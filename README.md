@@ -5,16 +5,16 @@ I provide pre-compiled images ready for use.
 
 1. *x86_64-efi* the preferred way of booting on x86_64 architecture.
     Standard GNU toolchain and a few files from gnuefi (included).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.efi?raw=true) (76k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.rom?raw=true) (76k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (76k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (76k)
 
 2. *x86_64-bios* BIOS and Multiboot (GRUB) compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
-    [boot.bin](https://gitlab.com/bztsrc/bootboot/blob/master/boot.bin?raw=true) (512 bytes, works as MBR and VBR too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.bin?raw=true) (8k)
+    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR and VBR too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (8k)
 
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.img?raw=true) (27k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (27k)
 
-4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel) in C which draws lines and boxes
+4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) in C which draws lines and boxes
 
 Please note that the reference implementations do not support the full protocol at level 2,
 they only handle static mappings which makes them level 1 loaders.
@@ -113,7 +113,7 @@ Glossary
 * _file system driver_: a separated function that parses initrd for the kernel file.
   Without one the first executable found will be loaded.
 
-* _kernel file_: an ELF64 / PE32+ [executable inside initrd](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel),
+* _kernel file_: an ELF64 / PE32+ [executable inside initrd](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel),
   optionally with the following symbols: `fb`, `environment`, `bootboot` (see machine state and linker script).
 
 * _BOOTBOOT structure_: an informational structure defined in [bootboot.h](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h).
@@ -128,7 +128,7 @@ Boot process
 5. if file system is not recognized, scans for the first executable in the initrd.
 6. parses executable header and symbols to get link addresses (only level 2 compatible loaders).
 7. maps linear framebuffer, environment and [bootboot structure](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h) accordingly.
-8. sets up stack, registers and jumps to kernel entry point. See [example kernel](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel).
+8. sets up stack, registers and jumps to kernel entry point. See [example kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel).
 
 Machine state
 -------------
@@ -337,8 +337,7 @@ BOOTBOOT-PANIC: Hardware not supported
 ```
 
 Really old hardware. On x86_64, your CPU is older than family 6.0 or PAE, MSR, LME features not supported.
-On AArch64 it means the MMU does not support 4k granule size, at least 36 bit address size or the system timer
-(0x3F003000) is not available.
+On AArch64 it means the MMU does not support 4k granule size or at least 36 bit address size.
 
 
 ```
