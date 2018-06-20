@@ -666,7 +666,7 @@ int sd_init()
 }
 
 // comment out this include if you don't want FS/Z support
-#include "../../osZ/etc/include/fsZ.h"
+#include "../../osZ/etc/include/sys/fsZ.h"
 // get filesystem drivers for initrd
 #include "fs.h"
 

@@ -237,7 +237,7 @@ OS developers, specially for those who want to write their own file systems.
 The reference implementations support [cpio](https://en.wikipedia.org/wiki/Cpio) (all hpodc, newc and crc variants),
 [ustar](https://en.wikipedia.org/wiki/Tar_(computing)), osdev.org's [SFS](http://wiki.osdev.org/SFS),
 [James Molloy's initrd](http://www.jamesmolloy.co.uk/tutorial_html/8.-The%20VFS%20and%20the%20initrd.html)
-format and OS/Z's native [FS/Z](https://gitlab.com/bztsrc/osz/blob/master/etc/include/fsZ.h).
+format and OS/Z's native [FS/Z](https://gitlab.com/bztsrc/osz/blob/master/etc/include/sys/fsZ.h).
 Gzip compressed initrds also supported to save disk space and fasten up load time (not recommended on RPi3).
 
 Example kernel
