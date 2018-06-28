@@ -162,14 +162,14 @@ typedef struct _EFI_FILE_PROTOCOL {
 #define EFI_PCI_OPTION_ROM_TABLE_GUID \
   { 0x7462660f, 0x1cbd, 0x48da, {0xad, 0x11, 0x91, 0x71, 0x79, 0x13, 0x83, 0x1c} }
 typedef struct {
-  EFI_PHYSICAL_ADDRESS   RomAddress; 
+  EFI_PHYSICAL_ADDRESS   RomAddress;
   EFI_MEMORY_TYPE        MemoryType;
-  UINT32                 RomLength; 
-  UINT32                 Seg; 
-  UINT8                  Bus; 
-  UINT8                  Dev; 
-  UINT8                  Func; 
-  BOOLEAN                ExecutedLegacyBiosImage; 
+  UINT32                 RomLength;
+  UINT32                 Seg;
+  UINT8                  Bus;
+  UINT8                  Dev;
+  UINT8                  Func;
+  BOOLEAN                ExecutedLegacyBiosImage;
   BOOLEAN                DontLoadEfiRom;
 } EFI_PCI_OPTION_ROM_DESCRIPTOR;
 
@@ -393,7 +393,7 @@ GetLFB()
 // there's a bug in TianoCore, it reports bad masks in PixelInformation, so we don't use PixelBitMask
 //          || (info->PixelFormat == PixelBitMask)
            )){
-            if(info->HorizontalResolution >= (unsigned int)reqwidth && 
+            if(info->HorizontalResolution >= (unsigned int)reqwidth &&
                info->VerticalResolution >= (unsigned int)reqheight &&
                (selectedMode==9999||(info->HorizontalResolution<sw && info->VerticalResolution < sh))) {
                     selectedMode = i;
@@ -440,7 +440,7 @@ GetLFB()
         ));
     DBG(L" * Screen %d x %d, scanline %d, fb @%lx %d bytes, type %d %s\n",
         bootboot->fb_width, bootboot->fb_height, bootboot->fb_scanline,
-        bootboot->fb_ptr, bootboot->fb_size, gop->Mode->Info->PixelFormat, 
+        bootboot->fb_ptr, bootboot->fb_size, gop->Mode->Info->PixelFormat,
             bootboot->fb_type==FB_ARGB?L"ARGB":(bootboot->fb_type==FB_ABGR?L"ABGR":(
             bootboot->fb_type==FB_RGBA?L"RGBA":L"BGRA")));
     return EFI_SUCCESS;
@@ -463,7 +463,7 @@ LoadFile(IN CHAR16 *FileName, OUT UINT8 **FileData, OUT UINTN *FileDataLength)
         return report(EFI_NOT_FOUND,L"Empty Root or FileName\n");
     }
 
-    status = uefi_call_wrapper(RootDir->Open, 5, RootDir, &FileHandle, FileName, 
+    status = uefi_call_wrapper(RootDir->Open, 5, RootDir, &FileHandle, FileName,
         EFI_FILE_MODE_READ, EFI_FILE_READ_ONLY | EFI_FILE_HIDDEN | EFI_FILE_SYSTEM);
     if (EFI_ERROR(status)) {
         return status;
@@ -527,7 +527,7 @@ LoadCore()
                 ehdr->e_phnum>0){
                     break;
                 }
-            if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && pehdr->magic == PE_MAGIC && 
+            if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && pehdr->magic == PE_MAGIC &&
                 pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS) {
                     break;
                 }
@@ -556,7 +556,7 @@ LoadCore()
                 }
                 phdr=(Elf64_Phdr *)((UINT8 *)phdr+ehdr->e_phentsize);
             }
-        } else if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && pehdr->magic == PE_MAGIC && 
+        } else if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && pehdr->magic == PE_MAGIC &&
             pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS &&
             (INT64)pehdr->code_base>>48==0xffff) {
                 //Parse PE32+
@@ -575,7 +575,7 @@ LoadCore()
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         CopyMem((void*)core.ptr,ptr,core.size);
         if(bss>0)
-            ZeroMem((void*)core.ptr + core.size, bss); 
+            ZeroMem((void*)core.ptr + core.size, bss);
         core.size += bss;
         DBG(L" * Entry point @%lx, text @%lx %d bytes\n",entrypoint, core.ptr, core.size);
         core.size = ((core.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
@@ -676,8 +676,8 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
             return report(EFI_OUT_OF_RESOURCES,L"GetMemoryMap getSize");
         }
         memory_map_size+=2*desc_size;
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 
-            (memory_map_size+PAGESIZE-1)/PAGESIZE, 
+        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
+            (memory_map_size+PAGESIZE-1)/PAGESIZE,
             (EFI_PHYSICAL_ADDRESS*)&memory_map);
         if (memory_map == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
@@ -784,7 +784,7 @@ foundinrom:
                     break;
                     // use the first OS/Z root partition for this architecture
                 if(!CompareMem(&gptEnt->PartitionTypeGUID.Data1,"OS/Z",4) &&
-                    gptEnt->PartitionTypeGUID.Data2==0x8664 && 
+                    gptEnt->PartitionTypeGUID.Data2==0x8664 &&
                     !CompareMem(&gptEnt->PartitionTypeGUID.Data4[4],"root",4)) {
 partfound:              lba_s=gptEnt->StartingLBA; lba_e=gptEnt->EndingLBA;
                         initrd.size = (((lba_e-lba_s)*bio->Media->BlockSize + PAGESIZE-1)/PAGESIZE)*PAGESIZE;
@@ -801,7 +801,7 @@ partok:
             uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, initrd.size/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
             if (initrd.ptr == NULL)
                 return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
-            status=bio->ReadBlocks(bio, bio->Media->MediaId, lba_s, initrd.size, initrd.ptr);            
+            status=bio->ReadBlocks(bio, bio->Media->MediaId, lba_s, initrd.size, initrd.ptr);
         } else
             status=EFI_LOAD_ERROR;
     }
@@ -955,8 +955,8 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         // allocate memory for memory descriptors. We assume that one or two new memory
         // descriptor may created by our next allocate calls and we round up to page size
         memory_map_size+=2*desc_size;
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 
-            (memory_map_size+PAGESIZE-1)/PAGESIZE, 
+        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
+            (memory_map_size+PAGESIZE-1)/PAGESIZE,
             (EFI_PHYSICAL_ADDRESS*)&memory_map);
         if (memory_map == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
@@ -1011,7 +1011,7 @@ get_memory_map:
             mement<memory_map+memory_map_size;
             mement=NextMemoryDescriptor(mement,desc_size)) {
             // failsafe
-            if(mement==NULL || bootboot->size>=PAGESIZE-128 || 
+            if(mement==NULL || bootboot->size>=PAGESIZE-128 ||
                 (mement->PhysicalStart==0 && mement->NumberOfPages==0))
                 break;
             // failsafe, don't report our own structures as free
@@ -1037,7 +1037,7 @@ get_memory_map:
                 (mement->Type==11||mement->Type==12?MMAP_MMIO:
                 MMAP_USED))));
             // merge continous areas of the same type
-            if(last!=NULL && 
+            if(last!=NULL &&
                 MMapEnt_Type(last) == MMapEnt_Type(mmapent) &&
                 MMapEnt_Ptr(last)+MMapEnt_Size(last) == MMapEnt_Ptr(mmapent)) {
                     last->size+=MMapEnt_Size(mmapent);

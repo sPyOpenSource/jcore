@@ -195,7 +195,7 @@ That cannot be larger than a page size (4096 bytes). Temporary variables will be
 UEFI command line). C style single line and multi line comments can be used. BOOTBOOT protocol only uses `screen` and
 `kernel` keys, all the others and their values are up to your kernel (or drivers) to parse. Be creative :-)
 
-To modify the environment, one will need to insert the disk into another machine (or boot a simple OS like DOS) and edit
+To modify the environment when having booting issues, one will need to insert the disk into another machine (or boot a simple OS like DOS) and edit
 BOOTBOOT\CONFIG on the boot partition. With UEFI, you can use the `edit` command provided by the EFI Shell or append
 "key=value" pairs on the command line (value specified on command line takes precedence over the one in the file).
 

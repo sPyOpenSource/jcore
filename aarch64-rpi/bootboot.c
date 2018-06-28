@@ -450,7 +450,7 @@ int sd_cmd(uint32_t code, uint32_t arg)
     uart_puts("EMMC: Sending command ");uart_hex(code,4);uart_puts(" arg ");uart_hex(arg,4);uart_putc('\n');
 #endif
     *EMMC_INTERRUPT=*EMMC_INTERRUPT; *EMMC_ARG1=arg; *EMMC_CMDTM=code;
-    if(code==CMD_SEND_OP_COND) delaym(1000); else 
+    if(code==CMD_SEND_OP_COND) delaym(1000); else
     if(code==CMD_SEND_IF_COND || code==CMD_APP_CMD) delaym(100);
     if((r=sd_int(INT_CMD_DONE))) {DBG("BOOTBOOT-ERROR: failed to send EMMC command\n");sd_err=r;return 0;}
     r=*EMMC_RESP0;
@@ -565,10 +565,10 @@ int sd_init()
 
     // GPIO_DAT0, GPIO_DAT1, GPIO_DAT2, GPIO_DAT3
     r=*GPFSEL5; r|=(7<<(0*3)) | (7<<(1*3)) | (7<<(2*3)) | (7<<(3*3)); *GPFSEL5=r;
-    *GPPUD=2; delay(150); 
+    *GPPUD=2; delay(150);
     *GPPUDCLK1=(1<<18) | (1<<19) | (1<<20) | (1<<21);
     delay(150); *GPPUD=0; *GPPUDCLK1=0;
-    
+
     sd_hv = (*EMMC_SLOTISR_VER & HOST_SPEC_NUM) >> HOST_SPEC_NUM_SHIFT;
 #if SD_DEBUG
     uart_puts("EMMC: GPIO set up\n");
@@ -803,13 +803,13 @@ int GetLFB(uint32_t width, uint32_t height)
     mbox[9] = 8;
     mbox[10] = width;       //FrameBufferInfo.virtual_width
     mbox[11] = height;      //FrameBufferInfo.virtual_height
-    
+
     mbox[12] = 0x48009; //set virt offset
     mbox[13] = 8;
     mbox[14] = 8;
     mbox[15] = 0;           //FrameBufferInfo.x_offset
     mbox[16] = 0;           //FrameBufferInfo.y.offset
-    
+
     mbox[17] = 0x48005; //set depth
     mbox[18] = 4;
     mbox[19] = 4;
@@ -1289,7 +1289,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                     core.size=1;
                     break;
                 }
-            if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && pehdr->magic == PE_MAGIC && 
+            if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && pehdr->magic == PE_MAGIC &&
                 pehdr->machine == IMAGE_FILE_MACHINE_ARM64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS) {
                     core.size=1;
                     break;
@@ -1322,7 +1322,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                     phdr=(Elf64_Phdr *)((uint8_t *)phdr+ehdr->e_phentsize);
                 }
         } else
-        if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && pehdr->magic == PE_MAGIC && 
+        if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && pehdr->magic == PE_MAGIC &&
             pehdr->machine == IMAGE_FILE_MACHINE_ARM64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS &&
             (int64_t)pehdr->code_base>>48==0xffff) {
                 DBG(" * Parsing PE32+\n");
@@ -1365,7 +1365,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
     mmap->ptr=0; mmap->size=(uint64_t)&__bootboot | MMAP_FREE;
     mmap++; bootboot->size+=sizeof(MMapEnt);
 
-    // mark bss reserved 
+    // mark bss reserved
     mmap->ptr=(uint64_t)&__bootboot; mmap->size=((uint64_t)&_end-(uint64_t)&__bootboot) | MMAP_USED;
     mmap++; bootboot->size+=sizeof(MMapEnt);
 

@@ -826,7 +826,7 @@ protmode_start:
             mov         gs, ax
             mov         ss, ax
             mov         esp, 7C00h
-            
+
             ; ------- Locate initrd --------
             mov         esi, 0C8000h
 .nextrom:   cmp         word [esi], 0AA55h
