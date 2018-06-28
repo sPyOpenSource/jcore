@@ -89,8 +89,8 @@ virtual at bootboot
     bootboot.pagesize:    db	0
     bootboot.fb_type:     db	0
 
-    bootboot.timezone:    dw	0
     bootboot.bspid:       dw	0
+    bootboot.timezone:    dw	0
 
     bootboot.datetime:    dq	0
 

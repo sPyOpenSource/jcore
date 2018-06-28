@@ -89,8 +89,8 @@ typedef struct {
   uint8_t    pagesize;    // in power of two, 12 = 4096
   uint8_t    fb_type;     // framebuffer type, see FB_* above
 
-  int16_t    timezone;    // in minutes -1440..1440
   uint16_t   bspid;       // Bootsrap processor ID (Local APIC Id on x86_64)
+  int16_t    timezone;    // in minutes -1440..1440
 
   uint8_t    datetime[8]; // in BCD yyyymmddhhiiss UTC (independent to timezone)
 
@@ -118,19 +118,19 @@ typedef struct {
     struct {
       uint64_t acpi_ptr;
       uint64_t mmio_ptr;
+      uint64_t efi_ptr;
       uint64_t unused0;
       uint64_t unused1;
       uint64_t unused2;
       uint64_t unused3;
       uint64_t unused4;
-      uint64_t unused5;
     } aarch64;
   };
 
   /* from 128th byte, MMapEnt[], more records may follow */
   MMapEnt    mmap;
-  /* use like this: 
-   * MMapEnt *mmap_ent = &bootboot.mmap; mmap_ent++; 
+  /* use like this:
+   * MMapEnt *mmap_ent = &bootboot.mmap; mmap_ent++;
    * until you reach bootboot->size */
 } __attribute__((packed)) BOOTBOOT;
 
