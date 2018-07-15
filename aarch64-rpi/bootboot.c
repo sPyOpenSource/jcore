@@ -1003,6 +1003,7 @@ int bootboot_main(uint64_t hcl)
 
     /* create bootboot structure */
     bootboot = (BOOTBOOT*)&__bootboot;
+    memset(bootboot,0,PAGESIZE);
     memcpy((void*)&bootboot->magic,BOOTBOOT_MAGIC,4);
     bootboot->protocol = PROTOCOL_STATIC;
     bootboot->loader_type = LOADER_RPI;
@@ -1113,7 +1114,7 @@ diskerr:
     bpb=(bpb_t*)&_end;
     if(!memcmp((void*)bpb->fst,"FAT16",5) || !memcmp((void*)bpb->fst2,"FAT32",5)) {
         // locate BOOTBOOT directory
-        uint32_t data_sec, root_sec, clu=0, s, s2;
+        uint64_t data_sec, root_sec, clu=0, s, s2, s3;
         fatdir_t *dir;
         uint32_t *fat32=(uint32_t*)((uint8_t*)&_end+bpb->rsc*512);
         uint16_t *fat16=(uint16_t*)fat32;
@@ -1129,6 +1130,7 @@ diskerr:
         } else {
             root_sec+=(bpb->rc-2)*bpb->spc;
         }
+        s3=bpb->spc*512;
         // load fat table
         r=sd_readblock(part->start+1,(unsigned char*)&_end+512,(bpb->spf16?bpb->spf16:bpb->spf32)+bpb->rsc);
         if(r==0) goto diskerr;
@@ -1144,12 +1146,12 @@ diskerr:
         // locate environment and initrd
         while(dir->name[0]!=0) {
             if(!memcmp(dir->name,"CONFIG     ",11)) {
-                s=dir->size<PAGESIZE?dir->size:PAGESIZE-1;
+                s=dir->size<PAGESIZE?dir->size:PAGESIZE; // round up to cluster size
                 clu=dir->cl+(dir->ch<<16);
                 ptr=(void*)&__environment;
                 while(s>0) {
-                    s2=s>bpb->spc*512?bpb->spc*512:s;
-                    r=sd_readblock(part->start+(clu-2)*bpb->spc+data_sec,ptr,s2<512?1:s2/512);
+                    s2=s>s3?s3:s;
+                    r=sd_readblock(part->start+(clu-2)*bpb->spc+data_sec,ptr,s2<512?1:(s2+511)/512);
                     clu=bpb->spf16>0?fat16[clu]:fat32[clu];
                     ptr+=s2;
                     s-=s2;
@@ -1179,8 +1181,8 @@ diskerr:
             initrd.ptr=ptr=pe;
             s=initrd.size;
             while(s>0) {
-                s2=s>bpb->spc*512?bpb->spc*512:s;
-                r=sd_readblock(part->start+(clu-2)*bpb->spc+data_sec,ptr,s2<512?1:s2/512);
+                s2=s>s3?s3:s;
+                r=sd_readblock(part->start+(clu-2)*bpb->spc+data_sec,ptr,s2<512?1:(s2+511)/512);
                 clu=bpb->spf16>0?fat16[clu]:fat32[clu];
                 ptr+=s2;
                 s-=s2;
