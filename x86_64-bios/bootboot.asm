@@ -178,7 +178,7 @@ loader:     db          55h,0AAh                ;ROM magic
 .pnpptr:    dw          0
 .flags:     dd          0
 MB_MAGIC    equ         01BADB002h
-MB_FLAGS    equ         0D43h
+MB_FLAGS    equ         010001h
             align           8
 .mb_header: dd          MB_MAGIC        ;magic
             dd          MB_FLAGS        ;flags
@@ -200,19 +200,46 @@ MB_FLAGS    equ         0D43h
 multiboot_start:
             cld
             cli
-            xor         dl, dl
+            ;clear drive code, initrd ptr and environment
+            xor         edx, edx
+            mov         edi, 9000h
+            mov         dword [edi], edx
+            mov         dword [bootboot.initrd_ptr], edx
+            mov         dword [bootboot.initrd_size], edx
             ;no GRUB environment available?
             cmp         eax, 2BADB002h
             jne         @f
             ;save drive code for boot device
             mov         dl, byte [ebx+12]
+            ;is there a module? mod_count!=0
+            cmp         dword [ebx+20], 0
+            jz          @f
+            ;mod_addr!=0
+            mov         eax, dword [ebx+24]
+            or          eax, eax
+            jz          @f
+            ;mods[0].end
+            mov         ecx, dword [eax+4]
+            sub         ecx, dword [eax]
+            mov         dword [bootboot.initrd_size], ecx
+            ;mods[0].start
+            mov         ecx, dword [eax]
+            mov         dword [bootboot.initrd_ptr], ecx
+            inc         byte [hasinitrd]
+            ;mod_count>1?
+            cmp         dword [ebx+20], 1
+            jbe         @f
+            ;mods[1], copy environment (4k)
+            mov         esi, dword [eax+16]
+            mov         ecx, 1024
+            repnz       movsd
 @@:         jmp         CODE_BOOT:.real ;load 16 bit mode segment into cs
             USE16
 .real:      mov         eax, CR0
             and         al, 0FEh        ;switching back to real mode
             mov         CR0, eax
             xor         ax, ax
-            mov         ds, ax          ;load registers 2nd turn
+            mov         ds, ax          ;load segment registers
             mov         es, ax
             mov         ss, ax
             jmp         0:realmode_start
@@ -388,9 +415,15 @@ getmemmap:
             DBG         dbg_mem
 
             xor         eax, eax
-            mov         dword [bootboot.acpi_ptr], eax
-            mov         dword [bootboot.smbi_ptr], eax
+            mov         edi, bootboot.acpi_ptr
+            mov         ecx, 16
+            repnz       stosd
+            cmp         byte [hasinitrd], 0
+            jnz         @f
             mov         dword [bootboot.initrd_ptr], eax
+            mov         dword [bootboot.initrd_size], eax
+@@:         mov         dword [bootboot.initrd_ptr+4], eax
+            mov         dword [bootboot.initrd_size+4], eax
             mov         eax, bootboot_MAGIC
             mov         dword [bootboot.magic], eax
             mov         dword [bootboot.size], 128
@@ -828,6 +861,8 @@ protmode_start:
             mov         esp, 7C00h
 
             ; ------- Locate initrd --------
+            cmp         byte [hasinitrd], 0
+            jnz         .initrdrom
             mov         esi, 0C8000h
 .nextrom:   cmp         word [esi], 0AA55h
             jne         @f
@@ -1056,7 +1091,7 @@ protmode_start:
             jne         .notcfg
             cmp         dword [esi+7], '    '
             jne         .notcfg
-
+            ; load environment from FS0:/BOOTBOOT/CONFIG
             push        edx
             push        esi
             push        edi
@@ -1864,7 +1899,6 @@ core_ptr:   dd          0
 core_len:   dd          0
 ebdaptr:    dd          0
 hw_stack:   dd          0
-lastmsg:    dd          0
 bpb_sec:    dd          0 ;ESP's first sector
 root_sec:   dd          0 ;root directory's first sector
 data_sec:   dd          0 ;first data sector
@@ -1882,6 +1916,7 @@ lbapacket:              ;lba packet for BIOS
 reqwidth:   dd          1024
 reqheight:  dd          768
 bootdev:    db          0
+hasinitrd:  db          0
 fattype:    db          0
 vbememsize: dw          0
 bkp:        dd          '    '
