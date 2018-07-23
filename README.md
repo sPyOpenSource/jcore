@@ -7,9 +7,9 @@ I provide pre-compiled images ready for use.
     Standard GNU toolchain and a few files from gnuefi (included).
     [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (76k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (76k)
 
-2. *x86_64-bios* BIOS and Multiboot (GRUB) compatible, OBSOLETE loader.
+2. *x86_64-bios* BIOS, Multiboot (GRUB) and El Torito (CDROM) compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
-    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR and VBR too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (8k)
+    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (8k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3
     [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (27k)
@@ -29,7 +29,7 @@ The protocol describes how to boot an ELF64 or PE32+ executable inside an initia
 into clean 64 bit mode, without using any configuration or even knowing the file system of initrd.
 
 On [BIOS](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-bios) based systems, the same image can be loaded via
-Multiboot, chainload from MBR or VBR (GPT hybrid booting) or run as a BIOS Expansion ROM
+Multiboot, chainload from MBR, VBR (GPT hybrid booting) and CDROM boot record, or run as a BIOS Expansion ROM
 (so not only the ramdisk can be in ROM, but the loader as well).
 
 On [UEFI machines](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-efi), it is a standard EFI OS Loader application.
@@ -45,7 +45,7 @@ as if it were a monolitic kernel. And you can use your own file system for the i
 
 Note: BOOTBOOT is not a boot manager, it's a boot loader protocol. If you want an interactive boot menu, you should
 integrate that *before* a BOOTBOOT compatible loader is called. Like GRUB chainloading boot.bin (or loading bootboot.bin as a
-kernel) or adding bootboot.efi to UEFI Boot Manager's menu for example.
+multiboot "kernel" and initrd as a module) or adding bootboot.efi to UEFI Boot Manager's menu for example.
 
 Licence
 -------
@@ -105,7 +105,7 @@ Glossary
 
 * _initrd_: initial [ramdisk image](https://gitlab.com/bztsrc/bootboot/blob/master/README.md#installation)
   (probably in ROM or flash, or on a GPT boot partition at BOOTBOOT\INITRD, or it can occupy the whole partition, or can be loaded
-  over the network). It's format and whereabouts are not specified (the good part :-) ) and can be optionally gzip compressed.
+  over the network or as a GRUB module). It's format and whereabouts are not specified (the good part :-) ) and can be optionally gzip compressed.
 
 * _loader_: a native executable on the boot partition or in ROM. For multi-bootable disks
   more loader implementations can co-exists.
@@ -354,11 +354,21 @@ Either the disk does not have a GPT, or there's no EFI System Partition nor any 
 partition on it. Or the FAT file system is found but inconsistent, or doesn't have a BOOTBOOT directory.
 
 ```
-BOOTBOOT-PANIC: INITRD not found
+BOOTBOOT-PANIC: Not 2048 sector aligned
 ```
 
-The loader could not find the initial ramdisk image on the boot partition. This message will be shown
-even if you specify an alternative initrd file on EFI command line.
+This error is only shown by bootboot.bin (and not by bootboot.efi or bootboot.img) and only when
+booted from CDROM in El Torito "no emulation" mode, and the boot partition file system's
+root directory is not 2048 bytes aligned or the cluster size is not multiple of 2048
+bytes. For FAT16 it depends on FAT table size and therefore on file system size. If you
+see this message, increase the number of hidden sectors in BPB by 2. FAT32 file systems are
+not affected.
+
+```
+BOOTBOOT-PANIC: Initrd not found
+```
+
+The loader could not find the initial ramdisk image on the boot partition.
 
 ```
 BOOTBOOT-PANIC: Kernel not found in initrd

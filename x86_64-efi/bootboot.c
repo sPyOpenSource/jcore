@@ -1071,6 +1071,6 @@ get_memory_map:
             "retq"
             : : "a"(entrypoint): "memory" );
     }
-    return report(status,L"INITRD not found");
+    return report(status,L"Initrd not found");
 }
 

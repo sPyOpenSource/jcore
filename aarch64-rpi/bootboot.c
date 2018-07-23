@@ -1197,7 +1197,7 @@ diskerr:
     }
 gotinitrd:
     if(initrd.ptr==NULL || initrd.size==0) {
-        puts("BOOTBOOT-PANIC: INITRD not found\n");
+        puts("BOOTBOOT-PANIC: Initrd not found\n");
         goto error;
     }
 #if INITRD_DEBUG

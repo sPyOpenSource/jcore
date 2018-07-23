@@ -24,16 +24,16 @@
 ;* DEALINGS IN THE SOFTWARE.
 ;*
 ;* This file is part of the BOOTBOOT Protocol package.
-;* @brief Booting code for BIOS and MultiBoot
+;* @brief Booting code for BIOS, MultiBoot and El Torito
 ;*
-;*  2nd stage loader, compatible with GRUB and
-;*  BIOS boot specification 1.0.1 too (even expansion ROM).
+;*  Stage2 loader, compatible with GRUB and BIOS boot specification
+;*  1.0.1 (even expansion ROM) and El Torito "no emulation" CDROM boot.
 ;*
 ;*  memory occupied: 800-7C00
 ;*
 ;*  Memory map
 ;*      0h -  600h reserved for the system
-;*    600h -  800h stage1 (MBR)
+;*    600h -  800h stage1 (MBR/VBR, boot.bin)
 ;*    800h - 6C00h stage2 (this)
 ;*   6C00h - 7C00h stack
 ;*   8000h - 9000h bootboot structure
@@ -420,6 +420,7 @@ getmemmap:
             repnz       stosd
             cmp         byte [hasinitrd], 0
             jnz         @f
+            mov         dword [9000h], eax
             mov         dword [bootboot.initrd_ptr], eax
             mov         dword [bootboot.initrd_size], eax
 @@:         mov         dword [bootboot.initrd_ptr+4], eax
@@ -763,19 +764,54 @@ prot_realmodefunc:
 prot_readsectorfunc:
             push        eax
             push        ecx
-            push        edx
             push        esi
             push        edi
-            ;load 8 sectors (1 page) in low memory
+            ;load 8 sectors (1 page) or more in low memory
             mov         dword [lbapacket.sect0], eax
-            mov         dword [lbapacket.sect1], edx
-            mov         dword [lbapacket.addr], 0A000h
             prot_realmode
-            mov         ah, byte 42h
+            ;try all drives from bootdev-8F to support RAID mirror
             mov         dl, byte [bootdev]
-            mov         esi, lbapacket
+            mov         byte [readdev], dl
+.again:     mov         ax, word [lbapacket.count]
+            mov         word [origcount], ax
+            ;query cdrom status to see if it's a cdrom
+            mov         ax, word 4B01h
+            mov         dl, byte [readdev]
+            mov         esi, spc_packet
+            mov         byte [si], 13h
+            mov         byte [si+2], 0h ;clear drive number
+            clc
             int         13h
-            xor         ebx, ebx
+            jc          @f
+            ;some buggy BIOSes (like bochs') fail to set carry flag and ax properly
+            cmp         byte [si+2], 0h
+            jz          @f
+            ;use 2048 byte sectors instead of 512 if it's a cdrom
+            mov         al, byte [lbapacket.sect0]
+            and         al, 011b
+            or          al, al
+            jz          .cdok
+            ;this should never happen.
+            ; - GPT is loaded from PMBR, from LBA 0 (%4==0)
+            ; - ESP is at LBA 128 (%4==0)
+            ; - root dir is at LBA 172 (%4==0) for FAT16, and it's cluster aligned for FAT32
+            ; - cluster size is multiple of 4 sectors
+            mov         si, notcdsect
+            jmp         real_diefunc
+.cdok:      shr         dword [lbapacket.sect0], 2
+            add         word [lbapacket.count], 3
+            shr         word [lbapacket.count], 2
+            mov         byte [iscdrom], 1
+@@:         mov         dl, byte [readdev]
+            inc         byte [readdev]
+            mov         ah, byte 42h
+            mov         esi, lbapacket
+            clc
+            int         13h
+            jnc         @f
+            cmp         byte [readdev], 08Fh
+            jle         .again
+@@:         xor         ebx, ebx
             mov         bl, ah
             real_protmode
             pop         edi
@@ -785,12 +821,11 @@ prot_readsectorfunc:
             ;and copy to addr where it wanted to be (maybe in high memory)
             mov         esi, dword [lbapacket.addr]
             xor         ecx, ecx
-            mov         cx, word [lbapacket.count]
+            mov         cx, word [origcount]
             shl         ecx, 7
             repnz       movsd
             pop         edi
 @@:         pop         esi
-            pop         edx
             pop         ecx
             pop         eax
             ret
@@ -880,9 +915,14 @@ protmode_start:
 
             ; read GPT
 .getgpt:    xor         eax, eax
-            xor         edx, edx
             xor         edi, edi
             prot_readsector
+if DEBUG eq 1
+            cmp         byte [iscdrom], 0
+            jz          @f
+            DBG32       dbg_cdrom
+@@:
+end if
             mov         esi, 0A000h+512
             cmp         dword [esi], 'EFI '
             je          @f
@@ -967,7 +1007,6 @@ protmode_start:
             ; load INITRD from partition
             dec         ecx
             shr         ecx, 12
-            xor         edx, edx
             mov         edi, dword [bootboot.initrd_ptr]
 @@:         add         edi, 4096
             prot_readsector
@@ -1044,7 +1083,6 @@ protmode_start:
 
             ;load root directory
             mov         eax, dword [root_sec]
-            xor         edx, edx
             mov         edi, dword [bootboot.initrd_ptr]
             prot_readsector
 
@@ -1072,14 +1110,11 @@ protmode_start:
 @@:         mov         ax, word [esi + fatdir.cl]
             ;sec = (cluster-2)*secPerCluster+data_sec
             sub         eax, 2
-            xor         edx, edx
             mov         ebx, dword [clu_sec]
             mul         ebx
             add         eax, dword [data_sec]
             mov         edi, dword [bootboot.initrd_ptr]
             prot_readsector
-
-            mov         dword [9000h], 0
 
             ;look for CONFIG and INITRD
             mov         esi, edi
@@ -1115,7 +1150,6 @@ protmode_start:
 .nextcfg:   push        eax
             ;sec = (cluster-2)*secPerCluster+data_sec
             sub         eax, 2
-            xor         edx, edx
             mov         ebx, dword [clu_sec]
             mul         ebx
             shl         ebx, 9
@@ -1187,7 +1221,6 @@ protmode_start:
 .nextclu:   push        eax
             ;sec = (cluster-2)*secPerCluster+data_sec
             sub         eax, 2
-            xor         edx, edx
             mov         ebx, dword [clu_sec]
             mov         word [lbapacket.count], bx
             mul         ebx
@@ -1894,9 +1927,18 @@ GDT_value:  dw          $-GDT_table
             dd          GDT_table
             dd          0,0
             align       16
+lbapacket:              ;lba packet for BIOS
+.size:      dw          10h
+.count:     dw          8
+.addr:      dd          0A000h
+.sect0:     dd          0
+.sect1:     dd          0
+spc_packet: db          18h dup 0
 entrypoint: dq          0
 core_ptr:   dd          0
 core_len:   dd          0
+reqwidth:   dd          1024
+reqheight:  dd          768
 ebdaptr:    dd          0
 hw_stack:   dd          0
 bpb_sec:    dd          0 ;ESP's first sector
@@ -1906,17 +1948,11 @@ clu_sec:    dd          0 ;sector per cluster
 gpt_ptr:    dd          0
 gpt_num:    dd          0
 gpt_ent:    dd          0
-lbapacket:              ;lba packet for BIOS
-.size:      dw          10h
-.count:     dw          8
-.addr:      dd          0A000h
-.sect0:     dd          0
-.sect1:     dd          0
-.flataddr:  dd          0,0
-reqwidth:   dd          1024
-reqheight:  dd          768
+origcount:  dw          0
 bootdev:    db          0
+readdev:    db          0
 hasinitrd:  db          0
+iscdrom:    db          0
 fattype:    db          0
 vbememsize: dw          0
 bkp:        dd          '    '
@@ -1926,6 +1962,7 @@ dbg_A20     db          " * Enabling A20",10,13,0
 dbg_mem     db          " * E820 Memory Map",10,13,0
 dbg_systab  db          " * System tables",10,13,0
 dbg_time    db          " * System time",10,13,0
+dbg_cdrom   db          " * Detected CDROM boot",10,13,0
 dbg_env     db          " * Environment",10,13,0
 dbg_initrd  db          " * Initrd loaded",10,13,0
 dbg_gzinitrd db         " * Gzip compressed initrd",10,13,0
@@ -1944,12 +1981,13 @@ nogzmem:    db          "Inflating: "
 noenmem:    db          "Not enough memory",0
 noacpi:     db          "ACPI not found",0
 nogpt:      db          "No boot partition",0
-nord:       db          "INITRD not found",0
+nord:       db          "Initrd not found",0
 nolib:      db          "/sys not found in initrd",0
 nocore:     db          "Kernel not found in initrd",0
 badcore:    db          "Kernel is not a valid executable",0
 novbe:      db          "VESA VBE error, no framebuffer",0
 nogzip:     db          "Unable to uncompress",0
+notcdsect:  db          "Not 2048 sector aligned",0
 cfgfile:    db          "sys/config",0,0,0
 kernel:     db          "sys/core"
             db          (128-($-kernel)) dup 0

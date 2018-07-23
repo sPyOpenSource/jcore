@@ -24,7 +24,8 @@
 ;* DEALINGS IN THE SOFTWARE.
 ;*
 ;* This file is part of the BOOTBOOT Protocol package.
-;* @brief 1nd stage loader, compatible with BIOS boot specification
+;* @brief Stage1 loader, compatible with BIOS boot specification and
+;* El Torito CD-ROM boot in "no emulation" mode
 ;*
 
 ;*********************************************************************
@@ -75,7 +76,7 @@ bootboot_record:
             ;skip BPB area so that we can use this
             ;boot code on a FAT volume if needed
             db          05Ah-($-$$) dup 0
-.skipid:    ;relocate our code to offset 600h
+.skipid:    ;relocate our code to offset 0h:600h
             cli
             xor         ax, ax
             mov         ss, ax
@@ -97,22 +98,23 @@ bootboot_record:
             ;and copy ourselves to 600h
             mov         cx, 100h
             repnz       movsw
+            ;have to clear ds, because cs is set to 7c0 when booted from El Torito
+            push        es
+            pop         ds
             jmp         0:.start
 
 .start:     ;save boot drive code
             mov         byte [drive], dl
             ;initialize lba packet
             mov         byte [lbapacket.size], 16
-            mov         byte [lbapacket.count], 58
             mov         byte [lbapacket.addr0+1], 08h   ;to address 800h
             ;check for lba presistance - floppy not supported any more
             ;we use pendrive as removable media for a long time
             cmp         dl, byte 80h
             jl          .nolba
-            cmp         dl, byte 84h
-            jae         .nostage2err
 .notfloppy: mov         ah, byte 41h
             mov         bx, word 55AAh
+            clc
             int         13h
             jc          .nolba
             cmp         bx, word 0AA55h
@@ -122,15 +124,42 @@ bootboot_record:
 .nolba:     mov         si, lbanotf
             jmp         diefunc
 .lbaok:     ;try to load stage2 - it's a continous area on disk
-            ;started at given sector with maximum size of 7400h bytes
+            ;started at given sector with maximum size of 7000h bytes
             mov         si, stage2_addr
             mov         di, lbapacket.sect0
+            push        bx
             push        di
+            ;set up for hard-drive
             movsw
             movsw
-            movsw
-            movsw
-            call        loadsectorfunc
+            mov         byte [lbapacket.count], 56
+            ;query cdrom status to see if it's a cdrom
+            mov         ax, word 4B01h
+            mov         dl, byte [drive]
+            mov         si, spc_packet
+            mov         byte [si], 13h
+            mov         byte [si+2], 0h ;clear drive number
+            clc
+            int         13h
+            pop         di
+            jc          @f
+            ;some buggy BIOSes (like bochs') fail to set carry flag and ax properly
+            cmp         byte [si+2], 0h
+            jz          @f
+            ;lba=lba/4
+            clc
+            rcr         word [di+2], 1
+            rcr         word [di], 1
+            clc
+            rcr         word [di+2], 1
+            rcr         word [di], 1
+            mov         byte [lbapacket.count], 14
+            ;load sectors
+@@:         mov         ah, byte 42h
+            mov         dl, byte [drive]
+            mov         si, lba_packet
+            int         13h
+            pop         bx
 
             ;do we have a 2nd stage loader?
 .chk:       cmp         word [ldr.header], bx
@@ -138,15 +167,14 @@ bootboot_record:
             cmp         byte [ldr.header+3], 0E9h
             jne         .nostage2
             ;invoke stage2 real mode code
-            print       okay
             mov         ax, [ldr.executor]
             add         ax, ldr.executor+3
             jmp         ax
 
 .nostage2:  ;try to load stage2 from a RAID mirror
             inc         byte [drive]
-            cmp         byte [drive], 84h
-            jl          .lbaok
+            cmp         byte [drive], 8Fh
+            jle         .lbaok
 .nostage2err:
             mov         si, stage2notf
             ;fall into the diefunc code
@@ -168,18 +196,6 @@ diefunc:
             out         64h, al
             jmp         far 0FFFFh:0    ;invoke BIOS POST routine
 
-;loads an LBA sector
-loadsectorfunc:
-            push        bx
-            push        si
-            mov         ah, byte 42h
-            mov         dl, byte [drive]
-            mov         si, lba_packet
-            int         13h
-            pop         si
-            pop         bx
-            ret
-
 ;ds:si zero terminated string to write
 printfunc:
             lodsb
@@ -199,9 +215,10 @@ panic:      db          "-PANIC: ",0
 lbanotf:    db          "LBA support",0
 stage2notf: db          "FS0:\BOOTBOOT\LOADER",0
 found:      db          " not found",10,13,0
-okay:       db          "Booting LOADER...",10,13,0
 drive:      db          0
-lba_packet: db          01B0h-($-$$) dup 0
+lba_packet: db          16 dup 0
+spc_packet: db          13h dup 0
+            db          01B0h-($-$$) dup 0
 
 ;right before the partition table some data
 stage2_addr:dd          0FFFFFFFFh,0    ;1B0h 2nd stage loader address

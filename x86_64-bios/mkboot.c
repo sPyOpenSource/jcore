@@ -25,7 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief Little tool to install boot.bin in MBR or VBR
- * 
+ *
  */
 
 #include <stdio.h>
