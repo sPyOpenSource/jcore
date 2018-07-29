@@ -1142,15 +1142,12 @@ end if
             mov         ax, word [esi + fatdir.ch]
             shl         eax, 16
 @@:         mov         ax, word [esi + fatdir.cl]
-            mov         ebx, dword [clu_sec]
-            cmp         bx, 8
-            jbe         @f
-            mov         word [lbapacket.count], 8
-@@:         mov         edi, 9000h
+            mov         edi, 9000h
 .nextcfg:   push        eax
             ;sec = (cluster-2)*secPerCluster+data_sec
             sub         eax, 2
             mov         ebx, dword [clu_sec]
+            mov         word [lbapacket.count], bx
             mul         ebx
             shl         ebx, 9
             add         eax, dword [data_sec]
