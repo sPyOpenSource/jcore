@@ -148,8 +148,8 @@ All infomration is passed at linker defined addresses. No API required at all, t
 totally architecture and ABI agnostic. Level 1 expects these symbols at pre-defined addresses, level 2 loaders
 parse the symbol table in executable to get the actual addresses.
 
-The RAM (up to 16G) is identity mapped in the positive address range. Interrups are turned off and code is running
-in supervisor mode.
+The RAM (up to 16G) is identity mapped in the positive address range. Serial console is configured for 115200 baud,
+8 data bits, no partity and 1 stop bit. Interrups are turned off and code is running in supervisor mode (ring 0 / EL1).
 
 The screen is properly set up with a 32 bit packed pixel linear framebuffer, mapped at the negative address defined by
 the `fb` symbol. Level 1 loaders limit the framebuffer size somewhere around 4096 x 4096 pixels (depends on scanline size
