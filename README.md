@@ -5,14 +5,14 @@ I provide pre-compiled images ready for use.
 
 1. *x86_64-efi* the preferred way of booting on x86_64 architecture.
     Standard GNU toolchain and a few files from gnuefi (included).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (76k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (76k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (81k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (81k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB) and El Torito (CDROM) compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
-    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (8k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
+    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (10k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (27k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (30k)
 
 4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) in C which draws lines and boxes
 
@@ -395,5 +395,12 @@ BOOTBOOT-PANIC: VideoCore error, no framebuffer
 The first part of the message varies on different platforms. It means that the loader was unable to set up linear
 framebuffer with packed 32 bit pixels in the requested resolution. Possible solution is to modify screen to
 `screen=800x600` or `screen=1024x768` in environment.
+
+```
+BOOTBOOT-PANIC: Unsupported cipher
+```
+
+This message is shown if the initrd is encrypted with a cipher that the loader does not support. Solution:
+regenerate and encrypt the initrd image with SHA-XOR-CBC cipher, supported by all three implementations.
 
 That's all, hope it will be useful!

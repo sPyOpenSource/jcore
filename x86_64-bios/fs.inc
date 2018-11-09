@@ -46,7 +46,7 @@ end if
 
 if FSZ_SUPPORT eq 1
 ; ----------- FS/Z ----------
-; Find the kernel on initrd
+; Find the kernel on initrd (only supports 4096 logical sector sizes)
 ; IN:   esi: initrd pointer, ecx: initrd end, edi: kernel filename
 ; OUT:  On Success
 ;         esi: pointer to the first byte, ecx: size in bytes
@@ -56,8 +56,151 @@ fsz_initrd:
             mov         ebx, ecx
             xor         ecx, ecx
             ; FS/Z superblock
+            cmp         dword [esi+512], 'FS/Z' ; FSZ_SuperBlock.magic
+            jne         .nolib
+            ; encrypted initrd?
+            cmp         dword [esi+708], 0      ; FSZ_SuperBlock.enchash
+            jz          .noenc
+            mov         al, byte [esi+518]      ; FSZ_SuperBlock.flags
+            shr         al, 2
+            and         al, 7
+            or          al, al
+            jz          @f
+            prot_realmode
+            real_print  loader.name
+            real_print  panic
+            mov         esi, nocipher
+            call        real_printfunc
+            real_protmode
+            jmp         .err
+@@:         push        edi
+            prot_realmode
+.passagain: real_print  passphrase
+            ; get passphrase from user
+            mov         di, pass
+            mov         byte [di], 0
+.getchar:   call        real_getchar
+            cmp         al, 27              ; Esc
+            jne         @f
+            real_print  clrdecrypt
+            jmp         .err
+@@:         cmp         al, 8               ; Backspace
+            jne         @f
+            cmp         di, pass
+            je          .getchar
+            mov         byte [di], 0
+            dec         di
+            jmp         .getchar
+@@:         cmp         al, 13              ; Enter
+            je          .gotpass
+            cmp         al, 10
+            je          .gotpass
+            cmp         al, ' '
+            jb          .getchar
+            cmp         di, pass+255
+            jge         .getchar
+            mov         word [di], ax
+            inc         di
+            jmp         .getchar
+.gotpass:   push        esi
+            real_protmode
+            mov         esi, pass
+            mov         ecx, edi
+            sub         ecx, esi
+            mov         dword [pl], ecx
+            call        crc32_calc
+            prot_realmode
+            pop         esi
+            cmp         dword [esi+708], edx
+            je          .passok
+            real_print  badpass
+            jmp         .passagain
+.passok:    real_print  decrypting
+            real_protmode
+            ; decrypt initrd
+            call        sha_init
+            mov         ecx, dword [pl]
+            mov         ebx, pass
+            call        sha_upd
+            mov         ecx, 6
+            mov         ebx, esi
+            add         ebx, 512                ; FSZ_SuperBlock.magic
+            call        sha_upd
+            mov         edi, chk
+            call        sha_final
+            mov         edi, esi
+            add         edi, 680                ; FSZ_SuperBlock.encrypt
+            mov         cl, 28
+            xor         ebx, ebx
+@@:         mov         al, byte [edi]
+            xor         byte [chk+ebx], al
+            xor         eax, eax
+            stosb
+            inc         ebx
+            dec         cl
+            jnz         @b
+            stosd
+            call        sha_init
+            mov         ecx, 28
+            mov         ebx, chk
+            call        sha_upd
+            mov         edi, iv
+            call        sha_final
+            mov         eax, dword [esi+528]    ; FSZ_SuperBlock.numsec
+            mov         dword [pl], eax
+            xor         eax, eax
+            inc         eax
+            mov         dword [_i], eax         ; skip first sector
+            mov         ebx, esi
+            add         ebx, 4096
+            push        esi
+.decrypt:   mov         esi, iv
+            mov         edi, chk
+            xor         ecx, ecx
+            mov         cl, 32/4
+            repnz       movsd
+            mov         cx, 4096
+.nextblk:   mov         al, bl
+            and         al, 31
+            jnz         @f
+            push        ebx
+            push        ecx
+            call        sha_init
+            mov         ecx, 32
+            mov         ebx, chk
+            call        sha_upd
+            mov         ecx, 4
+            mov         ebx, _i
+            call        sha_upd
+            mov         edi, chk
+            call        sha_final
+            pop         ecx
+            pop         ebx
+            mov         edx, edi
+@@:         mov         al, byte [edx]
+            xor         byte [ebx], al
+            inc         ebx
+            inc         edx
+            dec         cx
+            jnz         .nextblk
+            inc         dword [_i]
+            mov         eax, dword [_i]
+            cmp         eax, dword [pl]
+            jne         .decrypt
+            mov         esi, dword [esp]
+            add         esi, 512
+            mov         ecx, 508
+            call        crc32_calc
+            pop         esi
+            mov         dword [esi+1020], edx   ; FSZ_SuperBlock.chksum
+            ; clear console message
+            prot_realmode
+            real_print  clrdecrypt
+            real_protmode
+            pop         edi
+
             ; get root dir inode
-            mov         eax, dword [esi+560]    ; FSZ_SuperBlock.rootdirfid
+.noenc:     mov         eax, dword [esi+560]    ; FSZ_SuperBlock.rootdirfid
             shl         eax, 12
             add         esi, eax
             cmp         dword [esi], 'FSIN'
@@ -107,7 +250,7 @@ fsz_initrd:
             add         edi, 4
             cmp         byte [edi+3], '/'
             je          .again
-            
+
             ; it has inlined data?
             add         esi, 1024                   ; FSZ_Inode.inlinedata
             cmp         dword [esi], 'FSDR'

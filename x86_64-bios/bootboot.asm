@@ -275,13 +275,11 @@ realmode_start:
             mov         word [lbapacket.count], 8
 
             ;-----initialize serial port COM1,115200,8N1------
-if DEBUG eq 1
             mov         ax, 0401h
             xor         bx, bx
             mov         cx, 030Bh
             xor         dx, dx
             int         14h
-end if
             real_print  starting
 
             in          al, 060h    ; read key
@@ -396,7 +394,7 @@ end if
 .a20ok:
             ; wait for a key press, if so use backup initrd
             mov         ecx, dword [046Ch]
-            add         ecx, 5  ; ~250ms, 18.2/4
+            add         ecx, 10  ; ~500ms, 18.2/2
             sti
 .waitkey:   pause
             in          al, 064h
@@ -691,12 +689,35 @@ real_diefunc:
             real_print  panic
             pop         si
             call        real_printfunc
-            sti
-            xor         ax, ax
-            int         16h
+            call        real_getchar
             mov         al, 0FEh
             out         64h, al
             jmp         far 0FFFFh:0    ;invoke BIOS POST routine
+
+; get a character from keyboard or from serial line
+real_getchar:
+            pushf
+            sti
+            push        si
+            push        di
+.chkser:    mov         ah, byte 03h
+            xor         dx, dx
+            int         14h
+            bt          ax, 8
+            jnc         @f
+            mov         ah, byte 02h
+            xor         dx, dx
+            int         14h
+@@:         mov         ah, byte 01h
+            int         16h
+            jnz         .chkser
+            xor         ah, ah
+            int         16h
+.gotch:     pop         di
+            pop         si
+            popf
+            xor         ah, ah
+            ret
 
 ;ds:si zero terminated string to write
 real_printfunc:
@@ -709,11 +730,9 @@ real_printfunc:
             mov         bx, word 11
             int         10h
             pop         ax
-if DEBUG eq 1
             mov         ah, byte 01h
             xor         dx, dx
             int         14h
-end if
             pop         si
             jmp         real_printfunc
 .end:       ret
@@ -961,7 +980,7 @@ end if
             jne         .note
             cmp         dword [esi+4], edx
             je          .loadesp
-.note:      cmp         dword [esi], 'OS/Z'     ;or OS/Z root partition for this archicture?
+.note:      cmp         dword [esi], 'OS/Z'     ;or OS/Z root partition for this architecture?
             jne         .noto
             cmp         word [esi+4], 08664h
             jne         .noto
@@ -1462,6 +1481,8 @@ end if
             cmp         word [esi], 5A4Dh      ; MZ magic
             jne         @b
             mov         eax, dword [esi+0x3c]
+            cmp         eax, 65536
+            jnl         @b
             add         eax, esi
             cmp         dword [eax], 00004550h ; PE magic
             jne         @b
@@ -1480,6 +1501,8 @@ end if
             cmp         word [esi], 5A4Dh      ; MZ magic
             jne         .tryelf
             mov         ebx, esi
+            cmp         dword [esi+0x3c], 65536
+            jnl         .badcore
             add         esi, dword [esi+0x3c]
             cmp         dword [esi], 00004550h ; PE magic
             jne         .badcore
@@ -1642,7 +1665,6 @@ end if
 
             xor         ax, ax
             mov         es, ax
-            mov         word [vbememsize], ax
             ;get VESA VBE2.0 info
             mov         ax, 4f00h
             mov         di, 0A000h
@@ -1653,13 +1675,6 @@ end if
             je          @f
 .viderr:    mov         si, novbe
             jmp         real_diefunc
-            ;get video memory size in MiB
-@@:         mov         ax, word [0A000h+12h]
-            shr         ax, 4
-            or          ax, ax
-            jnz         @f
-            inc         ax
-@@:         mov         word [vbememsize], ax
             ;read dword pointer and copy string to 1st 64k
             ;available video modes
 @@:         xor         esi, esi
@@ -1907,6 +1922,268 @@ longmode_init:
             include     "fs.inc"
             include     "tinf.inc"
 
+            ;encryption support for FS/Z
+if FSZ_SUPPORT eq 1
+; --- SHA-256 ---
+sha_init:   xor         eax, eax
+            mov         dword [sha_l], eax
+            mov         dword [sha_b], eax
+            mov         dword [sha_b+4], eax
+            mov         dword [sha_s   ], 06a09e667h
+            mov         dword [sha_s+ 4], 0bb67ae85h
+            mov         dword [sha_s+ 8], 03c6ef372h
+            mov         dword [sha_s+12], 0a54ff53ah
+            mov         dword [sha_s+16], 0510e527fh
+            mov         dword [sha_s+20], 09b05688ch
+            mov         dword [sha_s+24], 01f83d9abh
+            mov         dword [sha_s+28], 05be0cd19h
+            ret
+
+            ; IN: ebx = buffer, ecx = length
+sha_upd:    push        esi
+            mov         esi, ebx
+            mov         edi, dword [sha_l]
+            add         edi, sha_d
+            ; for(;len--;d++) {
+            ; ctx->d[ctx->l++]=*d;
+.next:      movsb
+            inc         byte [sha_l]
+            ; if(ctx->l==64) {
+            cmp         byte [sha_l], 64
+            jne         @f
+            ; sha256_t(ctx);
+            call        sha_final.sha_t
+            ; SHA_ADD(ctx->b[0],ctx->b[1],512);
+            add         dword [sha_b], 512
+            adc         dword [sha_b+4], 0
+            ; ctx->l=0;
+            mov         byte [sha_l], 0
+            ; }
+@@:         dec         ecx
+            jnz         .next
+            pop         esi
+            ret
+
+            ; IN: edi = output buffer
+sha_final:  push        esi
+            push        edi
+            mov         ebx, edi
+            ; i=ctx->l; ctx->d[i++]=0x80;
+            mov         edi, dword [sha_l]
+            mov         ecx, edi
+            add         edi, sha_d
+            mov         al, 80h
+            stosb
+            xor         eax, eax
+            ; if(ctx->l<56) {while(i<56) ctx->d[i++]=0x00;}
+            cmp         cl, 56
+            jae         @f
+            neg         ecx
+            add         ecx, 63
+            xor         al, al
+            repnz       stosb
+            jmp         .padded
+@@:         ; else {while(i<64) ctx->d[i++]=0x00;sha256_t(ctx);memset(ctx->d,0,56);}
+            stosb
+            call        .sha_t
+            push        ecx
+            mov         ecx, 56/4
+            repnz       stosd
+            pop         ecx
+            inc         cl
+            cmp         cl, 64
+            jne         @b
+.padded:    ; SHA_ADD(ctx->b[0],ctx->b[1],ctx->l*8);
+            mov         eax, dword [sha_l]
+            shl         eax, 3
+            add         dword [sha_b], eax
+            adc         dword [sha_b+4], 0
+            ; ctx->d[63]=ctx->b[0];ctx->d[62]=ctx->b[0]>>8;ctx->d[61]=ctx->b[0]>>16;ctx->d[60]=ctx->b[0]>>24;
+            mov         eax, dword [sha_b]
+            bswap       eax
+            mov         dword [sha_d+60], eax
+            ; ctx->d[59]=ctx->b[1];ctx->d[58]=ctx->b[1]>>8;ctx->d[57]=ctx->b[1]>>16;ctx->d[56]=ctx->b[1]>>24;
+            mov         eax, dword [sha_b+4]
+            bswap       eax
+            mov         dword [sha_d+56], eax
+            ; sha256_t(ctx);
+            call        .sha_t
+            ; for(i=0;i<4;i++) {
+            ;   h[i]   =(ctx->s[0]>>(24-i*8)); h[i+4] =(ctx->s[1]>>(24-i*8));
+            ;   h[i+8] =(ctx->s[2]>>(24-i*8)); h[i+12]=(ctx->s[3]>>(24-i*8));
+            ;   h[i+16]=(ctx->s[4]>>(24-i*8)); h[i+20]=(ctx->s[5]>>(24-i*8));
+            ;   h[i+24]=(ctx->s[6]>>(24-i*8)); h[i+28]=(ctx->s[7]>>(24-i*8));
+            ; }
+            mov         edi, ebx
+            mov         esi, sha_s
+            mov         cl, 8
+@@:         lodsd
+            bswap       eax
+            stosd
+            dec         cl
+            jnz         @b
+            pop         edi
+            pop         esi
+            ret
+; private func, sha transform
+.sha_t:     push        esi
+            push        edi
+            push        edx
+            push        ecx
+            push        ebx
+            ; for(i=0,j=0;i<16;i++,j+=4) m[i]=(ctx->d[j]<<24)|(ctx->d[j+1]<<16)|(ctx->d[j+2]<<8)|(ctx->d[j+3]);
+            mov         cl, 16
+            mov         edi, _m
+            mov         esi, sha_d
+@@:         lodsd
+            bswap       eax
+            stosd
+            dec         cl
+            jnz         @b
+            ; for(;i<64;i++) m[i]=SHA_SIG1(m[i-2])+m[i-7]+SHA_SIG0(m[i-15])+m[i-16];
+            mov         cl, 48
+            ;   SHA_SIG0[m[i-15])       (SHA_ROTR(x,7)^SHA_ROTR(x,18)^((x)>>3))
+@@:         mov         eax, dword [edi-15*4]
+            mov         ebx, eax
+            mov         edx, eax
+            ror         eax, 7
+            ror         ebx, 18
+            shr         edx, 3
+            xor         eax, ebx
+            xor         eax, edx
+            ;   SHA_SIG1(m[i-2])        (SHA_ROTR(x,17)^SHA_ROTR(x,19)^((x)>>10))
+            mov         ebx, dword [edi-2*4]
+            mov         edx, ebx
+            ror         ebx, 17
+            ror         edx, 19
+            xor         ebx, edx
+            rol         edx, 19
+            shr         edx, 10
+            xor         ebx, edx
+            add         eax, ebx
+            ;   m[i-7]
+            add         eax, dword [edi-7*4]
+            ;   m[i-16]
+            add         eax, dword [edi-16*4]
+            stosd
+            dec         cl
+            jnz         @b
+            ; a=ctx->s[0];b=ctx->s[1];c=ctx->s[2];d=ctx->s[3];
+            ; e=ctx->s[4];f=ctx->s[5];g=ctx->s[6];h=ctx->s[7];
+            xor         ecx, ecx
+            mov         cl, 8
+            mov         esi, sha_s
+            mov         edi, _a
+            repnz       movsd
+            ; for(i=0;i<64;i++) {
+            mov         esi, _m
+@@:         ; t1=h+SHA_EP1(e)+SHA_CH(e,f,g)+sha256_k[i]+m[i];
+            mov         eax, dword [_h]
+            mov         dword [t1], eax
+            ;   SHA_EP1(e)              (SHA_ROTR(x,6)^SHA_ROTR(x,11)^SHA_ROTR(x,25))
+            mov         eax, dword [_e]
+            mov         ebx, eax
+            ror         eax, 6
+            ror         ebx, 11
+            xor         eax, ebx
+            ror         ebx, 14 ; 25 = 11+14
+            xor         eax, ebx
+            add         dword [t1], eax
+            ;   SHA_CH(e,f,g)           (((x)&(y))^(~(x)&(z)))
+            mov         eax, dword [_e]
+            mov         ebx, eax
+            not         ebx
+            and         eax, dword [_f]
+            and         ebx, dword [_g]
+            xor         eax, ebx
+            add         dword [t1], eax
+            ;   sha256_k[i]
+            mov         eax, dword [sha256_k+4*ecx]
+            add         dword [t1], eax
+            ;   m[i]
+            lodsd
+            add         dword [t1], eax
+            ; t2=SHA_EP0(a)+SHA_MAJ(a,b,c);
+            ;   SHA_EP0(a)              (SHA_ROTR(x,2)^SHA_ROTR(x,13)^SHA_ROTR(x,22))
+            mov         eax, dword [_a]
+            mov         ebx, eax
+            ror         eax, 2
+            ror         ebx, 13
+            xor         eax, ebx
+            ror         ebx, 9 ; 22 = 13+9
+            xor         eax, ebx
+            mov         dword [t2], eax
+            ;   SHA_MAJ(a,b,c)          (((x)&(y))^((x)&(z))^((y)&(z)))
+            mov         eax, dword [_a]
+            mov         edx, dword [_c]
+            mov         ebx, eax
+            and         eax, dword [_b]
+            and         ebx, edx
+            xor         eax, ebx
+            mov         ebx, dword [_b]
+            and         ebx, edx
+            xor         eax, ebx
+            add         dword [t2], eax
+            ; h=g;g=f;f=e;e=d+t1;d=c;c=b;b=a;a=t1+t2;
+            mov         eax, dword [_g]
+            mov         dword [_h], eax
+            mov         eax, dword [_f]
+            mov         dword [_g], eax
+            mov         eax, dword [_e]
+            mov         dword [_f], eax
+            mov         eax, dword [_d]
+            add         eax, dword [t1]
+            mov         dword [_e], eax
+            mov         eax, dword [_c]
+            mov         dword [_d], eax
+            mov         eax, dword [_b]
+            mov         dword [_c], eax
+            mov         eax, dword [_a]
+            mov         dword [_b], eax
+            mov         eax, dword [t1]
+            add         eax, dword [t2]
+            mov         dword [_a], eax
+            ; }
+            inc         cl
+            cmp         cl, 64
+            jne         @b
+            ; ctx->s[0]+=a;ctx->s[1]+=b;ctx->s[2]+=c;ctx->s[3]+=d;
+            ; ctx->s[4]+=e;ctx->s[5]+=f;ctx->s[6]+=g;ctx->s[7]+=h;
+            mov         cl, 8
+            mov         esi, _a
+            mov         edi, sha_s
+@@:         lodsd
+            add         dword [edi], eax
+            add         edi, 4
+            dec         cl
+            jnz         @b
+            pop         ebx
+            pop         ecx
+            pop         edx
+            pop         edi
+            pop         esi
+            xor         eax, eax
+            ret
+
+; --- CRC-32c ---
+            ; IN: esi = buffer, ecx = length
+            ; OUT: edx = crc
+crc32_calc: xor         edx, edx
+            xor         eax, eax
+            xor         ebx, ebx
+            or          cx, cx
+            jz          .end
+.next:      lodsb
+            mov         bl, dl
+            xor         bl, al
+            mov         eax, edx
+            shr         edx, 8
+            xor         edx, dword [crclkp+4*ebx]
+            dec         cx
+            jnz         .next
+.end:       ret
+end if
+
 ;*********************************************************************
 ;*                               Data                                *
 ;*********************************************************************
@@ -1923,7 +2200,51 @@ CODE_PROT   =           $-GDT_table
 GDT_value:  dw          $-GDT_table
             dd          GDT_table
             dd          0,0
-            align       16
+            ;lookup tables for initrd encryption
+if FSZ_SUPPORT eq 1
+            dw          0
+crclkp:     dd          000000000h, 0F26B8303h, 0E13B70F7h, 01350F3F4h, 0C79A971Fh, 035F1141Ch, 026A1E7E8h, 0D4CA64EBh
+            dd          08AD958CFh, 078B2DBCCh, 06BE22838h, 09989AB3Bh, 04D43CFD0h, 0BF284CD3h, 0AC78BF27h, 05E133C24h
+            dd          0105EC76Fh, 0E235446Ch, 0F165B798h, 0030E349Bh, 0D7C45070h, 025AFD373h, 036FF2087h, 0C494A384h
+            dd          09A879FA0h, 068EC1CA3h, 07BBCEF57h, 089D76C54h, 05D1D08BFh, 0AF768BBCh, 0BC267848h, 04E4DFB4Bh
+            dd          020BD8EDEh, 0D2D60DDDh, 0C186FE29h, 033ED7D2Ah, 0E72719C1h, 0154C9AC2h, 0061C6936h, 0F477EA35h
+            dd          0AA64D611h, 0580F5512h, 04B5FA6E6h, 0B93425E5h, 06DFE410Eh, 09F95C20Dh, 08CC531F9h, 07EAEB2FAh
+            dd          030E349B1h, 0C288CAB2h, 0D1D83946h, 023B3BA45h, 0F779DEAEh, 005125DADh, 01642AE59h, 0E4292D5Ah
+            dd          0BA3A117Eh, 04851927Dh, 05B016189h, 0A96AE28Ah, 07DA08661h, 08FCB0562h, 09C9BF696h, 06EF07595h
+            dd          0417B1DBCh, 0B3109EBFh, 0A0406D4Bh, 0522BEE48h, 086E18AA3h, 0748A09A0h, 067DAFA54h, 095B17957h
+            dd          0CBA24573h, 039C9C670h, 02A993584h, 0D8F2B687h, 00C38D26Ch, 0FE53516Fh, 0ED03A29Bh, 01F682198h
+            dd          05125DAD3h, 0A34E59D0h, 0B01EAA24h, 042752927h, 096BF4DCCh, 064D4CECFh, 077843D3Bh, 085EFBE38h
+            dd          0DBFC821Ch, 02997011Fh, 03AC7F2EBh, 0C8AC71E8h, 01C661503h, 0EE0D9600h, 0FD5D65F4h, 00F36E6F7h
+            dd          061C69362h, 093AD1061h, 080FDE395h, 072966096h, 0A65C047Dh, 05437877Eh, 04767748Ah, 0B50CF789h
+            dd          0EB1FCBADh, 0197448AEh, 00A24BB5Ah, 0F84F3859h, 02C855CB2h, 0DEEEDFB1h, 0CDBE2C45h, 03FD5AF46h
+            dd          07198540Dh, 083F3D70Eh, 090A324FAh, 062C8A7F9h, 0B602C312h, 044694011h, 05739B3E5h, 0A55230E6h
+            dd          0FB410CC2h, 0092A8FC1h, 01A7A7C35h, 0E811FF36h, 03CDB9BDDh, 0CEB018DEh, 0DDE0EB2Ah, 02F8B6829h
+            dd          082F63B78h, 0709DB87Bh, 063CD4B8Fh, 091A6C88Ch, 0456CAC67h, 0B7072F64h, 0A457DC90h, 0563C5F93h
+            dd          0082F63B7h, 0FA44E0B4h, 0E9141340h, 01B7F9043h, 0CFB5F4A8h, 03DDE77ABh, 02E8E845Fh, 0DCE5075Ch
+            dd          092A8FC17h, 060C37F14h, 073938CE0h, 081F80FE3h, 055326B08h, 0A759E80Bh, 0B4091BFFh, 0466298FCh
+            dd          01871A4D8h, 0EA1A27DBh, 0F94AD42Fh, 00B21572Ch, 0DFEB33C7h, 02D80B0C4h, 03ED04330h, 0CCBBC033h
+            dd          0A24BB5A6h, 0502036A5h, 04370C551h, 0B11B4652h, 065D122B9h, 097BAA1BAh, 084EA524Eh, 07681D14Dh
+            dd          02892ED69h, 0DAF96E6Ah, 0C9A99D9Eh, 03BC21E9Dh, 0EF087A76h, 01D63F975h, 00E330A81h, 0FC588982h
+            dd          0B21572C9h, 0407EF1CAh, 0532E023Eh, 0A145813Dh, 0758FE5D6h, 087E466D5h, 094B49521h, 066DF1622h
+            dd          038CC2A06h, 0CAA7A905h, 0D9F75AF1h, 02B9CD9F2h, 0FF56BD19h, 00D3D3E1Ah, 01E6DCDEEh, 0EC064EEDh
+            dd          0C38D26C4h, 031E6A5C7h, 022B65633h, 0D0DDD530h, 00417B1DBh, 0F67C32D8h, 0E52CC12Ch, 01747422Fh
+            dd          049547E0Bh, 0BB3FFD08h, 0A86F0EFCh, 05A048DFFh, 08ECEE914h, 07CA56A17h, 06FF599E3h, 09D9E1AE0h
+            dd          0D3D3E1ABh, 021B862A8h, 032E8915Ch, 0C083125Fh, 0144976B4h, 0E622F5B7h, 0F5720643h, 007198540h
+            dd          0590AB964h, 0AB613A67h, 0B831C993h, 04A5A4A90h, 09E902E7Bh, 06CFBAD78h, 07FAB5E8Ch, 08DC0DD8Fh
+            dd          0E330A81Ah, 0115B2B19h, 0020BD8EDh, 0F0605BEEh, 024AA3F05h, 0D6C1BC06h, 0C5914FF2h, 037FACCF1h
+            dd          069E9F0D5h, 09B8273D6h, 088D28022h, 07AB90321h, 0AE7367CAh, 05C18E4C9h, 04F48173Dh, 0BD23943Eh
+            dd          0F36E6F75h, 00105EC76h, 012551F82h, 0E03E9C81h, 034F4F86Ah, 0C69F7B69h, 0D5CF889Dh, 027A40B9Eh
+            dd          079B737BAh, 08BDCB4B9h, 0988C474Dh, 06AE7C44Eh, 0BE2DA0A5h, 04C4623A6h, 05F16D052h, 0AD7D5351h
+
+sha256_k:   dd          0428a2f98h, 071374491h, 0b5c0fbcfh, 0e9b5dba5h, 03956c25bh, 059f111f1h, 0923f82a4h, 0ab1c5ed5h
+            dd          0d807aa98h, 012835b01h, 0243185beh, 0550c7dc3h, 072be5d74h, 080deb1feh, 09bdc06a7h, 0c19bf174h
+            dd          0e49b69c1h, 0efbe4786h, 00fc19dc6h, 0240ca1cch, 02de92c6fh, 04a7484aah, 05cb0a9dch, 076f988dah
+            dd          0983e5152h, 0a831c66dh, 0b00327c8h, 0bf597fc7h, 0c6e00bf3h, 0d5a79147h, 006ca6351h, 014292967h
+            dd          027b70a85h, 02e1b2138h, 04d2c6dfch, 053380d13h, 0650a7354h, 0766a0abbh, 081c2c92eh, 092722c85h
+            dd          0a2bfe8a1h, 0a81a664bh, 0c24b8b70h, 0c76c51a3h, 0d192e819h, 0d6990624h, 0f40e3585h, 0106aa070h
+            dd          019a4c116h, 01e376c08h, 02748774ch, 034b0bcb5h, 0391c0cb3h, 04ed8aa4ah, 05b9cca4fh, 0682e6ff3h
+            dd          0748f82eeh, 078a5636fh, 084c87814h, 08cc70208h, 090befffah, 0a4506cebh, 0bef9a3f7h, 0c67178f2h
+end if
 lbapacket:              ;lba packet for BIOS
 .size:      dw          10h
 .count:     dw          8
@@ -1931,9 +2252,6 @@ lbapacket:              ;lba packet for BIOS
 .sect0:     dd          0
 .sect1:     dd          0
 spc_packet: db          18h dup 0
-entrypoint: dq          0
-core_ptr:   dd          0
-core_len:   dd          0
 reqwidth:   dd          1024
 reqheight:  dd          768
 ebdaptr:    dd          0
@@ -1942,16 +2260,12 @@ bpb_sec:    dd          0 ;ESP's first sector
 root_sec:   dd          0 ;root directory's first sector
 data_sec:   dd          0 ;first data sector
 clu_sec:    dd          0 ;sector per cluster
-gpt_ptr:    dd          0
-gpt_num:    dd          0
-gpt_ent:    dd          0
 origcount:  dw          0
 bootdev:    db          0
 readdev:    db          0
 hasinitrd:  db          0
 iscdrom:    db          0
 fattype:    db          0
-vbememsize: dw          0
 bkp:        dd          '    '
 if DEBUG eq 1
 dbg_cpu     db          " * Detecting CPU",10,13,0
@@ -1969,6 +2283,9 @@ dbg_pe      db          " * Parsing PE32+",10,13,0
 dbg_vesa    db          " * Screen VESA VBE",10,13,0
 end if
 backup:     db          " * Backup initrd",10,13,0
+passphrase: db          " * Passphrase? ",0
+decrypting: db          13," * Decrypting...",0
+clrdecrypt: db          13,"                ",13,0
 starting:   db          "Booting OS...",10,13,0
 panic:      db          "-PANIC: ",0
 noarch:     db          "Hardware not supported",0
@@ -1985,9 +2302,11 @@ badcore:    db          "Kernel is not a valid executable",0
 novbe:      db          "VESA VBE error, no framebuffer",0
 nogzip:     db          "Unable to uncompress",0
 notcdsect:  db          "Not 2048 sector aligned",0
+nocipher:   db          "Unsupported cipher",10,13,0
+badpass:    db          13,"BOOTBOOT-ERROR: Bad passphrase",10,13,0
 cfgfile:    db          "sys/config",0,0,0
 kernel:     db          "sys/core"
-            db          (128-($-kernel)) dup 0
+            db          (64-($-kernel)) dup 0
 ;-----------padding to be multiple of 512----------
             db          (511-($-loader+511) mod 512) dup 0
 loader_end:
@@ -2001,6 +2320,12 @@ end repeat
 store byte (100h-chksum) at (loader.checksum)
 
 ;-----------bss area-----------
+entrypoint: dq          ?
+core_ptr:   dd          ?
+core_len:   dd          ?
+gpt_ptr:    dd          ?
+gpt_num:    dd          ?
+gpt_ent:    dd          ?
 tinf_bss_start:
 d_end:      dd          ?
 d_lzOff:    dd          ?
@@ -2028,6 +2353,31 @@ hlit:       dw          ?
 hdist:      dw          ?
 hclen:      dw          ?
 tinf_bss_end:
+
+if FSZ_SUPPORT eq 1
+virtual at tinf_bss_start
+pass:       db          256 dup ?
+sha_d:      db          64 dup ?
+sha_l:      dd          ?
+sha_b:      dd          2 dup ?
+sha_s:      dd          8 dup ?
+_a:         dd          ?
+_b:         dd          ?
+_c:         dd          ?
+_d:         dd          ?
+_e:         dd          ?
+_f:         dd          ?
+_g:         dd          ?
+_h:         dd          ?
+t1:         dd          ?
+t2:         dd          ?
+_m:         dd          64 dup ?
+chk:        db          32 dup ?
+iv:         db          32 dup ?
+pl:         dd          ?
+_i:         dd          ?
+end virtual
+end if
 
 ;-----------bound check-------------
 ;fasm will generate an error if the code

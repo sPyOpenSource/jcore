@@ -1,6 +1,6 @@
 /*
  * aarch64-rpi/fs.h
- * 
+ *
  * Copyright (C) 2017 bzt (bztsrc@gitlab)
  *
  * Permission is hereby granted, free of charge, to any person
@@ -22,22 +22,11 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
- * 
+ *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief Filesystem drivers for initial ramdisk.
- * 
+ *
  */
-
-/**
- * return type for fs drivers
- */
-typedef struct {
-    uint8_t *ptr;
-    uint64_t size;
-} file_t;
-
-extern int oct2bin(unsigned char *str,int size);
-extern int hex2bin(unsigned char *str,int size);
 
 #ifdef _FS_Z_H_
 /**
@@ -46,17 +35,60 @@ extern int hex2bin(unsigned char *str,int size);
 file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
 {
     FSZ_SuperBlock *sb = (FSZ_SuperBlock *)initrd_p;
-    FSZ_DirEnt *ent;
-    FSZ_Inode *in=(FSZ_Inode *)(initrd_p+sb->rootdirfid*FSZ_SECSIZE);
     file_t ret = { NULL, 0 };
     if(initrd_p==NULL || memcmp(sb->magic,FSZ_MAGIC,4) || kernel==NULL){
         return ret;
     }
+    unsigned char passphrase[256],chk[32],iv[32];
+    int i,j,k,l,ss=1<<(sb->logsec+11);
+    FSZ_DirEnt *ent;
+    FSZ_Inode *in=(FSZ_Inode *)(initrd_p+sb->rootdirfid*ss);
+    SHA256_CTX ctx;
     DBG(" * FS/Z ");
     DBG(kernel);
     DBG("\n");
+    //decrypt initrd
+    if(sb->enchash!=0 && FSZ_SB_EALG(sb->flags)!=0) {
+        puts("BOOTBOOT-PANIC: Unsupported cipher\n");
+        return ret;
+    }
+    while(sb->enchash!=0) {
+        puts(" * Passphrase? ");
+        l=ReadLine(passphrase,sizeof(passphrase));
+        if(!l) {
+            puts("\n");
+            return ret;
+        }
+        if(sb->enchash!=crc32_calc((char*)passphrase,l)) {
+            puts("\rBOOTBOOT-ERROR: Bad passphrase\n");
+            continue;
+        }
+        puts("\r * Decrypting...\r");
+        SHA256_Init(&ctx);
+        SHA256_Update(&ctx,passphrase,l);
+        SHA256_Update(&ctx,&sb->magic,6);
+        SHA256_Final(chk,&ctx);
+        for(i=0;i<sizeof(sb->encrypt);i++) sb->encrypt[i]^=chk[i];
+        SHA256_Init(&ctx);
+        SHA256_Update(&ctx,&sb->encrypt,sizeof(sb->encrypt));
+        SHA256_Final(iv,&ctx);
+        for(k=ss,j=1;j<sb->numsec;j++) {
+            memcpy(chk,iv,32);
+            for(i=0;i<ss;i++) {
+                if(i%32==0) {
+                    SHA256_Init(&ctx);
+                    SHA256_Update(&ctx,&chk,32);
+                    SHA256_Update(&ctx,&j,4);
+                    SHA256_Final(chk,&ctx);
+                }
+                initrd_p[k++]^=chk[i%32];
+            }
+        }
+        memset(sb->encrypt,0,sizeof(sb->encrypt)+4);
+        sb->checksum=crc32_calc((char *)sb->magic,508);
+        puts("                \r");
+    }
     // Get the inode
-    int i,ss=1<<(sb->logsec+11);
     char *s,*e;
     s=e=kernel;
     i=0;
@@ -135,7 +167,7 @@ file_t cpio_initrd(unsigned char *initrd_p, char *kernel)
     unsigned char *ptr=initrd_p;
     int k;
     file_t ret = { NULL, 0 };
-    if(initrd_p==NULL || kernel==NULL || 
+    if(initrd_p==NULL || kernel==NULL ||
         (memcmp(initrd_p,"070701",6) && memcmp(initrd_p,"070702",6) && memcmp(initrd_p,"070707",6)))
         return ret;
     DBG(" * cpio ");
