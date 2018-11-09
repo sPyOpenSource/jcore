@@ -46,10 +46,6 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
     SHA256_CTX ctx;
     DBG(L" * FS/Z %s\n",a2u(kernel));
     //decrypt initrd
-    if(sb->enchash!=0 && FSZ_SB_EALG(sb->flags)!=0) {
-        Print(L"BOOTBOOT-PANIC: Unsupported cipher\n");
-        return ret;
-    }
     while(sb->enchash!=0) {
         Print(L" * Passphrase? ");
         l=ReadLine(passphrase,sizeof(passphrase));
@@ -70,16 +66,23 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
         SHA256_Init(&ctx);
         SHA256_Update(&ctx,&sb->encrypt,sizeof(sb->encrypt));
         SHA256_Final(iv,&ctx);
-        for(k=ss,j=1;j<sb->numsec;j++) {
-            CopyMem(chk,iv,32);
-            for(i=0;i<ss;i++) {
-                if(i%32==0) {
-                    SHA256_Init(&ctx);
-                    SHA256_Update(&ctx,&chk,32);
-                    SHA256_Update(&ctx,&j,4);
-                    SHA256_Final(chk,&ctx);
+        if(sb->flags&FSZ_SB_EALG_AESCBC) {
+            aes_init(iv);
+            for(k=ss,j=1;j<sb->numsec;k+=ss,j++) {
+                aes_dec(initrd_p+k,ss);
+            }
+        } else {
+            for(k=ss,j=1;j<sb->numsec;j++) {
+                CopyMem(chk,iv,32);
+                for(i=0;i<ss;i++) {
+                    if(i%32==0) {
+                        SHA256_Init(&ctx);
+                        SHA256_Update(&ctx,&chk,32);
+                        SHA256_Update(&ctx,&j,4);
+                        SHA256_Final(chk,&ctx);
+                    }
+                    initrd_p[k++]^=chk[i%32];
                 }
-                initrd_p[k++]^=chk[i%32];
             }
         }
         ZeroMem(sb->encrypt,sizeof(sb->encrypt)+4);

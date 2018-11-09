@@ -5,7 +5,7 @@ I provide pre-compiled images ready for use.
 
 1. *x86_64-efi* the preferred way of booting on x86_64 architecture.
     Standard GNU toolchain and a few files from gnuefi (included).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (81k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (81k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (93k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (93k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB) and El Torito (CDROM) compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
@@ -237,7 +237,7 @@ OS developers, specially for those who want to write their own file systems.
 The reference implementations support [cpio](https://en.wikipedia.org/wiki/Cpio) (all hpodc, newc and crc variants),
 [ustar](https://en.wikipedia.org/wiki/Tar_(computing)), osdev.org's [SFS](http://wiki.osdev.org/SFS),
 [James Molloy's initrd](http://www.jamesmolloy.co.uk/tutorial_html/8.-The%20VFS%20and%20the%20initrd.html)
-format and OS/Z's native [FS/Z](https://gitlab.com/bztsrc/osz/blob/master/etc/include/sys/fsZ.h).
+format and OS/Z's native [FS/Z](https://gitlab.com/bztsrc/osz/blob/master/etc/include/sys/fsZ.h) (with encryption support too).
 Gzip compressed initrds also supported to save disk space and fasten up load time (not recommended on RPi3).
 
 Example kernel
@@ -401,6 +401,7 @@ BOOTBOOT-PANIC: Unsupported cipher
 ```
 
 This message is shown if the initrd is encrypted with a cipher that the loader does not support. Solution:
-regenerate and encrypt the initrd image with SHA-XOR-CBC cipher, supported by all three implementations.
+regenerate and encrypt the initrd image with SHA-XOR-CBC cipher, known to all the three implementations.
+(Note: encryption is only supported for FS/Z initrd images.)
 
 That's all, hope it will be useful!

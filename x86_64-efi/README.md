@@ -15,6 +15,7 @@ File system drivers
 -------------------
 
 For boot partition, UEFI version relies on any file system that's supported by EFI Simple File System Protocol.
+This implementation supports both SHA-XOR-CBC and AES-256-CBC cipher.
 
 Installation
 ------------

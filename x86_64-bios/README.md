@@ -42,3 +42,4 @@ Limitations
  - As it boots in protected mode, it only maps the first 4G of RAM.
  - Compressed initrd in ROM is limited to ~96k.
  - The CMOS nvram does not store timezone, so always GMT+0 returned in bootboot.timezone.
+ - Only supports SHA-XOR-CBC, no AES
