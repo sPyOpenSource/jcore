@@ -81,7 +81,7 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
                     SHA256_Update(&ctx,&j,4);
                     SHA256_Final(chk,&ctx);
                 }
-                initrd_p[k++]^=chk[i%32];
+                initrd_p[k++]^=chk[i%32]^iv[i%32];
             }
         }
         memset(sb->encrypt,0,sizeof(sb->encrypt)+4);

@@ -179,6 +179,8 @@ fsz_initrd:
             mov         edx, edi
 @@:         mov         al, byte [edx]
             xor         byte [ebx], al
+            mov         al, byte [edx+32]
+            xor         byte [ebx], al
             inc         ebx
             inc         edx
             dec         cx
