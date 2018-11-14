@@ -1958,6 +1958,7 @@ sha_upd:    push        esi
             adc         dword [sha_b+4], 0
             ; ctx->l=0;
             mov         byte [sha_l], 0
+            sub         edi, 64
             ; }
 @@:         dec         ecx
             jnz         .next
