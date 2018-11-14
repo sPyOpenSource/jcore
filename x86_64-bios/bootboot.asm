@@ -1941,6 +1941,8 @@ sha_init:   xor         eax, eax
 
             ; IN: ebx = buffer, ecx = length
 sha_upd:    push        esi
+            or          ecx, ecx
+            jz          .end
             mov         esi, ebx
             mov         edi, dword [sha_l]
             add         edi, sha_d
@@ -1962,7 +1964,7 @@ sha_upd:    push        esi
             ; }
 @@:         dec         ecx
             jnz         .next
-            pop         esi
+.end:       pop         esi
             ret
 
             ; IN: edi = output buffer
