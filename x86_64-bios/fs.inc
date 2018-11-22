@@ -295,7 +295,7 @@ fsz_initrd:
             ; get data
             mov         eax, dword [esi+448]    ; FSZ_Inode.sec
             mov         ecx, dword [esi+464]    ; FSZ_Inode.size
-            mov         bl, byte [esi+492]      ; FSZ_Inode.flags
+            mov         bl, byte [esi+488]      ; FSZ_Inode.flags
 
             ; inline
             cmp         bl, 0FFh                ; FSZ_IN_FLAG_INLINE
