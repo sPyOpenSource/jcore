@@ -384,7 +384,7 @@ BOOTBOOT-PANIC: Kernel is not a valid executable
 
 The file that was specified as kernel could be loaded by fs drivers, but it's not an ELF64 or PE32+,
 does not match the architecture, or does not have any program header with a loadable segment (p_vaddr or core_base)
-in the negative range (see linker script). This error is also shown by level 2 loaders if the address of `fb`,
+in the negative range (see linker script). This error is also shown by level 2 loaders if the address of `mmio`, `fb`,
 `bootboot` and `environment` symbols are not in the negative range.
 
 ```
