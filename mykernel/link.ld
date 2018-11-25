@@ -28,7 +28,7 @@
  *
  */
 
-mmio  = 0xfffffffffa000000;
+mmio  = 0xfffffffff8000000;
 fb    = 0xfffffffffc000000;
 SECTIONS
 {

@@ -24,10 +24,11 @@
 ;* DEALINGS IN THE SOFTWARE.
 ;*
 ;* This file is part of the BOOTBOOT Protocol package.
-;* @brief Booting code for BIOS, MultiBoot and El Torito
+;* @brief Booting code for BIOS, MultiBoot, El Torito, Linux boot
 ;*
 ;*  Stage2 loader, compatible with GRUB and BIOS boot specification
-;*  1.0.1 (even expansion ROM) and El Torito "no emulation" CDROM boot.
+;*  1.0.1 (even expansion ROM), El Torito "no emulation" CDROM boot,
+;*  as well as Linux boot protocol.
 ;*
 ;*  memory occupied: 800-7C00
 ;*

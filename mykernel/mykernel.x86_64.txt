@@ -10,11 +10,11 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0xffffffffffe02000
   Start of program headers:          64 (bytes into file)
-  Start of section headers:          3512 (bytes into file)
+  Start of section headers:          3576 (bytes into file)
   Flags:                             0x0
   Size of this header:               64 (bytes)
   Size of program headers:           56 (bytes)
-  Number of program headers:         1
+  Number of program headers:         2
   Size of section headers:           64 (bytes)
   Number of section headers:         9
   Section header string table index: 8
@@ -22,21 +22,25 @@ ELF Header:
 Program Headers:
   Type           Offset             VirtAddr           PhysAddr
                  FileSiz            MemSiz              Flags  Align
-  LOAD           0x0000000000000078 0xffffffffffe02000 0xffffffffffe02000
-                 0x0000000000000bf0 0x0000000000000bf0  RWE    0x8
+  LOAD           0x00000000000000b0 0x0000000000000000 0x0000000000000000
+                 0x0000000000000054 0x0000000000000054  R      0x8
+  LOAD           0x0000000000000108 0xffffffffffe02000 0xffffffffffe02000
+                 0x0000000000000b88 0x0000000000000b90  RWE    0x8
 
  Section to Segment mapping:
   Segment Sections...
-   00     .text .eh_frame .got.plt 
+   00     .eh_frame 
+   01     .text .got.plt .bss 
 
-Symbol table '.symtab' contains 9 entries:
+Symbol table '.symtab' contains 10 entries:
    Num:    Value          Size Type    Bind   Vis      Ndx Name
      0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
-     1: ffffffffffe02000     0 SECTION LOCAL  DEFAULT    1 
-     2: ffffffffffe02b70     0 SECTION LOCAL  DEFAULT    2 
-     3: ffffffffffe02bd8     0 SECTION LOCAL  DEFAULT    3 
-     4: ffffffffffe02bf0     0 SECTION LOCAL  DEFAULT    4 
+     1: 0000000000000000     0 SECTION LOCAL  DEFAULT    1 
+     2: ffffffffffe02000     0 SECTION LOCAL  DEFAULT    2 
+     3: ffffffffffe02b70     0 SECTION LOCAL  DEFAULT    3 
+     4: ffffffffffe02b88     0 SECTION LOCAL  DEFAULT    4 
      5: 0000000000000000     0 SECTION LOCAL  DEFAULT    5 
-     6: ffffffffffe01000     0 NOTYPE  GLOBAL DEFAULT    1 environment
+     6: ffffffffffe01000     0 NOTYPE  GLOBAL DEFAULT    2 environment
      7: fffffffffc000000     0 NOTYPE  GLOBAL DEFAULT  ABS fb
-     8: ffffffffffe00000     0 NOTYPE  GLOBAL DEFAULT    1 bootboot
+     8: ffffffffffe00000     0 NOTYPE  GLOBAL DEFAULT    2 bootboot
+     9: fffffffff8000000     0 NOTYPE  GLOBAL DEFAULT  ABS mmio

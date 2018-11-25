@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0xffffffffffe02000
   Start of program headers:          64 (bytes into file)
-  Start of section headers:          3760 (bytes into file)
+  Start of section headers:          3792 (bytes into file)
   Flags:                             0x0
   Size of this header:               64 (bytes)
   Size of program headers:           56 (bytes)
@@ -29,7 +29,7 @@ Program Headers:
   Segment Sections...
    00     .text .got .got.plt 
 
-Symbol table '.symtab' contains 9 entries:
+Symbol table '.symtab' contains 10 entries:
    Num:    Value          Size Type    Bind   Vis      Ndx Name
      0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: ffffffffffe02000     0 SECTION LOCAL  DEFAULT    1 
@@ -40,3 +40,4 @@ Symbol table '.symtab' contains 9 entries:
      6: ffffffffffe01000     0 NOTYPE  GLOBAL DEFAULT    1 environment
      7: fffffffffc000000     0 NOTYPE  GLOBAL DEFAULT  ABS fb
      8: ffffffffffe00000     0 NOTYPE  GLOBAL DEFAULT    1 bootboot
+     9: fffffffff8000000     0 NOTYPE  GLOBAL DEFAULT  ABS mmio
