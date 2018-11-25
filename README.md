@@ -114,7 +114,7 @@ Glossary
   Without one the first executable found will be loaded.
 
 * _kernel file_: an ELF64 / PE32+ [executable inside initrd](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel),
-  optionally with the following symbols: `fb`, `environment`, `bootboot` (see machine state and linker script).
+  optionally with the following symbols: `mmio`, `fb`, `environment`, `bootboot` (see machine state and linker script).
 
 * _BOOTBOOT structure_: an informational structure defined in [bootboot.h](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h).
 
@@ -145,8 +145,8 @@ When the kernel gains control, the memory mapping looks like this:
 ```
 
 All infomration is passed at linker defined addresses. No API required at all, therefore the BOOTBOOT Protocol is
-totally architecture and ABI agnostic. Level 1 expects these symbols at pre-defined addresses, level 2 loaders
-parse the symbol table in executable to get the actual addresses.
+totally architecture and ABI agnostic. Level 1 expects these symbols at pre-defined addresses you see above, level 2
+loaders parse the symbol table in executable to get the actual addresses.
 
 The RAM (up to 16G) is identity mapped in the positive address range. Serial console is configured for 115200 baud,
 8 data bits, no partity and 1 stop bit. Interrups are turned off and code is running in supervisor mode (ring 0 / EL1).
@@ -166,7 +166,8 @@ The configuration string (or command line if you like) is mapped at `environment
 
 Kernel's code segment is mapped at ELF header's `p_vaddr` or PE header's `code_base` (level 2 only). Level 1 loaders
 load kernels at -2M, therefore limiting the kernel's size in 2M, including configuration, data, bss and stack. That
-must be more than enough for all micro-kernels.
+must be more than enough for all micro-kernels. Bss segment is after the text segment, growing upwards, and it's zerod-out
+by the loader.
 
 The stack is at the top of the memory, starting at zero and growing downwards.
 
