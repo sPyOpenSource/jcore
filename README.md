@@ -7,7 +7,7 @@ I provide pre-compiled images ready for use.
     Standard GNU toolchain and a few files from gnuefi (included).
     [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (93k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (93k)
 
-2. *x86_64-bios* BIOS, Multiboot (GRUB) and El Torito (CDROM) compatible, OBSOLETE loader.
+2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), Expansion ROM and Linux boot compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
     [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (10k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 

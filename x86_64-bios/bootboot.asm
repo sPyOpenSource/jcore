@@ -163,6 +163,8 @@ end virtual
 ; 26     2  pnp ptr, must be zero
 ; 28     4  flags, must be zero
 ; 32    32  MultiBoot header with protected mode entry point
+; 64     x  free to use
+;497   127  Linux x86 boot protocol header
 ;any format can follow.
 
             USE16
@@ -301,18 +303,19 @@ realmode_start:
             popf
             cmp         dx, bx
             jne         .cpuerror
+            mov         ebp, 200000h
             ;check for 386
             ;look for cpuid instruction
             pushfd
             pop         eax
             mov         ebx, eax
-            xor         eax, 200000h
-            and         ebx, 200000h
+            xor         eax, ebp
+            and         ebx, ebp
             push        eax
             popfd
             pushfd
             pop         eax
-            and         eax, 200000h
+            and         eax, ebp
             xor         eax, ebx
             shr         eax, 21
             and         al, 1
@@ -335,12 +338,14 @@ realmode_start:
             jnc         .cpuerror
             ;and can we use long mode (LME)?
             mov         eax, 80000000h
+            mov         ebp, eax
+            inc         ebp
             push        bx
             cpuid
             pop         bx
-            cmp         eax, 80000001h
+            cmp         eax, ebp
             jb          .cpuerror
-            mov         eax, 80000001h
+            mov         eax, ebp
             cpuid
             ;long mode
             bt          edx, 29
@@ -356,7 +361,7 @@ realmode_start:
             stc
             mov         ax, 2401h   ;BIOS enable A20 function
             int         15h
-            jnc         .a20ok
+            jnc         a20ok
             ;keyboard nightmare
             call        .a20wait
             mov         al, 0ADh
@@ -377,7 +382,7 @@ realmode_start:
             call        .a20wait
             mov         al, 0AEh
             out         64h, al
-            jmp         .a20ok
+            jmp         a20ok
 
             ;all methods failed, report an error
             mov         si, a20err
@@ -391,7 +396,55 @@ realmode_start:
             test        al, 1
             jz          .a20wait2
             ret
-.a20ok:
+
+;--- Linux x86 boot protocol header ---
+            db          01F1h-($-$$) dup 090h
+hdr:
+setup_sects:        db          (loader_end-loader)/512
+root_flags:         dw          0
+syssize:            dd          (loader_end-loader)/16
+ram_size:           dw          0
+vid_mode:           dw          0
+root_dev:           dw          0
+boot_flag:          dw          0AA55h
+                    db          0EBh        ; short jmp
+                    db          start_of_setup-@f   ; no space to jump to realmode_start directly
+@@:                 db          "HdrS"
+                    dw          020eh
+realmode_swtch:     dd          0
+start_sys_seg:      dw          0
+                    dw          starting-512    ; we don't have Linux kernel version...
+type_of_loader:     db          0
+loadflags:          db          0
+setup_move_size:    dw          08000h
+code32_start:       dd          100000h         ; we dont' use this either...
+ramdisk_image:      dd          0
+ramdisk_size:       dd          0
+bootsect_kludge:    dd          0
+heap_end_ptr:       dd          loader_end+1024-512 ; we don't care, we set our stack directly
+ext_loader_ver:     db          0
+ext_loader_type:    db          0
+cmd_line_ptr:       dd          0
+initrd_addr_max:    dd          07fffffffh
+kernel_alignment:   dd          16
+relocatable_kernel: db          0
+min_alignment:      db          4
+xloadflags:         dw          0
+cmdline_size:       dd          0
+hardware_subarch:   dd          0
+hardware_subarch_data: dq       0
+payload_offset:     dd          0
+payload_length:     dd          0
+setup_data:         dq          0
+pref_address:       dq          7C00h
+init_size:          dd          0
+handover_offset:    dd          0
+acpi_rsdp_addr:     dq          0
+start_of_setup:
+            jmp         realmode_start
+; --- end of Linux boot protocol header ---
+
+a20ok:
             ; wait for a key press, if so use backup initrd
             mov         ecx, dword [046Ch]
             add         ecx, 10  ; ~500ms, 18.2/2

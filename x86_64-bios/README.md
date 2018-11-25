@@ -1,12 +1,13 @@
-BOOTBOOT BIOS / Multiboot Implementation
-========================================
+BOOTBOOT BIOS / Multiboot / El Torito / Expansion ROM / Linux boot Implementation
+=================================================================================
 
 See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 
 On [BIOS](http://www.scs.stanford.edu/05au-cs240c/lab/specsbbs101.pdf) based systems, the same image can be loaded via
 [Multiboot](https://www.gnu.org/software/grub/manual/multiboot/multiboot.html),
-chainload from MBR, VBR (GPT hybrid booting) or from CDROM boot record via __boot.bin__, or run as a BIOS Expansion ROM
-(so not only the ramdisk can be in ROM, but the loader as well).
+chainload from MBR, VBR (GPT hybrid booting) or from CDROM boot record via __boot.bin__, run as a BIOS Expansion ROM
+(so not only the ramdisk can be in ROM, but the loader as well), or can be loaded as a
+[Linux kernel](https://elixir.bootlin.com/linux/latest/source/Documentation/x86/boot.txt) (by ISOLINUX, LoadLin etc.).
 
 Machine state
 -------------
