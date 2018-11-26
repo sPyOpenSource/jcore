@@ -73,6 +73,7 @@ int main(int argc, char** argv)
         return 2;
     }
     // read the boot record
+    if(seek>0) lseek(f, seek*512, SEEK_SET);
     if(read(f, data, 512)==-1) {
         close(f);
         fprintf(stderr, "mkboot: unable to read file\n");
@@ -83,7 +84,7 @@ int main(int argc, char** argv)
     memcpy((void*)&bootrec+0xB, (void*)&data+0xB, 0x5A-0xB);        // copy BPB (if any)
     memcpy((void*)&bootrec+0x1B8, (void*)&data+0x1B8, 510-0x1B8);   // copy WNTID and partitioning table (if any)
     // now locate the second stage by magic bytes
-    for(lsn = seek + 1; lsn < 1024*1024; lsn++) {
+    for(lsn = 1; lsn < 1024*1024; lsn++) {
         printf("Checking sector %d\r", lsn);
         if(read(f, data, 512) != -1 &&
             data[0] == 0x55 && data[1] == 0xAA && data[3] == 0xE9 && data[8] == 'B' && data[12] == 'B') {
@@ -101,7 +102,7 @@ int main(int argc, char** argv)
     memcpy((void*)&bootrec+0x1B0, (void*)&bootlsn, 4);
     // save boot record
     f = open(argv[1], O_WRONLY);
-    if(seek && f) lseek(f, seek*512, SEEK_SET);
+    if(seek>0 && f) lseek(f, seek*512, SEEK_SET);
     if(f < 0 || write(f, bootrec, 512) <= 0) {
         fprintf(stderr, "mkboot: unable to write boot record\n");
         return 3;
