@@ -42,25 +42,30 @@ int main(int argc, char** argv)
 {
     // variables
     unsigned char bootrec[512], data[512];
-    int f, lba=0, lsn, bootlsn=-1;
+    int f, lba=0, seek=0, lsn, bootlsn=-1;
 
     // check arguments
     if(argc < 2) {
         printf( "BOOTBOOT mkboot utility - bztsrc@gitlab\n\nUsage:\n"
-                "  ./mkboot <disk> [partition lba]\n\n"
+                "  ./mkboot <disk> [partition lba] [bootsector lba]\n\n"
                 "Installs boot record on a disk. Disk can be a local file, a disk or partition\n"
                 "device. If you want to install it on a partition, you'll have to specify the\n"
                 "starting LBA of that partition as well. Requires that bootboot.bin is already\n"
                 "copied on the disk in a contiguous area in order to work.\n\n"
                 "Examples:\n"
                 "  ./mkboot diskimage.dd      - installing on a disk image\n"
-                "  ./mkboot /dev/sda          - installing as MBR\n"
-                "  ./mkboot /dev/sda1 123     - installing as VBR\n");
+                "  ./mkboot /dev/sda          - installing as (P)MBR\n"
+                "  ./mkboot /dev/sda 123      - installing as VBR on a disk device\n"
+                "  ./mkboot /dev/sda1 123 0   - installing as VBR on a partition device\n");
         return 1;
     }
     if(argc > 2 || argv[2]!=NULL) {
-        lba = atoi(argv[2]);
+        lba = seek = atoi(argv[2]);
     }
+    if(argc > 3 || argv[3]!=NULL) {
+        seek = atoi(argv[3]);
+    }
+    if(lba < seek) seek = lba;
     // open file
     f = open(argv[1], O_RDONLY);
     if(f < 0) {
@@ -78,7 +83,7 @@ int main(int argc, char** argv)
     memcpy((void*)&bootrec+0xB, (void*)&data+0xB, 0x5A-0xB);        // copy BPB (if any)
     memcpy((void*)&bootrec+0x1B8, (void*)&data+0x1B8, 510-0x1B8);   // copy WNTID and partitioning table (if any)
     // now locate the second stage by magic bytes
-    for(lsn = 1; lsn < 1024*1024; lsn++) {
+    for(lsn = seek + 1; lsn < 1024*1024; lsn++) {
         printf("Checking sector %d\r", lsn);
         if(read(f, data, 512) != -1 &&
             data[0] == 0x55 && data[1] == 0xAA && data[3] == 0xE9 && data[8] == 'B' && data[12] == 'B') {
@@ -87,15 +92,16 @@ int main(int argc, char** argv)
         }
     }
     close(f);
-    // add bootboot.bin's address to boot record
     if(bootlsn == -1) {
         fprintf(stderr, "mkboot: unable to locate 2nd stage (bootboot.bin) in the first 512 Mbyte\n");
         return 2;
     }
-    bootlsn += lba;
+    // add bootboot.bin's address to boot record
+    bootlsn += lba - seek;
     memcpy((void*)&bootrec+0x1B0, (void*)&bootlsn, 4);
     // save boot record
     f = open(argv[1], O_WRONLY);
+    if(seek && f) lseek(f, seek*512, SEEK_SET);
     if(f < 0 || write(f, bootrec, 512) <= 0) {
         fprintf(stderr, "mkboot: unable to write boot record\n");
         return 3;
