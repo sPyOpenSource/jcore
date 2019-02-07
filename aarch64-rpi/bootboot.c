@@ -1,7 +1,7 @@
 /*
  * aarch64-rpi/bootboot.c
  *
- * Copyright (C) 2017 bzt (bztsrc@gitlab)
+ * Copyright (C) 2017 - 2019 bzt (bztsrc@gitlab)
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -755,6 +755,9 @@ unsigned char *kne;
 // alternative environment name
 char *cfgname="sys/config";
 
+uint64_t entrypoint=0, bss=0, *paging, reg, pa;
+uint8_t bsp_done=0;
+
 #ifdef _FS_Z_H_
 /**
  * SHA-256
@@ -1101,15 +1104,14 @@ void ParseEnvironment(uint8_t *env)
 }
 
 /**
- * bootboot entry point
+ * bootboot entry point, run only on BSP core
  */
 int bootboot_main(uint64_t hcl)
 {
     uint8_t *pe,bkp=0;
-    uint32_t np,sp,r,pa,mp;
+    uint32_t np,sp,r,mp;
     efipart_t *part;
     volatile bpb_t *bpb;
-    uint64_t entrypoint=0, bss=0, *paging, reg;
     MMapEnt *mmap;
 
     /* initialize UART */
@@ -1165,10 +1167,9 @@ int bootboot_main(uint64_t hcl)
     bootboot = (BOOTBOOT*)&__bootboot;
     memset(bootboot,0,PAGESIZE);
     memcpy((void*)&bootboot->magic,BOOTBOOT_MAGIC,4);
-    bootboot->protocol = PROTOCOL_STATIC;
-    bootboot->loader_type = LOADER_RPI;
+    bootboot->protocol = PROTOCOL_STATIC | LOADER_RPI;
     bootboot->size = 128;
-    bootboot->pagesize = PAGESIZE==4096? 12 : (PAGESIZE==65536 ? 16 : 14);
+    bootboot->numcores = 4;
     bootboot->aarch64.mmio_ptr = COREMMIO_BASE;
     // set up a framebuffer so that we can write on screen
     if(!GetLFB(0, 0)) goto viderr;
@@ -1516,6 +1517,8 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
     uart_hex((uint64_t)core.ptr+core.size,4);
     uart_putc('\n');
 #endif
+    /* we have fixed number of cores, nothing to detect */
+    DBG(" * SMP numcores 4\n");
 
     /* generate memory map to bootboot struct */
     DBG(" * Memory Map\n");
@@ -1629,7 +1632,7 @@ viderr:
 #if MEM_DEBUG
     reg=r;
 #endif
-    paging[5*512+511]=(uint64_t)((uint8_t*)&__corestack)|0b11|(3<<8)|(1<<10)|(1L<<54); // core stack
+    paging[5*512+511]=(uint64_t)((uint8_t*)&__corestack)|0b11|(3<<8)|(1<<10)|(1L<<54); // core stacks (1k each)
     // core L3 (lfb)
     for(r=0;r<16*512;r++)
         paging[6*512+r]=(uint64_t)((uint8_t*)bootboot->fb_ptr+r*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //map framebuffer
@@ -1677,6 +1680,35 @@ viderr:
     for(r=508;r<512;r++) { uart_hex(paging[5*512+r],8); uart_putc(' '); }
     uart_puts("\n\n");
 #endif
+#if DEBUG
+    uart_puts(" * Entry point ");
+    uart_hex(entrypoint,8);
+    uart_putc('\n');
+#endif
+    // release AP spinlock
+    bsp_done=1;
+    return 0;
+
+    // Wait until Enter or Space pressed, then reboot
+error:
+    while(r!='\n' && r!=' ') r=uart_getc();
+    uart_puts("\n\n");
+
+    // reset
+    asm volatile("dsb sy; isb");
+    *PM_WATCHDOG = PM_WDOG_MAGIC | 1;
+    *PM_RTSC = PM_WDOG_MAGIC | PM_RTSC_FULLRST;
+    while(1);
+}
+
+/**
+ * start kernel, run on all cores
+ */
+void bootboot_startcore()
+{
+    // spinlock until BSP finishes
+    do { asm volatile ("dsb sy"); } while(!bsp_done);
+
     // enable paging
     reg=(0xFF << 0) |    // Attr=0: normal, IWBWA, OWBWA, NTR
         (0x04 << 8) |    // Attr=1: device, nGnRE (must be OSH too)
@@ -1713,22 +1745,9 @@ viderr:
     reg|=(1<<0)/*|(1<<19)|(1<<12)|(1<<2)*/; // set M enable MMU, WXN, I instruction cache, C data cache
     asm volatile ("msr sctlr_el1, %0; isb" : : "r" (reg));
 
-    // jump to core's _start
-#if DEBUG
-    uart_puts(" * Entry point ");
-    uart_hex(entrypoint,8);
-    uart_putc('\n');
-#endif
-    asm volatile ("mov sp,#-16; mov x30, %0; ret" : : "r" (entrypoint));
-
-    // Wait until Enter or Space pressed, then reboot
-error:
-    while(r!='\n' && r!=' ') r=uart_getc();
-    uart_puts("\n\n");
-
-    // reset
-    asm volatile("dsb sy; isb");
-    *PM_WATCHDOG = PM_WDOG_MAGIC | 1;
-    *PM_RTSC = PM_WDOG_MAGIC | PM_RTSC_FULLRST;
-    while(1);
+    // set stack and call _start() in sys/core
+    asm volatile (  "mrs x0, mpidr_el1;"
+                    "and x0, x0, #3;"
+                    "sub x0, xzr, x0, lsl #10;" // sp = core_num * -1024
+                    "mov sp, x0; mov x30, %0; ret" : : "r" (entrypoint));
 }

@@ -50,6 +50,7 @@ extern uint8_t fb;                  // linear framebuffer mapped
  ******************************************/
 void _start()
 {
+    /*** NOTE: this code runs on all cores in parallel ***/
     int x, y, s=bootboot.fb_scanline, w=bootboot.fb_width, h=bootboot.fb_height;
 
     // cross-hair to see screen dimension detected correctly
@@ -90,7 +91,7 @@ void puts(char *s)
     int x,y,kx=0,line,mask,offs;
     int bpl=(font->width+7)/8;
     while(*s) {
-        unsigned char *glyph = (unsigned char*)&_binary_font_psf_start + font->headersize + 
+        unsigned char *glyph = (unsigned char*)&_binary_font_psf_start + font->headersize +
             (*s>0&&*s<font->numglyph?*s:0)*font->bytesperglyph;
         offs = (kx * (font->width+1) * 4);
         for(y=0;y<font->height;y++) {

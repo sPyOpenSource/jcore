@@ -12,7 +12,7 @@ chainload from MBR, VBR (GPT hybrid booting) or from CDROM boot record via __boo
 Machine state
 -------------
 
-IRQs masked. GDT unspecified, but valid, IDT unset. Code is running in supervisor mode in ring 0.
+IRQs masked. GDT unspecified, but valid, IDT unset. SSE, SMP enabled. Code is running in supervisor mode in ring 0 on all cores.
 
 Installation
 ------------

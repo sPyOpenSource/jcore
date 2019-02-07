@@ -1,6 +1,6 @@
 /*
  * aarch64-rpi/boot.S
- * 
+ *
  * Copyright (C) 2017 bzt (bztsrc@gitlab)
  *
  * Permission is hereby granted, free of charge, to any person
@@ -30,7 +30,6 @@
 .section ".text.boot"
 
 .global _start
-.global jumptokernel
 
 /*********************************************************************
  *                Entry point called by start.elf                    *
@@ -39,14 +38,8 @@ _start:
     // magic
     b       1f
     .ascii  "BOOTBOOT"
-    // read cpu id, stop slave cores
-1:  mrs     x7, mpidr_el1
-    and     x7, x7, #3
-    cbz     x7, 2f
-1:  wfe
-    b       1b
-2:  // set stack before our code
-    ldr     x1, =_start
+    // set stack before our code
+1:  ldr     x1, =_start
     // set up EL1
     mrs     x0, CurrentEL
     and     x0, x0, #12
@@ -65,8 +58,8 @@ _start:
     beq     1f
     msr     sp_el1, x1
     // set up exception handlers
-    ldr     x1, =_vectors
-    msr     vbar_el2, x1
+    ldr     x2, =_vectors
+    msr     vbar_el2, x2
     // enable CNTP for EL1
     mrs     x0, cnthctl_el2
     orr     x0, x0, #3
@@ -98,7 +91,14 @@ _start:
     adr     x2, 1f
     msr     elr_el2, x2
     eret
-1:  // clear bss
+    // set up exception handlers
+1:  ldr     x2, =_vectors
+    msr     vbar_el1, x2
+    // read cpu id, start slave cores
+    mrs     x7, mpidr_el1
+    and     x7, x7, #3
+    cbnz    x7, 3f
+    // clear bss
     ldr     x2, =__bss_start
     ldr     w3, =__bss_size
 1:  cbz     w3, 2f
@@ -106,13 +106,9 @@ _start:
     sub     w3, w3, #1
     cbnz    w3, 1b
 2:  mov     sp, x1
-    // set up exception handlers
-    ldr     x1, =_vectors
-    msr     vbar_el1, x1
     // jump to C code
     bl      bootboot_main
-1:  wfe
-    b       1b
+3:  b       bootboot_startcore
 
     .align 11
 _vectors:

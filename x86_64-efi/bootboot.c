@@ -1,7 +1,7 @@
 /*
  * x86_64-efi/bootboot.c
  *
- * Copyright (C) 2017 bzt (bztsrc@gitlab)
+ * Copyright (C) 2017 - 2019 bzt (bztsrc@gitlab)
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -123,10 +123,71 @@ typedef struct {
 } pe_hdr;
 
 /*** EFI defines and structs ***/
-extern EFI_GUID GraphicsOutputProtocol;
-extern EFI_GUID LoadedImageProtocol;
 struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
 struct EFI_FILE_PROTOCOL;
+
+#ifndef EFI_MP_SERVICES_PROTOCOL_GUID
+#define EFI_MP_SERVICES_PROTOCOL_GUID \
+  { 0x3fdda605, 0xa76e, 0x4f46, {0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08} }
+typedef struct _EFI_MP_SERVICES_PROTOCOL EFI_MP_SERVICES_PROTOCOL;
+
+#define PROCESSOR_AS_BSP_BIT         0x00000001
+
+typedef struct {
+  UINT64                     ProcessorId;
+  UINT32                     StatusFlag;
+} EFI_PROCESSOR_INFORMATION;
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_MP_SERVICES_DUMMY)(
+  IN  EFI_MP_SERVICES_PROTOCOL  *This
+  );
+
+typedef
+VOID
+(EFIAPI *EFI_AP_PROCEDURE)(
+  IN OUT VOID *Buffer
+  );
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_MP_SERVICES_GET_NUMBER_OF_PROCESSORS)(
+  IN  EFI_MP_SERVICES_PROTOCOL  *This,
+  OUT UINTN                     *NumberOfProcessors,
+  OUT UINTN                     *NumberOfEnabledProcessors
+  );
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_MP_SERVICES_GET_PROCESSOR_INFO)(
+  IN  EFI_MP_SERVICES_PROTOCOL   *This,
+  IN  UINTN                      ProcessorNumber,
+  OUT EFI_PROCESSOR_INFORMATION  *ProcessorInfoBuffer
+  );
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_MP_SERVICES_STARTUP_THIS_AP)(
+  IN  EFI_MP_SERVICES_PROTOCOL  *This,
+  IN  EFI_AP_PROCEDURE          Procedure,
+  IN  UINTN                     ProcessorNumber,
+  IN  EFI_EVENT                 WaitEvent               OPTIONAL,
+  IN  UINTN                     TimeoutInMicroseconds,
+  IN  VOID                      *ProcedureArgument      OPTIONAL,
+  OUT BOOLEAN                   *Finished               OPTIONAL
+  );
+
+struct _EFI_MP_SERVICES_PROTOCOL {
+  EFI_MP_SERVICES_GET_NUMBER_OF_PROCESSORS  GetNumberOfProcessors;
+  EFI_MP_SERVICES_GET_PROCESSOR_INFO        GetProcessorInfo;
+  EFI_MP_SERVICES_DUMMY                     StartupAllAPs;
+  EFI_MP_SERVICES_STARTUP_THIS_AP           StartupThisAP;
+  EFI_MP_SERVICES_DUMMY                     SwitchBSP;
+  EFI_MP_SERVICES_DUMMY                     EnableDisableAP;
+  EFI_MP_SERVICES_DUMMY                     WhoAmI;
+};
+#endif
 
 typedef
 EFI_STATUS
@@ -211,7 +272,7 @@ EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Volume;
 EFI_FILE_HANDLE                 RootDir;
 EFI_FILE_PROTOCOL               *Root;
 SIMPLE_INPUT_INTERFACE          *CI;
-unsigned char *kne;
+unsigned char *kne, bsp_done=0;
 
 // default environment variables. M$ states that 1024x768 must be supported
 int reqwidth = 1024, reqheight = 768;
@@ -1131,6 +1192,46 @@ LoadCore()
 }
 
 /**
+ * Initialize logical cores
+ * Because Local APIC ID is not contiguous, core id != core num
+ */
+VOID EFIAPI bootboot_startcore(IN VOID* buf)
+{
+    // we have a scalar number, not a pointer, so cast it
+    UINTN core_num = (UINTN)buf;
+
+    // spinlock until BSP finishes
+    do { __asm__ __volatile__ ("pause"); } while(!bsp_done);
+
+    // enable SSE
+    __asm__ __volatile__ (
+        "mov %%cr0, %%eax;"
+        "btsw $2, %%ax;"
+        "btrw $1, %%ax;"
+        "mov %%rax, %%cr0;"
+        "mov %%cr4, %%rax;"
+        "orw $3 << 9, %%ax;"
+        "mov %%rax, %%cr4"
+        : );
+
+    // set up paging
+    __asm__ __volatile__ (
+        "mov %0, %%rax;"
+        "mov %%rax, %%cr3"
+        : : "b"(paging) : "memory" );
+
+    // set stack and call _start() in sys/core
+    __asm__ __volatile__ (
+        // get a valid stack for the core we're running on
+        "xorq %%rsp, %%rsp;"
+        "subq %1, %%rsp;"  // sp = core_num * -1024
+        // pass control over
+        "pushq %0;"
+        "retq"
+        : : "a"(entrypoint), "r"(core_num*1024) : "memory" );
+}
+
+/**
  * Main EFI application entry point
  */
 EFI_STATUS
@@ -1148,7 +1249,12 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     EFI_PARTITION_TABLE_HEADER *gptHdr;
     EFI_PARTITION_ENTRY *gptEnt;
     EFI_INPUT_KEY key;
-    UINTN i, j=0, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
+    EFI_EVENT Event;
+    EFI_GUID mpspGuid = EFI_MP_SERVICES_PROTOCOL_GUID;
+    EFI_MP_SERVICES_PROTOCOL *mp;
+    UINT8 pibuffer[100];
+    EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
+    UINTN bsp_num=0, i, j=0, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
     UINT32 desc_version=0;
     UINT64 lba_s=0,lba_e=0;
     MMapEnt *mmapent, *last=NULL;
@@ -1435,10 +1541,9 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                 return report(status, L"GOP failed, no framebuffer");
 
         // collect information on system
-        bootboot->protocol=PROTOCOL_STATIC;
-        bootboot->loader_type=LOADER_UEFI;
+        bootboot->protocol=PROTOCOL_STATIC | LOADER_UEFI;
         bootboot->size=128;
-        bootboot->pagesize=12;
+        bootboot->numcores=1;
         CopyMem((void *)&(bootboot->initrd_ptr),&initrd.ptr,8);
         bootboot->initrd_size=((initrd.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
         CopyMem((void *)&(bootboot->x86_64.efi_ptr),&systab,8);
@@ -1492,6 +1597,34 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         if(kne!=NULL)
             *kne='\n';
 
+        // Symmetric Multi Processing support
+        status = uefi_call_wrapper(BS->LocateProtocol, 3, &mpspGuid, NULL, (void**)&mp);
+        if(!EFI_ERROR(status)) {
+            // override default values in bootboot struct
+            status = uefi_call_wrapper(mp->GetNumberOfProcessors, 3, mp, &i, &j);
+            if(!EFI_ERROR(status)) {
+                // failsafe: we cannot map more stacks (each core has 1k)
+                if(i>PAGESIZE/8/2*4) i=PAGESIZE/8/2*4;
+                bootboot->numcores = i;
+            }
+            DBG(L" * SMP numcores %d\n", bootboot->numcores);
+            // start APs
+            status = uefi_call_wrapper(BS->CreateEvent, 5, 0, TPL_NOTIFY, NULL, NULL, &Event);
+            if(!EFI_ERROR(status)) {
+                for(i=0; i<bootboot->numcores; i++) {
+                    status = uefi_call_wrapper(mp->GetProcessorInfo, 5, mp, i, pibuf);
+                    if(!EFI_ERROR(status)) {
+                        if(pibuf->StatusFlag & PROCESSOR_AS_BSP_BIT) {
+                            bootboot->bspid = pibuf->ProcessorId;
+                            bsp_num = i;
+                        } else {
+                            uefi_call_wrapper(mp->StartupThisAP, 7, mp, bootboot_startcore, i, Event, 0, (VOID*)i, NULL);
+                        }
+                    }
+                }
+            }
+        }
+
         // query size of memory map
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
             &memory_map_size, memory_map, NULL, &desc_size, NULL);
@@ -1509,7 +1642,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         }
 
         // create page tables
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 24, (EFI_PHYSICAL_ADDRESS*)&paging);
+        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 23+(bootboot->numcores+3)/4, (EFI_PHYSICAL_ADDRESS*)&paging);
         if (paging == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
@@ -1529,7 +1662,8 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         paging[3*512+1]=(UINT64)(env.ptr)+1;
         for(i=0;i<(core.size/PAGESIZE);i++)
             paging[3*512+2+i]=(UINT64)((UINT8 *)core.ptr+i*PAGESIZE+1);
-        paging[3*512+511]=(UINT64)((UINT8 *)paging+23*PAGESIZE+1);  // core stack
+        for(i=0; i<(UINTN)((bootboot->numcores+3)/4); i++)
+            paging[3*512+511-i]=(UINT64)((UINT8 *)paging+(23+i)*PAGESIZE+1);  // core stacks
         //identity mapping
         //2M PDPE
         for(i=0;i<16;i++)
@@ -1604,18 +1738,9 @@ get_memory_map:
             return report(status,L"ExitBootServices");
         }
 
-        //set up paging
-        __asm__ __volatile__ (
-            "mov %0,%%rax;"
-            "mov %%rax,%%cr3"
-            : : "b"(paging) : "memory" );
-
-        //call _start() in sys/core
-        __asm__ __volatile__ (
-            "xorq %%rsp, %%rsp;"
-            "pushq %0;"
-            "retq"
-            : : "a"(entrypoint): "memory" );
+        // release AP spinlock
+        bsp_done = 1;
+        bootboot_startcore((VOID*)bsp_num);
     }
     return report(status,L"Initrd not found");
 }

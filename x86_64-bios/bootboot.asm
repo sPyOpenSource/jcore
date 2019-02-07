@@ -1,7 +1,7 @@
 ;*
 ;* x86_64-bios/bootboot.asm
 ;*
-;* Copyright (C) 2017 bzt (bztsrc@gitlab)
+;* Copyright (C) 2017 - 2019 bzt (bztsrc@gitlab)
 ;*
 ;* Permission is hereby granted, free of charge, to any person
 ;* obtaining a copy of this software and associated documentation
@@ -30,7 +30,7 @@
 ;*  1.0.1 (even expansion ROM), El Torito "no emulation" CDROM boot,
 ;*  as well as Linux boot protocol.
 ;*
-;*  memory occupied: 800-7C00
+;*  text segment occupied: 800-7C00, bss: 8000-x
 ;*
 ;*  Memory map
 ;*      0h -  600h reserved for the system
@@ -49,7 +49,7 @@
 ;*  11000h -12000h PDE 2M
 ;*  12000h -13000h PDE 2M
 ;*  13000h -14000h PTE 4K
-;*  14000h -15000h core stack
+;*  14000h -A0000h core stacks (1k per core)
 ;*
 ;*  At first big enough free hole, initrd. Usually at 1Mbyte.
 ;*
@@ -480,9 +480,7 @@ getmemmap:
             mov         eax, bootboot_MAGIC
             mov         dword [bootboot.magic], eax
             mov         dword [bootboot.size], 128
-            mov         dword [bootboot.pagesize], 12
-            mov         dword [bootboot.protocol_ver], PROTOCOL_STATIC
-            mov         dword [bootboot.loader_type], LOADER_BIOS
+            mov         dword [bootboot.protocol], PROTOCOL_STATIC or LOADER_BIOS
             mov         di, bootboot.mmap
             mov         cx, 800h
             xor         ax, ax
@@ -677,8 +675,7 @@ getmemmap:
             cmp         dword [es:0], '_MP_'
             jne         .smbnotf
             shl         eax, 4
-            mov         ebx, dword [es:4]
-            mov         dword [bootboot.mp_ptr], ebx
+            mov         dword [bootboot.mp_ptr], eax
             bts         dx, 2
             jmp         .smbnotf
 .smbfound:  shl         eax, 4
@@ -732,8 +729,34 @@ getmemmap:
             mov         cr0, eax
             jmp         CODE_PROT:protmode_start
 
-;writes the reason, waits for a key and reboots.
+            ;---- enable protmode on APs ----
+ap_trampoline:
+            ;--this code will be relocated to the SIPI address --
+            cli
+            cld
+            jmp         0:ap_start
+            ;--relocation end--
+ap_start:   xor         ax, ax
+            mov         ds, ax
+            lgdt        [GDT_value]
+            mov         eax, cr0
+            or          al, 1
+            mov         cr0, eax
+            jmp         CODE_PROT:@f
             USE32
+@@:         mov         ax, DATA_PROT
+            mov         ds, ax
+            mov         es, ax
+            mov         fs, ax
+            mov         gs, ax
+            mov         ss, ax
+            ; spinlock until BSP finishes
+@@:         pause
+            cmp         byte [bsp_done], 0
+            jz          @b
+            jmp         longmode_init
+
+;writes the reason, waits for a key and reboots.
 prot_diefunc:
             prot_realmode
             USE16
@@ -857,7 +880,7 @@ prot_readsectorfunc:
             int         13h
             jc          @f
             ;some buggy BIOSes (like bochs') fail to set carry flag and ax properly
-            cmp         byte [si+2], 0h
+            cmp         byte [spc_packet+2], 0h
             jz          @f
             ;use 2048 byte sectors instead of 512 if it's a cdrom
             mov         al, byte [lbapacket.sect0]
@@ -1712,6 +1735,144 @@ end if
             dec         cx
             jnz         .nextfree
 .excludeok:
+            ; -------- SMP ---------
+            ; clear LAPIC address and logical core id list
+            mov         edi, lapic_ptr
+            mov         ecx, 512/4+1
+            xor         eax, eax
+            repnz       stosd
+            ; clear flags
+            mov         byte [bsp_done], al
+            ; try ACPI first
+            mov         esi, dword [bootboot.acpi_ptr]
+            or          esi, esi
+            jz          .trymp
+            mov         edx, 4
+            cmp         byte [esi], 'X'     ; XSDT has 8 bytes pointers, but we can only access 4G
+            jne         @f
+            mov         edx, 8
+@@:         mov         ecx, dword [esi+4]
+            add         esi, 024h
+            sub         ecx, 024h
+.nextsdt:   mov         ebx, dword [esi]
+            add         esi, edx
+            cmp         dword [ebx], 'APIC' ; look for MADT
+            je          .madt
+            sub         ecx, edx
+            or          ecx, ecx
+            jz          .trymp
+            jmp         .nextsdt
+            ; MADT found.
+.madt:      mov         eax, dword [ebx+24h]
+            mov         dword [lapic_ptr], eax  ; madt.lapic_address
+            mov         ecx, dword [ebx+4]
+            sub         ecx, 2ch
+            add         ebx, 2ch
+            mov         edi, lapic_ids
+.nextmadtentry:
+            cmp         word [bootboot.numcores], 256
+            jae         .dosmp
+            cmp         byte [ebx], 0       ; madt_entry.type: is it a Local APIC Processor?
+            jne         @f
+            xor         ax, ax
+            mov         al, byte [ebx+2]    ; madt_entry.lapicproc.lapicid
+            stosw                           ; ACPI table holds 1 byte id, but internally we have 2 bytes
+            inc         word [bootboot.numcores]
+@@:         xor         eax, eax
+            mov         al, byte [ebx+1]    ; madt_entry.size
+            or          al, al
+            jz          .dosmp
+            add         ebx, eax
+            sub         ecx, eax
+            cmp         ecx, 0
+            jg          .nextmadtentry
+            jmp         .dosmp
+
+
+.trymp:     ; in lack of ACPI, try legacy MP structures
+            mov         esi, dword [bootboot.mp_ptr]
+            or          esi, esi
+            jz          .nosmp
+            mov         esi, dword [esi+4]
+            cmp         dword [esi], 'PCMP'
+            jne         .nosmp
+            mov         eax, dword [esi+36]     ; pcmp.lapic_address
+            mov         dword [lapic_ptr], eax
+            mov         cx, word [esi+34]       ; pcmp.numentries
+            add         esi, 44                 ; pcmp header length
+            mov         edi, lapic_ids
+.nextpcmpentry:
+            cmp         word [bootboot.numcores], 256
+            jae         .dosmp
+            cmp         byte [esi], 0       ; pcmp_entry.type: is it a Local APIC Processor?
+            jne         @f
+            xor         ax, ax
+            mov         al, byte [esi+1]    ; pcmp_entry.lapicproc.lapicid
+            stosw                           ; PCMP has 1 byte id, but we use 2 bytes internally
+            inc         word [bootboot.numcores]
+            add         esi, 12
+@@:         add         esi, 8
+            dec         cx
+            jnz         .nextpcmpentry
+
+            ; send IPI and SIPI
+.dosmp:     cmp         word [bootboot.numcores], 2
+            jb          .nosmp
+
+            DBG32       dbg_smp
+
+            ; relocate AP trampoline
+            mov         esi, ap_trampoline
+            mov         edi, 7000h
+            mov         ecx, (ap_start-ap_trampoline+3)/4
+            repnz       movsd
+
+            ; send Broadcast INIT IPI
+            mov         esi, dword [lapic_ptr]
+            add         esi, 300h
+            mov         eax, 0C4500h
+            mov         dword [esi], eax
+            ; wait 10 millisec
+            mov         al, 10110000b           ; select channel 2, lo/hi access, mode 0, binary
+            out         043h, al
+            mov         ax, 1234DDh/1000*10     ; set counter
+            out         042h, al
+            mov         al, ah
+            out         042h, al
+@@:         mov         al, 0C8h                ; read back command, channel 2, flush latch, read status
+            out         043h, al
+            in          al, 042h                ; read channel 2 status
+            bt          ax, 7                   ; loop until output high bit set
+            jnc         @b
+
+            ; send Broadcast STARTUP IPI
+            mov         eax, 0C4607h        ; start at 0700:0000h
+            mov         dword [esi], eax
+
+            ; wait 1 millisec (should be 200 microsec minimum)
+            mov         al, 10110000b           ; select channel 2, lo/hi access, mode 0, binary
+            out         043h, al
+            mov         ax, 1234DDh/1000        ; set counter
+            out         042h, al
+            mov         al, ah
+            out         042h, al
+@@:         mov         al, 0C8h                ; read back command, channel 2, flush latch, read status
+            out         043h, al
+            in          al, 042h                ; read channel 2 status
+            bt          ax, 7                   ; loop until output high bit set
+            jnc         @b
+
+            mov         eax, 0C4607h        ; second SIPI
+            mov         dword [esi], eax
+
+.nosmp:     ; failsafe
+            cmp         word [bootboot.numcores], 0
+            jnz         @f
+            inc         word [bootboot.numcores]
+            mov         ax, word [bootboot.bspid]
+            mov         word [lapic_ids], ax
+@@:
+
             ; ------- set video resolution -------
             prot_realmode
 
@@ -1836,7 +1997,7 @@ end if
             ;address 0xffffffffffe00000
             xor         eax, eax
             mov         edi, 0A000h
-            mov         ecx, (15000h-0A000h)/4
+            mov         ecx, (14000h+256*1024-0A000h)/4
             repnz       stosd
 
             ;PML4
@@ -1875,7 +2036,17 @@ end if
             add         eax, 4096
             dec         ecx
             jnz         @b
-            mov         dword[0DFF8h], 014001h  ;map core stack
+            ;map core stacks (one page per 4 cores)
+            mov         edi, 0DFF8h
+            mov         eax, 014001h
+            mov         cx, word [bootboot.numcores]
+            add         cx, 3
+            shr         cx, 2
+@@:         mov         dword[edi], eax
+            sub         edi, 8
+            add         eax, 1000h
+            dec         cx
+            jnz         @b
 
             ;identity mapping
             ;2M PDPE
@@ -1937,8 +2108,12 @@ end if
             in          al, 70h         ;disable NMI
             or          al, 80h
             out         70h, al
+            ;release AP spinlock
+            inc         byte [bsp_done]
 
-            mov         eax, 1101000b  ;Set PAE, MCE, PGE
+            ;don't use stack below this line
+longmode_init:
+            mov         eax, 1101101000b  ;Set PAE, MCE, PGE; OSFXSR, OSXMMEXCPT (enable SSE)
             mov         cr4, eax
             mov         eax, 0A000h
             mov         cr3, eax
@@ -1948,15 +2123,15 @@ end if
             wrmsr
 
             mov         eax, cr0
+            and         al, 0FBh        ;clear EM, MP (enable SSE)
             or          eax, 0C0000001h
-            mov         cr0, eax        ;enable paging wich cache disabled
+            mov         cr0, eax        ;enable paging with cache disabled
             lgdt        [GDT_value]     ;read 80 bit address
             jmp         @f
             nop
-@@:         jmp         8:longmode_init
+@@:         jmp         8:@f
             USE64
-longmode_init:
-            xor         eax, eax
+@@:         xor         eax, eax        ;load long mode segments
             mov         ax, 10h
             mov         ds, ax
             mov         es, ax
@@ -1964,8 +2139,27 @@ longmode_init:
             mov         fs, ax
             mov         gs, ax
 
-            xor         rsp, rsp
-            ;call _start() at qword[entrypoint]
+            ; find out our lapic id
+            mov         eax, 1
+            cpuid
+            shr         ebx, 24
+            mov         edx, ebx
+            ; get array index for it
+            xor         rbx, rbx
+            mov         rsi, lapic_ids
+            mov         cx, word [bootboot.numcores]
+@@:         lodsw
+            cmp         ax, dx
+            je          @f
+            inc         ebx
+            dec         cx
+            jnz         @b
+            xor         rbx, rbx
+@@:         shl         rbx, 10           ; 1k stack for each core
+
+            ; set stack and call _start() in sys/core
+            xor         rsp, rsp        ;sp = core_num * -1024
+            sub         rsp, rbx
             jmp         qword[entrypoint]
             nop
             nop
@@ -2322,6 +2516,7 @@ bootdev:    db          0
 readdev:    db          0
 hasinitrd:  db          0
 iscdrom:    db          0
+bsp_done:                 ;flag to indicate APs can run
 fattype:    db          0
 bkp:        dd          '    '
 if DEBUG eq 1
@@ -2337,6 +2532,7 @@ dbg_gzinitrd db         " * Gzip compressed initrd",10,13,0
 dbg_scan    db          " * Autodetecting kernel",10,13,0
 dbg_elf     db          " * Parsing ELF64",10,13,0
 dbg_pe      db          " * Parsing PE32+",10,13,0
+dbg_smp     db          " * SMP init",10,13,0
 dbg_vesa    db          " * Screen VESA VBE",10,13,0
 end if
 backup:     db          " * Backup initrd",10,13,0
@@ -2383,6 +2579,8 @@ core_len:   dd          ?
 gpt_ptr:    dd          ?
 gpt_num:    dd          ?
 gpt_ent:    dd          ?
+lapic_ptr:  dd          ?
+lapic_ids:
 tinf_bss_start:
 d_end:      dd          ?
 d_lzOff:    dd          ?

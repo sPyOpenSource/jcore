@@ -1,7 +1,7 @@
 ;*
 ;* x86_64-bios/bootboot.inc
 ;*
-;* Copyright (C) 2017 bzt (bztsrc@gitlab)
+;* Copyright (C) 2017 - 2019 bzt (bztsrc@gitlab)
 ;*
 ;* Permission is hereby granted, free of charge, to any person
 ;* obtaining a copy of this software and associated documentation
@@ -47,12 +47,12 @@ PROTOCOL_STATIC    equ   1
 ;  kernel name parsed from environment, kernel memory addresses parsed from ELF symbols
 PROTOCOL_DYNAMIC   equ   2
 ; big-endian flag
-PROTOCOL_BIGENDIAN equ   080h
+PROTOCOL_BIGENDIAN equ      080h
 
 ; loader types, just informational
-LOADER_BIOS   equ   0
-LOADER_UEFI   equ   1
-LOADER_RPI    equ   2
+LOADER_BIOS   equ    0
+LOADER_UEFI   equ    4
+LOADER_RPI    equ    8
 
 ; framebuffer pixel format, only 32 bits supported
 FB_ARGB       equ 0
@@ -81,31 +81,26 @@ MMAP_MMIO         equ 4
 INITRD_MAXSIZE     equ 16 ; Mb
 
 virtual at bootboot
+   ; first 64 bytes is platform independent
     bootboot.magic:       dd	0
     bootboot.size:        dd	0
-
-    bootboot.protocol_ver:db	1
-    bootboot.loader_type: db	0
-    bootboot.pagesize:    db	0
+    bootboot.protocol:    db	1
     bootboot.fb_type:     db	0
-
+    bootboot.numcores:    dw	0
     bootboot.bspid:       dw	0
     bootboot.timezone:    dw	0
-
     bootboot.datetime:    dq	0
-
     bootboot.initrd_ptr:  dq	0
     bootboot.initrd_size: dq	0
-
     bootboot.fb_ptr:      dq	0
     bootboot.fb_size:     dd	0
     bootboot.fb_width:    dd	0
     bootboot.fb_height:   dd	0
     bootboot.fb_scanline: dd	0
 
-     ; architecture specific pointers
+   ; the rest (64 bytes) is platform specific
 
-
+   ; x86_64
       bootboot.acpi_ptr:    dq	0
       bootboot.smbi_ptr:    dq	0
       bootboot.efi_ptr:     dq	0
@@ -114,6 +109,8 @@ virtual at bootboot
 
      bootboot.mmap:
 end virtual
+
+
 
 
 

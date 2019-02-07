@@ -16,8 +16,8 @@ In addition to standard mappings, the MMIO is also mapped in kernel space:
    -128M         MMIO      (0xFFFFFFFFF8000000)
 ```
 
-Code is running in supervisor mode, at EL1. Dummy exception handlers are installed, but your kernel should use it's own
-handlers as soon as possible.
+Code is running in supervisor mode, at EL1 on all cores. Dummy exception handlers are installed, but your kernel should use
+it's own handlers as soon as possible.
 
 File system drivers
 -------------------

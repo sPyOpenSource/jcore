@@ -1,7 +1,7 @@
 /*
  * bootboot.h
  *
- * Copyright (C) 2017 bzt (bztsrc@gitlab)
+ * Copyright (C) 2017 - 2019 bzt (bztsrc@gitlab)
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -50,9 +50,9 @@ extern "C" {
 #define PROTOCOL_BIGENDIAN 0x80
 
 // loader types, just informational
-#define LOADER_BIOS 0
-#define LOADER_UEFI 1
-#define LOADER_RPI  2
+#define LOADER_BIOS (0<<2)
+#define LOADER_UEFI (1<<2)
+#define LOADER_RPI  (2<<2)
 
 // framebuffer pixel format, only 32 bits supported
 #define FB_ARGB   0
@@ -81,22 +81,17 @@ typedef struct {
 #define INITRD_MAXSIZE 16 //Mb
 
 typedef struct {
-  uint8_t    magic[4];    // 'BOOT', first 64 bytes are platform independent
+  // first 64 bytes is platform independent
+  uint8_t    magic[4];    // 'BOOT' magic
   uint32_t   size;        // length of bootboot structure, minimum 128
-
-  uint8_t    protocol;    // 1, static addresses, see PROTOCOL_* above
-  uint8_t    loader_type; // see LOADER_* above
-  uint8_t    pagesize;    // in power of two, 12 = 4096
+  uint8_t    protocol;    // 1, static addresses, see PROTOCOL_* and LOADER_* above
   uint8_t    fb_type;     // framebuffer type, see FB_* above
-
+  uint16_t   numcores;    // number of processor cores
   uint16_t   bspid;       // Bootsrap processor ID (Local APIC Id on x86_64)
   int16_t    timezone;    // in minutes -1440..1440
-
   uint8_t    datetime[8]; // in BCD yyyymmddhhiiss UTC (independent to timezone)
-
   uint64_t   initrd_ptr;  // ramdisk image position and size
   uint64_t   initrd_size;
-
   uint8_t    *fb_ptr;     // framebuffer pointer and dimensions
   uint32_t   fb_size;
   uint32_t   fb_width;

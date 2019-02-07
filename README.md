@@ -5,11 +5,11 @@ I provide pre-compiled images ready for use.
 
 1. *x86_64-efi* the preferred way of booting on x86_64 architecture.
     Standard GNU toolchain and a few files from gnuefi (included).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (93k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (93k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (94k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (93k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), Expansion ROM and Linux boot compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
-    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (10k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
+    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (11k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3
     [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (30k)
@@ -144,7 +144,7 @@ When the kernel gains control, the memory mapping looks like this:
     0-16G       RAM identity mapped   (0x0000000400000000)
 ```
 
-All infomration is passed at linker defined addresses. No API required at all, therefore the BOOTBOOT Protocol is
+All information is passed at linker defined addresses. No API required at all, therefore the BOOTBOOT Protocol is
 totally architecture and ABI agnostic. Level 1 expects these symbols at pre-defined addresses you see above, level 2
 loaders parse the symbol table in executable to get the actual addresses.
 
@@ -169,7 +169,10 @@ load kernels at -2M, therefore limiting the kernel's size in 2M, including confi
 must be more than enough for all micro-kernels. Bss segment is after the text segment, growing upwards, and it's zerod-out
 by the loader.
 
-The stack is at the top of the memory, starting at zero and growing downwards.
+Co-processor enabled, and if Symmetric Multi Processing supported, all cores are running the same kernel code at once.
+
+The stack is at the top of the memory, starting at zero and growing downwards. Each core has it's own 1k stack on SMP systems
+(core 0's stack starts at 0, core 1's at -1024 etc.).
 
 Environment file
 ----------------
@@ -257,6 +260,7 @@ extern uint8_t fb;                  // linear framebuffer mapped
 
 void _start()
 {
+    /*** NOTE: this code runs on all cores in parallel ***/
     int x, y, s=bootboot.fb_scanline, w=bootboot.fb_width, h=bootboot.fb_height;
 
     // cross-hair to see screen dimension detected correctly
@@ -278,6 +282,18 @@ void _start()
 
 For compilation, see example bootboot kernel's [Makefile](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/Makefile) and
 [link.ld](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/link.ld).
+
+Because on an SMP system all cores executing the same code, you probably want to start your kernel with something like:
+
+```c
+if (currentcoreid == bootboot.bspid) {
+    /* things to do on the bootstrap processor */
+} else {
+    /* things to do on the application processor(s) */
+}
+```
+
+On x86_64, 'currentcoreid' is the Local Apic Id (cpuid[eax=1].ebx >> 24), on AArch64 that's (mpidr_el1 & 3).
 
 Installation
 ------------
