@@ -201,8 +201,9 @@ MB_FLAGS    equ         010001h
 ;----------------Multiboot stub-----------------
             USE32
 multiboot_start:
-            cld
             cli
+            cld
+            lgdt        [GDT_value]
             ;clear drive code, initrd ptr and environment
             xor         edx, edx
             mov         edi, 9000h
@@ -243,8 +244,6 @@ multiboot_start:
             mov         CR0, eax
             xor         ax, ax
             mov         ds, ax          ;load segment registers
-            mov         es, ax
-            mov         ss, ax
             jmp         0:realmode_start
 
 ;-----------realmode-protmode stub-------------
@@ -252,6 +251,9 @@ realmode_start:
             cli
             cld
             mov         sp, 7C00h
+            xor         ax, ax
+            mov         es, ax
+            mov         ss, ax
             ;relocate ourself from ROM to RAM if necessary
             call        .getaddr
 .getaddr:   pop         si
@@ -261,8 +263,6 @@ realmode_start:
             cmp         si, .getaddr
             je          .noreloc
 .reloc:     mov         ds, ax
-            xor         ax, ax
-            mov         es, ax
             mov         di, loader
             sub         si, .getaddr-loader
             mov         cx, (loader_end-loader)/2
@@ -341,9 +341,7 @@ realmode_start:
             mov         eax, 80000000h
             mov         ebp, eax
             inc         ebp
-            push        bx
             cpuid
-            pop         bx
             cmp         eax, ebp
             jb          .cpuerror
             mov         eax, ebp
@@ -506,7 +504,7 @@ getmemmap:
             cmp         dword [di], 0
             jnz         .notfirst
             ; "allocate" memory for loader
-            mov         eax, 15000h
+            mov         eax, 14000h
             add         dword [di], eax
             sub         dword [di+8], eax
             ;convert E820 memory type to BOOTBOOT memory type
@@ -1871,7 +1869,13 @@ end if
             inc         word [bootboot.numcores]
             mov         ax, word [bootboot.bspid]
             mov         word [lapic_ids], ax
-@@:
+@@:         ; remove core stacks from memory map
+            xor         eax, eax
+            mov         ax, word [bootboot.numcores]
+            shl         eax, 10
+            mov         edi, bootboot.mmap
+            add         dword [edi], eax
+            sub         dword [edi+8], eax
 
             ; ------- set video resolution -------
             prot_realmode

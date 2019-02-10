@@ -109,7 +109,7 @@ bootboot_record:
             mov         byte [lbapacket.size], 16
             mov         byte [lbapacket.addr0+1], 08h   ;to address 800h
             ;check for lba presistance - floppy not supported any more
-            ;we use pendrive as removable media for a long time
+            ;we use USB sticks as removable media for a long time
             cmp         dl, byte 80h
             jl          .nolba
 .notfloppy: mov         ah, byte 41h
@@ -144,7 +144,7 @@ bootboot_record:
             pop         di
             jc          @f
             ;some buggy BIOSes (like bochs') fail to set carry flag and ax properly
-            cmp         byte [si+2], 0h
+            cmp         byte [spc_packet+2], 0h
             jz          @f
             ;lba=lba/4
             clc
