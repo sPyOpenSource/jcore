@@ -1746,8 +1746,8 @@ void bootboot_startcore()
     asm volatile ("msr sctlr_el1, %0; isb" : : "r" (reg));
 
     // set stack and call _start() in sys/core
-    asm volatile (  "mrs x0, mpidr_el1;"
-                    "and x0, x0, #3;"
-                    "sub x0, xzr, x0, lsl #10;" // sp = core_num * -1024
-                    "mov sp, x0; mov x30, %0; ret" : : "r" (entrypoint));
+    asm volatile (  "mrs x2, mpidr_el1;"
+                    "and x2, x2, #3;"
+                    "sub x2, xzr, x2, lsl #10;" // sp = core_num * -1024
+                    "mov sp, x2; mov x30, %0; ret" : : "r" (entrypoint));
 }
