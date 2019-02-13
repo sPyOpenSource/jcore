@@ -1546,16 +1546,16 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         bootboot->numcores=1;
         CopyMem((void *)&(bootboot->initrd_ptr),&initrd.ptr,8);
         bootboot->initrd_size=((initrd.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
-        CopyMem((void *)&(bootboot->x86_64.efi_ptr),&systab,8);
+        CopyMem((void *)&(bootboot->arch.x86_64.efi_ptr),&systab,8);
 
         // System tables and structures
         DBG(L" * System tables%s\n","");
-        LibGetSystemConfigurationTable(&AcpiTableGuid,(void *)&(bootboot->x86_64.acpi_ptr));
-        LibGetSystemConfigurationTable(&SMBIOSTableGuid,(void *)&(bootboot->x86_64.smbi_ptr));
-        LibGetSystemConfigurationTable(&MpsTableGuid,(void *)&(bootboot->x86_64.mp_ptr));
+        LibGetSystemConfigurationTable(&AcpiTableGuid,(void *)&(bootboot->arch.x86_64.acpi_ptr));
+        LibGetSystemConfigurationTable(&SMBIOSTableGuid,(void *)&(bootboot->arch.x86_64.smbi_ptr));
+        LibGetSystemConfigurationTable(&MpsTableGuid,(void *)&(bootboot->arch.x86_64.mp_ptr));
 
         // FIX ACPI table pointer on TianoCore...
-        ret.ptr = (UINT8*)(bootboot->x86_64.acpi_ptr);
+        ret.ptr = (UINT8*)(bootboot->arch.x86_64.acpi_ptr);
         if(CompareMem(ret.ptr,(const CHAR8 *)"RSDT", 4) && CompareMem(ret.ptr,(const CHAR8 *)"XSDT", 4)) {
             // scan for the real rsd ptr, as AcpiTableGuid returns bad address
             for(i=1;i<256;i++) {
@@ -1567,9 +1567,9 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             // get ACPI system table
             ACPI_RSDPTR *rsd = (ACPI_RSDPTR*)ret.ptr;
             if(rsd->xsdt!=0)
-                bootboot->x86_64.acpi_ptr = rsd->xsdt;
+                bootboot->arch.x86_64.acpi_ptr = rsd->xsdt;
             else
-                bootboot->x86_64.acpi_ptr = (UINT64)((UINT32)rsd->rsdt);
+                bootboot->arch.x86_64.acpi_ptr = (UINT64)((UINT32)rsd->rsdt);
         }
 
         // Date and time

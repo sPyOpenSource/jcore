@@ -1170,7 +1170,7 @@ int bootboot_main(uint64_t hcl)
     bootboot->protocol = PROTOCOL_STATIC | LOADER_RPI;
     bootboot->size = 128;
     bootboot->numcores = 4;
-    bootboot->aarch64.mmio_ptr = COREMMIO_BASE;
+    bootboot->arch.aarch64.mmio_ptr = COREMMIO_BASE;
     // set up a framebuffer so that we can write on screen
     if(!GetLFB(0, 0)) goto viderr;
     puts("Booting OS...\n");
