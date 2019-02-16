@@ -1613,7 +1613,7 @@ viderr:
         paging[2*512+r]=(uint64_t)(((uint64_t)r<<21))|0b01|(1<<10)|(r>=np?(2<<8)|(1<<2)|(1L<<54):(3<<8)); //device SH=2 OSH
     // identity L3
     for(r=0;r<512;r++)
-        paging[3*512+r]=(uint64_t)(r*PAGESIZE)|0b11|(1<<10)|(r<0x80||r>(uint32_t)((uint64_t)&_data/PAGESIZE)?0:(1<<7));
+        paging[3*512+r]=(uint64_t)(r*PAGESIZE)|0b11|(1<<10)/*|(r<0x80||r>(uint32_t)((uint64_t)&_data/PAGESIZE)?0:(1<<7))*/;
     // TTBR1, core L1
     paging[512+511]=(uint64_t)((uint8_t*)&__paging+4*PAGESIZE)|0b11|(3<<8)|(1<<10); //AF=1,Block=1,Present=1
     // core L2
@@ -1621,7 +1621,7 @@ viderr:
     for(r=0;r<32;r++)
         paging[4*512+448+r]=(uint64_t)(MMIO_BASE+((uint64_t)r<<21))|0b01|(2<<8)|(1<<10)|(1<<2)|(1L<<54); //OSH, Attr=1, NX
     // map framebuffer
-    for(r=0;r<28;r++)
+    for(r=0;r<16;r++)
         paging[4*512+480+r]=(uint64_t)((uint8_t*)&__paging+(6+r)*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //OSH, Attr=2
     paging[4*512+511]=(uint64_t)((uint8_t*)&__paging+5*PAGESIZE)|0b11|(3<<8)|(1<<10);// pointer to core L3
     // core L3
@@ -1635,7 +1635,7 @@ viderr:
     paging[5*512+511]=(uint64_t)((uint8_t*)&__corestack)|0b11|(3<<8)|(1<<10)|(1L<<54); // core stacks (1k each)
     // core L3 (lfb)
     for(r=0;r<16*512;r++)
-        paging[6*512+r]=(uint64_t)((uint8_t*)bootboot->fb_ptr+r*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //map framebuffer
+        paging[6*512+r]=(uint64_t)((uint8_t*)bootboot->fb_ptr+r*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); // map framebuffer
 
 #if MEM_DEBUG
     /* dump page translation tables */
