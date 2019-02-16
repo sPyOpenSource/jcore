@@ -1613,7 +1613,7 @@ viderr:
         paging[2*512+r]=(uint64_t)(((uint64_t)r<<21))|0b01|(1<<10)|(r>=np?(2<<8)|(1<<2)|(1L<<54):(3<<8)); //device SH=2 OSH
     // identity L3
     for(r=0;r<512;r++)
-        paging[3*512+r]=(uint64_t)(r*PAGESIZE)|0b11|(1<<10)/*|(r<0x80||r>(uint32_t)((uint64_t)&_data/PAGESIZE)?0:(1<<7))*/;
+        paging[3*512+r]=(uint64_t)(r*PAGESIZE)|0b11|(1<<10);
     // TTBR1, core L1
     paging[512+511]=(uint64_t)((uint8_t*)&__paging+4*PAGESIZE)|0b11|(3<<8)|(1<<10); //AF=1,Block=1,Present=1
     // core L2
