@@ -26,6 +26,30 @@ Installation
 
 3. *GRUB*, *UEFI Boot Manager*: add __bootboot.efi__ to boot options.
 
+You can also run the loader in interactive mode from the EFI Shell, appending options to its command line.
+
+```
+FS0:\> EFI\BOOT\BOOTX64.EFI /?
+BOOTBOOT LOADER (build Oct 11 2017)
+
+SYNOPSIS
+  BOOTBOOT.EFI [ -h | -? | /h | /? ] [ INITRDFILE [ ENVIRONMENTFILE [...] ] ]
+
+DESCRIPTION
+  Bootstraps an operating system via the BOOTBOOT Protocol.
+  If arguments not given, defaults to
+    FS0:\BOOTBOOT\INITRD   as ramdisk image and
+    FS0:\BOOTBOOT\CONFIG   for boot environment.
+  Additional "key=value" command line arguments will be appended to the
+  environment. If INITRD not found, it will use the first bootable partition
+  in GPT. If CONFIG not found, it will look for /sys/config inside the
+  INITRD (or partition).
+
+  As this is a loader, it is not supposed to return control to the shell.
+
+FS0:\>
+```
+
 Limitations
 -----------
 
