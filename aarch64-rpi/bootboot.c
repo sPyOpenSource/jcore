@@ -1601,8 +1601,8 @@ viderr:
         int offs = 0, line;
         for(ky=0;ky<bootboot->fb_height;ky++) {
             line=offs;
-            for(kx=0;kx<bootboot->fb_width;kx++,line+=4)
-                *((uint32_t*)((uint64_t)bootboot->fb_ptr + line))=0;
+            for(kx=0;kx<bootboot->fb_width;kx+=2,line+=8)
+                *((uint64_t*)((uint64_t)bootboot->fb_ptr + line))=0;
             offs+=bootboot->fb_scanline;
         }
     }
