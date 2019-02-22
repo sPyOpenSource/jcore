@@ -1597,6 +1597,14 @@ viderr:
             puts("BOOTBOOT-PANIC: VideoCore error, no framebuffer\n");
             goto error;
         }
+        /* clear the screen */
+        int offs = 0, line;
+        for(ky=0;ky<bootboot->fb_height;ky++) {
+            line=offs;
+            for(kx=0;kx<bootboot->fb_width;kx++,line+=4)
+                *((uint32_t*)((uint64_t)bootboot->fb_ptr + line))=0;
+            offs+=bootboot->fb_scanline;
+        }
     }
     kx=ky=0; color=0xFFDD33;
 
