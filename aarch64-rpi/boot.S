@@ -56,7 +56,8 @@ _start:
     // running at EL2?
 1:  cmp     x0, #4
     beq     1f
-    msr     sp_el1, x1
+    mov     x2, #4096
+    msr     sp_el1, x2
     // set up exception handlers
     ldr     x2, =_vectors
     msr     vbar_el2, x2

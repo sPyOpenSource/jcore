@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0xffffffffffe02000
   Start of program headers:          64 (bytes into file)
-  Start of section headers:          3736 (bytes into file)
+  Start of section headers:          3728 (bytes into file)
   Flags:                             0x0
   Size of this header:               64 (bytes)
   Size of program headers:           56 (bytes)
@@ -23,19 +23,19 @@ Program Headers:
   Type           Offset             VirtAddr           PhysAddr
                  FileSiz            MemSiz              Flags  Align
   LOAD           0x0000000000000078 0xffffffffffe02000 0xffffffffffe02000
-                 0x0000000000000cf0 0x0000000000000cf0  RWE    0x8
+                 0x0000000000000ce8 0x0000000000000cf0  RWE    0x8
 
  Section to Segment mapping:
   Segment Sections...
-   00     .text .got .got.plt 
+   00     .text .got .got.plt .bss 
 
 Symbol table '.symtab' contains 9 entries:
    Num:    Value          Size Type    Bind   Vis      Ndx Name
      0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: ffffffffffe02000     0 SECTION LOCAL  DEFAULT    1 
-     2: ffffffffffe02cb8     0 SECTION LOCAL  DEFAULT    2 
-     3: ffffffffffe02cd8     0 SECTION LOCAL  DEFAULT    3 
-     4: ffffffffffe02cf0     0 SECTION LOCAL  DEFAULT    4 
+     2: ffffffffffe02cb0     0 SECTION LOCAL  DEFAULT    2 
+     3: ffffffffffe02cd0     0 SECTION LOCAL  DEFAULT    3 
+     4: ffffffffffe02ce8     0 SECTION LOCAL  DEFAULT    4 
      5: ffffffffffe01000     0 NOTYPE  GLOBAL DEFAULT    1 environment
      6: fffffffffc000000     0 NOTYPE  GLOBAL DEFAULT  ABS fb
      7: ffffffffffe00000     0 NOTYPE  GLOBAL DEFAULT    1 bootboot
