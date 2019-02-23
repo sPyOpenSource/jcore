@@ -95,6 +95,8 @@ _start:
     // set up exception handlers
 1:  ldr     x2, =_vectors
     msr     vbar_el1, x2
+    // disable execution level dependent stacks, so that we have only 4 vectors
+    msr     SPSel, #0
     // read cpu id, start slave cores
     mrs     x7, mpidr_el1
     and     x7, x7, #3
