@@ -1549,7 +1549,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         CopyMem((void *)&(bootboot->arch.x86_64.efi_ptr),&systab,8);
 
         // System tables and structures
-        DBG(L" * System tables%s\n","");
+        DBG(L" * System tables%s\n",L"");
         LibGetSystemConfigurationTable(&AcpiTableGuid,(void *)&(bootboot->arch.x86_64.acpi_ptr));
         LibGetSystemConfigurationTable(&SMBIOSTableGuid,(void *)&(bootboot->arch.x86_64.smbi_ptr));
         LibGetSystemConfigurationTable(&MpsTableGuid,(void *)&(bootboot->arch.x86_64.mp_ptr));

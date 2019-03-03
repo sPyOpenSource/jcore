@@ -65,7 +65,7 @@ _start:
     mrs     x0, cnthctl_el2
     orr     x0, x0, #3
     msr     cnthctl_el2, x0
-    msr     cntvoff_el2, xzr
+    msr     cnthp_ctl_el2, xzr
     // initialize virtual MPIDR
     mrs     x0, midr_el1
     mrs     x2, mpidr_el1
@@ -101,6 +101,11 @@ _start:
     mrs     x7, mpidr_el1
     and     x7, x7, #3
     cbnz    x7, 3f
+    // failsafe: if startup.elf does not start all cores (depends on config.txt)
+    mov     x2, #0x40000000
+    str     w1, [x2, #0x9C]     // write _start address to core1's mailbox 3
+    str     w1, [x2, #0xAC]     // write _start address to core2's mailbox 3
+    str     w1, [x2, #0xBC]     // write _start address to core3's mailbox 3
     // clear bss
     ldr     x2, =__bss_start
     ldr     w3, =__bss_size

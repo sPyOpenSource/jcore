@@ -202,7 +202,12 @@ fsz_initrd:
             pop         edi
 
             ; get root dir inode
-.noenc:     mov         eax, dword [esi+560]    ; FSZ_SuperBlock.rootdirfid
+.noenc:     mov         dword [_i], 1024
+            mov         al, byte [esi+518]      ; FSZ_SuperBlock.flags
+            bt          ax, 0                   ; FSZ_FLAG_BIGINODE?
+            jnc         @f
+            mov         dword [_i], 2048
+@@:         mov         eax, dword [esi+560]    ; FSZ_SuperBlock.rootdirfid
             shl         eax, 12
             add         esi, eax
             cmp         dword [esi], 'FSIN'
@@ -213,12 +218,12 @@ fsz_initrd:
 .nocore:    mov         esi, nocore
             jmp         .err
 @@:         ; it has inlined data?
-.again:     add         esi, 1024                   ; FSZ_Inode.inlinedata
+.again:     mov         eax, dword [esi+448]        ; FSZ_Inode.sec
+            add         esi, dword[_i]              ; FSZ_Inode.[big|small].inlinedata
             cmp         dword [esi], 'FSDR'
             je          .srchdir
             ; no, locate the data
             mov         ecx, dword [esi]
-            mov         eax, dword [esi-1024+448]   ; FSZ_Inode.sec
             shl         eax, 12
             mov         esi, dword [bootboot.initrd_ptr]
             add         esi, eax
@@ -254,12 +259,12 @@ fsz_initrd:
             je          .again
 
             ; it has inlined data?
-            add         esi, 1024                   ; FSZ_Inode.inlinedata
+            mov         eax, dword [esi+448]        ; FSZ_Inode.sec
+            add         esi, dword[_i]              ; FSZ_Inode.[big|small].inlinedata
             cmp         dword [esi], 'FSDR'
             je          .srchcore
             ; no, locate the data
             mov         ecx, dword [esi]
-            mov         eax, dword [esi-1024+448]   ; FSZ_Inode.sec
             shl         eax, 12
             mov         esi, dword [bootboot.initrd_ptr]
             add         esi, eax
@@ -300,7 +305,7 @@ fsz_initrd:
             ; inline
             cmp         bl, 0FFh                ; FSZ_IN_FLAG_INLINE
             jne          @f
-            add         esi, 1024
+            add         esi, dword[_i]          ; FSZ_Inode.[big|small].inlinedata
             ret
             ; direct data block
 @@:         or          bl, bl                  ; FSZ_IN_FLAG_DIRECT
@@ -317,7 +322,7 @@ fsz_initrd:
             add         esi, eax
             mov         eax, dword [esi]        ; first FSZ_SectorList.sec
             jmp         .load
-@@:         add         esi, 1024
+@@:         add         esi, dword[_i]          ; FSZ_Inode.[big|small].inlinedata
             ; sector directory at esi, file size in ecx
             mov         eax, dword [esi]        ; first FSZ_SectorList.sec
 .load:      shl         eax, 12

@@ -97,8 +97,8 @@ again:
     if(*e=='/'){e++;}
     if(!memcmp(in->magic,FSZ_IN_MAGIC,4)){
         //is it inlined?
-        if(!memcmp(in->data.small.inlinedata,FSZ_DIR_MAGIC,4)){
-            ent=(FSZ_DirEnt *)(in->data.small.inlinedata);
+        if(!memcmp(sb->flags&FSZ_SB_FLAG_BIGINODE? in->data.big.inlinedata : in->data.small.inlinedata,FSZ_DIR_MAGIC,4)){
+            ent=(FSZ_DirEnt *)(sb->flags&FSZ_SB_FLAG_BIGINODE? in->data.big.inlinedata : in->data.small.inlinedata);
         } else if(!memcmp(initrd_p+in->sec*ss,FSZ_DIR_MAGIC,4)){
             // go, get the sector pointed
             ent=(FSZ_DirEnt *)(initrd_p+in->sec*ss);
@@ -138,7 +138,8 @@ again:
                 case FSZ_IN_FLAG_SECLIST:
                 case FSZ_IN_FLAG_SDINLINE:
                     // sector directory or list inlined
-                    ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)&in->data.small.inlinedata) * ss);
+                    ret.ptr=(uint8_t*)(initrd_p + *(sb->flags&FSZ_SB_FLAG_BIGINODE?
+                        (uint64_t*)&in->data.big.inlinedata : (uint64_t*)&in->data.small.inlinedata) * ss);
                     break;
                 case FSZ_IN_FLAG_DIRECT:
                     // direct data

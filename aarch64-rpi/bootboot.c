@@ -1563,7 +1563,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
     mmap++; bootboot->size+=sizeof(MMapEnt);
 
     // MMIO area
-    mmap->ptr=MMIO_BASE; mmap->size=((uint64_t)0x40000000-MMIO_BASE) | MMAP_MMIO;
+    mmap->ptr=MMIO_BASE; mmap->size=((uint64_t)0x40200000-MMIO_BASE) | MMAP_MMIO;
     mmap++; bootboot->size+=sizeof(MMapEnt);
 
 #if MEM_DEBUG
