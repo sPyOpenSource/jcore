@@ -46,6 +46,7 @@ _start:
     // running at EL3?
     cmp     x0, #12
     bne     1f
+    msr     sp_el2, x1
     mov     x2, #0x5b1
     msr     scr_el3, x2
     mov     x2, #0x3c9
@@ -56,8 +57,7 @@ _start:
     // running at EL2?
 1:  cmp     x0, #4
     beq     1f
-    mov     x2, #4096
-    msr     sp_el1, x2
+    msr     sp_el1, x1
     // set up exception handlers
     ldr     x2, =_vectors
     msr     vbar_el2, x2
