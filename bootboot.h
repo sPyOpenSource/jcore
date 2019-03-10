@@ -70,13 +70,12 @@ typedef struct {
 #define MMapEnt_Ptr(a)  (a->ptr)
 #define MMapEnt_Size(a) (a->size & 0xFFFFFFFFFFFFFFF0)
 #define MMapEnt_Type(a) (a->size & 0xF)
-#define MMapEnt_IsFree(a) ((a->size&0xF)==1||(a->size&0xF)==2)
+#define MMapEnt_IsFree(a) ((a->size&0xF)==1)
 
 #define MMAP_USED     0   /* don't use. Reserved or unknown regions */
 #define MMAP_FREE     1   /* usable memory */
-#define MMAP_ACPIFREE 2   /* free to use after acpi tables are parsed */
-#define MMAP_ACPINVS  3   /* don't use. Acpi non-volatile */
-#define MMAP_MMIO     4   /* memory mapped IO region */
+#define MMAP_ACPI     2   /* acpi memory, volatile and non-volatile as well */
+#define MMAP_MMIO     3   /* memory mapped IO region */
 
 #define INITRD_MAXSIZE 16 /* Mb */
 

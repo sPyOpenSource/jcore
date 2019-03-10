@@ -511,13 +511,11 @@ getmemmap:
 .notfirst:  mov         al, byte [di+16]
             cmp         al, 1
             je          .noov
+            cmp         al, 4
+            je          .isacpi
             cmp         al, 3
             jne         @f
-            mov         al, MMAP_ACPIFREE
-            jmp         .noov
-@@:         cmp         al, 4
-            jne         @f
-            mov         al, MMAP_ACPINVS
+.isacpi:    mov         al, MMAP_ACPI
             jmp         .noov
             ; everything else reserved
 @@:         mov         al, MMAP_USED
@@ -525,7 +523,7 @@ getmemmap:
             mov         byte [di+8], al
             xor         ecx, ecx
             ;is it ACPI area?
-            cmp         al, MMAP_ACPIFREE
+            cmp         al, MMAP_ACPI
             jne         .notacpi
             mov         dword [bootboot.acpi_ptr], edi
             jmp         .entryok
@@ -643,13 +641,14 @@ getmemmap:
             je          .acpi1
 .acpi2:     mov         eax, dword [es:24]
             mov         dword [bootboot.acpi_ptr], eax
-            mov         eax, dword [es:28]
-            mov         dword [bootboot.acpi_ptr+4], eax
-            jmp         .detsmbi
+            mov         edx, dword [es:28]
+            mov         dword [bootboot.acpi_ptr+4], edx
+            jmp         .chkacpi
             ; no, fallback to RSDT
 .acpi1:     mov         eax, dword [es:16]
 @@:         mov         dword [bootboot.acpi_ptr], eax
-            jmp         .detsmbi
+            xor         edx, edx
+            jmp         .chkacpi
 .acpinotf:  xor         eax, eax
             mov         ax, es
             inc         ax
@@ -661,6 +660,27 @@ getmemmap:
             jnz         .acpinext
             mov         si, noacpi
             jmp         real_diefunc
+.chkacpi:   ; check if memory is marked as ACPI in the memory map
+            mov         esi, bootboot.mmap
+            mov         edi, bootboot.magic
+            add         edi, dword [bootboot.size]
+.nextmm:    cmp         edx, dword [si+4]
+            jne         .skipmm
+            mov         ebx, dword [si]
+            cmp         eax, ebx
+            jl          .skipmm
+            add         ebx, dword [si+8]
+            and         bl, 0F0h
+            cmp         eax, ebx
+            jge         .skipmm
+            mov         al, byte [si+8]
+            and         al, 0F0h
+            or          al, MMAP_ACPI
+            mov         byte [si+8], al
+            jmp         .detsmbi
+.skipmm:    add         si, 16
+            cmp         si, di
+            jl          .nextmm
 
             ;detect SMBios tables
 .detsmbi:   xor         eax, eax

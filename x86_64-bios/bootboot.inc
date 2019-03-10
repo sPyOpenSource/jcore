@@ -74,9 +74,8 @@ end virtual
 
 MMAP_USED         equ 0
 MMAP_FREE         equ 1
-MMAP_ACPIFREE     equ 2
-MMAP_ACPINVS      equ 3
-MMAP_MMIO         equ 4
+MMAP_ACPI         equ 2
+MMAP_MMIO         equ 3
 
 INITRD_MAXSIZE     equ 16 ; Mb
 

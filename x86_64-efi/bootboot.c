@@ -1712,10 +1712,10 @@ get_memory_map:
             mmapent->ptr=mement->PhysicalStart;
             mmapent->size=(mement->NumberOfPages*PAGESIZE)+
                 ((mement->Type>0&&mement->Type<5)||mement->Type==7?MMAP_FREE:
-                (mement->Type==9?MMAP_ACPIFREE:
-                (mement->Type==10?MMAP_ACPINVS:
+                (mement->Type==9 || mement->Type==10 || (bootboot->arch.x86_64.acpi_ptr >= mmapent->ptr &&
+                    bootboot->arch.x86_64.acpi_ptr < mmapent->ptr+mement->NumberOfPages*PAGESIZE)?MMAP_ACPI:
                 (mement->Type==11||mement->Type==12?MMAP_MMIO:
-                MMAP_USED))));
+                MMAP_USED)));
             // merge continous areas of the same type
             if(last!=NULL &&
                 MMapEnt_Type(last) == MMapEnt_Type(mmapent) &&

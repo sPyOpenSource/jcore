@@ -1579,8 +1579,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
         switch(MMapEnt_Type(mmap)) {
             case MMAP_USED: uart_puts("reserved"); break;
             case MMAP_FREE: uart_puts("free"); break;
-            case MMAP_ACPIFREE: uart_puts("acpifree"); break;
-            case MMAP_ACPINVS: uart_puts("acpinvs"); break;
+            case MMAP_ACPI: uart_puts("acpi"); break;
             case MMAP_MMIO: uart_puts("mmio"); break;
             default: uart_puts("unknown"); break;
         }
