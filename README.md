@@ -136,6 +136,7 @@ Machine state
 When the kernel gains control, the memory mapping looks like this:
 
 ```
+  -128M         "mmio" area           (0xFFFFFFFFF8000000)
    -64M         "fb" framebuffer      (0xFFFFFFFFFC000000)
     -2M         "bootboot" structure  (0xFFFFFFFFFFE00000)
     -2M+1page   "environment" string  (0xFFFFFFFFFFE01000)
