@@ -671,8 +671,6 @@ int sd_init()
 }
 
 /*** other defines and structs ***/
-#define COREMMIO_BASE 0xFFFFFFFFF8000000
-
 typedef struct {
     uint32_t type[4];
     uint8_t  uuid[16];
@@ -1170,7 +1168,7 @@ int bootboot_main(uint64_t hcl)
     bootboot->protocol = PROTOCOL_STATIC | LOADER_RPI;
     bootboot->size = 128;
     bootboot->numcores = 4;
-    bootboot->arch.aarch64.mmio_ptr = COREMMIO_BASE;
+    bootboot->arch.aarch64.mmio_ptr = MMIO_BASE;
     // set up a framebuffer so that we can write on screen
     if(!GetLFB(0, 0)) goto viderr;
     puts("Booting OS...\n");
@@ -1525,7 +1523,9 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
     mmap=(MMapEnt *)&bootboot->mmap;
 
     // everything before the bootboot struct is free
-    mmap->ptr=0; mmap->size=(uint64_t)&__bootboot | MMAP_FREE;
+    // leave out the first page. qemu crashes if we write at 0x100, there are some
+    // system variables there
+    mmap->ptr=4096; mmap->size=((uint64_t)&__bootboot-4096) | MMAP_FREE;
     mmap++; bootboot->size+=sizeof(MMapEnt);
 
     // mark bss reserved
