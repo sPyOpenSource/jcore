@@ -1210,7 +1210,7 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
         "btrw $1, %%ax;"
         "mov %%rax, %%cr0;"
         "mov %%cr4, %%rax;"
-        "orw $3 << 9, %%ax;"
+        "orw $3 << 8, %%ax;"
         "mov %%rax, %%cr4"
         : );
 
