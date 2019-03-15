@@ -35,7 +35,7 @@ Multiboottal, láncbetöltéssel MBR, VBR (GPT hibrid indítás) és CDROM indí
 Az [UEFI gépek](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-efi)en egy szabványos OS Loader alkalmazás.
 
 A [Raspberry Pi 3](https://gitlab.com/bztsrc/bootboot/tree/master/aarch64-rpi) gépen a bootboot.img-t a start.elf
-tölti be kernel8.ig néven az SD kártya első partíciójáról.
+tölti be kernel8.img néven az SD kártya első partíciójáról.
 
 A különbség más betöltő protokollokhoz képest a rugalmasság és a hordozhatóság; a tisztán 64 bit támogatás; és hogy
 a BOOTBOOT a kernel-t a ramlemezképből tölti be. Ez ideális hobbi OS-ek és mikrokernelek számára. Ez biztosítja, hogy
@@ -125,7 +125,7 @@ Betöltés menete
 3. aztán betölti a környezeti fájlt és az initrd-t (valószínűleg a boot partícióról vagy ROM-ból).
 4. sorra meghívja a fájl rendszer meghajtókat, hogy betöltse a kernelt az initrd-ről.
 5. ha egyik meghajtó sem járt szerencsével, akkor megkeresi az első futtathatót az initrd-ben.
-6. értelmezi a futtatható fejlécét és szimbólumat, hogy megtalálja a címeket (csak 2-es szintű betöltők).
+6. értelmezi a futtatható fejlécét és a szimbólumokat, hogy megtalálja a címeket (csak 2-es szintű betöltők).
 7. ennek megfelelően leképezi a framebuffert, környezetet és a [bootboot struktúrá](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h)t.
 8. beállítja a vermet, regisztereket és a kernel belépési pontjára ugrik. Lásd [példa kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel).
 
@@ -148,7 +148,7 @@ Minden információ a linker által meghatározott címen kerül átadásra. Nin
 teljesen architektúra és ABI független. Az 1-es szintet támogató betöltők a fent látható fix címeket használják, míg
 a 2-es szintű betöltők a futtatható által definiált szimbólumokat használva állapítják meg a címeket.
 
-A RAM (egészen 16G-ig) egy-az-agyben le van képezve a pozitív címtartományban. A soros vonali konzol 115200 baudra,
+A RAM (egészen 16G-ig) egy-az-egyben le van képezve a pozitív címtartományban. A soros vonali konzol 115200 baudra,
 8 adatbittel, paritás nélkül és 1 stopbitre van felkonfigurálva. Megszakítások le vannak tiltva, a kód pedig felügyeleti
 szinten (0-ás gyűrű / EL1) fut.
 
