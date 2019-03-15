@@ -33,7 +33,7 @@ Installation
 
 1. Copy __bootboot.img__ to **_FS0:\KERNEL8.IMG_**.
 
-2. You'll need other [firmware files](https://gitlab.com/raspberrypi/firmware/tree/master/boot) as well.
+2. You'll need other [firmware files](https://gitlab.com/raspberrypi/firmware/tree/master/boot) as well (bootcode.bin, start.elf, fixup,dat).
 
 3. If you have used a GPT disk with ESP as boot partition, then you need to map it in MBR so that Raspberry Pi
     firmware could find those files. The [mkboot](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/mkboot.c)

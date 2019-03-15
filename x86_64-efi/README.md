@@ -53,8 +53,6 @@ FS0:\>
 Limitations
 -----------
 
-Known limitations:
-
  - Maps the first 16G of RAM.
  - PCI Option ROM should be signed in order to work.
  - Compressed initrd in ROM is limited to 16M.
