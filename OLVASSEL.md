@@ -229,13 +229,14 @@ file_t myfs_initrd(uint8_t *initrd, char *filename);
 
 A protokoll elvárja, hogy a BOOTBOOT kompatíbilis betöltők végigmenjenek egy meghajtó listán, amíg valamelyik
 érvényes választ nem ad. Ha mindegyik {NULL,0}-al tért vissza, akkor a betöltő bájtról bájtra megkeresi a legelső
-ELF64 / PE32+ binárist az initrd-ben. Ez roppant hasznos, ha még nem írtunk saját meghajtót, vagy amikor az "initrd"
-egy statikusan linkelt futtatható, mint például a Minix. Csak bemásolod az initrd-t a boot partícióra és már mehet is!
+ELF64 / PE32+ binárist az initrd-ben. Ez roppant hasznos, ha egyedi fájl rednszerünk van és még nem írtunk hozzá saját
+meghajtót, vagy amikor az "initrd" egy statikusan linkelt futtatható, mint például a Minix. Csak bemásolod az initrd-t
+a boot partícióra és már mehet is!
 
-The BOOTBOOT Protocol expects the file system drivers ([here](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-efi/fs.h),
-[here](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/fs.inc) and [here](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/fs.h))
-to be separated from the rest of the loader's source. This is so because it was designed to help the needs of hobby
-OS developers, specially for those who want to write their own file systems.
+A BOOTBOOT Protokoll előírja, hogy a fájl rendszer meghajtók ([itt](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-efi/fs.h),
+[itt](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/fs.inc) és [itt](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/fs.h))
+elkülönítve legyenek a betöltő forrásának többi részétől. Ez azért van, mert elsősorban azoknak a hobbi OS fejlesztőknek
+készült, akik saját fájl rendszert használnak.
 
 A referencia implementációk támogatják a [cpio](https://en.wikipedia.org/wiki/Cpio)-t (hpodc, newc és crc variáns),
 az [ustar](https://en.wikipedia.org/wiki/Tar_(computing))-t, az osdev.org féle [SFS](http://wiki.osdev.org/SFS)-t,
@@ -397,9 +398,9 @@ egyáltalán érvényes futtathatót benne.
 BOOTBOOT-PANIC: Kernel is not a valid executable
 ```
 
-A megadott kernel fájlt megtalálta ugyan az initrd-n valamelyik féjl rendszer meghajtó, de az nem ELF64 se PE32+ formátumú,
+A megadott kernel fájlt megtalálta ugyan az initrd-n valamelyik fájl rendszer meghajtó, de az nem ELF64 se PE32+ formátumú,
 vagy nem az adott architáktúrára van fordítva, vagy nincs benne betölthető szegmens definíció a negatív címtartományban
-megadva )lásd linker szkript). Ezt a hibát a 2-es szintű betöltők is kiírhatják, ha az `mmio`, `fb`, `bootboot` vagy
+megadva (lásd linker szkript). Ezt a hibát a 2-es szintű betöltők is kiírhatják, ha az `mmio`, `fb`, `bootboot` vagy
 `environment` szimbólumok címei nincsenek a negatív címtartományban.
 
 ```
