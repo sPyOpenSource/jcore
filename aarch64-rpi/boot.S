@@ -101,11 +101,16 @@ _start:
     mrs     x7, mpidr_el1
     and     x7, x7, #3
     cbnz    x7, 3f
-    // failsafe: if startup.elf does not start all cores (depends on config.txt)
+    // failsafe: if startup.elf does not start all cores (depends on config.txt), and qemu expects 0xD8
     mov     x2, #0x40000000
+    mov     x3, #0xd8
     str     w1, [x2, #0x9C]     // write _start address to core1's mailbox 3
+    str     w1, [x3, #8]
     str     w1, [x2, #0xAC]     // write _start address to core2's mailbox 3
+    str     w1, [x3, #16]
     str     w1, [x2, #0xBC]     // write _start address to core3's mailbox 3
+    str     w1, [x3, #24]
+    sev
     // clear bss
     ldr     x2, =__bss_start
     ldr     w3, =__bss_size
