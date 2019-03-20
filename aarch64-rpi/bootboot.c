@@ -1741,8 +1741,7 @@ void bootboot_startcore()
     asm volatile ("dsb ish; isb; mrs %0, sctlr_el1" : "=r" (reg));
     // set mandatory reserved bits
     reg|=0xC00800;
-    reg&=~( (1<<29) |   // clear AFE, full access permisson model
-            (1<<25) |   // clear EE, little endian translation tables
+    reg&=~( (1<<25) |   // clear EE, little endian translation tables
             (1<<24) |   // clear E0E
             (1<<19) |   // clear WXN
             (1<<12) |   // clear I, no instruction cache
