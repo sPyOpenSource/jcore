@@ -12,7 +12,7 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
     [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bájt, egyszerre MBR, VBR és CDROM indító szektor), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (11k, a boot.bin tölti be, valamint BBS bővítő ROM és Multiboot kompatíbilis is)
 
 3. *aarch64-rpi* ARMv8 betöltő Raspberry Pi 3-hoz
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (31k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (32k)
 
 4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) C-ben írva, ami vonalakat húz meg színes dobozokat rajzol
 
