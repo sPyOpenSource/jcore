@@ -34,13 +34,10 @@ GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor(uint32_t base, uint3
 {
     uint8_t* target = (uint8_t*)this;
 
-    if (limit <= 65536)
-    {
+    if (limit <= 65536){
         // 16-bit address space
         target[6] = 0x40;
-    }
-    else
-    {
+    } else {
         // 32-bit address space
         // Now we have to squeeze the (32-bit) limit into 2.5 regiters (20-bit).
         // This is done by discarding the 12 least significant bits, but this
@@ -100,4 +97,3 @@ uint32_t GlobalDescriptorTable::SegmentDescriptor::Limit()
 
     return result;
 }
-

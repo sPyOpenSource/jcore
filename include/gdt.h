@@ -5,7 +5,6 @@
 
 namespace myos
 {
-    
     class GlobalDescriptorTable
     {
         public:
@@ -40,7 +39,6 @@ namespace myos
             myos::common::uint16_t CodeSegmentSelector();
             myos::common::uint16_t DataSegmentSelector();
     };
-
 }
-    
+
 #endif

@@ -1,4 +1,4 @@
- 
+
 #ifndef __MYOS__MULTITASKING_H
 #define __MYOS__MULTITASKING_H
 
@@ -7,7 +7,7 @@
 
 namespace myos
 {
-    
+
     struct CPUState
     {
         common::uint32_t eax;
@@ -31,10 +31,10 @@ namespace myos
         common::uint32_t cs;
         common::uint32_t eflags;
         common::uint32_t esp;
-        common::uint32_t ss;        
+        common::uint32_t ss;
     } __attribute__((packed));
-    
-    
+
+
     class Task
     {
     friend class TaskManager;
@@ -45,8 +45,8 @@ namespace myos
         Task(GlobalDescriptorTable *gdt, void entrypoint());
         ~Task();
     };
-    
-    
+
+
     class TaskManager
     {
     private:
@@ -59,9 +59,6 @@ namespace myos
         bool AddTask(Task* task);
         CPUState* Schedule(CPUState* cpustate);
     };
-    
-    
-    
 }
 
 

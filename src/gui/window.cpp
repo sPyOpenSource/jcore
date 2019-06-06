@@ -1,4 +1,4 @@
- 
+
 #include <gui/window.h>
 
 using namespace myos::common;
@@ -38,5 +38,3 @@ void Window::OnMouseMove(common::int32_t oldx, common::int32_t oldy, common::int
     CompositeWidget::OnMouseMove(oldx,oldy,newx, newy);
 
 }
-
-    

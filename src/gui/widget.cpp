@@ -1,4 +1,4 @@
- 
+
 #include <gui/widget.h>
 
 using namespace myos::common;
@@ -23,7 +23,7 @@ Widget::Widget(Widget* parent, int32_t x, int32_t y, int32_t w, int32_t h,
 Widget::~Widget()
 {
 }
-            
+
 void Widget::GetFocus(Widget* widget)
 {
     if(parent != 0)
@@ -37,7 +37,7 @@ void Widget::ModelToScreen(common::int32_t &x, common::int32_t& y)
     x += this->x;
     y += this->y;
 }
-            
+
 void Widget::Draw(GraphicsContext* gc)
 {
     int X = 0;
@@ -67,13 +67,6 @@ void Widget::OnMouseMove(common::int32_t oldx, common::int32_t oldy, common::int
 }
 
 
-
-
-
-
-
-
-
 CompositeWidget::CompositeWidget(Widget* parent,
                    common::int32_t x, common::int32_t y, common::int32_t w, common::int32_t h,
                    common::uint8_t r, common::uint8_t g, common::uint8_t b)
@@ -86,7 +79,7 @@ CompositeWidget::CompositeWidget(Widget* parent,
 CompositeWidget::~CompositeWidget()
 {
 }
-            
+
 void CompositeWidget::GetFocus(Widget* widget)
 {
     this->focussedChild = widget;
@@ -161,6 +154,5 @@ void CompositeWidget::OnKeyDown(char str)
 void CompositeWidget::OnKeyUp(char str)
 {
     if(focussedChild != 0)
-        focussedChild->OnKeyUp(str);    
+        focussedChild->OnKeyUp(str);
 }
-

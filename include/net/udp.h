@@ -1,4 +1,4 @@
- 
+
 #ifndef __MYOS__NET__UDP_H
 #define __MYOS__NET__UDP_H
 
@@ -11,7 +11,7 @@ namespace myos
 {
     namespace net
     {
-        
+
         struct UserDatagramProtocolHeader
         {
             common::uint16_t srcPort;
@@ -19,14 +19,12 @@ namespace myos
             common::uint16_t length;
             common::uint16_t checksum;
         } __attribute__((packed));
-       
-      
-      
+
+
         class UserDatagramProtocolSocket;
         class UserDatagramProtocolProvider;
-        
-        
-        
+
+
         class UserDatagramProtocolHandler
         {
         public:
@@ -34,9 +32,8 @@ namespace myos
             ~UserDatagramProtocolHandler();
             virtual void HandleUserDatagramProtocolMessage(UserDatagramProtocolSocket* socket, common::uint8_t* data, common::uint16_t size);
         };
-      
-        
-      
+
+
         class UserDatagramProtocolSocket
         {
         friend class UserDatagramProtocolProvider;
@@ -55,19 +52,19 @@ namespace myos
             virtual void Send(common::uint8_t* data, common::uint16_t size);
             virtual void Disconnect();
         };
-      
-      
+
+
         class UserDatagramProtocolProvider : InternetProtocolHandler
         {
         protected:
             UserDatagramProtocolSocket* sockets[65535];
             common::uint16_t numSockets;
             common::uint16_t freePort;
-            
+
         public:
             UserDatagramProtocolProvider(InternetProtocolProvider* backend);
             ~UserDatagramProtocolProvider();
-            
+
             virtual bool OnInternetProtocolReceived(common::uint32_t srcIP_BE, common::uint32_t dstIP_BE,
                                                     common::uint8_t* internetprotocolPayload, common::uint32_t size);
 
@@ -78,11 +75,8 @@ namespace myos
 
             virtual void Bind(UserDatagramProtocolSocket* socket, UserDatagramProtocolHandler* handler);
         };
-        
-        
     }
 }
-
 
 
 #endif
