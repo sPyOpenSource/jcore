@@ -79,7 +79,6 @@ uint32_t bigEndian32(uint32_t x)
 bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t srcIP_BE, uint32_t dstIP_BE,
                                         uint8_t* internetprotocolPayload, uint32_t size)
 {
-
     if(size < 20)
         return false;
     TransmissionControlProtocolHeader* msg = (TransmissionControlProtocolHeader*)internetprotocolPayload;
@@ -121,7 +120,7 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
                     socket->remoteIP = srcIP_BE;
                     socket->acknowledgementNumber = bigEndian32( msg->sequenceNumber ) + 1;
                     socket->sequenceNumber = 0xbeefcafe;
-                    Send(socket, 0,0, SYN|ACK);
+                    Send(socket, 0, 0, SYN | ACK);
                     socket->sequenceNumber++;
                 }
                 else
@@ -135,7 +134,7 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
                     socket->state = ESTABLISHED;
                     socket->acknowledgementNumber = bigEndian32( msg->sequenceNumber ) + 1;
                     socket->sequenceNumber++;
-                    Send(socket, 0,0, ACK);
+                    Send(socket, 0, 0, ACK);
                 }
                 else
                     reset = true;
@@ -154,8 +153,8 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
                 {
                     socket->state = CLOSE_WAIT;
                     socket->acknowledgementNumber++;
-                    Send(socket, 0,0, ACK);
-                    Send(socket, 0,0, FIN|ACK);
+                    Send(socket, 0, 0, ACK);
+                    Send(socket, 0, 0, FIN | ACK);
                 }
                 else if(socket->state == CLOSE_WAIT)
                 {
@@ -166,7 +165,7 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
                 {
                     socket->state = CLOSED;
                     socket->acknowledgementNumber++;
-                    Send(socket, 0,0, ACK);
+                    Send(socket, 0, 0, ACK);
                 }
                 else
                     reset = true;
@@ -210,9 +209,7 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
                         socket->acknowledgementNumber += x - msg->headerSize32*4 + 1;
                         Send(socket, 0,0, ACK);
                     }
-                }
-                else
-                {
+                } else {
                     // data in wrong order
                     reset = true;
                 }
@@ -223,12 +220,9 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
 
     if(reset)
     {
-        if(socket != 0)
-        {
+        if(socket != 0){
             Send(socket, 0,0, RST);
-        }
-        else
-        {
+        } else {
             TransmissionControlProtocolSocket socket(this);
             socket.remotePort = msg->srcPort;
             socket.remoteIP = srcIP_BE;
@@ -236,7 +230,7 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
             socket.localIP = dstIP_BE;
             socket.sequenceNumber = bigEndian32(msg->acknowledgementNumber);
             socket.acknowledgementNumber = bigEndian32(msg->sequenceNumber) + 1;
-            Send(&socket, 0,0, RST);
+            Send(&socket, 0, 0, RST);
         }
     }
 
@@ -316,15 +310,15 @@ TransmissionControlProtocolSocket* TransmissionControlProtocolProvider::Connect(
         socket -> localPort = freePort++;
         socket -> localIP = backend->GetIPAddress();
 
-        socket -> remotePort = ((socket -> remotePort & 0xFF00)>>8) | ((socket -> remotePort & 0x00FF) << 8);
-        socket -> localPort = ((socket -> localPort & 0xFF00)>>8) | ((socket -> localPort & 0x00FF) << 8);
+        socket -> remotePort = ((socket -> remotePort & 0xFF00) >> 8) | ((socket -> remotePort & 0x00FF) << 8);
+        socket -> localPort = ((socket -> localPort & 0xFF00) >> 8) | ((socket -> localPort & 0x00FF) << 8);
 
         sockets[numSockets++] = socket;
         socket -> state = SYN_SENT;
 
         socket -> sequenceNumber = 0xbeefcafe;
 
-        Send(socket, 0,0, SYN);
+        Send(socket, 0, 0, SYN);
     }
 
     return socket;
@@ -334,7 +328,7 @@ TransmissionControlProtocolSocket* TransmissionControlProtocolProvider::Connect(
 void TransmissionControlProtocolProvider::Disconnect(TransmissionControlProtocolSocket* socket)
 {
     socket->state = FIN_WAIT1;
-    Send(socket, 0,0, FIN + ACK);
+    Send(socket, 0, 0, FIN + ACK);
     socket->sequenceNumber++;
 }
 
@@ -349,13 +343,14 @@ TransmissionControlProtocolSocket* TransmissionControlProtocolProvider::Listen(u
 
         socket -> state = LISTEN;
         socket -> localIP = backend->GetIPAddress();
-        socket -> localPort = ((port & 0xFF00)>>8) | ((port & 0x00FF) << 8);
+        socket -> localPort = ((port & 0xFF00) >> 8) | ((port & 0x00FF) << 8);
 
         sockets[numSockets++] = socket;
     }
 
     return socket;
 }
+
 void TransmissionControlProtocolProvider::Bind(TransmissionControlProtocolSocket* socket, TransmissionControlProtocolHandler* handler)
 {
     socket->handler = handler;

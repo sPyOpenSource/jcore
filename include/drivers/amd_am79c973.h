@@ -67,13 +67,13 @@ namespace myos
 
 
             BufferDescriptor* sendBufferDescr;
-            common::uint8_t sendBufferDescrMemory[2048+15];
-            common::uint8_t sendBuffers[2*1024+15][8];
+            common::uint8_t sendBufferDescrMemory[2048 + 15];
+            common::uint8_t sendBuffers[2 * 1024 + 15][8];
             common::uint8_t currentSendBuffer;
 
             BufferDescriptor* recvBufferDescr;
-            common::uint8_t recvBufferDescrMemory[2048+15];
-            common::uint8_t recvBuffers[2*1024+15][8];
+            common::uint8_t recvBufferDescrMemory[2048 + 15];
+            common::uint8_t recvBuffers[2 * 1024 + 15][8];
             common::uint8_t currentRecvBuffer;
 
 

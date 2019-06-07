@@ -12,7 +12,6 @@ namespace myos
 {
     namespace hardwarecommunication
     {
-
         class InterruptManager;
 
         class InterruptHandler
@@ -101,7 +100,7 @@ namespace myos
                 static void HandleException0x11();
                 static void HandleException0x12();
                 static void HandleException0x13();
-                
+
                 static myos::common::uint32_t HandleInterrupt(myos::common::uint8_t interrupt, myos::common::uint32_t esp);
                 myos::common::uint32_t DoHandleInterrupt(myos::common::uint8_t interrupt, myos::common::uint32_t esp);
 
@@ -117,7 +116,6 @@ namespace myos
                 void Activate();
                 void Deactivate();
         };
-        
     }
 }
 

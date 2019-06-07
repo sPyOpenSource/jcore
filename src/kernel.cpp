@@ -38,7 +38,7 @@ void printf(char* str)
 {
     static uint16_t* VideoMemory = (uint16_t*)0xb8000;
 
-    static uint8_t x=0,y=0;
+    static uint8_t x = 0, y = 0;
 
     for(int i = 0; str[i] != '\0'; ++i)
     {
@@ -49,7 +49,7 @@ void printf(char* str)
                 y++;
                 break;
             default:
-                VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0xFF00) | str[i];
+                VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0xFF00) | str[i];
                 x++;
                 break;
         }
@@ -64,7 +64,7 @@ void printf(char* str)
         {
             for(y = 0; y < 25; y++)
                 for(x = 0; x < 80; x++)
-                    VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0xFF00) | ' ';
+                    VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0xFF00) | ' ';
             x = 0;
             y = 0;
         }
@@ -116,17 +116,17 @@ public:
         uint16_t* VideoMemory = (uint16_t*)0xb8000;
         x = 40;
         y = 12;
-        VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
-                            | (VideoMemory[80*y+x] & 0xF000) >> 4
-                            | (VideoMemory[80*y+x] & 0x00FF);
+        VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0x0F00) << 4
+                                | (VideoMemory[80 * y + x] & 0xF000) >> 4
+                                | (VideoMemory[80 * y + x] & 0x00FF);
     }
 
     virtual void OnMouseMove(int xoffset, int yoffset)
     {
         static uint16_t* VideoMemory = (uint16_t*)0xb8000;
-        VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
-                            | (VideoMemory[80*y+x] & 0xF000) >> 4
-                            | (VideoMemory[80*y+x] & 0x00FF);
+        VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0x0F00) << 4
+                                | (VideoMemory[80 * y + x] & 0xF000) >> 4
+                                | (VideoMemory[80 * y + x] & 0x00FF);
 
         x += xoffset;
         if(x >= 80) x = 79;
@@ -135,9 +135,9 @@ public:
         if(y >= 25) y = 24;
         if(y < 0) y = 0;
 
-        VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0x0F00) << 4
-                            | (VideoMemory[80*y+x] & 0xF000) >> 4
-                            | (VideoMemory[80*y+x] & 0x00FF);
+        VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0x0F00) << 4
+                                | (VideoMemory[80 * y + x] & 0xF000) >> 4
+                                | (VideoMemory[80 * y + x] & 0x00FF);
     }
 
 };
@@ -183,7 +183,7 @@ public:
             && data[9] == 'P'
         )
         {
-            socket->Send((uint8_t*)"HTTP/1.1 200 OK\r\nServer: MyOS\r\nContent-Type: text/html\r\n\r\n<html><head><title>My Operating System</title></head><body><b>My Operating System</b> http://www.AlgorithMan.de</body></html>\r\n",184);
+            socket->Send((uint8_t*)"HTTP/1.1 200 OK\r\nServer: MyOS\r\nContent-Type: text/html\r\n\r\n<html><head><title>My Operating System</title></head><body><b>My Operating System</b> http://www.AlgorithMan.de</body></html>\r\n", 184);
             socket->Disconnect();
         }
 
@@ -229,8 +229,8 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
 
 
     uint32_t* memupper = (uint32_t*)(((size_t)multiboot_structure) + 8);
-    size_t heap = 10*1024*1024;
-    MemoryManager memoryManager(heap, (*memupper)*1024 - heap - 10*1024);
+    size_t heap = 10 * 1024 * 1024;
+    MemoryManager memoryManager(heap, (*memupper) * 1024 - heap - 10 * 1024);
 
     printf("heap: 0x");
     printfHex((heap >> 24) & 0xFF);
@@ -260,7 +260,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("Initializing Hardware, Stage 1\n");
 
     #ifdef GRAPHICSMODE
-        Desktop desktop(320,200, 0x00,0x00,0xA8);
+        Desktop desktop(320, 200, 0x00, 0x00, 0xA8);
     #endif
 
     DriverManager drvManager;
@@ -295,10 +295,10 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("Initializing Hardware, Stage 3\n");
 
     #ifdef GRAPHICSMODE
-        vga.SetMode(320,200,8);
-        Window win1(&desktop, 10,10,20,20, 0xA8,0x00,0x00);
+        vga.SetMode(320, 200, 8);
+        Window win1(&desktop, 10, 10, 20, 20, 0xA8, 0x00, 0x00);
         desktop.AddChild(&win1);
-        Window win2(&desktop, 40,15,30,30, 0x00,0xA8,0x00);
+        Window win2(&desktop, 40, 15, 30, 30, 0x00, 0xA8, 0x00);
         desktop.AddChild(&win2);
     #endif
 

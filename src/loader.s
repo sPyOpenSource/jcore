@@ -1,5 +1,5 @@
 .set MAGIC, 0x1badb002
-.set FLAGS, (1<<0 | 1<<1)
+.set FLAGS, (1 << 0 | 1 << 1)
 .set CHECKSUM, -(MAGIC + FLAGS)
 
 .section .multiboot
@@ -29,6 +29,5 @@ _stop:
 
 
 .section .bss
-.space 2*1024*1024; # 2 MiB
+.space 2 * 1024 * 1024; # 2 MiB
 kernel_stack:
-

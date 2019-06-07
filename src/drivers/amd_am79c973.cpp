@@ -6,8 +6,6 @@ using namespace myos::drivers;
 using namespace myos::hardwarecommunication;
 
 
-
-
 RawDataHandler::RawDataHandler(amd_am79c973* backend)
 {
     this->backend = backend;
