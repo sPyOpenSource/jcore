@@ -122,9 +122,9 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
                     socket->sequenceNumber = 0xbeefcafe;
                     Send(socket, 0, 0, SYN | ACK);
                     socket->sequenceNumber++;
+                } else {
+                  reset = true;
                 }
-                else
-                    reset = true;
                 break;
 
 
@@ -135,9 +135,9 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
                     socket->acknowledgementNumber = bigEndian32( msg->sequenceNumber ) + 1;
                     socket->sequenceNumber++;
                     Send(socket, 0, 0, ACK);
+                } else {
+                  reset = true;
                 }
-                else
-                    reset = true;
                 break;
 
 
@@ -166,9 +166,9 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
                     socket->state = CLOSED;
                     socket->acknowledgementNumber++;
                     Send(socket, 0, 0, ACK);
-                }
-                else
+                } else {
                     reset = true;
+                }
                 break;
 
 
@@ -198,16 +198,16 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
 
                 if(bigEndian32(msg->sequenceNumber) == socket->acknowledgementNumber)
                 {
-                    reset = !(socket->HandleTransmissionControlProtocolMessage(internetprotocolPayload + msg->headerSize32*4,
-                                                                              size - msg->headerSize32*4));
+                    reset = !(socket->HandleTransmissionControlProtocolMessage(internetprotocolPayload + msg->headerSize32 * 4,
+                                                                              size - msg->headerSize32 * 4));
                     if(!reset)
                     {
                         int x = 0;
-                        for(int i = msg->headerSize32*4; i < size; i++)
+                        for(int i = msg->headerSize32 * 4; i < size; i++)
                             if(internetprotocolPayload[i] != 0)
                                 x = i;
-                        socket->acknowledgementNumber += x - msg->headerSize32*4 + 1;
-                        Send(socket, 0,0, ACK);
+                        socket->acknowledgementNumber += x - msg->headerSize32 * 4 + 1;
+                        Send(socket, 0, 0, ACK);
                     }
                 } else {
                     // data in wrong order
@@ -221,7 +221,7 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
     if(reset)
     {
         if(socket != 0){
-            Send(socket, 0,0, RST);
+            Send(socket, 0, 0, RST);
         } else {
             TransmissionControlProtocolSocket socket(this);
             socket.remotePort = msg->srcPort;
@@ -245,7 +245,6 @@ bool TransmissionControlProtocolProvider::OnInternetProtocolReceived(uint32_t sr
             }
 
 
-
     return false;
 }
 
@@ -265,7 +264,7 @@ void TransmissionControlProtocolProvider::Send(TransmissionControlProtocolSocket
     uint8_t* buffer2 = buffer + sizeof(TransmissionControlProtocolHeader)
                               + sizeof(TransmissionControlProtocolPseudoHeader);
 
-    msg->headerSize32 = sizeof(TransmissionControlProtocolHeader)/4;
+    msg->headerSize32 = sizeof(TransmissionControlProtocolHeader) / 4;
     msg->srcPort = socket->localPort;
     msg->dstPort = socket->remotePort;
 
@@ -288,8 +287,8 @@ void TransmissionControlProtocolProvider::Send(TransmissionControlProtocolSocket
     phdr->protocol = 0x0600;
     phdr->totalLength = ((totalLength & 0x00FF) << 8) | ((totalLength & 0xFF00) >> 8);
 
-    msg -> checksum = 0;
-    msg -> checksum = InternetProtocolProvider::Checksum((uint16_t*)buffer, lengthInclPHdr);
+    msg->checksum = 0;
+    msg->checksum = InternetProtocolProvider::Checksum((uint16_t*)buffer, lengthInclPHdr);
 
 
     InternetProtocolHandler::Send(socket->remoteIP, (uint8_t*)msg, totalLength);

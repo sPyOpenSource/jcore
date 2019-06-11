@@ -23,7 +23,7 @@
 #include <net/tcp.h>
 
 
-//#define GRAPHICSMODE
+#define GRAPHICSMODE
 
 
 using namespace myos;
@@ -340,6 +340,12 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     EtherFrameProvider etherframe(eth0);
     AddressResolutionProtocol arp(&etherframe);
 
+    // IP Address
+    uint8_t ip21 = 192, ip22 = 168, ip23 = 90, ip24 = 218;
+    uint32_t ip2_be = ((uint32_t)ip24 << 24)
+                | ((uint32_t)ip23 << 16)
+                | ((uint32_t)ip22 << 8)
+                | (uint32_t)ip21;
 
     // IP Address of the default gateway
     uint8_t gip1 = 192, gip2 = 168, gip3 = 90, gip4 = 254;
@@ -365,10 +371,11 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("\n\n\n\n");
 
     arp.BroadcastMACAddress(gip_be);
-
+    arp.BroadcastMACAddress(ip2_be);
 
     PrintfTCPHandler tcphandler;
-    TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(1234);
+    TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(80);
+    //TransmissionControlProtocolSocket* tcpsocket = tcp.Connect(ip2_be, 1234);
     tcp.Bind(tcpsocket, &tcphandler);
     //tcpsocket->Send((uint8_t*)"Hello TCP!", 10);
 
@@ -376,7 +383,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     //icmp.RequestEchoReply(gip_be);
 
     //PrintfUDPHandler udphandler;
-    //UserDatagramProtocolSocket* udpsocket = udp.Connect(gip_be, 1234);
+    //UserDatagramProtocolSocket* udpsocket = udp.Connect(ip2_be, 1234);
     //udp.Bind(udpsocket, &udphandler);
     //udpsocket->Send((uint8_t*)"Hello UDP!", 10);
 

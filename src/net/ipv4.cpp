@@ -63,7 +63,7 @@ bool InternetProtocolProvider::OnEtherFrameReceived(uint8_t* etherframePayload, 
         if(handlers[ipmessage->protocol] != 0)
             sendBack = handlers[ipmessage->protocol]->OnInternetProtocolReceived(
                 ipmessage->srcIP, ipmessage->dstIP,
-                etherframePayload + 4*ipmessage->headerLength, length - 4*ipmessage->headerLength);
+                etherframePayload + 4 * ipmessage->headerLength, length - 4 * ipmessage->headerLength);
 
     }
 
@@ -75,7 +75,7 @@ bool InternetProtocolProvider::OnEtherFrameReceived(uint8_t* etherframePayload, 
 
         ipmessage->timeToLive = 0x40;
         ipmessage->checksum = 0;
-        ipmessage->checksum = Checksum((uint16_t*)ipmessage, 4*ipmessage->headerLength);
+        ipmessage->checksum = Checksum((uint16_t*)ipmessage, 4 * ipmessage->headerLength);
     }
 
     return sendBack;
@@ -89,7 +89,7 @@ void InternetProtocolProvider::Send(uint32_t dstIP_BE, uint8_t protocol, uint8_t
     InternetProtocolV4Message *message = (InternetProtocolV4Message*)buffer;
 
     message->version = 4;
-    message->headerLength = sizeof(InternetProtocolV4Message)/4;
+    message->headerLength = sizeof(InternetProtocolV4Message) / 4;
     message->tos = 0;
     message->totalLength = size + sizeof(InternetProtocolV4Message);
     message->totalLength = ((message->totalLength & 0xFF00) >> 8)
@@ -125,11 +125,11 @@ uint16_t InternetProtocolProvider::Checksum(uint16_t* data, uint32_t lengthInByt
 {
     uint32_t temp = 0;
 
-    for(int i = 0; i < lengthInBytes/2; i++)
+    for(int i = 0; i < lengthInBytes / 2; i++)
         temp += ((data[i] & 0xFF00) >> 8) | ((data[i] & 0x00FF) << 8);
 
     if(lengthInBytes % 2)
-        temp += ((uint16_t)((char*)data)[lengthInBytes-1]) << 8;
+        temp += ((uint16_t)((char*)data)[lengthInBytes - 1]) << 8;
 
     while(temp & 0xFFFF0000)
         temp = (temp & 0xFFFF) + (temp >> 16);
