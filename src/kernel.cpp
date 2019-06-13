@@ -396,5 +396,6 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
         #ifdef GRAPHICSMODE
             desktop.Draw(&vga);
         #endif
+        //for(int i = 0; i < 100000; i++){}
     }
 }

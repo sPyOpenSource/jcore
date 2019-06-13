@@ -9,9 +9,6 @@ void printf(char* str);
 void printfHex(uint8_t);
 
 
-
-
-
 InterruptHandler::InterruptHandler(InterruptManager* interruptManager, uint8_t InterruptNumber)
 {
     this->InterruptNumber = InterruptNumber;
@@ -31,18 +28,8 @@ uint32_t InterruptHandler::HandleInterrupt(uint32_t esp)
 }
 
 
-
-
-
-
-
-
-
-
 InterruptManager::GateDescriptor InterruptManager::interruptDescriptorTable[256];
 InterruptManager* InterruptManager::ActiveInterruptManager = 0;
-
-
 
 
 void InterruptManager::SetInterruptDescriptorTableEntry(uint8_t interrupt,
@@ -124,7 +111,7 @@ InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescr
 
     // remap
     programmableInterruptControllerMasterDataPort.Write(hardwareInterruptOffset);
-    programmableInterruptControllerSlaveDataPort.Write(hardwareInterruptOffset+8);
+    programmableInterruptControllerSlaveDataPort.Write(hardwareInterruptOffset + 8);
 
     programmableInterruptControllerMasterDataPort.Write(0x04);
     programmableInterruptControllerSlaveDataPort.Write(0x02);
@@ -136,7 +123,7 @@ InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescr
     programmableInterruptControllerSlaveDataPort.Write(0x00);
 
     InterruptDescriptorTablePointer idt_pointer;
-    idt_pointer.size  = 256*sizeof(GateDescriptor) - 1;
+    idt_pointer.size  = 256 * sizeof(GateDescriptor) - 1;
     idt_pointer.base  = (uint32_t)interruptDescriptorTable;
     asm volatile("lidt %0" : : "m" (idt_pointer));
 }
@@ -188,7 +175,7 @@ uint32_t InterruptManager::DoHandleInterrupt(uint8_t interrupt, uint32_t esp)
         printf("UNHANDLED INTERRUPT 0x");
         printfHex(interrupt);
     }
-    
+
     if(interrupt == hardwareInterruptOffset)
     {
         esp = (uint32_t)taskManager->Schedule((CPUState*)esp);
@@ -204,17 +191,3 @@ uint32_t InterruptManager::DoHandleInterrupt(uint8_t interrupt, uint32_t esp)
 
     return esp;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

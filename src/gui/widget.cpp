@@ -33,7 +33,7 @@ void Widget::GetFocus(Widget* widget)
 void Widget::ModelToScreen(common::int32_t &x, common::int32_t& y)
 {
     if(parent != 0)
-        parent->ModelToScreen(x,y);
+        parent->ModelToScreen(x, y);
     x += this->x;
     y += this->y;
 }
@@ -42,8 +42,8 @@ void Widget::Draw(GraphicsContext* gc)
 {
     int X = 0;
     int Y = 0;
-    ModelToScreen(X,Y);
-    gc->FillRectangle(X,Y,w,h, r,g,b);
+    ModelToScreen(X, Y);
+    gc->FillRectangle(X, Y, w, h, r, g, b);
 }
 
 void Widget::OnMouseDown(common::int32_t x, common::int32_t y, common::uint8_t button)
@@ -70,7 +70,7 @@ void Widget::OnMouseMove(common::int32_t oldx, common::int32_t oldy, common::int
 CompositeWidget::CompositeWidget(Widget* parent,
                    common::int32_t x, common::int32_t y, common::int32_t w, common::int32_t h,
                    common::uint8_t r, common::uint8_t g, common::uint8_t b)
-: Widget(parent, x,y,w,h, r,g,b)
+: Widget(parent, x, y, w, h, r, g, b)
 {
     focussedChild = 0;
     numChildren = 0;
@@ -99,7 +99,7 @@ bool CompositeWidget::AddChild(Widget* child)
 void CompositeWidget::Draw(GraphicsContext* gc)
 {
     Widget::Draw(gc);
-    for(int i = numChildren-1; i >= 0; --i)
+    for(int i = numChildren - 1; i >= 0; --i)
         children[i]->Draw(gc);
 }
 
