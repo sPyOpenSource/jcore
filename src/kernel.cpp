@@ -10,6 +10,7 @@
 #include <drivers/mouse.h>
 #include <drivers/vga.h>
 #include <drivers/ata.h>
+#include <filesystem/msdospart.h>
 #include <gui/desktop.h>
 #include <gui/window.h>
 #include <multitasking.h>
@@ -29,6 +30,7 @@
 using namespace myos;
 using namespace myos::common;
 using namespace myos::drivers;
+using namespace myos::filesystem;
 using namespace myos::hardwarecommunication;
 using namespace myos::gui;
 using namespace myos::net;
@@ -303,7 +305,6 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     #endif
 
 
-    /*
     printf("\nS-ATA primary master: ");
     AdvancedTechnologyAttachment ata0m(true, 0x1F0);
     ata0m.Identify();
@@ -311,9 +312,12 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     printf("\nS-ATA primary slave: ");
     AdvancedTechnologyAttachment ata0s(false, 0x1F0);
     ata0s.Identify();
-    ata0s.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
-    ata0s.Flush();
-    ata0s.Read28(0, 25);
+
+    //MSDOSPartitionTable::ReadPartitions(&ata0s);
+
+    //ata0s.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
+    //ata0s.Flush();
+    //ata0s.Read28(0, 25);
 
     printf("\nS-ATA secondary master: ");
     AdvancedTechnologyAttachment ata1m(true, 0x170);
@@ -324,7 +328,6 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
     ata1s.Identify();
     // third: 0x1E8
     // fourth: 0x168
-    */
 
 
     amd_am79c973* eth0 = (amd_am79c973*)(drvManager.drivers[2]);
