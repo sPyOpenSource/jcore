@@ -24,7 +24,7 @@
 #include <net/tcp.h>
 
 
-#define GRAPHICSMODE
+//#define GRAPHICSMODE
 
 
 using namespace myos;
@@ -304,28 +304,29 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
         desktop.AddChild(&win2);
     #endif
 
+    printf("\n\n\n\n\n\n\n\n\n");
 
     printf("\nS-ATA primary master: ");
     AdvancedTechnologyAttachment ata0m(true, 0x1F0);
     ata0m.Identify();
 
-    printf("\nS-ATA primary slave: ");
-    AdvancedTechnologyAttachment ata0s(false, 0x1F0);
-    ata0s.Identify();
+    //printf("\nS-ATA primary slave: ");
+    //AdvancedTechnologyAttachment ata0s(false, 0x1F0);
+    //ata0s.Identify();
 
-    //MSDOSPartitionTable::ReadPartitions(&ata0s);
+    MSDOSPartitionTable::ReadPartitions(&ata0m);
 
-    //ata0s.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
-    //ata0s.Flush();
-    //ata0s.Read28(0, 25);
+    //ata0m.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
+    //ata0m.Flush();
+    //ata0m.Read28(0, 25);
 
-    printf("\nS-ATA secondary master: ");
-    AdvancedTechnologyAttachment ata1m(true, 0x170);
-    ata1m.Identify();
+    //printf("\nS-ATA secondary master: ");
+    //AdvancedTechnologyAttachment ata1m(true, 0x170);
+    //ata1m.Identify();
 
-    printf("\nS-ATA secondary slave: ");
-    AdvancedTechnologyAttachment ata1s(false, 0x170);
-    ata1s.Identify();
+    //printf("\nS-ATA secondary slave: ");
+    //AdvancedTechnologyAttachment ata1s(false, 0x170);
+    //ata1s.Identify();
     // third: 0x1E8
     // fourth: 0x168
 
@@ -371,15 +372,15 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
 
     interrupts.Activate();
 
-    printf("\n\n\n\n");
+    //printf("\n\n\n\n");
 
-    arp.BroadcastMACAddress(gip_be);
-    arp.BroadcastMACAddress(ip2_be);
+    //arp.BroadcastMACAddress(gip_be);
+    //arp.BroadcastMACAddress(ip2_be);
 
-    PrintfTCPHandler tcphandler;
-    TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(80);
+    //PrintfTCPHandler tcphandler;
+    //TransmissionControlProtocolSocket* tcpsocket = tcp.Listen(80);
     //TransmissionControlProtocolSocket* tcpsocket = tcp.Connect(ip2_be, 1234);
-    tcp.Bind(tcpsocket, &tcphandler);
+    //tcp.Bind(tcpsocket, &tcphandler);
     //tcpsocket->Send((uint8_t*)"Hello TCP!", 10);
 
 

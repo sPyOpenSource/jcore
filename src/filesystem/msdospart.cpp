@@ -1,4 +1,5 @@
 #include <filesystem/msdospart.h>
+#include <filesystem/fat.h>
 
 using namespace myos;
 using namespace myos::common;
@@ -11,14 +12,14 @@ void printfHex(uint8_t);
 void MSDOSPartitionTable::ReadPartitions(myos::drivers::AdvancedTechnologyAttachment *hd)
 {
   MasterBootRecord mbr;
-  //hd->Read28(0, (uint8_t*)&mbr, sizeof(MasterBootRecord));
+  hd->Read28(0, (uint8_t*)&mbr, sizeof(MasterBootRecord));
 
-  /*printf("MBR: ");
+  printf("MBR: ");
   for(int i = 446; i < 446 + 4 * 16; i++){
-    printfHex((uint8_t*)&mbr)[i]);
+    printfHex(((uint8_t*)&mbr)[i]);
     printf(" ");
   }
-  printf("\n");*/
+  printf("\n");
 
   if(mbr.magicnumber != 0xAA55){
     printf("illegal MBR");
@@ -26,6 +27,9 @@ void MSDOSPartitionTable::ReadPartitions(myos::drivers::AdvancedTechnologyAttach
   }
 
   for(int i = 0; i < 4; i++){
+    if(mbr.parimaryPartition[i].partition_id == 0x00)
+      continue;
+
     printf(" Partition ");
     printfHex(i & 0xff);
 
@@ -35,5 +39,7 @@ void MSDOSPartitionTable::ReadPartitions(myos::drivers::AdvancedTechnologyAttach
       printf(" not bootable. Type ");
 
     printfHex(mbr.parimaryPartition[i].partition_id);
+
+    ReadBiosBlock(hd, mbr.parimaryPartition[i].start_lba);
   }
 }
