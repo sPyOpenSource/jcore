@@ -31,8 +31,8 @@ namespace myos
 
             void Identify();
             void Read28(common::uint32_t sectorNum, int count = 512);
-            void Read28(common::uint32_t sectorNum, common::uint8_t* data, int count = 512);
-            void Write28(common::uint32_t sectorNum, common::uint8_t* data, common::uint32_t count);
+            void Read28(common::uint32_t sectorNum, common::uint8_t* data, common::uint16_t count = 512);
+            void Write28(common::uint32_t sectorNum, common::uint8_t* data, common::uint32_t count = 512);
             void Flush();
 
 

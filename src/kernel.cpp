@@ -11,6 +11,7 @@
 #include <drivers/vga.h>
 #include <drivers/ata.h>
 #include <filesystem/msdospart.h>
+#include <filesystem/fat.h>
 #include <gui/desktop.h>
 #include <gui/window.h>
 #include <multitasking.h>
@@ -306,16 +307,40 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot
 
     printf("\n\n\n\n\n\n\n\n\n");
 
-    printf("\nS-ATA primary master: ");
+    /*printf("\nS-ATA primary master: ");
     AdvancedTechnologyAttachment ata0m(true, 0x1F0);
-    ata0m.Identify();
+    ata0m.Identify();*/
 
-    //printf("\nS-ATA primary slave: ");
-    //AdvancedTechnologyAttachment ata0s(false, 0x1F0);
-    //ata0s.Identify();
+    printf("\nS-ATA primary slave: ");
+    AdvancedTechnologyAttachment ata0s(false, 0x1F0);
+    ata0s.Identify();
 
-    MSDOSPartitionTable::ReadPartitions(&ata0m);
-
+    //MSDOSPartitionTable::ReadPartitions(&ata0m);
+    SdVolume volume;
+    SdFile root;
+    char test = volume.init(&ata0s, 1);
+    //printfHex(test);
+    test = root.openRoot(volume);
+    //printfHex(test);
+    //root.ls(LS_DATE, 0);
+    uint8_t buffer[512 * 9];
+    /*SdFile info1;
+    test = info1.open(&root, "INFO1.TXT", 0x01);
+    info1.read(buffer, 512);
+    printf((char*)buffer);
+    //printfHex(test);
+    SdFile info2;
+    test = info2.open(&root, "INFO2.TXT", 0x01);
+    //printfHex(test);
+    info2.read(buffer, 512);
+    printf((char*)buffer);*/
+    SdFile info3;
+    test = info3.open(&root, "INFO3.TXT", 0x01);
+    //printfHex(test);
+    //for (int i = 0; i < 9; i++){
+      info3.read(buffer, 512 * 9);
+      printf((char*)buffer);
+    //}
     //ata0m.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
     //ata0m.Flush();
     //ata0m.Read28(0, 25);

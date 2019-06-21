@@ -70,17 +70,17 @@ void AdvancedTechnologyAttachment::Identify()
     printf("\n");
 }
 
-void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, common::uint8_t* data, int count)
+void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, common::uint8_t* data, uint16_t count)
 {
     if(sectorNum > 0x0FFFFFFF)
         return;
 
-    devicePort.Write( (master ? 0xE0 : 0xF0) | ((sectorNum & 0x0F000000) >> 24) );
+    devicePort.Write((master ? 0xE0 : 0xF0) | ((sectorNum & 0x0F000000) >> 24));
     errorPort.Write(0);
     sectorCountPort.Write(1);
-    lbaLowPort.Write(  sectorNum & 0x000000FF );
-    lbaMidPort.Write( (sectorNum & 0x0000FF00) >> 8);
-    lbaLowPort.Write( (sectorNum & 0x00FF0000) >> 16 );
+    lbaLowPort.Write( sectorNum & 0x000000FF);
+    lbaMidPort.Write((sectorNum & 0x0000FF00) >> 8);
+    lbaHiPort.Write((sectorNum & 0x00FF0000) >> 16);
     commandPort.Write(0x20);
 
     uint8_t status = commandPort.Read();
@@ -100,11 +100,14 @@ void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, common::ui
     for(int i = 0; i < count; i += 2)
     {
         uint16_t wdata = dataPort.Read();
-
+        char *text = "  \0";
+        text[0] = wdata & 0xFF;
         data[i] = wdata & 0xFF;
 
         if(i + 1 < count)
             data[i + 1] = (wdata >> 8) & 0xFF;
+
+        //printf(text);
     }
 
     for(int i = count + (count % 2); i < 512; i += 2)
@@ -119,9 +122,9 @@ void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, int count)
     devicePort.Write( (master ? 0xE0 : 0xF0) | ((sectorNum & 0x0F000000) >> 24) );
     errorPort.Write(0);
     sectorCountPort.Write(1);
-    lbaLowPort.Write(sectorNum & 0x000000FF);
+    lbaLowPort.Write( sectorNum & 0x000000FF);
     lbaMidPort.Write((sectorNum & 0x0000FF00) >> 8);
-    lbaLowPort.Write((sectorNum & 0x00FF0000) >> 16);
+    lbaHiPort.Write((sectorNum & 0x00FF0000) >> 16);
     commandPort.Write(0x20);
 
     uint8_t status = commandPort.Read();
@@ -150,7 +153,7 @@ void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, int count)
         else
             text[1] = '\0';
 
-        printf(text);
+        //printf(text);
     }
 
     for(int i = count + (count % 2); i < 512; i += 2)
@@ -170,7 +173,7 @@ void AdvancedTechnologyAttachment::Write28(common::uint32_t sectorNum, common::u
     sectorCountPort.Write(1);
     lbaLowPort.Write(  sectorNum & 0x000000FF );
     lbaMidPort.Write( (sectorNum & 0x0000FF00) >> 8);
-    lbaLowPort.Write( (sectorNum & 0x00FF0000) >> 16 );
+    lbaHiPort.Write( (sectorNum & 0x00FF0000) >> 16 );
     commandPort.Write(0x30);
 
 
