@@ -3,17 +3,19 @@
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 1 "crt0.S"
- .text
-.p2align 2 , 0x90 ; .type _start ,@function ; .globl _start ; _start:
+.text
+.p2align 2, 0x90
+.type _start, @function
+.globl _start
+_start:
  jmp boot_entry
 
 
- .p2align 2
+.p2align 2
 boot_hdr:
  .long 0x1BADB002
-
  .long 0x00000000
- .long 0-0x1BADB002-0x00000000
+ .long 0 - 0x1BADB002 - 0x00000000
 boot_entry:
  movl $base_stack_end, %esp
  pushl $0
@@ -26,11 +28,11 @@ boot_entry:
  stosb
 
 
- xorb %al,%al
- movw $0x3f2,%dx
- outb %al,%dx
- movw $0x372,%dx
- outb %al,%dx
+ xorb %al, %al
+ movw $0x3f2, %dx
+ outb %al, %dx
+ movw $0x372, %dx
+ outb %al, %dx
 
 
  pushl %ebx

@@ -216,11 +216,10 @@ static void uncaught_exception(ObjectDesc * self)
 #ifdef VERBOSE_UNCAUGHT_EXCEPTION
 	ClassDesc *exclass = 0;
 
-	if (self != NULL) {
+	if (self != NULL)
 		exclass = obj2ClassDesc(self);
-	} else {
+	else
 		exclass = NULL;
-	}
 
 	if (((u4_t) exclass >= 0xfffffff0 && (u4_t) exclass <= 0xffffffff)
 	    || exclass == NULL) {

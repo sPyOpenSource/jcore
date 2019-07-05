@@ -78,9 +78,9 @@ typedef struct ThreadDesc_s {
 	ContextDesc context;
 	jint *depParams;
 	jint depMethodIndex;
-//    jboolean depSwitchBack;    /* if true the PortalThread should switch back to the caller */ 
+//    jboolean depSwitchBack;    /* if true the PortalThread should switch back to the caller */
 #ifdef CONT_PORTAL
-	struct ThreadDesc_s *linkedDEPThr;	/* if thread is servicing a Portal  this is the Pointer to 
+	struct ThreadDesc_s *linkedDEPThr;	/* if thread is servicing a Portal  this is the Pointer to
 						   the original caller (transitiv)
 						   else this points to the servicing Thread (transitiv)
 						   if no portal is used, this points to the thread itself */
@@ -97,7 +97,7 @@ typedef struct ThreadDesc_s {
 	DomainDesc *blockedInDomain;	/* this thread is currently waiting for a service of that domain */
 	u4_t  blockedInDomainID;	/* this thread is currently waiting for a service of that domain (detect terminated domain)*/
 	u4_t blockedInServiceIndex;	/* index of the service this thread is waiting for */
-	struct ThreadDesc_s * blockedInServiceThread;	/* service thread that executes our call 
+	struct ThreadDesc_s * blockedInServiceThread;	/* service thread that executes our call
 							 * (needed to update mostRecentlyCalledBy during GC) */
 	struct ThreadDesc_s *mostRecentlyCalledBy; /* needed to update the client thread pointer after svc exec */
 	struct DomainDesc_s *callerDomain;
@@ -126,7 +126,7 @@ typedef struct ThreadDesc_s {
 	DomainDesc *schedulingDomain;
 #endif
 	char name[THREAD_NAME_MAXLEN];
-	ObjectDesc *portalParameter;	/* implizit parameter passed during a portal call 
+	ObjectDesc *portalParameter;	/* implizit parameter passed during a portal call
 					   can be used to pass credentials to target domain
 					 */
 	ObjectDesc *entry;	/* thread entry object containing run method */
@@ -210,9 +210,9 @@ typedef void (*thread_start_t) (void *);
 // Prototypes
 void threads_init();
 ThreadDesc *createThread(DomainDesc * domain, thread_start_t thread_start,
-			 void *param, int state, int schedParam);
+			                   void *param, int state, int schedParam);
 ThreadDesc *createThreadUsingThreadEntry(DomainDesc * domain,
-					 ObjectDesc * entry);
+					                               ObjectDesc * entry);
 ThreadDesc *createInitialDomainThread(DomainDesc * domain, int state, int schedParam);
 ThreadDesc *createThreadInMem(DomainDesc * domain, thread_start_t thread_start, void *param, ObjectDesc * entry, u4_t stackSize, int state, int schedParam);
 void receive_dep(void *arg);
@@ -314,7 +314,6 @@ static inline void stack_push(u4_t ** sp, u4_t data)
 }
 
 
-
 /*
  * Read the 64-bit timestamp counter (TSC) register.
  * Works only on Pentium and higher processors,
@@ -341,8 +340,6 @@ static inline void stack_push(u4_t ** sp, u4_t data)
 #endif
 
 #endif				/* ASSEMBLER */
-
-
 
 
 #endif

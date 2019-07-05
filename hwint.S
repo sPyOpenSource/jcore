@@ -91,9 +91,9 @@ returnfromirq:
 	movl	PCB_EIP(%ecx), %eax
 	pushl	%eax   /* eip is loaded by the iret instruction */
 
-	/*movl	PCB_GS(%ecx), %gs
-	movl	PCB_FS(%ecx), %fs
-	movl	PCB_ES(%ecx), %es*/
+	mov	PCB_GS(%ecx), %gs
+	mov	PCB_FS(%ecx), %fs
+	mov	PCB_ES(%ecx), %es
 	movl	PCB_EDI(%ecx), %edi
 	movl	PCB_ESI(%ecx), %esi
 	movl	PCB_EBP(%ecx), %ebp

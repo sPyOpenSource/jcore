@@ -55,7 +55,6 @@ static int OFFSET_START_CENTRAL_DIRECTORY = 16;
 static int ZIPFILE_COMMENT_LENGTH = 20;
 
 
-
 static char *zip;
 static jint count;
 static jint dirofs;
@@ -141,8 +140,7 @@ int zip_next_entry(zipentry * entry)
 		return -1;
 	}
 
-	filestart = local_header_offset + LREC_SIZE + makeword(header, L_FILENAME_LENGTH)
-	    + makeword(header, L_EXTRA_FIELD_LENGTH);
+	filestart = local_header_offset + LREC_SIZE + makeword(header, L_FILENAME_LENGTH) + makeword(header, L_EXTRA_FIELD_LENGTH);
 
 	makestring(entry->filename, dirbuf, dirofs + C_FILENAME, filename_length);
 	entry->data = zip + filestart;
@@ -166,9 +164,9 @@ static jint makeword(char *b, int offset)
 static jint makelong(char *b, int offset)
 {
 	return ((((jint) b[offset + 3]) << 24) & 0xff000000)
-	    | ((((jint) b[offset + 2]) << 16) & 0x00ff0000)
-	    | ((((jint) b[offset + 1]) << 8) & 0x0000ff00)
-	    | ((jint) b[offset + 0] & 0xff);
+	     | ((((jint) b[offset + 2]) << 16) & 0x00ff0000)
+	     | ((((jint) b[offset + 1]) << 8)  & 0x0000ff00)
+	     |   ((jint) b[offset + 0]         & 0xff);
 }
 
 static char *makestring(char *buf, char *b, int offset, int len)

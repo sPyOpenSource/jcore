@@ -70,8 +70,8 @@ irq_destroy_switch_to:
 
  movl 40(%edx),%ecx
 
-
-
+ mov 0(%edx),%gs
+ mov 4(%edx),%fs
 
  movl 16(%edx),%edi
  movl 20(%edx),%esi

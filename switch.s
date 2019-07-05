@@ -53,9 +53,9 @@ internal_switch_to:
  movl %esi, 20(%ecx)
  movl %edi, 16(%ecx)
 
-
-
-
+ mov %es, 8(%ecx)
+ mov %gs, 0(%ecx)
+ mov %fs, 4(%ecx)
 
  pushf
  popl 52(%ecx)
@@ -71,11 +71,11 @@ internal_switch_to:
 
 
 
- movl 0(%ecx),%edx
+ movl 0(%ecx), %edx
 
-
-
-
+ mov 0(%edx), %gs
+ mov 4(%edx), %fs
+ mov 8(%edx), %es
 
 
  movl 28(%edx),%esp
@@ -119,9 +119,9 @@ destroy_switch_to:
 
  movl 0(%ecx),%edx
 
-
-
-
+ mov 8(%edx), %es
+ mov 0(%edx), %gs
+ mov 4(%edx), %fs
 
  movl 16(%edx),%edi
  movl 20(%edx),%esi

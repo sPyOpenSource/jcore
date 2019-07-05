@@ -152,7 +152,7 @@ tiny_destroy_switch_to:
 	*/
 	movl	THREAD_PPCB(%ecx),%edx
 
-//	movl	PCB_ESP(%edx),%esp
+//	movl	PCB_ESP(%edx), %esp
 //	pushl	PCB_EIP(%edx)  /* eip is loaded by the ret instruction */
 
 	movl	PCB_ESP(%edx),%esp
@@ -326,8 +326,8 @@ return_from_java:
 	movl	THREAD_PPCB(%ecx),%edx	/* edx = restore.context */
 #endif
 #ifdef KERNEL
-//	movl	PCB_GS(%edx),%gs
-//	movl	PCB_FS(%edx), %fs
+	//movl	PCB_GS(%edx), %gs
+	//movl	PCB_FS(%edx), %fs
 #endif
 
 	movl	PCB_ESP(%edx),%esp

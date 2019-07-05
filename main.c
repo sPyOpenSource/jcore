@@ -95,9 +95,8 @@ int main(int argc, char *argv[])
 	/*module = base_multiboot_find(ZIPFILE); */
 	module = multiboot_get_module();
 
-	if (module == NULL) {
+	if (module == NULL)
 		sys_panic("Could not find boot module");
-	}
 
 	zip_init(module->mod_start, module->mod_end - module->mod_start);
 
@@ -112,7 +111,7 @@ int main(int argc, char *argv[])
 	ser_enable_break();
 
 
-	dprintf("finished system init\n");
+	printf("finished system init\n");
 
 #ifdef LOG_PRINTF
 	init_log_space();

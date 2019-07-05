@@ -495,7 +495,7 @@ void multiboot_main(addr_t boot_info_pa)
 	   if(c=='#') break;
 	   }
 	 */
-	/*printf("jxCore running\n"); */
+	printf("jxCore running\n");
 
 	/* Identify the CPU and get the processor tables set up.  */
 

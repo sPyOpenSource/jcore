@@ -403,7 +403,7 @@ static void *jxmalloc_internal(u4_t size_blk, u4_t align, u4_t ** start MEMTYPE_
 		code_t ip;
 		//printf("free: %ld",jxmalloc_getTotalFreeMemory());
 		printf("jxmalloc(%ld,%ld) ", size_blk * BLOCKSIZE, align);
-		//if (curdom()) printf(" dom=%d ", curdom()->id);  
+		//if (curdom()) printf(" dom=%d ", curdom()->id);
 		ip = getCaller(1);
 		print_eip_info(ip);
 		ip = getCaller(2);
@@ -516,7 +516,7 @@ void jxfree(void *addr, u4_t size MEMTYPE_INFO)
 	{
 		code_t ip;
 		printf("jxfree(%p,%ld), free=%d ", addr, size, jxmalloc_getTotalFreeMemory());
-		//if (curdom()) printf(" dom=%d ", curdom()->id);  
+		//if (curdom()) printf(" dom=%d ", curdom()->id);
 		ip = getCaller(1);
 		print_eip_info(ip);
 		ip = getCaller(2);

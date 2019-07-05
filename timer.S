@@ -225,8 +225,8 @@ irq_destroy_switch_to:
 
 	movl	PCB_ECX(%edx),%ecx
 
-	/*movl	PCB_GS(%edx),%gs
-	movl	PCB_FS(%edx),%fs */
+	mov	PCB_GS(%edx),%gs
+	mov	PCB_FS(%edx),%fs
 
 	movl	PCB_EDI(%edx),%edi
 	movl	PCB_ESI(%edx),%esi

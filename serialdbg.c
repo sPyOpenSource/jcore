@@ -145,7 +145,7 @@ static u2_t svalue = 0x0f40;
 void ser_breakpoint_ex(struct irqcontext_timer sc)
 {
 	/*
-	   u2_t *screen_start = (u2_t*)0xb8000; 
+	   u2_t *screen_start = (u2_t*)0xb8000;
 	   u2_t *screen_end = screen_start + 80*24;
 	   u2_t *s;
 	   jint iid;
@@ -195,7 +195,7 @@ void ser_putchar(int port, int ch)
 	static int less_checks;
 	if ((less_checks++ % 20) == 0)
 		check_serial();
-	if (ch == 'ÿ')
+	if (ch == 'ï¿½')
 		monitor(NULL);
 #endif
 	//  DISABLE_IRQ;
@@ -233,9 +233,8 @@ unsigned char ser_waitforchar(int port)
 	for (;;) {
 		u1_t d;
 		d = inb(ser_io_base[port] + 5);
-		if (d & 0x10) {
+		if (d & 0x10)
 			pc_reset();
-		}
 		if (d & 0x01) {
 			/* Grab it.  */
 			ch = inb(ser_io_base[port] + 0);
@@ -299,18 +298,16 @@ void ser_dump(int port, const char *ptr, unsigned int size)
 	DISABLE_IRQ;
 	while (size--) {
 		/* Wait for the transmit buffer to become available.  */
-		while (!(inb(ser_io_base[port] + 5) & 0x20)) {
+		while (!(inb(ser_io_base[port] + 5) & 0x20))
 			SLOW_DOWN;
-		}
 		outb(ser_io_base[port] + 0, *ptr++);
 	}
 	RESTORE_IRQ;
 }
 void ser_getdata(int port, char *ptr, u4_t size)
 {
-	while (size--) {
+	while (size--)
 		*ptr++ = ser_waitforchar(port);
-	}
 }
 
 
@@ -322,17 +319,15 @@ int read_line(int port, char *msg, int msg_size)
 	while ((ch = ser_getchar(port)) != '\r') {
 		switch (ch) {
 		case CHAR_CURSOR_UP:
-			if (get_from_history(++pastindex, msg, msg_size) == -1) {
+			if (get_from_history(++pastindex, msg, msg_size) == -1)
 				strcpy(msg, "?????");
-			}
 			i = strlen(msg);
 			ser_putchar(port, '\r');	/* echo */
 			printf("Monitor: %s                                               ", msg);
 			break;
 		case CHAR_CURSOR_DOWN:
-			if (get_from_history(--pastindex, msg, msg_size) == -1) {
+			if (get_from_history(--pastindex, msg, msg_size) == -1)
 				strcpy(msg, "?????");
-			}
 			i = strlen(msg);
 			ser_putchar(port, '\r');	/* echo */
 			printf("Monitor: %s                                               ", msg);
@@ -373,6 +368,7 @@ void init_log_space()
 	memset(log_space, 0, LOG_SPACE_SIZE);
 	log_cursor = 0;
 }
+
 void mem_putc(int x, char c)
 {
 	if (log_cursor >= LOG_SPACE_SIZE) {	/* log space full ? */
@@ -416,8 +412,7 @@ void transfer_printflog()
 #endif
 
 
-
-/* 
+/*
 void ser_putc(int x, char c) {
 }
 #define debug_port -1

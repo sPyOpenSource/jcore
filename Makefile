@@ -130,7 +130,7 @@ jx: Makefile.dep .linux symbols.h $(LINUXOBJ)
 	$(LINUXBUILD)
 
 COREOBJ2 = $(COREOBJ:.kernel/gc/%=.kernel/%)
-COREBUILD = ld -m elf_i386 -s -o jxcore  $(COREOBJ2:.kernel/zero/%=.kernel/%)
+COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ2:.kernel/zero/%=.kernel/%)
 
 jxcore: Makefile.dep .kernel realmode.h $(COREOBJ)
 	$(COREBUILD)
@@ -172,8 +172,8 @@ symbols.h:
 
 
 realmode: asm.S
-	gcc -g -c -o asm.o asm.S
-	ld -Ttext 0x9000 -o realmode asm.o
+	gcc -m32 -g -c -o asm.o asm.S
+	ld -m elf_i386 -Ttext 0x9000 -o realmode asm.o
 	perl mksymtab.perl realmode realmode.h
 	touch main.c
 	$(MAKE) jxcore
@@ -223,7 +223,7 @@ ifeq ($(MAKECMDGOALS), jx)
 endif
 
 depend:
-	rm -f kernel.dep linux.dep
+	#rm -f kernel.dep linux.dep
 	$(MAKE) kernel.dep linux.dep
 
 kernel.dep:
@@ -241,7 +241,7 @@ Makefile.dep: Makefile settings.makefile
 	$(MAKE) depend
 
 wc:
-	wc -l  $(ESSENTIALSOURCES) $(ZEROSOURCES) $(ESSENTIALCORESOURCES) | sort -n
+	wc -l $(ESSENTIALSOURCES) $(ZEROSOURCES) $(ESSENTIALCORESOURCES) | sort -n
 
 disk:
 	rm -f EMULATED_DISK ; dd if=/dev/zero of=EMULATED_DISK bs=512 count=10000

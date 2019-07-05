@@ -459,7 +459,36 @@ void portal_abort_current_call(DEPDesc * dep, ThreadDesc * sender)
 {
 	dep->abortFlag = 1;
 }
-void Sched_block(u4_t state){}
+
+void Sched_block(u4_t state)
+{
+	ASSERTCLI;
+	/* inform profiler */
+	PROFILE_STOP_BLOCK(curthr());
+
+#ifdef VERBOSE_BLOCK
+	printf("BLOCKED: %d.%d\n", TID(curthr()));
+#endif
+#ifdef NEW_PORTALCALL
+	if (curthr()->processingDEP) {
+#ifdef VERBOSE_BLOCK
+		printf("   BLOCKED SERVICE %s in domain %d\n", obj2ClassDesc(curthr()->processingDEP->obj)->name, curdom()->id);
+		printf("   STARTING NEW THREAD FOR THIS SERVICE\n");
+#endif
+#ifdef NEW_SERVICE_THREADS
+		createServiceThread(curdom(), curthr()->processingDEP->pool->index, "additional");
+#endif				/* NEW_SERVICE_THREADS */
+	}
+#endif
+	curthr()->state = state;
+	Sched_blocked(curthr());
+	Sched_switch_to_nextThread();
+	curthr()->state = STATE_RUNNABLE;
+
+	/* inform profiler */
+	PROFILE_CONT_BLOCK(curthr());
+}
+
 ObjectDesc *copy_returnvalue(DomainDesc * src, DomainDesc * dst, ObjectDesc * srcObj, int *quota)
 {
 	return copy_reference(curdom(), dst, srcObj, quota);

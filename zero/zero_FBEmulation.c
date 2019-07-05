@@ -68,16 +68,16 @@ static u4_t vesaModes[30];
 static u4_t vesaModesWidth[30];
 static int numberModes = 0;
 
-#define SEG2LIN(x) ((((u4_t)(x))/ 65536) * 16 + (((u4_t)(x)) % 65536))
+#define SEG2LIN(x) ((((u4_t)(x)) / 65536) * 16 + (((u4_t)(x)) % 65536))
 
 typedef int (*vesa2_get_mode_info_t) (int mode, struct vesa_mode_info * vesa_mode_info);
-vesa2_get_mode_info_t extern_vesa2_get_mode_info = (vesa2_get_mode_info_t) 0;//FKTADDR_vesa2_get_mode_info;
+vesa2_get_mode_info_t extern_vesa2_get_mode_info = (vesa2_get_mode_info_t) FKTADDR_vesa2_get_mode_info;
 
 typedef int (*vesa2_set_mode_t) (int mode);
-vesa2_set_mode_t extern_vesa2_set_mode = (vesa2_set_mode_t) 0;//FKTADDR_vesa2_set_mode;
+vesa2_set_mode_t extern_vesa2_set_mode = (vesa2_set_mode_t) FKTADDR_vesa2_set_mode;
 
 typedef int (*vesa2_detect_t) (void);
-vesa2_detect_t extern_vesa2_detect = (vesa2_detect_t) 0;//FKTADDR_vesa2_detect;
+vesa2_detect_t extern_vesa2_detect = (vesa2_detect_t) FKTADDR_vesa2_detect;
 
 //#define DBG_VESA 1
 //#define TEST_FRAMEBUFFER 1
@@ -218,11 +218,9 @@ jboolean fbemulation_checkEvent(ObjectDesc * self, ObjectDesc * event)
 }
 
 
-
-
-
 void init_realmode()
 {
+	printf("realmode\n");
 	zipentry entry;
 	int ret;
 	u2_t mode;
@@ -287,9 +285,8 @@ void init_realmode()
 			ret = extern_vesa2_get_mode_info(modes[i] | (1 << 14), modeinfo);
 #ifdef DBG_VESA
 			printf("      ret=%d\n", ret);
-			for (j = 0; j < sizeof(struct vesa_mode_info); j++) {
+			for (j = 0; j < sizeof(struct vesa_mode_info); j++)
 				printf("%02x", ((u1_t *) modeinfo /*OTHERMEM*/)[j] & 0xff);
-			}
 			printf("\n");
 			printf("      %dx%d\n", modeinfo->width_in_pixels, modeinfo->height_in_pixels);
 			printf("      depth=%d\n", modeinfo->bits_per_pixel);
@@ -330,9 +327,6 @@ void init_realmode()
 }
 
 
-
-
-
 MethodInfoDesc fbemulationMethods[] = {
 	{"open", "", fbemulation_open}
 	,
@@ -361,7 +355,7 @@ void init_framebuffer_emulation(void)
 void init_fbemulation_portal()
 {
 	init_zero_dep("jx/zero/FBEmulation", "FBEmulation", fbemulationMethods, sizeof(fbemulationMethods),
-		      "<jx/zero/FBEmulation>");
+		            "<jx/zero/FBEmulation>");
 }
 
 
@@ -760,7 +754,7 @@ MethodInfoDesc fbemulationMethods[] = {
 void init_fbemulation_portal()
 {
 	init_zero_dep("jx/zero/FBEmulation", "FBEmulation", fbemulationMethods, sizeof(fbemulationMethods),
-		      "<jx/zero/FBEmulation>");
+		            "<jx/zero/FBEmulation>");
 }
 
 #endif				/* KERNEL */

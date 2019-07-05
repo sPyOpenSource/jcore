@@ -520,7 +520,6 @@ int pic_init_pmode()
 	}
 
 	dprintf("finished irq init\n");
-
 }
 
 

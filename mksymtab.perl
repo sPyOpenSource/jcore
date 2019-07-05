@@ -6,8 +6,8 @@
 # Used in the VM to find native method code.
 
 if (@ARGV != 2) {
-    print "Usage: perl mksymtab.perl <elf32executable> <headerfilename>\n"; 
-    exit 1; 
+    print "Usage: perl mksymtab.perl <elf32executable> <headerfilename>\n";
+    exit 1;
 }
 
 $executable = @ARGV[0];
@@ -18,7 +18,7 @@ if (! -e $executable) {
 } else {
 # open(INFILE, "objdump --syms $executable | grep .text |");
 # remove duplicates
-  open(INFILE, "objdump --syms $executable | grep .text | sort +5 -u |");
+  open(INFILE, "objdump --syms $executable | grep .text | sort -k 6 -u |");
 }
 open(OUTFILE, ">$header");
 
@@ -47,7 +47,7 @@ if (! $createEmpty) {
     $idx += length($name) + 1;
     $nsymbols++;
   }
-  close INFILE; 
+  close INFILE;
 } else {
   print OUTFILE "#define FKTSIZE_EMPTY\n\n";
   if (-e "symbols.autodef") {

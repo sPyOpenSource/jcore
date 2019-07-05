@@ -2,8 +2,8 @@
 # DO NOT DELETE
 
 
-.kernel/atomicfn.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/atomicfn.o: code.h  config.h context.h debug_reg.h
+.kernel/atomicfn.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/atomicfn.o: code.h config.h context.h debug_reg.h
 .kernel/atomicfn.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/atomicfn.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/atomicfn.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -13,10 +13,10 @@
 .kernel/atomicfn.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/atomicfn.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/atomicfn.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/atomic.o:   /usr/include/stdc-predef.h
-.kernel/bdt.o:   /usr/include/stdc-predef.h
-.kernel/classes.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/classes.o: code.h  config.h context.h debug_reg.h
+.kernel/atomic.o: /usr/include/stdc-predef.h
+.kernel/bdt.o: /usr/include/stdc-predef.h
+.kernel/classes.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/classes.o: code.h config.h context.h debug_reg.h
 .kernel/classes.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/classes.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/classes.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -26,10 +26,10 @@
 .kernel/classes.o: serialdbg.h smp.h spinlock.h symfind.h thread.h types.h
 .kernel/classes.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/classes.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/cpuid.o:   config.h /usr/include/stdc-predef.h
-.kernel/crc32.o:   /usr/include/stdc-predef.h
-.kernel/domain.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/domain.o: code.h  config.h context.h debug_reg.h
+.kernel/cpuid.o: config.h /usr/include/stdc-predef.h
+.kernel/crc32.o: /usr/include/stdc-predef.h
+.kernel/domain.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/domain.o: code.h config.h context.h debug_reg.h
 .kernel/domain.o: domain.h ekhz.h exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/domain.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h gc/gc_new.h
 .kernel/domain.o: gc/gc_org.h interrupt.h intr.h irq.h lapic.h libcache.h
@@ -39,8 +39,8 @@
 .kernel/domain.o: spinlock.h symfind.h thread.h types.h
 .kernel/domain.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/domain.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/ekhz.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/ekhz.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/ekhz.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/ekhz.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/ekhz.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/ekhz.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h interrupt.h
 .kernel/ekhz.o: intr.h irq.h lapic.h libcache.h load.h lock.h lowlevel.h
@@ -50,7 +50,7 @@
 .kernel/ekhz.o: types.h /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/ekhz.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
 .kernel/exception_handler.o: all.h atomicfn.h atomic.h bench.h
-.kernel/exception_handler.o: classes.h code.h  config.h
+.kernel/exception_handler.o: classes.h code.h config.h
 .kernel/exception_handler.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/exception_handler.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/exception_handler.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -63,8 +63,8 @@
 .kernel/exception_handler.o: types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/exception_handler.o: zero/zero.h zero/zero_Memory.h
 .kernel/exception_handler.o: zero/zero_Profiler.h zip.h
-.kernel/execJAVA.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/execJAVA.o: code.h  config.h context.h debug_reg.h
+.kernel/execJAVA.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/execJAVA.o: code.h config.h context.h debug_reg.h
 .kernel/execJAVA.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/execJAVA.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/execJAVA.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -74,8 +74,8 @@
 .kernel/execJAVA.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/execJAVA.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/execJAVA.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_alloc.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_alloc.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_alloc.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_alloc.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_alloc.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_alloc.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
 .kernel/gc/gc_alloc.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
@@ -87,9 +87,9 @@
 .kernel/gc/gc_alloc.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/gc/gc_alloc.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/gc/gc_alloc.o: zip.h
-.kernel/gc/gc_bitmap.o:   /usr/include/stdc-predef.h
+.kernel/gc/gc_bitmap.o: /usr/include/stdc-predef.h
 .kernel/gc/gc_checkheap.o: all.h atomicfn.h atomic.h bench.h
-.kernel/gc/gc_checkheap.o: classes.h code.h  config.h context.h
+.kernel/gc/gc_checkheap.o: classes.h code.h config.h context.h
 .kernel/gc/gc_checkheap.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/gc/gc_checkheap.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/gc/gc_checkheap.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h
@@ -103,7 +103,7 @@
 .kernel/gc/gc_checkheap.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/gc/gc_checkheap.o: zip.h
 .kernel/gc/gc_chunked.o: all.h atomicfn.h atomic.h bench.h
-.kernel/gc/gc_chunked.o: classes.h code.h  config.h context.h
+.kernel/gc/gc_chunked.o: classes.h code.h config.h context.h
 .kernel/gc/gc_chunked.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/gc/gc_chunked.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/gc/gc_chunked.o: gc/gc_chunked.h gc/gc_common.h gc/gc_compacting.h
@@ -116,8 +116,8 @@
 .kernel/gc/gc_chunked.o: smp.h spinlock.h symfind.h thread.h types.h
 .kernel/gc/gc_chunked.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/gc/gc_chunked.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_common.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_common.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_common.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_common.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_common.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_common.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
 .kernel/gc/gc_common.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
@@ -131,8 +131,8 @@
 .kernel/gc/gc_common.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
 .kernel/gc/gc_compacting.o:
 .kernel/gc/gc_compacting.o: /usr/include/stdc-predef.h
-.kernel/gc/gc_impl.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_impl.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_impl.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_impl.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_impl.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_impl.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
 .kernel/gc/gc_impl.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
@@ -145,8 +145,8 @@
 .kernel/gc/gc_impl.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/gc/gc_impl.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/gc/gc_impl.o: zip.h
-.kernel/gc/gc_memcpy.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_memcpy.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_memcpy.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_memcpy.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_memcpy.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_memcpy.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h
 .kernel/gc/gc_memcpy.o: gc/gc.h gc/gc_memcpy.h gc/gc_new.h gc/gc_org.h
@@ -158,7 +158,7 @@
 .kernel/gc/gc_memcpy.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/gc/gc_memcpy.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
 .kernel/gc/gc_move_common.o: all.h atomicfn.h atomic.h bench.h
-.kernel/gc/gc_move_common.o: classes.h code.h  config.h
+.kernel/gc/gc_move_common.o: classes.h code.h config.h
 .kernel/gc/gc_move_common.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/gc/gc_move_common.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/gc/gc_move_common.o: gc/gc_bitmap.h gc/gc_common.h gc/gc_compacting.h
@@ -172,8 +172,8 @@
 .kernel/gc/gc_move_common.o: thread.h types.h /usr/include/stdc-predef.h
 .kernel/gc/gc_move_common.o: vmsupport.h zero/zero.h zero/zero_Memory.h
 .kernel/gc/gc_move_common.o: zero/zero_Profiler.h zip.h
-.kernel/gc/gc_move.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_move.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_move.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_move.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_move.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_move.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
 .kernel/gc/gc_move.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_memcpy.h
@@ -185,8 +185,8 @@
 .kernel/gc/gc_move.o: smp.h spinlock.h symfind.h thread.h types.h
 .kernel/gc/gc_move.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/gc/gc_move.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_new.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_new.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_new.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_new.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_new.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_new.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
 .kernel/gc/gc_new.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h
@@ -198,8 +198,8 @@
 .kernel/gc/gc_new.o: spinlock.h symfind.h thread.h types.h
 .kernel/gc/gc_new.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/gc/gc_new.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/gc/gc.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/gc/gc.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/gc/gc.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/gc/gc.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/gc/gc.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h gc/gc_memcpy.h
 .kernel/gc/gc.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_pa.h gc/gc_pgc.h
@@ -207,8 +207,8 @@
 .kernel/gc/gc.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h misc.h
 .kernel/gc/gc.o: monitor.h multiboot.h object.h portal.h portal_proto.h
 .kernel/gc/gc.o: profile.h
-.kernel/gc/gc_org.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_org.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_org.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_org.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_org.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_org.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
 .kernel/gc/gc_org.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_memcpy.h
@@ -224,8 +224,8 @@
 .kernel/gc/gc.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/gc/gc.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/gc/gc.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_pa.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_pa.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_pa.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_pa.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_pa.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_pa.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/gc/gc_pa.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -235,9 +235,9 @@
 .kernel/gc/gc_pa.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/gc/gc_pa.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/gc/gc_pa.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_pgc.o:   /usr/include/stdc-predef.h
-.kernel/gc/gc_stack.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_stack.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_pgc.o: /usr/include/stdc-predef.h
+.kernel/gc/gc_stack.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_stack.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_stack.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_stack.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
 .kernel/gc/gc_stack.o: gc/gc_compacting.h gc/gc.h gc/gc_memcpy.h gc/gc_move.h
@@ -249,8 +249,8 @@
 .kernel/gc/gc_stack.o: smp.h spinlock.h symfind.h thread.h types.h
 .kernel/gc/gc_stack.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/gc/gc_stack.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_thread.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/gc/gc_thread.o: code.h  config.h context.h debug_reg.h
+.kernel/gc/gc_thread.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc/gc_thread.o: code.h config.h context.h debug_reg.h
 .kernel/gc/gc_thread.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/gc/gc_thread.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h
 .kernel/gc/gc_thread.o: gc/gc.h gc/gc_new.h gc/gc_org.h gc/gc_thread.h
@@ -261,8 +261,8 @@
 .kernel/gc/gc_thread.o: smp.h spinlock.h symfind.h thread.h types.h
 .kernel/gc/gc_thread.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/gc/gc_thread.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/interrupt.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/interrupt.o: code.h  config.h context.h debug_reg.h
+.kernel/interrupt.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/interrupt.o: code.h config.h context.h debug_reg.h
 .kernel/interrupt.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/interrupt.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/interrupt.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -272,9 +272,9 @@
 .kernel/interrupt.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/interrupt.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/interrupt.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/io_apic.o:   /usr/include/stdc-predef.h
-.kernel/irq.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/irq.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/io_apic.o: /usr/include/stdc-predef.h
+.kernel/irq.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/irq.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/irq.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/irq.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h gc/gc_impl.h
 .kernel/irq.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
@@ -284,9 +284,9 @@
 .kernel/irq.o: serialdbg.h smp.h spinlock.h symfind.h thread.h types.h
 .kernel/irq.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/irq.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/lapic.o:   config.h /usr/include/stdc-predef.h
-.kernel/libcache.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/libcache.o: code.h  config.h context.h debug_reg.h
+.kernel/lapic.o: config.h /usr/include/stdc-predef.h
+.kernel/libcache.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/libcache.o: code.h config.h context.h debug_reg.h
 .kernel/libcache.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/libcache.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/libcache.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -296,8 +296,8 @@
 .kernel/libcache.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/libcache.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/libcache.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/load.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/load.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/load.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/load.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/load.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/load.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h interrupt.h
 .kernel/load.o: intr.h irq.h lapic.h libcache.h load.h lock.h lowlevel.h
@@ -306,8 +306,8 @@
 .kernel/load.o: sched.h serialdbg.h smp.h spinlock.h symfind.h thread.h
 .kernel/load.o: types.h /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/load.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/main.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/main.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/main.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/main.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/main.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/main.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h interrupt.h
 .kernel/main.o: intr.h irq.h lapic.h libcache.h load.h lock.h lowlevel.h
@@ -316,8 +316,8 @@
 .kernel/main.o: sched.h serialdbg.h smp.h spinlock.h symfind.h thread.h
 .kernel/main.o: types.h /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/main.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/malloc.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/malloc.o: code.h  config.h context.h debug_reg.h
+.kernel/malloc.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/malloc.o: code.h config.h context.h debug_reg.h
 .kernel/malloc.o: domain.h ekhz.h exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/malloc.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h gc/gc_new.h
 .kernel/malloc.o: gc/gc_org.h interrupt.h intr.h irq.h lapic.h libcache.h
@@ -327,8 +327,8 @@
 .kernel/malloc.o: spinlock.h symfind.h thread.h types.h
 .kernel/malloc.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/malloc.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/memfs.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/memfs.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/memfs.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/memfs.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/memfs.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/memfs.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
 .kernel/memfs.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h lock.h
@@ -338,8 +338,8 @@
 .kernel/memfs.o: symfind.h thread.h types.h /usr/include/stdc-predef.h
 .kernel/memfs.o: vmsupport.h zero/zero.h zero/zero_Memory.h
 .kernel/memfs.o: zero/zero_Profiler.h zip.h
-.kernel/minic.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/minic.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/minic.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/minic.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/minic.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/minic.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
 .kernel/minic.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h lock.h
@@ -349,10 +349,10 @@
 .kernel/minic.o: symfind.h thread.h types.h /usr/include/stdc-predef.h
 .kernel/minic.o: vmsupport.h zero/zero.h zero/zero_Memory.h
 .kernel/minic.o: zero/zero_Profiler.h zip.h
-.kernel/minilzo.o:   config.h
+.kernel/minilzo.o: config.h
 .kernel/minilzo.o: /usr/include/stdc-predef.h
-.kernel/misc.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/misc.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/misc.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/misc.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/misc.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/misc.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h interrupt.h
 .kernel/misc.o: intr.h irq.h lapic.h libcache.h load.h lock.h lowlevel.h
@@ -361,8 +361,8 @@
 .kernel/misc.o: sched.h serialdbg.h smp.h spinlock.h symfind.h thread.h
 .kernel/misc.o: types.h /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/misc.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/monitor.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/monitor.o: code.h  config.h context.h debug_reg.h
+.kernel/monitor.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/monitor.o: code.h config.h context.h debug_reg.h
 .kernel/monitor.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/monitor.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
 .kernel/monitor.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
@@ -374,10 +374,10 @@
 .kernel/monitor.o: spinlock.h symfind.h thread.h types.h
 .kernel/monitor.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/monitor.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/multiboot.o:   debug_reg.h lock.h misc.h
+.kernel/multiboot.o: debug_reg.h lock.h misc.h
 .kernel/multiboot.o: multiboot.h segments.h types.h /usr/include/stdc-predef.h
-.kernel/oneshot.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/oneshot.o: code.h  config.h context.h debug_reg.h
+.kernel/oneshot.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/oneshot.o: code.h config.h context.h debug_reg.h
 .kernel/oneshot.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/oneshot.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/oneshot.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -387,8 +387,8 @@
 .kernel/oneshot.o: serialdbg.h smp.h spinlock.h symfind.h thread.h types.h
 .kernel/oneshot.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/oneshot.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/portal.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/portal.o: code.h  config.h context.h debug_reg.h
+.kernel/portal.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/portal.o: code.h config.h context.h debug_reg.h
 .kernel/portal.o: domain.h ekhz.h exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/portal.o: gc/gc_bitmap.h gc/gc_common.h gc/gc_compacting.h gc/gc.h
 .kernel/portal.o: gc/gc_impl.h gc/gc_move.h gc/gc_new.h gc/gc_org.h
@@ -399,10 +399,10 @@
 .kernel/portal.o: smp.h spinlock.h symfind.h thread.h types.h
 .kernel/portal.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/portal.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/profile.o:   config.h
+.kernel/profile.o: config.h
 .kernel/profile.o: /usr/include/stdc-predef.h
-.kernel/runq.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/runq.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/runq.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/runq.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/runq.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/runq.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h interrupt.h
 .kernel/runq.o: intr.h irq.h lapic.h libcache.h load.h lock.h lowlevel.h
@@ -411,15 +411,15 @@
 .kernel/runq.o: runq_inline.c sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/runq.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/runq.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/sched_global.o:   /usr/include/stdc-predef.h
+.kernel/sched_global.o: /usr/include/stdc-predef.h
 .kernel/sched_global_rr.o:
 .kernel/sched_global_rr.o: /usr/include/stdc-predef.h
 .kernel/sched_local_java.o:
 .kernel/sched_local_java.o: /usr/include/stdc-predef.h
-.kernel/sched_local.o:   /usr/include/stdc-predef.h
-.kernel/sched_local_rr.o:   /usr/include/stdc-predef.h
-.kernel/serialdbg.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/serialdbg.o: code.h  config.h context.h debug_reg.h
+.kernel/sched_local.o: /usr/include/stdc-predef.h
+.kernel/sched_local_rr.o: /usr/include/stdc-predef.h
+.kernel/serialdbg.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/serialdbg.o: code.h config.h context.h debug_reg.h
 .kernel/serialdbg.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/serialdbg.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/serialdbg.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -429,11 +429,11 @@
 .kernel/serialdbg.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/serialdbg.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/serialdbg.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/smp_activate.o:   /usr/include/stdc-predef.h
-.kernel/smp_detect.o:   /usr/include/stdc-predef.h
-.kernel/smp.o:   /usr/include/stdc-predef.h
-.kernel/symfind.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/symfind.o: code.h  config.h context.h debug_reg.h
+.kernel/smp_activate.o: /usr/include/stdc-predef.h
+.kernel/smp_detect.o: /usr/include/stdc-predef.h
+.kernel/smp.o: /usr/include/stdc-predef.h
+.kernel/symfind.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/symfind.o: code.h config.h context.h debug_reg.h
 .kernel/symfind.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/symfind.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/symfind.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -443,8 +443,8 @@
 .kernel/symfind.o: serialdbg.h smp.h spinlock.h symbols.h symfind.h thread.h
 .kernel/symfind.o: types.h /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/symfind.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/thread_debug.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/thread_debug.o: code.h  config.h context.h debug_reg.h
+.kernel/thread_debug.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/thread_debug.o: code.h config.h context.h debug_reg.h
 .kernel/thread_debug.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/thread_debug.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h
 .kernel/thread_debug.o: gc/gc.h gc/gc_new.h gc/gc_org.h interrupt.h intr.h
@@ -457,8 +457,8 @@
 .kernel/thread_debug.o: zero/zero_Profiler.h zip.h
 .kernel/thread_emulation.o:
 .kernel/thread_emulation.o: /usr/include/stdc-predef.h
-.kernel/thread.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/thread.o: code.h  config.h context.h debug_reg.h
+.kernel/thread.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/thread.o: code.h config.h context.h debug_reg.h
 .kernel/thread.o: domain.h ekhz.h exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/thread.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h gc/gc_new.h
 .kernel/thread.o: gc/gc_org.h interrupt.h intr.h irq.h lapic.h libcache.h
@@ -469,7 +469,7 @@
 .kernel/thread.o: types.h /usr/include/stdc-predef.h vmsupport.h zero/zero.h
 .kernel/thread.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
 .kernel/thread_profile.o: all.h atomicfn.h atomic.h bench.h
-.kernel/thread_profile.o: classes.h code.h  config.h context.h
+.kernel/thread_profile.o: classes.h code.h config.h context.h
 .kernel/thread_profile.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/thread_profile.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/thread_profile.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -481,10 +481,10 @@
 .kernel/thread_profile.o: types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/thread_profile.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/thread_profile.o: zip.h
-.kernel/timer8254.o:   misc.h timer8254.h types.h
+.kernel/timer8254.o: misc.h timer8254.h types.h
 .kernel/timer8254.o: /usr/include/stdc-predef.h
-.kernel/vmsupport.o: all.h atomicfn.h atomic.h bench.h  classes.h
-.kernel/vmsupport.o: code.h  config.h context.h debug_reg.h
+.kernel/vmsupport.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/vmsupport.o: code.h config.h context.h debug_reg.h
 .kernel/vmsupport.o: domain.h ekhz.h exception_handler.h execJAVA.h
 .kernel/vmsupport.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
 .kernel/vmsupport.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
@@ -495,7 +495,7 @@
 .kernel/vmsupport.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/vmsupport.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
 .kernel/zero/zero_AtomicVariable.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_AtomicVariable.o:  classes.h code.h
+.kernel/zero/zero_AtomicVariable.o: classes.h code.h
 .kernel/zero/zero_AtomicVariable.o: config.h context.h debug_reg.h domain.h
 .kernel/zero/zero_AtomicVariable.o: ekhz.h exception_handler.h execJAVA.h
 .kernel/zero/zero_AtomicVariable.o: gc/gc_alloc.h gc/gc_bitmap.h
@@ -511,7 +511,7 @@
 .kernel/zero/zero_AtomicVariable.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_AtomicVariable.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_BootFS.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_BootFS.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_BootFS.o: classes.h code.h config.h context.h
 .kernel/zero/zero_BootFS.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_BootFS.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_BootFS.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -524,7 +524,7 @@
 .kernel/zero/zero_BootFS.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_BootFS.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_CAS.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_CAS.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_CAS.o: classes.h code.h config.h context.h
 .kernel/zero/zero_CAS.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_CAS.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_CAS.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -537,7 +537,7 @@
 .kernel/zero/zero_CAS.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/zero/zero_CAS.o: zip.h
 .kernel/zero/zero_Clock.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Clock.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_Clock.o: classes.h code.h config.h context.h
 .kernel/zero/zero_Clock.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_Clock.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_Clock.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -550,8 +550,8 @@
 .kernel/zero/zero_Clock.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/zero/zero_Clock.o: zip.h
 .kernel/zero/zero_ComponentManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_ComponentManager.o:  classes.h code.h
-.kernel/zero/zero_ComponentManager.o:  config.h context.h
+.kernel/zero/zero_ComponentManager.o: classes.h code.h
+.kernel/zero/zero_ComponentManager.o: config.h context.h
 .kernel/zero/zero_ComponentManager.o: debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_ComponentManager.o: exception_handler.h execJAVA.h
 .kernel/zero/zero_ComponentManager.o: gc/gc_alloc.h gc/gc_bitmap.h
@@ -568,7 +568,7 @@
 .kernel/zero/zero_ComponentManager.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_ComponentManager.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_CPUManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_CPUManager.o: classes.h code.h  config.h
+.kernel/zero/zero_CPUManager.o: classes.h code.h config.h
 .kernel/zero/zero_CPUManager.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_CPUManager.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_CPUManager.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -582,7 +582,7 @@
 .kernel/zero/zero_CPUManager.o: vmsupport.h zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_CPUManager.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_CPU.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_CPU.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_CPU.o: classes.h code.h config.h context.h
 .kernel/zero/zero_CPU.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_CPU.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_CPU.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -595,7 +595,7 @@
 .kernel/zero/zero_CPU.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/zero/zero_CPU.o: zip.h
 .kernel/zero/zero_CPUState.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_CPUState.o: classes.h code.h  config.h
+.kernel/zero/zero_CPUState.o: classes.h code.h config.h
 .kernel/zero/zero_CPUState.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_CPUState.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_CPUState.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -609,7 +609,7 @@
 .kernel/zero/zero_CPUState.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_CPUState.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_Credential.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Credential.o: classes.h code.h  config.h
+.kernel/zero/zero_Credential.o: classes.h code.h config.h
 .kernel/zero/zero_Credential.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_Credential.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_Credential.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -623,7 +623,7 @@
 .kernel/zero/zero_Credential.o: vmsupport.h zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_Credential.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_DebugChannel.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_DebugChannel.o: classes.h code.h  config.h
+.kernel/zero/zero_DebugChannel.o: classes.h code.h config.h
 .kernel/zero/zero_DebugChannel.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_DebugChannel.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_DebugChannel.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -638,7 +638,7 @@
 .kernel/zero/zero_DebugChannel.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_DebugChannel.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_DebugSupport.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_DebugSupport.o: classes.h code.h  config.h
+.kernel/zero/zero_DebugSupport.o: classes.h code.h config.h
 .kernel/zero/zero_DebugSupport.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_DebugSupport.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_DebugSupport.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -652,10 +652,10 @@
 .kernel/zero/zero_DebugSupport.o: /usr/include/stdc-predef.h vmsupport.h
 .kernel/zero/zero_DebugSupport.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_DebugSupport.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_DiskEmulation.o:   config.h
+.kernel/zero/zero_DiskEmulation.o: config.h
 .kernel/zero/zero_DiskEmulation.o: /usr/include/stdc-predef.h
 .kernel/zero/zero_DomainManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_DomainManager.o:  classes.h code.h
+.kernel/zero/zero_DomainManager.o: classes.h code.h
 .kernel/zero/zero_DomainManager.o: config.h context.h debug_reg.h domain.h
 .kernel/zero/zero_DomainManager.o: ekhz.h exception_handler.h execJAVA.h
 .kernel/zero/zero_DomainManager.o: gc/gc_alloc.h gc/gc_bitmap.h
@@ -671,7 +671,7 @@
 .kernel/zero/zero_DomainManager.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_DomainManager.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_Domain.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Domain.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_Domain.o: classes.h code.h config.h context.h
 .kernel/zero/zero_Domain.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_Domain.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_Domain.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -684,7 +684,7 @@
 .kernel/zero/zero_Domain.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_Domain.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_FBEmulation.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_FBEmulation.o: classes.h code.h  config.h
+.kernel/zero/zero_FBEmulation.o: classes.h code.h config.h
 .kernel/zero/zero_FBEmulation.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_FBEmulation.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_FBEmulation.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -699,8 +699,8 @@
 .kernel/zero/zero_FBEmulation.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_FBEmulation.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_InterceptorInboundInfo.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_InterceptorInboundInfo.o:  classes.h code.h
-.kernel/zero/zero_InterceptorInboundInfo.o:  config.h context.h
+.kernel/zero/zero_InterceptorInboundInfo.o: classes.h code.h
+.kernel/zero/zero_InterceptorInboundInfo.o: config.h context.h
 .kernel/zero/zero_InterceptorInboundInfo.o: debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_InterceptorInboundInfo.o: exception_handler.h execJAVA.h
 .kernel/zero/zero_InterceptorInboundInfo.o: gc/gc_alloc.h gc/gc_bitmap.h
@@ -719,7 +719,7 @@
 .kernel/zero/zero_InterceptorInboundInfo.o: zero/zero_Memory.h
 .kernel/zero/zero_InterceptorInboundInfo.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_IRQ.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_IRQ.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_IRQ.o: classes.h code.h config.h context.h
 .kernel/zero/zero_IRQ.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_IRQ.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_IRQ.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -732,7 +732,7 @@
 .kernel/zero/zero_IRQ.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/zero/zero_IRQ.o: zip.h
 .kernel/zero/zero_MemoryManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_MemoryManager.o:  classes.h code.h
+.kernel/zero/zero_MemoryManager.o: classes.h code.h
 .kernel/zero/zero_MemoryManager.o: config.h context.h debug_reg.h domain.h
 .kernel/zero/zero_MemoryManager.o: ekhz.h exception_handler.h execJAVA.h
 .kernel/zero/zero_MemoryManager.o: gc/gc_alloc.h gc/gc_bitmap.h
@@ -748,7 +748,7 @@
 .kernel/zero/zero_MemoryManager.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_MemoryManager.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_Memory.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Memory.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_Memory.o: classes.h code.h config.h context.h
 .kernel/zero/zero_Memory.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_Memory.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_Memory.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h
@@ -762,7 +762,7 @@
 .kernel/zero/zero_Memory.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_Memory.o: zero/zero_Memory_org.c zero/zero_Profiler.h zip.h
 .kernel/zero/zero_Mutex.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Mutex.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_Mutex.o: classes.h code.h config.h context.h
 .kernel/zero/zero_Mutex.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_Mutex.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_Mutex.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -775,7 +775,7 @@
 .kernel/zero/zero_Mutex.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/zero/zero_Mutex.o: zip.h
 .kernel/zero/zero_Naming.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Naming.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_Naming.o: classes.h code.h config.h context.h
 .kernel/zero/zero_Naming.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_Naming.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_Naming.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -787,11 +787,11 @@
 .kernel/zero/zero_Naming.o: types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/zero/zero_Naming.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_Naming.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_NetEmulation.o:   config.h
+.kernel/zero/zero_NetEmulation.o: config.h
 .kernel/zero/zero_NetEmulation.o: /usr/include/stdc-predef.h
 .kernel/zero/zero.o: all.h atomicfn.h atomic.h bench.h
 .kernel/zero/zero_object.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_object.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_object.o: classes.h code.h config.h context.h
 .kernel/zero/zero_object.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_object.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_object.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -803,7 +803,7 @@
 .kernel/zero/zero_object.o: types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/zero/zero_object.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_object.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero.o:  classes.h code.h  config.h
+.kernel/zero/zero.o: classes.h code.h config.h
 .kernel/zero/zero.o: context.h debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -815,7 +815,7 @@
 .kernel/zero/zero.o: vmsupport.h zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_Ports.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Ports.o: classes.h code.h  config.h context.h
+.kernel/zero/zero_Ports.o: classes.h code.h config.h context.h
 .kernel/zero/zero_Ports.o: debug_reg.h domain.h ekhz.h exception_handler.h
 .kernel/zero/zero_Ports.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zero/zero_Ports.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
@@ -828,7 +828,7 @@
 .kernel/zero/zero_Ports.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
 .kernel/zero/zero_Ports.o: zip.h
 .kernel/zero/zero_Profiler.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Profiler.o: classes.h code.h  config.h
+.kernel/zero/zero_Profiler.o: classes.h code.h config.h
 .kernel/zero/zero_Profiler.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_Profiler.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_Profiler.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -842,7 +842,7 @@
 .kernel/zero/zero_Profiler.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_Profiler.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_Scheduler.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Scheduler.o: classes.h code.h  config.h
+.kernel/zero/zero_Scheduler.o: classes.h code.h config.h
 .kernel/zero/zero_Scheduler.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_Scheduler.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_Scheduler.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -856,7 +856,7 @@
 .kernel/zero/zero_Scheduler.o: vmsupport.h zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_Scheduler.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_SMPCPUManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_SMPCPUManager.o:  classes.h code.h
+.kernel/zero/zero_SMPCPUManager.o: classes.h code.h
 .kernel/zero/zero_SMPCPUManager.o: config.h context.h debug_reg.h domain.h
 .kernel/zero/zero_SMPCPUManager.o: ekhz.h exception_handler.h execJAVA.h
 .kernel/zero/zero_SMPCPUManager.o: gc/gc_alloc.h gc/gc_bitmap.h
@@ -872,7 +872,7 @@
 .kernel/zero/zero_SMPCPUManager.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_SMPCPUManager.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_TestDZperf.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_TestDZperf.o: classes.h code.h  config.h
+.kernel/zero/zero_TestDZperf.o: classes.h code.h config.h
 .kernel/zero/zero_TestDZperf.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_TestDZperf.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_TestDZperf.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -885,10 +885,10 @@
 .kernel/zero/zero_TestDZperf.o: thread.h types.h /usr/include/stdc-predef.h
 .kernel/zero/zero_TestDZperf.o: vmsupport.h zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_TestDZperf.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_TimerEmulation.o:   config.h
+.kernel/zero/zero_TimerEmulation.o: config.h
 .kernel/zero/zero_TimerEmulation.o: /usr/include/stdc-predef.h
 .kernel/zero/zero_VMClass.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_VMClass.o: classes.h code.h  config.h
+.kernel/zero/zero_VMClass.o: classes.h code.h config.h
 .kernel/zero/zero_VMClass.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_VMClass.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_VMClass.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -902,7 +902,7 @@
 .kernel/zero/zero_VMClass.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_VMClass.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_VMMethod.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_VMMethod.o: classes.h code.h  config.h
+.kernel/zero/zero_VMMethod.o: classes.h code.h config.h
 .kernel/zero/zero_VMMethod.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_VMMethod.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_VMMethod.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -916,7 +916,7 @@
 .kernel/zero/zero_VMMethod.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_VMMethod.o: zero/zero_Profiler.h zip.h
 .kernel/zero/zero_VMObject.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_VMObject.o: classes.h code.h  config.h
+.kernel/zero/zero_VMObject.o: classes.h code.h config.h
 .kernel/zero/zero_VMObject.o: context.h debug_reg.h domain.h ekhz.h
 .kernel/zero/zero_VMObject.o: exception_handler.h execJAVA.h gc/gc_alloc.h
 .kernel/zero/zero_VMObject.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
@@ -929,8 +929,8 @@
 .kernel/zero/zero_VMObject.o: types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/zero/zero_VMObject.o: zero/zero.h zero/zero_Memory.h
 .kernel/zero/zero_VMObject.o: zero/zero_Profiler.h zip.h
-.kernel/zip.o: all.h atomicfn.h atomic.h bench.h  classes.h code.h
-.kernel/zip.o:  config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/zip.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/zip.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/zip.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
 .kernel/zip.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h interrupt.h
 .kernel/zip.o: intr.h irq.h lapic.h libcache.h load.h lock.h lowlevel.h

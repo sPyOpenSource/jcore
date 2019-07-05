@@ -10,10 +10,3358 @@ struct symbols_s {
   unsigned long size;
 };
 
+#define FKTSIZE_abstract_method_error 0x0000005f
+#define FKTADDR_abstract_method_error 0x0010ab87
+#define FKTSIZE_abstract_method_error_proxy 0x00000019
+#define FKTADDR_abstract_method_error_proxy 0x0010abe6
+#define FKTSIZE_ack8259IRQ 0x00000046
+#define FKTADDR_ack8259IRQ 0x00125075
+#define FKTSIZE_ackIRQ 0x0000002b
+#define FKTADDR_ackIRQ 0x001251e4
+#define FKTSIZE_addHashKey 0x00000051
+#define FKTADDR_addHashKey 0x001012c9
+#define FKTSIZE_addrCoreSymbol 0x00000064
+#define FKTADDR_addrCoreSymbol 0x0012675b
+#define FKTSIZE_add_to_history 0x00000069
+#define FKTADDR_add_to_history 0x00125d36
+#define FKTSIZE_addToRefTable 0x00000085
+#define FKTADDR_addToRefTable 0x0010ba60
+#define FKTSIZE_addZeroVtables 0x00000086
+#define FKTADDR_addZeroVtables 0x00109c95
+#define FKTSIZE_allocArray 0x0000001f
+#define FKTADDR_allocArray 0x0010f373
+#define FKTSIZE_allocArrayInDomain 0x0000001c
+#define FKTADDR_allocArrayInDomain 0x0010f392
+#define FKTSIZE_allocAtomicVariableProxyInDomain 0x00000067
+#define FKTADDR_allocAtomicVariableProxyInDomain 0x0010ebe6
+#define FKTSIZE_allocByteArray 0x00000199
+#define FKTADDR_allocByteArray 0x0010f1da
+#define FKTSIZE_allocCASProxyInDomain 0x00000052
+#define FKTADDR_allocCASProxyInDomain 0x0010ec4d
+#define FKTSIZE_allocChunk 0x00000097
+#define FKTADDR_allocChunk 0x00114706
+#define FKTSIZE_allocCredentialProxyInDomain 0x0000005c
+#define FKTADDR_allocCredentialProxyInDomain 0x0010ed26
+#define FKTSIZE_allocDomainProxyInDomain 0x00000063
+#define FKTADDR_allocDomainProxyInDomain 0x0010ed82
+#define FKTSIZE_allocMemoryProxyInDomain 0x00000032
+#define FKTADDR_allocMemoryProxyInDomain 0x0011de94
+#define FKTSIZE_allocMemoryProxyInDomainDZM 0x0000001c
+#define FKTADDR_allocMemoryProxyInDomainDZM 0x0011de78
+#define FKTSIZE_allocObject 0x00000024
+#define FKTADDR_allocObject 0x0010196d
+#define FKTSIZE_allocProxyInDomain 0x000000a5
+#define FKTADDR_allocProxyInDomain 0x0010eb41
+#define FKTSIZE_allocReadOnlyMemory 0x0000002d
+#define FKTADDR_allocReadOnlyMemory 0x0011c0da
+#define FKTSIZE_allocServiceDescInDomain 0x00000050
+#define FKTADDR_allocServiceDescInDomain 0x0010ef4d
+#define FKTSIZE_allocThreadDescForeignProxyInDomain 0x000000c0
+#define FKTADDR_allocThreadDescForeignProxyInDomain 0x0010ee3f
+#define FKTSIZE_allocThreadDescProxyInDomain 0x0000005a
+#define FKTADDR_allocThreadDescProxyInDomain 0x0010ede5
+#define FKTSIZE_allocVMObjectProxyInDomain 0x00000087
+#define FKTADDR_allocVMObjectProxyInDomain 0x0010ec9f
+#define FKTSIZE_array_clone 0x0000001d
+#define FKTADDR_array_clone 0x0011f6cc
+#define FKTSIZE_array_constructor 0x00000006
+#define FKTADDR_array_constructor 0x0011f6a8
+#define FKTSIZE_array_equals 0x00000011
+#define FKTADDR_array_equals 0x0011f820
+#define FKTSIZE_array_finalize 0x00000019
+#define FKTADDR_array_finalize 0x0011f831
+#define FKTSIZE_array_getClass 0x00000016
+#define FKTADDR_array_getClass 0x0011f6ae
+#define FKTSIZE_array_hashCode 0x00000008
+#define FKTADDR_array_hashCode 0x0011f6c4
+#define FKTSIZE_array_notify 0x00000019
+#define FKTADDR_array_notify 0x0011f734
+#define FKTSIZE_array_notifyAll 0x00000019
+#define FKTADDR_array_notifyAll 0x0011f74d
+#define FKTSIZE_array_toString 0x000000ba
+#define FKTADDR_array_toString 0x0011f766
+#define FKTSIZE_array_wait0 0x00000019
+#define FKTADDR_array_wait0 0x0011f6e9
+#define FKTSIZE_array_wait1 0x00000019
+#define FKTADDR_array_wait1 0x0011f702
+#define FKTSIZE_array_wait2 0x00000019
+#define FKTADDR_array_wait2 0x0011f71b
+#define FKTSIZE_assert_memory 0x0000005c
+#define FKTADDR_assert_memory 0x0011c01d
+#define FKTSIZE_atexit 0x00000006
+#define FKTADDR_atexit 0x0012341e
+#define FKTSIZE_atol 0x00000048
+#define FKTADDR_atol 0x00123ae5
+#define FKTSIZE_atomicfn_init 0x00000083
+#define FKTADDR_atomicfn_init 0x00117382
+#define FKTSIZE_atomicvariable_activateListMode 0x00000010
+#define FKTADDR_atomicvariable_activateListMode 0x0011815b
+#define FKTSIZE_atomicvariable_atomicUpdateUnblock 0x000000a6
+#define FKTADDR_atomicvariable_atomicUpdateUnblock 0x00117ffb
+#define FKTSIZE_atomicvariable_blockIfEqual 0x0000005d
+#define FKTADDR_atomicvariable_blockIfEqual 0x001180a1
+#define FKTSIZE_atomicvariable_blockIfNotEqual 0x0000005d
+#define FKTADDR_atomicvariable_blockIfNotEqual 0x001180fe
+#define FKTSIZE_atomicvariable_get 0x0000000b
+#define FKTADDR_atomicvariable_get 0x00117ff0
+#define FKTSIZE_atomicvariable_set 0x0000000f
+#define FKTADDR_atomicvariable_set 0x00117fe1
+#define FKTSIZE_base_gdt_init 0x000000a6
+#define FKTADDR_base_gdt_init 0x001249dd
+#define FKTSIZE_base_gdt_load 0x00000054
+#define FKTADDR_base_gdt_load 0x00124ac0
+#define FKTSIZE_base_tss_init 0x00000032
+#define FKTADDR_base_tss_init 0x00124a83
+#define FKTSIZE_base_tss_load 0x0000001d
+#define FKTADDR_base_tss_load 0x00124b14
+#define FKTSIZE_blubb 0x00000006
+#define FKTADDR_blubb 0x0010a58d
+#define FKTSIZE_bootfs_getFile 0x0000007c
+#define FKTADDR_bootfs_getFile 0x001181d5
+#define FKTSIZE_bootfs_getReadWriteFile 0x00000080
+#define FKTADDR_bootfs_getReadWriteFile 0x00118251
+#define FKTSIZE_bootfs_lookup 0x00000022
+#define FKTADDR_bootfs_lookup 0x001181b3
+#define FKTSIZE_breakpoint_ex 0x00000067
+#define FKTADDR_breakpoint_ex 0x001253e1
+#define FKTSIZE_breakpoint_exception 0x00000012
+#define FKTADDR_breakpoint_exception 0x001001aa
+#define FKTSIZE_callClassConstructor 0x00000082
+#define FKTADDR_callClassConstructor 0x0010792f
+#define FKTSIZE_callClassConstructors 0x00000071
+#define FKTADDR_callClassConstructors 0x001078be
+#define FKTSIZE_call_java 0x00000027
+#define FKTADDR_call_java 0x001005a0
+#define FKTSIZE_call_JAVA_method0 0x0000013c
+#define FKTADDR_call_JAVA_method0 0x00115d19
+#define FKTSIZE_call_JAVA_method1 0x0000014c
+#define FKTADDR_call_JAVA_method1 0x00115e55
+#define FKTSIZE_call_JAVA_method2 0x00000168
+#define FKTADDR_call_JAVA_method2 0x00115fa1
+#define FKTSIZE_callnative_handler 0x0000000e
+#define FKTADDR_callnative_handler 0x00100495
+#define FKTSIZE_callnative_irq 0x00000017
+#define FKTADDR_callnative_irq 0x0010047e
+#define FKTSIZE_callnative_special 0x0000002f
+#define FKTADDR_callnative_special 0x001003f0
+#define FKTSIZE_callnative_special_portal 0x00000031
+#define FKTADDR_callnative_special_portal 0x00100420
+#define FKTSIZE_callnative_static 0x0000002b
+#define FKTADDR_callnative_static 0x00100452
+#define FKTSIZE_cas 0x00000026
+#define FKTADDR_cas 0x00115cf3
+#define FKTSIZE_cas_casObject 0x00000051
+#define FKTADDR_cas_casObject 0x0011830b
+#define FKTSIZE_check_assign 0x00000120
+#define FKTADDR_check_assign 0x0010a8e1
+#define FKTSIZE_check_domain_not_in_runq 0x0000003d
+#define FKTADDR_check_domain_not_in_runq 0x00117e11
+#define FKTSIZE_check_eflags0 0x0000004a
+#define FKTADDR_check_eflags0 0x00107bac
+#define FKTSIZE_check_eflags1 0x0000004a
+#define FKTADDR_check_eflags1 0x00107bf6
+#define FKTSIZE_check_in_runq 0x0000000a
+#define FKTADDR_check_in_runq 0x00117f46
+#define FKTSIZE_check_not_in_runq 0x00000006
+#define FKTADDR_check_not_in_runq 0x00117694
+#define FKTSIZE_check_notin_servicequeue 0x00000006
+#define FKTADDR_check_notin_servicequeue 0x0010af86
+#define FKTSIZE_check_runq 0x000000f8
+#define FKTADDR_check_runq 0x00117e4e
+#define FKTSIZE_check_serial 0x0000002c
+#define FKTADDR_check_serial 0x00125fba
+#define FKTSIZE_check_serial_timer 0x0000002e
+#define FKTADDR_check_serial_timer 0x00125f8c
+#define FKTSIZE_check_servicequeue 0x00000006
+#define FKTADDR_check_servicequeue 0x0010af80
+#define FKTSIZE_checkStackTrace 0x00000006
+#define FKTADDR_checkStackTrace 0x00120498
+#define FKTSIZE_checkStackTraceNew 0x00000006
+#define FKTADDR_checkStackTraceNew 0x0012049e
+#define FKTSIZE_check_thread_position 0x000001f5
+#define FKTADDR_check_thread_position 0x00112181
+#define FKTSIZE_check_threads 0x00000049
+#define FKTADDR_check_threads 0x00108ec4
+#define FKTSIZE_checkThreadsOfDomain 0x0000005b
+#define FKTADDR_checkThreadsOfDomain 0x0011ffe4
+#define FKTSIZE_class2Obj 0x0000000b
+#define FKTADDR_class2Obj 0x001189a2
+#define FKTSIZE_classDesc2Class 0x00000115
+#define FKTADDR_classDesc2Class 0x001015af
+#define FKTSIZE_clean_domainsys 0x0000001a
+#define FKTADDR_clean_domainsys 0x00109133
+#define FKTSIZE_clock_getCycles 0x00000036
+#define FKTADDR_clock_getCycles 0x00118431
+#define FKTSIZE_clock_getTicks 0x00000016
+#define FKTADDR_clock_getTicks 0x001183e9
+#define FKTSIZE_clock_getTicks_high 0x0000001a
+#define FKTADDR_clock_getTicks_high 0x00118417
+#define FKTSIZE_clock_getTicks_low 0x00000018
+#define FKTADDR_clock_getTicks_low 0x001183ff
+#define FKTSIZE_clock_getTimeInMillis 0x0000004c
+#define FKTADDR_clock_getTimeInMillis 0x0011839d
+#define FKTSIZE_clock_subtract 0x00000073
+#define FKTADDR_clock_subtract 0x00118467
+#define FKTSIZE_clock_toMicroSec 0x00000057
+#define FKTADDR_clock_toMicroSec 0x001184da
+#define FKTSIZE_clock_toMilliSec 0x0000007c
+#define FKTADDR_clock_toMilliSec 0x001185ad
+#define FKTSIZE_clock_toNanoSec 0x0000007c
+#define FKTADDR_clock_toNanoSec 0x00118531
+#define FKTSIZE_cloneMethodInDomain 0x0000009b
+#define FKTADDR_cloneMethodInDomain 0x00106ccc
+#define FKTSIZE_close 0x00000006
+#define FKTADDR_close 0x00123446
+#define FKTSIZE_compare_eipinfo 0x00000028
+#define FKTADDR_compare_eipinfo 0x001215d4
+#define FKTSIZE_componentManager_load 0x0000009b
+#define FKTADDR_componentManager_load 0x0011865d
+#define FKTSIZE_componentManager_registerLib 0x00000006
+#define FKTADDR_componentManager_registerLib 0x001186f8
+#define FKTSIZE_componentManager_setInheritThread 0x00000098
+#define FKTADDR_componentManager_setInheritThread 0x001186fe
+#define FKTSIZE_console 0x00000092
+#define FKTADDR_console 0x001232c1
+#define FKTSIZE_continue_Thread_to_pos 0x000000e6
+#define FKTADDR_continue_Thread_to_pos 0x0011209b
+#define FKTSIZE_copy_array 0x00000162
+#define FKTADDR_copy_array 0x0010c520
+#define FKTSIZE_copy_cpustate 0x000000b6
+#define FKTADDR_copy_cpustate 0x0010c46a
+#define FKTSIZE_copy_domainproxy 0x000000b6
+#define FKTADDR_copy_domainproxy 0x0010c39b
+#define FKTSIZE_copy_foreign_cpustate 0x00000019
+#define FKTADDR_copy_foreign_cpustate 0x0010c451
+#define FKTSIZE_copyFromCharArray 0x0000006a
+#define FKTADDR_copyFromCharArray 0x00101a0a
+#define FKTSIZE_copyIntoByteArray 0x00000046
+#define FKTADDR_copyIntoByteArray 0x00101a74
+#define FKTSIZE_copyIntoCharArray 0x00000046
+#define FKTADDR_copyIntoCharArray 0x001019c4
+#define FKTSIZE_copy_memory 0x000000d2
+#define FKTADDR_copy_memory 0x0011dd48
+#define FKTSIZE_copy_object 0x00000212
+#define FKTADDR_copy_object 0x0010c077
+#define FKTSIZE_copy_portal 0x00000112
+#define FKTADDR_copy_portal 0x0010c289
+#define FKTSIZE_copy_reference 0x0000004d
+#define FKTADDR_copy_reference 0x0010bae5
+#define FKTSIZE_copy_reference_internal 0x000001e8
+#define FKTADDR_copy_reference_internal 0x0010bb32
+#define FKTSIZE_copy_returnvalue 0x0000001f
+#define FKTADDR_copy_returnvalue 0x0010b0c7
+#define FKTSIZE_cpuDesc2Obj 0x0000000b
+#define FKTADDR_cpuDesc2Obj 0x0011e990
+#define FKTSIZE_CPUDesc2ObjectDesc 0x0000000b
+#define FKTADDR_CPUDesc2ObjectDesc 0x0010eb03
+#define FKTSIZE_cpu_dump 0x00000019
+#define FKTADDR_cpu_dump 0x00118814
+#define FKTSIZE_cpu_getID 0x00000028
+#define FKTADDR_cpu_getID 0x0011882d
+#define FKTSIZE_cpu_load 0x00000019
+#define FKTADDR_cpu_load 0x001187e2
+#define FKTSIZE_cpuManager_allowScheduling 0x00000006
+#define FKTADDR_cpuManager_allowScheduling 0x001197ee
+#define FKTSIZE_cpuManager_assertInterruptEnabled 0x00000006
+#define FKTADDR_cpuManager_assertInterruptEnabled 0x0011937c
+#define FKTSIZE_cpuManager_attachToThread 0x00000016
+#define FKTADDR_cpuManager_attachToThread 0x0011919c
+#define FKTSIZE_cpuManager_block 0x0000000e
+#define FKTADDR_cpuManager_block 0x00118cd2
+#define FKTSIZE_cpuManager_blockIfNotUnblocked 0x0000002b
+#define FKTADDR_cpuManager_blockIfNotUnblocked 0x00118ce0
+#define FKTSIZE_cpuManager_clearUnblockFlag 0x00000015
+#define FKTADDR_cpuManager_clearUnblockFlag 0x00118d0b
+#define FKTSIZE_cpuManager_createCPUState 0x00000050
+#define FKTADDR_cpuManager_createCPUState 0x00118e54
+#define FKTSIZE_cpuManager_createNewEvent 0x0000000a
+#define FKTADDR_cpuManager_createNewEvent 0x0011920e
+#define FKTSIZE_cpuManager_dump 0x00000227
+#define FKTADDR_cpuManager_dump 0x00118a7f
+#define FKTSIZE_cpuManager_executeClassConstructors 0x0000008c
+#define FKTADDR_cpuManager_executeClassConstructors 0x00119382
+#define FKTSIZE_cpuManager_getAtomicVariable 0x00000024
+#define FKTADDR_cpuManager_getAtomicVariable 0x00118f52
+#define FKTSIZE_cpuManager_getAttachedObject 0x00000010
+#define FKTADDR_cpuManager_getAttachedObject 0x001191b2
+#define FKTSIZE_cpuManager_getCAS 0x00000191
+#define FKTADDR_cpuManager_getCAS 0x00118f76
+#define FKTSIZE_cpuManager_getClass 0x0000010d
+#define FKTADDR_cpuManager_getClass 0x00119218
+#define FKTSIZE_cpuManager_getCPUState 0x00000013
+#define FKTADDR_cpuManager_getCPUState 0x00118cbf
+#define FKTSIZE_cpuManager_getCredential 0x00000036
+#define FKTADDR_cpuManager_getCredential 0x001191c2
+#define FKTSIZE_cpuManager_getStackDepth 0x0000005d
+#define FKTADDR_cpuManager_getStackDepth 0x00119428
+#define FKTSIZE_cpuManager_getStackFrameBytecode 0x000000bc
+#define FKTADDR_cpuManager_getStackFrameBytecode 0x0011972c
+#define FKTSIZE_cpuManager_getStackFrameClassName 0x000000e7
+#define FKTADDR_cpuManager_getStackFrameClassName 0x00119485
+#define FKTSIZE_cpuManager_getStackFrameLine 0x000000bc
+#define FKTADDR_cpuManager_getStackFrameLine 0x00119670
+#define FKTSIZE_cpuManager_getStackFrameMethodName 0x00000104
+#define FKTADDR_cpuManager_getStackFrameMethodName 0x0011956c
+#define FKTSIZE_cpuManager_getVMClass 0x0000003e
+#define FKTADDR_cpuManager_getVMClass 0x00119325
+#define FKTSIZE_cpuManager_getVMObject 0x00000019
+#define FKTADDR_cpuManager_getVMObject 0x00119363
+#define FKTSIZE_cpuManager_inheritServiceThread 0x0000000a
+#define FKTADDR_cpuManager_inheritServiceThread 0x0011940e
+#define FKTSIZE_cpuManager_inhibitScheduling 0x00000006
+#define FKTADDR_cpuManager_inhibitScheduling 0x001197e8
+#define FKTSIZE_cpuManager_join 0x0000003a
+#define FKTADDR_cpuManager_join 0x00118d5a
+#define FKTSIZE_cpuManager_notify 0x0000001d
+#define FKTADDR_cpuManager_notify 0x00118a07
+#define FKTSIZE_cpuManager_notifyAll 0x0000001d
+#define FKTADDR_cpuManager_notifyAll 0x00118a24
+#define FKTSIZE_cpuManager_printStackTrace 0x00000027
+#define FKTADDR_cpuManager_printStackTrace 0x00118f2b
+#define FKTSIZE_cpuManager_reboot 0x00000010
+#define FKTADDR_cpuManager_reboot 0x00119418
+#define FKTSIZE_cpuManager_receive 0x00000016
+#define FKTADDR_cpuManager_receive 0x001189ad
+#define FKTSIZE_cpuManager_recordEvent 0x00000006
+#define FKTADDR_cpuManager_recordEvent 0x001191f8
+#define FKTSIZE_cpuManager_recordEventWithInfo 0x00000006
+#define FKTADDR_cpuManager_recordEventWithInfo 0x001191fe
+#define FKTSIZE_cpuManager_setThreadName 0x00000095
+#define FKTADDR_cpuManager_setThreadName 0x00119107
+#define FKTSIZE_cpuManager_sleep 0x00000019
+#define FKTADDR_cpuManager_sleep 0x001189d1
+#define FKTSIZE_cpuManager_start 0x00000087
+#define FKTADDR_cpuManager_start 0x00118ea4
+#define FKTSIZE_cpuManager_switchTo 0x00000019
+#define FKTADDR_cpuManager_switchTo 0x00118ca6
+#define FKTSIZE_cpuManager_unblock 0x00000082
+#define FKTADDR_cpuManager_unblock 0x00118d94
+#define FKTSIZE_cpuManager_wait 0x0000001d
+#define FKTADDR_cpuManager_wait 0x001189ea
+#define FKTSIZE_cpuManager_waitUntilBlocked 0x0000003a
+#define FKTADDR_cpuManager_waitUntilBlocked 0x00118d20
+#define FKTSIZE_cpuManager_yield 0x0000000e
+#define FKTADDR_cpuManager_yield 0x001189c3
+#define FKTSIZE_cpu_save 0x00000019
+#define FKTADDR_cpu_save 0x001187fb
+#define FKTSIZE_cpuState2thread 0x0000006c
+#define FKTADDR_cpuState2thread 0x0010dde6
+#define FKTSIZE_cpuState_getNext 0x00000041
+#define FKTADDR_cpuState_getNext 0x00119948
+#define FKTSIZE_cpuState_getState 0x0000001f
+#define FKTADDR_cpuState_getState 0x001198b0
+#define FKTSIZE_cpuState_isPortalThread 0x0000001f
+#define FKTADDR_cpuState_isPortalThread 0x001198cf
+#define FKTSIZE_cpuState_setNext 0x0000005a
+#define FKTADDR_cpuState_setNext 0x001198ee
+#define FKTSIZE_cpu_toString 0x00000066
+#define FKTADDR_cpu_toString 0x00118855
+#define FKTSIZE_createArrayClass 0x000000ca
+#define FKTADDR_createArrayClass 0x00100cc2
+#define FKTSIZE_createArrayObjectVTableProto 0x00000162
+#define FKTADDR_createArrayObjectVTableProto 0x0011faf6
+#define FKTSIZE_createClassDescImplementingInterface 0x000000e1
+#define FKTADDR_createClassDescImplementingInterface 0x001098f4
+#define FKTSIZE_create_CPUObjs 0x00000035
+#define FKTADDR_create_CPUObjs 0x00109d22
+#define FKTSIZE_createDomain 0x00000207
+#define FKTADDR_createDomain 0x0010888f
+#define FKTSIZE_createDZClass 0x00000058
+#define FKTADDR_createDZClass 0x00109a1e
+#define FKTSIZE_createDZMemory 0x00000061
+#define FKTADDR_createDZMemory 0x0011c079
+#define FKTSIZE_createExceptionInDomain 0x000001d6
+#define FKTADDR_createExceptionInDomain 0x00116403
+#define FKTSIZE_createInitialDomainThread 0x0000002a
+#define FKTADDR_createInitialDomainThread 0x00107cd2
+#define FKTSIZE_createMemoryInstance 0x000000a2
+#define FKTADDR_createMemoryInstance 0x0011c107
+#define FKTSIZE_createNewEvent 0x0000000a
+#define FKTADDR_createNewEvent 0x00119204
+#define FKTSIZE_createObjectClass 0x0000003c
+#define FKTADDR_createObjectClass 0x0011faba
+#define FKTSIZE_createObjectClassDesc 0x00000270
+#define FKTADDR_createObjectClassDesc 0x0011f84a
+#define FKTSIZE_createPortalInDomain 0x000000c7
+#define FKTADDR_createPortalInDomain 0x0010abff
+#define FKTSIZE_createPrimitiveClass 0x0000006e
+#define FKTADDR_createPrimitiveClass 0x00100ad4
+#define FKTSIZE_createService 0x0000010b
+#define FKTADDR_createService 0x0010aa7c
+#define FKTSIZE_createSharedArrayClassDesc 0x0000017a
+#define FKTADDR_createSharedArrayClassDesc 0x00100d8c
+#define FKTSIZE_createSharedArrayClassDescUsingElemClass 0x00000155
+#define FKTADDR_createSharedArrayClassDescUsingElemClass 0x00100f06
+#define FKTSIZE_createSubClass 0x00000049
+#define FKTADDR_createSubClass 0x001099d5
+#define FKTSIZE_createThread 0x0000002f
+#define FKTADDR_createThread 0x00107cfc
+#define FKTSIZE_createThreadInMem 0x000001a5
+#define FKTADDR_createThreadInMem 0x00107d44
+#define FKTSIZE_createVTable 0x0000007c
+#define FKTADDR_createVTable 0x00106384
+#define FKTSIZE_credentialvariable_get 0x0000000b
+#define FKTADDR_credentialvariable_get 0x00119a24
+#define FKTSIZE_credentialvariable_getSignerDomainID 0x0000000b
+#define FKTADDR_credentialvariable_getSignerDomainID 0x00119a2f
+#define FKTSIZE_credentialvariable_set 0x00000053
+#define FKTADDR_credentialvariable_set 0x001199d1
+#define FKTSIZE_curdom 0x0000000d
+#define FKTADDR_curdom 0x00100a3a
+#define FKTSIZE_cur_idle_thread 0x0000000a
+#define FKTADDR_cur_idle_thread 0x00107b6f
+#define FKTSIZE_curthr 0x0000000a
+#define FKTADDR_curthr 0x00100a26
+#define FKTSIZE_curthrP 0x0000000a
+#define FKTADDR_curthrP 0x00100a30
+#define FKTSIZE_dbg_print 0x0000002b
+#define FKTADDR_dbg_print 0x001263ad
+#define FKTSIZE_debug_ex 0x00000167
+#define FKTADDR_debug_ex 0x00125448
+#define FKTSIZE_debug_exception 0x00000012
+#define FKTADDR_debug_exception 0x00100194
+#define FKTSIZE_debug_read 0x0000000a
+#define FKTADDR_debug_read 0x00119a7b
+#define FKTSIZE_debugsupport_breakpoint 0x00000007
+#define FKTADDR_debugsupport_breakpoint 0x00119bc1
+#define FKTSIZE_debugsupport_dumpDomain 0x00000028
+#define FKTADDR_debugsupport_dumpDomain 0x00119b76
+#define FKTSIZE_debugsupport_dumpObject 0x00000017
+#define FKTADDR_debugsupport_dumpObject 0x00119b9e
+#define FKTSIZE_debugsupport_registerMonitorCommand 0x00000006
+#define FKTADDR_debugsupport_registerMonitorCommand 0x00119bbb
+#define FKTSIZE_debugsupport_sendBinary 0x00000006
+#define FKTADDR_debugsupport_sendBinary 0x00119bb5
+#define FKTSIZE_debug_write 0x00000029
+#define FKTADDR_debug_write 0x00119a85
+#define FKTSIZE_debug_writeBuf 0x00000059
+#define FKTADDR_debug_writeBuf 0x00119aae
+#define FKTSIZE_destroy_call_java 0x00000022
+#define FKTADDR_destroy_call_java 0x001005c8
+#define FKTSIZE_destroy_call_JAVA_function 0x000000d8
+#define FKTADDR_destroy_call_JAVA_function 0x00116122
+#define FKTSIZE_destroy_call_JAVA_method1 0x000000e4
+#define FKTADDR_destroy_call_JAVA_method1 0x001161fa
+#define FKTSIZE_destroy_call_JAVA_method2 0x000000fe
+#define FKTADDR_destroy_call_JAVA_method2 0x001162de
+#define FKTSIZE_destroyCurrentThread 0x0000005a
+#define FKTADDR_destroyCurrentThread 0x0010806f
+#define FKTSIZE_destroyDomain 0x00000006
+#define FKTADDR_destroyDomain 0x00108a96
+#define FKTSIZE_destroy_switch_to 0x00000050
+#define FKTADDR_destroy_switch_to 0x00100550
+#define FKTSIZE_direct_send_portal 0x00000259
+#define FKTADDR_direct_send_portal 0x0010b758
+#define FKTSIZE_disable8259IRQ 0x0000007d
+#define FKTADDR_disable8259IRQ 0x00124ff8
+#define FKTSIZE_disable_cache 0x00000013
+#define FKTADDR_disable_cache 0x001003bd
+#define FKTSIZE_disableIRQ 0x00000040
+#define FKTADDR_disableIRQ 0x0012525d
+#define FKTSIZE___divdi3 0x000000ba
+#define FKTADDR___divdi3 0x001245c4
+#define FKTSIZE_doAllocMultiArray 0x0000012b
+#define FKTADDR_doAllocMultiArray 0x0010f095
+#define FKTSIZE_domain_clearTCBflag 0x00000006
+#define FKTADDR_domain_clearTCBflag 0x00119c02
+#define FKTSIZE_domainDesc2Obj 0x0000001d
+#define FKTADDR_domainDesc2Obj 0x0011fd65
+#define FKTSIZE_domain_getID 0x0000000b
+#define FKTADDR_domain_getID 0x00119cb6
+#define FKTSIZE_domain_getName 0x0000000a
+#define FKTADDR_domain_getName 0x00119cac
+#define FKTSIZE_domain_isActive 0x0000004e
+#define FKTADDR_domain_isActive 0x00119c08
+#define FKTSIZE_domain_isTerminated 0x00000056
+#define FKTADDR_domain_isTerminated 0x00119c56
+#define FKTSIZE___domainManager_createDomain 0x000003db
+#define FKTADDR___domainManager_createDomain 0x0011a080
+#define FKTSIZE_domainManager_createDomain 0x000000ee
+#define FKTADDR_domainManager_createDomain 0x0011a45b
+#define FKTSIZE_domainManager_freeze 0x0000001a
+#define FKTADDR_domainManager_freeze 0x0011a7c3
+#define FKTSIZE_domainManager_gc 0x00000083
+#define FKTADDR_domainManager_gc 0x0011a7f7
+#define FKTSIZE_domainManager_getCurrentDomain 0x0000007a
+#define FKTADDR_domainManager_getCurrentDomain 0x0011a5c4
+#define FKTSIZE_domainManager_getDomainZero 0x0000007b
+#define FKTADDR_domainManager_getDomainZero 0x0011a549
+#define FKTSIZE_domainManager_installInterceptor 0x00000016
+#define FKTADDR_domainManager_installInterceptor 0x0011a70f
+#define FKTSIZE_domainManager_terminate 0x0000003f
+#define FKTADDR_domainManager_terminate 0x0011a73e
+#define FKTSIZE_domainManager_terminateCaller 0x00000046
+#define FKTADDR_domainManager_terminateCaller 0x0011a77d
+#define FKTSIZE_domainManager_thaw 0x0000001a
+#define FKTADDR_domainManager_thaw 0x0011a7dd
+#define FKTSIZE_domain_panic 0x0000009c
+#define FKTADDR_domain_panic 0x00109157
+#define FKTSIZE_domainrunq_append 0x00000046
+#define FKTADDR_domainrunq_append 0x001177bf
+#define FKTSIZE_domainrunq_remove 0x0000006e
+#define FKTADDR_domainrunq_remove 0x00117805
+#define FKTSIZE_domainrunq_remove_domain 0x00000086
+#define FKTADDR_domainrunq_remove_domain 0x00117c55
+#define FKTSIZE_dprintf 0x0000002f
+#define FKTADDR_dprintf 0x0010961c
+#define FKTSIZE_dtostr 0x00000093
+#define FKTADDR_dtostr 0x00109589
+#define FKTSIZE_dummy_entry_point 0x00000019
+#define FKTADDR_dummy_entry_point 0x0010071f
+#define FKTSIZE_dump_chunk_visual 0x0000006b
+#define FKTADDR_dump_chunk_visual 0x0011b5bd
+#define FKTSIZE_dump_context 0x00000351
+#define FKTADDR_dump_context 0x0012003f
+#define FKTSIZE_dump_data 0x0000001b
+#define FKTADDR_dump_data 0x0012103b
+#define FKTSIZE_dumpDomainInfo 0x00000253
+#define FKTADDR_dumpDomainInfo 0x00121381
+#define FKTSIZE_dump_irqhandlers 0x0000028a
+#define FKTADDR_dump_irqhandlers 0x0012584e
+#define FKTSIZE_dumpObject 0x00000124
+#define FKTADDR_dumpObject 0x00120f17
+#define FKTSIZE_dumpPortalInfo 0x00000146
+#define FKTADDR_dumpPortalInfo 0x0012123b
+#define FKTSIZE_dump_runq 0x0000007d
+#define FKTADDR_dump_runq 0x00117d60
+#define FKTSIZE_dump_runqOfDomain 0x00000034
+#define FKTADDR_dump_runqOfDomain 0x00117ddd
+#define FKTSIZE_dumpstack 0x00000066
+#define FKTADDR_dumpstack 0x00120853
+#define FKTSIZE_dumpThreadInfo 0x000001e5
+#define FKTADDR_dumpThreadInfo 0x00121056
+#define FKTSIZE_dumpVTable 0x0000003e
+#define FKTADDR_dumpVTable 0x00118a41
+#define FKTSIZE_dzmemory_alive 0x00000023
+#define FKTADDR_dzmemory_alive 0x0011b9cc
+#define FKTSIZE_dzmemory_alloc 0x0000006c
+#define FKTADDR_dzmemory_alloc 0x0011b80f
+#define FKTSIZE_dzmemory_check 0x000000ee
+#define FKTADDR_dzmemory_check 0x0011ba27
+#define FKTSIZE_dzmemory_collector 0x00000059
+#define FKTADDR_dzmemory_collector 0x0011bb15
+#define FKTSIZE_dzmemory_decRefcount 0x0000004b
+#define FKTADDR_dzmemory_decRefcount 0x0011b6e8
+#define FKTSIZE_dzmemory_free 0x00000038
+#define FKTADDR_dzmemory_free 0x0011b87b
+#define FKTSIZE_dzmemory_free_chunk 0x00000119
+#define FKTADDR_dzmemory_free_chunk 0x0011b8b3
+#define FKTSIZE_dzmemory_gcdomain 0x000000a9
+#define FKTADDR_dzmemory_gcdomain 0x0011b628
+#define FKTSIZE_dzmemory_incRefcount 0x00000034
+#define FKTADDR_dzmemory_incRefcount 0x0011b733
+#define FKTSIZE_dzmemory_init 0x000000a8
+#define FKTADDR_dzmemory_init 0x0011b767
+#define FKTSIZE_dzmemory_join 0x000000c7
+#define FKTADDR_dzmemory_join 0x0011be71
+#define FKTSIZE_dzmemory_mark 0x00000038
+#define FKTADDR_dzmemory_mark 0x0011b9ef
+#define FKTSIZE_dzmemory_split2 0x00000147
+#define FKTADDR_dzmemory_split2 0x0011bd2a
+#define FKTSIZE_dzmemory_split3 0x000001bc
+#define FKTADDR_dzmemory_split3 0x0011bb6e
+#define FKTSIZE_eip_in_last_stackframe 0x00000063
+#define FKTADDR_eip_in_last_stackframe 0x0012688c
+#define FKTSIZE_enable8259IRQ 0x0000009b
+#define FKTADDR_enable8259IRQ 0x00124f5d
+#define FKTSIZE_enable_cache 0x00000015
+#define FKTADDR_enable_cache 0x001003d0
+#define FKTSIZE_enableIRQ 0x0000004e
+#define FKTADDR_enableIRQ 0x0012520f
+#define FKTSIZE_errexception 0x00000047
+#define FKTADDR_errexception 0x00100248
+#define FKTSIZE_exception 0x00000045
+#define FKTADDR_exception 0x00100200
+#define FKTSIZE_exceptionHandler 0x0000001c
+#define FKTADDR_exceptionHandler 0x00116736
+#define FKTSIZE_exceptionHandlerInternal 0x0000003c
+#define FKTADDR_exceptionHandlerInternal 0x001166fa
+#define FKTSIZE_exceptionHandlerMsg 0x0000030d
+#define FKTADDR_exceptionHandlerMsg 0x00116752
+#define FKTSIZE_exception_msg 0x000000c2
+#define FKTADDR_exception_msg 0x001255af
+#define FKTSIZE_executeForallClasses 0x0000006b
+#define FKTADDR_executeForallClasses 0x001156e2
+#define FKTSIZE_executeInterface 0x0000003d
+#define FKTADDR_executeInterface 0x00107a65
+#define FKTSIZE_executeSpecial 0x0000005c
+#define FKTADDR_executeSpecial 0x00107a09
+#define FKTSIZE_executeStatic 0x00000058
+#define FKTADDR_executeStatic 0x001079b1
+#define FKTSIZE_executeVirtual 0x00000039
+#define FKTADDR_executeVirtual 0x00107aa2
+#define FKTSIZE_exit 0x00000020
+#define FKTADDR_exit 0x001238eb
+#define FKTSIZE_fbemulation_checkEvent 0x0000000a
+#define FKTADDR_fbemulation_checkEvent 0x0011aadf
+#define FKTSIZE_fbemulation_getBitsPerPixel 0x0000000a
+#define FKTADDR_fbemulation_getBitsPerPixel 0x0011aac5
+#define FKTSIZE_fbemulation_getBytesPerLine 0x0000000a
+#define FKTADDR_fbemulation_getBytesPerLine 0x0011aabb
+#define FKTSIZE_fbemulation_getHeight 0x0000000a
+#define FKTADDR_fbemulation_getHeight 0x0011aab1
+#define FKTSIZE_fbemulation_getVideoMemory 0x0000003a
+#define FKTADDR_fbemulation_getVideoMemory 0x0011aa6d
+#define FKTSIZE_fbemulation_getWidth 0x0000000a
+#define FKTADDR_fbemulation_getWidth 0x0011aaa7
+#define FKTSIZE_fbemulation_inputDevicesAvailable 0x0000000a
+#define FKTADDR_fbemulation_inputDevicesAvailable 0x0011aad5
+#define FKTSIZE_fbemulation_open 0x000001b9
+#define FKTADDR_fbemulation_open 0x0011a8b4
+#define FKTSIZE_fbemulation_update 0x00000006
+#define FKTADDR_fbemulation_update 0x0011aacf
+#define FKTSIZE_fill_descriptor 0x000000a4
+#define FKTADDR_fill_descriptor 0x0012486a
+#define FKTSIZE_fill_gate 0x0000005a
+#define FKTADDR_fill_gate 0x0012490e
+#define FKTSIZE_findAddrOfMethodBytecode 0x00000032
+#define FKTADDR_findAddrOfMethodBytecode 0x0010193b
+#define FKTSIZE_findByteCodePosition 0x00000093
+#define FKTADDR_findByteCodePosition 0x00108bcb
+#define FKTSIZE_findClass 0x00000110
+#define FKTADDR_findClass 0x0010146b
+#define FKTSIZE_findClassAndMethod 0x00000109
+#define FKTADDR_findClassAndMethod 0x00107206
+#define FKTSIZE_findClassAndMethodInLib 0x00000102
+#define FKTADDR_findClassAndMethodInLib 0x00107104
+#define FKTSIZE_findClassDesc 0x0000007e
+#define FKTADDR_findClassDesc 0x001013ed
+#define FKTSIZE_findClassDescAndMethod 0x000000d1
+#define FKTADDR_findClassDescAndMethod 0x001074aa
+#define FKTSIZE_findClassDescAndMethodInLib 0x0000019b
+#define FKTADDR_findClassDescAndMethodInLib 0x0010730f
+#define FKTSIZE_findClassDescAndMethodInObject 0x000000d2
+#define FKTADDR_findClassDescAndMethodInObject 0x0011fc58
+#define FKTSIZE_findClassDescInSharedLib 0x0000008d
+#define FKTADDR_findClassDescInSharedLib 0x001010d0
+#define FKTSIZE_findClassForMethod 0x00000112
+#define FKTADDR_findClassForMethod 0x00108a9c
+#define FKTSIZE_findClassInLib 0x00000085
+#define FKTADDR_findClassInLib 0x0010115d
+#define FKTSIZE_findClassOrPrimitive 0x000000e7
+#define FKTADDR_findClassOrPrimitive 0x001011e2
+#define FKTSIZE_findCoreSymbol 0x00000088
+#define FKTADDR_findCoreSymbol 0x0012666f
+#define FKTSIZE_findDEPMethodIndex 0x000000f0
+#define FKTADDR_findDEPMethodIndex 0x001077ce
+#define FKTSIZE_findDomain 0x00000068
+#define FKTADDR_findDomain 0x00108f78
+#define FKTSIZE_findDomainByName 0x00000083
+#define FKTADDR_findDomainByName 0x00108fe0
+#define FKTSIZE_findFieldOffset 0x0000006b
+#define FKTADDR_findFieldOffset 0x00101382
+#define FKTSIZE_findMethod 0x000000a1
+#define FKTADDR_findMethod 0x0010762e
+#define FKTSIZE_findMethodAtAddr 0x00000078
+#define FKTADDR_findMethodAtAddr 0x00108e4c
+#define FKTSIZE_findMethodAtAddrInDomain 0x000001ee
+#define FKTADDR_findMethodAtAddrInDomain 0x00108c5e
+#define FKTSIZE_findMethodAtFramePointer 0x0000001d
+#define FKTADDR_findMethodAtFramePointer 0x00108bae
+#define FKTSIZE_findMethodInLib 0x0000005e
+#define FKTADDR_findMethodInLib 0x001075d0
+#define FKTSIZE_findMethodInSharedLibs 0x00000055
+#define FKTADDR_findMethodInSharedLibs 0x0010757b
+#define FKTSIZE_findPrimitiveClass 0x00000075
+#define FKTADDR_findPrimitiveClass 0x0010105b
+#define FKTSIZE_findProxyCode 0x0000006b
+#define FKTADDR_findProxyCode 0x00108f0d
+#define FKTSIZE_findProxyCodeInDomain 0x000000af
+#define FKTADDR_findProxyCodeInDomain 0x0010b9b1
+#define FKTSIZE_findSharedArrayClassDesc 0x00000073
+#define FKTADDR_findSharedArrayClassDesc 0x00100bf3
+#define FKTSIZE_findSharedArrayClassDescByElemClass 0x0000005c
+#define FKTADDR_findSharedArrayClassDescByElemClass 0x00100c66
+#define FKTSIZE_findSharedLib 0x0000003f
+#define FKTADDR_findSharedLib 0x00101dea
+#define FKTSIZE_find_stackmap 0x00000126
+#define FKTADDR_find_stackmap 0x00112376
+#define FKTSIZE_findSubClasses 0x00000064
+#define FKTADDR_findSubClasses 0x0010174f
+#define FKTSIZE_findSubClassesInLib 0x0000008b
+#define FKTADDR_findSubClassesInLib 0x001016c4
+#define FKTSIZE_findThreadByID 0x00000040
+#define FKTADDR_findThreadByID 0x00107f58
+#define FKTSIZE_findThreadDesc 0x000000d7
+#define FKTADDR_findThreadDesc 0x00107f98
+#define FKTSIZE_findVirtualMethodCode 0x000000ff
+#define FKTADDR_findVirtualMethodCode 0x001076cf
+#define FKTSIZE_findZeroLibMethodIndex 0x000000d1
+#define FKTADDR_findZeroLibMethodIndex 0x0011a63e
+#define FKTSIZE_foreachDomain 0x00000074
+#define FKTADDR_foreachDomain 0x00109063
+#define FKTSIZE_foreachDomain1 0x0000005c
+#define FKTADDR_foreachDomain1 0x001090d7
+#define FKTSIZE_freeChunk 0x0000008e
+#define FKTADDR_freeChunk 0x0011481b
+#define FKTSIZE_freeThreadMem 0x0000006f
+#define FKTADDR_freeThreadMem 0x00107ee9
+#define FKTSIZE_free_threadstack 0x00000014
+#define FKTADDR_free_threadstack 0x0010d7f5
+#define FKTSIZE_freezeDomain 0x0000009d
+#define FKTADDR_freezeDomain 0x0010948d
+#define FKTSIZE_freezeThreads 0x0000006a
+#define FKTADDR_freezeThreads 0x00113dd0
+#define FKTSIZE_fstat 0x00000006
+#define FKTADDR_fstat 0x0012343a
+#define FKTSIZE_gate_init 0x0000004e
+#define FKTADDR_gate_init 0x00124968
+#define FKTSIZE_gc_allocDataInDomain 0x00000022
+#define FKTADDR_gc_allocDataInDomain 0x0010eb1f
+#define FKTSIZE_gc_checkHeap 0x000000b8
+#define FKTADDR_gc_checkHeap 0x0010f72f
+#define FKTSIZE_gc_checkHeap_ArrayCB 0x00000016
+#define FKTADDR_gc_checkHeap_ArrayCB 0x0010f683
+#define FKTSIZE_gc_checkHeap_AtomVarCB 0x00000016
+#define FKTADDR_gc_checkHeap_AtomVarCB 0x0010f6ed
+#define FKTSIZE_gc_checkHeap_CASCB 0x00000006
+#define FKTADDR_gc_checkHeap_CASCB 0x0010f6e7
+#define FKTSIZE_gc_checkHeap_CPUStateProxyCB 0x00000016
+#define FKTADDR_gc_checkHeap_CPUStateProxyCB 0x0010f719
+#define FKTSIZE_gc_checkHeap_DomainProxyCB 0x00000016
+#define FKTADDR_gc_checkHeap_DomainProxyCB 0x0010f703
+#define FKTSIZE_gc_checkHeap_isValidCB 0x00000052
+#define FKTADDR_gc_checkHeap_isValidCB 0x0010f5bd
+#define FKTSIZE_gc_checkHeap_MemoryCB 0x00000006
+#define FKTADDR_gc_checkHeap_MemoryCB 0x0010f69f
+#define FKTSIZE_gc_checkHeap_ObjectCB 0x00000074
+#define FKTADDR_gc_checkHeap_ObjectCB 0x0010f60f
+#define FKTSIZE_gc_checkHeap_PortalCB 0x00000006
+#define FKTADDR_gc_checkHeap_PortalCB 0x0010f699
+#define FKTSIZE_gc_checkHeap_ServiceCB 0x00000016
+#define FKTADDR_gc_checkHeap_ServiceCB 0x0010f6a5
+#define FKTSIZE_gc_checkHeap_ServicePoolCB 0x00000016
+#define FKTADDR_gc_checkHeap_ServicePoolCB 0x0010f6bb
+#define FKTSIZE_gc_checkHeap_StackCB 0x00000016
+#define FKTADDR_gc_checkHeap_StackCB 0x0010f6d1
+#define FKTSIZE_gc_chunked_allocDataInDomain 0x00000305
+#define FKTADDR_gc_chunked_allocDataInDomain 0x001148a9
+#define FKTSIZE_gc_chunked_allocHeap2 0x000002db
+#define FKTADDR_gc_chunked_allocHeap2 0x00114d83
+#define FKTSIZE_gc_chunked_checkHeap 0x0000002a
+#define FKTADDR_gc_chunked_checkHeap 0x00115136
+#define FKTSIZE_gc_chunked_done 0x00000071
+#define FKTADDR_gc_chunked_done 0x001153f5
+#define FKTSIZE_gc_chunked_ensureInHeap 0x00000084
+#define FKTADDR_gc_chunked_ensureInHeap 0x00114cff
+#define FKTSIZE_gc_chunked_finalizeMemory 0x0000002d
+#define FKTADDR_gc_chunked_finalizeMemory 0x001150dc
+#define FKTSIZE_gc_chunked_finalizeMemoryCB 0x00000021
+#define FKTADDR_gc_chunked_finalizeMemoryCB 0x0011505e
+#define FKTSIZE_gc_chunked_finalizePortals 0x0000002d
+#define FKTADDR_gc_chunked_finalizePortals 0x00115109
+#define FKTSIZE_gc_chunked_finalizePortalsCB 0x0000005d
+#define FKTADDR_gc_chunked_finalizePortalsCB 0x0011507f
+#define FKTSIZE_gc_chunked_freeWords 0x00000010
+#define FKTADDR_gc_chunked_freeWords 0x0011528c
+#define FKTSIZE_gc_chunked_gc 0x0000012c
+#define FKTADDR_gc_chunked_gc 0x00115160
+#define FKTSIZE_gc_chunked_init 0x0000027c
+#define FKTADDR_gc_chunked_init 0x00115466
+#define FKTSIZE_gc_chunked_isInHeap 0x0000005b
+#define FKTADDR_gc_chunked_isInHeap 0x00114ca4
+#define FKTSIZE_gc_chunked_printInfo 0x00000149
+#define FKTADDR_gc_chunked_printInfo 0x001152ac
+#define FKTSIZE_gc_chunked_totalWords 0x00000010
+#define FKTADDR_gc_chunked_totalWords 0x0011529c
+#define FKTSIZE_gc_chunked_walkHeap 0x0000007b
+#define FKTADDR_gc_chunked_walkHeap 0x00114bae
+#define FKTSIZE_gc_chunked_walkHeap2 0x0000007b
+#define FKTADDR_gc_chunked_walkHeap2 0x00114c29
+#define FKTSIZE_gc_common_move_array 0x0000005b
+#define FKTADDR_gc_common_move_array 0x00112bff
+#define FKTSIZE_gc_common_move_atomvar 0x0000003c
+#define FKTADDR_gc_common_move_atomvar 0x00112ce2
+#define FKTSIZE_gc_common_move_cas 0x0000003c
+#define FKTADDR_gc_common_move_cas 0x00112d24
+#define FKTSIZE_gc_common_move_cpustate 0x0000004d
+#define FKTADDR_gc_common_move_cpustate 0x00112d9c
+#define FKTSIZE_gc_common_move_domain 0x0000003c
+#define FKTADDR_gc_common_move_domain 0x00112d60
+#define FKTSIZE_gc_common_move_memory 0x0000004c
+#define FKTADDR_gc_common_move_memory 0x00112c96
+#define FKTSIZE_gc_common_move_object 0x0000004b
+#define FKTADDR_gc_common_move_object 0x00112b72
+#define FKTSIZE_gc_common_move_portal 0x0000003c
+#define FKTADDR_gc_common_move_portal 0x00112c5a
+#define FKTSIZE_gc_common_move_reference 0x000002ed
+#define FKTADDR_gc_common_move_reference 0x00112de9
+#define FKTSIZE_gc_common_move_scan_heap2 0x00000047
+#define FKTADDR_gc_common_move_scan_heap2 0x0011319c
+#define FKTSIZE_gc_common_move_scan_heap2_Array 0x0000001f
+#define FKTADDR_gc_common_move_scan_heap2_Array 0x001130dc
+#define FKTSIZE_gc_common_move_scan_heap2_AtomVar 0x0000001f
+#define FKTADDR_gc_common_move_scan_heap2_AtomVar 0x00113139
+#define FKTSIZE_gc_common_move_scan_heap2_CPUState 0x0000001f
+#define FKTADDR_gc_common_move_scan_heap2_CPUState 0x00113158
+#define FKTSIZE_gc_common_move_scan_heap2_ForeignCPUState 0x0000001f
+#define FKTADDR_gc_common_move_scan_heap2_ForeignCPUState 0x00113177
+#define FKTSIZE_gc_common_move_scan_heap2_Object 0x00000006
+#define FKTADDR_gc_common_move_scan_heap2_Object 0x001130d6
+#define FKTSIZE_gc_common_move_scan_heap2_Service 0x0000001f
+#define FKTADDR_gc_common_move_scan_heap2_Service 0x001130fb
+#define FKTSIZE_gc_common_move_scan_heap2_ServicePool 0x0000001f
+#define FKTADDR_gc_common_move_scan_heap2_ServicePool 0x0011311a
+#define FKTSIZE_gc_common_move_scan_heap2_Stack 0x00000006
+#define FKTADDR_gc_common_move_scan_heap2_Stack 0x00113196
+#define FKTSIZE_gc_common_move_service 0x0000003c
+#define FKTADDR_gc_common_move_service 0x00112bbd
+#define FKTSIZE_gc_common_move_servicepool 0x00000006
+#define FKTADDR_gc_common_move_servicepool 0x00112bf9
+#define FKTSIZE_gc_common_move_stack 0x00000006
+#define FKTADDR_gc_common_move_stack 0x00112d1e
+#define FKTSIZE_gc_correct_irqHandlers 0x0000016a
+#define FKTADDR_gc_correct_irqHandlers 0x00125ad8
+#define FKTSIZE_gc_countInstances 0x000000c0
+#define FKTADDR_gc_countInstances 0x0010da69
+#define FKTSIZE_gc_countInstancesCB 0x0000018f
+#define FKTADDR_gc_countInstancesCB 0x0010d8da
+#define FKTSIZE_gc_done 0x00000045
+#define FKTADDR_gc_done 0x0010dd58
+#define FKTSIZE_gc_freeWords 0x0000001c
+#define FKTADDR_gc_freeWords 0x0010f835
+#define FKTSIZE_gc_impl_shallowCopyArray 0x00000074
+#define FKTADDR_gc_impl_shallowCopyArray 0x0010e15e
+#define FKTSIZE_gc_impl_shallowCopyAtomVar 0x00000049
+#define FKTADDR_gc_impl_shallowCopyAtomVar 0x0010e37d
+#define FKTSIZE_gc_impl_shallowCopyCAS 0x0000003d
+#define FKTADDR_gc_impl_shallowCopyCAS 0x0010e293
+#define FKTSIZE_gc_impl_shallowCopyCpuState 0x00000064
+#define FKTADDR_gc_impl_shallowCopyCpuState 0x0010e319
+#define FKTSIZE_gc_impl_shallowCopyDomain 0x00000049
+#define FKTADDR_gc_impl_shallowCopyDomain 0x0010e2d0
+#define FKTSIZE_gc_impl_shallowCopyMemory 0x00000037
+#define FKTADDR_gc_impl_shallowCopyMemory 0x0010de73
+#define FKTSIZE_gc_impl_shallowCopyObject 0x0000005d
+#define FKTADDR_gc_impl_shallowCopyObject 0x0010deaa
+#define FKTSIZE_gc_impl_shallowCopyPortal 0x00000055
+#define FKTADDR_gc_impl_shallowCopyPortal 0x0010e23e
+#define FKTSIZE_gc_impl_shallowCopyService 0x0000003a
+#define FKTADDR_gc_impl_shallowCopyService 0x0010dfb7
+#define FKTSIZE_gc_impl_shallowCopyServicePool 0x0000003a
+#define FKTADDR_gc_impl_shallowCopyServicePool 0x0010dff1
+#define FKTSIZE_gc_impl_walkContent 0x000000eb
+#define FKTADDR_gc_impl_walkContent 0x0010ea01
+#define FKTSIZE_gc_impl_walkContent2 0x00000108
+#define FKTADDR_gc_impl_walkContent2 0x0010e8f9
+#define FKTSIZE_gc_impl_walkContentArray 0x0000006c
+#define FKTADDR_gc_impl_walkContentArray 0x0010e1d2
+#define FKTSIZE_gc_impl_walkContentAtomVar 0x00000097
+#define FKTADDR_gc_impl_walkContentAtomVar 0x0010e3c6
+#define FKTSIZE_gc_impl_walkContentCPUState 0x00000478
+#define FKTADDR_gc_impl_walkContentCPUState 0x0010e481
+#define FKTSIZE_gc_impl_walkContentDomainProxy 0x00000006
+#define FKTADDR_gc_impl_walkContentDomainProxy 0x0010e45d
+#define FKTSIZE_gc_impl_walkContentForeignCPUState 0x0000001e
+#define FKTADDR_gc_impl_walkContentForeignCPUState 0x0010e463
+#define FKTSIZE_gc_impl_walkContentObject 0x000000b0
+#define FKTADDR_gc_impl_walkContentObject 0x0010df07
+#define FKTSIZE_gc_impl_walkContentService 0x000000b1
+#define FKTADDR_gc_impl_walkContentService 0x0010e02b
+#define FKTSIZE_gc_impl_walkContentServicePool 0x00000082
+#define FKTADDR_gc_impl_walkContentServicePool 0x0010e0dc
+#define FKTSIZE_gc_in 0x00000097
+#define FKTADDR_gc_in 0x0010db29
+#define FKTSIZE_gc_init 0x000000ac
+#define FKTADDR_gc_init 0x0010dcac
+#define FKTSIZE_gc_isValidHeapRef 0x00000204
+#define FKTADDR_gc_isValidHeapRef 0x0010f3b9
+#define FKTSIZE_gc_mem 0x0000000a
+#define FKTADDR_gc_mem 0x0010dc1a
+#define FKTSIZE_gc_memcpy4 0x00000021
+#define FKTADDR_gc_memcpy4 0x0010de52
+#define FKTSIZE_gc_memrefArrCB 0x00000095
+#define FKTADDR_gc_memrefArrCB 0x00114561
+#define FKTSIZE_gc_memrefObjCB 0x000000aa
+#define FKTADDR_gc_memrefObjCB 0x001144b7
+#define FKTSIZE_gc_memrefRootCB 0x0000005a
+#define FKTADDR_gc_memrefRootCB 0x001145f6
+#define FKTSIZE_gc_new_allocDataInDomain 0x000001e3
+#define FKTADDR_gc_new_allocDataInDomain 0x0011325e
+#define FKTSIZE_gc_new_allocHeap2 0x00000059
+#define FKTADDR_gc_new_allocHeap2 0x001135cc
+#define FKTSIZE_gc_new_checkHeap 0x0000002a
+#define FKTADDR_gc_new_checkHeap 0x0011387f
+#define FKTSIZE_gc_new_done 0x000000bc
+#define FKTADDR_gc_new_done 0x001136eb
+#define FKTSIZE_gc_new_ensureInHeap 0x000000ba
+#define FKTADDR_gc_new_ensureInHeap 0x00113512
+#define FKTSIZE_gc_new_finalizeMemory 0x0000002d
+#define FKTADDR_gc_new_finalizeMemory 0x00113825
+#define FKTSIZE_gc_new_finalizeMemoryCB 0x00000021
+#define FKTADDR_gc_new_finalizeMemoryCB 0x001137a7
+#define FKTSIZE_gc_new_finalizePortals 0x0000002d
+#define FKTADDR_gc_new_finalizePortals 0x00113852
+#define FKTSIZE_gc_new_finalizePortalsCB 0x0000005d
+#define FKTADDR_gc_new_finalizePortalsCB 0x001137c8
+#define FKTSIZE_gc_new_freeWords 0x00000024
+#define FKTADDR_gc_new_freeWords 0x001139e9
+#define FKTSIZE_gc_new_gc 0x0000013a
+#define FKTADDR_gc_new_gc 0x001138af
+#define FKTSIZE_gc_new_init 0x00000218
+#define FKTADDR_gc_new_init 0x00113b05
+#define FKTSIZE_gc_new_init1 0x00000006
+#define FKTADDR_gc_new_init1 0x001138a9
+#define FKTSIZE_gc_new_isInHeap 0x00000031
+#define FKTADDR_gc_new_isInHeap 0x001134e1
+#define FKTSIZE_gc_new_printInfo 0x000000d4
+#define FKTADDR_gc_new_printInfo 0x00113a31
+#define FKTSIZE_gc_new_scan_heap2_Array 0x0000001f
+#define FKTADDR_gc_new_scan_heap2_Array 0x00113644
+#define FKTSIZE_gc_new_scan_heap2_AtomVar 0x0000001f
+#define FKTADDR_gc_new_scan_heap2_AtomVar 0x00113682
+#define FKTSIZE_gc_new_scan_heap2_CPUState 0x0000001f
+#define FKTADDR_gc_new_scan_heap2_CPUState 0x001136a1
+#define FKTSIZE_gc_new_scan_heap2_ForeignCPUState 0x0000001f
+#define FKTADDR_gc_new_scan_heap2_ForeignCPUState 0x001136c0
+#define FKTSIZE_gc_new_scan_heap2_Object 0x0000001f
+#define FKTADDR_gc_new_scan_heap2_Object 0x00113625
+#define FKTSIZE_gc_new_scan_heap2_Service 0x0000001f
+#define FKTADDR_gc_new_scan_heap2_Service 0x00113663
+#define FKTSIZE_gc_new_scan_heap2_ServicePool 0x00000006
+#define FKTADDR_gc_new_scan_heap2_ServicePool 0x001136df
+#define FKTSIZE_gc_new_scan_heap2_Stack 0x00000006
+#define FKTADDR_gc_new_scan_heap2_Stack 0x001136e5
+#define FKTSIZE_gc_new_totalWords 0x00000024
+#define FKTADDR_gc_new_totalWords 0x00113a0d
+#define FKTSIZE_gc_new_walkHeap 0x00000050
+#define FKTADDR_gc_new_walkHeap 0x00113441
+#define FKTSIZE_gc_new_walkHeap2 0x00000050
+#define FKTADDR_gc_new_walkHeap2 0x00113491
+#define FKTSIZE_gc_objSize2 0x000000b7
+#define FKTADDR_gc_objSize2 0x00111a66
+#define FKTSIZE_gc_org_allocDataInDomain 0x0000017a
+#define FKTADDR_gc_org_allocDataInDomain 0x0011004d
+#define FKTSIZE_gc_org_allocHeap2 0x0000007a
+#define FKTADDR_gc_org_allocHeap2 0x0010f86d
+#define FKTSIZE_gc_org_checkHeap 0x0000000a
+#define FKTADDR_gc_org_checkHeap 0x0011171f
+#define FKTSIZE_gc_org_count_instances 0x0000029f
+#define FKTADDR_gc_org_count_instances 0x00111083
+#define FKTSIZE_gc_org_done 0x000000b3
+#define FKTADDR_gc_org_done 0x00110fd0
+#define FKTSIZE_gc_org_finalizeMemory 0x0000019b
+#define FKTADDR_gc_org_finalizeMemory 0x0011133b
+#define FKTSIZE_gc_org_finalizePortals 0x00000019
+#define FKTADDR_gc_org_finalizePortals 0x00111322
+#define FKTSIZE_gc_org_freeWords 0x00000020
+#define FKTADDR_gc_org_freeWords 0x0011175a
+#define FKTSIZE_gc_org_gc 0x00000636
+#define FKTADDR_gc_org_gc 0x0011099a
+#define FKTSIZE_gc_org_init 0x00000190
+#define FKTADDR_gc_org_init 0x0011185e
+#define FKTSIZE_gc_org_isInHeap 0x00000031
+#define FKTADDR_gc_org_isInHeap 0x00111729
+#define FKTSIZE_gc_org_isValidHeapRef 0x00000249
+#define FKTADDR_gc_org_isValidHeapRef 0x001114d6
+#define FKTSIZE_gc_org_move_array 0x00000172
+#define FKTADDR_gc_org_move_array 0x0010fae2
+#define FKTSIZE_gc_org_move_atomvar 0x00000096
+#define FKTADDR_gc_org_move_atomvar 0x0010fd22
+#define FKTSIZE_gc_org_move_cas 0x00000065
+#define FKTADDR_gc_org_move_cas 0x0010fdb8
+#define FKTSIZE_gc_org_move_cpustate 0x00000019
+#define FKTADDR_gc_org_move_cpustate 0x0010fc6d
+#define FKTSIZE_gc_org_move_memory 0x00000019
+#define FKTADDR_gc_org_move_memory 0x0010fc54
+#define FKTSIZE_gc_org_move_object 0x0000017c
+#define FKTADDR_gc_org_move_object 0x0010f8e7
+#define FKTSIZE_gc_org_move_portal 0x0000007f
+#define FKTADDR_gc_org_move_portal 0x0010fa63
+#define FKTSIZE_gc_org_move_reference 0x00000230
+#define FKTADDR_gc_org_move_reference 0x0010fe1d
+#define FKTSIZE_gc_org_move_service 0x0000009c
+#define FKTADDR_gc_org_move_service 0x0010fc86
+#define FKTSIZE_gc_org_printInfo 0x000000c4
+#define FKTADDR_gc_org_printInfo 0x0011179a
+#define FKTSIZE_gc_org_scan_heap2 0x00000264
+#define FKTADDR_gc_org_scan_heap2 0x001106bb
+#define FKTSIZE_gc_org_scan_stack 0x000004f4
+#define FKTADDR_gc_org_scan_stack 0x001101c7
+#define FKTSIZE_gc_org_totalWords 0x00000020
+#define FKTADDR_gc_org_totalWords 0x0011177a
+#define FKTSIZE_gc_printInfo 0x00000041
+#define FKTADDR_gc_printInfo 0x0010dbc0
+#define FKTSIZE_gc_totalWords 0x0000001c
+#define FKTADDR_gc_totalWords 0x0010f851
+#define FKTSIZE_gc_walkContinuesBlock 0x00000292
+#define FKTADDR_gc_walkContinuesBlock 0x00111b97
+#define FKTSIZE_gc_walkContinuesBlock_Alt 0x0000022e
+#define FKTADDR_gc_walkContinuesBlock_Alt 0x00111e29
+#define FKTSIZE_gc_zero_init 0x00000088
+#define FKTADDR_gc_zero_init 0x0010dc24
+#define FKTSIZE_gc_zero_panic 0x00000019
+#define FKTADDR_gc_zero_panic 0x0010dc01
+#define FKTSIZE_get_8254_timer_count 0x00000034
+#define FKTADDR_get_8254_timer_count 0x00125c7e
+#define FKTSIZE_getArraySize 0x00000024
+#define FKTADDR_getArraySize 0x00101991
+#define FKTSIZE_getCaller 0x00000057
+#define FKTADDR_getCaller 0x0010978c
+#define FKTSIZE_getchar 0x0000000a
+#define FKTADDR_getchar 0x00123b63
+#define FKTSIZE_get_dr6 0x00000011
+#define FKTADDR_get_dr6 0x00124d83
+#define FKTSIZE_get_dr7 0x00000011
+#define FKTADDR_get_dr7 0x001247ae
+#define FKTSIZE_getEFlags 0x00000010
+#define FKTADDR_getEFlags 0x00100a16
+#define FKTSIZE_get_element_class 0x0000000b
+#define FKTADDR_get_element_class 0x0010a70a
+#define FKTSIZE_getenv 0x0000000a
+#define FKTADDR_getenv 0x00123707
+#define FKTSIZE_get_flagname 0x0000007a
+#define FKTADDR_get_flagname 0x00111b1d
+#define FKTSIZE_get_from_history 0x00000064
+#define FKTADDR_get_from_history 0x00125d9f
+#define FKTSIZE_get_IDString 0x00000034
+#define FKTADDR_get_IDString 0x0011ffb0
+#define FKTSIZE_getIMR8259IRQ 0x00000051
+#define FKTADDR_getIMR8259IRQ 0x00125193
+#define FKTSIZE_getInitialNaming 0x00000010
+#define FKTADDR_getInitialNaming 0x00109864
+#define FKTSIZE_getIRR8259IRQ 0x0000006c
+#define FKTADDR_getIRR8259IRQ 0x00125127
+#define FKTSIZE_getISR8259IRQ 0x0000006c
+#define FKTADDR_getISR8259IRQ 0x001250bb
+#define FKTSIZE_get_message 0x0000000a
+#define FKTADDR_get_message 0x00107ae1
+#define FKTSIZE_getMethodNameByEIP 0x00000076
+#define FKTADDR_getMethodNameByEIP 0x001206f3
+#define FKTSIZE_getNumberOfDomains 0x0000000a
+#define FKTADDR_getNumberOfDomains 0x0010914d
+#define FKTSIZE_getObjFlags 0x0000000b
+#define FKTADDR_getObjFlags 0x0010aa6b
+#define FKTSIZE_getParameter 0x000000ac
+#define FKTADDR_getParameter 0x0011fe0a
+#define FKTSIZE_get_processor_id 0x00000006
+#define FKTADDR_get_processor_id 0x001003b7
+#define FKTSIZE_getReferenceArrayElement 0x0000000f
+#define FKTADDR_getReferenceArrayElement 0x001019b5
+#define FKTSIZE_get_state 0x00000079
+#define FKTADDR_get_state 0x00120769
+#define FKTSIZE_getSubObject 0x000000aa
+#define FKTADDR_getSubObject 0x0011f27c
+#define FKTSIZE_gettimeofday 0x0000000a
+#define FKTADDR_gettimeofday 0x0012342a
+#define FKTSIZE_hw_errexception 0x00000030
+#define FKTADDR_hw_errexception 0x00125762
+#define FKTSIZE_hw_exception 0x000000f1
+#define FKTADDR_hw_exception 0x00125671
+#define FKTSIZE_hwint 0x0000004a
+#define FKTADDR_hwint 0x00100058
+#define FKTSIZE_hwint00 0x00000001
+#define FKTADDR_hwint00 0x001002a0
+#define FKTSIZE_icore_base_cpu_init 0x0000000b
+#define FKTADDR_icore_base_cpu_init 0x00124ab5
+#define FKTSIZE_icore_base_cpu_load 0x00000013
+#define FKTADDR_icore_base_cpu_load 0x00124b31
+#define FKTSIZE_idle 0x00000026
+#define FKTADDR_idle 0x00117b60
+#define FKTSIZE_idt_load 0x000000e8
+#define FKTADDR_idt_load 0x00124e75
+#define FKTSIZE_implements_interface 0x000000c6
+#define FKTADDR_implements_interface 0x0010a808
+#define FKTSIZE_inb 0x0000001d
+#define FKTADDR_inb 0x00123363
+#define FKTSIZE_init_atomicvariable_portal 0x00000031
+#define FKTADDR_init_atomicvariable_portal 0x0011816b
+#define FKTSIZE_init_bootfs_portal 0x0000002a
+#define FKTADDR_init_bootfs_portal 0x001182d1
+#define FKTSIZE_init_cas_portal 0x00000031
+#define FKTADDR_init_cas_portal 0x0011835c
+#define FKTSIZE_init_clock_portal 0x0000002a
+#define FKTADDR_init_clock_portal 0x00118629
+#define FKTSIZE_init_componentmanager_portal 0x0000002a
+#define FKTADDR_init_componentmanager_portal 0x00118796
+#define FKTSIZE_init_cpumanager_portal 0x0000002d
+#define FKTADDR_init_cpumanager_portal 0x001197f4
+#define FKTSIZE_init_cpu_portal 0x00000031
+#define FKTADDR_init_cpu_portal 0x001188bb
+#define FKTSIZE_init_cpustate_portal 0x00000031
+#define FKTADDR_init_cpustate_portal 0x00119989
+#define FKTSIZE_init_credential_portal 0x00000031
+#define FKTADDR_init_credential_portal 0x00119a3a
+#define FKTSIZE_init_debugchannel_portal 0x00000052
+#define FKTADDR_init_debugchannel_portal 0x00119b07
+#define FKTSIZE_init_debugsupport_portal 0x0000002a
+#define FKTADDR_init_debugsupport_portal 0x00119bc8
+#define FKTSIZE_init_descriptor 0x000000a4
+#define FKTADDR_init_descriptor 0x00124dd1
+#define FKTSIZE_init_domainmanager_portal 0x0000002a
+#define FKTADDR_init_domainmanager_portal 0x0011a87a
+#define FKTSIZE_init_domain_portal 0x00000031
+#define FKTADDR_init_domain_portal 0x00119cc1
+#define FKTSIZE_init_domainsys 0x000000c6
+#define FKTADDR_init_domainsys 0x001086e5
+#define FKTSIZE_init_fbemulation_portal 0x0000002a
+#define FKTADDR_init_fbemulation_portal 0x0011ade6
+#define FKTSIZE_init_framebuffer_emulation 0x00000006
+#define FKTADDR_init_framebuffer_emulation 0x0011ade0
+#define FKTSIZE_init_interceptInboundInfo_portal 0x00000059
+#define FKTADDR_init_interceptInboundInfo_portal 0x0011ff43
+#define FKTSIZE_init_irq_data 0x000001d0
+#define FKTADDR_init_irq_data 0x0011ae77
+#define FKTSIZE_init_irq_portal 0x0000002a
+#define FKTADDR_init_irq_portal 0x0011b4d3
+#define FKTSIZE_init_memorymanager_portal 0x0000002a
+#define FKTADDR_init_memorymanager_portal 0x0011e144
+#define FKTSIZE_init_memory_portal 0x0000008f
+#define FKTADDR_init_memory_portal 0x0011df55
+#define FKTSIZE_init_mutex_portal 0x00000031
+#define FKTADDR_init_mutex_portal 0x0011e202
+#define FKTSIZE_init_naming_portal 0x0000002f
+#define FKTADDR_init_naming_portal 0x0011e4e9
+#define FKTSIZE_init_object 0x0000003b
+#define FKTADDR_init_object 0x0011fd2a
+#define FKTSIZE_init_ports_portal 0x0000002d
+#define FKTADDR_init_ports_portal 0x0011e79f
+#define FKTSIZE_initPrimitiveClasses 0x000000b1
+#define FKTADDR_initPrimitiveClasses 0x00100b42
+#define FKTSIZE_init_profiler_portal 0x0000002a
+#define FKTADDR_init_profiler_portal 0x0011e844
+#define FKTSIZE_init_realmode 0x000002f7
+#define FKTADDR_init_realmode 0x0011aae9
+#define FKTSIZE_init_scheduler_portal 0x0000002a
+#define FKTADDR_init_scheduler_portal 0x0011e8c8
+#define FKTSIZE_init_serial 0x00000162
+#define FKTADDR_init_serial 0x00125e03
+#define FKTSIZE_init_smpcpumanager_portal 0x0000002d
+#define FKTADDR_init_smpcpumanager_portal 0x0011ed46
+#define FKTSIZE_init_vmclass_portal 0x00000031
+#define FKTADDR_init_vmclass_portal 0x0011ef3d
+#define FKTSIZE_init_vmmethod_portal 0x00000031
+#define FKTADDR_init_vmmethod_portal 0x0011f182
+#define FKTSIZE_init_vmobject_portal 0x00000031
+#define FKTADDR_init_vmobject_portal 0x0011f37f
+#define FKTSIZE_init_zero_class 0x00000061
+#define FKTADDR_init_zero_class 0x00109a76
+#define FKTSIZE_init_zero_dep 0x000000d1
+#define FKTADDR_init_zero_dep 0x00109ad7
+#define FKTSIZE_init_zero_dep_without_thread 0x000000d0
+#define FKTADDR_init_zero_dep_without_thread 0x00109ba8
+#define FKTSIZE_init_zero_from_lib 0x000000ef
+#define FKTADDR_init_zero_from_lib 0x00109f92
+#define FKTSIZE_IN_jxbytecpy 0x00000013
+#define FKTADDR_IN_jxbytecpy 0x00100314
+#define FKTSIZE_inl 0x0000001c
+#define FKTADDR_inl 0x0011e5aa
+#define FKTSIZE_in_portalcall 0x00000029
+#define FKTADDR_in_portalcall 0x001268ef
+#define FKTSIZE_installInitialNaming 0x00000063
+#define FKTADDR_installInitialNaming 0x00109874
+#define FKTSIZE_installInterceptor 0x00000019
+#define FKTADDR_installInterceptor 0x0011a725
+#define FKTSIZE_installObjectVtable 0x000000bf
+#define FKTADDR_installObjectVtable 0x0011f5e9
+#define FKTSIZE_installVtables 0x000002ba
+#define FKTADDR_installVtables 0x0010acc6
+#define FKTSIZE_interceptInboundInfo_getFirstParameter 0x0000002a
+#define FKTADDR_interceptInboundInfo_getFirstParameter 0x0011feb6
+#define FKTSIZE_interceptInboundInfo_getMethod 0x0000001e
+#define FKTADDR_interceptInboundInfo_getMethod 0x0011fde1
+#define FKTSIZE_interceptInboundInfo_getNextParameter 0x0000002f
+#define FKTADDR_interceptInboundInfo_getNextParameter 0x0011fee0
+#define FKTSIZE_interceptInboundInfo_getServiceObject 0x0000000b
+#define FKTADDR_interceptInboundInfo_getServiceObject 0x0011fdff
+#define FKTSIZE_interceptInboundInfo_getSourceDomain 0x0000002a
+#define FKTADDR_interceptInboundInfo_getSourceDomain 0x0011fd8d
+#define FKTSIZE_interceptInboundInfo_getTargetDomain 0x0000002a
+#define FKTADDR_interceptInboundInfo_getTargetDomain 0x0011fdb7
+#define FKTSIZE_interceptPortalInfo_getServiceID 0x0000001a
+#define FKTADDR_interceptPortalInfo_getServiceID 0x0011ff0f
+#define FKTSIZE_interceptPortalInfo_getTargetDomain 0x0000001a
+#define FKTADDR_interceptPortalInfo_getTargetDomain 0x0011ff29
+#define FKTSIZE_internalallocMemoryProxyInDomain 0x0000008f
+#define FKTADDR_internalallocMemoryProxyInDomain 0x0011dec6
+#define FKTSIZE_internal_switch_to 0x00000063
+#define FKTADDR_internal_switch_to 0x001004e8
+#define FKTSIZE_int_gate 0x00000031
+#define FKTADDR_int_gate 0x00124da0
+#define FKTSIZE_invalid_mem 0x00000046
+#define FKTADDR_invalid_mem 0x0011b577
+#define FKTSIZE_inw 0x0000001f
+#define FKTADDR_inw 0x0011e5de
+#define FKTSIZE_irq_destroy_switch_to 0x00000000
+#define FKTADDR_irq_destroy_switch_to 0x001002a8
+#define FKTSIZE_irq_disableAll 0x00000006
+#define FKTADDR_irq_disableAll 0x0011b4c7
+#define FKTSIZE_irq_disableIRQ 0x00000006
+#define FKTADDR_irq_disableIRQ 0x0011b4bb
+#define FKTSIZE_irq_enableAll 0x00000006
+#define FKTADDR_irq_enableAll 0x0011b4c1
+#define FKTSIZE_irq_enableIRQ 0x0000004e
+#define FKTADDR_irq_enableIRQ 0x0011b46d
+#define FKTSIZE_irq_exit 0x00000098
+#define FKTADDR_irq_exit 0x0011b249
+#define FKTSIZE_irq_first_level_handler 0x0000018c
+#define FKTADDR_irq_first_level_handler 0x0011b2e1
+#define FKTSIZE_irq_handler_new 0x00000032
+#define FKTADDR_irq_handler_new 0x0010845b
+#define FKTSIZE_irq_happened 0x00000006
+#define FKTADDR_irq_happened 0x0010832a
+#define FKTSIZE_irq_installFirstLevelHandler 0x000001d0
+#define FKTADDR_irq_installFirstLevelHandler 0x0011b060
+#define FKTSIZE_irq_irrnotok 0x00000029
+#define FKTADDR_irq_irrnotok 0x001083a5
+#define FKTSIZE_irq_missed 0x00000049
+#define FKTADDR_irq_missed 0x00108330
+#define FKTSIZE_irq_panic 0x00000019
+#define FKTADDR_irq_panic 0x0011b230
+#define FKTSIZE_irq_picnotok 0x0000002c
+#define FKTADDR_irq_picnotok 0x00108379
+#define FKTSIZE_irq_set_destination 0x00000006
+#define FKTADDR_irq_set_destination 0x0011b4cd
+#define FKTSIZE_isArrayClass 0x00000016
+#define FKTADDR_isArrayClass 0x0010a6f4
+#define FKTSIZE_isdigit 0x0000001d
+#define FKTADDR_isdigit 0x00123b46
+#define FKTSIZE_isFree 0x0000007a
+#define FKTADDR_isFree 0x0010cbd4
+#define FKTSIZE_is_interface 0x00000013
+#define FKTADDR_is_interface 0x0010a8ce
+#define FKTSIZE_isRef 0x00000062
+#define FKTADDR_isRef 0x00111a04
+#define FKTSIZE_is_serial_event 0x00000027
+#define FKTADDR_is_serial_event 0x00125f65
+#define FKTSIZE_isspace 0x00000035
+#define FKTADDR_isspace 0x00123d5f
+#define FKTSIZE_is_subclass_of 0x0000006b
+#define FKTADDR_is_subclass_of 0x0010a715
+#define FKTSIZE_is_subinterface_of 0x00000088
+#define FKTADDR_is_subinterface_of 0x0010a780
+#define FKTSIZE_jxbcopy 0x00000000
+#define FKTADDR_jxbcopy 0x001002f0
+#define FKTSIZE_jxbytecpy 0x0000001d
+#define FKTADDR_jxbytecpy 0x00109c78
+#define FKTSIZE_jxfree 0x00000072
+#define FKTADDR_jxfree 0x0010cffd
+#define FKTSIZE_jxfree_tmp 0x0000001b
+#define FKTADDR_jxfree_tmp 0x0010d0d0
+#define FKTSIZE_jxmalloc 0x00000052
+#define FKTADDR_jxmalloc 0x0010ce44
+#define FKTSIZE_jxmalloc_align 0x0000001c
+#define FKTADDR_jxmalloc_align 0x0010ce96
+#define FKTSIZE_jxmalloc_getTotalFreeMemory 0x0000000d
+#define FKTADDR_jxmalloc_getTotalFreeMemory 0x0010cdab
+#define FKTSIZE_jxmalloc_getTotalMemory 0x00000015
+#define FKTADDR_jxmalloc_getTotalMemory 0x0010cd96
+#define FKTSIZE_jxmalloc_init 0x00000130
+#define FKTADDR_jxmalloc_init 0x0010c905
+#define FKTSIZE_jxmalloc_internal 0x0000014b
+#define FKTADDR_jxmalloc_internal 0x0010ceb2
+#define FKTSIZE_jxmalloc_stat 0x00000148
+#define FKTADDR_jxmalloc_stat 0x0010cc4e
+#define FKTSIZE_jxmalloc_tmp 0x00000061
+#define FKTADDR_jxmalloc_tmp 0x0010d06f
+#define FKTSIZE_jxmemset 0x00000000
+#define FKTADDR_jxmemset 0x0010033c
+#define FKTSIZE_jxwmemset 0x00000000
+#define FKTADDR_jxwmemset 0x00100384
+#define FKTSIZE_jxwordcpy 0x00000013
+#define FKTADDR_jxwordcpy 0x00100328
+#define FKTSIZE_libcache_init 0x00000010
+#define FKTADDR_libcache_init 0x001008a7
+#define FKTSIZE_libcache_lookup_jll 0x000000c2
+#define FKTADDR_libcache_lookup_jll 0x001008b7
+#define FKTSIZE_libcache_new_entry 0x00000043
+#define FKTADDR_libcache_new_entry 0x00100864
+#define FKTSIZE_libcache_register_jll 0x0000009d
+#define FKTADDR_libcache_register_jll 0x00100979
+#define FKTSIZE_libc_sendsig_init 0x00000006
+#define FKTADDR_libc_sendsig_init 0x00124789
+#define FKTSIZE_linksharedlib 0x0000039d
+#define FKTADDR_linksharedlib 0x00106d67
+#define FKTSIZE_list_stackmaps 0x00000109
+#define FKTADDR_list_stackmaps 0x0011249c
+#define FKTSIZE_load 0x000000a7
+#define FKTADDR_load 0x00101e29
+#define FKTSIZE_loadIt 0x00000072
+#define FKTADDR_loadIt 0x00101ed0
+#define FKTSIZE_loadLib 0x000002d5
+#define FKTADDR_loadLib 0x00101f42
+#define FKTSIZE_loadSharedLibrary 0x00003874
+#define FKTADDR_loadSharedLibrary 0x00102317
+#define FKTSIZE_locked_threadblock 0x0000001c
+#define FKTADDR_locked_threadblock 0x001082e5
+#define FKTSIZE_locked_threadunblock 0x00000025
+#define FKTADDR_locked_threadunblock 0x00108264
+#define FKTSIZE_longCmp 0x0000005d
+#define FKTADDR_longCmp 0x001060cc
+#define FKTSIZE_longDiv 0x00000066
+#define FKTADDR_longDiv 0x00105f32
+#define FKTSIZE_longMul 0x0000003d
+#define FKTADDR_longMul 0x00106129
+#define FKTSIZE_longRem 0x0000006a
+#define FKTADDR_longRem 0x00105f98
+#define FKTSIZE_longShl 0x00000030
+#define FKTADDR_longShl 0x00106033
+#define FKTSIZE_longShr 0x00000031
+#define FKTADDR_longShr 0x00106002
+#define FKTSIZE_longUShr 0x00000069
+#define FKTADDR_longUShr 0x00106063
+#define FKTSIZE_lookupPortal 0x00000046
+#define FKTADDR_lookupPortal 0x0011e265
+#define FKTSIZE_main 0x0000012c
+#define FKTADDR_main 0x00100738
+#define FKTSIZE_makelong 0x00000066
+#define FKTADDR_makelong 0x00115c37
+#define FKTSIZE_makestring 0x0000002f
+#define FKTADDR_makestring 0x00115c9d
+#define FKTSIZE_makeword 0x0000002e
+#define FKTADDR_makeword 0x00115c09
+#define FKTSIZE_malloc_argsmap 0x00000019
+#define FKTADDR_malloc_argsmap 0x0010d61f
+#define FKTSIZE_malloc_arrayclassdesc 0x0000005f
+#define FKTADDR_malloc_arrayclassdesc 0x0010d325
+#define FKTSIZE_malloc_bytecodetable 0x00000023
+#define FKTADDR_malloc_bytecodetable 0x0010d6b9
+#define FKTSIZE_malloc_class 0x00000018
+#define FKTADDR_malloc_class 0x0010d384
+#define FKTSIZE_malloc_classdesc 0x0000004c
+#define FKTADDR_malloc_classdesc 0x0010d28d
+#define FKTSIZE_malloc_classdescs 0x00000028
+#define FKTADDR_malloc_classdescs 0x0010d417
+#define FKTSIZE_malloc_classdesctable 0x0000001d
+#define FKTADDR_malloc_classdesctable 0x0010d49c
+#define FKTSIZE_malloc_classes 0x00000023
+#define FKTADDR_malloc_classes 0x0010d39c
+#define FKTSIZE_malloc_code 0x0000018a
+#define FKTADDR_malloc_code 0x0010d0eb
+#define FKTSIZE_malloc_cpudesc 0x00000019
+#define FKTADDR_malloc_cpudesc 0x0010d6a0
+#define FKTSIZE_malloc_domainzero_namevalue 0x00000038
+#define FKTADDR_malloc_domainzero_namevalue 0x0010d756
+#define FKTSIZE_malloc_dump 0x0000008c
+#define FKTADDR_malloc_dump 0x0010cdb8
+#define FKTSIZE_malloc_exceptiondescs 0x00000023
+#define FKTADDR_malloc_exceptiondescs 0x0010d3f4
+#define FKTSIZE_malloc_fielddescs 0x00000023
+#define FKTADDR_malloc_fielddescs 0x0010d4d6
+#define FKTSIZE_malloc_libdesc 0x00000018
+#define FKTADDR_malloc_libdesc 0x0010d275
+#define FKTSIZE_malloc_metatable 0x0000001d
+#define FKTADDR_malloc_metatable 0x0010d716
+#define FKTSIZE_malloc_methoddesc 0x00000018
+#define FKTADDR_malloc_methoddesc 0x0010d3bf
+#define FKTSIZE_malloc_methoddescs 0x0000001d
+#define FKTADDR_malloc_methoddescs 0x0010d3d7
+#define FKTSIZE_malloc_methods 0x0000001d
+#define FKTADDR_malloc_methods 0x0010d462
+#define FKTSIZE_malloc_methodVtable 0x0000001d
+#define FKTADDR_malloc_methodVtable 0x0010d47f
+#define FKTSIZE_malloc_nativecode 0x00000023
+#define FKTADDR_malloc_nativecode 0x0010d733
+#define FKTSIZE_malloc_objectmap 0x00000019
+#define FKTADDR_malloc_objectmap 0x0010d606
+#define FKTSIZE_malloc_primitiveclassdesc 0x0000004c
+#define FKTADDR_malloc_primitiveclassdesc 0x0010d2d9
+#define FKTSIZE_malloc_proxycode 0x00000019
+#define FKTADDR_malloc_proxycode 0x0010d687
+#define FKTSIZE_malloc_sharedlibdesc 0x0000006d
+#define FKTADDR_malloc_sharedlibdesc 0x0010d563
+#define FKTSIZE_malloc_sharedlibdesctable 0x0000001d
+#define FKTADDR_malloc_sharedlibdesctable 0x0010d4b9
+#define FKTSIZE_malloc_sourcelinetable 0x0000001d
+#define FKTADDR_malloc_sourcelinetable 0x0010d6dc
+#define FKTSIZE_malloc_stackmap 0x00000019
+#define FKTADDR_malloc_stackmap 0x0010d66e
+#define FKTSIZE_malloc_staticfields 0x0000001d
+#define FKTADDR_malloc_staticfields 0x0010d6f9
+#define FKTSIZE_malloc_staticsmap 0x00000019
+#define FKTADDR_malloc_staticsmap 0x0010d5ed
+#define FKTSIZE_malloc_string 0x0000001d
+#define FKTADDR_malloc_string 0x0010d5d0
+#define FKTSIZE_malloc_symbol 0x00000019
+#define FKTADDR_malloc_symbol 0x0010d655
+#define FKTSIZE_malloc_symboltable 0x0000001d
+#define FKTADDR_malloc_symboltable 0x0010d638
+#define FKTSIZE_malloc_threadstack 0x00000067
+#define FKTADDR_malloc_threadstack 0x0010d78e
+#define FKTSIZE_malloc_tmp_stringtable 0x0000004d
+#define FKTADDR_malloc_tmp_stringtable 0x0010d4f9
+#define FKTSIZE_malloc_vtable 0x0000001d
+#define FKTADDR_malloc_vtable 0x0010d546
+#define FKTSIZE_malloc_vtableSym 0x00000023
+#define FKTADDR_malloc_vtableSym 0x0010d43f
+#define FKTSIZE_markCurrentUsed 0x0000005a
+#define FKTADDR_markCurrentUsed 0x0010ca99
+#define FKTSIZE_markUnused 0x0000005b
+#define FKTADDR_markUnused 0x0010caf3
+#define FKTSIZE_markUsed 0x0000005e
+#define FKTADDR_markUsed 0x0010ca3b
+#define FKTSIZE_memcpy 0x00000034
+#define FKTADDR_memcpy 0x0012395c
+#define FKTSIZE_memfs_close 0x00000023
+#define FKTADDR_memfs_close 0x0011735f
+#define FKTSIZE_memfs_eof 0x00000020
+#define FKTADDR_memfs_eof 0x0011733f
+#define FKTSIZE_memfs_getFileName 0x0000000b
+#define FKTADDR_memfs_getFileName 0x001172ab
+#define FKTSIZE_memfs_getPos 0x0000000a
+#define FKTADDR_memfs_getPos 0x001172a1
+#define FKTSIZE_memfs_getSize 0x0000000b
+#define FKTADDR_memfs_getSize 0x001172b6
+#define FKTSIZE_memfs_getString 0x000000af
+#define FKTADDR_memfs_getString 0x0011719d
+#define FKTSIZE_memfs_init 0x00000006
+#define FKTADDR_memfs_init 0x00116e31
+#define FKTSIZE_memfs_link 0x0000000a
+#define FKTADDR_memfs_link 0x00116edd
+#define FKTSIZE_memfs_lookup 0x00000081
+#define FKTADDR_memfs_lookup 0x00116e5c
+#define FKTSIZE_memfs_mmap 0x00000054
+#define FKTADDR_memfs_mmap 0x00116ef1
+#define FKTSIZE_memfs_open 0x000000e2
+#define FKTADDR_memfs_open 0x00116f45
+#define FKTSIZE_memfs_readByte 0x00000048
+#define FKTADDR_memfs_readByte 0x00117027
+#define FKTSIZE_memfs_readCode 0x00000055
+#define FKTADDR_memfs_readCode 0x0011724c
+#define FKTSIZE_memfs_readInt 0x00000047
+#define FKTADDR_memfs_readInt 0x0011706f
+#define FKTSIZE_memfs_readString 0x00000087
+#define FKTADDR_memfs_readString 0x00117116
+#define FKTSIZE_memfs_readStringData 0x00000060
+#define FKTADDR_memfs_readStringData 0x001170b6
+#define FKTSIZE_memfs_seek 0x00000012
+#define FKTADDR_memfs_seek 0x001172c1
+#define FKTSIZE_memfs_str2chr 0x00000025
+#define FKTADDR_memfs_str2chr 0x00116e37
+#define FKTSIZE_memfs_testChecksum 0x0000006c
+#define FKTADDR_memfs_testChecksum 0x001172d3
+#define FKTSIZE_memfs_unlink 0x0000000a
+#define FKTADDR_memfs_unlink 0x00116ee7
+#define FKTSIZE_mem_getDeviceMemoryClass 0x0000000a
+#define FKTADDR_mem_getDeviceMemoryClass 0x0011dd1e
+#define FKTSIZE_memory_clear 0x00000065
+#define FKTADDR_memory_clear 0x0011c6f5
+#define FKTSIZE_memory_copy 0x000000c1
+#define FKTADDR_memory_copy 0x0011c887
+#define FKTSIZE_memory_copyFromByteArray 0x000000e2
+#define FKTADDR_memory_copyFromByteArray 0x0011ca2e
+#define FKTSIZE_memory_copyFromMemory 0x00000108
+#define FKTADDR_memory_copyFromMemory 0x0011cbf7
+#define FKTSIZE_memory_copy_intradomain 0x0000005e
+#define FKTADDR_memory_copy_intradomain 0x0011de1a
+#define FKTSIZE_memory_copyToByteArray 0x000000e6
+#define FKTADDR_memory_copyToByteArray 0x0011c948
+#define FKTSIZE_memory_copyToMemory 0x000000e7
+#define FKTADDR_memory_copyToMemory 0x0011cb10
+#define FKTSIZE_memory_deleted 0x00000017
+#define FKTADDR_memory_deleted 0x0011b6d1
+#define FKTSIZE_memory_extendFullRange 0x00000019
+#define FKTADDR_memory_extendFullRange 0x0011d651
+#define FKTSIZE_memory_extendRange 0x00000019
+#define FKTADDR_memory_extendRange 0x0011d638
+#define FKTSIZE_memory_fill16 0x00000099
+#define FKTADDR_memory_fill16 0x0011c5cb
+#define FKTSIZE_memory_fill32 0x00000091
+#define FKTADDR_memory_fill32 0x0011c664
+#define FKTSIZE_memory_get16 0x00000077
+#define FKTADDR_memory_get16 0x0011c47a
+#define FKTSIZE_memory_get32 0x0000006d
+#define FKTADDR_memory_get32 0x0011c55e
+#define FKTSIZE_memory_get8 0x00000091
+#define FKTADDR_memory_get8 0x0011c366
+#define FKTSIZE_memory_getBigEndian16 0x0000008a
+#define FKTADDR_memory_getBigEndian16 0x0011d949
+#define FKTSIZE_memory_getBigEndian32 0x0000007b
+#define FKTADDR_memory_getBigEndian32 0x0011d855
+#define FKTSIZE_memory_getLittleEndian16 0x00000071
+#define FKTADDR_memory_getLittleEndian16 0x0011d767
+#define FKTSIZE_memory_getLittleEndian32 0x00000070
+#define FKTADDR_memory_getLittleEndian32 0x0011d683
+#define FKTSIZE_memory_getMem 0x0000000b
+#define FKTADDR_memory_getMem 0x0011dd3d
+#define FKTSIZE_memory_getOffset 0x00000019
+#define FKTADDR_memory_getOffset 0x0011dce7
+#define FKTSIZE_memory_getReadOnlySubRange 0x00000019
+#define FKTADDR_memory_getReadOnlySubRange 0x0011d61f
+#define FKTSIZE_memory_getSize 0x0000000b
+#define FKTADDR_memory_getSize 0x0011dd32
+#define FKTSIZE_memory_getStartAddress 0x0000003e
+#define FKTADDR_memory_getStartAddress 0x0011c835
+#define FKTSIZE_memory_getSubRange 0x00000172
+#define FKTADDR_memory_getSubRange 0x0011ccff
+#define FKTSIZE_memory_isValid 0x0000001e
+#define FKTADDR_memory_isValid 0x0011dd00
+#define FKTSIZE_memory_joinAll 0x000001d8
+#define FKTADDR_memory_joinAll 0x0011d447
+#define FKTSIZE_memory_joinNext 0x00000133
+#define FKTADDR_memory_joinNext 0x0011d314
+#define FKTSIZE_memory_joinPrevious 0x00000181
+#define FKTADDR_memory_joinPrevious 0x0011d193
+#define FKTSIZE_memoryManager_alloc 0x00000042
+#define FKTADDR_memoryManager_alloc 0x0011e017
+#define FKTSIZE_memoryManager_allocAligned 0x00000050
+#define FKTADDR_memoryManager_allocAligned 0x0011e059
+#define FKTSIZE_memoryManager_allocDeviceMemory 0x00000046
+#define FKTADDR_memoryManager_allocDeviceMemory 0x0011e0a9
+#define FKTSIZE_memoryManager_getFreeHeapMemory 0x0000003b
+#define FKTADDR_memoryManager_getFreeHeapMemory 0x0011e109
+#define FKTSIZE_memoryManager_getTotalFreeMemory 0x0000000d
+#define FKTADDR_memoryManager_getTotalFreeMemory 0x0011e0fc
+#define FKTSIZE_memoryManager_getTotalMemory 0x0000000d
+#define FKTADDR_memoryManager_getTotalMemory 0x0011e0ef
+#define FKTSIZE_memory_map 0x00000019
+#define FKTADDR_memory_map 0x0011d66a
+#define FKTSIZE_memory_move 0x000000db
+#define FKTADDR_memory_move 0x0011c75a
+#define FKTSIZE_memory_revoke 0x00000283
+#define FKTADDR_memory_revoke 0x0011da64
+#define FKTSIZE_memory_set16 0x00000083
+#define FKTADDR_memory_set16 0x0011c3f7
+#define FKTSIZE_memory_set32 0x0000006d
+#define FKTADDR_memory_set32 0x0011c4f1
+#define FKTSIZE_memory_set8 0x000000c5
+#define FKTADDR_memory_set8 0x0011c2a1
+#define FKTSIZE_memory_setBigEndian16 0x00000091
+#define FKTADDR_memory_setBigEndian16 0x0011d9d3
+#define FKTSIZE_memory_setBigEndian32 0x00000079
+#define FKTADDR_memory_setBigEndian32 0x0011d8d0
+#define FKTSIZE_memory_setLittleEndian16 0x0000007d
+#define FKTADDR_memory_setLittleEndian16 0x0011d7d8
+#define FKTSIZE_memory_setLittleEndian32 0x00000074
+#define FKTADDR_memory_setLittleEndian32 0x0011d6f3
+#define FKTSIZE_memory_size 0x00000014
+#define FKTADDR_memory_size 0x0011c873
+#define FKTSIZE_memory_sizeof_proxy 0x0000000a
+#define FKTADDR_memory_sizeof_proxy 0x0011dd28
+#define FKTSIZE_memory_split2 0x00000167
+#define FKTADDR_memory_split2 0x0011ce71
+#define FKTSIZE_memory_split3 0x000001bb
+#define FKTADDR_memory_split3 0x0011cfd8
+#define FKTSIZE_memset 0x00000028
+#define FKTADDR_memset 0x0012390b
+#define FKTSIZE_memset16 0x00000029
+#define FKTADDR_memset16 0x00123933
+#define FKTSIZE_method2Obj 0x0000000b
+#define FKTADDR_method2Obj 0x0011ed95
+#define FKTSIZE_methodName2str 0x00000188
+#define FKTADDR_methodName2str 0x001017b3
+#define FKTSIZE___moddi3 0x000000d2
+#define FKTADDR___moddi3 0x001246b7
+#define FKTSIZE_monitor 0x00001b33
+#define FKTADDR_monitor 0x0012178e
+#define FKTSIZE_monitor_print_threadinfo 0x00000037
+#define FKTADDR_monitor_print_threadinfo 0x001215fc
+#define FKTSIZE_multiboot_get_module 0x0000007f
+#define FKTADDR_multiboot_get_module 0x0012339f
+#define FKTSIZE_multiboot_main 0x0000015a
+#define FKTADDR_multiboot_main 0x00124b44
+#define FKTSIZE_Mutex_destroy 0x0000000a
+#define FKTADDR_Mutex_destroy 0x0011e1f8
+#define FKTSIZE_Mutex_lock 0x00000019
+#define FKTADDR_Mutex_lock 0x0011e1b2
+#define FKTSIZE_Mutex_trylock 0x00000014
+#define FKTADDR_Mutex_trylock 0x0011e1cb
+#define FKTSIZE_Mutex_unlock 0x00000019
+#define FKTADDR_Mutex_unlock 0x0011e1df
+#define FKTSIZE_naming_lookup 0x000000ba
+#define FKTADDR_naming_lookup 0x0011e2ca
+#define FKTSIZE_naming_lookupOrWait 0x00000019
+#define FKTADDR_naming_lookupOrWait 0x0011e2ab
+#define FKTSIZE_naming_registerPortal 0x000000ca
+#define FKTADDR_naming_registerPortal 0x0011e41f
+#define FKTSIZE_never_return 0x00000019
+#define FKTADDR_never_return 0x00116109
+#define FKTSIZE_newDomainZeroString 0x00000032
+#define FKTADDR_newDomainZeroString 0x00101d1f
+#define FKTSIZE_newString 0x00000080
+#define FKTADDR_newString 0x00101b62
+#define FKTSIZE_newStringArray 0x00000085
+#define FKTADDR_newStringArray 0x00101be2
+#define FKTSIZE_newStringFromClassname 0x000000b8
+#define FKTADDR_newStringFromClassname 0x00101c67
+#define FKTSIZE_nextFree 0x00000086
+#define FKTADDR_nextFree 0x0010cb4e
+#define FKTSIZE_nonatomic_allocObjectInDomain 0x0000004e
+#define FKTADDR_nonatomic_allocObjectInDomain 0x0010eeff
+#define FKTSIZE_nonatomic_handle2ClassDesc 0x0000000f
+#define FKTADDR_nonatomic_handle2ClassDesc 0x001015a0
+#define FKTSIZE_nonatomic_memoryGetMem 0x0000000d
+#define FKTADDR_nonatomic_memoryGetMem 0x0011c1cb
+#define FKTSIZE_nonatomic_memoryGetSize 0x0000000d
+#define FKTADDR_nonatomic_memoryGetSize 0x0011c1d8
+#define FKTSIZE_nonatomic_memoryGetValid 0x00000010
+#define FKTADDR_nonatomic_memoryGetValid 0x0011c1e5
+#define FKTSIZE_nonatomic_memoryIsValid 0x00000022
+#define FKTADDR_nonatomic_memoryIsValid 0x0011c1a9
+#define FKTSIZE_nonatomic_memorySetValid 0x000000ac
+#define FKTADDR_nonatomic_memorySetValid 0x0011c1f5
+#define FKTSIZE_nonatomic_registerObject 0x00000085
+#define FKTADDR_nonatomic_registerObject 0x0010d809
+#define FKTSIZE_nonatomic_unregisterObject 0x0000004c
+#define FKTADDR_nonatomic_unregisterObject 0x0010d88e
+#define FKTSIZE_obj2class 0x0000000b
+#define FKTADDR_obj2class 0x0010a0a8
+#define FKTSIZE_obj2cpuDesc 0x0000000b
+#define FKTADDR_obj2cpuDesc 0x001187d7
+#define FKTSIZE_obj2domainDesc 0x0000001d
+#define FKTADDR_obj2domainDesc 0x00119b59
+#define FKTSIZE_obj2method 0x0000000b
+#define FKTADDR_obj2method 0x0011ef85
+#define FKTSIZE_object_clone 0x0000004c
+#define FKTADDR_object_clone 0x0011f4a3
+#define FKTSIZE_object_constructor 0x00000006
+#define FKTADDR_object_constructor 0x0011f3d2
+#define FKTSIZE_ObjectDesc2ptr 0x0000000b
+#define FKTADDR_ObjectDesc2ptr 0x00107b79
+#define FKTSIZE_object_equals 0x00000011
+#define FKTADDR_object_equals 0x0011f5bf
+#define FKTSIZE_object_finalize 0x00000019
+#define FKTADDR_object_finalize 0x0011f5d0
+#define FKTSIZE_object_getClass 0x000000c3
+#define FKTADDR_object_getClass 0x0011f3d8
+#define FKTSIZE_object_hashCode 0x00000008
+#define FKTADDR_object_hashCode 0x0011f49b
+#define FKTSIZE_object_notify 0x00000019
+#define FKTADDR_object_notify 0x0011f53a
+#define FKTSIZE_object_notifyAll 0x00000019
+#define FKTADDR_object_notifyAll 0x0011f553
+#define FKTSIZE_object_toString 0x00000053
+#define FKTADDR_object_toString 0x0011f56c
+#define FKTSIZE_object_wait0 0x00000019
+#define FKTADDR_object_wait0 0x0011f4ef
+#define FKTSIZE_object_wait1 0x00000019
+#define FKTADDR_object_wait1 0x0011f508
+#define FKTSIZE_object_wait2 0x00000019
+#define FKTADDR_object_wait2 0x0011f521
+#define FKTSIZE_open 0x00000006
+#define FKTADDR_open 0x00123434
+#define FKTSIZE_outb 0x0000001f
+#define FKTADDR_outb 0x00109553
+#define FKTSIZE_outb_p 0x00000037
+#define FKTADDR_outb_p 0x0011e537
+#define FKTSIZE_outl 0x00000018
+#define FKTADDR_outl 0x0011e5c6
+#define FKTSIZE_outw 0x00000021
+#define FKTADDR_outw 0x0011e5fd
+#define FKTSIZE_panic 0x00000019
+#define FKTADDR_panic 0x00123b2d
+#define FKTSIZE_patchByte 0x00000023
+#define FKTADDR_patchByte 0x00105b8b
+#define FKTSIZE_patchClassPointer 0x0000007a
+#define FKTADDR_patchClassPointer 0x00105d53
+#define FKTSIZE_patchConstant 0x0000004d
+#define FKTADDR_patchConstant 0x00105bae
+#define FKTSIZE_patchDirectMethodAddress 0x000000fd
+#define FKTADDR_patchDirectMethodAddress 0x00105de6
+#define FKTSIZE_patchMethodSymbols 0x0000056f
+#define FKTADDR_patchMethodSymbols 0x00106406
+#define FKTSIZE_patchPrimitiveClassPointer 0x000000b6
+#define FKTADDR_patchPrimitiveClassPointer 0x00106191
+#define FKTSIZE_patchRelativeAddress 0x0000002d
+#define FKTADDR_patchRelativeAddress 0x00105bfb
+#define FKTSIZE_patchRelativeLongAddress 0x0000002b
+#define FKTADDR_patchRelativeLongAddress 0x00106166
+#define FKTSIZE_patchStaticFieldAddress 0x0000012b
+#define FKTADDR_patchStaticFieldAddress 0x00105c28
+#define FKTSIZE_patchStringAddress 0x0000004f
+#define FKTADDR_patchStringAddress 0x00105ee3
+#define FKTSIZE_patchUnresolvedJump 0x00000030
+#define FKTADDR_patchUnresolvedJump 0x00106247
+#define FKTSIZE_pcb_init 0x00000092
+#define FKTADDR_pcb_init 0x00107c40
+#define FKTSIZE_pc_reset 0x0000000f
+#define FKTADDR_pc_reset 0x00123897
+#define FKTSIZE_pc_reset0 0x00000045
+#define FKTADDR_pc_reset0 0x001238a6
+#define FKTSIZE_pic_disable_all 0x00000027
+#define FKTADDR_pic_disable_all 0x001249b6
+#define FKTSIZE_pic_init_pmode 0x00000144
+#define FKTADDR_pic_init_pmode 0x0012529d
+#define FKTSIZE_pic_init_rmode 0x000000bc
+#define FKTADDR_pic_init_rmode 0x00125792
+#define FKTSIZE_pinb 0x0000001d
+#define FKTADDR_pinb 0x0011e56e
+#define FKTSIZE_pmc_log 0x00000006
+#define FKTADDR_pmc_log 0x001207e2
+#define FKTSIZE_portal_abort_current_call 0x00000010
+#define FKTADDR_portal_abort_current_call 0x0010b07f
+#define FKTSIZE_portal_add_sender 0x00000046
+#define FKTADDR_portal_add_sender 0x0010af9b
+#define FKTSIZE_portal_auto_promo 0x000002d8
+#define FKTADDR_portal_auto_promo 0x0010bd1a
+#define FKTSIZE_portal_dequeue_sender 0x0000004e
+#define FKTADDR_portal_dequeue_sender 0x0010afe1
+#define FKTSIZE_portal_remove_sender 0x00000050
+#define FKTADDR_portal_remove_sender 0x0010b02f
+#define FKTSIZE_portal_set_recv 0x0000000f
+#define FKTADDR_portal_set_recv 0x0010af8c
+#define FKTSIZE_portals_init 0x00000006
+#define FKTADDR_portals_init 0x0010c8ef
+#define FKTSIZE_ports_inb 0x0000001e
+#define FKTADDR_ports_inb 0x0011e644
+#define FKTSIZE_ports_inb_p 0x00000020
+#define FKTADDR_ports_inb_p 0x0011e68a
+#define FKTSIZE_ports_inl 0x0000001d
+#define FKTADDR_ports_inl 0x0011e6de
+#define FKTSIZE_ports_inl_p 0x0000001f
+#define FKTADDR_ports_inl_p 0x0011e6fb
+#define FKTSIZE_ports_inw 0x00000014
+#define FKTADDR_ports_inw 0x0011e76a
+#define FKTSIZE_ports_inw_p 0x00000021
+#define FKTADDR_ports_inw_p 0x0011e77e
+#define FKTSIZE_ports_outb 0x00000026
+#define FKTADDR_ports_outb 0x0011e61e
+#define FKTSIZE_ports_outb_p 0x00000028
+#define FKTADDR_ports_outb_p 0x0011e662
+#define FKTSIZE_ports_outl 0x00000019
+#define FKTADDR_ports_outl 0x0011e6aa
+#define FKTSIZE_ports_outl_p 0x0000001b
+#define FKTADDR_ports_outl_p 0x0011e6c3
+#define FKTSIZE_ports_outw 0x00000027
+#define FKTADDR_ports_outw 0x0011e71a
+#define FKTSIZE_ports_outw_p 0x00000029
+#define FKTADDR_ports_outw_p 0x0011e741
+#define FKTSIZE_poutb 0x0000001f
+#define FKTADDR_poutb 0x0011e58b
+#define FKTSIZE_pprintf 0x00000006
+#define FKTADDR_pprintf 0x0010aa76
+#define FKTSIZE_prepare_thread_using_code1 0x0000010b
+#define FKTADDR_prepare_thread_using_code1 0x00117484
+#define FKTSIZE_printCoreSymbolInformation 0x000000cd
+#define FKTADDR_printCoreSymbolInformation 0x001267bf
+#define FKTSIZE_print_domaininfo 0x0000003a
+#define FKTADDR_print_domaininfo 0x00121633
+#define FKTSIZE_print_domainmethods 0x00000105
+#define FKTADDR_print_domainmethods 0x0012166d
+#define FKTSIZE_print_eip_info 0x0000014b
+#define FKTADDR_print_eip_info 0x001204a4
+#define FKTSIZE_print_esp 0x00000039
+#define FKTADDR_print_esp 0x00108174
+#define FKTSIZE_printf 0x00000034
+#define FKTADDR_printf 0x00123711
+#define FKTSIZE_print_formatted_eip_info 0x00000104
+#define FKTADDR_print_formatted_eip_info 0x001205ef
+#define FKTSIZE_print_full_threadinfo 0x000000c4
+#define FKTADDR_print_full_threadinfo 0x001203d4
+#define FKTSIZE_printHeapUsage 0x0000035e
+#define FKTADDR_printHeapUsage 0x00120bb9
+#define FKTSIZE_print_memobj 0x000000e5
+#define FKTADDR_print_memobj 0x0011bf38
+#define FKTSIZE_print_memref 0x00000073
+#define FKTADDR_print_memref 0x00114650
+#define FKTSIZE_printMemUsage 0x0000003b
+#define FKTADDR_printMemUsage 0x00120b7e
+#define FKTSIZE_printNStackTrace 0x000000e6
+#define FKTADDR_printNStackTrace 0x001209de
+#define FKTSIZE_printnum 0x0000009f
+#define FKTADDR_printnum 0x00123990
+#define FKTSIZE_printStackTrace 0x000000fe
+#define FKTADDR_printStackTrace 0x001208e0
+#define FKTSIZE_printStackTraceNew 0x00000027
+#define FKTADDR_printStackTraceNew 0x001208b9
+#define FKTSIZE_printstr 0x00000097
+#define FKTADDR_printstr 0x00123a2f
+#define FKTSIZE_print_threadinfo 0x00000044
+#define FKTADDR_print_threadinfo 0x00120390
+#define FKTSIZE_printTraceFromCtx 0x0000005a
+#define FKTADDR_printTraceFromCtx 0x00120ac4
+#define FKTSIZE_printTraceFromStoredCtx 0x00000060
+#define FKTADDR_printTraceFromStoredCtx 0x00120b1e
+#define FKTSIZE_profiler_end_calibration 0x0000000a
+#define FKTADDR_profiler_end_calibration 0x0011e7fb
+#define FKTSIZE_profiler_getAverageCyclesOfMethod 0x00000006
+#define FKTADDR_profiler_getAverageCyclesOfMethod 0x0011e805
+#define FKTSIZE_profiler_isSampling 0x00000006
+#define FKTADDR_profiler_isSampling 0x0011e83e
+#define FKTSIZE_profiler_restart 0x00000019
+#define FKTADDR_profiler_restart 0x0011e7dc
+#define FKTSIZE_profiler_shell 0x00000027
+#define FKTADDR_profiler_shell 0x0011e80b
+#define FKTSIZE_profiler_start_calibration 0x00000006
+#define FKTADDR_profiler_start_calibration 0x0011e7f5
+#define FKTSIZE_profiler_startSampling 0x00000006
+#define FKTADDR_profiler_startSampling 0x0011e832
+#define FKTSIZE_profiler_stopSampling 0x00000006
+#define FKTADDR_profiler_stopSampling 0x0011e838
+#define FKTSIZE_ptr2ObjectDesc 0x0000000b
+#define FKTADDR_ptr2ObjectDesc 0x0010dda7
+#define FKTSIZE_putchar 0x0000001d
+#define FKTADDR_putchar 0x0012615f
+#define FKTSIZE_puts 0x0000001d
+#define FKTADDR_puts 0x0012617c
+#define FKTSIZE___qdivrem 0x000007ab
+#define FKTADDR___qdivrem 0x00123e19
+#define FKTSIZE_read 0x00000006
+#define FKTADDR_read 0x00123440
+#define FKTSIZE_read_codefile 0x00000099
+#define FKTADDR_read_codefile 0x00101d51
+#define FKTSIZE_readline 0x0000001c
+#define FKTADDR_readline 0x00121772
+#define FKTSIZE_read_line 0x000001d0
+#define FKTADDR_read_line 0x0012647d
+#define FKTSIZE_receive_dep 0x0000001d
+#define FKTADDR_receive_dep 0x001098d7
+#define FKTSIZE_receiveDomainDEP 0x0000000e
+#define FKTADDR_receiveDomainDEP 0x001083ce
+#define FKTSIZE_receive_portalcall 0x00000672
+#define FKTADDR_receive_portalcall 0x0010b0e6
+#define FKTSIZE_receive_portal_init 0x0000001b
+#define FKTADDR_receive_portal_init 0x0010c682
+#define FKTSIZE_register_HLScheduler 0x00000021
+#define FKTADDR_register_HLScheduler 0x0011e9f2
+#define FKTSIZE_registerPortal 0x0000009b
+#define FKTADDR_registerPortal 0x0011e384
+#define FKTSIZE_reinit_service_thread 0x000000a8
+#define FKTADDR_reinit_service_thread 0x0010c69d
+#define FKTSIZE_repatchMethodSymbols 0x00000357
+#define FKTADDR_repatchMethodSymbols 0x00106975
+#define FKTSIZE_reschedule 0x00000061
+#define FKTADDR_reschedule 0x001083dc
+#define FKTSIZE_restartCopy 0x0000000a
+#define FKTADDR_restartCopy 0x0010c06d
+#define FKTSIZE_restartCopy0 0x0000007b
+#define FKTADDR_restartCopy0 0x0010bff2
+#define FKTSIZE_return_from_java0 0x00000002
+#define FKTADDR_return_from_java0 0x0010062a
+#define FKTSIZE_return_from_java1 0x00000003
+#define FKTADDR_return_from_java1 0x00100629
+#define FKTSIZE_return_from_java2 0x00000004
+#define FKTADDR_return_from_java2 0x00100628
+#define FKTSIZE_returnfrom_oneshot 0x0000004e
+#define FKTADDR_returnfrom_oneshot 0x00117436
+#define FKTSIZE__return_to_continue_thread 0x00000025
+#define FKTADDR__return_to_continue_thread 0x0011206c
+#define FKTSIZE_return_to_continue_thread 0x00000007
+#define FKTADDR_return_to_continue_thread 0x00112094
+#define FKTSIZE_rtc_irq_ack 0x00000029
+#define FKTADDR_rtc_irq_ack 0x00108301
+#define FKTSIZE_runq_init 0x0000001a
+#define FKTADDR_runq_init 0x00117b86
+#define FKTSIZE_runqueue_removeFirstOrIdle 0x0000002a
+#define FKTADDR_runqueue_removeFirstOrIdle 0x00117d36
+#define FKTSIZE_runqueue_removeFirstOrNULL 0x0000005b
+#define FKTADDR_runqueue_removeFirstOrNULL 0x00117cdb
+#define FKTSIZE_runqueue_switchdomains 0x000000b5
+#define FKTADDR_runqueue_switchdomains 0x00117ba0
+#define FKTSIZE_save 0x000000ac
+#define FKTADDR_save 0x0010848d
+#define FKTSIZE_save_context 0x00000020
+#define FKTADDR_save_context 0x0010063e
+#define FKTSIZE_save_context2current 0x0000002e
+#define FKTADDR_save_context2current 0x00100630
+#define FKTSIZE_save_timer 0x000000ac
+#define FKTADDR_save_timer 0x00108539
+#define FKTSIZE_scan_class_org 0x0000007b
+#define FKTADDR_scan_class_org 0x0011091f
+#define FKTSIZE_Sched_activate_interrupt_thread 0x00000037
+#define FKTADDR_Sched_activate_interrupt_thread 0x00117a05
+#define FKTSIZE_Sched_block 0x00000038
+#define FKTADDR_Sched_block 0x001082ad
+#define FKTSIZE_Sched_blocked 0x00000006
+#define FKTADDR_Sched_blocked 0x00117974
+#define FKTSIZE_Sched_created 0x00000042
+#define FKTADDR_Sched_created 0x0011792c
+#define FKTSIZE_Sched_deactivate_interrupt_thread 0x00000037
+#define FKTADDR_Sched_deactivate_interrupt_thread 0x00117a3c
+#define FKTSIZE_Sched_destroyed 0x00000006
+#define FKTADDR_Sched_destroyed 0x0011796e
+#define FKTSIZE_Sched_destroy_switch_to_nextThread 0x0000003c
+#define FKTADDR_Sched_destroy_switch_to_nextThread 0x00117b24
+#define FKTSIZE_Sched_domainLeave 0x00000017
+#define FKTADDR_Sched_domainLeave 0x00117b0d
+#define FKTSIZE_Sched_portal_destroy_handoff_to_sender 0x00000045
+#define FKTADDR_Sched_portal_destroy_handoff_to_sender 0x00117725
+#define FKTSIZE_Sched_portal_handoff_to_receiver 0x00000032
+#define FKTADDR_Sched_portal_handoff_to_receiver 0x0011769a
+#define FKTSIZE_Sched_portal_handoff_to_sender 0x00000059
+#define FKTADDR_Sched_portal_handoff_to_sender 0x001176cc
+#define FKTSIZE_Sched_portal_unblock_sender 0x00000017
+#define FKTADDR_Sched_portal_unblock_sender 0x0011776a
+#define FKTSIZE_Sched_reschedule 0x0000009a
+#define FKTADDR_Sched_reschedule 0x00117a73
+#define FKTSIZE_Sched_switch_to_nextThread 0x0000003e
+#define FKTADDR_Sched_switch_to_nextThread 0x00117781
+#define FKTSIZE_Sched_threadsExist 0x0000001e
+#define FKTADDR_Sched_threadsExist 0x001179e7
+#define FKTSIZE_scheduler_blockAndEnableThreadSwitching 0x00000026
+#define FKTADDR_scheduler_blockAndEnableThreadSwitching 0x0011e8a2
+#define FKTSIZE_scheduler_disableThreadSwitching 0x00000014
+#define FKTADDR_scheduler_disableThreadSwitching 0x0011e87e
+#define FKTSIZE_scheduler_enableThreadSwitching 0x00000010
+#define FKTADDR_scheduler_enableThreadSwitching 0x0011e892
+#define FKTSIZE_Sched_unblocked 0x0000003c
+#define FKTADDR_Sched_unblocked 0x0011797a
+#define FKTSIZE_Sched_yielded 0x00000031
+#define FKTADDR_Sched_yielded 0x001179b6
+#define FKTSIZE_ser_breakpoint_ex 0x000000de
+#define FKTADDR_ser_breakpoint_ex 0x00126081
+#define FKTSIZE_ser_dump 0x0000006e
+#define FKTADDR_ser_dump 0x001263d8
+#define FKTSIZE_ser_enable_break 0x0000009b
+#define FKTADDR_ser_enable_break 0x00125fe6
+#define FKTSIZE_ser_getchar 0x000000ac
+#define FKTADDR_ser_getchar 0x001262b6
+#define FKTSIZE_ser_getdata 0x00000037
+#define FKTADDR_ser_getdata 0x00126446
+#define FKTSIZE_ser_putc 0x00000022
+#define FKTADDR_ser_putc 0x0012664d
+#define FKTSIZE_ser_putchar 0x000000be
+#define FKTADDR_ser_putchar 0x00126199
+#define FKTSIZE_ser_trygetchar 0x0000004b
+#define FKTADDR_ser_trygetchar 0x00126362
+#define FKTSIZE_service_decRefcount 0x00000101
+#define FKTADDR_service_decRefcount 0x0010c7ee
+#define FKTSIZE_service_incRefcount 0x00000026
+#define FKTADDR_service_incRefcount 0x0010c745
+#define FKTSIZE_ser_waitforchar 0x0000005f
+#define FKTADDR_ser_waitforchar 0x00126257
+#define FKTSIZE_set_b0 0x00000040
+#define FKTADDR_set_b0 0x001247ef
+#define FKTSIZE_set_b1 0x0000003b
+#define FKTADDR_set_b1 0x0012482f
+#define FKTSIZE_set_breakpoint 0x00000041
+#define FKTADDR_set_breakpoint 0x00107aeb
+#define FKTSIZE_setCodeStart 0x0000010d
+#define FKTADDR_setCodeStart 0x00106277
+#define FKTSIZE_set_current 0x0000000e
+#define FKTADDR_set_current 0x001006dd
+#define FKTSIZE_set_dr0 0x0000000c
+#define FKTADDR_set_dr0 0x001247bf
+#define FKTSIZE_set_dr1 0x0000000c
+#define FKTADDR_set_dr1 0x001247cb
+#define FKTSIZE_set_dr6 0x0000000c
+#define FKTADDR_set_dr6 0x001247d7
+#define FKTSIZE_set_dr7 0x0000000c
+#define FKTADDR_set_dr7 0x001247e3
+#define FKTSIZE_set_message 0x00000006
+#define FKTADDR_set_message 0x00107adb
+#define FKTSIZE_setObjFlags 0x00000011
+#define FKTADDR_setObjFlags 0x00100a47
+#define FKTSIZE_setThreadName 0x00000069
+#define FKTADDR_setThreadName 0x001081ad
+#define FKTSIZE_setTimer 0x0000005a
+#define FKTADDR_setTimer 0x001097e3
+#define FKTSIZE_sharedLib2Lib 0x00000025
+#define FKTADDR_sharedLib2Lib 0x0010157b
+#define FKTSIZE_shl 0x00000085
+#define FKTADDR_shl 0x00123d94
+#define FKTSIZE_should_not_be_called 0x00000019
+#define FKTADDR_should_not_be_called 0x00105dcd
+#define FKTSIZE_sizeCoreSymbol 0x00000064
+#define FKTADDR_sizeCoreSymbol 0x001266f7
+#define FKTSIZE_SMPcpuManager_dump 0x0000004e
+#define FKTADDR_SMPcpuManager_dump 0x0011ebe2
+#define FKTSIZE_SMPcpuManager_getCPU 0x0000008e
+#define FKTADDR_SMPcpuManager_getCPU 0x0011ec76
+#define FKTSIZE_SMPcpuManager_getCPUState 0x0000001d
+#define FKTADDR_SMPcpuManager_getCPUState 0x0011ed0e
+#define FKTSIZE_SMPcpuManager_getMyCPU 0x00000019
+#define FKTADDR_SMPcpuManager_getMyCPU 0x0011ec5d
+#define FKTSIZE_SMPcpuManager_getNumCPUs 0x0000000a
+#define FKTADDR_SMPcpuManager_getNumCPUs 0x0011ed04
+#define FKTSIZE_SMPcpuManager_mutex_create 0x0000001b
+#define FKTADDR_SMPcpuManager_mutex_create 0x0011ed2b
+#define FKTSIZE_SMPcpuManager_register_HLScheduler 0x00000019
+#define FKTADDR_SMPcpuManager_register_HLScheduler 0x0011ea13
+#define FKTSIZE_SMPcpuManager_register_LLScheduler 0x0000002f
+#define FKTADDR_SMPcpuManager_register_LLScheduler 0x0011e9c3
+#define FKTSIZE__SMPcpuManager_register_Scheduler 0x00000046
+#define FKTADDR__SMPcpuManager_register_Scheduler 0x0011eaca
+#define FKTSIZE_SMPcpuManager_sendIPI 0x0000002d
+#define FKTADDR_SMPcpuManager_sendIPI 0x0011ec30
+#define FKTSIZE_SMPcpuManager_start 0x00000055
+#define FKTADDR_SMPcpuManager_start 0x0011eb38
+#define FKTSIZE_SMPcpuManager_swap_HLScheduler 0x0000005e
+#define FKTADDR_SMPcpuManager_swap_HLScheduler 0x0011ea6c
+#define FKTSIZE_SMPcpuManager_test 0x0000000f
+#define FKTADDR_SMPcpuManager_test 0x0011eb10
+#define FKTSIZE_SMPcpuManager_test2 0x0000000f
+#define FKTADDR_SMPcpuManager_test2 0x0011eb1f
+#define FKTSIZE_SMPcpuManager_test_setAPICTimer 0x0000000a
+#define FKTADDR_SMPcpuManager_test_setAPICTimer 0x0011eb2e
+#define FKTSIZE_SMPcpuManager_unblock 0x00000055
+#define FKTADDR_SMPcpuManager_unblock 0x0011eb8d
+#define FKTSIZE_SMPcpuManager_unregister_HLScheduler 0x00000040
+#define FKTADDR_SMPcpuManager_unregister_HLScheduler 0x0011ea2c
+#define FKTSIZE_snprintf 0x00000019
+#define FKTADDR_snprintf 0x00123acc
+#define FKTSIZE_softint_handler 0x0000001e
+#define FKTADDR_softint_handler 0x0010843d
+#define FKTSIZE_specialAllocArray 0x00000032
+#define FKTADDR_specialAllocArray 0x0010f02d
+#define FKTSIZE_specialAllocClass 0x0000007c
+#define FKTADDR_specialAllocClass 0x00100a58
+#define FKTSIZE_specialAllocCPUDesc 0x0000006c
+#define FKTADDR_specialAllocCPUDesc 0x0010ef9d
+#define FKTSIZE_specialAllocDomainDesc 0x000000e4
+#define FKTADDR_specialAllocDomainDesc 0x001087ab
+#define FKTSIZE_specialAllocObject 0x00000024
+#define FKTADDR_specialAllocObject 0x0010f009
+#define FKTSIZE_specialAllocStaticFields 0x0000001a
+#define FKTADDR_specialAllocStaticFields 0x0010f1c0
+#define FKTSIZE_spin_lock 0x00000019
+#define FKTADDR_spin_lock 0x0011e18d
+#define FKTSIZE_spin_trylock 0x0000001f
+#define FKTADDR_spin_trylock 0x0011e16e
+#define FKTSIZE_spin_unlock 0x0000000c
+#define FKTADDR_spin_unlock 0x0011e1a6
+#define FKTSIZE_sprintf 0x00000019
+#define FKTADDR_sprintf 0x00123745
+#define FKTSIZE_sprintnum 0x00000091
+#define FKTADDR_sprintnum 0x001096fb
+#define FKTSIZE___stack_chk_fail 0x00000006
+#define FKTADDR___stack_chk_fail 0x0011e2c4
+#define FKTSIZE_stackMap 0x00000006
+#define FKTADDR_stackMap 0x00106400
+#define FKTSIZE_stack_push 0x0000001d
+#define FKTADDR_stack_push 0x0010aa4e
+#define FKTSIZE__start 0x00000000
+#define FKTADDR__start 0x00100000
+#define FKTSIZE_start_domain_zero 0x0000023b
+#define FKTADDR_start_domain_zero 0x00109d57
+#define FKTSIZE_start_initial_thread 0x0000033f
+#define FKTADDR_start_initial_thread 0x00119d41
+#define FKTSIZE_start_irq_thread 0x00000019
+#define FKTADDR_start_irq_thread 0x0011b047
+#define FKTSIZE_start_notify_thread 0x00000083
+#define FKTADDR_start_notify_thread 0x0010c76b
+#define FKTSIZE_start_thread_using_code1 0x000000a6
+#define FKTADDR_start_thread_using_code1 0x0011758f
+#define FKTSIZE_start_thread_using_entry 0x0000003e
+#define FKTADDR_start_thread_using_entry 0x00118e16
+#define FKTSIZE_sti 0x00000007
+#define FKTADDR_sti 0x00109d1b
+#define FKTSIZE_strcat 0x0000003b
+#define FKTADDR_strcat 0x001236cc
+#define FKTSIZE_strchr 0x0000002f
+#define FKTADDR_strchr 0x00123817
+#define FKTSIZE_strcmp 0x0000005a
+#define FKTADDR_strcmp 0x0012375e
+#define FKTSIZE_strcpy 0x0000002b
+#define FKTADDR_strcpy 0x001236a1
+#define FKTSIZE_string_CompareChar 0x0000002f
+#define FKTADDR_string_CompareChar 0x00101ac8
+#define FKTSIZE_string_Length 0x0000000e
+#define FKTADDR_string_Length 0x00101aba
+#define FKTSIZE_string_replace_char 0x00000048
+#define FKTADDR_string_replace_char 0x00101af7
+#define FKTSIZE_stringToChar 0x00000023
+#define FKTADDR_stringToChar 0x00101b3f
+#define FKTSIZE_strlen 0x0000002e
+#define FKTADDR_strlen 0x00123673
+#define FKTSIZE_strncmp 0x0000005f
+#define FKTADDR_strncmp 0x001237b8
+#define FKTSIZE_strncpy 0x00000051
+#define FKTADDR_strncpy 0x00123846
+#define FKTSIZE_strtod 0x00000027
+#define FKTADDR_strtod 0x0012364c
+#define FKTSIZE_strtok 0x000000bb
+#define FKTADDR_strtok 0x00123b6d
+#define FKTSIZE_strtol 0x00000200
+#define FKTADDR_strtol 0x0012344c
+#define FKTSIZE_strtoul 0x00000137
+#define FKTADDR_strtoul 0x00123c28
+#define FKTSIZE_switch_to 0x0000002d
+#define FKTADDR_switch_to 0x00108651
+#define FKTSIZE_sys_panic 0x000000b0
+#define FKTADDR_sys_panic 0x0010964b
+#define FKTSIZE_terminateDomain 0x0000029a
+#define FKTADDR_terminateDomain 0x001091f3
+#define FKTSIZE_terminateThread 0x00000025
+#define FKTADDR_terminateThread 0x001080c9
+#define FKTSIZE_terminateThread_internal 0x00000086
+#define FKTADDR_terminateThread_internal 0x001080ee
+#define FKTSIZE_testCheckSumAndVersion 0x00000100
+#define FKTADDR_testCheckSumAndVersion 0x00102217
+#define FKTSIZE_testHashKey 0x00000068
+#define FKTADDR_testHashKey 0x0010131a
+#define FKTSIZE_test_irq_missed 0x00000006
+#define FKTADDR_test_irq_missed 0x00107b38
+#define FKTSIZE_test_irq_no 0x00000006
+#define FKTADDR_test_irq_no 0x00107b2c
+#define FKTSIZE_test_irq_yes 0x00000006
+#define FKTADDR_test_irq_yes 0x00107b32
+#define FKTSIZE_test_mem 0x00000006
+#define FKTADDR_test_mem 0x0010ca35
+#define FKTSIZE_test_static 0x00000006
+#define FKTADDR_test_static 0x0010a4f9
+#define FKTSIZE_thawDomain 0x00000019
+#define FKTADDR_thawDomain 0x0010952a
+#define FKTSIZE_thread2CPUState 0x00000018
+#define FKTADDR_thread2CPUState 0x0010ddce
+#define FKTSIZE_threadblock 0x00000024
+#define FKTADDR_threadblock 0x00108289
+#define FKTSIZE_ThreadDesc2ObjectDesc 0x0000000b
+#define FKTADDR_ThreadDesc2ObjectDesc 0x00107b84
+#define FKTSIZE_thread_exit 0x0000001d
+#define FKTADDR_thread_exit 0x00107b8f
+#define FKTSIZE_thread_inc_current_stack 0x00000019
+#define FKTADDR_thread_inc_current_stack 0x00107d2b
+#define FKTSIZE_thread_prepare_to_copy 0x0000004d
+#define FKTADDR_thread_prepare_to_copy 0x0010867e
+#define FKTSIZE_thread_profile_irq 0x00000006
+#define FKTADDR_thread_profile_irq 0x001207e8
+#define FKTSIZE_threadrunq_append 0x00000061
+#define FKTADDR_threadrunq_append 0x001178cb
+#define FKTSIZE_threadrunq_remove 0x00000058
+#define FKTADDR_threadrunq_remove 0x00117873
+#define FKTSIZE_threads_init 0x0000006c
+#define FKTADDR_threads_init 0x001085e5
+#define FKTSIZE_threads_profile_init 0x00000019
+#define FKTADDR_threads_profile_init 0x001207ee
+#define FKTSIZE_threadunblock 0x00000021
+#define FKTADDR_threadunblock 0x00108243
+#define FKTSIZE_threadyield 0x0000002d
+#define FKTADDR_threadyield 0x00108216
+#define FKTSIZE_throw_ArithmeticException 0x0000003a
+#define FKTADDR_throw_ArithmeticException 0x001166c0
+#define FKTSIZE_throw_ArrayIndexOutOfBounds 0x0000003d
+#define FKTADDR_throw_ArrayIndexOutOfBounds 0x0011665c
+#define FKTSIZE_throw_exception 0x0000027c
+#define FKTADDR_throw_exception 0x00116b9e
+#define FKTSIZE_throw_IndexOutOfBounds 0x0000003d
+#define FKTADDR_throw_IndexOutOfBounds 0x0011661f
+#define FKTSIZE_throw_NullPointerException 0x0000003a
+#define FKTADDR_throw_NullPointerException 0x001165df
+#define FKTSIZE_throw_OutOfMemoryError 0x00000006
+#define FKTADDR_throw_OutOfMemoryError 0x00116619
+#define FKTSIZE_throw_RuntimeException 0x00000006
+#define FKTADDR_throw_RuntimeException 0x001165d9
+#define FKTSIZE_throw_StackOverflowError 0x00000027
+#define FKTADDR_throw_StackOverflowError 0x00116699
+#define FKTSIZE_traceme 0x0000001a
+#define FKTADDR_traceme 0x001006eb
+#define FKTSIZE_tryAllocChunk 0x0000007e
+#define FKTADDR_tryAllocChunk 0x0011479d
+#define FKTSIZE___udivdi3 0x00000039
+#define FKTADDR___udivdi3 0x0012467e
+#define FKTSIZE_unblock_thread_using_code1 0x00000034
+#define FKTADDR_unblock_thread_using_code1 0x00117635
+#define FKTSIZE_uncaught_exception 0x0000013f
+#define FKTADDR_uncaught_exception 0x00116a5f
+#define FKTSIZE_undefIRQfunc 0x00000019
+#define FKTADDR_undefIRQfunc 0x0011ae5e
+#define FKTSIZE_untraceme 0x0000001a
+#define FKTADDR_untraceme 0x00100705
+#define FKTSIZE_vm_arraycopy 0x00000217
+#define FKTADDR_vm_arraycopy 0x0010a1c5
+#define FKTSIZE_vm_arraycopy_left 0x00000026
+#define FKTADDR_vm_arraycopy_left 0x0010a4d3
+#define FKTSIZE_vm_arraycopy_right 0x000000f7
+#define FKTADDR_vm_arraycopy_right 0x0010a3dc
+#define FKTSIZE_vm_breakpoint 0x0000001a
+#define FKTADDR_vm_breakpoint 0x0010a61e
+#define FKTSIZE_vm_checkcast 0x0000009a
+#define FKTADDR_vm_checkcast 0x0010a12b
+#define FKTSIZE_vmclass_equals 0x00000011
+#define FKTADDR_vmclass_equals 0x0011edf0
+#define FKTSIZE_vmclass_getInstanceSize 0x0000001f
+#define FKTADDR_vmclass_getInstanceSize 0x0011ee01
+#define FKTSIZE_vmclass_getMethods 0x0000009d
+#define FKTADDR_vmclass_getMethods 0x0011eea0
+#define FKTSIZE_vmclass_getName 0x00000046
+#define FKTADDR_vmclass_getName 0x0011eda0
+#define FKTSIZE_vmclass_isPrimitive 0x0000000a
+#define FKTADDR_vmclass_isPrimitive 0x0011ede6
+#define FKTSIZE_vmclass_newInstance 0x00000080
+#define FKTADDR_vmclass_newInstance 0x0011ee20
+#define FKTSIZE_vm_getclassname 0x0000004c
+#define FKTADDR_vm_getclassname 0x0010a638
+#define FKTSIZE_vm_getinstancesize 0x0000001b
+#define FKTADDR_vm_getinstancesize 0x0010a684
+#define FKTSIZE_vm_getnaming 0x0000000d
+#define FKTADDR_vm_getnaming 0x0010aa01
+#define FKTSIZE_vm_getStaticsAddr 0x0000000d
+#define FKTADDR_vm_getStaticsAddr 0x0010a563
+#define FKTSIZE_vm_getStaticsAddr2 0x0000001d
+#define FKTADDR_vm_getStaticsAddr2 0x0010a570
+#define FKTSIZE_vm_instanceof 0x00000078
+#define FKTADDR_vm_instanceof 0x0010a0b3
+#define FKTSIZE_vm_isprimitive 0x00000023
+#define FKTADDR_vm_isprimitive 0x0010a69f
+#define FKTSIZE_vmmethod_getName 0x00000033
+#define FKTADDR_vmmethod_getName 0x0011ef90
+#define FKTSIZE_vmmethod_getSignature 0x00000033
+#define FKTADDR_vmmethod_getSignature 0x0011efc3
+#define FKTSIZE_vmmethod_invoke 0x0000018c
+#define FKTADDR_vmmethod_invoke 0x0011eff6
+#define FKTSIZE_vm_monitorenter 0x00000019
+#define FKTADDR_vm_monitorenter 0x0010a6c2
+#define FKTSIZE_vm_monitorexit 0x00000019
+#define FKTADDR_vm_monitorexit 0x0010a6db
+#define FKTSIZE_vmobject_getFirstSubObject 0x0000002a
+#define FKTADDR_vmobject_getFirstSubObject 0x0011f326
+#define FKTSIZE_vmobject_getNextSubObject 0x0000002f
+#define FKTADDR_vmobject_getNextSubObject 0x0011f350
+#define FKTSIZE_vmobject_getPrimitiveData 0x0000001c
+#define FKTADDR_vmobject_getPrimitiveData 0x0011f211
+#define FKTSIZE_vmobject_getString 0x0000004f
+#define FKTADDR_vmobject_getString 0x0011f22d
+#define FKTSIZE_vmobject_getVMClass 0x00000053
+#define FKTADDR_vmobject_getVMClass 0x0011f1be
+#define FKTSIZE_vm_put_array_field32 0x00000030
+#define FKTADDR_vm_put_array_field32 0x0010a5ee
+#define FKTSIZE_vm_put_field32 0x00000023
+#define FKTADDR_vm_put_field32 0x0010a593
+#define FKTSIZE_vm_put_static_field32 0x00000038
+#define FKTADDR_vm_put_static_field32 0x0010a5b6
+#define FKTSIZE_vmSpecialAllocArray 0x00000019
+#define FKTADDR_vmSpecialAllocArray 0x0010f05f
+#define FKTSIZE_vmSpecialAllocMultiArray 0x0000001d
+#define FKTADDR_vmSpecialAllocMultiArray 0x0010f078
+#define FKTSIZE_vm_test_cinit 0x00000064
+#define FKTADDR_vm_test_cinit 0x0010a4ff
+#define FKTSIZE_vm_unsupported 0x00000019
+#define FKTADDR_vm_unsupported 0x0010aa0e
+#define FKTSIZE_vprintf 0x00000006
+#define FKTADDR_vprintf 0x00123ac6
+#define FKTSIZE_wait_8254_wraparound 0x00000038
+#define FKTADDR_wait_8254_wraparound 0x00125cb2
+#define FKTSIZE_walkClass 0x0000007b
+#define FKTADDR_walkClass 0x00113e3a
+#define FKTSIZE_walkInterrupHandlers 0x00000085
+#define FKTADDR_walkInterrupHandlers 0x0011439f
+#define FKTSIZE_walkPortals 0x00000076
+#define FKTADDR_walkPortals 0x00113f94
+#define FKTSIZE_walkRegistereds 0x00000080
+#define FKTADDR_walkRegistereds 0x0011400a
+#define FKTSIZE_walkRootSet 0x00000093
+#define FKTADDR_walkRootSet 0x00114424
+#define FKTSIZE_walkSpecials 0x00000315
+#define FKTADDR_walkSpecials 0x0011408a
+#define FKTSIZE_walkStack 0x00000545
+#define FKTADDR_walkStack 0x001125a5
+#define FKTSIZE_walkStacks 0x0000006d
+#define FKTADDR_walkStacks 0x00113eb5
+#define FKTSIZE_walkStatics 0x00000072
+#define FKTADDR_walkStatics 0x00113f22
+#define FKTSIZE_write 0x00000006
+#define FKTADDR_write 0x00123424
+#define FKTSIZE_zip_init 0x00000177
+#define FKTADDR_zip_init 0x001157c1
+#define FKTSIZE_zip_next_entry 0x000002d1
+#define FKTADDR_zip_next_entry 0x00115938
+#define FKTSIZE_zip_reset 0x00000024
+#define FKTADDR_zip_reset 0x0011579d
+#define FKTSIZE_zread 0x00000021
+#define FKTADDR_zread 0x0011577c
+#define FKTSIZE_zseek 0x0000002f
+#define FKTADDR_zseek 0x0011574d
 
-static char strings[] __attribute__ ((unused)) = "";
+static char strings[] __attribute__ ((unused)) = "abstract_method_error\0abstract_method_error_proxy\0ack8259IRQ\0ackIRQ\0addHashKey\0addrCoreSymbol\0add_to_history\0addToRefTable\0addZeroVtables\0allocArray\0allocArrayInDomain\0allocAtomicVariableProxyInDomain\0allocByteArray\0allocCASProxyInDomain\0allocChunk\0allocCredentialProxyInDomain\0allocDomainProxyInDomain\0allocMemoryProxyInDomain\0allocMemoryProxyInDomainDZM\0allocObject\0allocProxyInDomain\0allocReadOnlyMemory\0allocServiceDescInDomain\0allocThreadDescForeignProxyInDomain\0allocThreadDescProxyInDomain\0allocVMObjectProxyInDomain\0array_clone\0array_constructor\0array_equals\0array_finalize\0array_getClass\0array_hashCode\0array_notify\0array_notifyAll\0array_toString\0array_wait0\0array_wait1\0array_wait2\0assert_memory\0atexit\0atol\0atomicfn_init\0atomicvariable_activateListMode\0atomicvariable_atomicUpdateUnblock\0atomicvariable_blockIfEqual\0atomicvariable_blockIfNotEqual\0atomicvariable_get\0atomicvariable_set\0base_gdt_init\0base_gdt_load\0base_tss_init\0base_tss_load\0blubb\0bootfs_getFile\0bootfs_getReadWriteFile\0bootfs_lookup\0breakpoint_ex\0breakpoint_exception\0callClassConstructor\0callClassConstructors\0call_java\0call_JAVA_method0\0call_JAVA_method1\0call_JAVA_method2\0callnative_handler\0callnative_irq\0callnative_special\0callnative_special_portal\0callnative_static\0cas\0cas_casObject\0check_assign\0check_domain_not_in_runq\0check_eflags0\0check_eflags1\0check_in_runq\0check_not_in_runq\0check_notin_servicequeue\0check_runq\0check_serial\0check_serial_timer\0check_servicequeue\0checkStackTrace\0checkStackTraceNew\0check_thread_position\0check_threads\0checkThreadsOfDomain\0class2Obj\0classDesc2Class\0clean_domainsys\0clock_getCycles\0clock_getTicks\0clock_getTicks_high\0clock_getTicks_low\0clock_getTimeInMillis\0clock_subtract\0clock_toMicroSec\0clock_toMilliSec\0clock_toNanoSec\0cloneMethodInDomain\0close\0compare_eipinfo\0componentManager_load\0componentManager_registerLib\0componentManager_setInheritThread\0console\0continue_Thread_to_pos\0copy_array\0copy_cpustate\0copy_domainproxy\0copy_foreign_cpustate\0copyFromCharArray\0copyIntoByteArray\0copyIntoCharArray\0copy_memory\0copy_object\0copy_portal\0copy_reference\0copy_reference_internal\0copy_returnvalue\0cpuDesc2Obj\0CPUDesc2ObjectDesc\0cpu_dump\0cpu_getID\0cpu_load\0cpuManager_allowScheduling\0cpuManager_assertInterruptEnabled\0cpuManager_attachToThread\0cpuManager_block\0cpuManager_blockIfNotUnblocked\0cpuManager_clearUnblockFlag\0cpuManager_createCPUState\0cpuManager_createNewEvent\0cpuManager_dump\0cpuManager_executeClassConstructors\0cpuManager_getAtomicVariable\0cpuManager_getAttachedObject\0cpuManager_getCAS\0cpuManager_getClass\0cpuManager_getCPUState\0cpuManager_getCredential\0cpuManager_getStackDepth\0cpuManager_getStackFrameBytecode\0cpuManager_getStackFrameClassName\0cpuManager_getStackFrameLine\0cpuManager_getStackFrameMethodName\0cpuManager_getVMClass\0cpuManager_getVMObject\0cpuManager_inheritServiceThread\0cpuManager_inhibitScheduling\0cpuManager_join\0cpuManager_notify\0cpuManager_notifyAll\0cpuManager_printStackTrace\0cpuManager_reboot\0cpuManager_receive\0cpuManager_recordEvent\0cpuManager_recordEventWithInfo\0cpuManager_setThreadName\0cpuManager_sleep\0cpuManager_start\0cpuManager_switchTo\0cpuManager_unblock\0cpuManager_wait\0cpuManager_waitUntilBlocked\0cpuManager_yield\0cpu_save\0cpuState2thread\0cpuState_getNext\0cpuState_getState\0cpuState_isPortalThread\0cpuState_setNext\0cpu_toString\0createArrayClass\0createArrayObjectVTableProto\0createClassDescImplementingInterface\0create_CPUObjs\0createDomain\0createDZClass\0createDZMemory\0createExceptionInDomain\0createInitialDomainThread\0createMemoryInstance\0createNewEvent\0createObjectClass\0createObjectClassDesc\0createPortalInDomain\0createPrimitiveClass\0createService\0createSharedArrayClassDesc\0createSharedArrayClassDescUsingElemClass\0createSubClass\0createThread\0createThreadInMem\0createVTable\0credentialvariable_get\0credentialvariable_getSignerDomainID\0credentialvariable_set\0curdom\0cur_idle_thread\0curthr\0curthrP\0dbg_print\0debug_ex\0debug_exception\0debug_read\0debugsupport_breakpoint\0debugsupport_dumpDomain\0debugsupport_dumpObject\0debugsupport_registerMonitorCommand\0debugsupport_sendBinary\0debug_write\0debug_writeBuf\0destroy_call_java\0destroy_call_JAVA_function\0destroy_call_JAVA_method1\0destroy_call_JAVA_method2\0destroyCurrentThread\0destroyDomain\0destroy_switch_to\0direct_send_portal\0disable8259IRQ\0disable_cache\0disableIRQ\0__divdi3\0doAllocMultiArray\0domain_clearTCBflag\0domainDesc2Obj\0domain_getID\0domain_getName\0domain_isActive\0domain_isTerminated\0__domainManager_createDomain\0domainManager_createDomain\0domainManager_freeze\0domainManager_gc\0domainManager_getCurrentDomain\0domainManager_getDomainZero\0domainManager_installInterceptor\0domainManager_terminate\0domainManager_terminateCaller\0domainManager_thaw\0domain_panic\0domainrunq_append\0domainrunq_remove\0domainrunq_remove_domain\0dprintf\0dtostr\0dummy_entry_point\0dump_chunk_visual\0dump_context\0dump_data\0dumpDomainInfo\0dump_irqhandlers\0dumpObject\0dumpPortalInfo\0dump_runq\0dump_runqOfDomain\0dumpstack\0dumpThreadInfo\0dumpVTable\0dzmemory_alive\0dzmemory_alloc\0dzmemory_check\0dzmemory_collector\0dzmemory_decRefcount\0dzmemory_free\0dzmemory_free_chunk\0dzmemory_gcdomain\0dzmemory_incRefcount\0dzmemory_init\0dzmemory_join\0dzmemory_mark\0dzmemory_split2\0dzmemory_split3\0eip_in_last_stackframe\0enable8259IRQ\0enable_cache\0enableIRQ\0errexception\0exception\0exceptionHandler\0exceptionHandlerInternal\0exceptionHandlerMsg\0exception_msg\0executeForallClasses\0executeInterface\0executeSpecial\0executeStatic\0executeVirtual\0exit\0fbemulation_checkEvent\0fbemulation_getBitsPerPixel\0fbemulation_getBytesPerLine\0fbemulation_getHeight\0fbemulation_getVideoMemory\0fbemulation_getWidth\0fbemulation_inputDevicesAvailable\0fbemulation_open\0fbemulation_update\0fill_descriptor\0fill_gate\0findAddrOfMethodBytecode\0findByteCodePosition\0findClass\0findClassAndMethod\0findClassAndMethodInLib\0findClassDesc\0findClassDescAndMethod\0findClassDescAndMethodInLib\0findClassDescAndMethodInObject\0findClassDescInSharedLib\0findClassForMethod\0findClassInLib\0findClassOrPrimitive\0findCoreSymbol\0findDEPMethodIndex\0findDomain\0findDomainByName\0findFieldOffset\0findMethod\0findMethodAtAddr\0findMethodAtAddrInDomain\0findMethodAtFramePointer\0findMethodInLib\0findMethodInSharedLibs\0findPrimitiveClass\0findProxyCode\0findProxyCodeInDomain\0findSharedArrayClassDesc\0findSharedArrayClassDescByElemClass\0findSharedLib\0find_stackmap\0findSubClasses\0findSubClassesInLib\0findThreadByID\0findThreadDesc\0findVirtualMethodCode\0findZeroLibMethodIndex\0foreachDomain\0foreachDomain1\0freeChunk\0freeThreadMem\0free_threadstack\0freezeDomain\0freezeThreads\0fstat\0gate_init\0gc_allocDataInDomain\0gc_checkHeap\0gc_checkHeap_ArrayCB\0gc_checkHeap_AtomVarCB\0gc_checkHeap_CASCB\0gc_checkHeap_CPUStateProxyCB\0gc_checkHeap_DomainProxyCB\0gc_checkHeap_isValidCB\0gc_checkHeap_MemoryCB\0gc_checkHeap_ObjectCB\0gc_checkHeap_PortalCB\0gc_checkHeap_ServiceCB\0gc_checkHeap_ServicePoolCB\0gc_checkHeap_StackCB\0gc_chunked_allocDataInDomain\0gc_chunked_allocHeap2\0gc_chunked_checkHeap\0gc_chunked_done\0gc_chunked_ensureInHeap\0gc_chunked_finalizeMemory\0gc_chunked_finalizeMemoryCB\0gc_chunked_finalizePortals\0gc_chunked_finalizePortalsCB\0gc_chunked_freeWords\0gc_chunked_gc\0gc_chunked_init\0gc_chunked_isInHeap\0gc_chunked_printInfo\0gc_chunked_totalWords\0gc_chunked_walkHeap\0gc_chunked_walkHeap2\0gc_common_move_array\0gc_common_move_atomvar\0gc_common_move_cas\0gc_common_move_cpustate\0gc_common_move_domain\0gc_common_move_memory\0gc_common_move_object\0gc_common_move_portal\0gc_common_move_reference\0gc_common_move_scan_heap2\0gc_common_move_scan_heap2_Array\0gc_common_move_scan_heap2_AtomVar\0gc_common_move_scan_heap2_CPUState\0gc_common_move_scan_heap2_ForeignCPUState\0gc_common_move_scan_heap2_Object\0gc_common_move_scan_heap2_Service\0gc_common_move_scan_heap2_ServicePool\0gc_common_move_scan_heap2_Stack\0gc_common_move_service\0gc_common_move_servicepool\0gc_common_move_stack\0gc_correct_irqHandlers\0gc_countInstances\0gc_countInstancesCB\0gc_done\0gc_freeWords\0gc_impl_shallowCopyArray\0gc_impl_shallowCopyAtomVar\0gc_impl_shallowCopyCAS\0gc_impl_shallowCopyCpuState\0gc_impl_shallowCopyDomain\0gc_impl_shallowCopyMemory\0gc_impl_shallowCopyObject\0gc_impl_shallowCopyPortal\0gc_impl_shallowCopyService\0gc_impl_shallowCopyServicePool\0gc_impl_walkContent\0gc_impl_walkContent2\0gc_impl_walkContentArray\0gc_impl_walkContentAtomVar\0gc_impl_walkContentCPUState\0gc_impl_walkContentDomainProxy\0gc_impl_walkContentForeignCPUState\0gc_impl_walkContentObject\0gc_impl_walkContentService\0gc_impl_walkContentServicePool\0gc_in\0gc_init\0gc_isValidHeapRef\0gc_mem\0gc_memcpy4\0gc_memrefArrCB\0gc_memrefObjCB\0gc_memrefRootCB\0gc_new_allocDataInDomain\0gc_new_allocHeap2\0gc_new_checkHeap\0gc_new_done\0gc_new_ensureInHeap\0gc_new_finalizeMemory\0gc_new_finalizeMemoryCB\0gc_new_finalizePortals\0gc_new_finalizePortalsCB\0gc_new_freeWords\0gc_new_gc\0gc_new_init\0gc_new_init1\0gc_new_isInHeap\0gc_new_printInfo\0gc_new_scan_heap2_Array\0gc_new_scan_heap2_AtomVar\0gc_new_scan_heap2_CPUState\0gc_new_scan_heap2_ForeignCPUState\0gc_new_scan_heap2_Object\0gc_new_scan_heap2_Service\0gc_new_scan_heap2_ServicePool\0gc_new_scan_heap2_Stack\0gc_new_totalWords\0gc_new_walkHeap\0gc_new_walkHeap2\0gc_objSize2\0gc_org_allocDataInDomain\0gc_org_allocHeap2\0gc_org_checkHeap\0gc_org_count_instances\0gc_org_done\0gc_org_finalizeMemory\0gc_org_finalizePortals\0gc_org_freeWords\0gc_org_gc\0gc_org_init\0gc_org_isInHeap\0gc_org_isValidHeapRef\0gc_org_move_array\0gc_org_move_atomvar\0gc_org_move_cas\0gc_org_move_cpustate\0gc_org_move_memory\0gc_org_move_object\0gc_org_move_portal\0gc_org_move_reference\0gc_org_move_service\0gc_org_printInfo\0gc_org_scan_heap2\0gc_org_scan_stack\0gc_org_totalWords\0gc_printInfo\0gc_totalWords\0gc_walkContinuesBlock\0gc_walkContinuesBlock_Alt\0gc_zero_init\0gc_zero_panic\0get_8254_timer_count\0getArraySize\0getCaller\0getchar\0get_dr6\0get_dr7\0getEFlags\0get_element_class\0getenv\0get_flagname\0get_from_history\0get_IDString\0getIMR8259IRQ\0getInitialNaming\0getIRR8259IRQ\0getISR8259IRQ\0get_message\0getMethodNameByEIP\0getNumberOfDomains\0getObjFlags\0getParameter\0get_processor_id\0getReferenceArrayElement\0get_state\0getSubObject\0gettimeofday\0hw_errexception\0hw_exception\0hwint\0hwint00\0icore_base_cpu_init\0icore_base_cpu_load\0idle\0idt_load\0implements_interface\0inb\0init_atomicvariable_portal\0init_bootfs_portal\0init_cas_portal\0init_clock_portal\0init_componentmanager_portal\0init_cpumanager_portal\0init_cpu_portal\0init_cpustate_portal\0init_credential_portal\0init_debugchannel_portal\0init_debugsupport_portal\0init_descriptor\0init_domainmanager_portal\0init_domain_portal\0init_domainsys\0init_fbemulation_portal\0init_framebuffer_emulation\0init_interceptInboundInfo_portal\0init_irq_data\0init_irq_portal\0init_memorymanager_portal\0init_memory_portal\0init_mutex_portal\0init_naming_portal\0init_object\0init_ports_portal\0initPrimitiveClasses\0init_profiler_portal\0init_realmode\0init_scheduler_portal\0init_serial\0init_smpcpumanager_portal\0init_vmclass_portal\0init_vmmethod_portal\0init_vmobject_portal\0init_zero_class\0init_zero_dep\0init_zero_dep_without_thread\0init_zero_from_lib\0IN_jxbytecpy\0inl\0in_portalcall\0installInitialNaming\0installInterceptor\0installObjectVtable\0installVtables\0interceptInboundInfo_getFirstParameter\0interceptInboundInfo_getMethod\0interceptInboundInfo_getNextParameter\0interceptInboundInfo_getServiceObject\0interceptInboundInfo_getSourceDomain\0interceptInboundInfo_getTargetDomain\0interceptPortalInfo_getServiceID\0interceptPortalInfo_getTargetDomain\0internalallocMemoryProxyInDomain\0internal_switch_to\0int_gate\0invalid_mem\0inw\0irq_destroy_switch_to\0irq_disableAll\0irq_disableIRQ\0irq_enableAll\0irq_enableIRQ\0irq_exit\0irq_first_level_handler\0irq_handler_new\0irq_happened\0irq_installFirstLevelHandler\0irq_irrnotok\0irq_missed\0irq_panic\0irq_picnotok\0irq_set_destination\0isArrayClass\0isdigit\0isFree\0is_interface\0isRef\0is_serial_event\0isspace\0is_subclass_of\0is_subinterface_of\0jxbcopy\0jxbytecpy\0jxfree\0jxfree_tmp\0jxmalloc\0jxmalloc_align\0jxmalloc_getTotalFreeMemory\0jxmalloc_getTotalMemory\0jxmalloc_init\0jxmalloc_internal\0jxmalloc_stat\0jxmalloc_tmp\0jxmemset\0jxwmemset\0jxwordcpy\0libcache_init\0libcache_lookup_jll\0libcache_new_entry\0libcache_register_jll\0libc_sendsig_init\0linksharedlib\0list_stackmaps\0load\0loadIt\0loadLib\0loadSharedLibrary\0locked_threadblock\0locked_threadunblock\0longCmp\0longDiv\0longMul\0longRem\0longShl\0longShr\0longUShr\0lookupPortal\0main\0makelong\0makestring\0makeword\0malloc_argsmap\0malloc_arrayclassdesc\0malloc_bytecodetable\0malloc_class\0malloc_classdesc\0malloc_classdescs\0malloc_classdesctable\0malloc_classes\0malloc_code\0malloc_cpudesc\0malloc_domainzero_namevalue\0malloc_dump\0malloc_exceptiondescs\0malloc_fielddescs\0malloc_libdesc\0malloc_metatable\0malloc_methoddesc\0malloc_methoddescs\0malloc_methods\0malloc_methodVtable\0malloc_nativecode\0malloc_objectmap\0malloc_primitiveclassdesc\0malloc_proxycode\0malloc_sharedlibdesc\0malloc_sharedlibdesctable\0malloc_sourcelinetable\0malloc_stackmap\0malloc_staticfields\0malloc_staticsmap\0malloc_string\0malloc_symbol\0malloc_symboltable\0malloc_threadstack\0malloc_tmp_stringtable\0malloc_vtable\0malloc_vtableSym\0markCurrentUsed\0markUnused\0markUsed\0memcpy\0memfs_close\0memfs_eof\0memfs_getFileName\0memfs_getPos\0memfs_getSize\0memfs_getString\0memfs_init\0memfs_link\0memfs_lookup\0memfs_mmap\0memfs_open\0memfs_readByte\0memfs_readCode\0memfs_readInt\0memfs_readString\0memfs_readStringData\0memfs_seek\0memfs_str2chr\0memfs_testChecksum\0memfs_unlink\0mem_getDeviceMemoryClass\0memory_clear\0memory_copy\0memory_copyFromByteArray\0memory_copyFromMemory\0memory_copy_intradomain\0memory_copyToByteArray\0memory_copyToMemory\0memory_deleted\0memory_extendFullRange\0memory_extendRange\0memory_fill16\0memory_fill32\0memory_get16\0memory_get32\0memory_get8\0memory_getBigEndian16\0memory_getBigEndian32\0memory_getLittleEndian16\0memory_getLittleEndian32\0memory_getMem\0memory_getOffset\0memory_getReadOnlySubRange\0memory_getSize\0memory_getStartAddress\0memory_getSubRange\0memory_isValid\0memory_joinAll\0memory_joinNext\0memory_joinPrevious\0memoryManager_alloc\0memoryManager_allocAligned\0memoryManager_allocDeviceMemory\0memoryManager_getFreeHeapMemory\0memoryManager_getTotalFreeMemory\0memoryManager_getTotalMemory\0memory_map\0memory_move\0memory_revoke\0memory_set16\0memory_set32\0memory_set8\0memory_setBigEndian16\0memory_setBigEndian32\0memory_setLittleEndian16\0memory_setLittleEndian32\0memory_size\0memory_sizeof_proxy\0memory_split2\0memory_split3\0memset\0memset16\0method2Obj\0methodName2str\0__moddi3\0monitor\0monitor_print_threadinfo\0multiboot_get_module\0multiboot_main\0Mutex_destroy\0Mutex_lock\0Mutex_trylock\0Mutex_unlock\0naming_lookup\0naming_lookupOrWait\0naming_registerPortal\0never_return\0newDomainZeroString\0newString\0newStringArray\0newStringFromClassname\0nextFree\0nonatomic_allocObjectInDomain\0nonatomic_handle2ClassDesc\0nonatomic_memoryGetMem\0nonatomic_memoryGetSize\0nonatomic_memoryGetValid\0nonatomic_memoryIsValid\0nonatomic_memorySetValid\0nonatomic_registerObject\0nonatomic_unregisterObject\0obj2class\0obj2cpuDesc\0obj2domainDesc\0obj2method\0object_clone\0object_constructor\0ObjectDesc2ptr\0object_equals\0object_finalize\0object_getClass\0object_hashCode\0object_notify\0object_notifyAll\0object_toString\0object_wait0\0object_wait1\0object_wait2\0open\0outb\0outb_p\0outl\0outw\0panic\0patchByte\0patchClassPointer\0patchConstant\0patchDirectMethodAddress\0patchMethodSymbols\0patchPrimitiveClassPointer\0patchRelativeAddress\0patchRelativeLongAddress\0patchStaticFieldAddress\0patchStringAddress\0patchUnresolvedJump\0pcb_init\0pc_reset\0pc_reset0\0pic_disable_all\0pic_init_pmode\0pic_init_rmode\0pinb\0pmc_log\0portal_abort_current_call\0portal_add_sender\0portal_auto_promo\0portal_dequeue_sender\0portal_remove_sender\0portal_set_recv\0portals_init\0ports_inb\0ports_inb_p\0ports_inl\0ports_inl_p\0ports_inw\0ports_inw_p\0ports_outb\0ports_outb_p\0ports_outl\0ports_outl_p\0ports_outw\0ports_outw_p\0poutb\0pprintf\0prepare_thread_using_code1\0printCoreSymbolInformation\0print_domaininfo\0print_domainmethods\0print_eip_info\0print_esp\0printf\0print_formatted_eip_info\0print_full_threadinfo\0printHeapUsage\0print_memobj\0print_memref\0printMemUsage\0printNStackTrace\0printnum\0printStackTrace\0printStackTraceNew\0printstr\0print_threadinfo\0printTraceFromCtx\0printTraceFromStoredCtx\0profiler_end_calibration\0profiler_getAverageCyclesOfMethod\0profiler_isSampling\0profiler_restart\0profiler_shell\0profiler_start_calibration\0profiler_startSampling\0profiler_stopSampling\0ptr2ObjectDesc\0putchar\0puts\0__qdivrem\0read\0read_codefile\0readline\0read_line\0receive_dep\0receiveDomainDEP\0receive_portalcall\0receive_portal_init\0register_HLScheduler\0registerPortal\0reinit_service_thread\0repatchMethodSymbols\0reschedule\0restartCopy\0restartCopy0\0return_from_java0\0return_from_java1\0return_from_java2\0returnfrom_oneshot\0_return_to_continue_thread\0return_to_continue_thread\0rtc_irq_ack\0runq_init\0runqueue_removeFirstOrIdle\0runqueue_removeFirstOrNULL\0runqueue_switchdomains\0save\0save_context\0save_context2current\0save_timer\0scan_class_org\0Sched_activate_interrupt_thread\0Sched_block\0Sched_blocked\0Sched_created\0Sched_deactivate_interrupt_thread\0Sched_destroyed\0Sched_destroy_switch_to_nextThread\0Sched_domainLeave\0Sched_portal_destroy_handoff_to_sender\0Sched_portal_handoff_to_receiver\0Sched_portal_handoff_to_sender\0Sched_portal_unblock_sender\0Sched_reschedule\0Sched_switch_to_nextThread\0Sched_threadsExist\0scheduler_blockAndEnableThreadSwitching\0scheduler_disableThreadSwitching\0scheduler_enableThreadSwitching\0Sched_unblocked\0Sched_yielded\0ser_breakpoint_ex\0ser_dump\0ser_enable_break\0ser_getchar\0ser_getdata\0ser_putc\0ser_putchar\0ser_trygetchar\0service_decRefcount\0service_incRefcount\0ser_waitforchar\0set_b0\0set_b1\0set_breakpoint\0setCodeStart\0set_current\0set_dr0\0set_dr1\0set_dr6\0set_dr7\0set_message\0setObjFlags\0setThreadName\0setTimer\0sharedLib2Lib\0shl\0should_not_be_called\0sizeCoreSymbol\0SMPcpuManager_dump\0SMPcpuManager_getCPU\0SMPcpuManager_getCPUState\0SMPcpuManager_getMyCPU\0SMPcpuManager_getNumCPUs\0SMPcpuManager_mutex_create\0SMPcpuManager_register_HLScheduler\0SMPcpuManager_register_LLScheduler\0_SMPcpuManager_register_Scheduler\0SMPcpuManager_sendIPI\0SMPcpuManager_start\0SMPcpuManager_swap_HLScheduler\0SMPcpuManager_test\0SMPcpuManager_test2\0SMPcpuManager_test_setAPICTimer\0SMPcpuManager_unblock\0SMPcpuManager_unregister_HLScheduler\0snprintf\0softint_handler\0specialAllocArray\0specialAllocClass\0specialAllocCPUDesc\0specialAllocDomainDesc\0specialAllocObject\0specialAllocStaticFields\0spin_lock\0spin_trylock\0spin_unlock\0sprintf\0sprintnum\0__stack_chk_fail\0stackMap\0stack_push\0_start\0start_domain_zero\0start_initial_thread\0start_irq_thread\0start_notify_thread\0start_thread_using_code1\0start_thread_using_entry\0sti\0strcat\0strchr\0strcmp\0strcpy\0string_CompareChar\0string_Length\0string_replace_char\0stringToChar\0strlen\0strncmp\0strncpy\0strtod\0strtok\0strtol\0strtoul\0switch_to\0sys_panic\0terminateDomain\0terminateThread\0terminateThread_internal\0testCheckSumAndVersion\0testHashKey\0test_irq_missed\0test_irq_no\0test_irq_yes\0test_mem\0test_static\0thawDomain\0thread2CPUState\0threadblock\0ThreadDesc2ObjectDesc\0thread_exit\0thread_inc_current_stack\0thread_prepare_to_copy\0thread_profile_irq\0threadrunq_append\0threadrunq_remove\0threads_init\0threads_profile_init\0threadunblock\0threadyield\0throw_ArithmeticException\0throw_ArrayIndexOutOfBounds\0throw_exception\0throw_IndexOutOfBounds\0throw_NullPointerException\0throw_OutOfMemoryError\0throw_RuntimeException\0throw_StackOverflowError\0traceme\0tryAllocChunk\0__udivdi3\0unblock_thread_using_code1\0uncaught_exception\0undefIRQfunc\0untraceme\0vm_arraycopy\0vm_arraycopy_left\0vm_arraycopy_right\0vm_breakpoint\0vm_checkcast\0vmclass_equals\0vmclass_getInstanceSize\0vmclass_getMethods\0vmclass_getName\0vmclass_isPrimitive\0vmclass_newInstance\0vm_getclassname\0vm_getinstancesize\0vm_getnaming\0vm_getStaticsAddr\0vm_getStaticsAddr2\0vm_instanceof\0vm_isprimitive\0vmmethod_getName\0vmmethod_getSignature\0vmmethod_invoke\0vm_monitorenter\0vm_monitorexit\0vmobject_getFirstSubObject\0vmobject_getNextSubObject\0vmobject_getPrimitiveData\0vmobject_getString\0vmobject_getVMClass\0vm_put_array_field32\0vm_put_field32\0vm_put_static_field32\0vmSpecialAllocArray\0vmSpecialAllocMultiArray\0vm_test_cinit\0vm_unsupported\0vprintf\0wait_8254_wraparound\0walkClass\0walkInterrupHandlers\0walkPortals\0walkRegistereds\0walkRootSet\0walkSpecials\0walkStack\0walkStacks\0walkStatics\0write\0zip_init\0zip_next_entry\0zip_reset\0zread\0zseek\0";
 
-static struct symbols_s symbols[] __attribute__ ((unused)) = {
+static struct symbols_s symbols[] __attribute__ ((unused)) = {{ 0, 0x0010ab87, 0x0000005f },
+{ 22, 0x0010abe6, 0x00000019 },
+{ 50, 0x00125075, 0x00000046 },
+{ 61, 0x001251e4, 0x0000002b },
+{ 68, 0x001012c9, 0x00000051 },
+{ 79, 0x0012675b, 0x00000064 },
+{ 94, 0x00125d36, 0x00000069 },
+{ 109, 0x0010ba60, 0x00000085 },
+{ 123, 0x00109c95, 0x00000086 },
+{ 138, 0x0010f373, 0x0000001f },
+{ 149, 0x0010f392, 0x0000001c },
+{ 168, 0x0010ebe6, 0x00000067 },
+{ 201, 0x0010f1da, 0x00000199 },
+{ 216, 0x0010ec4d, 0x00000052 },
+{ 238, 0x00114706, 0x00000097 },
+{ 249, 0x0010ed26, 0x0000005c },
+{ 278, 0x0010ed82, 0x00000063 },
+{ 303, 0x0011de94, 0x00000032 },
+{ 328, 0x0011de78, 0x0000001c },
+{ 356, 0x0010196d, 0x00000024 },
+{ 368, 0x0010eb41, 0x000000a5 },
+{ 387, 0x0011c0da, 0x0000002d },
+{ 407, 0x0010ef4d, 0x00000050 },
+{ 432, 0x0010ee3f, 0x000000c0 },
+{ 468, 0x0010ede5, 0x0000005a },
+{ 497, 0x0010ec9f, 0x00000087 },
+{ 524, 0x0011f6cc, 0x0000001d },
+{ 536, 0x0011f6a8, 0x00000006 },
+{ 554, 0x0011f820, 0x00000011 },
+{ 567, 0x0011f831, 0x00000019 },
+{ 582, 0x0011f6ae, 0x00000016 },
+{ 597, 0x0011f6c4, 0x00000008 },
+{ 612, 0x0011f734, 0x00000019 },
+{ 625, 0x0011f74d, 0x00000019 },
+{ 641, 0x0011f766, 0x000000ba },
+{ 656, 0x0011f6e9, 0x00000019 },
+{ 668, 0x0011f702, 0x00000019 },
+{ 680, 0x0011f71b, 0x00000019 },
+{ 692, 0x0011c01d, 0x0000005c },
+{ 706, 0x0012341e, 0x00000006 },
+{ 713, 0x00123ae5, 0x00000048 },
+{ 718, 0x00117382, 0x00000083 },
+{ 732, 0x0011815b, 0x00000010 },
+{ 764, 0x00117ffb, 0x000000a6 },
+{ 799, 0x001180a1, 0x0000005d },
+{ 827, 0x001180fe, 0x0000005d },
+{ 858, 0x00117ff0, 0x0000000b },
+{ 877, 0x00117fe1, 0x0000000f },
+{ 896, 0x001249dd, 0x000000a6 },
+{ 910, 0x00124ac0, 0x00000054 },
+{ 924, 0x00124a83, 0x00000032 },
+{ 938, 0x00124b14, 0x0000001d },
+{ 952, 0x0010a58d, 0x00000006 },
+{ 958, 0x001181d5, 0x0000007c },
+{ 973, 0x00118251, 0x00000080 },
+{ 997, 0x001181b3, 0x00000022 },
+{ 1011, 0x001253e1, 0x00000067 },
+{ 1025, 0x001001aa, 0x00000012 },
+{ 1046, 0x0010792f, 0x00000082 },
+{ 1067, 0x001078be, 0x00000071 },
+{ 1089, 0x001005a0, 0x00000027 },
+{ 1099, 0x00115d19, 0x0000013c },
+{ 1117, 0x00115e55, 0x0000014c },
+{ 1135, 0x00115fa1, 0x00000168 },
+{ 1153, 0x00100495, 0x0000000e },
+{ 1172, 0x0010047e, 0x00000017 },
+{ 1187, 0x001003f0, 0x0000002f },
+{ 1206, 0x00100420, 0x00000031 },
+{ 1232, 0x00100452, 0x0000002b },
+{ 1250, 0x00115cf3, 0x00000026 },
+{ 1254, 0x0011830b, 0x00000051 },
+{ 1268, 0x0010a8e1, 0x00000120 },
+{ 1281, 0x00117e11, 0x0000003d },
+{ 1306, 0x00107bac, 0x0000004a },
+{ 1320, 0x00107bf6, 0x0000004a },
+{ 1334, 0x00117f46, 0x0000000a },
+{ 1348, 0x00117694, 0x00000006 },
+{ 1366, 0x0010af86, 0x00000006 },
+{ 1391, 0x00117e4e, 0x000000f8 },
+{ 1402, 0x00125fba, 0x0000002c },
+{ 1415, 0x00125f8c, 0x0000002e },
+{ 1434, 0x0010af80, 0x00000006 },
+{ 1453, 0x00120498, 0x00000006 },
+{ 1469, 0x0012049e, 0x00000006 },
+{ 1488, 0x00112181, 0x000001f5 },
+{ 1510, 0x00108ec4, 0x00000049 },
+{ 1524, 0x0011ffe4, 0x0000005b },
+{ 1545, 0x001189a2, 0x0000000b },
+{ 1555, 0x001015af, 0x00000115 },
+{ 1571, 0x00109133, 0x0000001a },
+{ 1587, 0x00118431, 0x00000036 },
+{ 1603, 0x001183e9, 0x00000016 },
+{ 1618, 0x00118417, 0x0000001a },
+{ 1638, 0x001183ff, 0x00000018 },
+{ 1657, 0x0011839d, 0x0000004c },
+{ 1679, 0x00118467, 0x00000073 },
+{ 1694, 0x001184da, 0x00000057 },
+{ 1711, 0x001185ad, 0x0000007c },
+{ 1728, 0x00118531, 0x0000007c },
+{ 1744, 0x00106ccc, 0x0000009b },
+{ 1764, 0x00123446, 0x00000006 },
+{ 1770, 0x001215d4, 0x00000028 },
+{ 1786, 0x0011865d, 0x0000009b },
+{ 1808, 0x001186f8, 0x00000006 },
+{ 1837, 0x001186fe, 0x00000098 },
+{ 1871, 0x001232c1, 0x00000092 },
+{ 1879, 0x0011209b, 0x000000e6 },
+{ 1902, 0x0010c520, 0x00000162 },
+{ 1913, 0x0010c46a, 0x000000b6 },
+{ 1927, 0x0010c39b, 0x000000b6 },
+{ 1944, 0x0010c451, 0x00000019 },
+{ 1966, 0x00101a0a, 0x0000006a },
+{ 1984, 0x00101a74, 0x00000046 },
+{ 2002, 0x001019c4, 0x00000046 },
+{ 2020, 0x0011dd48, 0x000000d2 },
+{ 2032, 0x0010c077, 0x00000212 },
+{ 2044, 0x0010c289, 0x00000112 },
+{ 2056, 0x0010bae5, 0x0000004d },
+{ 2071, 0x0010bb32, 0x000001e8 },
+{ 2095, 0x0010b0c7, 0x0000001f },
+{ 2112, 0x0011e990, 0x0000000b },
+{ 2124, 0x0010eb03, 0x0000000b },
+{ 2143, 0x00118814, 0x00000019 },
+{ 2152, 0x0011882d, 0x00000028 },
+{ 2162, 0x001187e2, 0x00000019 },
+{ 2171, 0x001197ee, 0x00000006 },
+{ 2198, 0x0011937c, 0x00000006 },
+{ 2232, 0x0011919c, 0x00000016 },
+{ 2258, 0x00118cd2, 0x0000000e },
+{ 2275, 0x00118ce0, 0x0000002b },
+{ 2306, 0x00118d0b, 0x00000015 },
+{ 2334, 0x00118e54, 0x00000050 },
+{ 2360, 0x0011920e, 0x0000000a },
+{ 2386, 0x00118a7f, 0x00000227 },
+{ 2402, 0x00119382, 0x0000008c },
+{ 2438, 0x00118f52, 0x00000024 },
+{ 2467, 0x001191b2, 0x00000010 },
+{ 2496, 0x00118f76, 0x00000191 },
+{ 2514, 0x00119218, 0x0000010d },
+{ 2534, 0x00118cbf, 0x00000013 },
+{ 2557, 0x001191c2, 0x00000036 },
+{ 2582, 0x00119428, 0x0000005d },
+{ 2607, 0x0011972c, 0x000000bc },
+{ 2640, 0x00119485, 0x000000e7 },
+{ 2674, 0x00119670, 0x000000bc },
+{ 2703, 0x0011956c, 0x00000104 },
+{ 2738, 0x00119325, 0x0000003e },
+{ 2760, 0x00119363, 0x00000019 },
+{ 2783, 0x0011940e, 0x0000000a },
+{ 2815, 0x001197e8, 0x00000006 },
+{ 2844, 0x00118d5a, 0x0000003a },
+{ 2860, 0x00118a07, 0x0000001d },
+{ 2878, 0x00118a24, 0x0000001d },
+{ 2899, 0x00118f2b, 0x00000027 },
+{ 2926, 0x00119418, 0x00000010 },
+{ 2944, 0x001189ad, 0x00000016 },
+{ 2963, 0x001191f8, 0x00000006 },
+{ 2986, 0x001191fe, 0x00000006 },
+{ 3017, 0x00119107, 0x00000095 },
+{ 3042, 0x001189d1, 0x00000019 },
+{ 3059, 0x00118ea4, 0x00000087 },
+{ 3076, 0x00118ca6, 0x00000019 },
+{ 3096, 0x00118d94, 0x00000082 },
+{ 3115, 0x001189ea, 0x0000001d },
+{ 3131, 0x00118d20, 0x0000003a },
+{ 3159, 0x001189c3, 0x0000000e },
+{ 3176, 0x001187fb, 0x00000019 },
+{ 3185, 0x0010dde6, 0x0000006c },
+{ 3201, 0x00119948, 0x00000041 },
+{ 3218, 0x001198b0, 0x0000001f },
+{ 3236, 0x001198cf, 0x0000001f },
+{ 3260, 0x001198ee, 0x0000005a },
+{ 3277, 0x00118855, 0x00000066 },
+{ 3290, 0x00100cc2, 0x000000ca },
+{ 3307, 0x0011faf6, 0x00000162 },
+{ 3336, 0x001098f4, 0x000000e1 },
+{ 3373, 0x00109d22, 0x00000035 },
+{ 3388, 0x0010888f, 0x00000207 },
+{ 3401, 0x00109a1e, 0x00000058 },
+{ 3415, 0x0011c079, 0x00000061 },
+{ 3430, 0x00116403, 0x000001d6 },
+{ 3454, 0x00107cd2, 0x0000002a },
+{ 3480, 0x0011c107, 0x000000a2 },
+{ 3501, 0x00119204, 0x0000000a },
+{ 3516, 0x0011faba, 0x0000003c },
+{ 3534, 0x0011f84a, 0x00000270 },
+{ 3556, 0x0010abff, 0x000000c7 },
+{ 3577, 0x00100ad4, 0x0000006e },
+{ 3598, 0x0010aa7c, 0x0000010b },
+{ 3612, 0x00100d8c, 0x0000017a },
+{ 3639, 0x00100f06, 0x00000155 },
+{ 3680, 0x001099d5, 0x00000049 },
+{ 3695, 0x00107cfc, 0x0000002f },
+{ 3708, 0x00107d44, 0x000001a5 },
+{ 3726, 0x00106384, 0x0000007c },
+{ 3739, 0x00119a24, 0x0000000b },
+{ 3762, 0x00119a2f, 0x0000000b },
+{ 3799, 0x001199d1, 0x00000053 },
+{ 3822, 0x00100a3a, 0x0000000d },
+{ 3829, 0x00107b6f, 0x0000000a },
+{ 3845, 0x00100a26, 0x0000000a },
+{ 3852, 0x00100a30, 0x0000000a },
+{ 3860, 0x001263ad, 0x0000002b },
+{ 3870, 0x00125448, 0x00000167 },
+{ 3879, 0x00100194, 0x00000012 },
+{ 3895, 0x00119a7b, 0x0000000a },
+{ 3906, 0x00119bc1, 0x00000007 },
+{ 3930, 0x00119b76, 0x00000028 },
+{ 3954, 0x00119b9e, 0x00000017 },
+{ 3978, 0x00119bbb, 0x00000006 },
+{ 4014, 0x00119bb5, 0x00000006 },
+{ 4038, 0x00119a85, 0x00000029 },
+{ 4050, 0x00119aae, 0x00000059 },
+{ 4065, 0x001005c8, 0x00000022 },
+{ 4083, 0x00116122, 0x000000d8 },
+{ 4110, 0x001161fa, 0x000000e4 },
+{ 4136, 0x001162de, 0x000000fe },
+{ 4162, 0x0010806f, 0x0000005a },
+{ 4183, 0x00108a96, 0x00000006 },
+{ 4197, 0x00100550, 0x00000050 },
+{ 4215, 0x0010b758, 0x00000259 },
+{ 4234, 0x00124ff8, 0x0000007d },
+{ 4249, 0x001003bd, 0x00000013 },
+{ 4263, 0x0012525d, 0x00000040 },
+{ 4274, 0x001245c4, 0x000000ba },
+{ 4283, 0x0010f095, 0x0000012b },
+{ 4301, 0x00119c02, 0x00000006 },
+{ 4321, 0x0011fd65, 0x0000001d },
+{ 4336, 0x00119cb6, 0x0000000b },
+{ 4349, 0x00119cac, 0x0000000a },
+{ 4364, 0x00119c08, 0x0000004e },
+{ 4380, 0x00119c56, 0x00000056 },
+{ 4400, 0x0011a080, 0x000003db },
+{ 4429, 0x0011a45b, 0x000000ee },
+{ 4456, 0x0011a7c3, 0x0000001a },
+{ 4477, 0x0011a7f7, 0x00000083 },
+{ 4494, 0x0011a5c4, 0x0000007a },
+{ 4525, 0x0011a549, 0x0000007b },
+{ 4553, 0x0011a70f, 0x00000016 },
+{ 4586, 0x0011a73e, 0x0000003f },
+{ 4610, 0x0011a77d, 0x00000046 },
+{ 4640, 0x0011a7dd, 0x0000001a },
+{ 4659, 0x00109157, 0x0000009c },
+{ 4672, 0x001177bf, 0x00000046 },
+{ 4690, 0x00117805, 0x0000006e },
+{ 4708, 0x00117c55, 0x00000086 },
+{ 4733, 0x0010961c, 0x0000002f },
+{ 4741, 0x00109589, 0x00000093 },
+{ 4748, 0x0010071f, 0x00000019 },
+{ 4766, 0x0011b5bd, 0x0000006b },
+{ 4784, 0x0012003f, 0x00000351 },
+{ 4797, 0x0012103b, 0x0000001b },
+{ 4807, 0x00121381, 0x00000253 },
+{ 4822, 0x0012584e, 0x0000028a },
+{ 4839, 0x00120f17, 0x00000124 },
+{ 4850, 0x0012123b, 0x00000146 },
+{ 4865, 0x00117d60, 0x0000007d },
+{ 4875, 0x00117ddd, 0x00000034 },
+{ 4893, 0x00120853, 0x00000066 },
+{ 4903, 0x00121056, 0x000001e5 },
+{ 4918, 0x00118a41, 0x0000003e },
+{ 4929, 0x0011b9cc, 0x00000023 },
+{ 4944, 0x0011b80f, 0x0000006c },
+{ 4959, 0x0011ba27, 0x000000ee },
+{ 4974, 0x0011bb15, 0x00000059 },
+{ 4993, 0x0011b6e8, 0x0000004b },
+{ 5014, 0x0011b87b, 0x00000038 },
+{ 5028, 0x0011b8b3, 0x00000119 },
+{ 5048, 0x0011b628, 0x000000a9 },
+{ 5066, 0x0011b733, 0x00000034 },
+{ 5087, 0x0011b767, 0x000000a8 },
+{ 5101, 0x0011be71, 0x000000c7 },
+{ 5115, 0x0011b9ef, 0x00000038 },
+{ 5129, 0x0011bd2a, 0x00000147 },
+{ 5145, 0x0011bb6e, 0x000001bc },
+{ 5161, 0x0012688c, 0x00000063 },
+{ 5184, 0x00124f5d, 0x0000009b },
+{ 5198, 0x001003d0, 0x00000015 },
+{ 5211, 0x0012520f, 0x0000004e },
+{ 5221, 0x00100248, 0x00000047 },
+{ 5234, 0x00100200, 0x00000045 },
+{ 5244, 0x00116736, 0x0000001c },
+{ 5261, 0x001166fa, 0x0000003c },
+{ 5286, 0x00116752, 0x0000030d },
+{ 5306, 0x001255af, 0x000000c2 },
+{ 5320, 0x001156e2, 0x0000006b },
+{ 5341, 0x00107a65, 0x0000003d },
+{ 5358, 0x00107a09, 0x0000005c },
+{ 5373, 0x001079b1, 0x00000058 },
+{ 5387, 0x00107aa2, 0x00000039 },
+{ 5402, 0x001238eb, 0x00000020 },
+{ 5407, 0x0011aadf, 0x0000000a },
+{ 5430, 0x0011aac5, 0x0000000a },
+{ 5458, 0x0011aabb, 0x0000000a },
+{ 5486, 0x0011aab1, 0x0000000a },
+{ 5508, 0x0011aa6d, 0x0000003a },
+{ 5535, 0x0011aaa7, 0x0000000a },
+{ 5556, 0x0011aad5, 0x0000000a },
+{ 5590, 0x0011a8b4, 0x000001b9 },
+{ 5607, 0x0011aacf, 0x00000006 },
+{ 5626, 0x0012486a, 0x000000a4 },
+{ 5642, 0x0012490e, 0x0000005a },
+{ 5652, 0x0010193b, 0x00000032 },
+{ 5677, 0x00108bcb, 0x00000093 },
+{ 5698, 0x0010146b, 0x00000110 },
+{ 5708, 0x00107206, 0x00000109 },
+{ 5727, 0x00107104, 0x00000102 },
+{ 5751, 0x001013ed, 0x0000007e },
+{ 5765, 0x001074aa, 0x000000d1 },
+{ 5788, 0x0010730f, 0x0000019b },
+{ 5816, 0x0011fc58, 0x000000d2 },
+{ 5847, 0x001010d0, 0x0000008d },
+{ 5872, 0x00108a9c, 0x00000112 },
+{ 5891, 0x0010115d, 0x00000085 },
+{ 5906, 0x001011e2, 0x000000e7 },
+{ 5927, 0x0012666f, 0x00000088 },
+{ 5942, 0x001077ce, 0x000000f0 },
+{ 5961, 0x00108f78, 0x00000068 },
+{ 5972, 0x00108fe0, 0x00000083 },
+{ 5989, 0x00101382, 0x0000006b },
+{ 6005, 0x0010762e, 0x000000a1 },
+{ 6016, 0x00108e4c, 0x00000078 },
+{ 6033, 0x00108c5e, 0x000001ee },
+{ 6058, 0x00108bae, 0x0000001d },
+{ 6083, 0x001075d0, 0x0000005e },
+{ 6099, 0x0010757b, 0x00000055 },
+{ 6122, 0x0010105b, 0x00000075 },
+{ 6141, 0x00108f0d, 0x0000006b },
+{ 6155, 0x0010b9b1, 0x000000af },
+{ 6177, 0x00100bf3, 0x00000073 },
+{ 6202, 0x00100c66, 0x0000005c },
+{ 6238, 0x00101dea, 0x0000003f },
+{ 6252, 0x00112376, 0x00000126 },
+{ 6266, 0x0010174f, 0x00000064 },
+{ 6281, 0x001016c4, 0x0000008b },
+{ 6301, 0x00107f58, 0x00000040 },
+{ 6316, 0x00107f98, 0x000000d7 },
+{ 6331, 0x001076cf, 0x000000ff },
+{ 6353, 0x0011a63e, 0x000000d1 },
+{ 6376, 0x00109063, 0x00000074 },
+{ 6390, 0x001090d7, 0x0000005c },
+{ 6405, 0x0011481b, 0x0000008e },
+{ 6415, 0x00107ee9, 0x0000006f },
+{ 6429, 0x0010d7f5, 0x00000014 },
+{ 6446, 0x0010948d, 0x0000009d },
+{ 6459, 0x00113dd0, 0x0000006a },
+{ 6473, 0x0012343a, 0x00000006 },
+{ 6479, 0x00124968, 0x0000004e },
+{ 6489, 0x0010eb1f, 0x00000022 },
+{ 6510, 0x0010f72f, 0x000000b8 },
+{ 6523, 0x0010f683, 0x00000016 },
+{ 6544, 0x0010f6ed, 0x00000016 },
+{ 6567, 0x0010f6e7, 0x00000006 },
+{ 6586, 0x0010f719, 0x00000016 },
+{ 6615, 0x0010f703, 0x00000016 },
+{ 6642, 0x0010f5bd, 0x00000052 },
+{ 6665, 0x0010f69f, 0x00000006 },
+{ 6687, 0x0010f60f, 0x00000074 },
+{ 6709, 0x0010f699, 0x00000006 },
+{ 6731, 0x0010f6a5, 0x00000016 },
+{ 6754, 0x0010f6bb, 0x00000016 },
+{ 6781, 0x0010f6d1, 0x00000016 },
+{ 6802, 0x001148a9, 0x00000305 },
+{ 6831, 0x00114d83, 0x000002db },
+{ 6853, 0x00115136, 0x0000002a },
+{ 6874, 0x001153f5, 0x00000071 },
+{ 6890, 0x00114cff, 0x00000084 },
+{ 6914, 0x001150dc, 0x0000002d },
+{ 6940, 0x0011505e, 0x00000021 },
+{ 6968, 0x00115109, 0x0000002d },
+{ 6995, 0x0011507f, 0x0000005d },
+{ 7024, 0x0011528c, 0x00000010 },
+{ 7045, 0x00115160, 0x0000012c },
+{ 7059, 0x00115466, 0x0000027c },
+{ 7075, 0x00114ca4, 0x0000005b },
+{ 7095, 0x001152ac, 0x00000149 },
+{ 7116, 0x0011529c, 0x00000010 },
+{ 7138, 0x00114bae, 0x0000007b },
+{ 7158, 0x00114c29, 0x0000007b },
+{ 7179, 0x00112bff, 0x0000005b },
+{ 7200, 0x00112ce2, 0x0000003c },
+{ 7223, 0x00112d24, 0x0000003c },
+{ 7242, 0x00112d9c, 0x0000004d },
+{ 7266, 0x00112d60, 0x0000003c },
+{ 7288, 0x00112c96, 0x0000004c },
+{ 7310, 0x00112b72, 0x0000004b },
+{ 7332, 0x00112c5a, 0x0000003c },
+{ 7354, 0x00112de9, 0x000002ed },
+{ 7379, 0x0011319c, 0x00000047 },
+{ 7405, 0x001130dc, 0x0000001f },
+{ 7437, 0x00113139, 0x0000001f },
+{ 7471, 0x00113158, 0x0000001f },
+{ 7506, 0x00113177, 0x0000001f },
+{ 7548, 0x001130d6, 0x00000006 },
+{ 7581, 0x001130fb, 0x0000001f },
+{ 7615, 0x0011311a, 0x0000001f },
+{ 7653, 0x00113196, 0x00000006 },
+{ 7685, 0x00112bbd, 0x0000003c },
+{ 7708, 0x00112bf9, 0x00000006 },
+{ 7735, 0x00112d1e, 0x00000006 },
+{ 7756, 0x00125ad8, 0x0000016a },
+{ 7779, 0x0010da69, 0x000000c0 },
+{ 7797, 0x0010d8da, 0x0000018f },
+{ 7817, 0x0010dd58, 0x00000045 },
+{ 7825, 0x0010f835, 0x0000001c },
+{ 7838, 0x0010e15e, 0x00000074 },
+{ 7863, 0x0010e37d, 0x00000049 },
+{ 7890, 0x0010e293, 0x0000003d },
+{ 7913, 0x0010e319, 0x00000064 },
+{ 7941, 0x0010e2d0, 0x00000049 },
+{ 7967, 0x0010de73, 0x00000037 },
+{ 7993, 0x0010deaa, 0x0000005d },
+{ 8019, 0x0010e23e, 0x00000055 },
+{ 8045, 0x0010dfb7, 0x0000003a },
+{ 8072, 0x0010dff1, 0x0000003a },
+{ 8103, 0x0010ea01, 0x000000eb },
+{ 8123, 0x0010e8f9, 0x00000108 },
+{ 8144, 0x0010e1d2, 0x0000006c },
+{ 8169, 0x0010e3c6, 0x00000097 },
+{ 8196, 0x0010e481, 0x00000478 },
+{ 8224, 0x0010e45d, 0x00000006 },
+{ 8255, 0x0010e463, 0x0000001e },
+{ 8290, 0x0010df07, 0x000000b0 },
+{ 8316, 0x0010e02b, 0x000000b1 },
+{ 8343, 0x0010e0dc, 0x00000082 },
+{ 8374, 0x0010db29, 0x00000097 },
+{ 8380, 0x0010dcac, 0x000000ac },
+{ 8388, 0x0010f3b9, 0x00000204 },
+{ 8406, 0x0010dc1a, 0x0000000a },
+{ 8413, 0x0010de52, 0x00000021 },
+{ 8424, 0x00114561, 0x00000095 },
+{ 8439, 0x001144b7, 0x000000aa },
+{ 8454, 0x001145f6, 0x0000005a },
+{ 8470, 0x0011325e, 0x000001e3 },
+{ 8495, 0x001135cc, 0x00000059 },
+{ 8513, 0x0011387f, 0x0000002a },
+{ 8530, 0x001136eb, 0x000000bc },
+{ 8542, 0x00113512, 0x000000ba },
+{ 8562, 0x00113825, 0x0000002d },
+{ 8584, 0x001137a7, 0x00000021 },
+{ 8608, 0x00113852, 0x0000002d },
+{ 8631, 0x001137c8, 0x0000005d },
+{ 8656, 0x001139e9, 0x00000024 },
+{ 8673, 0x001138af, 0x0000013a },
+{ 8683, 0x00113b05, 0x00000218 },
+{ 8695, 0x001138a9, 0x00000006 },
+{ 8708, 0x001134e1, 0x00000031 },
+{ 8724, 0x00113a31, 0x000000d4 },
+{ 8741, 0x00113644, 0x0000001f },
+{ 8765, 0x00113682, 0x0000001f },
+{ 8791, 0x001136a1, 0x0000001f },
+{ 8818, 0x001136c0, 0x0000001f },
+{ 8852, 0x00113625, 0x0000001f },
+{ 8877, 0x00113663, 0x0000001f },
+{ 8903, 0x001136df, 0x00000006 },
+{ 8933, 0x001136e5, 0x00000006 },
+{ 8957, 0x00113a0d, 0x00000024 },
+{ 8975, 0x00113441, 0x00000050 },
+{ 8991, 0x00113491, 0x00000050 },
+{ 9008, 0x00111a66, 0x000000b7 },
+{ 9020, 0x0011004d, 0x0000017a },
+{ 9045, 0x0010f86d, 0x0000007a },
+{ 9063, 0x0011171f, 0x0000000a },
+{ 9080, 0x00111083, 0x0000029f },
+{ 9103, 0x00110fd0, 0x000000b3 },
+{ 9115, 0x0011133b, 0x0000019b },
+{ 9137, 0x00111322, 0x00000019 },
+{ 9160, 0x0011175a, 0x00000020 },
+{ 9177, 0x0011099a, 0x00000636 },
+{ 9187, 0x0011185e, 0x00000190 },
+{ 9199, 0x00111729, 0x00000031 },
+{ 9215, 0x001114d6, 0x00000249 },
+{ 9237, 0x0010fae2, 0x00000172 },
+{ 9255, 0x0010fd22, 0x00000096 },
+{ 9275, 0x0010fdb8, 0x00000065 },
+{ 9291, 0x0010fc6d, 0x00000019 },
+{ 9312, 0x0010fc54, 0x00000019 },
+{ 9331, 0x0010f8e7, 0x0000017c },
+{ 9350, 0x0010fa63, 0x0000007f },
+{ 9369, 0x0010fe1d, 0x00000230 },
+{ 9391, 0x0010fc86, 0x0000009c },
+{ 9411, 0x0011179a, 0x000000c4 },
+{ 9428, 0x001106bb, 0x00000264 },
+{ 9446, 0x001101c7, 0x000004f4 },
+{ 9464, 0x0011177a, 0x00000020 },
+{ 9482, 0x0010dbc0, 0x00000041 },
+{ 9495, 0x0010f851, 0x0000001c },
+{ 9509, 0x00111b97, 0x00000292 },
+{ 9531, 0x00111e29, 0x0000022e },
+{ 9557, 0x0010dc24, 0x00000088 },
+{ 9570, 0x0010dc01, 0x00000019 },
+{ 9584, 0x00125c7e, 0x00000034 },
+{ 9605, 0x00101991, 0x00000024 },
+{ 9618, 0x0010978c, 0x00000057 },
+{ 9628, 0x00123b63, 0x0000000a },
+{ 9636, 0x00124d83, 0x00000011 },
+{ 9644, 0x001247ae, 0x00000011 },
+{ 9652, 0x00100a16, 0x00000010 },
+{ 9662, 0x0010a70a, 0x0000000b },
+{ 9680, 0x00123707, 0x0000000a },
+{ 9687, 0x00111b1d, 0x0000007a },
+{ 9700, 0x00125d9f, 0x00000064 },
+{ 9717, 0x0011ffb0, 0x00000034 },
+{ 9730, 0x00125193, 0x00000051 },
+{ 9744, 0x00109864, 0x00000010 },
+{ 9761, 0x00125127, 0x0000006c },
+{ 9775, 0x001250bb, 0x0000006c },
+{ 9789, 0x00107ae1, 0x0000000a },
+{ 9801, 0x001206f3, 0x00000076 },
+{ 9820, 0x0010914d, 0x0000000a },
+{ 9839, 0x0010aa6b, 0x0000000b },
+{ 9851, 0x0011fe0a, 0x000000ac },
+{ 9864, 0x001003b7, 0x00000006 },
+{ 9881, 0x001019b5, 0x0000000f },
+{ 9906, 0x00120769, 0x00000079 },
+{ 9916, 0x0011f27c, 0x000000aa },
+{ 9929, 0x0012342a, 0x0000000a },
+{ 9942, 0x00125762, 0x00000030 },
+{ 9958, 0x00125671, 0x000000f1 },
+{ 9971, 0x00100058, 0x0000004a },
+{ 9977, 0x001002a0, 0x00000001 },
+{ 9985, 0x00124ab5, 0x0000000b },
+{ 10005, 0x00124b31, 0x00000013 },
+{ 10025, 0x00117b60, 0x00000026 },
+{ 10030, 0x00124e75, 0x000000e8 },
+{ 10039, 0x0010a808, 0x000000c6 },
+{ 10060, 0x00123363, 0x0000001d },
+{ 10064, 0x0011816b, 0x00000031 },
+{ 10091, 0x001182d1, 0x0000002a },
+{ 10110, 0x0011835c, 0x00000031 },
+{ 10126, 0x00118629, 0x0000002a },
+{ 10144, 0x00118796, 0x0000002a },
+{ 10173, 0x001197f4, 0x0000002d },
+{ 10196, 0x001188bb, 0x00000031 },
+{ 10212, 0x00119989, 0x00000031 },
+{ 10233, 0x00119a3a, 0x00000031 },
+{ 10256, 0x00119b07, 0x00000052 },
+{ 10281, 0x00119bc8, 0x0000002a },
+{ 10306, 0x00124dd1, 0x000000a4 },
+{ 10322, 0x0011a87a, 0x0000002a },
+{ 10348, 0x00119cc1, 0x00000031 },
+{ 10367, 0x001086e5, 0x000000c6 },
+{ 10382, 0x0011ade6, 0x0000002a },
+{ 10406, 0x0011ade0, 0x00000006 },
+{ 10433, 0x0011ff43, 0x00000059 },
+{ 10466, 0x0011ae77, 0x000001d0 },
+{ 10480, 0x0011b4d3, 0x0000002a },
+{ 10496, 0x0011e144, 0x0000002a },
+{ 10522, 0x0011df55, 0x0000008f },
+{ 10541, 0x0011e202, 0x00000031 },
+{ 10559, 0x0011e4e9, 0x0000002f },
+{ 10578, 0x0011fd2a, 0x0000003b },
+{ 10590, 0x0011e79f, 0x0000002d },
+{ 10608, 0x00100b42, 0x000000b1 },
+{ 10629, 0x0011e844, 0x0000002a },
+{ 10650, 0x0011aae9, 0x000002f7 },
+{ 10664, 0x0011e8c8, 0x0000002a },
+{ 10686, 0x00125e03, 0x00000162 },
+{ 10698, 0x0011ed46, 0x0000002d },
+{ 10724, 0x0011ef3d, 0x00000031 },
+{ 10744, 0x0011f182, 0x00000031 },
+{ 10765, 0x0011f37f, 0x00000031 },
+{ 10786, 0x00109a76, 0x00000061 },
+{ 10802, 0x00109ad7, 0x000000d1 },
+{ 10816, 0x00109ba8, 0x000000d0 },
+{ 10845, 0x00109f92, 0x000000ef },
+{ 10864, 0x00100314, 0x00000013 },
+{ 10877, 0x0011e5aa, 0x0000001c },
+{ 10881, 0x001268ef, 0x00000029 },
+{ 10895, 0x00109874, 0x00000063 },
+{ 10916, 0x0011a725, 0x00000019 },
+{ 10935, 0x0011f5e9, 0x000000bf },
+{ 10955, 0x0010acc6, 0x000002ba },
+{ 10970, 0x0011feb6, 0x0000002a },
+{ 11009, 0x0011fde1, 0x0000001e },
+{ 11040, 0x0011fee0, 0x0000002f },
+{ 11078, 0x0011fdff, 0x0000000b },
+{ 11116, 0x0011fd8d, 0x0000002a },
+{ 11153, 0x0011fdb7, 0x0000002a },
+{ 11190, 0x0011ff0f, 0x0000001a },
+{ 11223, 0x0011ff29, 0x0000001a },
+{ 11259, 0x0011dec6, 0x0000008f },
+{ 11292, 0x001004e8, 0x00000063 },
+{ 11311, 0x00124da0, 0x00000031 },
+{ 11320, 0x0011b577, 0x00000046 },
+{ 11332, 0x0011e5de, 0x0000001f },
+{ 11336, 0x001002a8, 0x00000000 },
+{ 11358, 0x0011b4c7, 0x00000006 },
+{ 11373, 0x0011b4bb, 0x00000006 },
+{ 11388, 0x0011b4c1, 0x00000006 },
+{ 11402, 0x0011b46d, 0x0000004e },
+{ 11416, 0x0011b249, 0x00000098 },
+{ 11425, 0x0011b2e1, 0x0000018c },
+{ 11449, 0x0010845b, 0x00000032 },
+{ 11465, 0x0010832a, 0x00000006 },
+{ 11478, 0x0011b060, 0x000001d0 },
+{ 11507, 0x001083a5, 0x00000029 },
+{ 11520, 0x00108330, 0x00000049 },
+{ 11531, 0x0011b230, 0x00000019 },
+{ 11541, 0x00108379, 0x0000002c },
+{ 11554, 0x0011b4cd, 0x00000006 },
+{ 11574, 0x0010a6f4, 0x00000016 },
+{ 11587, 0x00123b46, 0x0000001d },
+{ 11595, 0x0010cbd4, 0x0000007a },
+{ 11602, 0x0010a8ce, 0x00000013 },
+{ 11615, 0x00111a04, 0x00000062 },
+{ 11621, 0x00125f65, 0x00000027 },
+{ 11637, 0x00123d5f, 0x00000035 },
+{ 11645, 0x0010a715, 0x0000006b },
+{ 11660, 0x0010a780, 0x00000088 },
+{ 11679, 0x001002f0, 0x00000000 },
+{ 11687, 0x00109c78, 0x0000001d },
+{ 11697, 0x0010cffd, 0x00000072 },
+{ 11704, 0x0010d0d0, 0x0000001b },
+{ 11715, 0x0010ce44, 0x00000052 },
+{ 11724, 0x0010ce96, 0x0000001c },
+{ 11739, 0x0010cdab, 0x0000000d },
+{ 11767, 0x0010cd96, 0x00000015 },
+{ 11791, 0x0010c905, 0x00000130 },
+{ 11805, 0x0010ceb2, 0x0000014b },
+{ 11823, 0x0010cc4e, 0x00000148 },
+{ 11837, 0x0010d06f, 0x00000061 },
+{ 11850, 0x0010033c, 0x00000000 },
+{ 11859, 0x00100384, 0x00000000 },
+{ 11869, 0x00100328, 0x00000013 },
+{ 11879, 0x001008a7, 0x00000010 },
+{ 11893, 0x001008b7, 0x000000c2 },
+{ 11913, 0x00100864, 0x00000043 },
+{ 11932, 0x00100979, 0x0000009d },
+{ 11954, 0x00124789, 0x00000006 },
+{ 11972, 0x00106d67, 0x0000039d },
+{ 11986, 0x0011249c, 0x00000109 },
+{ 12001, 0x00101e29, 0x000000a7 },
+{ 12006, 0x00101ed0, 0x00000072 },
+{ 12013, 0x00101f42, 0x000002d5 },
+{ 12021, 0x00102317, 0x00003874 },
+{ 12039, 0x001082e5, 0x0000001c },
+{ 12058, 0x00108264, 0x00000025 },
+{ 12079, 0x001060cc, 0x0000005d },
+{ 12087, 0x00105f32, 0x00000066 },
+{ 12095, 0x00106129, 0x0000003d },
+{ 12103, 0x00105f98, 0x0000006a },
+{ 12111, 0x00106033, 0x00000030 },
+{ 12119, 0x00106002, 0x00000031 },
+{ 12127, 0x00106063, 0x00000069 },
+{ 12136, 0x0011e265, 0x00000046 },
+{ 12149, 0x00100738, 0x0000012c },
+{ 12154, 0x00115c37, 0x00000066 },
+{ 12163, 0x00115c9d, 0x0000002f },
+{ 12174, 0x00115c09, 0x0000002e },
+{ 12183, 0x0010d61f, 0x00000019 },
+{ 12198, 0x0010d325, 0x0000005f },
+{ 12220, 0x0010d6b9, 0x00000023 },
+{ 12241, 0x0010d384, 0x00000018 },
+{ 12254, 0x0010d28d, 0x0000004c },
+{ 12271, 0x0010d417, 0x00000028 },
+{ 12289, 0x0010d49c, 0x0000001d },
+{ 12311, 0x0010d39c, 0x00000023 },
+{ 12326, 0x0010d0eb, 0x0000018a },
+{ 12338, 0x0010d6a0, 0x00000019 },
+{ 12353, 0x0010d756, 0x00000038 },
+{ 12381, 0x0010cdb8, 0x0000008c },
+{ 12393, 0x0010d3f4, 0x00000023 },
+{ 12415, 0x0010d4d6, 0x00000023 },
+{ 12433, 0x0010d275, 0x00000018 },
+{ 12448, 0x0010d716, 0x0000001d },
+{ 12465, 0x0010d3bf, 0x00000018 },
+{ 12483, 0x0010d3d7, 0x0000001d },
+{ 12502, 0x0010d462, 0x0000001d },
+{ 12517, 0x0010d47f, 0x0000001d },
+{ 12537, 0x0010d733, 0x00000023 },
+{ 12555, 0x0010d606, 0x00000019 },
+{ 12572, 0x0010d2d9, 0x0000004c },
+{ 12598, 0x0010d687, 0x00000019 },
+{ 12615, 0x0010d563, 0x0000006d },
+{ 12636, 0x0010d4b9, 0x0000001d },
+{ 12662, 0x0010d6dc, 0x0000001d },
+{ 12685, 0x0010d66e, 0x00000019 },
+{ 12701, 0x0010d6f9, 0x0000001d },
+{ 12721, 0x0010d5ed, 0x00000019 },
+{ 12739, 0x0010d5d0, 0x0000001d },
+{ 12753, 0x0010d655, 0x00000019 },
+{ 12767, 0x0010d638, 0x0000001d },
+{ 12786, 0x0010d78e, 0x00000067 },
+{ 12805, 0x0010d4f9, 0x0000004d },
+{ 12828, 0x0010d546, 0x0000001d },
+{ 12842, 0x0010d43f, 0x00000023 },
+{ 12859, 0x0010ca99, 0x0000005a },
+{ 12875, 0x0010caf3, 0x0000005b },
+{ 12886, 0x0010ca3b, 0x0000005e },
+{ 12895, 0x0012395c, 0x00000034 },
+{ 12902, 0x0011735f, 0x00000023 },
+{ 12914, 0x0011733f, 0x00000020 },
+{ 12924, 0x001172ab, 0x0000000b },
+{ 12942, 0x001172a1, 0x0000000a },
+{ 12955, 0x001172b6, 0x0000000b },
+{ 12969, 0x0011719d, 0x000000af },
+{ 12985, 0x00116e31, 0x00000006 },
+{ 12996, 0x00116edd, 0x0000000a },
+{ 13007, 0x00116e5c, 0x00000081 },
+{ 13020, 0x00116ef1, 0x00000054 },
+{ 13031, 0x00116f45, 0x000000e2 },
+{ 13042, 0x00117027, 0x00000048 },
+{ 13057, 0x0011724c, 0x00000055 },
+{ 13072, 0x0011706f, 0x00000047 },
+{ 13086, 0x00117116, 0x00000087 },
+{ 13103, 0x001170b6, 0x00000060 },
+{ 13124, 0x001172c1, 0x00000012 },
+{ 13135, 0x00116e37, 0x00000025 },
+{ 13149, 0x001172d3, 0x0000006c },
+{ 13168, 0x00116ee7, 0x0000000a },
+{ 13181, 0x0011dd1e, 0x0000000a },
+{ 13206, 0x0011c6f5, 0x00000065 },
+{ 13219, 0x0011c887, 0x000000c1 },
+{ 13231, 0x0011ca2e, 0x000000e2 },
+{ 13256, 0x0011cbf7, 0x00000108 },
+{ 13278, 0x0011de1a, 0x0000005e },
+{ 13302, 0x0011c948, 0x000000e6 },
+{ 13325, 0x0011cb10, 0x000000e7 },
+{ 13345, 0x0011b6d1, 0x00000017 },
+{ 13360, 0x0011d651, 0x00000019 },
+{ 13383, 0x0011d638, 0x00000019 },
+{ 13402, 0x0011c5cb, 0x00000099 },
+{ 13416, 0x0011c664, 0x00000091 },
+{ 13430, 0x0011c47a, 0x00000077 },
+{ 13443, 0x0011c55e, 0x0000006d },
+{ 13456, 0x0011c366, 0x00000091 },
+{ 13468, 0x0011d949, 0x0000008a },
+{ 13490, 0x0011d855, 0x0000007b },
+{ 13512, 0x0011d767, 0x00000071 },
+{ 13537, 0x0011d683, 0x00000070 },
+{ 13562, 0x0011dd3d, 0x0000000b },
+{ 13576, 0x0011dce7, 0x00000019 },
+{ 13593, 0x0011d61f, 0x00000019 },
+{ 13620, 0x0011dd32, 0x0000000b },
+{ 13635, 0x0011c835, 0x0000003e },
+{ 13658, 0x0011ccff, 0x00000172 },
+{ 13677, 0x0011dd00, 0x0000001e },
+{ 13692, 0x0011d447, 0x000001d8 },
+{ 13707, 0x0011d314, 0x00000133 },
+{ 13723, 0x0011d193, 0x00000181 },
+{ 13743, 0x0011e017, 0x00000042 },
+{ 13763, 0x0011e059, 0x00000050 },
+{ 13790, 0x0011e0a9, 0x00000046 },
+{ 13822, 0x0011e109, 0x0000003b },
+{ 13854, 0x0011e0fc, 0x0000000d },
+{ 13887, 0x0011e0ef, 0x0000000d },
+{ 13916, 0x0011d66a, 0x00000019 },
+{ 13927, 0x0011c75a, 0x000000db },
+{ 13939, 0x0011da64, 0x00000283 },
+{ 13953, 0x0011c3f7, 0x00000083 },
+{ 13966, 0x0011c4f1, 0x0000006d },
+{ 13979, 0x0011c2a1, 0x000000c5 },
+{ 13991, 0x0011d9d3, 0x00000091 },
+{ 14013, 0x0011d8d0, 0x00000079 },
+{ 14035, 0x0011d7d8, 0x0000007d },
+{ 14060, 0x0011d6f3, 0x00000074 },
+{ 14085, 0x0011c873, 0x00000014 },
+{ 14097, 0x0011dd28, 0x0000000a },
+{ 14117, 0x0011ce71, 0x00000167 },
+{ 14131, 0x0011cfd8, 0x000001bb },
+{ 14145, 0x0012390b, 0x00000028 },
+{ 14152, 0x00123933, 0x00000029 },
+{ 14161, 0x0011ed95, 0x0000000b },
+{ 14172, 0x001017b3, 0x00000188 },
+{ 14187, 0x001246b7, 0x000000d2 },
+{ 14196, 0x0012178e, 0x00001b33 },
+{ 14204, 0x001215fc, 0x00000037 },
+{ 14229, 0x0012339f, 0x0000007f },
+{ 14250, 0x00124b44, 0x0000015a },
+{ 14265, 0x0011e1f8, 0x0000000a },
+{ 14279, 0x0011e1b2, 0x00000019 },
+{ 14290, 0x0011e1cb, 0x00000014 },
+{ 14304, 0x0011e1df, 0x00000019 },
+{ 14317, 0x0011e2ca, 0x000000ba },
+{ 14331, 0x0011e2ab, 0x00000019 },
+{ 14351, 0x0011e41f, 0x000000ca },
+{ 14373, 0x00116109, 0x00000019 },
+{ 14386, 0x00101d1f, 0x00000032 },
+{ 14406, 0x00101b62, 0x00000080 },
+{ 14416, 0x00101be2, 0x00000085 },
+{ 14431, 0x00101c67, 0x000000b8 },
+{ 14454, 0x0010cb4e, 0x00000086 },
+{ 14463, 0x0010eeff, 0x0000004e },
+{ 14493, 0x001015a0, 0x0000000f },
+{ 14520, 0x0011c1cb, 0x0000000d },
+{ 14543, 0x0011c1d8, 0x0000000d },
+{ 14567, 0x0011c1e5, 0x00000010 },
+{ 14592, 0x0011c1a9, 0x00000022 },
+{ 14616, 0x0011c1f5, 0x000000ac },
+{ 14641, 0x0010d809, 0x00000085 },
+{ 14666, 0x0010d88e, 0x0000004c },
+{ 14693, 0x0010a0a8, 0x0000000b },
+{ 14703, 0x001187d7, 0x0000000b },
+{ 14715, 0x00119b59, 0x0000001d },
+{ 14730, 0x0011ef85, 0x0000000b },
+{ 14741, 0x0011f4a3, 0x0000004c },
+{ 14754, 0x0011f3d2, 0x00000006 },
+{ 14773, 0x00107b79, 0x0000000b },
+{ 14788, 0x0011f5bf, 0x00000011 },
+{ 14802, 0x0011f5d0, 0x00000019 },
+{ 14818, 0x0011f3d8, 0x000000c3 },
+{ 14834, 0x0011f49b, 0x00000008 },
+{ 14850, 0x0011f53a, 0x00000019 },
+{ 14864, 0x0011f553, 0x00000019 },
+{ 14881, 0x0011f56c, 0x00000053 },
+{ 14897, 0x0011f4ef, 0x00000019 },
+{ 14910, 0x0011f508, 0x00000019 },
+{ 14923, 0x0011f521, 0x00000019 },
+{ 14936, 0x00123434, 0x00000006 },
+{ 14941, 0x00109553, 0x0000001f },
+{ 14946, 0x0011e537, 0x00000037 },
+{ 14953, 0x0011e5c6, 0x00000018 },
+{ 14958, 0x0011e5fd, 0x00000021 },
+{ 14963, 0x00123b2d, 0x00000019 },
+{ 14969, 0x00105b8b, 0x00000023 },
+{ 14979, 0x00105d53, 0x0000007a },
+{ 14997, 0x00105bae, 0x0000004d },
+{ 15011, 0x00105de6, 0x000000fd },
+{ 15036, 0x00106406, 0x0000056f },
+{ 15055, 0x00106191, 0x000000b6 },
+{ 15082, 0x00105bfb, 0x0000002d },
+{ 15103, 0x00106166, 0x0000002b },
+{ 15128, 0x00105c28, 0x0000012b },
+{ 15152, 0x00105ee3, 0x0000004f },
+{ 15171, 0x00106247, 0x00000030 },
+{ 15191, 0x00107c40, 0x00000092 },
+{ 15200, 0x00123897, 0x0000000f },
+{ 15209, 0x001238a6, 0x00000045 },
+{ 15219, 0x001249b6, 0x00000027 },
+{ 15235, 0x0012529d, 0x00000144 },
+{ 15250, 0x00125792, 0x000000bc },
+{ 15265, 0x0011e56e, 0x0000001d },
+{ 15270, 0x001207e2, 0x00000006 },
+{ 15278, 0x0010b07f, 0x00000010 },
+{ 15304, 0x0010af9b, 0x00000046 },
+{ 15322, 0x0010bd1a, 0x000002d8 },
+{ 15340, 0x0010afe1, 0x0000004e },
+{ 15362, 0x0010b02f, 0x00000050 },
+{ 15383, 0x0010af8c, 0x0000000f },
+{ 15399, 0x0010c8ef, 0x00000006 },
+{ 15412, 0x0011e644, 0x0000001e },
+{ 15422, 0x0011e68a, 0x00000020 },
+{ 15434, 0x0011e6de, 0x0000001d },
+{ 15444, 0x0011e6fb, 0x0000001f },
+{ 15456, 0x0011e76a, 0x00000014 },
+{ 15466, 0x0011e77e, 0x00000021 },
+{ 15478, 0x0011e61e, 0x00000026 },
+{ 15489, 0x0011e662, 0x00000028 },
+{ 15502, 0x0011e6aa, 0x00000019 },
+{ 15513, 0x0011e6c3, 0x0000001b },
+{ 15526, 0x0011e71a, 0x00000027 },
+{ 15537, 0x0011e741, 0x00000029 },
+{ 15550, 0x0011e58b, 0x0000001f },
+{ 15556, 0x0010aa76, 0x00000006 },
+{ 15564, 0x00117484, 0x0000010b },
+{ 15591, 0x001267bf, 0x000000cd },
+{ 15618, 0x00121633, 0x0000003a },
+{ 15635, 0x0012166d, 0x00000105 },
+{ 15655, 0x001204a4, 0x0000014b },
+{ 15670, 0x00108174, 0x00000039 },
+{ 15680, 0x00123711, 0x00000034 },
+{ 15687, 0x001205ef, 0x00000104 },
+{ 15712, 0x001203d4, 0x000000c4 },
+{ 15734, 0x00120bb9, 0x0000035e },
+{ 15749, 0x0011bf38, 0x000000e5 },
+{ 15762, 0x00114650, 0x00000073 },
+{ 15775, 0x00120b7e, 0x0000003b },
+{ 15789, 0x001209de, 0x000000e6 },
+{ 15806, 0x00123990, 0x0000009f },
+{ 15815, 0x001208e0, 0x000000fe },
+{ 15831, 0x001208b9, 0x00000027 },
+{ 15850, 0x00123a2f, 0x00000097 },
+{ 15859, 0x00120390, 0x00000044 },
+{ 15876, 0x00120ac4, 0x0000005a },
+{ 15894, 0x00120b1e, 0x00000060 },
+{ 15918, 0x0011e7fb, 0x0000000a },
+{ 15943, 0x0011e805, 0x00000006 },
+{ 15977, 0x0011e83e, 0x00000006 },
+{ 15997, 0x0011e7dc, 0x00000019 },
+{ 16014, 0x0011e80b, 0x00000027 },
+{ 16029, 0x0011e7f5, 0x00000006 },
+{ 16056, 0x0011e832, 0x00000006 },
+{ 16079, 0x0011e838, 0x00000006 },
+{ 16101, 0x0010dda7, 0x0000000b },
+{ 16116, 0x0012615f, 0x0000001d },
+{ 16124, 0x0012617c, 0x0000001d },
+{ 16129, 0x00123e19, 0x000007ab },
+{ 16139, 0x00123440, 0x00000006 },
+{ 16144, 0x00101d51, 0x00000099 },
+{ 16158, 0x00121772, 0x0000001c },
+{ 16167, 0x0012647d, 0x000001d0 },
+{ 16177, 0x001098d7, 0x0000001d },
+{ 16189, 0x001083ce, 0x0000000e },
+{ 16206, 0x0010b0e6, 0x00000672 },
+{ 16225, 0x0010c682, 0x0000001b },
+{ 16245, 0x0011e9f2, 0x00000021 },
+{ 16266, 0x0011e384, 0x0000009b },
+{ 16281, 0x0010c69d, 0x000000a8 },
+{ 16303, 0x00106975, 0x00000357 },
+{ 16324, 0x001083dc, 0x00000061 },
+{ 16335, 0x0010c06d, 0x0000000a },
+{ 16347, 0x0010bff2, 0x0000007b },
+{ 16360, 0x0010062a, 0x00000002 },
+{ 16378, 0x00100629, 0x00000003 },
+{ 16396, 0x00100628, 0x00000004 },
+{ 16414, 0x00117436, 0x0000004e },
+{ 16433, 0x0011206c, 0x00000025 },
+{ 16460, 0x00112094, 0x00000007 },
+{ 16486, 0x00108301, 0x00000029 },
+{ 16498, 0x00117b86, 0x0000001a },
+{ 16508, 0x00117d36, 0x0000002a },
+{ 16535, 0x00117cdb, 0x0000005b },
+{ 16562, 0x00117ba0, 0x000000b5 },
+{ 16585, 0x0010848d, 0x000000ac },
+{ 16590, 0x0010063e, 0x00000020 },
+{ 16603, 0x00100630, 0x0000002e },
+{ 16624, 0x00108539, 0x000000ac },
+{ 16635, 0x0011091f, 0x0000007b },
+{ 16650, 0x00117a05, 0x00000037 },
+{ 16682, 0x001082ad, 0x00000038 },
+{ 16694, 0x00117974, 0x00000006 },
+{ 16708, 0x0011792c, 0x00000042 },
+{ 16722, 0x00117a3c, 0x00000037 },
+{ 16756, 0x0011796e, 0x00000006 },
+{ 16772, 0x00117b24, 0x0000003c },
+{ 16807, 0x00117b0d, 0x00000017 },
+{ 16825, 0x00117725, 0x00000045 },
+{ 16864, 0x0011769a, 0x00000032 },
+{ 16897, 0x001176cc, 0x00000059 },
+{ 16928, 0x0011776a, 0x00000017 },
+{ 16956, 0x00117a73, 0x0000009a },
+{ 16973, 0x00117781, 0x0000003e },
+{ 17000, 0x001179e7, 0x0000001e },
+{ 17019, 0x0011e8a2, 0x00000026 },
+{ 17059, 0x0011e87e, 0x00000014 },
+{ 17092, 0x0011e892, 0x00000010 },
+{ 17124, 0x0011797a, 0x0000003c },
+{ 17140, 0x001179b6, 0x00000031 },
+{ 17154, 0x00126081, 0x000000de },
+{ 17172, 0x001263d8, 0x0000006e },
+{ 17181, 0x00125fe6, 0x0000009b },
+{ 17198, 0x001262b6, 0x000000ac },
+{ 17210, 0x00126446, 0x00000037 },
+{ 17222, 0x0012664d, 0x00000022 },
+{ 17231, 0x00126199, 0x000000be },
+{ 17243, 0x00126362, 0x0000004b },
+{ 17258, 0x0010c7ee, 0x00000101 },
+{ 17278, 0x0010c745, 0x00000026 },
+{ 17298, 0x00126257, 0x0000005f },
+{ 17314, 0x001247ef, 0x00000040 },
+{ 17321, 0x0012482f, 0x0000003b },
+{ 17328, 0x00107aeb, 0x00000041 },
+{ 17343, 0x00106277, 0x0000010d },
+{ 17356, 0x001006dd, 0x0000000e },
+{ 17368, 0x001247bf, 0x0000000c },
+{ 17376, 0x001247cb, 0x0000000c },
+{ 17384, 0x001247d7, 0x0000000c },
+{ 17392, 0x001247e3, 0x0000000c },
+{ 17400, 0x00107adb, 0x00000006 },
+{ 17412, 0x00100a47, 0x00000011 },
+{ 17424, 0x001081ad, 0x00000069 },
+{ 17438, 0x001097e3, 0x0000005a },
+{ 17447, 0x0010157b, 0x00000025 },
+{ 17461, 0x00123d94, 0x00000085 },
+{ 17465, 0x00105dcd, 0x00000019 },
+{ 17486, 0x001266f7, 0x00000064 },
+{ 17501, 0x0011ebe2, 0x0000004e },
+{ 17520, 0x0011ec76, 0x0000008e },
+{ 17541, 0x0011ed0e, 0x0000001d },
+{ 17567, 0x0011ec5d, 0x00000019 },
+{ 17590, 0x0011ed04, 0x0000000a },
+{ 17615, 0x0011ed2b, 0x0000001b },
+{ 17642, 0x0011ea13, 0x00000019 },
+{ 17677, 0x0011e9c3, 0x0000002f },
+{ 17712, 0x0011eaca, 0x00000046 },
+{ 17746, 0x0011ec30, 0x0000002d },
+{ 17768, 0x0011eb38, 0x00000055 },
+{ 17788, 0x0011ea6c, 0x0000005e },
+{ 17819, 0x0011eb10, 0x0000000f },
+{ 17838, 0x0011eb1f, 0x0000000f },
+{ 17858, 0x0011eb2e, 0x0000000a },
+{ 17890, 0x0011eb8d, 0x00000055 },
+{ 17912, 0x0011ea2c, 0x00000040 },
+{ 17949, 0x00123acc, 0x00000019 },
+{ 17958, 0x0010843d, 0x0000001e },
+{ 17974, 0x0010f02d, 0x00000032 },
+{ 17992, 0x00100a58, 0x0000007c },
+{ 18010, 0x0010ef9d, 0x0000006c },
+{ 18030, 0x001087ab, 0x000000e4 },
+{ 18053, 0x0010f009, 0x00000024 },
+{ 18072, 0x0010f1c0, 0x0000001a },
+{ 18097, 0x0011e18d, 0x00000019 },
+{ 18107, 0x0011e16e, 0x0000001f },
+{ 18120, 0x0011e1a6, 0x0000000c },
+{ 18132, 0x00123745, 0x00000019 },
+{ 18140, 0x001096fb, 0x00000091 },
+{ 18150, 0x0011e2c4, 0x00000006 },
+{ 18167, 0x00106400, 0x00000006 },
+{ 18176, 0x0010aa4e, 0x0000001d },
+{ 18187, 0x00100000, 0x00000000 },
+{ 18194, 0x00109d57, 0x0000023b },
+{ 18212, 0x00119d41, 0x0000033f },
+{ 18233, 0x0011b047, 0x00000019 },
+{ 18250, 0x0010c76b, 0x00000083 },
+{ 18270, 0x0011758f, 0x000000a6 },
+{ 18295, 0x00118e16, 0x0000003e },
+{ 18320, 0x00109d1b, 0x00000007 },
+{ 18324, 0x001236cc, 0x0000003b },
+{ 18331, 0x00123817, 0x0000002f },
+{ 18338, 0x0012375e, 0x0000005a },
+{ 18345, 0x001236a1, 0x0000002b },
+{ 18352, 0x00101ac8, 0x0000002f },
+{ 18371, 0x00101aba, 0x0000000e },
+{ 18385, 0x00101af7, 0x00000048 },
+{ 18405, 0x00101b3f, 0x00000023 },
+{ 18418, 0x00123673, 0x0000002e },
+{ 18425, 0x001237b8, 0x0000005f },
+{ 18433, 0x00123846, 0x00000051 },
+{ 18441, 0x0012364c, 0x00000027 },
+{ 18448, 0x00123b6d, 0x000000bb },
+{ 18455, 0x0012344c, 0x00000200 },
+{ 18462, 0x00123c28, 0x00000137 },
+{ 18470, 0x00108651, 0x0000002d },
+{ 18480, 0x0010964b, 0x000000b0 },
+{ 18490, 0x001091f3, 0x0000029a },
+{ 18506, 0x001080c9, 0x00000025 },
+{ 18522, 0x001080ee, 0x00000086 },
+{ 18547, 0x00102217, 0x00000100 },
+{ 18570, 0x0010131a, 0x00000068 },
+{ 18582, 0x00107b38, 0x00000006 },
+{ 18598, 0x00107b2c, 0x00000006 },
+{ 18610, 0x00107b32, 0x00000006 },
+{ 18623, 0x0010ca35, 0x00000006 },
+{ 18632, 0x0010a4f9, 0x00000006 },
+{ 18644, 0x0010952a, 0x00000019 },
+{ 18655, 0x0010ddce, 0x00000018 },
+{ 18671, 0x00108289, 0x00000024 },
+{ 18683, 0x00107b84, 0x0000000b },
+{ 18705, 0x00107b8f, 0x0000001d },
+{ 18717, 0x00107d2b, 0x00000019 },
+{ 18742, 0x0010867e, 0x0000004d },
+{ 18765, 0x001207e8, 0x00000006 },
+{ 18784, 0x001178cb, 0x00000061 },
+{ 18802, 0x00117873, 0x00000058 },
+{ 18820, 0x001085e5, 0x0000006c },
+{ 18833, 0x001207ee, 0x00000019 },
+{ 18854, 0x00108243, 0x00000021 },
+{ 18868, 0x00108216, 0x0000002d },
+{ 18880, 0x001166c0, 0x0000003a },
+{ 18906, 0x0011665c, 0x0000003d },
+{ 18934, 0x00116b9e, 0x0000027c },
+{ 18950, 0x0011661f, 0x0000003d },
+{ 18973, 0x001165df, 0x0000003a },
+{ 19000, 0x00116619, 0x00000006 },
+{ 19023, 0x001165d9, 0x00000006 },
+{ 19046, 0x00116699, 0x00000027 },
+{ 19071, 0x001006eb, 0x0000001a },
+{ 19079, 0x0011479d, 0x0000007e },
+{ 19093, 0x0012467e, 0x00000039 },
+{ 19103, 0x00117635, 0x00000034 },
+{ 19130, 0x00116a5f, 0x0000013f },
+{ 19149, 0x0011ae5e, 0x00000019 },
+{ 19162, 0x00100705, 0x0000001a },
+{ 19172, 0x0010a1c5, 0x00000217 },
+{ 19185, 0x0010a4d3, 0x00000026 },
+{ 19203, 0x0010a3dc, 0x000000f7 },
+{ 19222, 0x0010a61e, 0x0000001a },
+{ 19236, 0x0010a12b, 0x0000009a },
+{ 19249, 0x0011edf0, 0x00000011 },
+{ 19264, 0x0011ee01, 0x0000001f },
+{ 19288, 0x0011eea0, 0x0000009d },
+{ 19307, 0x0011eda0, 0x00000046 },
+{ 19323, 0x0011ede6, 0x0000000a },
+{ 19343, 0x0011ee20, 0x00000080 },
+{ 19363, 0x0010a638, 0x0000004c },
+{ 19379, 0x0010a684, 0x0000001b },
+{ 19398, 0x0010aa01, 0x0000000d },
+{ 19411, 0x0010a563, 0x0000000d },
+{ 19429, 0x0010a570, 0x0000001d },
+{ 19448, 0x0010a0b3, 0x00000078 },
+{ 19462, 0x0010a69f, 0x00000023 },
+{ 19477, 0x0011ef90, 0x00000033 },
+{ 19494, 0x0011efc3, 0x00000033 },
+{ 19516, 0x0011eff6, 0x0000018c },
+{ 19532, 0x0010a6c2, 0x00000019 },
+{ 19548, 0x0010a6db, 0x00000019 },
+{ 19563, 0x0011f326, 0x0000002a },
+{ 19590, 0x0011f350, 0x0000002f },
+{ 19616, 0x0011f211, 0x0000001c },
+{ 19642, 0x0011f22d, 0x0000004f },
+{ 19661, 0x0011f1be, 0x00000053 },
+{ 19681, 0x0010a5ee, 0x00000030 },
+{ 19702, 0x0010a593, 0x00000023 },
+{ 19717, 0x0010a5b6, 0x00000038 },
+{ 19739, 0x0010f05f, 0x00000019 },
+{ 19759, 0x0010f078, 0x0000001d },
+{ 19784, 0x0010a4ff, 0x00000064 },
+{ 19798, 0x0010aa0e, 0x00000019 },
+{ 19813, 0x00123ac6, 0x00000006 },
+{ 19821, 0x00125cb2, 0x00000038 },
+{ 19842, 0x00113e3a, 0x0000007b },
+{ 19852, 0x0011439f, 0x00000085 },
+{ 19873, 0x00113f94, 0x00000076 },
+{ 19885, 0x0011400a, 0x00000080 },
+{ 19901, 0x00114424, 0x00000093 },
+{ 19913, 0x0011408a, 0x00000315 },
+{ 19926, 0x001125a5, 0x00000545 },
+{ 19936, 0x00113eb5, 0x0000006d },
+{ 19947, 0x00113f22, 0x00000072 },
+{ 19959, 0x00123424, 0x00000006 },
+{ 19965, 0x001157c1, 0x00000177 },
+{ 19974, 0x00115938, 0x000002d1 },
+{ 19989, 0x0011579d, 0x00000024 },
+{ 19999, 0x0011577c, 0x00000021 },
+{ 20005, 0x0011574d, 0x0000002f },
+
 };
-static int n_symbols __attribute__ ((unused)) = 0;
+static int n_symbols __attribute__ ((unused)) = 1116;
 #endif

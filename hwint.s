@@ -122,9 +122,9 @@ returnfromirq:
  movl 48(%ecx), %eax
  pushl %eax
 
-
-
-
+ mov 0(%ecx), %gs
+ mov 4(%ecx), %fs
+ mov 8(%ecx), %es
  movl 16(%ecx), %edi
  movl 20(%ecx), %esi
  movl 24(%ecx), %ebp
