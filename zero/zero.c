@@ -46,7 +46,7 @@ void receive_dep(void *arg)
 }
 
 ClassDesc *createClassDescImplementingInterface(DomainDesc * domain, ClassDesc * cl, MethodInfoDesc * methods, int numMethods,
-						char *name)
+						                                    char *name)
 {
 	ClassDesc *c;
 
@@ -299,7 +299,6 @@ void start_domain_zero()
 	/* Enable processor interrupts */
 	sti();
 #endif
-
 
 
   /*********************************

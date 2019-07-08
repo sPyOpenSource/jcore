@@ -305,8 +305,6 @@ struct pseudo_descriptor {
 extern int irq_master_base, irq_slave_base;
 
 
-
-
 /* tables */
 /*static struct cpu_info base_cpuid;*/
 

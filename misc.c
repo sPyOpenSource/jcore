@@ -140,16 +140,16 @@ void setTimer()
 	value.it_value.tv_usec = value.it_interval.tv_usec;
 #ifndef NO_TIMER_IRQ
 	setitimer(ITIMER_REAL, &value, NULL);
-#  endif
+#endif
 
 #else				/* KERNEL */
 	/*
 	 * Setup Timer interrupt
 	 * Needed for timeslicing and to poll serial line
-	 * even if no timeslicing is deactivated the timer isr is used to poll the serial line 
+	 * even if no timeslicing is deactivated the timer isr is used to poll the serial line
 	 */
 
-#       define HZ            1193182
+#define HZ 1193182
 	int value = HZ / TIMER_HZ;
 	printf("SETTING TIMER\n\n");
 	outb(0x43, 0x30 | 0x04);	/* set mode: 16bit and mode rategen */

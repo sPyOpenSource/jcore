@@ -22,7 +22,7 @@ jint cpuManager_yield(ObjectDesc * self)
 {
 	/* printf("YIELD!!\n"); */
 	threadyield();
-	//     ASSERTNOCLI1;      
+	//     ASSERTNOCLI1;
 }
 
 void cpuManager_sleep(ObjectDesc * self, jint msec, jint nsec)
@@ -310,7 +310,6 @@ jboolean cpuManager_unblock(ObjectDesc * self, CPUStateProxy * cpuStateProxy)
       finish:
 	RESTORE_IRQ;
 	return ret;
-
 }
 
 //static ClassDesc *jx_zero_CPUState=NULL;
@@ -342,7 +341,7 @@ jboolean cpuManager_start(ObjectDesc * self, CPUStateProxy * cpuStateProxy)
 {
 	ThreadDesc *cpuState = cpuState2thread(cpuStateProxy);
 	jboolean result = JNI_TRUE;
-
+	printf("new thread\n");
 	ASSERTTHREAD(cpuState);
 	DISABLE_IRQ;
 	if (cpuState->state != STATE_INIT) {
@@ -621,11 +620,10 @@ ObjectDesc *cpuManager_getStackFrameClassName(ObjectDesc * self, jint depth)
 		sp = ebp;
 		n++;
 	}
-	if (findMethodAtAddrInDomain(curdom(), (char *) eip, &method, &classInfo, &bytecodePos, &i) == 0) {
+	if (findMethodAtAddrInDomain(curdom(), (char *) eip, &method, &classInfo, &bytecodePos, &i) == 0)
 		return newString(curdom(), classInfo->name);
-	} else {
+	else
 		return newString(curdom(), "core:");
-	}
 }
 
 ObjectDesc *cpuManager_getStackFrameMethodName(ObjectDesc * self, jint depth)
@@ -669,11 +667,10 @@ jint cpuManager_getStackFrameLine(ObjectDesc * self, jint depth)
 		sp = ebp;
 		n++;
 	}
-	if (findMethodAtAddrInDomain(curdom(), (char *) eip, &method, &classInfo, &bytecodePos, &i) == 0) {
+	if (findMethodAtAddrInDomain(curdom(), (char *) eip, &method, &classInfo, &bytecodePos, &i) == 0)
 		return i;
-	} else {
+	else
 		return -1;
-	}
 }
 
 jint cpuManager_getStackFrameBytecode(ObjectDesc * self, jint depth)
@@ -691,16 +688,16 @@ jint cpuManager_getStackFrameBytecode(ObjectDesc * self, jint depth)
 		sp = ebp;
 		n++;
 	}
-	if (findMethodAtAddrInDomain(curdom(), (char *) eip, &method, &classInfo, &bytecodePos, &i) == 0) {
+	if (findMethodAtAddrInDomain(curdom(), (char *) eip, &method, &classInfo, &bytecodePos, &i) == 0)
 		return bytecodePos;
-	} else {
+	else
 		return -1;
-	}
 }
 
 jint cpuManager_inhibitScheduling(ObjectDesc * self)
 {
 }
+
 jint cpuManager_allowScheduling(ObjectDesc * self)
 {
 }
@@ -790,8 +787,9 @@ MethodInfoDesc cpuManagerMethods[] = {
 	   "allowScheduling", "", (code_t) cpuManager_allowScheduling}
 	,
 };
+
 void init_cpumanager_portal()
 {
 	init_zero_dep_without_thread("jx/zero/CPUManager", "CPUManager", cpuManagerMethods, sizeof(cpuManagerMethods),
-				     "<jx/zero/CPUManager>");
+				                       "<jx/zero/CPUManager>");
 }

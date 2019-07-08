@@ -111,24 +111,6 @@ LINUXSRC  = $(LINUXSOURCES)
 LINUXOBJ  = $(LINUXSRC:%.c=.linux/%.o)
 LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
-all:
-	echo Specify target: jx, jxcore
-
-$(COREOBJ): $(COREINCLUDES)
-
-$(LINUXOBJ): $(LINUXINCLUDES)
-
-
-LINUXBUILD = $(CC) $(LINUXLDOPTS) -o jx $(LINUXOBJ) $(LINUXLIBS)
-
-jx: Makefile.dep .linux symbols.h $(LINUXOBJ)
-	$(LINUXBUILD)
-	perl mksymtab.perl jx symbols.h
-	rm -f .linux/symfind.o .linux/atomicfn.o
-	$(MAKE) .linux/symfind.o
-	$(MAKE) .linux/atomicfn.o
-	$(LINUXBUILD)
-
 COREOBJ2 = $(COREOBJ:.kernel/gc/%=.kernel/%)
 COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ2:.kernel/zero/%=.kernel/%)
 
@@ -138,13 +120,6 @@ jxcore: Makefile.dep .kernel realmode.h $(COREOBJ)
 	rm -f .kernel/symfind.o .kernel/atomicfn.o ; $(MAKE) .kernel/symfind.o .kernel/atomicfn.o
 	$(COREBUILD)
 #	strip jxcore
-
-.linux/valid-symbols: main.c symbols.h
-	$(LINUXBUILD)
-	$(MKSYMTAB) jx symbols.h
-	$(MAKE) .linux/symfind.o
-	touch .linux/valid-symbols
-	$(MAKE) jx
 
 .kernel/valid-symbols: symbols.h
 	$(COREBUILD)
@@ -156,20 +131,12 @@ jxcore: Makefile.dep .kernel realmode.h $(COREOBJ)
 symbols.h:
 	perl mksymtab.perl jx symbols.h
 
-.linux/symfind.o: symbols.h symfind.c
-
 .kernel/symfind.o: symbols.h symfind.c
-
-.linux/atomicfn.o: symbols.h atomicfn.c atomicfn.h
 
 .kernel/atomicfn.o: symbols.h atomicfn.c atomicfn.h
 
 .kernel:
 	mkdir .kernel
-
-.linux:
-	mkdir .linux
-
 
 realmode: asm.S
 	gcc -m32 -g -c -o asm.o asm.S
@@ -204,12 +171,6 @@ realmode: asm.S
 
 .SECONDARY: $(CORESEC)
 
-.linux/%.o: %.c
-	$(CC) $(LINUXCCFLAGS) $(LINUXDEFINES) $(LINUXINCLUDE) -c -o .linux/$(@F) $<
-
-.linux/%.o: %.S
-	$(AS) --32 $(LINUXCCFLAGS2) $(LINUXINCLUDE)  -c -o .linux/$(@F) $<
-
 
 # hidden dependencies
 zero/zero_Memory.c: zero/zero_Memory_new.c zero/zero_Memory_org.c zero/zero_Memory_shared.c zero/zero_Memory_simple.c
@@ -218,21 +179,14 @@ zero/zero_Memory.c: zero/zero_Memory_new.c zero/zero_Memory_org.c zero/zero_Memo
 ifeq ($(findstring jxcore, $(MAKECMDGOALS)), jxcore)
  -include kernel.dep
 endif
-ifeq ($(MAKECMDGOALS), jx)
- -include linux.dep
-endif
 
 depend:
 	#rm -f kernel.dep linux.dep
-	$(MAKE) kernel.dep linux.dep
+	$(MAKE) kernel.dep
 
 kernel.dep:
 	touch $@
 	./makedepend -- $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -- -f $@ -p .kernel/ $(CORESRC)
-
-linux.dep:
-	touch $@
-	./makedepend -- $(LINUXCCFLAGS) $(LINUXDEFINES) $(LINUXINCLUDE) -- -f $@ -p .linux/ $(LINUXSRC)
 
 # cleans all files if the Makefile was modified
 Makefile.dep: Makefile settings.makefile
@@ -243,11 +197,8 @@ Makefile.dep: Makefile settings.makefile
 wc:
 	wc -l $(ESSENTIALSOURCES) $(ZEROSOURCES) $(ESSENTIALCORESOURCES) | sort -n
 
-disk:
-	rm -f EMULATED_DISK ; dd if=/dev/zero of=EMULATED_DISK bs=512 count=10000
-
 clean:
-	rm -rf .kernel .linux *.o *.d thread jx lock *~ jxcore *.s #*.dep #symbols.h
+	rm -rf .kernel *.o *.d thread lock *~ jxcore *.s #*.dep #symbols.h
 
 print:
 	rm -rf .print ; mkdir .print

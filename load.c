@@ -331,7 +331,7 @@ ArrayClassDesc *findSharedArrayClassDescByElemClass(ClassDesc * elemClass)
 	return c;
 }
 
-/* creates a new array class 
+/* creates a new array class
  * arrayclasses are not shared???
 */
 Class *createArrayClass(DomainDesc * domain, char *name)
@@ -1796,7 +1796,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						}
 						break;
 					}
-				case 17:	// new version 
+				case 17:	// new version
 					{	/* StackMap */
 						SymbolDescStackMap *s;
 						int mapPos;
@@ -2069,6 +2069,7 @@ void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
 
 	if (m == NULL) {
 		//#ifdef DEBUG
+		printf("!!! no direct method found");
 		printf("!!! no direct method found: %s.%s%s\n", s->className, s->methodName, s->methodSignature);
 		//#endif
 		patchRelativeAddress(code, symbol, (jint) should_not_be_called);

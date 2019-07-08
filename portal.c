@@ -164,8 +164,10 @@ void abstract_method_error(ObjectDesc * self)
 	asm("int $3");
 	sys_panic("THIS METHOD IS ABSTRACT");
 }
+
 static void abstract_method_error_proxy()
 {
+  printf("THIS PROXY METHOD IS ABSTRACT");
 	sys_panic("THIS PROXY METHOD IS ABSTRACT");
 }
 
@@ -176,7 +178,7 @@ u4_t direct_send_portal(Proxy * proxy, ...);
 #endif
 
 Proxy *createPortalInDomain(DomainDesc * domain, ClassDesc * depClass, DomainDesc * targetDomain, u4_t targetDomainID,
-			    u4_t depIndex)
+			                      u4_t depIndex)
 {
 	code_t *vtable;
 	jint j;
@@ -288,12 +290,10 @@ void installVtables(DomainDesc * domain, ClassDesc * c, MethodInfoDesc * methods
 		}
 	}
 	if (failure) {
+    printf("Some DomainZero Portal methods are not implemented.");
 		sys_panic("Some DomainZero Portal methods are not implemented.");
 	}
 }
-
-
-
 
 
 /*********
@@ -339,7 +339,6 @@ void check_notin_servicequeue(DEPDesc * dep, ThreadDesc * thread)
 #endif
 #endif
 }
-
 
 
 #ifndef NEW_PORTALCALL

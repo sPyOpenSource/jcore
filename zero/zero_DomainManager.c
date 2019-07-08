@@ -117,7 +117,7 @@ void start_initial_thread(void *dummy)
 
 	RESTORE_IRQ;
 #ifndef KERNEL
-	enable_irq();		// FIXME   
+	enable_irq();		// FIXME
 #endif
 
 	/* The following code is executed with interrupts enabled */
@@ -162,6 +162,7 @@ void start_initial_thread(void *dummy)
 		/* try to find old fashioned init method */
 		executeStatic(curdom(), value, "init", "(Ljx/zero/Naming;)V", (jint *) dz, 1);
 	} else {
+		printf("init method not found for domain");
 		printf(" %s.init(Ljx/zero/Naming;[Ljava/lang/String;)V\n", value);
 		sys_panic("init method not found for domain %d\n", domain->id);
 	}
@@ -244,11 +245,11 @@ static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * 
 	}
 
 	if (domain->cpu[get_processor_id()] == NULL) {	/* create Object for the current CPU */
-		/*    
+		/*
 		   DEPDesc *aDEP = init_zero_dep_from_class_without_thread(cpuClass, NULL);
 		   CPUDesc *cpuInstance = (CPUDesc*)aDEP->obj;
 		   cpuInstance->cpu_id= get_processor_id();
-		   domain->cpu[get_processor_id()]=cpuInstance; 
+		   domain->cpu[get_processor_id()]=cpuInstance;
 		 */
 		domain->cpu[get_processor_id()] = domainZero->cpu[get_processor_id()];
 	}
