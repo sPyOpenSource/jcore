@@ -13,7 +13,6 @@
 #include "zero_Memory.h"
 
 
-
 extern jint gc_methodindex;
 
 extern ObjectDesc *memoryManagerInstance;
@@ -200,7 +199,6 @@ static inline MethodDesc *obj2method(ObjectDesc * obj)
 }
 
 
-
 /*************/
 /* functions */
 
@@ -250,9 +248,6 @@ void installInitialNaming(DomainDesc * srcDomain, DomainDesc * dstDomain,
 			  Proxy * naming);
 Proxy *getDomainZeroNaming();
 Proxy *getInitialNaming();
-
-
-
 
 
 /* in zero_DomainManager */

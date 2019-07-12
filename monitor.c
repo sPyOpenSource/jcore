@@ -206,7 +206,7 @@ void gc_monitor_commands(DomainDesc * domain, HandleReference_t handler)
 #endif				/* JAVA_MONITOR_COMMANDS */
 
 /****************/
-/* prints the next "anz" words in memory beginnig at sp 
+/* prints the next "anz" words in memory beginnig at sp
    and tries to find the method at that addr */
 void dumpstack(u4_t * sp, int anz)
 {
@@ -239,7 +239,6 @@ void printStackTrace(char *prefix, ThreadDesc * thread, u4_t * base)
 	printf("%s\n", prefix);
 
 	for (i = 0; i < STACK_TRACE_LIMIT; i++) {
-
 		if (sp <= thread->stack || sp + 2 >= thread->stackTop) {
 			if (sp != NULL)
 				printf("Framepointer %p out of stack memory(%p..%p).\n", sp, thread->stack, thread->stackTop);
@@ -271,7 +270,7 @@ void printStackTrace(char *prefix, ThreadDesc * thread, u4_t * base)
 	}
 }
 
-/* similar to printStackTrace, but prints the N last stack frames 
+/* similar to printStackTrace, but prints the N last stack frames
    and does not stop if the stackpointer is invalid (not in the stack of the given thread) */
 void printNStackTrace(char *prefix, ThreadDesc * thread, u4_t * base, int n)
 {
@@ -471,7 +470,7 @@ void dumpObject(ObjectDesc * o)
 	printf("     class:  %p %s\n", c, c->name);
 	for (i = 0; i < c->vtableSize; i++) {
 		if (c->vtable[i] != NULL) {
-			/*findMethodAtAddr(c->vtable[i], &c_method,&c_class,&c_pos,&c_line);            
+			/*findMethodAtAddr(c->vtable[i], &c_method,&c_class,&c_pos,&c_line);
 			   printf("       %03i:  %p  \n", i, c->vtable[i]);
 			   if (c_method != NULL) printf("             %s.%s\n", c_class->name, c_method->name); */
 			printf("       %03i:  %p", i, c->vtable[i]);
@@ -705,7 +704,7 @@ static int wait_while_in_monitor(void *nix)
 #endif
 
  /*
-  * Support functions for domain traversal 
+  * Support functions for domain traversal
   */
 static void monitor_print_threadinfo(DomainDesc * domain)
 {
@@ -1209,7 +1208,7 @@ void monitor(struct sigcontext *ctx)
 			   dumpDomainInfo(d);
 			   int i,j,k;
 			   DomainDesc* d = (DomainDesc*)strtol(line + 6, NULL, 16);
-			   printf(" Code of Domain 0x%lx:\n", d); 
+			   printf(" Code of Domain 0x%lx:\n", d);
 			   for(i=0; i<d->numberOfLibs; i++) {
 			   LibDesc *lib = d->libs[i];
 			   for(j=0; j<lib->numberOfClasses; j++) {

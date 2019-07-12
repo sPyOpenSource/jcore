@@ -116,7 +116,7 @@ COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ2:.kernel/zero/%=.ke
 
 jxcore: Makefile.dep .kernel realmode.h $(COREOBJ)
 	$(COREBUILD)
-	perl mksymtab.perl jxcore symbols.h
+	#perl mksymtab.perl jxcore symbols.h
 	rm -f .kernel/symfind.o .kernel/atomicfn.o ; $(MAKE) .kernel/symfind.o .kernel/atomicfn.o
 	$(COREBUILD)
 #	strip jxcore

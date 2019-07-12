@@ -195,7 +195,8 @@ int main(int argc, char *argv[])
 	}
 #endif
 	initPrimitiveClasses();
-
+	console(0, "OK");
+	console(1, "hello world");
 	domainZero_thread = createThread(domainZero, start_domain_zero, (void *) 0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
 	setThreadName(domainZero_thread, "DomainZero:InitialThread", NULL);
 	thread_exit();

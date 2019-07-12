@@ -18,7 +18,7 @@
 #include "config.h"
 #include "lock.h"
 
-#define SYMBOLDESC_BASE jint type;jint immediateNCIndex;jint numBytes;jint nextInstrNCIndex
+#define SYMBOLDESC_BASE jint type; jint immediateNCIndex; jint numBytes; jint nextInstrNCIndex
 
 
 typedef struct {
@@ -170,7 +170,6 @@ struct ArrayClassDesc_s;
     u4_t inheritServiceThread; \
     CLASSSTATISTICS;\
     CLASSDEBUGINFO
-
 
 
 #ifdef PROFILE_HEAPUSAGE

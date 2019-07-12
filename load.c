@@ -2924,20 +2924,26 @@ void callClassConstructors(DomainDesc * domain, LibDesc * lib)
 
 	for (i = 0; i < lib->numberOfClasses; i++)
 		callClassConstructor(&lib->allClasses[i]);
-
+	console(21,"ok");
 	lib->initialized = 1;
 }
 
+int line = 0;
 void callClassConstructor(Class * cl)
 {
 	jint i;
 	code_t c;
 	ASSERTCLASS(cl);
+	console(line % 20, cl->classDesc->name);
+	console(20, cl->classDesc->name);
+	//printf("cl->classDesc->name");
+	line++;
 	if (cl->state == CLASS_READY)
 		return;
 	cl->state = CLASS_READY;
 	for (i = 0; i < cl->classDesc->numberOfMethods; i++) {
 		if (strcmp("<clinit>", cl->classDesc->methods[i].name) == 0) {
+			console(22,cl->classDesc->methods[i].name);
 			c = (code_t) cl->classDesc->methods[i].code;
 			c();
 			break;
