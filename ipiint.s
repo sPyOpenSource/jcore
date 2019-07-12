@@ -1,5 +1,0 @@
-# 1 "ipiint.S"
-# 1 "/home/spy/OS/jcore//"
-# 1 "<built-in>"
-# 1 "<command-line>"
-# 1 "ipiint.S"

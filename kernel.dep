@@ -74,193 +74,193 @@
 .kernel/execJAVA.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/execJAVA.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/execJAVA.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_alloc.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_alloc.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_alloc.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_alloc.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
-.kernel/gc/gc_alloc.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
-.kernel/gc/gc_alloc.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/gc/gc_alloc.o: lapic.h libcache.h load.h lock.h lowlevel.h malloc.h
-.kernel/gc/gc_alloc.o: malloc_proto.h memfs.h minic.h misc.h monitor.h
-.kernel/gc/gc_alloc.o: multiboot.h object.h portal.h portal_proto.h profile.h
-.kernel/gc/gc_alloc.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/gc/gc_alloc.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/gc/gc_alloc.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/gc/gc_alloc.o: zip.h
-.kernel/gc/gc_bitmap.o: /usr/include/stdc-predef.h
-.kernel/gc/gc_checkheap.o: all.h atomicfn.h atomic.h bench.h
-.kernel/gc/gc_checkheap.o: classes.h code.h config.h context.h
-.kernel/gc/gc_checkheap.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/gc/gc_checkheap.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/gc/gc_checkheap.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h
-.kernel/gc/gc_checkheap.o: gc/gc_impl.h gc/gc_move.h gc/gc_new.h gc/gc_org.h
-.kernel/gc/gc_checkheap.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/gc/gc_checkheap.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/gc/gc_checkheap.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/gc/gc_checkheap.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/gc/gc_checkheap.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/gc/gc_checkheap.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/gc/gc_checkheap.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/gc/gc_checkheap.o: zip.h
-.kernel/gc/gc_chunked.o: all.h atomicfn.h atomic.h bench.h
-.kernel/gc/gc_chunked.o: classes.h code.h config.h context.h
-.kernel/gc/gc_chunked.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/gc/gc_chunked.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/gc/gc_chunked.o: gc/gc_chunked.h gc/gc_common.h gc/gc_compacting.h
-.kernel/gc/gc_chunked.o: gc/gc.h gc/gc_impl.h gc/gc_move_common.h gc/gc_move.h
-.kernel/gc/gc_chunked.o: gc/gc_new.h gc/gc_org.h gc/gc_pgc.h interrupt.h
-.kernel/gc/gc_chunked.o: intr.h irq.h lapic.h libcache.h load.h lock.h
-.kernel/gc/gc_chunked.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h
-.kernel/gc/gc_chunked.o: misc.h monitor.h multiboot.h object.h portal.h
-.kernel/gc/gc_chunked.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
-.kernel/gc/gc_chunked.o: smp.h spinlock.h symfind.h thread.h types.h
-.kernel/gc/gc_chunked.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
-.kernel/gc/gc_chunked.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_common.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_common.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_common.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_common.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
-.kernel/gc/gc_common.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
-.kernel/gc/gc_common.o: gc/gc_new.h gc/gc_org.h gc/gc_pgc.h gc/gc_stack.h
-.kernel/gc/gc_common.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/gc/gc_common.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/gc/gc_common.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
-.kernel/gc/gc_common.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
-.kernel/gc/gc_common.o: smp.h spinlock.h symfind.h thread.h types.h
-.kernel/gc/gc_common.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
-.kernel/gc/gc_common.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_compacting.o:
-.kernel/gc/gc_compacting.o: /usr/include/stdc-predef.h
-.kernel/gc/gc_impl.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_impl.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_impl.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_impl.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
-.kernel/gc/gc_impl.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
-.kernel/gc/gc_impl.o: gc/gc_new.h gc/gc_org.h gc/gc_pa.h gc/gc_pgc.h
-.kernel/gc/gc_impl.o: gc/gc_stack.h gc/gc_thread.h interrupt.h intr.h irq.h
-.kernel/gc/gc_impl.o: lapic.h libcache.h load.h lock.h lowlevel.h malloc.h
-.kernel/gc/gc_impl.o: malloc_proto.h memfs.h minic.h misc.h monitor.h
-.kernel/gc/gc_impl.o: multiboot.h object.h portal.h portal_proto.h profile.h
-.kernel/gc/gc_impl.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/gc/gc_impl.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/gc/gc_impl.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/gc/gc_impl.o: zip.h
-.kernel/gc/gc_memcpy.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_memcpy.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_memcpy.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_memcpy.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h
-.kernel/gc/gc_memcpy.o: gc/gc.h gc/gc_memcpy.h gc/gc_new.h gc/gc_org.h
-.kernel/gc/gc_memcpy.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/gc/gc_memcpy.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/gc/gc_memcpy.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
-.kernel/gc/gc_memcpy.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
-.kernel/gc/gc_memcpy.o: smp.h spinlock.h symfind.h thread.h types.h
-.kernel/gc/gc_memcpy.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
-.kernel/gc/gc_memcpy.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_move_common.o: all.h atomicfn.h atomic.h bench.h
-.kernel/gc/gc_move_common.o: classes.h code.h config.h
-.kernel/gc/gc_move_common.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/gc/gc_move_common.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/gc/gc_move_common.o: gc/gc_bitmap.h gc/gc_common.h gc/gc_compacting.h
-.kernel/gc/gc_move_common.o: gc/gc.h gc/gc_impl.h gc/gc_move_common.h
-.kernel/gc/gc_move_common.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_pgc.h
-.kernel/gc/gc_move_common.o: interrupt.h intr.h irq.h lapic.h libcache.h
-.kernel/gc/gc_move_common.o: load.h lock.h lowlevel.h malloc.h malloc_proto.h
-.kernel/gc/gc_move_common.o: memfs.h minic.h misc.h monitor.h multiboot.h
-.kernel/gc/gc_move_common.o: object.h portal.h portal_proto.h profile.h runq.h
-.kernel/gc/gc_move_common.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/gc/gc_move_common.o: thread.h types.h /usr/include/stdc-predef.h
-.kernel/gc/gc_move_common.o: vmsupport.h zero/zero.h zero/zero_Memory.h
-.kernel/gc/gc_move_common.o: zero/zero_Profiler.h zip.h
-.kernel/gc/gc_move.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_move.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_move.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_move.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
-.kernel/gc/gc_move.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_memcpy.h
-.kernel/gc/gc_move.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_pa.h
-.kernel/gc/gc_move.o: gc/gc_pgc.h interrupt.h intr.h irq.h lapic.h libcache.h
-.kernel/gc/gc_move.o: load.h lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/gc/gc_move.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
-.kernel/gc/gc_move.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
-.kernel/gc/gc_move.o: smp.h spinlock.h symfind.h thread.h types.h
-.kernel/gc/gc_move.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
-.kernel/gc/gc_move.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_new.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_new.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_new.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_new.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
-.kernel/gc/gc_new.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h
-.kernel/gc/gc_new.o: gc/gc_move_common.h gc/gc_move.h gc/gc_new.h gc/gc_org.h
-.kernel/gc/gc_new.o: gc/gc_pgc.h interrupt.h intr.h irq.h lapic.h libcache.h
-.kernel/gc/gc_new.o: load.h lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/gc/gc_new.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
-.kernel/gc/gc_new.o: portal_proto.h profile.h runq.h sched.h serialdbg.h smp.h
-.kernel/gc/gc_new.o: spinlock.h symfind.h thread.h types.h
-.kernel/gc/gc_new.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
-.kernel/gc/gc_new.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
-.kernel/gc/gc.o: config.h context.h debug_reg.h domain.h ekhz.h
-.kernel/gc/gc.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/gc/gc.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h gc/gc_memcpy.h
-.kernel/gc/gc.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_pa.h gc/gc_pgc.h
-.kernel/gc/gc.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h lock.h
-.kernel/gc/gc.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h misc.h
-.kernel/gc/gc.o: monitor.h multiboot.h object.h portal.h portal_proto.h
-.kernel/gc/gc.o: profile.h
-.kernel/gc/gc_org.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_org.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_org.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_org.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
-.kernel/gc/gc_org.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_memcpy.h
-.kernel/gc/gc_org.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_org_int.h
-.kernel/gc/gc_org.o: gc/gc_pa.h gc/gc_pgc.h gc/gc_stack.h gc/gc_thread.h
-.kernel/gc/gc_org.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h lock.h
-.kernel/gc/gc_org.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h misc.h
-.kernel/gc/gc_org.o: monitor.h multiboot.h object.h portal.h portal_proto.h
-.kernel/gc/gc_org.o: profile.h runq.h sched.h serialdbg.h smp.h spinlock.h
-.kernel/gc/gc_org.o: symfind.h thread.h types.h /usr/include/stdc-predef.h
-.kernel/gc/gc_org.o: vmsupport.h zero/zero.h zero/zero_Memory.h
-.kernel/gc/gc_org.o: zero/zero_Profiler.h zip.h
-.kernel/gc/gc.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/gc/gc.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/gc/gc.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_pa.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_pa.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_pa.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_pa.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/gc/gc_pa.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
-.kernel/gc/gc_pa.o: libcache.h load.h lock.h lowlevel.h malloc.h
-.kernel/gc/gc_pa.o: malloc_proto.h memfs.h minic.h misc.h monitor.h
-.kernel/gc/gc_pa.o: multiboot.h object.h portal.h portal_proto.h profile.h
-.kernel/gc/gc_pa.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/gc/gc_pa.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/gc/gc_pa.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_pgc.o: /usr/include/stdc-predef.h
-.kernel/gc/gc_stack.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_stack.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_stack.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_stack.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
-.kernel/gc/gc_stack.o: gc/gc_compacting.h gc/gc.h gc/gc_memcpy.h gc/gc_move.h
-.kernel/gc/gc_stack.o: gc/gc_new.h gc/gc_org.h gc/gc_pa.h gc/gc_pgc.h
-.kernel/gc/gc_stack.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/gc/gc_stack.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/gc/gc_stack.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
-.kernel/gc/gc_stack.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
-.kernel/gc/gc_stack.o: smp.h spinlock.h symfind.h thread.h types.h
-.kernel/gc/gc_stack.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
-.kernel/gc/gc_stack.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/gc/gc_thread.o: all.h atomicfn.h atomic.h bench.h classes.h
-.kernel/gc/gc_thread.o: code.h config.h context.h debug_reg.h
-.kernel/gc/gc_thread.o: domain.h ekhz.h exception_handler.h execJAVA.h
-.kernel/gc/gc_thread.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h
-.kernel/gc/gc_thread.o: gc/gc.h gc/gc_new.h gc/gc_org.h gc/gc_thread.h
-.kernel/gc/gc_thread.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/gc/gc_thread.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/gc/gc_thread.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
-.kernel/gc/gc_thread.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
-.kernel/gc/gc_thread.o: smp.h spinlock.h symfind.h thread.h types.h
-.kernel/gc/gc_thread.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
-.kernel/gc/gc_thread.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc_alloc.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_alloc.o: code.h config.h context.h debug_reg.h
+.kernel/gc_alloc.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_alloc.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
+.kernel/gc_alloc.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
+.kernel/gc_alloc.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/gc_alloc.o: lapic.h libcache.h load.h lock.h lowlevel.h malloc.h
+.kernel/gc_alloc.o: malloc_proto.h memfs.h minic.h misc.h monitor.h
+.kernel/gc_alloc.o: multiboot.h object.h portal.h portal_proto.h profile.h
+.kernel/gc_alloc.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/gc_alloc.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/gc_alloc.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/gc_alloc.o: zip.h
+.kernel/gc_bitmap.o: /usr/include/stdc-predef.h
+.kernel/gc_checkheap.o: all.h atomicfn.h atomic.h bench.h
+.kernel/gc_checkheap.o: classes.h code.h config.h context.h
+.kernel/gc_checkheap.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/gc_checkheap.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/gc_checkheap.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h
+.kernel/gc_checkheap.o: gc/gc_impl.h gc/gc_move.h gc/gc_new.h gc/gc_org.h
+.kernel/gc_checkheap.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/gc_checkheap.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/gc_checkheap.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/gc_checkheap.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/gc_checkheap.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/gc_checkheap.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/gc_checkheap.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/gc_checkheap.o: zip.h
+.kernel/gc_chunked.o: all.h atomicfn.h atomic.h bench.h
+.kernel/gc_chunked.o: classes.h code.h config.h context.h
+.kernel/gc_chunked.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/gc_chunked.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/gc_chunked.o: gc/gc_chunked.h gc/gc_common.h gc/gc_compacting.h
+.kernel/gc_chunked.o: gc/gc.h gc/gc_impl.h gc/gc_move_common.h gc/gc_move.h
+.kernel/gc_chunked.o: gc/gc_new.h gc/gc_org.h gc/gc_pgc.h interrupt.h
+.kernel/gc_chunked.o: intr.h irq.h lapic.h libcache.h load.h lock.h
+.kernel/gc_chunked.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h
+.kernel/gc_chunked.o: misc.h monitor.h multiboot.h object.h portal.h
+.kernel/gc_chunked.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
+.kernel/gc_chunked.o: smp.h spinlock.h symfind.h thread.h types.h
+.kernel/gc_chunked.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
+.kernel/gc_chunked.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc_common.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_common.o: code.h config.h context.h debug_reg.h
+.kernel/gc_common.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_common.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
+.kernel/gc_common.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
+.kernel/gc_common.o: gc/gc_new.h gc/gc_org.h gc/gc_pgc.h gc/gc_stack.h
+.kernel/gc_common.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/gc_common.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/gc_common.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
+.kernel/gc_common.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
+.kernel/gc_common.o: smp.h spinlock.h symfind.h thread.h types.h
+.kernel/gc_common.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
+.kernel/gc_common.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc_compacting.o:
+.kernel/gc_compacting.o: /usr/include/stdc-predef.h
+.kernel/gc_impl.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_impl.o: code.h config.h context.h debug_reg.h
+.kernel/gc_impl.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_impl.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
+.kernel/gc_impl.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_move.h
+.kernel/gc_impl.o: gc/gc_new.h gc/gc_org.h gc/gc_pa.h gc/gc_pgc.h
+.kernel/gc_impl.o: gc/gc_stack.h gc/gc_thread.h interrupt.h intr.h irq.h
+.kernel/gc_impl.o: lapic.h libcache.h load.h lock.h lowlevel.h malloc.h
+.kernel/gc_impl.o: malloc_proto.h memfs.h minic.h misc.h monitor.h
+.kernel/gc_impl.o: multiboot.h object.h portal.h portal_proto.h profile.h
+.kernel/gc_impl.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/gc_impl.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/gc_impl.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/gc_impl.o: zip.h
+.kernel/gc_memcpy.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_memcpy.o: code.h config.h context.h debug_reg.h
+.kernel/gc_memcpy.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_memcpy.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h
+.kernel/gc_memcpy.o: gc/gc.h gc/gc_memcpy.h gc/gc_new.h gc/gc_org.h
+.kernel/gc_memcpy.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/gc_memcpy.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/gc_memcpy.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
+.kernel/gc_memcpy.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
+.kernel/gc_memcpy.o: smp.h spinlock.h symfind.h thread.h types.h
+.kernel/gc_memcpy.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
+.kernel/gc_memcpy.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc_move_common.o: all.h atomicfn.h atomic.h bench.h
+.kernel/gc_move_common.o: classes.h code.h config.h
+.kernel/gc_move_common.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/gc_move_common.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/gc_move_common.o: gc/gc_bitmap.h gc/gc_common.h gc/gc_compacting.h
+.kernel/gc_move_common.o: gc/gc.h gc/gc_impl.h gc/gc_move_common.h
+.kernel/gc_move_common.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_pgc.h
+.kernel/gc_move_common.o: interrupt.h intr.h irq.h lapic.h libcache.h
+.kernel/gc_move_common.o: load.h lock.h lowlevel.h malloc.h malloc_proto.h
+.kernel/gc_move_common.o: memfs.h minic.h misc.h monitor.h multiboot.h
+.kernel/gc_move_common.o: object.h portal.h portal_proto.h profile.h runq.h
+.kernel/gc_move_common.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/gc_move_common.o: thread.h types.h /usr/include/stdc-predef.h
+.kernel/gc_move_common.o: vmsupport.h zero/zero.h zero/zero_Memory.h
+.kernel/gc_move_common.o: zero/zero_Profiler.h zip.h
+.kernel/gc_move.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_move.o: code.h config.h context.h debug_reg.h
+.kernel/gc_move.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_move.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
+.kernel/gc_move.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_memcpy.h
+.kernel/gc_move.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_pa.h
+.kernel/gc_move.o: gc/gc_pgc.h interrupt.h intr.h irq.h lapic.h libcache.h
+.kernel/gc_move.o: load.h lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/gc_move.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
+.kernel/gc_move.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
+.kernel/gc_move.o: smp.h spinlock.h symfind.h thread.h types.h
+.kernel/gc_move.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
+.kernel/gc_move.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc_new.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_new.o: code.h config.h context.h debug_reg.h
+.kernel/gc_new.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_new.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
+.kernel/gc_new.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h
+.kernel/gc_new.o: gc/gc_move_common.h gc/gc_move.h gc/gc_new.h gc/gc_org.h
+.kernel/gc_new.o: gc/gc_pgc.h interrupt.h intr.h irq.h lapic.h libcache.h
+.kernel/gc_new.o: load.h lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/gc_new.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
+.kernel/gc_new.o: portal_proto.h profile.h runq.h sched.h serialdbg.h smp.h
+.kernel/gc_new.o: spinlock.h symfind.h thread.h types.h
+.kernel/gc_new.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
+.kernel/gc_new.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
+.kernel/gc.o: config.h context.h debug_reg.h domain.h ekhz.h
+.kernel/gc.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/gc.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h gc/gc_memcpy.h
+.kernel/gc.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_pa.h gc/gc_pgc.h
+.kernel/gc.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h lock.h
+.kernel/gc.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h misc.h
+.kernel/gc.o: monitor.h multiboot.h object.h portal.h portal_proto.h
+.kernel/gc.o: profile.h
+.kernel/gc_org.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_org.o: code.h config.h context.h debug_reg.h
+.kernel/gc_org.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_org.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
+.kernel/gc_org.o: gc/gc_compacting.h gc/gc.h gc/gc_impl.h gc/gc_memcpy.h
+.kernel/gc_org.o: gc/gc_move.h gc/gc_new.h gc/gc_org.h gc/gc_org_int.h
+.kernel/gc_org.o: gc/gc_pa.h gc/gc_pgc.h gc/gc_stack.h gc/gc_thread.h
+.kernel/gc_org.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h lock.h
+.kernel/gc_org.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h misc.h
+.kernel/gc_org.o: monitor.h multiboot.h object.h portal.h portal_proto.h
+.kernel/gc_org.o: profile.h runq.h sched.h serialdbg.h smp.h spinlock.h
+.kernel/gc_org.o: symfind.h thread.h types.h /usr/include/stdc-predef.h
+.kernel/gc_org.o: vmsupport.h zero/zero.h zero/zero_Memory.h
+.kernel/gc_org.o: zero/zero_Profiler.h zip.h
+.kernel/gc.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/gc.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/gc.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc_pa.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_pa.o: code.h config.h context.h debug_reg.h
+.kernel/gc_pa.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_pa.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/gc_pa.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h lapic.h
+.kernel/gc_pa.o: libcache.h load.h lock.h lowlevel.h malloc.h
+.kernel/gc_pa.o: malloc_proto.h memfs.h minic.h misc.h monitor.h
+.kernel/gc_pa.o: multiboot.h object.h portal.h portal_proto.h profile.h
+.kernel/gc_pa.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/gc_pa.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/gc_pa.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc_pgc.o: /usr/include/stdc-predef.h
+.kernel/gc_stack.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_stack.o: code.h config.h context.h debug_reg.h
+.kernel/gc_stack.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_stack.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_common.h
+.kernel/gc_stack.o: gc/gc_compacting.h gc/gc.h gc/gc_memcpy.h gc/gc_move.h
+.kernel/gc_stack.o: gc/gc_new.h gc/gc_org.h gc/gc_pa.h gc/gc_pgc.h
+.kernel/gc_stack.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/gc_stack.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/gc_stack.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
+.kernel/gc_stack.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
+.kernel/gc_stack.o: smp.h spinlock.h symfind.h thread.h types.h
+.kernel/gc_stack.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
+.kernel/gc_stack.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
+.kernel/gc_thread.o: all.h atomicfn.h atomic.h bench.h classes.h
+.kernel/gc_thread.o: code.h config.h context.h debug_reg.h
+.kernel/gc_thread.o: domain.h ekhz.h exception_handler.h execJAVA.h
+.kernel/gc_thread.o: gc/gc_alloc.h gc/gc_bitmap.h gc/gc_compacting.h
+.kernel/gc_thread.o: gc/gc.h gc/gc_new.h gc/gc_org.h gc/gc_thread.h
+.kernel/gc_thread.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/gc_thread.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/gc_thread.o: minic.h misc.h monitor.h multiboot.h object.h portal.h
+.kernel/gc_thread.o: portal_proto.h profile.h runq.h sched.h serialdbg.h
+.kernel/gc_thread.o: smp.h spinlock.h symfind.h thread.h types.h
+.kernel/gc_thread.o: /usr/include/stdc-predef.h vmsupport.h zero/zero.h
+.kernel/gc_thread.o: zero/zero_Memory.h zero/zero_Profiler.h zip.h
 .kernel/interrupt.o: all.h atomicfn.h atomic.h bench.h classes.h
 .kernel/interrupt.o: code.h config.h context.h debug_reg.h
 .kernel/interrupt.o: domain.h ekhz.h exception_handler.h execJAVA.h
@@ -494,441 +494,441 @@
 .kernel/vmsupport.o: runq.h sched.h serialdbg.h smp.h spinlock.h symfind.h
 .kernel/vmsupport.o: thread.h types.h /usr/include/stdc-predef.h vmsupport.h
 .kernel/vmsupport.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h zip.h
-.kernel/zero/zero_AtomicVariable.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_AtomicVariable.o: classes.h code.h
-.kernel/zero/zero_AtomicVariable.o: config.h context.h debug_reg.h domain.h
-.kernel/zero/zero_AtomicVariable.o: ekhz.h exception_handler.h execJAVA.h
-.kernel/zero/zero_AtomicVariable.o: gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_AtomicVariable.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
-.kernel/zero/zero_AtomicVariable.o: gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_AtomicVariable.o: lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_AtomicVariable.o: lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_AtomicVariable.o: minic.h misc.h monitor.h multiboot.h
-.kernel/zero/zero_AtomicVariable.o: object.h portal.h portal_proto.h profile.h
-.kernel/zero/zero_AtomicVariable.o: runq.h sched.h serialdbg.h smp.h
-.kernel/zero/zero_AtomicVariable.o: spinlock.h symfind.h thread.h types.h
-.kernel/zero/zero_AtomicVariable.o: /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_AtomicVariable.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_AtomicVariable.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_BootFS.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_BootFS.o: classes.h code.h config.h context.h
-.kernel/zero/zero_BootFS.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_BootFS.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_BootFS.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_BootFS.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_BootFS.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_BootFS.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_BootFS.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_BootFS.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_BootFS.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_BootFS.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_BootFS.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_CAS.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_CAS.o: classes.h code.h config.h context.h
-.kernel/zero/zero_CAS.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_CAS.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_CAS.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_CAS.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_CAS.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_CAS.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_CAS.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_CAS.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_CAS.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_CAS.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/zero/zero_CAS.o: zip.h
-.kernel/zero/zero_Clock.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Clock.o: classes.h code.h config.h context.h
-.kernel/zero/zero_Clock.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_Clock.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_Clock.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_Clock.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_Clock.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_Clock.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_Clock.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_Clock.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_Clock.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_Clock.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/zero/zero_Clock.o: zip.h
-.kernel/zero/zero_ComponentManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_ComponentManager.o: classes.h code.h
-.kernel/zero/zero_ComponentManager.o: config.h context.h
-.kernel/zero/zero_ComponentManager.o: debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_ComponentManager.o: exception_handler.h execJAVA.h
-.kernel/zero/zero_ComponentManager.o: gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_ComponentManager.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
-.kernel/zero/zero_ComponentManager.o: gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_ComponentManager.o: lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_ComponentManager.o: lowlevel.h malloc.h malloc_proto.h
-.kernel/zero/zero_ComponentManager.o: memfs.h minic.h misc.h monitor.h
-.kernel/zero/zero_ComponentManager.o: multiboot.h object.h portal.h
-.kernel/zero/zero_ComponentManager.o: portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_ComponentManager.o: serialdbg.h smp.h spinlock.h symfind.h
-.kernel/zero/zero_ComponentManager.o: thread.h types.h
-.kernel/zero/zero_ComponentManager.o: /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_ComponentManager.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_ComponentManager.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_CPUManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_CPUManager.o: classes.h code.h config.h
-.kernel/zero/zero_CPUManager.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_CPUManager.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_CPUManager.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_CPUManager.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
-.kernel/zero/zero_CPUManager.o: irq.h lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_CPUManager.o: lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_CPUManager.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_CPUManager.o: portal.h portal_proto.h profile.h runq.h
-.kernel/zero/zero_CPUManager.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/zero/zero_CPUManager.o: thread.h types.h /usr/include/stdc-predef.h
-.kernel/zero/zero_CPUManager.o: vmsupport.h zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_CPUManager.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_CPU.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_CPU.o: classes.h code.h config.h context.h
-.kernel/zero/zero_CPU.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_CPU.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_CPU.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_CPU.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_CPU.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_CPU.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_CPU.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_CPU.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_CPU.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_CPU.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/zero/zero_CPU.o: zip.h
-.kernel/zero/zero_CPUState.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_CPUState.o: classes.h code.h config.h
-.kernel/zero/zero_CPUState.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_CPUState.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_CPUState.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_CPUState.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_CPUState.o: lapic.h libcache.h load.h lock.h lowlevel.h
-.kernel/zero/zero_CPUState.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
-.kernel/zero/zero_CPUState.o: monitor.h multiboot.h object.h portal.h
-.kernel/zero/zero_CPUState.o: portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_CPUState.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_CPUState.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_CPUState.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_CPUState.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_Credential.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Credential.o: classes.h code.h config.h
-.kernel/zero/zero_Credential.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_Credential.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_Credential.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_Credential.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
-.kernel/zero/zero_Credential.o: irq.h lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_Credential.o: lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_Credential.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_Credential.o: portal.h portal_proto.h profile.h runq.h
-.kernel/zero/zero_Credential.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/zero/zero_Credential.o: thread.h types.h /usr/include/stdc-predef.h
-.kernel/zero/zero_Credential.o: vmsupport.h zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_Credential.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_DebugChannel.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_DebugChannel.o: classes.h code.h config.h
-.kernel/zero/zero_DebugChannel.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_DebugChannel.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_DebugChannel.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_DebugChannel.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
-.kernel/zero/zero_DebugChannel.o: irq.h lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_DebugChannel.o: lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_DebugChannel.o: minic.h misc.h monitor.h multiboot.h
-.kernel/zero/zero_DebugChannel.o: object.h portal.h portal_proto.h profile.h
-.kernel/zero/zero_DebugChannel.o: runq.h sched.h serialdbg.h smp.h spinlock.h
-.kernel/zero/zero_DebugChannel.o: symfind.h thread.h types.h
-.kernel/zero/zero_DebugChannel.o: /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_DebugChannel.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_DebugChannel.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_DebugSupport.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_DebugSupport.o: classes.h code.h config.h
-.kernel/zero/zero_DebugSupport.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_DebugSupport.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_DebugSupport.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_DebugSupport.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
-.kernel/zero/zero_DebugSupport.o: irq.h lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_DebugSupport.o: lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_DebugSupport.o: minic.h misc.h monitor.h multiboot.h
-.kernel/zero/zero_DebugSupport.o: object.h portal.h portal_proto.h profile.h
-.kernel/zero/zero_DebugSupport.o: runq.h sched.h serialdbg.h smp.h spinlock.h
-.kernel/zero/zero_DebugSupport.o: symfind.h thread.h types.h
-.kernel/zero/zero_DebugSupport.o: /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_DebugSupport.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_DebugSupport.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_DiskEmulation.o: config.h
-.kernel/zero/zero_DiskEmulation.o: /usr/include/stdc-predef.h
-.kernel/zero/zero_DomainManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_DomainManager.o: classes.h code.h
-.kernel/zero/zero_DomainManager.o: config.h context.h debug_reg.h domain.h
-.kernel/zero/zero_DomainManager.o: ekhz.h exception_handler.h execJAVA.h
-.kernel/zero/zero_DomainManager.o: gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_DomainManager.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
-.kernel/zero/zero_DomainManager.o: gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_DomainManager.o: lapic.h libcache.h load.h lock.h lowlevel.h
-.kernel/zero/zero_DomainManager.o: malloc.h malloc_proto.h memfs.h minic.h
-.kernel/zero/zero_DomainManager.o: misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_DomainManager.o: portal.h portal_proto.h profile.h runq.h
-.kernel/zero/zero_DomainManager.o: sched.h serialdbg.h smp.h spinlock.h
-.kernel/zero/zero_DomainManager.o: symfind.h thread.h types.h
-.kernel/zero/zero_DomainManager.o: /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_DomainManager.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_DomainManager.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_Domain.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Domain.o: classes.h code.h config.h context.h
-.kernel/zero/zero_Domain.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_Domain.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_Domain.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_Domain.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_Domain.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_Domain.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_Domain.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_Domain.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_Domain.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_Domain.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_Domain.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_FBEmulation.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_FBEmulation.o: classes.h code.h config.h
-.kernel/zero/zero_FBEmulation.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_FBEmulation.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_FBEmulation.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_FBEmulation.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
-.kernel/zero/zero_FBEmulation.o: irq.h lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_FBEmulation.o: lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_FBEmulation.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_FBEmulation.o: portal.h portal_proto.h profile.h realmode.h
-.kernel/zero/zero_FBEmulation.o: runq.h sched.h serialdbg.h smp.h spinlock.h
-.kernel/zero/zero_FBEmulation.o: symfind.h thread.h types.h
-.kernel/zero/zero_FBEmulation.o: /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_FBEmulation.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_FBEmulation.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_InterceptorInboundInfo.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_InterceptorInboundInfo.o: classes.h code.h
-.kernel/zero/zero_InterceptorInboundInfo.o: config.h context.h
-.kernel/zero/zero_InterceptorInboundInfo.o: debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_InterceptorInboundInfo.o: exception_handler.h execJAVA.h
-.kernel/zero/zero_InterceptorInboundInfo.o: gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_InterceptorInboundInfo.o: gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_InterceptorInboundInfo.o: gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_InterceptorInboundInfo.o: interrupt.h intr.h irq.h lapic.h
-.kernel/zero/zero_InterceptorInboundInfo.o: libcache.h load.h lock.h
-.kernel/zero/zero_InterceptorInboundInfo.o: lowlevel.h malloc.h malloc_proto.h
-.kernel/zero/zero_InterceptorInboundInfo.o: memfs.h minic.h misc.h monitor.h
-.kernel/zero/zero_InterceptorInboundInfo.o: multiboot.h object.h portal.h
-.kernel/zero/zero_InterceptorInboundInfo.o: portal_proto.h profile.h runq.h
-.kernel/zero/zero_InterceptorInboundInfo.o: sched.h serialdbg.h smp.h
-.kernel/zero/zero_InterceptorInboundInfo.o: spinlock.h symfind.h thread.h
-.kernel/zero/zero_InterceptorInboundInfo.o: types.h /usr/include/stdc-predef.h
-.kernel/zero/zero_InterceptorInboundInfo.o: vmsupport.h zero/zero.h
-.kernel/zero/zero_InterceptorInboundInfo.o: zero/zero_Memory.h
-.kernel/zero/zero_InterceptorInboundInfo.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_IRQ.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_IRQ.o: classes.h code.h config.h context.h
-.kernel/zero/zero_IRQ.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_IRQ.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_IRQ.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_IRQ.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_IRQ.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_IRQ.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_IRQ.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_IRQ.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_IRQ.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_IRQ.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/zero/zero_IRQ.o: zip.h
-.kernel/zero/zero_MemoryManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_MemoryManager.o: classes.h code.h
-.kernel/zero/zero_MemoryManager.o: config.h context.h debug_reg.h domain.h
-.kernel/zero/zero_MemoryManager.o: ekhz.h exception_handler.h execJAVA.h
-.kernel/zero/zero_MemoryManager.o: gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_MemoryManager.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
-.kernel/zero/zero_MemoryManager.o: gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_MemoryManager.o: lapic.h libcache.h load.h lock.h lowlevel.h
-.kernel/zero/zero_MemoryManager.o: malloc.h malloc_proto.h memfs.h minic.h
-.kernel/zero/zero_MemoryManager.o: misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_MemoryManager.o: portal.h portal_proto.h profile.h runq.h
-.kernel/zero/zero_MemoryManager.o: sched.h serialdbg.h smp.h spinlock.h
-.kernel/zero/zero_MemoryManager.o: symfind.h thread.h types.h
-.kernel/zero/zero_MemoryManager.o: /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_MemoryManager.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_MemoryManager.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_Memory.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Memory.o: classes.h code.h config.h context.h
-.kernel/zero/zero_Memory.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_Memory.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_Memory.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_Memory.o: gc/gc_impl.h gc/gc_move.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_Memory.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_Memory.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_Memory.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_Memory.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_Memory.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_Memory.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_Memory.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_Memory.o: zero/zero_Memory_org.c zero/zero_Profiler.h zip.h
-.kernel/zero/zero_Mutex.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Mutex.o: classes.h code.h config.h context.h
-.kernel/zero/zero_Mutex.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_Mutex.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_Mutex.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_Mutex.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_Mutex.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_Mutex.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_Mutex.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_Mutex.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_Mutex.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_Mutex.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/zero/zero_Mutex.o: zip.h
-.kernel/zero/zero_Naming.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Naming.o: classes.h code.h config.h context.h
-.kernel/zero/zero_Naming.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_Naming.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_Naming.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_Naming.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_Naming.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_Naming.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_Naming.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_Naming.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_Naming.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_Naming.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_Naming.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_NetEmulation.o: config.h
-.kernel/zero/zero_NetEmulation.o: /usr/include/stdc-predef.h
-.kernel/zero/zero.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_object.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_object.o: classes.h code.h config.h context.h
-.kernel/zero/zero_object.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_object.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_object.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_object.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_object.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_object.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_object.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_object.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_object.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_object.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_object.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero.o: classes.h code.h config.h
-.kernel/zero/zero.o: context.h debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h lock.h
-.kernel/zero/zero.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h misc.h
-.kernel/zero/zero.o: monitor.h multiboot.h object.h portal.h portal_proto.h
-.kernel/zero/zero.o: profile.h runq.h sched.h serialdbg.h smp.h spinlock.h
-.kernel/zero/zero.o: symfind.h thread.h types.h /usr/include/stdc-predef.h
-.kernel/zero/zero.o: vmsupport.h zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_Ports.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Ports.o: classes.h code.h config.h context.h
-.kernel/zero/zero_Ports.o: debug_reg.h domain.h ekhz.h exception_handler.h
-.kernel/zero/zero_Ports.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_Ports.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
-.kernel/zero/zero_Ports.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
-.kernel/zero/zero_Ports.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_Ports.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_Ports.o: portal.h portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_Ports.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_Ports.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_Ports.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
-.kernel/zero/zero_Ports.o: zip.h
-.kernel/zero/zero_Profiler.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Profiler.o: classes.h code.h config.h
-.kernel/zero/zero_Profiler.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_Profiler.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_Profiler.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_Profiler.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_Profiler.o: lapic.h libcache.h load.h lock.h lowlevel.h
-.kernel/zero/zero_Profiler.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
-.kernel/zero/zero_Profiler.o: monitor.h multiboot.h object.h portal.h
-.kernel/zero/zero_Profiler.o: portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_Profiler.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_Profiler.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_Profiler.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_Profiler.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_Scheduler.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_Scheduler.o: classes.h code.h config.h
-.kernel/zero/zero_Scheduler.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_Scheduler.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_Scheduler.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_Scheduler.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
-.kernel/zero/zero_Scheduler.o: irq.h lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_Scheduler.o: lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_Scheduler.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_Scheduler.o: portal.h portal_proto.h profile.h runq.h
-.kernel/zero/zero_Scheduler.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/zero/zero_Scheduler.o: thread.h types.h /usr/include/stdc-predef.h
-.kernel/zero/zero_Scheduler.o: vmsupport.h zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_Scheduler.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_SMPCPUManager.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_SMPCPUManager.o: classes.h code.h
-.kernel/zero/zero_SMPCPUManager.o: config.h context.h debug_reg.h domain.h
-.kernel/zero/zero_SMPCPUManager.o: ekhz.h exception_handler.h execJAVA.h
-.kernel/zero/zero_SMPCPUManager.o: gc/gc_alloc.h gc/gc_bitmap.h
-.kernel/zero/zero_SMPCPUManager.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
-.kernel/zero/zero_SMPCPUManager.o: gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_SMPCPUManager.o: lapic.h libcache.h load.h lock.h lowlevel.h
-.kernel/zero/zero_SMPCPUManager.o: malloc.h malloc_proto.h memfs.h minic.h
-.kernel/zero/zero_SMPCPUManager.o: misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_SMPCPUManager.o: portal.h portal_proto.h profile.h runq.h
-.kernel/zero/zero_SMPCPUManager.o: sched.h serialdbg.h smp.h spinlock.h
-.kernel/zero/zero_SMPCPUManager.o: symfind.h thread.h types.h
-.kernel/zero/zero_SMPCPUManager.o: /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_SMPCPUManager.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_SMPCPUManager.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_TestDZperf.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_TestDZperf.o: classes.h code.h config.h
-.kernel/zero/zero_TestDZperf.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_TestDZperf.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_TestDZperf.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_TestDZperf.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
-.kernel/zero/zero_TestDZperf.o: irq.h lapic.h libcache.h load.h lock.h
-.kernel/zero/zero_TestDZperf.o: lowlevel.h malloc.h malloc_proto.h memfs.h
-.kernel/zero/zero_TestDZperf.o: minic.h misc.h monitor.h multiboot.h object.h
-.kernel/zero/zero_TestDZperf.o: portal.h portal_proto.h profile.h runq.h
-.kernel/zero/zero_TestDZperf.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
-.kernel/zero/zero_TestDZperf.o: thread.h types.h /usr/include/stdc-predef.h
-.kernel/zero/zero_TestDZperf.o: vmsupport.h zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_TestDZperf.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_TimerEmulation.o: config.h
-.kernel/zero/zero_TimerEmulation.o: /usr/include/stdc-predef.h
-.kernel/zero/zero_VMClass.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_VMClass.o: classes.h code.h config.h
-.kernel/zero/zero_VMClass.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_VMClass.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_VMClass.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_VMClass.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_VMClass.o: lapic.h libcache.h load.h lock.h lowlevel.h
-.kernel/zero/zero_VMClass.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
-.kernel/zero/zero_VMClass.o: monitor.h multiboot.h object.h portal.h
-.kernel/zero/zero_VMClass.o: portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_VMClass.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_VMClass.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_VMClass.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_VMClass.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_VMMethod.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_VMMethod.o: classes.h code.h config.h
-.kernel/zero/zero_VMMethod.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_VMMethod.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_VMMethod.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_VMMethod.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_VMMethod.o: lapic.h libcache.h load.h lock.h lowlevel.h
-.kernel/zero/zero_VMMethod.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
-.kernel/zero/zero_VMMethod.o: monitor.h multiboot.h object.h portal.h
-.kernel/zero/zero_VMMethod.o: portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_VMMethod.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_VMMethod.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_VMMethod.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_VMMethod.o: zero/zero_Profiler.h zip.h
-.kernel/zero/zero_VMObject.o: all.h atomicfn.h atomic.h bench.h
-.kernel/zero/zero_VMObject.o: classes.h code.h config.h
-.kernel/zero/zero_VMObject.o: context.h debug_reg.h domain.h ekhz.h
-.kernel/zero/zero_VMObject.o: exception_handler.h execJAVA.h gc/gc_alloc.h
-.kernel/zero/zero_VMObject.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
-.kernel/zero/zero_VMObject.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
-.kernel/zero/zero_VMObject.o: lapic.h libcache.h load.h lock.h lowlevel.h
-.kernel/zero/zero_VMObject.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
-.kernel/zero/zero_VMObject.o: monitor.h multiboot.h object.h portal.h
-.kernel/zero/zero_VMObject.o: portal_proto.h profile.h runq.h sched.h
-.kernel/zero/zero_VMObject.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
-.kernel/zero/zero_VMObject.o: types.h /usr/include/stdc-predef.h vmsupport.h
-.kernel/zero/zero_VMObject.o: zero/zero.h zero/zero_Memory.h
-.kernel/zero/zero_VMObject.o: zero/zero_Profiler.h zip.h
+.kernel/zero_AtomicVariable.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_AtomicVariable.o: classes.h code.h
+.kernel/zero_AtomicVariable.o: config.h context.h debug_reg.h domain.h
+.kernel/zero_AtomicVariable.o: ekhz.h exception_handler.h execJAVA.h
+.kernel/zero_AtomicVariable.o: gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_AtomicVariable.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
+.kernel/zero_AtomicVariable.o: gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_AtomicVariable.o: lapic.h libcache.h load.h lock.h
+.kernel/zero_AtomicVariable.o: lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_AtomicVariable.o: minic.h misc.h monitor.h multiboot.h
+.kernel/zero_AtomicVariable.o: object.h portal.h portal_proto.h profile.h
+.kernel/zero_AtomicVariable.o: runq.h sched.h serialdbg.h smp.h
+.kernel/zero_AtomicVariable.o: spinlock.h symfind.h thread.h types.h
+.kernel/zero_AtomicVariable.o: /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_AtomicVariable.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_AtomicVariable.o: zero/zero_Profiler.h zip.h
+.kernel/zero_BootFS.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_BootFS.o: classes.h code.h config.h context.h
+.kernel/zero_BootFS.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_BootFS.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_BootFS.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_BootFS.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_BootFS.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_BootFS.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_BootFS.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_BootFS.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_BootFS.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_BootFS.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_BootFS.o: zero/zero_Profiler.h zip.h
+.kernel/zero_CAS.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_CAS.o: classes.h code.h config.h context.h
+.kernel/zero_CAS.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_CAS.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_CAS.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_CAS.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_CAS.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_CAS.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_CAS.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_CAS.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_CAS.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_CAS.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/zero_CAS.o: zip.h
+.kernel/zero_Clock.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Clock.o: classes.h code.h config.h context.h
+.kernel/zero_Clock.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_Clock.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_Clock.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_Clock.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_Clock.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_Clock.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_Clock.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_Clock.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_Clock.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_Clock.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/zero_Clock.o: zip.h
+.kernel/zero_ComponentManager.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_ComponentManager.o: classes.h code.h
+.kernel/zero_ComponentManager.o: config.h context.h
+.kernel/zero_ComponentManager.o: debug_reg.h domain.h ekhz.h
+.kernel/zero_ComponentManager.o: exception_handler.h execJAVA.h
+.kernel/zero_ComponentManager.o: gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_ComponentManager.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
+.kernel/zero_ComponentManager.o: gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_ComponentManager.o: lapic.h libcache.h load.h lock.h
+.kernel/zero_ComponentManager.o: lowlevel.h malloc.h malloc_proto.h
+.kernel/zero_ComponentManager.o: memfs.h minic.h misc.h monitor.h
+.kernel/zero_ComponentManager.o: multiboot.h object.h portal.h
+.kernel/zero_ComponentManager.o: portal_proto.h profile.h runq.h sched.h
+.kernel/zero_ComponentManager.o: serialdbg.h smp.h spinlock.h symfind.h
+.kernel/zero_ComponentManager.o: thread.h types.h
+.kernel/zero_ComponentManager.o: /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_ComponentManager.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_ComponentManager.o: zero/zero_Profiler.h zip.h
+.kernel/zero_CPUManager.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_CPUManager.o: classes.h code.h config.h
+.kernel/zero_CPUManager.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_CPUManager.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_CPUManager.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_CPUManager.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
+.kernel/zero_CPUManager.o: irq.h lapic.h libcache.h load.h lock.h
+.kernel/zero_CPUManager.o: lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_CPUManager.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_CPUManager.o: portal.h portal_proto.h profile.h runq.h
+.kernel/zero_CPUManager.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/zero_CPUManager.o: thread.h types.h /usr/include/stdc-predef.h
+.kernel/zero_CPUManager.o: vmsupport.h zero/zero.h zero/zero_Memory.h
+.kernel/zero_CPUManager.o: zero/zero_Profiler.h zip.h
+.kernel/zero_CPU.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_CPU.o: classes.h code.h config.h context.h
+.kernel/zero_CPU.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_CPU.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_CPU.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_CPU.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_CPU.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_CPU.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_CPU.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_CPU.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_CPU.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_CPU.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/zero_CPU.o: zip.h
+.kernel/zero_CPUState.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_CPUState.o: classes.h code.h config.h
+.kernel/zero_CPUState.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_CPUState.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_CPUState.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_CPUState.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_CPUState.o: lapic.h libcache.h load.h lock.h lowlevel.h
+.kernel/zero_CPUState.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
+.kernel/zero_CPUState.o: monitor.h multiboot.h object.h portal.h
+.kernel/zero_CPUState.o: portal_proto.h profile.h runq.h sched.h
+.kernel/zero_CPUState.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_CPUState.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_CPUState.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_CPUState.o: zero/zero_Profiler.h zip.h
+.kernel/zero_Credential.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Credential.o: classes.h code.h config.h
+.kernel/zero_Credential.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_Credential.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_Credential.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_Credential.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
+.kernel/zero_Credential.o: irq.h lapic.h libcache.h load.h lock.h
+.kernel/zero_Credential.o: lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_Credential.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_Credential.o: portal.h portal_proto.h profile.h runq.h
+.kernel/zero_Credential.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/zero_Credential.o: thread.h types.h /usr/include/stdc-predef.h
+.kernel/zero_Credential.o: vmsupport.h zero/zero.h zero/zero_Memory.h
+.kernel/zero_Credential.o: zero/zero_Profiler.h zip.h
+.kernel/zero_DebugChannel.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_DebugChannel.o: classes.h code.h config.h
+.kernel/zero_DebugChannel.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_DebugChannel.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_DebugChannel.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_DebugChannel.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
+.kernel/zero_DebugChannel.o: irq.h lapic.h libcache.h load.h lock.h
+.kernel/zero_DebugChannel.o: lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_DebugChannel.o: minic.h misc.h monitor.h multiboot.h
+.kernel/zero_DebugChannel.o: object.h portal.h portal_proto.h profile.h
+.kernel/zero_DebugChannel.o: runq.h sched.h serialdbg.h smp.h spinlock.h
+.kernel/zero_DebugChannel.o: symfind.h thread.h types.h
+.kernel/zero_DebugChannel.o: /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_DebugChannel.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_DebugChannel.o: zero/zero_Profiler.h zip.h
+.kernel/zero_DebugSupport.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_DebugSupport.o: classes.h code.h config.h
+.kernel/zero_DebugSupport.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_DebugSupport.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_DebugSupport.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_DebugSupport.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
+.kernel/zero_DebugSupport.o: irq.h lapic.h libcache.h load.h lock.h
+.kernel/zero_DebugSupport.o: lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_DebugSupport.o: minic.h misc.h monitor.h multiboot.h
+.kernel/zero_DebugSupport.o: object.h portal.h portal_proto.h profile.h
+.kernel/zero_DebugSupport.o: runq.h sched.h serialdbg.h smp.h spinlock.h
+.kernel/zero_DebugSupport.o: symfind.h thread.h types.h
+.kernel/zero_DebugSupport.o: /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_DebugSupport.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_DebugSupport.o: zero/zero_Profiler.h zip.h
+.kernel/zero_DiskEmulation.o: config.h
+.kernel/zero_DiskEmulation.o: /usr/include/stdc-predef.h
+.kernel/zero_DomainManager.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_DomainManager.o: classes.h code.h
+.kernel/zero_DomainManager.o: config.h context.h debug_reg.h domain.h
+.kernel/zero_DomainManager.o: ekhz.h exception_handler.h execJAVA.h
+.kernel/zero_DomainManager.o: gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_DomainManager.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
+.kernel/zero_DomainManager.o: gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_DomainManager.o: lapic.h libcache.h load.h lock.h lowlevel.h
+.kernel/zero_DomainManager.o: malloc.h malloc_proto.h memfs.h minic.h
+.kernel/zero_DomainManager.o: misc.h monitor.h multiboot.h object.h
+.kernel/zero_DomainManager.o: portal.h portal_proto.h profile.h runq.h
+.kernel/zero_DomainManager.o: sched.h serialdbg.h smp.h spinlock.h
+.kernel/zero_DomainManager.o: symfind.h thread.h types.h
+.kernel/zero_DomainManager.o: /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_DomainManager.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_DomainManager.o: zero/zero_Profiler.h zip.h
+.kernel/zero_Domain.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Domain.o: classes.h code.h config.h context.h
+.kernel/zero_Domain.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_Domain.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_Domain.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_Domain.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_Domain.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_Domain.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_Domain.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_Domain.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_Domain.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_Domain.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_Domain.o: zero/zero_Profiler.h zip.h
+.kernel/zero_FBEmulation.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_FBEmulation.o: classes.h code.h config.h
+.kernel/zero_FBEmulation.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_FBEmulation.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_FBEmulation.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_FBEmulation.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
+.kernel/zero_FBEmulation.o: irq.h lapic.h libcache.h load.h lock.h
+.kernel/zero_FBEmulation.o: lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_FBEmulation.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_FBEmulation.o: portal.h portal_proto.h profile.h realmode.h
+.kernel/zero_FBEmulation.o: runq.h sched.h serialdbg.h smp.h spinlock.h
+.kernel/zero_FBEmulation.o: symfind.h thread.h types.h
+.kernel/zero_FBEmulation.o: /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_FBEmulation.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_FBEmulation.o: zero/zero_Profiler.h zip.h
+.kernel/zero_InterceptorInboundInfo.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_InterceptorInboundInfo.o: classes.h code.h
+.kernel/zero_InterceptorInboundInfo.o: config.h context.h
+.kernel/zero_InterceptorInboundInfo.o: debug_reg.h domain.h ekhz.h
+.kernel/zero_InterceptorInboundInfo.o: exception_handler.h execJAVA.h
+.kernel/zero_InterceptorInboundInfo.o: gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_InterceptorInboundInfo.o: gc/gc_compacting.h gc/gc.h
+.kernel/zero_InterceptorInboundInfo.o: gc/gc_new.h gc/gc_org.h
+.kernel/zero_InterceptorInboundInfo.o: interrupt.h intr.h irq.h lapic.h
+.kernel/zero_InterceptorInboundInfo.o: libcache.h load.h lock.h
+.kernel/zero_InterceptorInboundInfo.o: lowlevel.h malloc.h malloc_proto.h
+.kernel/zero_InterceptorInboundInfo.o: memfs.h minic.h misc.h monitor.h
+.kernel/zero_InterceptorInboundInfo.o: multiboot.h object.h portal.h
+.kernel/zero_InterceptorInboundInfo.o: portal_proto.h profile.h runq.h
+.kernel/zero_InterceptorInboundInfo.o: sched.h serialdbg.h smp.h
+.kernel/zero_InterceptorInboundInfo.o: spinlock.h symfind.h thread.h
+.kernel/zero_InterceptorInboundInfo.o: types.h /usr/include/stdc-predef.h
+.kernel/zero_InterceptorInboundInfo.o: vmsupport.h zero/zero.h
+.kernel/zero_InterceptorInboundInfo.o: zero/zero_Memory.h
+.kernel/zero_InterceptorInboundInfo.o: zero/zero_Profiler.h zip.h
+.kernel/zero_IRQ.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_IRQ.o: classes.h code.h config.h context.h
+.kernel/zero_IRQ.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_IRQ.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_IRQ.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_IRQ.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_IRQ.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_IRQ.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_IRQ.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_IRQ.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_IRQ.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_IRQ.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/zero_IRQ.o: zip.h
+.kernel/zero_MemoryManager.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_MemoryManager.o: classes.h code.h
+.kernel/zero_MemoryManager.o: config.h context.h debug_reg.h domain.h
+.kernel/zero_MemoryManager.o: ekhz.h exception_handler.h execJAVA.h
+.kernel/zero_MemoryManager.o: gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_MemoryManager.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
+.kernel/zero_MemoryManager.o: gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_MemoryManager.o: lapic.h libcache.h load.h lock.h lowlevel.h
+.kernel/zero_MemoryManager.o: malloc.h malloc_proto.h memfs.h minic.h
+.kernel/zero_MemoryManager.o: misc.h monitor.h multiboot.h object.h
+.kernel/zero_MemoryManager.o: portal.h portal_proto.h profile.h runq.h
+.kernel/zero_MemoryManager.o: sched.h serialdbg.h smp.h spinlock.h
+.kernel/zero_MemoryManager.o: symfind.h thread.h types.h
+.kernel/zero_MemoryManager.o: /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_MemoryManager.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_MemoryManager.o: zero/zero_Profiler.h zip.h
+.kernel/zero_Memory.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Memory.o: classes.h code.h config.h context.h
+.kernel/zero_Memory.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_Memory.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_Memory.o: gc/gc_common.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_Memory.o: gc/gc_impl.h gc/gc_move.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_Memory.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_Memory.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_Memory.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_Memory.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_Memory.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_Memory.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_Memory.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_Memory.o: zero/zero_Memory_org.c zero/zero_Profiler.h zip.h
+.kernel/zero_Mutex.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Mutex.o: classes.h code.h config.h context.h
+.kernel/zero_Mutex.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_Mutex.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_Mutex.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_Mutex.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_Mutex.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_Mutex.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_Mutex.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_Mutex.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_Mutex.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_Mutex.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/zero_Mutex.o: zip.h
+.kernel/zero_Naming.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Naming.o: classes.h code.h config.h context.h
+.kernel/zero_Naming.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_Naming.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_Naming.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_Naming.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_Naming.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_Naming.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_Naming.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_Naming.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_Naming.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_Naming.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_Naming.o: zero/zero_Profiler.h zip.h
+.kernel/zero_NetEmulation.o: config.h
+.kernel/zero_NetEmulation.o: /usr/include/stdc-predef.h
+.kernel/zero.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_object.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_object.o: classes.h code.h config.h context.h
+.kernel/zero_object.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_object.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_object.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_object.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_object.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_object.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_object.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_object.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_object.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_object.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_object.o: zero/zero_Profiler.h zip.h
+.kernel/zero.o: classes.h code.h config.h
+.kernel/zero.o: context.h debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h lock.h
+.kernel/zero.o: lowlevel.h malloc.h malloc_proto.h memfs.h minic.h misc.h
+.kernel/zero.o: monitor.h multiboot.h object.h portal.h portal_proto.h
+.kernel/zero.o: profile.h runq.h sched.h serialdbg.h smp.h spinlock.h
+.kernel/zero.o: symfind.h thread.h types.h /usr/include/stdc-predef.h
+.kernel/zero.o: vmsupport.h zero/zero.h zero/zero_Memory.h
+.kernel/zero.o: zero/zero_Profiler.h zip.h
+.kernel/zero_Ports.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Ports.o: classes.h code.h config.h context.h
+.kernel/zero_Ports.o: debug_reg.h domain.h ekhz.h exception_handler.h
+.kernel/zero_Ports.o: execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_Ports.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h gc/gc_org.h
+.kernel/zero_Ports.o: interrupt.h intr.h irq.h lapic.h libcache.h load.h
+.kernel/zero_Ports.o: lock.h lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_Ports.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_Ports.o: portal.h portal_proto.h profile.h runq.h sched.h
+.kernel/zero_Ports.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_Ports.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_Ports.o: zero/zero.h zero/zero_Memory.h zero/zero_Profiler.h
+.kernel/zero_Ports.o: zip.h
+.kernel/zero_Profiler.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Profiler.o: classes.h code.h config.h
+.kernel/zero_Profiler.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_Profiler.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_Profiler.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_Profiler.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_Profiler.o: lapic.h libcache.h load.h lock.h lowlevel.h
+.kernel/zero_Profiler.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
+.kernel/zero_Profiler.o: monitor.h multiboot.h object.h portal.h
+.kernel/zero_Profiler.o: portal_proto.h profile.h runq.h sched.h
+.kernel/zero_Profiler.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_Profiler.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_Profiler.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_Profiler.o: zero/zero_Profiler.h zip.h
+.kernel/zero_Scheduler.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_Scheduler.o: classes.h code.h config.h
+.kernel/zero_Scheduler.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_Scheduler.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_Scheduler.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_Scheduler.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
+.kernel/zero_Scheduler.o: irq.h lapic.h libcache.h load.h lock.h
+.kernel/zero_Scheduler.o: lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_Scheduler.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_Scheduler.o: portal.h portal_proto.h profile.h runq.h
+.kernel/zero_Scheduler.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/zero_Scheduler.o: thread.h types.h /usr/include/stdc-predef.h
+.kernel/zero_Scheduler.o: vmsupport.h zero/zero.h zero/zero_Memory.h
+.kernel/zero_Scheduler.o: zero/zero_Profiler.h zip.h
+.kernel/zero_SMPCPUManager.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_SMPCPUManager.o: classes.h code.h
+.kernel/zero_SMPCPUManager.o: config.h context.h debug_reg.h domain.h
+.kernel/zero_SMPCPUManager.o: ekhz.h exception_handler.h execJAVA.h
+.kernel/zero_SMPCPUManager.o: gc/gc_alloc.h gc/gc_bitmap.h
+.kernel/zero_SMPCPUManager.o: gc/gc_compacting.h gc/gc.h gc/gc_new.h
+.kernel/zero_SMPCPUManager.o: gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_SMPCPUManager.o: lapic.h libcache.h load.h lock.h lowlevel.h
+.kernel/zero_SMPCPUManager.o: malloc.h malloc_proto.h memfs.h minic.h
+.kernel/zero_SMPCPUManager.o: misc.h monitor.h multiboot.h object.h
+.kernel/zero_SMPCPUManager.o: portal.h portal_proto.h profile.h runq.h
+.kernel/zero_SMPCPUManager.o: sched.h serialdbg.h smp.h spinlock.h
+.kernel/zero_SMPCPUManager.o: symfind.h thread.h types.h
+.kernel/zero_SMPCPUManager.o: /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_SMPCPUManager.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_SMPCPUManager.o: zero/zero_Profiler.h zip.h
+.kernel/zero_TestDZperf.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_TestDZperf.o: classes.h code.h config.h
+.kernel/zero_TestDZperf.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_TestDZperf.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_TestDZperf.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_TestDZperf.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h
+.kernel/zero_TestDZperf.o: irq.h lapic.h libcache.h load.h lock.h
+.kernel/zero_TestDZperf.o: lowlevel.h malloc.h malloc_proto.h memfs.h
+.kernel/zero_TestDZperf.o: minic.h misc.h monitor.h multiboot.h object.h
+.kernel/zero_TestDZperf.o: portal.h portal_proto.h profile.h runq.h
+.kernel/zero_TestDZperf.o: sched.h serialdbg.h smp.h spinlock.h symfind.h
+.kernel/zero_TestDZperf.o: thread.h types.h /usr/include/stdc-predef.h
+.kernel/zero_TestDZperf.o: vmsupport.h zero/zero.h zero/zero_Memory.h
+.kernel/zero_TestDZperf.o: zero/zero_Profiler.h zip.h
+.kernel/zero_TimerEmulation.o: config.h
+.kernel/zero_TimerEmulation.o: /usr/include/stdc-predef.h
+.kernel/zero_VMClass.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_VMClass.o: classes.h code.h config.h
+.kernel/zero_VMClass.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_VMClass.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_VMClass.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_VMClass.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_VMClass.o: lapic.h libcache.h load.h lock.h lowlevel.h
+.kernel/zero_VMClass.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
+.kernel/zero_VMClass.o: monitor.h multiboot.h object.h portal.h
+.kernel/zero_VMClass.o: portal_proto.h profile.h runq.h sched.h
+.kernel/zero_VMClass.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_VMClass.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_VMClass.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_VMClass.o: zero/zero_Profiler.h zip.h
+.kernel/zero_VMMethod.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_VMMethod.o: classes.h code.h config.h
+.kernel/zero_VMMethod.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_VMMethod.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_VMMethod.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_VMMethod.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_VMMethod.o: lapic.h libcache.h load.h lock.h lowlevel.h
+.kernel/zero_VMMethod.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
+.kernel/zero_VMMethod.o: monitor.h multiboot.h object.h portal.h
+.kernel/zero_VMMethod.o: portal_proto.h profile.h runq.h sched.h
+.kernel/zero_VMMethod.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_VMMethod.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_VMMethod.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_VMMethod.o: zero/zero_Profiler.h zip.h
+.kernel/zero_VMObject.o: all.h atomicfn.h atomic.h bench.h
+.kernel/zero_VMObject.o: classes.h code.h config.h
+.kernel/zero_VMObject.o: context.h debug_reg.h domain.h ekhz.h
+.kernel/zero_VMObject.o: exception_handler.h execJAVA.h gc/gc_alloc.h
+.kernel/zero_VMObject.o: gc/gc_bitmap.h gc/gc_compacting.h gc/gc.h
+.kernel/zero_VMObject.o: gc/gc_new.h gc/gc_org.h interrupt.h intr.h irq.h
+.kernel/zero_VMObject.o: lapic.h libcache.h load.h lock.h lowlevel.h
+.kernel/zero_VMObject.o: malloc.h malloc_proto.h memfs.h minic.h misc.h
+.kernel/zero_VMObject.o: monitor.h multiboot.h object.h portal.h
+.kernel/zero_VMObject.o: portal_proto.h profile.h runq.h sched.h
+.kernel/zero_VMObject.o: serialdbg.h smp.h spinlock.h symfind.h thread.h
+.kernel/zero_VMObject.o: types.h /usr/include/stdc-predef.h vmsupport.h
+.kernel/zero_VMObject.o: zero/zero.h zero/zero_Memory.h
+.kernel/zero_VMObject.o: zero/zero_Profiler.h zip.h
 .kernel/zip.o: all.h atomicfn.h atomic.h bench.h classes.h code.h
 .kernel/zip.o: config.h context.h debug_reg.h domain.h ekhz.h
 .kernel/zip.o: exception_handler.h execJAVA.h gc/gc_alloc.h gc/gc_bitmap.h

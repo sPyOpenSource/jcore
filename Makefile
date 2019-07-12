@@ -65,7 +65,7 @@ ASMSOURCES2   = lowlevel.S call.S switch.S schedSWITCH.S bench.S zero_FastMemory
 COREASMSOURCES  = crt0.S stack.S hwint.S exception.S timer.S
 COREASMSOURCES  += smp_startup.S ipiint.S
 
-COREINCLUDE = -I.
+COREINCLUDE = -Isrc
 
 include settings.makefile
 ifeq ($(strip $(CC)), icc)
@@ -114,35 +114,32 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 COREOBJ2 = $(COREOBJ:.kernel/gc/%=.kernel/%)
 COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ2:.kernel/zero/%=.kernel/%)
 
-jxcore: Makefile.dep .kernel realmode.h $(COREOBJ)
+jxcore: Makefile.dep .kernel src/realmode.h $(COREOBJ)
 	$(COREBUILD)
 	#perl mksymtab.perl jxcore symbols.h
 	rm -f .kernel/symfind.o .kernel/atomicfn.o ; $(MAKE) .kernel/symfind.o .kernel/atomicfn.o
 	$(COREBUILD)
 #	strip jxcore
 
-.kernel/valid-symbols: symbols.h
+.kernel/valid-symbols: src/symbols.h
 	$(COREBUILD)
-	$(MKSYMTAB) jxcore symbols.h
+	$(MKSYMTAB) jxcore src/symbols.h
 	$(MAKE) .kernel/symfind.o
 	touch .kernel/valid-symbols
 	$(MAKE) jxcoremake
 
-symbols.h:
-	perl mksymtab.perl jx symbols.h
+.kernel/symfind.o: src/symbols.h src/symfind.c
 
-.kernel/symfind.o: symbols.h symfind.c
-
-.kernel/atomicfn.o: symbols.h atomicfn.c atomicfn.h
+.kernel/atomicfn.o: src/symbols.h src/atomicfn.c src/atomicfn.h
 
 .kernel:
 	mkdir .kernel
 
-realmode: asm.S
-	gcc -m32 -g -c -o asm.o asm.S
+realmode: src/asm.S
+	gcc -m32 -g -c -o asm.o src/asm.S
 	ld -m elf_i386 -Ttext 0x9000 -o realmode asm.o
-	perl mksymtab.perl realmode realmode.h
-	touch main.c
+	perl mksymtab.perl realmode src/realmode.h
+	touch src/main.c
 	$(MAKE) jxcore
 	@echo "***** USE BUILD TO UPDATE code.zip"
 
@@ -151,7 +148,7 @@ realmode: asm.S
 #	$(CC) $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -S -o .kernel/$<.s $<
 #	$(CC) $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -c -o .kernel/$(@F) $<
 
-.kernel/%.o: %.c
+.kernel/%.o: src/%.c
 	$(CC) -m32 $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -c -o .kernel/$(@F) $<
 
 
@@ -160,20 +157,20 @@ realmode: asm.S
 #.kernel/%.c: %.c
 #	gcc -E $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE)  -o .kernel/$(@F) $<
 
-.kernel/%.o: %.s
-	$(AS) --32 $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $< || (cp $< x.s ; exit 1)
+.kernel/%.o: src/%.s
+	$(AS) --32 $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $< || (cp $< src/x.s ; exit 1)
 
-%.s: %.S
-	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > $(@F)
+src/%.s: src/%.S
+	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/$(@F)
 
-.kernel/%.s: %.c
+.kernel/%.s: src/%.c
 	$(CC) -S $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -o .kernel/$(@F) $<
 
 .SECONDARY: $(CORESEC)
 
 
 # hidden dependencies
-zero/zero_Memory.c: zero/zero_Memory_new.c zero/zero_Memory_org.c zero/zero_Memory_shared.c zero/zero_Memory_simple.c
+src/zero/zero_Memory.c: src/zero/zero_Memory_new.c src/zero/zero_Memory_org.c src/zero/zero_Memory_shared.c src/zero/zero_Memory_simple.c
 
 
 ifeq ($(findstring jxcore, $(MAKECMDGOALS)), jxcore)
@@ -198,7 +195,7 @@ wc:
 	wc -l $(ESSENTIALSOURCES) $(ZEROSOURCES) $(ESSENTIALCORESOURCES) | sort -n
 
 clean:
-	rm -rf .kernel *.o *.d thread lock *~ jxcore *.s #*.dep #symbols.h
+	rm -rf .kernel *.o *.d thread lock *~ jxcore src/*.s
 
 print:
 	rm -rf .print ; mkdir .print
