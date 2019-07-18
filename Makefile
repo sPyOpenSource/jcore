@@ -174,12 +174,12 @@ src/zero/zero_Memory.c: src/zero/zero_Memory_new.c src/zero/zero_Memory_org.c sr
 
 
 ifeq ($(findstring jxcore, $(MAKECMDGOALS)), jxcore)
- -include kernel.dep
+ #-include kernel.dep
 endif
 
 depend:
 	#rm -f kernel.dep linux.dep
-	$(MAKE) kernel.dep
+	#$(MAKE) kernel.dep
 
 kernel.dep:
 	touch $@

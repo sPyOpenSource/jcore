@@ -46,7 +46,6 @@ int get_from_history(int pastindex, char *str, int len)
 }
 
 
-
 static int ser_io_base[] = { 0x3f8, 0x2f8, 0x3e8, 0x2e8 };
 static int ser_irq[] = { 4, 3, -1, -1 };
 
