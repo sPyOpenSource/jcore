@@ -341,7 +341,7 @@ jboolean cpuManager_start(ObjectDesc * self, CPUStateProxy * cpuStateProxy)
 {
 	ThreadDesc *cpuState = cpuState2thread(cpuStateProxy);
 	jboolean result = JNI_TRUE;
-	printf("new thread\n");
+	//printf("new thread\n");
 	ASSERTTHREAD(cpuState);
 	DISABLE_IRQ;
 	if (cpuState->state != STATE_INIT) {
@@ -402,6 +402,7 @@ ObjectDesc *cpuManager_getCAS(ObjectDesc * self, ObjectDesc * classNameObj, Obje
 
 void cpuManager_setThreadName(ObjectDesc * self, ObjectDesc * name)
 {
+	//printf("new name");
 	char value[128];
 	if (name == NULL)
 		return;

@@ -167,7 +167,7 @@ void start_initial_thread(void *dummy)
 		sys_panic("init method not found for domain %d\n", domain->id);
 	}
 }
-
+int linenumber = 0;
 /* create Domain without HLScheduler */
 static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * dname, ArrayDesc * cpuObjs,
 						ObjectDesc * dcodeName, ArrayDesc * libsName, ObjectDesc * startClassName,
@@ -175,6 +175,8 @@ static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * 
 						jint codeSize, ArrayDesc * argv, ObjectDesc * naming, ArrayDesc * moreArgs,
 						jint gcImpl, ArrayDesc * schedInfo)
 {
+	console(linenumber,"dmc");
+	linenumber++;
 	char value[80];
 	char value1[80];
 	DomainDesc *domain;
@@ -222,10 +224,12 @@ static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * 
 		installInitialNaming(sourceDomain, domain, sourceDomain->initialNamingProxy);
 	} else {
 		// install user supplied naming
+		console(linenumber, "naming");
 #ifdef COPY_TO_DOMAINZERO
 		installInitialNaming(curdom(), domain, naming);
 #else
-		installInitialNaming(sourceDomain, domain, naming);
+		//installInitialNaming(sourceDomain, domain, naming);
+		installInitialNaming(curdom(), domain, naming);
 #endif
 	}
 	/* inherit attibutes from parent */

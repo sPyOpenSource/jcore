@@ -306,8 +306,8 @@ void start_domain_zero()
    *********************************/
 
 	/* load zero lib and create portals */
-	console(6, "zero start");
-	printf("zero start\n");
+	//console(6, "zero start");
+	//printf("zero start\n");
 	lib = load(domainZero, "init2.jll");
 	if (lib == NULL)
 		sys_panic("Cannot load lib %s\n", "zero.jll");
@@ -318,17 +318,17 @@ void start_domain_zero()
 	 * Java code and C-code that implements DomainZero.
 	 */
 	zeroLib = lib->sharedLib;
-	console(5, "init zero");
+	//console(5, "init zero");
 	init_zero_from_lib(domainZero, lib->sharedLib);
 
 	/* Domainzero's naming does now exist.
 	 * Make it available.
 	 */
 	domainZero->initialNamingProxy = initialNamingProxy;
-	console(4, "call zero");
+	//console(4, "call zero");
 	callClassConstructors(domainZero, lib);
-	console(7, "zero OK");
-	printf("zero ok\n");
+	//console(7, "zero OK");
+	//printf("zero ok\n");
 	/*lib = load(domainZero, "init2.jll");
 	if (lib == NULL)
 		sys_panic("Cannot load lib %s\n", "jdk0.jll");

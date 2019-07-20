@@ -2934,8 +2934,8 @@ void callClassConstructor(Class * cl)
 	jint i;
 	code_t c;
 	ASSERTCLASS(cl);
-	console(line % 20, cl->classDesc->name);
-	console(20, cl->classDesc->name);
+	//console(line % 20, cl->classDesc->name);
+	//console(20, cl->classDesc->name);
 	//printf("cl->classDesc->name");
 	line++;
 	if (cl->state == CLASS_READY)
@@ -2943,7 +2943,7 @@ void callClassConstructor(Class * cl)
 	cl->state = CLASS_READY;
 	for (i = 0; i < cl->classDesc->numberOfMethods; i++) {
 		if (strcmp("<clinit>", cl->classDesc->methods[i].name) == 0) {
-			console(22,cl->classDesc->methods[i].name);
+			//console(22,cl->classDesc->methods[i].name);
 			c = (code_t) cl->classDesc->methods[i].code;
 			c();
 			break;

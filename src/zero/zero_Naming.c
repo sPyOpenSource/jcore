@@ -151,8 +151,6 @@ void naming_registerPortal(ObjectDesc * self, Proxy * proxy, ObjectDesc * nameSt
 }
 
 
-
-
 MethodInfoDesc namingMethods[] = {
 	{"lookup", "(Ljava/lang/String;)Ljx/zero/Portal;",
 	 (code_t) naming_lookup}
