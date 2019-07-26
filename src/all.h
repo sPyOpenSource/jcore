@@ -2,6 +2,7 @@
 #define ALL_H
 
 #include "config.h"
+
 #ifndef KERNEL
 #include <stdio.h>
 #include <signal.h>
@@ -58,10 +59,12 @@
 #include "smp.h"
 #include "zero/zero.h"
 #include "lapic.h"
+
 #ifdef JAVASCHEDULER
 #include "javascheduler.h"
 #include "execJAVA.h"
 #endif
+
 //#include "mutex.h"
 #include "spinlock.h"
 #include "libcache.h"

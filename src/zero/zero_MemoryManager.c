@@ -17,6 +17,8 @@ extern ClassDesc *readonlyMemoryClass;
 /* create a memory DEP with the requested size */
 ObjectDesc *memoryManager_alloc(ObjectDesc * self, jint size)
 {
+	//console(8, "mm");
+	//printf("mm");
 	MemoryProxyHandle handle;
 	DomainDesc *domain = CALLERDOMAIN;
 	ASSERT(domain != domainZero)
@@ -70,7 +72,6 @@ jint memoryManager_getFreeHeapMemory()
 	printf("Source: %s\n", sourceDomain->domainName);
 	return gc_freeWords(sourceDomain) * 4;
 }
-
 
 
 MethodInfoDesc memoryManagerMethods[] = {

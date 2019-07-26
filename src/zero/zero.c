@@ -204,9 +204,9 @@ void addZeroVtables()
 
 static int n_libs = 4;
 static char *start_libs[] = {
-	/*"zero.jll",
+	"zero.jll",
 	"jdk0.jll",
-	"zero_misc.jll",
+	//"zero_misc.jll",
 #ifdef JAVASCHEDULER
 	"scheduler.jll",
 #endif*/
@@ -308,7 +308,7 @@ void start_domain_zero()
 	/* load zero lib and create portals */
 	//console(6, "zero start");
 	//printf("zero start\n");
-	lib = load(domainZero, "init2.jll");
+	lib = load(domainZero, "zero.jll");
 	if (lib == NULL)
 		sys_panic("Cannot load lib %s\n", "zero.jll");
 	ASSERTLIB(lib);
@@ -327,13 +327,13 @@ void start_domain_zero()
 	domainZero->initialNamingProxy = initialNamingProxy;
 	//console(4, "call zero");
 	callClassConstructors(domainZero, lib);
-	//console(7, "zero OK");
+	console(7, "zero OK");
 	//printf("zero ok\n");
-	/*lib = load(domainZero, "init2.jll");
+	lib = load(domainZero, "jdk0.jll");
 	if (lib == NULL)
 		sys_panic("Cannot load lib %s\n", "jdk0.jll");
 	ASSERTLIB(lib);
-	callClassConstructors(domainZero, lib);*/
+	callClassConstructors(domainZero, lib);
 
 	DISABLE_IRQ;
 

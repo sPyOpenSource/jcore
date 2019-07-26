@@ -70,7 +70,7 @@ static void installHLSfromClassName(DomainDesc * domain)
 }
 #endif
 
-
+int dddd = 9;
 void start_initial_thread(void *dummy)
 {
 	LibDesc *lib;
@@ -92,6 +92,8 @@ void start_initial_thread(void *dummy)
 		for (i = 0; i < n_libs; i++) {
 			o = getReferenceArrayElement(domain->libNames, i);
 			stringToChar(o, value, sizeof(value));
+			printf(value);
+			console(9, "lib");
 			lib = load(curdom(), value);
 			if (lib == NULL) {
 				sys_panic("Cannot load lib %s\n", value);
@@ -102,6 +104,9 @@ void start_initial_thread(void *dummy)
 	}
 
 	stringToChar(domain->dcodeName, value, sizeof(value));
+	printf(value);
+	console(dddd, value);
+	dddd++;
 	lib = load(curdom(), value);
 	if (lib == NULL)
 		sys_panic("Cannot load domain file %s\n", value);
@@ -167,6 +172,7 @@ void start_initial_thread(void *dummy)
 		sys_panic("init method not found for domain %d\n", domain->id);
 	}
 }
+
 int linenumber = 0;
 /* create Domain without HLScheduler */
 static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * dname, ArrayDesc * cpuObjs,
@@ -175,7 +181,7 @@ static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * 
 						jint codeSize, ArrayDesc * argv, ObjectDesc * naming, ArrayDesc * moreArgs,
 						jint gcImpl, ArrayDesc * schedInfo)
 {
-	console(linenumber,"dmc");
+	console(linenumber, "dmc");
 	linenumber++;
 	char value[80];
 	char value1[80];
@@ -228,8 +234,8 @@ static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * 
 #ifdef COPY_TO_DOMAINZERO
 		installInitialNaming(curdom(), domain, naming);
 #else
-		//installInitialNaming(sourceDomain, domain, naming);
-		installInitialNaming(curdom(), domain, naming);
+		installInitialNaming(sourceDomain, domain, naming);
+		//installInitialNaming(curdom(), domain, naming);
 #endif
 	}
 	/* inherit attibutes from parent */
@@ -329,9 +335,7 @@ DomainProxy *domainManager_createDomain(ObjectDesc * self, ObjectDesc * dname, A
 	RESTORE_IRQ;
 	CREATEDOMAIN_EVENT_END;
 	return domainProxy;
-
 }
-
 
 
 ObjectDesc *domainManager_getDomainZero(ObjectDesc * self)
@@ -532,5 +536,4 @@ void init_domainmanager_portal()
 	event_initialthread_start = createNewEvent("INITIALTHREAD_STARTINIT");
 	event_initialthread_end = createNewEvent("INITIALTHREAD_ENDINIT");
 #endif
-
 }

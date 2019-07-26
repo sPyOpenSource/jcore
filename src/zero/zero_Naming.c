@@ -133,6 +133,8 @@ void registerPortal(DomainDesc * domain, ObjectDesc * portalObject, char *name)
 
 void naming_registerPortal(ObjectDesc * self, Proxy * proxy, ObjectDesc * nameStr)
 {
+	printf("registerPortal");
+	console(10, "copy");
 	char name[128];
 	u4_t quota = 1000;
 	//char *xname;
@@ -147,6 +149,8 @@ void naming_registerPortal(ObjectDesc * self, Proxy * proxy, ObjectDesc * nameSt
 	registerPortal(NULL, proxy, name);
 #else
 	registerPortal(NULL, copy_reference(CALLERDOMAIN, curdom(), (ObjectDesc *) proxy, &quota), name);
+	console(24, "copy");
+	//registerPortal(NULL, proxy, name);
 #endif
 }
 
