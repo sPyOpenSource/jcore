@@ -374,7 +374,7 @@ void start_domain_zero()
 
 	domainProxy =
 	    domainManager_createDomain(dm, newString(domainZero, "Init"), NULL, NULL, newString(domainZero, INIT_LIB), arr,
-				       newString(domainZero, "jx/init/Main"), HEAP_BYTES_INIT, -1, -1, NULL, -1,
+				       newString(domainZero, "AI/AI"), HEAP_BYTES_INIT, -1, -1, NULL, -1,
 				       CODE_BYTES_DOMAININIT, NULL, domainZero->initialNamingProxy, NULL,
 				       GC_IMPLEMENTATION_DEFAULT, NULL);
 	domainInit = domainProxy->domain;

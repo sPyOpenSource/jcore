@@ -1129,7 +1129,6 @@ LibDesc *load(DomainDesc * domain, char *filename)
 
 		linksharedlib(domainZero, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
 		jxfree_tmp(tmp_mem);
-
 	}
 
 	return loadLib(domain, sharedLib);
@@ -1259,7 +1258,6 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 		} else {
 			lib->allClasses[i].staticFields = 0;
 		}
-
 	}
 #endif
 
