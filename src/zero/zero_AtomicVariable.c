@@ -49,9 +49,11 @@ void atomicvariable_atomicUpdateUnblock(AtomicVariableProxy * self, ObjectDesc *
 	}
 	RESTORE_IRQ;
 }
-
+int dline = 0;
 void atomicvariable_blockIfEqual(AtomicVariableProxy * self, ObjectDesc * test)
 {
+	console(dline, "block");
+	dline++;
 	DISABLE_IRQ;
 
 	if (self->value == test) {
