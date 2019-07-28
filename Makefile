@@ -71,13 +71,9 @@ include settings.makefile
 ifeq ($(strip $(CC)), icc)
 # -w2 entspricht -Wall
 # -X  entspricht -nostdinc
-LINUXCCFLAGS = -g -w
 CORECCFLAGS  = -g -w -X
 else
-#LINUXCCFLAGS = -g -Wall -fcall-used-ebx -fcall-used-esi -fcall-used-edi
 #CORECCFLAGS = -g -Wall -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc
-LINUXCCFLAGS = -g -m32 -fcall-used-ebx -fcall-used-esi -fcall-used-edi
-LINUXCCFLAGS2 = -g
 CORECCFLAGS = -g -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc
 endif
 

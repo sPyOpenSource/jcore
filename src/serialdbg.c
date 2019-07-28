@@ -15,8 +15,8 @@
 
 int debug_port = -1;
 #ifdef LOG_PRINTF
-#define LOG_SPACE_SIZE        1024*1024*5
-#define COMPRESS_BLOCK_LEN	(64*1024L)
+#define LOG_SPACE_SIZE       1024 * 1024 * 5
+#define COMPRESS_BLOCK_LEN	(64 * 1024L)
 char *log_space = NULL;
 char *compressed_log_space = NULL;
 int log_cursor = 0;

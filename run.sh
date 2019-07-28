@@ -1,7 +1,7 @@
 #building the iso file
 #mkdir -p isodir/boot/grub
-#make jxcore
-#strip jxcore ; cat jxcore | gzip -9 -c > isodir/jxcore
+make jxcore
+strip jxcore ; cat jxcore | gzip -9 -c > isodir/jxcore
 cd isodir/code
 zip -0 uncompressed.zip *.jll
 cat uncompressed.zip | gzip --fast -c > ../code.zip
