@@ -220,7 +220,7 @@ jboolean fbemulation_checkEvent(ObjectDesc * self, ObjectDesc * event)
 
 void init_realmode()
 {
-	printf("realmode\n");
+	printf("realmode\n\n");
 	zipentry entry;
 	int ret;
 	u2_t mode;

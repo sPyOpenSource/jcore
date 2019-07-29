@@ -507,7 +507,7 @@ void multiboot_main(addr_t boot_info_pa)
 	/* The  manual recommends executing an LGDT instruction after modifying breakpoint registers. */
 	base_gdt_load();
 
-	printf("CPU OK\n");
+	printf("CPU OK\n\n");
 
 	jxmalloc_init();
 

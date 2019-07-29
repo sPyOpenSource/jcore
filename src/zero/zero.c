@@ -432,7 +432,7 @@ void start_domain_zero()
 #endif				/*0 */
 
 
-	printf("Terminate DomainZero initial thread.\n");
+	printf("Terminate DomainZero initial thread.\n\n");
 
 	RESTORE_IRQ;
 

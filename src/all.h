@@ -16,9 +16,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdarg.h>
+#include <string.h>
 #else
 #include "minic.h"
-#include "intr.h"
 #endif
 
 #include "malloc.h"
@@ -28,7 +28,6 @@
 #include "thread.h"
 #include "portal.h"
 #include "domain.h"
-#include "types.h"
 #include "config.h"
 #include "interrupt.h"
 #include "gc/gc.h"
@@ -43,7 +42,6 @@
 #include "exception_handler.h"
 
 
-#include "config.h"
 #include "thread.h"
 #include "misc.h"
 #include "monitor.h"
@@ -58,7 +56,6 @@
 #include "irq.h"
 #include "smp.h"
 #include "zero/zero.h"
-#include "lapic.h"
 
 #ifdef JAVASCHEDULER
 #include "javascheduler.h"
@@ -66,54 +63,14 @@
 #endif
 
 //#include "mutex.h"
-#include "spinlock.h"
 #include "libcache.h"
-#include "exception_handler.h"
 #include "memfs.h"
-
-
-#include "irq.h"
-#include "zero/zero.h"
-#include "smp.h"
-#include "monitor.h"
-#include "thread.h"
 #include "multiboot.h"
-#include "symfind.h"
-
-
-#ifndef KERNEL
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <sys/time.h>
-#include <unistd.h>
-#include <string.h>
-#include <signal.h>
-//#include <asm/sigcontext.h>
-#else
-#include "minic.h"
-#endif				/* KERNEL */
-
-
 #include "misc.h"
-#include "zero/zero.h"
 #include "memfs.h"
-#include "libcache.h"
 #include "zip.h"
-#include "thread.h"
-#include "malloc.h"
-
-
 #include "types.h"
 #include "intr.h"
-#include "config.h"
-#include "zero/zero.h"
-#include "serialdbg.h"
-#include "monitor.h"
-#include "irq.h"
 #include "debug_reg.h"
 
 
