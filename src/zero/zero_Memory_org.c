@@ -70,11 +70,6 @@ MemoryProxyHandle allocMemoryProxyInDomain(DomainDesc * domain, ClassDesc * c, j
 /* #define CHECKVALID(self) */
 
 
-
-
-
-
-
 #ifndef NUMBER_DZMEM
 #define NUMBER_DZMEM 2048
 #endif

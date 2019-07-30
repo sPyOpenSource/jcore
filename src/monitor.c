@@ -235,9 +235,8 @@ void printStackTrace(char *prefix, ThreadDesc * thread, u4_t * base)
 		return;
 	ASSERTTHREAD(thread);
 	sp = base;
-
+console(13, prefix);
 	printf("%s\n", prefix);
-
 	for (i = 0; i < STACK_TRACE_LIMIT; i++) {
 		if (sp <= thread->stack || sp + 2 >= thread->stackTop) {
 			if (sp != NULL)

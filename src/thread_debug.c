@@ -151,6 +151,29 @@ void checkStackTraceNew()
 }
 #endif
 
+void printfHex(char key)
+{
+    char* foo = "00";
+    char* hex = "0123456789ABCDEF";
+    foo[0] = hex[(key >> 4) & 0xF];
+    foo[1] = hex[key & 0xF];
+    printf("%s\n",foo);
+}
+
+void printfHex16(short key)
+{
+    printfHex((key >> 8) & 0xFF);
+    printfHex( key & 0xFF);
+}
+
+void printfHex32(int key)
+{
+    printfHex((key >> 24) & 0xFF);
+    printfHex((key >> 16) & 0xFF);
+    printfHex((key >> 8) & 0xFF);
+    printfHex( key & 0xFF);
+}
+
 void print_eip_info(char *addr)
 {
 	ClassDesc *classInfo;
@@ -172,13 +195,18 @@ void print_eip_info(char *addr)
 #ifdef COMPACT_EIP_INFO
 		methodName2str(classInfo, method, name_buffer, 512);
 		if (lineNumber < 0) {
+			console(15, name_buffer);
 			printf("(%s (0x%lx) at bytecode %ld)", name_buffer, method->code, bytecodePos);
 		} else {
 			printf("(%s (0x%lx) at line %ld)", name_buffer, method->code, lineNumber);
 		}
 #else
-		printf("(%s::%s.%s%s (0x%lx) at bytecode %ld, line %ld)", classInfo->definingLib->name, classInfo->name,
-		       method->name, method->signature, method->code, bytecodePos, lineNumber);
+		printf("%s\n", classInfo->name);
+		printf("%s\n", " ");
+		printf("%s\n", method->name);
+		printfHex32(lineNumber);
+		//printk("(%s::%s.%s%s (0x%lx) at bytecode %ld, line %ld)", classInfo->definingLib->name, classInfo->name,
+		  //     method->name, method->signature, method->code, bytecodePos, lineNumber);
 #endif
 	} else {
 		char *cname = findCoreSymbol((jint) addr);

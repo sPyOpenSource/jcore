@@ -515,7 +515,7 @@ int pic_init_pmode()
 			enableIRQ(i);
 			printf("enabled\n");
 		} else {
-			printf("disabled\n");
+			//printf("disabled\n");
 		}
 	}
 

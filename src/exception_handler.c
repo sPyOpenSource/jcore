@@ -144,7 +144,7 @@ void exceptionHandlerMsg(jint * p, char *msg)
 {
 	u4_t *base;
 	ObjectDesc *self = NULL;
-
+printf(msg);
 #ifdef VERBOSE_STACKTRACE
 	printf("\n\nMESSAGE: %s\n\n", msg);
 #endif
