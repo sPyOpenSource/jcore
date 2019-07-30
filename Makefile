@@ -60,8 +60,7 @@ ESSENTIALCORESOURCES =  minic.c multiboot.c irq.c lapic.c io_apic.c smp_detect.c
 CORESOURCES = $(SOURCES) $(ESSENTIALCORESOURCES) serialdbg.c symfind.c
 
 LINUXSOURCES = $(SOURCES) symfind.c
-ASMSOURCES   = lowlevel.S call.S switch.S schedSWITCH.S bench.S zero/zero_FastMemory.S vm_eventLog.S
-ASMSOURCES2   = lowlevel.S call.S switch.S schedSWITCH.S bench.S zero_FastMemory.S vm_eventLog.S
+ASMSOURCES   = lowlevel.S call.S switch.S schedSWITCH.S bench.S vm_eventLog.S zero/zero_FastMemory.S
 COREASMSOURCES  = crt0.S stack.S hwint.S exception.S timer.S
 COREASMSOURCES  += smp_startup.S ipiint.S
 
@@ -156,6 +155,9 @@ realmode: src/asm.S
 .kernel/%.o: src/%.s
 	$(AS) --32 $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $< || (cp $< src/x.s ; exit 1)
 
+src/zero/zero_FastMemory.s: src/zero/zero_FastMemory.S
+	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/zero/$(@F)
+
 src/%.s: src/%.S
 	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/$(@F)
 
@@ -191,7 +193,7 @@ wc:
 	wc -l $(ESSENTIALSOURCES) $(ZEROSOURCES) $(ESSENTIALCORESOURCES) | sort -n
 
 clean:
-	rm -rf .kernel *.o *.d thread lock *~ jxcore src/*.s
+	rm -rf .kernel *.o *.d thread lock *~ jxcore src/*.s src/zero/*.s
 
 print:
 	rm -rf .print ; mkdir .print
