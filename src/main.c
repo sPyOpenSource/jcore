@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 #else
 	init_irq_data();
 #endif				/* KERNEL */
-
+//asm("int $0x80");
 #ifdef EVENT_LOG
 	events_init();
 #endif
@@ -148,7 +148,7 @@ int main(int argc, char *argv[])
 
 
 	//irq_disable(); /* don't need to disable interrupts, because there are none - timer not yet initialized */
-
+asm("int $0x80");
 #ifdef PROFILE
 	profile_init();
 #endif
@@ -195,8 +195,9 @@ int main(int argc, char *argv[])
 	}
 #endif
 	initPrimitiveClasses();
+
 	console(0, "OK");
-	console(1, "hello world");
+//asm("int $0x80");
 	domainZero_thread = createThread(domainZero, start_domain_zero, (void *) 0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
 	setThreadName(domainZero_thread, "DomainZero:InitialThread", NULL);
 	thread_exit();

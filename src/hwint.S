@@ -21,6 +21,7 @@
 .globl hwint13
 .globl hwint14
 .globl hwint15
+.globl hwint0x80
 .global local_timer_int
 
 	/*
@@ -29,7 +30,7 @@
 	*
 	*/
 	.align 4
-	.type	 hwint,@function
+	.type	 hwint, @function
 	.globl hwint
 hwint:
 	SAVE
@@ -45,8 +46,8 @@ hwint:
 	popl	PCB_EBP(%ecx)
 	popl	%edx		/* esp (throw away) */
 	popl	PCB_EBX(%ecx)
-	popl    PCB_EDX(%ecx)
-	popl    PCB_ECX(%ecx)
+	popl  PCB_EDX(%ecx)
+	popl  PCB_ECX(%ecx)
 	popl	PCB_EAX(%ecx)
 
 	popl	%edx /* edx now contains the interrupt number */
@@ -168,7 +169,10 @@ hwint15:
 
 #ifdef APIC
 #include "irq.h"
-
+.align 4
+hwint0x80:
+			call HandleInterrupt
+			iret
 	.align 4
 local_timer_int:
 	/* ack APIC */
@@ -176,8 +180,8 @@ local_timer_int:
 
 #ifdef JAVASCHEDULER
  	pushl %eax
-	movl lapic_addr,%eax
-	movl $0,APIC_EOI(%eax)
+	movl lapic_addr, %eax
+	movl $0, APIC_EOI(%eax)
 	popl %eax
 
 	pushl	$LAPIC_TIMER_IRQNR

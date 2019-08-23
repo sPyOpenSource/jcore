@@ -8,6 +8,6 @@ cat uncompressed.zip | gzip --fast -c > ../code.zip
 cd ../..
 grub-mkrescue -o MyOS.iso isodir
 (killall VirtualBox && sleep 1) || true
-VirtualBox --startvm 'kayos' &
+VirtualBox --startvm 'Slax' &
 #run it in qemu
 #qemu-system-x86_64 -cdrom MyOS.iso

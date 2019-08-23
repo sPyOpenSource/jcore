@@ -726,8 +726,6 @@ void terminateDomain(DomainDesc * domain)
 #endif				/* JAVASCHEDULER */
 
 
-
-
 void freezeDomain(DomainDesc * domain)
 {
 	u4_t index, j, size;
@@ -777,7 +775,6 @@ void thawDomain(DomainDesc * domain)
 {
 	sys_panic("");
 }
-
 
 
 #ifdef DEBUG

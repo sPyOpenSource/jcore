@@ -10,7 +10,7 @@
 #include "lapic.h"
 
 unsigned long lapic_addr = LOCAL_APIC_DEFAULT_PHYS_BASE;	// addr. of the local APIC
-int lapic_version[MAX_NR_CPUS] = { APIC_VER_INTEGRATED, };	// version of local APIC 
+int lapic_version[MAX_NR_CPUS] = { APIC_VER_INTEGRATED, };	// version of local APIC
 int apic_found = 0;
 
 void detect_lAPIC(void)
@@ -94,7 +94,7 @@ void ack_APIC_irq(void)
 inline int get_processor_id(void) {
      if (smp_found)
 	  return  ((apic_read(APIC_ID)>>24)&0x0F);
-     else       
+     else
 	  return 0;
 }
 */
@@ -123,12 +123,12 @@ void inline set_APIC_ICR(unsigned long data)
 	tmp &= ~0xCDFFF;	// clear all bits
 	tmp |= data;
 	// Send the IPI. The write to APIC_ICR fires this off.
-	apic_write(APIC_ICR, tmp);	// Send IPI 
+	apic_write(APIC_ICR, tmp);	// Send IPI
 }
 
 
 /* send an IPI to the specified destination
-   if  the destination is > 0xF it should be 
+   if  the destination is > 0xF it should be
    APIC_DEST_SELF, APIC_DEST_ALLINC or APIC_DEST_ALLBUT */
 void send_IPI(int dest, int vector)
 {
@@ -240,7 +240,7 @@ void calibrate_APIC_clock(void)
 			      /LOOPS);	/* clocks per LOOP */
 
 	/* init timer to std timeslice */
-	set_APIC_clock(XXX);
+	//set_APIC_clock(XXX);
 #ifdef SMP
 	wait_8254_wraparound();	//ttt
 	smp_call_function(APIC_DEST_ALLBUT, setup_APIC_LVTT, (void *) (XXX * calibration_result), 1, NULL);
@@ -270,9 +270,6 @@ unsigned int read_APIC_clock(void)
 	return ((read_APIC_ticks() + (calibration_result - 1))
 		/ calibration_result);
 }
-
-
-
 
 
 void call_function_ipi(void);	// in ipiint.S

@@ -2,6 +2,7 @@
 #include "misc.h"
 #include "lock.h"
 #include "debug_reg.h"
+
 #define assert(x)
 
 struct multiboot_info boot_info;
@@ -310,7 +311,7 @@ extern int irq_master_base, irq_slave_base;
 
 
 /* Leave a little additional room beyond this for customization */
-#define GDTSZ		(0x80/8)
+#define GDTSZ		(0x80 / 8)
 struct x86_desc base_gdt[GDTSZ];
 
 struct x86_tss base_tss;
@@ -501,12 +502,14 @@ void multiboot_main(addr_t boot_info_pa)
 	base_gdt_init();
 	base_gdt_load();
 	idt_load();		/* in irq.c */
+
 	set_dr6(0xFFFF0FF0);	/* clear debug status reg */
 	set_b0(0, DR7_LEN_1, DR7_RW_INST);
 	set_b1(0, DR7_LEN_4, DR7_RW_DATA);
 	/* The  manual recommends executing an LGDT instruction after modifying breakpoint registers. */
 	base_gdt_load();
-
+	//asm("sti");
+	//asm("int $0x80");
 	printf("CPU OK\n\n");
 
 	jxmalloc_init();
@@ -514,5 +517,6 @@ void multiboot_main(addr_t boot_info_pa)
 	jxmalloc_stat();
 
 	/* Invoke the main program. */
+
 	exit(main(argc, argv, NULL));
 }

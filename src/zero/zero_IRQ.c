@@ -1,5 +1,5 @@
 #include "all.h"
-
+#include "syscalls.h"
 //#define DEBUG_IRQ 1
 
 #define debugz(x)
@@ -93,6 +93,9 @@ void init_irq_data(void)
 			iInfos[i].vector_number = 0;
 			iInfos[i].apic = -1;
 		}
+		iInfos[0x80].used = 1;
+		iInfos[0x80].vector_number = 0;
+		iInfos[0x80].apic = -1;
 	}			// next i
 }
 
@@ -100,12 +103,10 @@ void init_irq_data(void)
  * IRQDEP
  */
 
-
 static void start_irq_thread()
 {
 	sys_panic("SHOULD NOT BE CALLED");
 }
-
 
 void irq_installFirstLevelHandler(ObjectDesc * self, int irq, ObjectDesc * handler)
 {
@@ -138,7 +139,7 @@ void irq_installFirstLevelHandler(ObjectDesc * self, int irq, ObjectDesc * handl
 	idomains[cpu_id][irq] = sourceDomain;
 	ithreads[cpu_id][irq] = createThread(sourceDomain, start_irq_thread, NULL, STATE_AVAILABLE, SCHED_CREATETHREAD_NORUNQ);
 	ithreads[cpu_id][irq]->isInterruptHandlerThread = 1;
-	setThreadName(ithreads[cpu_id][irq], irqThreadName[irq], NULL);
+	setThreadName(ithreads[cpu_id][irq], irqThreadName[irq % 16], NULL);
 	printf("  Thread   %p   stack=%p, stackTop=%p\n", ithreads[cpu_id][irq], ithreads[cpu_id][irq]->stack,
 	       ithreads[cpu_id][irq]->stackTop);
 
@@ -150,8 +151,6 @@ void irq_installFirstLevelHandler(ObjectDesc * self, int irq, ObjectDesc * handl
 
 	if (error)
 		exceptionHandlerMsg(THROW_RuntimeException, "IRQ handler already there");
-
-
 }
 
 void irq_panic()
@@ -299,15 +298,15 @@ void sim_timer_irq()
 	/* not necessary for timer IRQ and SCHEUDLER */
 /*
   ifirstlevel_processed[cpuID][inumber[cpuID]]++;
-#ifdef DEBUG    
+#ifdef DEBUG
   check_current = 0;
 #endif
   *curthrP() = icurrent[cpuID];
     printf("back from %p (%s)   in %p (%s)\n",curt,curt->name,curthr(),curthr()->name);
-    
+
   ASSERT(ithreads[cpuID][inumber[cpuID]]->state == STATE_RUNNABLE);
   ithreads[cpuID][inumber[cpuID]]->state = STATE_AVAILABLE;
-#ifdef DEBUG    
+#ifdef DEBUG
   check_current = 1;
 #endif
 */
@@ -337,11 +336,13 @@ void irq_disableIRQ(ObjectDesc * self, jint irq)
 void irq_enableAll(ObjectDesc * self)
 {
 	debugz(("IRQ enableAll\n"));
+	asm("sti");
 }
 
 void irq_disableAll(ObjectDesc * self)
 {
 	debugz(("IRQ disableAll\n"));
+	asm("cli");
 }
 
 void irq_set_destination(ObjectDesc * self, jint irq, jint new_dest)

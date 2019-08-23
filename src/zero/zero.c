@@ -1,6 +1,7 @@
 #include "all.h"
 
 #include "spinlock.h"
+#include "lapic.h"
 
 static spinlock_t memory_revoke_lock = SPIN_LOCK_UNLOCKED;
 
@@ -277,9 +278,9 @@ void start_domain_zero()
 	if (smp_detect())
 		smp_init();
 #else
-	detect_lAPIC();		/* is a local APIC present?? */
+	detect_lAPIC();		/* is a local APIC present? */
 	if (apic_found) {
-		printf("APIC found!!");
+		printf("APIC found!");
 		install_apicIRQs();
 		enable_local_APIC();
 		calibrate_APIC_clock();	/* APICs and IRQs must already be setup */

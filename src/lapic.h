@@ -8,7 +8,7 @@
 
 #define LOCAL_APIC_DEFAULT_PHYS_BASE 0xfee00000
 extern unsigned long lapic_addr;	// addr. of the local APIC
-extern int lapic_version[MAX_NR_CPUS];	// version of local APIC  
+extern int lapic_version[MAX_NR_CPUS];	// version of local APIC
 #define APIC_VER_82489DX     0x00	// 0Xh = 82489DX  (see IA sw Dev Man V3 sec 7.5.15))
 #define APIC_VER_INTEGRATED  0x10	// 1Xh = local (2Xh-ffH = reserved)
 extern int apic_found;		/* Have we found an APIC */
@@ -83,7 +83,7 @@ extern int apic_found;		/* Have we found an APIC */
 #define			APIC_INPUT_POLARITY		(1<<13)
 #define			APIC_SEND_PENDING		(1<<12)
 
-#define APIC_BASE lapic_addr	/* if modified see lowlevel.S */
+#define APIC_BASE 0x20//lapic_addr	/* if modified see lowlevel.S */
 
 
 static inline void apic_write(unsigned long reg, unsigned long v)

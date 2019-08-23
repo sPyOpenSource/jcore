@@ -74,6 +74,7 @@ void hwint12(void);
 void hwint13(void);
 void hwint14(void);
 void hwint15(void);
+void hwint0x80(void);
 
 struct gate_table_s {
 	void (*gate) (void);
@@ -85,7 +86,7 @@ struct gate_table_s {
 #else
 #define NINT 0x31
 #endif
-#define NINT_PREDEFINED 0x30
+#define NINT_PREDEFINED 0x81
 static void (*irqhandler[NINT]) () = {
 	divide_error, debug_exception, nmi, breakpoint_exception, overflow, bounds_check, inval_opcode, copr_not_available, double_fault, copr_seg_overrun, inval_tss, segment_not_present, stack_exception, general_protection, page_fault, notDefined,	/* 0F */
 	    copr_error,		/* 10 */
@@ -106,6 +107,92 @@ static void (*irqhandler[NINT]) () = {
 	    notDefined,		/* 1F */
 	    hwint00,		/* 20 */
 	    hwint01, hwint02, hwint03, hwint04, hwint05, hwint06, hwint07, hwint08, hwint09, hwint10, hwint11, hwint12, hwint13, hwint14, hwint15,	/* 2F */
+			notDefined,		/* 30 */
+	    notDefined,		/* 31 */
+			notDefined,		/* 32 */
+	    notDefined,		/* 33 */
+	    notDefined,		/* 34 */
+	    notDefined,		/* 35 */
+	    notDefined,		/* 36 */
+	    notDefined,		/* 37 */
+	    notDefined,		/* 38 */
+	    notDefined,		/* 39 */
+	    notDefined,		/* 3A */
+	    notDefined,		/* 3B */
+	    notDefined,		/* 3C */
+	    notDefined,		/* 3D */
+	    notDefined,		/* 3E */
+	    notDefined,		/* 3F */
+
+			notDefined,		/* 40 */
+	    notDefined,		/* 31 */
+			notDefined,		/* 32 */
+	    notDefined,		/* 33 */
+	    notDefined,		/* 34 */
+	    notDefined,		/* 35 */
+	    notDefined,		/* 36 */
+	    notDefined,		/* 37 */
+	    notDefined,		/* 38 */
+	    notDefined,		/* 39 */
+	    notDefined,		/* 3A */
+	    notDefined,		/* 3B */
+	    notDefined,		/* 3C */
+	    notDefined,		/* 3D */
+	    notDefined,		/* 3E */
+	    notDefined,		/* 3F */
+
+			notDefined,		/* 50 */
+	    notDefined,		/* 31 */
+			notDefined,		/* 32 */
+	    notDefined,		/* 33 */
+	    notDefined,		/* 34 */
+	    notDefined,		/* 35 */
+	    notDefined,		/* 36 */
+	    notDefined,		/* 37 */
+	    notDefined,		/* 38 */
+	    notDefined,		/* 39 */
+	    notDefined,		/* 3A */
+	    notDefined,		/* 3B */
+	    notDefined,		/* 3C */
+	    notDefined,		/* 3D */
+	    notDefined,		/* 3E */
+	    notDefined,		/* 3F */
+
+			notDefined,		/* 60 */
+	    notDefined,		/* 31 */
+			notDefined,		/* 32 */
+	    notDefined,		/* 33 */
+	    notDefined,		/* 34 */
+	    notDefined,		/* 35 */
+	    notDefined,		/* 36 */
+	    notDefined,		/* 37 */
+	    notDefined,		/* 38 */
+	    notDefined,		/* 39 */
+	    notDefined,		/* 3A */
+	    notDefined,		/* 3B */
+	    notDefined,		/* 3C */
+	    notDefined,		/* 3D */
+	    notDefined,		/* 3E */
+	    notDefined,		/* 3F */
+
+			notDefined,		/* 70 */
+	    notDefined,		/* 31 */
+			notDefined,		/* 32 */
+	    notDefined,		/* 33 */
+	    notDefined,		/* 34 */
+	    notDefined,		/* 35 */
+	    notDefined,		/* 36 */
+	    notDefined,		/* 37 */
+	    notDefined,		/* 38 */
+	    notDefined,		/* 39 */
+	    notDefined,		/* 3A */
+	    notDefined,		/* 3B */
+	    notDefined,		/* 3C */
+	    notDefined,		/* 3D */
+	    notDefined,		/* 3E */
+	    notDefined,		/* 3F */
+
+			hwint0x80,		/* 80 */
 };
 
 
@@ -166,7 +253,6 @@ static void init_descriptor(struct descriptor_s *desc, u4_t base, u4_t limit, u1
 	desc->granularity = sizebits;
 	desc->base_high = base >> 24;
 }
-
 
 
 /* Fixed global descriptors.  1 to 7 are prescribed by the BIOS. */
@@ -231,7 +317,6 @@ void idt_load()
 	/*} */
 	asm("lidt IDTInfo");
 }
-
 
 
 #ifdef KERNEL
@@ -515,7 +600,7 @@ int pic_init_pmode()
 			enableIRQ(i);
 			printf("enabled\n");
 		} else {
-			//printf("disabled\n");
+			printf("disabled\n");
 		}
 	}
 
@@ -586,62 +671,62 @@ char *exception_msg(jint exc)
 {
 	char *msg;
 	switch (exc) {
-	case 0:
-		msg = "Divide Error";
-		break;
-	case 1:
-		msg = "Debug";
-		break;
-	case 2:
-		msg = "Non-Maskable Interrupt";
-		break;
-	case 3:
-		msg = "Software Breakpoint";
-		break;
-	case 4:
-		msg = "Overflow";
-		break;
-	case 5:
-		msg = "bounds check failed";
-		break;
-	case 6:
-		msg = "Invalid Opcode";
-		break;
-	case 7:
-		msg = "Coporcessor not available";
-		break;
-	case 8:
-		msg = "Double Fault";
-		break;
-	case 9:
-		msg = "Coprocessor segment overrun";
-		break;
-	case 10:
-		msg = "Invalid TSS";
-		break;
-	case 11:
-		msg = "Segment not present";
-		break;
-	case 12:
-		msg = "Stack Exception";
-		break;
-	case 13:
-		msg = "General Protection Fault";
-		break;
-	case 14:
-		msg = "Page Fault";
-		break;
-	case 16:
-		msg = "Coprocessor Error";
-		break;
-#ifdef APIC
-	case SPURIOUS_APIC_VECTOR:
-		msg = "spurious Interrupt from local APIC";
-		break;
-#endif
-	default:
-		msg = "Unknown exception code";
-		break;
+		case 0:
+			msg = "Divide Error";
+			break;
+		case 1:
+			msg = "Debug";
+			break;
+		case 2:
+			msg = "Non-Maskable Interrupt";
+			break;
+		case 3:
+			msg = "Software Breakpoint";
+			break;
+		case 4:
+			msg = "Overflow";
+			break;
+		case 5:
+			msg = "bounds check failed";
+			break;
+		case 6:
+			msg = "Invalid Opcode";
+			break;
+		case 7:
+			msg = "Coporcessor not available";
+			break;
+		case 8:
+			msg = "Double Fault";
+			break;
+		case 9:
+			msg = "Coprocessor segment overrun";
+			break;
+		case 10:
+			msg = "Invalid TSS";
+			break;
+		case 11:
+			msg = "Segment not present";
+			break;
+		case 12:
+			msg = "Stack Exception";
+			break;
+		case 13:
+			msg = "General Protection Fault";
+			break;
+		case 14:
+			msg = "Page Fault";
+			break;
+		case 16:
+			msg = "Coprocessor Error";
+			break;
+	#ifdef APIC
+		case SPURIOUS_APIC_VECTOR:
+			msg = "spurious Interrupt from local APIC";
+			break;
+	#endif
+		default:
+			msg = "Unknown exception code";
+			break;
 	}
 	return msg;
 }

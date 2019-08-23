@@ -1,7 +1,6 @@
 #include "all.h"
 
 
-
 /*
  *
  * JAVAschedulerSupport Portal
@@ -89,7 +88,7 @@ static ObjectDesc *JAVAschedulerSupport_getThreadDomain(ObjectDesc * self, Objec
 }
 
 void JAVAschedulerSupport_dumpThread(ObjectDesc * self, ObjectDesc * cpuState)
-{				//ttt
+{
 	ThreadDesc *t = cpuState2thread(cpuState);
 	dumpThreadInfo(t);
 }

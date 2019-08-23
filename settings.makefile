@@ -38,9 +38,9 @@ DEFINES += -DNOTIFY_SERVICE_CLEANUP
 #DEFINES += -DNEW_SERVICE_THREADS # create a new thread when a service thread blocks
 
 # scheduler settings ####################################################
-#DEFINES += -DSMP activates SMP support (APIC, JAVASCHEDULER are required)
+#DEFINES += -DSMP # activates SMP support (APIC, JAVASCHEDULER are required)
 #DEFINES += -DJAVASCHEDULER # activates the two level Java scheduling
-#DEFINES += -DAPIC # use local APIC as timer instead of PIT)
+DEFINES += -DAPIC # use local APIC as timer instead of PIT)
 #DEFINES += -DNOPREEMPT # activates support for non-preemptable regions
 #DEFINES += -DTIMESLICING_TIMER_IRQ
 DEFINES += -DTIMER_HZ=10

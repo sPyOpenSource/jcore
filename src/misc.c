@@ -67,6 +67,7 @@ void sys_panic(char *msg, ...)
 	printf("CPU%d ", get_processor_id());
 #endif
 	printf("PANIC:\n");
+	printf("%s\n", msg);
 	va_start(args, msg);
 	vprintf(msg, args);
 	va_end(args);

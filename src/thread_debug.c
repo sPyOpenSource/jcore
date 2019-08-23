@@ -205,6 +205,7 @@ void print_eip_info(char *addr)
 		printf("%s\n", " ");
 		printf("%s\n", method->name);
 		printfHex32(lineNumber);
+		printfHex32(bytecodePos);
 		//printk("(%s::%s.%s%s (0x%lx) at bytecode %ld, line %ld)", classInfo->definingLib->name, classInfo->name,
 		  //     method->name, method->signature, method->code, bytecodePos, lineNumber);
 #endif

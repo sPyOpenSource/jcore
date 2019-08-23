@@ -6,7 +6,7 @@ ESSENTIALSOURCES = main.c libcache.c load.c thread.c interrupt.c \
                    classes.c zip.c  execJAVA.c atomic.c \
                    exception_handler.c memfs.c atomicfn.c oneshot.c \
                    sched_global.c sched_local.c sched_local_rr.c sched_local_java.c sched_global_rr.c \
-		   				 		 runq.c
+		   				 		 runq.c syscalls.c
 
 
 SUPPORTSOURCES = profile.c thread_debug.c thread_emulation.c thread_profile.c \
@@ -28,9 +28,9 @@ ZEROSOURCES += zero/zero_Domain.c
 ZEROSOURCES += zero/zero_DomainManager.c
 ZEROSOURCES += zero/zero_FBEmulation.c
 ZEROSOURCES += zero/zero_IRQ.c
-#ZEROSOURCES += zero_HLSchedulerSupport.c
-#ZEROSOURCES += zero_JAVASchedulerSupport.c
-#ZEROSOURCES += zero_LLSchedulerSupport.c
+#ZEROSOURCES += zero/zero_HLSchedulerSupport.c
+#ZEROSOURCES += zero/zero_JAVASchedulerSupport.c
+#ZEROSOURCES += zero/zero_LLSchedulerSupport.c
 ZEROSOURCES += zero/zero_Memory.c
 ZEROSOURCES += zero/zero_MemoryManager.c
 ZEROSOURCES += zero/zero_Mutex.c
@@ -109,7 +109,7 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 COREOBJ2 = $(COREOBJ:.kernel/gc/%=.kernel/%)
 COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ2:.kernel/zero/%=.kernel/%)
 
-jxcore: Makefile.dep .kernel src/realmode.h $(COREOBJ)
+jxcore: .kernel src/realmode.h $(COREOBJ)
 	$(COREBUILD)
 	#perl mksymtab.perl jxcore symbols.h
 	rm -f .kernel/symfind.o .kernel/atomicfn.o ; $(MAKE) .kernel/symfind.o .kernel/atomicfn.o
