@@ -1218,8 +1218,8 @@ int bootboot_main(uint64_t hcl)
     /* read and parse GPT table */
     r=sd_readblock(1,(unsigned char*)&__diskbuf,1);
     if(r==0 || memcmp((void*)&__diskbuf, "EFI PART", 8)) {
-diskerr:
-        puts("BOOTBOOT-PANIC: No boot partition\n");
+gpterr:
+        puts("BOOTBOOT-PANIC: No GPT found\n");
         goto error;
     }
     // get number of partitions and size of partition entry
@@ -1227,7 +1227,7 @@ diskerr:
     if(np>127) np=127;
     // read GPT entries
     r=sd_readblock(*((uint32_t*)((char*)&__diskbuf+72)),(unsigned char*)&__diskbuf,(np*sp+511)/512);
-    if(r==0) goto diskerr;
+    if(r==0) goto gpterr;
     part=NULL;
     // first, look for a partition with bootable flag
     for(r=0;r<np;r++) {
@@ -1254,7 +1254,11 @@ diskerr:
                 break;
         }
     }
-    if(part==NULL || r>=np) goto diskerr;
+    if(part==NULL || r>=np) {
+diskerr:
+        puts("BOOTBOOT-PANIC: No boot partition\n");
+        goto error;
+    }
     r=sd_readblock(part->start,(unsigned char*)&_end,1);
     if(r==0) goto diskerr;
     initrd.ptr=NULL; initrd.size=0;

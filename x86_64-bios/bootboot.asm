@@ -1040,7 +1040,7 @@ end if
             mov         esi, 0A000h+512
             cmp         dword [esi], 'EFI '
             je          @f
-.nogpt:     mov         si, nogpt
+.nogpt:     mov         esi, nogpt
             jmp         prot_diefunc
 @@:         mov         edi, 0B000h
             mov         ebx, edi
@@ -1084,8 +1084,8 @@ end if
 .noto:      add         esi, ebx
             dec         ecx
             jnz         @b
-.noinitrd:  mov         esi, nord
-            jz          prot_diefunc
+.nopart:    mov         esi, nopar
+            jmp         prot_diefunc
 
             ; load ESP at free memory hole found
 .loadesp:   mov         dword [gpt_ptr], esi
@@ -1112,9 +1112,9 @@ end if
             je          .isfat
             ;no, then it's an initrd on the entire partition
             or          eax, eax
-            jz          .noinitrd
+            jz          .nopart
             or          ecx, ecx
-            jz          .noinitrd
+            jz          .nopart
             sub         ecx, eax
             shl         ecx, 9
             mov         dword [bootboot.initrd_size], ecx
@@ -1325,6 +1325,8 @@ end if
             jz          .loadinitrd
             dec         ecx
             jnz         .nextdir
+.noinitrd:  mov         esi, nord
+            jmp         prot_diefunc
 
             ;load cluster chain, eax=cluster, ecx=size
 .loadinitrd:
@@ -2571,7 +2573,8 @@ memerr:     db          "E820 memory map not found",0
 nogzmem:    db          "Inflating: "
 noenmem:    db          "Not enough memory",0
 noacpi:     db          "ACPI not found",0
-nogpt:      db          "No boot partition",0
+nogpt:      db          "No GPT found",0
+nopar:      db          "No boot partition",0
 nord:       db          "Initrd not found",0
 nolib:      db          "/sys not found in initrd",0
 nocore:     db          "Kernel not found in initrd",0

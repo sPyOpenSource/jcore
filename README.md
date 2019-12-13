@@ -365,11 +365,17 @@ BOOTBOOT-PANIC: Unable to initialize SDHC card
 The loader was unable to initialize EMMC for SDHC card access, probably hardware error or old card.
 
 ```
+BOOTBOOT-PANIC: No GPT found
+```
+
+The loader was unable to load the GUID Partitioning Table.
+
+```
 BOOTBOOT-PANIC: No boot partition
 ```
 
-Either the disk does not have a GPT, or there's no EFI System Partition nor any other bootable
-partition on it. Or the FAT file system is found but inconsistent, or doesn't have a BOOTBOOT directory.
+There's no EFI System Partition nor any other bootable partition in the GPT. Or the FAT file system is found but corrupt
+(contains inconsistent BPB data), or doesn't have a BOOTBOOT directory (with 8+3 MSDOS entry, not LFN).
 
 ```
 BOOTBOOT-PANIC: Not 2048 sector aligned

@@ -1256,7 +1256,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
     UINTN bsp_num=0, i, j=0, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
     UINT32 desc_version=0;
-    UINT64 lba_s=0,lba_e=0;
+    UINT64 lba_s=0,lba_e=0,sysptr;
     MMapEnt *mmapent, *last=NULL;
     file_t ret={NULL,0};
     CHAR16 **argv, *initrdfile, *configfile, *help=
@@ -1550,9 +1550,9 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
 
         // System tables and structures
         DBG(L" * System tables%s\n",L"");
-        LibGetSystemConfigurationTable(&AcpiTableGuid,(void *)&(bootboot->arch.x86_64.acpi_ptr));
-        LibGetSystemConfigurationTable(&SMBIOSTableGuid,(void *)&(bootboot->arch.x86_64.smbi_ptr));
-        LibGetSystemConfigurationTable(&MpsTableGuid,(void *)&(bootboot->arch.x86_64.mp_ptr));
+        sysptr = 0; LibGetSystemConfigurationTable(&AcpiTableGuid,(void *)&sysptr); bootboot->arch.x86_64.acpi_ptr = sysptr;
+        sysptr = 0; LibGetSystemConfigurationTable(&SMBIOSTableGuid,(void *)&sysptr); bootboot->arch.x86_64.smbi_ptr = sysptr;
+        sysptr = 0; LibGetSystemConfigurationTable(&MpsTableGuid,(void *)&sysptr); bootboot->arch.x86_64.mp_ptr = sysptr;
 
         // FIX ACPI table pointer on TianoCore...
         ret.ptr = (UINT8*)(bootboot->arch.x86_64.acpi_ptr);
