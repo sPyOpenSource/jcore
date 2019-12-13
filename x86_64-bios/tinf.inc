@@ -28,14 +28,14 @@
 ;*
 
 ;IN:
-; esi: gzipped initrd
+; esi: gzipped initrd (without gzip header)
 ; edi: output buffer (guaranteed to be big enough)
 ; ecx: output buffer size
 tinf_uncompress:
             push        ecx
             push        edi
             mov         edi, tinf_bss_start
-            mov         ecx, tinf_bss_end-tinf_bss_start
+            mov         ecx, tinf_bss_end-tinf_bss_start+1
             xor         al, al
             repnz       stosb
             pop         edi
