@@ -49,7 +49,7 @@
 #include "../bootboot.h"
 #include "tinf.h"
 // comment out this include if you don't want FS/Z support
-#include "../../osZ/include/osZ/fsZ.h"
+//#include "../../osZ/include/osZ/fsZ.h"
 
 /*** ELF64 defines and structs ***/
 #define ELFMAG      "\177ELF"
