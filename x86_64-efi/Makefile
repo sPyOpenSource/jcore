@@ -14,7 +14,7 @@ all: tinflate.o $(TARGET)
 
 %.efi: %.so
 	@echo "  src		x86_64-efi (UEFI)"
-	@objcopy -j .text -j .sdata -j .data -j .dynamic -j .dynsym  -j .rel -j .rela -j .rel.* -j .rela.* -j .reloc --target efi-app-$(ARCH) --subsystem=13 $^ $@
+	@objcopy -j .text -j .sdata -j .data -j .dynamic -j .dynsym  -j .rel -j .rela -j .rel.* -j .rela.* -j .reloc --target efi-app-$(ARCH) --subsystem=10 $^ $@
 	@echo -n "BOOTBOOT Loader do not " | dd conv=notrunc of=$(TARGET) bs=1 seek=78 1>/dev/null 2>/dev/null
 	@gcc $(GNUEFI_INCLUDES) -Wall -fshort-wchar efirom.c -o efirom $(LIBS)
 	@./efirom $(TARGET) ../bootboot.rom || true

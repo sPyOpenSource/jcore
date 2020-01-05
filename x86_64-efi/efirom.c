@@ -90,6 +90,11 @@ static void read_pe_info ( void *pe, uint16_t *machine,
 	dos = pe;
 	nt = ( pe + dos->e_lfanew );
 
+	/* issue 4: TianoCore demands subsystem 10, so we must use EFI_APPLICATION
+	 * in the PE header. Therefore we force EFI_ROM subsystem in this code here. */
+	if(nt->nt64.OptionalHeader.Subsystem == 10)
+		nt->nt64.OptionalHeader.Subsystem = 13;
+
 	/* Parse out PE information */
 	*machine = nt->nt64.FileHeader.Machine;
 	*subsystem = nt->nt64.OptionalHeader.Subsystem;
