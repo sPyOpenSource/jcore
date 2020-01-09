@@ -1649,32 +1649,32 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         ZeroMem((void*)paging,23*PAGESIZE);
         DBG(L" * Pagetables PML4 @%lx\n",paging);
         //PML4
-        paging[0]=(UINT64)((UINT8 *)paging+4*PAGESIZE)+1;   // pointer to 2M PDPE (16G RAM identity mapped)
-        paging[511]=(UINT64)((UINT8 *)paging+PAGESIZE)+1;   // pointer to 4k PDPE (core mapped at -2M)
+        paging[0]=(UINT64)((UINT8 *)paging+4*PAGESIZE)+3;   // pointer to 2M PDPE (16G RAM identity mapped)
+        paging[511]=(UINT64)((UINT8 *)paging+PAGESIZE)+3;   // pointer to 4k PDPE (core mapped at -2M)
         //4k PDPE
-        paging[512+511]=(UINT64)((UINT8 *)paging+2*PAGESIZE+1);
+        paging[512+511]=(UINT64)((UINT8 *)paging+2*PAGESIZE+3);
         //4k PDE
         for(i=0;i<31;i++)
-            paging[2*512+480+i]=(UINT64)(((UINT8 *)(bootboot->fb_ptr)+(i<<21))+0x81);   //map framebuffer
-        paging[2*512+511]=(UINT64)((UINT8 *)paging+3*PAGESIZE+1);
+            paging[2*512+480+i]=(UINT64)(((UINT8 *)(bootboot->fb_ptr)+(i<<21))+0x83);   //map framebuffer
+        paging[2*512+511]=(UINT64)((UINT8 *)paging+3*PAGESIZE+3);
         //4k PT
         paging[3*512+0]=(UINT64)(bootboot)+1;
         paging[3*512+1]=(UINT64)(env.ptr)+1;
         for(i=0;i<(core.size/PAGESIZE);i++)
-            paging[3*512+2+i]=(UINT64)((UINT8 *)core.ptr+i*PAGESIZE+1);
+            paging[3*512+2+i]=(UINT64)((UINT8 *)core.ptr+i*PAGESIZE+3);
         for(i=0; i<(UINTN)((bootboot->numcores+3)/4); i++)
-            paging[3*512+511-i]=(UINT64)((UINT8 *)paging+(23+i)*PAGESIZE+1);  // core stacks
+            paging[3*512+511-i]=(UINT64)((UINT8 *)paging+(23+i)*PAGESIZE+3);  // core stacks
         //identity mapping
         //2M PDPE
         for(i=0;i<16;i++)
-            paging[4*512+i]=(UINT64)((UINT8 *)paging+(7+i)*PAGESIZE+1);
+            paging[4*512+i]=(UINT64)((UINT8 *)paging+(7+i)*PAGESIZE+3);
         //first 2M mapped per page
-        paging[7*512]=(UINT64)((UINT8 *)paging+5*PAGESIZE+1);
+        paging[7*512]=(UINT64)((UINT8 *)paging+5*PAGESIZE+3);
         for(i=0;i<512;i++)
-            paging[5*512+i]=(UINT64)(i*PAGESIZE+1);
+            paging[5*512+i]=(UINT64)(i*PAGESIZE+3);
         //2M PDE
         for(i=1;i<512*16;i++)
-            paging[7*512+i]=(UINT64)((i<<21)+0x81);
+            paging[7*512+i]=(UINT64)((i<<21)+0x83);
 
         // Get memory map
         int cnt=3;

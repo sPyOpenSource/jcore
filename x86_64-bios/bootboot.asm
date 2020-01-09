@@ -2029,24 +2029,24 @@ end if
             ;PML4
             mov         edi, 0A000h
             ;pointer to 2M PDPE (first 4G RAM identity mapped)
-            mov         dword [edi], 0E001h
+            mov         dword [edi], 0E003h
             ;pointer to 4k PDPE (core mapped at -2M)
-            mov         dword [edi+4096-8], 0B001h
+            mov         dword [edi+4096-8], 0B003h
 
             ;4K PDPE
             mov         edi, 0B000h
-            mov         dword [edi+4096-8], 0C001h
+            mov         dword [edi+4096-8], 0C003h
             ;4K PDE
             mov         edi, 0C000h+3840
             mov         eax, dword[bootboot.fb_ptr] ;map framebuffer
-            mov         al,81h
+            mov         al,83h
             mov         ecx, 31
 @@:         stosd
             add         edi, 4
             add         eax, 2*1024*1024
             dec         ecx
             jnz         @b
-            mov         dword [0C000h+4096-8], 0D001h
+            mov         dword [0C000h+4096-8], 0D003h
 
             ;4K PT
             mov         dword[0D000h], 08001h   ;map bootboot
@@ -2064,7 +2064,7 @@ end if
             jnz         @b
             ;map core stacks (one page per 4 cores)
             mov         edi, 0DFF8h
-            mov         eax, 014001h
+            mov         eax, 014003h
             mov         cx, word [bootboot.numcores]
             add         cx, 3
             shr         cx, 2
@@ -2077,14 +2077,14 @@ end if
             ;identity mapping
             ;2M PDPE
             mov         edi, 0E000h
-            mov         dword [edi], 0F001h
-            mov         dword [edi+8], 010001h
-            mov         dword [edi+16], 011001h
-            mov         dword [edi+24], 012001h
+            mov         dword [edi], 0F003h
+            mov         dword [edi+8], 010003h
+            mov         dword [edi+16], 011003h
+            mov         dword [edi+24], 012003h
             ;2M PDE
             mov         edi, 0F000h
             xor         eax, eax
-            mov         al, 81h
+            mov         al, 83h
             mov         ecx, 512*  4;G RAM
 @@:         stosd
             add         edi, 4
@@ -2092,9 +2092,9 @@ end if
             dec         ecx
             jnz         @b
             ;first 2M mapped by page
-            mov         dword [0F000h], 013001h
+            mov         dword [0F000h], 013003h
             mov         edi, 013000h
-            mov         eax, 1
+            mov         eax, 3
             mov         ecx, 512
 @@:         stosd
             add         edi, 4
