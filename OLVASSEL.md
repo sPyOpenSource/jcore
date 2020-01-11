@@ -19,6 +19,8 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 Vedd figyelembe, hogy a referencia implementációk nem támogatják a teljes 2-es protokollt,
 csak statikus memórialeképezéseket kezelnek, ami az 1-es protokoll szintnek felel meg.
 
+Gyors kipróbáláshoz találsz bootolható képfájlokat az [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában.
+
 BOOTBOOT Protokoll
 ==================
 

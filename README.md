@@ -19,6 +19,8 @@ I provide pre-compiled images ready for use.
 Please note that the reference implementations do not support the full protocol at level 2,
 they only handle static mappings which makes them level 1 loaders.
 
+For quick test, you can find example bootable disk [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) too.
+
 BOOTBOOT Protocol
 =================
 
@@ -298,6 +300,9 @@ On x86_64, 'currentcoreid' is the Local Apic Id (cpuid[eax=1].ebx >> 24), on AAr
 
 Installation
 ------------
+
+In the [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) directory you can find test disk images and image creator
+as well.
 
 1. make an initrd with your kernel in it. Example:
 
