@@ -38,6 +38,7 @@ ifeq ($(PLATFORM),x86)
 	@cp ../bootboot.efi boot/EFI/BOOT/BOOTX64.EFI || true
 else
 	@cp ../aarch64-rpi/LIC* ../aarch64-rpi/*.bin ../aarch64-rpi/*.elf ../aarch64-rpi/*.dat boot/ || true
+	@cp ../bootboot.img boot/kernel8.img || true
 endif
 	@echo -e "screen=800x600\nkernel=sys/core\n" >boot/BOOTBOOT/CONFIG || true
 	@cp initrd.bin boot/BOOTBOOT/INITRD || true
