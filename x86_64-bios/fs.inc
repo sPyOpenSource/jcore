@@ -27,7 +27,7 @@
 ;* @brief Filesystem drivers for initial ramdisk.
 ;*
 
-FSZ_SUPPORT equ 0
+FSZ_SUPPORT equ 1
 
 ;*********************************************************************
 ;*                       File System Drivers                         *

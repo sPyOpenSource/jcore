@@ -298,6 +298,8 @@ Az x86_64-on a 'currentcoreid' a Local Apic Id (cpuid[eax=1].ebx >> 24), míg AA
 Telepítés
 ---------
 
+Az [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában találsz teszt képfájlokat és képfájl készítőt is.
+
 1. Hozz létre egy initrd-t benne a kerneleddel. Példák:
 
 ```shell
@@ -346,7 +348,7 @@ BOOTBOOT-PANIC: FS0:\BOOTBOOT\LOADER not found
 ```
 
 A fő betöltő (bootboot.bin) nem található a lemezen, vagy az induló szektorcíme nincs jól rögzítve az indítószektor 32 bites
-[0x1B0] címén (lásd [mkboot](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/mkboot.c)). mivel a betöltő szektor
+[0x1B0] címén (lásd [mkboot](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/mkboot.c)). Mivel a betöltő szektor
 támogatja a RAID tükröket, több meghajtóról is meg fogja próbálni betölteni a betöltőt. Ezt az üzenetet az első betöltő szektor
 (boot.bin) írja ki.
 
@@ -363,6 +365,12 @@ BOOTBOOT-PANIC: Unable to initialize SDHC card
 ```
 
 A betöltő nem tudta inicializálni az EMMC-t SD kártya olvasáshoz, valószínáleg hardver hiba vagy régi kártya.
+
+```
+BOOTBOOT-PANIC: No GPT found
+```
+
+Nem található a lemezen GUID Partíciós Tábla.
 
 ```
 BOOTBOOT-PANIC: No boot partition
