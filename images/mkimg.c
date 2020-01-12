@@ -157,6 +157,8 @@ int createdisk(int disksize, char *diskname)
     iso=malloc(32768);
     memset(iso,0,32768);
     if(disksize<64*1024*1024) disksize = 64*1024*1024;
+    /* make the UUID unique */
+    uuid[0] ^= (unsigned long int)t;
 
     /* MBR / VBR stage 1 loader */
     loader=readfileall("../boot.bin");

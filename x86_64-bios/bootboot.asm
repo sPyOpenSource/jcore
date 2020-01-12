@@ -240,11 +240,13 @@ multiboot_start:
 @@:         jmp         CODE_BOOT:.real ;load 16 bit mode segment into cs
             USE16
 .real:      mov         eax, CR0
-            and         al, 0FEh        ;switching back to real mode
+            and         eax, 07FFFFFFEh ;switching back to real mode
             mov         CR0, eax
             xor         ax, ax
-            mov         ds, ax          ;load segment registers
-            jmp         0:realmode_start
+            mov         ds, ax          ;load segment registers DS and CS
+            jmp         0:@f
+@@:         lidt        [idt16]         ;restore IDT as newer GRUBs mess it up
+            ;fallthrough realmode_start
 
 ;-----------realmode-protmode stub-------------
 realmode_start:
@@ -362,39 +364,26 @@ realmode_start:
             int         15h
             jnc         a20ok
             ;keyboard nightmare
-            call        .a20wait
+            call        a20wait
             mov         al, 0ADh
             out         64h, al
-            call        .a20wait
+            call        a20wait
             mov         al, 0D0h
             out         64h, al
-            call        .a20wait2
+            call        a20wait2
             in          al, 60h
             push            ax
-            call        .a20wait
+            call        a20wait
             mov         al, 0D1h
             out         64h, al
-            call        .a20wait
+            call        a20wait
             pop         ax
             or          al, 2
             out         60h, al
-            call        .a20wait
+            call        a20wait
             mov         al, 0AEh
             out         64h, al
             jmp         a20ok
-
-            ;all methods failed, report an error
-            mov         si, a20err
-            jmp         real_diefunc
-
-.a20wait:   in          al, 64h
-            test        al, 2
-            jnz         .a20wait
-            ret
-.a20wait2:  in          al, 64h
-            test        al, 1
-            jz          .a20wait2
-            ret
 
 ;--- Linux x86 boot protocol header ---
             db          01F1h-($-$$) dup 090h
@@ -443,6 +432,14 @@ start_of_setup:
             jmp         realmode_start
 ; --- end of Linux boot protocol header ---
 
+a20wait:    in          al, 64h
+            test        al, 2
+            jnz         a20wait
+            ret
+a20wait2:   in          al, 64h
+            test        al, 1
+            jz          a20wait2
+            ret
 a20ok:
             ; wait for a key press, if so use backup initrd
             mov         ecx, dword [046Ch]
@@ -2522,6 +2519,8 @@ sha256_k:   dd          0428a2f98h, 071374491h, 0b5c0fbcfh, 0e9b5dba5h, 03956c25
             dd          019a4c116h, 01e376c08h, 02748774ch, 034b0bcb5h, 0391c0cb3h, 04ed8aa4ah, 05b9cca4fh, 0682e6ff3h
             dd          0748f82eeh, 078a5636fh, 084c87814h, 08cc70208h, 090befffah, 0a4506cebh, 0bef9a3f7h, 0c67178f2h
 end if
+idt16:      dw          3FFh
+            dq          0
 lbapacket:              ;lba packet for BIOS
 .size:      dw          10h
 .count:     dw          8

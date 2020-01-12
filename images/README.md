@@ -3,9 +3,10 @@ BOOTBOOT Example Bootable Disk Images
 
 See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 
-- mkimg.c: is a very simple bootable disk image creator tool
 - disk-rpi.img.gz: an example image for AArch64 and RaspberryPi 3
 - disk-x86.img.gz: an example image for x86_64 (CDROM, BIOS, UEFI)
+- initrd.rom.gz: an example initrd ROM image (for embedded BIOS systems)
+- mkimg.c: is a very simple bootable disk image creator tool
 
 Before you can use the images, uncompress them with `gzip -d`.
 
@@ -28,6 +29,8 @@ The disk-x86.img is a special hybrid image, which can be renamed to disk-x86.iso
 booted from an USB stick in a BIOS machine as well as an UEFI machine.
 
 The disk-rpi.img can be written to an SDCard (Class 10) and booted on a Raspberry Pi 3.
+
+The disk images contain only one boot partition. Feel free to use `fdisk` and add more partitions to your needs.
 
 Testing
 -------
@@ -53,6 +56,11 @@ Will boot the example kernel from disk using UEFI. You must provide your own Tia
 make eficdrom
 ```
 Will boot the example kernel under UEFI from CDROM.
+```
+make grubcdrom
+```
+Will create a cdrom image using grub-mkrescue. Due to a bug in recent GRUB versions (see issue #3), this is known to be broken as
+a BIOS routine gets into an infinite loop.
 ```
 make sdcard
 ```

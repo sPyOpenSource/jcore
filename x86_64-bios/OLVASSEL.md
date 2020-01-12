@@ -38,6 +38,10 @@ menuentry "MyKernel" {
 }
 ```
 
+__FONTOS__: néhány újabb GRUB verzió tönkreteszti a BDA és EBDA területeket. Ennek eredményeképpen a BIOS rutinok lefagyhatnak,
+végtelen ciklusba kerülhetnek vagy kivételeket dobálhatnak. Ne küldj hibabejelentést BOOTBOOT kapcsán ha az GRUB-al indul, ezeket
+a GRUB hibabejelentő felületén jelezd, ne nekem!
+
 Limitációk
 ----------
 

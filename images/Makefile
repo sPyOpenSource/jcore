@@ -23,7 +23,7 @@ else
 	cp ../mykernel/mykernel.aarch64.elf initrd/sys/core
 endif
 	@cd initrd && (find . | cpio -H hpodc -o | gzip > ../initrd.bin) && cd ..
-	@rm -r initrd 2>/dev/null | true
+	@rm -r initrd 2>/dev/null || true
 
 # assemble the boot partition
 bootpart.bin: initrd.bin
@@ -49,8 +49,18 @@ endif
 disk: mkimg bootpart.bin
 	./mkimg $(DISKSIZE) disk-$(PLATFORM).img
 
-initrd.rom: initrd.bin mkimg
+initrd.rom: mkimg initrd.bin
 	mkimg rom
+
+# create a GRUB cdrom
+grub.iso: initrd.bin
+	@mkdir iso iso/bootboot iso/boot iso/boot/grub 2>/dev/null || true
+	@cp ../bootboot.bin iso/bootboot/loader || true
+	@echo -e "screen=800x600\nkernel=sys/core\n" >iso/bootboot/config || true
+	@cp initrd.bin iso/bootboot/initrd || true
+	@echo -e "menuentry \"BOOTBOOT test\" {\n  multiboot /bootboot/loader\n  module /bootboot/initrd\n  module /bootboot/config\n  boot\n}" >iso/boot/grub/grub.cfg || true
+	grub-mkrescue -o grub.iso iso
+	@rm -r iso 2>/dev/null || true
 
 # test the disk image
 rom: initrd.rom
@@ -61,6 +71,9 @@ bios:
 
 cdrom:
 	qemu-system-x86_64 -cdrom disk-x86.img -serial stdio
+
+grubcdrom: grub.iso
+	qemu-system-x86_64 -cdrom grub.iso -serial stdio
 
 efi:
 	qemu-system-x86_64 -bios $(OVMF) -m 64 -drive file=disk-x86.img,format=raw -serial stdio

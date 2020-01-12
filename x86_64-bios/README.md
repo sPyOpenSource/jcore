@@ -37,6 +37,10 @@ menuentry "MyKernel" {
 }
 ```
 
+__IMPORTANT__: more recent GRUB versions destroy some important variables in BDA and EBDA. As a result, BIOS routines will
+cause exceptions or run into infinite loops. Don't report BOOTBOOT issues with GRUB, you should report those to the GRUB issue
+tracker and not to me!
+
 Limitations
 -----------
 
