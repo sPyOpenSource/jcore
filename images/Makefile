@@ -81,6 +81,9 @@ efi:
 eficdrom:
 	qemu-system-x86_64 -bios $(OVMF) -m 64 -cdrom disk-x86.img -serial stdio
 
+linux:
+	qemu-system-x86_64 -kernel ../bootboot.bin -drive file=disk-x86.img,format=raw -serial stdio
+
 sdcard:
 	qemu-system-aarch64 -M raspi3 -kernel ../bootboot.img -drive file=disk-rpi.img,if=sd,format=raw -serial stdio
 

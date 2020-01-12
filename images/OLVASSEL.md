@@ -63,6 +63,11 @@ make grubcdrom
 Ez grub-mkrescue hívásával hoz létre egy cdrom lemezképet. A legutóbbi GRUB verziók hibája miatt (lásd issue #3), ez várhatóan
 nem fog bebootolni, mivel az egyik BIOS rutin végtelen ciklusba kerül.
 ```
+make linux
+```
+Ez betölti a minta kernelt úgy, hogy a BOOTBOOT-ot [Linux/x86 Boot Protocol](https://www.kernel.org/doc/html/latest/x86/boot.html)-al
+indítja.
+```
 make sdcard
 ```
 Ez "raspi3" gépet emulálva tölti be a minta kernelt SD kártya meghajtóról (kell hozzá a qemu-system-aarch64).

@@ -388,24 +388,24 @@ realmode_start:
 ;--- Linux x86 boot protocol header ---
             db          01F1h-($-$$) dup 090h
 hdr:
-setup_sects:        db          (loader_end-loader)/512
+setup_sects:        db          (loader_end-loader-511)/512
 root_flags:         dw          0
 syssize:            dd          (loader_end-loader)/16
 ram_size:           dw          0
 vid_mode:           dw          0
 root_dev:           dw          0
 boot_flag:          dw          0AA55h
-                    db          0EBh        ; short jmp
+                    db          0EBh            ; short jmp
                     db          start_of_setup-@f   ; no space to jump to realmode_start directly
 @@:                 db          "HdrS"
                     dw          020eh
 realmode_swtch:     dd          0
 start_sys_seg:      dw          0
-                    dw          starting-512    ; we don't have Linux kernel version...
-type_of_loader:     db          0
+                    dw          0               ; we don't have Linux kernel version...
+type_of_loader:     db          0FFh
 loadflags:          db          0
 setup_move_size:    dw          08000h
-code32_start:       dd          100000h         ; we dont' use this either...
+code32_start:       dd          0               ; we dont' use this either...
 ramdisk_image:      dd          0
 ramdisk_size:       dd          0
 bootsect_kludge:    dd          0
@@ -424,12 +424,13 @@ hardware_subarch_data: dq       0
 payload_offset:     dd          0
 payload_length:     dd          0
 setup_data:         dq          0
-pref_address:       dq          7C00h
-init_size:          dd          0
+pref_address:       dq          90000h          ; qemu does not handle anything else
+init_size:          dd          loader_end-loader
 handover_offset:    dd          0
 acpi_rsdp_addr:     dq          0
 start_of_setup:
-            jmp         realmode_start
+            ; fix: qemu forces address and set CS to 0x9020, but we must jump to segment 0x9000.
+            jmp         9000h:realmode_start-loader
 ; --- end of Linux boot protocol header ---
 
 a20wait:    in          al, 64h

@@ -62,6 +62,10 @@ make grubcdrom
 Will create a cdrom image using grub-mkrescue. Due to a bug in recent GRUB versions (see issue #3), this is known to be broken as
 a BIOS routine gets into an infinite loop.
 ```
+make linux
+```
+Will boot the example kernel by booting BOOTBOOT via the [Linux/x86 Boot Protocol](https://www.kernel.org/doc/html/latest/x86/boot.html).
+```
 make sdcard
 ```
 Will boot the example kernel from SDCard emulating "raspi3" machine under qemu (requires qemu-system-aarch64).
