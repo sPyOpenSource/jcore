@@ -60,8 +60,7 @@ Ez betölti a kernelt CDROM-ról, UEFI használatával.
 ```
 make grubcdrom
 ```
-Ez grub-mkrescue hívásával hoz létre egy cdrom lemezképet. A legutóbbi GRUB verziók hibája miatt (lásd issue #3), ez várhatóan
-nem fog bebootolni, mivel az egyik BIOS rutin végtelen ciklusba kerül.
+Ez grub-mkrescue hívásával hoz létre egy cdrom lemezképet, majd Multiboot-al betölti a BOOTBOOT-ot.
 ```
 make linux
 ```

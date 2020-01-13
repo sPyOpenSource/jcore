@@ -59,8 +59,7 @@ Will boot the example kernel under UEFI from CDROM.
 ```
 make grubcdrom
 ```
-Will create a cdrom image using grub-mkrescue. Due to a bug in recent GRUB versions (see issue #3), this is known to be broken as
-a BIOS routine gets into an infinite loop.
+Will create a cdrom image using grub-mkrescue and boot BOOTBOOT using Multiboot.
 ```
 make linux
 ```

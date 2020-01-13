@@ -3,8 +3,8 @@ DISKSIZE=128
 # boot partition size in kilobytes (16M)
 BOOTSIZE=16384
 # platform, either x86 or rpi
-#PLATFORM=x86
-PLATFORM=rpi
+PLATFORM=x86
+#PLATFORM=rpi
 # the path to OVMF.fd (for testing with EFI)
 OVMF=/usr/share/qemu/bios-TianoCoreEFI.bin
 

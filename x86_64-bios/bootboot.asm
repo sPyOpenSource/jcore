@@ -203,7 +203,6 @@ MB_FLAGS    equ         010001h
 multiboot_start:
             cli
             cld
-            lgdt        [GDT_value]
             ;clear drive code, initrd ptr and environment
             xor         edx, edx
             mov         edi, 9000h
@@ -237,9 +236,13 @@ multiboot_start:
             mov         esi, dword [eax+16]
             mov         ecx, 1024
             repnz       movsd
-@@:         mov         ax, DATA_BOOT
+            inc         byte [hasconfig]
+@@:         lgdt        [GDT_value]
+            mov         ax, DATA_BOOT   ;clear shadow segment registers
             mov         ds, ax
             mov         es, ax
+            mov         ss, ax
+            xor         esp, esp        ;GRUB leaves the upper 16 bits non-zero, we must clear it
             jmp         CODE_BOOT:.real ;load 16 bit mode segment into cs
             USE16
 .real:      mov         eax, CR0
@@ -274,13 +277,11 @@ realmode_start:
             repnz       movsw
             xor         ax, ax
             mov         ds, ax
-            xor         dl, dl
-            jmp         0:.noreloc
+            jmp         0:.clrdl
 .noreloc:   or          dl, dl
             jnz         @f
-            mov         dl, 80h
+.clrdl:     mov         dl, 80h
 @@:         mov         byte [bootdev], dl
-            mov         word [lbapacket.count], 8
 
             ;-----initialize serial port COM1,115200,8N1------
             mov         ax, 0401h
@@ -469,9 +470,11 @@ getmemmap:
             mov         edi, bootboot.acpi_ptr
             mov         ecx, 16
             repnz       stosd
-            cmp         byte [hasinitrd], 0
+            cmp         byte [hasconfig], 0
             jnz         @f
             mov         dword [9000h], eax
+@@:         cmp         byte [hasinitrd], 0
+            jnz         @f
             mov         dword [bootboot.initrd_ptr], eax
             mov         dword [bootboot.initrd_size], eax
 @@:         mov         dword [bootboot.initrd_ptr+4], eax
@@ -480,8 +483,8 @@ getmemmap:
             mov         dword [bootboot.magic], eax
             mov         dword [bootboot.size], 128
             mov         dword [bootboot.protocol], PROTOCOL_STATIC or LOADER_BIOS
-            mov         di, bootboot.mmap
-            mov         cx, 800h
+            mov         di, bootboot.fb_ptr
+            mov         cx, 800h-28h
             xor         ax, ax
             repnz       stosw
             mov         di, bootboot.mmap
@@ -2015,7 +2018,7 @@ end if
 
             ;inform firmware that we're about to leave it's realm
             mov         ax, 0EC00h
-            mov         bl, 2 ; 64 bit
+            mov         bx, 2 ; 64 bit
             int         15h
             real_protmode
 
@@ -2165,7 +2168,6 @@ longmode_init:
             mov         ss, ax
             mov         fs, ax
             mov         gs, ax
-
             ; find out our lapic id
             mov         eax, 1
             cpuid
@@ -2546,6 +2548,7 @@ origcount:  dw          0
 bootdev:    db          0
 readdev:    db          0
 hasinitrd:  db          0
+hasconfig:  db          0
 iscdrom:    db          0
 bsp_done:                 ;flag to indicate APs can run
 fattype:    db          0
