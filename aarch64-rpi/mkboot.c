@@ -1,7 +1,7 @@
 /*
  * aarch64-rpi/mkboot.c
  *
- * Copyright (C) 2017 bzt (bztsrc@gitlab)
+ * Copyright (C) 2017 - 2020 bzt (bztsrc@gitlab)
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -25,7 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief Little tool to create a RPi compatible MBR for ESP
- * 
+ *
  */
 
 #include <stdio.h>

@@ -1,7 +1,7 @@
 ;*
 ;* x86_64-bios/bootboot.inc
 ;*
-;* Copyright (C) 2017 - 2019 bzt (bztsrc@gitlab)
+;* Copyright (C) 2017 - 2020 bzt (bztsrc@gitlab)
 ;*
 ;* Permission is hereby granted, free of charge, to any person
 ;* obtaining a copy of this software and associated documentation

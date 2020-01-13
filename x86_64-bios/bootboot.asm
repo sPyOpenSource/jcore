@@ -1,7 +1,7 @@
 ;*
 ;* x86_64-bios/bootboot.asm
 ;*
-;* Copyright (C) 2017 - 2019 bzt (bztsrc@gitlab)
+;* Copyright (C) 2017 - 2020 bzt (bztsrc@gitlab)
 ;*
 ;* Permission is hereby granted, free of charge, to any person
 ;* obtaining a copy of this software and associated documentation
@@ -237,7 +237,10 @@ multiboot_start:
             mov         esi, dword [eax+16]
             mov         ecx, 1024
             repnz       movsd
-@@:         jmp         CODE_BOOT:.real ;load 16 bit mode segment into cs
+@@:         mov         ax, DATA_BOOT
+            mov         ds, ax
+            mov         es, ax
+            jmp         CODE_BOOT:.real ;load 16 bit mode segment into cs
             USE16
 .real:      mov         eax, CR0
             and         eax, 07FFFFFFEh ;switching back to real mode
@@ -2467,6 +2470,8 @@ end if
 GDT_table:  dd          0, 0                ;null descriptor
 DATA_PROT   =           $-GDT_table
             dd          0000FFFFh,008F9200h ;flat ds
+DATA_BOOT   =           $-GDT_table
+            dd          0000FFFFh,00009200h ;16 bit legacy real mode ds
 CODE_BOOT   =           $-GDT_table
             dd          0000FFFFh,00009800h ;16 bit legacy real mode cs
 CODE_PROT   =           $-GDT_table
