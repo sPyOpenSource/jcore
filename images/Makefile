@@ -50,7 +50,7 @@ disk: mkimg bootpart.bin
 	./mkimg $(DISKSIZE) disk-$(PLATFORM).img
 
 initrd.rom: mkimg initrd.bin
-	mkimg rom
+	./mkimg rom
 
 # create a GRUB cdrom
 grub.iso: initrd.bin
