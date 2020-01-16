@@ -436,3 +436,10 @@ initrd-t SHA-XOR-CBC-vel, amit minden betöltő implementációnak támogatnia k
 esetén támogatott).
 
 Ez minden, remélem hasznososnak találod!
+
+Hozzájárulások
+--------------
+
+Szeretnék külön köszönetet mondani [Valentin Anger](https://gitlab.com/SyrupThinker)-nek, amiért alaposan letesztelte a
+kódot számtalan igazi vason is.
+

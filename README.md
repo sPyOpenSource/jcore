@@ -437,3 +437,10 @@ regenerate and encrypt the initrd image with SHA-XOR-CBC cipher, known to all th
 (Note: encryption is only supported for FS/Z initrd images.)
 
 That's all, hope it will be useful!
+
+Contributors
+------------
+
+I'd like to say special thanks to [Valentin Anger](https://gitlab.com/SyrupThinker) for throughfully testing this
+code on many different real hardware.
+
