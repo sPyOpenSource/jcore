@@ -7,7 +7,7 @@ On [BIOS](http://www.scs.stanford.edu/05au-cs240c/lab/specsbbs101.pdf) based sys
 [Multiboot](https://www.gnu.org/software/grub/manual/multiboot/multiboot.html),
 chainload from MBR, VBR (GPT hybrid booting) or from CDROM boot record via __boot.bin__, run as a BIOS Expansion ROM
 (so not only the ramdisk can be in ROM, but the loader as well), or can be loaded as a
-[Linux kernel](https://elixir.bootlin.com/linux/latest/source/Documentation/x86/boot.txt) (by ISOLINUX, LoadLin etc.).
+[Linux kernel](https://www.kernel.org/doc/html/latest/x86/boot.html) (by ISOLINUX, LoadLin etc.).
 
 Machine state
 -------------
@@ -36,10 +36,6 @@ menuentry "MyKernel" {
     boot
 }
 ```
-
-__IMPORTANT__: more recent GRUB versions destroy some important variables in BDA and EBDA. As a result, BIOS routines will
-cause exceptions or run into infinite loops. Don't report BOOTBOOT issues with GRUB, you should report those to the GRUB issue
-tracker and not to me!
 
 Limitations
 -----------

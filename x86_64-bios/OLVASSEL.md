@@ -6,7 +6,7 @@ BOOTBOOT BIOS / Multiboot / El Torito / Bővító ROM / Linux boot Implementáci
 A [BIOS](http://www.scs.stanford.edu/05au-cs240c/lab/specsbbs101.pdf)-t támogató gépeken ugyanaz a betöltő működik
 [Multiboot](https://www.gnu.org/software/grub/manual/multiboot/multiboot.html)tal, láncbetöltéssel MBR, VBR (GPT hibrid indítás)
 és CDROM indító szektorból, vagy BIOS bővítő ROM-ból (szóval nemcsak a ramlemez lehet a ROM-ban, de maga a betöltő is), de
-betölthető [Linux kernel](https://elixir.bootlin.com/linux/latest/source/Documentation/x86/boot.txt)ként is (ISOLINUX, LoadLin stb.).
+betölthető [Linux kernel](https://www.kernel.org/doc/html/latest/x86/boot.html)ként is (ISOLINUX, LoadLin stb.).
 
 Gép állapot
 -------------
@@ -37,10 +37,6 @@ menuentry "MyKernel" {
     boot
 }
 ```
-
-__FONTOS__: néhány újabb GRUB verzió tönkreteszti a BDA és EBDA területeket. Ennek eredményeképpen a BIOS rutinok lefagyhatnak,
-végtelen ciklusba kerülhetnek vagy kivételeket dobálhatnak. Ne küldj hibabejelentést BOOTBOOT kapcsán ha az GRUB-al indul, ezeket
-a GRUB hibabejelentő felületén jelezd, ne nekem!
 
 Limitációk
 ----------

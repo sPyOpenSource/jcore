@@ -49,9 +49,6 @@ Note: BOOTBOOT is not a boot manager, it's a boot loader protocol. If you want a
 integrate that *before* a BOOTBOOT compatible loader is called. Like GRUB chainloading boot.bin (or loading bootboot.bin as a
 multiboot "kernel" and initrd as a module) or adding bootboot.efi to UEFI Boot Manager's menu for example.
 
-Note: some GRUB versions and configurations known to destroy BDA and EBDA variables. As a result, BOOTBOOT can't use BIOS routines
-any more. This is a bug in GRUB, do not report those problems to me.
-
 Licence
 -------
 

@@ -48,10 +48,6 @@ Megjegyzés: a BOOTBOOT nem egy boot menedzser, hanem egy boot protokoll. Ha int
 azt a BOOTBOOT kompatíbilis betöltő *elé* kell integrálnod. Például a GRUB lánctöltheti a boot.bin-t (vagy Multiboot
 "kernel"-ként a bootboot.bin-t és modulként a ramlemezt) vagy a bootboot.efi hozzáadható az UEFI Boot menedzser menüjéhez.
 
-Megjegyzés: a legújabb GRUB verziók bizonyos konfigurációban tönkreteszik a BDA és EBDA változókat. Ennek következményeképp
-a BOOTBOOT betöltő nem tudja rendeltetésszerűen használni a BIOS rutinokat a továbbiakban. Ez hiba a GRUB-ban, az ezzel
-kapcsolatos problémákat ne nekem jelezzétek.
-
 Licensz
 -------
 
