@@ -24,7 +24,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  * This file is part of the BOOTBOOT Protocol package.
- * @brief Boot loader for the Raspberry Pi 3+ ARMv8
+ * @brief Boot loader for the Raspberry Pi 3 and 4 ARMv8
  *
  */
 
@@ -136,55 +136,55 @@ typedef struct {
 
 
 /*** Raspberry Pi specific defines ***/
-#define MMIO_BASE       0x3F000000
+static uint64_t mmio_base;
 
-#define PM_RTSC         ((volatile uint32_t*)(MMIO_BASE+0x0010001c))
-#define PM_WATCHDOG     ((volatile uint32_t*)(MMIO_BASE+0x00100024))
+#define PM_RTSC         ((volatile uint32_t*)(mmio_base+0x0010001c))
+#define PM_WATCHDOG     ((volatile uint32_t*)(mmio_base+0x00100024))
 #define PM_WDOG_MAGIC   0x5a000000
 #define PM_RTSC_FULLRST 0x00000020
 
-#define GPFSEL0         ((volatile uint32_t*)(MMIO_BASE+0x00200000))
-#define GPFSEL1         ((volatile uint32_t*)(MMIO_BASE+0x00200004))
-#define GPFSEL2         ((volatile uint32_t*)(MMIO_BASE+0x00200008))
-#define GPFSEL3         ((volatile uint32_t*)(MMIO_BASE+0x0020000C))
-#define GPFSEL4         ((volatile uint32_t*)(MMIO_BASE+0x00200010))
-#define GPFSEL5         ((volatile uint32_t*)(MMIO_BASE+0x00200014))
-#define GPSET0          ((volatile uint32_t*)(MMIO_BASE+0x0020001C))
-#define GPSET1          ((volatile uint32_t*)(MMIO_BASE+0x00200020))
-#define GPCLR0          ((volatile uint32_t*)(MMIO_BASE+0x00200028))
-#define GPLEV0          ((volatile uint32_t*)(MMIO_BASE+0x00200034))
-#define GPLEV1          ((volatile uint32_t*)(MMIO_BASE+0x00200038))
-#define GPEDS0          ((volatile uint32_t*)(MMIO_BASE+0x00200040))
-#define GPEDS1          ((volatile uint32_t*)(MMIO_BASE+0x00200044))
-#define GPHEN0          ((volatile uint32_t*)(MMIO_BASE+0x00200064))
-#define GPHEN1          ((volatile uint32_t*)(MMIO_BASE+0x00200068))
-#define GPPUD           ((volatile uint32_t*)(MMIO_BASE+0x00200094))
-#define GPPUDCLK0       ((volatile uint32_t*)(MMIO_BASE+0x00200098))
-#define GPPUDCLK1       ((volatile uint32_t*)(MMIO_BASE+0x0020009C))
+#define GPFSEL0         ((volatile uint32_t*)(mmio_base+0x00200000))
+#define GPFSEL1         ((volatile uint32_t*)(mmio_base+0x00200004))
+#define GPFSEL2         ((volatile uint32_t*)(mmio_base+0x00200008))
+#define GPFSEL3         ((volatile uint32_t*)(mmio_base+0x0020000C))
+#define GPFSEL4         ((volatile uint32_t*)(mmio_base+0x00200010))
+#define GPFSEL5         ((volatile uint32_t*)(mmio_base+0x00200014))
+#define GPSET0          ((volatile uint32_t*)(mmio_base+0x0020001C))
+#define GPSET1          ((volatile uint32_t*)(mmio_base+0x00200020))
+#define GPCLR0          ((volatile uint32_t*)(mmio_base+0x00200028))
+#define GPLEV0          ((volatile uint32_t*)(mmio_base+0x00200034))
+#define GPLEV1          ((volatile uint32_t*)(mmio_base+0x00200038))
+#define GPEDS0          ((volatile uint32_t*)(mmio_base+0x00200040))
+#define GPEDS1          ((volatile uint32_t*)(mmio_base+0x00200044))
+#define GPHEN0          ((volatile uint32_t*)(mmio_base+0x00200064))
+#define GPHEN1          ((volatile uint32_t*)(mmio_base+0x00200068))
+#define GPPUD           ((volatile uint32_t*)(mmio_base+0x00200094))
+#define GPPUDCLK0       ((volatile uint32_t*)(mmio_base+0x00200098))
+#define GPPUDCLK1       ((volatile uint32_t*)(mmio_base+0x0020009C))
 
 #define UART0           0
-#define UART0_DR        ((volatile uint32_t*)(MMIO_BASE+0x00201000))
-#define UART0_FR        ((volatile uint32_t*)(MMIO_BASE+0x00201018))
-#define UART0_IBRD      ((volatile uint32_t*)(MMIO_BASE+0x00201024))
-#define UART0_FBRD      ((volatile uint32_t*)(MMIO_BASE+0x00201028))
-#define UART0_LCRH      ((volatile uint32_t*)(MMIO_BASE+0x0020102C))
-#define UART0_CR        ((volatile uint32_t*)(MMIO_BASE+0x00201030))
-#define UART0_IMSC      ((volatile uint32_t*)(MMIO_BASE+0x00201038))
-#define UART0_ICR       ((volatile uint32_t*)(MMIO_BASE+0x00201044))
+#define UART0_DR        ((volatile uint32_t*)(mmio_base+0x00201000))
+#define UART0_FR        ((volatile uint32_t*)(mmio_base+0x00201018))
+#define UART0_IBRD      ((volatile uint32_t*)(mmio_base+0x00201024))
+#define UART0_FBRD      ((volatile uint32_t*)(mmio_base+0x00201028))
+#define UART0_LCRH      ((volatile uint32_t*)(mmio_base+0x0020102C))
+#define UART0_CR        ((volatile uint32_t*)(mmio_base+0x00201030))
+#define UART0_IMSC      ((volatile uint32_t*)(mmio_base+0x00201038))
+#define UART0_ICR       ((volatile uint32_t*)(mmio_base+0x00201044))
 
 #define UART1           1
-#define AUX_ENABLE      ((volatile uint32_t*)(MMIO_BASE+0x00215004))
-#define AUX_MU_IO       ((volatile uint32_t*)(MMIO_BASE+0x00215040))
-#define AUX_MU_IER      ((volatile uint32_t*)(MMIO_BASE+0x00215044))
-#define AUX_MU_IIR      ((volatile uint32_t*)(MMIO_BASE+0x00215048))
-#define AUX_MU_LCR      ((volatile uint32_t*)(MMIO_BASE+0x0021504C))
-#define AUX_MU_MCR      ((volatile uint32_t*)(MMIO_BASE+0x00215050))
-#define AUX_MU_LSR      ((volatile uint32_t*)(MMIO_BASE+0x00215054))
-#define AUX_MU_MSR      ((volatile uint32_t*)(MMIO_BASE+0x00215058))
-#define AUX_MU_SCRATCH  ((volatile uint32_t*)(MMIO_BASE+0x0021505C))
-#define AUX_MU_CNTL     ((volatile uint32_t*)(MMIO_BASE+0x00215060))
-#define AUX_MU_STAT     ((volatile uint32_t*)(MMIO_BASE+0x00215064))
-#define AUX_MU_BAUD     ((volatile uint32_t*)(MMIO_BASE+0x00215068))
+#define AUX_ENABLE      ((volatile uint32_t*)(mmio_base+0x00215004))
+#define AUX_MU_IO       ((volatile uint32_t*)(mmio_base+0x00215040))
+#define AUX_MU_IER      ((volatile uint32_t*)(mmio_base+0x00215044))
+#define AUX_MU_IIR      ((volatile uint32_t*)(mmio_base+0x00215048))
+#define AUX_MU_LCR      ((volatile uint32_t*)(mmio_base+0x0021504C))
+#define AUX_MU_MCR      ((volatile uint32_t*)(mmio_base+0x00215050))
+#define AUX_MU_LSR      ((volatile uint32_t*)(mmio_base+0x00215054))
+#define AUX_MU_MSR      ((volatile uint32_t*)(mmio_base+0x00215058))
+#define AUX_MU_SCRATCH  ((volatile uint32_t*)(mmio_base+0x0021505C))
+#define AUX_MU_CNTL     ((volatile uint32_t*)(mmio_base+0x00215060))
+#define AUX_MU_STAT     ((volatile uint32_t*)(mmio_base+0x00215064))
+#define AUX_MU_BAUD     ((volatile uint32_t*)(mmio_base+0x00215068))
 
 /* timing stuff */
 uint64_t cntfrq;
@@ -262,7 +262,7 @@ void uart_exc(uint64_t idx, uint64_t esr, uint64_t elr, uint64_t spsr, uint64_t 
     *PM_RTSC = PM_WDOG_MAGIC | PM_RTSC_FULLRST;
     while(1);
 }
-#define VIDEOCORE_MBOX  (MMIO_BASE+0x0000B880)
+#define VIDEOCORE_MBOX  (mmio_base+0x0000B880)
 #define MBOX_READ       ((volatile uint32_t*)(VIDEOCORE_MBOX+0x0))
 #define MBOX_POLL       ((volatile uint32_t*)(VIDEOCORE_MBOX+0x10))
 #define MBOX_SENDER     ((volatile uint32_t*)(VIDEOCORE_MBOX+0x14))
@@ -323,23 +323,23 @@ int hex2bin(unsigned char *s, int n){ int r=0;while(n-->0){r<<=4;
 #endif
 
 /* sdcard */
-#define EMMC_ARG2           ((volatile uint32_t*)(MMIO_BASE+0x00300000))
-#define EMMC_BLKSIZECNT     ((volatile uint32_t*)(MMIO_BASE+0x00300004))
-#define EMMC_ARG1           ((volatile uint32_t*)(MMIO_BASE+0x00300008))
-#define EMMC_CMDTM          ((volatile uint32_t*)(MMIO_BASE+0x0030000C))
-#define EMMC_RESP0          ((volatile uint32_t*)(MMIO_BASE+0x00300010))
-#define EMMC_RESP1          ((volatile uint32_t*)(MMIO_BASE+0x00300014))
-#define EMMC_RESP2          ((volatile uint32_t*)(MMIO_BASE+0x00300018))
-#define EMMC_RESP3          ((volatile uint32_t*)(MMIO_BASE+0x0030001C))
-#define EMMC_DATA           ((volatile uint32_t*)(MMIO_BASE+0x00300020))
-#define EMMC_STATUS         ((volatile uint32_t*)(MMIO_BASE+0x00300024))
-#define EMMC_CONTROL0       ((volatile uint32_t*)(MMIO_BASE+0x00300028))
-#define EMMC_CONTROL1       ((volatile uint32_t*)(MMIO_BASE+0x0030002C))
-#define EMMC_INTERRUPT      ((volatile uint32_t*)(MMIO_BASE+0x00300030))
-#define EMMC_INT_MASK       ((volatile uint32_t*)(MMIO_BASE+0x00300034))
-#define EMMC_INT_EN         ((volatile uint32_t*)(MMIO_BASE+0x00300038))
-#define EMMC_CONTROL2       ((volatile uint32_t*)(MMIO_BASE+0x0030003C))
-#define EMMC_SLOTISR_VER    ((volatile uint32_t*)(MMIO_BASE+0x003000FC))
+#define EMMC_ARG2           ((volatile uint32_t*)(mmio_base+0x00300000))
+#define EMMC_BLKSIZECNT     ((volatile uint32_t*)(mmio_base+0x00300004))
+#define EMMC_ARG1           ((volatile uint32_t*)(mmio_base+0x00300008))
+#define EMMC_CMDTM          ((volatile uint32_t*)(mmio_base+0x0030000C))
+#define EMMC_RESP0          ((volatile uint32_t*)(mmio_base+0x00300010))
+#define EMMC_RESP1          ((volatile uint32_t*)(mmio_base+0x00300014))
+#define EMMC_RESP2          ((volatile uint32_t*)(mmio_base+0x00300018))
+#define EMMC_RESP3          ((volatile uint32_t*)(mmio_base+0x0030001C))
+#define EMMC_DATA           ((volatile uint32_t*)(mmio_base+0x00300020))
+#define EMMC_STATUS         ((volatile uint32_t*)(mmio_base+0x00300024))
+#define EMMC_CONTROL0       ((volatile uint32_t*)(mmio_base+0x00300028))
+#define EMMC_CONTROL1       ((volatile uint32_t*)(mmio_base+0x0030002C))
+#define EMMC_INTERRUPT      ((volatile uint32_t*)(mmio_base+0x00300030))
+#define EMMC_INT_MASK       ((volatile uint32_t*)(mmio_base+0x00300034))
+#define EMMC_INT_EN         ((volatile uint32_t*)(mmio_base+0x00300038))
+#define EMMC_CONTROL2       ((volatile uint32_t*)(mmio_base+0x0030003C))
+#define EMMC_SLOTISR_VER    ((volatile uint32_t*)(mmio_base+0x003000FC))
 
 // command flags
 #define CMD_NEED_APP        0x80000000
@@ -1112,6 +1112,13 @@ int bootboot_main(uint64_t hcl)
     volatile bpb_t *bpb;
     MMapEnt *mmap;
 
+    /* first things first, get the base address */
+    asm volatile ("mrs %0, midr_el1" : "=r" (reg));
+    switch(reg&0xFFF0) {
+        case 0xD030: mmio_base = 0x3F000000; break;     /* Raspberry Pi 3 */
+        default:     mmio_base = 0xFE000000; break;     /* Raspberry Pi 4 */
+    }
+
     /* initialize UART */
     *UART0_CR = 0;         // turn off UART0
     *AUX_ENABLE = 0;       // turn off UART1
@@ -1168,7 +1175,7 @@ int bootboot_main(uint64_t hcl)
     bootboot->protocol = PROTOCOL_STATIC | LOADER_RPI;
     bootboot->size = 128;
     bootboot->numcores = 4;
-    bootboot->arch.aarch64.mmio_ptr = MMIO_BASE;
+    bootboot->arch.aarch64.mmio_ptr = mmio_base;
     // set up a framebuffer so that we can write on screen
     if(!GetLFB(0, 0)) goto viderr;
     puts("Booting OS...\n");
@@ -1567,7 +1574,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
     mmap++; bootboot->size+=sizeof(MMapEnt);
 
     // MMIO area
-    mmap->ptr=MMIO_BASE; mmap->size=((uint64_t)0x40200000-MMIO_BASE) | MMAP_MMIO;
+    mmap->ptr=mmio_base; mmap->size=((uint64_t)0x40200000-mmio_base) | MMAP_MMIO;
     mmap++; bootboot->size+=sizeof(MMapEnt);
 
 #if MEM_DEBUG
@@ -1619,7 +1626,7 @@ viderr:
     paging[2*512]=(uint64_t)((uint8_t*)&__paging+3*PAGESIZE)|0b11|(3<<8)|(1<<10); //AF=1,Block=1,Present=1
     // identity L2 2M blocks
     mp>>=21;
-    np=MMIO_BASE>>21;
+    np=mmio_base>>21;
     for(r=1;r<512;r++)
         paging[2*512+r]=(uint64_t)(((uint64_t)r<<21))|0b01|(1<<10)|(r>=np?(2<<8)|(1<<2)|(1L<<54):(3<<8)); //device SH=2 OSH
     // identity L3
@@ -1630,7 +1637,7 @@ viderr:
     // core L2
     // map MMIO in kernel space
     for(r=0;r<32;r++)
-        paging[4*512+448+r]=(uint64_t)(MMIO_BASE+((uint64_t)r<<21))|0b01|(2<<8)|(1<<10)|(1<<2)|(1L<<54); //OSH, Attr=1, NX
+        paging[4*512+448+r]=(uint64_t)(mmio_base+((uint64_t)r<<21))|0b01|(2<<8)|(1<<10)|(1<<2)|(1L<<54); //OSH, Attr=1, NX
     // map framebuffer
     for(r=0;r<16;r++)
         paging[4*512+480+r]=(uint64_t)((uint8_t*)&__paging+(6+r)*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //OSH, Attr=2

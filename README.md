@@ -11,7 +11,7 @@ I provide pre-compiled images ready for use.
     If you want to recompile this, you'll need fasm (not included).
     [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (11k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 
-3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3
+3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3, 4
     [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (32k)
 
 4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) in C which draws lines and boxes
@@ -36,7 +36,7 @@ Multiboot, chainload from MBR, VBR (GPT hybrid booting) and CDROM boot record, o
 
 On [UEFI machines](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-efi), it is a standard EFI OS Loader application.
 
-On [Raspberry Pi 3](https://gitlab.com/bztsrc/bootboot/tree/master/aarch64-rpi) board the bootboot.img
+On [Raspberry Pi 3+](https://gitlab.com/bztsrc/bootboot/tree/master/aarch64-rpi) board the bootboot.img
 is loaded from the boot partition on SD card as kernel8.img by start.elf.
 
 The difference to other booting protocols is flexibility and portability;
@@ -334,7 +334,7 @@ You can also create an Option ROM out of INITRD (on BIOS there's not much space 
 
 3.2. *BIOS disk*: copy __bootboot.bin__ to **_FS0:\BOOTBOOT\LOADER_**.
 
-3.3. *Raspberry Pi 3*: copy __bootboot.img__ to **_FS0:\KERNEL8.IMG_**.
+3.3. *Raspberry Pi 3+*: copy __bootboot.img__ to **_FS0:\KERNEL8.IMG_**.
 
 **IMPORTANT**: see the relevant port's README.md for more details.
 

@@ -78,6 +78,7 @@ bootboot_record:
             db          05Ah-($-$$) dup 0
 .skipid:    ;relocate our code to offset 0h:600h
             cli
+            cld
             xor         ax, ax
             mov         ss, ax
             mov         sp, 600h
@@ -89,7 +90,6 @@ bootboot_record:
             call        .getaddr
 .getaddr:   pop         si
             sub         si, .getaddr-bootboot_record
-            cld
             mov         di, sp
             ;clear data area 500h-600h
             sub         di, 100h

@@ -1,9 +1,9 @@
-BOOTBOOT Raspberry Pi 3 Implementáció
-=====================================
+BOOTBOOT Raspberry Pi 3 / 4 Implementáció
+=========================================
 
 Általános leírásért lásd a [BOOTBOOT Protokoll](https://gitlab.com/bztsrc/bootboot)t.
 
-A [Raspberry Pi 3](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/sdcard.md) gépen a bootboot.img-t a
+A [Raspberry Pi 3+](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/sdcard.md) gépen a bootboot.img-t a
 start.elf tölti be kernel8.ig néven az SD kártya első partíciójáról. Ha külön förmver és boot partíciót szeretnél, olvasd el
 a [dokumentációt](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot_spec_1st_ed.pdf).
 

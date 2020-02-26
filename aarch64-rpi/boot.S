@@ -24,7 +24,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  * This file is part of the BOOTBOOT Protocol package.
- * @brief Boot loader for the Raspberry Pi 3+ ARMv8
+ * @brief Boot loader for the Raspberry Pi 3 and 4 ARMv8
  *
  */
 .section ".text.boot"
@@ -101,15 +101,11 @@ _start:
     mrs     x7, mpidr_el1
     and     x7, x7, #3
     cbnz    x7, 3f
-    // failsafe: if startup.elf does not start all cores (depends on config.txt), and qemu expects 0xD8
-    mov     x2, #0x40000000
-    mov     x3, #0xd8
-    str     w1, [x2, #0x9C]     // write _start address to core1's mailbox 3
-    str     w1, [x3, #8]
-    str     w1, [x2, #0xAC]     // write _start address to core2's mailbox 3
-    str     w1, [x3, #16]
-    str     w1, [x2, #0xBC]     // write _start address to core3's mailbox 3
-    str     w1, [x3, #24]
+    // start all cores
+    mov     x2, #0xd8
+    str     w1, [x2, #8]
+    str     w1, [x2, #16]
+    str     w1, [x2, #24]
     sev
     // clear bss
     ldr     x2, =__bss_start

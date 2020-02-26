@@ -11,7 +11,7 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
     Ha újra akarod fordítani, szükséged lesz a fasm-ra (nincs mellékelve).
     [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bájt, egyszerre MBR, VBR és CDROM indító szektor), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (11k, a boot.bin tölti be, valamint BBS bővítő ROM és Multiboot kompatíbilis is)
 
-3. *aarch64-rpi* ARMv8 betöltő Raspberry Pi 3-hoz
+3. *aarch64-rpi* ARMv8 betöltő Raspberry Pi 3-hoz, 4-hez
     [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (32k)
 
 4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) C-ben írva, ami vonalakat húz meg színes dobozokat rajzol
@@ -36,7 +36,7 @@ Multiboottal, láncbetöltéssel MBR, VBR (GPT hibrid indítás) és CDROM indí
 
 Az [UEFI gépek](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-efi)en egy szabványos OS Loader alkalmazás.
 
-A [Raspberry Pi 3](https://gitlab.com/bztsrc/bootboot/tree/master/aarch64-rpi) gépen a bootboot.img-t a start.elf
+A [Raspberry Pi 3+](https://gitlab.com/bztsrc/bootboot/tree/master/aarch64-rpi) gépen a bootboot.img-t a start.elf
 tölti be kernel8.img néven az SD kártya első partíciójáról.
 
 A különbség más betöltő protokollokhoz képest a rugalmasság és a hordozhatóság; a tisztán 64 bit támogatás; és hogy
@@ -332,7 +332,7 @@ elmehetsz egészen 16M-ig).
 
 3.2. *BIOS lemez*: másold a __bootboot.bin__-t az **_FS0:\BOOTBOOT\LOADER_**-be.
 
-3.3. *Raspberry Pi 3*: másold a __bootboot.img__-t az **_FS0:\KERNEL8.IMG_**-be.
+3.3. *Raspberry Pi 3+*: másold a __bootboot.img__-t az **_FS0:\KERNEL8.IMG_**-be.
 
 **FONTOS**: olvasd el a kérdéses implementáció README.md-jét is.
 

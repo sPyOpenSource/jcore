@@ -3,7 +3,7 @@ BOOTBOOT Minta Bootolható Lemezkép Fájlok
 
 Általános leírásért lásd a [BOOTBOOT Protokoll](https://gitlab.com/bztsrc/bootboot)t.
 
-- disk-rpi.img.gz: minta lemezkép AArch64-hez RaspberryPi 3-on
+- disk-rpi.img.gz: minta lemezkép AArch64-hez RaspberryPi 3-on és 4-en
 - disk-x86.img.gz: minta lemezkép x86_64-hez (CDROM, BIOS, UEFI)
 - initrd.rom.gz: minta initrd ROM kép (beágyazott BIOS rendszerekhez)
 - mkimg.c: egy nagyon szimpla és egyszerű lemezkép készítő
@@ -28,7 +28,7 @@ A `make all` parancsot futtatva a következő fájlokat hozza létre:
 A disk-x86.img egy speciális hibrid lemezkép, amit átnevezhetsz disk-x86.iso-ra és kiégetheted egy CDROM-ra; vagy bebootolhatod
 USB pendrávjról is BIOS valamint UEFI gépeken egyaránt.
 
-A disk-rpi.img egy (Class 10) SD kártyára írható, és Raspberry Pi 3-on bootolható.
+A disk-rpi.img egy (Class 10) SD kártyára írható, és Raspberry Pi 3-on és 4-en bootolható.
 
 A lemezképekben mindössze egy boot partíció található. Az `fdisk` paranccsal szabadon hozzáadhatsz még partíciókat az izlésednek
 megfelelően.

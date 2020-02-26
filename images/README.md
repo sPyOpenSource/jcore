@@ -3,7 +3,7 @@ BOOTBOOT Example Bootable Disk Images
 
 See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 
-- disk-rpi.img.gz: an example image for AArch64 and RaspberryPi 3
+- disk-rpi.img.gz: an example image for AArch64 and RaspberryPi 3 and 4
 - disk-x86.img.gz: an example image for x86_64 (CDROM, BIOS, UEFI)
 - initrd.rom.gz: an example initrd ROM image (for embedded BIOS systems)
 - mkimg.c: is a very simple bootable disk image creator tool
@@ -28,7 +28,7 @@ Executing `make all` will create the following files:
 The disk-x86.img is a special hybrid image, which can be renamed to disk-x86.iso and then burnt to a CDROM; it can also be
 booted from an USB stick in a BIOS machine as well as an UEFI machine.
 
-The disk-rpi.img can be written to an SDCard (Class 10) and booted on a Raspberry Pi 3.
+The disk-rpi.img can be written to an SDCard (Class 10) and booted on a Raspberry Pi 3 and 4.
 
 The disk images contain only one boot partition. Feel free to use `fdisk` and add more partitions to your needs.
 

@@ -1,9 +1,9 @@
-BOOTBOOT Raspberry Pi 3 Implementation
-======================================
+BOOTBOOT Raspberry Pi 3 / 4 Implementation
+==========================================
 
 See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 
-On [Raspberry Pi 3](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/sdcard.md) board the bootboot.img
+On [Raspberry Pi 3+](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/sdcard.md) board the bootboot.img
 is loaded from the boot (or firmware) partition on SD card as kernel8.img by start.elf. For separating firmware and boot
 partitions see [documentation](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot_spec_1st_ed.pdf).
 

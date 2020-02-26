@@ -46,7 +46,7 @@ int main(int argc, char** argv)
     if(argc < 2) {
         printf( "BOOTBOOT mkboot utility - bztsrc@gitlab\n\nUsage:\n"
                 "  ./mkboot <disk>\n\n"
-                "Maps GPT EFI System Partition into MBR so that Raspberry Pi 3\n"
+                "Maps GPT EFI System Partition into MBR so that Raspberry Pi\n"
                 "firmware can find it's files and boot from it.\n"
                 "Examples:\n"
                 "  ./mkboot diskimage.dd      - modify a disk image file\n"

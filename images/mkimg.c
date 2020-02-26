@@ -363,7 +363,7 @@ int createdisk(int disksize, char *diskname)
     /* README.TXT */
     iso[8260]=0x22+12;           /* recordsize */
     setinte(21, &iso[8262]);     /* LBA */
-    setinte(129, &iso[8270]);    /* size */
+    setinte(130, &iso[8270]);    /* size */
     iso[8278]=ts->tm_year;       /* date */
     iso[8279]=ts->tm_mon+1;
     iso[8280]=ts->tm_mday;
@@ -379,7 +379,7 @@ int createdisk(int disksize, char *diskname)
     memcpy(&iso[10240], "BOOTBOOT Live Image\r\n\r\nBootable as\r\n"
         " - CDROM (El Torito, UEFI)\r\n"
         " - USB stick (BIOS, Multiboot, UEFI)\r\n"
-        " - SD card (Raspberry Pi 3)", 129);
+        " - SD card (Raspberry Pi 3+)", 130);
 
     f=fopen(diskname,"wb");
     if(!f) {
