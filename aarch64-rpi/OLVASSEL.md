@@ -23,7 +23,8 @@ Fájl rendszer meghajtók
 -----------------------
 
 A boot partíció az RPi3 verzióban FAT16 vagy FAT32 fájl rendszer lehet (ha az initrd egy fájl és nem egy teljes partíció).
-Az initrd soros vonalról is betölthető, ehhez a távoli gépen a [raspbootcom](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/raspbootcom.c)-ot kell futtatni.
+Az initrd soros vonalról is betölthető, ehhez a távoli gépen a [raspbootcom](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/raspbootcom.c)-ot
+vagy az [USBImager](https://gitlab.com/bztsrc/usbimager)-t kell futtatni.
 
 A gzip tömörítés ellenjavalt, mivel az SD kártya sebessége lényegesen gyorsabb, mint a kitömörítésé.
 

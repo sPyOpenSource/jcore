@@ -24,7 +24,8 @@ File system drivers
 
 For boot partition, RPi3 version expects FAT16 or FAT32 file systems (if the
 initrd is a file and does not occupy the whole boot partition). The initrd can also be loaded over serial line,
-running [raspbootcom](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/raspbootcom.c) on a remote machine.
+running [raspbootcom](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/raspbootcom.c) or
+[USBImager](https://gitlab.com/bztsrc/usbimager) on a remote machine.
 
 Gzip compression is not recommended as reading from SD card is considerably faster than uncompressing.
 
