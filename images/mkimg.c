@@ -206,12 +206,12 @@ int createdisk(int disksize, char *diskname)
         /* MBR, EFI System Partition */
         loader[j-2]=0x80;                           /* bootable flag */
         setint(129,loader+j);                       /* start CHS */
-        loader[j+2]=0xC;                            /* type, LBA FAT */
+        loader[j+2]=esp[0x39]=='1' ? 0xE : 0xC;     /* type, LBA FAT16 (0xE) or FAT32 (0xC) */
         setint(((gs+es)/512)+2,loader+j+4);         /* end CHS */
         setint(128,loader+j+6);                     /* start LBA */
         setint(((es)/512),loader+j+10);             /* number of sectors */
+        j+=16;
     }
-    j+=16;
     /* MBR, GPT entry */
     setint(1,loader+j);                             /* start CHS */
     loader[j+2]=0xEE;                               /* type */

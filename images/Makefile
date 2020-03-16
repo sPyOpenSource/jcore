@@ -2,6 +2,8 @@
 DISKSIZE=128
 # boot partition size in kilobytes (16M)
 BOOTSIZE=16384
+# boot partition FAT type (16 or 32). Note that smallest possible FAT32 is 33M
+BOOTTYPE=16
 # platform, either x86 or rpi
 PLATFORM=x86
 #PLATFORM=rpi
@@ -28,7 +30,7 @@ endif
 # assemble the boot partition
 bootpart.bin: initrd.bin
 	dd if=/dev/zero of=bootpart.bin bs=1024 count=$(BOOTSIZE) >/dev/null 2>/dev/null
-	mkfs.vfat -F 16 -n "EFI System" bootpart.bin 2>/dev/null >/dev/null
+	mkfs.vfat -F $(BOOTTYPE) -n "EFI System" bootpart.bin 2>/dev/null >/dev/null
 	@mkdir boot 2>/dev/null || true
 	@sudo /usr/bin/mount -o loop,user bootpart.bin boot
 	@mkdir boot/BOOTBOOT

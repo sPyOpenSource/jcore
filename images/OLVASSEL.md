@@ -17,12 +17,15 @@ Nézz bele a Makefile-ba, az elején fogsz látni konfigurálható változókat.
 
 - DISKSIZE: a teljes generálnadó lemezkép mérete megabájtban
 - BOOTSIZE: a rendszerbetöltő partíció mérete kilobájtban (nem mega)
+- BOOTTYPE: a rendszerbetöltő partíció FAT típusa, 16 vagy 32 (12 már nem támogatott)
 - PLATFORM: vagy "x86" vagy "rpi", ez választja ki, melyik lemezképet generálja
+
+Ha FAT32-t szeretnél használni (BOOTTYPE=32), akkor a partíció méretét legalább 33 megabájtra kell venni.
 
 A `make all` parancsot futtatva a következő fájlokat hozza létre:
 
 - initrd.bin: egy gzippelt hpodc cpio initrd kép, amiben egyelőre csak a futtatható kernel található
-- bootpart.bin: a rendszerbetöltő partíció (ESP FAT16-al), ami tartalmazza az initrd-t és a betöltő programokat
+- bootpart.bin: a rendszerbetöltő partíció (ESP FAT16-tal vagy FAT32-vel), ami tartalmazza az initrd-t és a betöltő programokat
 - disk-(PLATFORM).img: hibrid lemezkép GPT partícióval
 
 A disk-x86.img egy speciális hibrid lemezkép, amit átnevezhetsz disk-x86.iso-ra és kiégetheted egy CDROM-ra; vagy bebootolhatod

@@ -17,12 +17,15 @@ Look at the beginning of the Makefile, you'll find configurable variables there.
 
 - DISKSIZE: the overall disk image size to be generated in Mbytes
 - BOOTSIZE: the boot partition size in Kbytes (not megabytes)
+- BOOTTYPE: the boot partition's FAT type, 16 for FAT16 and 32 for FAT32 (12 not supported any more)
 - PLATFORM: either "x86" or "rpi", this selects which disk image to create
+
+If you want to use FAT32 (BOOTTYPE=32), then the partition's size must be at least 33 megabytes.
 
 Executing `make all` will create the following files:
 
 - initrd.bin: a gzipped hpodc cpio initrd image, containing only the kernel executable for now
-- bootpart.bin: the boot partition (ESP with FAT16), containing the initrd and the required files for booting
+- bootpart.bin: the boot partition (ESP with FAT16 or FAT32), containing the initrd and the required files for booting
 - disk-(PLATFORM).img: a hybrid disk image with GPT partitions
 
 The disk-x86.img is a special hybrid image, which can be renamed to disk-x86.iso and then burnt to a CDROM; it can also be
