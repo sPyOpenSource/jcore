@@ -60,8 +60,6 @@
 #define ELFDATA2LSB 1       /* 2's complement, little endian */
 #define PT_LOAD     1       /* Loadable program segment */
 #define EM_X86_64   62      /* AMD x86-64 architecture */
-#define SHT_SYMTAB  2       /* Symbol table */
-#define SHT_STRTAB  3       /* String table */
 
 typedef struct
 {
@@ -1202,21 +1200,27 @@ LoadCore()
                 phdr=(Elf64_Phdr *)((UINT8 *)phdr+ehdr->e_phentsize);
             }
             if(ehdr->e_shoff > 0) {
-                Elf64_Shdr *shdr=(Elf64_Shdr *)((UINT8 *)ehdr + ehdr->e_shoff);
+                Elf64_Shdr *shdr=(Elf64_Shdr *)((UINT8 *)ehdr + ehdr->e_shoff), *sym_sh = NULL, *str_sh = NULL;
+                Elf64_Shdr *strt=(Elf64_Shdr *)((UINT8 *)shdr+(UINT64)ehdr->e_shstrndx*(UINT64)ehdr->e_shentsize);
                 Elf64_Sym *sym = NULL, *s;
-                char *strtable = NULL;
+                char *strtable = (char *)ehdr + strt->sh_offset;
                 UINT32 strsz = 0, syment = 0;
                 for(i = 0; i < ehdr->e_shnum; i++){
-                    if(shdr->sh_type == SHT_SYMTAB) { sym=(Elf64_Sym *)((UINT8*)ehdr+shdr->sh_offset); syment=shdr->sh_entsize; }
-                    if(shdr->sh_type == SHT_STRTAB) { strtable = (char *)ehdr + shdr->sh_offset; strsz = shdr->sh_size; }
+                    /* checking shdr->sh_type is not enough, there can be multiple SHT_STRTAB records... */
+                    if(!CompareMem(strtable + shdr->sh_name, ".symtab", 8)) sym_sh = shdr;
+                    if(!CompareMem(strtable + shdr->sh_name, ".strtab", 8)) str_sh = shdr;
                     shdr = (Elf64_Shdr *)((UINT8 *)shdr + ehdr->e_shentsize);
                 }
-                if(strtable && strsz > 0 && sym && syment > 0)
-                    for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
-                        if(!CompareMem(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
-                        if(!CompareMem(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
-                        if(!CompareMem(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
-                    }
+                if(str_sh && sym_sh) {
+                    strtable = (char *)ehdr + str_sh->sh_offset; strsz = str_sh->sh_size;
+                    sym = (Elf64_Sym *)((UINT8*)ehdr + sym_sh->sh_offset); syment = sym_sh->sh_entsize;
+                    if(str_sh->sh_offset && strsz > 0 && sym_sh->sh_offset && syment > 0)
+                        for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
+                            if(!CompareMem(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
+                            if(!CompareMem(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
+                            if(!CompareMem(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
+                        }
+                }
             }
         } else if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && ((mz_hdr*)(core.ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
             pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS &&
