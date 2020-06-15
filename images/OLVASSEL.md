@@ -6,7 +6,7 @@ BOOTBOOT Minta Bootolható Lemezkép Fájlok
 - disk-rpi.img.gz: minta lemezkép AArch64-hez RaspberryPi 3-on és 4-en
 - disk-x86.img.gz: minta lemezkép x86_64-hez (CDROM, BIOS, UEFI)
 - initrd.rom.gz: minta initrd ROM kép (beágyazott BIOS rendszerekhez)
-- mkimg.c: egy nagyon szimpla és egyszerű lemezkép készítő
+- mkimg.c: egy nagyon szimpla és egyszerű FAT partíciókép és lemezkép készítő
 
 Mielőtt használhatnád a lemezképeket, ki kell csomagolni őket a `gzip -d` paranccsal.
 
@@ -16,11 +16,12 @@ Fordítás
 Nézz bele a Makefile-ba, az elején fogsz látni konfigurálható változókat.
 
 - DISKSIZE: a teljes generálnadó lemezkép mérete megabájtban
-- BOOTSIZE: a rendszerbetöltő partíció mérete kilobájtban (nem mega)
+- BOOTSIZE: a rendszerbetöltő partíció mérete megabájtban
 - BOOTTYPE: a rendszerbetöltő partíció FAT típusa, 16 vagy 32 (12 már nem támogatott)
 - PLATFORM: vagy "x86" vagy "rpi", ez választja ki, melyik lemezképet generálja
 
-Ha FAT32-t szeretnél használni (BOOTTYPE=32), akkor a partíció méretét legalább 33 megabájtra kell venni.
+Ha FAT32-t szeretnél használni (BOOTTYPE=32), akkor a partíció méretét legalább 33 megabájtra kell venni. És ha 32 megabájtnál
+nagyobb partíciót szeretnél, akkor muszáj FAT32-t használni. Ezt az mkimg ellenőrzi.
 
 A `make all` parancsot futtatva a következő fájlokat hozza létre:
 

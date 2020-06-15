@@ -24,7 +24,7 @@
  * DEALINGS IN THE SOFTWARE.
  *
  * This file is part of the BOOTBOOT Protocol package.
- * @brief Small tool to create disk or cdrom images with BOOTBOOT
+ * @brief Small tool to create FAT, GPT disk or CDROM images with BOOTBOOT
  *
  */
 
@@ -34,8 +34,16 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#define __USE_MISC 1            /* due to DT_* enums */
+#include <dirent.h>
 
 long int read_size;
+time_t t;
+struct tm *ts;
+int nextcluster = 3, bpc;
+unsigned char *fs, *data;
+uint16_t *fat16_1 = NULL, *fat16_2;
+uint32_t *fat32_1 = NULL, *fat32_2;
 
 /**
  * Read file into memory
@@ -139,15 +147,163 @@ void initrdrom()
 }
 
 /**
+ * Add a FAT directory entry
+ */
+unsigned char *adddirent(unsigned char *ptr, char *name, int type, int cluster, int size)
+{
+    int i, j;
+    memset(ptr, ' ', 11);
+    if(name[0] == '.') strcpy((char*)ptr, name);
+    else
+        for(i = j = 0; j < 11 && name[i]; i++, j++) {
+            if(name[i] >= 'a' && name[i] <= 'z') ptr[j] = name[i] - ('a' - 'A');
+            else if(name[i] == '.') { j = 7; continue; }
+            else ptr[j] = name[i];
+        }
+    ptr[0xB] = type;
+    i = (ts->tm_hour << 11) | (ts->tm_min << 5) | (ts->tm_sec/2);
+    ptr[0xE] = ptr[0x16] = i & 0xFF; ptr[0xF] = ptr[0x17] = (i >> 8) & 0xFF;
+    i = ((ts->tm_year+1900-1980) << 9) | ((ts->tm_mon+1) << 5) | (ts->tm_mday);
+    ptr[0x10] = ptr[0x12] = ptr[0x18] = i & 0xFF; ptr[0x11] = ptr[0x13] = ptr[0x19] = (i >> 8) & 0xFF;
+    ptr[0x1A] = cluster & 0xFF; ptr[0x1B] = (cluster >> 8) & 0xFF;
+    ptr[0x14] = (cluster >> 16) & 0xFF; ptr[0x15] = (cluster >> 24) & 0xFF;
+    ptr[0x1C] = size & 0xFF; ptr[0x1D] = (size >> 8) & 0xFF;
+    ptr[0x1E] = (size >> 16) & 0xFF; ptr[0x1F] = (size >> 24) & 0xFF;
+    return ptr + 32;
+}
+
+/**
+ * Recursively parse the boot directory and add entries to the boot partition image
+ */
+void parsedir(unsigned char *ptr, char *directory, int parent)
+{
+    DIR *dir;
+    struct dirent *ent;
+    char full[1024];
+    unsigned char *tmp, *ptr2;
+    int i;
+
+    if ((dir = opendir(directory)) != NULL) {
+        while ((ent = readdir(dir)) != NULL) {
+            if(ent->d_name[0] == '.') continue;
+            sprintf(full,"%s/%s",directory,ent->d_name);
+            ptr2 = data + nextcluster * bpc;
+            if(ent->d_type == DT_DIR) {
+                ptr = adddirent(ptr, ent->d_name, 0x10, nextcluster, 0);
+                if(fat16_1) fat16_1[nextcluster] = fat16_2[nextcluster] = 0xFFFF;
+                else fat32_1[nextcluster] = fat32_2[nextcluster] = 0x0FFFFFFF;
+                ptr2 = adddirent(ptr2, ".", 0x10, nextcluster, 0);
+                ptr2 = adddirent(ptr2, "..", 0x10, parent, 0);
+                nextcluster++;
+                parsedir(ptr2, full, nextcluster - 1);
+            } else
+            if(ent->d_type == DT_REG) {
+                tmp = readfileall(full);
+                if(tmp) {
+                    ptr = adddirent(ptr, ent->d_name, 0, nextcluster, read_size);
+                    /* make sure LOADER is 2048 bytes aligned */
+                    if(tmp[0]==0x55 && tmp[1]==0xAA && tmp[3]==0xE9 && tmp[8]=='B' && tmp[12]=='B' && (int)(ptr2-fs) & 2047) {
+                        i = 2048 - ((int)(ptr2-fs) & 2047); ptr2 += i;
+                        nextcluster += i / bpc;
+                    }
+                    memcpy(ptr2, tmp, read_size);
+                    for(i = 0; i < (int)read_size; i += bpc, nextcluster++) {
+                        if(fat16_1) fat16_1[nextcluster] = fat16_2[nextcluster] = nextcluster+1;
+                        else fat32_1[nextcluster] = fat32_2[nextcluster] = nextcluster+1;
+                    }
+                    if(fat16_1) fat16_1[nextcluster-1] = fat16_2[nextcluster-1] = 0xFFFF;
+                    else fat32_1[nextcluster-1] = fat32_2[nextcluster-1] = 0x0FFFFFFF;
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Create bootpart.bin with FAT16 or FAT32
+ */
+int createfat(int fattype, int partsize, char *directory)
+{
+    unsigned char *rootdir;
+    int i, spf;
+    FILE *f;
+
+    if(fattype != 16 && fattype != 32) { fprintf(stderr,"mkimg: unsupported FAT type. Use 16 or 32.\n"); exit(1); }
+    if(fattype == 16 && partsize < 16*1024*1024) partsize = 16*1024*1024;
+    if(fattype == 16 && partsize >= 32*1024*1024) fattype = 32;
+    if(fattype == 32 && partsize < 33*1024*1024) partsize = 33*1024*1024;
+
+    fs = malloc(partsize);
+    if(fs==NULL) { fprintf(stderr,"mkimg: unable to allocate %d bytes\n", partsize); exit(2); }
+    memset(fs, 0, partsize);
+    /* Volume Boot Record */
+    fs[0] = 0xEB; fs[1] = fattype == 16 ? 0x3C : 0x58; fs[2] = 0x90;
+    memcpy(fs + 3, "MSWIN4.1 ", 8); fs[0xC] = 2; fs[0xD] = 4; fs[0x10] = 2; fs[0x15] = 0xF8; fs[0x1FE] = 0x55; fs[0x1FF] = 0xAA;
+    fs[0x18] = 0x20; fs[0x1A] = 0x40;
+    i = (partsize + 511) / 512;
+    if(fattype == 16) {
+        fs[0xD] = 4; fs[0xE] = 4; fs[0x12] = 2; fs[0x13] = i & 0xFF; fs[0x14] = (i >> 8) & 0xFF;
+        bpc = fs[0xD] * 512;
+        spf = ((partsize/bpc)*2 + 511) / 512;
+        fs[0x16] = spf & 0xFF; fs[0x17] = (spf >> 8) & 0xFF;
+        fs[0x24] = 0x80; fs[0x26] = 0x29; fs[0x27] = 0xB0; fs[0x28] = 0x07; fs[0x29] = 0xB0; fs[0x2A] = 0x07;
+        memcpy(fs + 0x2B, "EFI System FAT16   ", 19);
+        rootdir = fs + (spf*fs[0x10]+fs[0xE]) * 512;
+        data = rootdir + ((((fs[0x12]<<8)|fs[0x11])*32 - 4096) & ~2047);
+        fat16_1 = (uint16_t*)(&fs[fs[0xE] * 512]);
+        fat16_2 = (uint16_t*)(&fs[(fs[0xE]+spf) * 512]);
+        fat16_1[0] = fat16_2[0] = 0xFFF8; fat16_1[1] = fat16_2[1] = 0xFFFF;
+    } else {
+        fs[0xD] = 1; fs[0xE] = 0x20;
+        fs[0x20] = i & 0xFF; fs[0x21] = (i >> 8) & 0xFF; fs[0x22] = (i >> 16) & 0xFF; fs[0x23] = (i >> 24) & 0xFF;
+        bpc = fs[0xD] * 512;
+        spf = ((partsize/bpc)*4) / 512 - 8;
+        fs[0x24] = spf & 0xFF; fs[0x25] = (spf >> 8) & 0xFF; fs[0x26] = (spf >> 16) & 0xFF; fs[0x27] = (spf >> 24) & 0xFF;
+        fs[0x2C] = 2; fs[0x30] = 1; fs[0x32] = 6; fs[0x40] = 0x80;
+        fs[0x42] = 0x29; fs[0x43] = 0xB0; fs[0x44] = 0x07; fs[0x45] = 0xB0; fs[0x46] = 0x07;
+        memcpy(fs + 0x47, "EFI System FAT32   ", 19);
+        memcpy(fs + 0x200, "RRaA", 4); memcpy(fs + 0x3E4, "rrAa", 4);
+        for(i = 0; i < 8; i++) fs[0x3E8 + i] = 0xFF;
+        fs[0x3FE] = 0x55; fs[0x3FF] = 0xAA;
+        memcpy(fs + 0xC00, fs, 512);
+        rootdir = fs + (spf*fs[0x10]+fs[0xE]) * 512;
+        data = rootdir - 1024;
+        fat32_1 = (uint32_t*)(&fs[fs[0xE] * 512]);
+        fat32_2 = (uint32_t*)(&fs[(fs[0xE]+spf) * 512]);
+        fat32_1[0] = fat32_2[0] = fat32_1[2] = fat32_2[2] = 0x0FFFFFF8; fat32_1[1] = fat32_2[1] = 0x0FFFFFFF;
+    }
+    /* label in root directory */
+    rootdir = adddirent(rootdir, ".", 8, 0, 0);
+    memcpy(rootdir - 32, "EFI System ", 11);
+    /* add contents of the boot directory to the image */
+    parsedir(rootdir, directory, 0);
+    /* update fields in FS Information Sector */
+    if(fattype == 32) {
+        nextcluster -= 2;
+        i = ((partsize - (spf*fs[0x10]+fs[0xE]) * 512)/bpc) - nextcluster;
+        fs[0x3E8] = i & 0xFF; fs[0x3E9] = (i >> 8) & 0xFF;
+        fs[0x3EA] = (i >> 16) & 0xFF; fs[0x3EB] = (i >> 24) & 0xFF;
+        fs[0x3EC] = nextcluster & 0xFF; fs[0x3ED] = (nextcluster >> 8) & 0xFF;
+        fs[0x3EE] = (nextcluster >> 16) & 0xFF; fs[0x3EF] = (nextcluster >> 24) & 0xFF;
+
+    }
+    /* write out */
+    f=fopen("bootpart.bin","wb");
+    if(!f) { fprintf(stderr,"mkimg: unable to write bootpart.bin\n"); exit(3); }
+    fwrite(fs,partsize,1,f);
+    fclose(f);
+    free(fs);
+    return 0;
+}
+
+/**
  * Create a hybrid disk image from partition image with initrd in it
  */
 int createdisk(int disksize, char *diskname)
 {
     unsigned long int i,j=0,gs=63*512,es,bbs=0;
     unsigned long int uuid[4]={0x12345678,0x12345678,0x12345678,0x12345678};
-    unsigned char *esp, *gpt, *iso, *p, *loader;
-    time_t t=time(NULL);
-    struct tm *ts=gmtime(&t);
+    unsigned char *esp, *gpt, *iso, *p, *loader, *loader2;
     char isodate[17];
     FILE *f;
 
@@ -158,7 +314,7 @@ int createdisk(int disksize, char *diskname)
     memset(iso,0,32768);
     if(disksize<64*1024*1024) disksize = 64*1024*1024;
     /* make the UUID unique */
-    uuid[0] ^= (unsigned long int)t;
+    uuid[1] ^= (unsigned long int)t;
 
     /* MBR / VBR stage 1 loader */
     loader=readfileall("../boot.bin");
@@ -181,29 +337,30 @@ int createdisk(int disksize, char *diskname)
             }
         }
     }
-    /* save stage2 address into stage1 */
-    if(bbs>0) {
-        setint(bbs,loader+0x1B0);
-        /* WinNT disk id */
-        setint(uuid[0],loader+0x1B8);
-    } else {
-        fprintf(stderr,"mkimg: FS0:\\BOOTBOOT\\LOADER not found\n");
-        memset(loader, 0, 512);
+    /* failsafe */
+    if(!bbs) {
+        fprintf(stderr,"mkimg: FS0:\\BOOTBOOT\\LOADER not found, adding stage2 before the boot partition\n");
+        loader2 = readfileall("../bootboot.bin"); memcpy(gpt + 16384, loader2, read_size); bbs = 16384 / 512;
     }
+    /* save stage2 address into stage1 */
+    setint(bbs,loader+0x1B0);
+    /* WinNT disk id */
+    setint(uuid[0],loader+0x1B8);
     /* magic */
     loader[0x1FE]=0x55; loader[0x1FF]=0xAA;
 
     /* copy stage1 loader into VBR too */
     if(loader[0]!=0 && es>0) {
-        /* skip BPB */
+        /* skip BPB, but copy jump and OEM */
         memcpy(esp, loader, 11);
-        memcpy(esp+0x5A, loader+0x5A, 512-0x5A);
+        memcpy(esp + 0x5A, loader + 0x5A, 0x1B8 - 0x5A);
+        esp[0x1FE]=0x55; esp[0x1FF]=0xAA;
     }
 
     /* generate PMBR partitioning table */
     j=0x1C0;
     if(es>0) {
-        /* MBR, EFI System Partition */
+        /* MBR, EFI System Partition / boot partition. Don't use 0xEF as type, RPi doesn't like that */
         loader[j-2]=0x80;                           /* bootable flag */
         setint(129,loader+j);                       /* start CHS */
         loader[j+2]=esp[0x39]=='1' ? 0xE : 0xC;     /* type, LBA FAT16 (0xE) or FAT32 (0xC) */
@@ -212,7 +369,7 @@ int createdisk(int disksize, char *diskname)
         setint(((es)/512),loader+j+10);             /* number of sectors */
         j+=16;
     }
-    /* MBR, GPT entry */
+    /* MBR, protective GPT entry */
     setint(1,loader+j);                             /* start CHS */
     loader[j+2]=0xEE;                               /* type */
     setint((gs/512)+1,loader+j+4);                  /* end CHS */
@@ -265,7 +422,7 @@ int createdisk(int disksize, char *diskname)
 
     /* ISO9660 cdrom image part */
     if(bbs%4!=0) {
-        fprintf(stderr,"mkimg: %s\n","Stage2 is not 2048 byte sector aligned");
+        fprintf(stderr,"mkimg: %s (LBA %ld, offs %lx)\n","Stage2 is not 2048 byte sector aligned", bbs, bbs*512);
         exit(3);
     }
     sprintf((char*)&isodate, "%04d%02d%02d%02d%02d%02d00",
@@ -418,16 +575,24 @@ int createdisk(int disksize, char *diskname)
  */
 int main(int argc, char **argv)
 {
-    if(argc < 2 || argv[1]==NULL || !strcmp(argv[1],"help") || (strcmp(argv[1], "rom") && argc < 3)) {
+    if(argc < 2 || argv[1]==NULL || !strcmp(argv[1],"help") || (strcmp(argv[1], "rom") && argc < 4)) {
         printf( "BOOTBOOT mkimg utility - bztsrc@gitlab\n\nUsage:\n"
-                "  ./mkimg <disk image size in megabytes> <disk image name>\n"
+                "  ./mkimg disk <disk image size in megabytes> <disk image name>\n"
+                "  ./mkimg <fat16|fat32> <boot partition size in megabytes> <directory>\n"
                 "  ./mkimg rom\n\n"
-                "Creates a hybrid disk / cdrom image from bootpart.bin, or initrd.rom from initrd.bin.\n");
+                "Creates a hybrid disk / cdrom image from bootpart.bin, or initrd.rom from initrd.bin.\n"
+                "It can also create bootpart.bin from the contents of a directory in a portable way.\n");
         exit(0);
     }
+    t = time(NULL);
+    ts = gmtime(&t);
+
     if(!strcmp(argv[1], "rom"))
         initrdrom();
     else
-        createdisk(atoi(argv[1])*1024*1024, argv[2]);
+    if(!memcmp(argv[1], "fat", 3))
+        createfat(atoi(argv[1]+3), atoi(argv[2])*1024*1024, argv[3]);
+    else
+        createdisk(atoi(argv[2])*1024*1024, argv[3]);
     return 0;
 }

@@ -1,7 +1,7 @@
 # overall disk image size in megabytes (128M)
 DISKSIZE=128
 # boot partition size in kilobytes (16M)
-BOOTSIZE=16384
+BOOTSIZE=16
 # boot partition FAT type (16 or 32). Note that smallest possible FAT32 is 33M
 BOOTTYPE=16
 # platform, either x86 or rpi
@@ -29,11 +29,7 @@ endif
 
 # assemble the boot partition
 bootpart.bin: initrd.bin
-	dd if=/dev/zero of=bootpart.bin bs=1024 count=$(BOOTSIZE) >/dev/null 2>/dev/null
-	mkfs.vfat -F $(BOOTTYPE) -n "EFI System" bootpart.bin 2>/dev/null >/dev/null
-	@mkdir boot 2>/dev/null || true
-	@sudo /usr/bin/mount -o loop,user bootpart.bin boot
-	@mkdir boot/BOOTBOOT
+	@mkdir boot boot/BOOTBOOT 2>/dev/null || true
 ifeq ($(PLATFORM),x86)
 	@cp ../bootboot.bin boot/BOOTBOOT/LOADER || true
 	@mkdir boot/EFI boot/EFI/BOOT
@@ -42,14 +38,14 @@ else
 	@cp ../aarch64-rpi/LIC* ../aarch64-rpi/*.bin ../aarch64-rpi/*.elf ../aarch64-rpi/*.dat boot/ || true
 	@cp ../bootboot.img boot/kernel8.img || true
 endif
-	@echo -e "screen=800x600\nkernel=sys/core\n" >boot/BOOTBOOT/CONFIG || true
+	@printf "screen=800x600\nkernel=sys/core\n" >boot/BOOTBOOT/CONFIG || true
 	@cp initrd.bin boot/BOOTBOOT/INITRD || true
-	@sudo /usr/bin/umount -f /dev/loop* 2>/dev/null || true
-	@rmdir boot
+	./mkimg fat$(BOOTTYPE) $(BOOTSIZE) boot
+	@rm -rf boot
 
 # create hybrid disk / cdrom image or ROM image
 disk: mkimg bootpart.bin
-	./mkimg $(DISKSIZE) disk-$(PLATFORM).img
+	./mkimg disk $(DISKSIZE) disk-$(PLATFORM).img
 
 initrd.rom: mkimg initrd.bin
 	./mkimg rom
@@ -58,9 +54,9 @@ initrd.rom: mkimg initrd.bin
 grub.iso: initrd.bin
 	@mkdir iso iso/bootboot iso/boot iso/boot/grub 2>/dev/null || true
 	@cp ../bootboot.bin iso/bootboot/loader || true
-	@echo -e "screen=800x600\nkernel=sys/core\n" >iso/bootboot/config || true
+	@printf "screen=800x600\nkernel=sys/core\n" >iso/bootboot/config || true
 	@cp initrd.bin iso/bootboot/initrd || true
-	@echo -e "menuentry \"BOOTBOOT test\" {\n  multiboot /bootboot/loader\n  module /bootboot/initrd\n  module /bootboot/config\n  boot\n}" >iso/boot/grub/grub.cfg || true
+	@printf "menuentry \"BOOTBOOT test\" {\n  multiboot /bootboot/loader\n  module /bootboot/initrd\n  module /bootboot/config\n  boot\n}" >iso/boot/grub/grub.cfg || true
 	grub-mkrescue -o grub.iso iso
 	@rm -r iso 2>/dev/null || true
 
