@@ -16,7 +16,7 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 
 4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) C-ben írva, ami vonalakat húz meg színes dobozokat rajzol
 
-Vedd figyelembe, hogy a referencia implementációk nem támogatják a teljes 2-es protokollt,
+Vedd figyelembe, hogy a referencia implementációk nem támogatják a teljes 2-es protokollt (kivéve az UEFI változatot),
 csak statikus memórialeképezéseket kezelnek, ami az 1-es protokoll szintnek felel meg.
 
 Gyors kipróbáláshoz találsz bootolható képfájlokat az [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában.
@@ -24,11 +24,11 @@ Gyors kipróbáláshoz találsz bootolható képfájlokat az [images](https://gi
 BOOTBOOT Protokoll
 ==================
 
-Célközönség
------------
+Lényege
+-------
 
-A protokoll definiálja, hogyan kell betölteni ELF64 vagy PE32+ futtathatókat egy induló ramlemezről tisztán
-64 bites módban, mindenféle konfiguráció vagy akár a ramlemezkép formátumának ismerete nélkül.
+A protokoll definiálja, hogyan kell betölteni ELF64 vagy PE32+ futtathatókat egy induló memórialemezről tisztán
+64 bites módban, mindenféle konfiguráció vagy akár a memórialemezkép formátumának ismerete nélkül.
 
 A [BIOS](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-bios)-t támogató gépeken ugyanaz a betöltő működik
 Multiboottal, láncbetöltéssel MBR, VBR (GPT hibrid indítás) és CDROM indító szektorból, vagy BIOS bővítő ROM-ból
@@ -40,13 +40,13 @@ A [Raspberry Pi 3+](https://gitlab.com/bztsrc/bootboot/tree/master/aarch64-rpi) 
 tölti be kernel8.img néven az SD kártya első partíciójáról.
 
 A különbség más betöltő protokollokhoz képest a rugalmasság és a hordozhatóság; a tisztán 64 bit támogatás; és hogy
-a BOOTBOOT a kernel-t a ramlemezképből tölti be. Ez ideális hobbi OS-ek és mikrokernelek számára. Ez biztosítja, hogy
-a kerneled felbontható több fájlra, mégis megadja azt az előnyt, hogy egyszerre tölti be mind, mintha egy monolitikus
+a BOOTBOOT a kernel-t a memórialemezképből tölti be. Ez ideális hobbi OS-ek és mikrokernelek számára. Ez biztosítja, hogy
+a kerneled felbontható több fájlra, mégis megadja azt az előnyt, hogy egyszerre tölti be mindet, mintha egy monolitikus
 kernel lenne. Ráadásul mindehhez a saját fájl rendszeredet is használhatod.
 
 Megjegyzés: a BOOTBOOT nem egy boot menedzser, hanem egy boot protokoll. Ha interaktív indítómenüt szeretnél, akkor
 azt a BOOTBOOT kompatíbilis betöltő *elé* kell integrálnod. Például a GRUB lánctöltheti a boot.bin-t (vagy Multiboot
-"kernel"-ként a bootboot.bin-t és modulként a ramlemezt) vagy a bootboot.efi hozzáadható az UEFI Boot menedzser menüjéhez.
+"kernel"-ként a bootboot.bin-t és modulként a memórialemezt) vagy a bootboot.efi hozzáadható az UEFI Boot menedzser menüjéhez.
 
 Licensz
 -------

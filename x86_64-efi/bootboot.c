@@ -60,6 +60,8 @@
 #define ELFDATA2LSB 1       /* 2's complement, little endian */
 #define PT_LOAD     1       /* Loadable program segment */
 #define EM_X86_64   62      /* AMD x86-64 architecture */
+#define SHT_SYMTAB  2       /* Symbol table */
+#define SHT_STRTAB  3       /* String table */
 
 typedef struct
 {
@@ -91,6 +93,30 @@ typedef struct
   UINT64    p_align;        /* Segment alignment */
 } Elf64_Phdr;
 
+typedef struct
+{
+  UINT32    sh_name;        /* Section name (string tbl index) */
+  UINT32    sh_type;        /* Section type */
+  UINT64    sh_flags;       /* Section flags */
+  UINT64    sh_addr;        /* Section virtual addr at execution */
+  UINT64    sh_offset;      /* Section file offset */
+  UINT64    sh_size;        /* Section size in bytes */
+  UINT32    sh_link;        /* Link to another section */
+  UINT32    sh_info;        /* Additional section information */
+  UINT64    sh_addralign;   /* Section alignment */
+  UINT64    sh_entsize;     /* Entry size if section holds table */
+} Elf64_Shdr;
+
+typedef struct
+{
+  UINT32    st_name;        /* Symbol name (string tbl index) */
+  UINT8     st_info;        /* Symbol type and binding */
+  UINT8     st_other;       /* Symbol visibility */
+  UINT16    st_shndx;       /* Section index */
+  UINT64    st_value;       /* Symbol value */
+  UINT64    st_size;        /* Symbol size */
+} Elf64_Sym;
+
 /*** PE32+ defines and structs ***/
 #define MZ_MAGIC                    0x5a4d      /* "MZ" */
 #define PE_MAGIC                    0x00004550  /* "PE\0\0" */
@@ -109,7 +135,7 @@ typedef struct {
   UINT16 sections;      /* number of sections */
   UINT32 timestamp;     /* time_t */
   UINT32 sym_table;     /* symbol table offset */
-  UINT32 symbols;       /* number of symbols */
+  INT32  numsym;        /* number of symbols */
   UINT16 opt_hdr_size;  /* size of optional header */
   UINT16 flags;         /* flags */
   UINT16 file_type;     /* file type, PE32PLUS magic */
@@ -118,9 +144,19 @@ typedef struct {
   UINT32 text_size;     /* size of text section(s) */
   UINT32 data_size;     /* size of data section(s) */
   UINT32 bss_size;      /* size of bss section(s) */
-  INT32 entry_point;    /* file offset of entry point */
-  INT32 code_base;      /* relative code addr in ram */
+  INT32  entry_point;   /* file offset of entry point */
+  INT32  code_base;     /* relative code addr in ram */
 } pe_hdr;
+
+typedef struct {
+  UINT32 iszero;        /* if this is not zero, then iszero+nameoffs gives UTF-8 string */
+  UINT32 nameoffs;
+  INT32 value;          /* value of the symbol */
+  UINT16 section;       /* section it belongs to */
+  UINT16 type;          /* symbol type */
+  UINT8 storclass;      /* storage class */
+  UINT8 auxsyms;        /* number of pe_sym records following */
+} pe_sym;
 
 /*** EFI defines and structs ***/
 struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
@@ -268,6 +304,9 @@ file_t core;        // kernel file descriptor
 BOOTBOOT *bootboot; // the BOOTBOOT structure
 UINT64 *paging;     // paging table for MMU
 UINT64 entrypoint;  // kernel entry point
+UINT64 fb_addr = 0xfffffffffc000000;     // frame buffer virtual address
+UINT64 bb_addr = 0xffffffffffe00000;     // bootboot struct virtual address
+UINT64 env_addr= 0xffffffffffe01000;     // environment string virtual address
 EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Volume;
 EFI_FILE_HANDLE                 RootDir;
 EFI_FILE_PROTOCOL               *Root;
@@ -1152,7 +1191,7 @@ LoadCore()
             DBG(L" * Parsing ELF64 @%lx\n",core.ptr);
             Elf64_Phdr *phdr=(Elf64_Phdr *)((UINT8 *)ehdr+ehdr->e_phoff);
             for(i=0;i<ehdr->e_phnum;i++){
-                if(phdr->p_type==PT_LOAD && phdr->p_vaddr>>48==0xffff) {
+                if(phdr->p_type==PT_LOAD && (phdr->p_vaddr >> 30) == 0x3FFFFFFFF) {
                     // hack to keep symtab and strtab for shared libraries
                     core.size = phdr->p_filesz + (ehdr->e_type==3?0x4000:0);
                     ptr = (UINT8*)ehdr + phdr->p_offset;
@@ -1162,18 +1201,48 @@ LoadCore()
                 }
                 phdr=(Elf64_Phdr *)((UINT8 *)phdr+ehdr->e_phentsize);
             }
+            if(ehdr->e_shoff > 0) {
+                Elf64_Shdr *shdr=(Elf64_Shdr *)((UINT8 *)ehdr + ehdr->e_shoff);
+                Elf64_Sym *sym = NULL, *s;
+                char *strtable = NULL;
+                UINT32 strsz = 0, syment = 0;
+                for(i = 0; i < ehdr->e_shnum; i++){
+                    if(shdr->sh_type == SHT_SYMTAB) { sym=(Elf64_Sym *)((UINT8*)ehdr+shdr->sh_offset); syment=shdr->sh_entsize; }
+                    if(shdr->sh_type == SHT_STRTAB) { strtable = (char *)ehdr + shdr->sh_offset; strsz = shdr->sh_size; }
+                    shdr = (Elf64_Shdr *)((UINT8 *)shdr + ehdr->e_shentsize);
+                }
+                if(strtable && strsz > 0 && sym && syment > 0)
+                    for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
+                        if(!CompareMem(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
+                        if(!CompareMem(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
+                        if(!CompareMem(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
+                    }
+            }
         } else if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && ((mz_hdr*)(core.ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
             pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS &&
-            (INT64)pehdr->code_base>>48==0xffff) {
-                //Parse PE32+
+            (pehdr->code_base & 0xC0000000)) {
+                // Parse PE32+
                 DBG(L" * Parsing PE32+ @%lx\n",core.ptr);
                 core.size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
                 ptr = core.ptr;
                 bss = pehdr->bss_size;
                 entrypoint = (INT64)pehdr->entry_point;
+                if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
+                    pe_sym *s;
+                    char *strtable = (char *)pehdr + pehdr->sym_table + pehdr->numsym * 18 + 4, *name;
+                    for(i = 0; i < pehdr->numsym; i++) {
+                        s = (pe_sym*)((UINT8 *)pehdr + pehdr->sym_table + i * 18);
+                        name = !s->iszero ? (char*)&s->iszero : strtable + s->nameoffs;
+                        if(!CompareMem(name, "bootboot", 9)) bb_addr = (INT64)s->value;
+                        if(!CompareMem(name, "environment", 12)) env_addr = (INT64)s->value;
+                        if(!CompareMem(name, "fb", 3)) fb_addr = (INT64)s->value;
+                        i += s->auxsyms;
+                    }
+                }
         }
-        if(ptr==NULL || core.size<2 || entrypoint==0)
-            return report(EFI_LOAD_ERROR,L"Kernel is not a valid executable");
+        if(ptr==NULL || core.size<2 || entrypoint==0 || (bb_addr>>30)!=0x3FFFFFFFF || (env_addr>>30)!=0x3FFFFFFFF ||
+            (fb_addr>>30)!=0x3FFFFFFFF || (fb_addr & ~(1024*1024*2-1)))
+                return report(EFI_LOAD_ERROR,L"Kernel is not a valid executable");
         // create core segment
         uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (core.size + bss + PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&core.ptr);
@@ -1183,6 +1252,9 @@ LoadCore()
         if(bss>0)
             ZeroMem((void*)core.ptr + core.size, bss);
         core.size += bss;
+        DBG(L" * fb          @%lx\n", fb_addr);
+        DBG(L" * bootboot    @%lx\n", bb_addr);
+        DBG(L" * environment @%lx\n", env_addr);
         DBG(L" * Entry point @%lx, text @%lx %d bytes\n",entrypoint, core.ptr, core.size);
         core.size = ((core.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
         return EFI_SUCCESS;
@@ -1541,7 +1613,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                 return report(status, L"GOP failed, no framebuffer");
 
         // collect information on system
-        bootboot->protocol=PROTOCOL_STATIC | LOADER_UEFI;
+        bootboot->protocol=PROTOCOL_DYNAMIC | LOADER_UEFI;
         bootboot->size=128;
         bootboot->numcores=1;
         CopyMem((void *)&(bootboot->initrd_ptr),&initrd.ptr,8);

@@ -16,7 +16,7 @@ I provide pre-compiled images ready for use.
 
 4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) in C which draws lines and boxes
 
-Please note that the reference implementations do not support the full protocol at level 2,
+Please note that the reference implementations do not support the full protocol at level 2 (except the UEFI version),
 they only handle static mappings which makes them level 1 loaders.
 
 For quick test, you can find example bootable disk [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) too.
