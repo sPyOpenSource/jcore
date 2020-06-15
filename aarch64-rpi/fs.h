@@ -179,7 +179,8 @@ file_t cpio_initrd(unsigned char *initrd_p, char *kernel)
     while(!memcmp(ptr,"070707",6)){
         int ns=oct2bin(ptr+8*6+11,6);
         int fs=oct2bin(ptr+8*6+11+6,11);
-        if(!memcmp(ptr+9*6+2*11,kernel,k+1)){
+        if(!memcmp(ptr+9*6+2*11,kernel,k+1) ||
+            (ptr[9*6+2*11] == '.' && ptr[9*6+2*11+1] == '/' && !memcmp(ptr+9*6+2*11+2,kernel,k+1))) {
             ret.size=fs;
             ret.ptr=(uint8_t*)(ptr+9*6+2*11+ns);
             return ret;
@@ -190,7 +191,7 @@ file_t cpio_initrd(unsigned char *initrd_p, char *kernel)
     while(!memcmp(ptr,"07070",5)){
         int fs=hex2bin(ptr+8*6+6,8);
         int ns=hex2bin(ptr+8*11+6,8);
-        if(!memcmp(ptr+110,kernel,k+1)){
+        if(!memcmp(ptr+110,kernel,k+1) || (ptr[110] == '.' && ptr[111] == '/' && !memcmp(ptr+112,kernel,k+1))) {
             ret.size=fs;
             ret.ptr=(uint8_t*)(ptr+((110+ns+3)/4)*4);
             return ret;
@@ -216,7 +217,7 @@ file_t tar_initrd(unsigned char *initrd_p, char *kernel)
     k=strlen((unsigned char*)kernel);
     while(!memcmp(ptr+257,"ustar",5)){
         int fs=oct2bin(ptr+0x7c,11);
-        if(!memcmp(ptr,kernel,k+1)){
+        if(!memcmp(ptr,kernel,k+1) || (ptr[0] == '.' && ptr[1] == '/' && !memcmp(ptr+2,kernel,k+1))) {
             ret.size=fs;
             ret.ptr=(uint8_t*)(ptr+512);
             return ret;

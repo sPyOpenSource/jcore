@@ -382,7 +382,11 @@ cpio_initrd:
             push        edi
             add         esi, 9*6+2*11
             mov         ecx, dword [.ks]
-            repz        cmpsb
+            cmp         word [esi], './'
+            jne         .notcurdir
+            add         esi, 2
+            sub         ecx, 2
+.notcurdir: repz        cmpsb
             pop         edi
             pop         esi
             jz          @f
@@ -409,7 +413,11 @@ cpio_initrd:
             push        edi
             add         esi, 110
             mov         ecx, dword [.ks]
-            repz        cmpsb
+            cmp         word [esi], './'
+            jne         .notcudir
+            add         esi, 2
+            sub         ecx, 2
+.notcudir:  repz        cmpsb
             pop         edi
             pop         esi
             jz          @f
@@ -474,7 +482,11 @@ tar_initrd:
             push        esi                 ; name equals?
             push        edi
             mov         ecx, dword [.ks]
-            repz        cmpsb
+            cmp         word [esi], './'
+            jne         .notcurdir
+            add         esi, 2
+            sub         ecx, 2
+.notcurdir: repz        cmpsb
             pop         edi
             pop         esi
             jz          @f

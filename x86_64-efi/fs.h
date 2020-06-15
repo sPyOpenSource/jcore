@@ -178,7 +178,8 @@ file_t cpio_initrd(unsigned char *initrd_p, char *kernel)
     while(!CompareMem(ptr,"070707",6)){
         int ns=oct2bin(ptr+8*6+11,6);
         int fs=oct2bin(ptr+8*6+11+6,11);
-        if(!CompareMem(ptr+9*6+2*11,kernel,k+1)){
+        if(!CompareMem(ptr+9*6+2*11,kernel,k+1) ||
+            (ptr[9*6+2*11] == '.' && ptr[9*6+2*11+1] == '/' && !CompareMem(ptr+9*6+2*11+2,kernel,k+1))) {
             ret.size=fs;
             ret.ptr=(UINT8*)(ptr+9*6+2*11+ns);
             return ret;
@@ -189,7 +190,7 @@ file_t cpio_initrd(unsigned char *initrd_p, char *kernel)
     while(!CompareMem(ptr,"07070",5)){
         int fs=hex2bin(ptr+8*6+6,8);
         int ns=hex2bin(ptr+8*11+6,8);
-        if(!CompareMem(ptr+110,kernel,k+1)){
+        if(!CompareMem(ptr+110,kernel,k+1) || (ptr[110] == '.' && ptr[111] == '/' && !CompareMem(ptr+112,kernel,k+1))) {
             ret.size=fs;
             ret.ptr=(UINT8*)(ptr+((110+ns+3)/4)*4);
             return ret;
@@ -213,7 +214,7 @@ file_t tar_initrd(unsigned char *initrd_p, char *kernel)
     k=strlena((unsigned char*)kernel);
     while(!CompareMem(ptr+257,"ustar",5)){
         int fs=oct2bin(ptr+0x7c,11);
-        if(!CompareMem(ptr,kernel,k+1)){
+        if(!CompareMem(ptr,kernel,k+1) || (ptr[0] == '.' && ptr[1] == '/' && !CompareMem(ptr+2,kernel,k+1))) {
             ret.size=fs;
             ret.ptr=(UINT8*)(ptr+512);
             return ret;

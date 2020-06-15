@@ -1285,7 +1285,7 @@ diskerr:
     bpb=(bpb_t*)&_end;
     if(!memcmp((void*)bpb->fst,"FAT16",5) || !memcmp((void*)bpb->fst2,"FAT32",5)) {
         // locate BOOTBOOT directory
-        uint64_t data_sec, root_sec, clu=0, s, s2, s3;
+        uint64_t data_sec, root_sec, clu=0, cclu=0, s, s2, s3;
         fatdir_t *dir;
         uint32_t *fat32=(uint32_t*)((uint8_t*)&_end+bpb->rsc*512);
         uint16_t *fat16=(uint16_t*)fat32;
@@ -1315,16 +1315,15 @@ diskerr:
         while(dir->name[0]!=0) {
             if(!memcmp(dir->name,"CONFIG     ",11)) {
                 s=dir->size<PAGESIZE?dir->size:PAGESIZE; // round up to cluster size
-                clu=dir->cl+(dir->ch<<16);
+                cclu=dir->cl+(dir->ch<<16);
                 ptr=(void*)&__environment;
                 while(s>0) {
                     s2=s>s3?s3:s;
-                    r=sd_readblock(part->start+(clu-2)*bpb->spc+data_sec,ptr,s2<512?1:(s2+511)/512);
-                    clu=bpb->spf16>0?fat16[clu]:fat32[clu];
+                    r=sd_readblock(part->start+(cclu-2)*bpb->spc+data_sec,ptr,s2<512?1:(s2+511)/512);
+                    cclu=bpb->spf16>0?fat16[cclu]:fat32[cclu];
                     ptr+=s2;
                     s-=s2;
                 }
-                clu=0;
             } else
             if(!memcmp(dir->name,bkp?"INITRD  BAK":"INITRD     ",11)) {
                 clu=dir->cl+(dir->ch<<16);
