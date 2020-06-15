@@ -319,6 +319,7 @@ int createdisk(int disksize, char *diskname)
     /* MBR / VBR stage 1 loader */
     loader=readfileall("../boot.bin");
     if(loader==NULL) {
+        fprintf(stderr,"mkimg: stage1 ../boot.bin not found, creating non-bootable disk\n");
         loader=malloc(512);
         memset(loader,0,512);
     } else {
@@ -340,7 +341,9 @@ int createdisk(int disksize, char *diskname)
     /* failsafe */
     if(!bbs) {
         fprintf(stderr,"mkimg: FS0:\\BOOTBOOT\\LOADER not found, adding stage2 before the boot partition\n");
-        loader2 = readfileall("../bootboot.bin"); memcpy(gpt + 16384, loader2, read_size); bbs = 16384 / 512;
+        loader2 = readfileall("../bootboot.bin");
+        if(!loader2) fprintf(stderr,"mkimg: stage2 ../bootboot.bin not found, creating non-bootable disk\n");
+        else { memcpy(gpt + 16384, loader2, read_size); bbs = 16384 / 512; }
     }
     /* save stage2 address into stage1 */
     setint(bbs,loader+0x1B0);
