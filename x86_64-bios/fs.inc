@@ -27,24 +27,19 @@
 ;* @brief Filesystem drivers for initial ramdisk.
 ;*
 
-FSZ_SUPPORT equ 1
-
 ;*********************************************************************
 ;*                       File System Drivers                         *
 ;*********************************************************************
 
             USE32
 fsdrivers:
-if FSZ_SUPPORT eq 1
             dw          fsz_initrd
-end if
             dw          cpio_initrd
             dw          tar_initrd
             dw          sfs_initrd
             dw          jamesm_initrd
             dw          0
 
-if FSZ_SUPPORT eq 1
 ; ----------- FS/Z ----------
 ; Find the kernel on initrd (only supports 4096 logical sector sizes)
 ; IN:   esi: initrd pointer, ecx: initrd end, edi: kernel filename
@@ -329,7 +324,6 @@ fsz_initrd:
             mov         esi, dword [bootboot.initrd_ptr]
             add         esi, eax
             ret
-end if
 
 ; ----------- cpio ----------
 ; Find the kernel on initrd

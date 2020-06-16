@@ -37,6 +37,13 @@ bootboot = 8000h
 ; this define is in the 18th line of bootboot.h
 bootboot_MAGIC     equ   'BOOT'
 
+
+
+
+
+
+
+
 ; minimum protocol level:
 ;  hardcoded kernel name, static kernel memory addresses
 PROTOCOL_MINIMAL   equ   0

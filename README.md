@@ -5,19 +5,19 @@ I provide pre-compiled images ready for use.
 
 1. *x86_64-efi* the preferred way of booting on x86_64 architecture.
     Standard GNU toolchain and a few files from gnuefi (included).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (94k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (94k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (95k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (96k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), Expansion ROM and Linux boot compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
     [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (11k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3, 4
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (32k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (34k)
 
 4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) in C which draws lines and boxes
 
-Please note that the reference implementations do not support the full protocol at level 2 (except the UEFI version),
-they only handle static mappings which makes them level 1 loaders.
+Please note that not all the reference implementations do support the full protocol at level 2, x86_64-bios only handles
+static mappings which makes it a level 1 loader.
 
 For quick test, you can find example bootable disk [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) too.
 
@@ -48,6 +48,12 @@ as if it were a monolitic kernel. And you can use your own file system for the i
 Note: BOOTBOOT is not a boot manager, it's a boot loader protocol. If you want an interactive boot menu, you should
 integrate that *before* a BOOTBOOT compatible loader is called. Like GRUB chainloading boot.bin (or loading bootboot.bin as a
 multiboot "kernel" and initrd as a module) or adding bootboot.efi to UEFI Boot Manager's menu for example.
+
+Support the Development by Donation
+-----------------------------------
+
+If you like it or find it useful, your donation of any amount will be very much appreciated:<br>
+<a href="bitcoin:3G9vcV91S19fHMoBcmSksUpaxGPR5MUGCk"><img src="https://gitlab.com/bztsrc/bootboot/raw/master/donate.png"><br>BTC 3G9vcV91S19fHMoBcmSksUpaxGPR5MUGCk</a>
 
 Licence
 -------
@@ -124,7 +130,7 @@ Boot process
 ------------
 
 1. the firmware locates the loader, loads it and passes control to it.
-2. the loader initializes hardware (64 bit mode, screen resolution, memory map etc.)
+2. the loader initializes hardware (64 bit multicore mode, screen resolution, memory map etc.)
 3. then loads environment file and initrd file (probably from the boot partition or from ROM).
 4. iterates on file system drivers, and loads kernel file from initrd.
 5. if file system is not recognized, scans for the first executable in the initrd.
@@ -156,8 +162,8 @@ The RAM (up to 16G) is identity mapped in the positive address range. Serial con
 
 The screen is properly set up with a 32 bit packed pixel linear framebuffer, mapped at the negative address defined by
 the `fb` symbol. Level 1 loaders limit the framebuffer size somewhere around 4096 x 4096 pixels (depends on scanline size
-and aspect ratio too). That's more than enough for [Ultra HD 4K](https://en.wikipedia.org/wiki/4K_resolution)
-(3840 x 2160). Level 2 loaders can place the fb anywhere in memory therefore they do not have such a limitation.
+and aspect ratio too). That's more than enough for [Ultra HD 4K](https://en.wikipedia.org/wiki/4K_resolution) (3840 x 2160).
+Level 2 loaders can place the fb anywhere in memory from -1G to -2M, therefore they do not have such a limitation.
 
 The main information [bootboot structure](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h) is mapped
 at `bootboot` symbol. It consist of a fixed 128 bytes long header followed by various number of fixed
@@ -168,9 +174,9 @@ the *fb_ptr* field. The *boot time* and a platform independent *memory map* are 
 The configuration string (or command line if you like) is mapped at `environment` symbol.
 
 Kernel's code segment is mapped at ELF header's `p_vaddr` or PE header's `code_base` (level 2 only). Level 1 loaders
-load kernels at -2M, therefore limiting the kernel's size in 2M, including configuration, data, bss and stack. That
-must be more than enough for all micro-kernels. Bss segment is after the text segment, growing upwards, and it's zerod-out
-by the loader.
+load kernels at -2M, therefore limiting the kernel's size in 2M, including configuration, data, bss and stack. Level 2
+loaders has a limit of 16M for code, data and bss segment. That must be more than enough for all micro-kernels. Bss
+segment is after the text segment, growing upwards, and it's zerod-out by the loader.
 
 Co-processor enabled, and if Symmetric Multi Processing supported, all cores are running the same kernel code at once.
 
@@ -413,7 +419,14 @@ BOOTBOOT-PANIC: Kernel is not a valid executable
 The file that was specified as kernel could be loaded by fs drivers, but it's not an ELF64 or PE32+,
 does not match the architecture, or does not have any program header with a loadable segment (p_vaddr or core_base)
 in the negative range (see linker script). This error is also shown by level 2 loaders if the address of `mmio`, `fb`,
-`bootboot` and `environment` symbols are not in the negative range.
+`bootboot` and `environment` symbols are not in the negative range (-1G to 0) or if they are not page aligned.
+On x86_64 the fb symbol, and for AArch64 the mmio symbol must be 2M aligned too.
+
+```
+BOOTBOOT-PANIC: Kernel is too big
+```
+
+The kernel is bigger than 16 megabytes.
 
 ```
 BOOTBOOT-PANIC: GOP failed, no framebuffer
@@ -439,5 +452,5 @@ Contributors
 ------------
 
 I'd like to say special thanks to [Valentin Anger](https://gitlab.com/SyrupThinker) for throughfully testing this
-code on many different real hardware.
-
+code on many different real hardware. Also to [Vinay Chandra](https://gitlab.com/vinaychandra) for pushing me to add
+level 2 protocol to the reference implementations and for testing and providing a Rust kernel example for the project.

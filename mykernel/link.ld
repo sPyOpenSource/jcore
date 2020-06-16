@@ -28,7 +28,7 @@
  *
  */
 
-mmio  = 0xfffffffff8000000;
+mmio  = 0xfffffffff8000000;                    /* these are configurable for level 2 loaders */
 fb    = 0xfffffffffc000000;
 PHDRS
 {

@@ -30,7 +30,7 @@ Executing `make all` will create the following files:
 - disk-(PLATFORM).img: a hybrid disk image with GPT partitions
 
 The disk-x86.img is a special hybrid image, which can be renamed to disk-x86.iso and then burnt to a CDROM; it can also be
-booted from an USB stick in a BIOS machine as well as an UEFI machine.
+booted from an USB stick in a BIOS machine as well as in an UEFI machine.
 
 The disk-rpi.img can be written to an SDCard (Class 10) and booted on a Raspberry Pi 3 and 4.
 

@@ -15,8 +15,8 @@ Fordítás
 
 Nézz bele a Makefile-ba, az elején fogsz látni konfigurálható változókat.
 
-- DISKSIZE: a teljes generálnadó lemezkép mérete megabájtban
-- BOOTSIZE: a rendszerbetöltő partíció mérete megabájtban
+- DISKSIZE: a teljes generálandó lemezkép mérete Megabájtban
+- BOOTSIZE: a rendszerbetöltő partíció mérete Megabájtban
 - BOOTTYPE: a rendszerbetöltő partíció FAT típusa, 16 vagy 32 (12 már nem támogatott)
 - PLATFORM: vagy "x86" vagy "rpi", ez választja ki, melyik lemezképet generálja
 

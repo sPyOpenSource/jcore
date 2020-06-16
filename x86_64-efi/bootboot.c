@@ -28,8 +28,6 @@
  *
  */
 
-// DEBUG already defined in efidebug.h
-
 #define BBDEBUG 1
 //#define GOP_DEBUG BBDEBUG
 
@@ -48,8 +46,6 @@
 // get BOOTBOOT specific stuff
 #include "../bootboot.h"
 #include "tinf.h"
-// comment out this include if you don't want FS/Z support
-//#include "../../osZ/include/osZ/fsZ.h"
 
 /*** ELF64 defines and structs ***/
 #define ELFMAG      "\177ELF"
@@ -302,9 +298,11 @@ file_t core;        // kernel file descriptor
 BOOTBOOT *bootboot; // the BOOTBOOT structure
 UINT64 *paging;     // paging table for MMU
 UINT64 entrypoint;  // kernel entry point
-UINT64 fb_addr = 0xfffffffffc000000;     // frame buffer virtual address
-UINT64 bb_addr = 0xffffffffffe00000;     // bootboot struct virtual address
-UINT64 env_addr= 0xffffffffffe01000;     // environment string virtual address
+UINT64 fb_addr = BOOTBOOT_FB;       // virtual addresses
+UINT64 bb_addr = BOOTBOOT_INFO;
+UINT64 env_addr= BOOTBOOT_ENV;
+UINT64 core_addr=BOOTBOOT_CORE;
+
 EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Volume;
 EFI_FILE_HANDLE                 RootDir;
 EFI_FILE_PROTOCOL               *Root;
@@ -318,7 +316,6 @@ char *kernelname="sys/core";
 // alternative environment name
 char *cfgname="sys/config";
 
-#ifdef _FS_Z_H_
 /**
  * SHA-256
  */
@@ -850,7 +847,6 @@ int ReadLine(unsigned char *buf, int l)
     }
     return i;
 }
-#endif
 
 /**
  * function to convert ascii to number
@@ -920,6 +916,24 @@ int hex2bin(unsigned char *str, int size)
         str++;
     }
     return v;
+}
+
+/**
+ * Add a mapping to paging tables
+ */
+int freep = 24;
+void MapPage(UINT64 virt, UINT64 phys)
+{
+    int i,j;
+    j = (virt>>(9+12)) & 0x1FF;
+    if(!paging[22*512 + j] || (paging[22*512 + j] & 0xFF) == 0x83) {
+        if(freep == 37) return;
+        paging[22*512 + j]=(UINT64)((UINT8 *)paging+freep*PAGESIZE+3);
+        freep++;
+    }
+    i = (paging[22*512 + j] - (UINT64)((UINT8 *)paging)) >> 12;
+    j = (virt>>(12)) & 0x1FF;
+    paging[i*512 + j] = phys | 1;
 }
 
 // get filesystem drivers for initrd
@@ -1157,7 +1171,7 @@ LoadCore()
     }
     // if every driver failed, try brute force, scan for the first elf or pe executable
     if(core.ptr==NULL) {
-        DBG(L" * Autodetecting kernel%s\n","");
+        DBG(L" * Autodetecting kernel%s\n",L"");
         i=initrd.size;
         core.ptr=initrd.ptr;
         while(i-->0) {
@@ -1194,6 +1208,7 @@ LoadCore()
                     core.size = phdr->p_filesz + (ehdr->e_type==3?0x4000:0);
                     ptr = (UINT8*)ehdr + phdr->p_offset;
                     bss = phdr->p_memsz - core.size;
+                    core_addr = phdr->p_vaddr;
                     entrypoint = ehdr->e_entry;
                     break;
                 }
@@ -1230,6 +1245,7 @@ LoadCore()
                 core.size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
                 ptr = core.ptr;
                 bss = pehdr->bss_size;
+                core_addr = (INT64)pehdr->code_base;
                 entrypoint = (INT64)pehdr->entry_point;
                 if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
                     pe_sym *s;
@@ -1244,9 +1260,12 @@ LoadCore()
                     }
                 }
         }
-        if(ptr==NULL || core.size<2 || entrypoint==0 || (bb_addr>>30)!=0x3FFFFFFFF || (env_addr>>30)!=0x3FFFFFFFF ||
-            (fb_addr>>30)!=0x3FFFFFFFF || (fb_addr & ~(1024*1024*2-1)))
+        if(ptr==NULL || core.size<2 || entrypoint==0 || (core_addr&(PAGESIZE-1)) || (bb_addr>>30)!=0x3FFFFFFFF ||
+            (bb_addr & (PAGESIZE-1)) || (env_addr>>30)!=0x3FFFFFFFF || (env_addr&(PAGESIZE-1)) || (fb_addr>>30)!=0x3FFFFFFFF ||
+            (fb_addr&(1024*1024*2-1)))
                 return report(EFI_LOAD_ERROR,L"Kernel is not a valid executable");
+        if(core.size+bss > 16*1024*1024)
+            return report(EFI_LOAD_ERROR,L"Kernel is too big");
         // create core segment
         uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (core.size + bss + PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&core.ptr);
@@ -1330,7 +1349,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     EFI_MP_SERVICES_PROTOCOL *mp;
     UINT8 pibuffer[100];
     EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
-    UINTN bsp_num=0, i, j=0, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
+    UINTN bsp_num=0, i, j=0, x,y, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
     UINT32 desc_version=0;
     UINT64 lba_s=0,lba_e=0,sysptr;
     MMapEnt *mmapent, *last=NULL;
@@ -1718,44 +1737,48 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         }
 
         // create page tables
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 23+(bootboot->numcores+3)/4, (EFI_PHYSICAL_ADDRESS*)&paging);
+        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 37+(bootboot->numcores+3)/4, (EFI_PHYSICAL_ADDRESS*)&paging);
         if (paging == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
-        ZeroMem((void*)paging,23*PAGESIZE);
+        ZeroMem((void*)paging,37*PAGESIZE);
         DBG(L" * Pagetables PML4 @%lx\n",paging);
         //PML4
-        paging[0]=(UINT64)((UINT8 *)paging+4*PAGESIZE)+3;   // pointer to 2M PDPE (16G RAM identity mapped)
-        paging[511]=(UINT64)((UINT8 *)paging+PAGESIZE)+3;   // pointer to 4k PDPE (core mapped at -2M)
-        //4k PDPE
-        paging[512+511]=(UINT64)((UINT8 *)paging+2*PAGESIZE+3);
-        //4k PDE
-        for(i=0;i<31;i++)
-            paging[2*512+480+i]=(UINT64)(((UINT8 *)(bootboot->fb_ptr)+(i<<21))+0x83);   //map framebuffer
-        paging[2*512+511]=(UINT64)((UINT8 *)paging+3*PAGESIZE+3);
-        //4k PT
-        paging[3*512+0]=(UINT64)(bootboot)+1;
-        paging[3*512+1]=(UINT64)(env.ptr)+1;
-        for(i=0;i<(core.size/PAGESIZE);i++)
-            paging[3*512+2+i]=(UINT64)((UINT8 *)core.ptr+i*PAGESIZE+3);
-        for(i=0; i<(UINTN)((bootboot->numcores+3)/4); i++)
-            paging[3*512+511-i]=(UINT64)((UINT8 *)paging+(23+i)*PAGESIZE+3);  // core stacks
+        paging[0]=(UINT64)((UINT8 *)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
+        paging[511]=(UINT64)((UINT8 *)paging+20*PAGESIZE)+3;   // pointer to 4k PDPE (core mapped at -2M)
         //identity mapping
         //2M PDPE
         for(i=0;i<16;i++)
-            paging[4*512+i]=(UINT64)((UINT8 *)paging+(7+i)*PAGESIZE+3);
+            paging[512+i]=(UINT64)((UINT8 *)paging+(3+i)*PAGESIZE+3);
         //first 2M mapped per page
-        paging[7*512]=(UINT64)((UINT8 *)paging+5*PAGESIZE+3);
+        paging[3*512]=(UINT64)((UINT8 *)paging+2*PAGESIZE+3);
         for(i=0;i<512;i++)
-            paging[5*512+i]=(UINT64)(i*PAGESIZE+3);
+            paging[2*512+i]=(UINT64)(i*PAGESIZE+3);
         //2M PDE
         for(i=1;i<512*16;i++)
-            paging[7*512+i]=(UINT64)((i<<21)+0x83);
+            paging[3*512+i]=(UINT64)((i<<21)+0x83);
+        //kernel mapping
+        //4k PDPE
+        paging[20*512+511]=(UINT64)((UINT8 *)paging+22*PAGESIZE+3);
+        //4k PDE
+        j = (fb_addr>>(9+12)) & 0x1FF;
+        for(i=0;j+i<511 && i<63;i++)
+            paging[22*512+j+i]=(UINT64)(((UINT8 *)(bootboot->fb_ptr)+(i<<21))+0x83);   // map framebuffer
+        paging[22*512+511]=(UINT64)((UINT8 *)paging+23*PAGESIZE+3);
+        //4k PT
+        //dynamically map these. Main struct, environment string and code segment
+        for(i=0;i<(core.size/PAGESIZE);i++)
+            MapPage(core_addr + i*PAGESIZE, (UINT64)((UINT8 *)core.ptr+i*PAGESIZE+3));
+        MapPage(bb_addr, (UINT64)(bootboot)+1);
+        MapPage(env_addr, (UINT64)(env.ptr)+1);
+        // stack at the top of the memory
+        for(i=0; i<(UINTN)((bootboot->numcores+3)/4); i++)
+            paging[23*512+511-i]=(UINT64)((UINT8 *)paging+(37+i)*PAGESIZE+3);  // core stacks
 
         // Get memory map
         int cnt=3;
 get_memory_map:
-        DBG(L" * Memory Map @%lx %d bytes #%d\n",memory_map, memory_map_size, 4-cnt);
+        DBG(L" * Memory Map @%lx %d bytes try #%d\n",memory_map, memory_map_size, 4-cnt);
         mmapent=(MMapEnt *)&(bootboot->mmap);
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
             &memory_map_size, memory_map, &map_key, &desc_size, &desc_version);
@@ -1812,6 +1835,14 @@ get_memory_map:
             cnt--;
             if(cnt>0) goto get_memory_map;
             return report(status,L"ExitBootServices");
+        }
+
+        // clear the screen
+        for(j=y=0;y<bootboot->fb_height;y++) {
+            i=j;
+            for(x=0;x<bootboot->fb_width;x+=2,i+=8)
+                *((uint64_t*)((uint64_t)bootboot->fb_ptr + i))=0;
+            j+=bootboot->fb_scanline;
         }
 
         // release AP spinlock

@@ -28,51 +28,48 @@
  *
  */
 
-#ifdef _FS_Z_H_
 /**
  * FS/Z initrd (OS/Z's native file system)
  */
 file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
 {
-    FSZ_SuperBlock *sb = (FSZ_SuperBlock *)initrd_p;
     file_t ret = { NULL, 0 };
-    if(initrd_p==NULL || CompareMem(sb->magic,FSZ_MAGIC,4) || kernel==NULL){
+    if(initrd_p==NULL || CompareMem(initrd_p + 512,"FS/Z",4) || kernel==NULL){
         return ret;
     }
     unsigned char passphrase[256],chk[32],iv[32];
-    UINT64 i,j,k,l,ss=1<<(sb->logsec+11);
-    FSZ_DirEnt *ent;
-    FSZ_Inode *in=(FSZ_Inode *)(initrd_p+sb->rootdirfid*ss);
+    unsigned int i,j,k,l,ss=1<<(*((uint16_t*)(initrd_p+520))+11);
+    unsigned char *ent, *in=(initrd_p+*((uint64_t*)(initrd_p+560))*ss);
     SHA256_CTX ctx;
     DBG(L" * FS/Z %s\n",a2u(kernel));
     //decrypt initrd
-    while(sb->enchash!=0) {
+    while(*((uint32_t*)(initrd_p+708))!=0) {
         Print(L" * Passphrase? ");
         l=ReadLine(passphrase,sizeof(passphrase));
         if(!l) {
             Print(L"\n");
             return ret;
         }
-        if(sb->enchash!=crc32_calc((char*)passphrase,l)) {
+        if(*((uint32_t*)(initrd_p+708))!=crc32_calc((char*)passphrase,l)) {
             Print(L"\rBOOTBOOT-ERROR: Bad passphrase\n");
             continue;
         }
         Print(L"\r * Decrypting...\r");
         SHA256_Init(&ctx);
         SHA256_Update(&ctx,passphrase,l);
-        SHA256_Update(&ctx,&sb->magic,6);
+        SHA256_Update(&ctx,initrd_p+512,6);
         SHA256_Final(chk,&ctx);
-        for(i=0;i<sizeof(sb->encrypt);i++) sb->encrypt[i]^=chk[i];
+        for(i=0;i<28;i++) initrd_p[i+680]^=chk[i];
         SHA256_Init(&ctx);
-        SHA256_Update(&ctx,&sb->encrypt,sizeof(sb->encrypt));
+        SHA256_Update(&ctx,initrd_p+680,28);
         SHA256_Final(iv,&ctx);
-        if(sb->flags&FSZ_SB_EALG_AESCBC) {
+        if(((initrd_p[518]>>2)&7)==1) {
             aes_init(iv);
-            for(k=ss,j=1;j<sb->numsec;k+=ss,j++) {
+            for(k=ss,j=1;j<*((uint32_t*)(initrd_p+528));k+=ss,j++) {
                 aes_dec(initrd_p+k,ss);
             }
         } else {
-            for(k=ss,j=1;j<sb->numsec;j++) {
+            for(k=ss,j=1;j<*((uint32_t*)(initrd_p+528));j++) {
                 CopyMem(chk,iv,32);
                 for(i=0;i<ss;i++) {
                     if(i%32==0) {
@@ -85,8 +82,8 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
                 }
             }
         }
-        ZeroMem(sb->encrypt,sizeof(sb->encrypt)+4);
-        sb->checksum=crc32_calc((char *)sb->magic,508);
+        ZeroMem(initrd_p+680,28+4);
+        *((uint32_t*)(initrd_p+1020))=crc32_calc((char *)initrd_p+512,508);
         Print(L"                \r");
     }
     // Get the inode
@@ -96,60 +93,59 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
 again:
     while(*e!='/'&&*e!=0){e++;}
     if(*e=='/'){e++;}
-    if(!CompareMem(in->magic,FSZ_IN_MAGIC,4)){
+    if(!CompareMem(in,"FSIN",4)){
         //is it inlined?
-        if(!CompareMem(sb->flags&FSZ_SB_FLAG_BIGINODE? in->data.big.inlinedata : in->data.small.inlinedata,FSZ_DIR_MAGIC,4)){
-            ent=(FSZ_DirEnt *)(sb->flags&FSZ_SB_FLAG_BIGINODE? in->data.big.inlinedata : in->data.small.inlinedata);
-        } else if(!CompareMem(initrd_p+in->sec*ss,FSZ_DIR_MAGIC,4)){
+        if(!CompareMem(initrd_p[518]&1? in + 2048 : in + 1024,"FSDR",4)){
+            ent=(initrd_p[518]&1? in + 2048 : in + 1024);
+        } else if(!CompareMem(initrd_p+*((uint64_t*)(in+448))*ss,"FSDR",4)){
             // go, get the sector pointed
-            ent=(FSZ_DirEnt *)(initrd_p+in->sec*ss);
+            ent=(initrd_p+*((uint64_t*)(in+448))*ss);
         } else {
             return ret;
         }
         //skip header
-        FSZ_DirEntHeader *hdr=(FSZ_DirEntHeader *)ent; ent++;
+        unsigned char *hdr=ent; ent+=128;
         //iterate on directory entries
-        int j=hdr->numentries;
+        int j=*((uint64_t*)(hdr+16));
         while(j-->0){
-            if(!CompareMem(ent->name,s,e-s)) {
+            if(!CompareMem(ent + 17,s,e-s)) {
                 if(*e==0) {
-                    i=ent->fid;
+                    i=*((uint64_t*)(ent+0));
                     break;
                 } else {
                     s=e;
-                    in=(FSZ_Inode *)(initrd_p+ent->fid*ss);
+                    in=(initrd_p+*((uint64_t*)(ent+0))*ss);
                     goto again;
                 }
             }
-            ent++;
+            ent+=128;
         }
     } else {
         i=0;
     }
     if(i!=0) {
         // fid -> inode ptr -> data ptr
-        FSZ_Inode *in=(FSZ_Inode *)(initrd_p+i*ss);
-        if(!CompareMem(in->magic,FSZ_IN_MAGIC,4)){
-            ret.size=in->size;
-            switch(FSZ_FLAG_TRANSLATION(in->flags)) {
-                case FSZ_IN_FLAG_INLINE:
+        unsigned char *in=(initrd_p+i*ss);
+        if(!CompareMem(in,"FSIN",4)){
+            ret.size=*((uint64_t*)(in+464));
+            switch(in[488]) {
+                case 0xFF:
                     // inline data
-                    ret.ptr=(UINT8*)(initrd_p+i*ss+1024);
+                    ret.ptr=(uint8_t*)(initrd_p+i*ss+(initrd_p[518]&1? 2048 : 1024));
                     break;
-                case FSZ_IN_FLAG_SECLIST:
-                case FSZ_IN_FLAG_SDINLINE:
+                case 0x80:
+                case 0x7F:
                     // sector directory or list inlined
-                    ret.ptr=(UINT8*)(initrd_p + *(sb->flags&FSZ_SB_FLAG_BIGINODE?
-                        (UINT64*)&in->data.big.inlinedata : (UINT64*)&in->data.small.inlinedata) * ss);
+                    ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(initrd_p[518]&1? in + 2048 : in + 1024))*ss);
                     break;
-                case FSZ_IN_FLAG_DIRECT:
+                case 0:
                     // direct data
-                    ret.ptr=(UINT8*)(initrd_p + in->sec * ss);
+                    ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(in+448)) * ss);
                     break;
                 // sector directory (only one level supported here, and no holes in files)
-                case FSZ_IN_FLAG_SECLIST0:
-                case FSZ_IN_FLAG_SD:
-                    ret.ptr=(UINT8*)(initrd_p + (unsigned int)(((FSZ_SectorList *)(initrd_p+in->sec*ss))->sec) * ss);
+                case 0x81:
+                case 1:
+                    ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(initrd_p + *((uint64_t*)(in+448))*ss)) * ss);
                     break;
                 default:
                     ret.size=0;
@@ -159,7 +155,6 @@ again:
     }
     return ret;
 }
-#endif
 
 /**
  * cpio archive
@@ -289,9 +284,7 @@ file_t jamesm_initrd(unsigned char *initrd_p, char *kernel)
  * Static file system drivers registry
  */
 file_t (*fsdrivers[]) (unsigned char *, char *) = {
-#ifdef _FS_Z_H_
     fsz_initrd,
-#endif
     cpio_initrd,
     tar_initrd,
     sfs_initrd,

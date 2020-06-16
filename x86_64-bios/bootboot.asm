@@ -53,8 +53,10 @@
 ;*
 ;*  At first big enough free hole, initrd. Usually at 1Mbyte.
 ;*
+;*  WARNING: supports BOOTBOOT Protocol level 1 only (static mappings)
+;*
 
-DEBUG equ 1
+BBDEBUG equ 1
 
 ;get Core boot parameter block
 include "bootboot.inc"
@@ -102,14 +104,14 @@ macro       prot_readsector
 
 macro       DBG msg
 {
-if DEBUG eq 1
+if BBDEBUG eq 1
             real_print      msg
 end if
 }
 
 macro       DBG32 msg
 {
-if DEBUG eq 1
+if BBDEBUG eq 1
             prot_realmode
             real_print      msg
             real_protmode
@@ -1035,7 +1037,7 @@ protmode_start:
 .getgpt:    xor         eax, eax
             xor         edi, edi
             prot_readsector
-if DEBUG eq 1
+if BBDEBUG eq 1
             cmp         byte [iscdrom], 0
             jz          @f
             DBG32       dbg_cdrom
@@ -1671,7 +1673,13 @@ end if
             ;ebx=ptr to core segment, ecx=segment size, edx=bss size
 .mkcore:    or          ecx, ecx
             jz          .badcore
-            mov         edi, dword [bootboot.initrd_ptr]
+            mov         eax, ecx
+            add         eax, edx
+            cmp         eax, 2*1024*1024 - 256*1024 - 2*4096; 2M minus stack for 256 cores minus bootboot and environment
+            jl          @f
+            mov         esi, bigcore
+            jmp         prot_diefunc
+@@:          mov         edi, dword [bootboot.initrd_ptr]
             add         edi, dword [bootboot.initrd_size]
             mov         dword [core_ptr], edi
             mov         dword [core_len], ecx
@@ -2200,7 +2208,6 @@ longmode_init:
             include     "tinf.inc"
 
             ;encryption support for FS/Z
-if FSZ_SUPPORT eq 1
 ; --- SHA-256 ---
 sha_init:   xor         eax, eax
             mov         dword [sha_l], eax
@@ -2462,7 +2469,6 @@ crc32_calc: xor         edx, edx
             dec         cx
             jnz         .next
 .end:       ret
-end if
 
 ;*********************************************************************
 ;*                               Data                                *
@@ -2483,7 +2489,6 @@ GDT_value:  dw          $-GDT_table
             dd          GDT_table
             dd          0,0
             ;lookup tables for initrd encryption
-if FSZ_SUPPORT eq 1
             dw          0
 crclkp:     dd          000000000h, 0F26B8303h, 0E13B70F7h, 01350F3F4h, 0C79A971Fh, 035F1141Ch, 026A1E7E8h, 0D4CA64EBh
             dd          08AD958CFh, 078B2DBCCh, 06BE22838h, 09989AB3Bh, 04D43CFD0h, 0BF284CD3h, 0AC78BF27h, 05E133C24h
@@ -2526,7 +2531,6 @@ sha256_k:   dd          0428a2f98h, 071374491h, 0b5c0fbcfh, 0e9b5dba5h, 03956c25
             dd          0a2bfe8a1h, 0a81a664bh, 0c24b8b70h, 0c76c51a3h, 0d192e819h, 0d6990624h, 0f40e3585h, 0106aa070h
             dd          019a4c116h, 01e376c08h, 02748774ch, 034b0bcb5h, 0391c0cb3h, 04ed8aa4ah, 05b9cca4fh, 0682e6ff3h
             dd          0748f82eeh, 078a5636fh, 084c87814h, 08cc70208h, 090befffah, 0a4506cebh, 0bef9a3f7h, 0c67178f2h
-end if
 idt16:      dw          3FFh
             dq          0
 lbapacket:              ;lba packet for BIOS
@@ -2553,7 +2557,7 @@ iscdrom:    db          0
 bsp_done:                 ;flag to indicate APs can run
 fattype:    db          0
 bkp:        dd          '    '
-if DEBUG eq 1
+if BBDEBUG eq 1
 dbg_cpu     db          " * Detecting CPU",10,13,0
 dbg_A20     db          " * Enabling A20",10,13,0
 dbg_mem     db          " * E820 Memory Map",10,13,0
@@ -2587,6 +2591,7 @@ nord:       db          "Initrd not found",0
 nolib:      db          "/sys not found in initrd",0
 nocore:     db          "Kernel not found in initrd",0
 badcore:    db          "Kernel is not a valid executable",0
+bigcore:    db          "Kernel is too big",0
 novbe:      db          "VESA VBE error, no framebuffer",0
 nogzip:     db          "Unable to uncompress",0
 notcdsect:  db          "Not 2048 sector aligned",0
@@ -2644,7 +2649,6 @@ hdist:      dw          ?
 hclen:      dw          ?
 tinf_bss_end:
 
-if FSZ_SUPPORT eq 1
 virtual at tinf_bss_start
 pass:       db          256 dup ?
 sha_d:      db          64 dup ?
@@ -2667,7 +2671,6 @@ iv:         db          32 dup ?
 pl:         dd          ?
 _i:         dd          ?
 end virtual
-end if
 
 ;-----------bound check-------------
 ;fasm will generate an error if the code

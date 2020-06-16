@@ -28,11 +28,11 @@
  *
  */
 
-#define DEBUG 1
-//#define SD_DEBUG DEBUG
-//#define INITRD_DEBUG DEBUG
-//#define EXEC_DEBUG DEBUG
-//#define MEM_DEBUG DEBUG
+#define BBDEBUG 1
+//#define SD_DEBUG BBDEBUG
+//#define INITRD_DEBUG BBDEBUG
+//#define EXEC_DEBUG BBDEBUG
+//#define MEM_DEBUG BBDEBUG
 
 #define CONSOLE UART0
 
@@ -43,16 +43,13 @@
 
 /* get BOOTBOOT structure */
 #include "../bootboot.h"
-// comment out this include if you don't want FS/Z support
-//#include "../../osZ/include/osZ/fsZ.h"
-
 
 /* aligned buffers */
 volatile uint32_t  __attribute__((aligned(16))) mbox[36];
 /* we place these manually in linker script, gcc would otherwise waste lots of memory */
 volatile uint8_t __attribute__((aligned(PAGESIZE))) __bootboot[PAGESIZE];
 volatile uint8_t __attribute__((aligned(PAGESIZE))) __environment[PAGESIZE];
-volatile uint8_t __attribute__((aligned(PAGESIZE))) __paging[23*PAGESIZE];
+volatile uint8_t __attribute__((aligned(PAGESIZE))) __paging[50*PAGESIZE];
 volatile uint8_t __attribute__((aligned(PAGESIZE))) __corestack[PAGESIZE];
 #define __diskbuf __paging
 extern volatile uint8_t _data;
@@ -103,6 +100,30 @@ typedef struct
   uint64_t    p_align;        /* Segment alignment */
 } Elf64_Phdr;
 
+typedef struct
+{
+  uint32_t    sh_name;        /* Section name (string tbl index) */
+  uint32_t    sh_type;        /* Section type */
+  uint64_t    sh_flags;       /* Section flags */
+  uint64_t    sh_addr;        /* Section virtual addr at execution */
+  uint64_t    sh_offset;      /* Section file offset */
+  uint64_t    sh_size;        /* Section size in bytes */
+  uint32_t    sh_link;        /* Link to another section */
+  uint32_t    sh_info;        /* Additional section information */
+  uint64_t    sh_addralign;   /* Section alignment */
+  uint64_t    sh_entsize;     /* Entry size if section holds table */
+} Elf64_Shdr;
+
+typedef struct
+{
+  uint32_t    st_name;        /* Symbol name (string tbl index) */
+  uint8_t     st_info;        /* Symbol type and binding */
+  uint8_t     st_other;       /* Symbol visibility */
+  uint16_t    st_shndx;       /* Section index */
+  uint64_t    st_value;       /* Symbol value */
+  uint64_t    st_size;        /* Symbol size */
+} Elf64_Sym;
+
 /*** PE32+ defines and structs ***/
 #define MZ_MAGIC                    0x5a4d      /* "MZ" */
 #define PE_MAGIC                    0x00004550  /* "PE\0\0" */
@@ -121,7 +142,7 @@ typedef struct {
   uint16_t sections;      /* number of sections */
   uint32_t timestamp;     /* time_t */
   uint32_t sym_table;     /* symbol table offset */
-  uint32_t symbols;       /* number of symbols */
+  uint32_t numsym;        /* number of symbols */
   uint16_t opt_hdr_size;  /* size of optional header */
   uint16_t flags;         /* flags */
   uint16_t file_type;     /* file type, PE32PLUS magic */
@@ -134,6 +155,15 @@ typedef struct {
   int32_t code_base;      /* relative code addr in ram */
 } pe_hdr;
 
+typedef struct {
+  uint32_t iszero;        /* if this is not zero, then iszero+nameoffs gives UTF-8 string */
+  uint32_t nameoffs;
+  int32_t value;          /* value of the symbol */
+  uint16_t section;       /* section it belongs to */
+  uint16_t type;          /* symbol type */
+  uint8_t storclass;      /* storage class */
+  uint8_t auxsyms;        /* number of pe_sym records following */
+} pe_sym;
 
 /*** Raspberry Pi specific defines ***/
 static uint64_t mmio_base;
@@ -316,7 +346,7 @@ int oct2bin(unsigned char *s, int n){ int r=0;while(n-->0){r<<=3;r+=*s++-'0';} r
 int hex2bin(unsigned char *s, int n){ int r=0;while(n-->0){r<<=4;
     if(*s>='0' && *s<='9')r+=*s-'0';else if(*s>='A'&&*s<='F')r+=*s-'A'+10;s++;} return r; }
 
-#if DEBUG
+#if BBDEBUG
 #define DBG(s) puts(s)
 #else
 #define DBG(s)
@@ -744,6 +774,11 @@ file_t env;         // environment file descriptor
 file_t initrd;      // initrd file descriptor
 file_t core;        // kernel file descriptor
 BOOTBOOT *bootboot; // the BOOTBOOT structure
+uint64_t mm_addr = BOOTBOOT_MMIO;   // virtual addresses
+uint64_t fb_addr = BOOTBOOT_FB;
+uint64_t bb_addr = BOOTBOOT_INFO;
+uint64_t env_addr= BOOTBOOT_ENV;
+uint64_t core_addr=BOOTBOOT_CORE;
 
 // default environment variables. M$ states that 1024x768 must be supported
 int reqwidth = 1024, reqheight = 768;
@@ -756,7 +791,6 @@ char *cfgname="sys/config";
 uint64_t entrypoint=0, bss=0, *paging, reg, pa;
 uint8_t bsp_done=0;
 
-#ifdef _FS_Z_H_
 /**
  * SHA-256
  */
@@ -903,7 +937,6 @@ int ReadLine(unsigned char *buf, int l)
     }
     return i;
 }
-#endif
 
 // get filesystem drivers for initrd
 #include "fs.h"
@@ -1054,6 +1087,27 @@ void putc(char c)
  */
 void puts(char *s) { while(*s) putc(*s++); }
 
+/**
+ * Add a mapping to paging tables
+ */
+int freep = 37;
+void MapPage(uint64_t virt, uint64_t phys)
+{
+    int i,j;
+    j = (virt>>(9+12)) & 0x1FF;
+    if(!paging[4*512 + j] || (paging[4*512 + j] & (2<<2))) {
+        if(freep == 50) return;
+        paging[4*512 + j]=(uint64_t)((uint8_t *)paging+freep*PAGESIZE)|0b11|(3<<8)|(1<<10);
+        freep++;
+    }
+    i = (paging[4*512 + j] - (uint64_t)((uint8_t *)paging)) >> 12;
+    j = (virt>>(12)) & 0x1FF;
+    paging[i*512 + j] = phys;
+}
+
+/**
+ * Parse FS0:\BOOTBOOT\CONFIG or /sys/config
+ */
 void ParseEnvironment(uint8_t *env)
 {
     uint8_t *end=env+PAGESIZE;
@@ -1107,7 +1161,7 @@ void ParseEnvironment(uint8_t *env)
 int bootboot_main(uint64_t hcl)
 {
     uint8_t *pe,bkp=0;
-    uint32_t np,sp,r,mp;
+    uint32_t np,sp,r,mp,j;
     efipart_t *part;
     volatile bpb_t *bpb;
     MMapEnt *mmap;
@@ -1172,7 +1226,7 @@ int bootboot_main(uint64_t hcl)
     bootboot = (BOOTBOOT*)&__bootboot;
     memset(bootboot,0,PAGESIZE);
     memcpy((void*)&bootboot->magic,BOOTBOOT_MAGIC,4);
-    bootboot->protocol = PROTOCOL_STATIC | LOADER_RPI;
+    bootboot->protocol = PROTOCOL_DYNAMIC | LOADER_RPI;
     bootboot->size = 128;
     bootboot->numcores = 4;
     bootboot->arch.aarch64.mmio_ptr = mmio_base;
@@ -1490,14 +1544,52 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                     }
                     phdr=(Elf64_Phdr *)((uint8_t *)phdr+ehdr->e_phentsize);
                 }
+                if(ehdr->e_shoff > 0) {
+                    Elf64_Shdr *shdr=(Elf64_Shdr *)((uint8_t *)ehdr + ehdr->e_shoff), *sym_sh = NULL, *str_sh = NULL;
+                    Elf64_Shdr *strt=(Elf64_Shdr *)((uint8_t *)shdr+(uint64_t)ehdr->e_shstrndx*(uint64_t)ehdr->e_shentsize);
+                    Elf64_Sym *sym = NULL, *s;
+                    char *strtable = (char *)ehdr + strt->sh_offset;
+                    uint32_t strsz = 0, syment = 0, i;
+                    for(i = 0; i < ehdr->e_shnum; i++){
+                        /* checking shdr->sh_type is not enough, there can be multiple SHT_STRTAB records... */
+                        if(!memcmp(strtable + shdr->sh_name, ".symtab", 8)) sym_sh = shdr;
+                        if(!memcmp(strtable + shdr->sh_name, ".strtab", 8)) str_sh = shdr;
+                        shdr = (Elf64_Shdr *)((uint8_t *)shdr + ehdr->e_shentsize);
+                    }
+                    if(str_sh && sym_sh) {
+                        strtable = (char *)ehdr + str_sh->sh_offset; strsz = str_sh->sh_size;
+                        sym = (Elf64_Sym *)((uint8_t*)ehdr + sym_sh->sh_offset); syment = sym_sh->sh_entsize;
+                        if(str_sh->sh_offset && strsz > 0 && sym_sh->sh_offset && syment > 0)
+                            for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
+                                if(!memcmp(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "mmio", 4)) mm_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
+                            }
+                    }
+                }
         } else
         if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && ((mz_hdr*)(core.ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
             pehdr->machine == IMAGE_FILE_MACHINE_ARM64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS &&
-            (int64_t)pehdr->code_base>>48==0xffff) {
+            (pehdr->code_base & 0xC0000000)) {
                 DBG(" * Parsing PE32+\n");
                 core.size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
                 bss = pehdr->bss_size;
                 entrypoint = (int64_t)pehdr->entry_point;
+                if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
+                    pe_sym *s;
+                    char *strtable = (char *)pehdr + pehdr->sym_table + pehdr->numsym * 18 + 4, *name;
+                    uint32_t i;
+                    for(i = 0; i < pehdr->numsym; i++) {
+                        s = (pe_sym*)((uint8_t *)pehdr + pehdr->sym_table + i * 18);
+                        name = !s->iszero ? (char*)&s->iszero : strtable + s->nameoffs;
+                        if(!memcmp(name, "bootboot", 9)) bb_addr = (int64_t)s->value;
+                        if(!memcmp(name, "environment", 12)) env_addr = (int64_t)s->value;
+                        if(!memcmp(name, "mmio", 4)) mm_addr = (int64_t)s->value;
+                        if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)s->value;
+                        i += s->auxsyms;
+                    }
+                }
         }
     }
 #if EXEC_DEBUG
@@ -1508,8 +1600,14 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
     uart_putc('\n');
     uart_dump((void*)core.ptr,4);
 #endif
-    if(core.size<2 || entrypoint==0) {
-        puts("BOOTBOOT-PANIC: Kernel is not a valid executable\n");
+    if(core.ptr==NULL || core.size<2 || entrypoint==0 || (core_addr&(PAGESIZE-1)) || (bb_addr>>30)!=0x3FFFFFFFF ||
+        (bb_addr & (PAGESIZE-1)) || (env_addr>>30)!=0x3FFFFFFFF || (env_addr&(PAGESIZE-1)) || (fb_addr>>30)!=0x3FFFFFFFF ||
+        (fb_addr&(1024*1024*2-1))) {
+            puts("BOOTBOOT-PANIC: Kernel is not a valid executable\n");
+            goto error;
+    }
+    if(core.size+bss > 16*1024*1024) {
+        puts("BOOTBOOT-PANIC: Kernel is too big");
         goto error;
     }
     // create core segment
@@ -1606,19 +1704,19 @@ viderr:
             puts("BOOTBOOT-PANIC: VideoCore error, no framebuffer\n");
             goto error;
         }
-        /* clear the screen */
-        int offs = 0, line;
-        for(ky=0;ky<bootboot->fb_height;ky++) {
-            line=offs;
-            for(kx=0;kx<bootboot->fb_width;kx+=2,line+=8)
-                *((uint64_t*)((uint64_t)bootboot->fb_ptr + line))=0;
-            offs+=bootboot->fb_scanline;
-        }
+    }
+    /* clear the screen */
+    for(j=ky=0;ky<bootboot->fb_height;ky++) {
+        r=j;
+        for(kx=0;kx<bootboot->fb_width;kx+=2,r+=8)
+            *((uint64_t*)((uint64_t)bootboot->fb_ptr + r))=0;
+        j+=bootboot->fb_scanline;
     }
     kx=ky=0; color=0xFFDD33;
 
     /* create MMU translation tables in __paging */
     paging=(uint64_t*)&__paging;
+    memset(paging, 0, 50*PAGESIZE);
     // TTBR0, identity L1
     paging[0]=(uint64_t)((uint8_t*)&__paging+2*PAGESIZE)|0b11|(3<<8)|(1<<10); //AF=1,Block=1,Present=1, SH=3 ISH, RO
     // identity L2
@@ -1635,24 +1733,28 @@ viderr:
     paging[512+511]=(uint64_t)((uint8_t*)&__paging+4*PAGESIZE)|0b11|(3<<8)|(1<<10); //AF=1,Block=1,Present=1
     // core L2
     // map MMIO in kernel space
-    for(r=0;r<32;r++)
-        paging[4*512+448+r]=(uint64_t)(mmio_base+((uint64_t)r<<21))|0b01|(2<<8)|(1<<10)|(1<<2)|(1L<<54); //OSH, Attr=1, NX
+    j = (mm_addr>>(9+12)) & 0x1FF;
+    for(r=0;j+r < 511 && r<32;r++)
+        paging[4*512+j+r]=(uint64_t)(mmio_base+((uint64_t)r<<21))|0b01|(2<<8)|(1<<10)|(1<<2)|(1L<<54); //OSH, Attr=1, NX
     // map framebuffer
-    for(r=0;r<16;r++)
-        paging[4*512+480+r]=(uint64_t)((uint8_t*)&__paging+(6+r)*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //OSH, Attr=2
-    paging[4*512+511]=(uint64_t)((uint8_t*)&__paging+5*PAGESIZE)|0b11|(3<<8)|(1<<10);// pointer to core L3
+    j = (fb_addr>>(9+12)) & 0x1FF;
+    for(r=0;j+r < 511 && r<31;r++)
+        paging[4*512+j+r]=(uint64_t)((uint8_t*)&__paging+(5+r)*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //OSH, Attr=2
+    paging[4*512+511]=(uint64_t)((uint8_t*)&__paging+36*PAGESIZE)|0b11|(3<<8)|(1<<10);// pointer to core L3
+    j = (fb_addr>>(12)) & 0x1FF;
+    for(r=0;r<31*512;r++)
+        paging[5*512+j+r]=(uint64_t)((uint8_t*)bootboot->fb_ptr+r*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //map framebuffer
     // core L3
-    paging[5*512+0]=(uint64_t)((uint8_t*)&__bootboot)|0b11|(3<<8)|(1<<10)|(1L<<54);  // p, b, AF, ISH
-    paging[5*512+1]=(uint64_t)((uint8_t*)&__environment)|0b11|(3<<8)|(1<<10)|(1L<<54);
+    // dynamically map these. Main struct, environment string and code segment
     for(r=0;r<(core.size/PAGESIZE);r++)
-        paging[5*512+2+r]=(uint64_t)((uint8_t *)core.ptr+(uint64_t)r*PAGESIZE)|0b11|(3<<8)|(1<<10);
+        MapPage(core_addr+r*PAGESIZE,(uint64_t)((uint8_t *)core.ptr+(uint64_t)r*PAGESIZE)|0b11|(3<<8)|(1<<10));
+    MapPage(bb_addr,(uint64_t)((uint8_t*)&__bootboot)|0b11|(3<<8)|(1<<10)|(1L<<54));  // p, b, AF, ISH
+    MapPage(env_addr,(uint64_t)((uint8_t*)&__environment)|0b11|(3<<8)|(1<<10)|(1L<<54));
+    // stack at the top of the memory
+    paging[36*512+511]=(uint64_t)((uint8_t*)&__corestack)|0b11|(3<<8)|(1<<10)|(1L<<54); // core stacks (1k each)
 #if MEM_DEBUG
     reg=r;
 #endif
-    paging[5*512+511]=(uint64_t)((uint8_t*)&__corestack)|0b11|(3<<8)|(1<<10)|(1L<<54); // core stacks (1k each)
-    // core L3 (lfb)
-    for(r=0;r<16*512;r++)
-        paging[6*512+r]=(uint64_t)((uint8_t*)bootboot->fb_ptr+r*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); // map framebuffer
 
 #if MEM_DEBUG
     /* dump page translation tables */
@@ -1697,7 +1799,19 @@ viderr:
     for(r=508;r<512;r++) { uart_hex(paging[5*512+r],8); uart_putc(' '); }
     uart_puts("\n\n");
 #endif
-#if DEBUG
+#if BBDEBUG
+    uart_puts(" * mmio        ");
+    uart_hex(mm_addr,8);
+    uart_putc('\n');
+    uart_puts(" * fb          ");
+    uart_hex(fb_addr,8);
+    uart_putc('\n');
+    uart_puts(" * bootboot    ");
+    uart_hex(bb_addr,8);
+    uart_putc('\n');
+    uart_puts(" * environment ");
+    uart_hex(env_addr,8);
+    uart_putc('\n');
     uart_puts(" * Entry point ");
     uart_hex(entrypoint,8);
     uart_putc('\n');

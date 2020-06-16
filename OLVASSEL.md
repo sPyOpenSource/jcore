@@ -5,19 +5,19 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 
 1. *x86_64-efi* a preferált indítási mód x86_64-en.
     Szabvány GNU eszköztár plusz néhány fájl a gnuefi-ből (mellékelve).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (94k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (94k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (95k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (96k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), bővítő ROM és Linux boot kompatíbilis, RÉGI betöltő.
     Ha újra akarod fordítani, szükséged lesz a fasm-ra (nincs mellékelve).
     [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bájt, egyszerre MBR, VBR és CDROM indító szektor), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (11k, a boot.bin tölti be, valamint BBS bővítő ROM és Multiboot kompatíbilis is)
 
 3. *aarch64-rpi* ARMv8 betöltő Raspberry Pi 3-hoz, 4-hez
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (32k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (34k)
 
 4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) C-ben írva, ami vonalakat húz meg színes dobozokat rajzol
 
-Vedd figyelembe, hogy a referencia implementációk nem támogatják a teljes 2-es protokollt (kivéve az UEFI változatot),
-csak statikus memórialeképezéseket kezelnek, ami az 1-es protokoll szintnek felel meg.
+Vedd figyelembe, hogy nem minden referencia implementáció támogatja a teljes 2-es protokollt, az x86_64-bios csak statikus
+memórialeképezéseket kezel, ami az 1-es protokoll szintnek felel meg.
 
 Gyors kipróbáláshoz találsz bootolható képfájlokat az [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában.
 
@@ -47,6 +47,12 @@ kernel lenne. Ráadásul mindehhez a saját fájl rendszeredet is használhatod.
 Megjegyzés: a BOOTBOOT nem egy boot menedzser, hanem egy boot protokoll. Ha interaktív indítómenüt szeretnél, akkor
 azt a BOOTBOOT kompatíbilis betöltő *elé* kell integrálnod. Például a GRUB lánctöltheti a boot.bin-t (vagy Multiboot
 "kernel"-ként a bootboot.bin-t és modulként a memórialemezt) vagy a bootboot.efi hozzáadható az UEFI Boot menedzser menüjéhez.
+
+Támogasd a fejlesztést adománnyal
+---------------------------------
+
+Ha tetszik, vagy hasznosnak találod, szívesen fogadok akármekkora adományt:<br>
+<a href="bitcoin:3G9vcV91S19fHMoBcmSksUpaxGPR5MUGCk"><img src="https://gitlab.com/bztsrc/bootboot/raw/master/donate.png"><br>BTC 3G9vcV91S19fHMoBcmSksUpaxGPR5MUGCk</a>
 
 Licensz
 -------
@@ -123,7 +129,7 @@ Betöltés menete
 ---------------
 
 1. a förmver megkeresi a betöltőt, betölti és elindítja.
-2. a betöltő inicializálja a hardvert (64 bites mód, képernyőfelbontás, memória térkép stb.)
+2. a betöltő inicializálja a hardvert (64 bites többmagos mód, képernyőfelbontás, memória térkép stb.)
 3. aztán betölti a környezeti fájlt és az initrd-t (valószínűleg a boot partícióról vagy ROM-ból).
 4. sorra meghívja a fájl rendszer meghajtókat, hogy betöltse a kernelt az initrd-ről.
 5. ha egyik meghajtó sem járt szerencsével, akkor megkeresi az első futtathatót az initrd-ben.
@@ -152,12 +158,12 @@ a 2-es szintű betöltők a futtatható által definiált szimbólumokat haszná
 
 A RAM (egészen 16G-ig) egy-az-egyben le van képezve a pozitív címtartományban. A soros vonali konzol 115200 baudra,
 8 adatbittel, paritás nélkül és 1 stopbitre van felkonfigurálva. Megszakítások le vannak tiltva, a kód pedig felügyeleti
-szinten (0-ás gyűrű / EL1) fut.
+szinten (0-ás gyűrűn / EL1-n) fut.
 
-A képernyű megfelelő felbontásra van állítva 32 bites picelekkel, az `fb` szimbólum által jelölt, negatív címre leképezve.
+A képernyű megfelelő felbontásra van állítva 32 bites pixelekkel, az `fb` szimbólum által jelölt, negatív címre leképezve.
 Az 1-es szintű betöltők korlátozzák a képernyő méretét valahol 4096 x 4096 pixelnél (függ a szkensortól és a képaránytól is).
 Ez több, mint elég az [Ultra HD 4K](https://en.wikipedia.org/wiki/4K_resolution) (3840 x 2160) felbontáshoz. A 2-es szintű
-betöltők akárhoz képesek kezelni az fb szimbólumot, ezért rájuk nem vonatkozik ez a megszorítás.
+betöltők akárhova képesek leképezni az fb szimbólumot -1G és -2M között, ezért rájuk nem vonatkozik ez a megszorítás.
 
 A fő információs [bootboot struktúra](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h) a `bootboot` szimbólumra
 van leképezve. Ez áll egy fix 128 bájtos fejlécből, amit egy változó hosszúságú, de fix méretű rekordok követnek. Az initrd
@@ -165,12 +171,13 @@ van leképezve. Ez áll egy fix 128 bájtos fejlécből, amit egy változó hoss
 *initrd_size* mezői mutatnak rá. A framebuffer fizikai címe az *fb_ptr* mezőben található. Az *indulási rendszer idő* és
 a platform független *memóriatérkép* szintén itt található.
 
-A konfigurációs sztring (vagy parancssor, ha úgy tetszik) az `environment` szimbólumra van leképezve.
+A konfigurációs sztring (vagy parancssor, "command line" ha úgy tetszik) az `environment` szimbólumra van leképezve.
 
 A kernel kód szegmense az ELF fejléc `p_vaddr` vagy a PE fejléc `code_base` mezői alapján kerülnek leképezésre (csak 2-es
 szint). Az 1-es szintű betöltők mindig -2M-re töltik a kernelt, ezzel limitálva a teljes méretét 2M-re, beleértve a
-konfigurációt, adatot, inicializálatlan adatterületet és a vermet. Ennek több, mint elégnek kell lennie bármilyen mikrokernel
-számára. Az inicialiyálatlan adatterület a text szegmens után jön, felfelé növekszik, és a betöltő kinullázza.
+konfigurációt, adatot, inicializálatlan adatterületet és a vermet. A 2. szint limitje 16M az adat, kód és bss szegmensre.
+Ennek több, mint elégnek kell lennie bármilyen mikrokernel számára. Az inicializálatlan adatterület a text szegmens után jön,
+felfelé növekszik, és a betöltő kinullázza.
 
 A társprocesszor (lebegőpontos számtás) be van kapcsolva, és ha a Szimmetrikus Többmagos Feldolgozás (SMP) támogatott, akkor
 minden CPU mag ugyanazt a kernel kódot hajtja végre egyszerre.
@@ -411,7 +418,14 @@ BOOTBOOT-PANIC: Kernel is not a valid executable
 A megadott kernel fájlt megtalálta ugyan az initrd-n valamelyik fájl rendszer meghajtó, de az nem ELF64 se PE32+ formátumú,
 vagy nem az adott architáktúrára van fordítva, vagy nincs benne betölthető szegmens definíció a negatív címtartományban
 megadva (lásd linker szkript). Ezt a hibát a 2-es szintű betöltők is kiírhatják, ha az `mmio`, `fb`, `bootboot` vagy
-`environment` szimbólumok címei nincsenek a negatív címtartományban.
+`environment` szimbólumok címei nincsenek a negatív címtartományban (-1G és 0 között), vagy nincsenek lapcímhatárra igazítva.
+Az x86_64-en az fb szimbólumnak, míg AArch64-on az mmio szimbólumnak 2M igazítottnak is kell lennie.
+
+```
+BOOTBOOT-PANIC: Kernel is too big
+```
+
+A kernel nagyobb, 16 megabájt.
 
 ```
 BOOTBOOT-PANIC: GOP failed, no framebuffer
@@ -428,14 +442,16 @@ BOOTBOOT-PANIC: Unsupported cipher
 ```
 
 Ezt akkor írja ki, ha az initrd olyan titkosítást használ, amit a betöltő nem ismer. Megoldás: újra kell generálni az
-initrd-t SHA-XOR-CBC-vel, amit minden betöltő implementációnak támogatnia kell (megjegyzés: a titikosítás csak FS/Z
-esetén támogatott).
+initrd-t SHA-XOR-CBC-vel, amit minden betöltő implementációnak támogatnia kell (megjegyzés: a titkosítás csak FS/Z
+lemezkép esetén támogatott).
 
 Ez minden, remélem hasznososnak találod!
 
 Hozzájárulások
 --------------
 
-Szeretnék külön köszönetet mondani [Valentin Anger](https://gitlab.com/SyrupThinker)-nek, amiért alaposan letesztelte a
-kódot számtalan igazi vason is.
+Szeretnék külön köszönetet mondani [Valentin Anger](https://gitlab.com/SyrupThinker)nek, amiért alaposan letesztelte a
+kódot számtalan igazi vason is. Továbbá [Vinay Chandrá](https://gitlab.com/vinaychandra)nak, amiért addig nem hagyott
+békén, míg a 2. szintű protokoll be nem került a refenrencia implementációkba, és amiért tesztelte és kiegészítette
+Rust minta kernellel a projektet.
 
