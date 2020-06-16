@@ -96,6 +96,8 @@ tinflate: Joergen Ibsen
 
 raspbootcom: (GPL) Goswin von Brederlow
 
+mykernel-rust: Vinay Chandra
+
 BOOTBOOT, FS/Z: bzt
 
 Glossary
