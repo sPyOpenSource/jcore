@@ -422,13 +422,14 @@ The file that was specified as kernel could be loaded by fs drivers, but it's no
 does not match the architecture, or does not have any program header with a loadable segment (p_vaddr or core_base)
 in the negative range (see linker script). This error is also shown by level 2 loaders if the address of `mmio`, `fb`,
 `bootboot` and `environment` symbols are not in the negative range (-1G to 0) or if they are not page aligned.
-On x86_64 the fb symbol, and for AArch64 the mmio symbol must be 2M aligned too.
+On x86_64 the fb symbol, and for AArch64 the mmio symbol must be 2M aligned too. Use [mkimg check](https://gitlab.com/bztsrc/bootboot/tree/master/images)
+to find out what the problem is.
 
 ```
 BOOTBOOT-PANIC: Kernel is too big
 ```
 
-The kernel is bigger than 16 megabytes.
+The kernel is bigger than 16 megabytes. For level 1 loaders the limit is somewhere below 2M.
 
 ```
 BOOTBOOT-PANIC: GOP failed, no framebuffer

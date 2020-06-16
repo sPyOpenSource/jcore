@@ -375,7 +375,7 @@ AArch64-en azt jelenti, hogy az MMU nem kezeli a 4k-s lapméretet vagy legalább
 BOOTBOOT-PANIC: Unable to initialize SDHC card
 ```
 
-A betöltő nem tudta inicializálni az EMMC-t SD kártya olvasáshoz, valószínáleg hardver hiba vagy régi kártya.
+A betöltő nem tudta inicializálni az EMMC-t SD kártya olvasáshoz, valószínűleg hardver hiba vagy régi kártya.
 
 ```
 BOOTBOOT-PANIC: No GPT found
@@ -421,13 +421,14 @@ A megadott kernel fájlt megtalálta ugyan az initrd-n valamelyik fájl rendszer
 vagy nem az adott architáktúrára van fordítva, vagy nincs benne betölthető szegmens definíció a negatív címtartományban
 megadva (lásd linker szkript). Ezt a hibát a 2-es szintű betöltők is kiírhatják, ha az `mmio`, `fb`, `bootboot` vagy
 `environment` szimbólumok címei nincsenek a negatív címtartományban (-1G és 0 között), vagy nincsenek lapcímhatárra igazítva.
-Az x86_64-en az fb szimbólumnak, míg AArch64-on az mmio szimbólumnak 2M igazítottnak is kell lennie.
+Az x86_64-en az fb szimbólumnak, míg AArch64-on az mmio szimbólumnak 2M igazítottnak is kell lennie. A [mkimg check](https://gitlab.com/bztsrc/bootboot/tree/master/images)
+megmondja, mi az ok.
 
 ```
 BOOTBOOT-PANIC: Kernel is too big
 ```
 
-A kernel nagyobb, 16 megabájt.
+A kernel nagyobb, 16 megabájt. 1. szintű beltöltőknél a limit valamivel kevesebb, mint 2M.
 
 ```
 BOOTBOOT-PANIC: GOP failed, no framebuffer

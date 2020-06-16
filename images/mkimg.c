@@ -53,6 +53,7 @@ unsigned char* readfileall(char *file)
     unsigned char *data=NULL;
     FILE *f;
     read_size=0;
+    if(!file || !*file) return NULL;
     f=fopen(file,"r");
     if(f){
         fseek(f,0L,SEEK_END);
@@ -573,23 +574,274 @@ int createdisk(int disksize, char *diskname)
     return 1;
 }
 
+/*** ELF64 defines and structs ***/
+#define ELFMAG      "\177ELF"
+#define SELFMAG     4
+#define EI_CLASS    4       /* File class byte index */
+#define ELFCLASS64  2       /* 64-bit objects */
+#define EI_DATA     5       /* Data encoding byte index */
+#define ELFDATA2LSB 1       /* 2's complement, little endian */
+#define PT_LOAD     1       /* Loadable program segment */
+#define EM_X86_64   62      /* AMD x86-64 architecture */
+#define EM_AARCH64  183     /* ARM aarch64 architecture */
+
+typedef struct
+{
+  unsigned char e_ident[16];/* Magic number and other info */
+  uint16_t    e_type;         /* Object file type */
+  uint16_t    e_machine;      /* Architecture */
+  uint32_t    e_version;      /* Object file version */
+  uint64_t    e_entry;        /* Entry point virtual address */
+  uint64_t    e_phoff;        /* Program header table file offset */
+  uint64_t    e_shoff;        /* Section header table file offset */
+  uint32_t    e_flags;        /* Processor-specific flags */
+  uint16_t    e_ehsize;       /* ELF header size in bytes */
+  uint16_t    e_phentsize;    /* Program header table entry size */
+  uint16_t    e_phnum;        /* Program header table entry count */
+  uint16_t    e_shentsize;    /* Section header table entry size */
+  uint16_t    e_shnum;        /* Section header table entry count */
+  uint16_t    e_shstrndx;     /* Section header string table index */
+} Elf64_Ehdr;
+
+typedef struct
+{
+  uint32_t    p_type;         /* Segment type */
+  uint32_t    p_flags;        /* Segment flags */
+  uint64_t    p_offset;       /* Segment file offset */
+  uint64_t    p_vaddr;        /* Segment virtual address */
+  uint64_t    p_paddr;        /* Segment physical address */
+  uint64_t    p_filesz;       /* Segment size in file */
+  uint64_t    p_memsz;        /* Segment size in memory */
+  uint64_t    p_align;        /* Segment alignment */
+} Elf64_Phdr;
+
+typedef struct
+{
+  uint32_t    sh_name;        /* Section name (string tbl index) */
+  uint32_t    sh_type;        /* Section type */
+  uint64_t    sh_flags;       /* Section flags */
+  uint64_t    sh_addr;        /* Section virtual addr at execution */
+  uint64_t    sh_offset;      /* Section file offset */
+  uint64_t    sh_size;        /* Section size in bytes */
+  uint32_t    sh_link;        /* Link to another section */
+  uint32_t    sh_info;        /* Additional section information */
+  uint64_t    sh_addralign;   /* Section alignment */
+  uint64_t    sh_entsize;     /* Entry size if section holds table */
+} Elf64_Shdr;
+
+typedef struct
+{
+  uint32_t    st_name;        /* Symbol name (string tbl index) */
+  uint8_t     st_info;        /* Symbol type and binding */
+  uint8_t     st_other;       /* Symbol visibility */
+  uint16_t    st_shndx;       /* Section index */
+  uint64_t    st_value;       /* Symbol value */
+  uint64_t    st_size;        /* Symbol size */
+} Elf64_Sym;
+
+/*** PE32+ defines and structs ***/
+#define MZ_MAGIC                    0x5a4d      /* "MZ" */
+#define PE_MAGIC                    0x00004550  /* "PE\0\0" */
+#define IMAGE_FILE_MACHINE_AMD64    0x8664      /* AMD x86_64 architecture */
+#define IMAGE_FILE_MACHINE_ARM64    0xaa64      /* ARM aarch64 architecture */
+#define PE_OPT_MAGIC_PE32PLUS       0x020b      /* PE32+ format */
+typedef struct
+{
+  uint16_t magic;         /* MZ magic */
+  uint16_t reserved[29];  /* reserved */
+  uint32_t peaddr;        /* address of pe header */
+} mz_hdr;
+
+typedef struct {
+  uint32_t magic;         /* PE magic */
+  uint16_t machine;       /* machine type */
+  uint16_t sections;      /* number of sections */
+  uint32_t timestamp;     /* time_t */
+  uint32_t sym_table;     /* symbol table offset */
+  uint32_t numsym;        /* number of symbols */
+  uint16_t opt_hdr_size;  /* size of optional header */
+  uint16_t flags;         /* flags */
+  uint16_t file_type;     /* file type, PE32PLUS magic */
+  uint8_t  ld_major;      /* linker major version */
+  uint8_t  ld_minor;      /* linker minor version */
+  uint32_t text_size;     /* size of text section(s) */
+  uint32_t data_size;     /* size of data section(s) */
+  uint32_t bss_size;      /* size of bss section(s) */
+  int32_t entry_point;    /* file offset of entry point */
+  int32_t code_base;      /* relative code addr in ram */
+} pe_hdr;
+
+typedef struct {
+  uint32_t iszero;        /* if this is not zero, then iszero+nameoffs gives UTF-8 string */
+  uint32_t nameoffs;
+  int32_t value;          /* value of the symbol */
+  uint16_t section;       /* section it belongs to */
+  uint16_t type;          /* symbol type */
+  uint8_t storclass;      /* storage class */
+  uint8_t auxsyms;        /* number of pe_sym records following */
+} pe_sym;
+
+/**
+ * Check if kernel is conforming with BOOTBOOT
+ */
+void checkkernel(char *fn)
+{
+    unsigned char *data = readfileall(fn);
+    Elf64_Ehdr *ehdr=(Elf64_Ehdr *)(data);
+    Elf64_Phdr *phdr;
+    Elf64_Shdr *shdr, *strt, *sym_sh = NULL, *str_sh = NULL;
+    Elf64_Sym *sym = NULL, *s;
+    pe_hdr *pehdr;
+    pe_sym *ps;
+    uint32_t i, n = 0, bss = 0, strsz = 0, syment = 0, ma, fa;
+    uint64_t core_ptr = 0, core_size = 0, core_addr = 0, entrypoint = 0, mm_addr = 0, fb_addr = 0, bb_addr = 0, env_addr = 0;
+    char *strtable, *name;
+    if(!data) {
+        fprintf(stderr,"mkimg: unable to read %s\n",fn);
+        exit(1);
+    }
+    pehdr=(pe_hdr*)(data + ((mz_hdr*)(data))->peaddr);
+    printf("File format: ");
+    if((!memcmp(ehdr->e_ident,ELFMAG,SELFMAG)||!memcmp(ehdr->e_ident,"OS/Z",4)) &&
+        ehdr->e_ident[EI_CLASS]==ELFCLASS64 && ehdr->e_ident[EI_DATA]==ELFDATA2LSB) {
+        printf("ELF64\nArchitecture: %s\n", ehdr->e_machine==EM_AARCH64 ? "AArch64" : (ehdr->e_machine==EM_X86_64 ?
+            "x86_64" : "invalid"));
+        if(ehdr->e_machine != EM_AARCH64 && ehdr->e_machine != EM_X86_64) return;
+        if(ehdr->e_machine == EM_AARCH64) { ma = 2*1024*1024-1; fa = 4095; } else { ma = 4095; fa = 2*1024*1024-1; }
+        phdr=(Elf64_Phdr *)((uint8_t *)ehdr+ehdr->e_phoff);
+        for(i=0;i<ehdr->e_phnum;i++){
+            if(phdr->p_type==PT_LOAD) {
+                n++;
+                core_ptr = phdr->p_offset;
+                core_size = phdr->p_filesz + (ehdr->e_type==3?0x4000:0);
+                bss = phdr->p_memsz - core_size;
+                core_addr = phdr->p_vaddr;
+                entrypoint = ehdr->e_entry;
+                break;
+            }
+            phdr=(Elf64_Phdr *)((uint8_t *)phdr+ehdr->e_phentsize);
+        }
+        printf("Load segment: %08lx size %ldK offs %lx ", core_addr, (core_size + bss + 1024)/1024, core_ptr);
+        if(n != 1) { printf("more than one load segment\n"); return; }
+        if((core_addr >> 30) != 0x3FFFFFFFF) { printf("not in the higher half top -1G\n"); return; }
+        if(core_addr & 4095) { printf("not page aligned\n"); return; }
+        if(core_size + bss > 16 * 1024 * 1024) { printf("bigger than 16M\n"); return; }
+        printf("OK\nEntry point:  %08lx ", entrypoint);
+        if(entrypoint < core_addr || entrypoint > core_addr+core_size) { printf("not in text segment\n"); return; }
+        printf("OK\n");
+        if(ehdr->e_shoff > 0) {
+            shdr = (Elf64_Shdr *)((uint8_t *)ehdr + ehdr->e_shoff);
+            strt = (Elf64_Shdr *)((uint8_t *)shdr+(uint64_t)ehdr->e_shstrndx*(uint64_t)ehdr->e_shentsize);
+            strtable = (char *)ehdr + strt->sh_offset;
+            for(i = 0; i < ehdr->e_shnum; i++){
+                /* checking shdr->sh_type is not enough, there can be multiple SHT_STRTAB records... */
+                if(!memcmp(strtable + shdr->sh_name, ".symtab", 8)) sym_sh = shdr;
+                if(!memcmp(strtable + shdr->sh_name, ".strtab", 8)) str_sh = shdr;
+                shdr = (Elf64_Shdr *)((uint8_t *)shdr + ehdr->e_shentsize);
+            }
+            if(str_sh && sym_sh) {
+                strtable = (char *)ehdr + str_sh->sh_offset; strsz = str_sh->sh_size;
+                sym = (Elf64_Sym *)((uint8_t*)ehdr + sym_sh->sh_offset); syment = sym_sh->sh_entsize;
+                if(str_sh->sh_offset && strsz > 0 && sym_sh->sh_offset && syment > 0)
+                    for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
+                        if(!memcmp(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
+                        if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
+                        if(!memcmp(strtable + s->st_name, "mmio", 4)) mm_addr = s->st_value;
+                        if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
+                    }
+            } else printf("No symbols found\n");
+        } else printf("No section table found\n");
+    } else
+    if(((mz_hdr*)(data))->magic==MZ_MAGIC && ((mz_hdr*)(data))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
+        pehdr->file_type == PE_OPT_MAGIC_PE32PLUS) {
+        printf("PE32+\nArchitecture: %s\n", pehdr->machine == IMAGE_FILE_MACHINE_ARM64 ? "AArch64" : (
+            pehdr->machine == IMAGE_FILE_MACHINE_AMD64 ? "x86_64" : "invalid"));
+        if(pehdr->machine != IMAGE_FILE_MACHINE_ARM64 && pehdr->machine != IMAGE_FILE_MACHINE_AMD64) return;
+        if(pehdr->machine == IMAGE_FILE_MACHINE_ARM64) { ma = 2*1024*1024-1; fa = 4095; } else { ma = 4095; fa = 2*1024*1024-1; }
+        core_size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
+        bss = pehdr->bss_size;
+        core_addr = (int64_t)pehdr->code_base;
+        entrypoint = (int64_t)pehdr->entry_point;
+        printf("Load segment: %08lx size %ldK offs %lx ", core_addr, (core_size + bss + 1024)/1024, core_ptr);
+        if((core_addr >> 30) != 0x3FFFFFFFF) { printf("not in the higher half top -1G\n"); return; }
+        if(core_addr & 4095) { printf("not page aligned\n"); return; }
+        if(core_size + bss > 16 * 1024 * 1024) { printf("bigger than 16M\n"); return; }
+        printf("OK\nEntry point:  %08lx ", entrypoint);
+        if(entrypoint < core_addr || entrypoint > core_addr+pehdr->text_size) { printf("not in text segment\n"); return; }
+        printf("OK\n");
+        if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
+            strtable = (char *)pehdr + pehdr->sym_table + pehdr->numsym * 18 + 4;
+            for(i = 0; i < pehdr->numsym; i++) {
+                ps = (pe_sym*)((uint8_t *)pehdr + pehdr->sym_table + i * 18);
+                name = !ps->iszero ? (char*)&ps->iszero : strtable + ps->nameoffs;
+                if(!memcmp(name, "bootboot", 9)) bb_addr = (int64_t)ps->value;
+                if(!memcmp(name, "environment", 12)) env_addr = (int64_t)ps->value;
+                if(!memcmp(name, "mmio", 4)) mm_addr = (int64_t)ps->value;
+                if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)ps->value;
+                i += ps->auxsyms;
+            }
+        } else printf("No symbols found\n");
+    } else {
+        printf("invalid\n");
+        return;
+    }
+    if(!mm_addr && !fb_addr && !bb_addr && !env_addr) {
+        printf("\nComplies with BOOTBOOT Protocol Level 1, must use valid static addresses\n");
+        return;
+    }
+    if(mm_addr) {
+        printf("mmio:         %08lx ", mm_addr);
+        if((mm_addr >> 30) != 0x3FFFFFFFF) { printf("not in the higher half top -1G\n"); return; }
+        if(mm_addr & ma) { printf("not properly aligned\n"); return; }
+        printf("OK\n");
+    }
+    if(fb_addr) {
+        printf("fb:           %08lx ", fb_addr);
+        if((fb_addr >> 30) != 0x3FFFFFFFF) { printf("not in the higher half top -1G\n"); return; }
+        if(fb_addr & fa) { printf("not properly aligned\n"); return; }
+        printf("OK\n");
+    }
+    if(bb_addr) {
+        printf("bootboot:     %08lx ", bb_addr);
+        if((bb_addr >> 30) != 0x3FFFFFFFF) { printf("not in the higher half top -1G\n"); return; }
+        if(bb_addr & 4095) { printf("not page aligned\n"); return; }
+        printf("OK\n");
+    }
+    if(env_addr) {
+        printf("environment:  %08lx ", env_addr);
+        if((env_addr >> 30) != 0x3FFFFFFFF) { printf("not in the higher half top -1G\n"); return; }
+        if(env_addr & 4095) { printf("not page aligned\n"); return; }
+        printf("OK\n");
+    }
+    printf("\nComplies with BOOTBOOT Protocol Level %s2, valid dynamic addresses\n",
+        (!mm_addr || mm_addr == 0xfffffffff8000000) && (!fb_addr || fb_addr == 0xfffffffffc000000) &&
+        (!bb_addr || bb_addr == 0xffffffffffe00000) && (!env_addr || env_addr == 0xffffffffffe01000) &&
+        core_addr == 0xffffffffffe02000 && core_size + bss < 2*1024*1024 - 256*1024 - 2*4096 ? "1 and " : "");
+}
+
 /**
  * Main entry point
  */
 int main(int argc, char **argv)
 {
-    if(argc < 2 || argv[1]==NULL || !strcmp(argv[1],"help") || (strcmp(argv[1], "rom") && argc < 4)) {
+    if(argc < 2 || argv[1]==NULL || !strcmp(argv[1],"help") || (strcmp(argv[1], "rom") && strcmp(argv[1], "check") && argc < 4) ||
+        (!strcmp(argv[1], "check") && argc < 3)) {
         printf( "BOOTBOOT mkimg utility - bztsrc@gitlab\n\nUsage:\n"
                 "  ./mkimg disk <disk image size in megabytes> <disk image name>\n"
                 "  ./mkimg <fat16|fat32> <boot partition size in megabytes> <directory>\n"
-                "  ./mkimg rom\n\n"
+                "  ./mkimg rom\n"
+                "  ./mkimg check <kernel>\n\n"
                 "Creates a hybrid disk / cdrom image from bootpart.bin, or initrd.rom from initrd.bin.\n"
-                "It can also create bootpart.bin from the contents of a directory in a portable way.\n");
+                "It can also create bootpart.bin from the contents of a directory in a portable way.\n"
+                "With check you can validate an ELF or PE executable for being BOOTBOOT compatible.\n");
         exit(0);
     }
     t = time(NULL);
     ts = gmtime(&t);
 
+    if(!strcmp(argv[1], "check"))
+        checkkernel(argv[2]);
+    else
     if(!strcmp(argv[1], "rom"))
         initrdrom();
     else

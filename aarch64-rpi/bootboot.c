@@ -1534,11 +1534,12 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                 DBG(" * Parsing ELF64\n");
                 Elf64_Phdr *phdr=(Elf64_Phdr *)((uint8_t *)ehdr+ehdr->e_phoff);
                 for(r=0;r<ehdr->e_phnum;r++){
-                    if(phdr->p_type==PT_LOAD && phdr->p_vaddr>>48==0xffff) {
+                    if(phdr->p_type==PT_LOAD && (phdr->p_vaddr >> 30) == 0x3FFFFFFFF) {
                         core.ptr += phdr->p_offset;
                         // hack to keep symtab and strtab for shared libraries
                         core.size = phdr->p_filesz + (ehdr->e_type==3?0x4000:0);
                         bss = phdr->p_memsz - core.size;
+                        core_addr = phdr->p_vaddr;
                         entrypoint = ehdr->e_entry;
                         break;
                     }
@@ -1575,6 +1576,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                 DBG(" * Parsing PE32+\n");
                 core.size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
                 bss = pehdr->bss_size;
+                core_addr = (int64_t)pehdr->code_base;
                 entrypoint = (int64_t)pehdr->entry_point;
                 if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
                     pe_sym *s;
@@ -1602,7 +1604,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
 #endif
     if(core.ptr==NULL || core.size<2 || entrypoint==0 || (core_addr&(PAGESIZE-1)) || (bb_addr>>30)!=0x3FFFFFFFF ||
         (bb_addr & (PAGESIZE-1)) || (env_addr>>30)!=0x3FFFFFFFF || (env_addr&(PAGESIZE-1)) || (fb_addr>>30)!=0x3FFFFFFFF ||
-        (fb_addr&(1024*1024*2-1))) {
+        (fb_addr & (PAGESIZE-1)) || (mm_addr>>30)!=0x3FFFFFFFF || (mm_addr & (1024*1024*2-1))) {
             puts("BOOTBOOT-PANIC: Kernel is not a valid executable\n");
             goto error;
     }
