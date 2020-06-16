@@ -20,9 +20,9 @@ mkimg: mkimg.c
 initrd.bin:
 	@mkdir initrd initrd/sys 2>/dev/null | true
 ifeq ($(PLATFORM),x86)
-	cp ../mykernel/mykernel.x86_64.elf initrd/sys/core
+	cp ../mykernel-rust/mykernel.x86_64.elf initrd/sys/core
 else
-	cp ../mykernel/mykernel.aarch64.elf initrd/sys/core
+	cp ../mykernel-rust/mykernel.aarch64.elf initrd/sys/core
 endif
 	@cd initrd && (find . | cpio -H hpodc -o | gzip > ../initrd.bin) && cd ..
 	@rm -r initrd 2>/dev/null || true
