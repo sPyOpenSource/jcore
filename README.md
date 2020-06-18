@@ -16,10 +16,12 @@ I provide pre-compiled images ready for use.
 
 4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) in C which draws lines and boxes
 
+5. *mkbootimg* an all-in-one multiplatform [bootable disk image creator](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) (Windows, MacOSX, Linux).
+
 Please note that not all the reference implementations do support the full protocol at level 2, x86_64-bios only handles
 static mappings which makes it a level 1 loader.
 
-For quick test, you can find example bootable disk [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) too.
+For a quick test, you can find example bootable disk [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) too.
 
 BOOTBOOT Protocol
 =================
@@ -422,7 +424,7 @@ The file that was specified as kernel could be loaded by fs drivers, but it's no
 does not match the architecture, or does not have any program header with a loadable segment (p_vaddr or core_base)
 in the negative range (see linker script). This error is also shown by level 2 loaders if the address of `mmio`, `fb`,
 `bootboot` and `environment` symbols are not in the negative range (-1G to 0) or if they are not page aligned.
-On x86_64 the fb symbol, and for AArch64 the mmio symbol must be 2M aligned too. Use [mkimg check](https://gitlab.com/bztsrc/bootboot/tree/master/images)
+On x86_64 the fb symbol, and for AArch64 the mmio symbol must be 2M aligned too. Use [mkbootimg check](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
 to find out what the problem is.
 
 ```

@@ -6,22 +6,17 @@ BOOTBOOT Minta Bootolható Lemezkép Fájlok
 - disk-rpi.img.gz: minta lemezkép AArch64-hez RaspberryPi 3-on és 4-en
 - disk-x86.img.gz: minta lemezkép x86_64-hez (CDROM, BIOS, UEFI)
 - initrd.rom.gz: minta initrd ROM kép (beágyazott BIOS rendszerekhez)
-- mkimg.c: egy nagyon szimpla és egyszerű FAT partíciókép és lemezkép készítő
 
-Mielőtt használhatnád a lemezképeket, ki kell csomagolni őket a `gzip -d` paranccsal.
+Mielőtt használhatnád a lemezképeket, ki kell csomagolni őket a `gzip -d` paranccsal. A lemezképeket az [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
+paranccsal hoztam létre, és a kiírásukhoz fizikai lemezre az [USBImager](https://gitlab.com/bztsrc/usbimager)-t vagy a `dd` parancsot javaslom.
 
 Fordítás
 --------
 
-Nézz bele a Makefile-ba, az elején fogsz látni konfigurálható változókat.
+Lásd mkbootimg.json. Nézz bele a Makefile-ba is, az elején fogsz látni konfigurálható változókat.
 
-- DISKSIZE: a teljes generálandó lemezkép mérete Megabájtban
-- BOOTSIZE: a rendszerbetöltő partíció mérete Megabájtban
-- BOOTTYPE: a rendszerbetöltő partíció FAT típusa, 16 vagy 32 (12 már nem támogatott)
 - PLATFORM: vagy "x86" vagy "rpi", ez választja ki, melyik lemezképet generálja
-
-Ha FAT32-t szeretnél használni (BOOTTYPE=32), akkor a partíció méretét legalább 33 megabájtra kell venni. És ha 32 megabájtnál
-nagyobb partíciót szeretnél, akkor muszáj FAT32-t használni. Ezt az mkimg ellenőrzi.
+- OVMF: a EFI firmware elérési útja
 
 A `make all` parancsot futtatva a következő fájlokat hozza létre:
 
@@ -35,7 +30,7 @@ USB pendrávjról is BIOS valamint UEFI gépeken egyaránt.
 A disk-rpi.img egy (Class 10) SD kártyára írható, és Raspberry Pi 3-on és 4-en bootolható.
 
 A lemezképekben mindössze egy boot partíció található. Az `fdisk` paranccsal szabadon hozzáadhatsz még partíciókat az izlésednek
-megfelelően.
+megfelelően, vagy csak módosítsd az mkbootimg.json fájlt és adj hozzá rekordokat a `partitions` tömbhöz.
 
 Tesztelés
 ---------

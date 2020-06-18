@@ -1,60 +1,40 @@
-# overall disk image size in megabytes (128M)
-DISKSIZE=128
-# boot partition size in kilobytes (16M)
-BOOTSIZE=16
-# boot partition FAT type (16 or 32). Note that smallest possible FAT32 is 33M
-BOOTTYPE=16
 # platform, either x86 or rpi
 PLATFORM=x86
 #PLATFORM=rpi
 # the path to OVMF.fd (for testing with EFI)
 OVMF=/usr/share/qemu/bios-TianoCoreEFI.bin
 
-all: mkimg initrd.bin bootpart.bin disk
+all: ../mkbootimg/mkbootimg initdir disk
 
 # compile the image creator
-mkimg: mkimg.c
-	gcc -ansi -pedantic -Wall -Wextra -g mkimg.c -o mkimg
+../mkbootimg/mkbootimg:
+	@make -C ../mkbootimg/mkbootimg all
 
 # create an initial ram disk image with the kernel inside
-initrd.bin:
+initdir:
 	@mkdir initrd initrd/sys 2>/dev/null | true
 ifeq ($(PLATFORM),x86)
 	cp ../mykernel/mykernel.x86_64.elf initrd/sys/core
 else
 	cp ../mykernel/mykernel.aarch64.elf initrd/sys/core
 endif
-	@cd initrd && (find . | cpio -H hpodc -o | gzip > ../initrd.bin) && cd ..
-	@rm -r initrd 2>/dev/null || true
-
-# assemble the boot partition
-bootpart.bin: initrd.bin
-	@mkdir boot boot/BOOTBOOT 2>/dev/null || true
-ifeq ($(PLATFORM),x86)
-	@cp ../bootboot.bin boot/BOOTBOOT/LOADER || true
-	@mkdir boot/EFI boot/EFI/BOOT
-	@cp ../bootboot.efi boot/EFI/BOOT/BOOTX64.EFI || true
-else
-	@cp ../aarch64-rpi/LIC* ../aarch64-rpi/*.bin ../aarch64-rpi/*.elf ../aarch64-rpi/*.dat boot/ || true
-	@cp ../bootboot.img boot/kernel8.img || true
-endif
-	@printf "screen=800x600\nkernel=sys/core\n" >boot/BOOTBOOT/CONFIG || true
-	@cp initrd.bin boot/BOOTBOOT/INITRD || true
-	./mkimg fat$(BOOTTYPE) $(BOOTSIZE) boot
-	@rm -rf boot
 
 # create hybrid disk / cdrom image or ROM image
-disk: mkimg bootpart.bin
-	./mkimg disk $(DISKSIZE) disk-$(PLATFORM).img
+disk: ../mkbootimg/mkbootimg initdir mkbootimg.json
+	../mkbootimg/mkbootimg mkbootimg.json disk-$(PLATFORM).img
+	@rm -rf initrd
 
-initrd.rom: mkimg initrd.bin
-	./mkimg rom
+initrd.rom: ../mkbootimg/mkbootimg initdir mkbootimg.json
+	../mkbootimg/mkbootimg mkbootimg.json initrd.rom
+	@rm -rf initrd
 
 # create a GRUB cdrom
-grub.iso: initrd.bin
+grub.iso: ../mkbootimg/mkbootimg initdir mkbootimg.json
+	@../mkbootimg/mkbootimg mkbootimg.json initrd.bin
+	@rm -rf initrd
 	@mkdir iso iso/bootboot iso/boot iso/boot/grub 2>/dev/null || true
 	@cp ../bootboot.bin iso/bootboot/loader || true
-	@printf "screen=800x600\nkernel=sys/core\n" >iso/bootboot/config || true
+	@cp config iso/bootboot/config || true
 	@cp initrd.bin iso/bootboot/initrd || true
 	@printf "menuentry \"BOOTBOOT test\" {\n  multiboot /bootboot/loader\n  module /bootboot/initrd\n  module /bootboot/config\n  boot\n}" >iso/boot/grub/grub.cfg || true
 	grub-mkrescue -o grub.iso iso
@@ -87,4 +67,4 @@ sdcard:
 
 # clean up
 clean:
-	rm mkimg *.bin *.img *.rom 2>/dev/null || true
+	rm -rf initrd *.bin *.img *.rom *.iso 2>/dev/null || true

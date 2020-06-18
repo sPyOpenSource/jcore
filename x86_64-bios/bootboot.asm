@@ -1025,10 +1025,15 @@ protmode_start:
             jne         @f
             cmp         word [esi+12], 'RD'
             jne         @f
-            mov         eax, dword [esi+16]
-            mov         dword [bootboot.initrd_size], eax
+            mov         ecx, dword [esi+16]
+            mov         dword [bootboot.initrd_size], ecx
             add         esi, 32
-            jmp         .initrdrom
+            cmp         word [esi], 08b1fh
+            je          .initrdrom
+            ; copy from ROM to RAM
+            mov         edi, dword [bootboot.initrd_ptr]
+            repnz       movsb
+            jmp         .noinflate
 @@:         add         esi, 2048
             cmp         esi, 0F4000h
             jb          .nextrom

@@ -6,22 +6,17 @@ See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 - disk-rpi.img.gz: an example image for AArch64 and RaspberryPi 3 and 4
 - disk-x86.img.gz: an example image for x86_64 (CDROM, BIOS, UEFI)
 - initrd.rom.gz: an example initrd ROM image (for embedded BIOS systems)
-- mkimg.c: is a very simple FAT partition image and bootable disk image creator tool
 
-Before you can use the images, uncompress them with `gzip -d`.
+Before you can use the images, uncompress them with `gzip -d`. I've used [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
+to generate these images, and I recommend [USBImager](https://gitlab.com/bztsrc/usbimager) or `dd` to write them to physical disks.
 
 Compilation
 -----------
 
-Look at the beginning of the Makefile, you'll find configurable variables there.
+See mkbootimg.json. Look at the beginning of the Makefile too, you'll find configurable variables there.
 
-- DISKSIZE: the overall disk image size to be generated in Mbytes
-- BOOTSIZE: the boot partition size in MBytes
-- BOOTTYPE: the boot partition's FAT type, 16 for FAT16 and 32 for FAT32 (12 not supported any more)
 - PLATFORM: either "x86" or "rpi", this selects which disk image to create
-
-If you want to use FAT32 (BOOTTYPE=32), then the partition's size must be at least 33 megabytes. Also, if you want to
-use larger than 32 megabytes partition, FAT32 must be used. The mkimg tool checks for this.
+- OVMF: plath to the EFI firmware image
 
 Executing `make all` will create the following files:
 
@@ -34,7 +29,8 @@ booted from an USB stick in a BIOS machine as well as in an UEFI machine.
 
 The disk-rpi.img can be written to an SDCard (Class 10) and booted on a Raspberry Pi 3 and 4.
 
-The disk images contain only one boot partition. Feel free to use `fdisk` and add more partitions to your needs.
+The disk images contain only one boot partition. Feel free to use `fdisk` and add more partitions to your needs, or
+modify mkbootimg.json and add more elements to the `partitions` array.
 
 Testing
 -------

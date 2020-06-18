@@ -16,6 +16,8 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 
 4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) C-ben írva, ami vonalakat húz meg színes dobozokat rajzol
 
+5. *mkbootimg* minden az egyben, multiplatform [bootolható lemezkép készítő](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) (Windows, MacOSX, Linux).
+
 Vedd figyelembe, hogy nem minden referencia implementáció támogatja a teljes 2-es protokollt, az x86_64-bios csak statikus
 memórialeképezéseket kezel, ami az 1-es protokoll szintnek felel meg.
 
@@ -421,7 +423,7 @@ A megadott kernel fájlt megtalálta ugyan az initrd-n valamelyik fájl rendszer
 vagy nem az adott architáktúrára van fordítva, vagy nincs benne betölthető szegmens definíció a negatív címtartományban
 megadva (lásd linker szkript). Ezt a hibát a 2-es szintű betöltők is kiírhatják, ha az `mmio`, `fb`, `bootboot` vagy
 `environment` szimbólumok címei nincsenek a negatív címtartományban (-1G és 0 között), vagy nincsenek lapcímhatárra igazítva.
-Az x86_64-en az fb szimbólumnak, míg AArch64-on az mmio szimbólumnak 2M igazítottnak is kell lennie. A [mkimg check](https://gitlab.com/bztsrc/bootboot/tree/master/images)
+Az x86_64-en az fb szimbólumnak, míg AArch64-on az mmio szimbólumnak 2M igazítottnak is kell lennie. A [mkbootimg check](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
 megmondja, mi az ok.
 
 ```
