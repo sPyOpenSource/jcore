@@ -271,8 +271,8 @@ file_t jamesm_initrd(unsigned char *initrd_p, char *kernel)
     unsigned char *ptr=initrd_p+4;
     int i,k,nf=*((int*)initrd_p);
     file_t ret = { NULL, 0 };
-    // no real magic, so we assume initrd contains at least 2 files...
-    if(initrd_p==NULL || kernel==NULL || initrd_p[2]!=0 || initrd_p[3]!=0 || initrd_p[4]!=0xBF || initrd_p[77]!=0xBF)
+    // no real magic, so we assume initrd contains at least one file...
+    if(initrd_p==NULL || kernel==NULL || initrd_p[2]!=0 || initrd_p[3]!=0 || initrd_p[4]!=0xBF)
         return ret;
     DBG(" * JamesM ");
     DBG(kernel);

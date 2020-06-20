@@ -28,6 +28,17 @@
  *
  */
 #include "main.h"
+#define __USE_XOPEN_EXTENDED 1  /* for readlink() */
+#include <unistd.h>
+
+#ifdef __WIN32__
+int readlink(char *path, char *target, int len) {
+    (void)path;
+    (void)target;
+    (void)len;
+    return 0;
+}
+#endif
 
 time_t t;
 struct tm *ts;
@@ -58,7 +69,7 @@ unsigned char* readfileall(char *file)
         read_size=ftell(f);
         fseek(f,0L,SEEK_SET);
         data=(unsigned char*)malloc(read_size+1);
-        if(!data) { fprintf(stderr,"mkbootimg: unable to allocate %ld memory\r\n",read_size+1); exit(1); }
+        if(!data) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
         memset(data,0,read_size+1);
         fread(data,read_size,1,f);
         data[read_size] = 0;
@@ -105,21 +116,29 @@ void parsedir(char *directory, int parent)
 {
     DIR *dir;
     struct dirent *ent;
-    char full[1024];
+    char full[MAXPATH];
     unsigned char *tmp;
     struct stat st;
 
     if ((dir = opendir(directory)) != NULL) {
         while ((ent = readdir(dir)) != NULL) {
-            if(ent->d_name[0] == '.') continue;
-            sprintf(full,"%s/%s",directory,ent->d_name);
+            if(!parent && (!strcmp(ent->d_name, ".") || !strcmp(ent->d_name, ".."))) continue;
+            full[0] = 0;
+            strncat(full, directory, sizeof(full)-1);
+            strncat(full, "/", sizeof(full)-1);
+            strncat(full, ent->d_name, sizeof(full)-1);
             if(stat(full, &st)) continue;
             if(S_ISDIR(st.st_mode)) {
                 (*rd_add)(&st, full + skipbytes, NULL, 0);
-                parsedir(full, parent+1);
+                if(strcmp(ent->d_name, ".") && strcmp(ent->d_name, ".."))
+                    parsedir(full, parent+1);
             } else {
                 tmp = NULL; read_size = 0;
-                if(S_ISREG(st.st_mode)) tmp = readfileall(full);
+                if(S_ISREG(st.st_mode)) tmp = readfileall(full); else
+                if(S_ISLNK(st.st_mode)) {
+                    tmp = malloc(MAXPATH); if(!tmp) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
+                    read_size=readlink(full,(char*)tmp,MAXPATH-1); tmp[read_size]=0;
+                }
                 (*rd_add)(&st, full + skipbytes, tmp, read_size);
                 if(tmp) free(tmp);
             }
@@ -136,15 +155,15 @@ void initrdcompress()
     unsigned char *initrdgz;
     unsigned long int initrdgz_len = 0;
     uint32_t crc;
-    if(!initrd_gzip || !fs_len || !fs_base) return;
+    if(!initrd_gzip || !fs_len || !fs_base || (fs_base[0] == 0x1f && fs_base[1] == 0x8b)) return;
     initrdgz_len = compressBound(fs_len);
     initrdgz = malloc(initrdgz_len);
-    if(!initrdgz) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+    if(!initrdgz) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
     compress2(initrdgz, &initrdgz_len, fs_base, fs_len, 9);
     if(initrdgz_len) {
         crc = crc32(0,fs_base, fs_len);
         fs_base = realloc(fs_base, initrdgz_len + 18);
-        if(!fs_base) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+        if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
         memset(fs_base, 0, 10);
         fs_base[0] = 0x1f; fs_base[1] = 0x8b; fs_base[2] = 0x8; fs_base[9] = 3;
         memcpy(fs_base + 4, &t, 4);
@@ -152,5 +171,25 @@ void initrdcompress()
         memcpy(fs_base + 10 + initrdgz_len - 2, &crc, 4);
         memcpy(fs_base + 14 + initrdgz_len - 2, &fs_len, 4);
         fs_len = initrdgz_len - 2 + 18;
-    }
+    } else
+        free(initrdgz);
+}
+
+/**
+ * Uncompress the initrd image
+ */
+void initrduncompress()
+{
+    unsigned char *buf;
+    unsigned long int len = 0;
+    if(!fs_len || !fs_base || fs_base[0] != 0x1f || fs_base[1] != 0x8b || fs_base[2] != 8) return;
+    memcpy(&len, fs_base + fs_len - 4, 4);
+    buf = malloc(len);
+    if(!buf) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
+    if(uncompress(buf,&len,fs_base,fs_len) == Z_OK && len > 0) {
+        free(fs_base);
+        fs_base = buf;
+        fs_len = len;
+    } else
+        free(buf);
 }

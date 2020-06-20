@@ -29,17 +29,18 @@
  */
 #include "main.h"
 
-void cpio_open()
+void cpio_open(gpt_t *gpt_entry)
 {
+    (void)gpt_entry;
 }
 
 void cpio_add(struct stat *st, char *name, unsigned char *content, int size)
 {
     unsigned char *end;
     int n = strlen(name);
-    if(!S_ISREG(st->st_mode)) return;
+    if(!S_ISREG(st->st_mode) && !S_ISDIR(st->st_mode) && !S_ISLNK(st->st_mode)) return;
     fs_base = realloc(fs_base, fs_len + 76 + n + 1 + size);
-    if(!fs_base) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+    if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_MEM]); exit(1); }
     end = fs_base + fs_len;
     end += sprintf((char*)end, "070707000000000000%06o00000000000000000000000000000000000%06o%011o%s",
         st->st_mode & 0777777,n+1,size,name);
@@ -52,7 +53,7 @@ void cpio_close()
 {
     char *end;
     fs_base = realloc(fs_base, fs_len + 76 + 11 + 512);
-    if(!fs_base) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+    if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_MEM]); exit(1); }
     end = (char*)fs_base + fs_len;
     memset(end, 0, 76 + 11 + 512);
     end += sprintf(end, "07070700000000000000000000000000000000000010000000000000000%06o%011oTRAILER!!!",11,0);

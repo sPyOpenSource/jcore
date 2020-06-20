@@ -34,9 +34,15 @@
 #include <dirent.h>
 #include <time.h>
 #include <sys/stat.h>
+#include "lang.h"
 #include "zlib.h"
 
 #define NUMARCH 2
+#define MAXPATH 1024
+
+#ifndef S_ISLNK
+#define S_ISLNK(x) (0)
+#endif
 
 /*** ELF64 defines and structs ***/
 #define ELFMAG      "\177ELF"
@@ -152,7 +158,16 @@ typedef struct {
     uint8_t  Data4[8];
 } __attribute__((packed)) guid_t;
 
-typedef void (*initrd_open)();
+typedef struct {
+    guid_t type;
+    guid_t guid;
+    uint64_t start;
+    uint64_t last;
+    uint64_t attrib;
+    uint16_t name[36];
+} __attribute__((packed)) gpt_t;
+
+typedef void (*initrd_open)(gpt_t *gpt_entry);
 typedef void (*initrd_add)(struct stat *st, char *name, unsigned char *content, int size);
 typedef void (*initrd_close)();
 
@@ -183,7 +198,7 @@ unsigned int gethex(char *ptr, int len);
 void getguid(char *ptr, guid_t *guid);
 void parsedir(char *directory, int parent);
 void initrdcompress();
-uint32_t crc32a_calc(char *start, size_t length);
+void initrduncompress();
 char *json_get(const char *jsonstr, char *key);
 unsigned char * stbi_zlib_compress(unsigned char *data, int data_len, int *out_len, int quality);
 void esp_makepart();

@@ -1,5 +1,5 @@
 # platform, either x86 or rpi
-PLATFORM=x86
+PLATFORM=rpi
 #PLATFORM=rpi
 # the path to OVMF.fd (for testing with EFI)
 OVMF=/usr/share/qemu/bios-TianoCoreEFI.bin
@@ -8,7 +8,7 @@ all: ../mkbootimg/mkbootimg initdir disk
 
 # compile the image creator
 ../mkbootimg/mkbootimg:
-	@make -C ../mkbootimg/mkbootimg all
+	@make -C ../mkbootimg all
 
 # create an initial ram disk image with the kernel inside
 initdir:

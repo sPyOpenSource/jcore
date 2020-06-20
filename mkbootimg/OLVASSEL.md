@@ -6,7 +6,7 @@ BOOTBOOT Bootolható Lemezkép Készítő
 Ez egy minden az egyben, többplatformos, függőség nélküli lemezkép kreáló (na jó, zlib kell neki, de az statikusan bele van
 forgatva). Egy lemezkonfigurációt kell megadni neki JSON-ben, és létrehozza az ESP FAT boot partíciót a szükséges betöltő
 fájlokkal, GPT táblával, PMBR-el, stb. Továbbá képes létrehozni az induló memórialemezképet egy könyvtár tartalmából (jelenleg
-`cpio` és `tar` támogatott, de a kód úgy lett megírva, hogy könnyű legyen bővíteni).
+`cpio`, `tar`, `jamesm` (James Molloy initrdje) és az `FS/Z` támogatott, de a kód úgy lett megírva, hogy könnyű legyen bővíteni).
 
 A kigenerált képet leellenőriztem fdisk-el, valamint a gdisk verify funkciójával. A FAT partíció tesztelve lett fsck.vfat-al
 és UEFI förmverrel, továbbá Raspberry Pi-n.
@@ -21,6 +21,10 @@ Protokoll szintű betöltő kell a betöltéséhez.
 Egyébként az első paraméter a konfigurációs fájl. Ha a második paraméter `initrd.rom`, akkor BIOS Option ROM-ot generál
 a megadott initrd könyvtár tartalmából. Ha `bootpart.bin`, akkor a boot partíció képét menti le (és csakis a partíció képét).
 Minden más fájlnévre egy teljes lemezképet hoz létre GPT-vel.
+
+Az eszköz többnyelvű. Automatikusan detektálja az operációs rendszered nyelvét, és ha van szótára hozzá, akkor azt használja.
+Ez felülbírálható parancssorból a `-l <nyelv>` kapcsolóval, mint első paraméterrel (minden működési mód esetén megadható).
+A nyelvkód két karakteres, és az alapértelmezett az `en`. A magyarhoz `-l hu`-t kell megadni.
 
 Konfiguráció
 ------------
@@ -43,13 +47,15 @@ Példa:
 ```
 {
     "diskguid": "00000000-0000-0000-0000-000000000000",
-    "disksize": 128,
+    "disksize": 512,
     "align": 1024,
     "iso9660": true,
     "config": "boot/sys/config",
     "initrd": { "type": "tar", "gzip": true, "directory": "boot" },
     "partitions": [
         { "type": "boot", "size": 16 },
+        { "type": "ext4", "size": 128, "name": "Linux Exchange" },
+        { "type": "ntfs", "size": 128, "name": "Windows Exchange" },
         { "type": "Microsoft basic data", "size": 32, "name": "MyOS usr", "file": "usrpart.bin" },
         { "type": "00000000-0000-0000-0000-000000000000", "size": 32, "name": "MyOS var", "file": "varpart.bin" }
     ]
@@ -70,12 +76,13 @@ Példa:
 A `file` és a `directory` kölcsönösen kizárja egymást. Mindkettő lehet sztring (ha csak egy architektúrához generálunk),
 vagy tömb (egy elem minden architektúrához). Jelenleg kettő támogatott, azaz minden tömb maximum két elemű lehet.
 Hogy melyik architektúrát jelenti, azt az dönti el, hogy a mabbában vagy lemezképben milyen architektúrájú kernel található.
+A `type` típus csak `directory` esetén kötelező megadni.
 
 Példák:
 ```
-    "initrd": { "type": "tar", "gzip": false, "file": "initrd.bin" },
-    "initrd": { "type": "tar", "gzip": 1, "directory": "boot" },
-    "initrd": { "type": "tar", "gzip": 0, "file": [ "initrd-x86.bin", "initrd-arm.bin" ] },
+    "initrd": { "file": "initrd.bin" },
+    "initrd": { "type": "tar", "gzip": 0, "directory": "boot" },
+    "initrd": { "gzip": true, "file": [ "initrd-x86.bin", "initrd-arm.bin" ] },
     "initrd": { "type": "cpio", "gzip": true, "directory": [ "boot/arm", "boot/x86" ] },
 ```
 
@@ -89,67 +96,79 @@ System Partition" névvel.
 |------------|----------|-------------------------------------------------------------------------------------|
 | size       | szám     | opcionális, a partíció mérete Megabájtban. Ha nincs megadva, kiszámolja             |
 | file       | fájlnév  | opcionális, a használandó partíciókép elérési útja                                  |
+| directory  | mappa    | opcionális, mappa elérési útja, a tarmalmából fogja generálni a partícióképet       |
 | type       | sztring  | a partíció formátuma. Érvénytelen esetén listázza a lehetőségeket                   |
 | name       | sztring  | UTF-8 partíciónév, korlátozva a 32 és 65535 közötti UNICODE kódpontokra (BMP)       |
 
 Az első elem esetén a `type` lehetséges értékei: `boot` (vagy explicit `fat16` és `fat32`). A parancs igyekszik kényelmesen
 használni ezeket, ha lehet FAT16-ot választva, helytakarékosság miatt. A boot partíció minimális mérete 16 Megabájt. Bár mind
 a lemezkép készítő, mind a BOOTBOOT betöltő képes lenne kezelni kissebb méretet, néhány UEFI förmver helytelenül FAT12-nek
-hiszi, ha túl kevés kluszter van a fájlrendszeren. Ha a partíció mérete meghaladja a 256 Megabájtot, akkor automatikusan
+hiszi, ha túl kevés kluszter van a fájlrendszeren. Ha a partíció mérete meghaladja a 128 Megabájtot, akkor automatikusan
 FAT32-t választ. Ha nem használsz `iso9660`-t, akkor kissebb méretű is lehet, de legalább 33 Megabájt (ez a FAT32 minimális
 mérete). Ugyanakkor `iso9660` használata esetén garantálni kell, hogy minden kluszter 2048 bájtos címen kezdődjön, amit
 4 szektor per kluszterrel a legegyszerűbb elérni. Itt is ugyanaz a probléma merül fel, mind a lemezkép készítő, mind a
 BOOTBOOT betöltők képesek lennének kevessebb kluszterrel is használni a FAT32-t, de néhány UEFI förmver nem, és hibásan
 FAT16-nak látná. Hogy ezt elkerüljük a minimális kluszterszámmal, az ISO9960 és FAT32 együttes használata esetén a
-partíció minimális mérete 256 Megabájt.
+partíció minimális mérete 128 Megabájt (128*1024*1024/512/4 = 65536, ami pont eggyel több, mint ami még 16 bitbe belefér).
 
 A többi (a másodiktól kezdve) bejegyzés esetén a `type` vagy egy GUID, vagy egy az előre definiált aliaszok közül. Érvénytelen
 sztring esetén a parancs listázza az összes lehetséges értéket.
 
 Példa:
 ```
-mkbootimg: partition #2 doesn't have a valid type. Accepted values:
-  "5A2F534F-0000-5346-2F2F-000000000000" / "FS/Z"
-  "6A898CC3-1DD2-11B2-9999-080020736631" / "ZFS"
-  "EBD0A0A2-B9E5-4433-8787-68B6B72699C7" / "ntfs"
-  "0FC63DAF-8483-4772-8E8E-3D69D8477DE4" / "ext4"
-  "516E7CB6-6ECF-11D6-8F8F-00022D09712B" / "ufs"
-  "C91818F9-8025-47AF-8989-F030D7000C2C" / "p9"
-  "D3BFE2DE-3DAF-11DF-BABA-E3A556D89593" / "Intel Fast Flash"
-  "21686148-6449-6E6F-7474-656564454649" / "BIOS boot"
+mkbootimg: partition #2 nincs érvényes type típusa. Lehetséges értékek:
+  "65706154-4120-6372-6968-766520465320" / "tar"
+  "5A2F534F-0000-5346-2F5A-000000000000" / "FS/Z"
+  "6A898CC3-1DD2-11B2-99A6-080020736631" / "ZFS"
+  "EBD0A0A2-B9E5-4433-87C0-68B6B72699C7" / "ntfs"
+  "0FC63DAF-8483-4772-8E79-3D69D8477DE4" / "ext4"
+  "516E7CB6-6ECF-11D6-8FF8-00022D09712B" / "ufs"
+  "C91818F9-8025-47AF-89D2-F030D7000C2C" / "p9"
+  "D3BFE2DE-3DAF-11DF-BA40-E3A556D89593" / "Intel Fast Flash"
+  "21686148-6449-6E6F-744E-656564454649" / "BIOS boot"
      ...
-  "77719A0C-A4A0-11E3-A4A4-000C29745A24" / "VMware Virsto"
-  "9198EFFC-31C0-11DB-8F8F-000C2911D1B8" / "VMware Reserved"
-  "824CC7A0-36A8-11E3-8989-952519AD3F61" / "OpenBSD data"
-  "CEF5A9AD-73BC-4601-8989-CDEEEEE321A1" / "QNX6 file system"
-  "C91818F9-8025-47AF-8989-F030D7000C2C" / "Plan 9 partition"
-  "5B193300-FC78-40CD-8080-E86C45580B47" / "HiFive Unleashed FSBL"
-  "2E54B353-1271-4842-8080-E436D6AF6985" / "HiFive Unleashed BBL"
-  ...or any non-zero GUID in the form "%08X-%04X-%04X-%04X-%12X"
+  "77719A0C-A4A0-11E3-A47E-000C29745A24" / "VMware Virsto"
+  "9198EFFC-31C0-11DB-8F78-000C2911D1B8" / "VMware Reserved"
+  "824CC7A0-36A8-11E3-890A-952519AD3F61" / "OpenBSD data"
+  "CEF5A9AD-73BC-4601-89F3-CDEEEEE321A1" / "QNX6 file system"
+  "C91818F9-8025-47AF-89D2-F030D7000C2C" / "Plan 9 partition"
+  "5B193300-FC78-40CD-8002-E86C45580B47" / "HiFive Unleashed FSBL"
+  "2E54B353-1271-4842-806F-E436D6AF6985" / "HiFive Unleashed BBL"
+  ...vagy bármilyen nem csupa nulla GUID ilyen formátumban "%08X-%04X-%04X-%04X-%12X"
 ```
 
 Ha a `file` meg van adva, akkor a partíció fel lesz tölve a fájl tartalmával. Ha a `size` méret nincs megadva, vagy
 kissebb, mint a fájl mérete, akkor a fájl mérete lesz a partíció mérete. Ha mindkettő meg van adva, és a `size` nagyobb,
 akkor a kölönbséget nullákkal tölti fel. A partíció mérete mindig `align` Kilobájt többszöröse lesz. 1024 megadásával
 a partíciók 1 Megabájtos címekre lesznek igazítva. Az első bejegyzés esetén csak a `size` használható, a `file` nem.
+Alternatívaként esetleg használható a `directory` a `file` helyett, amennyiben a `type`-nál megadott típushoz van
+fájlrendszer meghajtó implementálva. Ekkor a megadott mappa tartalmából generálódik a partíció tartalma. Mivel nem feltétlenül
+van egy-az-egyhez megfeleltetés a fájlrendszer típus és a partíció típus között, ezért használható a `typeguid` az utóbbi
+explicit megadására. Erre csak a `directory` direktíva használata esetén lehet szükség. Példa:
+```
+    { "type": "FS/Z", "typeguid": "5A2F534F-8664-5346-2F5A-000075737200", "size": 32, "name": "MyOS usr", "directory": "myusr" },
+```
 
-Végezetül a `name` egy sima UTF-8 sztring, a partíció neve.
+Végezetül a `name` egy sima UTF-8 sztring, a partíció neve. Maximális hossza 35 karakter. Az első partíciónál nem használható.
 
 Újabb fájlrendszerek hozzáadása
 -------------------------------
 
 Ezeket az fs registry listázza, az `fs.h` fájlban. Szabadon hozzáadhatsz új típusokat. Azoknál a fájlrendszereknél,
-amiket indító memórialemezképhez is szeretnél használni, implementálni kell három funkciót.
+amiket indító memórialemezképhez is szeretnél használni, implementálni kell három funkciót, például:
 
 ```
-void cpio_open();
-void cpio_add(struct stat *st, char *name, unsigned char *content, int size);
-void cpio_close();
+void somefs_open(gpt_t *gpt_entry);
+void somefs_add(struct stat *st, char *name, int pathlen, unsigned char *content, int size);
+void somefs_close();
 ```
 
-Az első akkor hívódik, amikor egy új fájlrendszert kell létrehozni. Ahogy a megadott mappát rekurzívan bejárja, minden
-almappa és fájl esetén meghívódik az "add". Ez hozzá kell adja a fájlt vagy mappát a fájlrendszer képéhez. Végezetül
-amikor a bejárásnak vége, a close hívódik meg, hogy lezárja és véglegesítse a lemezképet.
+Az első akkor hívódik, amikor egy új fájlrendszert kell létrehozni. Itt a `gpt_entry` mutató NULL, ha memórialemezkép kreáláshoz
+hívódik a meghajtó. Ahogy a megadott mappát rekurzívan bejárja, minden almappa és fájl esetén meghívódik az "add". Ez hozzá
+kell adja a fájlt vagy mappát a fájlrendszer képéhez. Az `st` a stat struktúra, `name` a fájl neve teljes elérési úttal,
+a `content` és a `size` pedig a fájl tartalma, illetve szimbolikus hivatkozások esetén a mutatott elérési út. Végezetül amikor a
+bejárásnak vége, a close hívódik meg, hogy lezárja és véglegesítse a lemezképet. Ezek közül csak az "add" a kötelező, a másik
+kettő opcionális.
 
 Ezek a funkciók elérnek két globális változót, az `fs_base`-t és `fs_len`-t, amik a lemezkép memóriabeli bufferét jelölik.
 

@@ -24,22 +24,23 @@
  * DEALINGS IN THE SOFTWARE.
  *
  * This file is part of the BOOTBOOT Protocol package.
- * @brief POSIX ustar initrd driver
+ * @brief POSIX ustar file system driver
  *
  */
 #include "main.h"
 
-void tar_open()
+void tar_open(gpt_t *gpt_entry)
 {
+    if(gpt && (gpt_entry->last - gpt_entry->start) < 1) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_NOSIZE]); exit(1); }
 }
 
 void tar_add(struct stat *st, char *name, unsigned char *content, int size)
 {
     unsigned char *end;
     int i, j = 0;
-    if(!S_ISREG(st->st_mode)) return;
+    if(!S_ISREG(st->st_mode) && !S_ISDIR(st->st_mode) && !S_ISLNK(st->st_mode)) return;
     fs_base = realloc(fs_base, fs_len + 512 + ((size + 511) & ~511));
-    if(!fs_base) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+    if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
     end = fs_base + fs_len;
     memset(end, 0, 512);
     strncpy((char*)end, name, 99);
@@ -50,6 +51,7 @@ void tar_add(struct stat *st, char *name, unsigned char *content, int size)
     sprintf((char*)end + 136, "%011o", 0);
     sprintf((char*)end + 148, "%06o", 0);
     sprintf((char*)end + 155, " 0");
+    if(S_ISLNK(st->st_mode)) { strncpy((char*)end + 157, (char*)content, 99); size = 0; }
     memcpy(end + 257, "ustar  ", 7);
     memcpy(end + 265, "root", 4); memcpy(end + 297, "root", 4);
     for(i = 0; i < 512; i++) j += end[i];

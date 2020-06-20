@@ -10,6 +10,14 @@ BOOTBOOT Minta Bootolható Lemezkép Fájlok
 Mielőtt használhatnád a lemezképeket, ki kell csomagolni őket a `gzip -d` paranccsal. A lemezképeket az [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
 paranccsal hoztam létre, és a kiírásukhoz fizikai lemezre az [USBImager](https://gitlab.com/bztsrc/usbimager)-t vagy a `dd` parancsot javaslom.
 
+A disk-x86.img egy speciális hibrid lemezkép, amit átnevezhetsz disk-x86.iso-ra és kiégetheted egy CDROM-ra; vagy bebootolhatod
+USB pendrávjról is BIOS valamint UEFI gépeken egyaránt.
+
+A disk-rpi.img egy (Class 10) SD kártyára írható, és Raspberry Pi 3-on és 4-en bootolható.
+
+A lemezképekben mindössze egy boot partíció található. Az `fdisk` paranccsal szabadon hozzáadhatsz még partíciókat az izlésednek
+megfelelően, vagy csak módosítsd az mkbootimg.json fájlt és adj hozzá rekordokat a `partitions` tömbhöz.
+
 Fordítás
 --------
 
@@ -18,19 +26,7 @@ Lásd mkbootimg.json. Nézz bele a Makefile-ba is, az elején fogsz látni konfi
 - PLATFORM: vagy "x86" vagy "rpi", ez választja ki, melyik lemezképet generálja
 - OVMF: a EFI firmware elérési útja
 
-A `make all` parancsot futtatva a következő fájlokat hozza létre:
-
-- initrd.bin: egy gzippelt hpodc cpio initrd kép, amiben egyelőre csak a futtatható kernel található
-- bootpart.bin: a rendszerbetöltő partíció (ESP FAT16-tal vagy FAT32-vel), ami tartalmazza az initrd-t és a betöltő programokat
-- disk-(PLATFORM).img: hibrid lemezkép GPT partícióval
-
-A disk-x86.img egy speciális hibrid lemezkép, amit átnevezhetsz disk-x86.iso-ra és kiégetheted egy CDROM-ra; vagy bebootolhatod
-USB pendrávjról is BIOS valamint UEFI gépeken egyaránt.
-
-A disk-rpi.img egy (Class 10) SD kártyára írható, és Raspberry Pi 3-on és 4-en bootolható.
-
-A lemezképekben mindössze egy boot partíció található. Az `fdisk` paranccsal szabadon hozzáadhatsz még partíciókat az izlésednek
-megfelelően, vagy csak módosítsd az mkbootimg.json fájlt és adj hozzá rekordokat a `partitions` tömbhöz.
+Aztán csak futtasd a `make` parancsot.
 
 Tesztelés
 ---------

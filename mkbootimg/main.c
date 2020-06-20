@@ -31,6 +31,7 @@
 #include "fs.h"
 
 #ifdef __WIN32__
+#include <windows.h>
 #define ISHH(x) ((((x)>>30)&0xFFFFFFFF)==0xFFFFFFFF)
 #else
 #define ISHH(x) (((x)>>30)==0x3FFFFFFFF)
@@ -40,6 +41,66 @@
 #else
 #define LL "l"
 #endif
+
+extern const char deflate_copyright[];
+char **lang = NULL;
+
+/**
+ * Get language dictionary
+ */
+char **getlang(int *argc, char **argv)
+{
+    char *loc = NULL;
+    int i;
+#ifdef __WIN32__
+    /* see https://docs.microsoft.com/en-us/windows/win32/intl/language-identifier-constants-and-strings */
+    switch((GetUserDefaultLangID() /* GetUserDefaultUILanguage() */) & 0xFF) {
+        case 0x01: loc = "ar"; break;   case 0x02: loc = "bg"; break;
+        case 0x03: loc = "ca"; break;   case 0x04: loc = "zh"; break;
+        case 0x05: loc = "cs"; break;   case 0x06: loc = "da"; break;
+        case 0x07: loc = "de"; break;   case 0x08: loc = "el"; break;
+        case 0x0A: loc = "es"; break;   case 0x0B: loc = "fi"; break;
+        case 0x0C: loc = "fr"; break;   case 0x0D: loc = "he"; break;
+        case 0x0E: loc = "hu"; break;   case 0x0F: loc = "is"; break;
+        case 0x10: loc = "it"; break;   case 0x11: loc = "jp"; break;
+        case 0x12: loc = "ko"; break;   case 0x13: loc = "nl"; break;
+        case 0x14: loc = "no"; break;   case 0x15: loc = "pl"; break;
+        case 0x16: loc = "pt"; break;   case 0x17: loc = "rm"; break;
+        case 0x18: loc = "ro"; break;   case 0x19: loc = "ru"; break;
+        case 0x1A: loc = "hr"; break;   case 0x1B: loc = "sk"; break;
+        case 0x1C: loc = "sq"; break;   case 0x1D: loc = "sv"; break;
+        case 0x1E: loc = "th"; break;   case 0x1F: loc = "tr"; break;
+        case 0x20: loc = "ur"; break;   case 0x21: loc = "id"; break;
+        case 0x22: loc = "uk"; break;   case 0x23: loc = "be"; break;
+        case 0x24: loc = "sl"; break;   case 0x25: loc = "et"; break;
+        case 0x26: loc = "lv"; break;   case 0x27: loc = "lt"; break;
+        case 0x29: loc = "fa"; break;   case 0x2A: loc = "vi"; break;
+        case 0x2B: loc = "hy"; break;   case 0x2D: loc = "bq"; break;
+        case 0x2F: loc = "mk"; break;   case 0x36: loc = "af"; break;
+        case 0x37: loc = "ka"; break;   case 0x38: loc = "fo"; break;
+        case 0x39: loc = "hi"; break;   case 0x3A: loc = "mt"; break;
+        case 0x3C: loc = "gd"; break;   case 0x3E: loc = "ms"; break;
+        case 0x3F: loc = "kk"; break;   case 0x40: loc = "ky"; break;
+        case 0x45: loc = "bn"; break;   case 0x47: loc = "gu"; break;
+        case 0x4D: loc = "as"; break;   case 0x4E: loc = "mr"; break;
+        case 0x4F: loc = "sa"; break;   case 0x53: loc = "kh"; break;
+        case 0x54: loc = "lo"; break;   case 0x56: loc = "gl"; break;
+        case 0x5E: loc = "am"; break;   case 0x62: loc = "fy"; break;
+        case 0x68: loc = "ha"; break;   case 0x6D: loc = "ba"; break;
+        case 0x6E: loc = "lb"; break;   case 0x6F: loc = "kl"; break;
+        case 0x7E: loc = "br"; break;   case 0x92: loc = "ku"; break;
+        case 0x09: default: loc = "en"; break;
+    }
+#endif
+    if(!loc) loc = getenv("LANG");
+    if(!loc) loc = "en";
+    if(*argc > 2 && !strcmp(argv[1], "-l")) { loc = argv[2]; (*argc) -= 2; argv += 2; }
+    for(i = 0; i < NUMLANGS; i++)
+        if(!strncmp(loc, dict[i][0], strlen(dict[i][0]))) break;
+    if(i >= NUMLANGS) { i = 0; loc = "en"; }
+    lang = &dict[i][1];
+    return argv;
+}
 
 /**
  * Parse the mkbootimg json configuration file
@@ -51,20 +112,6 @@ void parsejson(char *json)
     tmp = json_get(json, "diskguid"); getguid(tmp, &diskguid); free(tmp);
     tmp = json_get(json, "disksize"); if(tmp) { disk_size = atoi(tmp); } free(tmp);
     tmp = json_get(json, "align"); if(tmp) { disk_align = atoi(tmp); } free(tmp);
-    tmp = json_get(json, "initrd.type");
-    if(!tmp || !*tmp) { fprintf(stderr,"mkbootimg: initrd type not specified in json\r\n"); exit(1); }
-    for(i = 0; fsdrv[i].name && fsdrv[i].add; i++)
-        if(!strcmp(tmp, fsdrv[i].name)) { rd_open = fsdrv[i].open; rd_add = fsdrv[i].add; rd_close = fsdrv[i].close; break; }
-    if(!rd_add) {
-        fprintf(stderr,"mkbootimg: invalid initrd type %s, valid values:", tmp);
-        for(i = 0; fsdrv[i].name && fsdrv[i].add; i++) fprintf(stderr,"%s %s",i ? "," : "",fsdrv[i].name);
-        fprintf(stderr,"\r\n");
-        exit(1);
-    }
-    free(tmp);
-    tmp = json_get(json, "initrd.gzip");
-    if(tmp && tmp[0] != '1' && tmp[0] != 't') initrd_gzip = 0;
-    free(tmp);
     memset(initrd_dir, 0, NUMARCH*sizeof(void*));
     memset(initrd_buf, 0, NUMARCH*sizeof(void*));
     for(i = 0; i < NUMARCH; i++) {
@@ -74,7 +121,7 @@ void parsejson(char *json)
         if(tmp && *tmp) {
             initrd_buf[i] = readfileall(tmp);
             initrd_size[i] = read_size;
-            if(!initrd_buf[i] || !read_size) { fprintf(stderr,"mkbootimg: unable to read initrd image from %s\r\n",tmp); exit(1); }
+            if(!initrd_buf[i] || !read_size) { fprintf(stderr,"mkbootimg: %s %s\r\n",lang[ERR_INITRDIMG],tmp); exit(1); }
             free(tmp);
         } else {
             sprintf(key, "initrd.directory.%d", i);
@@ -83,17 +130,34 @@ void parsejson(char *json)
         }
         if(!initrd_dir[i] && !initrd_buf[i]) break;
     }
-    if((!initrd_dir[0] || !initrd_dir[0][0]) && !initrd_buf[0]) { fprintf(stderr,"mkbootimg: initrd not specified in json\r\n"); exit(1); }
+    if((!initrd_dir[0] || !initrd_dir[0][0]) && !initrd_buf[0]) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_NOINITRD]); exit(1); }
+    if(initrd_dir[0]) {
+        tmp = json_get(json, "initrd.type");
+        if(!tmp || !*tmp) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_NOINITRDTYPE]); exit(1); }
+        if(strcmp(tmp, "fat16") && strcmp(tmp, "fat32"))
+            for(i = 0; fsdrv[i].name && fsdrv[i].add; i++)
+                if(!strcmp(tmp, fsdrv[i].name)) { rd_open = fsdrv[i].open; rd_add = fsdrv[i].add; rd_close = fsdrv[i].close; break; }
+        if(!rd_add) {
+            fprintf(stderr,"mkbootimg: %s %s. %s:", lang[ERR_BADINITRDTYPE],tmp,lang[ERR_ACCEPTVALUES]);
+            for(i = 0; fsdrv[i].name && fsdrv[i].add; i++) fprintf(stderr,"%s %s",i ? "," : "",fsdrv[i].name);
+            fprintf(stderr,"\r\n");
+            exit(1);
+        }
+        free(tmp);
+    }
+    tmp = json_get(json, "initrd.gzip");
+    if(tmp && tmp[0] != '1' && tmp[0] != 't' && tmp[0] != 'y') initrd_gzip = 0;
+    free(tmp);
     tmp = json_get(json, "config");
     if(tmp && *tmp) {
         config = (char*)readfileall(tmp);
-        if(!config || !*config) { fprintf(stderr,"mkbootimg: unable to read BOOTBOOT configuration from %s\r\n",tmp); exit(1); }
-        if(read_size > 4095) { fprintf(stderr,"mkbootimg: BOOTBOOT configuration file %s is bigger than 4095\r\n",tmp); exit(1); }
+        if(!config || !*config) { fprintf(stderr,"mkbootimg: %s %s\r\n",lang[ERR_NOCONF],tmp); exit(1); }
+        if(read_size > 4095) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BIGCONF]); exit(1); }
     }
     free(tmp);
     tmp = json_get(json, "iso9660"); if(tmp && (*tmp=='1' || *tmp=='t' || *tmp=='y')) { iso9660 = 1; } free(tmp);
     tmp = json_get(json, "partitions.0.type");
-    if(!tmp || !*tmp) { fprintf(stderr,"mkbootimg: partitions array or boot partition's type not specified in json\r\n"); exit(1); }
+    if(!tmp || !*tmp) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_NOPART]); exit(1); }
     if(tmp && !memcmp(tmp, "fat32", 5)) boot_fat = 32;
     free(tmp);
     tmp = json_get(json, "partitions.0.size");
@@ -119,7 +183,7 @@ void parseconfig()
         if(!memcmp(ptr, "kernel=", 7)) {
             ptr += 7; for(e = ptr; *e && *e != '\r' && *e != '\n'; e++);
             kernelname = malloc(e - ptr + 1);
-            if(!kernelname) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+            if(!kernelname) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
             memcpy(kernelname, ptr, e - ptr); kernelname[e - ptr] = 0;
             break;
         }
@@ -127,7 +191,7 @@ void parseconfig()
     }
     if(!kernelname || !*kernelname) {
         kernelname = malloc(10);
-        if(!kernelname) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+        if(!kernelname) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
         strcpy(kernelname, "sys/core");
     }
 }
@@ -148,6 +212,7 @@ void parsekernel(int idx, unsigned char *data, int v)
     char *strtable, *name;
     ehdr=(Elf64_Ehdr *)(data);
     pehdr=(pe_hdr*)(data + ((mz_hdr*)(data))->peaddr);
+    /* do not translate stdout, it might be parsed by scripts. Only translate stderr */
     if(v) printf("File format:  ");
     if((!memcmp(ehdr->e_ident,ELFMAG,SELFMAG)||!memcmp(ehdr->e_ident,"OS/Z",4)) &&
         ehdr->e_ident[EI_CLASS]==ELFCLASS64 && ehdr->e_ident[EI_DATA]==ELFDATA2LSB) {
@@ -155,7 +220,7 @@ void parsekernel(int idx, unsigned char *data, int v)
             "x86_64" : "invalid"));
         if(ehdr->e_machine == EM_AARCH64) { ma = 2*1024*1024-1; fa = 4095; initrd_arch[idx] = 1; } else
         if(ehdr->e_machine == EM_X86_64)  { ma = 4095; fa = 2*1024*1024-1; initrd_arch[idx] = 2; } else
-        { fprintf(stderr,"mkbootimg: invalid architecture in kernel\r\n"); exit(1); }
+        { fprintf(stderr,"mkbootimg: %s. %s: e_machine 62, 183.\r\n",lang[ERR_BADARCH],lang[ERR_ACCEPTVALUES]); exit(1); }
         phdr=(Elf64_Phdr *)((uint8_t *)ehdr+ehdr->e_phoff);
         for(i=0;i<ehdr->e_phnum;i++){
             if(phdr->p_type==PT_LOAD) {
@@ -168,10 +233,10 @@ void parsekernel(int idx, unsigned char *data, int v)
             }
             phdr=(Elf64_Phdr *)((uint8_t *)phdr+ehdr->e_phentsize);
         }
-        if(n != 1) { fprintf(stderr,"mkbootimg: more than one loadable segment in kernel\r\n"); exit(1); }
+        if(n != 1) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MORESEG]); exit(1); }
         if(v) printf("Entry point:  %08" LL "x ", entrypoint);
         if(entrypoint < core_addr || entrypoint > core_addr+core_size)
-            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: entry point is not in text segment\r\n"); exit(1); }
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BADENTRYP]); exit(1); }
         if(ehdr->e_shoff > 0) {
             shdr = (Elf64_Shdr *)((uint8_t *)ehdr + ehdr->e_shoff);
             strt = (Elf64_Shdr *)((uint8_t *)shdr+(uint64_t)ehdr->e_shstrndx*(uint64_t)ehdr->e_shentsize);
@@ -201,14 +266,14 @@ void parsekernel(int idx, unsigned char *data, int v)
             pehdr->machine == IMAGE_FILE_MACHINE_AMD64 ? "x86_64" : "invalid"));
         if(pehdr->machine == IMAGE_FILE_MACHINE_ARM64) { ma = 2*1024*1024-1; fa = 4095; initrd_arch[idx] = 1; } else
         if(pehdr->machine == IMAGE_FILE_MACHINE_AMD64) { ma = 4095; fa = 2*1024*1024-1; initrd_arch[idx] = 2; } else
-        { fprintf(stderr,"mkbootimg: invalid architecture in kernel\r\n"); exit(1); }
+        { fprintf(stderr,"mkbootimg: %s. %s: pe_hdr.machine 0x8664, 0xAA64\r\n",lang[ERR_BADARCH],lang[ERR_ACCEPTVALUES]); exit(1); }
         core_size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
         bss = pehdr->bss_size;
         core_addr = (int64_t)pehdr->code_base;
         entrypoint = (int64_t)pehdr->entry_point;
         if(v) printf("Entry point:  %08" LL "x ", entrypoint);
         if(entrypoint < core_addr || entrypoint > core_addr+pehdr->text_size)
-            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: entry point is not in text segment\r\n"); exit(1); }
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BADENTRYP]); exit(1); }
         if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
             strtable = (char *)pehdr + pehdr->sym_table + pehdr->numsym * 18 + 4;
             for(i = 0; i < pehdr->numsym; i++) {
@@ -223,44 +288,47 @@ void parsekernel(int idx, unsigned char *data, int v)
         }
     } else {
         if(v) printf("unknown\r\n");
-        fprintf(stderr,"mkbootimg: invalid kernel executable format. ELF64 or PE32+ only.\r\n");
+        fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_INVALIDEXE]);
         exit(1);
     }
     if(v) printf("OK\r\n");
-    if(!mm_addr && !fb_addr && !bb_addr && !env_addr) {
-        if(v) printf("Complies with BOOTBOOT Protocol Level 1, must use valid static addresses\r\n");
-        free(data);
-        return;
-    }
     if(mm_addr) {
         if(v) printf("mmio:         %08" LL "x ", mm_addr);
-        if(!ISHH(mm_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: symbol mmio not in the higher half top -1G\r\n"); exit(1); }
-        if(mm_addr & ma) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: symbol mmio not %d bytes aligned\r\n", ma+1); exit(1); }
+        if(!ISHH(mm_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio %s\r\n",lang[ERR_BADADDR]); exit(1); }
+        if(mm_addr & ma) { if(v) {   printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio ");fprintf(stderr,lang[ERR_BADALIGN],ma+1);fprintf(stderr,"\r\n"); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(fb_addr) {
         if(v) printf("fb:           %08" LL "x ", fb_addr);
-        if(!ISHH(fb_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: symbol fb not in the higher half top -1G\r\n"); exit(1); }
-        if(fb_addr & fa) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: symbol fb not %d bytes aligned\r\n", fa+1); exit(1); }
+        if(!ISHH(fb_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb %s\r\n",lang[ERR_BADALIGN]); exit(1); }
+        if(fb_addr & fa) { if(v) {   printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb ");fprintf(stderr,lang[ERR_BADALIGN],fa+1);fprintf(stderr,"\r\n"); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(bb_addr) {
         if(v) printf("bootboot:     %08" LL "x ", bb_addr);
-        if(!ISHH(bb_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: symbol bootboot not in the higher half top -1G\r\n"); exit(1); }
-        if(bb_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: symbol bootboot not page aligned\r\n"); exit(1); }
+        if(!ISHH(bb_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: bootboot %s\r\n",lang[ERR_BADADDR]); exit(1); }
+        if(bb_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: bootboot %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(env_addr) {
         if(v) printf("environment:  %08" LL "x ", env_addr);
-        if(!ISHH(env_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: symbol environment not in the higher half top -1G\r\n"); exit(1); }
-        if(env_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: symbol environment not page aligned\r\n"); exit(1); }
+        if(!ISHH(env_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: environment %s\r\n",lang[ERR_BADADDR]); exit(1); }
+        if(env_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: environment %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(v) printf("Load segment: %08" LL "x size %" LL "dK offs %" LL "x ", core_addr, (core_size + bss + 1024)/1024, core_ptr);
-    if(!ISHH(core_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: loadable segment not in the higher half top -1G\r\n"); exit(1); }
-    if(core_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: loadable segment is not page aligned\r\n"); exit(1); }
-    if(core_size + bss > 16 * 1024 * 1024) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: loadable segment is bigger than 16M\r\n"); exit(1); }
-    if(v) printf("OK\r\n");
+    if(!ISHH(core_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_BADADDR]); exit(1); }
+    if(core_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
+    if(core_size + bss > 16 * 1024 * 1024) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BIGSEG]); exit(1); }
+    if(v) {
+        if(!mm_addr && !fb_addr && !bb_addr && !env_addr)
+            printf("OKr\nComplies with BOOTBOOT Protocol Level 1, %s\r\n",lang[STATADDR]);
+        else
+            printf("OK\r\nComplies with BOOTBOOT Protocol Level %s2, %s\r\n",
+            (!mm_addr || (mm_addr&0xFFFFFFFF)==0xf8000000) && (!fb_addr || (fb_addr&0xFFFFFFFF)==0xfc000000) &&
+            (!bb_addr || (bb_addr&0xFFFFFFFF)==0xffe00000) && (!env_addr || (env_addr&0xFFFFFFFF)==0xffe01000) &&
+            ((core_addr&0xFFFFFFFF)==0xffe02000) ? "1 and " : "", lang[DYNADDR]);
+    }
 }
 
 /**
@@ -273,9 +341,9 @@ void makerom()
     FILE *f;
 
     size=((initrd_size[0]+32+511)/512)*512;
-    if(!initrd_buf[0] || size < 1) { fprintf(stderr,"mkbootimg: unable to read initrd\r\n"); exit(1); }
+    if(!initrd_buf[0] || size < 1) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_NOINITRD]); exit(1); }
     buf=(unsigned char*)malloc(size+1);
-    if(!buf) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+    if(!buf) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
     memset(buf, 0, size+1);
     /* Option ROM header */
     buf[0]=0x55; buf[1]=0xAA; buf[2]=(initrd_size[0]+32+511)/512;
@@ -290,10 +358,10 @@ void makerom()
     buf[6]=(unsigned char)((int)(256-c));
     /* write out */
     f=fopen("initrd.rom","wb");
-    if(!f) { fprintf(stderr,"mkbootimg: unable to write %s\r\n", "initrd.rom"); exit(3); }
+    if(!f) { fprintf(stderr,"mkbootimg: %s %s\r\n", lang[ERR_WRITE], "initrd.rom"); exit(3); }
     fwrite(buf,size,1,f);
     fclose(f);
-    printf("mkbootimg: %s saved.\r\n", "initrd.rom");
+    printf("mkbootimg: %s %s.\r\n", "initrd.rom", lang[SAVED]);
 }
 
 /**
@@ -307,45 +375,51 @@ int main(int argc, char **argv)
     unsigned char *data;
     char kfn[32768];
     FILE *f;
+    argv = getlang(&argc, argv);
     if(argc < 3 || argv[1]==NULL || argv[2] == NULL || !strcmp(argv[1],"help")) {
-        printf( "BOOTBOOT mkbootimg utility - bztsrc@gitlab\r\n  https://gitlab.com/bztsrc/bootboot\r\n\r\n"
-                "You can validate an ELF or PE executable for being BOOTBOOT compatible, otherwise\r\n"
-                "creates a bootable hybrid disk / cdrom image for your hobby OS or Option ROM image.\r\n\r\n");
-        printf( "Usage:\r\n"
-                "  ./mkbootimg check <kernel elf or pe>\r\n"
-                "  ./mkbootimg <configuration json> initrd.rom\r\n"
-                "  ./mkbootimg <configuration json> bootpart.bin\r\n"
-                "  ./mkbootimg <configuration json> <output disk image name>\r\n\r\n"
-                "Examples:\n"
+        printf( "BOOTBOOT mkbootimg utility - bztsrc@gitlab\r\n BOOTBOOT Copyright (c) bzt MIT "
+                "https://gitlab.com/bztsrc/bootboot\r\n%s\r\n"
+                " Raspbery Pi Firmware Copyright (c) Broadcom Corp, Raspberry Pi (Trading) Ltd\r\n\r\n%s\r\n"
+                "%s.\r\n\r\n",
+                deflate_copyright,lang[HELP1],lang[HELP2]);
+        printf( "%s:\r\n"
+                "  ./mkbootimg check <kernel elf / pe>\r\n"
+                "  ./mkbootimg <%s> initrd.rom\r\n"
+                "  ./mkbootimg <%s> bootpart.bin\r\n"
+                "  ./mkbootimg <%s> <%s>\r\n\r\n",lang[HELP3],lang[HELP4],
+                lang[HELP4],lang[HELP4],lang[HELP5]);
+        printf( "%s:\n"
                 "  ./mkbootimg check mykernel/mykernel.x86_64.elf\r\n"
                 "  ./mkbootimg myos.json initrd.rom\r\n"
                 "  ./mkbootimg myos.json bootpart.bin\r\n"
-                "  ./mkbootimg myos.json myos.img\r\n"
-                );
+                "  ./mkbootimg myos.json myos.img\r\n",
+                lang[HELP6]);
         return 0;
     }
     if(!strcmp(argv[1], "check")) {
         data = readfileall(argv[2]);
-        if(!data || read_size < 16) { fprintf(stderr,"mkbootimg: unable to read kernel from %s\r\n",argv[2]); exit(1); }
+        if(!data || read_size < 16) { fprintf(stderr,"mkbootimg: %s %s\r\n",lang[ERR_KRNL],argv[2]); exit(1); }
         parsekernel(0, data, 1);
     } else {
         t = time(NULL);
         ts = gmtime(&t);
         memset(kfn, 0, sizeof(kfn)); /* <- make valgrind happy with sprintf */
         json = (char*)readfileall(argv[1]);
-        if(!json || !*json) { fprintf(stderr,"mkbootimg: unable to read configuration json from %s\r\n",argv[1]); exit(1); }
+        if(!json || !*json) { fprintf(stderr,"mkbootimg: %s %s\r\n",lang[ERR_JSON],argv[1]); exit(1); }
         parsejson(json);
         parseconfig();
         for(i = 0; i < NUMARCH; i++)
             if(initrd_dir[i]) {
                 sprintf(kfn, "%s/%s", initrd_dir[i], kernelname);
                 data = readfileall(kfn);
-                if(!data || read_size < 16) { fprintf(stderr,"mkbootimg: unable to read kernel from %s\r\n",kfn); exit(1); }
+                if(!data || read_size < 16) { fprintf(stderr,"mkbootimg: %s %s\r\n",lang[ERR_KRNL],kfn); exit(1); }
+                if(!memcmp(data + 54, "FAT1", 4) || !memcmp(data + 82, "FAT3", 4))
+                    { fprintf(stderr,"mkbootimg: %s %s\r\n", lang[ERR_BADINITRDTYPE],"FAT"); exit(1); }
                 parsekernel(i, data, 0);
                 free(data);
                 skipbytes = strlen(initrd_dir[i]) + 1;
                 fs_base = NULL; fs_len = 0;
-                if(rd_open) (*rd_open)();
+                if(rd_open) (*rd_open)(NULL);
                 parsedir(initrd_dir[i], 0);
                 if(rd_close) (*rd_close)();
                 initrdcompress();
@@ -353,19 +427,23 @@ int main(int argc, char **argv)
                 initrd_size[i] = fs_len;
             } else
             if(initrd_buf[i]) {
-                for(j = 0, kfn[0] = 0; j < initrd_size[i] - 512; j++) {
-                    ehdr=(Elf64_Ehdr *)(initrd_buf[i] + j);
-                    pehdr=(pe_hdr*)(initrd_buf[i] + j + ((mz_hdr*)(initrd_buf[i] + j))->peaddr);
+                fs_base = initrd_buf[i]; fs_len = initrd_size[i];
+                if(initrd_buf[i][0] == 0x1f && initrd_buf[i][1] == 0x8b) {
+                    initrduncompress(); initrd_buf[i] = fs_base; initrd_size[i] = fs_len; }
+                for(j = 0, kfn[0] = 0; j < fs_len - 512; j++) {
+                    ehdr=(Elf64_Ehdr *)(fs_base + j);
+                    pehdr=(pe_hdr*)(fs_base + j + ((mz_hdr*)(fs_base + j))->peaddr);
                     if(((!memcmp(ehdr->e_ident,ELFMAG,SELFMAG)||!memcmp(ehdr->e_ident,"OS/Z",4)) &&
                         ehdr->e_ident[EI_CLASS]==ELFCLASS64 && ehdr->e_ident[EI_DATA]==ELFDATA2LSB) ||
-                        (((mz_hdr*)(initrd_buf[i] + j))->magic==MZ_MAGIC && ((mz_hdr*)(initrd_buf[i] + j))->peaddr<65536 &&
+                        (((mz_hdr*)(fs_base + j))->magic==MZ_MAGIC && ((mz_hdr*)(fs_base + j))->peaddr<65536 &&
                         pehdr->magic == PE_MAGIC && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS)) {
-                            parsekernel(i, initrd_buf[i] + j, 0);
+                            parsekernel(i, fs_base + j, 0);
                             kfn[0] = 1;
                             break;
                         }
                 }
-                if(!kfn[0]) { fprintf(stderr,"mkbootimg: unable to locate kernel in initrd #%d\r\n",i+1); exit(1); }
+                if(!kfn[0]) { fprintf(stderr,"mkbootimg: %s initrd #%d\r\n",lang[ERR_LOCKRNL],i+1); exit(1); }
+                if(initrd_gzip) { initrdcompress(); initrd_buf[i] = fs_base; initrd_size[i] = fs_len; }
             } else
                 break;
         if(initrd_arch[1] && initrd_arch[1] == initrd_arch[0]) { initrd_size[1] = 0; initrd_arch[1] = 0; }
@@ -373,19 +451,19 @@ int main(int argc, char **argv)
         if(!strcmp(argv[2], "initrd.bin")) {
             /* write out */
             f=fopen("initrd.bin","wb");
-            if(!f) { fprintf(stderr,"mkbootimg: unable to write %s\r\n", "initrd.bin"); exit(3); }
+            if(!f) { fprintf(stderr,"mkbootimg: %s %s\r\n", lang[ERR_WRITE], "initrd.bin"); exit(3); }
             fwrite(initrd_buf[0],initrd_size[0],1,f);
             fclose(f);
-            printf("mkbootimg: %s saved.\r\n", "initrd.bin");
+            printf("mkbootimg: %s %s.\r\n", "initrd.bin", lang[SAVED]);
         } else {
             esp_makepart();
             if(!strcmp(argv[2], "bootpart.bin")) {
                 /* write out */
                 f=fopen("bootpart.bin","wb");
-                if(!f) { fprintf(stderr,"mkbootimg: unable to write %s\r\n", "bootpart.bin"); exit(3); }
+                if(!f) { fprintf(stderr,"mkbootimg: %s %s\r\n", lang[ERR_WRITE], "bootpart.bin"); exit(3); }
                 fwrite(esp,esp_size,1,f);
                 fclose(f);
-                printf("mkbootimg: %s saved.\r\n", "bootpart.bin");
+                printf("mkbootimg: %s %s.\r\n", "bootpart.bin", lang[SAVED]);
             } else {
                 gpt_maketable();
                 img_write(argv[2]);

@@ -36,16 +36,16 @@ void img_write(char *fn)
 {
     FILE *f, *d;
     int i, n, lastpercent, k;
-    char key[64], *tmp, *buf;
+    char key[64], *tmp, *dir, *buf;
     unsigned long int size, pos;
     size_t s;
     time_t c = 0;
 
     buf = malloc(1024*1024);
-    if(!buf) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(2); }
+    if(!buf) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(2); }
 
     f=fopen(fn,"wb");
-    if(!f) { fprintf(stderr,"mkbootimg: unable to write %s\n", fn); exit(3); }
+    if(!f) { fprintf(stderr,"mkbootimg: %s %s\n", lang[ERR_WRITE],fn); exit(3); }
     /* write out primary GPT table (and optional ISO9660 header) */
     fwrite(gpt,es*512,1,f);
     /* write out ESP */
@@ -68,7 +68,7 @@ void img_write(char *fn)
                         n = pos * 100L / (tsize + 1);
                         if(n != lastpercent) {
                             lastpercent = n;
-                            printf("\rmkbootimg: writing [");
+                            printf("\rmkbootimg: %s [",lang[WRITING]);
                             for(i = 0; i < 20; i++) printf(i < n/5 ? "#" : " ");
                             printf("] %3d%% ", n);
                             fflush(stdout);
@@ -78,6 +78,36 @@ void img_write(char *fn)
                 }
                 fclose(d);
             }
+        } else {
+            sprintf(key, "partitions.%d.%s", k, "directory");
+            dir = json_get(json, key);
+            if(dir && *dir) {
+                fs_base = NULL; fs_len = 0;
+                sprintf(key, "partitions.%d.%s", k, "type");
+                tmp = json_get(json, key);
+                if(tmp && *tmp) {
+                    rd_open = NULL; rd_add = NULL; rd_close = NULL;
+                    for(i = 0; fsdrv[i].name && fsdrv[i].add; i++)
+                        if(!strcmp(tmp, fsdrv[i].name)) { rd_open = fsdrv[i].open; rd_add = fsdrv[i].add; rd_close = fsdrv[i].close; break; }
+                    free(tmp);
+                    if(rd_add) {
+                        skipbytes = strlen(dir) + 1;
+                        if(rd_open) (*rd_open)((gpt_t*)(gpt + 1024 + k * 128));
+                        parsedir(dir, 0);
+                        if(rd_close) (*rd_close)();
+                    }
+                }
+                free(dir);
+                if(fs_base && fs_len) {
+                    if(gpt_parts[k] < (unsigned long int)fs_len) {
+                        fprintf(stderr,"mkbootimg: partition #%d %s.\r\n", k+1,lang[ERR_PARTSIZE]);
+                        exit(2);
+                    }
+                    fwrite(fs_base, fs_len, 1, f);
+                    free(fs_base);
+                    size += fs_len;
+                }
+            }
         }
         fseek(f,gpt_parts[k] - size,SEEK_CUR);
     }
@@ -86,6 +116,7 @@ void img_write(char *fn)
     fwrite(gpt+1024,62*512,1,f);
     fwrite(gpt2,512,1,f);
     fclose(f);
-    printf("\r\x1b[K\rmkbootimg: %s saved.\r\n", fn);
+    printf("\r\x1b[K\r");
+    printf("mkbootimg: %s %s.\r\n", fn, lang[SAVED]);
     free(buf);
 }

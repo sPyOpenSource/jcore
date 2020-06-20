@@ -610,12 +610,10 @@ sfs_initrd:
 ;       On Error
 ;         ecx: 0
 jamesm_initrd:
-            ; no real magic, so we assume initrd contains at least 2 files...
+            ; no real magic, so we assume initrd contains at least one file...
             cmp         word [esi+2], 0
             jne          .err
             cmp         byte [esi+4], 0BFh
-            jne          .err
-            cmp         byte [esi+77], 0BFh
             jne          .err
             ; upper bound
             xor         ecx, ecx

@@ -69,20 +69,25 @@ void gpt_maketable()
             if(fsdrv[i].type.Data1 && !strcmp(tmp, fsdrv[i].name)) { memcpy(&typeguid, &fsdrv[i].type, sizeof(guid_t)); break; }
         free(tmp);
         if(!typeguid.Data1 && !typeguid.Data2 && !typeguid.Data3 && !typeguid.Data4[0]) {
-            fprintf(stderr,"mkbootimg: partition #%d doesn't have a valid type. Accepted values:\r\n", np+1);
+            sprintf(key, "partitions.%d.%s", np, "typeguid");
+            tmp = json_get(json, key);
+            if(tmp && *tmp) { getguid(tmp, &typeguid); free(tmp); }
+        }
+        if(!typeguid.Data1 && !typeguid.Data2 && !typeguid.Data3 && !typeguid.Data4[0]) {
+            fprintf(stderr,"mkbootimg: partition #%d %s. %s:\r\n", np+1, lang[ERR_TYPE], lang[ERR_ACCEPTVALUES]);
             for(i = 0; fsdrv[i].name; i++)
                 if(fsdrv[i].type.Data1) {
                     fprintf(stderr,"  \"%08X-%04X-%04X-%02X%02X-",fsdrv[i].type.Data1,fsdrv[i].type.Data2,fsdrv[i].type.Data3,
-                        fsdrv[i].type.Data4[0],fsdrv[i].type.Data4[0]);
+                        fsdrv[i].type.Data4[0],fsdrv[i].type.Data4[1]);
                     for(j = 2; j < 8; j++) fprintf(stderr,"%02X",fsdrv[i].type.Data4[j]);
                     fprintf(stderr,"\" / \"%s\"\r\n",fsdrv[i].name);
                 }
-            fprintf(stderr,"  ...or any non-zero GUID in the form \"%%08X-%%04X-%%04X-%%04X-%%12X\"\r\n");
+            fprintf(stderr,"  ...%s \"%%08X-%%04X-%%04X-%%04X-%%12X\"\r\n",lang[ERR_GUIDFMT]);
             exit(1);
         }
         sprintf(key, "partitions.%d.%s", np, "name");
         tmp = json_get(json, key);
-        if(!tmp || !*tmp) { fprintf(stderr,"mkbootimg: partition #%d doesn't have a name\r\n", np+1); exit(1); }
+        if(!tmp || !*tmp) { fprintf(stderr,"mkbootimg: partition #%d %s\r\n", np+1, lang[ERR_NONAME]); exit(1); }
         free(tmp);
         sprintf(key, "partitions.%d.%s", np, "size");
         tmp = json_get(json, key); if(tmp) { size = atoi(tmp) * 1024UL * 1024UL; } else { size = 0; } free(tmp);
@@ -90,7 +95,7 @@ void gpt_maketable()
         tmp = json_get(json, key);
         if(!tmp || !*tmp) ps = 0; else {
             f = fopen(tmp, "rb");
-            if(!f) { fprintf(stderr,"mkbootimg: partition #%d unable to read partition image from %s\r\n",np+1,tmp); exit(1); }
+            if(!f) { fprintf(stderr,"mkbootimg: partition #%d %s %s\r\n",np+1,lang[ERR_PARTIMG],tmp); exit(1); }
             fseek(f, 0L, SEEK_END);
             ps = ftell(f);
             fclose(f); free(tmp);
@@ -101,7 +106,7 @@ void gpt_maketable()
     if(total > tsize) tsize = total;
 
     gpt = malloc(es*512);
-    if(!gpt) { fprintf(stderr,"mkbootimg: unable to allocate memory\r\n"); exit(1); }
+    if(!gpt) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
     memset(gpt,0,es*512);
 
     /* MBR stage 1 loader */
@@ -181,7 +186,7 @@ void gpt_maketable()
         setint(l,p+40);                              /* end LBA */
         sprintf(key, "partitions.%d.%s", k, "name"); tmp = name = json_get(json, key);
         u = (uint16_t*)(p+56);
-        for(i = 0; i < 31 && *name; name++, i++) {   /* name, utf8 to unicode16 */
+        for(i = 0; i < 35 && *name; name++, i++) {   /* name, utf8 to unicode16 */
             u[i] = *name;
             if((*name & 128) != 0) {
                 if(!(*name & 32)) { u[i] = ((*name & 0x1F)<<6)|(name[1] & 0x3F); name += 1; } else
@@ -212,9 +217,16 @@ void gpt_maketable()
 
     /* ISO9660 cdrom image part */
     if(iso9660) {
+        /* from the UEFI spec section 12.3.2.1 ISO-9660 and El Torito
+          "...A Platform ID of 0xEF indicates an EFI System Partition. The Platform ID is in either the Section
+          Header Entry or the Validation Entry of the Booting Catalog as defined by the “El Torito”
+          specification. EFI differs from “El Torito” “no emulation” mode in that it does not load the “no
+          emulation” image into memory and jump to it. EFI interprets the “no emulation” image as an EFI
+          system partition."
+         * so we must record the ESP in the Boot Catalog, that's how UEFI locates it */
         if(esp_bbs%4!=0) {
             /* this should never happen, but better check */
-            fprintf(stderr,"mkbootimg: %s (LBA %d, offs %x)\n","stage2 is not 2048 byte sector aligned", esp_bbs, esp_bbs*512);
+            fprintf(stderr,"mkbootimg: %s (LBA %d, offs %x)\n",lang[ERR_ST2ALIGN], esp_bbs, esp_bbs*512);
             exit(3);
         }
         sprintf((char*)&isodate, "%04d%02d%02d%02d%02d%02d00",
@@ -325,7 +337,7 @@ void gpt_maketable()
         iso[8288]=1;                 /* serial */
         iso[8292]=14;                /* filename length */
         memcpy(&iso[8293], "BOOTBOOT.TXT;1", 14);
-        /* 21th sector: contents of README.TXT */
+        /* 21th sector: contents of BOOTBOOT.TXT */
         memcpy(&iso[10240], "BOOTBOOT hybrid GPT / CDROM Image\r\n\r\nBootable as\r\n"
             " - CDROM (El Torito, UEFI)\r\n"
             " - USB stick (BIOS, UEFI)\r\n"

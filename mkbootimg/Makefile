@@ -25,13 +25,16 @@ data.c:
 	./bin2h $(INCBIN) >data.c
 	@rm bin2h
 
+zlib.o: zlib.c zlib.h
+	$(CC) $(CFLAGS) -Wno-implicit-fallthrough zlib.c -c -o zlib.o
+
 %: %.c
 	$(CC) $(CFLAGS) $< -c $@
 
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET) $(LIBDIRS) $(LIBS)
-	@zip $(ZIPNAME) $(TARGET)*
+	@zip $(ZIPNAME) $(TARGET)* DESCRIPT.ION
 
 clean:
-	@rm $(TARGET) *.o 2>/dev/null || true
+	@rm $(TARGET)* *.o 2>/dev/null || true
 

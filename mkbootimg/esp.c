@@ -110,13 +110,13 @@ void esp_makepart()
     /* we must force 16M at least, because if FAT16 has too few clusters, some UEFI thinks it's FAT12... */
     if(boot_size < 16) boot_size = 16;
     if(boot_fat == 16 && boot_size >= 256) boot_fat = 32;
-    /* we must force 256M, because if FAT32 has too few clusters, some UEFI thinks it's FAT16... */
-    i = (iso9660 ? 256 : 33);
+    /* we must force 128M, because if FAT32 has too few clusters, some UEFI thinks it's FAT16... */
+    i = (iso9660 ? 128 : 33);
     if(boot_fat == 32 && boot_size < i) boot_size = i;
     esp_size = boot_size*1024*1024;
 
     esp = malloc(esp_size);
-    if(!esp) { fprintf(stderr,"mkbootimg: unable to allocate %d bytes\r\n", esp_size); exit(2); }
+    if(!esp) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_MEM]); exit(2); }
     memset(esp, 0, esp_size);
     /* Volume Boot Record */
     memcpy(esp, binary_boot_bin, 11);
@@ -141,7 +141,7 @@ void esp_makepart()
         fat16_2 = (uint16_t*)(&esp[(esp[0xE]+spf) * 512]);
         fat16_1[0] = fat16_2[0] = 0xFFF8; fat16_1[1] = fat16_2[1] = 0xFFFF;
     } else {
-        esp[0xD] = iso9660 || boot_size >= 256 ? 4 : 1; esp[0xE] = 4;
+        esp[0xD] = iso9660 || boot_size >= 128 ? 4 : 1; esp[0xE] = 4;
         esp[0x20] = i & 0xFF; esp[0x21] = (i >> 8) & 0xFF; esp[0x22] = (i >> 16) & 0xFF; esp[0x23] = (i >> 24) & 0xFF;
         bpc = esp[0xD] * 512;
         spf = ((esp_size/bpc)*4) / 512 - 8;
