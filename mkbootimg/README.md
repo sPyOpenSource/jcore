@@ -9,7 +9,7 @@ also creates an initrd from a directory (currently `cpio`, `tar`, `jamesm` (Jame
 the code is written in a way that it is easily expandable).
 
 The generated image was tested with fdisk, and with the verify function of gdisk. The FAT partition was tested with fsck.vfat
-and with TianoCore UEFI firmware, and on Raspberry Pi.
+and with TianoCore UEFI firmware and on Raspberry Pi.
 
 Operating Modes
 ---------------
@@ -23,7 +23,7 @@ a BIOS Option ROM image from the initrd directory. If that is `bootpart.bin`, th
 
 The tool is multilingual. It will detect your operating system's language and if it has a dictionary for it, it will use that.
 You can override the autodetection from the command line by using the `-l <lang>` flag as the first argument (available for
-all operating modes). Language is given in two character long codes and fallbacks to `en`.
+all operating modes). Language is given in two characters long code and fallbacks to `en`.
 
 Configuration
 -------------
