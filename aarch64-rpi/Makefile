@@ -5,7 +5,7 @@ all: boot.S bootboot.c fs.h
 	@aarch64-elf-gcc -Wall -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles -fno-stack-protector -I ./ -c bootboot.c -o bootboot.o
 	@aarch64-elf-ld -r -b binary -o font.o font.psf
 	@aarch64-elf-ld -nostdlib -nostartfiles boot.o bootboot.o tinflate.o font.o -T link.ld -o bootboot.elf
-	@aarch64-elf-objcopy -O binary bootboot.elf ../bootboot.img
+	@aarch64-elf-objcopy -O binary bootboot.elf ../dist/bootboot.img
 	@rm *.o bootboot.elf
 
 mkboot: mkboot.c

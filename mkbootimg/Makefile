@@ -16,7 +16,7 @@ ZIPNAME = ../$(TARGET)-$(shell uname -s).zip
 endif
 endif
 OBJS = $(SRCS:.c=.o)
-INCBIN = ../boot.bin ../bootboot.bin ../bootboot.efi ../bootboot.img ../aarch64-rpi/LICENCE.broadcom ../aarch64-rpi/bootcode.bin ../aarch64-rpi/fixup.dat ../aarch64-rpi/start.elf
+INCBIN = ../dist/boot.bin ../dist/bootboot.bin ../dist/bootboot.efi ../dist/bootboot.img ../aarch64-rpi/LICENCE.broadcom ../aarch64-rpi/bootcode.bin ../aarch64-rpi/fixup.dat ../aarch64-rpi/start.elf
 
 all: data.c $(TARGET)
 

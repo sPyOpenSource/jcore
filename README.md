@@ -5,14 +5,14 @@ I provide pre-compiled images ready for use.
 
 1. *x86_64-efi* the preferred way of booting on x86_64 architecture.
     Standard GNU toolchain and a few files from gnuefi (included).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (95k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (96k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.efi) (95k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.rom) (96k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), Expansion ROM and Linux boot compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
-    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (11k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
+    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.bin) (11k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3, 4
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (34k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (34k)
 
 4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) in C which draws lines and boxes
 
@@ -128,7 +128,7 @@ Glossary
 * _kernel file_: an ELF64 / PE32+ [executable inside initrd](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel),
   optionally with the following symbols: `mmio`, `fb`, `environment`, `bootboot` (see machine state and linker script).
 
-* _BOOTBOOT structure_: an informational structure defined in [bootboot.h](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h).
+* _BOOTBOOT structure_: an informational structure defined in [bootboot.h](https://gitlab.com/bztsrc/bootboot/blob/master/dist/bootboot.h).
 
 Boot process
 ------------
@@ -139,7 +139,7 @@ Boot process
 4. iterates on file system drivers, and loads kernel file from initrd.
 5. if file system is not recognized, scans for the first executable in the initrd.
 6. parses executable header and symbols to get link addresses (only level 2 compatible loaders).
-7. maps linear framebuffer, environment and [bootboot structure](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h) accordingly.
+7. maps linear framebuffer, environment and [bootboot structure](https://gitlab.com/bztsrc/bootboot/blob/master/dist/bootboot.h) accordingly.
 8. sets up stack, registers and jumps to kernel entry point. See [example kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel).
 
 Machine state
@@ -169,7 +169,7 @@ the `fb` symbol. Level 1 loaders limit the framebuffer size somewhere around 409
 and aspect ratio too). That's more than enough for [Ultra HD 4K](https://en.wikipedia.org/wiki/4K_resolution) (3840 x 2160).
 Level 2 loaders can place the fb anywhere in memory from -1G to -2M, therefore they do not have such a limitation.
 
-The main information [bootboot structure](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h) is mapped
+The main information [bootboot structure](https://gitlab.com/bztsrc/bootboot/blob/master/dist/bootboot.h) is mapped
 at `bootboot` symbol. It consist of a fixed 128 bytes long header followed by various number of fixed
 records. Your initrd (with the additional kernel modules and servers) is enitrely in the memory, and you can locate it
 using this struct's *initrd_ptr* and *initrd_size* members. The physical address of the framebuffer can be found in

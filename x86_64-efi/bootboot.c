@@ -43,9 +43,9 @@
 #include <eficon.h>
 #include <efiprot.h>
 #include <efigpt.h>
-// get BOOTBOOT specific stuff
-#include "../bootboot.h"
 #include "tinf.h"
+// get BOOTBOOT specific stuff
+#include "../dist/bootboot.h"
 
 /*** ELF64 defines and structs ***/
 #define ELFMAG      "\177ELF"

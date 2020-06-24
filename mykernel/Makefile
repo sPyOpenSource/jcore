@@ -28,7 +28,7 @@
 #
 #
 
-CFLAGS = -Wall -fpic -ffreestanding -fno-stack-protector -nostdinc -nostdlib -I../
+CFLAGS = -Wall -fpic -ffreestanding -fno-stack-protector -nostdinc -nostdlib -I../dist/
 
 all: mykernel.x86_64.elf mykernel.aarch64.elf
 

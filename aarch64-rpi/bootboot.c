@@ -42,7 +42,7 @@
 #include "tinf.h"
 
 /* get BOOTBOOT structure */
-#include "../bootboot.h"
+#include "../dist/bootboot.h"
 
 /* aligned buffers */
 volatile uint32_t  __attribute__((aligned(16))) mbox[36];

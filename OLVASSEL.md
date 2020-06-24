@@ -5,14 +5,14 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 
 1. *x86_64-efi* a preferált indítási mód x86_64-en.
     Szabvány GNU eszköztár plusz néhány fájl a gnuefi-ből (mellékelve).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.efi) (95k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.rom) (96k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.efi) (95k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.rom) (96k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), bővítő ROM és Linux boot kompatíbilis, RÉGI betöltő.
     Ha újra akarod fordítani, szükséged lesz a fasm-ra (nincs mellékelve).
-    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/boot.bin) (512 bájt, egyszerre MBR, VBR és CDROM indító szektor), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.bin) (11k, a boot.bin tölti be, valamint BBS bővítő ROM és Multiboot kompatíbilis is)
+    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/boot.bin) (512 bájt, egyszerre MBR, VBR és CDROM indító szektor), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.bin) (11k, a boot.bin tölti be, valamint BBS bővítő ROM és Multiboot kompatíbilis is)
 
 3. *aarch64-rpi* ARMv8 betöltő Raspberry Pi 3-hoz, 4-hez
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/bootboot.img) (34k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (34k)
 
 4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) C-ben írva, ami vonalakat húz meg színes dobozokat rajzol
 
@@ -127,7 +127,7 @@ Kifejezések
 * _kernel fájl_: egy ELF64 / PE32+ [futtatható az initrd-ben](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel),
   opcionálisan a következő szimbólumokkal: `mmio`, `fb`, `environment`, `bootboot` (lásd gép állapot és linker szkript alább).
 
-* _BOOTBOOT struktúra_: a [bootboot.h](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h)-ban definiált struktúra.
+* _BOOTBOOT struktúra_: a [bootboot.h](https://gitlab.com/bztsrc/bootboot/blob/master/dist/bootboot.h)-ban definiált struktúra.
 
 Betöltés menete
 ---------------
@@ -138,7 +138,7 @@ Betöltés menete
 4. sorra meghívja a fájl rendszer meghajtókat, hogy betöltse a kernelt az initrd-ről.
 5. ha egyik meghajtó sem járt szerencsével, akkor megkeresi az első futtathatót az initrd-ben.
 6. értelmezi a futtatható fejlécét és a szimbólumokat, hogy megtalálja a címeket (csak 2-es szintű betöltők).
-7. ennek megfelelően leképezi a framebuffert, környezetet és a [bootboot struktúrá](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h)t.
+7. ennek megfelelően leképezi a framebuffert, környezetet és a [bootboot struktúrá](https://gitlab.com/bztsrc/bootboot/blob/master/dist/bootboot.h)t.
 8. beállítja a vermet, regisztereket és a kernel belépési pontjára ugrik. Lásd [példa kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel).
 
 Gép állapot
@@ -169,7 +169,7 @@ Az 1-es szintű betöltők korlátozzák a képernyő méretét valahol 4096 x 4
 Ez több, mint elég az [Ultra HD 4K](https://en.wikipedia.org/wiki/4K_resolution) (3840 x 2160) felbontáshoz. A 2-es szintű
 betöltők akárhova képesek leképezni az fb szimbólumot -1G és -2M között, ezért rájuk nem vonatkozik ez a megszorítás.
 
-A fő információs [bootboot struktúra](https://gitlab.com/bztsrc/bootboot/blob/master/bootboot.h) a `bootboot` szimbólumra
+A fő információs [bootboot struktúra](https://gitlab.com/bztsrc/bootboot/blob/master/dist/bootboot.h) a `bootboot` szimbólumra
 van leképezve. Ez áll egy fix 128 bájtos fejlécből, amit egy változó hosszúságú, de fix méretű rekordok követnek. Az initrd
 (benne a további kernel modulokkal és szerverekkel) teljes egészében a memóriában van, és ezen struktúra *initrd_ptr* és
 *initrd_size* mezői mutatnak rá. A framebuffer fizikai címe az *fb_ptr* mezőben található. Az *indulási rendszer idő* és

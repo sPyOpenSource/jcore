@@ -35,7 +35,7 @@
 #include <unistd.h>
 
 /* the BOOTBOOT 1st stage loader code */
-extern unsigned char *_binary____boot_bin_start;
+extern unsigned char *_binary____dist_boot_bin_start;
 
 /* entry point */
 int main(int argc, char** argv)
@@ -80,7 +80,7 @@ int main(int argc, char** argv)
         return 2;
     }
     // create the boot record. First copy the code then the data area from original sector on disk
-    memcpy((void*)&bootrec, (void*)&_binary____boot_bin_start, 512);
+    memcpy((void*)&bootrec, (void*)&_binary____dist_boot_bin_start, 512);
     memcpy((void*)&bootrec+0xB, (void*)&data+0xB, 0x5A-0xB);        // copy BPB (if any)
     memcpy((void*)&bootrec+0x1B8, (void*)&data+0x1B8, 510-0x1B8);   // copy WNTID and partitioning table (if any)
     // now locate the second stage by magic bytes
