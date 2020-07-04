@@ -1300,9 +1300,7 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
 
     // enable SSE
     __asm__ __volatile__ (
-        "movq %%cr0, %%rax;"
-        "andb $0xfb, %%al;"
-        "orl $0xC0000001, %%eax;"
+        "movl $0xC0000011, %%eax;"
         "movq %%rax, %%cr0;"
         "movq %%cr4, %%rax;"
         "orw $3 << 8, %%ax;"

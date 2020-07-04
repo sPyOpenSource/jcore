@@ -1551,7 +1551,7 @@ end if
             xor         eax, eax
             repnz       stosd
             mov         dword [ebx+0], '// N'
-            mov         dword [ebx+4], '/A\n'
+            mov         dword [ebx+4], '/A' or (10 shl 16)
 .parseend:
 
             ;-----load /sys/core------
@@ -2165,9 +2165,7 @@ longmode_init:
             or          eax, 100h       ;enable long mode
             wrmsr
 
-            mov         eax, cr0
-            and         al, 0FBh        ;clear EM, MP (enable SSE)
-            or          eax, 0C0000001h
+            mov         eax, 0C0000011h ;clear EM, MP (enable SSE) and WP
             mov         cr0, eax        ;enable paging with cache disabled
             lgdt        [GDT_value]     ;read 80 bit address
             jmp         @f
