@@ -88,8 +88,9 @@ Examples:
 ### Partitions
 
 It is somewhat unusual, as the first array element is different than the rest. It specifies the boot partition,
-therefore it has different types, and `file` and `name` are not interpreted because that partition image is
-dinamically generated with the implicit name of "EFI System Partition".
+therefore it has different types, and `file` / `directory` and `name` are not interpreted because that partition image is
+always dinamically generated with the implicit name of "EFI System Partition". For the same reason, `size` is mandatory
+for the first (boot) partition.
 
 | Field      | Type     | Description                                                                         |
 |------------|----------|-------------------------------------------------------------------------------------|
@@ -154,7 +155,7 @@ Adding More File Systems
 ------------------------
 
 These are listed in the fs registry, in the file `fs.h`. You can freely add new types. For file systems that you
-want to use for initrd as well, you must implement three functions, like:
+want to use for generating partition images or initrd as well, you must implement three functions, like:
 
 ```
 void somefs_open(gpt_t *gpt_entry);
@@ -171,7 +172,8 @@ done, the close function is called to finalize the image. Only the "add" functio
 These functions can use two global variables, `fs_base` and `fs_len` which holds the buffer for the filesystem image
 in memory.
 
-In lack of these functions, with a valid GPT type, the file system can be used in the partition's `type` field.
+In lack of these functions, the file system still can be used in the partition's `type` field, but then only the GPT entry
+will be created, not the content of the partition.
 
 Keeping the built-in binaries up-to-date
 ----------------------------------------

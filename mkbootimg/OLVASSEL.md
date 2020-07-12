@@ -89,8 +89,8 @@ Példák:
 ### Partíciók
 
 Kicsit szokatlan, a legelső elem különbözik a többitől. Az a boot partíciót definiálja, ezért eltérő típusokat
-használ, és a `file` valamint a `name` nem használható, mivel az a partíció dinamikusan generált, fix "EFI
-System Partition" névvel.
+használ, és a `file` / `directory` valamint a `name` nem használható, mivel az a partíció mindig dinamikusan generált,
+fix "EFI System Partition" névvel. Ugyanezért a `size` méret megadása kötelező az első (boot) partíciónál.
 
 | Mező       | Típus    | Leírás                                                                              |
 |------------|----------|-------------------------------------------------------------------------------------|
@@ -155,7 +155,7 @@ Végezetül a `name` egy sima UTF-8 sztring, a partíció neve. Maximális hossz
 -------------------------------
 
 Ezeket az fs registry listázza, az `fs.h` fájlban. Szabadon hozzáadhatsz új típusokat. Azoknál a fájlrendszereknél,
-amiket indító memórialemezképhez is szeretnél használni, implementálni kell három funkciót, például:
+amiket indító memórialemezképhez vagy partícióképhez is szeretnél használni, implementálni kell három funkciót, például:
 
 ```
 void somefs_open(gpt_t *gpt_entry);
@@ -172,7 +172,8 @@ kettő opcionális.
 
 Ezek a funkciók elérnek két globális változót, az `fs_base`-t és `fs_len`-t, amik a lemezkép memóriabeli bufferét jelölik.
 
-Ezen függvények hiányában, érvényes GPT típussal rendelkezve a fájlrendszer csak a partíciók `type` mezőjében használható.
+Ezen függvények hiányában, a fájlrendszer továbbra is használható a partíciók `type` mezőjében, de ekkor csak a GPT bejegyzést
+hozza létre, magát a partíció tartalmát nem.
 
 A beépített binárisok naprakészen tartása
 -----------------------------------------
