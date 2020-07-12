@@ -14,10 +14,33 @@ and with TianoCore UEFI firmware and on Raspberry Pi.
 Operating Modes
 ---------------
 
+```
+$ ./mkbootimg
+BOOTBOOT mkbootimg utility - bztsrc@gitlab
+ BOOTBOOT Copyright (c) bzt MIT https://gitlab.com/bztsrc/bootboot
+ deflate 1.2.11 Copyright 1995-2017 Jean-loup Gailly and Mark Adler
+ Raspbery Pi Firmware Copyright (c) Broadcom Corp, Raspberry Pi (Trading) Ltd
+
+Validates ELF or PE executables for being BOOTBOOT compatible, otherwise
+creates a bootable hybrid image for your hobby OS or Option ROM image.
+
+Usage:
+  ./mkbootimg check <kernel elf / pe>
+  ./mkbootimg <configuration json> initrd.rom
+  ./mkbootimg <configuration json> bootpart.bin
+  ./mkbootimg <configuration json> <output disk image name>
+
+Examples:
+  ./mkbootimg check mykernel/mykernel.x86_64.elf
+  ./mkbootimg myos.json initrd.rom
+  ./mkbootimg myos.json bootpart.bin
+  ./mkbootimg myos.json myos.img
+```
+
 If the first argument is `check`, then it's followed by a kernel filename. The utility will check the executable for
 BOOTBOOT compliance, and it will report all errors and if passed, which BOOTBOOT Protocol level it conforms to.
 
-Otherwise the first argument is the configuration file. If the second argument is `initrd.rom`, then it will generate
+Otherwise the first argument is the configuration JSON file. If the second argument is `initrd.rom`, then it will generate
 a BIOS Option ROM image from the initrd directory. If that is `bootpart.bin`, then it saves the boot partition image
 (and only the partition image). Every other filename will make it generate a whole disk image with GPT.
 

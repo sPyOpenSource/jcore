@@ -14,11 +14,34 @@ A kigenerált képet leellenőriztem fdisk-el, valamint a gdisk verify funkciój
 Működési módok
 --------------
 
+```
+$ ./mkbootimg
+BOOTBOOT mkbootimg utility - bztsrc@gitlab
+ BOOTBOOT Copyright (c) bzt MIT https://gitlab.com/bztsrc/bootboot
+ deflate 1.2.11 Copyright 1995-2017 Jean-loup Gailly and Mark Adler
+ Raspbery Pi Firmware Copyright (c) Broadcom Corp, Raspberry Pi (Trading) Ltd
+
+Ellenőrzi, hogy az ELF vagy PE futtatható BOOTBOOT kompatíbilis-e, illetve
+hibrid indító lemez képet generál a hobbi OS-edhez vagy Option ROM képet.
+
+Használat:
+  ./mkbootimg check <kernel elf / pe>
+  ./mkbootimg <konfigurációs json> initrd.rom
+  ./mkbootimg <konfigurációs json> bootpart.bin
+  ./mkbootimg <konfigurációs json> <kimeneti lemezkép neve>
+
+Példák:
+  ./mkbootimg check mykernel/mykernel.x86_64.elf
+  ./mkbootimg myos.json initrd.rom
+  ./mkbootimg myos.json bootpart.bin
+  ./mkbootimg myos.json myos.img
+```
+
 Ha az első paraméter `check` (ellenőrzés), akkor a második egy kernel fájlnév. A parancs ellenőrizni fogja a futtathatót,
 hogy megfelel-e a BOOTBOOT-nak, részletesen kijelzi a hibákat, és ha átment az ellenőrzésen, megadja, milyen BOOTBOOT
 Protokoll szintű betöltő kell a betöltéséhez.
 
-Egyébként az első paraméter a konfigurációs fájl. Ha a második paraméter `initrd.rom`, akkor BIOS Option ROM-ot generál
+Egyébként az első paraméter a konfigurációs JSON fájl. Ha a második paraméter `initrd.rom`, akkor BIOS Option ROM-ot generál
 a megadott initrd könyvtár tartalmából. Ha `bootpart.bin`, akkor a boot partíció képét menti le (és csakis a partíció képét).
 Minden más fájlnévre egy teljes lemezképet hoz létre GPT-vel.
 
