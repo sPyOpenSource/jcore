@@ -56,3 +56,26 @@ Limitations
  - Maps the first 16G of RAM.
  - PCI Option ROM should be signed in order to work.
  - Compressed initrd in ROM is limited to 16M.
+
+Secure Boot
+-----------
+
+First of all, this does not mean Secure. The naming is just a fraud from the M$ Marketing department to
+lock-in machines to only boot Windoze. If you can, turn it off, it worths nothing anyway as rootkits can
+workaround it using the leaked Secure Boot Golden Key backdoor demanded by the FBI.
+
+If despite that you insist, then to get it to work, you'll need a loader that is signed by Microsoft. It is
+not easy to get your custom loader signed, because M$ just won't do that even if you pay for it. So instead,
+
+1. download [shim](https://apps.fedoraproject.org/packages/shim)
+2. extract SHIMX64.EFI and MMX64.EFI to EFI\BOOT (these are signed by M$).
+3. rename the BOOTBOOT loader `EFI\BOOT\BOOTX64.EFI` to `EFI\BOOT\GRUBX64.EFI`.
+4. rename `EFI\BOOT\SHIMX64.EFI` to `EFI\BOOT\BOOTX64.EFI`.
+5. create a public-private key pair and x509 cert with `openssl`.
+6. sign EFI\BOOT\GRUBX64.EFI using an SHA-256 hash with `sbsign`. Should result in MOK.cer.
+7. copy that MOK.cer to the ESP partition.
+8. boot into UEFI, shim will call MOK Manager where you can enroll your hash and MOK.cer.
+9. enable Secure Boot.
+
+After these steps BOOTBOOT loader will boot with Secure Boot enabled (shim will load the signed GRUBX64.EFI
+instead of the MOK Manager hereafter).
