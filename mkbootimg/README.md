@@ -9,7 +9,7 @@ also creates an initrd from a directory (currently `cpio`, `tar`, `jamesm` (Jame
 the code is written in a way that it is easily expandable).
 
 The generated image was tested with fdisk, and with the verify function of gdisk. The FAT partition was tested with fsck.vfat
-and with TianoCore UEFI firmware and on Raspberry Pi.
+and with TianoCore UEFI firmware and on Raspberry Pi. The ISO9660 part tested with iat (ISO9660 Analyzer Tool) and Linux mount.
 
 Operating Modes
 ---------------

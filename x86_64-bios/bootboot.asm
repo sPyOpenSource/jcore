@@ -2002,12 +2002,17 @@ end if
 @@:         cmp         word [0A000h+814h], ax
             jb          .nextmode
             ;match? go no further
-.match:     mov         ax, word [0A000h+810h]
-            mov         word [bootboot.fb_scanline], ax
+.match:     xor         edx, edx
+            xor         ebx, ebx
+            xor         eax, eax
+            mov         bx, word [0A000h+810h]
+            mov         word [bootboot.fb_scanline], bx
             mov         ax, word [0A000h+812h]
             mov         word [bootboot.fb_width], ax
             mov         ax, word [0A000h+814h]
             mov         word [bootboot.fb_height], ax
+            mul         ebx
+            mov         dword [bootboot.fb_size], eax
             mov         eax, dword [0A000h+828h]
             mov         dword [bootboot.fb_ptr], eax
             mov         byte [bootboot.fb_type],FB_ARGB ; blue offset

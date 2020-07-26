@@ -9,7 +9,7 @@ fájlokkal, GPT táblával, PMBR-el, stb. Továbbá képes létrehozni az indul�
 `cpio`, `tar`, `jamesm` (James Molloy initrdje) és az `FS/Z` támogatott, de a kód úgy lett megírva, hogy könnyű legyen bővíteni).
 
 A kigenerált képet leellenőriztem fdisk-el, valamint a gdisk verify funkciójával. A FAT partíció tesztelve lett fsck.vfat-al
-és UEFI förmverrel, továbbá Raspberry Pi-n.
+és UEFI förmverrel, továbbá Raspberry Pi-n. Az ISO9660-es rész iat-vel (ISO966ö Analyzer Tool) és Linux mounttal lett tesztelve.
 
 Működési módok
 --------------

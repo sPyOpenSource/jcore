@@ -1,5 +1,5 @@
 # platform, either x86 or rpi
-PLATFORM=rpi
+PLATFORM=x86
 #PLATFORM=rpi
 # the path to OVMF.fd (for testing with EFI)
 OVMF=/usr/share/qemu/bios-TianoCoreEFI.bin
