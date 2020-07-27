@@ -43,7 +43,7 @@ unsigned char *esp_adddirent(unsigned char *ptr, char *name, int type, int clust
 {
     int i, j;
     memset(ptr, ' ', 11);
-    if(name[0] == '.') strcpy((char*)ptr, name);
+    if(name[0] == '.') memcpy((char*)ptr, name, strlen(name));
     else
         for(i = j = 0; j < 11 && name[i]; i++, j++) {
             if(name[i] >= 'a' && name[i] <= 'z') ptr[j] = name[i] - ('a' - 'A');

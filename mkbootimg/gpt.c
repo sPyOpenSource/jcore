@@ -308,9 +308,9 @@ void gpt_maketable()
         iso[8217]=2;                 /* flags (0=hidden,1=directory) */
         iso[8220]=1;                 /* serial */
         iso[8224]=1;                 /* filename length */
-        iso[8225]='.';               /* filename */
+        iso[8225]=0;                 /* filename '.' */
         /* .. */
-        iso[8226]=0x21 + 2;          /* recordsize */
+        iso[8226]=0x21 + 1;          /* recordsize */
         setinte(20, &iso[8228]);     /* LBA */
         setinte(2048, &iso[8236]);   /* size */
         iso[8244]=ts->tm_year;       /* date */
@@ -322,23 +322,23 @@ void gpt_maketable()
         iso[8250]=0;                 /* timezone UTC (GMT) */
         iso[8251]=2;                 /* flags (0=hidden,1=directory) */
         iso[8254]=1;                 /* serial */
-        iso[8258]=2;                 /* filename length */
-        iso[8259]=iso[8260]='.';     /* filename */
+        iso[8258]=1;                 /* filename length */
+        iso[8259]='\001';            /* filename '..' */
         /* BOOTBOOT.TXT */
-        iso[8261]=0x21+14;           /* recordsize */
-        setinte(21, &iso[8263]);     /* LBA */
-        setinte(133, &iso[8271]);    /* size */
-        iso[8279]=ts->tm_year;       /* date */
-        iso[8280]=ts->tm_mon+1;
-        iso[8281]=ts->tm_mday;
-        iso[8282]=ts->tm_hour;
-        iso[8283]=ts->tm_min;
-        iso[8284]=ts->tm_sec;
-        iso[8285]=0;                 /* timezone UTC (GMT) */
-        iso[8286]=0;                 /* flags (0=hidden,1=directory) */
-        iso[8289]=1;                 /* serial */
-        iso[8293]=14;                /* filename length */
-        memcpy(&iso[8294], "BOOTBOOT.TXT;1", 14);
+        iso[8260]=0x21+14;           /* recordsize */
+        setinte(21, &iso[8262]);     /* LBA */
+        setinte(133, &iso[8270]);    /* size */
+        iso[8278]=ts->tm_year;       /* date */
+        iso[8279]=ts->tm_mon+1;
+        iso[8280]=ts->tm_mday;
+        iso[8281]=ts->tm_hour;
+        iso[8282]=ts->tm_min;
+        iso[8283]=ts->tm_sec;
+        iso[8284]=0;                 /* timezone UTC (GMT) */
+        iso[8285]=0;                 /* flags (0=hidden,1=directory) */
+        iso[8288]=1;                 /* serial */
+        iso[8292]=14;                /* filename length */
+        memcpy(&iso[8293], "BOOTBOOT.TXT;1", 14);
         /* 21th sector: contents of BOOTBOOT.TXT */
         memcpy(&iso[10240], "BOOTBOOT hybrid GPT / CDROM Image\r\n\r\nBootable as\r\n"
             " - CDROM (El Torito, UEFI)\r\n"
