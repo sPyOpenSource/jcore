@@ -747,9 +747,6 @@ void save_timer(struct irqcontext_timer *sc)
 }
 #endif
 
-
-
-
 void threads_init()
 {
 	printf("init threads system\n");

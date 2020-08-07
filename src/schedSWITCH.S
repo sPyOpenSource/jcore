@@ -278,8 +278,6 @@ destroy_call_java:
 	.size destroy_call_java, .Ldestroy_call_java_end-destroy_call_java
 
 
-
-
 	/* activates the context WITHOUT saving current context */
 	/* #ifdef KERNEL
 		Prototype:	 private jint return_from_java(ThreadDesc *to, ContectDesc *restore) ;
@@ -399,8 +397,6 @@ return_from_javaX_end:
 	.size return_from_java0, return_from_javaX_end-return_from_java0
 	.size return_from_java1, return_from_javaX_end-return_from_java1
 	.size return_from_java2, return_from_javaX_end-return_from_java2
-
-
 
 
 	/* a sub-routine to save the current context */

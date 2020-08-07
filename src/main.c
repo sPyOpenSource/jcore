@@ -196,8 +196,6 @@ asm("int $0x80");
 #endif
 	initPrimitiveClasses();
 
-	console(0, "OK");
-//asm("int $0x80");
 	domainZero_thread = createThread(domainZero, start_domain_zero, (void *) 0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
 	setThreadName(domainZero_thread, "DomainZero:InitialThread", NULL);
 	thread_exit();

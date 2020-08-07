@@ -48,6 +48,7 @@ void Sched_created(ThreadDesc * thread, int param)
 		}
 	}
 }
+
 void Sched_destroyed(ThreadDesc * thread)
 {
 	ASSERTLOCKED;
@@ -194,6 +195,9 @@ void idle(void *x)
 	check_current = 1;	/* may be deactivated */
 #endif
 	for (;;) {
+		asm("sti");
+		asm("hlt");
+		asm("cli");
 		/* loop forever */
 #ifndef SMP
 		while (domain_runqueue.first == NULL && domainZero->firstThreadInRunQueue == NULL);
