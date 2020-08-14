@@ -143,19 +143,6 @@ static u2_t svalue = 0x0f40;
 
 void ser_breakpoint_ex(struct irqcontext_timer sc)
 {
-	/*
-	   u2_t *screen_start = (u2_t*)0xb8000;
-	   u2_t *screen_end = screen_start + 80*24;
-	   u2_t *s;
-	   jint iid;
-	   jint *st;
-	   jint i;
-	   for(s=screen_start; s<screen_end; s++) {
-	   *s = svalue;
-	   }
-	   svalue++;
-	 */
-
 	/* Clear all serial interrupts.  */
 	inb(ser_io_base[debug_port] + 6);	/* ID 0: read RS-232 status register */
 	inb(ser_io_base[debug_port] + 2);	/* ID 1: read interrupt identification reg */
@@ -409,10 +396,3 @@ void transfer_printflog()
 	DUMP(&compressed_len, sizeof(int));
 }
 #endif
-
-
-/*
-void ser_putc(int x, char c) {
-}
-#define debug_port -1
-*/

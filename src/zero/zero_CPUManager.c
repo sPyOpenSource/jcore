@@ -69,44 +69,7 @@ jint cpuManager_dump(ObjectDesc * self, ObjectDesc * msg, ObjectDesc * ref)
 	if (ref == NULL)
 		return;
 	if ((getObjFlags(ref) & FLAGS_MASK) == OBJFLAGS_MEMORY) {
-#if 0
-		MemoryProxy *m = (MemoryProxy *) ref;
-		printf("   MEMORY: dz=%p mem=%p size=%d valid=%d refcount=%d\n", m->dz, m->mem, m->size, m->dz->valid,
-		       m->dz->refcount);
-#ifdef DEBUG_MEMORY_CREATION
-		if (m->dz->createdBy) {
-			printf("     created at : ");
-			print_eip_info(m->dz->createdAt);
-			printf(", by: %s ", m->dz->createdBy->domainName);
-			if (m->dz->createdUsing)
-				printf(" using %s", m->dz->createdUsing);
-#endif
-		} else {
-			printf(", unknown creator");
-		}
-		printf("\n");
-		{
-#if 0
-			DZMemoryProxy *dz;
-			printf("--\n");
-			dz = m->dz;
-			while (dz->prev) {
-				printf("  PREV %p owner=%d size=%d valid=%d\n", dz->prev, dz->prevOwner, dz->prev->size,
-				       dz->prev->valid);
-				dz = dz->prev;
-				if (i++ > 20)
-					sys_panic("POSSIBLE CIRCULARITY IN MEMORY CHAIN");
-			}
-			dz = m->dz;
-			while (dz->next) {
-				printf("  NEXT %p owner=%d size=%d valid=%d\n", dz->next, dz->nextOwner, dz->next->size,
-				       dz->next->valid);
-				dz = dz->next;
-			}
-		}
-#endif
-
-#endif				/* DEBUG_MEMORY_CREATION */
+				/* DEBUG_MEMORY_CREATION */
 		{
 			int i;
 			ClassDesc *cd = obj2ClassDesc(ref);
@@ -131,11 +94,6 @@ jint cpuManager_dump(ObjectDesc * self, ObjectDesc * msg, ObjectDesc * ref)
 		printf("     Service: interface=%s\n", s->interface->name);
 	} else if ((getObjFlags(ref) & FLAGS_MASK) == OBJFLAGS_SERVICE_POOL) {
 		printf("     Servicepool\n");
-#if 0
-	} else if (getObjFlags(ref) == OBJFLAGS_EXTERNAL_CPUSTATE) {
-		printf("     CPUSTATE thread %d.%d\n", TID(cpuState2thread(ref)));
-		//printStackTraceNew("CPUSTATE");
-#endif
 	} else {
 		printf("     unknown object type. flags=(%p)\n", getObjFlags(ref));
 	}

@@ -88,8 +88,6 @@ int call_JAVA_method1(ObjectDesc * Object, ThreadDesc * worker, java_method1_t f
 
 	/* prepare worker thread */
 	sp = worker->stackTop;
-//     stack_push(&sp,  curthr());
-//     stack_push(&sp,  &backup_ctx);
 	stack_push(&sp, (int) &backup_ctx);
 	stack_push(&sp, (int) curthr());
 	stack_push(&sp, param);

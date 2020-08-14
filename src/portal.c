@@ -47,17 +47,6 @@ static int event_send_start, event_send_block, event_send_end, event_send_return
 #define INLINE static inline
 #endif
 
-//#define VERBOSE_PORTAL_PARAM_COPY 1
-//#define CHECK_DEPPARAMS 1
-
-//#define VERBOSE_SENDER_QUEUE 1
-
-/*
-#define DBG_DEP 1
-#define DBG_AUTO_PORTAL_PROMO 1
-*/
-
-//#define pprintf printf
 static inline void pprintf(char *s, ...)
 {
 }
@@ -67,8 +56,6 @@ static inline void pprintf(char *s, ...)
 #define pprintf3(a,b,c)
 #define pprintf4(a,b,c,d)
 #define pprintf5(a,b,c,d,e)
-
-//#define MULTI_PORTAL_HACK 1
 
 ObjectDesc *copy_reference(DomainDesc * src, DomainDesc * dst, ObjectDesc * ref, u4_t * quota);
 

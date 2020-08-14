@@ -18,16 +18,6 @@ jint clock_getTimeInMillis(ObjectDesc * self)
 	asm volatile ("rdtsc":"=A" (ret):);
 	return CYCL2MILLIS(ret);
 #endif
-#if 0
-#ifndef KERNEL
-	struct timeval tp;
-	/*  debugz(("CLOCK GETTIME %lx\n",(jint)self); */
-	gettimeofday(&tp, NULL);
-	return tp.tv_sec;
-#else
-	return 0;
-#endif
-#endif
 }
 
 jlong clock_getTicks(ObjectDesc * self)
