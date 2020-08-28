@@ -16,7 +16,9 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 
 4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) C-ben írva, ami vonalakat húz meg színes dobozokat rajzol
 
-5. *mkbootimg* minden az egyben, multiplatform [bootolható lemezkép készítő](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) (Windows, MacOSX, Linux).
+5. *mykernel-rust* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) Rust-ban
+
+6. *mkbootimg* minden az egyben, multiplatform [bootolható lemezkép készítő](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) (Windows, MacOSX, Linux).
 
 Vedd figyelembe, hogy nem minden referencia implementáció támogatja a teljes 2-es protokollt, az x86_64-bios csak statikus
 memórialeképezéseket kezel, ami az 1-es protokoll szintnek felel meg.
@@ -267,9 +269,9 @@ hogy bemutassa, miként lehet elérni a betöltő által nyújtott információk
 #include <bootboot.h>
 
 /* importált virtuális címek, lásd linker szkript */
-extern BOOTBOOT bootboot;           // lásd bootboot.h
-extern unsigned char *environment;  // konfiguráció, UTF-8 szöveg kulcs=érték párokkal
-extern uint8_t fb;                  // lineáris framebuffer leképezés
+extern BOOTBOOT bootboot;               // lásd bootboot.h
+extern unsigned char environment[4096]; // konfiguráció, UTF-8 szöveg kulcs=érték párokkal
+extern uint8_t fb;                      // lineáris framebuffer leképezés
 
 void _start()
 {
@@ -458,5 +460,6 @@ Hozzájárulások
 Szeretnék külön köszönetet mondani [Valentin Anger](https://gitlab.com/SyrupThinker)nek, amiért alaposan letesztelte a
 kódot számtalan igazi vason is. Továbbá [Vinay Chandrá](https://gitlab.com/vinaychandra)nak, amiért addig nem hagyott
 békén, míg a 2. szintű protokoll be nem került a refenrencia implementációkba, és amiért tesztelte és kiegészítette
-Rust minta kernellel a projektet.
+Rust minta kernellel a projektet. További köszönet [Stephen Sherratt](https://gitlab.com/stevebob)nak a kitartó hibajavításáért.
+
 

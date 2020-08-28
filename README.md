@@ -16,7 +16,9 @@ I provide pre-compiled images ready for use.
 
 4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) in C which draws lines and boxes
 
-5. *mkbootimg* an all-in-one multiplatform [bootable disk image creator](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) (Windows, MacOSX, Linux).
+5. *mykernel-rust* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel-rust) in Rust
+
+6. *mkbootimg* an all-in-one multiplatform [bootable disk image creator](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) (Windows, MacOSX, Linux).
 
 Please note that not all the reference implementations do support the full protocol at level 2, x86_64-bios only handles
 static mappings which makes it a level 1 loader.
@@ -267,9 +269,9 @@ to demostrate how to access the environment:
 #include <bootboot.h>
 
 /* imported virtual addresses, see linker script below */
-extern BOOTBOOT bootboot;           // see bootboot.h
-extern unsigned char *environment;  // configuration, UTF-8 text key=value pairs
-extern uint8_t fb;                  // linear framebuffer mapped
+extern BOOTBOOT bootboot;               // see bootboot.h
+extern unsigned char environment[4096]; // configuration, UTF-8 text key=value pairs
+extern uint8_t fb;                      // linear framebuffer mapped
 
 void _start()
 {
@@ -459,3 +461,4 @@ Contributors
 I'd like to say special thanks to [Valentin Anger](https://gitlab.com/SyrupThinker) for throughfully testing this
 code on many different real hardware. Also to [Vinay Chandra](https://gitlab.com/vinaychandra) for pushing me to add
 level 2 protocol to the reference implementations and for testing and providing a Rust kernel example for the project.
+Further thanks to [Stephen Sherratt](https://gitlab.com/stevebob) for being presistent at fixing issues.
