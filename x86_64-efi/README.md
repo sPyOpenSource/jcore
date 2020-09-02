@@ -33,7 +33,7 @@ FS0:\> EFI\BOOT\BOOTX64.EFI /?
 BOOTBOOT LOADER (build Oct 11 2017)
 
 SYNOPSIS
-  BOOTBOOT.EFI [ -h | -? | /h | /? ] [ INITRDFILE [ ENVIRONMENTFILE [...] ] ]
+  BOOTBOOT.EFI [ -h | -? | /h | /? | -s ] [ INITRDFILE [ ENVIRONFILE [...] ] ]
 
 DESCRIPTION
   Bootstraps an operating system via the BOOTBOOT Protocol.
@@ -43,7 +43,7 @@ DESCRIPTION
   Additional "key=value" command line arguments will be appended to the
   environment. If INITRD not found, it will use the first bootable partition
   in GPT. If CONFIG not found, it will look for /sys/config inside the
-  INITRD (or partition).
+  INITRD (or partition). With -s it will scan the memory for an initrd ROM.
 
   As this is a loader, it is not supposed to return control to the shell.
 

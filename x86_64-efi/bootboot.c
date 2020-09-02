@@ -1353,8 +1353,8 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     MMapEnt *mmapent, *last=NULL;
     file_t ret={NULL,0};
     CHAR16 **argv, *initrdfile, *configfile, *help=
-        L"SYNOPSIS\n  BOOTBOOT.EFI [ -h | -? | /h | /? ] [ INITRDFILE [ ENVIRONMENTFILE [...] ] ]\n\nDESCRIPTION\n  Bootstraps an operating system via the BOOTBOOT Protocol.\n  If arguments not given, defaults to\n    FS0:\\BOOTBOOT\\INITRD   as ramdisk image and\n    FS0:\\BOOTBOOT\\CONFIG   for boot environment.\n  Additional \"key=value\" command line arguments will be appended to the\n  environment. If INITRD not found, it will use the first bootable partition\n  in GPT. If CONFIG not found, it will look for /sys/config inside the\n  INITRD (or partition).\n\n  As this is a loader, it is not supposed to return control to the shell.\n\n";
-    INTN argc;
+        L"SYNOPSIS\n  BOOTBOOT.EFI [ -h | -? | /h | /? | -s ] [ INITRDFILE [ ENVIRONFILE [...] ] ]\n\nDESCRIPTION\n  Bootstraps an operating system via the BOOTBOOT Protocol.\n  If arguments not given, defaults to\n    FS0:\\BOOTBOOT\\INITRD   as ramdisk image and\n    FS0:\\BOOTBOOT\\CONFIG   for boot environment.\n  Additional \"key=value\" command line arguments will be appended to the\n  environment. If INITRD not found, it will use the first bootable partition\n  in GPT. If CONFIG not found, it will look for /sys/config inside the\n  INITRD (or partition). With -s it will scan the memory for an initrd ROM.\n\n  As this is a loader, it is not supposed to return control to the shell.\n\n";
+    INTN argc, scanmemory=0;
 
     // Initialize UEFI Library
     InitializeLib(image, systab);
@@ -1369,6 +1369,11 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
             Print(L"BOOTBOOT LOADER (build %s)\n\n%s",a2u(__DATE__),help);
             return EFI_SUCCESS;
         }
+        if(argv[1][0]=='-'||argv[1][0]=='s') {
+            argc--; argv++; scanmemory = 1;
+        }
+    }
+    if(argc>1) {
         initrdfile=argv[1];
     } else {
         initrdfile=L"\\BOOTBOOT\\INITRD";
@@ -1414,7 +1419,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
         }
     }
     //if not found, scan memory
-    if(EFI_ERROR(status) || initrd.ptr==NULL){
+    if(scanmemory && (EFI_ERROR(status) || initrd.ptr==NULL)){
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
             &memory_map_size, memory_map, NULL, &desc_size, NULL);
         if (status!=EFI_BUFFER_TOO_SMALL || memory_map_size==0) {
@@ -1436,11 +1441,11 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
                 if(mement==NULL || (mement->PhysicalStart==0 && mement->NumberOfPages==0))
                     break;
                 // skip free and ACPI memory
-                if(mement->Type==7||mement->Type==9||mement->Type==10)
+                if(mement->Type==7||(mement->Type>=9&&mement->Type<=13))
                     continue;
                 // according to spec, EFI Option ROMs must start on 512 bytes boundary, not 2048
                 for(ret.ptr=(UINT8*)mement->PhysicalStart;
-                    ret.ptr<(UINT8*)mement->PhysicalStart+mement->NumberOfPages*PAGESIZE;
+                    ret.ptr+512<(UINT8*)mement->PhysicalStart+mement->NumberOfPages*PAGESIZE;
                     ret.ptr+=512) {
                     if(ret.ptr[0]==0x55 && ret.ptr[1]==0xAA && !CompareMem(ret.ptr+8,(const CHAR8 *)"INITRD",6)) {
                         CopyMem(&initrd.size,ret.ptr+16,4);
