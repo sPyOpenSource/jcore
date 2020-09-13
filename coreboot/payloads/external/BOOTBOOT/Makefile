@@ -1,0 +1,48 @@
+project_git_repo=https://gitlab.com/bztsrc/bootboot.git
+project_dir=bootboot
+ifeq ($(CONFIG_COREBOOT_BUILD),)
+include ../../../.config
+endif
+ifeq ($(CONFIG_ARCH_ARM64),y)
+loader_dir=$(project_dir)/aarch64-cb
+else
+loader_dir=$(project_dir)/x86_64-cb
+endif
+
+unexport KCONFIG_AUTOHEADER
+unexport KCONFIG_AUTOCONFIG
+unexport KCONFIG_DEPENDENCIES
+unexport KCONFIG_SPLITCONFIG
+unexport KCONFIG_TRISTATE
+unexport KCONFIG_NEGATIVES
+
+all: bootboot
+
+checkout:
+	echo "    GIT        BOOTBOOT $(loader_dir)"
+	@test -d ../../../../bootboot && ln -s ../../../../bootboot 2>/dev/null || true
+	test -L $(project_dir) || ( \
+		( test -d $(project_dir) || \
+			git clone $(project_git_repo) $(project_dir) ) && \
+		( cd $(project_dir) && \
+			git checkout master && \
+			git remote update ) )
+
+bootboot: libpayload
+	echo "    MAKE       $(loader_dir)"
+	$(MAKE) -C $(loader_dir) LIBCONFIG_PATH=../../../libpayload
+
+libpayload: checkout
+	cd ../../libpayload && $(MAKE) defconfig && \
+		$(MAKE) && $(MAKE) DESTDIR=../external/FILO/filo/build install
+
+clean:
+	test -d $(loader_dir) && $(MAKE) -C $(loader_dir) clean || exit 0
+
+distclean:
+	rm -rf $(project_dir)
+
+print-repo-info:
+	echo "$(project_git_repo) $(project_dir)"
+
+.PHONY: checkout bootboot libpayload clean distclean print-repo-info
