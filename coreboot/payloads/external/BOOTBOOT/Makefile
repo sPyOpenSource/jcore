@@ -33,8 +33,9 @@ bootboot: libpayload
 	$(MAKE) -C $(loader_dir) LIBCONFIG_PATH=../../../libpayload
 
 libpayload: checkout
-	cd ../../libpayload && $(MAKE) defconfig && \
-		$(MAKE) && $(MAKE) DESTDIR=../external/FILO/filo/build install
+	cp $(loader_dir)/lib.config ../../libpayload/.config
+	cd ../../libpayload && $(MAKE) oldconfig && \
+		$(MAKE) && $(MAKE) DESTDIR=../external/BOOTBOOT/$(loader_dir) install
 
 clean:
 	test -d $(loader_dir) && $(MAKE) -C $(loader_dir) clean || exit 0

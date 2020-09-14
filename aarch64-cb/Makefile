@@ -17,7 +17,8 @@ CFLAGS += -Wall -Wvla -Werror -Os -ffreestanding -nostdinc -nostdlib
 all: $(TARGET)
 
 $(LIBPAYLOAD_DIR):
-	$(MAKE) -C $(LIBCONFIG_PATH) $(LPOPTS) defconfig
+	@cp lib.config $(LIBCONFIG_PATH)/.config
+	$(MAKE) -C $(LIBCONFIG_PATH) $(LPOPTS) oldconfig
 	$(MAKE) -C $(LIBCONFIG_PATH) $(LPOPTS)
 	$(MAKE) -C $(LIBCONFIG_PATH) $(LPOPTS) install
 
