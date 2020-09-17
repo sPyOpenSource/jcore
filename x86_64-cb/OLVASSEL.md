@@ -107,7 +107,6 @@ fájlt az alaplapodra.
 Limitációk
 ----------
 
- - Mivel védett módban indul, csak az első 4G-nyi RAM-ot képezi le.
  - A CMOS nvram nem tárol időzónát, ezért mindig GMT+0 kerül a bootboot.timezone-ba.
  - Coreboot-ban nem lehet felbontást váltani, ezért a "screen=" opciót nem kezeli.
  - Csak a SHA-XOR-CBC titkosítást ismeri, nincs AES

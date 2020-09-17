@@ -105,7 +105,6 @@ Once you have compiled a coreboot ROM with the BOOTBOOT payload, you can
 Limitations
 -----------
 
- - As it boots in protected mode, it only maps the first 4G of RAM.
  - The CMOS nvram does not store timezone, so always GMT+0 returned in bootboot.timezone.
  - Coreboot does not provide a way to set screen resolution, so "screen=" config option is skipped.
  - Only supports SHA-XOR-CBC, no AES
