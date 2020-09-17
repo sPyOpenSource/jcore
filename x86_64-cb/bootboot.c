@@ -1194,6 +1194,14 @@ gzerr:      panic("Unable to uncompress");
     }
     DBG(" * Memory Map @%lx %d bytes\n",(uintptr_t)&(bootboot->mmap), bootboot->size - 128);
 
+    /* clear the screen */
+    for(np=sp=0;sp<bootboot->fb_height;sp++) {
+        r=np;
+        for(i=0;i<bootboot->fb_width;i+=2,r+=8)
+            *((uint64_t*)(uintptr_t)(bootboot->fb_ptr + r))=0;
+        np+=bootboot->fb_scanline;
+    }
+
     /* continue in Assembly, enable long mode and jump to kernel's entry point */
     bsp_init();
 
