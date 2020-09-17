@@ -366,6 +366,47 @@ void makerom()
 }
 
 /**
+ * Generate an initrd ROM image into a Flashmap image area (section, partition, range whatever)
+ */
+int flashmapadd(char *file)
+{
+    unsigned char *data=NULL, *desc;
+    FILE *f;
+    unsigned int size=0,bs=((initrd_size[0]+511)/512)*512;
+    /* see if file exists and contains a Flashmap */
+    if(!file || !*file) return 0;
+    f=fopen(file,"r");
+    if(!f) return 0;
+    fseek(f,0L,SEEK_END);
+    size=(unsigned int)ftell(f);
+    fseek(f,0L,SEEK_SET);
+    data=(unsigned char*)malloc(size + bs);
+    if(!data) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
+    data[0] = 0; fread(data,size,1,f);
+    fclose(f);
+    if(memcmp(data, "__FMAP__", 8)) { free(data); return 0; }
+    if(!initrd_buf[0] || bs < 1) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_NOINITRD]); exit(1); }
+    /* add a new or replace the last partition descriptor */
+    desc = data + 0x38 + data[0x36] * 42;
+    if(!memcmp(desc - 34, "INITRD", 7)) desc -= 42; else data[0x36]++;
+    size = (*((unsigned int*)(desc - 42)) + *((unsigned int*)(desc - 38)) + 4095) & ~4095;
+    memset(desc, 0, 42);
+    memcpy(desc + 0, &size, 4);
+    memcpy(desc + 4, &bs, 4);
+    memcpy(desc + 8, "INITRD", 6);
+    memcpy(data + size,initrd_buf[0],initrd_size[0]);
+    if(initrd_size[0] < (int)bs) memset(data + size + initrd_size[0], 0, bs - initrd_size[0]);
+    size += bs; *((unsigned int*)(data + 0x12)) = *((unsigned int*)(data + 0x3c)) = size;
+    /* write out */
+    f=fopen(file,"wb");
+    if(!f) { fprintf(stderr,"mkbootimg: %s %s\r\n", lang[ERR_WRITE], file); exit(3); }
+    fwrite(data,size,1,f);
+    fclose(f);
+    printf("mkbootimg: %s %s.\r\n", file, lang[SAVED]);
+    return 1;
+}
+
+/**
  * Main function
  */
 int main(int argc, char **argv)
@@ -387,12 +428,14 @@ int main(int argc, char **argv)
                 "  ./mkbootimg check <kernel elf / pe>\r\n"
                 "  ./mkbootimg <%s> initrd.rom\r\n"
                 "  ./mkbootimg <%s> bootpart.bin\r\n"
+                "  ./mkbootimg <%s> <flashmap rom>\r\n"
                 "  ./mkbootimg <%s> <%s>\r\n\r\n",lang[HELP3],lang[HELP4],
-                lang[HELP4],lang[HELP4],lang[HELP5]);
+                lang[HELP4],lang[HELP4],lang[HELP4],lang[HELP5]);
         printf( "%s:\n"
                 "  ./mkbootimg check mykernel/mykernel.x86_64.elf\r\n"
                 "  ./mkbootimg myos.json initrd.rom\r\n"
                 "  ./mkbootimg myos.json bootpart.bin\r\n"
+                "  ./mkbootimg myos.json coreboot.rom\r\n"
                 "  ./mkbootimg myos.json myos.img\r\n",
                 lang[HELP6]);
         return 0;
@@ -456,7 +499,7 @@ int main(int argc, char **argv)
             fwrite(initrd_buf[0],initrd_size[0],1,f);
             fclose(f);
             printf("mkbootimg: %s %s.\r\n", "initrd.bin", lang[SAVED]);
-        } else {
+        } else if(!flashmapadd(argv[2])) {
             esp_makepart();
             if(!strcmp(argv[2], "bootpart.bin")) {
                 /* write out */

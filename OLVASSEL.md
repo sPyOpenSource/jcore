@@ -252,9 +252,9 @@ meghajtót, vagy amikor az "initrd" egy statikusan linkelt futtatható, mint pé
 a boot partícióra és már mehet is!
 
 A BOOTBOOT Protokoll előírja, hogy a fájl rendszer meghajtók ([itt](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-efi/fs.h),
-[itt](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/fs.inc) és [itt](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/fs.h))
-elkülönítve legyenek a betöltő forrásának többi részétől. Ez azért van, mert elsősorban azoknak a hobbi OS fejlesztőknek
-készült, akik saját fájl rendszert használnak.
+[itt](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/fs.inc), [itt](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/fs.h)
+és [itt](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-cb/fs.h)) elkülönítve legyenek a betöltő forrásának többi részétől.
+Ez azért van, mert elsősorban azoknak a hobbi OS fejlesztőknek készült, akik saját fájl rendszert használnak.
 
 A referencia implementációk támogatják a [cpio](https://en.wikipedia.org/wiki/Cpio)-t (hpodc, newc és crc variáns),
 az [ustar](https://en.wikipedia.org/wiki/Tar_(computing))-t, az osdev.org féle [SFS](http://wiki.osdev.org/SFS)-t,

@@ -42,7 +42,7 @@ grub.iso: ../mkbootimg/mkbootimg initdir mkbootimg.json
 
 # test the disk image
 rom: initrd.rom
-	qemu-system-x86_64 -option-rom ../bootboot.bin -option-rom initrd.rom -serial stdio
+	qemu-system-x86_64 -option-rom ../dist/bootboot.bin -option-rom initrd.rom -serial stdio
 
 bios:
 	qemu-system-x86_64 -drive file=disk-x86.img,format=raw -serial stdio
@@ -60,10 +60,13 @@ eficdrom:
 	qemu-system-x86_64 -bios $(OVMF) -m 64 -cdrom disk-x86.img -serial stdio
 
 linux:
-	qemu-system-x86_64 -kernel ../bootboot.bin -drive file=disk-x86.img,format=raw -serial stdio
+	qemu-system-x86_64 -kernel ../dist/bootboot.bin -drive file=disk-x86.img,format=raw -serial stdio
 
 sdcard:
-	qemu-system-aarch64 -M raspi3 -kernel ../bootboot.img -drive file=disk-rpi.img,if=sd,format=raw -serial stdio
+	qemu-system-aarch64 -M raspi3 -kernel ../dist/bootboot.img -drive file=disk-rpi.img,if=sd,format=raw -serial stdio
+
+coreboot:
+	qemu-system-x86_64 -bios coreboot.rom -drive file=disk-x86.img,format=raw -serial stdio
 
 # clean up
 clean:

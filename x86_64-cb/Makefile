@@ -28,7 +28,7 @@ ifneq ($(strip $(wildcard libpayload)),)
 include $(XCOMPILE)
 LPGCC = CC="$(GCC_CC_x86_32)" "$(LIBPAYLOAD_DIR)/bin/lpgcc"
 $(TARGET):
-	$(LPGCC) $(CFLAGS) -o $(TARGET) bootboot.c
+	$(LPGCC) $(CFLAGS) -o $(TARGET) bootboot.c tinflate.c smp.S
 else
 # If libpayload is not found, first build libpayload,
 # then do the make, this time it'll find libpayload

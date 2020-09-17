@@ -6,6 +6,7 @@ BOOTBOOT Minta Bootolható Lemezkép Fájlok
 - disk-rpi.img.gz: minta lemezkép AArch64-hez RaspberryPi 3-on és 4-en
 - disk-x86.img.gz: minta lemezkép x86_64-hez (CDROM, BIOS, UEFI)
 - initrd.rom.gz: minta initrd ROM kép (beágyazott BIOS rendszerekhez)
+- coreboot.rom.gz: minta coreboot ROM kép BOOTBOOT payload-al
 
 Mielőtt használhatnád a lemezképeket, ki kell csomagolni őket a `gzip -d` paranccsal. A lemezképeket az [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
 paranccsal hoztam létre, és a kiírásukhoz fizikai lemezre az [USBImager](https://gitlab.com/bztsrc/usbimager)-t vagy a `dd` parancsot javaslom.
@@ -27,6 +28,9 @@ Lásd mkbootimg.json. Nézz bele a Makefile-ba is, az elején fogsz látni konfi
 - OVMF: a EFI firmware elérési útja
 
 Aztán csak futtasd a `make` parancsot.
+
+A coreboot.rom fordításához [pecselt coreboot fordító környezet](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb)
+szükséges.
 
 Tesztelés
 ---------
@@ -65,3 +69,7 @@ indítja.
 make sdcard
 ```
 Ez "raspi3" gépet emulálva tölti be a minta kernelt SD kártya meghajtóról (kell hozzá a qemu-system-aarch64).
+```
+make coreboot
+```
+BOOTBOOT tesztelése mint coreboot payload (nincs BIOS se UEFI).

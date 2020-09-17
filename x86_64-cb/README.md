@@ -3,7 +3,7 @@ BOOTBOOT Coreboot x86_64 Implementation
 
 See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 
-Implements the BOOTBOOT Protocol as a [coreboot](https://coreboot.org) payload. Currently __EXPERIMENTAL__.
+Implements the BOOTBOOT Protocol as a [coreboot](https://coreboot.org) payload.
 Must be compiled using the coreboot build environment.
 
 Compilation
@@ -43,6 +43,11 @@ $ make menuconfig
     Beside 'Mainboard vendor' should be '(Emulation)'
     Beside 'Mainboard model' should be 'QEMU x86 i440fx/piix4'
     select 'Exit'
+    select 'Devices' menu
+    select 'Display' menu
+    Beside 'Framebuffer mode' should be 'Linear "high-resolution" framebuffer'
+    select 'Exit'
+    select 'Exit'
     select 'Payload' menu
     select 'Add a Payload'
     choose 'BOOTBOOT'
@@ -50,6 +55,8 @@ $ make menuconfig
     select 'Exit'
     select 'Yes'
 ```
+It is important to set the display to "linear framebuffer", because BOOTBOOT does not handle the legacy, non-portable VGA
+text mode. Sadly there's no way of configuring this in run-time with libpayload.
 
 ### Step 5 - Build coreboot
 
@@ -59,10 +66,30 @@ $ make
 
 ### Step 6 - Test the newly compiled ROM in QEMU
 
-For more information, read [coreboot docs](https://doc.coreboot.org/mainboard/emulation/qemu-i440fx.html).
+For more information, read the [coreboot docs](https://doc.coreboot.org/mainboard/emulation/qemu-i440fx.html). In the
+[images](https://gitlab.com/bztsrc/bootboot/tree/master/images) directory you can find a precompiled coreboot.rom binary.
 ```sh
 $ qemu-system-x86_64 -bios $(COREBOOT)/build/coreboot.rom -drive file=$(BOOTBOOT)/images/disk-x86.img,format=raw -serial stdio
 ```
+
+Adding Initrd to ROM
+--------------------
+
+To add an initrd into ROM, first you have to generate one. It can be an (optionally gzipped) tar, cpio, etc. archive. You can
+also create it using the [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) utility:
+```sh
+$ ./mkbootimg myos.json initrd.bin
+```
+Then use the `cbfstool` utility in the coreboot repository to add the initrd image into the ROM image:
+```sh
+$ ./build/util/cbfstool/cbfstool $(COREBOOT)/build/coreboot.rom add -t raw -f $(BOOTBOOT)/initrd.bin -n bootboot/initrd
+```
+You can add a fallback environment configuration similarily (only used if environment cannot be loaded from the usual places):
+```sh
+$ ./build/util/cbfstool/cbfstool $(COREBOOT)/build/coreboot.rom add -t raw -f environment.txt -n bootboot/config
+```
+Obviously this can only work if libpayload was compiled with `CONFIG_LP_CBFS=y`. Without you can still place the initrd on
+a Flashmap partition named "INITRD" (however using the fmaptool and dealing with the fmd format is a rocket science).
 
 Machine state
 -------------
@@ -80,4 +107,5 @@ Limitations
 
  - As it boots in protected mode, it only maps the first 4G of RAM.
  - The CMOS nvram does not store timezone, so always GMT+0 returned in bootboot.timezone.
+ - Coreboot does not provide a way to set screen resolution, so "screen=" config option is skipped.
  - Only supports SHA-XOR-CBC, no AES

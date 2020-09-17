@@ -969,13 +969,13 @@ int GetLFB(uint32_t width, uint32_t height)
         }
     }
     //if we already have a framebuffer, release it
-    if(bootboot->fb_ptr!=NULL) {
+    if(bootboot->fb_ptr) {
         mbox[0] = 8*4;
         mbox[1] = MBOX_REQUEST;
         mbox[2] = 0x48001;  //release buffer
         mbox[3] = 8;
         mbox[4] = 8;
-        mbox[5] = (uint32_t)(((uint64_t)bootboot->fb_ptr));
+        mbox[5] = (uint32_t)bootboot->fb_ptr;
         mbox[6] = 0;
         mbox[7] = 0;
         mbox_call(MBOX_CH_PROP,mbox);
@@ -1033,7 +1033,7 @@ int GetLFB(uint32_t width, uint32_t height)
         bootboot->fb_width=mbox[5];
         bootboot->fb_height=mbox[6];
         bootboot->fb_scanline=mbox[33];
-        bootboot->fb_ptr=(void*)((uint64_t)mbox[28]);
+        bootboot->fb_ptr=(uint64_t)mbox[28];
         bootboot->fb_size=mbox[29];
         bootboot->fb_type=mbox[24]?FB_ABGR:FB_ARGB;
         kx=ky=0;
@@ -1065,11 +1065,11 @@ void putc(char c)
             line=offs;
             mask=1<<(font->width-1);
             for(x=0;x<font->width;x++){
-                *((uint32_t*)((uint64_t)bootboot->fb_ptr + line))=((int)*glyph) & (mask)?color:0;
+                *((uint32_t*)(bootboot->fb_ptr + line))=((int)*glyph) & (mask)?color:0;
                 mask>>=1;
                 line+=4;
             }
-            *((uint32_t*)((uint64_t)bootboot->fb_ptr + line))=0;
+            *((uint32_t*)(bootboot->fb_ptr + line))=0;
             glyph+=bytesperline;
             offs+=bootboot->fb_scanline;
         }
@@ -1259,15 +1259,15 @@ int bootboot_main(uint64_t hcl)
 #endif
     if(mp>0) {
         // we got response from raspbootcom
-        sp=uart_getc();
-        sp|=uart_getc()<<8; sp|=uart_getc()<<16; sp|=uart_getc()<<24;
+        sp=uart_getc(); sp|=uart_getc()<<8; sp|=uart_getc()<<16; sp|=uart_getc()<<24;
         if(sp>0 && sp<INITRD_MAXSIZE*1024*1024) {
             uart_puts("OK");
             initrd.size=sp;
             initrd.ptr=pe=(uint8_t*)&_end;
             while(sp--) *pe++ = uart_getc();
             goto gotinitrd;
-        }
+        } else
+            uart_puts("SE");
     }
 
     /* initialize SDHC card reader in EMMC */
@@ -1341,7 +1341,7 @@ diskerr:
         // locate BOOTBOOT directory
         uint64_t data_sec, root_sec, clu=0, cclu=0, s, s2, s3;
         fatdir_t *dir;
-        uint32_t *fat32=(uint32_t*)((uint8_t*)&_end+bpb->rsc*512);
+        uint32_t *fat32=(uint32_t*)((uint8_t*)&_end+512);
         uint16_t *fat16=(uint16_t*)fat32;
         uint8_t *ptr;
         data_sec=root_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;
@@ -1711,7 +1711,7 @@ viderr:
     for(j=ky=0;ky<bootboot->fb_height;ky++) {
         r=j;
         for(kx=0;kx<bootboot->fb_width;kx+=2,r+=8)
-            *((uint64_t*)((uint64_t)bootboot->fb_ptr + r))=0;
+            *((uint64_t*)(bootboot->fb_ptr + r))=0;
         j+=bootboot->fb_scanline;
     }
     kx=ky=0; color=0xFFDD33;
@@ -1745,7 +1745,7 @@ viderr:
     paging[4*512+511]=(uint64_t)((uint8_t*)&__paging+36*PAGESIZE)|0b11|(3<<8)|(1<<10);// pointer to core L3
     j = (fb_addr>>(12)) & 0x1FF;
     for(r=0;r<31*512;r++)
-        paging[5*512+j+r]=(uint64_t)((uint8_t*)bootboot->fb_ptr+r*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //map framebuffer
+        paging[5*512+j+r]=(uint64_t)(bootboot->fb_ptr+r*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //map framebuffer
     // core L3
     // dynamically map these. Main struct, environment string and code segment
     for(r=0;r<(core.size/PAGESIZE);r++)

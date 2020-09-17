@@ -6,6 +6,7 @@ See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 - disk-rpi.img.gz: an example image for AArch64 and RaspberryPi 3 and 4
 - disk-x86.img.gz: an example image for x86_64 (CDROM, BIOS, UEFI)
 - initrd.rom.gz: an example initrd ROM image (for embedded BIOS systems)
+- coreboot.rom.gz: an example coreboot ROM image with BOOTBOOT payload
 
 Before you can use the images, uncompress them with `gzip -d`. I've used [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
 to generate these images, and I recommend [USBImager](https://gitlab.com/bztsrc/usbimager) or `dd` to write them to physical disks.
@@ -27,6 +28,8 @@ See mkbootimg.json. Look at the beginning of the Makefile too, you'll find confi
 - OVMF: path to the EFI firmware image
 
 Then just run `make`.
+
+Compiling coreboot.rom requires a [patched coreboot build environment](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb).
 
 Testing
 -------
@@ -64,3 +67,7 @@ Will boot the example kernel by booting BOOTBOOT via the [Linux/x86 Boot Protoco
 make sdcard
 ```
 Will boot the example kernel from SDCard emulating "raspi3" machine under qemu (requires qemu-system-aarch64).
+```
+make coreboot
+```
+To test BOOTBOOT as a coreboot payload (no BIOS, no UEFI).

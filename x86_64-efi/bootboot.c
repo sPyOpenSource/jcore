@@ -1083,7 +1083,7 @@ GetLFB()
             nativeMode = selectedMode;
     }
     // get framebuffer properties
-    bootboot->fb_ptr=(void*)gop->Mode->FrameBufferBase;
+    bootboot->fb_ptr=(uint64_t)gop->Mode->FrameBufferBase;
     bootboot->fb_size=gop->Mode->FrameBufferSize;
     bootboot->fb_scanline=4*gop->Mode->Info->PixelsPerScanLine;
     bootboot->fb_width=gop->Mode->Info->HorizontalResolution;
@@ -1744,7 +1744,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         if (paging == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
-        ZeroMem((void*)paging,37*PAGESIZE);
+        ZeroMem((void*)paging,(37+(bootboot->numcores+3)/4)*PAGESIZE);
         DBG(L" * Pagetables PML4 @%lx\n",paging);
         //PML4
         paging[0]=(UINT64)((UINT8 *)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
@@ -1766,7 +1766,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         //4k PDE
         j = (fb_addr>>(9+12)) & 0x1FF;
         for(i=0;j+i<511 && i<63;i++)
-            paging[22*512+j+i]=(UINT64)(((UINT8 *)(bootboot->fb_ptr)+(i<<21))+0x83);   // map framebuffer
+            paging[22*512+j+i]=(UINT64)((bootboot->fb_ptr+(i<<21))+0x83);   // map framebuffer
         paging[22*512+511]=(UINT64)((UINT8 *)paging+23*PAGESIZE+3);
         //4k PT
         //dynamically map these. Main struct, environment string and code segment
@@ -1844,7 +1844,7 @@ get_memory_map:
         for(j=y=0;y<bootboot->fb_height;y++) {
             i=j;
             for(x=0;x<bootboot->fb_width;x+=2,i+=8)
-                *((uint64_t*)((uint64_t)bootboot->fb_ptr + i))=0;
+                *((uint64_t*)(bootboot->fb_ptr + i))=0;
             j+=bootboot->fb_scanline;
         }
 

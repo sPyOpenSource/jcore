@@ -43,8 +43,8 @@
  * the superblock. Current implementation only supports 64 bits, that gives you the
  * capacity of 64 Zettabytes with 4096 bytes sector size. */
 
-/* for CRC32 the ANSI method is used, CCITT32 CRC with polynominal 0x04c11db7
- * (same as the one in EFI GPT and in gzip checksums) */
+/* for CRC32 the Castagnoli method is used, polynomial 0x1EDC6F41 (differs to ANSI
+ * CRC32a in EFI GPT and in gzip) but has hardware support on many architectures */
 
 /* sizeof = 16, one Access Control Entry, UUID without the last byte */
 typedef struct {

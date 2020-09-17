@@ -61,7 +61,7 @@ int fsz_add_inode(char *filetype, char *mimetype)
             in->flags=FSZ_IN_FLAG_INLINE;
             in->size=sizeof(FSZ_DirEntHeader);
             memcpy(in->data.small.inlinedata,FSZ_DIR_MAGIC,4);
-            hdr->checksum=crc32(0,(unsigned char*)hdr+sizeof(FSZ_DirEntHeader),hdr->numentries*sizeof(FSZ_DirEnt));
+            hdr->checksum=crc32_calc((unsigned char*)hdr+sizeof(FSZ_DirEntHeader),hdr->numentries*sizeof(FSZ_DirEnt));
         }
     }
     if(mimetype!=NULL){
@@ -77,7 +77,7 @@ int fsz_add_inode(char *filetype, char *mimetype)
     }
     in->changedate=t * 1000000;
     in->modifydate=t * 1000000;
-    in->checksum=crc32(0,in->filetype,1016);
+    in->checksum=crc32_calc(in->filetype,1016);
     fs_len+=fsz_secsize;
     return fs_len/fsz_secsize-1;
 }
@@ -116,10 +116,10 @@ void fsz_link_inode(int inode, char *path, int toinode)
     in->modifydate=t * 1000000;
     in->size+=sizeof(FSZ_DirEnt);
     qsort((char*)hdr+sizeof(FSZ_DirEntHeader), hdr->numentries, sizeof(FSZ_DirEnt), fsz_direntcmp);
-    hdr->checksum=crc32(0,(unsigned char*)hdr+sizeof(FSZ_DirEntHeader),hdr->numentries*sizeof(FSZ_DirEnt));
-    in->checksum=crc32(0,in->filetype,1016);
+    hdr->checksum=crc32_calc((unsigned char*)hdr+sizeof(FSZ_DirEntHeader),hdr->numentries*sizeof(FSZ_DirEnt));
+    in->checksum=crc32_calc(in->filetype,1016);
     in2->numlinks++;
-    in2->checksum=crc32(0,in2->filetype,1016);
+    in2->checksum=crc32_calc(in2->filetype,1016);
 }
 
 void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
@@ -269,7 +269,7 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
          memcpy(in->filetype,"text",4);
         }
     }
-    in->checksum=crc32(0,in->filetype,1016);
+    in->checksum=crc32_calc(in->filetype,1016);
     fs_len+=s;
     fsz_link_inode(inode,name,0);
 }
@@ -333,5 +333,5 @@ void fsz_close()
     if(!sb) return;
     if(!sb->numsec) sb->numsec = fs_len / fsz_secsize;
     sb->freesec = fs_len / fsz_secsize;
-    sb->checksum = crc32(0,(unsigned char *)&sb->magic,508);
+    sb->checksum = crc32_calc((unsigned char *)&sb->magic,508);
 }

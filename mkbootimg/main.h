@@ -204,3 +204,4 @@ unsigned char * stbi_zlib_compress(unsigned char *data, int data_len, int *out_l
 void esp_makepart();
 void gpt_maketable();
 void img_write(char *fn);
+uint32_t crc32_calc(unsigned char *start,int length);

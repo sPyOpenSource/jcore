@@ -33,23 +33,23 @@
 ;*  text segment occupied: 800-7C00, bss: 8000-x
 ;*
 ;*  Memory map
-;*      0h -  600h reserved for the system
-;*    600h -  800h stage1 (MBR/VBR, boot.bin)
-;*    800h - 6C00h stage2 (this)
-;*   6C00h - 7C00h stack
-;*   8000h - 9000h bootboot structure
-;*   9000h - A000h environment
-;*   A000h - B000h disk buffer / PML4
-;*   B000h - C000h PDPE, higher half core 4K slots
-;*   C000h - D000h PDE 4K
-;*   D000h - E000h PTE 4K
-;*   E000h - F000h PDPE, 4G physical RAM identity mapped 2M
-;*   F000h -10000h PDE 2M
-;*  10000h -11000h PDE 2M
-;*  11000h -12000h PDE 2M
-;*  12000h -13000h PDE 2M
-;*  13000h -14000h PTE 4K
-;*  14000h -A0000h core stacks (1k per core)
+;*      0h -   600h reserved for the system
+;*    600h -   800h stage1 (MBR/VBR, boot.bin)
+;*    800h -  6C00h stage2 (this)
+;*   6C00h -  7C00h stack (7000h - 700Fh SMP trampoline code)
+;*   8000h -  9000h bootboot structure
+;*   9000h -  A000h environment
+;*   A000h -  B000h disk buffer / PML4
+;*   B000h -  C000h PDPE, higher half core 4K slots
+;*   C000h -  D000h PDE 4K
+;*   D000h -  E000h PTE 4K
+;*   E000h -  F000h PDPE, 4G physical RAM identity mapped 2M
+;*   F000h - 10000h PDE 2M
+;*  10000h - 11000h PDE 2M
+;*  11000h - 12000h PDE 2M
+;*  12000h - 13000h PDE 2M
+;*  13000h - 14000h PTE 4K
+;*  14000h - 9F000h core stacks (1k per core)
 ;*
 ;*  At first big enough free hole, initrd. Usually at 1Mbyte.
 ;*
@@ -2200,7 +2200,7 @@ longmode_init:
             dec         cx
             jnz         @b
             xor         rbx, rbx
-@@:         shl         rbx, 10           ; 1k stack for each core
+@@:         shl         rbx, 10         ; 1k stack for each core
 
             ; set stack and call _start() in sys/core
             xor         rsp, rsp        ;sp = core_num * -1024

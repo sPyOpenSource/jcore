@@ -252,9 +252,10 @@ want to use your own file system but you don't have written an fs driver for it 
 your initrd on the boot partition, and you're ready to rock and roll!
 
 The BOOTBOOT Protocol expects the file system drivers ([here](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-efi/fs.h),
-[here](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/fs.inc) and [here](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/fs.h))
-to be separated from the rest of the loader's source. This is so because it was designed to help the needs of hobby
-OS developers, specially for those who want to write their own file systems.
+[here](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/fs.inc), [here](https://gitlab.com/bztsrc/bootboot/blob/master/aarch64-rpi/fs.h)
+and [here](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-cb/fs.h)) to be separated from the rest of the loader's source.
+This is so because it was designed to help the needs of hobby OS developers, specially for those who want to write their own file
+systems.
 
 The reference implementations support [cpio](https://en.wikipedia.org/wiki/Cpio) (all hpodc, newc and crc variants),
 [ustar](https://en.wikipedia.org/wiki/Tar_(computing)), osdev.org's [SFS](http://wiki.osdev.org/SFS),

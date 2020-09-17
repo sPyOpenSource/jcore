@@ -57,9 +57,10 @@ PROTOCOL_DYNAMIC   equ   2
 PROTOCOL_BIGENDIAN equ      080h
 
 ; loader types, just informational
-LOADER_BIOS   equ    0
-LOADER_UEFI   equ    4
-LOADER_RPI    equ    8
+LOADER_BIOS     equ  0
+LOADER_UEFI     equ  4
+LOADER_RPI      equ  8
+LOADER_COREBOOT equ 16
 
 ; framebuffer pixel format, only 32 bits supported
 FB_ARGB       equ 0

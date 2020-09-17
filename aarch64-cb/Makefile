@@ -24,7 +24,7 @@ $(LIBPAYLOAD_DIR):
 
 ifneq ($(strip $(wildcard libpayload)),)
 include $(XCOMPILE)
-LPGCC = CC="$(GCC_CC_aarch64)" "$(LIBPAYLOAD_DIR)/bin/lpgcc"
+LPGCC = CC="$(GCC_CC_arm64)" "$(LIBPAYLOAD_DIR)/bin/lpgcc"
 $(TARGET):
 	$(LPGCC) $(CFLAGS) -o $(TARGET) bootboot.c
 else
