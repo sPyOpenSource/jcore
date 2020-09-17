@@ -43,6 +43,11 @@ $ make menuconfig
     alatta a 'Mainboard vendor' legyen '(Emulation)'
     alatta a 'Mainboard model' legyen 'QEMU AArch64'
     válaszd az 'Exit'-t
+    válaszd a 'Devices' menüt
+    válaszd a 'Display' menüt
+    alatta a 'Framebuffer mode' legyen 'Linear "high-resolution" framebuffer'
+    válaszd az 'Exit'-t
+    válaszd az 'Exit'-t
     válaszd a 'Payload' menüt
     válaszd az 'Add a Payload' opciót
     válaszd ki a 'BOOTBOOT'-ot
@@ -50,6 +55,8 @@ $ make menuconfig
     válaszd az 'Exit'-t
     válaszd a 'Yes'-t
 ```
+Fontos, hogy a kijelzőt "linear framebuffer"-re állítsd, mert a BOOTBOOT nem kezeli az elavult, nem portolható VGA szöveges
+módot. Sajnos a libpayload nem támogatja a futás időben való beállítást.
 
 ### 5. lépés - A coreboot fordítása
 
@@ -61,7 +68,7 @@ $ make
 
 Bővebb információért lásd a [coreboot dokumentáció](https://doc.coreboot.org/mainboard/emulation/qemu-aarch64.html)t.
 ```sh
-$ qemu-system-aarch64 -bios $(COREBOOT)/build/coreboot.rom -M virt,secure=on,virtualization=on -cpu cortex-a53 -m 1024M \
+$ qemu-system-aarch64 -bios build/coreboot.rom -M virt,secure=on,virtualization=on -cpu cortex-a53 -m 1024M \
     -drive file=$(BOOTBOOT)/images/disk-rpi.img,format=raw -serial stdio
 ```
 

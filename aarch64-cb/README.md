@@ -43,6 +43,11 @@ $ make menuconfig
     Beside 'Mainboard vendor' should be '(Emulation)'
     Beside 'Mainboard model' should be 'QEMU AArch64'
     select 'Exit'
+    select 'Devices' menu
+    select 'Display' menu
+    Beside 'Framebuffer mode' should be 'Linear "high-resolution" framebuffer'
+    select 'Exit'
+    select 'Exit'
     select 'Payload' menu
     select 'Add a Payload'
     choose 'BOOTBOOT'
@@ -50,6 +55,8 @@ $ make menuconfig
     select 'Exit'
     select 'Yes'
 ```
+It is important to set the display to "linear framebuffer", because BOOTBOOT does not handle the legacy, non-portable VGA
+text mode. Sadly there's no way of configuring this in run-time with libpayload.
 
 ### Step 5 - Build coreboot
 
@@ -61,7 +68,7 @@ $ make
 
 For more information, read [coreboot docs](https://doc.coreboot.org/mainboard/emulation/qemu-aarch64.html).
 ```sh
-$ qemu-system-aarch64 -bios $(COREBOOT)/build/coreboot.rom -M virt,secure=on,virtualization=on -cpu cortex-a53 -m 1024M \
+$ qemu-system-aarch64 -bios build/coreboot.rom -M virt,secure=on,virtualization=on -cpu cortex-a53 -m 1024M \
     -drive file=$(BOOTBOOT)/images/disk-rpi.img,format=raw -serial stdio
 ```
 

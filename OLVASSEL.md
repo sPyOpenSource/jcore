@@ -25,8 +25,8 @@ memórialeképezéseket kezel, ami az 1-es protokoll szintnek felel meg.
 
 Gyors kipróbáláshoz találsz bootolható képfájlokat az [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában.
 
-BOOTBOOT lefordítható [coreboot](https://coreboot.org) payloadként is, lásd *x86_64-cb* és *aarch64-cb*, de mivel ezek szorosan
-kapcsolódnak a libpayload-hoz, nincs belőlük előre fordított bináris.
+BOOTBOOT lefordítható [coreboot](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb) payloadként is, lásd *x86_64-cb*
+és *aarch64-cb*, de mivel ezek szorosan kapcsolódnak a libpayload-hoz, nincs belőlük előre fordított bináris.
 
 BOOTBOOT Protokoll
 ==================

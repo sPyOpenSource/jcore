@@ -69,7 +69,7 @@ $ make
 Bővebb információért lásd a [coreboot dokumentáció](https://doc.coreboot.org/mainboard/emulation/qemu-i440fx.html)t. Az
 [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában találsz lefordított coreboot.rom binárist.
 ```sh
-$ qemu-system-x86_64 -bios $(COREBOOT)/build/coreboot.rom -drive file=$(BOOTBOOT)/images/disk-x86.img,format=raw -serial stdio
+$ qemu-system-x86_64 -bios build/coreboot.rom -drive file=$(BOOTBOOT)/images/disk-x86.img,format=raw -serial stdio
 ```
 
 Initrd hozzáadása a ROM-hoz
@@ -82,12 +82,12 @@ $ ./mkbootimg myos.json initrd.bin
 ```
 Ezután a coreboot repójában található `cbfstool` alkalmazással lehet az initrd lemezképet a ROM képhez hozzáadni:
 ```sh
-$ ./build/util/cbfstool/cbfstool $(COREBOOT)/build/coreboot.rom add -t raw -f $(BOOTBOOT)/initrd.bin -n bootboot/initrd
+$ ./build/cbfstool build/coreboot.rom add -t raw -f $(BOOTBOOT)/initrd.bin -n bootboot/initrd
 ```
 Ehhez hasonlóan hozzá lehet adni egy alapértelmezett környezeti fájlt is (csak akkor használja, ha a szokásos helyeken nem
 találta):
 ```sh
-$ ./build/util/cbfstool/cbfstool $(COREBOOT)/build/coreboot.rom add -t raw -f environment.txt -n bootboot/config
+$ ./build/cbfstool build/coreboot.rom add -t raw -f environment.txt -n bootboot/config
 ```
 Ez természetesen csak akkor működik, ha a libpayload `CONFIG_LP_CBFS=y` opcióval lett fordítva. Ennek hiányában az initrd
 egy "INITRD" nevű Flashmap partíción is elhelyezhető (bár az fmaptool és az fmd formátum kezelése nem kicsit pilótavizsgás).

@@ -69,7 +69,7 @@ $ make
 For more information, read the [coreboot docs](https://doc.coreboot.org/mainboard/emulation/qemu-i440fx.html). In the
 [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) directory you can find a precompiled coreboot.rom binary.
 ```sh
-$ qemu-system-x86_64 -bios $(COREBOOT)/build/coreboot.rom -drive file=$(BOOTBOOT)/images/disk-x86.img,format=raw -serial stdio
+$ qemu-system-x86_64 -bios build/coreboot.rom -drive file=$(BOOTBOOT)/images/disk-x86.img,format=raw -serial stdio
 ```
 
 Adding Initrd to ROM
@@ -82,11 +82,11 @@ $ ./mkbootimg myos.json initrd.bin
 ```
 Then use the `cbfstool` utility in the coreboot repository to add the initrd image into the ROM image:
 ```sh
-$ ./build/util/cbfstool/cbfstool $(COREBOOT)/build/coreboot.rom add -t raw -f $(BOOTBOOT)/initrd.bin -n bootboot/initrd
+$ ./build/cbfstool build/coreboot.rom add -t raw -f $(BOOTBOOT)/initrd.bin -n bootboot/initrd
 ```
 You can add a fallback environment configuration similarily (only used if environment cannot be loaded from the usual places):
 ```sh
-$ ./build/util/cbfstool/cbfstool $(COREBOOT)/build/coreboot.rom add -t raw -f environment.txt -n bootboot/config
+$ ./build/cbfstool build/coreboot.rom add -t raw -f $(BOOTBOOT)/environment.txt -n bootboot/config
 ```
 Obviously this can only work if libpayload was compiled with `CONFIG_LP_CBFS=y`. Without you can still place the initrd on
 a Flashmap partition named "INITRD" (however using the fmaptool and dealing with the fmd format is a rocket science).
@@ -106,5 +106,5 @@ Limitations
 -----------
 
  - The CMOS nvram does not store timezone, so always GMT+0 returned in bootboot.timezone.
- - Coreboot does not provide a way to set screen resolution, so "screen=" config option is skipped.
+ - Coreboot does not provide a way to set screen resolution, so "screen=" config option is not used.
  - Only supports SHA-XOR-CBC, no AES

@@ -25,8 +25,8 @@ static mappings which makes it a level 1 loader.
 
 For a quick test, you can find example bootable disk [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) too.
 
-BOOTBOOT can also be compiled as a [coreboot](https://coreboot.org) payload, see *x86_64-cb* and *aarch64-cb*, but since
-they are tied strongly with libpayload, I do not provide binaries for those.
+BOOTBOOT can also be compiled as a [coreboot](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb) payload,
+see *x86_64-cb* and *aarch64-cb*, but since they are tied strongly with libpayload, I do not provide binaries for those.
 
 BOOTBOOT Protocol
 =================
