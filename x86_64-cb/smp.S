@@ -129,28 +129,20 @@ bit64:
     movw    %ax, %ss
     movw    %ax, %fs
     movw    %ax, %gs
+    xorq    %rbx, %rbx
     // find our lapic id
     movl    $1, %eax
     cpuid
-    shrl    $24, %ebx
-    movl    %ebx, %edx
-    // get array index for it
-    xorq    %rbx, %rbx
-    xorq    %rsi, %rsi
-    movl    $lapic_ids, %esi
-    movw    0x200C, %cx         // bootboot.numcores
-1:  lodsw
-    cmpw    %dx, %ax
-    je      1f
-    incw    %bx
-    decw    %cx
-    jnz     1b
-    xorw    %bx, %bx
-1:  shlq    $10, %rbx           // 1k stack for each core
+    shrl    $23, %ebx
+    andb    $0xfe, %bl          // ebx = lapic id * 2
+    addl    $lapic_ids, %ebx
+    xorq    %rax, %rax
+    movw    (%rbx), %ax         // ax = word[lapic_ids + lapic id * 2]
+1:  shlq    $10, %rax           // 1k stack for each core
 
     // set stack and call _start() in sys/core
     xorq    %rsp, %rsp          // sp = core_num * -1024
-    subq    %rbx, %rsp
+    subq    %rax, %rsp
     movl    $entrypoint, %esi   // GAS does not allow "jmp qword[entrypoint]"
     lodsq
     jmp     *%rax

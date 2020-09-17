@@ -5,7 +5,7 @@ I provide pre-compiled images ready for use.
 
 1. *x86_64-efi* the preferred way of booting on x86_64 architecture.
     Standard GNU toolchain and a few files from gnuefi (included).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.efi) (95k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.rom) (96k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.efi) (100k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.rom) (100k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), Expansion ROM and Linux boot compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).

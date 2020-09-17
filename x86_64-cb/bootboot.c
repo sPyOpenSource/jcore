@@ -1088,7 +1088,7 @@ gzerr:      panic("Unable to uncompress");
                 for(r = *((uint32_t*)(data + 4)), ptr = data + 44, i = 0; ptr < data + r &&
                     i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); ptr += ptr[1]) {
                     switch(ptr[0]) {
-                        case 0: lapic_ids[i++] = ptr[2]; break;             // found Processor Local APIC
+                        case 0: lapic_ids[(int)ptr[2]] = i++; break;        // found Processor Local APIC
                         case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                     }
                 }

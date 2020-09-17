@@ -30,6 +30,7 @@
 
 #define BBDEBUG 1
 //#define GOP_DEBUG BBDEBUG
+#define USE_MP_SERVICES 0   /* without fallback to ACPI parser and APIC INIT + SIPI */
 
 #if BBDEBUG
 #define DBG(fmt, ...) do{Print(fmt,__VA_ARGS__); }while(0);
@@ -156,6 +157,7 @@ typedef struct {
 struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
 struct EFI_FILE_PROTOCOL;
 
+#if USE_MP_SERVICES
 #ifndef EFI_MP_SERVICES_PROTOCOL_GUID
 #define EFI_MP_SERVICES_PROTOCOL_GUID \
   { 0x3fdda605, 0xa76e, 0x4f46, {0xad, 0x29, 0x12, 0xf4, 0x53, 0x1b, 0x3d, 0x08} }
@@ -217,6 +219,10 @@ struct _EFI_MP_SERVICES_PROTOCOL {
   EFI_MP_SERVICES_DUMMY                     EnableDisableAP;
   EFI_MP_SERVICES_DUMMY                     WhoAmI;
 };
+#endif
+#else
+extern void ap_trampoline();
+UINT16 lapic_ids[1024];
 #endif
 
 typedef
@@ -1292,8 +1298,20 @@ LoadCore()
  */
 VOID EFIAPI bootboot_startcore(IN VOID* buf)
 {
+#if USE_MP_SERVICES
     // we have a scalar number, not a pointer, so cast it
     UINTN core_num = (UINTN)buf;
+#else
+    (void)buf;
+    UINT16 core_num;
+    __asm__ __volatile__ (
+        "movl $1, %%eax;"
+        "cpuid;"
+        "shrl $24, %%ebx;"
+        "mov %%bx,%0"
+        : "=b"(core_num) : : );
+    core_num = lapic_ids[core_num];
+#endif
 
     // spinlock until BSP finishes
     do { __asm__ __volatile__ ("pause"); } while(!bsp_done);
@@ -1321,7 +1339,7 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
         // pass control over
         "pushq %0;"
         "retq"
-        : : "a"(entrypoint), "r"(core_num*1024) : "memory" );
+        : : "a"(entrypoint), "r"((UINTN)core_num*1024) : "memory" );
 }
 
 /**
@@ -1342,11 +1360,13 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     EFI_PARTITION_TABLE_HEADER *gptHdr;
     EFI_PARTITION_ENTRY *gptEnt;
     EFI_INPUT_KEY key;
+#if USE_MP_SERVICES
     EFI_EVENT Event;
     EFI_GUID mpspGuid = EFI_MP_SERVICES_PROTOCOL_GUID;
     EFI_MP_SERVICES_PROTOCOL *mp;
     UINT8 pibuffer[100];
     EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
+#endif
     UINTN bsp_num=0, i, j=0, x,y, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
     UINT32 desc_version=0;
     UINT64 lba_s=0,lba_e=0,sysptr;
@@ -1696,6 +1716,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             *kne='\n';
 
         // Symmetric Multi Processing support
+#if USE_MP_SERVICES
         status = uefi_call_wrapper(BS->LocateProtocol, 3, &mpspGuid, NULL, (void**)&mp);
         if(!EFI_ERROR(status)) {
             // override default values in bootboot struct
@@ -1722,6 +1743,55 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                 }
             }
         }
+#else
+        UINT8 *ptr = (UINT8*)bootboot->arch.x86_64.acpi_ptr, *pe, *data;
+        UINT64 r, lapic_addr=0, ap_code = 0x8000;
+        ZeroMem(lapic_ids, sizeof(lapic_ids));
+        if(ptr && (ptr[0]=='X' || ptr[0]=='R') && ptr[1]=='S' && ptr[2]=='D' && ptr[3]=='T') {
+            pe = ptr; ptr += 36;
+            // iterate on ACPI table pointers
+            for(r = *((uint32_t*)(pe + 4)); ptr < pe + r; ptr += pe[0] == 'X' ? 8 : 4) {
+                data = (uint8_t*)(uintptr_t)(pe[0] == 'X' ? *((uint64_t*)ptr) : *((uint32_t*)ptr));
+                if(!CompareMem(data, "APIC", 4)) {
+                    // found MADT, iterate on its variable length entries
+                    lapic_addr = (uint64_t)(*((uint32_t*)(data+0x24)));
+                    for(r = *((uint32_t*)(data + 4)), ptr = data + 44, i = 0; ptr < data + r &&
+                        i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); ptr += ptr[1]) {
+                        switch(ptr[0]) {
+                            case 0: lapic_ids[(INTN)ptr[2]] = i++; break;       // found Processor Local APIC
+                            case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
+                        }
+                    }
+                    if(i) {
+                        bootboot->numcores = i;
+                        bsp_num = lapic_ids[bootboot->bspid];
+                    }
+                    break;
+                }
+            }
+            // Allocate page at fixed address for AP trampoline code
+            status = uefi_call_wrapper(BS->AllocatePages, 4, 2, 1, 1, (EFI_PHYSICAL_ADDRESS*)&ap_code);
+            if(EFI_ERROR(status)) ap_code = 0;
+        }
+        if(bootboot->numcores > 1 && lapic_addr && ap_code) {
+            DBG(L" * SMP numcores %d\n", bootboot->numcores);
+            CopyMem((uint8_t*)0x8000, &ap_trampoline, 256);
+            // save UEFI's 64 bit system registers for the trampoline code
+            __asm__ __volatile__ (
+                "movq %%cr3, %%rax; movq %%rax, 0x80C0;"
+                "movl %%cs, %%eax; movl %%eax, 0x80C8;"
+                "movl %%ds, %%eax; movl %%eax, 0x80CC;"
+                "sgdt 0x80D0" : : : );
+            // send Broadcast INIT IPI
+            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4500;
+            uefi_call_wrapper(BS->Stall, 1, 10);
+            // send Broadcast STARTUP IPI
+            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608; // start at 0800:0000h
+            uefi_call_wrapper(BS->Stall, 1, 1);
+            // send second SIPI
+            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608;
+        }
+#endif
 
         // query size of memory map
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,

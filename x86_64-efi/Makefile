@@ -10,7 +10,7 @@ LDFLAGS += -shared -Bsymbolic -L. $(GNUEFI_CRT_OBJS)
 
 TARGET  = bootboot.efi
 
-all: tinflate.o $(TARGET)
+all: tinflate.o smp.o $(TARGET)
 
 %.efi: %.so
 	@echo "  src		x86_64-efi (UEFI)"
@@ -19,10 +19,10 @@ all: tinflate.o $(TARGET)
 	@gcc $(GNUEFI_INCLUDES) -Wall -fshort-wchar efirom.c -o efirom $(LIBS)
 	@./efirom $(TARGET) ../dist/bootboot.rom || true
 	@mv $(TARGET) ../dist/$(TARGET)
-	@rm tinflate.o efirom
+	@rm tinflate.o smp.o efirom
 
 %.so: %.o
-	@ld $(LDFLAGS) tinflate.o $^ -o $@ -lefi -lgnuefi -T $(GNUEFI_LDS)
+	@ld $(LDFLAGS) tinflate.o smp.o $^ -o $@ -lefi -lgnuefi -T $(GNUEFI_LDS)
 
 %.o: %.c
 	@gcc $(GNUEFI_INCLUDES) $(CFLAGS) -c $< -o $@
@@ -31,5 +31,5 @@ all: tinflate.o $(TARGET)
 	@gcc $(GNUEFI_INCLUDES) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm bootboot.o $(TARGET) ../dist/$(TARGET) ../dist/bootboot.rom *.so *.efi efirom tinflate.o 2>/dev/null || true
+	@rm bootboot.o $(TARGET) ../dist/$(TARGET) ../dist/bootboot.rom *.so *.efi efirom tinflate.o smp.o 2>/dev/null || true
 
