@@ -86,9 +86,9 @@ int main(int argc, char** argv)
     }
     // if first MBR partition is not a FAT, make space for it
     if(data[0x1C2]!=0xC/*FAT32 LBA*/ && data[0x1C2]!=0xE/*FAT16 LBA*/) {
-        memcpy(&data+0x1EE, &data+0x1DE, 16);
-        memcpy(&data+0x1DE, &data+0x1CE, 16);
-        memcpy(&data+0x1CE, &data+0x1BE, 16);
+        memcpy((void*)&data+0x1EE, (void*)&data+0x1DE, 16);
+        memcpy((void*)&data+0x1DE, (void*)&data+0x1CE, 16);
+        memcpy((void*)&data+0x1CE, (void*)&data+0x1BE, 16);
         data[0x1C2]=0xC;
     }
     // check if it's already pointing to ESP
