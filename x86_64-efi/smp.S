@@ -76,7 +76,7 @@ _L8060:
     wrmsr
     movl    $0x0C0000011, %eax  // clear EM, MP (enable SSE) and WP
     movl    %eax, %cr0
-    lgdtl   0x80D0
+    lgdtl   0x80E0
     movl    0x80C8, %eax
     push    %eax
     push    $0x80A0
@@ -90,7 +90,10 @@ _L80A0:
     movw    %ax, %ss
     movw    %ax, %fs
     movw    %ax, %gs
-    jmp     bootboot_startcode
+// some linkers (GNU ld) generates bad relocation record for this
+//    jmp     bootboot_startcode
+    movq    0x80D0, %rax
+    jmp     *%rax
     .align 32
 _L80C0_cr3_value:
     .long 0, 0
@@ -98,6 +101,8 @@ _L80C8_cs_value:
     .long 0
 _L80CC_ds_value:
     .long 0
-_L80D0_gdt_value:
+_L80D0_bootboot_startcore:
+    .long 0, 0
+_L80E0_gdt_value:
     .long 0, 0, 0, 0
 ap_trampoline_end:

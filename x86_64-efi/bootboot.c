@@ -1781,7 +1781,9 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                 "movq %%cr3, %%rax; movq %%rax, 0x80C0;"
                 "movl %%cs, %%eax; movl %%eax, 0x80C8;"
                 "movl %%ds, %%eax; movl %%eax, 0x80CC;"
-                "sgdt 0x80D0" : : : );
+                "sgdt 0x80E0" : : : );
+            // save relocated address, relocation record doesn't work in Assembly
+            *((uint64_t*)0x80D0) = (uint64_t)bootboot_startcore;
             // send Broadcast INIT IPI
             *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4500;
             uefi_call_wrapper(BS->Stall, 1, 10);
