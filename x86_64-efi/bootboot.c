@@ -275,6 +275,71 @@ typedef struct {
 } EFI_PCI_OPTION_ROM_TABLE;
 #endif
 
+#ifndef EFI_SERIAL_IO_PROTOCOL_GUID
+#define EFI_SERIAL_IO_PROTOCOL_GUID \
+    { 0xBB25CF6F, 0xF1D4, 0x11D2, {0x9A, 0x0C, 0x00, 0x90, 0x27, 0x3F, 0xC1, 0xFD} }
+
+typedef enum {
+    DefaultParity,
+    NoParity,
+    EvenParity,
+    OddParity,
+    MarkParity,
+    SpaceParity
+} EFI_PARITY_TYPE;
+
+typedef enum {
+    DefaultStopBits,
+    OneStopBit,         // 1 stop bit
+    OneFiveStopBits,    // 1.5 stop bits
+    TwoStopBits         // 2 stop bits
+} EFI_STOP_BITS_TYPE;
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_SERIAL_DUMMY)(
+  IN  EFI_SERIAL_IO_PROTOCOL  *This
+  );
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_SERIAL_SET_ATTRIBUTES) (
+    IN struct _EFI_SERIAL_IO_PROTOCOL  *This,
+    IN UINT64                          BaudRate,
+    IN UINT32                          ReceiveFifoDepth,
+    IN UINT32                          Timeout,
+    IN EFI_PARITY_TYPE                 Parity,
+    IN UINT8                           DataBits,
+    IN EFI_STOP_BITS_TYPE              StopBits
+    );
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_SERIAL_WRITE) (
+    IN struct _EFI_SERIAL_IO_PROTOCOL  *This,
+    IN OUT UINTN                       *BufferSize,
+    IN VOID                            *Buffer
+    );
+
+typedef
+EFI_STATUS
+(EFIAPI *EFI_SERIAL_READ) (
+    IN struct _EFI_SERIAL_IO_PROTOCOL  *This,
+    IN OUT UINTN                       *BufferSize,
+    OUT VOID                           *Buffer
+    );
+
+typedef struct _EFI_SERIAL_IO_PROTOCOL {
+    UINT32                       Revision;
+    EFI_SERIAL_DUMMY             Reset;
+    EFI_SERIAL_SET_ATTRIBUTES    SetAttributes;
+    EFI_SERIAL_DUMMY             SetControl;
+    EFI_SERIAL_DUMMY             GetControl;
+    EFI_SERIAL_WRITE             Write;
+    EFI_SERIAL_READ              Read;
+} EFI_SERIAL_IO_PROTOCOL;
+#endif
+
 /*** other defines and structs ***/
 typedef struct {
     UINT8 magic[8];
@@ -1022,14 +1087,14 @@ EFI_STATUS
 GetLFB()
 {
     EFI_STATUS status;
-    EFI_GRAPHICS_OUTPUT_PROTOCOL *gop;
+    EFI_GRAPHICS_OUTPUT_PROTOCOL *gop = NULL;
     EFI_GUID gopGuid = EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID;
     EFI_GRAPHICS_OUTPUT_MODE_INFORMATION *info;
     UINTN i, imax, SizeOfInfo, nativeMode, selectedMode=9999, sw=0, sh=0, valid;
 
     //GOP
     status = uefi_call_wrapper(BS->LocateProtocol, 3, &gopGuid, NULL, (void**)&gop);
-    if(EFI_ERROR(status))
+    if(EFI_ERROR(status) && gop)
         return status;
 
     // minimum resolution
@@ -1363,10 +1428,12 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
 #if USE_MP_SERVICES
     EFI_EVENT Event;
     EFI_GUID mpspGuid = EFI_MP_SERVICES_PROTOCOL_GUID;
-    EFI_MP_SERVICES_PROTOCOL *mp;
+    EFI_MP_SERVICES_PROTOCOL *mp = NULL;
     UINT8 pibuffer[100];
     EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
 #endif
+    EFI_GUID SerIoGuid = EFI_SERIAL_IO_PROTOCOL_GUID;
+    EFI_SERIAL_IO_PROTOCOL *ser = NULL;
     UINTN bsp_num=0, i, j=0, x,y, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
     UINT32 desc_version=0;
     UINT64 lba_s=0,lba_e=0,sysptr;
@@ -1477,6 +1544,45 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
         }
 foundinrom:
         uefi_call_wrapper(BS->FreePages, 2, (EFI_PHYSICAL_ADDRESS)memory_map, (memory_map_size+PAGESIZE-1)/PAGESIZE);
+    }
+    // try reading the initrd from serial line
+    if(EFI_ERROR(status) || initrd.ptr==NULL){
+        status = uefi_call_wrapper(BS->LocateProtocol, 3, &SerIoGuid, NULL, (void**)&ser);
+        if(!EFI_ERROR(status) && ser) {
+            // 1000 microsec timeout, mode 115200,8,n,1
+            status = uefi_call_wrapper(ser->SetAttributes, 7, ser, 115200, 0, 1000, NoParity, 8, OneStopBit);
+            if(!EFI_ERROR(status)) {
+                i = 3;
+                uefi_call_wrapper(ser->Write, 3, ser, &i, "\003\003\003");
+                i = 4; initrd.size = 0;
+                status = uefi_call_wrapper(ser->Read, 3, ser, &i, (VOID*)&initrd.size);
+                if(!EFI_ERROR(status) && i == 4) {
+                    i = 2;
+                    if(initrd.size < 32 || initrd.size >= INITRD_MAXSIZE*1024*1024) {
+                        uefi_call_wrapper(ser->Write, 3, ser, &i, "SE");
+                        initrd.size = 0;
+                        status = EFI_LOAD_ERROR;
+                    } else {
+                        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (initrd.size+PAGESIZE-1)/PAGESIZE,
+                            (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
+                        if (initrd.ptr == NULL) {
+                            uefi_call_wrapper(ser->Write, 3, ser, &i, "SE");
+                            return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
+                        }
+                        uefi_call_wrapper(ser->Write, 3, ser, &i, "OK");
+                        i = initrd.size;
+                        status = uefi_call_wrapper(ser->Read, 3, ser, &i, (VOID*)initrd.ptr);
+                        if(EFI_ERROR(status) || i != initrd.size) {
+                            uefi_call_wrapper(BS->FreePages, 2, (EFI_PHYSICAL_ADDRESS)initrd.ptr,
+                                (initrd.size+PAGESIZE-1)/PAGESIZE);
+                            initrd.ptr = NULL;
+                            initrd.size = 0;
+                            status = EFI_LOAD_ERROR;
+                        }
+                    }
+                }
+            }
+        }
     }
     // fall back to INITRD on filesystem
     if(EFI_ERROR(status) || initrd.ptr==NULL){
@@ -1718,7 +1824,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         // Symmetric Multi Processing support
 #if USE_MP_SERVICES
         status = uefi_call_wrapper(BS->LocateProtocol, 3, &mpspGuid, NULL, (void**)&mp);
-        if(!EFI_ERROR(status)) {
+        if(!EFI_ERROR(status) && mp) {
             // override default values in bootboot struct
             status = uefi_call_wrapper(mp->GetNumberOfProcessors, 3, mp, &i, &j);
             if(!EFI_ERROR(status)) {

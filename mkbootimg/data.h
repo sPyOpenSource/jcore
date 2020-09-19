@@ -2,7 +2,7 @@
 
 extern unsigned char binary_boot_bin[512];
 extern unsigned char binary_bootboot_bin[12288];
-extern unsigned char binary_bootboot_efi[99396];
+extern unsigned char binary_bootboot_efi[100420];
 extern unsigned char binary_bootboot_img[34672];
 extern unsigned char binary_LICENCE_broadcom[1594];
 extern unsigned char binary_bootcode_bin[52480];

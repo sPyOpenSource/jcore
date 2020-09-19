@@ -122,7 +122,7 @@ Glossary
 
 * _initrd_: initial [ramdisk image](https://gitlab.com/bztsrc/bootboot/blob/master/README.md#installation)
   (probably in ROM or flash, or on a GPT boot partition at BOOTBOOT\INITRD, or it can occupy the whole partition, or can be loaded
-  over the network or as a GRUB module). It's format and whereabouts are not specified (the good part :-) ) and can be optionally gzip compressed.
+  over the network, over serial line or as a GRUB module). It's format and whereabouts are not specified (the good part :-) ) and can be optionally gzip compressed.
 
 * _loader_: a native executable on the boot partition or in ROM. For multi-bootable disks
   more loader implementations can co-exists.

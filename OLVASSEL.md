@@ -120,7 +120,7 @@ Kifejezések
 
 * _initrd_: induló [ramlemez kép](https://gitlab.com/bztsrc/bootboot/blob/master/README.md#installation)
   (lehet ROM-ban vagy flash-en, vagy egy GPT boot partíción BOOTBOOT\INITRD néven, vagy kitöltheti az egész partíciót, de akár
-  hálózatról vagy GRUB modulként is betöltehető). A formátuma és a holléte nincs meghatározva (a jó rész :-) ) és gzip tömörítést
+  hálózatról, soros vonalról vagy GRUB modulként is betöltehető). A formátuma és a holléte nincs meghatározva (a jó rész :-) ) és gzip tömörítést
   is használhat.
 
 * _betöltő_: (loader) egy natív futtatható a boot partíción vagy ROM-ban. Többarchitektúrás lemezeken több
