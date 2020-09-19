@@ -1,4 +1,4 @@
-/* raspbootcom.c - upload INITRD via serial port to the RPi running BOOTBOOT */
+/* raspbootcom.c - upload INITRD via serial port to a machine running BOOTBOOT */
 /* Copyright (C) 2013 Goswin von Brederlow <goswin-v-b@web.de>
  * minor modifications for BOOTBOOT: 2017 bzt (bztsrc@gitlab)
 
@@ -28,7 +28,7 @@
 #include <endian.h>
 #include <stdint.h>
 #include <termios.h>
-#include "../bootboot.h"
+#include "../dist/bootboot.h"
 
 #define BUF_SIZE 65536
 
@@ -102,7 +102,7 @@ void send_initrd(int fd, const char *file) {
     ssize_t pos, total=0;
     char *p;
     int done = 0;
-    
+
     // Set fd blocking
     if (fcntl(fd, F_SETFL, 0) == -1) {
 	perror("fcntl()");
@@ -185,7 +185,7 @@ void send_initrd(int fd, const char *file) {
 	}
     }
     close(file_fd);
-    
+
     // Set fd non-blocking
     if (fcntl(fd, F_SETFL, O_NONBLOCK) == -1) {
 	perror("fcntl()");
@@ -225,7 +225,7 @@ int main(int argc, char *argv[]) {
 	    perror("tcgetattr");
 	    exit(EXIT_FAILURE);
 	}
-	
+
 	// we want to keep the old setting to restore them a the end
 	new_tio=old_tio;
 
@@ -238,7 +238,7 @@ int main(int argc, char *argv[]) {
 	    do_exit(-1, EXIT_FAILURE);
 	}
     }
-    
+
     while(!leave) {
 	// Open device
 	if ((fd = open_serial(argv[1])) == -1) {
@@ -263,12 +263,12 @@ int main(int argc, char *argv[]) {
 
 	done = 0;
 	start = end = 0;
-	while(!done || start != end) {	
+	while(!done || start != end) {
 	    // Watch stdin and dev for input.
 	    FD_ZERO(&rfds);
 	    if (!done && end < BUF_SIZE) FD_SET(STDIN_FILENO, &rfds);
 	    FD_SET(fd, &rfds);
-	    
+
 	    // Watch fd for output if needed.
 	    FD_ZERO(&wfds);
 	    if (start != end) FD_SET(fd, &wfds);
@@ -374,6 +374,6 @@ int main(int argc, char *argv[]) {
 	}
 	close(fd);
     }
-		
+
     do_exit(-1, EXIT_SUCCESS);
 }
