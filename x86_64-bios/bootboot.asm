@@ -1006,6 +1006,29 @@ prot_oct2bin:
             pop         ebx
             ret
 
+; IN: al, character to send
+uart_send:  mov         ah, al
+            mov         dx, 3fdh
+@@:         pause
+            in          al, dx
+            and         al, 20h
+            jz          @b
+            sub         dl, 5
+            mov         al, ah
+            out         dx, al
+            ret
+
+; IN: edi pointer to store the received char
+uart_getc:  mov         dx, 03fdh
+@@:         pause
+            in          al, dx
+            and         al, 1
+            jz          @b
+            sub         dl, 5
+            in          al, dx
+            stosb
+            ret
+
 protmode_start:
             mov         ax, DATA_PROT
             mov         ds, ax
@@ -1038,7 +1061,51 @@ protmode_start:
             cmp         esi, 0F4000h
             jb          .nextrom
 
-            ; read GPT
+            ;---- notify raspbootcom / USBImager to send the initrd over serial line ----
+            mov         al, 3
+            call        uart_send
+            call        uart_send
+            call        uart_send
+
+            ; wait for response with timeout
+            mov         ah, al
+            mov         cx, 10000
+            mov         dx, 3fdh
+@@:         dec         cx
+            jz          .getgpt
+            pause
+            in          al, dx
+            and         al, 1
+            jz          @b
+            ; read the initrd's size
+            mov         edi, bootboot.initrd_size
+            call        uart_getc
+            call        uart_getc
+            call        uart_getc
+            call        uart_getc
+            mov         ecx, dword [bootboot.initrd_size]
+            ; send negative or positive acknowledge
+            cmp         ecx, 32
+            jb          .se
+            cmp         ecx, INITRD_MAXSIZE*1024*1024
+            jb          .ok
+.se:        mov         al, 'S'
+            call        uart_send
+            mov         al, 'E'
+            call        uart_send
+            jmp         .getgpt
+.ok:        mov         al, 'O'
+            call        uart_send
+            mov         al, 'K'
+            call        uart_send
+            mov         edi, dword [bootboot.initrd_ptr]
+            ; read in the image
+@@:         call        uart_getc
+            dec         ecx
+            jnz         @b
+            jmp         .initrdloaded
+
+            ;---- read GPT -----
 .getgpt:    xor         eax, eax
             xor         edi, edi
             prot_readsector
