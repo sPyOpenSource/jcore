@@ -88,7 +88,7 @@ unsigned char *esp_addfile(unsigned char *ptr, char *name, unsigned char *conten
     ptr = esp_adddirent(ptr, name, 0, nextcluster, size);
     if(content && size) {
         memcpy(ptr2, content, size);
-        for(i = 0; i < size; i += bpc, nextcluster++) {
+        for(i = 0; i < ((size + bpc-1) & ~(bpc-1)); i += bpc, nextcluster++) {
             if(fat16_1) fat16_1[nextcluster] = fat16_2[nextcluster] = nextcluster+1;
             else fat32_1[nextcluster] = fat32_2[nextcluster] = nextcluster+1;
         }
@@ -168,6 +168,7 @@ void esp_makepart()
 
     ptr = esp_mkdir(rootdir, "BOOTBOOT", 0); rootdir += 32;
     if(boot & (1 << 1)) {
+        /* x86 PC (BIOS) */
         esp_bbs = ((data + nextcluster * bpc)-esp) / 512;
         ptr = esp_addfile(ptr, "LOADER", binary_bootboot_bin, sizeof(binary_bootboot_bin));
     }
@@ -180,15 +181,19 @@ void esp_makepart()
         }
     }
     if(boot & (1 << 3)) {
+        /* additional platform */
     }
     if(boot & (1 << 2)) {
+        /* additional platform */
     }
     if(boot & (1 << 1)) {
+        /* x86 PC (UEFI) */
         ptr = esp_mkdir(rootdir, "EFI", 0); rootdir += 32;
         ptr = esp_mkdir(ptr, "BOOT", lastcluster);
         ptr = esp_addfile(ptr, "BOOTX64.EFI", binary_bootboot_efi, sizeof(binary_bootboot_efi));
     }
     if(boot & (1 << 0)) {
+        /* Raspberry Pi */
         ptr = esp_addfile(rootdir, "KERNEL8.IMG", binary_bootboot_img, sizeof(binary_bootboot_img));
         ptr = esp_addfile(ptr, "BOOTCODE.BIN", binary_bootcode_bin, sizeof(binary_bootcode_bin));
         ptr = esp_addfile(ptr, "FIXUP.DAT", binary_fixup_dat, sizeof(binary_fixup_dat));
