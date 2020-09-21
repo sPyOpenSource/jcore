@@ -2789,9 +2789,7 @@ typedef struct ct_data_s {
 } FAR ct_data;
 
 #define Freq fc.freq
-#define Code fc.code
 #define Dad  dl.dad
-#define Len  dl.len
 
 typedef struct static_tree_desc_s  static_tree_desc;
 
