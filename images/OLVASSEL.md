@@ -29,7 +29,7 @@ Lásd mkbootimg.json. Nézz bele a Makefile-ba is, az elején fogsz látni konfi
 
 Aztán csak futtasd a `make` parancsot.
 
-A coreboot.rom fordításához [pecselt coreboot fordító környezet](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb)
+A coreboot.rom fordításához [coreboot fordító környezet](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb)
 szükséges.
 
 Tesztelés

@@ -1090,7 +1090,10 @@ GetLFB()
     EFI_GRAPHICS_OUTPUT_PROTOCOL *gop = NULL;
     EFI_GUID gopGuid = EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID;
     EFI_GRAPHICS_OUTPUT_MODE_INFORMATION *info;
-    UINTN i, imax, SizeOfInfo, nativeMode, selectedMode=9999, sw=0, sh=0, valid;
+    UINTN i, imax, SizeOfInfo, nativeMode, selectedMode=9999, sw=0, sh=0;
+#if GOP_DEBUG
+    UINTN valid;
+#endif
 
     //GOP
     status = uefi_call_wrapper(BS->LocateProtocol, 3, &gopGuid, NULL, (void**)&gop);
@@ -1114,7 +1117,9 @@ GetLFB()
         // failsafe
         if (EFI_ERROR(status))
             continue;
+#if GOP_DEBUG
         valid=0;
+#endif
         // get the mode for the closest resolution
         if((info->PixelFormat == PixelRedGreenBlueReserved8BitPerColor ||
             info->PixelFormat == PixelBlueGreenRedReserved8BitPerColor
@@ -1128,10 +1133,10 @@ GetLFB()
                     sw = info->HorizontalResolution;
                     sh = info->VerticalResolution;
             }
+#if GOP_DEBUG
             valid=1;
+#endif
         }
-        // make gcc happy
-        if(valid){}
 #if GOP_DEBUG
         DBG(L"    %c%2d %4d x %4d, %d%c ", i==selectedMode?'+':(i==nativeMode?'-':' '),
             i, info->HorizontalResolution, info->VerticalResolution, info->PixelFormat,valid?' ':'?');
@@ -1244,24 +1249,25 @@ LoadCore()
     if(core.ptr==NULL) {
         DBG(L" * Autodetecting kernel%s\n",L"");
         i=initrd.size;
-        core.ptr=initrd.ptr;
+        ptr=initrd.ptr;
         while(i-->0) {
-            Elf64_Ehdr *ehdr=(Elf64_Ehdr *)(core.ptr);
-            pe_hdr *pehdr=(pe_hdr*)(core.ptr + ((mz_hdr*)(core.ptr))->peaddr);
+            Elf64_Ehdr *ehdr=(Elf64_Ehdr *)(ptr);
+            pe_hdr *pehdr=(pe_hdr*)(ptr + ((mz_hdr*)(ptr))->peaddr);
             if((!CompareMem(ehdr->e_ident,ELFMAG,SELFMAG)||!CompareMem(ehdr->e_ident,"OS/Z",4))&&
                 ehdr->e_ident[EI_CLASS]==ELFCLASS64&&
                 ehdr->e_ident[EI_DATA]==ELFDATA2LSB&&
                 ehdr->e_machine==EM_X86_64&&
                 ehdr->e_phnum>0){
+                    core.ptr=ptr;
                     break;
                 }
-            if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && ((mz_hdr*)(core.ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
+            if(((mz_hdr*)(ptr))->magic==MZ_MAGIC && ((mz_hdr*)(ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
                 pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS) {
+                    core.ptr=ptr;
                     break;
                 }
-            core.ptr++;
+            ptr++;
         }
-        core.ptr=NULL;
     }
 
     if(core.ptr!=NULL) {
@@ -1908,7 +1914,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             return report(EFI_OUT_OF_RESOURCES,L"GetMemoryMap getSize");
         }
         // allocate memory for memory descriptors. We assume that one or two new memory
-        // descriptor may created by our next allocate calls and we round up to page size
+        // descriptor may be created by our next allocate calls and we round up to page size
         memory_map_size+=2*desc_size;
         uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (memory_map_size+PAGESIZE-1)/PAGESIZE,

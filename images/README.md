@@ -29,7 +29,7 @@ See mkbootimg.json. Look at the beginning of the Makefile too, you'll find confi
 
 Then just run `make`.
 
-Compiling coreboot.rom requires a [patched coreboot build environment](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb).
+Compiling coreboot.rom requires a [coreboot build environment](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb).
 
 Testing
 -------
