@@ -1437,6 +1437,8 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     EFI_MP_SERVICES_PROTOCOL *mp = NULL;
     UINT8 pibuffer[100];
     EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
+#else
+    UINT64 ncycles = 0, currtime, endtime;
 #endif
     EFI_GUID SerIoGuid = EFI_SERIAL_IO_PROTOCOL_GUID;
     EFI_SERIAL_IO_PROTOCOL *ser = NULL;
@@ -1493,6 +1495,33 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
         "shrl $24, %%ebx;"
         "mov %%bx,%0"
         : "=b"(bootboot->bspid) : : );
+#if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
+    // should be no need to check for RDSTC, available since Pentium, therefore
+    // all long mode capable CPUs should have it. But just to be on the safe side
+    __asm__ __volatile__ (
+        "mov $0x80000007, %%eax; xor %%edx, %%edx;"
+        "cpuid;"
+        : "=d"(desc_version) : : );
+    if(desc_version & (1<<8)) {
+        // calibrate CPU clock cycles
+        __asm__ __volatile__ ( "rdtsc" : "=A"(currtime));
+        uefi_call_wrapper(BS->Stall, 1, 1);
+        __asm__ __volatile__ ( "rdtsc" : "=A"(ncycles));
+        ncycles -= currtime;
+        ncycles /= 5;
+        if(ncycles < 1) ncycles = 1;
+    } else {
+        // fallback to dummy loops without RDTSC (should never happen)
+        ncycles = 0;
+    }
+    desc_version = 0;
+#define sleep(n) do { if(ncycles) { \
+                    __asm__ __volatile__ ( "rdtsc" : "=A"(endtime)); endtime += n*ncycles; \
+                    do { __asm__ __volatile__ ( "rdtsc" : "=A"(currtime)); } while(currtime < endtime); \
+                    } else \
+                        for(i = 0; i < n*1000000; i++) __asm__ __volatile__ ("pause" : : : "memory"); \
+                } while(0)
+#endif
 
     // locate InitRD in ROM
     DBG(L" * Locate initrd in Option ROMs%s\n",L"");
@@ -1891,20 +1920,13 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             // save UEFI's 64 bit system registers for the trampoline code
             __asm__ __volatile__ (
                 "movq %%cr3, %%rax; movq %%rax, 0x80C0;"
-                "movl %%cs, %%eax; movl %%eax, 0x80C8;"
-                "movl %%ds, %%eax; movl %%eax, 0x80CC;"
+                "movl %%cs, %%eax; movl %%eax, 0x80CC;"
+                "movl %%ds, %%eax; movl %%eax, 0x80D0;"
                 "sgdt 0x80E0" : : : );
             // save relocated address, relocation record doesn't work in Assembly
-            *((uint64_t*)0x80D0) = (uint64_t)bootboot_startcore;
-            // send Broadcast INIT IPI
-            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4500;
-            uefi_call_wrapper(BS->Stall, 1, 10);
-            // send Broadcast STARTUP IPI
-            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608; // start at 0800:0000h
-            uefi_call_wrapper(BS->Stall, 1, 1);
-            // send second SIPI
-            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608;
-        }
+            *((uint64_t*)0x80D8) = (uint64_t)bootboot_startcore;
+        } else
+            bootboot->numcores = 1;
 #endif
 
         // query size of memory map
@@ -2023,6 +2045,20 @@ get_memory_map:
             if(cnt>0) goto get_memory_map;
             return report(status,L"ExitBootServices");
         }
+
+#if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
+        // start APs
+        if(bootboot->numcores > 1) {
+            // send Broadcast INIT IPI
+            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4500;
+            sleep(50);
+            // send Broadcast STARTUP IPI
+            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608; // start at 0800:0000h
+            sleep(1);
+            // send second SIPI
+            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608;
+        }
+#endif
 
         // clear the screen
         for(j=y=0;y<bootboot->fb_height;y++) {

@@ -66,6 +66,7 @@ _L8040:
 _L8060:
     movw    $16, %ax
     movw    %ax, %ds
+    movw    %ax, %ss
     movl    $0x368, %eax        // Set PAE, MCE, PGE; OSFXSR, OSXMMEXCPT (enable SSE)
     movl    %eax, %cr4
     movl    0x80C0, %eax        // let's hope it's in the first 4G...
@@ -77,14 +78,12 @@ _L8060:
     movl    $0x0C0000011, %eax  // clear EM, MP (enable SSE) and WP
     movl    %eax, %cr0
     lgdtl   0x80E0
-    movl    0x80C8, %eax
-    push    %eax
-    push    $0x80A0
+    movl    $0x80C8, %esp       // we can't use "ljmp $8, $0x80A0", because we don't know cs
     retf
     .align 32
     .code64
 _L80A0:
-    movl    0x80CC, %eax         // load long mode segments
+    movl    0x80D0, %eax         // load long mode segments
     movw    %ax, %ds
     movw    %ax, %es
     movw    %ax, %ss
@@ -92,16 +91,17 @@ _L80A0:
     movw    %ax, %gs
 // some linkers (GNU ld) generates bad relocation record for this
 //    jmp     bootboot_startcode
-    movq    0x80D0, %rax
+    movq    0x80D8, %rax
     jmp     *%rax
     .align 32
 _L80C0_cr3_value:
     .long 0, 0
-_L80C8_cs_value:
+    .long 0x80A0
+_L80CC_cs_value:
     .long 0
-_L80CC_ds_value:
-    .long 0
-_L80D0_bootboot_startcore:
+_L80D0_ds_value:
+    .long 0, 0
+_L80D8_bootboot_startcore:
     .long 0, 0
 _L80E0_gdt_value:
     .long 0, 0, 0, 0
