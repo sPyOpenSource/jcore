@@ -67,7 +67,7 @@ $ make
 ### 6. lépés - A frissen fordított ROM tesztelése QEMU-n
 
 Bővebb információért lásd a [coreboot dokumentáció](https://doc.coreboot.org/mainboard/emulation/qemu-i440fx.html)t. Az
-[images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában találsz lefordított coreboot.rom binárist.
+[images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában találsz lefordított coreboot-x86.rom binárist.
 ```sh
 $ qemu-system-x86_64 -bios build/coreboot.rom -drive file=$(BOOTBOOT)/images/disk-x86.img,format=raw -serial stdio
 ```

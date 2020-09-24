@@ -66,7 +66,11 @@ sdcard:
 	qemu-system-aarch64 -M raspi3 -kernel ../dist/bootboot.img -drive file=disk-rpi.img,if=sd,format=raw -serial stdio
 
 coreboot:
-	qemu-system-x86_64 -bios coreboot.rom -drive file=disk-x86.img,format=raw -serial stdio
+ifeq ($(PLATFORM),x86)
+	qemu-system-x86_64 -bios coreboot-x86.rom -drive file=disk-x86.img,format=raw -serial stdio
+else
+	qemu-system-aarch64 -bios coreboot-arm.rom -M virt,secure=on,virtualization=on -cpu cortex-a53 -m 1024M -drive file=disk-rpi.img,format=raw -serial stdio
+endif
 
 # clean up
 clean:

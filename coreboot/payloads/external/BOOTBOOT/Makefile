@@ -20,13 +20,8 @@ all: bootboot
 
 checkout:
 	echo "    GIT        BOOTBOOT $(loader_dir)"
-	@test -d ../../../../bootboot && ln -s ../../../../bootboot 2>/dev/null || true
-	test -L $(project_dir) || ( \
-		( test -d $(project_dir) || \
-			git clone $(project_git_repo) $(project_dir) ) && \
-		( cd $(project_dir) && \
-			git checkout master && \
-			git remote update ) )
+	test -L $(project_dir) || test -d $(project_dir) || \
+		git clone $(project_git_repo) $(project_dir)
 
 bootboot: libpayload
 	echo "    MAKE       $(loader_dir)"

@@ -20,13 +20,13 @@ I provide pre-compiled images ready for use.
 
 6. *mkbootimg* an all-in-one multiplatform [bootable disk image creator](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) (Windows, MacOSX, Linux).
 
+BOOTBOOT can also be compiled as a [coreboot](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb) payload,
+see *x86_64-cb* and *aarch64-cb*, but since they are tied strongly with libpayload, I do not provide binaries for those.
+
 Please note that not all the reference implementations do support the full protocol at level 2, x86_64-bios only handles
 static mappings which makes it a level 1 loader.
 
 For a quick test, you can find example bootable disk [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) too.
-
-BOOTBOOT can also be compiled as a [coreboot](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb) payload,
-see *x86_64-cb* and *aarch64-cb*, but since they are tied strongly with libpayload, I do not provide binaries for those.
 
 BOOTBOOT Protocol
 =================

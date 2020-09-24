@@ -6,7 +6,7 @@ BOOTBOOT Minta Bootolható Lemezkép Fájlok
 - disk-rpi.img.gz: minta lemezkép AArch64-hez RaspberryPi 3-on és 4-en
 - disk-x86.img.gz: minta lemezkép x86_64-hez (CDROM, BIOS, UEFI)
 - initrd.rom.gz: minta initrd ROM kép (beágyazott BIOS rendszerekhez)
-- coreboot.rom.gz: minta coreboot ROM kép BOOTBOOT payload-al
+- coreboot-x86.rom.gz: minta coreboot ROM kép BOOTBOOT payload-al PC-re
 
 Mielőtt használhatnád a lemezképeket, ki kell csomagolni őket a `gzip -d` paranccsal. A lemezképeket az [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
 paranccsal hoztam létre, és a kiírásukhoz fizikai lemezre az [USBImager](https://gitlab.com/bztsrc/usbimager)-t vagy a `dd` parancsot javaslom.
@@ -29,8 +29,7 @@ Lásd mkbootimg.json. Nézz bele a Makefile-ba is, az elején fogsz látni konfi
 
 Aztán csak futtasd a `make` parancsot.
 
-A coreboot.rom fordításához [coreboot fordító környezet](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb)
-szükséges.
+A coreboot-*.rom fordításához [coreboot fordító környezet](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb) szükséges.
 
 Tesztelés
 ---------
@@ -72,4 +71,4 @@ Ez "raspi3" gépet emulálva tölti be a minta kernelt SD kártya meghajtóról 
 ```
 make coreboot
 ```
-BOOTBOOT tesztelése mint coreboot payload (nincs BIOS se UEFI).
+BOOTBOOT tesztelése mint coreboot payload (nincs BIOS se UEFI). PLATFORM=x86 esetén PC-t emulál, egyébként ARM64-et.

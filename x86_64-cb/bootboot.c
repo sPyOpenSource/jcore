@@ -42,6 +42,8 @@
 
 #define BBDEBUG 1
 
+//#define BBNOIDEFALLBACK 1
+
 #include <libpayload-config.h>
 #include <libpayload.h>
 #if IS_ENABLED(CONFIG_LP_CBFS)
@@ -49,10 +51,10 @@
 #endif
 #if IS_ENABLED(CONFIG_LP_STORAGE)
 # include <storage/storage.h>
-# if IS_ENABLED(CONFIG_LP_USB)
-#  include <usb/usb.h>
-#  include <usb/usbmsc.h>
-# endif
+#endif
+#if IS_ENABLED(CONFIG_LP_USB)
+# include <usb/usb.h>
+# include <usb/usbmsc.h>
 #endif
 #include "tinf.h"
 #include "../dist/bootboot.h"
@@ -249,7 +251,7 @@ uint64_t bb_addr = BOOTBOOT_INFO;
 uint64_t env_addr= BOOTBOOT_ENV;
 uint64_t core_addr=BOOTBOOT_CORE;
 
-uint64_t entrypoint=0, bss=0, lapic_addr=0;
+uint64_t entrypoint=0, lapic_addr=0;
 uint16_t lapic_ids[1024];
 
 /**
@@ -425,7 +427,7 @@ void panic(char *str)
 }
 
 /**
- * Read a line from UART
+ * Read a line from console
  */
 int ReadLine(unsigned char *buf, int l)
 {
@@ -453,9 +455,8 @@ int ReadLine(unsigned char *buf, int l)
     return i;
 }
 
-#if IS_ENABLED(CONFIG_LP_STORAGE)
-static int usbcount = 0;
-# if IS_ENABLED(CONFIG_LP_USB)
+static int usbcount = 0,ahcicount = 0;
+#if IS_ENABLED(CONFIG_LP_USB)
 static usbdev_t* usbdevs[8];
 
 void usbdisk_create(usbdev_t* dev)
@@ -463,7 +464,7 @@ void usbdisk_create(usbdev_t* dev)
     if (usbcount < (int)(sizeof(usbdevs)/sizeof(usbdevs[0])) - 1)
         usbdevs[usbcount++] = dev;
 }
-# endif
+#endif
 
 /**
  * read a block from disk and return the number of sectors read
@@ -471,18 +472,21 @@ void usbdisk_create(usbdev_t* dev)
  */
 ssize_t disk_read(size_t dev_num, lba_t start, size_t count, unsigned char *buf)
 {
-    size_t i;
+#if IS_ENABLED(CONFIG_LP_STORAGE)
     /* first try SATA, AHCI etc. */
-    if(dev_num < storage_device_count())
+    if(dev_num < ahcicount)
         return storage_read_blocks512(dev_num, start, count, buf);
-# if IS_ENABLED(CONFIG_LP_USB)
+    dev_num -= ahcicount;
+#endif
+#if IS_ENABLED(CONFIG_LP_USB)
     /* USB storages */
-    dev_num -= storage_device_count();
     if(dev_num < usbcount)
         return readwrite_blocks_512(usbdevs[dev_num], start, count, cbw_direction_data_in, buf) ? 0 : count;
-# endif
+    dev_num -= usbcount;
+#endif
+#ifndef BBNOIDEFALLBACK
     /* fallback primary ATA IDE */
-    i = inb(0x1F6);
+    size_t i = inb(0x1F6);
     if(i != 0 && i != 0xFF) {
         for(i = 0; i < count; i++, buf+=512, start++) {
             while((inb(0x1F7) & 0xC0) != 0x40);
@@ -497,9 +501,9 @@ ssize_t disk_read(size_t dev_num, lba_t start, size_t count, unsigned char *buf)
         }
         return count;
     }
+#endif
     return 0;
 }
-#endif
 
 // get filesystem drivers for initrd
 #include "fs.h"
@@ -555,6 +559,160 @@ void ParseEnvironment(uint8_t *env)
 }
 
 /**
+ * Get a linear frame buffer
+ */
+void GetLFB()
+{
+    /* FIXME: is there a way to set screen resolution with libpayload? */
+    bootboot->fb_width=lib_sysinfo.framebuffer.x_resolution;
+    bootboot->fb_height=lib_sysinfo.framebuffer.y_resolution;
+    bootboot->fb_scanline=lib_sysinfo.framebuffer.bytes_per_line;
+    bootboot->fb_ptr=(uint64_t)lib_sysinfo.framebuffer.physical_address;
+    bootboot->fb_size=lib_sysinfo.framebuffer.y_resolution * lib_sysinfo.framebuffer.bytes_per_line;
+    bootboot->fb_type=(!lib_sysinfo.framebuffer.blue_mask_pos ? FB_ARGB : (
+        !lib_sysinfo.framebuffer.red_mask_pos ? FB_ABGR : (
+        lib_sysinfo.framebuffer.blue_mask_pos == 8 ? FB_RGBA : FB_BGRA
+    )));
+    DBG(" * Screen %d x %d, scanline %d, fb @%llx %d bytes, type %d %s\n",
+        bootboot->fb_width, bootboot->fb_height, bootboot->fb_scanline,
+        bootboot->fb_ptr, bootboot->fb_size,bootboot->fb_type,
+        bootboot->fb_type==FB_ARGB?"ARGB":(bootboot->fb_type==FB_ABGR?"ABGR":(
+        bootboot->fb_type==FB_RGBA?"RGBA":"BGRA")));
+}
+
+/**
+ * Locate and load the kernel in initrd
+ */
+void LoadCore()
+{
+    uint64_t bss = 0;
+    uint32_t r = 0;
+
+    entrypoint=0;
+    core.ptr=NULL;
+    while(core.ptr==NULL && fsdrivers[r]!=NULL) {
+        core=(*fsdrivers[r++])(initrd.ptr,kernelname);
+    }
+    if(kne!=NULL)
+        *kne='\n';
+    // scan for the first executable
+    if(core.ptr==NULL || core.size==0) {
+        DBG(" * Autodetecting kernel%s\n","");
+        core.size=0;
+        r=initrd.size;
+        core.ptr=initrd.ptr;
+        while(r-->0) {
+            Elf64_Ehdr *ehdr=(Elf64_Ehdr *)(core.ptr);
+            pe_hdr *pehdr=(pe_hdr*)(core.ptr + ((mz_hdr*)(core.ptr))->peaddr);
+            if((!memcmp(ehdr->e_ident,ELFMAG,SELFMAG)||!memcmp(ehdr->e_ident,"OS/Z",4))&&
+                ehdr->e_ident[EI_CLASS]==ELFCLASS64&&
+                ehdr->e_ident[EI_DATA]==ELFDATA2LSB&&
+                ehdr->e_machine==EM_X86_64&&
+                ehdr->e_phnum>0){
+                    core.size=1;
+                    break;
+                }
+            if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && ((mz_hdr*)(core.ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
+                pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS) {
+                    core.size=1;
+                    break;
+                }
+            core.ptr++;
+        }
+    }
+    if(core.ptr==NULL || core.size==0) {
+        panic("Kernel not found in initrd");
+    } else {
+        Elf64_Ehdr *ehdr=(Elf64_Ehdr *)(core.ptr);
+        pe_hdr *pehdr=(pe_hdr*)(core.ptr + ((mz_hdr*)(core.ptr))->peaddr);
+        if((!memcmp(ehdr->e_ident,ELFMAG,SELFMAG)||!memcmp(ehdr->e_ident,"OS/Z",4))&&
+            ehdr->e_ident[EI_CLASS]==ELFCLASS64&&
+            ehdr->e_ident[EI_DATA]==ELFDATA2LSB&&
+            ehdr->e_machine==EM_X86_64&&
+            ehdr->e_phnum>0){
+                DBG(" * Parsing ELF64 @%p\n",core.ptr);
+                Elf64_Phdr *phdr=(Elf64_Phdr *)((uint8_t *)ehdr+ehdr->e_phoff);
+                for(r=0;r<ehdr->e_phnum;r++){
+                    if(phdr->p_type==PT_LOAD && (phdr->p_vaddr >> 30) == 0x3FFFFFFFF) {
+                        core.ptr += phdr->p_offset;
+                        // hack to keep symtab and strtab for shared libraries
+                        core.size = phdr->p_filesz + (ehdr->e_type==3?0x4000:0);
+                        bss = phdr->p_memsz - core.size;
+                        core_addr = phdr->p_vaddr;
+                        entrypoint = ehdr->e_entry;
+                        break;
+                    }
+                    phdr=(Elf64_Phdr *)((uint8_t *)phdr+ehdr->e_phentsize);
+                }
+                if(ehdr->e_shoff > 0) {
+                    Elf64_Shdr *shdr=(Elf64_Shdr *)((uint8_t *)ehdr + ehdr->e_shoff), *sym_sh = NULL, *str_sh = NULL;
+                    Elf64_Shdr *strt=(Elf64_Shdr *)((uint8_t *)shdr+(uint64_t)ehdr->e_shstrndx*(uint64_t)ehdr->e_shentsize);
+                    Elf64_Sym *sym = NULL, *s;
+                    char *strtable = (char *)ehdr + strt->sh_offset;
+                    uint32_t strsz = 0, syment = 0, i;
+                    for(i = 0; i < ehdr->e_shnum; i++){
+                        /* checking shdr->sh_type is not enough, there can be multiple SHT_STRTAB records... */
+                        if(!memcmp(strtable + shdr->sh_name, ".symtab", 8)) sym_sh = shdr;
+                        if(!memcmp(strtable + shdr->sh_name, ".strtab", 8)) str_sh = shdr;
+                        shdr = (Elf64_Shdr *)((uint8_t *)shdr + ehdr->e_shentsize);
+                    }
+                    if(str_sh && sym_sh) {
+                        strtable = (char *)ehdr + str_sh->sh_offset; strsz = str_sh->sh_size;
+                        sym = (Elf64_Sym *)((uint8_t*)ehdr + sym_sh->sh_offset); syment = sym_sh->sh_entsize;
+                        if(str_sh->sh_offset && strsz > 0 && sym_sh->sh_offset && syment > 0)
+                            for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
+                                if(!memcmp(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "mmio", 4)) mm_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
+                            }
+                    }
+                }
+        } else
+        if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && ((mz_hdr*)(core.ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
+            pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS &&
+            (pehdr->code_base & 0xC0000000)) {
+                DBG(" * Parsing PE32+ @%p\n",core.ptr);
+                core.size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
+                bss = pehdr->bss_size;
+                core_addr = (int64_t)pehdr->code_base;
+                entrypoint = (int64_t)pehdr->entry_point;
+                if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
+                    pe_sym *s;
+                    char *strtable = (char *)pehdr + pehdr->sym_table + pehdr->numsym * 18 + 4, *name;
+                    uint32_t i;
+                    for(i = 0; i < pehdr->numsym; i++) {
+                        s = (pe_sym*)((uint8_t *)pehdr + pehdr->sym_table + i * 18);
+                        name = !s->iszero ? (char*)&s->iszero : strtable + s->nameoffs;
+                        if(!memcmp(name, "bootboot", 9)) bb_addr = (int64_t)s->value;
+                        if(!memcmp(name, "environment", 12)) env_addr = (int64_t)s->value;
+                        if(!memcmp(name, "mmio", 4)) mm_addr = (int64_t)s->value;
+                        if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)s->value;
+                        i += s->auxsyms;
+                    }
+                }
+        }
+    }
+    if(core.ptr==NULL || core.size<2 || entrypoint==0 || (core_addr&(PAGESIZE-1)) || (bb_addr>>30)!=0x3FFFFFFFF ||
+        (bb_addr & (PAGESIZE-1)) || (env_addr>>30)!=0x3FFFFFFFF || (env_addr&(PAGESIZE-1)) || (fb_addr>>30)!=0x3FFFFFFFF ||
+        (mm_addr & (PAGESIZE-1)) || (mm_addr>>30)!=0x3FFFFFFFF || (fb_addr & (1024*1024*2-1)))
+            panic("Kernel is not a valid executable");
+    if(core.size+bss > 16*1024*1024)
+        panic("Kernel is too big");
+    // create core segment
+    memcpy((void*)((uint8_t*)(uintptr_t)bootboot->initrd_ptr+bootboot->initrd_size), core.ptr, core.size);
+    core.ptr=(uint8_t*)(uintptr_t)bootboot->initrd_ptr+bootboot->initrd_size;
+    if(bss>0)
+        memset(core.ptr + core.size, 0, bss);
+    core.size += bss;
+    DBG(" * fb          @%llx\n", fb_addr);
+    DBG(" * bootboot    @%llx\n", bb_addr);
+    DBG(" * environment @%llx\n", env_addr);
+    DBG(" * Entry point @%llx, text @%p %d bytes\n",entrypoint, core.ptr, core.size);
+    core.size = (core.size+PAGESIZE-1)&~(PAGESIZE-1);
+}
+
+/**
  * Add a mapping to paging tables
  */
 int freep = 24;
@@ -583,7 +741,7 @@ int main(void)
     unsigned char *data;
 
 #if IS_ENABLED(CONFIG_LP_SERIAL_CONSOLE)
-    /* ridiculous, libpayload is a huge bloated library, yet has no function to initialize serial port properly... */
+    /* ridiculous, libpayload is a huge library, yet has no function to initialize serial port properly... */
     __asm__ __volatile__(
         "movl %0, %%edx;"
         "xorb %%al, %%al;outb %%al, %%dx;"               /* IER int off */
@@ -599,10 +757,11 @@ int main(void)
     video_init();
 #if IS_ENABLED(CONFIG_LP_STORAGE)
     storage_initialize();
-# if IS_ENABLED(CONFIG_LP_USB)
+    ahcicount = storage_device_count();
+#endif
+#if IS_ENABLED(CONFIG_LP_USB)
     usb_initialize();
     usb_poll(); // this calls usbdisk_create() if it detects any USB storages
-# endif
 #endif
     video_console_clear();
     printf("Booting OS...\n");
@@ -612,15 +771,6 @@ int main(void)
     bootboot->protocol = PROTOCOL_DYNAMIC | LOADER_COREBOOT;
     bootboot->size = 128;
     bootboot->numcores = 1;
-    bootboot->fb_width=lib_sysinfo.framebuffer.x_resolution;
-    bootboot->fb_height=lib_sysinfo.framebuffer.y_resolution;
-    bootboot->fb_scanline=lib_sysinfo.framebuffer.bytes_per_line;
-    bootboot->fb_ptr=(uint64_t)lib_sysinfo.framebuffer.physical_address;
-    bootboot->fb_size=lib_sysinfo.framebuffer.y_resolution * lib_sysinfo.framebuffer.bytes_per_line;
-    bootboot->fb_type=(!lib_sysinfo.framebuffer.blue_mask_pos ? FB_ARGB : (
-        !lib_sysinfo.framebuffer.red_mask_pos ? FB_ABGR : (
-        lib_sysinfo.framebuffer.blue_mask_pos == 8 ? FB_RGBA : FB_BGRA
-    )));
 
     __asm__ __volatile__ (
         "movl $1, %%eax;"
@@ -639,6 +789,7 @@ int main(void)
         : "=d"(i) : : );
     if((ret & 0xFFFF) < 0x0600 || !(i & (1<<29))) panic("Hardware not supported");
 
+    /* we check this here as early as possible, because GetLFB() can't change the resolution */
     if(!lib_sysinfo.framebuffer.physical_address || !lib_sysinfo.framebuffer.bytes_per_line)
         panic("coreboot compiled without LINEAR_FRAMEBUFFER");
     if(lib_sysinfo.framebuffer.bits_per_pixel != 32)
@@ -692,7 +843,6 @@ int main(void)
 #endif
 
     /* fall back to INITRD on filesystem */
-#if IS_ENABLED(CONFIG_LP_STORAGE)
     if(!initrd.ptr || !initrd.size) {
         char *fn = "INITRD     ";
         // if the user presses any key now, we fallback to backup initrd
@@ -705,7 +855,7 @@ int main(void)
             mdelay(1);
         }
         DBG(" * Locate initrd in GPT%s\n","");
-        for(dsk = 0; dsk < storage_device_count() + usbcount + 1 && !initrd.ptr; dsk++) {
+        for(dsk = 0; dsk < ahcicount + usbcount + 1 && !initrd.ptr; dsk++) {
             pe=(uint8_t*)0x4000;
             memset(pe, 0, 512);
             if(!disk_read(dsk, 1, 1, pe) || memcmp(pe, "EFI PART", 8)) continue;
@@ -824,15 +974,15 @@ int main(void)
                     initrd.ptr=(uint8_t*)INITRD_BASE;
                     initrd.size=r*512;
                 }
-
             }
         }
-   }
-#endif
+    }
     if(!initrd.ptr || !initrd.size)
         panic("Initrd not found");
+    data = initrd.ptr == (uint8_t*)INITRD_BASE ?
+        (uint8_t*)(((uintptr_t)initrd.ptr+initrd.size+PAGESIZE-1) & ~(PAGESIZE-1)) : (uint8_t*)INITRD_BASE;
     // check if initrd is gzipped
-    if(initrd.ptr[0]==0x1f && initrd.ptr[1]==0x8b){
+    if(initrd.ptr[0]==0x1f && initrd.ptr[1]==0x8b) {
         unsigned char *addr,f;
         int len=0, r;
         TINF_DATA d;
@@ -846,33 +996,28 @@ int main(void)
         if(f&16) { while(*addr++ != 0); }
         if(f&2) addr+=2;
         d.source = addr;
-        // destination buffer
         memcpy(&len,initrd.ptr+initrd.size-4,4);
-        addr = initrd.ptr == (uint8_t*)INITRD_BASE ?
-            (uint8_t*)(((uintptr_t)initrd.ptr+initrd.size+PAGESIZE-1) & ~(PAGESIZE-1)) : (uint8_t*)INITRD_BASE;
         // decompress
         d.bitcount = 0;
         d.bfinal = 0;
         d.btype = -1;
         d.curlen = 0;
-        d.dest = addr;
+        d.dest = data;
         d.destSize = len;
         do { r = uzlib_uncompress(&d); } while (!r);
         if (r != TINF_DONE) {
 gzerr:      panic("Unable to uncompress");
         }
         // swap initrd.ptr with the uncompressed buffer
-        initrd.ptr=addr;
+        initrd.ptr=data;
         initrd.size=len;
     }
 #if IS_ENABLED(CONFIG_LP_LZMA)
     // check if initrd is compressed with xz
     if(initrd.ptr[0] == 0xFD && initrd.ptr[1] == '7' && initrd.ptr[2] == 'z' && initrd.ptr[3] == 'X' && initrd.ptr[4] == 'Z') {
         DBG(" * Xz (lzma) compressed initrd @%p %d bytes\n",initrd.ptr,initrd.size);
-        addr = initrd.ptr == (uint8_t*)INITRD_BASE ?
-            (uint8_t*)(((uintptr_t)initrd.ptr+initrd.size+PAGESIZE-1) & ~(PAGESIZE-1)) : (uint8_t*)INITRD_BASE;
-        initrd.size = ulzma(initrd.ptr, addr);
-        initrd.ptr = addr;
+        initrd.size = ulzma(initrd.ptr, data);
+        initrd.ptr = data;
         if(initrd.size < 1) goto gzerr;
     }
 #endif
@@ -880,10 +1025,8 @@ gzerr:      panic("Unable to uncompress");
     // check if initrd is compressed with lz4
     if(initrd.ptr[0] == 0x04 && initrd.ptr[1] == 0x22 && initrd.ptr[2] == 0x4D && initrd.ptr[3] == 0x18) {
         DBG(" * Lz4 compressed initrd @%p %d bytes\n",initrd.ptr,initrd.size);
-        addr = initrd.ptr == (uint8_t*)INITRD_BASE ?
-            (uint8_t*)(((uintptr_t)initrd.ptr+initrd.size+PAGESIZE-1) & ~(PAGESIZE-1)) : (uint8_t*)INITRD_BASE;
-        initrd.size = ulz4f(initrd.ptr, addr);
-        initrd.ptr = addr;
+        initrd.size = ulz4f(initrd.ptr, data);
+        initrd.ptr = data;
         if(initrd.size < 1) goto gzerr;
     }
 #endif
@@ -893,7 +1036,7 @@ gzerr:      panic("Unable to uncompress");
     bootboot->initrd_size = initrd.size;
 
     if(!environment[0]) {
-        // if there were no environment file on boot partition, find it inside the INITRD
+        // if there's no environment file on boot partition, find it inside the INITRD
         file_t ret;
         i=0; ret.ptr=NULL; ret.size=0;
         while(ret.ptr==NULL && fsdrivers[i]!=NULL) {
@@ -915,12 +1058,7 @@ gzerr:      panic("Unable to uncompress");
 #endif
     ParseEnvironment((uint8_t*)environment);
 
-    /* FIXME: is there a way to set screen resolution with libpayload? */
-    DBG(" * Screen %d x %d, scanline %d, fb @%llx %d bytes, type %d %s\n",
-        bootboot->fb_width, bootboot->fb_height, bootboot->fb_scanline,
-        bootboot->fb_ptr, bootboot->fb_size,bootboot->fb_type,
-        bootboot->fb_type==FB_ARGB?"ARGB":(bootboot->fb_type==FB_ABGR?"ABGR":(
-        bootboot->fb_type==FB_RGBA?"RGBA":"BGRA")));
+    GetLFB();
 
     DBG(" * System tables%s\n","");
     for(data = (unsigned char*)phys_to_virt(0x000f0000); data < (unsigned char*)phys_to_virt(0x00100000); data += 16) {
@@ -951,128 +1089,7 @@ gzerr:      panic("Unable to uncompress");
 #endif
 
     // locate sys/core
-    entrypoint=0;
-    r=0; core.ptr=NULL;
-    while(core.ptr==NULL && fsdrivers[r]!=NULL) {
-        core=(*fsdrivers[r++])(initrd.ptr,kernelname);
-    }
-    if(kne!=NULL)
-        *kne='\n';
-    // scan for the first executable
-    if(core.ptr==NULL || core.size==0) {
-        DBG(" * Autodetecting kernel%s\n","");
-        core.size=0;
-        r=initrd.size;
-        core.ptr=initrd.ptr;
-        while(r-->0) {
-            Elf64_Ehdr *ehdr=(Elf64_Ehdr *)(core.ptr);
-            pe_hdr *pehdr=(pe_hdr*)(core.ptr + ((mz_hdr*)(core.ptr))->peaddr);
-            if((!memcmp(ehdr->e_ident,ELFMAG,SELFMAG)||!memcmp(ehdr->e_ident,"OS/Z",4))&&
-                ehdr->e_ident[EI_CLASS]==ELFCLASS64&&
-                ehdr->e_ident[EI_DATA]==ELFDATA2LSB&&
-                ehdr->e_machine==EM_X86_64&&
-                ehdr->e_phnum>0){
-                    core.size=1;
-                    break;
-                }
-            if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && ((mz_hdr*)(core.ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
-                pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS) {
-                    core.size=1;
-                    break;
-                }
-            core.ptr++;
-        }
-    }
-    if(core.ptr==NULL || core.size==0) {
-        panic("Kernel not found in initrd");
-    } else {
-        Elf64_Ehdr *ehdr=(Elf64_Ehdr *)(core.ptr);
-        pe_hdr *pehdr=(pe_hdr*)(core.ptr + ((mz_hdr*)(core.ptr))->peaddr);
-        if((!memcmp(ehdr->e_ident,ELFMAG,SELFMAG)||!memcmp(ehdr->e_ident,"OS/Z",4))&&
-            ehdr->e_ident[EI_CLASS]==ELFCLASS64&&
-            ehdr->e_ident[EI_DATA]==ELFDATA2LSB&&
-            ehdr->e_machine==EM_X86_64&&
-            ehdr->e_phnum>0){
-                DBG(" * Parsing ELF64 @%p\n",core.ptr);
-                Elf64_Phdr *phdr=(Elf64_Phdr *)((uint8_t *)ehdr+ehdr->e_phoff);
-                for(r=0;r<ehdr->e_phnum;r++){
-                    if(phdr->p_type==PT_LOAD && (phdr->p_vaddr >> 30) == 0x3FFFFFFFF) {
-                        core.ptr += phdr->p_offset;
-                        // hack to keep symtab and strtab for shared libraries
-                        core.size = phdr->p_filesz + (ehdr->e_type==3?0x4000:0);
-                        bss = phdr->p_memsz - core.size;
-                        core_addr = phdr->p_vaddr;
-                        entrypoint = ehdr->e_entry;
-                        break;
-                    }
-                    phdr=(Elf64_Phdr *)((uint8_t *)phdr+ehdr->e_phentsize);
-                }
-                if(ehdr->e_shoff > 0) {
-                    Elf64_Shdr *shdr=(Elf64_Shdr *)((uint8_t *)ehdr + ehdr->e_shoff), *sym_sh = NULL, *str_sh = NULL;
-                    Elf64_Shdr *strt=(Elf64_Shdr *)((uint8_t *)shdr+(uint64_t)ehdr->e_shstrndx*(uint64_t)ehdr->e_shentsize);
-                    Elf64_Sym *sym = NULL, *s;
-                    char *strtable = (char *)ehdr + strt->sh_offset;
-                    uint32_t strsz = 0, syment = 0, i;
-                    for(i = 0; i < ehdr->e_shnum; i++){
-                        /* checking shdr->sh_type is not enough, there can be multiple SHT_STRTAB records... */
-                        if(!memcmp(strtable + shdr->sh_name, ".symtab", 8)) sym_sh = shdr;
-                        if(!memcmp(strtable + shdr->sh_name, ".strtab", 8)) str_sh = shdr;
-                        shdr = (Elf64_Shdr *)((uint8_t *)shdr + ehdr->e_shentsize);
-                    }
-                    if(str_sh && sym_sh) {
-                        strtable = (char *)ehdr + str_sh->sh_offset; strsz = str_sh->sh_size;
-                        sym = (Elf64_Sym *)((uint8_t*)ehdr + sym_sh->sh_offset); syment = sym_sh->sh_entsize;
-                        if(str_sh->sh_offset && strsz > 0 && sym_sh->sh_offset && syment > 0)
-                            for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
-                                if(!memcmp(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
-                                if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
-                                if(!memcmp(strtable + s->st_name, "mmio", 4)) mm_addr = s->st_value;
-                                if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
-                            }
-                    }
-                }
-        } else
-        if(((mz_hdr*)(core.ptr))->magic==MZ_MAGIC && ((mz_hdr*)(core.ptr))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
-            pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS &&
-            (pehdr->code_base & 0xC0000000)) {
-                DBG(" * Parsing PE32+ @%p\n",core.ptr);
-                core.size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
-                bss = pehdr->bss_size;
-                core_addr = (int64_t)pehdr->code_base;
-                entrypoint = (int64_t)pehdr->entry_point;
-                if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
-                    pe_sym *s;
-                    char *strtable = (char *)pehdr + pehdr->sym_table + pehdr->numsym * 18 + 4, *name;
-                    uint32_t i;
-                    for(i = 0; i < pehdr->numsym; i++) {
-                        s = (pe_sym*)((uint8_t *)pehdr + pehdr->sym_table + i * 18);
-                        name = !s->iszero ? (char*)&s->iszero : strtable + s->nameoffs;
-                        if(!memcmp(name, "bootboot", 9)) bb_addr = (int64_t)s->value;
-                        if(!memcmp(name, "environment", 12)) env_addr = (int64_t)s->value;
-                        if(!memcmp(name, "mmio", 4)) mm_addr = (int64_t)s->value;
-                        if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)s->value;
-                        i += s->auxsyms;
-                    }
-                }
-        }
-    }
-    if(core.ptr==NULL || core.size<2 || entrypoint==0 || (core_addr&(PAGESIZE-1)) || (bb_addr>>30)!=0x3FFFFFFFF ||
-        (bb_addr & (PAGESIZE-1)) || (env_addr>>30)!=0x3FFFFFFFF || (env_addr&(PAGESIZE-1)) || (fb_addr>>30)!=0x3FFFFFFFF ||
-        (fb_addr & (PAGESIZE-1)) || (mm_addr>>30)!=0x3FFFFFFFF || (mm_addr & (1024*1024*2-1)))
-            panic("Kernel is not a valid executable");
-    if(core.size+bss > 16*1024*1024)
-        panic("Kernel is too big");
-    // create core segment
-    memcpy((void*)((uint8_t*)(uintptr_t)bootboot->initrd_ptr+bootboot->initrd_size), core.ptr, core.size);
-    core.ptr=(uint8_t*)(uintptr_t)bootboot->initrd_ptr+bootboot->initrd_size;
-    if(bss>0)
-        memset(core.ptr + core.size, 0, bss);
-    core.size += bss;
-    DBG(" * fb          @%llx\n", fb_addr);
-    DBG(" * bootboot    @%llx\n", bb_addr);
-    DBG(" * environment @%llx\n", env_addr);
-    DBG(" * Entry point @%llx, text @%p %d bytes\n",entrypoint, core.ptr, core.size);
-    core.size = (core.size+PAGESIZE-1)&~(PAGESIZE-1);
+    LoadCore();
 
     /* Symmetric Multi Processing support */
     memset(lapic_ids, 0, sizeof(lapic_ids)); lapic_ids[0] = bootboot->bspid;
@@ -1108,7 +1125,8 @@ gzerr:      panic("Unable to uncompress");
         udelay(200);
         // send second SIPI
         *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4601;
-    }
+    } else
+        bootboot->numcores = 1;
 
     /* Create paging tables */
     DBG(" * Pagetables PML4 @%p\n",paging);
