@@ -67,21 +67,22 @@ semmit, a rootkitek meg tudják kerülni az FBI által megkövetelt, de kiszivá
 Ha mégis ragaszkodsz hozzá, akkor ahhoz, hogy működjön, olyan betöltő kell, amit a Microsoft digitálisan aláírt. Ezt nem
 könnyű megszerezni egy egyedi betöltő számára, mert az M$ nem fogja megadni, akkor se, ha fizetsz érte. Szóval ehelyett,
 
-1. töltsd le a [shim](https://apps.fedoraproject.org/packages/shim)-et
-2. csomagold ki az SHIMX64.EFI és MMX64.EFI fájlokat az EFI\BOOT alá (ezeket aláírta az M$).
-3. nevezd át az `EFI\BOOT\SHIMX64.EFI` fájlt `EFI\BOOT\BOOTX64.EFI`-re.
-4. csinálj privát-publikus kulcspárt és egy x509 certet `openssl`-el.
+1. másold be a `bootboot.efi`-t `EFI\BOOT\GRUBX64.EFI` néven (ez a név be van drótozva a shim-be, nem változtatható).
+2. töltsd le a [shim](https://apps.fedoraproject.org/packages/shim)-et
+3. csomagold ki az SHIMX64.EFI és MMX64.EFI fájlokat az EFI\BOOT alá (ezeket aláírta az M$).
+4. nevezd át az `EFI\BOOT\SHIMX64.EFI` fájlt `EFI\BOOT\BOOTX64.EFI`-re.
+5. csinálj privát-publikus kulcspárt és egy x509 certet `openssl`-el.
 ```
 openssl req -newkey rsa:4096 -nodes -keyout MOK.key -new -x509 -days 3650 -subj "/CN=BOOTBOOT/" -out MOK.crt
 openssl x509 -outform DER -in MOK.crt -out MOK.cer
 ```
-5. írd alá az EFI\BOOT\GRUBX64.EFI-t SHA-256 hashel az `sbsign`-t használva.
+6. írd alá az EFI\BOOT\GRUBX64.EFI-t SHA-256 hashel az `sbsign`-t használva.
 ```
 sbsign --key MOK.key --cert MOK.crt --out EFI/BOOT/GRUBX64.EFI bootboot.efi
 ```
-6. másold át a MOK.cer fájlt az ESP partícióra.
-7. bootolj UEFI-be, shim el fogja indítani a MOK Menedzsert. Ott válaszd ki az "Enroll key from disk" opciót, keresd meg a MOK.cer-t, add hozzá. Aztán "Enroll hash from disk", keresd meg a GRUBX64.EFI-t és add hozzá.
-8. engedélyezd a Secure Boot-ot.
+7. másold át a MOK.cer fájlt az ESP partícióra.
+8. bootolj UEFI-be, shim el fogja indítani a MOK Menedzsert. Ott válaszd ki az "Enroll key from disk" opciót, keresd meg a MOK.cer-t, add hozzá. Aztán "Enroll hash from disk", keresd meg a GRUBX64.EFI-t és add hozzá.
+9. engedélyezd a Secure Boot-ot.
 
 Ezek után a lépések után a BOOTBOOT betöltő Secure Boot módban fog indulni (shim a továbbiakban az aláírt
 GRUBX64.EFI-t indítja a MOK Menedzser helyett).
