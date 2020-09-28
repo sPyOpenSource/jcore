@@ -31,10 +31,7 @@ This step could take a while. Replace *$(nproc)* with the number of CPU cores yo
 $ make crossgcc-aarch64 CPUS=$(nproc)
 ```
 
-### Step 4 - Patch coreboot and configure
-
-Copy and overwrite files from [../coreboot directory](https://gitlab.com/bztsrc/bootboot/tree/master/coreboot) to the
-coreboot working directory. This will update the coreboot configuration system.
+### Step 4 - Configure
 
 Now configure coreboot for your motherboard (or qemu) and BOOTBOOT.
 ```sh

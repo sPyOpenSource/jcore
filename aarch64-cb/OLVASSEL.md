@@ -31,10 +31,7 @@ Ez el fog tartani egy jódarabig. A *$(nproc)* helyett add meg, hogy hány CPU c
 $ make crossgcc-aarch64 CPUS=$(nproc)
 ```
 
-### 4. lépés - A coreboot pecselése és konfigurálása
-
-Másold át és írd felül a [../coreboot könyvtár](https://gitlab.com/bztsrc/bootboot/tree/master/coreboot) fájlait a
-coreboot projekted munkakönyvtárába. Ez frissíteni fogja a coreboot konfigurációs rendszerét.
+### 4. lépés - Konfigurálás
 
 Ezután be kell konfigurálnod a coreboot-ot, hogy milyen alaplapot (vagy qemu-t) kezeljen, és hogy BOOTBOOT-al induljon.
 ```sh
