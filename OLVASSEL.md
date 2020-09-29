@@ -18,7 +18,7 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 
 5. *mykernel-rust* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel) Rust-ban
 
-6. *mkbootimg* minden az egyben, multiplatform [bootolható lemezkép készítő](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) (Windows, MacOSX, Linux).
+6. *mkbootimg* minden az egyben, multiplatform [bootolható lemezkép készítő](https://gitlab.com/bztsrc/bootboot/tree/binaries) (Windows, MacOSX, Linux).
 
 BOOTBOOT lefordítható [coreboot](https://gitlab.com/bztsrc/bootboot/tree/master/x86_64-cb) payloadként is, lásd *x86_64-cb*
 és *aarch64-cb*, de mivel ezek szorosan kapcsolódnak a libpayload-hoz, nincs belőlük előre fordított bináris.
@@ -26,7 +26,7 @@ BOOTBOOT lefordítható [coreboot](https://gitlab.com/bztsrc/bootboot/tree/maste
 Vedd figyelembe, hogy nem minden referencia implementáció támogatja a teljes 2-es protokollt, az x86_64-bios csak statikus
 memórialeképezéseket kezel, ami az 1-es protokoll szintnek felel meg.
 
-Gyors kipróbáláshoz találsz bootolható képfájlokat az [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában.
+Gyors kipróbáláshoz találsz bootolható képfájlokat az [images](https://gitlab.com/bztsrc/bootboot/tree/binaries/images) mappában.
 
 BOOTBOOT Protokoll
 ==================

@@ -64,7 +64,7 @@ $ make
 ### Step 6 - Test the newly compiled ROM in QEMU
 
 For more information, read the [coreboot docs](https://doc.coreboot.org/mainboard/emulation/qemu-i440fx.html). In the
-[images](https://gitlab.com/bztsrc/bootboot/tree/master/images) directory you can find a precompiled coreboot-x86.rom binary.
+[images](https://gitlab.com/bztsrc/bootboot/tree/binaries/images) directory you can find a precompiled coreboot-x86.rom binary.
 ```sh
 $ qemu-system-x86_64 -bios build/coreboot.rom -drive file=$(BOOTBOOT)/images/disk-x86.img,format=raw -serial stdio
 ```
