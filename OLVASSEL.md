@@ -316,7 +316,7 @@ Az x86_64-on a 'currentcoreid' a Local Apic Id (cpuid[eax=1].ebx >> 24), míg AA
 Telepítés
 ---------
 
-Az [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) mappában találsz teszt képfájlokat és képfájl készítőt is.
+Az [images](https://gitlab.com/bztsrc/bootboot/tree/binaries/images) mappában találsz teszt képfájlokat.
 
 1. Hozz létre egy initrd-t benne a kerneleddel. Példák:
 

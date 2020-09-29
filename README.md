@@ -317,8 +317,7 @@ On x86_64, 'currentcoreid' is the Local Apic Id (cpuid[eax=1].ebx >> 24), on AAr
 Installation
 ------------
 
-In the [images](https://gitlab.com/bztsrc/bootboot/tree/master/images) directory you can find test disk images and image creator
-as well.
+In the [images](https://gitlab.com/bztsrc/bootboot/tree/binaries/images) directory you can find test disk images.
 
 1. make an initrd with your kernel in it. Example:
 
