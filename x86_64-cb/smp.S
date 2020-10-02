@@ -90,6 +90,11 @@ GDT_value:
     .word GDT_value - GDT_table - 1
     .long GDT_table, 0, 0
     .word 0
+    .align 8
+stack64:
+    .long bit64
+    .long 0
+    .quad 8
 
 /*****************************************************************************
  * things to do on BSP                                                       *
@@ -137,15 +142,20 @@ bsp64_init:
     orb     $0x80, %al
     outb    %al, $0x70
     incb    0x1010              // release AP spin lock
-    movl    $0x368, %eax        // Set PAE, MCE, PGE; OSFXSR, OSXMMEXCPT (enable SSE)
-    movl    %eax, %cr4
-    movl    $0x4000, %eax
-    movl    %eax, %cr3
-    movl    $0x0C0000080, %ecx  // EFR MSR
-    movl    $0x0C0000011, %eax  // clear EM, MP (enable SSE) and WP
-    movl    %eax, %cr0
-    lgdt    GDT_value
-    ljmp    $8, $bit64
+    xorq    %rax, %rax
+    movl    $0xC0000011, %eax   // enable SSE
+    movq    %rax, %cr0
+    movq    %cr4, %rax
+    orw     $3 << 8, %ax
+    mov     %rax, %cr4
+    movl    $0x4000, %eax       // set up paging
+    movq    %rax, %cr3
+    xorq    %rax, %rax
+    movl    $GDT_value, %eax
+    lgdt    (%rax)
+    movl    $stack64, %eax      // reload CS, that's tricky in long mode because ljmp doesn't work
+    movq    %rax, %rsp
+    lretq
 
 bit64:
     movl    $0x10, %eax         // load long mode segments
