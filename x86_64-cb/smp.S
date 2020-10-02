@@ -30,6 +30,7 @@
 
 .globl ap_trampoline
 .globl bsp_init
+.globl bsp64_init
 .extern lapic_ids
 
     .text
@@ -93,8 +94,10 @@ GDT_value:
 /*****************************************************************************
  * things to do on BSP                                                       *
  *****************************************************************************/
+    /* these are 32 bit encoded instructions */
 bsp_init:
     cli
+    cld
     movb    $0xFF, %al          // disable PIC
     outb    %al, $0x21
     outb    %al, $0xA1
@@ -121,7 +124,29 @@ longmode_init:
     movl    %eax, %cr0
     lgdt    GDT_value
     ljmp    $8, $bit64
+
     .code64
+    /* similar code to above, but these are 64 bit encoded, only needed on BSP if coreboot is compiled for x86_64 */
+bsp64_init:
+    cli
+    cld
+    movb    $0xFF, %al          // disable PIC
+    outb    %al, $0x21
+    outb    %al, $0xA1
+    inb     $0x70, %al          // disable NMI
+    orb     $0x80, %al
+    outb    %al, $0x70
+    incb    0x1010              // release AP spin lock
+    movl    $0x368, %eax        // Set PAE, MCE, PGE; OSFXSR, OSXMMEXCPT (enable SSE)
+    movl    %eax, %cr4
+    movl    $0x4000, %eax
+    movl    %eax, %cr3
+    movl    $0x0C0000080, %ecx  // EFR MSR
+    movl    $0x0C0000011, %eax  // clear EM, MP (enable SSE) and WP
+    movl    %eax, %cr0
+    lgdt    GDT_value
+    ljmp    $8, $bit64
+
 bit64:
     movl    $0x10, %eax         // load long mode segments
     movw    %ax, %ds
@@ -143,6 +168,7 @@ bit64:
     // set stack and call _start() in sys/core
     xorq    %rsp, %rsp          // sp = core_num * -1024
     subq    %rax, %rsp
+    xorq    %rsi, %rsi
     movl    $entrypoint, %esi   // GAS does not allow "jmp qword[entrypoint]"
     lodsq
     jmp     *%rax

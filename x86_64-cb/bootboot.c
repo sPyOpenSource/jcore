@@ -70,7 +70,11 @@
 #define INITRD_BASE ((CONFIG_LP_BASE_ADDRESS + 1024*1024 + CONFIG_LP_HEAP_SIZE + PAGESIZE-1) & ~(PAGESIZE-1))
 
 extern void ap_trampoline();
+#if __WORDSIZE == 64
+extern void bsp64_init();
+#else
 extern void bsp_init();
+#endif
 
 /*** ELF64 defines and structs ***/
 #define ELFMAG      "\177ELF"
@@ -663,7 +667,7 @@ void LoadCore()
                             for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
                                 if(!memcmp(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
                                 if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
-                                if(!memcmp(strtable + s->st_name, "mmio", 4)) mm_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "mmio", 5)) mm_addr = s->st_value;
                                 if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
                             }
                     }
@@ -686,7 +690,7 @@ void LoadCore()
                         name = !s->iszero ? (char*)&s->iszero : strtable + s->nameoffs;
                         if(!memcmp(name, "bootboot", 9)) bb_addr = (int64_t)s->value;
                         if(!memcmp(name, "environment", 12)) env_addr = (int64_t)s->value;
-                        if(!memcmp(name, "mmio", 4)) mm_addr = (int64_t)s->value;
+                        if(!memcmp(name, "mmio", 5)) mm_addr = (int64_t)s->value;
                         if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)s->value;
                         i += s->auxsyms;
                     }
@@ -1221,7 +1225,10 @@ gzerr:      panic("Unable to uncompress");
     }
 
     /* continue in Assembly, enable long mode and jump to kernel's entry point */
+#if __WORDSIZE == 64
+    bsp64_init();
+#else
     bsp_init();
-
+#endif
     return 0;
 }
