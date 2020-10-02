@@ -1564,7 +1564,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                             for(s = sym, i = 0; i<(strtable-(char*)sym)/syment && s->st_name < strsz; i++, s++) {
                                 if(!memcmp(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
                                 if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
-                                if(!memcmp(strtable + s->st_name, "mmio", 4)) mm_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "mmio", 5)) mm_addr = s->st_value;
                                 if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
                             }
                     }
@@ -1587,7 +1587,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                         name = !s->iszero ? (char*)&s->iszero : strtable + s->nameoffs;
                         if(!memcmp(name, "bootboot", 9)) bb_addr = (int64_t)s->value;
                         if(!memcmp(name, "environment", 12)) env_addr = (int64_t)s->value;
-                        if(!memcmp(name, "mmio", 4)) mm_addr = (int64_t)s->value;
+                        if(!memcmp(name, "mmio", 5)) mm_addr = (int64_t)s->value;
                         if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)s->value;
                         i += s->auxsyms;
                     }
