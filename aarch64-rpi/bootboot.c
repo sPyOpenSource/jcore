@@ -1110,7 +1110,7 @@ void MapPage(uint64_t virt, uint64_t phys)
  */
 void ParseEnvironment(uint8_t *env)
 {
-    uint8_t *end=env+PAGESIZE;
+    uint8_t *end=env+PAGESIZE, *start=env;
     DBG(" * Environment\n");
     env--; env[PAGESIZE]=0; kne=NULL;
     while(env<end) {
@@ -1134,6 +1134,9 @@ void ParseEnvironment(uint8_t *env)
             while(env[0]!=0 && env[-1]!='*' && env[0]!='/')
                 env++;
         }
+        // only match on beginning of line
+        if(env>start && env[-1]!=' '&&env[-1]!='\t'&&env[-1]!='\r'&&env[-1]!='\n')
+            continue;
         // parse screen dimensions
         if(!memcmp(env,"screen=",7)){
             env+=7;

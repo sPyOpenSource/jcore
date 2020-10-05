@@ -1561,6 +1561,13 @@ end if
             cmp         esi, 0A000h
             ja          .parseend
             jmp         .skipcom2
+            ;only match on beginning of line
+@@:         cmp         esi, 9000h
+            je          @f
+            cmp         byte [esi-1], ' '
+            je          @f
+            cmp         byte [esi-1], 13
+            jae         .next
             ;parse screen dimensions
 @@:         cmp         dword[esi], 'scre'
             jne         @f
@@ -1577,11 +1584,11 @@ end if
             jmp         .getnext
             ;get kernel's filename
 @@:         cmp         dword[esi], 'kern'
-            jne         @f
+            jne         .next
             cmp         word[esi+4], 'el'
-            jne         @f
+            jne         .next
             cmp         byte[esi+6], '='
-            jne         @f
+            jne         .next
             add         esi, 7
             mov         edi, kernel
 .copy:      lodsb
@@ -1600,8 +1607,7 @@ end if
 .copyend:   xor         al, al
             stosb
             jmp         .getnext
-@@:
-            inc         esi
+.next:      inc         esi
             ;failsafe
 .getnext:   cmp         esi, 0A000h
             jae         .parseend

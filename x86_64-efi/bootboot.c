@@ -1058,6 +1058,9 @@ ParseEnvironment(unsigned char *cfg, int len, INTN argc, CHAR16 **argv)
             while(ptr[0]!=0 && ptr[-1]!='*' && ptr[0]!='/')
                 ptr++;
         }
+        // only match on beginning of line
+        if(ptr>cfg && ptr[-1]!=' '&&ptr[-1]!='\t'&&ptr[-1]!='\r'&&ptr[-1]!='\n')
+            continue;
         // parse screen dimensions
         if(!CompareMem(ptr,(const CHAR8 *)"screen=",7)){
             ptr+=7;
