@@ -291,8 +291,18 @@ realmode_start:
             mov         cx, 030Bh
             xor         dx, dx
             int         14h
-            real_print  starting
+            ; if there's no serial, but BIOS incorrectly sets the IO port for it
+            mov         dx, word [400h]
+            or          dx, dx
+            jz          @f
+            add         dx, 5
+            in          al, dx
+            cmp         al, 0FFh
+            jne         @f
+            mov         word [400h], 0
+@@:         real_print  starting
 
+            ; flush PS/2 keyboard
             in          al, 060h    ; read key
             in          al, 061h    ; ack
             out         061h, al
@@ -356,40 +366,10 @@ realmode_start:
             cpuid
             ;long mode
             bt          edx, 29
-            jc          .cpuok
+            jc          cpuok
 .cpuerror:  mov         si, noarch
             jmp         real_diefunc
-.cpuok:     ;okay, we can do 64 bit!
-
-            DBG         dbg_A20
-
-            ;-----enable A20-----
-            ;no problem even if a20 is already turned on.
-            stc
-            mov         ax, 2401h   ;BIOS enable A20 function
-            int         15h
-            jnc         a20ok
-            ;keyboard nightmare
-            call        a20wait
-            mov         al, 0ADh
-            out         64h, al
-            call        a20wait
-            mov         al, 0D0h
-            out         64h, al
-            call        a20wait2
-            in          al, 60h
-            push            ax
-            call        a20wait
-            mov         al, 0D1h
-            out         64h, al
-            call        a20wait
-            pop         ax
-            or          al, 2
-            out         60h, al
-            call        a20wait
-            mov         al, 0AEh
-            out         64h, al
-            jmp         a20ok
+            ;okay, we can do 64 bit!
 
 ;--- Linux x86 boot protocol header ---
             db          01F1h-($-$$) dup 090h
@@ -439,6 +419,36 @@ start_of_setup:
             jmp         9000h:realmode_start-loader
 ; --- end of Linux boot protocol header ---
 
+cpuok:      DBG         dbg_A20
+
+            ;-----enable A20-----
+            ;no problem even if a20 is already turned on.
+            stc
+            mov         ax, 2401h   ;BIOS enable A20 function
+            int         15h
+            jnc         a20ok
+            ;keyboard nightmare
+            call        a20wait
+            mov         al, 0ADh
+            out         64h, al
+            call        a20wait
+            mov         al, 0D0h
+            out         64h, al
+            call        a20wait2
+            in          al, 60h
+            push            ax
+            call        a20wait
+            mov         al, 0D1h
+            out         64h, al
+            call        a20wait
+            pop         ax
+            or          al, 2
+            out         60h, al
+            call        a20wait
+            mov         al, 0AEh
+            out         64h, al
+            jmp         a20ok
+
 a20wait:    in          al, 64h
             test        al, 2
             jnz         a20wait
@@ -452,15 +462,19 @@ a20ok:
             mov         ecx, dword [046Ch]
             add         ecx, 10  ; ~500ms, 18.2/2
             sti
-.waitkey:   pause
-            in          al, 064h
-            and         al, 1
+.waitkey:   push        ecx
+            mov         ah, byte 01h
+            int         16h
             jz          @f
+            xor         ah, ah
+            int         16h
             mov         eax, ' BAK'
             mov         dword [bkp], eax
             real_print  backup
+            pop         ecx
             jmp         .waitend
-@@:         cmp         dword [046Ch], ecx
+@@:         pop         ecx
+            cmp         dword [046Ch], ecx
             jb          .waitkey
 .waitend:   cli
 
@@ -801,7 +815,9 @@ real_getchar:
             sti
             push        si
             push        di
-.chkser:    mov         ah, byte 03h
+.chkser:    cmp         word [400h], 0
+            jz          @f
+            mov         ah, byte 03h
             xor         dx, dx
             int         14h
             bt          ax, 8
@@ -809,9 +825,10 @@ real_getchar:
             mov         ah, byte 02h
             xor         dx, dx
             int         14h
+            jmp         .gotch
 @@:         mov         ah, byte 01h
             int         16h
-            jnz         .chkser
+            jz          .chkser
             xor         ah, ah
             int         16h
 .gotch:     pop         di
@@ -831,10 +848,12 @@ real_printfunc:
             mov         bx, word 11
             int         10h
             pop         ax
+            cmp         word [400h], 0
+            jz          @f
             mov         ah, byte 01h
             xor         dx, dx
             int         14h
-            pop         si
+@@:         pop         si
             jmp         real_printfunc
 .end:       ret
 
@@ -1008,18 +1027,20 @@ prot_oct2bin:
 
 ; IN: al, character to send
 uart_send:  mov         ah, al
-            mov         dx, 3fdh
+            mov         dx, word [400h] ;3fdh
+            add         dx, 5
 @@:         pause
             in          al, dx
             and         al, 20h
             jz          @b
-            sub         dl, 5
+            sub         dx, 5
             mov         al, ah
             out         dx, al
             ret
 
 ; IN: edi pointer to store the received char
-uart_getc:  mov         dx, 03fdh
+uart_getc:  mov         dx, word [400h] ;3fdh
+            add         dx, 5
 @@:         pause
             in          al, dx
             and         al, 1
@@ -1062,6 +1083,9 @@ protmode_start:
             jb          .nextrom
 
             ;---- notify raspbootcom / USBImager to send the initrd over serial line ----
+            cmp         word [400h], 0
+            jz          .getgpt
+
             mov         al, 3
             call        uart_send
             call        uart_send
@@ -1070,13 +1094,17 @@ protmode_start:
             ; wait for response with timeout
             mov         ah, al
             mov         cx, 10000
-            mov         dx, 3fdh
+            mov         dx, word [400h]
+            add         dx, 5
 @@:         dec         cx
             jz          .getgpt
             pause
             in          al, dx
             and         al, 1
             jz          @b
+
+            DBG32       dbg_serial
+
             ; read the initrd's size
             mov         edi, bootboot.initrd_size
             call        uart_getc
@@ -1113,7 +1141,9 @@ if BBDEBUG eq 1
             cmp         byte [iscdrom], 0
             jz          @f
             DBG32       dbg_cdrom
-@@:
+            jmp         .isgpt
+@@:         DBG32       dbg_gpt
+.isgpt:
 end if
             mov         esi, 0A000h+512
             cmp         dword [esi], 'EFI '
@@ -2644,6 +2674,8 @@ dbg_A20     db          " * Enabling A20",10,13,0
 dbg_mem     db          " * E820 Memory Map",10,13,0
 dbg_systab  db          " * System tables",10,13,0
 dbg_time    db          " * System time",10,13,0
+dbg_serial  db          " * Initrd over serial",10,13,0
+dbg_gpt     db          " * Reading GPT",10,13,0
 dbg_cdrom   db          " * Detected CDROM boot",10,13,0
 dbg_env     db          " * Environment",10,13,0
 dbg_initrd  db          " * Initrd loaded",10,13,0

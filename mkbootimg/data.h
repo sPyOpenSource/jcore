@@ -6,5 +6,5 @@ extern unsigned char binary_bootboot_efi[100932];
 extern unsigned char binary_bootboot_img[34712];
 extern unsigned char binary_LICENCE_broadcom[1594];
 extern unsigned char binary_bootcode_bin[52480];
-extern unsigned char binary_fixup_dat[7290];
-extern unsigned char binary_start_elf[2949088];
+extern unsigned char binary_fixup_dat[7289];
+extern unsigned char binary_start_elf[2949248];
