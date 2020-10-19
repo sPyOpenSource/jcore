@@ -33,10 +33,10 @@ grub.iso: ../mkbootimg/mkbootimg initdir mkbootimg.json
 	@../mkbootimg/mkbootimg mkbootimg.json initrd.bin
 	@rm -rf initrd
 	@mkdir iso iso/bootboot iso/boot iso/boot/grub 2>/dev/null || true
-	@cp ../bootboot.bin iso/bootboot/loader || true
+	@cp ../dist/bootboot.bin iso/bootboot/loader || true
 	@cp config iso/bootboot/config || true
 	@cp initrd.bin iso/bootboot/initrd || true
-	@printf "menuentry \"BOOTBOOT test\" {\n  multiboot /bootboot/loader\n  module /bootboot/initrd\n  module /bootboot/config\n  boot\n}" >iso/boot/grub/grub.cfg || true
+	@printf "menuentry \"BOOTBOOT test\" {\n  multiboot /bootboot/loader\n  module /bootboot/initrd\n  module /bootboot/config\n  boot\n}\n\nmenuentry \"Chainload\" {\n  set root=(hd0)\n  chainloader +1\n  boot\n}\n" >iso/boot/grub/grub.cfg || true
 	grub-mkrescue -o grub.iso iso
 	@rm -r iso 2>/dev/null || true
 
@@ -52,6 +52,9 @@ cdrom:
 
 grubcdrom: grub.iso
 	qemu-system-x86_64 -cdrom grub.iso -serial stdio
+
+grub2: grub.iso
+	qemu-system-x86_64 -drive file=disk-x86.img,format=raw -cdrom grub.iso -boot order=d -serial stdio
 
 efi:
 	qemu-system-x86_64 -bios $(OVMF) -m 64 -drive file=disk-x86.img,format=raw -serial stdio
