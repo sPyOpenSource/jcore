@@ -33,6 +33,7 @@
 ;*********************************************************************
 
 ;LBA packet fields
+lba_packet      equ     07E00h
 virtual at lba_packet
 lbapacket.size: dw      ?
 lbapacket.count:dw      ?
@@ -72,10 +73,9 @@ end if
 bootboot_record:
             jmp         short .skipid
             nop
-.system:    db          "BOOTBOOT",0
             ;skip BPB area so that we can use this
-            ;boot code on a FAT volume if needed
-            db          05Ah-($-$$) dup 0
+            ;boot code on a FAT / exFAT volume if needed
+            db          120-($-$$) dup 0
 .skipid:    ;relocate our code to offset 0h:600h
             cli
             cld
@@ -105,9 +105,6 @@ bootboot_record:
 
 .start:     ;save boot drive code
             mov         byte [drive], dl
-            ;initialize lba packet
-            mov         byte [lbapacket.size], 16
-            mov         byte [lbapacket.addr0+1], 08h   ;to address 800h
             ;check for lba presistance - floppy not supported any more
             ;we use USB sticks as removable media for a long time
             cmp         dl, byte 80h
@@ -125,27 +122,23 @@ bootboot_record:
             jmp         diefunc
 .lbaok:     ;try to load stage2 - it's a continous area on disk
             ;started at given sector with maximum size of 7000h bytes
+            mov         di, lba_packet
+            mov         cx, 8
+            xor         ax, ax
+            repnz       stosw
             mov         si, stage2_addr
             mov         di, lbapacket.sect0
-            push        bx
-            push        di
             ;set up for hard-drive
             movsw
             movsw
+            mov         byte [lbapacket.size], 16
+            mov         byte [lbapacket.addr0+1], 08h   ;to address 800h
             mov         byte [lbapacket.count], 56
-            ;query cdrom status to see if it's a cdrom
-            mov         ax, word 4B01h
             mov         dl, byte [drive]
-            mov         si, spc_packet
-            mov         byte [si], 13h
-            mov         byte [si+2], 0h ;clear drive number
-            clc
-            int         13h
-            pop         di
-            jc          @f
-            ;some buggy BIOSes (like bochs') fail to set carry flag and ax properly
-            cmp         byte [spc_packet+2], 0h
-            jz          @f
+            ;if it's a CDROM with 2048 byte sectors
+            cmp         dl, 0E0h
+            jl          @f
+            sub         di, 4
             ;lba=lba/4
             clc
             rcr         word [di+2], 1
@@ -153,28 +146,33 @@ bootboot_record:
             clc
             rcr         word [di+2], 1
             rcr         word [di], 1
-            mov         byte [lbapacket.count], 14
+            shr         word [lbapacket.count], 2
             ;load sectors
 @@:         mov         ah, byte 42h
-            mov         dl, byte [drive]
             mov         si, lba_packet
             int         13h
-            pop         bx
 
             ;do we have a 2nd stage loader?
-.chk:       cmp         word [ldr.header], bx
+.chk:       cmp         word [ldr.header], 0AA55h
             jne         .nostage2
             cmp         byte [ldr.header+3], 0E9h
             jne         .nostage2
+            mov         dl, byte [drive]
             ;invoke stage2 real mode code
             mov         ax, [ldr.executor]
             add         ax, ldr.executor+3
             jmp         ax
 
 .nostage2:  ;try to load stage2 from a RAID mirror
-            inc         byte [drive]
-            cmp         byte [drive], 8Fh
-            jle         .lbaok
+            mov         al, byte [drive]
+            inc         al
+            cmp         al, 87h
+            jle         @f
+            mov         al, 80h
+@@:         mov         byte [drive], al
+            inc         byte [cnt]
+            cmp         byte [cnt], 8
+            jl          .lbaok
 .nostage2err:
             mov         si, stage2notf
             ;fall into the diefunc code
@@ -184,7 +182,6 @@ bootboot_record:
 ;*********************************************************************
 ;writes the reason, waits for a key and reboots.
 diefunc:
-            print       bootboot_record.system
             print       panic
             call        printfunc
             mov         si, found
@@ -211,13 +208,12 @@ printfunc:
 ;*                          data area                                *
 ;*********************************************************************
 
-panic:      db          "-PANIC: ",0
+panic:      db          "BOOTBOOT-PANIC: ",0
 lbanotf:    db          "LBA support",0
 stage2notf: db          "FS0:\BOOTBOOT\LOADER",0
-found:      db          " not found",10,13,0
+found:      db          " not found",0
+cnt:        db          0
 drive:      db          0
-lba_packet: db          16 dup 0
-spc_packet: db          13h dup 0
             db          01B0h-($-$$) dup 0
 
 ;right before the partition table some data

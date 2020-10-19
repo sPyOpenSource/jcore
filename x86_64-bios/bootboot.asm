@@ -804,6 +804,8 @@ real_diefunc:
             real_print  panic
             pop         si
             call        real_printfunc
+            mov         si, crlf
+            call        real_printfunc
             call        real_getchar
             mov         al, 0FEh
             out         64h, al
@@ -908,23 +910,17 @@ prot_readsectorfunc:
             ;load 8 sectors (1 page) or more in low memory
             mov         dword [lbapacket.sect0], eax
             prot_realmode
-            ;try all drives from bootdev-8F to support RAID mirror
+            ;try all drives from bootdev-87 to support RAID mirror
             mov         dl, byte [bootdev]
             mov         byte [readdev], dl
+            mov         byte [cntdev], 0
+            mov         byte [iscdrom], 0
 .again:     mov         ax, word [lbapacket.count]
             mov         word [origcount], ax
-            ;query cdrom status to see if it's a cdrom
-            mov         ax, word 4B01h
             mov         dl, byte [readdev]
-            mov         esi, spc_packet
-            mov         byte [si], 13h
-            mov         byte [si+2], 0h ;clear drive number
-            clc
-            int         13h
-            jc          @f
-            ;some buggy BIOSes (like bochs') fail to set carry flag and ax properly
-            cmp         byte [spc_packet+2], 0h
-            jz          @f
+            ;don't use INT 13h / AX=4B01h, that's buggy on many BIOSes
+            cmp         dl, 0E0h
+            jl          @f
             ;use 2048 byte sectors instead of 512 if it's a cdrom
             mov         al, byte [lbapacket.sect0]
             and         al, 011b
@@ -932,7 +928,7 @@ prot_readsectorfunc:
             jz          .cdok
             ;this should never happen.
             ; - GPT is loaded from PMBR, from LBA 0 (%4==0)
-            ; - ESP is at LBA 128 (%4==0)
+            ; - ESP is at LBA 128 or 2048 (%4==0)
             ; - root dir is at LBA 172 (%4==0) for FAT16, and it's cluster aligned for FAT32
             ; - cluster size is multiple of 4 sectors
             mov         si, notcdsect
@@ -941,16 +937,23 @@ prot_readsectorfunc:
             add         word [lbapacket.count], 3
             shr         word [lbapacket.count], 2
             mov         byte [iscdrom], 1
-@@:         mov         dl, byte [readdev]
-            inc         byte [readdev]
-            mov         ah, byte 42h
+@@:         mov         ah, byte 42h
             mov         esi, lbapacket
             clc
             int         13h
-            jnc         @f
-            cmp         byte [readdev], 08Fh
+            jnc         .rdok
+            ;we do not expect this to fail, but if so, load sector from another
+            ;drive assuming we have a RAID mirror. This will fail for non-RAIDs
+            mov         al, byte [readdev]
+            inc         al
+            cmp         al, 87h
+            jle         @f
+            mov         al, 80h
+@@:         mov         byte [readdev], al
+            inc         byte [cntdev]
+            cmp         byte [cntdev], 8
             jle         .again
-@@:         xor         ebx, ebx
+.rdok:      xor         ebx, ebx
             mov         bl, ah
             real_protmode
             pop         edi
@@ -2662,6 +2665,7 @@ clu_sec:    dd          0 ;sector per cluster
 origcount:  dw          0
 bootdev:    db          0
 readdev:    db          0
+cntdev:     db          0
 hasinitrd:  db          0
 hasconfig:  db          0
 iscdrom:    db          0
@@ -2690,7 +2694,8 @@ backup:     db          " * Backup initrd",10,13,0
 passphrase: db          " * Passphrase? ",0
 decrypting: db          13," * Decrypting...",0
 clrdecrypt: db          13,"                ",13,0
-starting:   db          "Booting OS...",10,13,0
+starting:   db          "Booting OS..."
+crlf:       db          10,13,0
 panic:      db          "-PANIC: ",0
 noarch:     db          "Hardware not supported",0
 a20err:     db          "Failed to enable A20",0
