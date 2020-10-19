@@ -458,12 +458,10 @@ a20wait2:   in          al, 64h
             jz          a20wait2
             ret
 a20ok:
-            ; wait for a key press, if so use backup initrd
-            mov         ecx, dword [046Ch]
-            add         ecx, 10  ; ~500ms, 18.2/2
+            ; wait for a key press for half a sec, if pressed use backup initrd
+            mov         word [origcount], 0
             sti
-.waitkey:   push        ecx
-            mov         ah, byte 01h
+.waitkey:   mov         ah, byte 01h
             int         16h
             jz          @f
             xor         ah, ah
@@ -471,11 +469,23 @@ a20ok:
             mov         eax, ' BAK'
             mov         dword [bkp], eax
             real_print  backup
-            pop         ecx
             jmp         .waitend
-@@:         pop         ecx
-            cmp         dword [046Ch], ecx
-            jb          .waitkey
+@@:         ; wait 10 millisec
+            mov         cx, 10000/15
+            in          al, 61h             ; ps2 control port bit 4 is oscillating at 15 usec
+            and         al, 10h
+            mov         ah, al
+@@:         in          al, 61h
+            and         al, 10h
+            cmp         al, ah
+            je          @b
+            mov         ah, al
+            dec         cx
+            jnz         @b
+            ; repeat loop 50 times
+            inc         word [origcount]
+            cmp         word [origcount], 50
+            jl          .waitkey
 .waitend:   cli
 
             ;-----detect memory map-----
