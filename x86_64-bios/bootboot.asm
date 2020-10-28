@@ -471,17 +471,10 @@ a20ok:
             real_print  backup
             jmp         .waitend
 @@:         ; wait 10 millisec
-            mov         cx, 10000/15
-            in          al, 61h             ; ps2 control port bit 4 is oscillating at 15 usec
-            and         al, 10h
-            mov         ah, al
-@@:         in          al, 61h
-            and         al, 10h
-            cmp         al, ah
-            je          @b
-            mov         ah, al
-            dec         cx
-            jnz         @b
+            xor         cx, cx
+            mov         dx, 10000
+            mov         ah, 086h
+            int         15h
             ; repeat loop 50 times
             inc         word [origcount]
             cmp         word [origcount], 50
