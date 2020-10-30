@@ -2041,7 +2041,7 @@ get_memory_map:
         }
         // --- NO PRINT AFTER THIS POINT ---
 
-        // read (or blue) dot on the top left corner (sort of status report)
+        // red (or blue) dot on the top left corner (sort of status report)
         *((uint64_t*)(bootboot->fb_ptr)) = *((uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x000000FF000000FFUL;
 
         //inform firmware that we're about to leave it's realm
