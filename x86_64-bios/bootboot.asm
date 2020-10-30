@@ -1978,35 +1978,30 @@ end if
             add         esi, 300h
             mov         eax, 0C4500h
             mov         dword [esi], eax
+
             ; wait 10 millisec
-            mov         cx, 10000/15
-            in          al, 61h             ; ps2 control port bit 4 is oscillating at 15 usec
-            and         al, 10h
-            mov         ah, al
-@@:         in          al, 61h
-            and         al, 10h
-            cmp         al, ah
-            je          @b
-            mov         ah, al
-            dec         cx
-            jnz         @b
+            prot_realmode
+            xor         cx, cx
+            mov         dx, 10000
+            mov         ah, 086h
+            sti
+            int         15h
+            cli
+            real_protmode
 
             ; send Broadcast STARTUP IPI
             mov         eax, 0C4607h        ; start at 0700:0000h
             mov         dword [esi], eax
 
-            ; wait 1 millisec (should be 200 microsec minimum)
-            mov         cx, 1000/15
-            in          al, 61h             ; ps2 control port bit 4 is oscillating at 15 usec
-            and         al, 10h
-            mov         ah, al
-@@:         in          al, 61h
-            and         al, 10h
-            cmp         al, ah
-            je          @b
-            mov         ah, al
-            dec         cx
-            jnz         @b
+            ; wait 200 microsec
+            prot_realmode
+            xor         cx, cx
+            mov         dx, 200
+            mov         ah, 086h
+            sti
+            int         15h
+            cli
+            real_protmode
 
             mov         eax, 0C4607h        ; second SIPI
             mov         dword [esi], eax

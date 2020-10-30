@@ -2041,6 +2041,9 @@ get_memory_map:
         }
         // --- NO PRINT AFTER THIS POINT ---
 
+        // read (or blue) dot on the top left corner (sort of status report)
+        *((uint64_t*)(bootboot->fb_ptr)) = *((uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x000000FF000000FFUL;
+
         //inform firmware that we're about to leave it's realm
         status = uefi_call_wrapper(BS->ExitBootServices, 2, image, map_key);
         if(EFI_ERROR(status)){
@@ -2050,6 +2053,10 @@ get_memory_map:
         }
 
 #if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
+        // green dot on the top left corner
+        *((uint64_t*)(bootboot->fb_ptr)) = *((uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x0000FF000000FF00UL;
+
+
         // start APs
         if(bootboot->numcores > 1) {
             // send Broadcast INIT IPI
