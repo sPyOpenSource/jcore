@@ -132,7 +132,7 @@ mérete). Ugyanakkor `iso9660` használata esetén garantálni kell, hogy minden
 4 szektor per kluszterrel a legegyszerűbb elérni. Itt is ugyanaz a probléma merül fel, mind a lemezkép készítő, mind a
 BOOTBOOT betöltők képesek lennének kevessebb kluszterrel is használni a FAT32-t, de néhány UEFI förmver nem, és hibásan
 FAT16-nak látná. Hogy ezt elkerüljük a minimális kluszterszámmal, az ISO9960 és FAT32 együttes használata esetén a
-partíció minimális mérete 128 Megabájt (128*1024*1024/512/4 = 65536, ami pont eggyel több, mint ami még 16 bitbe belefér).
+partíció minimális mérete 128 Megabájt (128\*1024\*1024/512/4 = 65536, ami pont eggyel több, mint ami még 16 bitbe belefér).
 
 A többi (a másodiktól kezdve) bejegyzés esetén a `type` vagy egy GUID, vagy egy az előre definiált aliaszok közül. Érvénytelen
 sztring esetén a parancs listázza az összes lehetséges értéket.

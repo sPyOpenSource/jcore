@@ -132,7 +132,7 @@ smaller images, but at least 33 Megabytes (that's a hard lower limit for FAT32).
 be 2048 bytes aligned, which is achieved by 4 sectors per cluster. The same problem applies here, both the image
 creator and the BOOTBOOT loader capable of handling FAT32 with smaller cluster numbers, but some UEFI firmware don't,
 and falsely assumes FAT16. To guarantee the minimum number of clusters, with ISO9660 and FAT32 the boot partition's
-minimum size is 128 Megabytes (128*1024*1024/512/4 = 65536, just one larger than what fits in 16 bits).
+minimum size is 128 Megabytes (128\*1024\*1024/512/4 = 65536, just one larger than what fits in 16 bits).
 
 For the other entries (starting from the second), `type` is either a GUID or one of a pre-defined file system aliases.
 With an invalid string, the utility will list all possible values.
