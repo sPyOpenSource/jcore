@@ -314,6 +314,10 @@ if (currentcoreid == bootboot.bspid) {
 
 On x86_64, 'currentcoreid' is the Local Apic Id (cpuid[eax=1].ebx >> 24), on AArch64 that's (mpidr_el1 & 3).
 
+Because there were multiple reports with SMP issues on buggy machines, the x86 loaders also support `nosmp=1` in the environment.
+If given, then only one core will be booted. This option will be removed once the issues are workarounded and SMP
+initialized properly on all machines.
+
 Installation
 ------------
 

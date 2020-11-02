@@ -244,7 +244,7 @@ uint64_t *paging = (uint64_t*)0x4000;
 
 int reqwidth = 1024, reqheight = 768;
 char *kernelname="sys/core";
-unsigned char *kne;
+unsigned char *kne, nosmp=0;
 
 // alternative environment name
 char *cfgname="sys/config";
@@ -561,6 +561,11 @@ void ParseEnvironment(uint8_t *env)
             kne=env;
             *env=0;
             env++;
+        }
+        // skip SMP initialization
+        if(!memcmp(env,"nosmp=1",7)){
+            env+=7;
+            nosmp=1;
         }
     }
 }
@@ -1121,7 +1126,7 @@ gzerr:      panic("Unable to uncompress");
             }
         }
     }
-    if(bootboot->numcores > 1 && lapic_addr) {
+    if(!nosmp && bootboot->numcores > 1 && lapic_addr) {
         DBG(" * SMP numcores %d\n", bootboot->numcores);
         memcpy((uint8_t*)0x1000, &ap_trampoline, 128);
         // send Broadcast INIT IPI

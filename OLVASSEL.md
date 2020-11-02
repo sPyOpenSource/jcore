@@ -313,6 +313,10 @@ if (currentcoreid == bootboot.bspid) {
 
 Az x86_64-on a 'currentcoreid' a Local Apic Id (cpuid[eax=1].ebx >> 24), míg AArch64-on ez az (mpidr_el1 & 3).
 
+Mivel több hibabejelentés is érkezett az SMP kapcsán bugos gépek miatt, ezért az x86 betöltők megértik a `nosmp=1` környezeti
+opciót is. Ha meg van adva, akkor csak egy mag indul el. Ez az opció el lesz távolítva, amint a problémákra lesz kerülőmegoldás,
+és az SMP inicializálás megfelelően működik minden gépen.
+
 Telepítés
 ---------
 

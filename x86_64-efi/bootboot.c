@@ -378,7 +378,7 @@ EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Volume;
 EFI_FILE_HANDLE                 RootDir;
 EFI_FILE_PROTOCOL               *Root;
 SIMPLE_INPUT_INTERFACE          *CI;
-unsigned char *kne, bsp_done=0;
+unsigned char *kne, bsp_done=0, nosmp=0;
 
 // default environment variables. M$ states that 1024x768 must be supported
 int reqwidth = 1024, reqheight = 768;
@@ -1078,6 +1078,11 @@ ParseEnvironment(unsigned char *cfg, int len, INTN argc, CHAR16 **argv)
             kne=ptr;
             *ptr=0;
             ptr++;
+        }
+        // skip SMP initialization
+        if(!CompareMem(ptr,(const CHAR8 *)"nosmp=1",7)){
+            ptr+=7;
+            nosmp=1;
         }
     }
     return EFI_SUCCESS;
@@ -1862,7 +1867,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         // Symmetric Multi Processing support
 #if USE_MP_SERVICES
         status = uefi_call_wrapper(BS->LocateProtocol, 3, &mpspGuid, NULL, (void**)&mp);
-        if(!EFI_ERROR(status) && mp) {
+        if(!nosmp && !EFI_ERROR(status) && mp) {
             // override default values in bootboot struct
             status = uefi_call_wrapper(mp->GetNumberOfProcessors, 3, mp, &i, &j);
             if(!EFI_ERROR(status)) {
@@ -1886,12 +1891,13 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                     }
                 }
             }
-        }
+        } else
+            bootboot->numcores = 1;
 #else
         UINT8 *ptr = (UINT8*)bootboot->arch.x86_64.acpi_ptr, *pe, *data;
         UINT64 r, lapic_addr=0, ap_code = 0x8000;
         ZeroMem(lapic_ids, sizeof(lapic_ids));
-        if(ptr && (ptr[0]=='X' || ptr[0]=='R') && ptr[1]=='S' && ptr[2]=='D' && ptr[3]=='T') {
+        if(!nosmp && ptr && (ptr[0]=='X' || ptr[0]=='R') && ptr[1]=='S' && ptr[2]=='D' && ptr[3]=='T') {
             pe = ptr; ptr += 36;
             // iterate on ACPI table pointers
             for(r = *((uint32_t*)(pe + 4)); ptr < pe + r; ptr += pe[0] == 'X' ? 8 : 4) {
@@ -1917,7 +1923,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             status = uefi_call_wrapper(BS->AllocatePages, 4, 2, 1, 1, (EFI_PHYSICAL_ADDRESS*)&ap_code);
             if(EFI_ERROR(status)) ap_code = 0;
         }
-        if(bootboot->numcores > 1 && lapic_addr && ap_code) {
+        if(!nosmp && bootboot->numcores > 1 && lapic_addr && ap_code) {
             DBG(L" * SMP numcores %d\n", bootboot->numcores);
             CopyMem((uint8_t*)0x8000, &ap_trampoline, 256);
             // save UEFI's 64 bit system registers for the trampoline code
@@ -2055,7 +2061,6 @@ get_memory_map:
 #if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
         // green dot on the top left corner
         *((uint64_t*)(bootboot->fb_ptr)) = *((uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x0000FF000000FF00UL;
-
 
         // start APs
         if(bootboot->numcores > 1) {

@@ -1620,11 +1620,11 @@ end if
             jmp         .getnext
             ;get kernel's filename
 @@:         cmp         dword[esi], 'kern'
-            jne         .next
+            jne         @f
             cmp         word[esi+4], 'el'
-            jne         .next
+            jne         @f
             cmp         byte[esi+6], '='
-            jne         .next
+            jne         @f
             add         esi, 7
             mov         edi, kernel
 .copy:      lodsb
@@ -1643,6 +1643,13 @@ end if
 .copyend:   xor         al, al
             stosb
             jmp         .getnext
+@@:         cmp         dword[esi], 'nosm'
+            jne         .next
+            cmp         word[esi+4], 'p='
+            jne         .next
+            cmp         byte[esi+6], '1'
+            jne         .next
+            mov         byte[nosmp], 1
 .next:      inc         esi
             ;failsafe
 .getnext:   cmp         esi, 0A000h
@@ -1889,6 +1896,10 @@ end if
             repnz       stosd
             ; clear flags
             mov         byte [bsp_done], al
+
+            cmp         byte [nosmp], al
+            jne         .nosmp
+
             ; try ACPI first
             mov         esi, dword [bootboot.acpi_ptr]
             or          esi, esi
@@ -2665,8 +2676,9 @@ bootdev:    db          0
 readdev:    db          0
 cntdev:     db          0
 hasinitrd:  db          0
-hasconfig:  db          0
+hasconfig:   db          0
 iscdrom:    db          0
+nosmp:      db          0
 bsp_done:                 ;flag to indicate APs can run
 fattype:    db          0
 bkp:        dd          '    '
