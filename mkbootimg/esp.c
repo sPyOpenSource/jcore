@@ -119,8 +119,7 @@ void esp_makepart()
     if(!esp) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_MEM]); exit(2); }
     memset(esp, 0, esp_size);
     /* Volume Boot Record */
-    memcpy(esp, binary_boot_bin, 3);
-    memcpy(esp + 0x78, binary_boot_bin + 0x78, 0x1B8 - 0x78);
+    memcpy(esp, binary_boot_bin, 512);
     esp[0x1FE]=0x55; esp[0x1FF]=0xAA;
     /* use 4 sectors per cluster to ensure data is always 2048 bytes aligned for ISO9660, that's
      * a good default for FAT16 anyway. For FAT32 we only use 1 sector per cluster if no ISO9660
