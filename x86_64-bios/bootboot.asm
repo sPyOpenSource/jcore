@@ -423,10 +423,11 @@ cpuok:      DBG         dbg_A20
 
             ;-----enable A20-----
             ;no problem even if a20 is already turned on.
-            stc
             mov         ax, 2401h   ;BIOS enable A20 function
             int         15h
-            jnc         a20ok
+            ;see if it worked
+            call        a20chk
+            jz          a20ok
             ;keyboard nightmare
             call        a20wait
             mov         al, 0ADh
@@ -436,7 +437,7 @@ cpuok:      DBG         dbg_A20
             out         64h, al
             call        a20wait2
             in          al, 60h
-            push            ax
+            push        ax
             call        a20wait
             mov         al, 0D1h
             out         64h, al
@@ -447,8 +448,30 @@ cpuok:      DBG         dbg_A20
             call        a20wait
             mov         al, 0AEh
             out         64h, al
+            call        a20wait
+            call        a20chk
+            jz          a20ok
+            ;fast enable method
+            in          al, 92h
+            test        al, 2
+            jnz         a20ok
+            or          al, 2
+            and         al, 0FEh
+            out         92h, al
             jmp         a20ok
 
+a20chk:     push        es
+            xor         ax, ax
+            dec         ax
+            mov         es, ax
+            mov         ah, byte [es:510h]
+            mov         byte [ds:500h], 0
+            mov         byte [es:510h], al
+            mov         al, byte [ds:500h]
+            mov         byte [es:510h], ah
+            pop         es
+            or          al, al
+            ret
 a20wait:    in          al, 64h
             test        al, 2
             jnz         a20wait
@@ -461,9 +484,13 @@ a20ok:
             ; wait for a key press for half a sec, if pressed use backup initrd
             mov         word [origcount], 0
             sti
-.waitkey:   mov         ah, byte 01h
+.waitkey:   mov         ax, word 0100h
+            or          al, al      ; make sure ZF is clear
             int         16h
             jz          @f
+            or          al, al
+            jz          @f
+            ; this blocks, so only call it if we are sure there's a keystroke waiting
             xor         ah, ah
             int         16h
             mov         eax, ' BAK'
