@@ -126,9 +126,9 @@ void esp_makepart()
      * requested and the disk size is small */
     esp[0xC] = 2; esp[0x10] = 2; esp[0x15] = 0xF8; esp[0x1FE] = 0x55; esp[0x1FF] = 0xAA;
     esp[0x18] = 0x20; esp[0x1A] = 0x40;
-    i = (esp_size + 511) / 512;
+    i = (esp_size + 511) / 512; if(i < 65536) memcpy(esp + 0x13, &i, 2); else memcpy(esp + 0x20, &i, 4);
     if(boot_fat == 16) {
-        esp[0xD] = 4; esp[0xE] = 4; esp[0x12] = 2; esp[0x13] = i & 0xFF; esp[0x14] = (i >> 8) & 0xFF;
+        esp[0xD] = 4; esp[0xE] = 4; esp[0x12] = 2;
         bpc = esp[0xD] * 512;
         spf = ((esp_size/bpc)*2 + 511) / 512;
         esp[0x16] = spf & 0xFF; esp[0x17] = (spf >> 8) & 0xFF;
@@ -140,8 +140,7 @@ void esp_makepart()
         fat16_2 = (uint16_t*)(&esp[(esp[0xE]+spf) * 512]);
         fat16_1[0] = fat16_2[0] = 0xFFF8; fat16_1[1] = fat16_2[1] = 0xFFFF;
     } else {
-        esp[0xD] = iso9660 || boot_size >= 128 ? 4 : 1; esp[0xE] = 4;
-        esp[0x20] = i & 0xFF; esp[0x21] = (i >> 8) & 0xFF; esp[0x22] = (i >> 16) & 0xFF; esp[0x23] = (i >> 24) & 0xFF;
+        esp[0xD] = iso9660 || boot_size >= 128 ? 4 : 1; esp[0xE] = 8;
         bpc = esp[0xD] * 512;
         spf = ((esp_size/bpc)*4) / 512 - 8;
         esp[0x24] = spf & 0xFF; esp[0x25] = (spf >> 8) & 0xFF; esp[0x26] = (spf >> 16) & 0xFF; esp[0x27] = (spf >> 24) & 0xFF;
@@ -151,7 +150,6 @@ void esp_makepart()
         memcpy(esp + 0x200, "RRaA", 4); memcpy(esp + 0x3E4, "rrAa", 4);
         for(i = 0; i < 8; i++) esp[0x3E8 + i] = 0xFF;
         esp[0x3FE] = 0x55; esp[0x3FF] = 0xAA;
-        memcpy(esp + 0xC00, esp, 512);
         rootdir = esp + (spf*esp[0x10]+esp[0xE]) * 512;
         data = rootdir - 2*bpc;
         fat32_1 = (uint32_t*)(&esp[esp[0xE] * 512]);
@@ -169,6 +167,7 @@ void esp_makepart()
     if(boot & (1 << 1)) {
         /* x86 PC (BIOS) */
         esp_bbs = ((data + nextcluster * bpc)-esp) / 512;
+        memcpy(esp + 0x1B0, &esp_bbs, 4);
         ptr = esp_addfile(ptr, "LOADER", binary_bootboot_bin, sizeof(binary_bootboot_bin));
     }
     ptr = esp_addfile(ptr, "CONFIG", (unsigned char*)config, strlen(config));
@@ -207,7 +206,8 @@ void esp_makepart()
         esp[0x3EA] = (i >> 16) & 0xFF; esp[0x3EB] = (i >> 24) & 0xFF;
         esp[0x3EC] = nextcluster & 0xFF; esp[0x3ED] = (nextcluster >> 8) & 0xFF;
         esp[0x3EE] = (nextcluster >> 16) & 0xFF; esp[0x3EF] = (nextcluster >> 24) & 0xFF;
+        /* copy backup boot sectors */
+        memcpy(esp + (esp[0x32]*512), esp, 1024);
     }
-    memcpy(esp + 0x1B0, &esp_bbs, 4);
 }
 

@@ -112,9 +112,12 @@ void gpt_maketable()
     /* MBR stage 1 loader */
     if(esp_bbs) {
         esp_bbs += es;
-        setint(esp_bbs, esp+0x1B0);
-        memcpy(gpt, esp, 11);
-        memcpy(gpt + 0x5A, esp + 0x5A, 0x1B8 - 0x5A);
+        setint(esp_bbs, esp + 0x1B0);
+        /* set it in FAT32 backup too */
+        if(!esp[0x16] && !esp[0x17])
+            setint(esp_bbs, esp + (esp[0x32]*512) + 0x1B0);
+        memcpy(gpt, esp, 3);
+        memcpy(gpt + 0x78, esp + 0x78, 0x1B8 - 0x78);
     }
     gpt[0x1FE]=0x55; gpt[0x1FF]=0xAA;
     /* WinNT disk id */
