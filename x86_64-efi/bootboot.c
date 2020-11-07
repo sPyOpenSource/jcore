@@ -1198,7 +1198,7 @@ LoadFile(IN CHAR16 *FileName, OUT UINT8 **FileData, OUT UINTN *FileDataLength)
     EFI_FILE_INFO       *FileInfo;
     UINT64              ReadSize;
     UINTN               BufferSize;
-    UINT8               *Buffer;
+    UINT8               *Buffer = NULL;
 
     if ((RootDir == NULL) || (FileName == NULL)) {
         return report(EFI_NOT_FOUND,L"Empty Root or FileName\n");
@@ -1224,7 +1224,7 @@ LoadFile(IN CHAR16 *FileName, OUT UINT8 **FileData, OUT UINTN *FileDataLength)
 
     BufferSize = (UINTN)((ReadSize+PAGESIZE-1)/PAGESIZE);
     status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, BufferSize, (EFI_PHYSICAL_ADDRESS*)&Buffer);
-    if (Buffer == NULL) {
+    if (EFI_ERROR(status) || Buffer == NULL) {
         uefi_call_wrapper(FileHandle->Close, 1, FileHandle);
         return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
     }
@@ -1247,6 +1247,7 @@ LoadFile(IN CHAR16 *FileName, OUT UINT8 **FileData, OUT UINTN *FileDataLength)
 EFI_STATUS
 LoadCore()
 {
+    EFI_STATUS status;
     int i=0,bss=0;
     UINT8 *ptr;
     core.ptr=ptr=NULL;
@@ -1352,9 +1353,10 @@ LoadCore()
         if(core.size+bss > 16*1024*1024)
             return report(EFI_LOAD_ERROR,L"Kernel is too big");
         // create core segment
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
+        core.ptr = NULL;
+        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (core.size + bss + PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&core.ptr);
-        if (core.ptr == NULL)
+        if (EFI_ERROR(status) || core.ptr == NULL)
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         CopyMem((void*)core.ptr,ptr,core.size);
         if(bss>0)
@@ -1490,8 +1492,9 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     Print(L"Booting OS...\n");
 
     // get memory for bootboot structure
-    uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&bootboot);
-    if (bootboot == NULL)
+    bootboot = NULL;
+    status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&bootboot);
+    if (EFI_ERROR(status) || bootboot == NULL)
         return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
     ZeroMem((void*)bootboot,PAGESIZE);
     CopyMem(bootboot->magic,BOOTBOOT_MAGIC,4);
@@ -1556,10 +1559,11 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
             return report(EFI_OUT_OF_RESOURCES,L"GetMemoryMap getSize");
         }
         memory_map_size+=2*desc_size;
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
+        memory_map = NULL;
+        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (memory_map_size+PAGESIZE-1)/PAGESIZE,
             (EFI_PHYSICAL_ADDRESS*)&memory_map);
-        if (memory_map == NULL) {
+        if (EFI_ERROR(status) || memory_map == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
@@ -1606,9 +1610,10 @@ foundinrom:
                         initrd.size = 0;
                         status = EFI_LOAD_ERROR;
                     } else {
-                        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (initrd.size+PAGESIZE-1)/PAGESIZE,
+                        initrd.ptr = NULL;
+                        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (initrd.size+PAGESIZE-1)/PAGESIZE,
                             (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
-                        if (initrd.ptr == NULL) {
+                        if (EFI_ERROR(status) || initrd.ptr == NULL) {
                             uefi_call_wrapper(ser->Write, 3, ser, &i, "SE");
                             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
                         }
@@ -1667,11 +1672,14 @@ foundinrom:
         if (status!=EFI_BUFFER_TOO_SMALL || handle_size==0) {
             return report(EFI_OUT_OF_RESOURCES,L"LocateHandle getSize");
         }
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (handle_size+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&handles);
-        if(handles==NULL)
+        handles = NULL;
+        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (handle_size+PAGESIZE-1)/PAGESIZE,
+            (EFI_PHYSICAL_ADDRESS*)&handles);
+        if(EFI_ERROR(status) || handles == NULL)
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages\n");
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
-        if (initrd.ptr == NULL)
+        initrd.ptr = NULL;
+        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
+        if (EFI_ERROR(status) || initrd.ptr == NULL)
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         lba_s=lba_e=0;
         status = uefi_call_wrapper(BS->LocateHandle, 5, ByProtocol, &bioGuid, NULL, &handle_size, handles);
@@ -1717,8 +1725,9 @@ partfound:              lba_s=gptEnt->StartingLBA; lba_e=gptEnt->EndingLBA;
 partok:
         uefi_call_wrapper(BS->FreePages, 2, (EFI_PHYSICAL_ADDRESS)initrd.ptr, 1);
         if(initrd.size>0 && bio!=NULL) {
-            uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, initrd.size/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
-            if (initrd.ptr == NULL)
+            initrd.ptr = NULL;
+            status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, initrd.size/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
+            if (EFI_ERROR(status) || initrd.ptr == NULL)
                 return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
             status=bio->ReadBlocks(bio, bio->Media->MediaId, lba_s, initrd.size, initrd.ptr);
         } else
@@ -1742,8 +1751,9 @@ partok:
             d.source = addr;
             // allocate destination buffer
             CopyMem(&len,initrd.ptr+initrd.size-4,4);
-            uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (len+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&addr);
-            if(addr==NULL)
+            addr = NULL;
+            status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (len+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&addr);
+            if(EFI_ERROR(status) || addr == NULL)
                 return report(EFI_OUT_OF_RESOURCES,L"AllocatePages\n");
             // decompress
             d.bitcount = 0;
@@ -1781,8 +1791,9 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             if(ret.ptr!=NULL) {
                 if(ret.size>PAGESIZE-1)
                     ret.size=PAGESIZE-1;
-                uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&env.ptr);
-                if(env.ptr==NULL)
+                env.ptr = NULL;
+                status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&env.ptr);
+                if(EFI_ERROR(status) || env.ptr == NULL)
                     return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
                 ZeroMem((void*)env.ptr,PAGESIZE);
                 CopyMem((void*)env.ptr,ret.ptr,ret.size);
@@ -1793,9 +1804,10 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             ParseEnvironment(env.ptr,env.size, argc, argv);
         } else {
             // provide an empty environment for the OS
-            env.size=0;
-            uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&env.ptr);
-            if (env.ptr == NULL) {
+            env.size = 0;
+            env.ptr = NULL;
+            status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&env.ptr);
+            if (EFI_ERROR(status) || env.ptr == NULL) {
                 return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
             }
             ZeroMem((void*)env.ptr,PAGESIZE);
@@ -1947,16 +1959,18 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         // allocate memory for memory descriptors. We assume that one or two new memory
         // descriptor may be created by our next allocate calls and we round up to page size
         memory_map_size+=2*desc_size;
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
+        memory_map = NULL;
+        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (memory_map_size+PAGESIZE-1)/PAGESIZE,
             (EFI_PHYSICAL_ADDRESS*)&memory_map);
-        if (memory_map == NULL) {
+        if (EFI_ERROR(status) || memory_map == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
 
         // create page tables
-        uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 37+(bootboot->numcores+3)/4, (EFI_PHYSICAL_ADDRESS*)&paging);
-        if (paging == NULL) {
+        paging = NULL;
+        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 37+(bootboot->numcores+3)/4, (EFI_PHYSICAL_ADDRESS*)&paging);
+        if (EFI_ERROR(status) || paging == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
         ZeroMem((void*)paging,(37+(bootboot->numcores+3)/4)*PAGESIZE);
