@@ -467,5 +467,6 @@ Hozzájárulások
 Szeretnék külön köszönetet mondani [Valentin Anger](https://gitlab.com/SyrupThinker)nek, amiért alaposan letesztelte a
 kódot számtalan igazi vason is. Továbbá [Vinay Chandrá](https://gitlab.com/vinaychandra)nak, amiért addig nem hagyott
 békén, míg a 2. szintű protokoll be nem került a refenrencia implementációkba, és amiért tesztelte és kiegészítette
-Rust minta kernellel a projektet. További köszönet [Stephen Sherratt](https://gitlab.com/stevebob)nak a kitartó hibajavításáért.
+Rust minta kernellel a projektet, valamint hogy MacOS bináris biztosít a mkbootimg-hez. További köszönet
+[Stephen Sherratt](https://gitlab.com/stevebob)nak a kitartó hibajavításáért.
 Köszönet [Neutru](https://gitlab.com/neutru)-nak a rettentő alapos tesztelésért.

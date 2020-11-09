@@ -467,6 +467,7 @@ Contributors
 
 I'd like to say special thanks to [Valentin Anger](https://gitlab.com/SyrupThinker) for throughfully testing this
 code on many different real hardware. Also to [Vinay Chandra](https://gitlab.com/vinaychandra) for pushing me to add
-level 2 protocol to the reference implementations and for testing and providing a Rust kernel example for the project.
+level 2 protocol to the reference implementations and for testing and providing a Rust kernel example for the project,
+and also for providing a MacOS binary for mkbootimg.
 Further thanks to [Stephen Sherratt](https://gitlab.com/stevebob) for being presistent at fixing issues.
 Many thanks for a very through testing to [Neutru](https://gitlab.com/neutru).

@@ -374,6 +374,8 @@ UINT64 bb_addr = BOOTBOOT_INFO;
 UINT64 env_addr= BOOTBOOT_ENV;
 UINT64 core_addr=BOOTBOOT_CORE;
 
+UINT64 initstack=1024;
+
 EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Volume;
 EFI_FILE_HANDLE                 RootDir;
 EFI_FILE_PROTOCOL               *Root;
@@ -1320,6 +1322,9 @@ LoadCore()
                             if(!CompareMem(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
                             if(!CompareMem(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
                             if(!CompareMem(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
+                            /* this is non-standard, not in the BOOTBOOT spec. I've added this because
+                             * Chandra asked for it to allow bigger initial stacks for Rust */
+                            if(!CompareMem(strtable + s->st_name, "initstack", 10)) initstack = s->st_value;
                         }
                 }
             }
@@ -1342,6 +1347,9 @@ LoadCore()
                         if(!CompareMem(name, "bootboot", 9)) bb_addr = (INT64)s->value;
                         if(!CompareMem(name, "environment", 12)) env_addr = (INT64)s->value;
                         if(!CompareMem(name, "fb", 3)) fb_addr = (INT64)s->value;
+                        /* this is non-standard, not in the BOOTBOOT spec. I've added this because
+                         * Chandra asked for it to allow bigger initial stacks for Rust */
+                        if(!CompareMem(name, "initstack", 10)) initstack = (INT64)s->value;
                         i += s->auxsyms;
                     }
                 }
@@ -1352,6 +1360,8 @@ LoadCore()
                 return report(EFI_LOAD_ERROR,L"Kernel is not a valid executable");
         if(core.size+bss > 16*1024*1024)
             return report(EFI_LOAD_ERROR,L"Kernel is too big");
+        if(initstack < 1024) initstack = 1024;
+        if(initstack > 1024*1024) initstack = 1024*1024;
         // create core segment
         core.ptr = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
@@ -1366,6 +1376,8 @@ LoadCore()
         DBG(L" * bootboot    @%lx\n", bb_addr);
         DBG(L" * environment @%lx\n", env_addr);
         DBG(L" * Entry point @%lx, text @%lx %d bytes\n",entrypoint, core.ptr, core.size);
+        if(initstack!=1024)
+            DBG(L" * Stack size  %ld bytes per core\n",initstack);
         core.size = ((core.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
         return EFI_SUCCESS;
 
@@ -1420,7 +1432,7 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
         // pass control over
         "pushq %0;"
         "retq"
-        : : "a"(entrypoint), "r"((UINTN)core_num*1024) : "memory" );
+        : : "a"(entrypoint), "r"((UINTN)core_num*initstack) : "memory" );
 }
 
 /**
@@ -1453,7 +1465,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     EFI_GUID SerIoGuid = EFI_SERIAL_IO_PROTOCOL_GUID;
     EFI_SERIAL_IO_PROTOCOL *ser = NULL;
     UINTN bsp_num=0, i, j=0, x,y, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
-    UINT32 desc_version=0;
+    UINT32 desc_version=0, a, b;
     UINT64 lba_s=0,lba_e=0,sysptr;
     MMapEnt *mmapent, *last=NULL;
     file_t ret={NULL,0};
@@ -1509,15 +1521,12 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
 #if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
     // should be no need to check for RDSTC, available since Pentium, therefore
     // all long mode capable CPUs should have it. But just to be on the safe side
-    __asm__ __volatile__ (
-        "mov $0x80000007, %%eax; xor %%edx, %%edx;"
-        "cpuid;"
-        : "=d"(desc_version) : : );
-    if(desc_version & (1<<8)) {
+    __asm__ __volatile__ ("mov $1, %%eax; cpuid;" : "=d"(a) : : );
+    if(a & (1<<4)) {
         // calibrate CPU clock cycles
-        __asm__ __volatile__ ( "rdtsc" : "=A"(currtime));
+        __asm__ __volatile__ ( "rdtsc" : "=a"(a),"=d"(b)); currtime=((UINT64)b << 32)|a;
         uefi_call_wrapper(BS->Stall, 1, 1);
-        __asm__ __volatile__ ( "rdtsc" : "=A"(ncycles));
+        __asm__ __volatile__ ( "rdtsc" : "=a"(a),"=d"(b)); ncycles=((UINT64)b << 32)|a;
         ncycles -= currtime;
         ncycles /= 5;
         if(ncycles < 1) ncycles = 1;
@@ -1525,10 +1534,12 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
         // fallback to dummy loops without RDTSC (should never happen)
         ncycles = 0;
     }
-    desc_version = 0;
-#define sleep(n) do { if(ncycles) { \
-                    __asm__ __volatile__ ( "rdtsc" : "=A"(endtime)); endtime += n*ncycles; \
-                    do { __asm__ __volatile__ ( "rdtsc" : "=A"(currtime)); } while(currtime < endtime); \
+#define sleep(n) do { \
+                    if(ncycles) { \
+                        __asm__ __volatile__ ( "rdtsc" : "=a"(a),"=d"(b)); endtime=(((UINT64)b << 32)|a) + n*ncycles; \
+                        do { \
+                            __asm__ __volatile__ ( "rdtsc" : "=a"(a),"=d"(b)); currtime=((UINT64)b << 32)|a; \
+                        } while(currtime < endtime); \
                     } else \
                         for(i = 0; i < n*1000000; i++) __asm__ __volatile__ ("pause" : : : "memory"); \
                 } while(0)
@@ -1969,11 +1980,12 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
 
         // create page tables
         paging = NULL;
-        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 37+(bootboot->numcores+3)/4, (EFI_PHYSICAL_ADDRESS*)&paging);
+        status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 37+
+            (bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&paging);
         if (EFI_ERROR(status) || paging == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
-        ZeroMem((void*)paging,(37+(bootboot->numcores+3)/4)*PAGESIZE);
+        ZeroMem((void*)paging,(37+(bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
         DBG(L" * Pagetables PML4 @%lx\n",paging);
         //PML4
         paging[0]=(UINT64)((UINT8 *)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
@@ -2004,8 +2016,11 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         MapPage(bb_addr, (UINT64)(bootboot)+1);
         MapPage(env_addr, (UINT64)(env.ptr)+1);
         // stack at the top of the memory
-        for(i=0; i<(UINTN)((bootboot->numcores+3)/4); i++)
+        for(i=0; i<(UINTN)((bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE); i++) {
+            if(paging[23*512+511-i])
+                return report(EFI_OUT_OF_RESOURCES,L"Stack smash");
             paging[23*512+511-i]=(UINT64)((UINT8 *)paging+(37+i)*PAGESIZE+3);  // core stacks
+        }
 
         // Get memory map
         int cnt=3;
