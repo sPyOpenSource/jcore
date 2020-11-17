@@ -50,7 +50,7 @@ void tar_add(struct stat *st, char *name, unsigned char *content, int size)
     sprintf((char*)end + 124, "%011o", size);
     sprintf((char*)end + 136, "%011o", 0);
     sprintf((char*)end + 148, "%06o", 0);
-    sprintf((char*)end + 155, " 0");
+    sprintf((char*)end + 155, " %1d", S_ISDIR(st->st_mode) ? 5 : (S_ISLNK(st->st_mode) ? 2 : 0));
     if(S_ISLNK(st->st_mode)) { strncpy((char*)end + 157, (char*)content, 99); size = 0; }
     memcpy(end + 257, "ustar  ", 7);
     memcpy(end + 265, "root", 4); memcpy(end + 297, "root", 4);
