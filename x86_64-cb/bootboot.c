@@ -840,7 +840,7 @@ int main(void)
         serial_putchar(3); serial_putchar(3); serial_putchar(3);
         mdelay(10);
         if(serial_havechar()) {
-            // we got response from raspbootcom
+            // we got response from raspbootcom or USBImager
             sp=serial_getchar(); sp|=serial_getchar()<<8; sp|=serial_getchar()<<16; sp|=serial_getchar()<<24;
             if(sp>0 && sp<INITRD_MAXSIZE*1024*1024) {
                 serial_putchar('O'); serial_putchar('K');
