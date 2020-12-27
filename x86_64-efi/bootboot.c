@@ -1699,7 +1699,7 @@ foundinrom:
             status = uefi_call_wrapper(BS->HandleProtocol, 3, handles[i], &bioGuid, (void **) &bio);
             if(status!=EFI_SUCCESS || bio==NULL || bio->Media->BlockSize==0)
                 continue;
-            status=bio->ReadBlocks(bio, bio->Media->MediaId, 1, PAGESIZE, initrd.ptr);
+            status = uefi_call_wrapper(bio->ReadBlocks, 5, bio, bio->Media->MediaId, 1, PAGESIZE, initrd.ptr);
             if(status!=EFI_SUCCESS || CompareMem(initrd.ptr,EFI_PTAB_HEADER_ID,8))
                 continue;
             gptHdr = (EFI_PARTITION_TABLE_HEADER*)initrd.ptr;
@@ -1740,7 +1740,7 @@ partok:
             status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, initrd.size/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
             if (EFI_ERROR(status) || initrd.ptr == NULL)
                 return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
-            status=bio->ReadBlocks(bio, bio->Media->MediaId, lba_s, initrd.size, initrd.ptr);
+            status = uefi_call_wrapper(bio->ReadBlocks, 5, bio, bio->Media->MediaId, lba_s, initrd.size, initrd.ptr);
         } else
             status=EFI_LOAD_ERROR;
     }
@@ -2027,6 +2027,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
 get_memory_map:
         DBG(L" * Memory Map @%lx %d bytes try #%d\n",memory_map, memory_map_size, 4-cnt);
         mmapent=(MMapEnt *)&(bootboot->mmap);
+        bootboot->size=128;
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
             &memory_map_size, memory_map, &map_key, &desc_size, &desc_version);
         if (EFI_ERROR(status)) {
