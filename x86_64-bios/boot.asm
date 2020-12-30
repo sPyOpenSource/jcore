@@ -160,7 +160,7 @@ bootboot_record:
             mov         dl, byte [drive]
             ;invoke stage2 real mode code
             mov         ax, [ldr.executor]
-            add         ax, ldr.executor+3
+            add         ax, ldr.executor+2
             jmp         ax
 
 .nostage2:  ;try to load stage2 from a RAID mirror
