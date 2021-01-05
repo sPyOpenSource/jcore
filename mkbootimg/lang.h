@@ -74,7 +74,7 @@ enum {
     NUMTEXTS
 };
 
-#define NUMLANGS         2
+#define NUMLANGS         3
 
 extern char *dict[NUMLANGS][NUMTEXTS + 1], **lang;
 
