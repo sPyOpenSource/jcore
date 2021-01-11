@@ -2411,25 +2411,23 @@ sha_final:  push        esi
             add         edi, sha_d
             mov         al, 80h
             stosb
+            inc         ecx
             xor         eax, eax
             ; if(ctx->l<56) {while(i<56) ctx->d[i++]=0x00;}
-            cmp         cl, 56
+            cmp         cl, 57
             jae         @f
             neg         ecx
-            add         ecx, 63
-            xor         al, al
+            add         ecx, 56
             repnz       stosb
             jmp         .padded
 @@:         ; else {while(i<64) ctx->d[i++]=0x00;sha256_t(ctx);memset(ctx->d,0,56);}
-            stosb
+            neg         ecx
+            add         ecx, 64
+            repnz       stosb
             call        .sha_t
-            push        ecx
             mov         ecx, 56/4
+            mov         edi, sha_d
             repnz       stosd
-            pop         ecx
-            inc         cl
-            cmp         cl, 64
-            jne         @b
 .padded:    ; SHA_ADD(ctx->b[0],ctx->b[1],ctx->l*8);
             mov         eax, dword [sha_l]
             shl         eax, 3
