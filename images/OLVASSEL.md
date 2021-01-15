@@ -9,7 +9,7 @@ BOOTBOOT Minta Bootolható Lemezkép Fájlok
 - coreboot-x86.rom.gz: minta coreboot ROM kép BOOTBOOT payload-al PC-re
 
 Mielőtt használhatnád a lemezképeket, ki kell csomagolni őket a `gzip -d` paranccsal. A lemezképeket az [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
-paranccsal hoztam létre, és a kiírásukhoz fizikai lemezre az [USBImager](https://gitlab.com/bztsrc/usbimager)-t vagy a `dd` parancsot javaslom.
+paranccsal hoztam létre, és a kiírásukhoz fizikai lemezre az [USBImager](https://bztsrc.gitlab.io/usbimager)-t vagy a `dd` parancsot javaslom.
 
 A disk-x86.img egy speciális hibrid lemezkép, amit átnevezhetsz disk-x86.iso-ra és kiégetheted egy CDROM-ra; vagy bebootolhatod
 USB pendrávjról is BIOS valamint UEFI gépeken egyaránt.

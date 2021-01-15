@@ -9,7 +9,7 @@ See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 - coreboot-x86.rom.gz: an example coreboot ROM image with BOOTBOOT payload for PC
 
 Before you can use the images, uncompress them with `gzip -d`. I've used [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg)
-to generate these images, and I recommend [USBImager](https://gitlab.com/bztsrc/usbimager) or `dd` to write them to physical disks.
+to generate these images, and I recommend [USBImager](https://bztsrc.gitlab.io/usbimager) or `dd` to write them to physical disks.
 
 The disk-x86.img is a special hybrid image, which can be renamed to disk-x86.iso and then burnt to a CDROM; it can also be
 booted from an USB stick in a BIOS machine as well as in an UEFI machine.
