@@ -1,7 +1,7 @@
 ;*
 ;* x86_64-bios/tinf.inc
 ;*
-;* Copyright (C) 2017 - 2020 bzt (bztsrc@gitlab)
+;* Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
 ;*
 ;* Permission is hereby granted, free of charge, to any person
 ;* obtaining a copy of this software and associated documentation
@@ -143,7 +143,7 @@ tinf_build_fixed_trees:
             repnz       stosb
             mov         al, 32
             stosb
-            
+
             mov         edi, d_dtree_trans
             mov         cl, 32
             xor         ax, ax
@@ -168,7 +168,7 @@ tinf_build_tree:
             stosd
             stosd
             stosd
-            
+
             ; scan symbol lengths, and sum code length counts
             push        ebx
             push        ecx
@@ -263,7 +263,7 @@ tinf_decode_trees:
             xor         ecx, ecx
             mov         cl, 19
             call        tinf_build_tree
-            
+
             ; decode code lengths for the dynamic trees
             mov         edx, lengths
 .decode:    mov         ebp, d_ltree
@@ -316,7 +316,7 @@ tinf_decode_trees:
             mov         byte [edx], al
             inc         edx
             dec         word [num]
-      
+
 .next:      cmp         word [num], 0
             jnz         .decode
 
