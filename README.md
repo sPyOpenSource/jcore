@@ -264,7 +264,7 @@ Gzip compressed initrds also supported to save disk space and fasten up load tim
 Example kernel
 --------------
 
-An [example kernel](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/kernel.c) is included with BOOTBOOT Protocol
+An [example kernel](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/c/kernel.c) is included with BOOTBOOT Protocol
 to demostrate how to access the environment:
 
 ```c
@@ -297,8 +297,8 @@ void _start()
 }
 ```
 
-For compilation, see example bootboot kernel's [Makefile](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/Makefile) and
-[link.ld](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/link.ld).
+For compilation, see example bootboot kernel's [Makefile](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/c/Makefile) and
+[link.ld](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/c/link.ld).
 
 Because on an SMP system all cores executing the same code, you probably want to start your kernel with something like:
 

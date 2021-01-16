@@ -263,7 +263,7 @@ Az initrd-k gzippel tömörítettek is lehetnek, hogy kissebb lemezterületet fo
 Példa kernel
 ------------
 
-Egy [példa kernel](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/kernel.c) is lett mellékelve a BOOTBOOT Protokollhoz,
+Egy [példa kernel](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/c/kernel.c) is lett mellékelve a BOOTBOOT Protokollhoz,
 hogy bemutassa, miként lehet elérni a betöltő által nyújtott információkat:
 
 ```c
@@ -296,8 +296,8 @@ void _start()
 }
 ```
 
-A fordításhoz lásd a mellékelt példa kernel [Makefile](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/Makefile)-ját és
-[link.ld](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/link.ld)-jét.
+A fordításhoz lásd a mellékelt példa kernel [Makefile](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/c/Makefile)-ját és
+[link.ld](https://gitlab.com/bztsrc/bootboot/blob/master/mykernel/c/link.ld)-jét.
 
 Mivel SMP rendszeren minden processzormag ezt a kódot futtatja, ezért valósznűleg valami ilyesmivel fogod kezdeni a kerneled:
 
