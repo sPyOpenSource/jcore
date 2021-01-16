@@ -32,15 +32,17 @@ GOFLAGS = -Wall -fpic -fno-stack-protector -static -nostdinc -nostdlib -nostartf
 
 all: mykernel.x86_64.elf mykernel.aarch64.elf
 
-mykernel.x86_64.elf: kernel.go
+mykernel.x86_64.elf: go_rt0.s kernel.go
 	x86_64-elf-gccgo $(GOFLAGS) -c kernel.go -o kernel.o
-	x86_64-elf-ld -nostdlib -nostartfiles -T link.ld kernel.o -o mykernel.x86_64.elf
+	x86_64-elf-as -c go_rt0.s -o go_rt0.o
+	x86_64-elf-ld -nostdlib -nostartfiles -T link.ld go_rt0.o kernel.o -o mykernel.x86_64.elf
 	x86_64-elf-strip -s -K mmio -K fb -K bootboot -K environment mykernel.x86_64.elf
 	x86_64-elf-readelf -hls mykernel.x86_64.elf >mykernel.x86_64.txt
 
-mykernel.aarch64.elf: kernel.go
+mykernel.aarch64.elf: go_rt0.s kernel.go
 	aarch64-elf-gccgo $(GOFLAGS) -c kernel.go -o kernel.o
-	aarch64-elf-ld -nostdlib -nostartfiles -T link.ld kernel.o -o mykernel.aarch64.elf
+	aarch64-elf-as -c go_rt0.s -o go_rt0.o
+	aarch64-elf-ld -nostdlib -nostartfiles -T link.ld go_rt0.o kernel.o -o mykernel.aarch64.elf
 	aarch64-elf-strip -s -K mmio -K fb -K bootboot -K environment mykernel.aarch64.elf
 	aarch64-elf-readelf -hls mykernel.aarch64.elf >mykernel.aarch64.txt
 
