@@ -37,7 +37,7 @@ import "unsafe"
  * 2. no union support nor pre-compiler conditionals for the arch specific struct part (no comment...)
  * 3. as soon as you declare a type struct (not use it, just declare) Go will generate tons of unresolved runtime references
  * 4. importing font from another object file? Forget it... neither CGO nor .syso work for non-function labels
- * 5. accesing a linker defined label? Forget it... Use constants and keep them synced with the linker script
+ * 5. accessing a linker defined label? Forget it... Use constants and keep them synced with the linker script
  * 6. even the "official" bare-metal-gophers example on github miserably fails to compile with the latest Go compiler...
  * 7. if you finally manage to compile it, the resulting file is going to be twice the size of the C version!
  *
