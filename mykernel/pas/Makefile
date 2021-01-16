@@ -1,5 +1,5 @@
 #
-# mykernel-go/Makefile
+# mykernel/pas/Makefile
 #
 # Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
 #
@@ -28,23 +28,23 @@
 #
 #
 
-GOFLAGS = -Wall -fpic -fno-stack-protector -static -nostdinc -nostdlib -nostartfiles -nodefaultlibs
+PASFLAGS = -Aelf -n -O3 -Xd -CX -XXs -Tlinux
 
 all: mykernel.x86_64.elf mykernel.aarch64.elf
 
-mykernel.x86_64.elf: go_rt0.s kernel.go
-	x86_64-elf-gccgo $(GOFLAGS) -c kernel.go -o kernel.o
-	x86_64-elf-as -c go_rt0.s -o go_rt0.o
-	x86_64-elf-ld -nostdlib -nostartfiles -T link.ld go_rt0.o kernel.o -o mykernel.x86_64.elf
+mykernel.x86_64.elf: kernel.pas
+	fpc -Px86_64 $(PASFLAGS) kernel.pas
+	x86_64-elf-ld -r -b binary -o font.o font.psf
+	x86_64-elf-ld -nostdlib -nostartfiles -T link.ld kernel.o font.o -o mykernel.x86_64.elf
 	x86_64-elf-strip -s -K mmio -K fb -K bootboot -K environment mykernel.x86_64.elf
 	x86_64-elf-readelf -hls mykernel.x86_64.elf >mykernel.x86_64.txt
 
-mykernel.aarch64.elf: go_rt0.s kernel.go
-	aarch64-elf-gccgo $(GOFLAGS) -c kernel.go -o kernel.o
-	aarch64-elf-as -c go_rt0.s -o go_rt0.o
-	aarch64-elf-ld -nostdlib -nostartfiles -T link.ld go_rt0.o kernel.o -o mykernel.aarch64.elf
+mykernel.aarch64.elf: kernel.pas
+	fpc -Paarch64 $(PASFLAGS) kernel.pas
+	aarch64-elf-ld -r -b binary -o font.o font.psf
+	aarch64-elf-ld -nostdlib -nostartfiles -T link.ld kernel.o font.o -o mykernel.aarch64.elf
 	aarch64-elf-strip -s -K mmio -K fb -K bootboot -K environment mykernel.aarch64.elf
 	aarch64-elf-readelf -hls mykernel.aarch64.elf >mykernel.aarch64.txt
 
 clean:
-	rm *.o *.elf *.txt || true
+	rm *.o *.elf *.ppu *.txt || true

@@ -1,5 +1,5 @@
-/*
- * mykernel-go/link.ld
+{*
+ * mykernel/pas/system.pas
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *
@@ -24,35 +24,65 @@
  * DEALINGS IN THE SOFTWARE.
  *
  * This file is part of the BOOTBOOT Protocol package.
- * @brief An example linker script for sample kernel
+ * @brief Indirectly and unintuitively compiled by FPC along with kernel.pas
  *
- */
+ *}
 
-/* you thought it's going to be called "go.kernel.init"? Think it again! */
-ENTRY(go.kernel.go.kernel..init0)
+Unit System;
 
-/* you can't access these labels from Go, so make sure the constants match */
-mmio  = 0xfffffffff8000000;                    /* these are configurable for level 2 loaders */
-fb    = 0xfffffffffc000000;
-PHDRS
-{
-  boot PT_LOAD;                                /* one single loadable segment */
-}
-SECTIONS
-{
-    . = 0xffffffffffe00000;
-    bootboot    = .; . += 4096;
-    environment = .; . += 4096;
-    .text : {
-        KEEP(*(.text.boot)) *(.text .text.*)   /* code */
-        *(.rodata .rodata.*)                   /* data */
-        *(.data .data.*)
-    } :boot
-    .bss (NOLOAD) : {                          /* bss */
-        . = ALIGN(16);
-        *(.bss .bss.*)
-        *(COMMON)
-    } :boot
+{$define FPS_IS_SYSTEM}
 
-    /DISCARD/ : { *(.eh_frame) *(.comment) }
-}
+Interface
+
+{ Make FPC 3.2.0 happy by defining dummy types }
+
+Const
+    FPC_EXCEPTION = 0;
+
+Type
+    Cardinal = 0..$FFFFFFFF;
+    Int8 = ShortInt;
+    Int16 = SmallInt;
+    Int32 = LongInt;
+    UInt8 = Byte;
+    UInt16 = Word;
+    UInt32 = Cardinal;
+    Uint64 = QWord;
+    DWord = UInt32;
+    PDWord = ^DWord;
+    HRESULT = QWord;
+    TTypeKind = QWord;
+    Integer = Int32;
+    PChar = ^Char;
+    PByte = ^Byte;
+
+    TExceptAddr = Record
+    End;
+
+    jmp_buf = Record
+    End;
+
+    PGuid = ^TGuid;
+    TGuid = Record
+        Data1 : DWord;
+        Data2 : Word;
+        Data3 : Word;
+        Data4 : Array[0..7] of Byte;
+    End;
+
+    Ppsf = ^Tpsf;
+    Tpsf = Packed Record
+        magic : UInt32;
+        version : UInt32;
+        headersize : UInt32;
+        flags : UInt32;
+        numglyph : UInt32;
+        bytesperglyph : UInt32;
+        height : UInt32;
+        width : UInt32;
+    End;
+
+{$I bootboot.inc}
+
+Implementation
+End.

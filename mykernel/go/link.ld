@@ -1,5 +1,5 @@
 /*
- * mykernel-pas/link.ld
+ * mykernel/go/link.ld
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *
@@ -28,6 +28,10 @@
  *
  */
 
+/* you thought it's going to be called "go.kernel.init"? Think it again! */
+ENTRY(go.kernel.go.kernel..init0)
+
+/* you can't access these labels from Go, so make sure the constants match */
 mmio  = 0xfffffffff8000000;                    /* these are configurable for level 2 loaders */
 fb    = 0xfffffffffc000000;
 PHDRS

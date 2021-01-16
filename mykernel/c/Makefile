@@ -1,5 +1,5 @@
 #
-# mykernel/Makefile
+# mykernel/c/Makefile
 #
 # Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
 #
@@ -28,7 +28,7 @@
 #
 #
 
-CFLAGS = -Wall -fpic -ffreestanding -fno-stack-protector -nostdinc -nostdlib -I../dist/
+CFLAGS = -Wall -fpic -ffreestanding -fno-stack-protector -nostdinc -nostdlib -I../../dist/
 
 all: mykernel.x86_64.elf mykernel.aarch64.elf
 

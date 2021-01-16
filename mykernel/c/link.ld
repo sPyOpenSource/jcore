@@ -1,5 +1,5 @@
 /*
- * mykernel/link.ld
+ * mykernel/c/link.ld
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *

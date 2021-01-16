@@ -1,5 +1,5 @@
 {*
- * mykernel-pas/kernel.pas
+ * mykernel/pas/kernel.pas
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *

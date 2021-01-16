@@ -1,5 +1,5 @@
 {*
- * mykernel-pas/bootboot.inc
+ * mykernel/pas/bootboot.inc
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *

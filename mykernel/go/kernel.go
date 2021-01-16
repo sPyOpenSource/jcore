@@ -1,5 +1,5 @@
 /*
- * mykernel-go/kernel.go
+ * mykernel/go/kernel.go
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *

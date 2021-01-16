@@ -1,5 +1,5 @@
 /*
- * mykernel-go/go_rt0.s
+ * mykernel/go/go_rt0.s
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *

@@ -1,5 +1,5 @@
 /*
- * mykernel/kernel.c
+ * mykernel/c/kernel.c
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *
