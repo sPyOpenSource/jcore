@@ -49,4 +49,4 @@ mykernel.aarch64.elf: kernel.cpp
 	aarch64-elf-readelf -hls mykernel.aarch64.elf >mykernel.aarch64.txt
 
 clean:
-	rm *.o *.elf *.txt
+	rm *.o *.elf *.txt || true
