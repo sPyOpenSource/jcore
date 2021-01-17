@@ -12,6 +12,6 @@ után egy ilyen képernyőt kell látnod:
 Fordítás
 --------
 
-Az adott nyelv mappájában csak futtasd a `make` parancsot. Kelleni fog a `gcc`, `fpc` (FreePascal Compiler),
-`cargo` + `rust`, és a `gccgo` (GNU go-lang fordító, NEM a hivatalos go-lang fordító!).
+Az adott nyelv mappájában csak futtasd a `make` parancsot. Kelleni fog a `gcc`, `g++`, `gnat` (GNU Ada),
+`fpc` (FreePascal Compiler), `cargo` + `rust`, és a `gccgo` (GNU go-lang fordító, NEM a hivatalos go-lang fordító!).
 

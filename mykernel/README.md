@@ -12,5 +12,5 @@ should output a screen like this after a successful boot:
 Compilation
 -----------
 
-In the language's directory, just run `make`. You'll need `gcc`, `fpc` (FreePascal Compiler),
-`cargo` + `rust`, and `gccgo` (GNU go-lang compiler, NOT the official go-lang compiler!).
+In the language's directory, just run `make`. You'll need `gcc`, `g++`, `gnat` (GNU Ada), `fpc` (FreePascal
+Compiler), `cargo` + `rust`, and `gccgo` (GNU go-lang compiler, NOT the official go-lang compiler!).
