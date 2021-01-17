@@ -14,7 +14,7 @@ I provide pre-compiled images ready for use.
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3, 4
     [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (34k)
 
-4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/binaries/mykernel) (source available in [C](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/c), [Pascal](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/pas), [Rust](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/rust) and [Go](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/go)) which draws lines and boxes
+4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/binaries/mykernel) (source available in [C](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/c), [C++](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/cpp), [Pascal](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/pas), [Rust](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/rust) and [Go](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/go)) which draws lines and boxes
 
 5. *mkbootimg* an all-in-one multiplatform [bootable disk image creator](https://gitlab.com/bztsrc/bootboot/tree/binaries/) (Windows, MacOSX, Linux).
 

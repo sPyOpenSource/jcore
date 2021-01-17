@@ -14,7 +14,7 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 3. *aarch64-rpi* ARMv8 betöltő Raspberry Pi 3-hoz, 4-hez
     [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (34k)
 
-4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/binaries/mykernel) (forrás elérhető [C](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/c)-ben, [Pascal](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/pas)-ban, [Rust](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/rust)-ban és [Go](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/go)-ban), ami vonalakat húz meg színes dobozokat rajzol
+4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/binaries/mykernel) (forrás elérhető [C](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/c)-ben, [C++](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/cpp)-ban, [Pascal](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/pas)-ban, [Rust](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/rust)-ban és [Go](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/go)-ban), ami vonalakat húz meg színes dobozokat rajzol
 
 5. *mkbootimg* minden az egyben, multiplatform [bootolható lemezkép készítő](https://gitlab.com/bztsrc/bootboot/tree/binaries) (Windows, MacOSX, Linux).
 
