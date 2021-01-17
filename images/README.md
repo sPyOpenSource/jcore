@@ -22,6 +22,7 @@ modify mkbootimg.json and add more elements to the `partitions` array.
 Compilation
 -----------
 
+First, move this `images` directory to your local master branch of the repository.
 See mkbootimg.json. Look at the beginning of the Makefile too, you'll find configurable variables there.
 
 - PLATFORM: either "x86" or "rpi", this selects which disk image to create

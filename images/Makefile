@@ -14,9 +14,9 @@ all: ../mkbootimg/mkbootimg initdir disk
 initdir:
 	@mkdir initrd initrd/sys 2>/dev/null | true
 ifeq ($(PLATFORM),x86)
-	cp ../mykernel/mykernel.x86_64.elf initrd/sys/core
+	cp ../mykernel/c/mykernel.x86_64.elf initrd/sys/core
 else
-	cp ../mykernel/mykernel.aarch64.elf initrd/sys/core
+	cp ../mykernel/c/mykernel.aarch64.elf initrd/sys/core
 endif
 
 # create hybrid disk / cdrom image or ROM image

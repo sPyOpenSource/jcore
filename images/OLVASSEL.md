@@ -22,6 +22,7 @@ megfelelően, vagy csak módosítsd az mkbootimg.json fájlt és adj hozzá reko
 Fordítás
 --------
 
+Először is mozgasd át ezt az egész `images` mappát a helyi repód master ága alá.
 Lásd mkbootimg.json. Nézz bele a Makefile-ba is, az elején fogsz látni konfigurálható változókat.
 
 - PLATFORM: vagy "x86" vagy "rpi", ez választja ki, melyik lemezképet generálja
