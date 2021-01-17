@@ -1,3 +1,34 @@
+/*
+ * mykernel/rust/src/main.rs
+ *
+ * Copyright (C) 2017 - 2021 Vinay Chandra
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ *
+ * This file is part of the BOOTBOOT Protocol package.
+ * @brief A sample BOOTBOOT compatible kernel
+ *
+ */
+
+// configure Rust compiler
 #![no_std]
 #![no_main]
 
@@ -12,16 +43,16 @@ mod bootboot;
 // Required for -Z build-std flag.
 extern crate rlibc;
 
-/// Entry point for the Operating System.
+/******************************************
+ * Entry point, called by BOOTBOOT Loader *
+ ******************************************/
 #[no_mangle] // don't mangle the name of this function
 fn _start() -> ! {
-    // int x, y, s=bootboot.fb_scanline, w=bootboot.fb_width, h=bootboot.fb_height;
-    // for(y=0;y<h;y++) { *((uint32_t*)(&fb + s*y + (w*2)))=0x00FFFFFF; }
-
+    /*** NOTE: this code runs on all cores in parallel ***/
     unsafe {
         let fb = &bootboot::fb as *const u8 as u64;
 
-        // Cross hair
+        // cross-hair to see screen dimension detected correctly
         for y in 0..bootboot::bootboot.fb_height {
             let addr = fb
                 + bootboot::bootboot.fb_scanline as u64 * y as u64
@@ -34,7 +65,7 @@ fn _start() -> ! {
             *(addr as *mut u64) = 0x00FFFFFF;
         }
 
-        // RGB boxes in order
+        // red, green, blue boxes in order
         for y in 0..20 {
             for x in 0..20 {
                 let addr = fb
@@ -61,18 +92,16 @@ fn _start() -> ! {
         }
     }
 
+    // say hello
     puts("Hello from a simple BOOTBOOT kernel");
 
+    // hang for now
     loop {}
 }
 
-/// This function is called on panic.
-#[cfg(not(test))]
-#[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
-    loop {}
-}
-
+/**************************
+ * Display text on screen *
+ **************************/
 fn puts(string: &'static str) {
     use bootboot::*;
     unsafe {
@@ -112,4 +141,13 @@ fn puts(string: &'static str) {
             kx += 1;
         }
     }
+}
+
+/*************************************
+ * This function is called on panic. *
+ *************************************/
+#[cfg(not(test))]
+#[panic_handler]
+fn panic(_info: &PanicInfo) -> ! {
+    loop {}
 }

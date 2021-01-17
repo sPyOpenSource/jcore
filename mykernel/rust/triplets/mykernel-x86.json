@@ -23,6 +23,6 @@
   "position-independent-executables": false,
   "has-elf-tls": true,
   "pre-link-args": {
-    "ld.lld": ["--script=./triplets/mykernel.ld", "./font.o"]
+    "ld.lld": ["--script=./link.ld", "./font.o"]
   }
 }
