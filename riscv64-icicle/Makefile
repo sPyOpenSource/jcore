@@ -1,4 +1,4 @@
-TARGET=../dist/bootbootcb.rv64
+TARGET=../dist/bootboot.rv64
 
 all: $(TARGET)
 
