@@ -50,9 +50,9 @@ mykernel.aarch64.elf: kernel.c
 
 mykernel.riscv64.elf: kernel.c
 	riscv64-elf-gcc $(CFLAGS) -c kernel.c -o kernel.o
-	@# fuck you GNU ld, not possible to set correct elf header flags
+	@# buggy GNU ld, not possible to set correct elf header flags, so we use a dd hack
 	riscv64-elf-ld -r -b binary -o font.o font.psf
-	@echo -ne '\005' | dd conv=notrunc of=font.o bs=1 seek=48 1>/dev/null 2>/dev/null
+	@printf '\005' | dd conv=notrunc of=font.o bs=1 seek=48 1>/dev/null 2>/dev/null
 	riscv64-elf-ld $(LDFLAGS) kernel.o font.o -o mykernel.riscv64.elf
 	riscv64-elf-strip $(STRIPFLAGS) mykernel.riscv64.elf
 	riscv64-elf-readelf -hls mykernel.riscv64.elf >mykernel.riscv64.txt
