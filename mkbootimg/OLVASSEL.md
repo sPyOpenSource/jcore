@@ -97,7 +97,7 @@ Példa:
 | directory  | tömb     | többarchitektúrás lemezképekhez                                                     |
 
 A `file` és a `directory` kölcsönösen kizárja egymást. Mindkettő lehet sztring (ha csak egy architektúrához generálunk),
-vagy tömb (egy elem minden architektúrához). Jelenleg kettő támogatott, azaz minden tömb maximum két elemű lehet.
+vagy tömb (egy elem minden architektúrához). Jelenleg három támogatott, azaz minden tömb maximum három elemű lehet.
 Hogy melyik architektúrát jelenti, azt az dönti el, hogy a mabbában vagy lemezképben milyen architektúrájú kernel található.
 A `type` típus csak `directory` esetén kötelező megadni.
 
@@ -105,8 +105,8 @@ Példák:
 ```
     "initrd": { "file": "initrd.bin" },
     "initrd": { "type": "tar", "gzip": 0, "directory": "boot" },
-    "initrd": { "gzip": true, "file": [ "initrd-x86.bin", "initrd-arm.bin" ] },
-    "initrd": { "type": "cpio", "gzip": true, "directory": [ "boot/arm", "boot/x86" ] },
+    "initrd": { "gzip": true, "file": [ "initrd-x86.bin", "initrd-arm.bin", "initrd-rv64.bin" ] },
+    "initrd": { "type": "cpio", "gzip": true, "directory": [ "boot/arm", "boot/x86", "boot/riscv64" ] },
 ```
 
 ### Partíciók

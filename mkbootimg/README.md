@@ -96,16 +96,16 @@ Example:
 | directory  | array    | for multiarch images                                                                |
 
 The fields `file` and `directory` are mutually exclusive. They can be both strings (if there's only one architecture),
-or arrays (one array element for each architecture). Currently two architecture supported, which means there can be
-two strings in the arrays. Which architecture is used depends on the kernel's architecture in that folder or image
+or arrays (one array element for each architecture). Currently three architecture supported, which means there can be
+three strings in the arrays. Which architecture is used depends on the kernel's architecture in that folder or image
 file. Type is only mandatory for `directory`.
 
 Examples:
 ```
     "initrd": { "file": "initrd.bin" },
     "initrd": { "type": "tar", "gzip": 0, "directory": "boot" },
-    "initrd": { "gzip": true, "file": [ "initrd-x86.bin", "initrd-arm.bin" ] },
-    "initrd": { "type": "cpio", "gzip": true, "directory": [ "boot/arm", "boot/x86" ] },
+    "initrd": { "gzip": true, "file": [ "initrd-x86.bin", "initrd-arm.bin", "initrd-rv64.bin" ] },
+    "initrd": { "type": "cpio", "gzip": true, "directory": [ "boot/arm", "boot/x86", "boot/riscv64" ] },
 ```
 
 ### Partitions

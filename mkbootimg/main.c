@@ -218,10 +218,11 @@ void parsekernel(int idx, unsigned char *data, int v)
     if((!memcmp(ehdr->e_ident,ELFMAG,SELFMAG)||!memcmp(ehdr->e_ident,"OS/Z",4)) &&
         ehdr->e_ident[EI_CLASS]==ELFCLASS64 && ehdr->e_ident[EI_DATA]==ELFDATA2LSB) {
         if(v) printf("ELF64\r\nArchitecture: %s\r\n", ehdr->e_machine==EM_AARCH64 ? "AArch64" : (ehdr->e_machine==EM_X86_64 ?
-            "x86_64" : "invalid"));
+            "x86_64" : (ehdr->e_machine==EM_RISCV ? "riscv64" : "invalid")));
         if(ehdr->e_machine == EM_AARCH64) { ma = 2*1024*1024-1; fa = 4095; initrd_arch[idx] = 1; } else
         if(ehdr->e_machine == EM_X86_64)  { ma = 4095; fa = 2*1024*1024-1; initrd_arch[idx] = 2; } else
-        { fprintf(stderr,"mkbootimg: %s. %s: e_machine 62, 183.\r\n",lang[ERR_BADARCH],lang[ERR_ACCEPTVALUES]); exit(1); }
+        if(ehdr->e_machine == EM_RISCV)   { ma = 4095; fa = 2*1024*1024-1; initrd_arch[idx] = 3; } else
+        { fprintf(stderr,"mkbootimg: %s. %s: e_machine 62, 183, 243.\r\n",lang[ERR_BADARCH],lang[ERR_ACCEPTVALUES]); exit(1); }
         phdr=(Elf64_Phdr *)((uint8_t *)ehdr+ehdr->e_phoff);
         for(i=0;i<ehdr->e_phnum;i++){
             if(phdr->p_type==PT_LOAD) {
@@ -264,10 +265,12 @@ void parsekernel(int idx, unsigned char *data, int v)
     if(((mz_hdr*)(data))->magic==MZ_MAGIC && ((mz_hdr*)(data))->peaddr<65536 && pehdr->magic == PE_MAGIC &&
         pehdr->file_type == PE_OPT_MAGIC_PE32PLUS) {
         if(v) printf("PE32+\r\nArchitecture: %s\r\n", pehdr->machine == IMAGE_FILE_MACHINE_ARM64 ? "AArch64" : (
-            pehdr->machine == IMAGE_FILE_MACHINE_AMD64 ? "x86_64" : "invalid"));
+            pehdr->machine == IMAGE_FILE_MACHINE_AMD64 ? "x86_64" : (
+            pehdr->machine == IMAGE_FILE_MACHINE_AMD64 ? "riscv64" : "invalid")));
         if(pehdr->machine == IMAGE_FILE_MACHINE_ARM64) { ma = 2*1024*1024-1; fa = 4095; initrd_arch[idx] = 1; } else
         if(pehdr->machine == IMAGE_FILE_MACHINE_AMD64) { ma = 4095; fa = 2*1024*1024-1; initrd_arch[idx] = 2; } else
-        { fprintf(stderr,"mkbootimg: %s. %s: pe_hdr.machine 0x8664, 0xAA64\r\n",lang[ERR_BADARCH],lang[ERR_ACCEPTVALUES]); exit(1); }
+        if(pehdr->machine == IMAGE_FILE_MACHINE_RISCV64){ma = 4095; fa = 2*1024*1024-1; initrd_arch[idx] = 3; } else
+        { fprintf(stderr,"mkbootimg: %s. %s: pe_hdr.machine 0x8664, 0xAA64, 0x5064\r\n",lang[ERR_BADARCH],lang[ERR_ACCEPTVALUES]); exit(1); }
         core_size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
         bss = pehdr->bss_size;
         core_addr = (int64_t)pehdr->code_base;

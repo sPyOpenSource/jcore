@@ -37,7 +37,7 @@
 #include "lang.h"
 #include "zlib.h"
 
-#define NUMARCH 2
+#define NUMARCH 3
 #define MAXPATH 1024
 
 #ifndef S_ISLNK
@@ -54,6 +54,7 @@
 #define PT_LOAD     1       /* Loadable program segment */
 #define EM_X86_64   62      /* AMD x86-64 architecture */
 #define EM_AARCH64  183     /* ARM aarch64 architecture */
+#define EM_RISCV    243     /* RISC-V */
 
 typedef struct
 {
@@ -114,6 +115,7 @@ typedef struct
 #define PE_MAGIC                    0x00004550  /* "PE\0\0" */
 #define IMAGE_FILE_MACHINE_AMD64    0x8664      /* AMD x86_64 architecture */
 #define IMAGE_FILE_MACHINE_ARM64    0xaa64      /* ARM aarch64 architecture */
+#define IMAGE_FILE_MACHINE_RISCV64  0x5064      /* RISC-V riscv64 architecture */
 #define PE_OPT_MAGIC_PE32PLUS       0x020b      /* PE32+ format */
 typedef struct
 {

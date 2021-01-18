@@ -30,7 +30,7 @@
 #include "main.h"
 #include "data.h"
 
-char *initrdnames[NUMARCH+1] = { "INITRD", "AARCH64", "X86_64" };
+char *initrdnames[NUMARCH+1] = { "INITRD", "AARCH64", "X86_64", "RISCV64" };
 int nextcluster = 3, lastcluster = 0, bpc, esp_size, esp_bbs = 0;
 unsigned char *esp, *data;
 uint16_t *fat16_1 = NULL, *fat16_2;
@@ -182,7 +182,8 @@ void esp_makepart()
         /* additional platform */
     }
     if(boot & (1 << 2)) {
-        /* additional platform */
+        /* Risc-V 64 */
+        ptr = esp_addfile(rootdir, "KERNEL.IMG", binary_bootboot_rv64, sizeof(binary_bootboot_rv64));
     }
     if(boot & (1 << 1)) {
         /* x86 PC (UEFI) */
