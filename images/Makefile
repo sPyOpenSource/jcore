@@ -1,6 +1,7 @@
-# platform, either x86 or rpi
+# platform, either x86, rpi or icicle
 PLATFORM=x86
 #PLATFORM=rpi
+#PLATFORM=icicle
 # the path to OVMF.fd (for testing with EFI)
 OVMF=/usr/share/qemu/bios-TianoCoreEFI.bin
 
@@ -16,7 +17,11 @@ initdir:
 ifeq ($(PLATFORM),x86)
 	cp ../mykernel/c/mykernel.x86_64.elf initrd/sys/core
 else
+ifeq ($(PLATFORM),rpi)
 	cp ../mykernel/c/mykernel.aarch64.elf initrd/sys/core
+else
+	cp ../mykernel/c/mykernel.riscv64.elf initrd/sys/core
+endif
 endif
 
 # create hybrid disk / cdrom image or ROM image
@@ -67,6 +72,9 @@ linux:
 
 sdcard:
 	qemu-system-aarch64 -M raspi3 -kernel ../dist/bootboot.img -drive file=disk-rpi.img,if=sd,format=raw -serial stdio
+
+riscv:
+	qemu-system-riscv64 -M microchip-icicle-kit -kernel ../dist/bootboot.rv64 -drive file=disk-icicle.img,if=sd,format=raw -serial stdio
 
 coreboot:
 ifeq ($(PLATFORM),x86)
