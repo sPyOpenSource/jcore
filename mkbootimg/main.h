@@ -185,7 +185,7 @@ extern time_t t;
 extern struct tm *ts;
 extern guid_t diskguid;
 extern char *json, *config, *kernelname, *initrd_dir[NUMARCH], initrd_arch[NUMARCH];
-extern int fs_len, initrd_size[NUMARCH], initrd_gzip, boot_size, boot_fat, disk_size, esp_size, esp_bbs;
+extern int fs_len, initrd_size[NUMARCH], initrd_gzip, boot_size, boot_fat, disk_size, esp_size, esp_bbs, bbp_start, bbp_end;
 extern int iso9660, skipbytes, np;
 extern unsigned char *esp, *gpt, gpt2[512], *fs_base, *initrd_buf[NUMARCH];
 extern unsigned long int tsize, es, esiz, disk_align, gpt_parts[248];

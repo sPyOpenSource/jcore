@@ -163,14 +163,17 @@ void esp_makepart()
     for(i = 0; i < NUMARCH && initrd_arch[i]; i++)
         boot |= (1 << (initrd_arch[i] - 1));
 
+    /* add loader's directory */
     ptr = esp_mkdir(rootdir, "BOOTBOOT", 0); rootdir += 32;
     if(boot & (1 << 1)) {
-        /* x86 PC (BIOS) */
+        /*** x86 PC (BIOS) ***/
+        /* start address has to be saved in PMBR too */
         esp_bbs = ((data + nextcluster * bpc)-esp) / 512;
         memcpy(esp + 0x1B0, &esp_bbs, 4);
         ptr = esp_addfile(ptr, "LOADER", binary_bootboot_bin, sizeof(binary_bootboot_bin));
     }
     ptr = esp_addfile(ptr, "CONFIG", (unsigned char*)config, strlen(config));
+    /* add INITRDs */
     if(!initrd_arch[1]) {
         ptr = esp_addfile(ptr, initrdnames[0], initrd_buf[0], initrd_size[0]);
     } else {
@@ -178,21 +181,33 @@ void esp_makepart()
             ptr = esp_addfile(ptr, initrdnames[(int)initrd_arch[i]], initrd_buf[i], initrd_size[i]);
         }
     }
+    if(boot & (1 << 6)) {
+        /* additional platform */
+    }
+    if(boot & (1 << 5)) {
+        /* additional platform */
+    }
+    if(boot & (1 << 4)) {
+        /* additional platform */
+    }
     if(boot & (1 << 3)) {
         /* additional platform */
     }
     if(boot & (1 << 2)) {
-        /* Risc-V 64 */
-        ptr = esp_addfile(rootdir, "KERNEL.IMG", binary_bootboot_rv64, sizeof(binary_bootboot_rv64));
+        /*** Risc-V 64 Microchip Icicle ***/
+        /* start and end address has to be added to the GPT too in a special partition */
+        bbp_start = ((data + nextcluster * bpc)-esp) / 512;
+        rootdir = esp_addfile(rootdir, "PAYLOAD.BIN", binary_bootboot_rv64, sizeof(binary_bootboot_rv64));
+        bbp_end = (((data + nextcluster * bpc)-esp) / 512) - 1;
     }
     if(boot & (1 << 1)) {
-        /* x86 PC (UEFI) */
+        /*** x86 PC (UEFI) ***/
         ptr = esp_mkdir(rootdir, "EFI", 0); rootdir += 32;
         ptr = esp_mkdir(ptr, "BOOT", lastcluster);
         ptr = esp_addfile(ptr, "BOOTX64.EFI", binary_bootboot_efi, sizeof(binary_bootboot_efi));
     }
     if(boot & (1 << 0)) {
-        /* Raspberry Pi */
+        /*** Raspberry Pi ***/
         ptr = esp_addfile(rootdir, "KERNEL8.IMG", binary_bootboot_img, sizeof(binary_bootboot_img));
         ptr = esp_addfile(ptr, "BOOTCODE.BIN", binary_bootcode_bin, sizeof(binary_bootcode_bin));
         ptr = esp_addfile(ptr, "FIXUP.DAT", binary_fixup_dat, sizeof(binary_fixup_dat));

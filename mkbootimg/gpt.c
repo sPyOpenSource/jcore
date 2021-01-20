@@ -30,9 +30,10 @@
 #include "main.h"
 
 guid_t efiguid = { 0xC12A7328, 0xF81F, 0x11D2, { 0xBA,0x4B,0x00,0xA0,0xC9,0x3E,0xC9,0x3B} };
+guid_t bbpguid = { 0x21686148, 0x6449, 0x6E6F, { 0x74,0x4E,0x65,0x65,0x64,0x45,0x46,0x49} };
 unsigned char *gpt = NULL, gpt2[512];
 unsigned long int gpt_parts[248];
-int np = 0;
+int np = 0, bbp_start = 0, bbp_end = 0;
 
 /**
  * Set integers in byte arrays
@@ -61,6 +62,7 @@ void gpt_maketable()
     total = (2*es + esiz) * 512;
     memset(gpt_parts, 0, sizeof(gpt_parts));
     for(np = 1; np < 248; np++) {
+        /* get type, either fsname or GUID */
         sprintf(key, "partitions.%d.%s", np, "type");
         tmp = json_get(json, key);
         if(!tmp || !*tmp) break;
@@ -68,11 +70,11 @@ void gpt_maketable()
         for(i = 0; fsdrv[i].name; i++)
             if(fsdrv[i].type.Data1 && !strcmp(tmp, fsdrv[i].name)) { memcpy(&typeguid, &fsdrv[i].type, sizeof(guid_t)); break; }
         free(tmp);
-        if(!typeguid.Data1 && !typeguid.Data2 && !typeguid.Data3 && !typeguid.Data4[0]) {
-            sprintf(key, "partitions.%d.%s", np, "typeguid");
-            tmp = json_get(json, key);
-            if(tmp && *tmp) { getguid(tmp, &typeguid); free(tmp); }
-        }
+        /* override with specific GUID if type was an fsname */
+        sprintf(key, "partitions.%d.%s", np, "typeguid");
+        tmp = json_get(json, key);
+        if(tmp && *tmp) { getguid(tmp, &typeguid); free(tmp); }
+        /* if there's still no type GUID */
         if(!typeguid.Data1 && !typeguid.Data2 && !typeguid.Data3 && !typeguid.Data4[0]) {
             fprintf(stderr,"mkbootimg: partition #%d %s. %s:\r\n", np+1, lang[ERR_TYPE], lang[ERR_ACCEPTVALUES]);
             for(i = 0; fsdrv[i].name; i++)
@@ -85,10 +87,12 @@ void gpt_maketable()
             fprintf(stderr,"  ...%s \"%%08X-%%04X-%%04X-%%04X-%%12X\"\r\n",lang[ERR_GUIDFMT]);
             exit(1);
         }
+        /* partition's name */
         sprintf(key, "partitions.%d.%s", np, "name");
         tmp = json_get(json, key);
         if(!tmp || !*tmp) { fprintf(stderr,"mkbootimg: partition #%d %s\r\n", np+1, lang[ERR_NONAME]); exit(1); }
         free(tmp);
+        /* size and/or image file's size */
         sprintf(key, "partitions.%d.%s", np, "size");
         tmp = json_get(json, key); if(tmp) { size = atoi(tmp) * 1024UL * 1024UL; } else { size = 0; } free(tmp);
         sprintf(key, "partitions.%d.%s", np, "file");
@@ -173,6 +177,20 @@ void gpt_maketable()
     for(i = 0; name[i]; i++) p[56+i*2] = name[i];
     p += 128;
 
+    /* BIOS BOOT Partition (needed for Risc-V64 Icicle firmware, not mounted, binary blob) */
+    if(bbp_start && bbp_end && bbp_start <= bbp_end) {
+        /* it would have been more fortunate if Microchip had choosen its own Microchip boot partition type guid */
+        memcpy(p, &bbpguid, sizeof(guid_t));        /* entry type */
+        diskguid.Data1++;
+        memcpy(p+16, &diskguid, sizeof(guid_t));    /* partition UUID */
+        setint(bbp_start,p+32);                     /* start LBA */
+        setint(bbp_end,p+40);                       /* end LBA */
+        name = "BOOTBOOT RISC-V";                   /* name */
+        for(i = 0; name[i]; i++) p[56+i*2] = name[i];
+        p += 128;
+    }
+
+    /* add user defined partitions */
     for(k = 1; k < np; k++) {
         sprintf(key, "partitions.%d.%s", k, "type");
         tmp = json_get(json, key);
@@ -181,15 +199,15 @@ void gpt_maketable()
         for(i = 0; fsdrv[i].name; i++)
             if(fsdrv[i].type.Data1 && !strcmp(tmp, fsdrv[i].name)) { memcpy(&typeguid, &fsdrv[i].type, sizeof(guid_t)); break; }
         free(tmp);
-        memcpy(p, &typeguid, sizeof(guid_t));        /* entry type */
+        memcpy(p, &typeguid, sizeof(guid_t));       /* entry type */
         diskguid.Data1++;
-        memcpy(p+16, &diskguid, sizeof(guid_t));     /* partition UUID */
-        setint(l+1,p+32);                            /* start LBA */
+        memcpy(p+16, &diskguid, sizeof(guid_t));    /* partition UUID */
+        setint(l+1,p+32);                           /* start LBA */
         l += gpt_parts[k] / 512;
-        setint(l,p+40);                              /* end LBA */
+        setint(l,p+40);                             /* end LBA */
         sprintf(key, "partitions.%d.%s", k, "name"); tmp = name = json_get(json, key);
         u = (uint16_t*)(p+56);
-        for(i = 0; i < 35 && *name; name++, i++) {   /* name, utf8 to unicode16 */
+        for(i = 0; i < 35 && *name; name++, i++) {  /* name, utf8 to unicode16 */
             u[i] = *name;
             if((*name & 128) != 0) {
                 if(!(*name & 32)) { u[i] = ((*name & 0x1F)<<6)|(name[1] & 0x3F); name += 1; } else

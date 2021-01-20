@@ -434,7 +434,7 @@ int main(int argc, char **argv)
                 "  ./mkbootimg <%s> <%s>\r\n\r\n",lang[HELP3],lang[HELP4],
                 lang[HELP4],lang[HELP4],lang[HELP5]);
         printf( "%s:\n"
-                "  ./mkbootimg check mykernel/mykernel.x86_64.elf\r\n"
+                "  ./mkbootimg check mykernel/c/mykernel.x86_64.elf\r\n"
                 "  ./mkbootimg myos.json initrd.rom\r\n"
                 "  ./mkbootimg myos.json bootpart.bin\r\n"
                 "  ./mkbootimg myos.json myos.img\r\n",
