@@ -1766,7 +1766,7 @@ viderr:
     MapPage(env_addr,(uint64_t)((uint8_t*)&__environment)|0b11|(3<<8)|(1<<10)|(1L<<54));
     // stack at the top of the memory (1k each)
     for(r=0;r<16;r++)
-        paging[36*512+496]=(uint64_t)((uint8_t*)&__corestack+(uint64_t)r*PAGESIZE)|0b11|(3<<8)|(1<<10)|(1L<<54);
+        paging[36*512+496+r]=(uint64_t)((uint8_t*)&__corestack+(uint64_t)r*PAGESIZE)|0b11|(3<<8)|(1<<10)|(1L<<54);
 
 #if MEM_DEBUG
     /* dump page translation tables */
