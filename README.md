@@ -12,7 +12,7 @@ I provide pre-compiled images ready for use.
     [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.bin) (11k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3, 4
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (34k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (35k)
 
 4. *mykernel* an example BOOTBOOT [compatible kernel](https://gitlab.com/bztsrc/bootboot/tree/binaries/mykernel) (source available in [C](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/c), [C++](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/cpp), [Pascal](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/pas), [Ada](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/ada), [Rust](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/rust) and [Go](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/go)) which draws lines and boxes
 
@@ -188,7 +188,8 @@ segment is after the text segment, growing upwards, and it's zerod-out by the lo
 Co-processor enabled, and if Symmetric Multi Processing supported, all cores are running the same kernel code at once.
 
 The stack is at the top of the memory, starting at zero and growing downwards. Each core has it's own 1k stack on SMP systems
-(core 0's stack starts at 0, core 1's at -1024 etc.).
+(core 0's stack starts at 0, core 1's at -1024 etc.). Level 2 loaders can set the size of the stack with the `initstack`
+symbol.
 
 Environment file
 ----------------

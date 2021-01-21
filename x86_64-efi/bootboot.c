@@ -374,7 +374,7 @@ UINT64 bb_addr = BOOTBOOT_INFO;
 UINT64 env_addr= BOOTBOOT_ENV;
 UINT64 core_addr=BOOTBOOT_CORE;
 
-UINT64 initstack=1024;
+UINT64 initstack = 1024;
 
 EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Volume;
 EFI_FILE_HANDLE                 RootDir;
@@ -1322,8 +1322,6 @@ LoadCore()
                             if(!CompareMem(strtable + s->st_name, "bootboot", 9)) bb_addr = s->st_value;
                             if(!CompareMem(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
                             if(!CompareMem(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
-                            /* this is non-standard, not in the BOOTBOOT spec. I've added this because
-                             * Chandra asked for it to allow bigger initial stacks for Rust */
                             if(!CompareMem(strtable + s->st_name, "initstack", 10)) initstack = s->st_value;
                         }
                 }
@@ -1347,8 +1345,6 @@ LoadCore()
                         if(!CompareMem(name, "bootboot", 9)) bb_addr = (INT64)s->value;
                         if(!CompareMem(name, "environment", 12)) env_addr = (INT64)s->value;
                         if(!CompareMem(name, "fb", 3)) fb_addr = (INT64)s->value;
-                        /* this is non-standard, not in the BOOTBOOT spec. I've added this because
-                         * Chandra asked for it to allow bigger initial stacks for Rust */
                         if(!CompareMem(name, "initstack", 10)) initstack = (INT64)s->value;
                         i += s->auxsyms;
                     }
@@ -1361,7 +1357,7 @@ LoadCore()
         if(core.size+bss > 16*1024*1024)
             return report(EFI_LOAD_ERROR,L"Kernel is too big");
         if(initstack < 1024) initstack = 1024;
-        if(initstack > 1024*1024) initstack = 1024*1024;
+        if(initstack > 16384) initstack = 16384;
         // create core segment
         core.ptr = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
@@ -1376,8 +1372,8 @@ LoadCore()
         DBG(L" * bootboot    @%lx\n", bb_addr);
         DBG(L" * environment @%lx\n", env_addr);
         DBG(L" * Entry point @%lx, text @%lx %d bytes\n",entrypoint, core.ptr, core.size);
-        if(initstack!=1024)
-            DBG(L" * Stack size  %ld bytes per core\n",initstack);
+        if(initstack != 1024)
+            DBG(L" * Stack size  %ld bytes per core\n", initstack);
         core.size = ((core.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
         return EFI_SUCCESS;
 

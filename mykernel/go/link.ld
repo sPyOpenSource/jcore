@@ -34,6 +34,7 @@ ENTRY(go.kernel.go.kernel..init0)
 /* you can't access these labels from Go, so make sure the constants match */
 mmio  = 0xfffffffff8000000;                    /* these are configurable for level 2 loaders */
 fb    = 0xfffffffffc000000;
+/* initstack = 1024; */
 PHDRS
 {
   boot PT_LOAD;                                /* one single loadable segment */

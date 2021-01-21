@@ -32,6 +32,7 @@ ENTRY(_ada_kernel)
 
 mmio  = 0xfffffffff8000000;                    /* these are configurable for level 2 loaders */
 fb    = 0xfffffffffc000000;
+/* initstack = 1024; */
 PHDRS
 {
   boot PT_LOAD;                                /* one single loadable segment */

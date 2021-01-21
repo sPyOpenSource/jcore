@@ -255,7 +255,7 @@ uint64_t bb_addr = BOOTBOOT_INFO;
 uint64_t env_addr= BOOTBOOT_ENV;
 uint64_t core_addr=BOOTBOOT_CORE;
 
-uint64_t entrypoint=0, lapic_addr=0;
+uint64_t entrypoint=0, lapic_addr=0, initstack = 1024;
 uint16_t lapic_ids[1024];
 
 /**
@@ -677,6 +677,7 @@ void LoadCore()
                                 if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
                                 if(!memcmp(strtable + s->st_name, "mmio", 5)) mm_addr = s->st_value;
                                 if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
+                                if(!memcmp(strtable + s->st_name, "initstack", 10)) initstack = s->st_value;
                             }
                     }
                 }
@@ -700,6 +701,7 @@ void LoadCore()
                         if(!memcmp(name, "environment", 12)) env_addr = (int64_t)s->value;
                         if(!memcmp(name, "mmio", 5)) mm_addr = (int64_t)s->value;
                         if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)s->value;
+                        if(!memcmp(name, "initstack", 10)) initstack = (int64_t)s->value;
                         i += s->auxsyms;
                     }
                 }
@@ -711,6 +713,8 @@ void LoadCore()
             panic("Kernel is not a valid executable");
     if(core.size+bss > 16*1024*1024)
         panic("Kernel is too big");
+    if(initstack < 1024) initstack = 1024;
+    if(initstack > 16384) initstack = 16384;
     // create core segment
     memcpy((void*)((uint8_t*)(uintptr_t)bootboot->initrd_ptr+bootboot->initrd_size), core.ptr, core.size);
     core.ptr=(uint8_t*)(uintptr_t)bootboot->initrd_ptr+bootboot->initrd_size;
@@ -721,6 +725,8 @@ void LoadCore()
     DBG(" * bootboot    @%llx\n", bb_addr);
     DBG(" * environment @%llx\n", env_addr);
     DBG(" * Entry point @%llx, text @%p %d bytes\n",entrypoint, core.ptr, core.size);
+    if(initstack != 1024)
+        DBG(" * Stack size  %d bytes per core\n", (int)initstack);
     core.size = (core.size+PAGESIZE-1)&~(PAGESIZE-1);
 }
 
@@ -1142,7 +1148,7 @@ gzerr:      panic("Unable to uncompress");
 
     /* Create paging tables */
     DBG(" * Pagetables PML4 @%p\n",paging);
-    memset(paging, 0, (37+(bootboot->numcores+3)/4)*PAGESIZE);
+    memset(paging, 0, 37*PAGESIZE+bootboot->numcores*initstack);
     //PML4
     paging[0]=(uint64_t)((uintptr_t)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
     paging[511]=(uint64_t)((uintptr_t)paging+20*PAGESIZE)+3;   // pointer to 4k PDPE (core mapped at -2M)
@@ -1172,8 +1178,11 @@ gzerr:      panic("Unable to uncompress");
     MapPage(bb_addr, (uint64_t)((uintptr_t)bootboot)+1);
     MapPage(env_addr, (uint64_t)((uintptr_t)environment)+1);
     // stack at the top of the memory
-    for(i=0; i<(bootboot->numcores+3)/4; i++)
+    for(i=0; i<((bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE); i++) {
+        if(paging[23*512+511-i])
+            panic("Stack smash");
         paging[23*512+511-i]=(uint64_t)((uintptr_t)paging+(37+i)*PAGESIZE+3);  // core stacks
+    }
 
     /* Get memory map */
     uint64_t srt, end, ldrend = (uintptr_t)paging + (37+(bootboot->numcores+3)/4)*PAGESIZE;

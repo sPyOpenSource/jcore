@@ -29,6 +29,7 @@
  */
 
 KERNEL_OFFSET = 0xfffffffff8000000;            /* these are configurable for level 2 loaders */
+initstack = 4096;
 
 PHDRS
 {

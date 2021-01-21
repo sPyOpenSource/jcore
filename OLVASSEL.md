@@ -12,7 +12,7 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
     [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/boot.bin) (512 bájt, egyszerre MBR, VBR és CDROM indító szektor), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.bin) (11k, a boot.bin tölti be, valamint BBS bővítő ROM és Multiboot kompatíbilis is)
 
 3. *aarch64-rpi* ARMv8 betöltő Raspberry Pi 3-hoz, 4-hez
-    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (34k)
+    [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (35k)
 
 4. *mykernel* egy példa BOOTBOOT [kompatíbilis kernel](https://gitlab.com/bztsrc/bootboot/tree/binaries/mykernel) (forrás elérhető [C](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/c)-ben, [C++](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/cpp)-ban, [Pascal](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/pas)-ban, [Adá](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/ada)-ban, [Rust](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/rust)-ban és [Go](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel/go)-ban), ami vonalakat húz meg színes dobozokat rajzol
 
@@ -190,7 +190,8 @@ A társprocesszor (lebegőpontos számtás) be van kapcsolva, és ha a Szimmetri
 minden CPU mag ugyanazt a kernel kódot hajtja végre egyszerre.
 
 A verem a memória tetején található, 0-tól kezdve és lefelé növekszik. Minden magnak saját 1k-s verme van SMP rendszereken
-(a 0-ás mag verme kezdődik 0-án, az 1-es magé -1024-nél stb.)
+(a 0-ás mag verme kezdődik 0-án, az 1-es magé -1024-nél stb). A kettes szintű betöltők az `initstack` szimbólummal állíthatják
+a verem méretét.
 
 Környezeti fájl
 ----------------

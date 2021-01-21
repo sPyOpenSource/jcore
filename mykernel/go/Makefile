@@ -30,7 +30,7 @@
 
 GOFLAGS = -Wall -fpic -fno-stack-protector -static -nostdinc -nostdlib -nostartfiles -nodefaultlibs
 LDFLAGS = -nostdlib -nostartfiles -T link.ld
-STRIPFLAGS = -s -K mmio -K fb -K bootboot -K environment
+STRIPFLAGS = -s -K mmio -K fb -K bootboot -K environment -K initstack
 
 all: mykernel.x86_64.elf mykernel.aarch64.elf
 

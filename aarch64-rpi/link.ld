@@ -20,7 +20,7 @@ SECTIONS
         __paging = .;
         . += (50*4096);
         __corestack = .;
-        . += 4096;
+        . += (16*4096);
         __bss_end = .;
     }
     _end = .;

@@ -50,7 +50,7 @@ volatile uint32_t  __attribute__((aligned(16))) mbox[36];
 volatile uint8_t __attribute__((aligned(PAGESIZE))) __bootboot[PAGESIZE];
 volatile uint8_t __attribute__((aligned(PAGESIZE))) __environment[PAGESIZE];
 volatile uint8_t __attribute__((aligned(PAGESIZE))) __paging[50*PAGESIZE];
-volatile uint8_t __attribute__((aligned(PAGESIZE))) __corestack[PAGESIZE];
+volatile uint8_t __attribute__((aligned(PAGESIZE))) __corestack[16*PAGESIZE];
 #define __diskbuf __paging
 extern volatile uint8_t _data;
 extern volatile uint8_t _end;
@@ -779,6 +779,8 @@ uint64_t fb_addr = BOOTBOOT_FB;
 uint64_t bb_addr = BOOTBOOT_INFO;
 uint64_t env_addr= BOOTBOOT_ENV;
 uint64_t core_addr=BOOTBOOT_CORE;
+
+uint64_t initstack = 1024;
 
 // default environment variables. M$ states that 1024x768 must be supported
 int reqwidth = 1024, reqheight = 768;
@@ -1569,7 +1571,8 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                                 if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
                                 if(!memcmp(strtable + s->st_name, "mmio", 5)) mm_addr = s->st_value;
                                 if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
-                            }
+                                if(!memcmp(strtable + s->st_name, "initstack", 10)) initstack = s->st_value;
+                    }
                     }
                 }
         } else
@@ -1592,6 +1595,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
                         if(!memcmp(name, "environment", 12)) env_addr = (int64_t)s->value;
                         if(!memcmp(name, "mmio", 5)) mm_addr = (int64_t)s->value;
                         if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)s->value;
+                        if(!memcmp(name, "initstack", 10)) initstack = (int64_t)s->value;
                         i += s->auxsyms;
                     }
                 }
@@ -1615,6 +1619,8 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
         puts("BOOTBOOT-PANIC: Kernel is too big");
         goto error;
     }
+    if(initstack < 1024) initstack = 1024;
+    if(initstack > 16384) initstack = 16384;
     // create core segment
     memcpy((void*)(bootboot->initrd_ptr+bootboot->initrd_size), core.ptr, core.size);
     core.ptr=(uint8_t*)(bootboot->initrd_ptr+bootboot->initrd_size);
@@ -1753,13 +1759,14 @@ viderr:
     // dynamically map these. Main struct, environment string and code segment
     for(r=0;r<(core.size/PAGESIZE);r++)
         MapPage(core_addr+r*PAGESIZE,(uint64_t)((uint8_t *)core.ptr+(uint64_t)r*PAGESIZE)|0b11|(3<<8)|(1<<10));
-    MapPage(bb_addr,(uint64_t)((uint8_t*)&__bootboot)|0b11|(3<<8)|(1<<10)|(1L<<54));  // p, b, AF, ISH
-    MapPage(env_addr,(uint64_t)((uint8_t*)&__environment)|0b11|(3<<8)|(1<<10)|(1L<<54));
-    // stack at the top of the memory
-    paging[36*512+511]=(uint64_t)((uint8_t*)&__corestack)|0b11|(3<<8)|(1<<10)|(1L<<54); // core stacks (1k each)
 #if MEM_DEBUG
     reg=r;
 #endif
+    MapPage(bb_addr,(uint64_t)((uint8_t*)&__bootboot)|0b11|(3<<8)|(1<<10)|(1L<<54));  // p, b, AF, ISH
+    MapPage(env_addr,(uint64_t)((uint8_t*)&__environment)|0b11|(3<<8)|(1<<10)|(1L<<54));
+    // stack at the top of the memory (1k each)
+    for(r=0;r<16;r++)
+        paging[36*512+496]=(uint64_t)((uint8_t*)&__corestack+(uint64_t)r*PAGESIZE)|0b11|(3<<8)|(1<<10)|(1L<<54);
 
 #if MEM_DEBUG
     /* dump page translation tables */
@@ -1819,6 +1826,10 @@ viderr:
     uart_putc('\n');
     uart_puts(" * Entry point ");
     uart_hex(entrypoint,8);
+    if(initstack != 1024) {
+        uart_puts(" * Stack Size ");
+        uart_hex(initstack,8);
+    }
     uart_putc('\n');
 #endif
     // release AP spinlock
@@ -1884,6 +1895,7 @@ void bootboot_startcore()
     // set stack and call _start() in sys/core
     asm volatile (  "mrs x2, mpidr_el1;"
                     "and x2, x2, #3;"
-                    "sub x2, xzr, x2, lsl #10;" // sp = core_num * -1024
-                    "mov sp, x2; mov x30, %0; ret" : : "r" (entrypoint));
+                    "mul x2, x2, %1;"
+                    "sub x2, xzr, x2;" // sp = core_num * -initstack
+                    "mov sp, x2; mov x30, %0; ret" : : "r" (entrypoint), "r" (initstack));
 }

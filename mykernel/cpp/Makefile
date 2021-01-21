@@ -30,7 +30,7 @@
 
 CPPFLAGS = -Wall -fpic -ffreestanding -fno-stack-protector -fno-exceptions -fno-rtti -nostdinc -nostdlib -I../../dist/
 LDFLAGS = -nostdlib -nostartfiles -T link.ld
-STRIPFLAGS = -s -K mmio -K fb -K bootboot -K environment
+STRIPFLAGS = -s -K mmio -K fb -K bootboot -K environment -K initstack
 
 all: mykernel.x86_64.elf mykernel.aarch64.elf
 

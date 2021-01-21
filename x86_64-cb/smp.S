@@ -32,6 +32,7 @@
 .globl bsp_init
 .globl bsp64_init
 .extern lapic_ids
+.extern initstack
 
     .text
 
@@ -173,10 +174,12 @@ bit64:
     addl    $lapic_ids, %ebx
     xorq    %rax, %rax
     movw    (%rbx), %ax         // ax = word[lapic_ids + lapic id * 2]
-1:  shlq    $10, %rax           // 1k stack for each core
+1:  movl    $initstack, %ebx
+    movl    (%rbx), %ebx
+    mulq    %rbx                // 1k stack for each core
 
     // set stack and call _start() in sys/core
-    xorq    %rsp, %rsp          // sp = core_num * -1024
+    xorq    %rsp, %rsp          // sp = core_num * -initstack
     subq    %rax, %rsp
     xorq    %rsi, %rsi
     movl    $entrypoint, %esi   // GAS does not allow "jmp qword[entrypoint]"
