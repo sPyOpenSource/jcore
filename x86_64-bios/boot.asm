@@ -210,7 +210,7 @@ printfunc:
 
 panic:      db          "BOOTBOOT-PANIC: ",0
 lbanotf:    db          "LBA support",0
-stage2notf: db          "FS0:\BOOTBOOT\LOADER",0
+stage2notf: db          "FS0:\BOOTBOOT.BIN",0
 found:      db          " not found",0
 cnt:        db          0
 drive:      db          0

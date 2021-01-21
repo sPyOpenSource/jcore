@@ -17,8 +17,8 @@ fut minden processzormagon.
 Telepítés
 ---------
 
-1. *BIOS lemez / cdrom*: másold be a __bootboot.bin__-t az **_FS0:\BOOTBOOT\LOADER_**-be. Rakhatod az INITRD partíciódra de akár
-        a partíciós területen kívülre is (lásd `dd conv=notrunc oseek=x`). Végezetül telepítsd a __boot.bin__-t az
+1. *BIOS lemez / cdrom*: másold be a __bootboot.bin__-t az **_FS0:\BOOTBOOT.BIN_**-be. Rakhatod az INITRD partíciódra de akár
+        a partíciós területen kívülre is (lásd `dd conv=notrunc seek=x`). Végezetül telepítsd a __boot.bin__-t az
         El Torito Boot katalógusába "no emulation" módban, vagy a Master Boot Record-ba (illetve Volume Boot Record-ba ha
         boot menedzsert használsz), a bootboot.bin első szektorának LBA címét lemetve 32 biten a 0x1B0 címre. A [mkboot](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/mkboot.c)
         szerszám ezt megteszi neked.
@@ -31,7 +31,7 @@ a szokásos helyen. Példa:
 
 ```
 menuentry "MyKernel" {
-    multiboot /bootboot/loader      # bootboot.bin
+    multiboot /bootboot.bin         # a betöltő
     module /bootboot/initrd         # első modul az initrd (opcionális)
     module /bootboot/config         # második modul a konfigurációs fájl (opcionális)
     boot

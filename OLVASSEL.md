@@ -320,6 +320,7 @@ Telepítés
 ---------
 
 Az [images](https://gitlab.com/bztsrc/bootboot/tree/binaries/images) mappában találsz teszt képfájlokat.
+Az alábbi lépéseket elvégzi helyetted az [mkbootimg](https://gitlab.com/bztsrc/bootboot/tree/master/mkbootimg) lemezképkészítő.
 
 1. Hozz létre egy initrd-t benne a kerneleddel. Példák:
 
@@ -347,12 +348,6 @@ elmehetsz egészen 16M-ig).
 
 3. másold be a BOOTBOOT betöltőt a boot partícióra.
 
-3.1. *UEFI lemez*: másold a __bootboot.efi__-t az **_FS0:\EFI\BOOT\BOOTX64.EFI_**-be.
-
-3.2. *BIOS lemez*: másold a __bootboot.bin__-t az **_FS0:\BOOTBOOT\LOADER_**-be.
-
-3.3. *Raspberry Pi 3+*: másold a __bootboot.img__-t az **_FS0:\KERNEL8.IMG_**-be.
-
 **FONTOS**: olvasd el a kérdéses implementáció README.md-jét is.
 
 Hibakeresés
@@ -365,10 +360,10 @@ BOOTBOOT-PANIC: LBA support not found
 Nagyon régi hardver. A BIOSod nem támogatja az LBA-t. Ezt az üzenetet az első betöltő szektor (boot.bin) írja ki.
 
 ```
-BOOTBOOT-PANIC: FS0:\BOOTBOOT\LOADER not found
+BOOTBOOT-PANIC: FS0:\BOOTBOOT.BIN not found
 ```
 
-A fő betöltő (bootboot.bin) nem található a lemezen, vagy az induló szektorcíme nincs jól rögzítve az indítószektor 32 bites
+A fő betöltő nem található a lemezen, vagy az induló szektorcíme nincs jól rögzítve az indítószektor 32 bites
 [0x1B0] címén (lásd [mkboot](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/mkboot.c)). Mivel a betöltő szektor
 támogatja a RAID tükröket, több meghajtóról is meg fogja próbálni betölteni a betöltőt. Ezt az üzenetet az első betöltő szektor
 (boot.bin) írja ki.

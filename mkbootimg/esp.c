@@ -163,17 +163,9 @@ void esp_makepart()
     for(i = 0; i < NUMARCH && initrd_arch[i]; i++)
         boot |= (1 << (initrd_arch[i] - 1));
 
-    /* add loader's directory */
+    /* add loader's directory with config and initrds */
     ptr = esp_mkdir(rootdir, "BOOTBOOT", 0); rootdir += 32;
-    if(boot & (1 << 1)) {
-        /*** x86 PC (BIOS) ***/
-        /* start address has to be saved in PMBR too */
-        esp_bbs = ((data + nextcluster * bpc)-esp) / 512;
-        memcpy(esp + 0x1B0, &esp_bbs, 4);
-        ptr = esp_addfile(ptr, "LOADER", binary_bootboot_bin, sizeof(binary_bootboot_bin));
-    }
     ptr = esp_addfile(ptr, "CONFIG", (unsigned char*)config, strlen(config));
-    /* add INITRDs */
     if(!initrd_arch[1]) {
         ptr = esp_addfile(ptr, initrdnames[0], initrd_buf[0], initrd_size[0]);
     } else {
@@ -181,6 +173,7 @@ void esp_makepart()
             ptr = esp_addfile(ptr, initrdnames[(int)initrd_arch[i]], initrd_buf[i], initrd_size[i]);
         }
     }
+    /* add loader code */
     if(boot & (1 << 6)) {
         /* additional platform */
     }
@@ -201,6 +194,11 @@ void esp_makepart()
         bbp_end = (((data + nextcluster * bpc)-esp) / 512) - 1;
     }
     if(boot & (1 << 1)) {
+        /*** x86 PC (BIOS) ***/
+        /* start address has to be saved in PMBR too */
+        esp_bbs = ((data + nextcluster * bpc)-esp) / 512;
+        memcpy(esp + 0x1B0, &esp_bbs, 4);
+        rootdir = esp_addfile(rootdir, "BOOTBOOT.BIN", binary_bootboot_bin, sizeof(binary_bootboot_bin));
         /*** x86 PC (UEFI) ***/
         ptr = esp_mkdir(rootdir, "EFI", 0); rootdir += 32;
         ptr = esp_mkdir(ptr, "BOOT", lastcluster);

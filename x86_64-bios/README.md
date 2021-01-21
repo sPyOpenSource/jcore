@@ -17,8 +17,8 @@ IRQs masked. GDT unspecified, but valid, IDT unset. SSE, SMP enabled. Code is ru
 Installation
 ------------
 
-1. *BIOS disk / cdrom*: copy __bootboot.bin__ to **_FS0:\BOOTBOOT\LOADER_**. You can place it inside your INITRD partition
-        or outside of partition area as well (with `dd conv=notrunc oseek=x`). Finally install __boot.bin__ in the
+1. *BIOS disk / cdrom*: copy __bootboot.bin__ to **_FS0:\BOOTBOOT.BIN_**. You can place it inside your INITRD partition
+        or outside of partition area as well (with `dd conv=notrunc seek=x`). Finally install __boot.bin__ in the
         El Torito Boot catalog with "no emulation" or in Master Boot Record (or in Volume Boot Record if you have a boot manager),
         saving bootboot.bin's first sector's LBA number in a dword at 0x1B0. The [mkboot](https://gitlab.com/bztsrc/bootboot/blob/master/x86_64-bios/mkboot.c)
         utility will do that for you.
@@ -30,7 +30,7 @@ the initrd and the environment file as modules (in this order). If no modules gi
 
 ```
 menuentry "MyKernel" {
-    multiboot /bootboot/loader      # bootboot.bin
+    multiboot /bootboot.bin         # the loader
     module /bootboot/initrd         # first module is the initrd (optional)
     module /bootboot/config         # second module is the environment file (optional)
     boot
