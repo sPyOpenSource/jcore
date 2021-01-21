@@ -20,7 +20,7 @@ INCBIN = ../dist/boot.bin ../dist/bootboot.bin ../dist/bootboot.efi ../dist/boot
 
 all: data.c $(TARGET)
 
-data.c: $(INCBIN)
+data.c:
 	$(CC) bin2h.c -o bin2h
 	./bin2h $(INCBIN) >data.c
 	@rm bin2h

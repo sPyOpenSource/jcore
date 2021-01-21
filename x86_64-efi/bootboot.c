@@ -956,6 +956,10 @@ EFI_STATUS
 report(EFI_STATUS Status,CHAR16 *Msg)
 {
     Print(L"BOOTBOOT-PANIC: %s (EFI %r)\n",Msg,Status);
+#if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
+    // don't care if we can't free because it isn't allocated
+    uefi_call_wrapper(BS->FreePages, 2, (EFI_PHYSICAL_ADDRESS)0x8000, 1);
+#endif
     return Status;
 }
 
@@ -1424,11 +1428,11 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
     __asm__ __volatile__ (
         // get a valid stack for the core we're running on
         "xorq %%rsp, %%rsp;"
-        "subq %1, %%rsp;"  // sp = core_num * -1024
+        "subq %0, %%rsp;"  // sp = core_num * -initstack
         // pass control over
-        "pushq %0;"
+        "pushq %1;"
         "retq"
-        : : "a"(entrypoint), "r"((UINTN)core_num*initstack) : "memory" );
+        : : "a"((UINTN)core_num*initstack), "b"(entrypoint) : "memory" );
 }
 
 /**
@@ -1456,7 +1460,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     UINT8 pibuffer[100];
     EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
 #else
-    UINT64 ncycles = 0, currtime, endtime;
+    UINT64 ncycles = 0, currtime, endtime, ap_code = 0x8000;
 #endif
     EFI_GUID SerIoGuid = EFI_SERIAL_IO_PROTOCOL_GUID;
     EFI_SERIAL_IO_PROTOCOL *ser = NULL;
@@ -1496,6 +1500,11 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     } else {
         configfile=L"\\BOOTBOOT\\CONFIG";
     }
+#if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
+    // Allocate page at fixed address for AP trampoline code as soon as possible
+    status = uefi_call_wrapper(BS->AllocatePages, 4, 2, 1, 1, (EFI_PHYSICAL_ADDRESS*)&ap_code);
+    if(EFI_ERROR(status) || ap_code != 0x8000) ap_code = 0;
+#endif
 
     Print(L"Booting OS...\n");
 
@@ -1914,7 +1923,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             bootboot->numcores = 1;
 #else
         UINT8 *ptr = (UINT8*)bootboot->arch.x86_64.acpi_ptr, *pe, *data;
-        UINT64 r, lapic_addr=0, ap_code = 0x8000;
+        UINT64 r, lapic_addr=0;
         ZeroMem(lapic_ids, sizeof(lapic_ids));
         if(!nosmp && ptr && (ptr[0]=='X' || ptr[0]=='R') && ptr[1]=='S' && ptr[2]=='D' && ptr[3]=='T') {
             pe = ptr; ptr += 36;
@@ -1927,7 +1936,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                     for(r = *((uint32_t*)(data + 4)), ptr = data + 44, i = 0; ptr < data + r &&
                         i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); ptr += ptr[1]) {
                         switch(ptr[0]) {
-                            case 0: lapic_ids[(INTN)ptr[2]] = i++; break;       // found Processor Local APIC
+                            case 0: lapic_ids[(INTN)ptr[2]] = i++; break;           // found Processor Local APIC
                             case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                         }
                     }
@@ -1938,12 +1947,16 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                     break;
                 }
             }
-            // Allocate page at fixed address for AP trampoline code
-            status = uefi_call_wrapper(BS->AllocatePages, 4, 2, 1, 1, (EFI_PHYSICAL_ADDRESS*)&ap_code);
-            if(EFI_ERROR(status)) ap_code = 0;
         }
         if(!nosmp && bootboot->numcores > 1 && lapic_addr && ap_code) {
             DBG(L" * SMP numcores %d\n", bootboot->numcores);
+#if BBDEBUG
+            for(i = 0; i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); i++) {
+                if(!i || lapic_ids[i])
+                    DBG(L" %02x:%d", i, lapic_ids[i]);
+            }
+            DBG(L"\n%s", L"");
+#endif
             CopyMem((uint8_t*)0x8000, &ap_trampoline, 256);
             // save UEFI's 64 bit system registers for the trampoline code
             __asm__ __volatile__ (
@@ -2019,11 +2032,11 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         }
 
         // Get memory map
-        int cnt=3;
+        int cnt = 3;
 get_memory_map:
-        DBG(L" * Memory Map @%lx %d bytes try #%d\n",memory_map, memory_map_size, 4-cnt);
-        mmapent=(MMapEnt *)&(bootboot->mmap);
-        bootboot->size=128;
+        DBG(L" * Memory Map @%lx %d bytes try #%d\n", memory_map, memory_map_size, 4-cnt);
+        mmapent = (MMapEnt *)&(bootboot->mmap);
+        bootboot->size = 128;
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
             &memory_map_size, memory_map, &map_key, &desc_size, &desc_version);
         if (EFI_ERROR(status)) {
@@ -2073,7 +2086,7 @@ get_memory_map:
         }
         // --- NO PRINT AFTER THIS POINT ---
 
-        // red (or blue) dot on the top left corner (sort of status report)
+        // blue (or red) dot on the top left corner (sort of status report)
         *((uint64_t*)(bootboot->fb_ptr)) = *((uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x000000FF000000FFUL;
 
         //inform firmware that we're about to leave it's realm
