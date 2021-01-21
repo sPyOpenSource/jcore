@@ -128,7 +128,7 @@ Kifejezések
   Ha nincs ilyen, akkor a legelső futtathatót tölti be az initrd-ről.
 
 * _kernel fájl_: egy ELF64 / PE32+ [futtatható az initrd-ben](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel),
-  opcionálisan a következő szimbólumokkal: `mmio`, `fb`, `environment`, `bootboot` (lásd gép állapot és linker szkript alább).
+  opcionálisan a következő szimbólumokkal: `mmio`, `fb`, `environment`, `bootboot`, `initstack` (lásd gép állapot és linker szkript alább).
 
 * _BOOTBOOT struktúra_: a [bootboot.h](https://gitlab.com/bztsrc/bootboot/blob/master/dist/bootboot.h)-ban definiált struktúra.
 

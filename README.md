@@ -129,7 +129,7 @@ Glossary
   Without one the first executable found will be loaded.
 
 * _kernel file_: an ELF64 / PE32+ [executable inside initrd](https://gitlab.com/bztsrc/bootboot/tree/master/mykernel),
-  optionally with the following symbols: `mmio`, `fb`, `environment`, `bootboot` (see machine state and linker script).
+  optionally with the following symbols: `mmio`, `fb`, `environment`, `bootboot`, `initstack` (see machine state and linker script).
 
 * _BOOTBOOT structure_: an informational structure defined in [bootboot.h](https://gitlab.com/bztsrc/bootboot/blob/master/dist/bootboot.h).
 
