@@ -1937,7 +1937,9 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                     for(r = *((uint32_t*)(data + 4)), ptr = data + 44, i = 0; ptr < data + r &&
                         i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); ptr += ptr[1]) {
                         switch(ptr[0]) {
-                            case 0: lapic_ids[(INTN)ptr[2]] = i++; break;           // found Processor Local APIC
+                            case 0:
+                            DBG(L"ACPI table lapicid %02x is core %d\n",ptr[2],i);
+                            lapic_ids[(INTN)ptr[2]] = i++; break;           // found Processor Local APIC
                             case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                         }
                     }
