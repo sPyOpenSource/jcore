@@ -266,7 +266,7 @@ void parsekernel(int idx, unsigned char *data, int v)
         pehdr->file_type == PE_OPT_MAGIC_PE32PLUS) {
         if(v) printf("PE32+\r\nArchitecture: %s\r\n", pehdr->machine == IMAGE_FILE_MACHINE_ARM64 ? "AArch64" : (
             pehdr->machine == IMAGE_FILE_MACHINE_AMD64 ? "x86_64" : (
-            pehdr->machine == IMAGE_FILE_MACHINE_AMD64 ? "riscv64" : "invalid")));
+            pehdr->machine == IMAGE_FILE_MACHINE_RISCV64 ? "riscv64" : "invalid")));
         if(pehdr->machine == IMAGE_FILE_MACHINE_ARM64) { ma = 2*1024*1024-1; fa = 4095; initrd_arch[idx] = 1; } else
         if(pehdr->machine == IMAGE_FILE_MACHINE_AMD64) { ma = 4095; fa = 2*1024*1024-1; initrd_arch[idx] = 2; } else
         if(pehdr->machine == IMAGE_FILE_MACHINE_RISCV64){ma = 4095; fa = 2*1024*1024-1; initrd_arch[idx] = 3; } else
