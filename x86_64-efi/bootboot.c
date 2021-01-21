@@ -380,7 +380,8 @@ EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Volume;
 EFI_FILE_HANDLE                 RootDir;
 EFI_FILE_PROTOCOL               *Root;
 SIMPLE_INPUT_INTERFACE          *CI;
-unsigned char *kne, bsp_done=0, nosmp=0;
+unsigned char *kne, nosmp=0;
+volatile char bsp_done=0;
 
 // default environment variables. M$ states that 1024x768 must be supported
 int reqwidth = 1024, reqheight = 768;
@@ -2124,6 +2125,7 @@ get_memory_map:
 
         // release AP spinlock
         bsp_done = 1;
+        __asm__ __volatile__ ("pause" : : : "memory"); // memory barrier
         bootboot_startcore((VOID*)bsp_num);
     }
     return report(status,L"Initrd not found");
