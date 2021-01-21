@@ -111,7 +111,6 @@ bootboot_record:
             jl          .nolba
 .notfloppy: mov         ah, byte 41h
             mov         bx, word 55AAh
-            clc
             int         13h
             jc          .nolba
             cmp         bx, word 0AA55h
@@ -120,25 +119,41 @@ bootboot_record:
             jnz         .lbaok
 .nolba:     mov         si, lbanotf
             jmp         diefunc
-.lbaok:     ;try to load stage2 - it's a continous area on disk
+.lbaok:     ;get CDROM drive code
+            mov         ax, word 4B01h
+            mov         si, lba_packet
+            mov         byte [si + 2], 0E0h
+            push        si
+            int         13h
+            pop         si
+            jc          .read2stg
+            mov         al, byte [si + 2]
+            mov         byte [cdrom], al
+            ;try to load stage2 - it's a continous area on disk
             ;started at given sector with maximum size of 7000h bytes
-            mov         di, lba_packet
-            mov         cx, 8
-            xor         ax, ax
-            repnz       stosw
+.read2stg:  mov         di, lba_packet
             mov         si, stage2_addr
-            mov         di, lbapacket.sect0
             ;set up for hard-drive
-            movsw
-            movsw
-            mov         byte [lbapacket.size], 16
-            mov         byte [lbapacket.addr0+1], 08h   ;to address 800h
-            mov         byte [lbapacket.count], 56
+            xor         ah, ah
+            mov         al, 16          ; size
+            stosw
+            mov         al, 56          ; count
+            stosw
+            xor         al, al
+            mov         ah, 8           ; addr0 to address 800h
+            stosw
+            xor         ax, ax          ; addr1
+            stosw
+            movsw                       ; sect0
+            movsw                       ; sect1
+            xor         ax, ax
+            stosw                       ; sect2
+            stosw                       ; sect3
             mov         dl, byte [drive]
             ;if it's a CDROM with 2048 byte sectors
-            cmp         dl, 0E0h
+            cmp         dl, byte [cdrom]
             jl          @f
-            sub         di, 4
+            sub         di, 8
             ;lba=lba/4
             clc
             rcr         word [di+2], 1
@@ -146,6 +161,7 @@ bootboot_record:
             clc
             rcr         word [di+2], 1
             rcr         word [di], 1
+            ;count=count/4
             shr         word [lbapacket.count], 2
             ;load sectors
 @@:         mov         ah, byte 42h
@@ -172,7 +188,7 @@ bootboot_record:
 @@:         mov         byte [drive], al
             inc         byte [cnt]
             cmp         byte [cnt], 8
-            jl          .lbaok
+            jl          .read2stg
 .nostage2err:
             mov         si, stage2notf
             ;fall into the diefunc code
@@ -183,8 +199,6 @@ bootboot_record:
 ;writes the reason, waits for a key and reboots.
 diefunc:
             print       panic
-            call        printfunc
-            mov         si, found
             call        printfunc
             sti
             xor         ax, ax
@@ -208,17 +222,18 @@ printfunc:
 ;*                          data area                                *
 ;*********************************************************************
 
-panic:      db          "BOOTBOOT-PANIC: ",0
+panic:      db          "BOOTBOOT-PANIC: no ",0
 lbanotf:    db          "LBA support",0
 stage2notf: db          "FS0:\BOOTBOOT.BIN",0
-found:      db          " not found",0
-cnt:        db          0
-drive:      db          0
             db          01B0h-($-$$) dup 0
 
 ;right before the partition table some data
-stage2_addr:dd          0FFFFFFFFh,0    ;1B0h 2nd stage loader address
+stage2_addr:dd          0FFFFFFFFh      ;1B0h 2nd stage loader address
                                         ;this should be set by mkfs
+cnt:        db          0
+drive:      db          0
+cdrom:      db          0
+            db          0
 
 diskid:     dd          0               ;1B8h WinNT expects it here
             dw          0

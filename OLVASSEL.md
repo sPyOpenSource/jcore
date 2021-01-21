@@ -354,13 +354,13 @@ Hibakeresés
 -----------
 
 ```
-BOOTBOOT-PANIC: LBA support not found
+BOOTBOOT-PANIC: no LBA support
 ```
 
 Nagyon régi hardver. A BIOSod nem támogatja az LBA-t. Ezt az üzenetet az első betöltő szektor (boot.bin) írja ki.
 
 ```
-BOOTBOOT-PANIC: FS0:\BOOTBOOT.BIN not found
+BOOTBOOT-PANIC: no FS0:\BOOTBOOT.BIN
 ```
 
 A fő betöltő nem található a lemezen, vagy az induló szektorcíme nincs jól rögzítve az indítószektor 32 bites

@@ -284,7 +284,17 @@ realmode_start:
             jnz         @f
 .clrdl:     mov         dl, 80h
 @@:         mov         byte [bootdev], dl
-
+            ;get CDROM drive code
+            mov         ax, word 4B01h
+            mov         si, entrypoint ; bss area
+            mov         byte [si + 2], 0E0h
+            push        si
+            int         13h
+            pop         si
+            jc          @f
+            mov         al, byte [si + 2]
+            mov         byte [cdromdev], al
+@@:
             ;-----initialize serial port COM1,115200,8N1------
             mov         ax, 0401h
             xor         bx, bx
@@ -948,8 +958,7 @@ prot_readsectorfunc:
 .again:     mov         ax, word [lbapacket.count]
             mov         word [origcount], ax
             mov         dl, byte [readdev]
-            ;don't use INT 13h / AX=4B01h, that's buggy on many BIOSes
-            cmp         dl, 0E0h
+            cmp         dl, byte [cdromdev]
             jl          @f
             ;use 2048 byte sectors instead of 512 if it's a cdrom
             mov         al, byte [lbapacket.sect0]
@@ -2697,11 +2706,12 @@ root_sec:   dd          0 ;root directory's first sector
 data_sec:   dd          0 ;first data sector
 clu_sec:    dd          0 ;sector per cluster
 origcount:  dw          0
+cdromdev:   db          0
 bootdev:    db          0
 readdev:    db          0
 cntdev:     db          0
 hasinitrd:  db          0
-hasconfig:   db          0
+hasconfig:  db          0
 iscdrom:    db          0
 nosmp:      db          0
 bsp_done:                 ;flag to indicate APs can run
