@@ -223,6 +223,7 @@ struct _EFI_MP_SERVICES_PROTOCOL {
 #else
 extern void ap_trampoline();
 UINT16 lapic_ids[1024];
+UINT64 lapic_addr=0;
 #endif
 
 typedef
@@ -1394,21 +1395,14 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
 {
 #if USE_MP_SERVICES
     // we have a scalar number, not a pointer, so cast it
-    UINTN core_num = (UINTN)buf;
+    register UINTN core_num = (UINTN)buf;
 #else
     (void)buf;
-    UINT16 core_num;
-    __asm__ __volatile__ (
-        "movl $1, %%eax;"
-        "cpuid;"
-        "shrl $24, %%ebx;"
-        "mov %%bx,%0"
-        : "=b"(core_num) : : );
-    core_num = lapic_ids[core_num];
+    register UINT16 core_num = lapic_addr ? lapic_ids[*((volatile uint32_t*)(lapic_addr + 0x20)) >> 24] : 0;
 #endif
 
-    // spinlock until BSP finishes
-    do { __asm__ __volatile__ ("pause"); } while(!bsp_done);
+    // spinlock until BSP finishes (or forever if we got an invalid lapicid, should never happen)
+    do { __asm__ __volatile__ ("pause" : : : "memory"); } while(!bsp_done && core_num != 0xFFFF);
 
     // enable SSE
     __asm__ __volatile__ (
@@ -1432,8 +1426,9 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
         "subq %0, %%rsp;"  // sp = core_num * -initstack
         // pass control over
         "pushq %1;"
+        "movq %2, %%rdi;"
         "retq"
-        : : "a"((UINTN)core_num*initstack), "b"(entrypoint) : "memory" );
+        : : "a"((UINTN)core_num*initstack), "b"(entrypoint), "c"((UINTN)core_num) : "memory" );
 }
 
 /**
@@ -1924,8 +1919,8 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             bootboot->numcores = 1;
 #else
         UINT8 *ptr = (UINT8*)bootboot->arch.x86_64.acpi_ptr, *pe, *data;
-        UINT64 r, lapic_addr=0;
-        ZeroMem(lapic_ids, sizeof(lapic_ids));
+        UINT64 r;
+        for(i = 0; i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); i++) lapic_ids[i] = 0xFFFF;
         if(!nosmp && ptr && (ptr[0]=='X' || ptr[0]=='R') && ptr[1]=='S' && ptr[2]=='D' && ptr[3]=='T') {
             pe = ptr; ptr += 36;
             // iterate on ACPI table pointers
@@ -1937,15 +1932,16 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                     for(r = *((uint32_t*)(data + 4)), ptr = data + 44, i = 0; ptr < data + r &&
                         i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); ptr += ptr[1]) {
                         switch(ptr[0]) {
-                            case 0:
-                            DBG(L"ACPI table lapicid %02x is core %d\n",ptr[2],i);
-                            lapic_ids[(INTN)ptr[2]] = i++; break;           // found Processor Local APIC
+                            case 0:                                             // found Processor Local APIC
+                                if((ptr[4] & 1) && lapic_ids[(INTN)ptr[3]] == 0xFFFF) { lapic_ids[(INTN)ptr[3]] = i++; }
+                            break;
                             case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                         }
                     }
                     if(i) {
-                        bootboot->numcores = i;
                         bsp_num = lapic_ids[bootboot->bspid];
+                        if(bsp_num == 0xFFFF) bsp_num = 0;
+                        else bootboot->numcores = i;
                     }
                     break;
                 }
@@ -1953,13 +1949,6 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         }
         if(!nosmp && bootboot->numcores > 1 && lapic_addr && ap_code) {
             DBG(L" * SMP numcores %d\n", bootboot->numcores);
-#if BBDEBUG
-            for(i = 0; i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); i++) {
-                if(!i || lapic_ids[i])
-                    DBG(L" %02x:%d", i, lapic_ids[i]);
-            }
-            DBG(L"\n%s", L"");
-#endif
             CopyMem((uint8_t*)0x8000, &ap_trampoline, 256);
             // save UEFI's 64 bit system registers for the trampoline code
             __asm__ __volatile__ (
@@ -2106,14 +2095,48 @@ get_memory_map:
 
         // start APs
         if(bootboot->numcores > 1) {
-            // send Broadcast INIT IPI
-            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4500;
+            // send INIT IPI (supports up to 256 cores, requires x2APIC to have more)
+            for(i = 0; i < 256; i++) {
+                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+                *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;                            // clear APIC errors
+                *((volatile uint32_t*)(lapic_addr + 0x310)) =
+                    (*((volatile uint32_t*)(lapic_addr + 0x310)) & 0x00ffffff) | (i << 24); // select AP
+                *((volatile uint32_t*)(lapic_addr + 0x300)) =
+                    (*((volatile uint32_t*)(lapic_addr + 0x300)) & 0xfff00000) | 0x00C500;  // trigger INIT IPI
+                do { __asm__ __volatile__ ("pause" : : : "memory"); }
+                    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12));         // wait for delivery
+                // deassert
+                *((volatile uint32_t*)(lapic_addr + 0x310)) =
+                    (*((volatile uint32_t*)(lapic_addr + 0x310)) & 0x00ffffff) | (i << 24);
+                *((volatile uint32_t*)(lapic_addr + 0x300)) =
+                    (*((volatile uint32_t*)(lapic_addr + 0x300)) & 0xfff00000) | 0x008500;
+                do { __asm__ __volatile__ ("pause" : : : "memory"); }
+                    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12));
+            }
+            // wait 10 msec
             sleep(50);
-            // send Broadcast STARTUP IPI
-            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608; // start at 0800:0000h
-            sleep(1);
-            // send second SIPI
-            *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608;
+            // send STARTUP IPI
+            for(i = 0; i < 256; i++) {
+                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+                *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;                            // clear APIC errors
+                *((volatile uint32_t*)(lapic_addr + 0x310)) =
+                    (*((volatile uint32_t*)(lapic_addr + 0x310)) & 0x00ffffff) | (i << 24); // select AP
+                // trigger IPI, start at 0800:0000h
+                *((volatile uint32_t*)(lapic_addr + 0x300)) =
+                    (*((volatile uint32_t*)(lapic_addr + 0x300)) & 0xfff0f800) | 0x000608;
+                // wait 200 usec
+                sleep(1);
+                do { __asm__ __volatile__ ("pause" : : : "memory"); }
+                    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12));         // wait for delivery
+                // send second IPI
+                *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;
+                *((volatile uint32_t*)(lapic_addr + 0x310)) =
+                    (*((volatile uint32_t*)(lapic_addr + 0x310)) & 0x00ffffff) | (i << 24);
+                *((volatile uint32_t*)(lapic_addr + 0x300)) =
+                    (*((volatile uint32_t*)(lapic_addr + 0x300)) & 0xfff0f800) | 0x000608;
+                do { __asm__ __volatile__ ("pause" : : : "memory"); }
+                    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12));
+            }
         }
 #endif
 

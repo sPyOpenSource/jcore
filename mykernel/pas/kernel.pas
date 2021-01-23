@@ -61,47 +61,49 @@ Begin
     W := Integer(bootboot.fb_width);
     H := Integer(bootboot.fb_height);
 
-    { cross-hair to see screen dimension detected correctly }
-    For Y := 0 to (H-1) Do
+    If (S > 0) Then
     Begin
-        P := PDword(@fb + S*Y + W*2);
-        P^ := $00FFFFFF;
-    End;
-    For X := 0 to (W-1) Do
-    Begin
-        P := PDword(@fb + S*(H shr 1) + X*4);
-        P^ := $00FFFFFF;
-    End;
-
-    { red, green, blue boxes in order }
-    For Y := 0 to 20 Do
-    Begin
-        For X := 0 to 20 Do
+        { cross-hair to see screen dimension detected correctly }
+        For Y := 0 to (H-1) Do
         Begin
-            P := PDword(@fb + S*(Y+20) + (X+20)*4);
-            P^ := $00FF0000;
+            P := PDword(@fb + S*Y + W*2);
+            P^ := $00FFFFFF;
         End;
-    End;
-    For Y := 0 to 20 Do
-    Begin
-        For X := 0 to 20 Do
+        For X := 0 to (W-1) Do
         Begin
-            P := PDword(@fb + S*(Y+20) + (X+50)*4);
-            P^ := $0000FF00;
+            P := PDword(@fb + S*(H shr 1) + X*4);
+            P^ := $00FFFFFF;
         End;
-    End;
-    For Y := 0 to 20 Do
-    Begin
-        For X := 0 to 20 Do
+
+        { red, green, blue boxes in order }
+        For Y := 0 to 20 Do
         Begin
-            P := PDword(@fb + S*(Y+20) + (X+80)*4);
-            P^ := $000000FF;
+            For X := 0 to 20 Do
+            Begin
+                P := PDword(@fb + S*(Y+20) + (X+20)*4);
+                P^ := $00FF0000;
+            End;
         End;
+        For Y := 0 to 20 Do
+        Begin
+            For X := 0 to 20 Do
+            Begin
+                P := PDword(@fb + S*(Y+20) + (X+50)*4);
+                P^ := $0000FF00;
+            End;
+        End;
+        For Y := 0 to 20 Do
+        Begin
+            For X := 0 to 20 Do
+            Begin
+                P := PDword(@fb + S*(Y+20) + (X+80)*4);
+                P^ := $000000FF;
+            End;
+        End;
+
+        { say hello }
+        Puts('Hello from a simple BOOTBOOT kernel');
     End;
-
-    { say hello }
-    Puts('Hello from a simple BOOTBOOT kernel');
-
     { hang for now }
     While (True) Do;
 End;

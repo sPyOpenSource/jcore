@@ -32,6 +32,7 @@
 .globl bsp_init
 .globl bsp64_init
 .extern lapic_ids
+.extern lapic_addr
 .extern initstack
 
     .text
@@ -76,7 +77,7 @@ _L1060:
     cmpb    $0, 0x1010
     jz      1b
     // jump back to non-relocated code segment
-    jmp     longmode_init
+    ljmp    $8, $longmode_init
     .align 128
 ap_trampoline_end:
 
@@ -93,7 +94,7 @@ GDT_value:
     .word 0
     .align 8
 stack64:
-    .long bit64
+    .long bootboot_startcore
     .long 0
     .quad 8
 
@@ -117,6 +118,15 @@ bsp_init:
  * common code for all cores, enable long mode and start kernel              *
  *****************************************************************************/
 longmode_init:
+    // find our lapic id
+    movl    lapic_addr, %edi
+    or      %edi, %edi
+    jz      1f
+    addl    $0x20, %edi
+    movl    (%edi), %edi
+    shrl    $24, %edi
+1:  // do not clobber di
+
     movl    $0x368, %eax        // Set PAE, MCE, PGE; OSFXSR, OSXMMEXCPT (enable SSE)
     movl    %eax, %cr4
     movl    $0x4000, %eax
@@ -129,11 +139,12 @@ longmode_init:
     movl    $0x0C0000011, %eax  // clear EM, MP (enable SSE) and WP
     movl    %eax, %cr0
     lgdt    GDT_value
-    ljmp    $8, $bit64
+    ljmp    $8, $bootboot_startcore
 
     .code64
     /* similar code to above, but these are 64 bit encoded, only needed on BSP if coreboot is compiled for x86_64 */
 bsp64_init:
+    // do not clobber di
     cli
     cld
     movb    $0xFF, %al          // disable PIC
@@ -143,6 +154,7 @@ bsp64_init:
     orb     $0x80, %al
     outb    %al, $0x70
     incb    0x1010              // release AP spin lock
+
     xorq    %rax, %rax
     movl    $0xC0000011, %eax   // enable SSE
     movq    %rax, %cr0
@@ -158,24 +170,22 @@ bsp64_init:
     movq    %rax, %rsp
     lretq
 
-bit64:
+    /* IN: di = apic id of current core */
+bootboot_startcore:
     movl    $0x10, %eax         // load long mode segments
     movw    %ax, %ds
     movw    %ax, %es
     movw    %ax, %ss
     movw    %ax, %fs
     movw    %ax, %gs
-    xorq    %rbx, %rbx
-    // find our lapic id
-    movl    $1, %eax
-    cpuid
-    shrl    $23, %ebx
-    andb    $0xfe, %bl          // ebx = lapic id * 2
+    movzwq  %di, %rbx
+    shll    $1, %ebx            // ebx = lapic id * 2
     addl    $lapic_ids, %ebx
     xorq    %rax, %rax
     movw    (%rbx), %ax         // ax = word[lapic_ids + lapic id * 2]
-1:  movl    $initstack, %ebx
+    movl    $initstack, %ebx
     movl    (%rbx), %ebx
+    movzwq  %ax, %rdi
     mulq    %rbx                // 1k stack for each core
 
     // set stack and call _start() in sys/core

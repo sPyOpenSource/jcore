@@ -81,34 +81,35 @@ procedure Kernel is
 begin
     ----- NOTE: this code runs on all cores in parallel -----
 
-    -- cross-hair to see screen dimension detected correctly
-    for Y in Integer range 0 .. (H-1) loop
-        bootboot.fb (S*Y + W/2) := bootboot.UInt32(16#00FFFFFF#);
-    end loop;
-    for X in Integer range 0 .. (W-1) loop
-        bootboot.fb (S*H/2 + X) := bootboot.UInt32(16#00FFFFFF#);
-    end loop;
-
-    -- red, green, blue boxes in order
-    for Y in Integer range 0 .. 20 loop
-        for X in Integer range 0 .. 20 loop
-            bootboot.fb (S*(Y+20) + (X+20)) := bootboot.UInt32(16#00FF0000#);
+    if S > 0 then
+        -- cross-hair to see screen dimension detected correctly
+        for Y in Integer range 0 .. (H-1) loop
+            bootboot.fb (S*Y + W/2) := bootboot.UInt32(16#00FFFFFF#);
         end loop;
-    end loop;
-    for Y in Integer range 0 .. 20 loop
-        for X in Integer range 0 .. 20 loop
-            bootboot.fb (S*(Y+20) + (X+50)) := bootboot.UInt32(16#0000FF00#);
+        for X in Integer range 0 .. (W-1) loop
+            bootboot.fb (S*H/2 + X) := bootboot.UInt32(16#00FFFFFF#);
         end loop;
-    end loop;
-    for Y in Integer range 0 .. 20 loop
-        for X in Integer range 0 .. 20 loop
-            bootboot.fb (S*(Y+20) + (X+80)) := bootboot.UInt32(16#000000FF#);
+
+        -- red, green, blue boxes in order
+        for Y in Integer range 0 .. 20 loop
+            for X in Integer range 0 .. 20 loop
+                bootboot.fb (S*(Y+20) + (X+20)) := bootboot.UInt32(16#00FF0000#);
+            end loop;
         end loop;
-    end loop;
+        for Y in Integer range 0 .. 20 loop
+            for X in Integer range 0 .. 20 loop
+                bootboot.fb (S*(Y+20) + (X+50)) := bootboot.UInt32(16#0000FF00#);
+            end loop;
+        end loop;
+        for Y in Integer range 0 .. 20 loop
+            for X in Integer range 0 .. 20 loop
+                bootboot.fb (S*(Y+20) + (X+80)) := bootboot.UInt32(16#000000FF#);
+            end loop;
+        end loop;
 
-    -- say hello
-    puts("Hello from a simple BOOTBOOT kernel");
-
+        -- say hello
+        puts("Hello from a simple BOOTBOOT kernel");
+    end if;
     -- hang for now
     loop
         null;

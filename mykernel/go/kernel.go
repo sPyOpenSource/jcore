@@ -62,35 +62,36 @@ const glyphs = "\x00\x00\xda\x02\x80\x82\x02\x80\x82\x02\x80\xb6\x00\x00\x00\x00
 func init() {
     /*** NOTE: this code runs on all cores in parallel ***/
     var x, y int
-    var w int = (int)(*(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_INFO + 0x34))))
-    var h int = (int)(*(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_INFO + 0x38))))
-    var s int = (int)(*(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_INFO + 0x3c))))
+    var w int = (int)(*(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_INFO + 0x34))))    // bootboot.fb_width
+    var h int = (int)(*(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_INFO + 0x38))))    // bootboot.fb_height
+    var s int = (int)(*(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_INFO + 0x3c))))    // bootboot.fb_scanline
 
-    // cross-hair to see screen dimension detected correctly
-    for y = 0; y < h; y++ {
-        *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*y + w*2))) = 0x00FFFFFF;
-    }
-    for x = 0; x < w; x++ {
-        *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*y/2 + x*4))) = 0x00FFFFFF;
-    }
+    if (s > 0) {
+        // cross-hair to see screen dimension detected correctly
+        for y = 0; y < h; y++ {
+            *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*y + w*2))) = 0x00FFFFFF;
+        }
+        for x = 0; x < w; x++ {
+            *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*y/2 + x*4))) = 0x00FFFFFF;
+        }
 
-    // red, green, blue boxes in order
-    for y = 0; y < 20; y++ {
-        for x = 0; x < 20; x++ {
-            *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*(y+20) + (x+20)*4))) = 0x00FF0000;
+        // red, green, blue boxes in order
+        for y = 0; y < 20; y++ {
+            for x = 0; x < 20; x++ {
+                *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*(y+20) + (x+20)*4))) = 0x00FF0000;
+            }
+        }
+        for y = 0; y < 20; y++ {
+            for x = 0; x < 20; x++ {
+                *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*(y+20) + (x+50)*4))) = 0x0000FF00;
+            }
+        }
+        for y = 0; y < 20; y++ {
+            for x = 0; x < 20; x++ {
+                *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*(y+20) + (x+80)*4))) = 0x000000FF;
+            }
         }
     }
-    for y = 0; y < 20; y++ {
-        for x = 0; x < 20; x++ {
-            *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*(y+20) + (x+50)*4))) = 0x0000FF00;
-        }
-    }
-    for y = 0; y < 20; y++ {
-        for x = 0; x < 20; x++ {
-            *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*(y+20) + (x+80)*4))) = 0x000000FF;
-        }
-    }
-
     // say hello
     puts("Hello from a simple BOOTBOOT kernel");
 

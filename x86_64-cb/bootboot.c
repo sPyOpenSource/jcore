@@ -71,7 +71,7 @@
 
 extern void ap_trampoline();
 #if __WORDSIZE == 64
-extern void bsp64_init();
+extern void bsp64_init(uint64_t apicid);
 #else
 extern void bsp_init();
 #endif
@@ -597,7 +597,7 @@ void GetLFB()
  */
 void LoadCore()
 {
-    uint64_t bss = 0;
+    uint64_t bss = 0, ptr;
     uint32_t r = 0;
 
     entrypoint=0;
@@ -716,8 +716,9 @@ void LoadCore()
     if(initstack < 1024) initstack = 1024;
     if(initstack > 16384) initstack = 16384;
     // create core segment
-    memcpy((void*)((uint8_t*)(uintptr_t)bootboot->initrd_ptr+bootboot->initrd_size), core.ptr, core.size);
-    core.ptr=(uint8_t*)(uintptr_t)bootboot->initrd_ptr+bootboot->initrd_size;
+    ptr = ((bootboot->initrd_ptr+bootboot->initrd_size) + PAGESIZE - 1) & ~(PAGESIZE-1);
+    memcpy((void*)(uintptr_t)ptr, core.ptr, core.size);
+    core.ptr=(uint8_t*)(uintptr_t)ptr;
     if(bss>0)
         memset(core.ptr + core.size, 0, bss);
     core.size += bss;
@@ -1110,7 +1111,7 @@ gzerr:      panic("Unable to uncompress");
     LoadCore();
 
     /* Symmetric Multi Processing support */
-    memset(lapic_ids, 0, sizeof(lapic_ids)); lapic_ids[0] = bootboot->bspid;
+    memset(lapic_ids, 0xFF, sizeof(lapic_ids));
     ptr = (uint8_t*)(uintptr_t)bootboot->arch.x86_64.acpi_ptr;
     if(ptr && (ptr[0]=='X' || ptr[0]=='R') && ptr[1]=='S' && ptr[2]=='D' && ptr[3]=='T') {
         pe = ptr; ptr += 36;
@@ -1123,11 +1124,13 @@ gzerr:      panic("Unable to uncompress");
                 for(r = *((uint32_t*)(data + 4)), ptr = data + 44, i = 0; ptr < data + r &&
                     i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); ptr += ptr[1]) {
                     switch(ptr[0]) {
-                        case 0: lapic_ids[(int)ptr[2]] = i++; break;        // found Processor Local APIC
+                        case 0:                                             // found Processor Local APIC
+                            if((ptr[4] & 1) && lapic_ids[(int)ptr[3]] == 0xFFFF) { lapic_ids[(int)ptr[3]] = i++; }
+                        break;
                         case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                     }
                 }
-                if(i) bootboot->numcores = i;
+                if(i && lapic_ids[bootboot->bspid] != 0xFFFF) bootboot->numcores = i;
                 break;
             }
         }
@@ -1135,20 +1138,56 @@ gzerr:      panic("Unable to uncompress");
     if(!nosmp && bootboot->numcores > 1 && lapic_addr) {
         DBG(" * SMP numcores %d\n", bootboot->numcores);
         memcpy((uint8_t*)0x1000, &ap_trampoline, 128);
-        // send Broadcast INIT IPI
-        *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4500;
+
+        // send INIT IPI (supports up to 256 cores, requires x2APIC to have more)
+        for(i = 0; i < 256; i++) {
+            if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280)) = 0;                            // clear APIC errors
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) =
+                (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) & 0x00ffffff) | (i << 24); // select AP
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) =
+                (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & 0xfff00000) | 0x00C500;  // trigger INIT IPI
+            do { __asm__ __volatile__ ("pause" : : : "memory"); }
+                while(*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & (1 << 12));         // wait for delivery
+            // deassert
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) =
+                (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) & 0x00ffffff) | (i << 24);
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) =
+                (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & 0xfff00000) | 0x008500;
+            do { __asm__ __volatile__ ("pause" : : : "memory"); }
+                while(*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & (1 << 12));
+        }
         mdelay(10);
-        // send Broadcast STARTUP IPI
-        *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4601; // start at 0100:0000h
-        udelay(200);
-        // send second SIPI
-        *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4601;
-    } else
+        // send STARTUP IPI
+        for(i = 0; i < 256; i++) {
+            if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280)) = 0;                            // clear APIC errors
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) =
+                (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) & 0x00ffffff) | (i << 24); // select AP
+            // trigger IPI, start at 0100:0000h
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) =
+                (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & 0xfff0f800) | 0x000601;
+            udelay(200);
+            do { __asm__ __volatile__ ("pause" : : : "memory"); }
+                while(*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & (1 << 12));         // wait for delivery
+            // send second IPI
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280)) = 0;
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) =
+                (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) & 0x00ffffff) | (i << 24);
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) =
+                (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & 0xfff0f800) | 0x000601;
+            do { __asm__ __volatile__ ("pause" : : : "memory"); }
+                while(*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & (1 << 12));
+        }
+    } else {
+        lapic_addr = 0;
+        lapic_ids[bootboot->bspid] = 0;
         bootboot->numcores = 1;
+    }
 
     /* Create paging tables */
     DBG(" * Pagetables PML4 @%p\n",paging);
-    memset(paging, 0, 37*PAGESIZE+bootboot->numcores*initstack);
+    memset(paging, 0, (37+(bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
     //PML4
     paging[0]=(uint64_t)((uintptr_t)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
     paging[511]=(uint64_t)((uintptr_t)paging+20*PAGESIZE)+3;   // pointer to 4k PDPE (core mapped at -2M)
@@ -1243,7 +1282,7 @@ gzerr:      panic("Unable to uncompress");
 
     /* continue in Assembly, enable long mode and jump to kernel's entry point */
 #if __WORDSIZE == 64
-    bsp64_init();
+    bsp64_init(bootboot->bspid);
 #else
     bsp_init();
 #endif

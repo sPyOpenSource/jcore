@@ -49,52 +49,53 @@ extern crate rlibc;
 #[no_mangle] // don't mangle the name of this function
 fn _start() -> ! {
     /*** NOTE: this code runs on all cores in parallel ***/
-    unsafe {
-        let fb = &bootboot::fb as *const u8 as u64;
+    if bootboot::bootboot.fb_scanline > 0 {
+        unsafe {
+            let fb = &bootboot::fb as *const u8 as u64;
 
-        // cross-hair to see screen dimension detected correctly
-        for y in 0..bootboot::bootboot.fb_height {
-            let addr = fb
-                + bootboot::bootboot.fb_scanline as u64 * y as u64
-                + bootboot::bootboot.fb_width as u64 * 2;
-            *(addr as *mut u64) = 0x00FFFFFF;
-        }
-        for x in 0..bootboot::bootboot.fb_width {
-            let addr = fb
-                + bootboot::bootboot.fb_scanline as u64 * (bootboot::bootboot.fb_height / 2) as u64 + (x * 4) as u64;
-            *(addr as *mut u64) = 0x00FFFFFF;
+            // cross-hair to see screen dimension detected correctly
+            for y in 0..bootboot::bootboot.fb_height {
+                let addr = fb
+                    + bootboot::bootboot.fb_scanline as u64 * y as u64
+                    + bootboot::bootboot.fb_width as u64 * 2;
+                *(addr as *mut u64) = 0x00FFFFFF;
+            }
+            for x in 0..bootboot::bootboot.fb_width {
+                let addr = fb
+                    + bootboot::bootboot.fb_scanline as u64 * (bootboot::bootboot.fb_height / 2) as u64 + (x * 4) as u64;
+                *(addr as *mut u64) = 0x00FFFFFF;
+            }
+
+            // red, green, blue boxes in order
+            for y in 0..20 {
+                for x in 0..20 {
+                    let addr = fb
+                        + bootboot::bootboot.fb_scanline as u64 * (y + 20) as u64
+                        + (x + 20) * 4;
+                    *(addr as *mut u64) = 0x00FF0000;
+                }
+            }
+            for y in 0..20 {
+                for x in 0..20 {
+                    let addr = fb
+                        + bootboot::bootboot.fb_scanline as u64 * (y + 20) as u64
+                        + (x + 50) * 4;
+                    *(addr as *mut u64) = 0x0000FF00;
+                }
+            }
+            for y in 0..20 {
+                for x in 0..20 {
+                    let addr = fb
+                        + bootboot::bootboot.fb_scanline as u64 * (y + 20) as u64
+                        + (x + 80) * 4;
+                    *(addr as *mut u64) = 0x000000FF;
+                }
+            }
         }
 
-        // red, green, blue boxes in order
-        for y in 0..20 {
-            for x in 0..20 {
-                let addr = fb
-                    + bootboot::bootboot.fb_scanline as u64 * (y + 20) as u64
-                    + (x + 20) * 4;
-                *(addr as *mut u64) = 0x00FF0000;
-            }
-        }
-        for y in 0..20 {
-            for x in 0..20 {
-                let addr = fb
-                    + bootboot::bootboot.fb_scanline as u64 * (y + 20) as u64
-                    + (x + 50) * 4;
-                *(addr as *mut u64) = 0x0000FF00;
-            }
-        }
-        for y in 0..20 {
-            for x in 0..20 {
-                let addr = fb
-                    + bootboot::bootboot.fb_scanline as u64 * (y + 20) as u64
-                    + (x + 80) * 4;
-                *(addr as *mut u64) = 0x000000FF;
-            }
-        }
+        // say hello
+        puts("Hello from a simple BOOTBOOT kernel");
     }
-
-    // say hello
-    puts("Hello from a simple BOOTBOOT kernel");
-
     // hang for now
     loop {}
 }

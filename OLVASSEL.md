@@ -280,18 +280,19 @@ void _start()
     /*** FIGYELEM: ez a kód párhuzamosan fut minden processzormagon ***/
     int x, y, s=bootboot.fb_scanline, w=bootboot.fb_width, h=bootboot.fb_height;
 
-    // célkereszt, hogy lássuk, a felbontás jó-e
-    for(y=0;y<h;y++) { *((uint32_t*)(&fb + s*y + (w*2)))=0x00FFFFFF; }
-    for(x=0;x<w;x++) { *((uint32_t*)(&fb + s*(h/2)+x*4))=0x00FFFFFF; }
+    if(s) {
+        // célkereszt, hogy lássuk, a felbontás jó-e
+        for(y=0;y<h;y++) { *((uint32_t*)(&fb + s*y + (w*2)))=0x00FFFFFF; }
+        for(x=0;x<w;x++) { *((uint32_t*)(&fb + s*(h/2)+x*4))=0x00FFFFFF; }
 
-    // piros, zöld és kék dobozok, ebben a sorrendben
-    for(y=0;y<20;y++) { for(x=0;x<20;x++) { *((uint32_t*)(&fb + s*(y+20) + (x+20)*4))=0x00FF0000; } }
-    for(y=0;y<20;y++) { for(x=0;x<20;x++) { *((uint32_t*)(&fb + s*(y+20) + (x+50)*4))=0x0000FF00; } }
-    for(y=0;y<20;y++) { for(x=0;x<20;x++) { *((uint32_t*)(&fb + s*(y+20) + (x+80)*4))=0x000000FF; } }
+        // piros, zöld és kék dobozok, ebben a sorrendben
+        for(y=0;y<20;y++) { for(x=0;x<20;x++) { *((uint32_t*)(&fb + s*(y+20) + (x+20)*4))=0x00FF0000; } }
+        for(y=0;y<20;y++) { for(x=0;x<20;x++) { *((uint32_t*)(&fb + s*(y+20) + (x+50)*4))=0x0000FF00; } }
+        for(y=0;y<20;y++) { for(x=0;x<20;x++) { *((uint32_t*)(&fb + s*(y+20) + (x+80)*4))=0x000000FF; } }
 
-    // köszönünk
-    puts("Hello from a simple BOOTBOOT kernel");
-
+        // köszönünk
+        puts("Hello from a simple BOOTBOOT kernel");
+    }
     // leállunk egyelőre
     while(1);
 }

@@ -1968,7 +1968,7 @@ end if
             cmp         byte [ebx], 0       ; madt_entry.type: is it a Local APIC Processor?
             jne         @f
             xor         ax, ax
-            mov         al, byte [ebx+2]    ; madt_entry.lapicproc.lapicid
+            mov         al, byte [ebx+3]    ; madt_entry.lapicproc.lapicid
             stosw                           ; ACPI table holds 1 byte id, but internally we have 2 bytes
             inc         word [bootboot.numcores]
 @@:         xor         eax, eax
@@ -2012,7 +2012,52 @@ end if
 .dosmp:     cmp         word [bootboot.numcores], 2
             jb          .nosmp
 
-            DBG32       dbg_smp
+if BBDEBUG eq 1
+            xor         eax, eax
+            mov         dword [gpt_ptr], eax
+            mov         dword [gpt_num], eax
+            prot_realmode
+            mov         si, dbg_smp
+            mov         bx, word [bootboot.numcores]
+            mov         di, gpt_ptr
+
+            cmp         bx, 1000
+            jl          @f
+            mov         al, '1'
+            stosb
+            sub         bx, 1000
+@@:         mov         cx, 100
+            cmp         bx, cx
+            jl          @f
+            mov         ax, bx
+            xor         dx, dx
+            div         cx
+            add         al, '0'
+            stosb
+            mov         bx, dx
+@@:         mov         cx, 10
+            cmp         bx, cx
+            jl          @f
+            mov         ax, bx
+            xor         dx, dx
+            div         cx
+            add         al, '0'
+            stosb
+            mov         bx, dx
+@@:         mov         al, bl
+            add         al, '0'
+            stosb
+            xor         al, al
+            stosb
+
+            mov         si, dbg_smp
+            call        real_printfunc
+            mov         si, gpt_ptr
+            call        real_printfunc
+            mov         si, crlf
+            call        real_printfunc
+            real_protmode
+end if
 
             ; relocate AP trampoline
             mov         esi, ap_trampoline
@@ -2324,11 +2369,10 @@ longmode_init:
             mov         eax, 0C0000011h ;clear EM, MP (enable SSE) and WP
             mov         cr0, eax        ;enable paging with cache disabled
             lgdt        [GDT_value]     ;read 80 bit address
-            jmp         @f
-            nop
-@@:         jmp         8:@f
+            jmp         8:.bootboot_startcore
             USE64
-@@:         xor         eax, eax        ;load long mode segments
+.bootboot_startcore:
+            xor         rax, rax        ;load long mode segments
             mov         ax, 10h
             mov         ds, ax
             mov         es, ax
@@ -2336,10 +2380,13 @@ longmode_init:
             mov         fs, ax
             mov         gs, ax
             ; find out our lapic id
-            mov         eax, 1
-            cpuid
-            shr         ebx, 24
-            mov         edx, ebx
+            mov         eax, dword [lapic_ptr]
+            or          eax, eax
+            jz          @f
+            add         eax, 20h
+            mov         eax, dword [rax]
+            shr         eax, 24
+@@:         mov         edx, eax
             ; get array index for it
             xor         rbx, rbx
             mov         rsi, lapic_ids
@@ -2351,7 +2398,8 @@ longmode_init:
             dec         cx
             jnz         @b
             xor         rbx, rbx
-@@:         shl         rbx, 10         ; 1k stack for each core
+@@:         mov         rdi, rbx
+            shl         rbx, 10         ; 1k stack for each core
 
             ; set stack and call _start() in sys/core
             xor         rsp, rsp        ;sp = core_num * -1024
@@ -2732,7 +2780,7 @@ dbg_gzinitrd db         " * Gzip compressed initrd",10,13,0
 dbg_scan    db          " * Autodetecting kernel",10,13,0
 dbg_elf     db          " * Parsing ELF64",10,13,0
 dbg_pe      db          " * Parsing PE32+",10,13,0
-dbg_smp     db          " * SMP init",10,13,0
+dbg_smp     db          " * SMP numcores ",0
 dbg_vesa    db          " * Screen VESA VBE",10,13,0
 end if
 backup:     db          " * Backup initrd",10,13,0
