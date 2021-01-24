@@ -72,6 +72,7 @@ _L1040:
 _L1060:
     movw    $16, %ax
     movw    %ax, %ds
+    incb    0x1011
     // spinlock until BSP finishes
 1:  pause
     cmpb    $0, 0x1010
@@ -118,11 +119,15 @@ bsp_init:
  * common code for all cores, enable long mode and start kernel              *
  *****************************************************************************/
 longmode_init:
-    // find our lapic id
+    // enable lapic and find our lapic id
     movl    lapic_addr, %edi
     or      %edi, %edi
     jz      1f
-    addl    $0x20, %edi
+    addl    $0xF0, %edi
+    movl    (%edi), %eax
+    or      $0x1, %ah
+    movl    %eax, (%edi)
+    subl    $0xD0, %edi
     movl    (%edi), %edi
     shrl    $24, %edi
 1:  // do not clobber di
@@ -178,6 +183,7 @@ bootboot_startcore:
     movw    %ax, %ss
     movw    %ax, %fs
     movw    %ax, %gs
+    lock    incb 0x200A         // __sync_fetch_and_add(&bootboot->numcores, 1);
     movzwq  %di, %rbx
     shll    $1, %ebx            // ebx = lapic id * 2
     addl    $lapic_ids, %ebx

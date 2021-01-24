@@ -1233,7 +1233,6 @@ int bootboot_main(uint64_t hcl)
     memcpy((void*)&bootboot->magic,BOOTBOOT_MAGIC,4);
     bootboot->protocol = PROTOCOL_DYNAMIC | LOADER_RPI;
     bootboot->size = 128;
-    bootboot->numcores = 4;
     bootboot->arch.aarch64.mmio_ptr = mmio_base;
     // set up a framebuffer so that we can write on screen
     if(!GetLFB(0, 0)) goto viderr;
@@ -1849,12 +1848,13 @@ error:
 }
 
 /**
- * start kernel, run on all cores
+ * start kernel, runs on all cores
  */
 void bootboot_startcore()
 {
     // spinlock until BSP finishes
     do { asm volatile ("dsb sy"); } while(!bsp_done);
+    __sync_fetch_and_add(&bootboot->numcores, 1);
 
     // enable paging
     reg=(0xFF << 0) |    // Attr=0: normal, IWBWA, OWBWA, NTR

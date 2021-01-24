@@ -382,7 +382,7 @@ EFI_FILE_HANDLE                 RootDir;
 EFI_FILE_PROTOCOL               *Root;
 SIMPLE_INPUT_INTERFACE          *CI;
 unsigned char *kne, nosmp=0;
-volatile char bsp_done=0;
+volatile char bsp_done=0, ap_done=0;
 
 // default environment variables. M$ states that 1024x768 must be supported
 int reqwidth = 1024, reqheight = 768;
@@ -958,10 +958,6 @@ EFI_STATUS
 report(EFI_STATUS Status,CHAR16 *Msg)
 {
     Print(L"BOOTBOOT-PANIC: %s (EFI %r)\n",Msg,Status);
-#if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
-    // don't care if we can't free because it isn't allocated
-    uefi_call_wrapper(BS->FreePages, 2, (EFI_PHYSICAL_ADDRESS)0x8000, 1);
-#endif
     return Status;
 }
 
@@ -1398,11 +1394,18 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
     register UINTN core_num = (UINTN)buf;
 #else
     (void)buf;
-    register UINT16 core_num = lapic_addr ? lapic_ids[*((volatile uint32_t*)(lapic_addr + 0x20)) >> 24] : 0;
+    register UINT16 core_num = 0;
+    if(lapic_addr) {
+        // enable Local APIC
+        *((volatile uint32_t*)(lapic_addr + 0x0F0)) = *((volatile uint32_t*)(lapic_addr + 0x0F0)) | 0x100;
+        core_num = lapic_ids[*((volatile uint32_t*)(lapic_addr + 0x20)) >> 24];
+    }
 #endif
+    ap_done = 1;
 
     // spinlock until BSP finishes (or forever if we got an invalid lapicid, should never happen)
     do { __asm__ __volatile__ ("pause" : : : "memory"); } while(!bsp_done && core_num != 0xFFFF);
+    __sync_fetch_and_add(&bootboot->numcores, 1);
 
     // enable SSE
     __asm__ __volatile__ (
@@ -1456,7 +1459,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     UINT8 pibuffer[100];
     EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
 #else
-    UINT64 ncycles = 0, currtime, endtime, ap_code = 0x8000;
+    UINT64 ncycles = 0, currtime, endtime;
 #endif
     EFI_GUID SerIoGuid = EFI_SERIAL_IO_PROTOCOL_GUID;
     EFI_SERIAL_IO_PROTOCOL *ser = NULL;
@@ -1467,7 +1470,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     file_t ret={NULL,0};
     CHAR16 **argv, *initrdfile, *configfile, *help=
         L"SYNOPSIS\n  BOOTBOOT.EFI [ -h | -? | /h | /? | -s ] [ INITRDFILE [ ENVIRONFILE [...] ] ]\n\nDESCRIPTION\n  Bootstraps an operating system via the BOOTBOOT Protocol.\n  If arguments not given, defaults to\n    FS0:\\BOOTBOOT\\INITRD   as ramdisk image and\n    FS0:\\BOOTBOOT\\CONFIG   for boot environment.\n  Additional \"key=value\" command line arguments will be appended to the\n  environment. If INITRD not found, it will use the first bootable partition\n  in GPT. If CONFIG not found, it will look for /sys/config inside the\n  INITRD (or partition). With -s it will scan the memory for an initrd ROM.\n\n  As this is a loader, it is not supposed to return control to the shell.\n\n";
-    INTN argc, scanmemory=0;
+    INTN argc, scanmemory=0, numcores=0;
 
     // Initialize UEFI Library
     InitializeLib(image, systab);
@@ -1496,11 +1499,6 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     } else {
         configfile=L"\\BOOTBOOT\\CONFIG";
     }
-#if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
-    // Allocate page at fixed address for AP trampoline code as soon as possible
-    status = uefi_call_wrapper(BS->AllocatePages, 4, 2, 1, 1, (EFI_PHYSICAL_ADDRESS*)&ap_code);
-    if(EFI_ERROR(status) || ap_code != 0x8000) ap_code = 0;
-#endif
 
     Print(L"Booting OS...\n");
 
@@ -1542,8 +1540,13 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
                             __asm__ __volatile__ ( "rdtsc" : "=a"(a),"=d"(b)); currtime=((UINT64)b << 32)|a; \
                         } while(currtime < endtime); \
                     } else \
-                        for(i = 0; i < n*1000000; i++) __asm__ __volatile__ ("pause" : : : "memory"); \
+                        __asm__ __volatile__ ("1: pause; dec %%ecx; or %%ecx, %%ecx; jnz 1b" : : "c"(n*1000) : "memory"); \
                 } while(0)
+#define send_ipi(a,v) do { \
+    *((volatile uint32_t*)(lapic_addr + 0x310)) = (a << 24); \
+    *((volatile uint32_t*)(lapic_addr + 0x300)) = v;  \
+    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12)) __asm__ __volatile__ ("pause" : : : "memory"); \
+} while(0)
 #endif
 
     // locate InitRD in ROM
@@ -1834,7 +1837,6 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         // collect information on system
         bootboot->protocol=PROTOCOL_DYNAMIC | LOADER_UEFI;
         bootboot->size=128;
-        bootboot->numcores=1;
         CopyMem((void *)&(bootboot->initrd_ptr),&initrd.ptr,8);
         bootboot->initrd_size=((initrd.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
         CopyMem((void *)&(bootboot->arch.x86_64.efi_ptr),&systab,8);
@@ -1897,13 +1899,14 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             if(!EFI_ERROR(status)) {
                 // failsafe: we cannot map more stacks (each core has 1k)
                 if(i>PAGESIZE/8/2*4) i=PAGESIZE/8/2*4;
-                bootboot->numcores = i;
+                if(i<1) i = 1;
+                numcores = i;
             }
-            DBG(L" * SMP numcores %d\n", bootboot->numcores);
+            DBG(L" * SMP numcores %d\n", numcores);
             // start APs
             status = uefi_call_wrapper(BS->CreateEvent, 5, 0, TPL_NOTIFY, NULL, NULL, &Event);
             if(!EFI_ERROR(status)) {
-                for(i=0; i<bootboot->numcores; i++) {
+                for(i=0; i<numcores; i++) {
                     status = uefi_call_wrapper(mp->GetProcessorInfo, 5, mp, i, pibuf);
                     if(!EFI_ERROR(status)) {
                         if(pibuf->StatusFlag & PROCESSOR_AS_BSP_BIT) {
@@ -1916,10 +1919,10 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                 }
             }
         } else
-            bootboot->numcores = 1;
+            numcores = 1;
 #else
         UINT8 *ptr = (UINT8*)bootboot->arch.x86_64.acpi_ptr, *pe, *data;
-        UINT64 r;
+        UINT64 r, boguscore = 0;
         for(i = 0; i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); i++) lapic_ids[i] = 0xFFFF;
         if(!nosmp && ptr && (ptr[0]=='X' || ptr[0]=='R') && ptr[1]=='S' && ptr[2]=='D' && ptr[3]=='T') {
             pe = ptr; ptr += 36;
@@ -1933,7 +1936,10 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                         i < (int)(sizeof(lapic_ids)/sizeof(lapic_ids[0])); ptr += ptr[1]) {
                         switch(ptr[0]) {
                             case 0:                                             // found Processor Local APIC
-                                if((ptr[4] & 1) && lapic_ids[(INTN)ptr[3]] == 0xFFFF) { lapic_ids[(INTN)ptr[3]] = i++; }
+                                if((ptr[4] & 1) && ptr[3] != 0xFF && lapic_ids[(INTN)ptr[3]] == 0xFFFF)
+                                    lapic_ids[(INTN)ptr[3]] = i++;
+                                else
+                                    boguscore++;
                             break;
                             case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                         }
@@ -1941,25 +1947,19 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                     if(i) {
                         bsp_num = lapic_ids[bootboot->bspid];
                         if(bsp_num == 0xFFFF) bsp_num = 0;
-                        else bootboot->numcores = i;
+                        else {
+                            numcores = i;
+                            DBG(L" * SMP numcores %d%s\n", numcores, boguscore ? L" (bogus ACPI table)" : L"");
+                        }
                     }
                     break;
                 }
             }
         }
-        if(!nosmp && bootboot->numcores > 1 && lapic_addr && ap_code) {
-            DBG(L" * SMP numcores %d\n", bootboot->numcores);
-            CopyMem((uint8_t*)0x8000, &ap_trampoline, 256);
-            // save UEFI's 64 bit system registers for the trampoline code
-            __asm__ __volatile__ (
-                "movq %%cr3, %%rax; movq %%rax, 0x80C0;"
-                "movl %%cs, %%eax; movl %%eax, 0x80CC;"
-                "movl %%ds, %%eax; movl %%eax, 0x80D0;"
-                "sgdt 0x80E0" : : : );
-            // save relocated address, relocation record doesn't work in Assembly
-            *((uint64_t*)0x80D8) = (uint64_t)bootboot_startcore;
-        } else
-            bootboot->numcores = 1;
+        if(nosmp || numcores < 2 || !lapic_addr) {
+            numcores = 1;
+            lapic_addr = 0;
+        }
 #endif
 
         // query size of memory map
@@ -1970,7 +1970,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         }
         // allocate memory for memory descriptors. We assume that one or two new memory
         // descriptor may be created by our next allocate calls and we round up to page size
-        memory_map_size+=2*desc_size;
+        memory_map_size+=16*desc_size;
         memory_map = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (memory_map_size+PAGESIZE-1)/PAGESIZE,
@@ -1982,11 +1982,11 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         // create page tables
         paging = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 37+
-            (bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&paging);
+            (numcores*initstack+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&paging);
         if (EFI_ERROR(status) || paging == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
-        ZeroMem((void*)paging,(37+(bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
+        ZeroMem((void*)paging,(37+(numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
         DBG(L" * Pagetables PML4 @%lx\n",paging);
         //PML4
         paging[0]=(UINT64)((UINT8 *)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
@@ -2017,14 +2017,14 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         MapPage(bb_addr, (UINT64)(bootboot)+1);
         MapPage(env_addr, (UINT64)(env.ptr)+1);
         // stack at the top of the memory
-        for(i=0; i<(UINTN)((bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE); i++) {
+        for(i=0; i<(UINTN)((numcores*initstack+PAGESIZE-1)/PAGESIZE); i++) {
             if(paging[23*512+511-i])
                 return report(EFI_OUT_OF_RESOURCES,L"Stack smash");
             paging[23*512+511-i]=(UINT64)((UINT8 *)paging+(37+i)*PAGESIZE+3);  // core stacks
         }
 
         // Get memory map
-        int cnt = 3;
+        int cnt = 3, apmemfree = 0;
 get_memory_map:
         DBG(L" * Memory Map @%lx %d bytes try #%d\n", memory_map, memory_map_size, 4-cnt);
         mmapent = (MMapEnt *)&(bootboot->mmap);
@@ -2042,6 +2042,10 @@ get_memory_map:
             if(mement==NULL || bootboot->size>=PAGESIZE-128 ||
                 (mement->PhysicalStart==0 && mement->NumberOfPages==0))
                 break;
+            // check if the AP trampoline code's memory is free
+            if( mement->Type==7 && mement->PhysicalStart <= (UINT64)0x8000 &&
+                mement->PhysicalStart+(mement->NumberOfPages*PAGESIZE) > (UINT64)0x8000)
+                    apmemfree = 1;
             // failsafe, don't report our own structures as free
             if( mement->NumberOfPages==0 ||
                 ((mement->PhysicalStart <= (UINT64)bootboot &&
@@ -2079,7 +2083,8 @@ get_memory_map:
         // --- NO PRINT AFTER THIS POINT ---
 
         // blue (or red) dot on the top left corner (sort of status report)
-        *((uint64_t*)(bootboot->fb_ptr)) = *((uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x000000FF000000FFUL;
+        *((volatile uint64_t*)(bootboot->fb_ptr)) =
+        *((volatile uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x000000FF000000FFUL;
 
         //inform firmware that we're about to leave it's realm
         status = uefi_call_wrapper(BS->ExitBootServices, 2, image, map_key);
@@ -2090,54 +2095,55 @@ get_memory_map:
         }
 
 #if !defined(USE_MP_SERVICES) || !USE_MP_SERVICES
-        // green dot on the top left corner
-        *((uint64_t*)(bootboot->fb_ptr)) = *((uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x0000FF000000FF00UL;
+        // green dot on the top left corner (do not allow gcc to rearrange this!!!)
+        *((volatile uint64_t*)(bootboot->fb_ptr)) =
+        *((volatile uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x0000FF000000FF00UL;
+        __asm__ __volatile__ ("pause" : : : "memory"); // memory barrier
 
         // start APs
-        if(bootboot->numcores > 1) {
-            // send INIT IPI (supports up to 256 cores, requires x2APIC to have more)
-            for(i = 0; i < 256; i++) {
-                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
-                *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;                            // clear APIC errors
-                *((volatile uint32_t*)(lapic_addr + 0x310)) =
-                    (*((volatile uint32_t*)(lapic_addr + 0x310)) & 0x00ffffff) | (i << 24); // select AP
-                *((volatile uint32_t*)(lapic_addr + 0x300)) =
-                    (*((volatile uint32_t*)(lapic_addr + 0x300)) & 0xfff00000) | 0x00C500;  // trigger INIT IPI
-                do { __asm__ __volatile__ ("pause" : : : "memory"); }
-                    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12));         // wait for delivery
-                // deassert
-                *((volatile uint32_t*)(lapic_addr + 0x310)) =
-                    (*((volatile uint32_t*)(lapic_addr + 0x310)) & 0x00ffffff) | (i << 24);
-                *((volatile uint32_t*)(lapic_addr + 0x300)) =
-                    (*((volatile uint32_t*)(lapic_addr + 0x300)) & 0xfff00000) | 0x008500;
-                do { __asm__ __volatile__ ("pause" : : : "memory"); }
-                    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12));
-            }
-            // wait 10 msec
-            sleep(50);
-            // send STARTUP IPI
-            for(i = 0; i < 256; i++) {
-                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
-                *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;                            // clear APIC errors
-                *((volatile uint32_t*)(lapic_addr + 0x310)) =
-                    (*((volatile uint32_t*)(lapic_addr + 0x310)) & 0x00ffffff) | (i << 24); // select AP
-                // trigger IPI, start at 0800:0000h
-                *((volatile uint32_t*)(lapic_addr + 0x300)) =
-                    (*((volatile uint32_t*)(lapic_addr + 0x300)) & 0xfff0f800) | 0x000608;
-                // wait 200 usec
-                sleep(1);
-                do { __asm__ __volatile__ ("pause" : : : "memory"); }
-                    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12));         // wait for delivery
-                // send second IPI
-                *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;
-                *((volatile uint32_t*)(lapic_addr + 0x310)) =
-                    (*((volatile uint32_t*)(lapic_addr + 0x310)) & 0x00ffffff) | (i << 24);
-                *((volatile uint32_t*)(lapic_addr + 0x300)) =
-                    (*((volatile uint32_t*)(lapic_addr + 0x300)) & 0xfff0f800) | 0x000608;
-                do { __asm__ __volatile__ ("pause" : : : "memory"); }
-                    while(*((volatile uint32_t*)(lapic_addr + 0x300)) & (1 << 12));
+        if(numcores > 1 && apmemfree) {
+
+            // copy trampoline and save UEFI's 64 bit system registers for the trampoline code
+            __asm__ __volatile__ (
+                "movq $32, %%rcx; movq %0, %%rsi; movq $0x8000, %%rdi; repnz movsq;"
+                "movq %%cr3, %%rax; movq %%rax, 0x80C0;"
+                "movl %%cs, %%eax; movl %%eax, 0x80CC;"
+                "movl %%ds, %%eax; movl %%eax, 0x80D0;"
+                "movq %%rbx, 0x80D8;"
+                "sgdt 0x80E0;" : : "a"((uint64_t)&ap_trampoline), "b"((uint64_t)&bootboot_startcore) : );
+
+            // enable Local APIC
+            *((volatile uint32_t*)(lapic_addr + 0x0F0)) = *((volatile uint32_t*)(lapic_addr + 0x0F0)) | 0x100;
+
+            // if there were no bogus core definitions in the ACPI table, we can do a broadcast (simpler, faster)
+            if(!boguscore) {
+                *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4500;         // trigger bcast INIT IPI
+                sleep(50);                                                      // wait 10 msec
+                *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608;         // trigger bcast SIPI, start at 0800:0000h
+                sleep(1);                                                       // wait 200 usec
+                *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608;         // trigger second bcast SIPI
+            } else {
+                // supports up to 255 cores (lapicid 255 is bcast address), requires x2APIC to have more
+                for(i = 0; i < 255; i++) {
+                    if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+                    *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;            // clear APIC errors
+                    a = *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280));
+                    send_ipi(i, 0x004500);                                      // trigger INIT IPI
+                }
+                sleep(50);                                                      // wait 10 msec
+                for(i = 0; i < 255; i++) {
+                    if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+                    ap_done = 0;
+                    send_ipi(i, 0x004608);                                      // trigger SIPI, start at 0800:0000h
+                    sleep(1);                                                   // wait 200 usec
+                    if(!ap_done) {
+                        send_ipi(i, 0x004608);
+                        sleep(1);
+                    }
+                }
             }
         }
+        __asm__ __volatile__ ("pause" : : : "memory"); // memory barrier
 #endif
 
         // clear the screen
@@ -2150,7 +2156,6 @@ get_memory_map:
 
         // release AP spinlock
         bsp_done = 1;
-        __asm__ __volatile__ ("pause" : : : "memory"); // memory barrier
         bootboot_startcore((VOID*)bsp_num);
     }
     return report(status,L"Initrd not found");
