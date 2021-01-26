@@ -102,6 +102,12 @@ macro       prot_readsector
             call            near prot_readsectorfunc
 }
 
+macro       prot_sleep      delay
+{
+            mov             ecx, delay
+            call            near prot_sleepfunc
+}
+
 macro       DBG msg
 {
 if BBDEBUG eq 1
@@ -359,11 +365,14 @@ realmode_start:
             cmp         ax, 0600h
             jb          .cpuerror
             ;look for minimum feature flags
-            ;so we have PAE?
+            ;do we have PAE?
             bt          edx, 6
             jnc         .cpuerror
             ;what about MSR?
             bt          edx, 5
+            jnc         .cpuerror
+            ;do we have RDTSC instruction?
+            bt          edx, 4
             jnc         .cpuerror
             ;and can we use long mode (LME)?
             mov         eax, 80000000h
@@ -491,6 +500,21 @@ a20wait2:   in          al, 64h
             jz          a20wait2
             ret
 a20ok:
+            ; calibrate RDTSC
+            rdtsc
+            mov         dword [ncycles], eax
+            mov         dword [ncycles+4], edx
+            ; wait 200 usec
+            xor         cx, cx
+            mov         dx, 200
+            mov         ah, 086h
+            int         15h
+            rdtsc
+            sub         eax, dword [ncycles]
+            sbb         edx, dword [ncycles+4]
+            mov         dword [ncycles], eax
+            mov         dword [ncycles+4], edx
+
             ; wait for a key press for half a sec, if pressed use backup initrd
             mov         word [origcount], 0
             sti
@@ -834,7 +858,7 @@ ap_start:   xor         ax, ax
             mov         eax, dword [esi]
             or          ah, 1h
             mov         dword [esi], eax
-            inc         byte [ap_done]
+            lock inc    byte [ap_done]
             ; spinlock until BSP finishes
 @@:         pause
             cmp         byte [bsp_done], 0
@@ -1072,6 +1096,26 @@ prot_oct2bin:
             jnz         @b
             pop         edx
             pop         ebx
+            ret
+
+; IN: ecx delay time in 200 usec units
+prot_sleepfunc:
+            push        edx
+            rdtsc
+            mov         dword [gpt_ptr], eax
+            mov         dword [gpt_ptr+4], edx
+            mov         eax, dword [ncycles]
+            mov         edx, dword [ncycles+4]
+            mul         ecx
+            add         dword [gpt_ptr], eax
+            adc         dword [gpt_ptr+4], edx
+@@:         pause
+            rdtsc
+            cmp         dword [gpt_ptr+4], edx
+            jl          @b
+            cmp         dword [gpt_ptr], eax
+            jl          @b
+            pop         edx
             ret
 
 ; IN: al, character to send
@@ -1971,38 +2015,35 @@ end if
             mov         edi, lapic_ids
 .nextmadtentry:
             cmp         word [numcores], 256
-            jae         .dosmp
+            jae         .acpidone
             cmp         byte [ebx], 0       ; madt_entry.type: is it a Local APIC Processor?
             jne         @f
             mov         al, byte [ebx+4]    ; madt_entry.lapicproc.flag & ENABLED
             and         al, 1
-            jz          .madterr
+            jz          @f
             xor         ax, ax
             mov         al, byte [ebx+3]    ; madt_entry.lapicproc.lapicid
             cmp         al, 0FFh
-            je          .madterr
+            je          @f
             stosw                           ; ACPI table holds 1 byte id, but internally we have 2 bytes
             inc         word [numcores]
-            jmp         @f
-.madterr:   mov         byte [boguscore], 1
 @@:         xor         eax, eax
             mov         al, byte [ebx+1]    ; madt_entry.size
             or          al, al
-            jz          .dosmp
+            jz          .acpidone
             add         ebx, eax
+            cmp         ecx, eax
+            jl          .acpidone
             sub         ecx, eax
-            cmp         ecx, 0
-            jg          .nextmadtentry
-            jmp         .dosmp
-
+            jmp         .nextmadtentry
 
 .trymp:     ; in lack of ACPI, try legacy MP structures
             mov         esi, dword [bootboot.mp_ptr]
             or          esi, esi
-            jz          .nosmp
+            jz          .acpidone
             mov         esi, dword [esi+4]
             cmp         dword [esi], 'PCMP'
-            jne         .nosmp
+            jne         .acpidone
             mov         eax, dword [esi+36]     ; pcmp.lapic_address
             mov         dword [lapic_ptr], eax
             mov         cx, word [esi+34]       ; pcmp.numentries
@@ -2010,7 +2051,7 @@ end if
             mov         edi, lapic_ids
 .nextpcmpentry:
             cmp         word [numcores], 256
-            jae         .dosmp
+            jae         .acpidone
             cmp         byte [esi], 0       ; pcmp_entry.type: is it a Local APIC Processor?
             jne         @f
             xor         ax, ax
@@ -2021,13 +2062,18 @@ end if
 @@:         add         esi, 8
             dec         cx
             jnz         .nextpcmpentry
-
-            ; send IPI and SIPI
-.dosmp:     cmp         word [numcores], 2
-            jb          .nosmp
+.acpidone:
+            ; failsafe
             cmp         dword [lapic_ptr], 0
-            jz          .nosmp
-
+            jz          @f
+            cmp         word [numcores], 0
+            jnz         .smpok
+@@:         mov         word [numcores], 1
+            mov         ax, word [bootboot.bspid]
+            mov         word [lapic_ids], ax
+            mov         dword [lapic_ptr], 0
+            jmp         .stks
+.smpok:
 if BBDEBUG eq 1
             xor         eax, eax
             mov         dword [gpt_ptr], eax
@@ -2069,196 +2115,11 @@ if BBDEBUG eq 1
             call        real_printfunc
             mov         si, gpt_ptr
             call        real_printfunc
-            cmp         byte [boguscore], 0
-            jz          @f
-            mov         si, dbg_bogus
-            call        real_printfunc
-@@:         mov         si, crlf
+            mov         si, crlf
             call        real_printfunc
             real_protmode
 end if
-
-            ; relocate AP trampoline
-            mov         esi, ap_trampoline
-            mov         edi, 7000h
-            mov         ecx, (ap_start-ap_trampoline+3)/4
-            repnz       movsd
-
-            ; enable Local APIC
-            mov         esi, dword [lapic_ptr]
-            add         esi, 0F0h
-            mov         eax, dword [esi]
-            or          ah, 1h
-            mov         dword [esi], eax
-
-            cmp         byte [boguscore], 0
-            jnz         .nobcast
-
-            ; send Broadcast INIT IPI
-            mov         esi, dword [lapic_ptr]
-            add         esi, 300h
-            mov         eax, 0C4500h
-            mov         dword [esi], eax
-
-            ; wait 10 millisec
-            push        esi
-            prot_realmode
-            xor         cx, cx
-            mov         dx, 10000
-            mov         ah, 086h
-            sti
-            int         15h
-            cli
-            real_protmode
-            pop         esi
-
-            ; send Broadcast STARTUP IPI
-            mov         eax, 0C4607h        ; start at 0700:0000h
-            mov         dword [esi], eax
-
-            ; wait 200 microsec
-            push        eax
-            push        esi
-            prot_realmode
-            xor         cx, cx
-            mov         dx, 200
-            mov         ah, 086h
-            sti
-            int         15h
-            cli
-            real_protmode
-            pop         esi
-            pop         eax
-            mov         dword [esi], eax    ; second SIPI
-            jmp         .nosmp
-
-            ; send IPIs to specific cores one by one
-.nobcast:   xor         edx, edx
-.nextcore:  cmp         dx, word [numcores]
-            jae         .nosmp
-            xor         esi, esi
-            mov         esi, edx
-            inc         edx
-            shl         esi, 1
-            add         esi, lapic_ids
-            mov         bx, word [esi]
-            cmp         bx, word [bootboot.bspid]
-            je          .nextcore
-            shl         ebx, 24
-
-            ; clear APIC error
-            mov         esi, dword [lapic_ptr]
-            add         esi, 280h
-            mov         dword [esi], 0
-            mov         eax, dword [esi]
-
-            ; select AP
-            add         esi, 30h
-            mov         dword [esi], ebx
-            ; trigger INIT IPI
-            sub         esi, 10h
-            mov         eax, 004500h
-            mov         dword [esi], eax
-
-            ; wait 200 microsec
-            push        esi
-            push        edx
-            push        ebx
-            prot_realmode
-            xor         cx, cx
-            mov         dx, 200
-            mov         ah, 086h
-            sti
-            int         15h
-            cli
-            real_protmode
-            pop         ebx
-            pop         edx
-            pop         esi
-
-            ; select AP
-            add         esi, 10h
-            mov         dword [esi], ebx
-            ; deassert INIT IPI
-            sub         esi, 10h
-            mov         eax, 008500h
-            mov         dword [esi], eax
-
-            ; wait 10 millisec
-            push        esi
-            push        edx
-            push        ebx
-            prot_realmode
-            xor         cx, cx
-            mov         dx, 10000
-            mov         ah, 086h
-            sti
-            int         15h
-            cli
-            real_protmode
-            pop         ebx
-            pop         edx
-            pop         esi
-
-            mov         byte [ap_done], 0
-            ; select AP
-            add         esi, 10h
-            mov         dword [esi], ebx
-            ; send STARTUP IPI
-            sub         esi, 10h
-            mov         eax, 004607h    ; start at 0700:0000h
-            mov         dword [esi], eax
-
-            ; wait 200 microsec
-            push        eax
-            push        esi
-            push        edx
-            push        ebx
-            prot_realmode
-            xor         cx, cx
-            mov         dx, 200
-            mov         ah, 086h
-            sti
-            int         15h
-            cli
-            real_protmode
-            pop         ebx
-            pop         edx
-            pop         esi
-            pop         eax
-
-            ; do we need a second SIPI?
-            cmp         byte [ap_done], 0
-            jnz         .nextcore
-
-            ; select AP
-            add         esi, 10h
-            mov         dword [esi], ebx
-            ; send STARTUP IPI
-            sub         esi, 10h
-            mov         dword [esi], eax
-
-            ; wait 200 microsec
-            push        edx
-            prot_realmode
-            xor         cx, cx
-            mov         dx, 200
-            mov         ah, 086h
-            sti
-            int         15h
-            cli
-            real_protmode
-            pop         edx
-            jmp         .nextcore
-
-.nosmp:     ; failsafe
-            cmp         word [numcores], 0
-            jnz         @f
-            inc         word [numcores]
-            mov         ax, word [bootboot.bspid]
-            mov         word [lapic_ids], ax
-            mov         dword [lapic_ptr], 0
-@@:         ; remove core stacks from memory map
+.stks:      ; remove core stacks from memory map
             xor         eax, eax
             mov         ax, word [numcores]
             shl         eax, 10
@@ -2498,16 +2359,176 @@ end if
             stosd
             stosd
 
-            ;Enter long mode
-            cli
             mov         al, 0FFh        ;disable PIC
             out         021h, al
             out         0A1h, al
             in          al, 70h         ;disable NMI
             or          al, 80h
             out         70h, al
+
+            ; send IPI and SIPI
+            cmp         word [numcores], 2
+            jb          .nosmp
+            cmp         dword [lapic_ptr], 0
+            jz          .nosmp
+
+            ; relocate AP trampoline
+            mov         esi, ap_trampoline
+            mov         edi, 7000h
+            mov         ecx, (ap_start-ap_trampoline+3)/4
+            repnz       movsd
+
+            ; enable Local APIC
+            mov         esi, dword [lapic_ptr]
+            add         esi, 0D0h               ; logical destination
+            mov         al, 1
+            shl         eax, 24
+            mov         dword [esi], eax
+            add         esi, 10h                ; destination form
+            xor         eax, eax
+            sub         eax, 1
+            mov         dword [esi], eax
+            add         esi, 10h
+            mov         eax, dword [esi]        ; spurious + enable
+            mov         ax, 1FFh
+            mov         dword [esi], eax
+            sub         esi, 70h                ; task priority
+            xor         eax, eax
+            mov         dword [esi], eax
+
+            ; make sure we use the correct Local APIC ID for the BSP
+            sub         esi, 60h
+            mov         eax, dword [esi]
+            shr         eax, 24
+            mov         word [bootboot.bspid], ax
+
+            ; send IPIs to specific cores one by one
+            xor         edx, edx
+.initcore:  cmp         dx, word [numcores]
+            jae         .sipi
+            mov         esi, edx
+            inc         edx
+            shl         esi, 1
+            add         esi, lapic_ids
+            mov         bx, word [esi]
+            cmp         bx, word [bootboot.bspid]
+            je          .initcore
+            shl         ebx, 24
+
+            ; clear APIC error
+            mov         esi, dword [lapic_ptr]
+            add         esi, 280h
+            mov         dword [esi], 0
+            mov         eax, dword [esi]
+            add         esi, 20h
+
+            ; select AP
+@@:         pause
+            mov         eax, dword [esi]
+            bt          eax, 12
+            jc          @b
+            add         esi, 10h
+            mov         eax, dword [esi]
+            and         eax, 00ffffffh
+            or          eax, ebx
+            mov         dword [esi], eax
+            ; trigger INIT IPI
+            sub         esi, 10h
+            mov         eax, dword [esi]
+            and         eax, 0fff00000h
+            or          eax, 00C500h
+            mov         dword [esi], eax
+
+            ; wait 200 microsec
+            prot_sleep  1
+
+            ; select AP
+@@:         pause
+            mov         eax, dword [esi]
+            bt          eax, 12
+            jc          @b
+            add         esi, 10h
+            mov         eax, dword [esi]
+            and         eax, 00ffffffh
+            or          eax, ebx
+            mov         dword [esi], eax
+            ; deassert INIT IPI
+            sub         esi, 10h
+            mov         eax, dword [esi]
+            and         eax, 0fff00000h
+            or          eax, 008500h
+            mov         dword [esi], eax
+            jmp         .initcore
+.sipi:
+            ; wait 10 millisec
+            prot_sleep  50
+
+            xor         edx, edx
+.nextcore:  cmp         dx, word [numcores]
+            jae         .nosmp
+            mov         esi, edx
+            inc         edx
+            shl         esi, 1
+            add         esi, lapic_ids
+            mov         bx, word [esi]
+            cmp         bx, word [bootboot.bspid]
+            je          .nextcore
+            shl         ebx, 24
+
+            mov         byte [ap_done], 0
+
+            ; select AP
+            mov         esi, dword [lapic_ptr]
+            add         esi, 300h
+@@:         pause
+            mov         eax, dword [esi]
+            bt          eax, 12
+            jc          @b
+            add         esi, 10h
+            mov         eax, dword [esi]
+            and         eax, 00ffffffh
+            or          eax, ebx
+            mov         dword [esi], eax
+            ; send STARTUP IPI
+            sub         esi, 10h
+            mov         eax, dword [esi]
+            and         eax, 0fff0f800h
+            or          eax, 004607h    ; start at 0700:0000h
+            mov         dword [esi], eax
+
+            ; wait 200 microsec
+            prot_sleep  1
+
+            ; do we need a second SIPI?
+            cmp         byte [ap_done], 0
+            jnz         .nextcore
+
+            ; select AP
+@@:         pause
+            mov         eax, dword [esi]
+            bt          eax, 12
+            jc          @b
+            add         esi, 10h
+            mov         eax, dword [esi]
+            and         eax, 00ffffffh
+            or          eax, ebx
+            mov         dword [esi], eax
+            ; send STARTUP IPI
+            sub         esi, 10h
+            mov         eax, dword [esi]
+            and         eax, 0fff0f800h
+            or          eax, 004607h
+            mov         dword [esi], eax
+
+            ; wait 200 microsec
+            prot_sleep  1
+            jmp         .nextcore
+.nosmp:
+
+            ;Enter long mode
+            cli
             ;release AP spinlock
-            inc         byte [bsp_done]
+            lock inc    byte [bsp_done]
 
             ;don't use stack below this line
 longmode_init:
@@ -2533,7 +2554,7 @@ longmode_init:
             mov         ss, ax
             mov         fs, ax
             mov         gs, ax
-            lock        inc word [bootboot.numcores]
+            lock inc    word [bootboot.numcores]
             ; find out our lapic id
             mov         eax, dword [lapic_ptr]
             or          eax, eax
@@ -2918,9 +2939,8 @@ hasconfig:  db          0
 iscdrom:    db          0
 nosmp:      db          0
 numcores:   dw          0
-ap_done:
-boguscore:  db          0
-bsp_done:                 ;flag to indicate APs can run
+ap_done:    db          0
+bsp_done:   db          0 ;flag to indicate APs can run
 fattype:    db          0
 bkp:        dd          '    '
 if BBDEBUG eq 1
@@ -2939,7 +2959,6 @@ dbg_scan    db          " * Autodetecting kernel",10,13,0
 dbg_elf     db          " * Parsing ELF64",10,13,0
 dbg_pe      db          " * Parsing PE32+",10,13,0
 dbg_smp     db          " * SMP numcores ",0
-dbg_bogus   db          " (bogus ACPI table)",0
 dbg_vesa    db          " * Screen VESA VBE",10,13,0
 end if
 backup:     db          " * Backup initrd",10,13,0
@@ -2989,6 +3008,7 @@ core_len:   dd          ?
 gpt_ptr:    dd          ?
 gpt_num:    dd          ?
 gpt_ent:    dd          ?
+ncycles:    dq          ?
 lapic_ptr:  dd          ?
 lapic_ids:
 tinf_bss_start:

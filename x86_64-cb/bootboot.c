@@ -76,10 +76,11 @@ extern void bsp64_init(uint64_t apicid);
 extern void bsp_init();
 #endif
 
-#define send_ipi(a,v) do { \
-    *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) = (a << 24); \
-    *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = v;  \
+#define send_ipi(a,m,v) do { \
     while(*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & (1 << 12)) __asm__ __volatile__ ("pause" : : : "memory"); \
+    *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) = (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x310)) & \
+        0x00ffffff) | (a << 24); \
+    *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = (*((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) & m) | v;  \
 } while(0)
 
 /*** ELF64 defines and structs ***/
@@ -760,7 +761,7 @@ void MapPage(uint64_t virt, uint64_t phys)
  */
 int main(void)
 {
-    int ret=0, i, dsk, boguscore = 0, numcores = 0;
+    int ret=0, i, dsk, numcores = 0;
     uint8_t *pe, *ptr;
     uint32_t np,sp,r;
     unsigned char *data;
@@ -1132,8 +1133,6 @@ gzerr:      panic("Unable to uncompress");
                         case 0:                                             // found Processor Local APIC
                             if((ptr[4] & 1) && ptr[3] != 0xFF && lapic_ids[(int)ptr[3]] == 0xFFFF)
                                 lapic_ids[(int)ptr[3]] = i++;
-                            else
-                                boguscore++;
                         break;
                         case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                     }
@@ -1143,38 +1142,43 @@ gzerr:      panic("Unable to uncompress");
             }
         }
     }
+
+    // disable PIC and NMI
+    __asm__ __volatile__ (
+        "movb $0xFF, %%al; outb %%al, $0x21; outb %%al, $0xA1;"                 // disable PIC
+        "inb $0x70, %%al; orb $0x80, %%al; outb %%al, $0x70;"                   // disable NMI
+        : : :);
+
     if(!nosmp && numcores > 1 && lapic_addr) {
-        DBG(" * SMP numcores %d%s\n", numcores, boguscore ? " (bogus ACPI table)" : "");
+        DBG(" * SMP numcores %d\n", numcores);
         memcpy((uint8_t*)0x1000, &ap_trampoline, 128);
 
         // enable Local APIC
+        *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x0D0)) = (1 << 24);
+        *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x0E0)) = 0xFFFFFFFF;
         *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x0F0)) = *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x0F0)) | 0x100;
+        *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x080)) = 0;
+        // make sure we use the correct Local APIC ID for the BSP
+        bootboot->bspid = *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x20)) >> 24;
 
-        // if there were no bogus core definitions in the ACPI table, we can do a broadcast (simpler, faster)
-        if(!boguscore) {
-            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4500;  // trigger bcast INIT IPI
-            mdelay(10);                                                         // wait 10 msec
-            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4601;  // trigger bcast SIPI, start at 0100:0000h
-            udelay(200);                                                        // wait 200 usec
-            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4601;  // trigger second bcast SIPI
-        } else {
-            // supports up to 255 cores (lapicid 255 is bcast address), requires x2APIC to have more
-            for(i = 0; i < 255; i++) {
-                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
-                *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280)) = 0;     // clear APIC errors
-                r = *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280));
-                send_ipi(i, 0x004500);                                          // trigger INIT IPI
-            }
-            mdelay(10);                                                         // wait 10 msec
-            for(i = 0; i < 255; i++) {
-                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
-                *((uint8_t*)0x1011) = 0;
-                send_ipi(i, 0x004601);                                          // trigger SIPI, start at 0100:0000h
-                udelay(200);                                                    // wait 200 usec
-                if(!*((uint8_t*)0x1011)) {
-                    send_ipi(i, 0x004601);
-                    udelay(200);
-                }
+        // supports up to 255 cores (lapicid 255 is bcast address), requires x2APIC to have more
+        for(i = 0; i < 255; i++) {
+            if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280)) = 0;     // clear APIC errors
+            r = *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280));
+            send_ipi(i, 0xfff00000, 0x00C500);                              // trigger INIT IPI
+            udelay(200);
+            send_ipi(i, 0xfff00000, 0x008500);                              // deassert INIT IPI
+        }
+        mdelay(10);                                                         // wait 10 msec
+        for(i = 0; i < 255; i++) {
+            if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+            *((uint8_t*)0x1011) = 0;
+            send_ipi(i, 0xfff0f800, 0x004601);                              // trigger SIPI, start at 0100:0000h
+            udelay(200);                                                    // wait 200 usec
+            if(!*((uint8_t*)0x1011)) {
+                send_ipi(i, 0xfff0f800, 0x004601);
+                udelay(200);
             }
         }
     } else {
