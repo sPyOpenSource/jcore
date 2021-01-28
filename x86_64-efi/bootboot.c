@@ -1368,7 +1368,7 @@ LoadCore()
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         CopyMem((void*)core.ptr,ptr,core.size);
         if(bss>0)
-            ZeroMem((void*)core.ptr + core.size, bss);
+            ZeroMem((UINT8*)core.ptr + core.size, bss);
         core.size += bss;
         DBG(L" * fb          @%lx\n", fb_addr);
         DBG(L" * bootboot    @%lx\n", bb_addr);

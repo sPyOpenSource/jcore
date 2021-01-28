@@ -466,7 +466,7 @@ int ReadLine(unsigned char *buf, int l)
     return i;
 }
 
-static int usbcount = 0,ahcicount = 0;
+static size_t usbcount = 0,ahcicount = 0;
 #if IS_ENABLED(CONFIG_LP_USB)
 static usbdev_t* usbdevs[8];
 
@@ -761,9 +761,9 @@ void MapPage(uint64_t virt, uint64_t phys)
  */
 int main(void)
 {
-    int ret=0, i, dsk, numcores = 0;
+    unsigned int ret=0, i, dsk, numcores = 0;
     uint8_t *pe, *ptr;
-    uint32_t np,sp,r;
+    uint32_t np, sp, r;
     unsigned char *data;
 
 #if IS_ENABLED(CONFIG_LP_SERIAL_CONSOLE)
@@ -880,7 +880,7 @@ int main(void)
             mdelay(1);
         }
         DBG(" * Locate initrd in GPT%s\n","");
-        for(dsk = 0; dsk < ahcicount + usbcount + 1 && !initrd.ptr; dsk++) {
+        for(dsk = 0; (size_t)dsk < ahcicount + usbcount + 1 && !initrd.ptr; dsk++) {
             pe=(uint8_t*)0x4000;
             memset(pe, 0, 512);
             if(!disk_read(dsk, 1, 1, pe) || memcmp(pe, "EFI PART", 8)) continue;
@@ -1151,7 +1151,7 @@ gzerr:      panic("Unable to uncompress");
 
     if(!nosmp && numcores > 1 && lapic_addr) {
         DBG(" * SMP numcores %d\n", numcores);
-        memcpy((uint8_t*)0x1000, &ap_trampoline, 128);
+        memcpy((uint8_t*)0x1000, (void*)&ap_trampoline, 128);
 
         // enable Local APIC
         *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x0D0)) = (1 << 24);
@@ -1188,7 +1188,7 @@ gzerr:      panic("Unable to uncompress");
     }
 
     /* Create paging tables */
-    DBG(" * Pagetables PML4 @%p\n",paging);
+    DBG(" * Pagetables PML4 @%p\n", (void*)paging);
     memset(paging, 0, (37+(numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
     //PML4
     paging[0]=(uint64_t)((uintptr_t)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
@@ -1229,7 +1229,7 @@ gzerr:      panic("Unable to uncompress");
     uint64_t srt, end, ldrend = (uintptr_t)paging + (37+(numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
     uint64_t iniend = (uint64_t)(uintptr_t)core.ptr + core.size;
     MMapEnt *mmapent=(MMapEnt *)&(bootboot->mmap);
-    for (i = 0; i < lib_sysinfo.n_memranges; i++) {
+    for (i = 0; (int)i < lib_sysinfo.n_memranges; i++) {
         srt = lib_sysinfo.memrange[i].base;
         end = srt + lib_sysinfo.memrange[i].size;
         srt = (srt + PAGESIZE-1) & ~(PAGESIZE-1); end &= ~(PAGESIZE-1);

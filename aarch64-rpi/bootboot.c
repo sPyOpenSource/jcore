@@ -443,7 +443,8 @@ int hex2bin(unsigned char *s, int n){ int r=0;while(n-->0){r<<=4;
 #define SD_TIMEOUT          -1
 #define SD_ERROR            -2
 
-uint32_t sd_scr[2], sd_ocr, sd_rca, sd_err, sd_hv;
+uint32_t sd_scr[2], sd_ocr, sd_rca, sd_hv;
+int sd_err;
 
 /**
  * Wait for data or command ready
@@ -473,7 +474,7 @@ int sd_int(uint32_t mask)
  */
 int sd_cmd(uint32_t code, uint32_t arg)
 {
-    int r=0;
+    uint32_t r=0;
     sd_err=SD_OK;
     if(code&CMD_NEED_APP) {
         r=sd_cmd(CMD_APP_CMD|(sd_rca?CMD_RSPNS_48:0),sd_rca);
@@ -527,7 +528,7 @@ int sd_readblock(uint64_t lba, uint8_t *buffer, uint32_t num)
     } else {
         *EMMC_BLKSIZECNT = (1 << 16) | 512;
     }
-    while( c < num ) {
+    while( (uint32_t)c < num ) {
         if(!(sd_scr[0] & SCR_SUPP_CCS)) {
             sd_cmd(CMD_READ_SINGLE,(lba+c)*512);
             if(sd_err) return 0;
@@ -540,7 +541,7 @@ int sd_readblock(uint64_t lba, uint8_t *buffer, uint32_t num)
     uart_dump(buffer,4);
 #endif
     if( num > 1 && !(sd_scr[0] & SCR_SUPP_SET_BLKCNT) && (sd_scr[0] & SCR_SUPP_CCS)) sd_cmd(CMD_STOP_TRANS,0);
-    return sd_err!=SD_OK || c!=num? 0 : num*512;
+    return sd_err!=SD_OK || (uint32_t)c!=num? 0 : num*512;
 }
 
 /**
@@ -783,7 +784,7 @@ uint64_t core_addr=BOOTBOOT_CORE;
 uint64_t initstack = 1024;
 
 // default environment variables. M$ states that 1024x768 must be supported
-int reqwidth = 1024, reqheight = 768;
+unsigned int reqwidth = 1024, reqheight = 768;
 char *kernelname="sys/core";
 unsigned char *kne;
 
@@ -944,9 +945,9 @@ int ReadLine(unsigned char *buf, int l)
 #include "fs.h"
 
 /* current cursor position */
-int kx, ky;
+unsigned int kx, ky;
 /* maximum coordinates */
-int maxx, maxy;
+unsigned int maxx, maxy;
 
 /**
  * Get a linear frame buffer
@@ -1055,7 +1056,7 @@ void putc(char c)
     unsigned char *glyph = (unsigned char*)&_binary_font_psf_start +
      font->headersize + (c>0&&c<font->numglyph?c:0)*font->bytesperglyph;
     int offs = (ky * font->height * bootboot->fb_scanline) + (kx * (font->width+1) * 4);
-    int x,y, line,mask;
+    unsigned int x,y, line,mask;
     int bytesperline=(font->width+7)/8;
     if(c=='\r') {
         kx=0;
@@ -1099,7 +1100,7 @@ void MapPage(uint64_t virt, uint64_t phys)
     j = (virt>>(9+12)) & 0x1FF;
     if(!paging[4*512 + j] || (paging[4*512 + j] & (2<<2))) {
         if(freep == 50) return;
-        paging[4*512 + j]=(uint64_t)((uint8_t *)paging+freep*PAGESIZE)|0b11|(3<<8)|(1<<10);
+        paging[4*512 + j]=(uint64_t)((uint8_t *)paging+freep*PAGESIZE)|0x03|(3<<8)|(1<<10);
         freep++;
     }
     i = (paging[4*512 + j] - (uint64_t)((uint8_t *)paging)) >> 12;
@@ -1163,7 +1164,7 @@ void ParseEnvironment(uint8_t *env)
 /**
  * bootboot entry point, run only on BSP core
  */
-int bootboot_main(uint64_t hcl)
+int bootboot_main()
 {
     uint8_t *pe,bkp=0;
     uint32_t np,sp,r,mp,j;
@@ -1222,7 +1223,7 @@ int bootboot_main(uint64_t hcl)
     *UART0_ICR = 0x7FF;    // clear interrupts
     *UART0_IBRD = 2;       // 115200 baud
     *UART0_FBRD = 0xB;
-    *UART0_LCRH = 0b11<<5; // 8n1
+    *UART0_LCRH = 0x03<<5; // 8n1
 //    *UART0_IMSC = 0x7F2;   // mask interrupts
     *UART0_CR = 0x301;     // enable Tx, Rx, FIFO
 #endif
@@ -1728,44 +1729,44 @@ viderr:
     paging=(uint64_t*)&__paging;
     memset(paging, 0, 50*PAGESIZE);
     // TTBR0, identity L1
-    paging[0]=(uint64_t)((uint8_t*)&__paging+2*PAGESIZE)|0b11|(3<<8)|(1<<10); //AF=1,Block=1,Present=1, SH=3 ISH, RO
+    paging[0]=(uint64_t)((uint8_t*)&__paging+2*PAGESIZE)|0x03|(3<<8)|(1<<10); //AF=1,Block=1,Present=1, SH=3 ISH, RO
     // identity L2
-    paging[2*512]=(uint64_t)((uint8_t*)&__paging+3*PAGESIZE)|0b11|(3<<8)|(1<<10); //AF=1,Block=1,Present=1
+    paging[2*512]=(uint64_t)((uint8_t*)&__paging+3*PAGESIZE)|0x03|(3<<8)|(1<<10); //AF=1,Block=1,Present=1
     // identity L2 2M blocks
     mp>>=21;
     np=mmio_base>>21;
     for(r=1;r<512;r++)
-        paging[2*512+r]=(uint64_t)(((uint64_t)r<<21))|0b01|(1<<10)|(r>=np?(2<<8)|(1<<2)|(1L<<54):(3<<8)); //device SH=2 OSH
+        paging[2*512+r]=(uint64_t)(((uint64_t)r<<21))|0x01|(1<<10)|(r>=np?(2<<8)|(1<<2)|(1L<<54):(3<<8)); //device SH=2 OSH
     // identity L3
     for(r=0;r<512;r++)
-        paging[3*512+r]=(uint64_t)(r*PAGESIZE)|0b11|(1<<10);
+        paging[3*512+r]=(uint64_t)(r*PAGESIZE)|0x03|(1<<10);
     // TTBR1, core L1
-    paging[512+511]=(uint64_t)((uint8_t*)&__paging+4*PAGESIZE)|0b11|(3<<8)|(1<<10); //AF=1,Block=1,Present=1
+    paging[512+511]=(uint64_t)((uint8_t*)&__paging+4*PAGESIZE)|0x03|(3<<8)|(1<<10); //AF=1,Block=1,Present=1
     // core L2
     // map MMIO in kernel space
     j = (mm_addr>>(9+12)) & 0x1FF;
     for(r=0;j+r < 511 && r<32;r++)
-        paging[4*512+j+r]=(uint64_t)(mmio_base+((uint64_t)r<<21))|0b01|(2<<8)|(1<<10)|(1<<2)|(1L<<54); //OSH, Attr=1, NX
+        paging[4*512+j+r]=(uint64_t)(mmio_base+((uint64_t)r<<21))|0x01|(2<<8)|(1<<10)|(1<<2)|(1L<<54); //OSH, Attr=1, NX
     // map framebuffer
     j = (fb_addr>>(9+12)) & 0x1FF;
     for(r=0;j+r < 511 && r<31;r++)
-        paging[4*512+j+r]=(uint64_t)((uint8_t*)&__paging+(5+r)*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //OSH, Attr=2
-    paging[4*512+511]=(uint64_t)((uint8_t*)&__paging+36*PAGESIZE)|0b11|(3<<8)|(1<<10);// pointer to core L3
+        paging[4*512+j+r]=(uint64_t)((uint8_t*)&__paging+(5+r)*PAGESIZE)|0x03|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //OSH, Attr=2
+    paging[4*512+511]=(uint64_t)((uint8_t*)&__paging+36*PAGESIZE)|0x03|(3<<8)|(1<<10);// pointer to core L3
     j = (fb_addr>>(12)) & 0x1FF;
     for(r=0;r<31*512;r++)
-        paging[5*512+j+r]=(uint64_t)(bootboot->fb_ptr+r*PAGESIZE)|0b11|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //map framebuffer
+        paging[5*512+j+r]=(uint64_t)(bootboot->fb_ptr+r*PAGESIZE)|0x03|(2<<8)|(1<<10)|(2<<2)|(1L<<54); //map framebuffer
     // core L3
     // dynamically map these. Main struct, environment string and code segment
     for(r=0;r<(core.size/PAGESIZE);r++)
-        MapPage(core_addr+r*PAGESIZE,(uint64_t)((uint8_t *)core.ptr+(uint64_t)r*PAGESIZE)|0b11|(3<<8)|(1<<10));
+        MapPage(core_addr+r*PAGESIZE,(uint64_t)((uint8_t *)core.ptr+(uint64_t)r*PAGESIZE)|0x03|(3<<8)|(1<<10));
 #if MEM_DEBUG
     reg=r;
 #endif
-    MapPage(bb_addr,(uint64_t)((uint8_t*)&__bootboot)|0b11|(3<<8)|(1<<10)|(1L<<54));  // p, b, AF, ISH
-    MapPage(env_addr,(uint64_t)((uint8_t*)&__environment)|0b11|(3<<8)|(1<<10)|(1L<<54));
+    MapPage(bb_addr,(uint64_t)((uint8_t*)&__bootboot)|0x03|(3<<8)|(1<<10)|(1L<<54));  // p, b, AF, ISH
+    MapPage(env_addr,(uint64_t)((uint8_t*)&__environment)|0x03|(3<<8)|(1<<10)|(1L<<54));
     // stack at the top of the memory (1k each)
     for(r=0;r<16;r++)
-        paging[36*512+496+r]=(uint64_t)((uint8_t*)&__corestack+(uint64_t)r*PAGESIZE)|0b11|(3<<8)|(1<<10)|(1L<<54);
+        paging[36*512+496+r]=(uint64_t)((uint8_t*)&__corestack+(uint64_t)r*PAGESIZE)|0x03|(3<<8)|(1<<10)|(1L<<54);
 
 #if MEM_DEBUG
     /* dump page translation tables */
@@ -1861,19 +1862,19 @@ void bootboot_startcore()
         (0x04 << 8) |    // Attr=1: device, nGnRE (must be OSH too)
         (0x44 <<16);     // Attr=2: non cacheable
     asm volatile ("msr mair_el1, %0" : : "r" (reg));
-    reg=(0b00LL << 37) | // TBI=0, no tagging
+    reg=(0x00LL << 37) | // TBI=0, no tagging
         ((uint64_t)pa << 32) | // IPS=autodetected
-        (0b10LL << 30) | // TG1=4k
-        (0b11LL << 28) | // SH1=3 inner
-        (0b01LL << 26) | // ORGN1=1 write back
-        (0b01LL << 24) | // IRGN1=1 write back
-        (0b0LL  << 23) | // EPD1 undocumented by ARM DEN0024A Fig 12-5, 12-6
+        (0x02LL << 30) | // TG1=4k
+        (0x03LL << 28) | // SH1=3 inner
+        (0x01LL << 26) | // ORGN1=1 write back
+        (0x01LL << 24) | // IRGN1=1 write back
+        (0x00LL << 23) | // EPD1 undocumented by ARM DEN0024A Fig 12-5, 12-6
         (25LL   << 16) | // T1SZ=25, 3 levels (512G)
-        (0b00LL << 14) | // TG0=4k
-        (0b11LL << 12) | // SH0=3 inner
-        (0b01LL << 10) | // ORGN0=1 write back
-        (0b01LL << 8) |  // IRGN0=1 write back
-        (0b0LL  << 7) |  // EPD0 undocumented by ARM DEN0024A Fig 12-5, 12-6
+        (0x00LL << 14) | // TG0=4k
+        (0x03LL << 12) | // SH0=3 inner
+        (0x01LL << 10) | // ORGN0=1 write back
+        (0x01LL << 8) |  // IRGN0=1 write back
+        (0x00LL << 7) |  // EPD0 undocumented by ARM DEN0024A Fig 12-5, 12-6
         (25LL   << 0);   // T0SZ=25, 3 levels (512G)
     asm volatile ("msr tcr_el1, %0; isb" : : "r" (reg));
     asm volatile ("msr ttbr0_el1, %0" : : "r" ((uint64_t)&__paging+1));

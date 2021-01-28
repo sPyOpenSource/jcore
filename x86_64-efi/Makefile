@@ -3,7 +3,7 @@ GNUEFI_INCLUDES    = -I/usr/include -I. -I/usr/include/efi -I/usr/include/efi/$(
 GNUEFI_CRT_OBJS    = crt0-efi-$(ARCH).o
 GNUEFI_LDS         = elf_$(ARCH)_efi.lds
 
-CFLAGS = -mno-red-zone -mno-mmx -mno-sse -O2 -fpic -Wall -Wextra -Werror -fshort-wchar -fno-strict-aliasing -ffreestanding -fno-stack-protector -fno-stack-check -DCONFIG_$(ARCH) -DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args --std=c11
+CFLAGS = -mno-red-zone -mno-mmx -mno-sse -O2 -fpic -pedantic -Wall -Wextra -Werror -fshort-wchar -fno-strict-aliasing -ffreestanding -fno-stack-protector -fno-stack-check -DCONFIG_$(ARCH) -DGNU_EFI_USE_MS_ABI -maccumulate-outgoing-args --std=c11
 
 LDFLAGS = -nostdlib
 LDFLAGS += -shared -Bsymbolic -L. $(GNUEFI_CRT_OBJS)

@@ -2366,7 +2366,7 @@ end if
             or          al, 80h
             out         70h, al
 
-            ; send IPI and SIPI
+            ; ------- send INIT IPI and SIPI --------
             cmp         word [numcores], 2
             jb          .nosmp
             cmp         dword [lapic_ptr], 0
@@ -2393,8 +2393,12 @@ end if
             mov         ax, 1FFh
             mov         dword [esi], eax
             sub         esi, 70h                ; task priority
-            xor         eax, eax
-            mov         dword [esi], eax
+            mov         dword [esi], 0
+
+            mov         ecx, 1Bh                ; enable APIC MSR
+            rdmsr
+            bt          eax, 1
+            wrmsr
 
             ; make sure we use the correct Local APIC ID for the BSP
             sub         esi, 60h
@@ -2414,6 +2418,12 @@ end if
             cmp         bx, word [bootboot.bspid]
             je          .initcore
             shl         ebx, 24
+
+            mov         al, 0fh                 ; CMOS warm reset code 0A
+            out         70h, al
+            mov         al, 0ah
+            out         71h, al
+            mov         dword [467h], 07000000h ; warm reset vector
 
             ; clear APIC error
             mov         esi, dword [lapic_ptr]
