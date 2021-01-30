@@ -79,7 +79,7 @@ _L8060:
     movl    %eax, %cr0
     lgdtl   0x80E0
     movl    $0x80C8, %esp       // we can't use "ljmp $8, $0x80A0", because we don't know cs
-    retf
+    lret
     .align 32
     .code64
 _L80A0:
