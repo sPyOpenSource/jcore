@@ -844,9 +844,9 @@ ap_start:   xor         ax, ax
             mov         eax, cr0
             or          al, 1
             mov         cr0, eax
-            jmp         CODE_PROT:@f
+            jmp         CODE_PROT:ap_prot
             USE32
-@@:         mov         ax, DATA_PROT
+ap_prot:    mov         ax, DATA_PROT
             mov         ds, ax
             mov         es, ax
             mov         fs, ax
@@ -858,7 +858,11 @@ ap_start:   xor         ax, ax
             mov         eax, dword [esi]
             or          ah, 1h
             mov         dword [esi], eax
-            lock inc    byte [ap_done]
+            mov         ecx, 1Bh                ; enable APIC MSR
+            rdmsr
+            bt          eax, 1
+            wrmsr
+            lock inc    word [ap_done]
             ; spinlock until BSP finishes
 @@:         pause
             cmp         byte [bsp_done], 0
@@ -2020,13 +2024,15 @@ end if
             jne         @f
             mov         al, byte [ebx+4]    ; madt_entry.lapicproc.flag & ENABLED
             and         al, 1
-            jz          @f
+            jz          .badmadt
             xor         ax, ax
             mov         al, byte [ebx+3]    ; madt_entry.lapicproc.lapicid
             cmp         al, 0FFh
-            je          @f
+            je          .badmadt
             stosw                           ; ACPI table holds 1 byte id, but internally we have 2 bytes
             inc         word [numcores]
+            jmp         @f
+.badmadt:   mov         byte [bad_madt], 1
 @@:         xor         eax, eax
             mov         al, byte [ebx+1]    ; madt_entry.size
             or          al, al
@@ -2335,30 +2341,6 @@ end if
             dec         ecx
             jnz         @b
 
-            ;generate new 64 bit gdt
-            mov         edi, GDT_table+8
-            ;8h core code
-            xor         eax, eax        ;supervisor mode (ring 0)
-            mov         ax, 0FFFFh
-            stosd
-            mov         eax, 00209800h
-            stosd
-            ;10h core data
-            xor         eax, eax        ;flat data segment
-            mov         ax, 0FFFFh
-            stosd
-            mov         eax, 00809200h
-            stosd
-            ;18h mandatory tss
-            xor         eax, eax        ;required by vt-x
-            mov         al, 068h
-            stosd
-            mov         eax, 00008900h
-            stosd
-            xor         eax, eax
-            stosd
-            stosd
-
             mov         al, 0FFh        ;disable PIC
             out         021h, al
             out         0A1h, al
@@ -2377,6 +2359,13 @@ end if
             mov         edi, 7000h
             mov         ecx, (ap_start-ap_trampoline+3)/4
             repnz       movsd
+
+            ; disable ICMR
+            mov         al, 070h
+            out         22h, al
+            in          al, 23h
+            or          al, 1
+            out         23h, al
 
             ; enable Local APIC
             mov         esi, dword [lapic_ptr]
@@ -2400,11 +2389,60 @@ end if
             bt          eax, 1
             wrmsr
 
+            mov         al, 0fh                 ; CMOS warm reset code 0A
+            out         70h, al
+            mov         al, 0ah
+            out         71h, al
+            mov         dword [467h], 07000000h ; warm reset vector
+
             ; make sure we use the correct Local APIC ID for the BSP
-            sub         esi, 60h
+            mov         esi, dword [lapic_ptr]
+            add         esi, 020h
             mov         eax, dword [esi]
             shr         eax, 24
             mov         word [bootboot.bspid], ax
+
+            ; use broadcast IPI if MADT is okay (no bcast id and all CPUs enabled)
+            cmp         byte [bad_madt], 0
+            jnz         .onebyone
+            ; send Broadcast INIT IPI
+            mov         esi, dword [lapic_ptr]
+            add         esi, 300h
+            mov         eax, 0C4500h
+            mov         dword [esi], eax
+            ; wait 10 millisec
+            prot_sleep  50
+            ; send Broadcast STARTUP IPI
+            mov         eax, 0C4607h
+            mov         dword [esi], eax
+            ; wait 200 microsec
+            prot_sleep  1
+            ; send second STARTUP IPI
+            mov         eax, 0C4607h
+            mov         dword [esi], eax
+            ; wait 200 microsec
+            prot_sleep  1
+            ; wait for APs with 100 millisec timeout
+            mov         ecx, 500
+            rdtsc
+            mov         dword [gpt_ptr], eax
+            mov         dword [gpt_ptr+4], edx
+            mov         eax, dword [ncycles]
+            mov         edx, dword [ncycles+4]
+            mul         ecx
+            add         dword [gpt_ptr], eax
+            adc         dword [gpt_ptr+4], edx
+            mov         cx, word [numcores]
+@@:         pause
+            cmp         word [ap_done], cx
+            je          .nosmp
+            rdtsc
+            cmp         dword [gpt_ptr+4], edx
+            jl          @b
+            cmp         dword [gpt_ptr], eax
+            jl          @b
+            jmp         .nosmp
+.onebyone:
 
             ; send IPIs to specific cores one by one
             xor         edx, edx
@@ -2418,12 +2456,6 @@ end if
             cmp         bx, word [bootboot.bspid]
             je          .initcore
             shl         ebx, 24
-
-            mov         al, 0fh                 ; CMOS warm reset code 0A
-            out         70h, al
-            mov         al, 0ah
-            out         71h, al
-            mov         dword [467h], 07000000h ; warm reset vector
 
             ; clear APIC error
             mov         esi, dword [lapic_ptr]
@@ -2485,7 +2517,7 @@ end if
             je          .nextcore
             shl         ebx, 24
 
-            mov         byte [ap_done], 0
+            mov         word [ap_done], 0
 
             ; select AP
             mov         esi, dword [lapic_ptr]
@@ -2510,7 +2542,7 @@ end if
             prot_sleep  1
 
             ; do we need a second SIPI?
-            cmp         byte [ap_done], 0
+            cmp         word [ap_done], 0
             jnz         .nextcore
 
             ; select AP
@@ -2534,6 +2566,29 @@ end if
             prot_sleep  1
             jmp         .nextcore
 .nosmp:
+            ;generate new 64 bit gdt
+            mov         edi, GDT_table+8
+            ;8h core code
+            xor         eax, eax        ;supervisor mode (ring 0)
+            mov         ax, 0FFFFh
+            stosd
+            mov         eax, 00209800h
+            stosd
+            ;10h core data
+            xor         eax, eax        ;flat data segment
+            mov         ax, 0FFFFh
+            stosd
+            mov         eax, 00809200h
+            stosd
+            ;18h mandatory tss
+            xor         eax, eax        ;required by vt-x
+            mov         al, 068h
+            stosd
+            mov         eax, 00008900h
+            stosd
+            xor         eax, eax
+            stosd
+            stosd
 
             ;Enter long mode
             cli
@@ -2949,7 +3004,8 @@ hasconfig:  db          0
 iscdrom:    db          0
 nosmp:      db          0
 numcores:   dw          0
-ap_done:    db          0
+bad_madt:
+ap_done:    dw          0
 bsp_done:   db          0 ;flag to indicate APs can run
 fattype:    db          0
 bkp:        dd          '    '
