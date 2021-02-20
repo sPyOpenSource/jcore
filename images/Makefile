@@ -83,6 +83,9 @@ else
 	qemu-system-aarch64 -bios coreboot-arm.rom -M virt,secure=on,virtualization=on -cpu cortex-a53 -m 1024M -drive file=disk-rpi.img,format=raw -serial stdio
 endif
 
+bochs:
+	bochs -f bochs.rc -q
+
 # clean up
 clean:
 	rm -rf initrd *.bin *.img *.rom *.iso 2>/dev/null || true
