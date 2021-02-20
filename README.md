@@ -465,4 +465,4 @@ code on many different real hardware. Also to [Vinay Chandra](https://gitlab.com
 level 2 protocol to the reference implementations and for testing and providing a Rust kernel example for the project,
 and also for providing a MacOS binary for mkbootimg.
 Further thanks to [Stephen Sherratt](https://gitlab.com/stevebob) for being presistent at fixing issues.
-Many thanks for a very through testing to [Neutru](https://gitlab.com/neutru).
+Many thanks for a very through testing to [Neutru](https://gitlab.com/neutru) and [Pascal Mathis](https://gitlab.com/ppmathis).

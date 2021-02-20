@@ -464,4 +464,5 @@ kódot számtalan igazi vason is. Továbbá [Vinay Chandrá](https://gitlab.com/
 békén, míg a 2. szintű protokoll be nem került a refenrencia implementációkba, és amiért tesztelte és kiegészítette
 Rust minta kernellel a projektet, valamint hogy MacOS bináris biztosít a mkbootimg-hez. További köszönet
 [Stephen Sherratt](https://gitlab.com/stevebob)nak a kitartó hibajavításáért.
-Köszönet [Neutru](https://gitlab.com/neutru)-nak a rettentő alapos tesztelésért.
+Köszönet [Neutru](https://gitlab.com/neutru)-nak és [Pascal Mathis](https://gitlab.com/ppmathis)-nak a rettentő alapos
+tesztelésért.
