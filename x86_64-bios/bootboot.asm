@@ -854,10 +854,9 @@ ap_prot:    mov         ax, DATA_PROT
             mov         ss, ax
             ; enable Local APIC
             mov         esi, dword [lapic_ptr]
-            add         esi, 0F0h
-            mov         eax, dword [esi]
-            or          ah, 1h
-            mov         dword [esi], eax
+            mov         eax, dword [esi + 0F0h]
+            or          ah, 1
+            mov         dword [esi + 0F0h], eax
             mov         ecx, 1Bh                ; enable APIC MSR
             rdmsr
             bt          eax, 1
@@ -919,6 +918,7 @@ real_printfunc:
             lodsb
             or          al, al
             jz          .end
+            ;out        0e9h, al
             push        si
             push        ax
             mov         ah, byte 0Eh
@@ -2014,7 +2014,7 @@ end if
 .madt:      mov         eax, dword [ebx+24h]
             mov         dword [lapic_ptr], eax  ; madt.lapic_address
             mov         ecx, dword [ebx+4]
-            sub         ecx, 2ch
+            add         ecx, ebx
             add         ebx, 2ch
             mov         edi, lapic_ids
 .nextmadtentry:
@@ -2038,9 +2038,8 @@ end if
             or          al, al
             jz          .acpidone
             add         ebx, eax
-            cmp         ecx, eax
-            jl          .acpidone
-            sub         ecx, eax
+            cmp         ebx, ecx
+            jae         .acpidone
             jmp         .nextmadtentry
 
 .trymp:     ; in lack of ACPI, try legacy MP structures
@@ -2369,20 +2368,20 @@ end if
 
             ; enable Local APIC
             mov         esi, dword [lapic_ptr]
-            add         esi, 0D0h               ; logical destination
             mov         al, 1
             shl         eax, 24
-            mov         dword [esi], eax
-            add         esi, 10h                ; destination form
+            mov         dword [esi + 0D0h], eax ; logical destination
             xor         eax, eax
             sub         eax, 1
-            mov         dword [esi], eax
-            add         esi, 10h
-            mov         eax, dword [esi]        ; spurious + enable
+            mov         dword [esi + 0E0h], eax ; destination form
+            mov         eax, dword [esi + 0F0h] ; spurious + enable
             mov         ax, 1FFh
-            mov         dword [esi], eax
-            sub         esi, 70h                ; task priority
-            mov         dword [esi], 0
+            mov         dword [esi + 0F0h], eax
+            mov         dword [esi + 080h], 0   ; task priority
+            ; make sure we use the correct Local APIC ID for the BSP
+            mov         eax, dword [esi + 020h]
+            shr         eax, 24
+            mov         word [bootboot.bspid], ax
 
             mov         ecx, 1Bh                ; enable APIC MSR
             rdmsr
@@ -2395,52 +2394,24 @@ end if
             out         71h, al
             mov         dword [467h], 07000000h ; warm reset vector
 
-            ; make sure we use the correct Local APIC ID for the BSP
-            mov         esi, dword [lapic_ptr]
-            add         esi, 020h
-            mov         eax, dword [esi]
-            shr         eax, 24
-            mov         word [bootboot.bspid], ax
-
             ; use broadcast IPI if MADT is okay (no bcast id and all CPUs enabled)
             cmp         byte [bad_madt], 0
             jnz         .onebyone
             ; send Broadcast INIT IPI
-            mov         esi, dword [lapic_ptr]
-            add         esi, 300h
             mov         eax, 0C4500h
-            mov         dword [esi], eax
+            mov         dword [esi + 300h], eax
             ; wait 10 millisec
             prot_sleep  50
             ; send Broadcast STARTUP IPI
             mov         eax, 0C4607h
-            mov         dword [esi], eax
+            mov         dword [esi + 300h], eax
             ; wait 200 microsec
             prot_sleep  1
             ; send second STARTUP IPI
             mov         eax, 0C4607h
-            mov         dword [esi], eax
+            mov         dword [esi + 300h], eax
             ; wait 200 microsec
             prot_sleep  1
-            ; wait for APs with 100 millisec timeout
-            mov         ecx, 500
-            rdtsc
-            mov         dword [gpt_ptr], eax
-            mov         dword [gpt_ptr+4], edx
-            mov         eax, dword [ncycles]
-            mov         edx, dword [ncycles+4]
-            mul         ecx
-            add         dword [gpt_ptr], eax
-            adc         dword [gpt_ptr+4], edx
-            mov         cx, word [numcores]
-@@:         pause
-            cmp         word [ap_done], cx
-            je          .nosmp
-            rdtsc
-            cmp         dword [gpt_ptr+4], edx
-            jl          @b
-            cmp         dword [gpt_ptr], eax
-            jl          @b
             jmp         .nosmp
 .onebyone:
 
@@ -2459,47 +2430,42 @@ end if
 
             ; clear APIC error
             mov         esi, dword [lapic_ptr]
-            add         esi, 280h
-            mov         dword [esi], 0
-            mov         eax, dword [esi]
+            mov         dword [esi + 280h], 0
+            mov         eax, dword [esi + 280h]
             add         esi, 20h
 
             ; select AP
 @@:         pause
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 300h]
             bt          eax, 12
             jc          @b
-            add         esi, 10h
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 310h]
             and         eax, 00ffffffh
             or          eax, ebx
-            mov         dword [esi], eax
+            mov         dword [esi + 310h], eax
             ; trigger INIT IPI
-            sub         esi, 10h
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 300h]
             and         eax, 0fff00000h
             or          eax, 00C500h
-            mov         dword [esi], eax
+            mov         dword [esi + 300h], eax
 
             ; wait 200 microsec
             prot_sleep  1
 
             ; select AP
 @@:         pause
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 300h]
             bt          eax, 12
             jc          @b
-            add         esi, 10h
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 310h]
             and         eax, 00ffffffh
             or          eax, ebx
-            mov         dword [esi], eax
+            mov         dword [esi + 310h], eax
             ; deassert INIT IPI
-            sub         esi, 10h
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 300h]
             and         eax, 0fff00000h
             or          eax, 008500h
-            mov         dword [esi], eax
+            mov         dword [esi + 300h], eax
             jmp         .initcore
 .sipi:
             ; wait 10 millisec
@@ -2521,22 +2487,19 @@ end if
 
             ; select AP
             mov         esi, dword [lapic_ptr]
-            add         esi, 300h
 @@:         pause
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 300h]
             bt          eax, 12
             jc          @b
-            add         esi, 10h
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 310h]
             and         eax, 00ffffffh
             or          eax, ebx
-            mov         dword [esi], eax
+            mov         dword [esi + 310h], eax
             ; send STARTUP IPI
-            sub         esi, 10h
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 300h]
             and         eax, 0fff0f800h
             or          eax, 004607h    ; start at 0700:0000h
-            mov         dword [esi], eax
+            mov         dword [esi + 300h], eax
 
             ; wait 200 microsec
             prot_sleep  1
@@ -2547,49 +2510,23 @@ end if
 
             ; select AP
 @@:         pause
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 300h]
             bt          eax, 12
             jc          @b
-            add         esi, 10h
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 310h]
             and         eax, 00ffffffh
             or          eax, ebx
-            mov         dword [esi], eax
+            mov         dword [esi + 310h], eax
             ; send STARTUP IPI
-            sub         esi, 10h
-            mov         eax, dword [esi]
+            mov         eax, dword [esi + 300h]
             and         eax, 0fff0f800h
             or          eax, 004607h
-            mov         dword [esi], eax
+            mov         dword [esi + 300h], eax
 
             ; wait 200 microsec
             prot_sleep  1
             jmp         .nextcore
 .nosmp:
-            ;generate new 64 bit gdt
-            mov         edi, GDT_table+8
-            ;8h core code
-            xor         eax, eax        ;supervisor mode (ring 0)
-            mov         ax, 0FFFFh
-            stosd
-            mov         eax, 00209800h
-            stosd
-            ;10h core data
-            xor         eax, eax        ;flat data segment
-            mov         ax, 0FFFFh
-            stosd
-            mov         eax, 00809200h
-            stosd
-            ;18h mandatory tss
-            xor         eax, eax        ;required by vt-x
-            mov         al, 068h
-            stosd
-            mov         eax, 00008900h
-            stosd
-            xor         eax, eax
-            stosd
-            stosd
-
             ;Enter long mode
             cli
             ;release AP spinlock
@@ -2608,7 +2545,7 @@ longmode_init:
 
             mov         eax, 0C0000011h ;clear EM, MP (enable SSE) and WP
             mov         cr0, eax        ;enable paging with cache disabled
-            lgdt        [GDT_value]     ;read 80 bit address
+            lgdt        [GDT64_value]   ;read 80 bit address
             jmp         8:.bootboot_startcore
             USE64
 .bootboot_startcore:
@@ -2624,8 +2561,7 @@ longmode_init:
             mov         eax, dword [lapic_ptr]
             or          eax, eax
             jz          @f
-            add         eax, 20h
-            mov         eax, dword [rax]
+            mov         eax, dword [rax + 020h]
             shr         eax, 24
 @@:         mov         edx, eax
             ; get array index for it
@@ -2923,7 +2859,7 @@ crc32_calc: xor         edx, edx
             align       16
 GDT_table:  dd          0, 0                ;null descriptor
 DATA_PROT   =           $-GDT_table
-            dd          0000FFFFh,008F9200h ;flat ds
+            dd          0000FFFFh,00CF9200h ;flat ds
 DATA_BOOT   =           $-GDT_table
             dd          0000FFFFh,00009200h ;16 bit legacy real mode ds
 CODE_BOOT   =           $-GDT_table
@@ -2931,9 +2867,19 @@ CODE_BOOT   =           $-GDT_table
 CODE_PROT   =           $-GDT_table
             dd          0000FFFFh,00CF9A00h ;32 bit prot mode ring0 cs
             dd          00000068h,00CF8900h ;32 bit TSS, not used but required
-GDT_value:  dw          $-GDT_table
+GDT_value:  dw          $-GDT_table-1
             dd          GDT_table
             dd          0,0
+            align       16
+GDT64_table:dd          0, 0                ;null descriptor
+            dd          0000FFFFh,00209800h ;supervisor mode (ring 0) cs
+            dd          0000FFFFh,00809200h ;flat data segment
+            dd          00000068h,00008900h ;TSS, not used but required by vt-x
+            dd          0,0
+GDT64_value:dw          $-GDT64_table-1
+            dd          GDT64_table
+            dd          0,0
+
             ;lookup tables for initrd encryption
             dw          0
 crclkp:     dd          000000000h, 0F26B8303h, 0E13B70F7h, 01350F3F4h, 0C79A971Fh, 035F1141Ch, 026A1E7E8h, 0D4CA64EBh
