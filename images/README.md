@@ -72,3 +72,7 @@ Will boot the example kernel from SDCard emulating "raspi3" machine under qemu (
 make coreboot
 ```
 To test BOOTBOOT as a coreboot payload (no BIOS, no UEFI). With PLATFORM=x86 emulates a PC, and ARM64 otherwise.
+```
+make bochs
+```
+Testing with bochs (using BIOS).

@@ -73,3 +73,7 @@ Ez "raspi3" gépet emulálva tölti be a minta kernelt SD kártya meghajtóról 
 make coreboot
 ```
 BOOTBOOT tesztelése mint coreboot payload (nincs BIOS se UEFI). PLATFORM=x86 esetén PC-t emulál, egyébként ARM64-et.
+```
+make bochs
+```
+Tesztelés bochs-al (BIOS-al).
