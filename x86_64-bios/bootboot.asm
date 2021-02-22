@@ -2071,8 +2071,8 @@ end if
             ; failsafe
             cmp         dword [lapic_ptr], 0
             jz          @f
-            cmp         word [numcores], 0
-            jnz         .smpok
+            cmp         word [numcores], 1
+            ja          .smpok
 @@:         mov         word [numcores], 1
             mov         ax, word [bootboot.bspid]
             mov         word [lapic_ids], ax
@@ -2412,6 +2412,26 @@ end if
             mov         dword [esi + 300h], eax
             ; wait 200 microsec
             prot_sleep  1
+
+            ; wait for APs with 250 millisec timeout
+            mov         ecx, 1500
+            rdtsc
+            mov         dword [gpt_ptr], eax
+            mov         dword [gpt_ptr+4], edx
+            mov         eax, dword [ncycles]
+            mov         edx, dword [ncycles+4]
+            mul         ecx
+            add         dword [gpt_ptr], eax
+            adc         dword [gpt_ptr+4], edx
+            mov         cx, word [numcores]
+@@:         pause
+            cmp         word [ap_done], cx
+            je          .nosmp
+            rdtsc
+            cmp         dword [gpt_ptr+4], edx
+            jl          @b
+            cmp         dword [gpt_ptr], eax
+            jl          @b
             jmp         .nosmp
 .onebyone:
 
