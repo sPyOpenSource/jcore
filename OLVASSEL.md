@@ -9,7 +9,7 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), bővítő ROM és Linux boot kompatíbilis, RÉGI betöltő.
     Ha újra akarod fordítani, szükséged lesz a fasm-ra (nincs mellékelve).
-    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/boot.bin) (512 bájt, egyszerre MBR, VBR és CDROM indító szektor), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.bin) (11k, a boot.bin tölti be, valamint BBS bővítő ROM és Multiboot kompatíbilis is)
+    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/boot.bin) (512 bájt, egyszerre MBR, VBR és CDROM indító szektor), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.bin) (13k, a boot.bin tölti be, valamint BBS bővítő ROM és Multiboot kompatíbilis is)
 
 3. *aarch64-rpi* ARMv8 betöltő Raspberry Pi 3-hoz, 4-hez
     [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (35k)

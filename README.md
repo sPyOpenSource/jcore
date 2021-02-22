@@ -9,7 +9,7 @@ I provide pre-compiled images ready for use.
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), Expansion ROM and Linux boot compatible, OBSOLETE loader.
     If you want to recompile this, you'll need fasm (not included).
-    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.bin) (11k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
+    [boot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/boot.bin) (512 bytes, works as MBR, VBR and CDROM boot record too), [bootboot.bin](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.bin) (13k, loaded by boot.bin, also BBS Expansion ROM and Multiboot compliant)
 
 3. *aarch64-rpi* ARMv8 boot loader for Raspberry Pi 3, 4
     [bootboot.img](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.img) (35k)
