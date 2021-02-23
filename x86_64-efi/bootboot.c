@@ -1405,7 +1405,6 @@ VOID EFIAPI bootboot_startcore(IN VOID* buf)
 
     // spinlock until BSP finishes (or forever if we got an invalid lapicid, should never happen)
     do { __asm__ __volatile__ ("pause" : : : "memory"); } while(!bsp_done && core_num != 0xFFFF);
-    __sync_fetch_and_add(&bootboot->numcores, 1);
 
     // enable SSE
     __asm__ __volatile__ (
@@ -1470,7 +1469,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     file_t ret={NULL,0};
     CHAR16 **argv, *initrdfile, *configfile, *help=
         L"SYNOPSIS\n  BOOTBOOT.EFI [ -h | -? | /h | /? | -s ] [ INITRDFILE [ ENVIRONFILE [...] ] ]\n\nDESCRIPTION\n  Bootstraps an operating system via the BOOTBOOT Protocol.\n  If arguments not given, defaults to\n    FS0:\\BOOTBOOT\\INITRD   as ramdisk image and\n    FS0:\\BOOTBOOT\\CONFIG   for boot environment.\n  Additional \"key=value\" command line arguments will be appended to the\n  environment. If INITRD not found, it will use the first bootable partition\n  in GPT. If CONFIG not found, it will look for /sys/config inside the\n  INITRD (or partition). With -s it will scan the memory for an initrd ROM.\n\n  As this is a loader, it is not supposed to return control to the shell.\n\n";
-    INTN argc, scanmemory=0, numcores=0;
+    INTN argc, scanmemory=0;
 
     // Initialize UEFI Library
     InitializeLib(image, systab);
@@ -1900,13 +1899,13 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                 // failsafe: we cannot map more stacks (each core has 1k)
                 if(i>PAGESIZE/8/2*4) i=PAGESIZE/8/2*4;
                 if(i<1) i = 1;
-                numcores = i;
+                bootboot->numcores = i;
             }
-            DBG(L" * SMP numcores %d\n", numcores);
+            DBG(L" * SMP numcores %d\n", bootboot->numcores);
             // start APs
             status = uefi_call_wrapper(BS->CreateEvent, 5, 0, TPL_NOTIFY, NULL, NULL, &Event);
             if(!EFI_ERROR(status)) {
-                for(i=0; i<numcores; i++) {
+                for(i=0; i<bootboot->numcores; i++) {
                     status = uefi_call_wrapper(mp->GetProcessorInfo, 5, mp, i, pibuf);
                     if(!EFI_ERROR(status)) {
                         if(pibuf->StatusFlag & PROCESSOR_AS_BSP_BIT) {
@@ -1919,7 +1918,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                 }
             }
         } else
-            numcores = 1;
+            bootboot->numcores = 1;
 #else
         UINT8 *ptr = (UINT8*)bootboot->arch.x86_64.acpi_ptr, *pe, *data;
         UINT64 r;
@@ -1946,16 +1945,16 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                         bsp_num = lapic_ids[bootboot->bspid];
                         if(bsp_num == 0xFFFF) bsp_num = 0;
                         else {
-                            numcores = i;
-                            DBG(L" * SMP numcores %d\n", numcores);
+                            bootboot->numcores = i;
+                            DBG(L" * SMP numcores %d\n", bootboot->numcores);
                         }
                     }
                     break;
                 }
             }
         }
-        if(nosmp || numcores < 2 || !lapic_addr) {
-            numcores = 1;
+        if(nosmp || bootboot->numcores < 2 || !lapic_addr) {
+            bootboot->numcores = 1;
             lapic_addr = 0;
         }
 #endif
@@ -1980,11 +1979,11 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         // create page tables
         paging = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 37+
-            (numcores*initstack+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&paging);
+            (bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&paging);
         if (EFI_ERROR(status) || paging == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
-        ZeroMem((void*)paging,(37+(numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
+        ZeroMem((void*)paging,(37+(bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
         DBG(L" * Pagetables PML4 @%lx\n",paging);
         //PML4
         paging[0]=(UINT64)((UINT8 *)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
@@ -2015,7 +2014,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         MapPage(bb_addr, (UINT64)(bootboot)+1);
         MapPage(env_addr, (UINT64)(env.ptr)+1);
         // stack at the top of the memory
-        for(i=0; i<(UINTN)((numcores*initstack+PAGESIZE-1)/PAGESIZE); i++) {
+        for(i=0; i<(UINTN)((bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE); i++) {
             if(paging[23*512+511-i])
                 return report(EFI_OUT_OF_RESOURCES,L"Stack smash");
             paging[23*512+511-i]=(UINT64)((UINT8 *)paging+(37+i)*PAGESIZE+3);  // core stacks
@@ -2105,7 +2104,7 @@ get_memory_map:
         __asm__ __volatile__ ("pause" : : : "memory"); // memory barrier
 
         // start APs
-        if(numcores > 1 && apmemfree) {
+        if(bootboot->numcores > 1 && apmemfree) {
 
             // copy trampoline and save UEFI's 64 bit system registers for the trampoline code
             __asm__ __volatile__ (

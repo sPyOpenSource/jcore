@@ -2018,7 +2018,7 @@ end if
             add         ebx, 2ch
             mov         edi, lapic_ids
 .nextmadtentry:
-            cmp         word [numcores], 256
+            cmp         word [bootboot.numcores], 255
             jae         .acpidone
             cmp         byte [ebx], 0       ; madt_entry.type: is it a Local APIC Processor?
             jne         @f
@@ -2030,7 +2030,7 @@ end if
             cmp         al, 0FFh
             je          .badmadt
             stosw                           ; ACPI table holds 1 byte id, but internally we have 2 bytes
-            inc         word [numcores]
+            inc         word [bootboot.numcores]
             jmp         @f
 .badmadt:   mov         byte [bad_madt], 1
 @@:         xor         eax, eax
@@ -2055,14 +2055,14 @@ end if
             add         esi, 44                 ; pcmp header length
             mov         edi, lapic_ids
 .nextpcmpentry:
-            cmp         word [numcores], 256
+            cmp         word [bootboot.numcores], 255
             jae         .acpidone
             cmp         byte [esi], 0       ; pcmp_entry.type: is it a Local APIC Processor?
             jne         @f
             xor         ax, ax
             mov         al, byte [esi+1]    ; pcmp_entry.lapicproc.lapicid
             stosw                           ; PCMP has 1 byte id, but we use 2 bytes internally
-            inc         word [numcores]
+            inc         word [bootboot.numcores]
             add         esi, 12
 @@:         add         esi, 8
             dec         cx
@@ -2071,9 +2071,9 @@ end if
             ; failsafe
             cmp         dword [lapic_ptr], 0
             jz          @f
-            cmp         word [numcores], 1
+            cmp         word [bootboot.numcores], 1
             ja          .smpok
-@@:         mov         word [numcores], 1
+@@:         mov         word [bootboot.numcores], 1
             mov         ax, word [bootboot.bspid]
             mov         word [lapic_ids], ax
             mov         dword [lapic_ptr], 0
@@ -2084,7 +2084,7 @@ if BBDEBUG eq 1
             mov         dword [gpt_ptr], eax
             mov         dword [gpt_num], eax
             prot_realmode
-            mov         bx, word [numcores]
+            mov         bx, word [bootboot.numcores]
             mov         di, gpt_ptr
 
             cmp         bx, 1000
@@ -2126,7 +2126,7 @@ if BBDEBUG eq 1
 end if
 .stks:      ; remove core stacks from memory map
             xor         eax, eax
-            mov         ax, word [numcores]
+            mov         ax, word [bootboot.numcores]
             shl         eax, 10
             mov         edi, bootboot.mmap
             add         dword [edi], eax
@@ -2303,7 +2303,7 @@ end if
             ;map core stacks (one page per 4 cores)
             mov         edi, 0DFF8h
             mov         eax, 014003h
-            mov         cx, word [numcores]
+            mov         cx, word [bootboot.numcores]
             add         cx, 3
             shr         cx, 2
 @@:         mov         dword[edi], eax
@@ -2348,7 +2348,7 @@ end if
             out         70h, al
 
             ; ------- send INIT IPI and SIPI --------
-            cmp         word [numcores], 2
+            cmp         word [bootboot.numcores], 2
             jb          .nosmp
             cmp         dword [lapic_ptr], 0
             jz          .nosmp
@@ -2413,31 +2413,12 @@ end if
             ; wait 200 microsec
             prot_sleep  1
 
-            ; wait for APs with 250 millisec timeout
-            mov         ecx, 1500
-            rdtsc
-            mov         dword [gpt_ptr], eax
-            mov         dword [gpt_ptr+4], edx
-            mov         eax, dword [ncycles]
-            mov         edx, dword [ncycles+4]
-            mul         ecx
-            add         dword [gpt_ptr], eax
-            adc         dword [gpt_ptr+4], edx
-            mov         cx, word [numcores]
-@@:         pause
-            cmp         word [ap_done], cx
-            je          .nosmp
-            rdtsc
-            cmp         dword [gpt_ptr+4], edx
-            jl          @b
-            cmp         dword [gpt_ptr], eax
-            jl          @b
             jmp         .nosmp
 .onebyone:
 
             ; send IPIs to specific cores one by one
             xor         edx, edx
-.initcore:  cmp         dx, word [numcores]
+.initcore:  cmp         dx, word [bootboot.numcores]
             jae         .sipi
             mov         esi, edx
             inc         edx
@@ -2492,7 +2473,7 @@ end if
             prot_sleep  50
 
             xor         edx, edx
-.nextcore:  cmp         dx, word [numcores]
+.nextcore:  cmp         dx, word [bootboot.numcores]
             jae         .nosmp
             mov         esi, edx
             inc         edx
@@ -2576,7 +2557,6 @@ longmode_init:
             mov         ss, ax
             mov         fs, ax
             mov         gs, ax
-            lock inc    word [bootboot.numcores]
             ; find out our lapic id
             mov         eax, dword [lapic_ptr]
             or          eax, eax
@@ -2587,7 +2567,7 @@ longmode_init:
             ; get array index for it
             xor         rbx, rbx
             mov         rsi, lapic_ids
-            mov         cx, word [numcores]
+            mov         cx, word [bootboot.numcores]
 @@:         lodsw
             cmp         ax, dx
             je          @f
@@ -2969,7 +2949,6 @@ hasinitrd:  db          0
 hasconfig:  db          0
 iscdrom:    db          0
 nosmp:      db          0
-numcores:   dw          0
 bad_madt:
 ap_done:    dw          0
 bsp_done:   db          0 ;flag to indicate APs can run

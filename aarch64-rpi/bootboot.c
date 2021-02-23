@@ -1636,6 +1636,7 @@ gzerr:      puts("BOOTBOOT-PANIC: Unable to uncompress\n");
 #endif
     /* we have fixed number of cores, nothing to detect */
     DBG(" * SMP numcores 4\n");
+    bootboot->numcores = 4;
 
     /* generate memory map to bootboot struct */
     DBG(" * Memory Map\n");
@@ -1855,7 +1856,6 @@ void bootboot_startcore()
 {
     // spinlock until BSP finishes
     do { asm volatile ("dsb sy"); } while(!bsp_done);
-    __sync_fetch_and_add(&bootboot->numcores, 1);
 
     // enable paging
     reg=(0xFF << 0) |    // Attr=0: normal, IWBWA, OWBWA, NTR

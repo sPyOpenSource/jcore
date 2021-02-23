@@ -761,7 +761,7 @@ void MapPage(uint64_t virt, uint64_t phys)
  */
 int main(void)
 {
-    unsigned int ret=0, i, dsk, numcores = 0;
+    unsigned int ret=0, i, dsk;
     uint8_t *pe, *ptr;
     uint32_t np, sp, r;
     unsigned char *data;
@@ -1137,7 +1137,7 @@ gzerr:      panic("Unable to uncompress");
                         case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                     }
                 }
-                if(i && lapic_ids[bootboot->bspid] != 0xFFFF) numcores = i;
+                if(i && lapic_ids[bootboot->bspid] != 0xFFFF) bootboot->numcores = i;
                 break;
             }
         }
@@ -1149,8 +1149,8 @@ gzerr:      panic("Unable to uncompress");
         "inb $0x70, %%al; orb $0x80, %%al; outb %%al, $0x70;"                   // disable NMI
         : : :);
 
-    if(!nosmp && numcores > 1 && lapic_addr) {
-        DBG(" * SMP numcores %d\n", numcores);
+    if(!nosmp && bootboot->numcores > 1 && lapic_addr) {
+        DBG(" * SMP numcores %d\n", bootboot->numcores);
         memcpy((uint8_t*)0x1000, (void*)&ap_trampoline, 128);
 
         // enable Local APIC
@@ -1182,14 +1182,14 @@ gzerr:      panic("Unable to uncompress");
             }
         }
     } else {
-        numcores = 1;
+        bootboot->numcores = 1;
         lapic_addr = 0;
         lapic_ids[bootboot->bspid] = 0;
     }
 
     /* Create paging tables */
     DBG(" * Pagetables PML4 @%p\n", (void*)paging);
-    memset(paging, 0, (37+(numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
+    memset(paging, 0, (37+(bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
     //PML4
     paging[0]=(uint64_t)((uintptr_t)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
     paging[511]=(uint64_t)((uintptr_t)paging+20*PAGESIZE)+3;   // pointer to 4k PDPE (core mapped at -2M)
@@ -1219,14 +1219,14 @@ gzerr:      panic("Unable to uncompress");
     MapPage(bb_addr, (uint64_t)((uintptr_t)bootboot)+1);
     MapPage(env_addr, (uint64_t)((uintptr_t)environment)+1);
     // stack at the top of the memory
-    for(i=0; i<((numcores*initstack+PAGESIZE-1)/PAGESIZE); i++) {
+    for(i=0; i<((bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE); i++) {
         if(paging[23*512+511-i])
             panic("Stack smash");
         paging[23*512+511-i]=(uint64_t)((uintptr_t)paging+(37+i)*PAGESIZE+3);  // core stacks
     }
 
     /* Get memory map */
-    uint64_t srt, end, ldrend = (uintptr_t)paging + (37+(numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
+    uint64_t srt, end, ldrend = (uintptr_t)paging + (37+(bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
     uint64_t iniend = (uint64_t)(uintptr_t)core.ptr + core.size;
     MMapEnt *mmapent=(MMapEnt *)&(bootboot->mmap);
     for (i = 0; (int)i < lib_sysinfo.n_memranges; i++) {

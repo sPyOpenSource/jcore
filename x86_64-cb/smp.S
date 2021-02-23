@@ -183,7 +183,6 @@ bootboot_startcore:
     movw    %ax, %ss
     movw    %ax, %fs
     movw    %ax, %gs
-    lock    incb 0x200A         // __sync_fetch_and_add(&bootboot->numcores, 1);
     movzwq  %di, %rbx
     shll    $1, %ebx            // ebx = lapic id * 2
     addl    $lapic_ids, %ebx
