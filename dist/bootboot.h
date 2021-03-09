@@ -1,5 +1,6 @@
 /*
  * bootboot.h
+ * https://gitlab.com/bztsrc/bootboot
  *
  * Copyright (C) 2017 - 2021 bzt (bztsrc@gitlab)
  *
