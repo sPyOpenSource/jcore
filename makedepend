@@ -8,7 +8,7 @@
 #
 #	makedepend [cpp-flags] [-w width] [-s magic-string] [-f makefile]
 #	  [-o object-suffix]
-#	  [-p object-prefix]   
+#	  [-p object-prefix]
 #
 #	Notes:
 #
@@ -44,11 +44,11 @@ trap "rm -f ${TMP}*; exit 0" 1 2 13
 echo " \c" > $CPPCMD
 if [ `wc -c < $CPPCMD` -eq 1 ]
 then
-    c="\c"
-    n=
+  c="\c"
+  n=
 else
-    c=
-    n="-n"
+  c=
+  n="-n"
 fi
 
 echo $n "$c" >$ARGS
@@ -65,79 +65,79 @@ append=n
 
 while [ $# != 0 ]
 do
-    if [ "$endmarker"x != x ] && [ "$endmarker" = "$1" ]; then
-	endmarker=""
-    else
-	case "$1" in
-	    -D*|-I*)
-		echo $n " '$1'$c" >> $ARGS
-		;;
+  if [ "$endmarker"x != x ] && [ "$endmarker" = "$1" ]; then
+    endmarker=""
+  else
+    case "$1" in
+      -D*|-I*)
+        echo $n " '$1'$c" >> $ARGS
+        ;;
 
-	    -g|-O)	# ignore so we can just pass $(CFLAGS) in
-		;;
+      -g|-O)	# ignore so we can just pass $(CFLAGS) in
+        ;;
 
-	    *)
-		if [ "$endmarker"x = x ]; then
-		    case "$1" in 	
-			-w)
-			    width="$2"
-			    shift
-			    ;;
-			-s)
-			    magic_string="$2"
-			    shift
-			    ;;
-			-f*)
-			    if [ "$1" = "-f-" ]; then
-				makefile="-"
-			    else
-				makefile="$2"
-				shift
-			    fi
-			    ;;
-			-o)
-			    objsuffix="$2"
-			    shift
-			    ;;
-			
-			-p)
-			    objprefix="$2"
-			    shift
-			    ;;
-			
-			--*)
-			    echo "$1" | sed 's/^\-\-//' >${TMP}end
-			    endmarker="`cat ${TMP}end`"
-			    rm -f ${TMP}end
-			    if [ "$endmarker"x = x ]; then
-				endmarker="--"
-			    fi
-			    ;;
-			-v)
-			    verbose="y"
-			    ;;
+      *)
+        if [ "$endmarker"x = x ]; then
+          case "$1" in
+            -w)
+              width="$2"
+              shift
+              ;;
+            -s)
+              magic_string="$2"
+              shift
+              ;;
+            -f*)
+              if [ "$1" = "-f-" ]; then
+                makefile="-"
+              else
+                makefile="$2"
+                shift
+              fi
+              ;;
+            -o)
+              objsuffix="$2"
+              shift
+              ;;
 
-			-a)
-			    append="y"
-			    ;;
+            -p)
+              objprefix="$2"
+              shift
+              ;;
 
-			-cc)
-			    CC="$2"
-			    shift
-			    ;;
+            --*)
+              echo "$1" | sed 's/^\-\-//' >${TMP}end
+              endmarker="`cat ${TMP}end`"
+              rm -f ${TMP}end
+              if [ "$endmarker"x = x ]; then
+                endmarker="--"
+              fi
+              ;;
+            -v)
+              verbose="y"
+              ;;
 
-			-*)
-			    echo "Unknown option '$1' ignored" 1>&2
-			    ;;
-			*)
-			    files="$files $1"
-			    ;;
-		    esac
-		fi
-		;;
-	esac
-    fi
-    shift
+            -a)
+              append="y"
+              ;;
+
+            -cc)
+              CC="$2"
+              shift
+              ;;
+
+            -*)
+              echo "Unknown option '$1' ignored" 1>&2
+              ;;
+            *)
+              files="$files $1"
+              ;;
+          esac
+        fi
+        ;;
+    esac
+  fi
+  shift
 done
 echo ' $*' >> $ARGS
 
@@ -147,31 +147,31 @@ chmod +x $CPPCMD
 rm $ARGS
 
 case "$makefile" in
-    '')
-	if [ -r makefile ]
-	then
-	    makefile=makefile
-	elif [ -r Makefile ]
-	then
-	    makefile=Makefile
-	else
-	    echo 'no makefile or Makefile found' 1>&2
-	    exit 1
-	fi
-	;;
-    -)
-	makefile=$TMPMAKEFILE
-	;;
+  '')
+    if [ -r makefile ]
+    then
+      makefile=makefile
+  elif [ -r Makefile ]
+    then
+      makefile=Makefile
+    else
+      echo 'no makefile or Makefile found' 1>&2
+      exit 1
+    fi
+    ;;
+  -)
+    makefile=$TMPMAKEFILE
+    ;;
 esac
 
-if [ "$verbose"x = "y"x ]; then 
-    cat $CPPCMD
+if [ "$verbose"x = "y"x ]; then
+  cat $CPPCMD
 fi
 
 echo '' > $DEPENDLINES
 for i in $files
 do
-    $CPPCMD $i       | sed -n "/^#/s;^;$i ;p"
+  $CPPCMD $i       | sed -n "/^#/s;^;$i ;p"
 
 done   | sed -e 's|/[^/.][^/]*/\.\.||g' -e 's|/\.[^.][^/]*/\.\.||g'     -e 's|"||g' -e 's| \./| |'   | awk '{
 	if ($1 != $4  &&  $2 != "#ident" && $2 != "#pragma")
@@ -206,18 +206,18 @@ done   | sed -e 's|/[^/.][^/]*/\.\.||g' -e 's|/\.[^.][^/]*/\.\.||g'     -e 's|"|
 
 	    if (rec != "")
 		print rec
-	    }'   | egrep -v '^[^:]*:[ 	]*$' >> $DEPENDLINES
+}'   | egrep -v '^[^:]*:[ 	]*$' >> $DEPENDLINES
 
 
 trap "" 1 2 13 15	# Now we are committed
 case "$makefile" in
-    $TMPMAKEFILE)
-	;;
-    *)
-	rm -f $makefile.bak
-	cp $makefile $makefile.bak
-	echo "Appending dependencies to $makefile"
-	;;
+  $TMPMAKEFILE)
+    ;;
+  *)
+    rm -f $makefile.bak
+    cp $makefile $makefile.bak
+    echo "Appending dependencies to $makefile"
+    ;;
 esac
 
 #
@@ -228,25 +228,25 @@ esac
 #
 if [ "$append" = "n" ]
 then
-    cat >> $makefile << END_OF_APPEND
+  cat >> $makefile << END_OF_APPEND
 
 $magic_string
 
 END_OF_APPEND
-    ed $silent $makefile << END_OF_ED_SCRIPT
+  ed $silent $makefile << END_OF_ED_SCRIPT
 /^$magic_string/+1,\$d
 w
 q
 END_OF_ED_SCRIPT
-    echo '' >>$makefile
+  echo '' >>$makefile
 fi
 
 cat $DEPENDLINES >>$makefile
 
 case "$makefile" in
-    $TMPMAKEFILE)
-	cat $TMPMAKEFILE
-	;;
+  $TMPMAKEFILE)
+    cat $TMPMAKEFILE
+    ;;
 
 esac
 
