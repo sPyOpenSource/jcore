@@ -5,10 +5,12 @@ CFLAGS = -Wall -Wextra -ansi -pedantic
 SRCS = $(filter-out bin2h.c data.c,$(wildcard *.c)) data.c
 
 ifneq ("$(wildcard /bin/*.exe)","")
+CFLAGS += -Wno-long-long
 LIBDIRS = -static -static-libgcc
 ZIPNAME = ../$(TARGET)-Win.zip
 else
 ifneq ("$(wildcard /Applications/*)","")
+CFLAGS += -Wno-long-long
 ZIPNAME = ../$(TARGET)-MacOSX.zip
 CFLAGS += -DMACOSX
 else
