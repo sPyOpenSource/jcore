@@ -2120,7 +2120,11 @@ if BBDEBUG eq 1
             call        real_printfunc
             mov         si, gpt_ptr
             call        real_printfunc
-            mov         si, crlf
+            cmp         byte [bad_madt], 0
+            jz          @f
+            mov         si, dbg_madt
+            call        real_printfunc
+@@:         mov         si, crlf
             call        real_printfunc
             real_protmode
 end if
@@ -2502,8 +2506,8 @@ end if
             or          eax, 004607h    ; start at 0700:0000h
             mov         dword [esi + 300h], eax
 
-            ; wait 200 microsec
-            prot_sleep  1
+            ; wait 10 millisec
+            prot_sleep  50
 
             ; do we need a second SIPI?
             cmp         word [ap_done], 0
@@ -2524,8 +2528,8 @@ end if
             or          eax, 004607h
             mov         dword [esi + 300h], eax
 
-            ; wait 200 microsec
-            prot_sleep  1
+            ; wait 10 millisec
+            prot_sleep  50
             jmp         .nextcore
 .nosmp:
             ;Enter long mode
@@ -2970,6 +2974,7 @@ dbg_scan    db          " * Autodetecting kernel",10,13,0
 dbg_elf     db          " * Parsing ELF64",10,13,0
 dbg_pe      db          " * Parsing PE32+",10,13,0
 dbg_smp     db          " * SMP numcores ",0
+dbg_madt    db          " (bad MADT)",0
 dbg_vesa    db          " * Screen VESA VBE",10,13,0
 end if
 backup:     db          " * Backup initrd",10,13,0

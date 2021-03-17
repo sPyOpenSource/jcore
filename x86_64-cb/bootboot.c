@@ -761,7 +761,7 @@ void MapPage(uint64_t virt, uint64_t phys)
  */
 int main(void)
 {
-    unsigned int ret=0, i, dsk;
+    unsigned int ret=0, i, dsk, bad_madt=0;
     uint8_t *pe, *ptr;
     uint32_t np, sp, r;
     unsigned char *data;
@@ -1133,6 +1133,7 @@ gzerr:      panic("Unable to uncompress");
                         case 0:                                             // found Processor Local APIC
                             if((ptr[4] & 1) && ptr[3] != 0xFF && lapic_ids[(int)ptr[3]] == 0xFFFF)
                                 lapic_ids[(int)ptr[3]] = i++;
+                            else bad_madt++;
                         break;
                         case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                     }
@@ -1150,7 +1151,7 @@ gzerr:      panic("Unable to uncompress");
         : : :);
 
     if(!nosmp && bootboot->numcores > 1 && lapic_addr) {
-        DBG(" * SMP numcores %d\n", bootboot->numcores);
+        DBG(" * SMP numcores %d%s\n", bootboot->numcores, bad_madt ? " (bad MADT)" : "");
         memcpy((uint8_t*)0x1000, (void*)&ap_trampoline, 128);
 
         // enable Local APIC
@@ -1161,24 +1162,40 @@ gzerr:      panic("Unable to uncompress");
         // make sure we use the correct Local APIC ID for the BSP
         bootboot->bspid = *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x20)) >> 24;
 
-        // supports up to 255 cores (lapicid 255 is bcast address), requires x2APIC to have more
-        for(i = 0; i < 255; i++) {
-            if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
-            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280)) = 0;     // clear APIC errors
-            r = *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280));
-            send_ipi(i, 0xfff00000, 0x00C500);                              // trigger INIT IPI
-            udelay(200);
-            send_ipi(i, 0xfff00000, 0x008500);                              // deassert INIT IPI
-        }
-        mdelay(10);                                                         // wait 10 msec
-        for(i = 0; i < 255; i++) {
-            if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
-            *((uint8_t*)0x1011) = 0;
-            send_ipi(i, 0xfff0f800, 0x004601);                              // trigger SIPI, start at 0100:0000h
-            udelay(200);                                                    // wait 200 usec
-            if(!*((uint8_t*)0x1011)) {
-                send_ipi(i, 0xfff0f800, 0x004601);
+#if 0
+        // use broadcast IPI if MADT is okay (no bcast id and all CPUs enabled)
+        if(!bad_madt) {
+            // send Broadcast INIT IPI
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4500;
+            mdelay(10);                                                     // wait 10 msec
+            // send Broadcast STARTUP IPI
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4601;// start at 0100:0000h
+            udelay(200);                                                    // wait 10 msec
+            // send second SIPI
+            *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x300)) = 0x0C4601;
+            udelay(200);                                                    // wait 10 msec
+        } else
+#endif
+        {
+            // supports up to 255 cores (lapicid 255 is bcast address), requires x2APIC to have more
+            for(i = 0; i < 255; i++) {
+                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+                *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280)) = 0; // clear APIC errors
+                r = *((volatile uint32_t*)((uintptr_t)lapic_addr + 0x280));
+                send_ipi(i, 0xfff00000, 0x00C500);                          // trigger INIT IPI
                 udelay(200);
+                send_ipi(i, 0xfff00000, 0x008500);                          // deassert INIT IPI
+            }
+            mdelay(10);                                                     // wait 10 msec
+            for(i = 0; i < 255; i++) {
+                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+                *((volatile uint8_t*)0x1011) = 0;
+                send_ipi(i, 0xfff0f800, 0x004601);                          // trigger SIPI, start at 0100:0000h
+                for(r = 250; !*((volatile uint8_t*)0x1011) && r > 0; r--) udelay(200);// wait for AP with 50 msec timeout
+                if(!*((volatile uint8_t*)0x1011)) {
+                    send_ipi(i, 0xfff0f800, 0x004601);
+                    mdelay(50);
+                }
             }
         }
     } else {

@@ -92,6 +92,10 @@ _L80A0:
 // some linkers (GNU ld) generates bad relocation record for this
 //    jmp     bootboot_startcode
     movq    0x80D8, %rax
+    // in theory this could cause trouble, but it does not since all cores are executing the same
+    // code at this point, so it doesn't matter if one core is overwriting the same stack with the
+    // stack frame, because all are saving exactly the same stack frame to the same position
+    movl    $0x8800, %esp
     jmp     *%rax
     .align 32
 _L80C0_cr3_value:

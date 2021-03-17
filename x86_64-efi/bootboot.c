@@ -1459,6 +1459,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     EFI_PROCESSOR_INFORMATION *pibuf=(EFI_PROCESSOR_INFORMATION*)pibuffer;
 #else
     UINT64 ncycles = 0, currtime, endtime;
+    UINTN bad_madt=0;
 #endif
     EFI_GUID SerIoGuid = EFI_SERIAL_IO_PROTOCOL_GUID;
     EFI_SERIAL_IO_PROTOCOL *ser = NULL;
@@ -1937,6 +1938,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                             case 0:                                             // found Processor Local APIC
                                 if((ptr[4] & 1) && ptr[3] != 0xFF && lapic_ids[(INTN)ptr[3]] == 0xFFFF)
                                     lapic_ids[(INTN)ptr[3]] = i++;
+                                else bad_madt++;
                             break;
                             case 5: lapic_addr = *((uint64_t*)(ptr+4)); break;  // found 64 bit Local APIC Address
                         }
@@ -1946,7 +1948,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                         if(bsp_num == 0xFFFF) bsp_num = 0;
                         else {
                             bootboot->numcores = i;
-                            DBG(L" * SMP numcores %d\n", bootboot->numcores);
+                            DBG(L" * SMP numcores %d%s\n", bootboot->numcores, bad_madt ? L" (bad MADT)" : L"");
                         }
                     }
                     break;
@@ -2082,6 +2084,7 @@ get_memory_map:
         // blue (or red) dot on the top left corner (sort of status report)
         *((volatile uint64_t*)(bootboot->fb_ptr)) =
         *((volatile uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x000000FF000000FFUL;
+        __asm__ __volatile__ ("invlpg (%0)" : : "a"(bootboot->fb_ptr) : "memory"); // memory barrier and flush screen
 
         //inform firmware that we're about to leave it's realm
         status = uefi_call_wrapper(BS->ExitBootServices, 2, image, map_key);
@@ -2101,7 +2104,7 @@ get_memory_map:
         // green dot on the top left corner (do not allow gcc to rearrange this!!!)
         *((volatile uint64_t*)(bootboot->fb_ptr)) =
         *((volatile uint64_t*)(bootboot->fb_ptr + bootboot->fb_scanline)) = 0x0000FF000000FF00UL;
-        __asm__ __volatile__ ("pause" : : : "memory"); // memory barrier
+        __asm__ __volatile__ ("invlpg (%0)" : : "a"(bootboot->fb_ptr) : "memory"); // memory barrier and flush screen
 
         // start APs
         if(bootboot->numcores > 1 && apmemfree) {
@@ -2123,24 +2126,40 @@ get_memory_map:
             // make sure we use the correct Local APIC ID for the BSP
             bootboot->bspid = *((volatile uint32_t*)(lapic_addr + 0x20)) >> 24;
 
-            // supports up to 255 cores (lapicid 255 is bcast address), requires x2APIC to have more
-            for(i = 0; i < 255; i++) {
-                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
-                *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;            // clear APIC errors
-                a = *((volatile uint32_t*)(lapic_addr + 0x280));
-                send_ipi(i, 0xfff00000, 0x00C500);                          // trigger INIT IPI
-                sleep(1);
-                send_ipi(i, 0xfff00000, 0x008500);                          // deassert INIT IPI
-            }
-            sleep(50);                                                      // wait 10 msec
-            for(i = 0; i < 255; i++) {
-                if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
-                ap_done = 0;
-                send_ipi(i, 0xfff0f800, 0x004608);                          // trigger SIPI, start at 0800:0000h
+#if 0
+            // use broadcast IPI if MADT is okay (no bcast id and all CPUs enabled)
+            if(!bad_madt) {
+                // send Broadcast INIT IPI
+                *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4500;
+                sleep(50);                                                  // wait 10 msec
+                // send Broadcast STARTUP IPI
+                *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608;     // start at 0800:0000h
                 sleep(1);                                                   // wait 200 usec
-                if(!ap_done) {
-                    send_ipi(i, 0xfff0f800, 0x004608);
+                // send second SIPI
+                *((volatile uint32_t*)(lapic_addr + 0x300)) = 0x0C4608;
+                sleep(1);                                                   // wait 200 usec
+            } else
+#endif
+            {
+                // supports up to 255 cores (lapicid 255 is bcast address), requires x2APIC to have more
+                for(i = 0; i < 255; i++) {
+                    if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+                    *((volatile uint32_t*)(lapic_addr + 0x280)) = 0;        // clear APIC errors
+                    a = *((volatile uint32_t*)(lapic_addr + 0x280));
+                    send_ipi(i, 0xfff00000, 0x00C500);                      // trigger INIT IPI
                     sleep(1);
+                    send_ipi(i, 0xfff00000, 0x008500);                      // deassert INIT IPI
+                }
+                sleep(50);                                                  // wait 10 msec
+                for(i = 0; i < 255; i++) {
+                    if(i == bootboot->bspid || lapic_ids[i] == 0xFFFF) continue;
+                    ap_done = 0;
+                    send_ipi(i, 0xfff0f800, 0x004608);                      // trigger SIPI, start at 0800:0000h
+                    for(a = 250; !ap_done && a > 0; a--) sleep(1);          // wait for AP with 50 msec timeout
+                    if(!ap_done) {
+                        send_ipi(i, 0xfff0f800, 0x004608);
+                        sleep(250);
+                    }
                 }
             }
         }
