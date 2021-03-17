@@ -40,6 +40,10 @@ void fsz_open(gpt_t *gpt_entry);
 void fsz_add(struct stat *st, char *name, unsigned char *content, int size);
 void fsz_close();
 
+void ech_open(gpt_t *gpt_entry);
+void ech_add(struct stat *st, char *name, unsigned char *content, int size);
+void ech_close();
+
 void jamesm_open(gpt_t *gpt_entry);
 void jamesm_add(struct stat *st, char *name, unsigned char *content, int size);
 void jamesm_close();
@@ -50,6 +54,7 @@ fsdrv_t fsdrv[] = {
     { "cpio",                    {0}, cpio_open, cpio_add, cpio_close },
     { "tar",                     { 0x65706154, 0x4120, 0x6372, { 0x68,0x69,0x76,0x65,0x20,0x46,0x53,0x20} }, tar_open, tar_add, tar_close },
     { "FS/Z",                    { 0x5A2F534F, 0x0000, 0x5346, { 0x2F,0x5A,0x00,0x00,0x00,0x00,0x00,0x00} }, fsz_open, fsz_add, fsz_close },
+    { "echfs",                   { 0x66686365, 0x6973, 0x7673, { 0x65,0x72,0x79,0x6C,0x61,0x6D,0x65,0x00} }, ech_open, ech_add, ech_close },
     { "OS/Z usr (x86_64)",       { 0x5A2F534F, 0x8664, 0x5346, { 0x2F,0x5A,0x00,0x00,0x75,0x73,0x72,0x00} }, NULL, NULL, NULL },
     { "OS/Z usr (AArch64)",      { 0x5A2F534F, 0xAA64, 0x5346, { 0x2F,0x5A,0x00,0x00,0x75,0x73,0x72,0x00} }, NULL, NULL, NULL },
     { "OS/Z var",                { 0x5A2F534F, 0x0000, 0x5346, { 0x2F,0x5A,0x00,0x00,0x76,0x61,0x72,0x00} }, NULL, NULL, NULL },

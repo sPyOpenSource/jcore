@@ -5,8 +5,8 @@ See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 
 This is an all-in-one, multiplatform, dependency-free disk image creator tool. You pass a disk configuration to it in a very
 flexible JSON, and it generates ESP FAT boot partition with the required loader files, GPT partitioning table, PMBR, etc. It
-also creates an initrd from a directory (currently `cpio`, `tar`, `jamesm` (James Molloy's initrd) and `FS/Z` supported, but
-the code is written in a way that it is easily expandable).
+also creates an initrd from a directory (currently `cpio`, `tar`, `jamesm` (James Molloy's initrd), `echfs` and `FS/Z`
+supported, but the code is written in a way that it is easily expandable).
 
 The generated image was tested with fdisk, and with the verify function of gdisk. The FAT partition was tested with fsck.vfat
 and with TianoCore UEFI firmware and on Raspberry Pi. The ISO9660 part tested with iat (ISO9660 Analyzer Tool) and Linux mount.

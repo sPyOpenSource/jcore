@@ -281,6 +281,40 @@ file_t jamesm_initrd(unsigned char *initrd_p, char *kernel)
 }
 
 /**
+ * EchFS
+ * http://github.com/echfs/echfs
+ */
+file_t ech_initrd(unsigned char *initrd_p, char *kernel)
+{
+    UINT64 parent = 0xffffffffffffffffUL, n;
+    unsigned char *ptr;
+    char *end, *fn;
+    int k = 0;
+    file_t ret = { NULL, 0 };
+    if(initrd_p==NULL || kernel==NULL || CompareMem(initrd_p+4,"_ECH_FS_",8))
+        return ret;
+    DBG(L" * EchFS %s\n",a2u(kernel));
+    memcpy(&k, initrd_p + 28, 4);
+    memcpy(&n, initrd_p + 12, 8);
+    ptr = initrd_p + (((n * 8 + k - 1) / k) + 16) * k;
+    for(end = fn = kernel; *end && *end != '/'; end++);
+    while(*((UINT64*)ptr)) {
+        if(*((UINT64*)ptr) == parent && !CompareMem(ptr + 9, fn, end - fn) && !ptr[9 + end - fn]) {
+            parent = *((UINT64*)(ptr + 240));
+            if(!*end) {
+                ret.size=*((UINTN*)(ptr + 248));
+                ret.ptr=(UINT8*)(initrd_p + parent * k);
+                break;
+            }
+            end++;
+            for(fn = end; *end && *end != '/'; end++);
+        }
+        ptr += 256;
+    }
+    return ret;
+}
+
+/**
  * Static file system drivers registry
  */
 file_t (*fsdrivers[]) (unsigned char *, char *) = {
@@ -289,5 +323,6 @@ file_t (*fsdrivers[]) (unsigned char *, char *) = {
     tar_initrd,
     sfs_initrd,
     jamesm_initrd,
+    ech_initrd,
     NULL
 };

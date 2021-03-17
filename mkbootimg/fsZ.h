@@ -382,12 +382,12 @@ typedef struct {
  *                     Meta labels                       *
  *********************************************************/
 
-/* meta labels are list of sector aligned, zero terminated JSON strings,
+/* meta labels are list of sector aligned, key value pairs (with possibly binary values),
  * filled up with zeros to be multiple of sector size.
  *
  * Example (assuming meta label file starts at lsn 1234):
- * {"icon":"/usr/firefox/share/icon.png"} (zeros padding to sector size)
- * {"icon":"/usr/vlc/share/icon.svg","downloaded":"http://videolan.org"} (zeros, at least one)
+ * (length) "icon" (zero) "/usr/firefox/share/icon.png" (zero) (zeros padding to sector size)
+ * (length) "icon" (zero) "/usr/vlc/share/icon.svg" (zeros padding to sector size)
  *
  * Inode of /usr/firefox/bin/firefox: metalabel=1234
  * Inode of /usr/vlc/bin/vlc: metalabel=1235
@@ -396,7 +396,7 @@ typedef struct {
  * must be careful to allocate contiguous sectors for a meta block. This complicates things
  * a bit when large meta label blocks (>4096) are written, but simplifies a lot on read by
  * eliminating the need of translating LSNs for meta labels file. As meta labels are read more
- * often than written, and usually one JSON is smaller than 4096, this is intentional.
+ * often than written, and usually one meta is smaller than 4096, this is intentional.
  * In other words, meta label blocks are one or more contiguous sectors per inode on disk, and
  * meta labels file covers them just like bad sectors file covers bad sectors.
  */

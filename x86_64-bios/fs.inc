@@ -38,6 +38,7 @@ fsdrivers:
             dw          tar_initrd
             dw          sfs_initrd
             dw          jamesm_initrd
+            dw          ech_initrd
             dw          0
 
 ; ----------- FS/Z ----------
@@ -654,3 +655,59 @@ jamesm_initrd:
             add         esi, ebx
             ret
 .ks:        dd          0
+
+; ----------- echfs ----------
+; Find the kernel on initrd
+; IN:   esi: initrd pointer, ecx: initrd end, edi: kernel filename
+; OUT:  On Success
+;         esi: pointer to the first byte, ecx: size in bytes
+;       On Error
+;         ecx: 0
+ech_initrd:
+            cmp         dword [esi + 4], '_ECH'
+            jne         .err
+            cmp         dword [esi + 8], '_FS_'
+            jne         .err
+            mov         edx, esi
+            mov         esi, dword[esi + 12]
+            shl         esi, 3
+            add         esi, 16*512
+            mov         ebx, 0FFFFFFFFh
+.again:     xor         ecx, ecx
+@@:         inc         cx
+            cmp         byte [edi + ecx], 0
+            jz          @f
+            cmp         byte [edi + ecx], '/'
+            jne         @b
+@@:
+.next:      cmp         dword [esi], 0
+            jz          .err
+            cmp         dword [esi], ebx
+            jne         .not
+            cmp         byte [esi + ecx + 9], 0
+            jnz         .not
+            push        esi
+            push        edi
+            push        ecx
+            add         esi, 9
+            rep         cmpsb
+            pop         ecx
+            pop         edi
+            pop         esi
+            jnz         .not
+            mov         ebx, dword [esi + 240]
+            add         edi, ecx
+            inc         edi
+            cmp         byte [edi - 1], '/'
+            je          .again
+            cmp         byte [esi + 8], 0
+            jnz         .err
+            mov         ecx, dword [esi + 248]
+            mov         esi, ebx
+            shl         esi, 9
+            add         esi, edx
+            ret
+.not:       add         esi, 256
+            jmp         .next
+.err:       xor         ecx, ecx
+            ret
