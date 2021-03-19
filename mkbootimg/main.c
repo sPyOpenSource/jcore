@@ -236,7 +236,7 @@ void parsekernel(int idx, unsigned char *data, int v)
             phdr=(Elf64_Phdr *)((uint8_t *)phdr+ehdr->e_phentsize);
         }
         if(n != 1) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MORESEG]); exit(1); }
-        if(v) printf("Entry point:  %08" LL "x ", entrypoint);
+        if(v) printf("Entry point:  %08" LL "x ", (unsigned long int)entrypoint);
         if(entrypoint < core_addr || entrypoint > core_addr+core_size)
             { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BADENTRYP]); exit(1); }
         if(ehdr->e_shoff > 0) {
@@ -275,7 +275,7 @@ void parsekernel(int idx, unsigned char *data, int v)
         bss = pehdr->bss_size;
         core_addr = (int64_t)pehdr->code_base;
         entrypoint = (int64_t)pehdr->entry_point;
-        if(v) printf("Entry point:  %08" LL "x ", entrypoint);
+        if(v) printf("Entry point:  %08" LL "x ", (unsigned long int)entrypoint);
         if(entrypoint < core_addr || entrypoint > core_addr+pehdr->text_size)
             { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BADENTRYP]); exit(1); }
         if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
@@ -297,30 +297,31 @@ void parsekernel(int idx, unsigned char *data, int v)
     }
     if(v) printf("OK\r\n");
     if(mm_addr) {
-        if(v) printf("mmio:         %08" LL "x ", mm_addr);
+        if(v) printf("mmio:         %08" LL "x ", (unsigned long int)mm_addr);
         if(!ISHH(mm_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio %s\r\n",lang[ERR_BADADDR]); exit(1); }
         if(mm_addr & ma) { if(v) {   printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio ");fprintf(stderr,lang[ERR_BADALIGN],ma+1);fprintf(stderr,"\r\n"); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(fb_addr) {
-        if(v) printf("fb:           %08" LL "x ", fb_addr);
+        if(v) printf("fb:           %08" LL "x ", (unsigned long int)fb_addr);
         if(!ISHH(fb_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb %s\r\n",lang[ERR_BADALIGN]); exit(1); }
         if(fb_addr & fa) { if(v) {   printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb ");fprintf(stderr,lang[ERR_BADALIGN],fa+1);fprintf(stderr,"\r\n"); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(bb_addr) {
-        if(v) printf("bootboot:     %08" LL "x ", bb_addr);
+        if(v) printf("bootboot:     %08" LL "x ", (unsigned long int)bb_addr);
         if(!ISHH(bb_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: bootboot %s\r\n",lang[ERR_BADADDR]); exit(1); }
         if(bb_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: bootboot %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(env_addr) {
-        if(v) printf("environment:  %08" LL "x ", env_addr);
+        if(v) printf("environment:  %08" LL "x ", (unsigned long int)env_addr);
         if(!ISHH(env_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: environment %s\r\n",lang[ERR_BADADDR]); exit(1); }
         if(env_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: environment %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
         if(v) printf("OK\r\n");
     }
-    if(v) printf("Load segment: %08" LL "x size %" LL "dK offs %" LL "x ", core_addr, (core_size + bss + 1024)/1024, core_ptr);
+    if(v) printf("Load segment: %08" LL "x size %" LL "dK offs %" LL "x ", (unsigned long int)core_addr,
+        (long int)(core_size + bss + 1024)/1024, (unsigned long int)core_ptr);
     if(!ISHH(core_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_BADADDR]); exit(1); }
     if(core_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
     if(core_size + bss > 16 * 1024 * 1024) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BIGSEG]); exit(1); }
