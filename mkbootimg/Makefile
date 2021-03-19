@@ -1,7 +1,7 @@
 TARGET = mkbootimg
 
 CC = gcc
-CFLAGS = -Wall -Wextra -ansi -pedantic -g
+CFLAGS = -Wall -Wextra -ansi -pedantic
 SRCS = $(filter-out bin2h.c data.c,$(wildcard *.c)) data.c
 
 ifneq ("$(wildcard /bin/*.exe)","")
