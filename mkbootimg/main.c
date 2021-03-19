@@ -463,13 +463,14 @@ int main(int argc, char **argv)
                 parsekernel(i, data, 0);
                 free(data);
                 skipbytes = strlen(initrd_dir[i]) + 1;
-                fs_base = NULL; fs_len = 0;
+                fs_base = NULL; fs_len = 0; fs_no = 0;
                 if(rd_open) (*rd_open)(NULL);
                 parsedir(initrd_dir[i], 0);
                 if(rd_close) (*rd_close)();
                 initrdcompress();
                 initrd_buf[i] = fs_base;
                 initrd_size[i] = fs_len;
+                free(initrd_dir[i]);
             } else
             if(initrd_buf[i]) {
                 fs_base = initrd_buf[i]; fs_len = initrd_size[i];
@@ -519,6 +520,8 @@ int main(int argc, char **argv)
         free(kernelname);
         free(initrd_buf[0]);
         if(initrd_buf[1]) free(initrd_buf[1]);
+        if(initrd_buf[2]) free(initrd_buf[2]);
+        if(config) free(config);
         free(json);
     }
     return 0;

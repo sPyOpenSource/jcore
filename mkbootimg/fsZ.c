@@ -30,7 +30,7 @@
 #include "main.h"
 #include "fsZ.h"
 
-int fsz_secsize = FSZ_SECSIZE, fsz_isinitrd = 0;
+int fsz_secsize = FSZ_SECSIZE, fsz_max = 0;
 unsigned char fsz_emptysec[FSZ_SECSIZE] = {0};
 
 /* private functions */
@@ -44,6 +44,10 @@ int fsz_add_inode(char *filetype, char *mimetype)
     unsigned int i,j=!strcmp(filetype,FSZ_FILETYPE_SYMLINK)||!strcmp(filetype,FSZ_FILETYPE_UNION)?fsz_secsize-1024:36;
     FSZ_Inode *in;
     FSZ_DirEntHeader *hdr;
+    if(fsz_max && fs_len+fsz_secsize > fsz_max) {
+        fprintf(stderr,"mkbootimg: partition #%d %s\n", fs_no, lang[ERR_TOOBIG]);
+        exit(1);
+    }
     fs_base=realloc(fs_base,fs_len+fsz_secsize);
     if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_MEM]); exit(1); }
     memset(fs_base+fs_len,0,fsz_secsize);
@@ -110,7 +114,7 @@ void fsz_link_inode(int inode, char *path, int toinode)
     }
     /* the format can hold 2^127 directory entries, but we only implement directories embedded in inodes here, up to 23 */
     if(hdr->numentries >= (fsz_secsize - 1024 - sizeof(FSZ_DirEntHeader)) / sizeof(FSZ_DirEnt)) {
-        fprintf(stderr,"mkbootimg: %s: %s\n",lang[ERR_TOOMANY],path); exit(1);
+        fprintf(stderr,"mkbootimg: partition #%d %s: %s\n", fs_no, lang[ERR_TOOMANY], path); exit(1);
     }
     hdr->numentries++;
     in->modifydate=t * 1000000;
@@ -130,6 +134,10 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
     int inode=fsz_add_inode(data[0]==0x55 && data[1]==0xAA &&
                data[3]==0xE9 && data[8]=='B' &&
                data[12]=='B'?"boot":"application","octet-stream");
+    if(fsz_max && fs_len+fsz_secsize+s > fsz_max) {
+        fprintf(stderr,"mkbootimg: partition #%d %s: %s\n", fs_no, lang[ERR_TOOBIG], name);
+        exit(1);
+    }
     fs_base=realloc(fs_base,fs_len+fsz_secsize+s);
     if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_MEM]); exit(1); }
     memset(fs_base+fs_len,0,fsz_secsize);
@@ -147,7 +155,7 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
         in->sec=fs_len/fsz_secsize;
         if(size>(unsigned long int)fsz_secsize) {
             j=s/fsz_secsize;
-            if(j*16>fsz_secsize){ fprintf(stderr,"mkbootimg: %s: %s\n",lang[ERR_TOOBIG],name); exit(1); }
+            if(j*16>fsz_secsize){ fprintf(stderr,"mkbootimg: partition #%d %s: %s\n", fs_no, lang[ERR_TOOBIG], name); exit(1); }
             if(j*16<=fsz_secsize-1024) {
                 ptr=(unsigned char*)&in->data.small.inlinedata;
                 in->flags=FSZ_IN_FLAG_SDINLINE;
@@ -162,7 +170,7 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
             k=inode+1+l;
             for(i=0;i<j;i++){
                 /* no spare blocks allowed in initrd, there we must save a sector full of zeros */
-                if(fsz_isinitrd || memcmp(data+i*fsz_secsize,fsz_emptysec,fsz_secsize)) {
+                if(!fsz_max || memcmp(data+i*fsz_secsize,fsz_emptysec,fsz_secsize)) {
                     memcpy(ptr,&k,4);
                     memcpy(fs_base+size+(i+l)*fsz_secsize,data+i*fsz_secsize,
                         (unsigned long int)(i+l)*fsz_secsize>size?size%fsz_secsize:(unsigned long int)fsz_secsize);
@@ -294,12 +302,12 @@ void fsz_open(gpt_t *gpt_entry)
     sb->createdate=sb->lastchangedate=t * 1000000;
     if(gpt_entry) {
         memcpy(&sb->uuid, (void*)(gpt_entry + 16), sizeof(guid_t));
-        sb->numsec = (gpt_entry->last - gpt_entry->start + 1) * 512 / fsz_secsize;
-        fsz_isinitrd = 0;
+        fsz_max = (gpt_entry->last - gpt_entry->start + 1) * 512;
+        sb->numsec = fsz_max / fsz_secsize;
     } else {
         memcpy(&sb->uuid, (void*)&diskguid, sizeof(guid_t));
         sb->uuid[15]--;
-        fsz_isinitrd = 1;
+        fsz_max = 0;
     }
     memcpy(sb->magic2,FSZ_MAGIC,4);
     fs_len = fsz_secsize;

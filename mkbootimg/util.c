@@ -45,7 +45,7 @@ struct tm *ts;
 guid_t diskguid;
 char *json = NULL, *config = NULL, *kernelname = NULL, *initrd_dir[NUMARCH] = {0}, *initrd_file[NUMARCH] = {0};
 char initrd_arch[NUMARCH] = {0};
-int fs_len, initrd_size[NUMARCH] = {0}, initrd_gzip = 1, boot_size = 0, boot_fat = 16, disk_size = 0;
+int fs_len, fs_no, initrd_size[NUMARCH] = {0}, initrd_gzip = 1, boot_size = 0, boot_fat = 16, disk_size = 0;
 int iso9660 = 0, skipbytes = 0;
 unsigned char *fs_base = NULL, *initrd_buf[NUMARCH] = {0};
 unsigned long int tsize = 0, es = 0, esiz = 0, disk_align = 0;
@@ -171,8 +171,8 @@ void initrdcompress()
         memcpy(fs_base + 10 + initrdgz_len - 2, &crc, 4);
         memcpy(fs_base + 14 + initrdgz_len - 2, &fs_len, 4);
         fs_len = initrdgz_len - 2 + 18;
-    } else
-        free(initrdgz);
+    }
+    free(initrdgz);
 }
 
 /**

@@ -6,7 +6,9 @@ See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 This is an all-in-one, multiplatform, dependency-free disk image creator tool. You pass a disk configuration to it in a very
 flexible JSON, and it generates ESP FAT boot partition with the required loader files, GPT partitioning table, PMBR, etc. It
 also creates an initrd from a directory (currently `cpio`, `tar`, `jamesm` (James Molloy's initrd), `echfs` and `FS/Z`
-supported, but the code is written in a way that it is easily expandable).
+supported, but the code is written in a way that it is easily expandable). In contrast, partitions can be generated from
+directories for `fat` (with long file names), `minix` (Minix V3 with POSIX permissions and device files), `tar`, `echfs`,
+`FS/Z` filesystems.
 
 The generated image was tested with fdisk, and with the verify function of gdisk. The FAT partition was tested with fsck.vfat
 and with TianoCore UEFI firmware and on Raspberry Pi. The ISO9660 part tested with iat (ISO9660 Analyzer Tool) and Linux mount.
@@ -22,7 +24,7 @@ BOOTBOOT mkbootimg utility - bztsrc@gitlab
  Raspbery Pi Firmware Copyright (c) Broadcom Corp, Raspberry Pi (Trading) Ltd
 
 Validates ELF or PE executables for being BOOTBOOT compatible, otherwise
-creates a bootable hybrid image for your hobby OS or Option ROM image.
+creates a bootable hybrid image or Option ROM image for your hobby OS.
 
 Usage:
   ./mkbootimg check <kernel elf / pe>
@@ -120,21 +122,23 @@ for the first (boot) partition.
 | size       | integer  | optional, the size of the partition in Megabytes. If not given, it is calculated    |
 | file       | filename | optional, path to a partition image to be used                                      |
 | directory  | folder   | optional, path to a folder, its contents will be used to generate the partition     |
+| driver     | string   | optional, in case type can't specify the format without a doubt                     |
 | type       | string   | format of the partition. When invalid value given, it lists the options             |
 | name       | string   | UTF-8 partition names, limited to UNICODE code points 32 to 65535 (BMP)             |
 
-For the first entry, valid values for `type` are: `boot` (or explicit `fat16` and `fat32`). The utility handles these
-comfortably, it tries to use FAT16 if possible to save storage space. There's a minimal size for the boot partition,
-16 Megabytes. Although both the image creator and BOOTBOOT is capable of handling smaller sizes, some UEFI firmware
-incorrectly assumes FAT12 when there are too few clusters on the file system. If the partition size is bigger than
-128 Megabytes, then it automatically switches to FAT32. If you don't use `iso9660`, then you can also set FAT32 for
-smaller images, but at least 33 Megabytes (that's a hard lower limit for FAT32). With `iso9660`, each cluster must
+For the first entry, valid values for `type` are: `boot` (or explicit `fat16` and `fat32`). Generates only 8+3 file names.
+The utility handles this comfortably, it tries to use FAT16 if possible to save storage space. There's a minimal size
+for the boot partition, 16 Megabytes. Although both the image creator and BOOTBOOT is capable of handling smaller sizes,
+some UEFI firmware incorrectly assumes FAT12 when there are too few clusters on the file system. If the partition size is
+bigger than 128 Megabytes, then it automatically switches to FAT32. If you don't use `iso9660`, then you can also set FAT32
+for smaller images, but at least 33 Megabytes (that's a hard lower limit for FAT32). With `iso9660`, each cluster must
 be 2048 bytes aligned, which is achieved by 4 sectors per cluster. The same problem applies here, both the image
 creator and the BOOTBOOT loader capable of handling FAT32 with smaller cluster numbers, but some UEFI firmware don't,
 and falsely assumes FAT16. To guarantee the minimum number of clusters, with ISO9660 and FAT32 the boot partition's
 minimum size is 128 Megabytes (128\*1024\*1024/512/4 = 65536, just one larger than what fits in 16 bits).
 
 For the other entries (starting from the second), `type` is either a GUID or one of a pre-defined file system aliases.
+Here `fat` will decide between FAT16 and FAT32 based on the number of clusters, and it can generate long file names.
 With an invalid string, the utility will list all possible values.
 
 Example:
@@ -164,12 +168,14 @@ If `file` given, then the partition is filled with data from that file. If `size
 the file's size, then the file's size will be the partition's size. If both given, and `size` is larger, then the
 difference is filled up with zeros. Partition sizes will always be multiple of `align` Kilobytes. Using 1024
 as alignment gives you 1 Megabyte aligned partitions. For the first entry, only `size` is valid, `file` isn't.
-Alternatively to `file`, you might also able to use `directory` to generate the partition image from the contents
+Alternatively to `file`, you might also be able to use `directory` to generate the partition image from the contents
 of a directory. This option is only available if the file system driver is implemented for `type`. Because there might
-be no one-to-one relation between file system types and partition types, you can use `typeguid` to explicily set the
+be no one-to-one relation between partition types and file system types, you can use `driver` to explicily set the
 latter. This is only relevant when the `directory` directive is used. For example:
 ```
-    { "type": "FS/Z", "typeguid": "5A2F534F-8664-5346-2F5A-000075737200", "size": 32, "name": "MyOS usr", "directory": "myusr" },
+    { "type": "5A2F534F-8664-5346-2F5A-000075737200", "driver": "FS/Z",  "size": 32, "name": "usr",  "directory": "myusr" },
+    { "type": "Linux home",                           "driver": "minix", "size": 32, "name": "home", "directory": "myhome" },
+    { "type": "Microsoft basic data",                 "driver": "fat",   "size": 32, "name": "data", "directory": "mydata" },
 ```
 
 Finally, `name` is just an UTF-8 string, name of the partition. Maximum length is 35 characters. Not valid for the first entry.
@@ -177,7 +183,7 @@ Finally, `name` is just an UTF-8 string, name of the partition. Maximum length i
 Adding More File Systems
 ------------------------
 
-These are listed in the fs registry, in the file `fs.h`. You can freely add new types. For file systems that you
+Types are listed in the fs registry, in the file `fs.h`. You can freely add new file system types. For file systems that you
 want to use for generating partition images or initrd as well, you must implement three functions, like:
 
 ```
@@ -186,17 +192,18 @@ void somefs_add(struct stat *st, char *name, unsigned char *content, int size);
 void somefs_close();
 ```
 
-The first is called whenever a new file system is to be created. The `gpt_entry` is NULL when called for initrd creation.
-As the given directory is recursively parsed, for each directory entry an "add" call is made. This should add the file or
-directory to the file system image. Here `st` is the stat struct for the file, `name` is the filename with full path,
+The first, the "open" is called whenever a new file system is to be created. The `gpt_entry` is NULL when called for initrd
+creation. As the given directory is recursively parsed, for each directory entry an "add" call is made. This should add the
+file or directory to the file system image. Here `st` is the stat struct for the file, `name` is the filename with full path,
 `content` and `size` are the file's content, or in case of a symbolic link, the pointed path. Finally when the parsing is
-done, the close function is called to finalize the image. Only the "add" function is mandatory, the other two are optional.
+done, the "close" function is called to finalize the image. Only the "add" function is mandatory, the other two are optional.
 
 These functions can use two global variables, `fs_base` and `fs_len` which holds the buffer for the filesystem image
-in memory.
+in memory (this implies that partitions are limited to few gigabytes, depending how much RAM you have). In case they want
+to report error, `fs_no` is the number of the partition the driver is generating for.
 
 In lack of these functions, the file system still can be used in the partition's `type` field, but then only the GPT entry
-will be created, not the content of the partition.
+will be created, not the content of the partition. The `driver` field only accepts file system types which have these functions.
 
 Keeping the built-in binaries up-to-date
 ----------------------------------------

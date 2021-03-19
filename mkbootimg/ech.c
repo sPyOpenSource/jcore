@@ -52,8 +52,11 @@ uint64_t ech_numblk;
 
 void ech_open(gpt_t *gpt_entry)
 {
-    if(gpt) {
-        if((gpt_entry->last - gpt_entry->start) < 1) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_NOSIZE]); exit(1); }
+    if(gpt_entry) {
+        if((gpt_entry->last - gpt_entry->start) < 1) {
+            fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_NOSIZE]);
+            exit(1);
+        }
         memcpy(ech_uuid, &gpt_entry->guid, 16);
         ech_numblk = gpt_entry->last - gpt_entry->start + 1;
         ech_maxents = (ech_numblk * 5 / 100) * 512 / sizeof(ech_entry_t);
@@ -84,10 +87,17 @@ void ech_add(struct stat *st, char *name, unsigned char *content, int size)
             parent = ech_ents[i].payload;
             fn = end + 1;
             end = *end ? strchr(fn, '/') : NULL;
-            if(!end) { end = fn + strlen(name); break; }
+            if(!end) { end = fn + strlen(fn); break; }
         }
     }
-    if(ech_maxents && ech_numents + 1 >= ech_maxents) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_TOOMANY]); exit(1); }
+    if(ech_numblk && ech_numblk * 512 < ech_size + size) {
+        fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_TOOBIG]);
+        exit(1);
+    }
+    if(ech_maxents && ech_numents + 1 >= ech_maxents) {
+        fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_TOOMANY]);
+        exit(1);
+    }
     ech_ents = (ech_entry_t*)realloc(ech_ents, (ech_numents + 1) * sizeof(ech_entry_t));
     if(!ech_ents) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
     memset(&ech_ents[ech_numents], 0, sizeof(ech_entry_t));

@@ -70,10 +70,6 @@ void gpt_maketable()
         for(i = 0; fsdrv[i].name; i++)
             if(fsdrv[i].type.Data1 && !strcmp(tmp, fsdrv[i].name)) { memcpy(&typeguid, &fsdrv[i].type, sizeof(guid_t)); break; }
         free(tmp);
-        /* override with specific GUID if type was an fsname */
-        sprintf(key, "partitions.%d.%s", np, "typeguid");
-        tmp = json_get(json, key);
-        if(tmp && *tmp) { getguid(tmp, &typeguid); free(tmp); }
         /* if there's still no type GUID */
         if(!typeguid.Data1 && !typeguid.Data2 && !typeguid.Data3 && !typeguid.Data4[0]) {
             fprintf(stderr,"mkbootimg: partition #%d %s. %s:\r\n", np+1, lang[ERR_TYPE], lang[ERR_ACCEPTVALUES]);
@@ -216,6 +212,7 @@ void gpt_maketable()
                 else u[i] = 0;
             }
         }
+        free(tmp);
         p += 128;
     }
 

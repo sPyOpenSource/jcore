@@ -35,7 +35,7 @@
 void img_write(char *fn)
 {
     FILE *f, *d;
-    int i, n, lastpercent, k;
+    int i, j, n, lastpercent, k;
     char key[64], *tmp, *dir, *buf;
     unsigned long int size, pos;
     size_t s;
@@ -82,9 +82,13 @@ void img_write(char *fn)
             sprintf(key, "partitions.%d.%s", k, "directory");
             dir = json_get(json, key);
             if(dir && *dir) {
-                fs_base = NULL; fs_len = 0;
-                sprintf(key, "partitions.%d.%s", k, "type");
+                fs_base = NULL; fs_len = 0; fs_no = k + 1;
+                sprintf(key, "partitions.%d.%s", k, "driver");
                 tmp = json_get(json, key);
+                if(!tmp || !*tmp) {
+                    sprintf(key, "partitions.%d.%s", k, "type");
+                    tmp = json_get(json, key);
+                }
                 if(tmp && *tmp) {
                     rd_open = NULL; rd_add = NULL; rd_close = NULL;
                     for(i = 0; fsdrv[i].name && fsdrv[i].add; i++)
@@ -95,6 +99,16 @@ void img_write(char *fn)
                         if(rd_open) (*rd_open)((gpt_t*)(gpt + 1024 + k * 128));
                         parsedir(dir, 0);
                         if(rd_close) (*rd_close)();
+                    } else {
+                        fprintf(stderr,"mkbootimg: partition #%d %s. %s:\r\n", np+1, lang[ERR_TYPE], lang[ERR_ACCEPTVALUES]);
+                        for(i = 0; fsdrv[i].name; i++)
+                            if(fsdrv[i].add) {
+                                fprintf(stderr,"  \"%08X-%04X-%04X-%02X%02X-",fsdrv[i].type.Data1,fsdrv[i].type.Data2,
+                                    fsdrv[i].type.Data3, fsdrv[i].type.Data4[0],fsdrv[i].type.Data4[1]);
+                                for(j = 2; j < 8; j++) fprintf(stderr,"%02X",fsdrv[i].type.Data4[j]);
+                                fprintf(stderr,"\" / \"%s\"\r\n",fsdrv[i].name);
+                            }
+                        exit(1);
                     }
                 }
                 free(dir);

@@ -31,7 +31,10 @@
 
 void tar_open(gpt_t *gpt_entry)
 {
-    if(gpt && (gpt_entry->last - gpt_entry->start) < 1) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_NOSIZE]); exit(1); }
+    if(gpt_entry && (gpt_entry->last - gpt_entry->start) < 1) {
+        fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_NOSIZE]);
+        exit(1);
+    }
 }
 
 void tar_add(struct stat *st, char *name, unsigned char *content, int size)

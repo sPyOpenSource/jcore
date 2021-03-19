@@ -31,7 +31,7 @@
 
 void cpio_open(gpt_t *gpt_entry)
 {
-    (void)gpt_entry;
+    if(gpt_entry) { fprintf(stderr,"mkbootimg: partition #%d %s cpio.\r\n", fs_no, lang[ERR_INITRDTYPE]); exit(1); }
 }
 
 void cpio_add(struct stat *st, char *name, unsigned char *content, int size)

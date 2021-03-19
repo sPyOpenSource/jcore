@@ -7,7 +7,8 @@ Ez egy minden az egyben, többplatformos, függőség nélküli lemezkép kreál
 forgatva). Egy lemezkonfigurációt kell megadni neki JSON-ben, és létrehozza az ESP FAT boot partíciót a szükséges betöltő
 fájlokkal, GPT táblával, PMBR-el, stb. Továbbá képes létrehozni az induló memórialemezképet egy könyvtár tartalmából (jelenleg
 `cpio`, `tar`, `jamesm` (James Molloy initrdje), `echfs` és az `FS/Z` támogatott, de a kód úgy lett megírva, hogy könnyű legyen
-bővíteni).
+bővíteni). Szemben ezzel, könyvtárból generálható partíció `fat` (hosszú fájlnevekkel), `minix` (Minix V3, POSIX
+jogosultságokkal és eszközfájlokkal), `tar`, `echfs`, `FS/Z` fájlrendszerekhez.
 
 A kigenerált képet leellenőriztem fdisk-el, valamint a gdisk verify funkciójával. A FAT partíció tesztelve lett fsck.vfat-al
 és UEFI förmverrel, továbbá Raspberry Pi-n. Az ISO9660-es rész iat-vel (ISO9660 Analyzer Tool) és Linux mounttal lett tesztelve.
@@ -23,7 +24,7 @@ BOOTBOOT mkbootimg utility - bztsrc@gitlab
  Raspbery Pi Firmware Copyright (c) Broadcom Corp, Raspberry Pi (Trading) Ltd
 
 Ellenőrzi, hogy az ELF vagy PE futtatható BOOTBOOT kompatíbilis-e, illetve
-hibrid indító lemez képet generál a hobbi OS-edhez vagy Option ROM képet.
+hibrid indító lemez képet vagy Option ROM képet generál a hobbi OS-edhez.
 
 Használat:
   ./mkbootimg check <kernel elf / pe>
@@ -121,22 +122,25 @@ fix "EFI System Partition" névvel. Ugyanezért a `size` méret megadása kötel
 | size       | szám     | opcionális, a partíció mérete Megabájtban. Ha nincs megadva, kiszámolja             |
 | file       | fájlnév  | opcionális, a használandó partíciókép elérési útja                                  |
 | directory  | mappa    | opcionális, mappa elérési útja, a tarmalmából fogja generálni a partícióképet       |
+| driver     | sztring  | opcionális, ha a paríció típusa nem határozná meg egyértelműen a formátumot         |
 | type       | sztring  | a partíció formátuma. Érvénytelen esetén listázza a lehetőségeket                   |
 | name       | sztring  | UTF-8 partíciónév, korlátozva a 32 és 65535 közötti UNICODE kódpontokra (BMP)       |
 
-Az első elem esetén a `type` lehetséges értékei: `boot` (vagy explicit `fat16` és `fat32`). A parancs igyekszik kényelmesen
-használni ezeket, ha lehet FAT16-ot választva, helytakarékosság miatt. A boot partíció minimális mérete 16 Megabájt. Bár mind
-a lemezkép készítő, mind a BOOTBOOT betöltő képes lenne kezelni kissebb méretet, néhány UEFI förmver helytelenül FAT12-nek
-hiszi, ha túl kevés kluszter van a fájlrendszeren. Ha a partíció mérete meghaladja a 128 Megabájtot, akkor automatikusan
-FAT32-t választ. Ha nem használsz `iso9660`-t, akkor kissebb méretű is lehet, de legalább 33 Megabájt (ez a FAT32 minimális
-mérete). Ugyanakkor `iso9660` használata esetén garantálni kell, hogy minden kluszter 2048 bájtos címen kezdődjön, amit
-4 szektor per kluszterrel a legegyszerűbb elérni. Itt is ugyanaz a probléma merül fel, mind a lemezkép készítő, mind a
-BOOTBOOT betöltők képesek lennének kevessebb kluszterrel is használni a FAT32-t, de néhány UEFI förmver nem, és hibásan
-FAT16-nak látná. Hogy ezt elkerüljük a minimális kluszterszámmal, az ISO9960 és FAT32 együttes használata esetén a
-partíció minimális mérete 128 Megabájt (128\*1024\*1024/512/4 = 65536, ami pont eggyel több, mint ami még 16 bitbe belefér).
+Az első elem esetén a `type` lehetséges értékei: `boot` (vagy explicit `fat16` és `fat32`). Csak 8+3 fájlneveket generál.
+A parancs igyekszik kényelmesen kezelni ezt, ha lehet FAT16-ot választva, helytakarékosság miatt. A boot partíció
+minimális mérete 16 Megabájt. Bár mind a lemezkép készítő, mind a BOOTBOOT betöltő képes lenne kezelni kissebb méretet,
+néhány UEFI förmver helytelenül FAT12-nek hiszi, ha túl kevés kluszter van a fájlrendszeren. Ha a partíció mérete meghaladja
+a 128 Megabájtot, akkor automatikusan FAT32-t választ. Ha nem használsz `iso9660`-t, akkor kissebb méretű is lehet, de
+legalább 33 Megabájt (ez a FAT32 minimális mérete). Ugyanakkor `iso9660` használata esetén garantálni kell, hogy minden
+kluszter 2048 bájtos címen kezdődjön, amit 4 szektor per kluszterrel a legegyszerűbb elérni. Itt is ugyanaz a probléma merül
+fel, mind a lemezkép készítő, mind a BOOTBOOT betöltők képesek lennének kevessebb kluszterrel is használni a FAT32-t, de
+néhány UEFI förmver nem, és hibásan FAT16-nak látná. Hogy ezt elkerüljük a minimális kluszterszámmal, az ISO9960 és FAT32
+együttes használata esetén a partíció minimális mérete 128 Megabájt (128\*1024\*1024/512/4 = 65536, ami pont eggyel több,
+mint ami még 16 bitbe belefér).
 
-A többi (a másodiktól kezdve) bejegyzés esetén a `type` vagy egy GUID, vagy egy az előre definiált aliaszok közül. Érvénytelen
-sztring esetén a parancs listázza az összes lehetséges értéket.
+A többi (a másodiktól kezdve) bejegyzés esetén a `type` vagy egy GUID, vagy egy az előre definiált aliaszok közül. Itt a
+`fat` meghajtó csakis a kluszterek száma alapján dönt, hogy FAT16 vagy FAT32 legyen-e, és hosszú fájlneveket is generál.
+Érvénytelen sztring esetén a parancs listázza az összes lehetséges értéket.
 
 Példa:
 ```
@@ -167,10 +171,12 @@ akkor a kölönbséget nullákkal tölti fel. A partíció mérete mindig `align
 a partíciók 1 Megabájtos címekre lesznek igazítva. Az első bejegyzés esetén csak a `size` használható, a `file` nem.
 Alternatívaként esetleg használható a `directory` a `file` helyett, amennyiben a `type`-nál megadott típushoz van
 fájlrendszer meghajtó implementálva. Ekkor a megadott mappa tartalmából generálódik a partíció tartalma. Mivel nem feltétlenül
-van egy-az-egyhez megfeleltetés a fájlrendszer típus és a partíció típus között, ezért használható a `typeguid` az utóbbi
-explicit megadására. Erre csak a `directory` direktíva használata esetén lehet szükség. Példa:
+van egy-az-egyhez megfeleltetés a partíció típus és a fájlrendszer típus között, ezért használható a `driver` az utóbbi
+explicit megadására. Erre csak a `directory` direktíva használata esetén lehet szükség. Példák:
 ```
-    { "type": "FS/Z", "typeguid": "5A2F534F-8664-5346-2F5A-000075737200", "size": 32, "name": "MyOS usr", "directory": "myusr" },
+    { "type": "5A2F534F-8664-5346-2F5A-000075737200", "driver": "FS/Z",  "size": 32, "name": "usr",  "directory": "myusr" },
+    { "type": "Linux home",                           "driver": "minix", "size": 32, "name": "home", "directory": "myhome" },
+    { "type": "Microsoft basic data",                 "driver": "fat",   "size": 32, "name": "data", "directory": "mydata" },
 ```
 
 Végezetül a `name` egy sima UTF-8 sztring, a partíció neve. Maximális hossza 35 karakter. Az első partíciónál nem használható.
@@ -187,17 +193,20 @@ void somefs_add(struct stat *st, char *name, int pathlen, unsigned char *content
 void somefs_close();
 ```
 
-Az első akkor hívódik, amikor egy új fájlrendszert kell létrehozni. Itt a `gpt_entry` mutató NULL, ha memórialemezkép kreáláshoz
-hívódik a meghajtó. Ahogy a megadott mappát rekurzívan bejárja, minden almappa és fájl esetén meghívódik az "add". Ez hozzá
-kell adja a fájlt vagy mappát a fájlrendszer képéhez. Az `st` a stat struktúra, `name` a fájl neve teljes elérési úttal,
+Az első, az "open" akkor hívódik, amikor egy új fájlrendszert kell létrehozni. Itt a `gpt_entry` mutató NULL, ha memórialemezkép
+kreáláshoz hívódik a meghajtó. Ahogy a megadott mappát rekurzívan bejárja, minden almappa és fájl esetén meghívódik az "add". Ez
+hozzá kell adja a fájlt vagy mappát a fájlrendszer képéhez. Az `st` a stat struktúra, `name` a fájl neve teljes elérési úttal,
 a `content` és a `size` pedig a fájl tartalma, illetve szimbolikus hivatkozások esetén a mutatott elérési út. Végezetül amikor a
-bejárásnak vége, a close hívódik meg, hogy lezárja és véglegesítse a lemezképet. Ezek közül csak az "add" a kötelező, a másik
+bejárásnak vége, a "close" hívódik meg, hogy lezárja és véglegesítse a lemezképet. Ezek közül csak az "add" a kötelező, a másik
 kettő opcionális.
 
-Ezek a funkciók elérnek két globális változót, az `fs_base`-t és `fs_len`-t, amik a lemezkép memóriabeli bufferét jelölik.
+Ezek a funkciók elérnek két globális változót, az `fs_base`-t és `fs_len`-t, amik a lemezkép memóriabeli bufferét jelölik
+(ebből következik, hogy a partíciók mérete pár gigabájt lehet, amennyi szabad memória van a gépedben). Ha hibát kell jelenteni,
+az `fs_no` változó tartalmazza annak a partíciónak a számát, amihez a meghajtó éppen generál.
 
 Ezen függvények hiányában, a fájlrendszer továbbra is használható a partíciók `type` mezőjében, de ekkor csak a GPT bejegyzést
-hozza létre, magát a partíció tartalmát nem.
+hozza létre, magát a partíció tartalmát nem. A `driver` mezőben csak olyan fájlrendszer típus adható meg, ami rendelkezik ezekkel
+a funkciókkal.
 
 A beépített binárisok naprakészen tartása
 -----------------------------------------

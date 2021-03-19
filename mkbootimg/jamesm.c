@@ -31,7 +31,7 @@
 
 void jamesm_open(gpt_t *gpt_entry)
 {
-    (void)gpt_entry;
+    if(gpt_entry) { fprintf(stderr,"mkbootimg: partition #%d %s jamesm.\r\n", fs_no, lang[ERR_INITRDTYPE]); exit(1); }
     fs_len = 4 + 64 * 73;
     fs_base = realloc(fs_base, fs_len);
     if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n", lang[ERR_MEM]); exit(1); }
