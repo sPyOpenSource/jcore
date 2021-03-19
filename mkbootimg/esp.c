@@ -99,6 +99,19 @@ unsigned char *esp_addfile(unsigned char *ptr, char *name, unsigned char *conten
 }
 
 /**
+ * Add a compressed file to the boot partition
+ */
+unsigned char *esp_addzfile(unsigned char *ptr, char *name, unsigned char *content, int size, unsigned long int len)
+{
+    unsigned char *buf = malloc(len);
+    if(!buf) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
+    if(uncompress(buf,&len,content,size) == Z_OK && len > 0)
+        ptr = esp_addfile(ptr, name, buf, len);
+    free(buf);
+    return ptr;
+}
+
+/**
  * Create EFI System Partition with FAT16 or FAT32
  */
 void esp_makepart()
@@ -190,7 +203,7 @@ void esp_makepart()
         /*** Risc-V 64 Microchip Icicle ***/
         /* start and end address has to be added to the GPT too in a special partition */
         bbp_start = ((data + nextcluster * bpc)-esp) / 512;
-        rootdir = esp_addfile(rootdir, "PAYLOAD.BIN", binary_bootboot_rv64, sizeof(binary_bootboot_rv64));
+        rootdir = esp_addzfile(rootdir, "PAYLOAD.BIN", binary_bootboot_rv64, sizeof(binary_bootboot_rv64), sizeof_bootboot_rv64);
         bbp_end = (((data + nextcluster * bpc)-esp) / 512) - 1;
     }
     if(boot & (1 << 1)) {
@@ -198,19 +211,19 @@ void esp_makepart()
         /* start address has to be saved in PMBR too */
         esp_bbs = ((data + nextcluster * bpc)-esp) / 512;
         memcpy(esp + 0x1B0, &esp_bbs, 4);
-        rootdir = esp_addfile(rootdir, "BOOTBOOT.BIN", binary_bootboot_bin, sizeof(binary_bootboot_bin));
+        rootdir = esp_addzfile(rootdir, "BOOTBOOT.BIN", binary_bootboot_bin, sizeof(binary_bootboot_bin), sizeof_bootboot_bin);
         /*** x86 PC (UEFI) ***/
         ptr = esp_mkdir(rootdir, "EFI", 0); rootdir += 32;
         ptr = esp_mkdir(ptr, "BOOT", lastcluster);
-        ptr = esp_addfile(ptr, "BOOTX64.EFI", binary_bootboot_efi, sizeof(binary_bootboot_efi));
+        ptr = esp_addzfile(ptr, "BOOTX64.EFI", binary_bootboot_efi, sizeof(binary_bootboot_efi), sizeof_bootboot_efi);
     }
     if(boot & (1 << 0)) {
         /*** Raspberry Pi ***/
-        ptr = esp_addfile(rootdir, "KERNEL8.IMG", binary_bootboot_img, sizeof(binary_bootboot_img));
-        ptr = esp_addfile(ptr, "BOOTCODE.BIN", binary_bootcode_bin, sizeof(binary_bootcode_bin));
-        ptr = esp_addfile(ptr, "FIXUP.DAT", binary_fixup_dat, sizeof(binary_fixup_dat));
-        ptr = esp_addfile(ptr, "START.ELF", binary_start_elf, sizeof(binary_start_elf));
-        ptr = esp_addfile(ptr, "LICENCE.BCM", binary_LICENCE_broadcom, sizeof(binary_start_elf));
+        ptr = esp_addzfile(rootdir, "KERNEL8.IMG", binary_bootboot_img, sizeof(binary_bootboot_img), sizeof_bootboot_img);
+        ptr = esp_addzfile(ptr, "BOOTCODE.BIN", binary_bootcode_bin, sizeof(binary_bootcode_bin), sizeof_bootcode_bin);
+        ptr = esp_addzfile(ptr, "FIXUP.DAT", binary_fixup_dat, sizeof(binary_fixup_dat), sizeof_fixup_dat);
+        ptr = esp_addzfile(ptr, "START.ELF", binary_start_elf, sizeof(binary_start_elf), sizeof_start_elf);
+        ptr = esp_addzfile(ptr, "LICENCE.BCM", binary_LICENCE_broadcom, sizeof(binary_LICENCE_broadcom), sizeof_LICENCE_broadcom);
     }
     /* update fields in FS Information Sector */
     if(boot_fat == 32) {

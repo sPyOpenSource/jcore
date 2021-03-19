@@ -32,11 +32,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include "zlib.c"
 
 int main(int argc, char **argv)
 {
     FILE *f, *c, *h;
-    long size;
+    unsigned long int size, len;
     unsigned char *buff = NULL, *buff2 = NULL;
     char *fn, name[255];
     int i, file;
@@ -70,9 +71,19 @@ int main(int argc, char **argv)
             for(i = 0; fn[i]; i++)
                 name[i] = fn[i] == '.' || fn[i] <= ' ' ? '_' : fn[i];
             name[i] = 0;
-            fprintf(h, "extern unsigned char binary_%s[%ld];\n", name, size);
-            fprintf(c, "unsigned char binary_%s[%ld] = { ", name, size);
-            for(i = 0; i < size; i++)
+            if(size > 512) {
+                len = compressBound(size);
+                buff2 = (unsigned char*)malloc(len);
+                if(!buff2) {
+                    fprintf(stderr, "bin2h: memory allocation error\r\n");
+                    exit(2);
+                }
+                compress2(buff2, &len, buff, size, 9);
+                free(buff); buff = buff2;
+            } else len = size;
+            fprintf(h, "#define sizeof_%s %ld\nextern unsigned char binary_%s[%ld];\n", name, size, name, len);
+            fprintf(c, "unsigned char binary_%s[%ld] = { ", name, len);
+            for(i = 0; i < len; i++)
                 fprintf(c,"%s%d", i?",":"", buff[i]);
             fprintf(c," };\n");
             free(buff);

@@ -374,9 +374,4 @@ void mnx_add(struct stat *st, char *name, unsigned char *content, int size)
 
 void mnx_close()
 {
-    FILE *f;
-    if(!fs_base || fs_len < 2048) return;
-    f = fopen("test.bin", "w");
-    fwrite(fs_base, fs_len, 1, f);
-    fclose(f);
 }
