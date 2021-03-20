@@ -5,7 +5,7 @@ Előre lefordított binárisok mellékelve, egyből használhatók.
 
 1. *x86_64-efi* a preferált indítási mód x86_64-en.
     Szabvány GNU eszköztár plusz néhány fájl a gnuefi-ből (mellékelve).
-    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.efi) (100k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.rom) (100k)
+    [bootboot.efi](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.efi) (101k), [bootboot.rom](https://gitlab.com/bztsrc/bootboot/raw/master/dist/bootboot.rom) (101k)
 
 2. *x86_64-bios* BIOS, Multiboot (GRUB), El Torito (CDROM), bővítő ROM és Linux boot kompatíbilis, RÉGI betöltő.
     Ha újra akarod fordítani, szükséged lesz a fasm-ra (nincs mellékelve).

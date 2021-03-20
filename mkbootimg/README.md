@@ -7,8 +7,7 @@ This is an all-in-one, multiplatform, dependency-free disk image creator tool. Y
 flexible JSON, and it generates ESP FAT boot partition with the required loader files, GPT partitioning table, PMBR, etc. It
 also creates an initrd from a directory (currently `cpio`, `tar`, `jamesm` (James Molloy's initrd), `echfs` and `FS/Z`
 supported, but the code is written in a way that it is easily expandable). In contrast, partitions can be generated from
-directories for `fat` (with long file names), `minix` (Minix V3 with POSIX permissions and device files), `tar`, `echfs`,
-`FS/Z` filesystems.
+directories for `fat` (with long file names), `minix` (Minix V3), `ext2` (Rev 1), `tar`, `echfs` and `FS/Z` file systems.
 
 The generated image was tested with fdisk, and with the verify function of gdisk. The FAT partition was tested with fsck.vfat
 and with TianoCore UEFI firmware and on Raspberry Pi. The ISO9660 part tested with iat (ISO9660 Analyzer Tool) and Linux mount.

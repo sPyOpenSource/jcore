@@ -322,6 +322,11 @@ void mnx_add(struct stat *st, char *name, unsigned char *content, int size)
     do {
         /* FIXME: this doesn't handle indirect and double indirect data */
         ino = (inode_t*)(fs_base + mnx_inode_offset * DEFAULT_BLOCK_SIZE + (parent-1) * sizeof(inode_t));
+        if(!ino->i_zone[k]) break;
+        if(k >= NR_DZONES) {
+            fprintf(stderr,"mkbootimg: partition #%d %s: %s\r\n", fs_no, lang[ERR_TOOBIG], name);
+            exit(1);
+        }
         dir_entry = (direct_t*)(fs_base + ino->i_zone[k] * DEFAULT_BLOCK_SIZE);
         if(!memcmp(dir_entry[i].d_name, fn, end - fn) && !dir_entry[i].d_name[end - fn]) {
             parent = dir_entry[i].d_ino; i = k = 0;

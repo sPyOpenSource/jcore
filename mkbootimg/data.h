@@ -5,7 +5,7 @@ extern unsigned char binary_boot_bin[512];
 #define sizeof_bootboot_bin 13312
 extern unsigned char binary_bootboot_bin[9285];
 #define sizeof_bootboot_efi 103614
-extern unsigned char binary_bootboot_efi[46258];
+extern unsigned char binary_bootboot_efi[46278];
 #define sizeof_bootboot_img 35488
 extern unsigned char binary_bootboot_img[20151];
 #define sizeof_bootboot_rv64 8192

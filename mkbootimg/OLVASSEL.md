@@ -7,8 +7,8 @@ Ez egy minden az egyben, többplatformos, függőség nélküli lemezkép kreál
 forgatva). Egy lemezkonfigurációt kell megadni neki JSON-ben, és létrehozza az ESP FAT boot partíciót a szükséges betöltő
 fájlokkal, GPT táblával, PMBR-el, stb. Továbbá képes létrehozni az induló memórialemezképet egy könyvtár tartalmából (jelenleg
 `cpio`, `tar`, `jamesm` (James Molloy initrdje), `echfs` és az `FS/Z` támogatott, de a kód úgy lett megírva, hogy könnyű legyen
-bővíteni). Szemben ezzel, könyvtárból generálható partíció `fat` (hosszú fájlnevekkel), `minix` (Minix V3, POSIX
-jogosultságokkal és eszközfájlokkal), `tar`, `echfs`, `FS/Z` fájlrendszerekhez.
+bővíteni). Szemben ezzel, könyvtárból generálható partíció `fat` (hosszú fájlnevekkel), `minix` (Minix V3), `ext2` (Rev 1),
+`tar`, `echfs` és `FS/Z` fájlrendszerekhez.
 
 A kigenerált képet leellenőriztem fdisk-el, valamint a gdisk verify funkciójával. A FAT partíció tesztelve lett fsck.vfat-al
 és UEFI förmverrel, továbbá Raspberry Pi-n. Az ISO9660-es rész iat-vel (ISO9660 Analyzer Tool) és Linux mounttal lett tesztelve.
