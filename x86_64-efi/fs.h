@@ -294,8 +294,8 @@ file_t ech_initrd(unsigned char *initrd_p, char *kernel)
     if(initrd_p==NULL || kernel==NULL || CompareMem(initrd_p+4,"_ECH_FS_",8))
         return ret;
     DBG(L" * EchFS %s\n",a2u(kernel));
-    memcpy(&k, initrd_p + 28, 4);
-    memcpy(&n, initrd_p + 12, 8);
+    CopyMem(&k, initrd_p + 28, 4);
+    CopyMem(&n, initrd_p + 12, 8);
     ptr = initrd_p + (((n * 8 + k - 1) / k) + 16) * k;
     for(end = fn = kernel; *end && *end != '/'; end++);
     while(*((UINT64*)ptr)) {

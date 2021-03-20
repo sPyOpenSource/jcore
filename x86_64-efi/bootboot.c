@@ -1374,8 +1374,9 @@ LoadCore()
         DBG(L" * bootboot    @%lx\n", bb_addr);
         DBG(L" * environment @%lx\n", env_addr);
         DBG(L" * Entry point @%lx, text @%lx %d bytes\n",entrypoint, core.ptr, core.size);
-        if(initstack != 1024)
+        if(initstack != 1024) {
             DBG(L" * Stack size  %ld bytes per core\n", initstack);
+        }
         core.size = ((core.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
         return EFI_SUCCESS;
 
