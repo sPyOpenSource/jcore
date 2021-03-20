@@ -63,9 +63,11 @@ grub2: grub.iso
 
 efi:
 	qemu-system-x86_64 -bios $(OVMF) -m 64 -drive file=disk-x86.img,format=raw -serial stdio
+	@printf '\033[0m'
 
 eficdrom:
 	qemu-system-x86_64 -bios $(OVMF) -m 64 -cdrom disk-x86.img -serial stdio
+	@printf '\033[0m'
 
 linux:
 	qemu-system-x86_64 -kernel ../dist/bootboot.bin -drive file=disk-x86.img,format=raw -serial stdio
