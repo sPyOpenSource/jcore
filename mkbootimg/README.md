@@ -16,7 +16,7 @@ also creates an initrd or a disk partition from a directory. Supported file syst
 | `FS/Z`   | ✔Yes   | ✔Yes      | [source](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
 | `boot`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf) (ESP only, 8+3 names) |
 | `fat`    | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (non-ESP only, with LFN) |
-| `minix`  | ✗No    | ✔Yes      | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf), [V3 source](https://github.com/Stichting-MINIX-Research-Fundation/minix/tree/master/minix/fs/mfs) (V3 supported, but there's only V2 spec) |
+| `minix`  | ✗No    | ✔Yes      | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf), [V3 source](https://github.com/Stichting-MINIX-Research-Foundation/minix/tree/master/minix/fs/mfs) (V3 supported, but there's only V2 spec) |
 | `ext2`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf), [documentation](https://www.nongnu.org/ext2-doc/ext2.html) |
 | `lean`   | ✗No    | ✔Yes      | [homepage](https://freedos-32.sourceforge.net/lean/specification.php) |
 
