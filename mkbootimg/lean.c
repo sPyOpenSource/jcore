@@ -25,7 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief LeanFS file system driver
- * https://freedos-32.sourceforge.net/lean/specification.php
+ * See http://freedos-32.sourceforge.net/lean/specification.php
  *
  */
 #include "main.h"
