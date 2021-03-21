@@ -5,10 +5,23 @@ BOOTBOOT Bootolható Lemezkép Készítő
 
 Ez egy minden az egyben, többplatformos, függőség nélküli lemezkép kreáló (na jó, zlib kell neki, de az statikusan bele van
 forgatva). Egy lemezkonfigurációt kell megadni neki JSON-ben, és létrehozza az ESP FAT boot partíciót a szükséges betöltő
-fájlokkal, GPT táblával, PMBR-el, stb. Továbbá képes létrehozni az induló memórialemezképet egy könyvtár tartalmából (jelenleg
-`cpio`, `tar`, `jamesm` (James Molloy initrdje), `echfs` és az `FS/Z` támogatott, de a kód úgy lett megírva, hogy könnyű legyen
-bővíteni). Szemben ezzel, könyvtárból generálható partíció `fat` (hosszú fájlnevekkel), `minix` (Minix V3), `ext2` (Rev 1),
-`tar`, `echfs` és `FS/Z` fájlrendszerekhez.
+fájlokkal, GPT táblával, PMBR-el, stb. Továbbá képes létrehozni az induló memórialemezképet egy könyvtár tartalmából. Támogatott
+fájlrendszerek:
+
+| Formátum | Initrd | Partíció | Specifikáció, forrás                            |
+|----------|--------|----------|-------------------------------------------------|
+| `jamesm` | ✔Yes   | ✗No      | [James Molloy oktatóanyagok](http://jamesmolloy.co.uk/tutorial_html/8.-The+VFS+and+the+initrd.html) |
+| `cpio`   | ✔Yes   | ✗No      | [wikipédia](https://en.wikipedia.org/wiki/Cpio) |
+| `tar`    | ✔Yes   | ✔Yes     | [wikipédia](https://wiki.osdev.org/USTAR)       |
+| `echfs`  | ✔Yes   | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md) [forrás repo](https://github.com/echfs/echfs) |
+| `FS/Z`   | ✔Yes   | ✔Yes     | [forrás](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
+| `boot`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf) (csak ESP, 8+3 nevek) |
+| `fat`    | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (csak nem-ESP, LFN-el) |
+| `minix`  | ✗No    | ✔Yes     | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf) [V3 forrás](https://github.com/Stiching-MINIX-Research-Fundation/minix/tree/master/minix/fs/mfs) (V3 támogatott, de csak V2-höz van spec) |
+| `ext2`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf) [dokumentáció](https://www.nongnu.org/ext2-doc/ext2.html) |
+| `lean`   | ✗No    | ✔Yes     | [honlap](https://freedos-32.sourceforge.net/lean/specification.php) |
+
+A kód úgy lett megírva, hogy könnyű legyen bővíteni.
 
 A kigenerált képet leellenőriztem fdisk-el, valamint a gdisk verify funkciójával. A FAT partíció tesztelve lett fsck.vfat-al
 és UEFI förmverrel, továbbá Raspberry Pi-n. Az ISO9660-es rész iat-vel (ISO9660 Analyzer Tool) és Linux mounttal lett tesztelve.

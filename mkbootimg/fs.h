@@ -56,6 +56,10 @@ void ext_open(gpt_t *gpt_entry);
 void ext_add(struct stat *st, char *name, unsigned char *content, int size);
 void ext_close();
 
+void len_open(gpt_t *gpt_entry);
+void len_add(struct stat *st, char *name, unsigned char *content, int size);
+void len_close();
+
 void jamesm_open(gpt_t *gpt_entry);
 void jamesm_add(struct stat *st, char *name, unsigned char *content, int size);
 void jamesm_close();
@@ -72,6 +76,7 @@ fsdrv_t fsdrv[] = {
     { "minix",                   { 0xB7AADF00, 0xDE27, 0x11CA, { 0xA5,0x74,0x56,0x72,0x69,0x6A,0x65,0x55} }, mnx_open, mnx_add, mnx_close },
     { "fat",                     { 0xEBD0A0A2, 0xB9E5, 0x4433, { 0x87,0xC0,0x68,0xB6,0xB7,0x26,0x99,0xC7} }, fat_open, fat_add, fat_close },
     { "ext2",                    { 0x0FC63DAF, 0x8483, 0x4772, { 0x8E,0x79,0x3D,0x69,0xD8,0x47,0x7D,0xE4} }, ext_open, ext_add, ext_close },
+    { "lean",                    { 0xBB5A91B0, 0x977E, 0x11DB, { 0xB6,0x06,0x08,0x00,0x20,0x0C,0x9A,0x66} }, len_open, len_add, len_close },
     { "FS/Z",                    { 0x5A2F534F, 0x0000, 0x5346, { 0x2F,0x5A,0x00,0x00,0x00,0x00,0x00,0x00} }, fsz_open, fsz_add, fsz_close },
     /* partition type only, without drivers */
     { "OS/Z usr (x86_64)",       { 0x5A2F534F, 0x8664, 0x5346, { 0x2F,0x5A,0x00,0x00,0x75,0x73,0x72,0x00} }, NULL, NULL, NULL },

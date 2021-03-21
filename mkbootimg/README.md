@@ -5,9 +5,22 @@ See [BOOTBOOT Protocol](https://gitlab.com/bztsrc/bootboot) for common details.
 
 This is an all-in-one, multiplatform, dependency-free disk image creator tool. You pass a disk configuration to it in a very
 flexible JSON, and it generates ESP FAT boot partition with the required loader files, GPT partitioning table, PMBR, etc. It
-also creates an initrd from a directory (currently `cpio`, `tar`, `jamesm` (James Molloy's initrd), `echfs` and `FS/Z`
-supported, but the code is written in a way that it is easily expandable). In contrast, partitions can be generated from
-directories for `fat` (with long file names), `minix` (Minix V3), `ext2` (Rev 1), `tar`, `echfs` and `FS/Z` file systems.
+also creates an initrd or a disk partition from a directory. Supported file systems:
+
+| Format   | Initrd | Partition | Specification, source                           |
+|----------|--------|-----------|-------------------------------------------------|
+| `jamesm` | ✔Yes   | ✗No       | [James Molloy's tutorials](http://jamesmolloy.co.uk/tutorial_html/8.-The+VFS+and+the+initrd.html) |
+| `cpio`   | ✔Yes   | ✗No       | [wikipedia](https://en.wikipedia.org/wiki/Cpio) |
+| `tar`    | ✔Yes   | ✔Yes      | [wikipedia](https://wiki.osdev.org/USTAR)       |
+| `echfs`  | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md) [source repo](https://github.com/echfs/echfs) |
+| `FS/Z`   | ✔Yes   | ✔Yes      | [source](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
+| `boot`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf) (ESP only, 8+3 names) |
+| `fat`    | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (non-ESP only, with LFN) |
+| `minix`  | ✗No    | ✔Yes      | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf) [V3 source](https://github.com/Stiching-MINIX-Research-Fundation/minix/tree/master/minix/fs/mfs) (V3 supported, but there's only V2 spec) |
+| `ext2`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf) [documentation](https://www.nongnu.org/ext2-doc/ext2.html) |
+| `lean`   | ✗No    | ✔Yes      | [homepage](https://freedos-32.sourceforge.net/lean/specification.php) |
+
+The code is written in a way that it is easily expandable.
 
 The generated image was tested with fdisk, and with the verify function of gdisk. The FAT partition was tested with fsck.vfat
 and with TianoCore UEFI firmware and on Raspberry Pi. The ISO9660 part tested with iat (ISO9660 Analyzer Tool) and Linux mount.

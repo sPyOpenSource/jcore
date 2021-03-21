@@ -30,14 +30,14 @@
  */
 #include "main.h"
 
-void lean_open(gpt_t *gpt_entry)
+void len_open(gpt_t *gpt_entry)
 {
 }
 
-void lean_add(struct stat *st, char *name, unsigned char *content, int size)
+void len_add(struct stat *st, char *name, unsigned char *content, int size)
 {
 }
 
-void lean_close()
+void len_close()
 {
 }
