@@ -13,12 +13,12 @@ fájlrendszerek:
 | `jamesm` | ✔Yes   | ✗No      | [James Molloy oktatóanyagok](http://jamesmolloy.co.uk/tutorial_html/8.-The%20VFS%20and%20the%20initrd.html) |
 | `cpio`   | ✔Yes   | ✗No      | [wikipédia](https://en.wikipedia.org/wiki/Cpio) |
 | `tar`    | ✔Yes   | ✔Yes     | [wikipédia](https://wiki.osdev.org/USTAR)       |
-| `echfs`  | ✔Yes   | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md) [forrás repo](https://github.com/echfs/echfs) |
+| `echfs`  | ✔Yes   | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md), [forrás](https://github.com/echfs/echfs) |
 | `FS/Z`   | ✔Yes   | ✔Yes     | [forrás](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
 | `boot`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf) (csak ESP, 8+3 nevek) |
 | `fat`    | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (csak nem-ESP, LFN-el) |
-| `minix`  | ✗No    | ✔Yes     | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf) [V3 forrás](https://github.com/Stiching-MINIX-Research-Fundation/minix/tree/master/minix/fs/mfs) (V3 támogatott, de csak V2-höz van spec) |
-| `ext2`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf) [dokumentáció](https://www.nongnu.org/ext2-doc/ext2.html) |
+| `minix`  | ✗No    | ✔Yes     | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf), [V3 forrás](https://github.com/Stiching-MINIX-Research-Fundation/minix/tree/master/minix/fs/mfs) (V3 támogatott, de csak V2-höz van spec) |
+| `ext2`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf), [dokumentáció](https://www.nongnu.org/ext2-doc/ext2.html) |
 | `lean`   | ✗No    | ✔Yes     | [honlap](https://freedos-32.sourceforge.net/lean/specification.php) |
 
 A kód úgy lett megírva, hogy könnyű legyen bővíteni.

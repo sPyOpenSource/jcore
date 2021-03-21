@@ -12,12 +12,12 @@ also creates an initrd or a disk partition from a directory. Supported file syst
 | `jamesm` | ✔Yes   | ✗No       | [James Molloy's tutorials](http://jamesmolloy.co.uk/tutorial_html/8.-The%20VFS%20and%20the%20initrd.html) |
 | `cpio`   | ✔Yes   | ✗No       | [wikipedia](https://en.wikipedia.org/wiki/Cpio) |
 | `tar`    | ✔Yes   | ✔Yes      | [wikipedia](https://wiki.osdev.org/USTAR)       |
-| `echfs`  | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md) [source repo](https://github.com/echfs/echfs) |
+| `echfs`  | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md), [source](https://github.com/echfs/echfs) |
 | `FS/Z`   | ✔Yes   | ✔Yes      | [source](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
 | `boot`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf) (ESP only, 8+3 names) |
 | `fat`    | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (non-ESP only, with LFN) |
-| `minix`  | ✗No    | ✔Yes      | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf) [V3 source](https://github.com/Stiching-MINIX-Research-Fundation/minix/tree/master/minix/fs/mfs) (V3 supported, but there's only V2 spec) |
-| `ext2`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf) [documentation](https://www.nongnu.org/ext2-doc/ext2.html) |
+| `minix`  | ✗No    | ✔Yes      | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf), [V3 source](https://github.com/Stiching-MINIX-Research-Fundation/minix/tree/master/minix/fs/mfs) (V3 supported, but there's only V2 spec) |
+| `ext2`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf), [documentation](https://www.nongnu.org/ext2-doc/ext2.html) |
 | `lean`   | ✗No    | ✔Yes      | [homepage](https://freedos-32.sourceforge.net/lean/specification.php) |
 
 The code is written in a way that it is easily expandable.
