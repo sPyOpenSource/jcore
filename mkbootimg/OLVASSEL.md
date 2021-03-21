@@ -10,7 +10,7 @@ fájlrendszerek:
 
 | Formátum | Initrd | Partíció | Specifikáció, forrás                            |
 |----------|--------|----------|-------------------------------------------------|
-| `jamesm` | ✔Yes   | ✗No      | [James Molloy oktatóanyagok](http://jamesmolloy.co.uk/tutorial_html/8.-The+VFS+and+the+initrd.html) |
+| `jamesm` | ✔Yes   | ✗No      | [James Molloy oktatóanyagok](http://jamesmolloy.co.uk/tutorial_html/8.-The%20VFS%20and%20the%20initrd.html) |
 | `cpio`   | ✔Yes   | ✗No      | [wikipédia](https://en.wikipedia.org/wiki/Cpio) |
 | `tar`    | ✔Yes   | ✔Yes     | [wikipédia](https://wiki.osdev.org/USTAR)       |
 | `echfs`  | ✔Yes   | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md) [forrás repo](https://github.com/echfs/echfs) |

@@ -25,7 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief Driver for James Molloy's initrd
- * See http://jamesmolloy.co.uk/tutorial_html/8.-The+VFS+and+the+initrd.html
+ * See http://jamesmolloy.co.uk/tutorial_html/8.-The%20VFS%20and%20the%20initrd.html
  *
  */
 #include "main.h"

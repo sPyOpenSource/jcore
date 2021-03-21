@@ -9,7 +9,7 @@ also creates an initrd or a disk partition from a directory. Supported file syst
 
 | Format   | Initrd | Partition | Specification, source                           |
 |----------|--------|-----------|-------------------------------------------------|
-| `jamesm` | ✔Yes   | ✗No       | [James Molloy's tutorials](http://jamesmolloy.co.uk/tutorial_html/8.-The+VFS+and+the+initrd.html) |
+| `jamesm` | ✔Yes   | ✗No       | [James Molloy's tutorials](http://jamesmolloy.co.uk/tutorial_html/8.-The%20VFS%20and%20the%20initrd.html) |
 | `cpio`   | ✔Yes   | ✗No       | [wikipedia](https://en.wikipedia.org/wiki/Cpio) |
 | `tar`    | ✔Yes   | ✔Yes      | [wikipedia](https://wiki.osdev.org/USTAR)       |
 | `echfs`  | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md) [source repo](https://github.com/echfs/echfs) |
