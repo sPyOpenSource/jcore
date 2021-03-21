@@ -25,6 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief Generate EFI System Partition
+ * See https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf
  *
  */
 #include "main.h"

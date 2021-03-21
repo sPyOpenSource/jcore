@@ -25,6 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief CPIO initrd driver
+ * See https://en.wikipedia.org/wiki/Cpio
  *
  */
 #include "main.h"

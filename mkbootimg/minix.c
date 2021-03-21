@@ -25,6 +25,8 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief Minix3 file system driver
+ * See https://ohm.hgresser.de/sp-ss2012/Intro-MinixFS.pdf
+ * (however that's for V2, see the Minix3 source code)
  *
  */
 #include "main.h"

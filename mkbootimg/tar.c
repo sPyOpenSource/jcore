@@ -25,6 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief POSIX ustar file system driver
+ * See https://en.wikipedia.org/wiki/Tarball_(computing)#UStar_format
  *
  */
 #include "main.h"

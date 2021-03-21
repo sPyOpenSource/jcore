@@ -25,6 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief very simple ext2 file system driver
+ * See https://www.nongnu.org/ext2-doc/ext2.html
  *
  */
 #include "main.h"

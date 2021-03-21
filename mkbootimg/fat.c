@@ -25,6 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief normal (non-ESP) FAT16/32 file system driver with long filename support
+ * See https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf
  *
  */
 #include "main.h"

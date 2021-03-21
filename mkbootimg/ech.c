@@ -25,6 +25,7 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief a very minimal echfs driver which is much easier to use than echfs-utils
+ * See https://github.com/echfs/echfs
  *
  */
 #include "main.h"
