@@ -114,7 +114,7 @@ Példa:
 A `file` és a `directory` kölcsönösen kizárja egymást. Mindkettő lehet sztring (ha csak egy architektúrához generálunk),
 vagy tömb (egy elem minden architektúrához). Jelenleg három támogatott, azaz minden tömb maximum három elemű lehet.
 Hogy melyik architektúrát jelenti, azt az dönti el, hogy a mabbában vagy lemezképben milyen architektúrájú kernel található.
-A `type` típus csak `directory` esetén kötelező megadni.
+A `type` típust csak `directory` esetén kötelező megadni.
 
 Példák:
 ```
@@ -141,7 +141,7 @@ fix "EFI System Partition" névvel. Ugyanezért a `size` méret megadása kötel
 
 Az első elem esetén a `type` lehetséges értékei: `boot` (vagy explicit `fat16` és `fat32`). Csak 8+3 fájlneveket generál.
 A parancs igyekszik kényelmesen kezelni ezt, ha lehet FAT16-ot választva, helytakarékosság miatt. A boot partíció
-minimális mérete 16 Megabájt. Bár mind a lemezkép készítő, mind a BOOTBOOT betöltő képes lenne kezelni kissebb méretet,
+minimális mérete 8 Megabájt. Bár mind a lemezkép készítő, mind a BOOTBOOT betöltő képes lenne kezelni kissebb méretet,
 néhány UEFI förmver helytelenül FAT12-nek hiszi, ha túl kevés kluszter van a fájlrendszeren. Ha a partíció mérete meghaladja
 a 128 Megabájtot, akkor automatikusan FAT32-t választ. Ha nem használsz `iso9660`-t, akkor kissebb méretű is lehet, de
 legalább 33 Megabájt (ez a FAT32 minimális mérete). Ugyanakkor `iso9660` használata esetén garantálni kell, hogy minden

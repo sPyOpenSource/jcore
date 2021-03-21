@@ -140,7 +140,7 @@ for the first (boot) partition.
 
 For the first entry, valid values for `type` are: `boot` (or explicit `fat16` and `fat32`). Generates only 8+3 file names.
 The utility handles this comfortably, it tries to use FAT16 if possible to save storage space. There's a minimal size
-for the boot partition, 16 Megabytes. Although both the image creator and BOOTBOOT is capable of handling smaller sizes,
+for the boot partition, 8 Megabytes. Although both the image creator and BOOTBOOT is capable of handling smaller sizes,
 some UEFI firmware incorrectly assumes FAT12 when there are too few clusters on the file system. If the partition size is
 bigger than 128 Megabytes, then it automatically switches to FAT32. If you don't use `iso9660`, then you can also set FAT32
 for smaller images, but at least 33 Megabytes (that's a hard lower limit for FAT32). With `iso9660`, each cluster must

@@ -122,7 +122,7 @@ void esp_makepart()
 
     if(boot_size < i) boot_size = i;
     /* we must force 16M at least, because if FAT16 has too few clusters, some UEFI thinks it's FAT12... */
-    if(boot_size < 16) boot_size = 16;
+    if(boot_size < 8) boot_size = 8;
     if(boot_fat == 16 && boot_size >= 128) boot_fat = 32;
     /* we must force 128M, because if FAT32 has too few clusters, some UEFI thinks it's FAT16... */
     i = (iso9660 ? 128 : 33);

@@ -162,7 +162,7 @@ void parsejson(char *json)
     free(tmp);
     tmp = json_get(json, "partitions.0.size");
     if(!tmp || !*tmp) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_NOPARTSIZE]); exit(1); }
-    boot_size = atoi(tmp); free(tmp); if(boot_size < 16) boot_size = 16;
+    boot_size = atoi(tmp); free(tmp); if(boot_size < 8) boot_size = 8;
     if(!diskguid.Data1) diskguid.Data1 = crc32(0,(uint8_t*)&t, sizeof(time_t)) ^ 0x08040201;
     if(!diskguid.Data2 && !diskguid.Data3) {
         ((uint32_t*)&diskguid)[1] = crc32(0,(uint8_t*)&diskguid.Data1, 4);
