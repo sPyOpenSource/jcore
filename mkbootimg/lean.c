@@ -42,6 +42,7 @@
 #define LEAN_ATTR_IFMT          (7 << 29)
 #define LEAN_ATTR_IFTYPE(x)     ((uint32_t)(x) << 29)
 #define LEAN_LOG_BANDSIZE       12
+#define LEAN_BITMAPSIZE         (1 << (LEAN_LOG_BANDSIZE - 12))
 #define LEAN_INODE_SIZE         176
 
 typedef struct {
@@ -95,7 +96,7 @@ typedef struct {
   uint16_t name_len;
 } __attribute__((packed)) lean_dirent_t;
 
-int len_numblk, len_nextblk, len_numband;
+int len_numblk, len_nextblk;
 lean_super_t *len_sb;
 
 uint32_t len_checksum(void *data, int size)
@@ -113,7 +114,7 @@ int len_alloc_blk()
     while((uint64_t)len_nextblk < len_sb->sector_count &&
         fs_base[(g * (1 << LEAN_LOG_BANDSIZE) + (!g ? len_sb->bitmap_start : 0)) * 512 + o / 8] & (1 << (o & 7))) {
             o++; len_nextblk++;
-            if(o >= (1 << LEAN_LOG_BANDSIZE)) { o = 0; g++; len_nextblk += LEAN_LOG_BANDSIZE; }
+            if(o >= (1 << LEAN_LOG_BANDSIZE)) { o = 0; g++; len_nextblk += LEAN_BITMAPSIZE; }
     }
     if((uint64_t)len_nextblk + 1 >= len_sb->sector_count || len_sb->free_sector_count < 1) {
         fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_TOOBIG]);
@@ -122,7 +123,7 @@ int len_alloc_blk()
     fs_base[(g * (1 << LEAN_LOG_BANDSIZE) + (!g ? len_sb->bitmap_start : 0)) * 512 + o / 8] |= 1 << (o & 7);
     len_sb->free_sector_count--;
     r = len_nextblk++;
-    if(!(len_nextblk % (1 << LEAN_LOG_BANDSIZE))) len_nextblk += LEAN_LOG_BANDSIZE;
+    if(!(len_nextblk % (1 << LEAN_LOG_BANDSIZE))) len_nextblk += LEAN_BITMAPSIZE;
     return r;
 }
 
@@ -225,16 +226,16 @@ uint8_t *len_add_dirent(uint8_t *dir, uint64_t toinode, uint64_t ino, uint8_t ty
 
 void len_open(gpt_t *gpt_entry)
 {
-    int i, j;
+    int i, j, numband;
     if(!gpt_entry) { fprintf(stderr,"mkbootimg: %s lean.\r\n", lang[ERR_BADINITRDTYPE]); exit(1); }
     len_numblk = (gpt_entry->last - gpt_entry->start + 1);
-    if(len_numblk < 8 + LEAN_LOG_BANDSIZE) { fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_NOSIZE]); exit(1); }
+    if(len_numblk < 8 + LEAN_BITMAPSIZE) { fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_NOSIZE]); exit(1); }
     fs_len = len_numblk * 512;
     fs_base = realloc(fs_base, fs_len);
     if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
     memset(fs_base, 0, fs_len);
-    len_numband = len_numblk / ((1 << LEAN_LOG_BANDSIZE) * 512);
-    if(len_numband < 1) len_numband = 1;
+    numband = len_numblk / ((1 << LEAN_LOG_BANDSIZE) * 512);
+    if(numband < 1) numband = 1;
     len_sb = (lean_super_t*)fs_base;
     len_sb->magic = LEAN_SUPER_MAGIC;
     len_sb->fs_version = LEAN_SUPER_VERSION;
@@ -244,16 +245,16 @@ void len_open(gpt_t *gpt_entry)
     memcpy(&len_sb->uuid, &gpt_entry->guid, sizeof(guid_t));
     memcpy(&len_sb->volume_label, "NO NAME", 7);
     len_sb->sector_count = len_numblk;
-    len_sb->free_sector_count = len_numblk - 3 - len_numband * LEAN_LOG_BANDSIZE; /* loader, superblock, backup, bitmaps */
+    len_sb->free_sector_count = len_numblk - 3 - numband * LEAN_BITMAPSIZE; /* loader, superblock, backup, bitmaps */
     len_sb->primary_super = 1;
     len_sb->backup_super = (len_numblk < (1 << LEAN_LOG_BANDSIZE) ? len_numblk : (1 << LEAN_LOG_BANDSIZE)) - 1;
     len_sb->bitmap_start = len_sb->primary_super + 1;
-    for(j = 0; j < len_numband; j++) {
-        for(i = 0; i < LEAN_LOG_BANDSIZE + (!j ? (int)len_sb->bitmap_start : 0); i++)
+    for(j = 0; j < numband; j++) {
+        for(i = 0; i < LEAN_BITMAPSIZE + (!j ? (int)len_sb->bitmap_start : 0); i++)
             fs_base[(j * (1 << LEAN_LOG_BANDSIZE) + (!j ? len_sb->bitmap_start : 0)) * 512 + i / 8] |= 1 << (i & 7);
     }
     fs_base[len_sb->bitmap_start * 512 + len_sb->backup_super / 8] |= 1 << (len_sb->backup_super & 7);
-    len_nextblk = len_sb->bitmap_start + LEAN_LOG_BANDSIZE;
+    len_nextblk = len_sb->bitmap_start + LEAN_BITMAPSIZE;
     len_sb->root_inode = len_alloc_inode(0755, LEAN_FT_DIR, 0, t);
     len_add_dirent(len_add_dirent(NULL,
         len_sb->root_inode, len_sb->root_inode, LEAN_FT_DIR, ".", 1),
@@ -275,8 +276,8 @@ void len_add(struct stat *st, char *name, unsigned char *content, int size)
     fn = name;
     nend = strchr(name, '/');
     if(!nend) nend = name + strlen(name);
-    i = 0; j = 0;
 again:
+    i = 0; j = 0;
     inode = (lean_inode_t*)(fs_base + parent * 512);
     if(i < inode->extent_count) {
         dir = fs_base + inode->extent_start[i] * 512;
@@ -302,7 +303,7 @@ again:
                 j += 16;
             }
             if(l == nend - fn && !memcmp(d_name, fn, nend - fn)) {
-                parent = ino; i = 0; j = 0;
+                parent = ino;
                 fn = nend + 1;
                 nend = *nend ? strchr(fn, '/') : NULL;
                 if(!nend) { nend = fn + strlen(fn); break; }
