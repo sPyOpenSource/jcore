@@ -31,7 +31,7 @@
 #include "main.h"
 
 #define LEAN_SUPER_MAGIC        0x4E41454C
-#define LEAN_SUPER_VERSION      0x0007
+#define LEAN_SUPER_VERSION      0x0006
 #define LEAN_INODE_MAGIC        0x45444F4E
 #define LEAN_INODE_EXTENT_CNT   6
 #define LEAN_FT_MT              0
@@ -39,6 +39,7 @@
 #define LEAN_FT_DIR             2
 #define LEAN_FT_LNK             3
 #define LEAN_ATTR_PREALLOC      (1 << 18)
+#define LEAN_ATTR_INLINEXTATTR  (1 << 19)
 #define LEAN_ATTR_IFMT          (7 << 29)
 #define LEAN_ATTR_IFTYPE(x)     ((uint32_t)(x) << 29)
 #define LEAN_LOG_BANDSIZE       12
@@ -46,7 +47,7 @@
 #define LEAN_INODE_SIZE         176
 
 typedef struct {
-  uint8_t  loader[512];
+  uint8_t  loader[16384];
   uint32_t checksum;
   uint32_t magic;
   uint16_t fs_version;
@@ -131,20 +132,19 @@ void len_add_to_inode(uint32_t ino, uint32_t blk, char *name)
 {
     lean_inode_t *inode = (lean_inode_t*)(fs_base + ino * 512);
     inode->sector_count++;
-    if(inode->extent_count && inode->extent_start[inode->extent_count - 1] + inode->extent_size[inode->extent_count - 1] == blk) {
+    if(inode->extent_start[inode->extent_count - 1] + inode->extent_size[inode->extent_count - 1] == blk) {
         inode->extent_size[inode->extent_count - 1]++;
-        inode->checksum = len_checksum(inode, LEAN_INODE_SIZE / 4);
-        return;
+    } else {
+        inode->extent_count++;
+        if(inode->extent_count < LEAN_INODE_EXTENT_CNT) {
+            inode->extent_start[inode->extent_count - 1] = blk;
+            inode->extent_size[inode->extent_count - 1] = 1;
+        } else {
+            fprintf(stderr,"mkbootimg: partition #%d %s: %s\r\n", fs_no, lang[ERR_TOOBIG], name);
+            exit(1);
+        }
     }
-    inode->extent_count++;
-    if(inode->extent_count < LEAN_INODE_EXTENT_CNT) {
-        inode->extent_start[inode->extent_count - 1] = blk;
-        inode->extent_size[inode->extent_count - 1] = 1;
-        inode->checksum = len_checksum(inode, LEAN_INODE_SIZE / 4);
-        return;
-    }
-    fprintf(stderr,"mkbootimg: partition #%d %s: %s\r\n", fs_no, lang[ERR_TOOBIG], name);
-    exit(1);
+    inode->checksum = len_checksum(inode, LEAN_INODE_SIZE / 4);
 }
 
 int len_alloc_inode(uint16_t mode, uint8_t type, uint64_t size, time_t t)
@@ -153,10 +153,16 @@ int len_alloc_inode(uint16_t mode, uint8_t type, uint64_t size, time_t t)
     int n = len_alloc_blk(), i;
     inode = (lean_inode_t*)(fs_base + n * 512);
     inode->magic = LEAN_INODE_MAGIC;
+#if LEAN_SUPER_VERSION == 0x0007
     inode->inode_size = sizeof(lean_inode_t) / 4;
-    inode->attributes = (mode & 0xFFF) | LEAN_ATTR_IFTYPE(type) | (type == LEAN_FT_DIR ? LEAN_ATTR_PREALLOC : 0);
+#endif
+    inode->attributes = (mode & 0xFFF) | LEAN_ATTR_IFTYPE(type) | LEAN_ATTR_INLINEXTATTR |
+        (type == LEAN_FT_DIR ? LEAN_ATTR_PREALLOC : 0);
     inode->atime = inode->ctime = inode->mtime = inode->btime = (uint64_t)t * 1000000;
-    /*inode->sector_count = 1;*/
+    inode->extent_count = 1;
+    inode->extent_start[0] = n;
+    inode->extent_size[0] = 1;
+    inode->sector_count = 1;
     if(type == LEAN_FT_DIR)
         for(i = 0; i < len_sb->pre_alloc_count; i++)
             len_add_to_inode(n, len_alloc_blk(), NULL);
@@ -178,9 +184,9 @@ uint8_t *len_add_dirent(uint8_t *dir, uint64_t toinode, uint64_t ino, uint8_t ty
     inode->checksum = len_checksum(inode, LEAN_INODE_SIZE / 4);
     inode = (lean_inode_t*)(fs_base + toinode * 512);
     if(!dir) {
-        if(!inode->extent_count)
+        if(!inode->extent_count || inode->extent_size[0] == 1)
             len_add_to_inode(toinode, len_alloc_blk(), NULL);
-        dir = fs_base + inode->extent_start[0] * 512;
+        dir = fs_base + inode->extent_start[0] * 512 + 512;
         end = fs_base + (inode->extent_start[0] + inode->extent_size[0]) * 512;
         while(j < inode->file_size && ((lean_dirent_t*)dir)->inode && ((lean_dirent_t*)dir)->rec_len) {
             j += ((lean_dirent_t*)dir)->rec_len * 16;
@@ -229,7 +235,7 @@ void len_open(gpt_t *gpt_entry)
     int i, j, numband;
     if(!gpt_entry) { fprintf(stderr,"mkbootimg: %s lean.\r\n", lang[ERR_BADINITRDTYPE]); exit(1); }
     len_numblk = (gpt_entry->last - gpt_entry->start + 1);
-    if(len_numblk < 8 + LEAN_BITMAPSIZE) { fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_NOSIZE]); exit(1); }
+    if(len_numblk < 32 + LEAN_BITMAPSIZE) { fprintf(stderr,"mkbootimg: partition #%d %s\r\n", fs_no, lang[ERR_NOSIZE]); exit(1); }
     fs_len = len_numblk * 512;
     fs_base = realloc(fs_base, fs_len);
     if(!fs_base) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
@@ -240,13 +246,13 @@ void len_open(gpt_t *gpt_entry)
     len_sb->magic = LEAN_SUPER_MAGIC;
     len_sb->fs_version = LEAN_SUPER_VERSION;
     len_sb->log_sectors_per_band = LEAN_LOG_BANDSIZE;
-/*    len_sb->pre_alloc_count = 7;*/
+    len_sb->pre_alloc_count = 7;
     len_sb->state = 1;
     memcpy(&len_sb->uuid, &gpt_entry->guid, sizeof(guid_t));
     memcpy(&len_sb->volume_label, "NO NAME", 7);
     len_sb->sector_count = len_numblk;
-    len_sb->free_sector_count = len_numblk - 3 - numband * LEAN_BITMAPSIZE; /* loader, superblock, backup, bitmaps */
-    len_sb->primary_super = 1;
+    len_sb->free_sector_count = len_numblk - 34 - numband * LEAN_BITMAPSIZE; /* loader, superblock, backup, bitmaps */
+    len_sb->primary_super = 32;
     len_sb->backup_super = (len_numblk < (1 << LEAN_LOG_BANDSIZE) ? len_numblk : (1 << LEAN_LOG_BANDSIZE)) - 1;
     len_sb->bitmap_start = len_sb->primary_super + 1;
     for(j = 0; j < numband; j++) {
@@ -280,7 +286,7 @@ again:
     i = 0; j = 0;
     inode = (lean_inode_t*)(fs_base + parent * 512);
     if(i < inode->extent_count) {
-        dir = fs_base + inode->extent_start[i] * 512;
+        dir = fs_base + inode->extent_start[i] * 512 + (!i ? 512 : 0);
         end = fs_base + (inode->extent_start[i] + inode->extent_size[i]) * 512;
         while(j < inode->file_size) {
             ino = ((lean_dirent_t*)dir)->inode;
@@ -331,13 +337,11 @@ again:
 
 void len_close()
 {
+    FILE *f;
     if(!fs_base || (uint64_t)fs_len < (len_sb->backup_super + 1) * 512) return;
     len_sb->checksum = len_checksum(fs_base + len_sb->primary_super * 512, 128);
     memcpy(fs_base + len_sb->backup_super * 512, fs_base + len_sb->primary_super * 512, 512);
-/*
-    FILE *f;
     f = fopen("test.bin", "w");
     fwrite(fs_base, fs_len, 1, f);
     fclose(f);
-*/
 }
