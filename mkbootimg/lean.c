@@ -337,11 +337,7 @@ again:
 
 void len_close()
 {
-    FILE *f;
     if(!fs_base || (uint64_t)fs_len < (len_sb->backup_super + 1) * 512) return;
     len_sb->checksum = len_checksum(fs_base + len_sb->primary_super * 512, 128);
     memcpy(fs_base + len_sb->backup_super * 512, fs_base + len_sb->primary_super * 512, 512);
-    f = fopen("test.bin", "w");
-    fwrite(fs_base, fs_len, 1, f);
-    fclose(f);
 }

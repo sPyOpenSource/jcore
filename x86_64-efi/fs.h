@@ -108,7 +108,7 @@ again:
         //iterate on directory entries
         int j=*((uint64_t*)(hdr+16));
         while(j-->0){
-            if(!CompareMem(ent + 17,s,e-s)) {
+            if(!CompareMem(ent + 16,s,e-s)) {
                 if(*e==0) {
                     i=*((uint64_t*)(ent+0));
                     break;

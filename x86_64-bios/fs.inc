@@ -235,7 +235,7 @@ fsz_initrd:
             mov         ecx, dword [esi+16]          ; FSZ_DirEntHeader.numentries
             mov         eax, dword [edi]
 @@:         add         esi, 128                    ; directories than
-            cmp         dword [esi+17], eax
+            cmp         dword [esi+16], eax
             je          @f
             dec         ecx
             jnz         @b
@@ -279,9 +279,9 @@ fsz_initrd:
             mov         eax, dword [edi]
             mov         edx, dword [edi+4]
 @@:         add         esi, 128
-            cmp         dword [esi+21], edx
+            cmp         dword [esi+20], edx
             jne         .not
-            cmp         dword [esi+17], eax
+            cmp         dword [esi+16], eax
             je          @f
 .not:       dec         ecx
             jnz         @b

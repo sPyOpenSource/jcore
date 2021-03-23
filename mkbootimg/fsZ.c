@@ -61,11 +61,11 @@ int fsz_add_inode(char *filetype, char *mimetype)
         memcpy(in->filetype,filetype,i>4?4:i);
         if(!strcmp(filetype,FSZ_FILETYPE_DIR)){
             hdr=(FSZ_DirEntHeader *)(in->data.small.inlinedata);
-            in->sec=fs_len/fsz_secsize;
+            in->sec=hdr->fid=fs_len/fsz_secsize;
             in->flags=FSZ_IN_FLAG_INLINE;
             in->size=sizeof(FSZ_DirEntHeader);
             memcpy(in->data.small.inlinedata,FSZ_DIR_MAGIC,4);
-            hdr->checksum=crc32_calc((unsigned char*)hdr+sizeof(FSZ_DirEntHeader),hdr->numentries*sizeof(FSZ_DirEnt));
+            hdr->checksum=crc32_calc((unsigned char*)hdr+16,hdr->numentries*sizeof(FSZ_DirEnt));
         }
     }
     if(mimetype!=NULL){
@@ -79,7 +79,7 @@ int fsz_add_inode(char *filetype, char *mimetype)
         if(j!=36)
             in->size=i;
     }
-    in->changedate=t * 1000000;
+    in->changedate=in->createdate=t * 1000000;
     in->modifydate=t * 1000000;
     in->checksum=crc32_calc(in->filetype,1016);
     fs_len+=fsz_secsize;
@@ -88,7 +88,7 @@ int fsz_add_inode(char *filetype, char *mimetype)
 
 void fsz_link_inode(int inode, char *path, int toinode)
 {
-    unsigned int ns=0,cnt=0;
+    unsigned int ns=0,cnt=0,l=strlen(path);
     FSZ_DirEntHeader *hdr;
     FSZ_DirEnt *ent;
     FSZ_Inode *in, *in2;
@@ -107,10 +107,10 @@ void fsz_link_inode(int inode, char *path, int toinode)
     in=((FSZ_Inode *)(fs_base+toinode*fsz_secsize));
     in2=((FSZ_Inode *)(fs_base+inode*fsz_secsize));
     ent->fid=inode;
-    ent->length=strlen(path);
-    memcpy(ent->name,path,strlen(path));
+    if(l > 110) l = 110;
+    memcpy(ent->name,path,l);
     if(!strncmp((char *)(((FSZ_Inode *)(fs_base+inode*fsz_secsize))->filetype),FSZ_FILETYPE_DIR,4)){
-        ent->name[ent->length++]='/';
+        ent->name[l]='/';
     }
     /* the format can hold 2^127 directory entries, but we only implement directories embedded in inodes here, up to 23 */
     if(hdr->numentries >= (fsz_secsize - 1024 - sizeof(FSZ_DirEntHeader)) / sizeof(FSZ_DirEnt)) {
@@ -120,7 +120,7 @@ void fsz_link_inode(int inode, char *path, int toinode)
     in->modifydate=t * 1000000;
     in->size+=sizeof(FSZ_DirEnt);
     qsort((char*)hdr+sizeof(FSZ_DirEntHeader), hdr->numentries, sizeof(FSZ_DirEnt), fsz_direntcmp);
-    hdr->checksum=crc32_calc((unsigned char*)hdr+sizeof(FSZ_DirEntHeader),hdr->numentries*sizeof(FSZ_DirEnt));
+    hdr->checksum=crc32_calc((unsigned char*)hdr+16,hdr->numentries*sizeof(FSZ_DirEnt));
     in->checksum=crc32_calc(in->filetype,1016);
     in2->numlinks++;
     in2->checksum=crc32_calc(in2->filetype,1016);
@@ -158,12 +158,12 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
             if(j*16>fsz_secsize){ fprintf(stderr,"mkbootimg: partition #%d %s: %s\n", fs_no, lang[ERR_TOOBIG], name); exit(1); }
             if(j*16<=fsz_secsize-1024) {
                 ptr=(unsigned char*)&in->data.small.inlinedata;
-                in->flags=FSZ_IN_FLAG_SDINLINE;
+                in->flags=FSZ_IN_FLAG_SD0;
                 in->numblocks=0;
                 l=0;
             } else {
                 ptr=fs_base+size;
-                in->flags=FSZ_IN_FLAG_SD;
+                in->flags=FSZ_IN_FLAG_SD1;
                 in->numblocks=1;
                 l=1;
             }
@@ -181,7 +181,7 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
                 }
                 ptr+=16;
             }
-            if(in->flags==FSZ_IN_FLAG_SD)
+            if(in->flags==FSZ_IN_FLAG_SD1)
                 size+=fsz_secsize;
         } else {
             in->flags=FSZ_IN_FLAG_DIRECT;
@@ -291,17 +291,15 @@ void fsz_open(gpt_t *gpt_entry)
     memset(fs_base,0,2*fsz_secsize);
     sb=(FSZ_SuperBlock *)(fs_base);
     memcpy(sb->magic,FSZ_MAGIC,4);
-    memcpy((char*)&sb->owner,"root",4);
     sb->version_major=FSZ_VERSION_MAJOR;
     sb->version_minor=FSZ_VERSION_MINOR;
-    sb->raidtype=FSZ_SB_SOFTRAID_NONE;
     sb->logsec=fsz_secsize==2048?0:(fsz_secsize==4096?1:2);
     sb->physec=fsz_secsize/512;
     sb->maxmounts=255;
     sb->currmounts=0;
-    sb->createdate=sb->lastchangedate=t * 1000000;
+    sb->createdate=sb->lastmountdate=sb->lastumountdate=t * 1000000;
     if(gpt_entry) {
-        memcpy(&sb->uuid, (void*)(gpt_entry + 16), sizeof(guid_t));
+        memcpy(&sb->uuid, &gpt_entry->guid, 16);
         fsz_max = (gpt_entry->last - gpt_entry->start + 1) * 512;
         sb->numsec = fsz_max / fsz_secsize;
     } else {

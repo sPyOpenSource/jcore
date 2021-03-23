@@ -105,7 +105,7 @@ again:
         //iterate on directory entries
         int j=*((uint64_t*)(hdr+16));
         while(j-->0){
-            if(!memcmp(ent + 17,s,e-s)) {
+            if(!memcmp(ent + 16,s,e-s)) {
                 if(*e==0) {
                     i=*((uint64_t*)(ent+0));
                     break;
