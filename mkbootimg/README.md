@@ -13,7 +13,7 @@ also creates an initrd or a disk partition from a directory. Supported file syst
 | `cpio`   | ✔Yes   | ✗No       | [wikipedia](https://en.wikipedia.org/wiki/Cpio) |
 | `tar`    | ✔Yes   | ✔Yes      | [wikipedia](https://wiki.osdev.org/USTAR)       |
 | `echfs`  | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md), [source](https://github.com/echfs/echfs) |
-| `FS/Z`   | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/fsz.pdf) [source](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
+| `FS/Z`   | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/fsz.pdf), [source](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
 | `boot`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf) (ESP only, 8+3 names) |
 | `fat`    | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (non-ESP only, with LFN) |
 | `minix`  | ✗No    | ✔Yes      | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf), [V3 source](https://github.com/Stichting-MINIX-Research-Foundation/minix/tree/master/minix/fs/mfs) (V3 supported, but there's only V2 spec) |
