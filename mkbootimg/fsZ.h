@@ -54,10 +54,9 @@ typedef struct {
     uint8_t     magic[4];           /* 512 */
     uint8_t     version_major;      /* 516 */
     uint8_t     version_minor;      /* 517 */
-    uint8_t     flags;              /* 518 flags */
+    uint8_t     logsec;             /* 518 logical sector size, 0=2048,1=4096(default),2=8192... */
     uint8_t     enctype;            /* 519 encryption alogirthm */
-    uint16_t    logsec;             /* 520 logical sector size, 0=2048,1=4096(default),2=8192... */
-    uint16_t    physec;             /* 522 how many physical sector gives up a logical one, defaults to 8 */
+    uint32_t    flags;              /* 520 flags */
     uint16_t    maxmounts;          /* 524 number of maximum mounts allowed to next fsck */
     uint16_t    currmounts;         /* 526 current mount counter */
     uint64_t    numsec;             /* 528 total number of logical sectors */
@@ -95,15 +94,16 @@ typedef struct {
 #define FSZ_MAGIC               "FS/Z"
 #define FSZ_RAIDMAGIC           "FSRD"
 
-/* feature flags */
-#define FSZ_SB_FLAG_BIGINODE    (1<<0)  /* indicates inode size is 2048 (ACL size 96 instead of 32) */
-#define FSZ_SB_JOURNAL_DATA     (1<<1)  /* also put file content records in journal file, not just metadata */
-#define FSZ_SB_SOFTRAID         (1<<2)  /* single disk when not set */
-#define FSZ_SB_ACCESSDATE       (1<<3)  /* store last access timestamp in i-nodes */
-/* bits 4 - 7 are reserved for future use */
 #define FSZ_SB_EALG_SHACBC      0       /* encrypted with SHA-XOR-CBC */
 #define FSZ_SB_EALG_AESCBC      1       /* encrypted with AES-256-CBC */
 /* values 2 - 255 are reserved for future use */
+
+/* feature flags */
+#define FSZ_SB_BIGINODE         (1<<0)  /* indicates inode size is 2048 (ACL size 96 instead of 32) */
+#define FSZ_SB_JOURNAL_DATA     (1<<1)  /* also put file content records in journal file, not just metadata */
+#define FSZ_SB_SOFTRAID         (1<<2)  /* single disk when not set */
+#define FSZ_SB_ACCESSDATE       (1<<3)  /* store last access timestamp in i-nodes */
+/* bits 4 - 31 are reserved for future use */
 
 /*********************************************************
  *                    I-node sector                      *
@@ -202,9 +202,7 @@ typedef struct {
 
 #define FSZ_IN_MAGIC            "FSIN"
 
-/* (*) according to IANA, there's only two groups of mime types which does not fit into this (both vendor specific):
- * application/vnd.collabio.xodicuments.* and application/vnd.openxmlformats-officedocument.*
- * those two must be shortend. All the other, more than 1700 mime types are unique on 4+36 bytes. */
+/* (*) according to IANA, all, more than 1700 mime types are unique on 4+60 bytes. */
 
 /* regular files, 4th character never ':' */
 #define FSZ_FILETYPE_REG_TEXT   "text"  /* main part of mime type */
@@ -220,6 +218,7 @@ typedef struct {
 #define FSZ_FILETYPE_SYMLINK    "lnk:"  /* symbolic link, inlined data is a path */
 #define FSZ_FILETYPE_PIPE       "pip:"  /* named pipe (FIFO) */
 #define FSZ_FILETYPE_DEV        "dev:"  /* device */
+#define FSZ_FILETYPE_SOCK       "sck:"  /* socket */
 
 /* mime types for filesystem specific files */
 /* for FSZ_FILETYPE_DIR */

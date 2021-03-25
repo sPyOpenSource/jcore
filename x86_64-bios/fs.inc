@@ -57,9 +57,7 @@ fsz_initrd:
             ; encrypted initrd?
             cmp         dword [esi+708], 0      ; FSZ_SuperBlock.enchash
             jz          .noenc
-            mov         al, byte [esi+518]      ; FSZ_SuperBlock.flags
-            shr         al, 2
-            and         al, 7
+            mov         al, byte [esi+519]      ; FSZ_SuperBlock.enctype
             or          al, al
             jz          @f
             prot_realmode
@@ -199,8 +197,8 @@ fsz_initrd:
 
             ; get root dir inode
 .noenc:     mov         dword [_i], 1024
-            mov         al, byte [esi+518]      ; FSZ_SuperBlock.flags
-            bt          ax, 0                   ; FSZ_FLAG_BIGINODE?
+            mov         al, byte [esi+520]      ; FSZ_SuperBlock.flags
+            bt          ax, 0                   ; FSZ_SB_BIGINODE?
             jnc         @f
             mov         dword [_i], 2048
 @@:         mov         eax, dword [esi+560]    ; FSZ_SuperBlock.rootdirfid

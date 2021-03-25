@@ -240,6 +240,7 @@ uint8_t *ext_add_dirent(uint8_t *dir, uint32_t toinode, uint32_t ino, uint8_t ty
     return dir + ((len + 3) & ~3) + 8;
 }
 
+/*** mkbootimg interface ***/
 void ext_open(gpt_t *gpt_entry)
 {
     uint32_t i, j, k, l, n, m, o;

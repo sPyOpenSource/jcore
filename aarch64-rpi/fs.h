@@ -38,14 +38,14 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
         return ret;
     }
     unsigned char passphrase[256],chk[32],iv[32];
-    unsigned int i,j,k,l,ss=1<<(*((uint16_t*)(initrd_p+520))+11);
+    unsigned int i,j,k,l,ss=1<<(initrd_p[518]+11);
     unsigned char *ent, *in=(initrd_p+*((uint64_t*)(initrd_p+560))*ss);
     SHA256_CTX ctx;
     DBG(" * FS/Z ");
     DBG(kernel);
     DBG("\n");
     //decrypt initrd
-    if(*((uint32_t*)(initrd_p+708))!=0 && ((initrd_p[518]>>2)&7)!=0) {
+    if(*((uint32_t*)(initrd_p+708))!=0 && initrd_p[519]!=0) {
         puts("BOOTBOOT-PANIC: Unsupported cipher\n");
         return ret;
     }
@@ -94,8 +94,8 @@ again:
     if(*e=='/'){e++;}
     if(!memcmp(in,"FSIN",4)){
         //is it inlined?
-        if(!memcmp(initrd_p[518]&1? in + 2048 : in + 1024,"FSDR",4)){
-            ent=(initrd_p[518]&1? in + 2048 : in + 1024);
+        if(!memcmp(initrd_p[520]&1? in + 2048 : in + 1024,"FSDR",4)){
+            ent=(initrd_p[520]&1? in + 2048 : in + 1024);
         } else if(!memcmp(initrd_p+*((uint64_t*)(in+448))*ss,"FSDR",4)){
             // go, get the sector pointed
             ent=(initrd_p+*((uint64_t*)(in+448))*ss);
@@ -130,12 +130,12 @@ again:
             switch(in[488]) {
                 case 0xFF:
                     // inline data
-                    ret.ptr=(uint8_t*)(initrd_p+i*ss+(initrd_p[518]&1? 2048 : 1024));
+                    ret.ptr=(uint8_t*)(initrd_p+i*ss+(initrd_p[520]&1? 2048 : 1024));
                     break;
                 case 0x80:
                 case 0x7F:
                     // sector directory or list inlined
-                    ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(initrd_p[518]&1? in + 2048 : in + 1024))*ss);
+                    ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(initrd_p[520]&1? in + 2048 : in + 1024))*ss);
                     break;
                 case 0:
                     // direct data

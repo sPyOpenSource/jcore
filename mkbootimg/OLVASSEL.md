@@ -19,7 +19,7 @@ fájlrendszerek:
 | `fat`    | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (csak nem-ESP, LFN-el) |
 | `minix`  | ✗No    | ✔Yes     | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf), [V3 forrás](https://github.com/Stichting-MINIX-Research-Foundation/minix/tree/master/minix/fs/mfs) (V3 támogatott, de csak V2-höz van spec) |
 | `ext2`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf), [dokumentáció](https://www.nongnu.org/ext2-doc/ext2.html) |
-| `lean`   | ✗No    | ✔Yes     | [honlap](http://freedos-32.sourceforge.net/lean/specification.php) |
+| `lean`   | ✗No    | ✔Yes     | [V0.6 spec](http://freedos-32.sourceforge.net/lean/specification.php), [V0.7 spec](http://www.fysnet.net/leanfs/specification.php) |
 
 A kód úgy lett megírva, hogy könnyű legyen bővíteni.
 

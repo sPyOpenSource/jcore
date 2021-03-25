@@ -26,12 +26,13 @@
  * This file is part of the BOOTBOOT Protocol package.
  * @brief LeanFS file system driver
  * See http://freedos-32.sourceforge.net/lean/specification.php
+ * See http://www.fysnet.net/leanfs/specification.php
  *
  */
 #include "main.h"
 
 #define LEAN_SUPER_MAGIC        0x4E41454C
-#define LEAN_SUPER_VERSION      0x0006
+#define LEAN_SUPER_VERSION      0x0007      /* could be 0x0006 as well, backwards compatible */
 #define LEAN_INODE_MAGIC        0x45444F4E
 #define LEAN_INODE_EXTENT_CNT   6
 #define LEAN_FT_MT              0
@@ -63,15 +64,16 @@ typedef struct {
   uint64_t bitmap_start;
   uint64_t root_inode;
   uint64_t bad_inode;
-  uint8_t  reserved2[360];
+  uint64_t journal_inode;
+  uint8_t  log_block_size;
+  uint8_t  reserved2[344];
 } __attribute__((packed)) lean_super_t;
 
 typedef struct {
   uint32_t checksum;
   uint32_t magic;
   uint8_t  extent_count;
-  uint8_t  inode_size;
-  uint16_t reserved;
+  uint8_t  reserved[3];
   uint32_t indirect_count;
   uint32_t links_count;
   uint32_t uid;
@@ -153,9 +155,6 @@ int len_alloc_inode(uint16_t mode, uint8_t type, uint64_t size, time_t t)
     int n = len_alloc_blk(), i;
     inode = (lean_inode_t*)(fs_base + n * 512);
     inode->magic = LEAN_INODE_MAGIC;
-#if LEAN_SUPER_VERSION == 0x0007
-    inode->inode_size = sizeof(lean_inode_t) / 4;
-#endif
     inode->attributes = (mode & 0xFFF) | LEAN_ATTR_IFTYPE(type) | LEAN_ATTR_INLINEXTATTR |
         (type == LEAN_FT_DIR ? LEAN_ATTR_PREALLOC : 0);
     inode->atime = inode->ctime = inode->mtime = inode->btime = (uint64_t)t * 1000000;
@@ -230,6 +229,7 @@ uint8_t *len_add_dirent(uint8_t *dir, uint64_t toinode, uint64_t ino, uint8_t ty
     return dir;
 }
 
+/*** mkbootimg interface ***/
 void len_open(gpt_t *gpt_entry)
 {
     int i, j, numband;
@@ -250,6 +250,7 @@ void len_open(gpt_t *gpt_entry)
     len_sb->state = 1;
     memcpy(&len_sb->uuid, &gpt_entry->guid, sizeof(guid_t));
     memcpy(&len_sb->volume_label, "NO NAME", 7);
+    len_sb->log_block_size = 9;
     len_sb->sector_count = len_numblk;
     len_sb->free_sector_count = len_numblk - 34 - numband * LEAN_BITMAPSIZE; /* loader, superblock, backup, bitmaps */
     len_sb->primary_super = 32;

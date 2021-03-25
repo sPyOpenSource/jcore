@@ -294,7 +294,6 @@ void fsz_open(gpt_t *gpt_entry)
     sb->version_major=FSZ_VERSION_MAJOR;
     sb->version_minor=FSZ_VERSION_MINOR;
     sb->logsec=fsz_secsize==2048?0:(fsz_secsize==4096?1:2);
-    sb->physec=fsz_secsize/512;
     sb->maxmounts=255;
     sb->currmounts=0;
     sb->createdate=sb->lastmountdate=sb->lastumountdate=t * 1000000;

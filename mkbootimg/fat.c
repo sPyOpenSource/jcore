@@ -61,7 +61,7 @@ unsigned char *fat_readlfn(unsigned char *dir, int *clu, int *size, int parent)
 {
     uint16_t uc2[256], *u;
     unsigned char *s, *d;
-    int i, n;
+    int i = 0, n;
     memset(fat_lfn, 0, sizeof(fat_lfn));
     if(!dir[0]) return dir;
     while(dir[0] == '.') dir += 32;
@@ -77,7 +77,7 @@ unsigned char *fat_readlfn(unsigned char *dir, int *clu, int *size, int parent)
         dir = fat_data + parent * fat_bpc;
     }
     if(dir[0xB] != 0xF) {
-        for(s = dir, d = fat_lfn; *s && *s != ' ' && i < 8; i++)
+        for(s = dir, d = fat_lfn, i = 0; *s && *s != ' ' && i < 8; i++)
             *d++ = *s++;
         if(dir[8] && dir[8] != ' ') {
             *d++ = '.';
@@ -183,6 +183,7 @@ unsigned char *fat_writelfn(unsigned char *dir, char *name, int type, int size, 
     return dir + 32;
 }
 
+/*** mkbootimg interface ***/
 void fat_open(gpt_t *gpt_entry)
 {
     int i;

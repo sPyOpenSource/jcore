@@ -51,6 +51,7 @@ uint8_t *ech_data = NULL, ech_uuid[16];
 uint64_t ech_size;
 uint64_t ech_numblk;
 
+/*** mkbootimg interface ***/
 void ech_open(gpt_t *gpt_entry)
 {
     if(gpt_entry) {

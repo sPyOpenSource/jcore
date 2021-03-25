@@ -253,6 +253,7 @@ void mnx_enter_dir(ino_t parent, char const *name, ino_t child)
     exit(1);
 }
 
+/*** mkbootimg interface ***/
 void mnx_open(gpt_t *gpt_entry)
 {
     zone_t z;
