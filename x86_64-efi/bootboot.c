@@ -1467,7 +1467,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     UINTN bsp_num=0, i, j=0, x,y, handle_size=0,memory_map_size=0, map_key=0, desc_size=0;
     UINT32 desc_version=0, a, b;
     UINT64 lba_s=0,lba_e=0,sysptr;
-    MMapEnt *mmapent, *last=NULL;
+    MMapEnt *mmapent, *last=NULL, *sort;
     file_t ret={NULL,0};
     CHAR16 **argv, *initrdfile, *configfile, *help=
         L"SYNOPSIS\n  BOOTBOOT.EFI [ -h | -? | /h | /? | -s ] [ INITRDFILE [ ENVIRONFILE [...] ] ]\n\nDESCRIPTION\n  Bootstraps an operating system via the BOOTBOOT Protocol.\n  If arguments not given, defaults to\n    FS0:\\BOOTBOOT\\INITRD   as ramdisk image and\n    FS0:\\BOOTBOOT\\CONFIG   for boot environment.\n  Additional \"key=value\" command line arguments will be appended to the\n  environment. If INITRD not found, it will use the first bootable partition\n  in GPT. If CONFIG not found, it will look for /sys/config inside the\n  INITRD (or partition). With -s it will scan the memory for an initrd ROM.\n\n  As this is a loader, it is not supposed to return control to the shell.\n\n";
@@ -2077,6 +2077,14 @@ get_memory_map:
             } else {
                 last=mmapent;
                 bootboot->size+=16;
+                // bubble up record. It's okay to use an ineffective, but simple sort here, because there are no
+                // more records than a couple hundred, and in most scenearios they are already sorted, meaning this
+                // loop will never run at all. But in the unlikely event they aren't sorted, this will fix that.
+                for(sort = mmapent - 1; sort >= (MMapEnt *)&(bootboot->mmap) && sort[0].ptr > sort[1].ptr; sort--) {
+                    lba_s = sort[0].ptr; lba_e = sort[0].size;
+                    sort[0].ptr = sort[1].ptr; sort[0].size = sort[1].size;
+                    sort[1].ptr = lba_s; sort[1].size = lba_e;
+                }
                 mmapent++;
             }
         }

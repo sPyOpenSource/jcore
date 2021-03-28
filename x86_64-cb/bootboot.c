@@ -1244,8 +1244,8 @@ gzerr:      panic("Unable to uncompress");
 
     /* Get memory map */
     uint64_t srt, end, ldrend = (uintptr_t)paging + (37+(bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
-    uint64_t iniend = (uint64_t)(uintptr_t)core.ptr + core.size;
-    MMapEnt *mmapent=(MMapEnt *)&(bootboot->mmap);
+    uint64_t iniend = (uint64_t)(uintptr_t)core.ptr + core.size, a, b;
+    MMapEnt *mmapent=(MMapEnt *)&(bootboot->mmap), *sort;
     for (i = 0; (int)i < lib_sysinfo.n_memranges; i++) {
         srt = lib_sysinfo.memrange[i].base;
         end = srt + lib_sysinfo.memrange[i].size;
@@ -1274,6 +1274,14 @@ gzerr:      panic("Unable to uncompress");
             // split into two regions
             mmapent->ptr = srt;
             mmapent->size = (INITRD_BASE - srt) | (r & 0xF);
+            // bubble up record. It's okay to use an ineffective, but simple sort here, because there are no
+            // more records than a couple hundred, and in most scenearios they are already sorted, meaning this
+            // loop will never run at all. But in the unlikely event they aren't sorted, this will fix that.
+            for(sort = mmapent - 1; sort >= (MMapEnt *)&(bootboot->mmap) && sort[0].ptr > sort[1].ptr; sort--) {
+                a = sort[0].ptr; b = sort[0].size;
+                sort[0].ptr = sort[1].ptr; sort[0].size = sort[1].size;
+                sort[1].ptr = a; sort[1].size = b;
+            }
             mmapent++;
             bootboot->size += sizeof(MMapEnt);
             srt = iniend;
@@ -1285,6 +1293,11 @@ gzerr:      panic("Unable to uncompress");
         } else {
             mmapent->ptr = srt;
             mmapent->size = (end - srt) | (r & 0xF);
+            for(sort = mmapent - 1; sort >= (MMapEnt *)&(bootboot->mmap) && sort[0].ptr > sort[1].ptr; sort--) {
+                a = sort[0].ptr; b = sort[0].size;
+                sort[0].ptr = sort[1].ptr; sort[0].size = sort[1].size;
+                sort[1].ptr = a; sort[1].size = b;
+            }
             mmapent++;
             bootboot->size += sizeof(MMapEnt);
         }

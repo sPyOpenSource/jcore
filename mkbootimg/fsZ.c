@@ -65,7 +65,7 @@ int fsz_add_inode(char *filetype, char *mimetype)
             in->flags=FSZ_IN_FLAG_INLINE;
             in->size=sizeof(FSZ_DirEntHeader);
             memcpy(in->data.small.inlinedata,FSZ_DIR_MAGIC,4);
-            hdr->checksum=crc32_calc((unsigned char*)hdr+16,hdr->numentries*sizeof(FSZ_DirEnt));
+            hdr->checksum=crc32_calc((unsigned char*)hdr + 16, in->size - 16);
         }
     }
     if(mimetype!=NULL){
@@ -120,7 +120,7 @@ void fsz_link_inode(int inode, char *path, int toinode)
     in->modifydate=t * 1000000;
     in->size+=sizeof(FSZ_DirEnt);
     qsort((char*)hdr+sizeof(FSZ_DirEntHeader), hdr->numentries, sizeof(FSZ_DirEnt), fsz_direntcmp);
-    hdr->checksum=crc32_calc((unsigned char*)hdr+16,hdr->numentries*sizeof(FSZ_DirEnt));
+    hdr->checksum=crc32_calc((unsigned char*)hdr + 16, in->size - 16);
     in->checksum=crc32_calc(in->filetype,1016);
     in2->numlinks++;
     in2->checksum=crc32_calc(in2->filetype,1016);

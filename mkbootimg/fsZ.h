@@ -1,5 +1,5 @@
 /*
- * include/osZ/fsZ.h
+ * include/fsZ.h
  *
  * Copyright (C) 2017 bzt (bztsrc@gitlab)
  *
@@ -92,7 +92,7 @@ typedef struct {
 } __attribute__((packed)) FSZ_SuperBlock;
 
 #define FSZ_MAGIC               "FS/Z"
-#define FSZ_RAIDMAGIC           "FSRD"
+#define FSZ_RAID_MAGIC          "FSRD"
 
 #define FSZ_SB_EALG_SHACBC      0       /* encrypted with SHA-XOR-CBC */
 #define FSZ_SB_EALG_AESCBC      1       /* encrypted with AES-256-CBC */
@@ -145,7 +145,7 @@ typedef struct {
     uint64_t    sec;
     uint32_t    sec_hi;
     uint32_t    chksum;
-} __attribute__((packed)) FSZ_SDEntry;
+} __attribute__((packed)) FSZ_SectorDir;
 /* used with FSZ_IN_FLAG_SD* mappings. */
 
 /* file version structure. You can use this to point to version5, version4 etc. */
@@ -361,6 +361,24 @@ typedef struct {
 #define FSZ_DIR_FLAG_UNSORTED (1<<0)
 #define FSZ_DIR_FLAG_HASHED   (2<<0)
 
+enum {
+    FSZ_DIR_DSP_DEFAULT,        /* use global configuration */
+    FSZ_DIR_DSP_DETAILED,
+    FSZ_DIR_DSP_LIST,
+    FSZ_DIR_DSP_ICONS,
+    FSZ_DIR_DSP_PREVIEW
+};
+
+enum {
+    FSZ_DIR_SORT_DEFAULT,       /* use global configuration */
+    FSZ_DIR_SORT_NAME_ASC,
+    FSZ_DIR_SORT_NAME_DESC,
+    FSZ_DIR_SORT_SIZE_ASC,
+    FSZ_DIR_SORT_SIZE_DESC,
+    FSZ_DIR_SORT_TIME_ASC,
+    FSZ_DIR_SORT_TIME_DESC
+};
+
 /* directory entries are fixed in size and lexicographically ordered.
  * this means a bit slower writes, but also incredibly faster look ups. */
 
@@ -403,8 +421,9 @@ typedef struct {
  * by an empty string. Meta label sectors in i-nodes point to the starting logical sector with
  * contiguous meta values in a key id value pairs (with possibly binary values), filled up
  * with zeros to be multiple of sector size.
- *
- * Normally meta labels do not exceed logical sector size. But when they do, the allocation
+ */
+
+/* Normally meta labels do not exceed logical sector size. But when they do, the allocation
  * must be careful to allocate contiguous sectors for a meta block. This complicates things
  * a bit when large meta label blocks (>4096) are written, but simplifies a lot on read by
  * eliminating the need of translating LSNs for meta labels file. As meta labels are read more
@@ -450,7 +469,7 @@ typedef struct {
 /* followed by 32 bytes long FSZ_SectorList entries, padded to logical sector size,
  * followed by the data sectors pointed by those FSZ_SectorList entries */
 
-#define FSZ_JT_MAGIC "FSTR"
+#define FSZ_JT_MAGIC        "FSTR"
 
 /*********************************************************
  *                     Encryption                        *

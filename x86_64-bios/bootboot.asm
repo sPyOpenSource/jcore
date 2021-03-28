@@ -635,7 +635,7 @@ getmemmap:
             mov         dword [bootboot.initrd_ptr], eax
 .entryok:   ;get limit of memory
             mov         eax, dword [di+8]               ;load size
-            xor         al, al
+            and         al, 0F0h                        ;clear lower tetrad for type
             mov         edx, dword [di+12]
             add         eax, dword [di]                 ;add base
             adc         edx, dword [di+4]
