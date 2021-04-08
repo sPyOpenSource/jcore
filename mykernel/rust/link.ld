@@ -28,7 +28,10 @@
  *
  */
 
-KERNEL_OFFSET = 0xfffffffff8000000;            /* these are configurable for level 2 loaders */
+mmio        = 0xfffffffff8000000;              /* these are configurable for level 2 loaders */
+fb          = 0xfffffffffc000000;
+bootboot    = 0xffffffffffe00000;
+environment = 0xffffffffffe01000;
 initstack = 4096;
 
 PHDRS
@@ -37,12 +40,7 @@ PHDRS
 }
 SECTIONS
 {
-    . = KERNEL_OFFSET;
-    mmio    = .; . += 0x4000000;
-    fb      = .; . += 0x3E00000;
-    bootboot    = .; . += 4096;
-    environment = .; . += 4096;
-
+    . = 0xffffffffffe02000;
     .text . + SIZEOF_HEADERS : AT(ADDR(.text) - KERNEL_OFFSET + SIZEOF_HEADERS) {
         __text_start = .;
         KEEP(*(.text.boot)) *(.text .text.* .gnu.linkonce.t*)   /* code */

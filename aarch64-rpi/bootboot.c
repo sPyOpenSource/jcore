@@ -166,7 +166,7 @@ typedef struct {
 } pe_sym;
 
 /*** Raspberry Pi specific defines ***/
-static uint64_t mmio_base;
+static uint64_t mmio_base, emmc_base;
 
 #define PM_RTSC         ((volatile uint32_t*)(mmio_base+0x0010001c))
 #define PM_WATCHDOG     ((volatile uint32_t*)(mmio_base+0x00100024))
@@ -264,6 +264,9 @@ void uart_dump(void *ptr,uint32_t l) {
 void uart_exc(uint64_t idx, uint64_t esr, uint64_t elr, uint64_t spsr, uint64_t far, uint64_t sctlr, uint64_t tcr)
 {
     register uint64_t r;
+    /* only report exceptions for the BSP */
+    asm volatile ("mrs x8, mpidr_el1; and x8, x8, #3; cbz x8, 2f; 1: wfe; b 1b; 2:;" : : : "x8");
+
     asm volatile ("msr ttbr0_el1, %0;tlbi vmalle1" : : "r" ((uint64_t)&__paging+1));
     asm volatile ("dsb ish; isb; mrs %0, sctlr_el1" : "=r" (r));
     // set mandatory reserved bits
@@ -353,23 +356,23 @@ int hex2bin(unsigned char *s, int n){ int r=0;while(n-->0){r<<=4;
 #endif
 
 /* sdcard */
-#define EMMC_ARG2           ((volatile uint32_t*)(mmio_base+0x00300000))
-#define EMMC_BLKSIZECNT     ((volatile uint32_t*)(mmio_base+0x00300004))
-#define EMMC_ARG1           ((volatile uint32_t*)(mmio_base+0x00300008))
-#define EMMC_CMDTM          ((volatile uint32_t*)(mmio_base+0x0030000C))
-#define EMMC_RESP0          ((volatile uint32_t*)(mmio_base+0x00300010))
-#define EMMC_RESP1          ((volatile uint32_t*)(mmio_base+0x00300014))
-#define EMMC_RESP2          ((volatile uint32_t*)(mmio_base+0x00300018))
-#define EMMC_RESP3          ((volatile uint32_t*)(mmio_base+0x0030001C))
-#define EMMC_DATA           ((volatile uint32_t*)(mmio_base+0x00300020))
-#define EMMC_STATUS         ((volatile uint32_t*)(mmio_base+0x00300024))
-#define EMMC_CONTROL0       ((volatile uint32_t*)(mmio_base+0x00300028))
-#define EMMC_CONTROL1       ((volatile uint32_t*)(mmio_base+0x0030002C))
-#define EMMC_INTERRUPT      ((volatile uint32_t*)(mmio_base+0x00300030))
-#define EMMC_INT_MASK       ((volatile uint32_t*)(mmio_base+0x00300034))
-#define EMMC_INT_EN         ((volatile uint32_t*)(mmio_base+0x00300038))
-#define EMMC_CONTROL2       ((volatile uint32_t*)(mmio_base+0x0030003C))
-#define EMMC_SLOTISR_VER    ((volatile uint32_t*)(mmio_base+0x003000FC))
+#define EMMC_ARG2           ((volatile uint32_t*)(emmc_base+0x00000000))
+#define EMMC_BLKSIZECNT     ((volatile uint32_t*)(emmc_base+0x00000004))
+#define EMMC_ARG1           ((volatile uint32_t*)(emmc_base+0x00000008))
+#define EMMC_CMDTM          ((volatile uint32_t*)(emmc_base+0x0000000C))
+#define EMMC_RESP0          ((volatile uint32_t*)(emmc_base+0x00000010))
+#define EMMC_RESP1          ((volatile uint32_t*)(emmc_base+0x00000014))
+#define EMMC_RESP2          ((volatile uint32_t*)(emmc_base+0x00000018))
+#define EMMC_RESP3          ((volatile uint32_t*)(emmc_base+0x0000001C))
+#define EMMC_DATA           ((volatile uint32_t*)(emmc_base+0x00000020))
+#define EMMC_STATUS         ((volatile uint32_t*)(emmc_base+0x00000024))
+#define EMMC_CONTROL0       ((volatile uint32_t*)(emmc_base+0x00000028))
+#define EMMC_CONTROL1       ((volatile uint32_t*)(emmc_base+0x0000002C))
+#define EMMC_INTERRUPT      ((volatile uint32_t*)(emmc_base+0x00000030))
+#define EMMC_INT_MASK       ((volatile uint32_t*)(emmc_base+0x00000034))
+#define EMMC_INT_EN         ((volatile uint32_t*)(emmc_base+0x00000038))
+#define EMMC_CONTROL2       ((volatile uint32_t*)(emmc_base+0x0000003C))
+#define EMMC_SLOTISR_VER    ((volatile uint32_t*)(emmc_base+0x000000FC))
 
 // command flags
 #define CMD_NEED_APP        0x80000000
@@ -619,6 +622,7 @@ int sd_init()
 #if SD_DEBUG
     uart_puts("EMMC: reset OK\n");
 #endif
+    *EMMC_CONTROL0 = 0xF << 8; // set voltage to 3.3
     *EMMC_CONTROL1 |= C1_CLK_INTLEN | C1_TOUNIT_MAX;
     delaym(10);
     // Set clock to setup frequency.
@@ -792,7 +796,7 @@ unsigned char *kne;
 char *cfgname="sys/config";
 
 uint64_t entrypoint=0, bss=0, *paging, reg, pa;
-uint8_t bsp_done=0;
+static volatile uint8_t bsp_done=0;
 
 /**
  * SHA-256
@@ -1175,8 +1179,8 @@ int bootboot_main()
     /* first things first, get the base address */
     asm volatile ("mrs %0, midr_el1" : "=r" (reg));
     switch(reg&0xFFF0) {
-        case 0xD030: mmio_base = 0x3F000000; break;     /* Raspberry Pi 3 */
-        default:     mmio_base = 0xFE000000; break;     /* Raspberry Pi 4 */
+        case 0xD030: mmio_base = 0x3F000000; emmc_base = 0x3F300000; break;     /* Raspberry Pi 3 */
+        default:     mmio_base = 0xFE000000; emmc_base = 0xFE340000; break;     /* Raspberry Pi 4 */
     }
 
     /* initialize UART */
@@ -1829,7 +1833,7 @@ viderr:
     uart_hex(entrypoint,8);
     uart_putc('\n');
     if(initstack != 1024) {
-        uart_puts(" * Stack Size ");
+        uart_puts(" * Stack Size  ");
         uart_hex(initstack,8);
         uart_putc('\n');
     }

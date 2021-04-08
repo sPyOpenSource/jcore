@@ -210,6 +210,7 @@ void parsekernel(int idx, unsigned char *data, int v)
     pe_sym *ps;
     uint32_t i, n = 0, bss = 0, strsz = 0, syment = 0, ma, fa;
     uint64_t core_ptr = 0, core_size = 0, core_addr = 0, entrypoint = 0, mm_addr = 0, fb_addr = 0, bb_addr = 0, env_addr = 0;
+    uint64_t initstack = 0;
     char *strtable, *name;
     ehdr=(Elf64_Ehdr *)(data);
     pehdr=(pe_hdr*)(data + ((mz_hdr*)(data))->peaddr);
@@ -229,14 +230,22 @@ void parsekernel(int idx, unsigned char *data, int v)
                 n++;
                 core_size = phdr->p_filesz + (ehdr->e_type==3?0x4000:0);
                 bss = phdr->p_memsz - core_size;
+                core_ptr = phdr->p_offset;
                 core_addr = phdr->p_vaddr;
                 entrypoint = ehdr->e_entry;
+                /* these are just warnings, hopefully not a problem, but better to be fixed in the kernel linker script */
+                if(v) {
+                    if(phdr->p_vaddr != phdr->p_paddr)
+                        fprintf(stderr,"mkbootimg: phdr #%d p_vaddr %016" LL "x != p_paddr %016" LL "x ???\r\n",n,phdr->p_vaddr,phdr->p_paddr);
+                    if(phdr->p_align > 4096)
+                        fprintf(stderr,"mkbootimg: phdr #%d %s (p_align %" LL "d)\r\n",n,lang[ERR_PAGEALIGN],phdr->p_align);
+                }
                 break;
             }
             phdr=(Elf64_Phdr *)((uint8_t *)phdr+ehdr->e_phentsize);
         }
         if(n != 1) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MORESEG]); exit(1); }
-        if(v) printf("Entry point:  %08" LL "x ", entrypoint);
+        if(v) printf("Entry point:  %016" LL "x ", entrypoint);
         if(entrypoint < core_addr || entrypoint > core_addr+core_size)
             { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BADENTRYP]); exit(1); }
         if(ehdr->e_shoff > 0) {
@@ -258,6 +267,7 @@ void parsekernel(int idx, unsigned char *data, int v)
                         if(!memcmp(strtable + s->st_name, "environment", 12)) env_addr = s->st_value;
                         if(!memcmp(strtable + s->st_name, "mmio", 4)) mm_addr = s->st_value;
                         if(!memcmp(strtable + s->st_name, "fb", 3)) fb_addr = s->st_value;
+                        if(!memcmp(strtable + s->st_name, "initstack", 10)) initstack = s->st_value;
                     }
             }
         }
@@ -275,7 +285,7 @@ void parsekernel(int idx, unsigned char *data, int v)
         bss = pehdr->bss_size;
         core_addr = (int64_t)pehdr->code_base;
         entrypoint = (int64_t)pehdr->entry_point;
-        if(v) printf("Entry point:  %08" LL "x ", entrypoint);
+        if(v) printf("Entry point:  %016" LL "x ", entrypoint);
         if(entrypoint < core_addr || entrypoint > core_addr+pehdr->text_size)
             { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BADENTRYP]); exit(1); }
         if(pehdr->sym_table > 0 && pehdr->numsym > 0) {
@@ -287,6 +297,7 @@ void parsekernel(int idx, unsigned char *data, int v)
                 if(!memcmp(name, "environment", 12)) env_addr = (int64_t)ps->value;
                 if(!memcmp(name, "mmio", 4)) mm_addr = (int64_t)ps->value;
                 if(!memcmp(name, "fb", 3)) fb_addr = (int64_t)ps->value;
+                if(!memcmp(name, "initstack", 10)) initstack = (int64_t)ps->value;
                 i += ps->auxsyms;
             }
         }
@@ -297,33 +308,60 @@ void parsekernel(int idx, unsigned char *data, int v)
     }
     if(v) printf("OK\r\n");
     if(mm_addr) {
-        if(v) printf("mmio:         %08" LL "x ", mm_addr);
+        if(v) printf("mmio:         %016" LL "x ", mm_addr);
         if(!ISHH(mm_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio %s\r\n",lang[ERR_BADADDR]); exit(1); }
         if(mm_addr & ma) { if(v) {   printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio ");fprintf(stderr,lang[ERR_BADALIGN],ma+1);fprintf(stderr,"\r\n"); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(fb_addr) {
-        if(v) printf("fb:           %08" LL "x ", fb_addr);
+        if(v) printf("fb:           %016" LL "x ", fb_addr);
         if(!ISHH(fb_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb %s\r\n",lang[ERR_BADALIGN]); exit(1); }
         if(fb_addr & fa) { if(v) {   printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb ");fprintf(stderr,lang[ERR_BADALIGN],fa+1);fprintf(stderr,"\r\n"); exit(1); }
+        if((fb_addr >= mm_addr && fb_addr < mm_addr + 16*1024*1024) || (fb_addr + 16*1024*1024 > mm_addr && fb_addr + 16*1024*1024 <= mm_addr + 16*1024*1024))
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio/fb %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(bb_addr) {
-        if(v) printf("bootboot:     %08" LL "x ", bb_addr);
+        if(v) printf("bootboot:     %016" LL "x ", bb_addr);
         if(!ISHH(bb_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: bootboot %s\r\n",lang[ERR_BADADDR]); exit(1); }
         if(bb_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: bootboot %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
+        if((bb_addr >= mm_addr && bb_addr < mm_addr + 16*1024*1024) || (bb_addr + 4096 > mm_addr && bb_addr + 4096 <= mm_addr + 16*1024*1024))
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio/bootboot %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
+        if((bb_addr >= fb_addr && bb_addr < fb_addr + 16*1024*1024) || (bb_addr + 4096 > fb_addr && bb_addr + 4096 <= fb_addr + 16*1024*1024))
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb/bootboot %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
         if(v) printf("OK\r\n");
     }
     if(env_addr) {
-        if(v) printf("environment:  %08" LL "x ", env_addr);
+        if(v) printf("environment:  %016" LL "x ", env_addr);
         if(!ISHH(env_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: environment %s\r\n",lang[ERR_BADADDR]); exit(1); }
         if(env_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: environment %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
+        if((env_addr >= mm_addr && env_addr < mm_addr + 16*1024*1024) || (env_addr + 4096 > mm_addr && env_addr + 4096 <= mm_addr + 16*1024*1024))
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio/environment %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
+        if((env_addr >= fb_addr && env_addr < fb_addr + 16*1024*1024) || (env_addr + 4096 > fb_addr && env_addr + 4096 <= fb_addr + 16*1024*1024))
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb/enviroment %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
+        if(env_addr == bb_addr)
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: bootboot/enviroment %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
         if(v) printf("OK\r\n");
     }
-    if(v) printf("Load segment: %08" LL "x size %" LL "dK offs %" LL "x ", core_addr, (core_size + bss + 1024)/1024, core_ptr);
+    if(initstack) {
+        if(v) printf("initstack:    %016" LL "x ", initstack);
+        if(initstack != 1024 && initstack != 2048 && initstack != 4096 && initstack != 8192 && initstack != 16384)
+            { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: initstack %s\r\n",lang[ERR_BADSIZE]); exit(1); }
+        if(v) printf("OK\r\n");
+    }
+    if(v) printf("Load segment: %016" LL "x size %" LL "dK offs %" LL "x ", core_addr, (core_size + bss + 1024)/1024, core_ptr);
     if(!ISHH(core_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_BADADDR]); exit(1); }
     if(core_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
-    if(core_size + bss > 16 * 1024 * 1024) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BIGSEG]); exit(1); }
+    if(core_size + bss > 16 * 1024 * 1024) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_BIGSEG]); exit(1); }
+    if((mm_addr >= core_addr && mm_addr < core_addr + core_size) || (mm_addr + 16*1024*1024 > core_addr && mm_addr + 16*1024*1024 <= core_addr + core_size))
+        { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: mmio/segment %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
+    if((fb_addr >= core_addr && fb_addr < core_addr + core_size) || (fb_addr + 16*1024*1024 > core_addr && fb_addr + 16*1024*1024 <= core_addr + core_size))
+        { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: fb/segment %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
+    /* we check for the entrypoint as the lower boundary, because it's okay if the segment is at 0xfffffffe00000 */
+    if((bb_addr >= entrypoint && bb_addr < core_addr + core_size) || (bb_addr + 4096 > entrypoint && bb_addr + 4096 <= core_addr + core_size))
+        { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: bootboot/segment %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
+    if((env_addr >= entrypoint && env_addr < core_addr + core_size) || (env_addr + 4096 > entrypoint && env_addr + 4096 <= core_addr + core_size))
+        { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: environment/segment %s\r\n",lang[ERR_ADDRCOL]); exit(1); }
     if(v) {
         if(!mm_addr && !fb_addr && !bb_addr && !env_addr)
             printf("OK\r\nComplies with BOOTBOOT Protocol Level 1, %s\r\n",lang[STATADDR]);
