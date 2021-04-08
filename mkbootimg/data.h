@@ -6,8 +6,8 @@ extern unsigned char binary_boot_bin[512];
 extern unsigned char binary_bootboot_bin[9284];
 #define sizeof_bootboot_efi 103614
 extern unsigned char binary_bootboot_efi[46349];
-#define sizeof_bootboot_img 35488
-extern unsigned char binary_bootboot_img[20152];
+#define sizeof_bootboot_img 35496
+extern unsigned char binary_bootboot_img[20143];
 #define sizeof_bootboot_rv64 8192
 extern unsigned char binary_bootboot_rv64[31];
 #define sizeof_LICENCE_broadcom 1594

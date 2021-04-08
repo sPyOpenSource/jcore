@@ -1827,12 +1827,12 @@ viderr:
     uart_putc('\n');
     uart_puts(" * Entry point ");
     uart_hex(entrypoint,8);
+    uart_putc('\n');
     if(initstack != 1024) {
-        uart_putc('\n');
         uart_puts(" * Stack Size ");
         uart_hex(initstack,8);
+        uart_putc('\n');
     }
-    uart_putc('\n');
 #endif
     // release AP spinlock
     bsp_done=1;
