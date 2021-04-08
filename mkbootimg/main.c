@@ -326,7 +326,7 @@ void parsekernel(int idx, unsigned char *data, int v)
     if(core_size + bss > 16 * 1024 * 1024) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_BIGSEG]); exit(1); }
     if(v) {
         if(!mm_addr && !fb_addr && !bb_addr && !env_addr)
-            printf("OKr\nComplies with BOOTBOOT Protocol Level 1, %s\r\n",lang[STATADDR]);
+            printf("OK\r\nComplies with BOOTBOOT Protocol Level 1, %s\r\n",lang[STATADDR]);
         else
             printf("OK\r\nComplies with BOOTBOOT Protocol Level %s2, %s\r\n",
             (!mm_addr || (mm_addr&0xFFFFFFFF)==0xf8000000) && (!fb_addr || (fb_addr&0xFFFFFFFF)==0xfc000000) &&
