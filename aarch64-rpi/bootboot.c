@@ -1363,7 +1363,7 @@ diskerr:
         }
         s3=bpb->spc*512;
         // load fat table
-        r=sd_readblock(part->start+1,(unsigned char*)&_end+512,(bpb->spf16?bpb->spf16:bpb->spf32)+bpb->rsc);
+        r=sd_readblock(part->start+bpb->rsc,(unsigned char*)&_end+512,(bpb->spf16?bpb->spf16:bpb->spf32));
         if(r==0) goto diskerr;
         pe=(uint8_t*)&_end+512+r;
         // load root directory
@@ -1377,12 +1377,12 @@ diskerr:
         // locate environment and initrd
         while(dir->name[0]!=0) {
             if(!memcmp(dir->name,"CONFIG     ",11)) {
-                s=dir->size<PAGESIZE?dir->size:PAGESIZE; // round up to cluster size
+                s=dir->size<PAGESIZE?dir->size:PAGESIZE;
                 cclu=dir->cl+(dir->ch<<16);
                 ptr=(void*)&__environment;
                 while(s>0) {
                     s2=s>s3?s3:s;
-                    r=sd_readblock(part->start+(cclu-2)*bpb->spc+data_sec,ptr,s2<512?1:(s2+511)/512);
+                    r=sd_readblock(part->start+(cclu-2)*bpb->spc+data_sec,ptr,bpb->spc);
                     cclu=bpb->spf16>0?fat16[cclu]:fat32[cclu];
                     ptr+=s2;
                     s-=s2;
@@ -1412,7 +1412,7 @@ diskerr:
             s=initrd.size;
             while(s>0) {
                 s2=s>s3?s3:s;
-                r=sd_readblock(part->start+(clu-2)*bpb->spc+data_sec,ptr,s2<512?1:(s2+511)/512);
+                r=sd_readblock(part->start+(clu-2)*bpb->spc+data_sec,ptr,bpb->spc);
                 clu=bpb->spf16>0?fat16[clu]:fat32[clu];
                 ptr+=s2;
                 s-=s2;
@@ -1420,7 +1420,7 @@ diskerr:
         }
     } else {
         // initrd is on the entire partition
-        r=sd_readblock(part->start,(unsigned char*)&_end+512,part->end-part->start);
+        r=sd_readblock(part->start,(unsigned char*)&_end+512,part->end-part->start+1);
         if(r==0) goto diskerr;
         initrd.ptr=(uint8_t*)&_end;
         initrd.size=r;
