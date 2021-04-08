@@ -1828,6 +1828,7 @@ viderr:
     uart_puts(" * Entry point ");
     uart_hex(entrypoint,8);
     if(initstack != 1024) {
+        uart_putc('\n');
         uart_puts(" * Stack Size ");
         uart_hex(initstack,8);
     }
