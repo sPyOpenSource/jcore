@@ -168,9 +168,9 @@ void initrdcompress()
         fs_base[0] = 0x1f; fs_base[1] = 0x8b; fs_base[2] = 0x8; fs_base[9] = 3;
         memcpy(fs_base + 4, &t, 4);
         memcpy(fs_base + 10, initrdgz + 2, initrdgz_len - 2);
-        memcpy(fs_base + 10 + initrdgz_len - 2, &crc, 4);
-        memcpy(fs_base + 14 + initrdgz_len - 2, &fs_len, 4);
-        fs_len = initrdgz_len - 2 + 18;
+        memcpy(fs_base + 10 + initrdgz_len - 6, &crc, 4);
+        memcpy(fs_base + 10 + initrdgz_len - 2, &fs_len, 4);
+        fs_len = initrdgz_len - 2 + 14;
     }
     free(initrdgz);
 }
