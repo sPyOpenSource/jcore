@@ -49,8 +49,9 @@ extern crate rlibc;
 #[no_mangle] // don't mangle the name of this function
 fn _start() -> ! {
     /*** NOTE: this code runs on all cores in parallel ***/
-    if bootboot::bootboot.fb_scanline > 0 {
-        unsafe {
+    unsafe {
+        if bootboot::bootboot.fb_scanline > 0 {
+        
             let fb = &bootboot::fb as *const u8 as u64;
 
             // cross-hair to see screen dimension detected correctly
