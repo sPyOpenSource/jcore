@@ -35,6 +35,13 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
+#ifndef _MSC_VER
+#define _pack __attribute__((packed))
+#else
+#define _pack
+#pragma pack(push)
+#pragma pack(1)
+#endif
 
 #define BOOTBOOT_MAGIC "BOOT"
 
@@ -75,7 +82,7 @@ extern "C" {
 typedef struct {
   uint64_t   ptr;
   uint64_t   size;
-} __attribute__((packed)) MMapEnt;
+} _pack MMapEnt;
 #define MMapEnt_Ptr(a)  (a->ptr)
 #define MMapEnt_Size(a) (a->size & 0xFFFFFFFFFFFFFFF0)
 #define MMapEnt_Type(a) (a->size & 0xF)
@@ -135,8 +142,11 @@ typedef struct {
   /* use like this:
    * MMapEnt *mmap_ent = &bootboot.mmap; mmap_ent++;
    * until you reach bootboot->size */
-} __attribute__((packed)) BOOTBOOT;
+} _pack BOOTBOOT;
 
+#ifdef _MSC_VER
+#pragma pack(pop)
+#endif
 
 #ifdef  __cplusplus
 }
