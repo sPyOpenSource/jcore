@@ -34,6 +34,8 @@ bootboot    = 0xffffffffffe00000;
 environment = 0xffffffffffe01000;
 initstack = 4096;
 
+KERNEL_OFFSET = 0xffffffffffe02000;
+
 PHDRS
 {
   boot PT_LOAD FILEHDR PHDRS;                  /* one single loadable segment */
