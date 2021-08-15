@@ -83,10 +83,10 @@ typedef struct {
   uint64_t   ptr;
   uint64_t   size;
 } _pack MMapEnt;
-#define MMapEnt_Ptr(a)  (a->ptr)
-#define MMapEnt_Size(a) (a->size & 0xFFFFFFFFFFFFFFF0)
-#define MMapEnt_Type(a) (a->size & 0xF)
-#define MMapEnt_IsFree(a) ((a->size&0xF)==1)
+#define MMapEnt_Ptr(a)  ((a)->ptr)
+#define MMapEnt_Size(a) ((a)->size & 0xFFFFFFFFFFFFFFF0)
+#define MMapEnt_Type(a) ((a)->size & 0xF)
+#define MMapEnt_IsFree(a) (((a)->size&0xF)==1)
 
 #define MMAP_USED     0   /* don't use. Reserved or unknown regions */
 #define MMAP_FREE     1   /* usable memory */
@@ -141,7 +141,7 @@ typedef struct {
   MMapEnt    mmap;
   /* use like this:
    * MMapEnt *mmap_ent = &bootboot.mmap; mmap_ent++;
-   * until you reach bootboot->size */
+   * until you reach bootboot->size, while(mmap_ent < bootboot + bootboot->size) */
 } _pack BOOTBOOT;
 
 #ifdef _MSC_VER
