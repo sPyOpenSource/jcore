@@ -232,13 +232,13 @@ void uart_send(uint32_t c) {
     do{asm volatile("nop");}while(*UART0_FR&0x20); *UART0_DR=c;
 #endif
 }
-char uart_getc() {char r;
+char uart_getc() {char r = 0;
 #if CONSOLE == UART1
     do{asm volatile("nop");}while(!(*AUX_MU_LSR&0x01));r=(char)(*AUX_MU_IO);
 #else
     do{asm volatile("nop");}while(*UART0_FR&0x10);r=(char)(*UART0_DR);
 #endif
-    return r=='\r'?'\n':r;
+    return r;
 }
 void uart_hex(uint64_t d,int c) { uint32_t n;c<<=3;c-=4;for(;c>=0;c-=4){n=(d>>c)&0xF;n+=n>9?0x37:0x30;uart_send(n);} }
 void uart_putc(char c) { if(c=='\n') uart_send((uint32_t)'\r'); uart_send((uint32_t)c); }
@@ -289,7 +289,7 @@ void uart_exc(uint64_t idx, uint64_t esr, uint64_t elr, uint64_t spsr, uint64_t 
     uart_puts(" TCR_EL1 ");
     uart_hex(tcr,8);
     uart_putc('\n');
-    r=0; while(r!='\n' && r!=' ') r=uart_getc();
+    r=0; while(r!='\n' && r != '\r' && r!=' ') r=uart_getc();
     asm volatile("dsb sy; isb");
     *PM_WATCHDOG = PM_WDOG_MAGIC | 1;
     *PM_RTSC = PM_WDOG_MAGIC | PM_RTSC_FULLRST;
@@ -1844,7 +1844,7 @@ viderr:
 
     // Wait until Enter or Space pressed, then reboot
 error:
-    while(r!='\n' && r!=' ') r=uart_getc();
+    while(r!='\n' && r!='\r' && r!=' ') r=uart_getc();
     uart_puts("\n\n");
 
     // reset
