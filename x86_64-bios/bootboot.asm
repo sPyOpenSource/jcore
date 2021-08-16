@@ -2132,6 +2132,8 @@ end if
             xor         eax, eax
             mov         ax, word [bootboot.numcores]
             shl         eax, 10
+            add         eax, 0FFFh  ; round up to page size
+            and         ax, 0F000h
             mov         edi, bootboot.mmap
             add         dword [edi], eax
             sub         dword [edi+8], eax
