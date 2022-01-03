@@ -34,14 +34,14 @@
 /*****************************************************************************
  * things to do on the APs                                                   *
  *****************************************************************************/
-    .align 128
+    .balign 128
     .code16
     /* this code will be relocated to 0x8000 - 0x8100 */
 ap_trampoline:
     cli
     cld
     ljmp    $0, $0x8040
-    .align 16
+    .balign 16
     // prot mode GDT
 _L8010_GDT_table:
     .long 0, 0
@@ -52,7 +52,7 @@ _L8030_GDT_value:
     .word _L8030_GDT_value - _L8010_GDT_table - 1
     .long 0x8010
     .long 0, 0
-    .align 64
+    .balign 64
 _L8040:
     xorw    %ax, %ax
     movw    %ax, %ds
@@ -61,7 +61,7 @@ _L8040:
     orl     $1, %eax
     movl    %eax, %cr0
     ljmp    $8, $0x8060
-    .align 32
+    .balign 32
     .code32
 _L8060:
     movw    $16, %ax
@@ -80,7 +80,7 @@ _L8060:
     lgdtl   0x80E0
     movl    $0x80C8, %esp       // we can't use "ljmp $8, $0x80A0", because we don't know cs
     lret
-    .align 32
+    .balign 32
     .code64
 _L80A0:
     movl    0x80D0, %eax         // load long mode segments
@@ -97,7 +97,7 @@ _L80A0:
     // stack frame, because all are saving exactly the same stack frame to the same position
     movl    $0x8800, %esp
     jmp     *%rax
-    .align 32
+    .balign 32
 _L80C0_cr3_value:
     .long 0, 0
     .long 0x80A0
