@@ -40,14 +40,14 @@
 /*****************************************************************************
  * things to do on the APs                                                   *
  *****************************************************************************/
-    .align 128
+    .balign 128
     .code16
     /* this code will be relocated to 0x1000 - 0x1100 */
 ap_trampoline:
     cli
     cld
     ljmp    $0, $0x1040
-    .align 16
+    .balign 16
     // prot mode GDT
 _L1010_GDT_table:
     .long 0, 0
@@ -58,7 +58,7 @@ _L1030_GDT_value:
     .word _L1030_GDT_value - _L1010_GDT_table - 1
     .long 0x1010
     .long 0, 0
-    .align 64
+    .balign 64
 _L1040:
     xorw    %ax, %ax
     movw    %ax, %ds
@@ -67,7 +67,7 @@ _L1040:
     orl     $1, %eax
     movl    %eax, %cr0
     ljmp    $8, $0x1060
-    .align 32
+    .balign 32
     .code32
 _L1060:
     movw    $16, %ax
@@ -79,7 +79,7 @@ _L1060:
     jz      1b
     // jump back to non-relocated code segment
     ljmp    $8, $longmode_init
-    .align 128
+    .balign 128
 ap_trampoline_end:
 
     // long mode GDT (here it is aligned and out of execution flow)
@@ -93,7 +93,7 @@ GDT_value:
     .word GDT_value - GDT_table - 1
     .long GDT_table, 0, 0
     .word 0
-    .align 8
+    .balign 8
 stack64:
     .long bootboot_startcore
     .long 0
