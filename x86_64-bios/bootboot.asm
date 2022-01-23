@@ -2087,12 +2087,8 @@ if BBDEBUG eq 1
             mov         bx, word [bootboot.numcores]
             mov         di, gpt_ptr
 
-            cmp         bx, 1000
-            jl          @f
-            mov         al, '1'
-            stosb
-            sub         bx, 1000
-@@:         mov         cx, 100
+            mov         cx, 100
+            mov         dx, bx
             cmp         bx, cx
             jl          @f
             mov         ax, bx
@@ -2100,17 +2096,15 @@ if BBDEBUG eq 1
             div         cx
             add         al, '0'
             stosb
-            mov         bx, dx
 @@:         mov         cx, 10
-            cmp         bx, cx
-            jl          @f
-            mov         ax, bx
+            mov         ax, dx
             xor         dx, dx
             div         cx
+            cmp         bx, cx
+            jl          @f
             add         al, '0'
             stosb
-            mov         bx, dx
-@@:         mov         al, bl
+@@:         mov         al, dl
             add         al, '0'
             stosb
             xor         al, al
