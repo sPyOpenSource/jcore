@@ -21,10 +21,17 @@ fájlrendszerek:
 | `ext2`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf), [dokumentáció](https://www.nongnu.org/ext2-doc/ext2.html) |
 | `lean`   | ✗No    | ✔Yes     | [V0.6 spec](http://freedos-32.sourceforge.net/lean/specification.php), [V0.7 spec](http://www.fysnet.net/leanfs/specification.php) |
 
-A kód úgy lett megírva, hogy könnyű legyen bővíteni.
+A kód úgy lett megírva, hogy könnyű legyen bővíteni új fájlrendszerekkel.
 
 A kigenerált képet leellenőriztem fdisk-el, valamint a gdisk verify funkciójával. A FAT partíció tesztelve lett fsck.vfat-al
 és UEFI förmverrel, továbbá Raspberry Pi-n. Az ISO9660-es rész iat-vel (ISO9660 Analyzer Tool) és Linux mounttal lett tesztelve.
+
+Áttekintés
+----------
+
+Itt a minden komponenst tartalmazó, teljes kép:
+
+<img src="https://gitlab.com/bztsrc/bootboot/raw/master/mkbootimg/overview.gif">
 
 Működési módok
 --------------

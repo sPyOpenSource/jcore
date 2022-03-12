@@ -20,10 +20,17 @@ also creates an initrd or a disk partition from a directory. Supported file syst
 | `ext2`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf), [documentation](https://www.nongnu.org/ext2-doc/ext2.html) |
 | `lean`   | ✗No    | ✔Yes      | [V0.6 spec](http://freedos-32.sourceforge.net/lean/specification.php), [V0.7 spec](http://www.fysnet.net/leanfs/specification.php) |
 
-The code is written in a way that it is easily expandable.
+The code is written in a way that it is easily expandable with new file systems.
 
 The generated image was tested with fdisk, and with the verify function of gdisk. The FAT partition was tested with fsck.vfat
 and with TianoCore UEFI firmware and on Raspberry Pi. The ISO9660 part tested with iat (ISO9660 Analyzer Tool) and Linux mount.
+
+Overview
+--------
+
+This is the big picture, showing all components:
+
+<img src="https://gitlab.com/bztsrc/bootboot/raw/master/mkbootimg/overview.gif">
 
 Operating Modes
 ---------------
