@@ -836,8 +836,9 @@ int main(void)
     /* if it's on the CBFS filesystem in the COREBOOT Flashmap area */
     if(!initrd.ptr || !initrd.size) {
         size_t s;
-        struct cbfs_handle *file = cbfs_get_handle(CBFS_DEFAULT_MEDIA, "bootboot/initrd");
-        if(file) { initrd.ptr = cbfs_get_contents(file, &s, 16*1024*1024); initrd.size = s; }
+        initrd.ptr = cbfs_map("bootboot/initrd", &s);
+        if(initrd.ptr && s > 1 && s < 16*1024*1024) initrd.size = s;
+        else initrd.ptr = NULL;
     }
 #endif
     // skip optional ROM header
@@ -1074,11 +1075,8 @@ gzerr:      panic("Unable to uncompress");
     if(!environment[0]) {
         // if there's no environment on the boot partition neither inside the INITRD, but we have CBFS support, try that too
         size_t s;
-        struct cbfs_handle *file = cbfs_get_handle(CBFS_DEFAULT_MEDIA, "bootboot/config");
-        if(file) {
-            ptr = cbfs_get_contents(file, &s, PAGESIZE-1);
-            if(ptr && s) memcpy(environment, ptr, s);
-        }
+        ptr = cbfs_map("bootboot/config", &s);
+        if(ptr && s > 1 && s < PAGESIZE-1) memcpy(environment, ptr, s);
     }
 #endif
     ParseEnvironment((uint8_t*)environment);
