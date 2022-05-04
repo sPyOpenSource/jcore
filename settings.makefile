@@ -25,7 +25,6 @@ DEFINES += -DINIT_LIB=\"init2.jll\"
 #DEFINES += -DDOMAIN_SCRATCHMEM_SIZE=4096
 DEFINES += -DDOMAIN_SCRATCHMEM_SIZE="(4096*100)"
 
-
 # portal call handling ##################################################
 #DEFINES += -DCOPY_TO_DOMAINZERO
 #DEFINES += -DPORTAL_INTERCEPTOR
