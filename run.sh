@@ -9,8 +9,8 @@ cd ../..
 grub-mkrescue -o MyOS.iso isodir
 
 #run it in VirtualBox
-(killall VirtualBox && sleep 1) || true
-VBoxManage startvm 'JavaOS' &
+#(killall VirtualBox && sleep 1) || true
+#VBoxManage startvm 'JavaOS' &
 
 #run it in qemu
-#qemu-system-x86_64 -cdrom MyOS.iso
+qemu-system-x86_64 -cdrom MyOS.iso
