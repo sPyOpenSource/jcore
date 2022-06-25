@@ -12,41 +12,41 @@ ESSENTIALSOURCES = main.c libcache.c load.c thread.c interrupt.c \
 SUPPORTSOURCES = profile.c thread_debug.c thread_emulation.c thread_profile.c \
                  monitor.c Memory/gc_pa.c Memory/gc_pgc.c minilzo.c bdt.c crc32.c ekhz.c
 
-ZEROSOURCES  = NativeJavaInterface/zero_AtomicVariable.c
-ZEROSOURCES += NativeJavaInterface/zero_BootFS.c
-ZEROSOURCES += NativeJavaInterface/zero_CAS.c
-ZEROSOURCES += NativeJavaInterface/zero_Clock.c
-ZEROSOURCES += NativeJavaInterface/zero_ComponentManager.c
-ZEROSOURCES += NativeJavaInterface/zero_CPU.c
-ZEROSOURCES += NativeJavaInterface/zero_CPUManager.c
-ZEROSOURCES += NativeJavaInterface/zero_CPUState.c
-ZEROSOURCES += NativeJavaInterface/zero_Credential.c
-ZEROSOURCES += NativeJavaInterface/zero_DebugChannel.c
-ZEROSOURCES += NativeJavaInterface/zero_DebugSupport.c
-ZEROSOURCES += NativeJavaInterface/zero_DiskEmulation.c
-ZEROSOURCES += NativeJavaInterface/zero_Domain.c
-ZEROSOURCES += NativeJavaInterface/zero_DomainManager.c
-ZEROSOURCES += NativeJavaInterface/zero_FBEmulation.c
-ZEROSOURCES += NativeJavaInterface/zero_IRQ.c
+ZEROSOURCES  = Interface/zero_AtomicVariable.c
+ZEROSOURCES += Interface/zero_BootFS.c
+ZEROSOURCES += Interface/zero_CAS.c
+ZEROSOURCES += Interface/zero_Clock.c
+ZEROSOURCES += Interface/zero_ComponentManager.c
+ZEROSOURCES += Interface/zero_CPU.c
+ZEROSOURCES += Interface/zero_CPUManager.c
+ZEROSOURCES += Interface/zero_CPUState.c
+ZEROSOURCES += Interface/zero_Credential.c
+ZEROSOURCES += Interface/zero_DebugChannel.c
+ZEROSOURCES += Interface/zero_DebugSupport.c
+ZEROSOURCES += Interface/zero_DiskEmulation.c
+ZEROSOURCES += Interface/zero_Domain.c
+ZEROSOURCES += Interface/zero_DomainManager.c
+ZEROSOURCES += Interface/zero_FBEmulation.c
+ZEROSOURCES += Interface/zero_IRQ.c
 #ZEROSOURCES += NativeJavaInterface/zero_HLSchedulerSupport.c
 #ZEROSOURCES += NativeJavaInterface/zero_JAVASchedulerSupport.c
 #ZEROSOURCES += NativeJavaInterface/zero_LLSchedulerSupport.c
-ZEROSOURCES += NativeJavaInterface/zero_Memory.c
-ZEROSOURCES += NativeJavaInterface/zero_MemoryManager.c
-ZEROSOURCES += NativeJavaInterface/zero_Mutex.c
-ZEROSOURCES += NativeJavaInterface/zero_Naming.c
-ZEROSOURCES += NativeJavaInterface/zero_NetEmulation.c
-ZEROSOURCES += NativeJavaInterface/zero_Ports.c
-ZEROSOURCES += NativeJavaInterface/zero_Profiler.c
-ZEROSOURCES += NativeJavaInterface/zero_Scheduler.c
-ZEROSOURCES += NativeJavaInterface/zero_SMPCPUManager.c
-ZEROSOURCES += NativeJavaInterface/zero_TestDZperf.c
-ZEROSOURCES += NativeJavaInterface/zero_TimerEmulation.c
-ZEROSOURCES += NativeJavaInterface/zero_VMClass.c
-ZEROSOURCES += NativeJavaInterface/zero_VMMethod.c
-ZEROSOURCES += NativeJavaInterface/zero_VMObject.c
-ZEROSOURCES += NativeJavaInterface/zero_object.c
-ZEROSOURCES += NativeJavaInterface/zero_InterceptorInboundInfo.c
+ZEROSOURCES += Interface/zero_Memory.c
+ZEROSOURCES += Interface/zero_MemoryManager.c
+ZEROSOURCES += Interface/zero_Mutex.c
+ZEROSOURCES += Interface/zero_Naming.c
+ZEROSOURCES += Interface/zero_NetEmulation.c
+ZEROSOURCES += Interface/zero_Ports.c
+ZEROSOURCES += Interface/zero_Profiler.c
+ZEROSOURCES += Interface/zero_Scheduler.c
+ZEROSOURCES += Interface/zero_SMPCPUManager.c
+ZEROSOURCES += Interface/zero_TestDZperf.c
+ZEROSOURCES += Interface/zero_TimerEmulation.c
+ZEROSOURCES += Interface/zero_VMClass.c
+ZEROSOURCES += Interface/zero_VMMethod.c
+ZEROSOURCES += Interface/zero_VMObject.c
+ZEROSOURCES += Interface/zero_object.c
+ZEROSOURCES += Interface/zero_InterceptorInboundInfo.c
 
 SOURCES = $(ESSENTIALSOURCES) $(ZEROSOURCES) $(SUPPORTSOURCES)
 
@@ -60,9 +60,9 @@ ESSENTIALCORESOURCES =  minic.c multiboot.c irq.c lapic.c io_apic.c smp_detect.c
 CORESOURCES = $(SOURCES) $(ESSENTIALCORESOURCES) serialdbg.c symfind.c
 
 LINUXSOURCES = $(SOURCES) symfind.c
-ASMSOURCES   = Assembly/lowlevel.S Assembly/call.S Assembly/switch.S Assembly/schedSWITCH.S Assembly/bench.S Assembly/vm_eventLog.S NativeJavaInterface/zero_FastMemory.S
-COREASMSOURCES  = crt0.S stack.S hwint.S exception.S timer.S
-COREASMSOURCES  += smp_startup.S ipiint.S
+ASMSOURCES   = Assembly/lowlevel.S Assembly/call.S Assembly/switch.S Assembly/schedSWITCH.S Assembly/bench.S Assembly/vm_eventLog.S Interface/zero_FastMemory.S
+COREASMSOURCES  = Assembly/crt0.S Assembly/stack.S Assembly/hwint.S Assembly/exception.S Assembly/timer.S
+COREASMSOURCES  += Assembly/smp_startup.S Assembly/ipiint.S
 
 COREINCLUDE = -Isrc
 
@@ -109,7 +109,7 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 COREOBJ2 = $(COREOBJ:.kernel/gc/%=.kernel/%)
 COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ2:.kernel/zero/%=.kernel/%)
 
-jxcore: .kernel src/realmode.h $(COREOBJ)
+jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)
 	#perl mksymtab.perl jxcore symbols.h
 	rm -f .kernel/symfind.o .kernel/atomicfn.o ; $(MAKE) .kernel/symfind.o .kernel/atomicfn.o

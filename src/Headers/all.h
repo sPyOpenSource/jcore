@@ -30,12 +30,12 @@
 #include "domain.h"
 #include "config.h"
 #include "interrupt.h"
-#include "gc/gc.h"
+#include "Memory/gc.h"
 #include "vmsupport.h"
 #include "execJAVA.h"
 #include "monitor.h"
-#include "zero/zero.h"
-#include "zero/zero_Profiler.h"
+#include "Interface/zero.h"
+#include "Interface/zero_Profiler.h"
 #include "malloc_proto.h"
 #include "portal_proto.h"
 #include "atomic.h"
@@ -55,7 +55,7 @@
 
 #include "irq.h"
 #include "smp.h"
-#include "zero/zero.h"
+#include "Interface/zero.h"
 
 #ifdef JAVASCHEDULER
 #include "javascheduler.h"
