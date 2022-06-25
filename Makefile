@@ -45,9 +45,10 @@ ESSENTIALCORESOURCES =  minic.c multiboot.c irq.c lapic.c io_apic.c smp_detect.c
 CORESOURCES = $(SOURCES) $(ESSENTIALCORESOURCES) serialdbg.c symfind.c
 
 LINUXSOURCES = $(SOURCES) symfind.c
-ASMSOURCES   = Assembly/lowlevel.S Assembly/call.S Assembly/switch.S Assembly/schedSWITCH.S Assembly/bench.S Assembly/vm_eventLog.S Interface/zero_FastMemory.S
-COREASMSOURCES  = Assembly/crt0.S Assembly/stack.S Assembly/hwint.S Assembly/exception.S Assembly/timer.S \
-				  Assembly/smp_startup.S Assembly/ipiint.S
+ASMSOURCES   = Assembly/lowlevel.S Assembly/call.S Assembly/switch.S Assembly/schedSWITCH.S \
+			   Assembly/bench.S Assembly/vm_eventLog.S Interface/zero_FastMemory.S
+COREASMSOURCES = Assembly/crt0.S Assembly/stack.S Assembly/hwint.S Assembly/exception.S Assembly/timer.S \
+				 Assembly/smp_startup.S Assembly/ipiint.S
 
 COREINCLUDE = -Isrc
 
@@ -142,7 +143,7 @@ src/Interface/zero_FastMemory.s: src/Interface/zero_FastMemory.S
 	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
 
 src/%.s: src/%.S
-	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/$(@F)
+	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > $<
 
 .kernel/%.s: src/%.c
 	$(CC) -S $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -o .kernel/$(@F) $<
