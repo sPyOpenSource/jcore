@@ -50,7 +50,7 @@ ASMSOURCES   = Assembly/lowlevel.S Assembly/call.S Assembly/switch.S Assembly/sc
 COREASMSOURCES = Assembly/crt0.S Assembly/stack.S Assembly/hwint.S Assembly/exception.S Assembly/timer.S \
 				 Assembly/smp_startup.S Assembly/ipiint.S
 
-COREINCLUDE = -Isrc
+COREINCLUDE = -Isrc -Isrc/Headers
 
 include settings.makefile
 ifeq ($(strip $(CC)), icc)
