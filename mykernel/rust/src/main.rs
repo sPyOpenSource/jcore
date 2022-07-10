@@ -1,7 +1,7 @@
 /*
  * mykernel/rust/src/main.rs
  *
- * Copyright (C) 2017 - 2021 Vinay Chandra
+ * Copyright (C) 2017 - 2022 Vinay Chandra, Valkony Balázs
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -32,9 +32,6 @@
 #![no_std]
 #![no_main]
 
-#[cfg(not(test))]
-use core::panic::PanicInfo;
-
 #[allow(dead_code)]
 #[allow(non_snake_case)]
 #[allow(non_camel_case_types)]
@@ -55,7 +52,7 @@ fn _start() -> ! {
     let bootboot_r = unsafe { & (*(BOOTBOOT_INFO as *const BOOTBOOT)) };
 
     if bootboot_r.fb_scanline > 0 {
-    
+
         //As pointer arithmetic is not possible in rust, use the address as u64
         let fb = BOOTBOOT_FB as u64;
 
@@ -97,11 +94,11 @@ fn _start() -> ! {
                 unsafe { *(addr as *mut u64) = 0x000000FF };
             }
         }
+
+        // say hello
+        puts("Hello from a simple BOOTBOOT kernel");
     }
 
-    // say hello
-    puts("Hello Rust Hobby Kernel");
-    
     // hang for now
     loop {}
 }
@@ -109,9 +106,7 @@ fn _start() -> ! {
 /**************************
  * Display text on screen *
  **************************/
- //TODO: REFACTOR 
- 
- fn puts(string: &'static str) {
+fn puts(string: &'static str) {
     use bootboot::*;
 
     let fb = BOOTBOOT_FB as u64;
@@ -154,14 +149,4 @@ fn _start() -> ! {
             kx += 1;
         }
     }
-}
-
-
-/*************************************
- * This function is called on panic. *
- *************************************/
-#[cfg(not(test))]
-#[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
-    loop {}
 }
