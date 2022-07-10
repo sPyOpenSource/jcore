@@ -91,9 +91,10 @@ func init() {
                 *(*uint32)(unsafe.Pointer(uintptr(BOOTBOOT_FB) + uintptr(s*(y+20) + (x+80)*4))) = 0x000000FF;
             }
         }
+
+        // say hello
+        puts("Hello from a simple BOOTBOOT kernel");
     }
-    // say hello
-    puts("Hello from a simple BOOTBOOT kernel");
 
     // hang for now
     for ; ; {
