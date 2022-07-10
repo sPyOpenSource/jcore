@@ -3,7 +3,7 @@
 #define sizeof_boot_bin 512
 extern unsigned char binary_boot_bin[512];
 #define sizeof_bootboot_bin 13312
-extern unsigned char binary_bootboot_bin[9285];
+extern unsigned char binary_bootboot_bin[9291];
 #define sizeof_bootboot_efi 103614
 extern unsigned char binary_bootboot_efi[46348];
 #define sizeof_bootboot_img 35344
@@ -12,9 +12,9 @@ extern unsigned char binary_bootboot_img[20050];
 extern unsigned char binary_bootboot_rv64[31];
 #define sizeof_LICENCE_broadcom 1594
 extern unsigned char binary_LICENCE_broadcom[883];
-#define sizeof_bootcode_bin 52456
-extern unsigned char binary_bootcode_bin[30329];
-#define sizeof_fixup_dat 7297
-extern unsigned char binary_fixup_dat[1281];
-#define sizeof_start_elf 2939744
-extern unsigned char binary_start_elf[1717161];
+#define sizeof_bootcode_bin 52460
+extern unsigned char binary_bootcode_bin[30800];
+#define sizeof_fixup_dat 7260
+extern unsigned char binary_fixup_dat[1267];
+#define sizeof_start_elf 2973056
+extern unsigned char binary_start_elf[1737447];

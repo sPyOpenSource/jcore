@@ -15,10 +15,10 @@ raspbootcom: raspbootcom.c
 	gcc raspbootcom.c -o raspbootcom
 
 getfw:
-	wget -q https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/LICENCE.broadcom
-	wget -q https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/bootcode.bin
-	wget -q https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/fixup.dat
-	wget -q https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/start.elf
+	wget -c -q https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/LICENCE.broadcom
+	wget -c -q https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/bootcode.bin
+	wget -c -q https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/fixup.dat
+	wget -c -q https://raw.githubusercontent.com/raspberrypi/firmware/master/boot/start.elf
 
 cleanfw:
 	@rm LICENCE.broadcom bootcode.bin fixup.dat start.elf

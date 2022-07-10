@@ -930,6 +930,11 @@ real_printfunc:
             mov         ah, byte 01h
             xor         dx, dx
             int         14h
+            ;if BIOS timed out, clear the IO address
+            ;so that further calls won't try sending
+            and         ah, 80h
+            jz          @f
+            mov         word[400h], 0
 @@:         pop         si
             jmp         real_printfunc
 .end:       ret
