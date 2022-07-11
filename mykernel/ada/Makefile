@@ -29,7 +29,7 @@
 #
 
 ADAFLAGS = -Wall -fpic -fno-stack-protector -nostdinc -nostdlib
-LDFLAGS =  -nostdlib -nostartfiles -T link.ld
+LDFLAGS =  -nostdlib -n -T link.ld
 STRIPFLAGS =  -s -K mmio -K fb -K bootboot -K environment -K initstack
 
 all: mykernel.x86_64.elf mykernel.aarch64.elf
