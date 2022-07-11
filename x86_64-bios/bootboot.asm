@@ -873,6 +873,8 @@ prot_diefunc:
             prot_realmode
             USE16
 real_diefunc:
+            xor         ax, ax
+            mov         ds, ax
             push        si
             real_print  loader.name
             real_print  panic
@@ -2149,7 +2151,11 @@ end if
             mov         di, 0A000h
             mov         dword [di], 'VBE2'
             ;this call requires a big stack
+            push        ds
+            push        es
             int         10h
+            pop         es
+            pop         ds
             cmp         ax, 004fh
             je          @f
 .viderr:    mov         si, novbe
@@ -2189,7 +2195,11 @@ end if
             push        cx
             push        si
             push        di
+            push        ds
+            push        es
             int         10h
+            pop         es
+            pop         ds
             pop         di
             pop         si
             pop         cx
