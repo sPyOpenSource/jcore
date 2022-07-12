@@ -2260,7 +2260,11 @@ end if
             mov         bx, cx
             bts         bx, 14 ;flat linear
             mov         ax, 4f02h
+            push        ds
+            push        es
             int         10h
+            pop         es
+            pop         ds
             cmp         ax, 004fh
             jne         .viderr
             ;no debug output after this point
