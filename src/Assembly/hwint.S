@@ -33,7 +33,7 @@
 	.globl hwint
 hwint:
 	SAVE
-	call get_processor_id
+	call 	get_processor_id
 	movl	__current(,%eax,4),%ecx	 /* ecx = current[cpu] */
 	movl	THREAD_PPCB(%ecx),%ecx	 /* ecx = current[cpu].context */
 
@@ -91,16 +91,16 @@ returnfromirq:
 	movl	PCB_EIP(%ecx),%eax
 	pushl	%eax   /* eip is loaded by the iret instruction */
 
-	movl	PCB_GS(%ecx),%gs
+	movl	PCB_GS(%ecx), %gs
 	movl	PCB_FS(%ecx), %fs 
 	movl	PCB_ES(%ecx), %es 
-	movl	PCB_EDI(%ecx),%edi
-	movl	PCB_ESI(%ecx),%esi
-	movl	PCB_EBP(%ecx),%ebp
+	movl	PCB_EDI(%ecx), %edi
+	movl	PCB_ESI(%ecx), %esi
+	movl	PCB_EBP(%ecx), %ebp
 	movl	PCB_EDX(%ecx), %edx 
 	movl	PCB_EAX(%ecx), %eax 
 	movl	PCB_EBX(%ecx), %ebx 
-	movl	PCB_ECX(%ecx),%ecx /* must be last line ! */
+	movl	PCB_ECX(%ecx), %ecx /* must be last line ! */
 	
 	iret
 .Lreturnfromirq_end:		
@@ -221,5 +221,3 @@ activate_irq:
 	movl	PCB_EDX(%edx),%edx /* must be last line ! */
 
 	ret
-		
-	

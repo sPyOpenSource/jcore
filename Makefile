@@ -6,8 +6,8 @@ ESSENTIALSOURCES = main.c libcache.c load.c thread.c interrupt.c \
 		   		   runq.c syscalls.c 
 					  
 ESSENTIALSOURCES += Memory/gc.c Memory/gc_memcpy.c Memory/gc_move.c Memory/gc_alloc.c Memory/gc_checkheap.c \
-                   Memory/gc_org.c Memory/gc_common.c Memory/gc_thread.c Memory/gc_stack.c Memory/gc_move_common.c \
-                   Memory/gc_new.c Memory/gc_impl.c Memory/gc_compacting.c Memory/gc_bitmap.c Memory/gc_chunked.c
+                    Memory/gc_org.c Memory/gc_common.c Memory/gc_thread.c Memory/gc_stack.c Memory/gc_move_common.c \
+                    Memory/gc_new.c Memory/gc_impl.c Memory/gc_compacting.c Memory/gc_bitmap.c Memory/gc_chunked.c
                    
 
 SUPPORTSOURCES = profile.c thread_debug.c thread_emulation.c thread_profile.c \
@@ -87,7 +87,6 @@ COREOBJ += $(CORESRC:%.c=.kernel/%.o)
 CORESEC  = $(ASMSOURCES:%.S=%.s)
 CORESEC += $(COREASMSOURCES:%.S=%.s)
 
-
 LINUXSRC  = $(LINUXSOURCES)
 LINUXOBJ  = $(LINUXSRC:%.c=.linux/%.o)
 LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
@@ -137,7 +136,7 @@ realmode: src/Assembly/asm.S
 #	gcc -E $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE)  -o .kernel/$(@F) $<
 
 .kernel/%.o: src/%.s
-	$(AS) --32 $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $< || (cp $< src/*.s ; exit 1)
+	$(AS) $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
 
 src/Interface/zero_FastMemory.s: src/Interface/zero_FastMemory.S
 	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
