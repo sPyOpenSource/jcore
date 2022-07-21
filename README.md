@@ -1,7 +1,7 @@
 **!!!WARNING!!**
 
 Microsoft-paid trolls got me banned from OSDev.org and they are lying about BOOTBOOT ever since. Do not ask questions about
-BOOTBOOT there, because you won't get correct answers. Use gitlab issues instead or mail me directly. And by the way, BOOTBOOT does
+BOOTBOOT there, because you won't get correct answers. Use GitLab issues instead or mail me directly. And by the way, BOOTBOOT does
 provide the same environment and a consistent, architecture-independent memory map on ALL supported platforms, see for yourself.
 
 BOOTBOOT Reference Implementations
