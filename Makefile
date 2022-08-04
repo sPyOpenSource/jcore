@@ -136,7 +136,7 @@ realmode: src/Assembly/asm.S
 #	gcc -E $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE)  -o .kernel/$(@F) $<
 
 .kernel/%.o: src/%.s
-	$(AS) $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
+	$(AS) $(COREINCLUDE) --32 -c -nostdinc -o .kernel/$(@F) $<
 
 src/Interface/zero_FastMemory.s: src/Interface/zero_FastMemory.S
 	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
