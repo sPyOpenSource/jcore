@@ -403,7 +403,7 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 
 	//printf("createSharedArrayClassDesc2: %s\n", ( *(ClassDesc**)(( arrayClass->vtable-1) ))->name);
 
-	//  printf("   <- created arrayClass %s\n", arrayClass->name);
+	//printf("   <- created arrayClass %s\n", arrayClass->name);
 
 
 	/* add to list of shared array classes */

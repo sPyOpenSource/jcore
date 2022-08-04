@@ -348,7 +348,7 @@ void start_domain_zero()
 
 #ifdef EVENT_CALIBRATION
   /*********************************
-   * Calibrate event loggin system
+   * Calibrate event login system
    *********************************/
 	{
 		int i;

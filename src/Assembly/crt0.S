@@ -32,7 +32,7 @@ boot_entry:
 
 	xorl	%ebp,%ebp
 	 
-	call	 multiboot_main  
+	call	multiboot_main
 
 1:      
         int   $3

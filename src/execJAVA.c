@@ -151,7 +151,6 @@ void never_return(void)
 {
 	sys_panic("should not return");
 	asm(".global never_return_end;" " never_return_end:");
-	;
 }
 
 /* ! IRQ must be disabled before calling this function*/

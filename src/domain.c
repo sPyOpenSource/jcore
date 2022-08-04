@@ -157,7 +157,7 @@ DomainDesc *createDomain(char *domainName, jint gcinfo0, jint gcinfo1, jint gcin
 
 	strcpy(domain->domainName, domainName);
 	domain->threads = NULL;
-	domain->services[0] = SERVICE_ENTRY_CHANGING;	/* reserve; index 0 can be used as invalid index */
+	domain->services[0] = SERVICE_ENTRY_CHANGING; /* reserve; index 0 can be used as invalid index */
 
 	gc_init(domain, mem, gcinfo0, gcinfo1, gcinfo2, gcinfo3, gcinfo4, gcImpl);
 
@@ -260,7 +260,7 @@ int findMethodAtAddrInDomain(DomainDesc * domain, u1_t * addr, MethodDesc ** met
 
 	LOCK_DOMAINS;
 #ifndef FASTER_METHOD_LOOKUP
-	// printf("Looking for %p\n", addr);
+	//printf("Looking for %p\n", addr);
 	for (h = 0; h < domain->numberOfLibs; h++) {
 		LibDesc *lib = domain->libs[h];
 		Class *allClasses = lib->allClasses;
@@ -276,7 +276,7 @@ int findMethodAtAddrInDomain(DomainDesc * domain, u1_t * addr, MethodDesc ** met
 					*bytecodePos = findByteCodePosition(&(classDesc->methods[j]), addr);
 
 					*lineNumber = -1;
-					//      printf("BC=%ld NS=%d\n", *bytecodePos, classDesc->methods[j].numberOfSourceLines);
+					//printf("BC=%ld NS=%d\n", *bytecodePos, classDesc->methods[j].numberOfSourceLines);
 					if (*bytecodePos != -1) {
 						/* find source code line */
 						stable = classDesc->methods[j].sourceLineTable;
@@ -538,7 +538,7 @@ void foreachDomainRUNQ(domain_f func)
 	DomainDesc *domain;
 	char *mem;
 
-	if (!domainsys_inited) {	/*printf("DOMAINSYS NOT INITIED\n"); */
+	if (!domainsys_inited) {	/* printf("DOMAINSYS NOT INITIED\n"); */
 		return;
 	}
 	if (!runnable_in_runq_check)

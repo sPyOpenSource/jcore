@@ -202,7 +202,7 @@ ENTRY(vesa2_detect)
 1:
 	WRITE('0')
 	
-	popl    %edi
+		popl    %edi
         popl    %ebx
         popl    %ebp
         ret
@@ -253,9 +253,9 @@ ENTRY(vesa2_get_mode_info)
         /* Get the target address and convert to segmented form. */
         movl    12(%ebp), %ebx
 
-       movl    %ebx, %edi
-       shrl    $4, %ebx
-       andl    $0xFFFF, %edi
+        movl    %ebx, %edi
+        shrl    $4, %ebx
+        andl    $0xFFFF, %edi
 
         /* Store the mode number in CX. */
         movl    8(%ebp), %ecx
@@ -267,13 +267,13 @@ ENTRY(vesa2_get_mode_info)
 
         /* Call the 'GET SuperVGA Mode Information' VESA function. */
 
-	/* load segment into %es */
+		/* load segment into %es */
         movw    $0, %ax
-	movw	%ax, %es
+		movw	%ax, %es
 
-	/* load offset into %di */
+		/* load offset into %di */
         movw    $0x6000, %ax
-	movw	%ax, %di
+		movw	%ax, %di
 	
         /*movw    %bx, %es*/
         movw    $0x4f01, %ax
@@ -395,6 +395,3 @@ gdt:
 gdtdesc:
 	.word	0x27			/* limit */
 	.long	gdt			/* addr */
-
-
-

@@ -19,7 +19,7 @@ struct x86_desc {
 	unsigned int limit_low:16,	/* limit 0..15 */
 	 base_low:16,		/* base  0..15 */
 	 base_med:8,		/* base  16..23 */
-	 access:8,		/* access byte */
+	 access:8,		    /* access byte */
 	 limit_high:4,		/* limit 16..19 */
 	 granularity:4,		/* granularity */
 	 base_high:8;		/* base 24..31 */
@@ -161,7 +161,6 @@ struct pseudo_descriptor {
 	unsigned short limit;
 	unsigned long linear_base;
 };
-
 
 
 /* On normal PCs, there are always 16 IRQ lines.  */
@@ -376,7 +375,7 @@ void pic_disable_all()
 
 #define pic_ack(irq) ({				\
 	outb(MASTER_ICW, NON_SPEC_EOI);		\
-	if ((irq) >= 8)				\
+	if ((irq) >= 8)				    \
 		outb(SLAVES_ICW, NON_SPEC_EOI);	\
 })
 
@@ -402,7 +401,7 @@ void base_gdt_init(void)
 
 void base_tss_init(void)
 {
-	/* Only initialize once.  */
+	/* Only initialize once. */
 	if (!base_tss.ss0) {
 		base_tss.ss0 = KERNEL_DS;
 		base_tss.esp0 = get_esp();	/* only temporary */
@@ -417,13 +416,13 @@ void cpuid(struct cpu_info *out_id) {
 */
 void icore_base_cpu_init(void)
 {
-	/* Detect the current processor.  */
-	/*cpuid(&base_cpuid); */
+	/* Detect the current processor. */
+	/* cpuid(&base_cpuid); */
 
-	/* Initialize the processor tables.  */
-/*init_intr_gates(); *//* in metaxa_os_IRQ.c */
+	/* Initialize the processor tables. */
+    /* init_intr_gates(); *//* in metaxa_os_IRQ.c */
 	base_gdt_init();
-	/*base_tss_init(); */
+	/* base_tss_init(); */
 }
 
 
@@ -432,11 +431,11 @@ void base_gdt_load(void)
 {
 	struct pseudo_descriptor pdesc;
 
-	/* Create a pseudo-descriptor describing the GDT.  */
+	/* Create a pseudo-descriptor describing the GDT. */
 	pdesc.limit = sizeof(base_gdt) - 1;
 	pdesc.linear_base = (unsigned long) &base_gdt;
 
-	/* Load it into the CPU.  */
+	/* Load it into the CPU. */
 	asm volatile ("lgdt %0"::"m" ((&pdesc)->limit));
 
 	/*
@@ -451,10 +450,10 @@ void base_gdt_load(void)
 
 void base_tss_load(void)
 {
-	/* Make sure the TSS isn't marked busy.  */
+	/* Make sure the TSS isn't marked busy. */
 	base_gdt[BASE_TSS / 8].access &= ~ACC_TSS_BUSY;
 
-	/* Load the TSS.  */
+	/* Load the TSS. */
 	asm volatile ("ltr %0"::"rm" ((unsigned short) (BASE_TSS)));
 }
 
@@ -463,7 +462,7 @@ void icore_base_cpu_load(void)
 {
 	base_gdt_load();
 	idt_load();		/* in metaxa_os_IRQ.c */
-	/*base_tss_load(); */
+	/* base_tss_load(); */
 }
 
 void multiboot_main(addr_t boot_info_pa)
@@ -479,14 +478,14 @@ void multiboot_main(addr_t boot_info_pa)
 	init_serial(port);
 
 	/* Copy the multiboot_info structure into our pre-reserved area.
-	   This avoids one loose fragment of memory that has to be avoided.  */
+	   This avoids one loose fragment of memory that has to be avoided. */
 	boot_info = *(struct multiboot_info *) boot_info_pa;
 
 	for (s = screen_start; s < screen_end; s++)
 		*s = 0x0f00;
 
-	/*dbg_sync(port); */
-	/*dbg_print(port, "JX\n"); */
+	/* dbg_sync(port); */
+	/* dbg_print(port, "JX\n"); */
 	/*
 	   for(;;) {
 	   dbg_print(port, "JX");

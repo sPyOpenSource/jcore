@@ -8,7 +8,6 @@
 void sigsegv_handler();
 void start_domain_zero();
 
-
 ObjectDesc *allocObject(ClassDesc * c);
 ArrayDesc *allocArray(ClassDesc * elemClass, jint size);
 
@@ -92,7 +91,7 @@ int main(int argc, char *argv[])
 
 #else				/* KERNEL */
 	/* read zip from boot module */
-	/*module = base_multiboot_find(ZIPFILE); */
+	/* module = base_multiboot_find(ZIPFILE); */
 	module = multiboot_get_module();
 
 	if (module == NULL)
@@ -156,7 +155,7 @@ asm("int $0x80");
 	java_lang_Object_class = createObjectClass(java_lang_Object);
 
 	createArrayObjectVTableProto(domainZero);
-	//  class_Array = createArrayObjectClassDesc(domainZero);
+	//class_Array = createArrayObjectClassDesc(domainZero);
 	//class_Array_class = createArrayObjectClass(domainZero, class_Array);
 	/* init system */
 	set_current(createThread(domainZero, dummy_entry_point /* dummy */ , (void *) -1, STATE_RUNNABLE, SCHED_CREATETHREAD_NORUNQ));	/* dummy thread */
