@@ -139,13 +139,13 @@ realmode: src/Assembly/asm.S
 	$(AS) $(COREINCLUDE) --32 -c -nostdinc -o .kernel/$(@F) $<
 
 src/Interface/zero_FastMemory.s: src/Interface/zero_FastMemory.S
-	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
+	$(CC) -m32 -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
 
 src/%.s: src/%.S
-	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Assembly/$(@F)
+	$(CC) -m32 -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Assembly/$(@F)
 
 .kernel/%.s: src/%.c
-	$(CC) -S $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -o .kernel/$(@F) $<
+	$(CC) -m32 -S $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -o .kernel/$(@F) $<
 
 .SECONDARY: $(CORESEC)
 
