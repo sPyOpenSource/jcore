@@ -1,5 +1,5 @@
 #include "all.h"
-#include "gc/gc_impl.h"
+#include "Memory/gc_impl.h"
 
 
 #ifdef PROFILE_EVENT_MEMORY_ALLOC
