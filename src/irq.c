@@ -192,7 +192,7 @@ static void (*irqhandler[NINT]) () = {
 	    notDefined,		/* 3E */
 	    notDefined,		/* 3F */
 
-			hwint0x80,		/* 80 */
+			//hwint0x80,		/* 80 */
 };
 
 
