@@ -1,5 +1,5 @@
 ESSENTIALSOURCES = main.c libcache.c load.c thread.c interrupt.c \
-                   domain.c misc.c zero/zero.c vmsupport.c portal.c malloc.c \
+                   domain.c misc.c Interface/zero.c vmsupport.c portal.c malloc.c \
 				   classes.c zip.c  execJAVA.c atomic.c \
                    exception_handler.c memfs.c atomicfn.c oneshot.c \
                    sched_global.c sched_local.c sched_local_rr.c sched_local_java.c sched_global_rr.c \
