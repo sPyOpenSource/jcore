@@ -6,8 +6,8 @@
 #include "all.h"
 #include "runq.h"
 #include "scheduler_inlined.h"
-#include "gc/gc_common.h"
-#include "gc/gc_impl.h"
+#include "Memory/gc_common.h"
+#include "Memory/gc_impl.h"
 
 #ifdef PROFILE_EVENT_PORTAL
 static int event_send_start, event_send_block, event_send_end, event_send_return, event_send_handoff_to_recv,
