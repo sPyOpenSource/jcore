@@ -395,10 +395,10 @@ return_from_java1:
 return_from_java0:
 	jmp return_from_java
 .global return_from_javaX_end
-.Lreturn_from_javaX_end:
-	.size return_from_java0, .Lreturn_from_javaX_end-return_from_java0
-	.size return_from_java1, .Lreturn_from_javaX_end-return_from_java1
-	.size return_from_java2, .Lreturn_from_javaX_end-return_from_java2
+return_from_javaX_end:
+	.size return_from_java0, return_from_javaX_end-return_from_java0
+	.size return_from_java1, return_from_javaX_end-return_from_java1
+	.size return_from_java2, return_from_javaX_end-return_from_java2
 
 	
 
