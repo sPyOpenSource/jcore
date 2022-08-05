@@ -10,8 +10,8 @@
 #include "io_apic.h"
 #endif
 
-#include "gc/gc_common.h"
-#include "gc/gc_impl.h"
+#include "Memory/gc_common.h"
+#include "Memory/gc_impl.h"
 
 void int_dispatch(int irq, struct irqcontext ctx);
 
