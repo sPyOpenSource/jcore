@@ -8,18 +8,18 @@
 
 #include "all.h"
 
-#include "gc/gc_common.h"
-#include "gc/gc_impl.h"
-#include "gc/gc_stack.h"
-#include "gc/gc_pgc.h"
-#include "gc/gc_pa.h"
+#include "Memory/gc_common.h"
+#include "Memory/gc_impl.h"
+#include "Memory/gc_stack.h"
+#include "Memory/gc_pgc.h"
+#include "Memory/gc_pa.h"
 
 #ifdef BINARY_DATA_TRANSMISSION
 #include "bdt.h"
 #endif
 
 #ifdef PROFILE_GC
-#include "gc/gc_pgc.h"
+#include "Memory/gc_pgc.h"
 #endif
 
 #include "misc.h"
