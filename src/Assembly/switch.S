@@ -166,7 +166,7 @@ destroy_switch_to:
 	
 	ret
 destroy_switch_to_end:		
-	.size destroy_switch_to, destroy_switch_to_end-destory_switch_to
+	.size destroy_switch_to, destroy_switch_to_end-destroy_switch_to
 #else /* KERNEL */
 	/***********************
 	* EMULATION ONTOP OF UNIX
