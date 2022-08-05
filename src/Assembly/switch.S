@@ -32,9 +32,9 @@ internal_switch_to:
 	movl	%esi,PCB_ESI(%ecx)
 	movl	%edi,PCB_EDI(%ecx)
 #ifdef KERNEL	
-	movl	%es, PCB_ES(%ecx)
-	movl	%gs, PCB_GS(%ecx)
-	movl	%fs, PCB_FS(%ecx) 
+	mov	%es, PCB_ES(%ecx)
+	mov	%gs, PCB_GS(%ecx)
+	mov	%fs, PCB_FS(%ecx) 
 #endif /* KERNEL */
 	pushf
 	popl    PCB_EFLAGS(%ecx)
@@ -65,9 +65,9 @@ internal_switch_to:
 	*/
 	movl	THREAD_PPCB(%ecx),%edx
 #ifdef KERNEL
-	movl	PCB_GS(%edx),%gs
-	movl	PCB_FS(%edx), %fs 
-	movl	PCB_ES(%edx), %es 
+	mov	PCB_GS(%edx), %gs
+	mov	PCB_FS(%edx), %fs 
+	mov	PCB_ES(%edx), %es 
 #endif /* KERNEL */
 
 	movl	PCB_ESP(%edx),%esp
@@ -121,9 +121,9 @@ destroy_switch_to:
 	*/
 	movl	THREAD_PPCB(%ecx),%edx
 #ifdef KERNEL
-	movl	PCB_ES(%edx),%es
-	movl	PCB_GS(%edx),%gs
-	movl	PCB_FS(%edx), %fs 
+	mov	PCB_ES(%edx),%es
+	mov	PCB_GS(%edx),%gs
+	mov	PCB_FS(%edx),%fs 
 #endif
 	movl	PCB_EDI(%edx),%edi
 	movl	PCB_ESI(%edx),%esi
