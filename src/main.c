@@ -14,8 +14,7 @@ ArrayDesc *allocArray(ClassDesc * elemClass, jint size);
 /* On some architectures, this helps needless PIC pointer setup
    that would be needed just for the __stack_chk_fail call.  */
 
-void __attribute__ ((noreturn)) attribute_hidden
-__stack_chk_fail_local (void)
+void __stack_chk_fail_local (void)
 {
   __stack_chk_fail ();
 }
