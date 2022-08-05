@@ -74,7 +74,7 @@ void hwint12(void);
 void hwint13(void);
 void hwint14(void);
 void hwint15(void);
-void hwint0x80(void);
+//void hwint0x80(void);
 
 struct gate_table_s {
 	void (*gate) (void);
