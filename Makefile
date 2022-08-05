@@ -91,8 +91,9 @@ LINUXSRC  = $(LINUXSOURCES)
 LINUXOBJ  = $(LINUXSRC:%.c=.linux/%.o)
 LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
-COREOBJ2 = $(COREOBJ:.kernel/gc/%=.kernel/%)
-COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ2:.kernel/zero/%=.kernel/%)
+COREOBJ2 = $(COREOBJ:.kernel/Memory/%=.kernel/%)
+COREOBJ3 = $(COREOBJ2:.kernel/Assembly/%=.kernel/%)
+COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
 
 jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)
