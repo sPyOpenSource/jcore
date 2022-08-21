@@ -128,7 +128,6 @@ int main(int argc, char *argv[])
 #else
 	init_irq_data();
 #endif				/* KERNEL */
-//asm("int $0x80");
 #ifdef EVENT_LOG
 	events_init();
 #endif
