@@ -1,5 +1,5 @@
-# JavaOS
-This is the kernel for JavaOS. It's written in C and Assambly.
+# Kernel of JavaOS
+This kernel is written in C and Assambly.
 
 ## Targets
 Current is only for x86 proccesors with 32bit memory address.
