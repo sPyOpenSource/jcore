@@ -45,8 +45,6 @@ ipiint:
 .Lipiint_end:		
 	.size ipiint, .Lipiint_end-ipiint
 
-
-
 	
 	.align 4
 call_function_ipi:

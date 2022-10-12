@@ -48,4 +48,3 @@ event_panic:
        push $0 
        call domain_panic; 
 #endif
-

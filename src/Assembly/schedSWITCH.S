@@ -448,5 +448,3 @@ save_context:
 	ret	
 .Lsave_context_end:		
 	.size save_context, .Lsave_context_end-save_context
-
-					
