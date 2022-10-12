@@ -251,6 +251,4 @@ int findProxyCodeInDomain(struct DomainDesc_s *domain, char *addr,
 #endif				/*ASSEMBLER */
 
 
-
-
 #endif

@@ -76,7 +76,6 @@ static inline int fetchAndStore(int *var, int new)
     })
 
 
-
 #define ALIGN4(x) ((((u4_t)x)+3)&~3)
 
 #endif				/* ASSEMBLER */

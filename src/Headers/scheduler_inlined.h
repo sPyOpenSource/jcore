@@ -12,5 +12,3 @@
 /* receiver is idle, the wait queue is empty, wait for sender
  *  set this threads state to PORTAL_WAIT_FOR_SND and switch to next runnable thread */
 #define SCHED_BLOCK_PORTAL_WAIT_FOR_SND {Sched_block(STATE_PORTAL_WAIT_FOR_SND);}
-
-
