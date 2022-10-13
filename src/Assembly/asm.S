@@ -1,7 +1,7 @@
 #define ENTRY(x) 	.type	 x,@function ;.globl x	;  x:	 
-#define DATA32 data32
-#define CR0_PE_ON      0x1
-#define CR0_PE_OFF     0xfffffffe
+#define DATA32 		data32
+#define CR0_PE_ON   0x1
+#define CR0_PE_OFF  0xfffffffe
 
 #define KERNEL_DS       0x18
 #define KERNEL_16_DS    0x28

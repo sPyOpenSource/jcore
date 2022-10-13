@@ -122,7 +122,8 @@ ThreadDesc *createServiceThread(DomainDesc * domain, int poolIndex, char *name)
 
 #ifndef DIRECT_SEND_PORTAL
 
-char proxycode[] = { /* pushl  %ebp                     */ 0x55,
+char proxycode[] = { 
+	/* pushl  %ebp                     */ 0x55,
 	/* movl   %esp,%ebp                */ 0x89, 0xe5,
 	/* leal   0x8(%ebp),%ecx           */ 0x8d, 0x4d, 0x08,
 	/* pushl  %ecx                     */ 0x51,
@@ -134,6 +135,7 @@ char proxycode[] = { /* pushl  %ebp                     */ 0x55,
 	/* popl   %ebp                     */ 0x5d,
 	/* ret                             */ 0xc3
 };
+
 #define PROXYC_METHODINDEX   10
 #define PROXYC_NUMPARAMS     8
 #define PROXYC_ADDRESS       15

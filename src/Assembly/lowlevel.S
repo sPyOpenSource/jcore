@@ -53,8 +53,6 @@ ENTRY(jxbcopy)
 	ret	
 
 	
-	
-
 	/* void jxbytecpy(char* source, char* target, jint nbytes) */
 	.align 4
 ENTRY(IN_jxbytecpy)

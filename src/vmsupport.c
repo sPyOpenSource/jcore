@@ -12,7 +12,7 @@
 #define debugc(x) printf x
 #else				/* DBG_LOAD */
 #define debugc(x)
-#endif				/* DBG_LOAD */
+#endif			/* DBG_LOAD */
 
 static jint vm_spinlock = 1;
 

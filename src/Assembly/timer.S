@@ -7,7 +7,6 @@
 */
 
 
-	
 #include "config.h"
 #include "context.h"
 #include "thread.h"
