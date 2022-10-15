@@ -153,8 +153,6 @@ DomainDesc *createDomain(char *domainName, jint gcinfo0, jint gcinfo1, jint gcin
 	memset(domain->sfields, 0, sizeof(jint *) * domain->maxNumberOfLibs);
 #endif
 
-
-
 	strcpy(domain->domainName, domainName);
 	domain->threads = NULL;
 	domain->services[0] = SERVICE_ENTRY_CHANGING; /* reserve; index 0 can be used as invalid index */

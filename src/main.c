@@ -96,7 +96,6 @@ int main(int argc, char *argv[])
 	install_handler(SIGFPE, sigsegv_handler);
 
 	jxmalloc_init();
-
 #else				/* KERNEL */
 	/* read zip from boot module */
 	/* module = base_multiboot_find(ZIPFILE); */
@@ -106,7 +105,6 @@ int main(int argc, char *argv[])
 		sys_panic("Could not find boot module");
 
 	zip_init(module->mod_start, module->mod_end - module->mod_start);
-
 #endif				/* KERNEL */
 
 #ifdef KERNEL
@@ -139,6 +137,7 @@ int main(int argc, char *argv[])
 	init_realmode();
 #endif
 #endif
+
 	/*
 	 * Init preemption-aware atomic regions
 	 */
@@ -151,7 +150,6 @@ int main(int argc, char *argv[])
 	threads_init();
 
 	portals_init();
-
 
 	//irq_disable(); /* don't need to disable interrupts, because there are none - timer not yet initialized */
 asm("int $0x80");

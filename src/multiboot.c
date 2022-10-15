@@ -16,12 +16,12 @@ extern char **environ;
  * Real segment descriptor.
  */
 struct x86_desc {
-	unsigned int limit_low:16,	/* limit 0..15 */
+	 unsigned int limit_low:16,	/* limit 0..15 */
 	 base_low:16,		/* base  0..15 */
 	 base_med:8,		/* base  16..23 */
-	 access:8,		    /* access byte */
-	 limit_high:4,		/* limit 16..19 */
-	 granularity:4,		/* granularity */
+	 access:8,		  /* access byte */
+	 limit_high:4,  /* limit 16..19 */
+	 granularity:4,	/* granularity */
 	 base_high:8;		/* base 24..31 */
 };
 
@@ -29,7 +29,7 @@ struct x86_desc {
  * Trap, interrupt, or call gate.
  */
 struct x86_gate {
-	unsigned int offset_low:16,	/* offset 0..15 */
+	 unsigned int offset_low:16,	/* offset 0..15 */
 	 selector:16, word_count:8, access:8, offset_high:16;	/* offset 16..31 */
 };
 
@@ -38,7 +38,7 @@ struct x86_gate {
  */
 struct x86_tss {
 	int back_link;		/* segment number of previous task,
-				   if nested */
+				   					if nested */
 	int esp0;		/* initial stack pointer ... */
 	int ss0;		/* and segment for ring 0 */
 	int esp1;		/* initial stack pointer ... */
@@ -83,7 +83,7 @@ struct x86_tss {
 #define	ACC_LDT		0x02	/* LDT */
 #define	ACC_CALL_GATE_16 0x04	/* 16-bit call gate */
 #define	ACC_TASK_GATE	0x05	/* task gate */
-#define	ACC_TSS		0x09	/* task segment */
+#define	ACC_TSS		    0x09	/* task segment */
 #define	ACC_CALL_GATE	0x0c	/* call gate */
 #define	ACC_INTR_GATE	0x0e	/* interrupt gate */
 #define	ACC_TRAP_GATE	0x0f	/* trap gate */
@@ -92,20 +92,20 @@ struct x86_tss {
 
 #define	ACC_TYPE_USER	0x10	/* user descriptors */
 
-#define	ACC_DATA	0x10	/* data */
+#define	ACC_DATA	  0x10	/* data */
 #define	ACC_DATA_W	0x12	/* data, writable */
 #define	ACC_DATA_E	0x14	/* data, expand-down */
 #define	ACC_DATA_EW	0x16	/* data, expand-down,
-				   writable */
-#define	ACC_CODE	0x18	/* code */
+				   								writable */
+#define	ACC_CODE	  0x18	/* code */
 #define	ACC_CODE_R	0x1a	/* code, readable */
 #define	ACC_CODE_C	0x1c	/* code, conforming */
 #define	ACC_CODE_CR	0x1e	/* code, conforming,
-				   readable */
+				   								readable */
 #define	ACC_PL		0x60	/* access rights: */
 #define	ACC_PL_K	0x00	/* kernel access only */
 #define	ACC_PL_U	0x60	/* user access */
-#define	ACC_P		0x80	/* segment present */
+#define	ACC_P			0x80	/* segment present */
 
 /*
  * Components of a selector
@@ -362,7 +362,7 @@ void gate_init(struct x86_gate *dest, const struct gate_init_entry *src, unsigne
 	}
 }
 
-#define pic_enable_all() ({		\
+#define pic_enable_all() ({	\
 	outb(MASTER_OCW, 0);		\
 	outb(SLAVES_OCW, 0);		\
 })
@@ -375,7 +375,7 @@ void pic_disable_all()
 
 #define pic_ack(irq) ({				\
 	outb(MASTER_ICW, NON_SPEC_EOI);		\
-	if ((irq) >= 8)				    \
+	if ((irq) >= 8)				    	\
 		outb(SLAVES_ICW, NON_SPEC_EOI);	\
 })
 
@@ -456,7 +456,6 @@ void base_tss_load(void)
 	/* Load the TSS. */
 	asm volatile ("ltr %0"::"rm" ((unsigned short) (BASE_TSS)));
 }
-
 
 void icore_base_cpu_load(void)
 {

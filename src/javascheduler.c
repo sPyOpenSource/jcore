@@ -122,32 +122,32 @@ static void MaybeRunnable(ThreadDesc * t)
 /*********************** JAVA wrappers *************************/
 
 #define GENERATE_WARPER(NAME, CUSTOM_CODE)                         \
-void Sched_##NAME (ThreadDesc *thread) {                          \
+void Sched_##NAME (ThreadDesc *thread) {                           \
      DomainDesc* domain = thread->schedulingDomain;                \
      HLSchedDesc* HLS;  /* the HighLevel Scheduler */              \
      ASSERTTHREAD (thread);                                        \
      ASSERTCLI;                                                    \
                                                                    \
      if (domain == NULL)                                           \
-	  sys_panic("no scheduling Domain\n");                     \
+	     sys_panic("no scheduling Domain\n");                        \
                                                                    \
      sched_dprintf(2,"CPU%d: "#NAME" Thread of Domain: %s scheduled by Domain: %s\n",\
 		   get_processor_id(), thread->domain->domainName, domain->domainName);\
      HLS = domain->Scheduler[get_processor_id()];                  \
      if (HLS == NULL)                                              \
-	  sys_panic("no scheduler\n");                             \
+	     sys_panic("no scheduler\n");                                \
      else {                                                        \
-          CUSTOM_CODE;                                             \
-	  call_JAVA_method1(HLS->SchedObj, HLS->SchedThread,       \
-			    HLS->NAME##_code, (long)thread2CPUState(thread));     \
+       CUSTOM_CODE;                                                \
+	     call_JAVA_method1(HLS->SchedObj, HLS->SchedThread,          \
+			 HLS->NAME##_code, (long)thread2CPUState(thread));           \
      }                                                             \
 }
 
 //IRQs need not to be disabled!!
-#define GENERATE_LOCKED_WARPER(NAME)                    	   \
-void Sched_locked_##NAME(ThreadDesc *thread) {                   \
+#define GENERATE_LOCKED_WARPER(NAME)                    	         \
+void Sched_locked_##NAME(ThreadDesc *thread) {                     \
      DISABLE_IRQ;                                                  \
-     Sched_##NAME(thread);                                       \
+     Sched_##NAME(thread);                                         \
      RESTORE_IRQ;                                                  \
 }
 
@@ -229,17 +229,17 @@ void Sched_portal_handoff_to_receiver(ThreadDesc * receiver)
 #endif
 
 	if (handoff == JNI_FALSE) {	/* no hand-off Scheduling */
-//        target->depSwitchBack = JNI_FALSE;
+//  target->depSwitchBack = JNI_FALSE;
 		threadunblock(receiver);	/* sheduler was informed by Sched_blockedInPortalCall */
 		Sched_switch_to_nextThread();
 	} else {		/* hand-off Scheduling */
-//        target->depSwitchBack = JNI_TRUE;
+//  target->depSwitchBack = JNI_TRUE;
 #ifdef VISIBLE_PORTALS
 		Sched_switchTo(receiver);
 #else
 		switch_to(curthrP(), receiver);
 #endif
-//        curthr()->state = STATE_RUNNABLE;
+//  curthr()->state = STATE_RUNNABLE;
 	}
 	ASSERT(curthr()->state == STATE_RUNNABLE);
 }
@@ -292,7 +292,7 @@ void Sched_deactivate_interrupt_thread(ThreadDesc * normalThread)
 #ifdef PROFILE_EVENT_THREADSWITCH
 	profile_event_threadswitch_to(normalThread);
 #endif
-	//  printf("deactivate: curthr: %d.%d irqthr: %d.%d\n", TID(curthr()), TID(normalThread));
+	// printf("deactivate: curthr: %d.%d irqthr: %d.%d\n", TID(curthr()), TID(normalThread));
 }
 
 
@@ -392,10 +392,6 @@ void Sched_destroy_switchTo(ThreadDesc * thread)
 			destroy_call_JAVA_method1(HLS->SchedObj, HLS->SchedActivateThread, HLS->switchedTo_code, (long)
 						  thread2CPUState(thread), CALL_WITH_ENABLED_IRQS);
 		}
-
-
-
-
 
 	}
 	sys_panic("never reached\n");
@@ -587,7 +583,6 @@ void LLSched_register(DomainDesc * domain, ObjectDesc * new_sched)
 
 	RESTORE_IRQ;
 }
-
 
 
 /*********************** HighLevelScheduler  *************************/
@@ -1000,12 +995,10 @@ int _check_not_in_runq(int cpu_id, ThreadDesc * thread)
 }
 #endif
 
-
 #ifdef CHECK_RUNNABLE_IN_RUNQ
 void check_runnable(DomainDesc * domain)
 {
 }
 #endif
-
 
 #endif				/* JAVASCHEDULER */

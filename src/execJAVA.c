@@ -74,9 +74,8 @@ int call_JAVA_method1(ObjectDesc * Object, ThreadDesc * worker, java_method1_t f
 #endif
 
 	if (function == NULL)	/* method not implemented */
-		//       sys_panic("null function not supportet yet");
+		// sys_panic("null function not supportet yet");
 		return JNI_FALSE;
-
 
 	if (worker == NULL)	/* DomainZero? */
 		return function(Object, param);
@@ -161,8 +160,8 @@ void destroy_call_JAVA_function(ObjectDesc * Object, ThreadDesc * worker, java_m
 	ASSERTTHREAD(worker);
 	ASSERT(function != NULL)
 
-	    /* switch worker->state from AVAILABLE to RUNNING */
-	    if (!cas((u4_t *) (&worker->state), (u4_t) STATE_AVAILABLE, (u4_t) STATE_RUNNABLE))
+	/* switch worker->state from AVAILABLE to RUNNING */
+	if (!cas((u4_t *) (&worker->state), (u4_t) STATE_AVAILABLE, (u4_t) STATE_RUNNABLE))
 		sys_panic("the worker thread %d.%d (%s) is not AVAILABLE\n", TID(worker), worker->name);
 
 	/* prepare worker thread */
@@ -190,8 +189,8 @@ void destroy_call_JAVA_method1(ObjectDesc * Object, ThreadDesc * worker, java_me
 	ASSERTTHREAD(worker);
 	ASSERT(function != NULL)
 
-	    /* switch worker->state from AVAILABLE to RUNNING */
-	    if (!cas((u4_t *) (&worker->state), (u4_t) STATE_AVAILABLE, (u4_t) STATE_RUNNABLE))
+	/* switch worker->state from AVAILABLE to RUNNING */
+	if (!cas((u4_t *) (&worker->state), (u4_t) STATE_AVAILABLE, (u4_t) STATE_RUNNABLE))
 		sys_panic("the worker thread (%d.d) is not AVAILABLE\n", TID(worker));
 
 	/* prepare worker thread */
@@ -222,8 +221,8 @@ void destroy_call_JAVA_method2(ObjectDesc * Object, ThreadDesc * worker, java_me
 	ASSERTTHREAD(worker);
 	ASSERT(function != NULL)
 
-	    /* switch worker->state from AVAILABLE to RUNNING */
-	    if (!cas((u4_t *) (&worker->state), (u4_t) STATE_AVAILABLE, (u4_t) STATE_RUNNABLE))
+	/* switch worker->state from AVAILABLE to RUNNING */
+	if (!cas((u4_t *) (&worker->state), (u4_t) STATE_AVAILABLE, (u4_t) STATE_RUNNABLE))
 		sys_panic("the worker thread %d.%d (%s) is not AVAILABLE\n", TID(worker), worker->name);
 
 	/* prepare worker thread */

@@ -33,8 +33,8 @@ void int_dispatch(int irq, struct irqcontext ctx);
 #define STACK_FAULT_VECTOR 12	/* stack exception */
 #define PROTECTION_VECTOR  13	/* general protection */
 /* extra 386 Exception vector numbers. */
-#define PAGE_FAULT_VECTOR   14
-#define COPROC_ERR_VECTOR   16	/* coprocessor error */
+#define PAGE_FAULT_VECTOR  14
+#define COPROC_ERR_VECTOR  16	/* coprocessor error */
 
 #define IRQ0_VECTOR     40
 #define IRQ8_VECTOR     48
@@ -204,12 +204,12 @@ static void (*irqhandler[NINT]) () = {
  * Trap, interrupt, or call gate.
  */
 struct gate_s {
-	u4_t offset_low:16,	/* offset 0..15 */
+	 u4_t offset_low:16,	/* offset 0..15 */
 	 selector:16, word_count:8, access:8, offset_high:16;	/* offset 16..31 */
 };
 
 struct descriptor_s {
-	u4_t limit_low:16,	/* limit 0..15 */
+	 u4_t limit_low:16,	/* limit 0..15 */
 	 base_low:16,		/* base  0..15 */
 	 base_med:8,		/* base  16..23 */
 	 access:8,		/* access byte */
@@ -269,7 +269,7 @@ struct desctable_s {
 };
 
 #define KCODESEL 0x10
-#define DESCSIZE 8
+#define DESCSIZE  8
 #define IDTOFF_LO 0
 #define IDT_SEL   2
 #define IDT_ZERO  4
@@ -829,7 +829,7 @@ void dump_irqhandlers()
 			printf(" e=%d ", iInfos[i].enabled);
 
 			if (ifirstlevel_object[cpu][i] != NULL) {
-//                       printf(", 1stLevel Handler %p, thread=%p\n", ifirstlevel_object[cpu][i], ithreads[cpu][i]);
+//      printf(", 1stLevel Handler %p, thread=%p\n", ifirstlevel_object[cpu][i], ithreads[cpu][i]);
 				printf(", 1stLevel Handler %p in domain 0x%lx (%s)\n", ifirstlevel_object[cpu][i],
 				       idomains[cpu][i], idomains[cpu][i]->domainName);
 				printf("thread=%d.%d", ithreads[cpu][i]->domain->id, ithreads[cpu][i]->id);
@@ -843,8 +843,7 @@ void dump_irqhandlers()
 			printf("\n\n");
 		}
 
-
-	}			// end "for cpu"
+	}	// end "for cpu"
 }
 
 /* t is pointer into old heap ! */

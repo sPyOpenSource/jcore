@@ -122,7 +122,7 @@ ThreadDesc *createServiceThread(DomainDesc * domain, int poolIndex, char *name)
 
 #ifndef DIRECT_SEND_PORTAL
 
-char proxycode[] = { 
+char proxycode[] = {
 	/* pushl  %ebp                     */ 0x55,
 	/* movl   %esp,%ebp                */ 0x89, 0xe5,
 	/* leal   0x8(%ebp),%ecx           */ 0x8d, 0x4d, 0x08,
@@ -2713,7 +2713,6 @@ void disconnectServiceFromPool(DEPDesc * svc)
 	}
 }
 #endif
-
 
 void portals_init()
 {

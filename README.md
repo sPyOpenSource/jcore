@@ -1,8 +1,8 @@
 # Kernel of JavaOS
-This kernel is written in C and Assambly.
+This kernel is written in C and Assembly.
 
 ## Targets
-Current is only for x86 proccesors with 32bit memory address.
+Current is only support for x86 processors with 32bit memory address.
 
 ## Future work
 For x86_64, ARM and RiscV processors
