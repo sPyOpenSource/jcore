@@ -52,8 +52,8 @@ static int accNSent = 0;
 #define ACC(x) x
 static void accPrint()
 {
-	fprintf(stderr, "T:%d G:%d S:%d C:%d P:%d S:%d\n", accACKTries, accACKGots, accACKSuccesses, accACKTimeouts, accNPackages,
-		accNSent);
+	fprintf(stderr, "T:%d G:%d S:%d C:%d P:%d S:%d\n", accACKTries, accACKGots, accACKSuccesses,
+		accACKTimeouts, accNPackages, accNSent);
 }
 #else
 static void accPrint()
@@ -83,7 +83,7 @@ static u8_t getMilliSeconds()
 	/*  struct timeval tv;
 	   u8_t ms;
 
-	   gettimeofday(&tv, NULL);  
+	   gettimeofday(&tv, NULL);
 	   ms = tv.tv_usec / 1000;
 	   ms += tv.tv_sec * 1000;
 

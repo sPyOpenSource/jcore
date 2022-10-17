@@ -8,7 +8,6 @@
 #define ATOMICFN0(_r_, _n_, _s_) _r_ (* _n_) _s_;
 #include "atomicfn.h"
 
-
 #undef ATOMICFN
 #undef ATOMICFN0
 #define ATOMICFN(_r_, _n_, _s_) _r_ nonatomic_##_n_ _s_;

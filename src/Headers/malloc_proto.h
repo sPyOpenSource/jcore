@@ -2,7 +2,7 @@
 LibDesc *malloc_libdesc(DomainDesc * domain);
 ClassDesc *malloc_classdesc(DomainDesc * domain, u4_t namelen);
 PrimitiveClassDesc *malloc_primitiveclassdesc(DomainDesc * domain,
-					      u4_t namelen);
+					      															u4_t namelen);
 Class *malloc_class(DomainDesc * domain);
 Class *malloc_classes(DomainDesc * domain, u4_t number);
 MethodDesc *malloc_methoddesc(DomainDesc * domain);
@@ -25,7 +25,7 @@ struct nameValue_s *malloc_domainzero_namevalue();
 char *malloc_proxycode(DomainDesc * domain, u4_t size);
 char *malloc_cpudesc(DomainDesc * domain, u4_t size);
 SharedLibDesc **malloc_sharedlibdesctable(DomainDesc * domain,
-					  u4_t number);
+					  															u4_t number);
 ClassDesc *malloc_classdescs(DomainDesc * domain, u4_t number);
 ArrayClassDesc *malloc_arrayclassdesc(DomainDesc * domain, u4_t namelen);
 u4_t *malloc_threadstack(DomainDesc * domain, u4_t size, u4_t align);

@@ -48,8 +48,8 @@ void init_domainsys()
 
 	domainsys_inited = 1;
 	domainZero =
-	    createDomain("DomainZero", HEAP_BYTES_DOMAINZERO, -1, -1, NULL, -1, CODE_BYTES_DOMAINZERO, GC_IMPLEMENTATION_DEFAULT,
-			 NULL);
+	    createDomain("DomainZero", HEAP_BYTES_DOMAINZERO, -1, -1, NULL, -1, CODE_BYTES_DOMAINZERO,
+				GC_IMPLEMENTATION_DEFAULT, NULL);
 	if (domainZero == NULL)
 		sys_panic("Cannot create domainzero");
 #ifdef PORTAL_INTERCEPTOR
@@ -96,8 +96,8 @@ DomainDesc *specialAllocDomainDesc()
 }
 
 
-DomainDesc *createDomain(char *domainName, jint gcinfo0, jint gcinfo1, jint gcinfo2, char *gcinfo3, jint gcinfo4, u4_t code_bytes,
-			 int gcImpl, ArrayDesc * schedinfo)
+DomainDesc *createDomain(char *domainName, jint gcinfo0, jint gcinfo1, jint gcinfo2, char *gcinfo3,
+	jint gcinfo4, u4_t code_bytes, int gcImpl, ArrayDesc * schedinfo)
 {
 	u1_t *mem;
 	DEPDesc *gcdep;
@@ -247,8 +247,8 @@ int findByteCodePosition(MethodDesc * method, u1_t * addr)
 	return bPos;
 }
 
-int findMethodAtAddrInDomain(DomainDesc * domain, u1_t * addr, MethodDesc ** method, ClassDesc ** classInfo, jint * bytecodePos,
-			     jint * lineNumber)
+int findMethodAtAddrInDomain(DomainDesc * domain, u1_t * addr, MethodDesc ** method, ClassDesc ** classInfo,
+	jint * bytecodePos, jint * lineNumber)
 {
 	int g, h, i, j, k, l, m;
 	int ret = -1;
@@ -395,7 +395,8 @@ int findMethodAtAddrInDomain(DomainDesc * domain, u1_t * addr, MethodDesc ** met
 
 /* -1 failure,
    0 success */
-int findMethodAtAddr(u1_t * addr, MethodDesc ** method, ClassDesc ** classInfo, jint * bytecodePos, jint * lineNumber)
+int findMethodAtAddr(u1_t * addr, MethodDesc ** method, ClassDesc ** classInfo, jint * bytecodePos,
+	jint * lineNumber)
 {
 	int g, h, i, j, k;
 	jint offset;
