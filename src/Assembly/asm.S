@@ -1,18 +1,18 @@
-#define ENTRY(x) 	.type	 x,@function ;.globl x	;  x:	 
+#define ENTRY(x) 	.type	 x,@function ;.globl x	;  x:
 #define DATA32 		data32
 #define CR0_PE_ON   0x1
 #define CR0_PE_OFF  0xfffffffe
 
-#define KERNEL_DS       0x18
-#define KERNEL_16_DS    0x28
-#define KERNEL_CS		0x10
+#define KERNEL_DS     0x18
+#define KERNEL_16_DS  0x28
+#define KERNEL_CS			0x10
 #define KERNEL_16_CS	0x20
 
 #define REALCODE   0x9000
 #define STACKOFF   0x8000
 #define SCRATCHMEM 0x7000
 #define OTHERMEM   0x6000
-	
+
 #if 0
 #define WRITE(c)\
 	mov    $0x3fd,%dx	; \
@@ -24,18 +24,18 @@
 	out    %al,(%dx)
 #endif
 #define WRITE(c)
-	
-		
+
+
 	.text
-.p2align  2   , 0x90 ; .type       _start   ,@function ; .globl     _start     ;     _start:    
-				
+.p2align  2   , 0x90 ; .type       _start   ,@function ; .globl     _start     ;     _start:
+
 
 	.code16
 ENTRY(real_to_prot)
 	cli
 
 	WRITE('0')
-	
+
 	/* load the GDT register */
 	/*DATA32	ADDR32	lgdt	gdtdesc*/
 
@@ -45,7 +45,7 @@ ENTRY(real_to_prot)
 	movl	%eax, %cr0
 
 	WRITE('1')
-	
+
 	/* jump to relocation, flush prefetch queue, and reload %cs */
 	DATA32	ljmp	$KERNEL_CS, $protcseg
 
@@ -61,7 +61,7 @@ protcseg:
 	movw	%ax, %ss
 
 	WRITE('2')
-	
+
 	/* put the return address in a known safe location */
 	movl	(%esp), %eax
 	movl	%eax, STACKOFF
@@ -82,7 +82,7 @@ protcseg:
 	ret
 
 	.code32
-prot_to_real:	
+prot_to_real:
 
 	/* save the protected mode stack */
 	movl	%esp, %eax
@@ -108,7 +108,7 @@ prot_to_real:
 	/* this might be an extra step */
 	ljmp	$KERNEL_16_CS, $tmpcseg	/* jump to a 16 bit segment */
 
-tmpcseg:	
+tmpcseg:
 	.code16
 
 	/* clear the PE bit of CR0 */
@@ -119,7 +119,7 @@ tmpcseg:
 	/* flush prefetch queue, reload %cs */
 	DATA32	ljmp	$0, $realcseg
 
-realcseg:	
+realcseg:
 	/* we are in real mode now
 	 * set up the real mode segment registers : DS, SS, ES
 	 */
@@ -133,15 +133,15 @@ realcseg:
 	movw	%ax, %gs
 	movw	%ax, %ss
 
-#ifdef ALLOW_IRQ	
+#ifdef ALLOW_IRQ
 	/* restore interrupts */
 	sti
 #endif
-	
+
 	/* return on new stack! */
 	DATA32	ret
 
-	
+
 /* int vesa2_detect (void)
  *      Returns zero if VESA 2 or better is detected, or non-zero if
  *      not detected.
@@ -166,7 +166,7 @@ ENTRY(vesa2_detect)
         .code16
 
 	WRITE('M')
-	
+
         /* Call the 'GET SuperVGA Information' VESA function. */
         movw    %bx, %es
         xorw    %di, %di
@@ -176,13 +176,13 @@ ENTRY(vesa2_detect)
         movw    %ax, %bx
 
 	WRITE('L')
-		
+
         /* Return to protected mode. */
        DATA32  call    real_to_prot
        .code32
 
 	WRITE('K')
-	
+
         movl    $1, %eax
 
         /* First, make sure the call suceeded. */
@@ -190,7 +190,7 @@ ENTRY(vesa2_detect)
         jne     1f
 
 	WRITE('1')
-	
+
         /* Okay, we have a VESA BIOS. Now, make sure the version
            number is high enough. */
         cmpw    $0x200, (SCRATCHMEM)
@@ -201,13 +201,13 @@ ENTRY(vesa2_detect)
 
 1:
 	WRITE('0')
-	
+
 		popl    %edi
         popl    %ebx
         popl    %ebp
         ret
 
-	
+
 ENTRY(testreal)
         pushl   %ebp
         pushl   %ebx
@@ -217,7 +217,7 @@ ENTRY(testreal)
 
 
 	WRITE('N')
-	
+
         /* Enter real mode. */
         call   prot_to_real
         .code16
@@ -229,13 +229,13 @@ ENTRY(testreal)
        .code32
 
 	WRITE('L')
-	
-	
+
+
 1:      popl    %edi
         popl    %ebx
         popl    %ebp
         ret
-	
+
 
 /* int vesa2_get_mode_info (int mode, struct vesa_mode_info *vesa_mode_info)
  *      Gets VESA mode information from the VESA BIOS.
@@ -260,7 +260,7 @@ ENTRY(vesa2_get_mode_info)
         /* Store the mode number in CX. */
         movl    8(%ebp), %ecx
 
-		
+
         /* Enter real mode. */
         call   prot_to_real
         .code16
@@ -274,7 +274,7 @@ ENTRY(vesa2_get_mode_info)
 		/* load offset into %di */
         movw    $0x6000, %ax
 		movw	%ax, %di
-	
+
         /*movw    %bx, %es*/
         movw    $0x4f01, %ax
         int     $0x10
@@ -344,11 +344,11 @@ ENTRY(vesa2_set_mode)
 	/* this is the place where the stack pointer is saved
 	 * at the entry to prot_to_real and restored at exit from
 	 * real_to_prot */
-	
+
 protstack:
 	.long	0
 
-	
+
 /*
  * This is the Global Descriptor Table
  *

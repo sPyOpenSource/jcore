@@ -4,7 +4,7 @@
 
 #ifdef MICROBENCHMARKS
 
-	
+
 #define BENCH_PRO(name) \
 	.text			; \
 	.align 16		; \
@@ -22,20 +22,20 @@ name:			; \
 
 #define BENCH_EPI\
 	rdtsc			; \
-	mov    0x8(%ebp),%ecx	; \
-	movl   %edi,0x0(%ecx)	; \
-	movl   %esi,0x4(%ecx)	; \
-	movl   %edx,0x8(%ecx)	; \
-	movl   %eax,0xc(%ecx)	; \
+	mov   0x8(%ebp),%ecx	; \
+	movl  %edi,0x0(%ecx)	; \
+	movl  %esi,0x4(%ecx)	; \
+	movl  %edx,0x8(%ecx)	; \
+	movl  %eax,0xc(%ecx)	; \
 	popl	%edi		; \
 	popl	%esi		; \
 	popl	%ebx		; \
 	leave			; \
 	ret
-		
+
 
 	/* these registers can be used:	 %eax, %ebx, %ecx, %edx */
-	
+
 BENCH_PRO(bench_empty)
 BENCH_EPI
 
@@ -62,7 +62,6 @@ BENCH_PRO(bench_load1)
 	movl	benchmem, %eax
 	movl	(%eax), %ebx
 BENCH_EPI
-			
+
 
 #endif /* MICROBENCHMARKS	 */
-	

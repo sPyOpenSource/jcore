@@ -46,7 +46,7 @@ struct x86_tss {
 	int esp2;		/* initial stack pointer ... */
 	int ss2;		/* and segment for ring 2 */
 	int cr3;		/* CR3 - page table directory
-				   physical address */
+				   			 physical address */
 	int eip;
 	int eflags;
 	int eax;
@@ -167,7 +167,7 @@ struct pseudo_descriptor {
 #define BASE_IRQ_COUNT		0x10
 
 /* This is the default location in the IDT at which we program the PICs. */
-#define BASE_IRQ_MASTER_BASE	0x20
+#define BASE_IRQ_MASTER_BASE 0x20
 #define BASE_IRQ_SLAVE_BASE	0x28
 
 
@@ -420,7 +420,7 @@ void icore_base_cpu_init(void)
 	/* cpuid(&base_cpuid); */
 
 	/* Initialize the processor tables. */
-    /* init_intr_gates(); *//* in metaxa_os_IRQ.c */
+  /* init_intr_gates(); *//* in metaxa_os_IRQ.c */
 	base_gdt_init();
 	/* base_tss_init(); */
 }
