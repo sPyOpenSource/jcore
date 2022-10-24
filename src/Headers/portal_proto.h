@@ -41,7 +41,6 @@ void receive_portalcall(u4_t serviceIndex);
 #endif
 jint send_portalcall(jint methodIndex, jint numParams, jint ** paramlist);
 
-
 #endif				/*ASSEMBLER */
 
 #endif

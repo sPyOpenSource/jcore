@@ -54,9 +54,9 @@ static void undefIRQfunc(unsigned int irq)
 }
 static struct irqfunctions undefinedIRQ = {
 	"undefined",
-	undefIRQfunc,		//ack
-	undefIRQfunc,		//enable
-	undefIRQfunc,		//disable
+	undefIRQfunc,	//ack
+	undefIRQfunc,	//enable
+	undefIRQfunc,	//disable
 };
 
 /* init the data defined above
@@ -363,7 +363,7 @@ MethodInfoDesc irqMethods[] = {
 	{"disableIRQ", "", irq_disableIRQ},
 	{"enableAll", "", irq_enableAll},
 	{"disableAll", "", irq_disableAll},
-	{"set_destination", "", irq_set_destination},
+	{"setDestination", "", irq_set_destination},
 };
 
 void init_irq_portal()

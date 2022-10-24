@@ -662,89 +662,47 @@ jint cpuManager_allowScheduling(ObjectDesc * self)
 }
 
 MethodInfoDesc cpuManagerMethods[] = {
-	{
-	 "receive", "", (code_t) cpuManager_receive}
-	, {
-	   "yield", "", (code_t) cpuManager_yield}
-	, {
-	   "sleep", "", (code_t) cpuManager_sleep}
-	, {
-	   "wait", "", (code_t) cpuManager_wait}
-	, {
-	   "notify", "", (code_t) cpuManager_notify}
-	, {
-	   "notifyAll", "", (code_t) cpuManager_notifyAll}
-	, {
-	   "dump", "", (code_t) cpuManager_dump}
-	, {
-	   "switchTo", "", (code_t) cpuManager_switchTo}
-	, {
-	   "getCPUState", "", (code_t) cpuManager_getCPUState}
-	, {
-	   "block", "", (code_t) cpuManager_block}
-	, {
-	   "blockIfNotUnblocked", "", (code_t) cpuManager_blockIfNotUnblocked}
-	, {
-	   "clearUnblockFlag", "", (code_t) cpuManager_clearUnblockFlag}
-	, {
-	   "join", "", (code_t) cpuManager_join}
-	, {
-	   "waitUntilBlocked", "", (code_t) cpuManager_waitUntilBlocked}
-	, {
-	   "unblock", "", (code_t) cpuManager_unblock}
-	, {
-	   "createCPUState", "", (code_t) cpuManager_createCPUState}
-	, {
-	   "start", "", (code_t) cpuManager_start}
-	, {
-	   "printStackTrace", "", (code_t) cpuManager_printStackTrace}
-	, {
-	   "getAtomicVariable", "", (code_t) cpuManager_getAtomicVariable}
-	, {
-	   "setThreadName", "", (code_t) cpuManager_setThreadName}
-	, {
-	   "attachToThread", "", (code_t) cpuManager_attachToThread}
-	, {
-	   "getAttachedObject", "", (code_t) cpuManager_getAttachedObject}
-	, {
-	   "getCredential", "", (code_t) cpuManager_getCredential}
-	, {
-	   "createNewEvent", "", (code_t) cpuManager_createNewEvent}
-	, {
-	   "recordEvent", "", (code_t) cpuManager_recordEvent}
-	, {
-	   "recordEventWithInfo", "", (code_t) cpuManager_recordEventWithInfo}
-	, {
-	   "getCAS", "", (code_t) cpuManager_getCAS}
-	, {
-	   "getClass", "", (code_t) cpuManager_getClass}
-	, {
-	   "getVMClass", "", (code_t) cpuManager_getVMClass}
-	, {
-	   "getVMObject", "", (code_t) cpuManager_getVMObject}
-	, {
-	   "assertInterruptEnabled", "", (code_t) cpuManager_assertInterruptEnabled}
-	, {
-	   "executeClassConstructors", "", (code_t) cpuManager_executeClassConstructors}
-	, {
-	   "inheritServiceThread", "", (code_t) cpuManager_inheritServiceThread}
-	, {
-	   "reboot", "", (code_t) cpuManager_reboot}
-	, {
-	   "getStackDepth", "", (code_t) cpuManager_getStackDepth}
-	, {
-	   "getStackFrameClassName", "", (code_t) cpuManager_getStackFrameClassName}
-	, {
-	   "getStackFrameMethodName", "", (code_t) cpuManager_getStackFrameMethodName}
-	, {
-	   "getStackFrameLine", "", (code_t) cpuManager_getStackFrameLine}
-	, {
-	   "getStackFrameBytecode", "", (code_t) cpuManager_getStackFrameBytecode}
-	, {
-	   "inhibitScheduling", "", (code_t) cpuManager_inhibitScheduling}
-	, {
-	   "allowScheduling", "", (code_t) cpuManager_allowScheduling}
-	,
+	{"receive", "", (code_t) cpuManager_receive}
+	, {"yield", "", (code_t) cpuManager_yield}
+	, {"sleep", "", (code_t) cpuManager_sleep}
+	, {"wait", "", (code_t) cpuManager_wait}
+	, {"notify", "", (code_t) cpuManager_notify}
+	, {"notifyAll", "", (code_t) cpuManager_notifyAll}
+	, {"dump", "", (code_t) cpuManager_dump}
+	, {"switchTo", "", (code_t) cpuManager_switchTo}
+	, {"getCPUState", "", (code_t) cpuManager_getCPUState}
+	, {"block", "", (code_t) cpuManager_block}
+	, {"blockIfNotUnblocked", "", (code_t) cpuManager_blockIfNotUnblocked}
+	, {"clearUnblockFlag", "", (code_t) cpuManager_clearUnblockFlag}
+	, {"join", "", (code_t) cpuManager_join}
+	, {"waitUntilBlocked", "", (code_t) cpuManager_waitUntilBlocked}
+	, {"unblock", "", (code_t) cpuManager_unblock}
+	, {"createCPUState", "", (code_t) cpuManager_createCPUState}
+	, {"start", "", (code_t) cpuManager_start}
+	, {"printStackTrace", "", (code_t) cpuManager_printStackTrace}
+	, {"getAtomicVariable", "", (code_t) cpuManager_getAtomicVariable}
+	, {"setThreadName", "", (code_t) cpuManager_setThreadName}
+	, {"attachToThread", "", (code_t) cpuManager_attachToThread}
+	, {"getAttachedObject", "", (code_t) cpuManager_getAttachedObject}
+	, {"getCredential", "", (code_t) cpuManager_getCredential}
+	, {"createNewEvent", "", (code_t) cpuManager_createNewEvent}
+	, {"recordEvent", "", (code_t) cpuManager_recordEvent}
+	, {"recordEventWithInfo", "", (code_t) cpuManager_recordEventWithInfo}
+	, {"getCAS", "", (code_t) cpuManager_getCAS}
+	, {"getClass", "", (code_t) cpuManager_getClass}
+	, {"getVMClass", "", (code_t) cpuManager_getVMClass}
+	, {"getVMObject", "", (code_t) cpuManager_getVMObject}
+	, {"assertInterruptEnabled", "", (code_t) cpuManager_assertInterruptEnabled}
+	, {"executeClassConstructors", "", (code_t) cpuManager_executeClassConstructors}
+	, {"inheritServiceThread", "", (code_t) cpuManager_inheritServiceThread}
+	, {"reboot", "", (code_t) cpuManager_reboot}
+	, {"getStackDepth", "", (code_t) cpuManager_getStackDepth}
+	, {"getStackFrameClassName", "", (code_t) cpuManager_getStackFrameClassName}
+	, {"getStackFrameMethodName", "", (code_t) cpuManager_getStackFrameMethodName}
+	, {"getStackFrameLine", "", (code_t) cpuManager_getStackFrameLine}
+	, {"getStackFrameBytecode", "", (code_t) cpuManager_getStackFrameBytecode}
+	, {"inhibitScheduling", "", (code_t) cpuManager_inhibitScheduling}
+	, {"allowScheduling", "", (code_t) cpuManager_allowScheduling},
 };
 
 void init_cpumanager_portal()

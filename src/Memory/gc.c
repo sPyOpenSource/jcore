@@ -10,7 +10,6 @@
 #include "gc_new.h"
 #include "gc_compacting.h"
 
-
 #include "gc_common.h"
 #include "gc_memcpy.h"
 #include "gc_move.h"
@@ -18,7 +17,7 @@
 #include "gc_pgc.h"
 #endif				/* ENABLE_GC */
 
-/* FIXME 
+/* FIXME
 #ifdef SMP
 #include "spinlock.h"
 static spinlock_t allocating_mem = SPIN_LOCK_UNLOCKED;
@@ -217,7 +216,7 @@ void profile_sample_heapusage_alloc(DomainDesc * domain, u4_t objsize)
 #endif				/* PROFILE_HEAPUSAGE */
 
 #ifdef PROFILE_HEAPUSAGE
-/* 
+/*
  * callback for counting instances
  */
 static void gc_countInstancesCB(DomainDesc * domain, ObjectDesc * obj, u4_t objsize, jint flags)

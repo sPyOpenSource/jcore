@@ -4,7 +4,6 @@
  * CPU DEP
  */
 
-
 ClassDesc *cpuClass;
 
 static void cpu_load(ObjectDesc * self, ObjectDesc * oldState, ObjectDesc * newState)
@@ -78,16 +77,11 @@ static ObjectDesc *cpu_toString(ObjectDesc * self)
 }
 
 MethodInfoDesc cpuMethods[] = {
-	{"load", "", (code_t) cpu_load}
-	,
-	{"save", "", (code_t) cpu_save}
-	,
-	{"dump", "", (code_t) cpu_dump}
-	,
-	{"getID", "", (code_t) cpu_getID}
-	,
-	{"toString", "", (code_t) cpu_toString}
-	,
+	{"load", "", (code_t) cpu_load},
+	{"save", "", (code_t) cpu_save},
+	{"dump", "", (code_t) cpu_dump},
+	{"getID", "", (code_t) cpu_getID},
+	{"toString", "", (code_t) cpu_toString},
 };
 
 static jbyte cpuTypeMap[] = { 0 };

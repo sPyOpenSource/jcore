@@ -19,7 +19,7 @@ typedef unsigned long long u_quad_t;
 
 
 union uu {
-	quad_t q;		/* as a (signed) quad */
+	quad_t q;		  /* as a (signed) quad */
 	quad_t uq;		/* as an unsigned quad */
 	long sl[2];		/* as two signed longs */
 	u4_t ul[2];		/* as two unsigned longs */
@@ -32,7 +32,7 @@ union uu {
 #define	L		_QUAD_LOWWORD
 
 #define _QUAD_HIGHWORD 1
-#define _QUAD_LOWWORD 0
+#define _QUAD_LOWWORD  0
 
 /*
  * Total number of bits in a quad_t and in the pieces that make it up.
@@ -64,7 +64,6 @@ u_quad_t __udivdi3(u_quad_t a, u_quad_t b);
 u_quad_t __umoddi3(u_quad_t a, u_quad_t b);
 
 typedef unsigned int qshift_t;
-
 
 
 /*

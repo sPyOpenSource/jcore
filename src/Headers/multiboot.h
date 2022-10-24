@@ -29,7 +29,7 @@
 
 /* The boot loader passes this value in register EAX to signal the kernel
    that the multiboot method is being used */
-#define MULTIBOOT_VALID         0x2badb002
+#define MULTIBOOT_VALID       0x2badb002
 
 
 #define MULTIBOOT_MEMORY	(1L<<0)

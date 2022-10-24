@@ -41,7 +41,6 @@
 #include "atomic.h"
 #include "exception_handler.h"
 
-
 #include "thread.h"
 #include "misc.h"
 #include "monitor.h"
@@ -51,7 +50,6 @@
 #include "spinlock.h"
 #include "symfind.h"
 #include "interrupt.h"
-
 
 #include "irq.h"
 #include "smp.h"
@@ -73,11 +71,9 @@
 #include "intr.h"
 #include "debug_reg.h"
 
-
 #include "object.h"
 #include "bench.h"
 #include "ekhz.h"
-
 #include "sched.h"
 
 
@@ -86,6 +82,5 @@
 #define ATOMICFN0(_r_, _n_, _s_) extern _r_ (* _n_) _s_;
 #include "atomicfn.h"
 #endif
-
 
 #endif				/* ALL_H */

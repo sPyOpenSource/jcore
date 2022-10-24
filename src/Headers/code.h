@@ -20,7 +20,6 @@
 
 #define SYMBOLDESC_BASE jint type; jint immediateNCIndex; jint numBytes; jint nextInstrNCIndex
 
-
 typedef struct {
 	SYMBOLDESC_BASE;
 } SymbolDesc;
