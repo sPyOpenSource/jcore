@@ -173,7 +173,7 @@ unsigned char *fat_writelfn(unsigned char *dir, char *name, int type, int size, 
         dir[0x1C] = size & 0xFF; dir[0x1D] = (size >> 8) & 0xFF;
         dir[0x1E] = (size >> 16) & 0xFF; dir[0x1F] = (size >> 24) & 0xFF;
     }
-    if(!clu) clu = fat_nextcluster;
+    if(!clu) clu = size > 0 || type ? fat_nextcluster : 0;
     if(clu < 3) clu = 0;
     dir[0x1A] = clu & 0xFF; dir[0x1B] = (clu >> 8) & 0xFF;
     dir[0x14] = (clu >> 16) & 0xFF; dir[0x15] = (clu >> 24) & 0xFF;
@@ -220,7 +220,7 @@ void fat_open(gpt_t *gpt_entry)
         fat_fat32_1 = fat_fat32_2 = NULL;
     } else {
         /* FAT32 */
-        fat_spf = (fat_numclu*4) / 512 - 8;
+        fat_spf = (fat_numclu*4) / 512;
         fs_base[0xD] = SECTOR_PER_CLUSTER; fs_base[0xE] = 8;
         fs_base[0x24] = fat_spf & 0xFF; fs_base[0x25] = (fat_spf >> 8) & 0xFF;
         fs_base[0x26] = (fat_spf >> 16) & 0xFF; fs_base[0x27] = (fat_spf >> 24) & 0xFF;
@@ -244,7 +244,7 @@ void fat_open(gpt_t *gpt_entry)
 
 void fat_add(struct stat *st, char *name, unsigned char *content, int size)
 {
-    int parent = 2, clu, i;
+    int parent = 2, clu, i, j;
     unsigned char *dir = fat_rootdir;
     char *end, *fn = strrchr(name, '/');
     if(!fn) fn = name; else fn++;
@@ -256,7 +256,7 @@ void fat_add(struct stat *st, char *name, unsigned char *content, int size)
     if(!end) end = name + strlen(name);
     fat_lfncnt = 1;
     do {
-        dir = fat_readlfn(dir, &clu, &size, parent);
+        dir = fat_readlfn(dir, &clu, &j, parent);
         if(!dir) return;
         if(!memcmp(fat_lfn, fn, end - fn) && !fat_lfn[end - fn]) {
             fat_lfncnt = 1;

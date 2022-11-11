@@ -25,14 +25,17 @@
  *
  * This file is part of the BOOTBOOT Protocol package.
  * @brief LeanFS file system driver
- * See http://freedos-32.sourceforge.net/lean/specification.php
- * See http://www.fysnet.net/leanfs/specification.php
+ * See http://freedos-32.sourceforge.net/lean/specification.php (v0.6, original)
+ * See http://www.fysnet.net/leanfs/specification.php (v0.7 and later, forked by fys)
+ *
+ * The FS we create here does not use any v0.8 or v0.7 specific features, hence it is v0.6 compatible
+ * (no hidden or undeleted files, no bad sectors, sector size 512 bytes, six extents per inode etc.)
  *
  */
 #include "main.h"
 
 #define LEAN_SUPER_MAGIC        0x4E41454C
-#define LEAN_SUPER_VERSION      0x0007      /* could be 0x0006 as well, backwards compatible */
+#define LEAN_SUPER_VERSION      0x0008      /* could be 6 or 7 as well */
 #define LEAN_INODE_MAGIC        0x45444F4E
 #define LEAN_INODE_EXTENT_CNT   6
 #define LEAN_FT_MT              0
