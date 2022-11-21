@@ -424,7 +424,7 @@ int flashmapadd(char *file)
     fseek(f,0L,SEEK_SET);
     data=(unsigned char*)malloc(size + bs);
     if(!data) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
-    data[0] = 0; fread(data,size,1,f);
+    data[0] = 0; fread(data,1,size,f);
     fclose(f);
     if(memcmp(data, "__FMAP__", 8)) { free(data); return 0; }
     if(!initrd_buf[0] || bs < 1) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_NOINITRD]); exit(1); }

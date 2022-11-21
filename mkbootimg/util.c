@@ -56,11 +56,13 @@ initrd_close rd_close = NULL;
 /**
  * Read a file entirely into memory. Don't use it with partition image files
  */
-long int read_size;
+int64_t read_size;
 unsigned char* readfileall(char *file)
 {
     unsigned char *data=NULL;
     FILE *f;
+    int64_t r, t = 0;
+
     read_size=0;
     if(!file || !*file) return NULL;
     f=fopen(file,"r");
@@ -71,7 +73,11 @@ unsigned char* readfileall(char *file)
         data=(unsigned char*)malloc(read_size+1);
         if(!data) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
         memset(data,0,read_size+1);
-        fread(data,1,read_size,f);
+        do {
+            r = fread(data + t,1,read_size - t,f);
+            t += r;
+        } while(r > 0 && t < read_size);
+        if(t != read_size) { fprintf(stderr,"mkbootimg: '%s' fread %ld != %ld ???\r\n",file,(long int)t,(long int)read_size); exit(1); }
         data[read_size] = 0;
         fclose(f);
     }

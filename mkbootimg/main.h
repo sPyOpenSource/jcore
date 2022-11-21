@@ -194,7 +194,7 @@ extern initrd_open rd_open;
 extern initrd_add rd_add;
 extern initrd_close rd_close;
 
-extern long int read_size;
+extern int64_t read_size;
 unsigned char* readfileall(char *file);
 unsigned int gethex(char *ptr, int len);
 void getguid(char *ptr, guid_t *guid);

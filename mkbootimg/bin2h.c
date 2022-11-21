@@ -63,7 +63,7 @@ int main(int argc, char **argv)
                 fprintf(stderr, "bin2h: memory allocation error\r\n");
                 exit(2);
             }
-            fread(buff, size, 1, f);
+            fread(buff, 1, size, f);
             fclose(f);
             fn = strrchr(argv[file], '/');
             if(!fn) fn = strrchr(argv[file], '\\');
