@@ -32,6 +32,7 @@
 #include <unistd.h>
 
 #ifdef __WIN32__
+#include <windows.h>
 int readlink(char *path, char *target, int len) {
     (void)path;
     (void)target;
@@ -60,11 +61,30 @@ int64_t read_size;
 unsigned char* readfileall(char *file)
 {
     unsigned char *data=NULL;
+#ifdef __WIN32__
+    HANDLE f;
+    DWORD r, t;
+#else
     FILE *f;
-    int64_t r, t = 0;
+    int64_t t;
+#endif
 
     read_size=0;
     if(!file || !*file) return NULL;
+    /* for some reason sometimes fread refuses to load the entire file under Windows... even if it's as small as 10k... */
+#ifdef __WIN32__
+    f=CreateFileA(file, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
+    if(f){
+        r=GetFileSize(f,NULL);
+        read_size=r;
+        data=(unsigned char*)malloc(read_size+1);
+        if(!data) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
+        memset(data,0,read_size+1);
+        if(!ReadFile(f,data,r,&t,NULL) || r != t) { fprintf(stderr,"mkbootimg: '%s' ReadFile %ld != %ld ???\r\n",file,t,r); exit(1); }
+        data[read_size] = 0;
+        CloseHandle(f);
+    }
+#else
     f=fopen(file,"r");
     if(f){
         fseek(f,0L,SEEK_END);
@@ -73,14 +93,12 @@ unsigned char* readfileall(char *file)
         data=(unsigned char*)malloc(read_size+1);
         if(!data) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
         memset(data,0,read_size+1);
-        do {
-            r = fread(data + t,1,read_size - t,f);
-            t += r;
-        } while(r > 0 && t < read_size);
+        t = fread(data,1,read_size,f);
         if(t != read_size) { fprintf(stderr,"mkbootimg: '%s' fread %ld != %ld ???\r\n",file,(long int)t,(long int)read_size); exit(1); }
         data[read_size] = 0;
         fclose(f);
     }
+#endif
     return data;
 }
 
