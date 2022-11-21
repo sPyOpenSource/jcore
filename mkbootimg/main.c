@@ -31,15 +31,16 @@
 #include "fs.h"
 
 #ifdef __WIN32__
-#include <windows.h>
-#define ISHH(x) ((((x)>>30)&0xFFFFFFFF)==0xFFFFFFFF)
+# include <windows.h>
+# define ISHH(x) ((((x)>>30)&0xFFFFFFFF)==0xFFFFFFFF)
+# define LL "I64"
 #else
-#define ISHH(x) (((x)>>30)==0x3FFFFFFFF)
-#endif
-#if defined(MACOSX) || __WORDSIZE == 32
-#define LL "ll"
-#else
-#define LL "l"
+# define ISHH(x) (((x)>>30)==0x3FFFFFFFF)
+# if defined(MACOSX) || __WORDSIZE == 32
+#  define LL "ll"
+# else
+#  define LL "l"
+# endif
 #endif
 
 extern const char deflate_copyright[];
@@ -349,7 +350,7 @@ void parsekernel(int idx, unsigned char *data, int v)
             { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: initstack %s\r\n",lang[ERR_BADSIZE]); exit(1); }
         if(v) printf("OK\r\n");
     }
-    if(v) printf("Load segment: %016" LL "x size %" LL "dK offs %" LL "x ", core_addr, (core_size + bss + 1024)/1024, core_ptr);
+    if(v) printf("Load segment: %016" LL "x size %" LL "uK offs %" LL "x ", core_addr, (core_size + bss + 1024)/1024, core_ptr);
     if(!ISHH(core_addr)) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_BADADDR]); exit(1); }
     if(core_addr & 4095) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_PAGEALIGN]); exit(1); }
     if(core_size + bss > 16 * 1024 * 1024) { if(v) { printf("invalid\r\n"); } fprintf(stderr,"mkbootimg: segment %s\r\n",lang[ERR_BIGSEG]); exit(1); }

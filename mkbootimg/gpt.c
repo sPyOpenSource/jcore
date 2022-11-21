@@ -51,7 +51,7 @@ void gpt_maketable()
     unsigned long int size, ps, total, l;
     unsigned char *iso, *p;
     uint16_t *u;
-    char isodate[17], key[64], *tmp, *name;
+    char isodate[64], key[64], *tmp, *name;
     guid_t typeguid;
     FILE *f;
 

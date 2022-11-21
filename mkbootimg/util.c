@@ -71,7 +71,7 @@ unsigned char* readfileall(char *file)
         data=(unsigned char*)malloc(read_size+1);
         if(!data) { fprintf(stderr,"mkbootimg: %s\r\n",lang[ERR_MEM]); exit(1); }
         memset(data,0,read_size+1);
-        fread(data,read_size,1,f);
+        fread(data,1,read_size,f);
         data[read_size] = 0;
         fclose(f);
     }
