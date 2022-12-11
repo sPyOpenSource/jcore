@@ -3,6 +3,7 @@ use core::convert::{From, TryFrom};
 use crate::error::{SysErrno, SysError, SysResult};
 use crate::ipc::IpcMessageType;
 use num_traits::FromPrimitive;
+use core::arch::asm;
 
 #[repr(C)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq, FromPrimitive, ToPrimitive)]
@@ -210,14 +211,23 @@ pub fn syscall(
     let info: usize = msg_info.into();
 
     unsafe {
-        llvm_asm! {"svc 1"
-        : "={x0}"(badge), "={x1}"(args[0]), "={x2}"(args[1]), "={x3}"(args[2]),
-          "={x4}"(args[3]), "={x5}"(args[4]), "={x6}"(ret)
-        : "{x0}"(args[0]), "{x1}"(args[1]), "{x2}"(args[2]),
-          "{x3}"(args[3]), "{x4}"(args[4]), "{x5}"(args[5]), "{x6}"(info)
-        : "memory"
-        : "volatile"
-        }
+        asm! (
+          "svc 1",
+          inout("x0") args[0] => badge,
+          inout("x1") args[1] => args[0],
+          inout("x2") args[2] => args[1],
+          inout("x3") args[3] => args[2],
+          inout("x4") args[4] => args[3],
+          inout("x5") args[5] => args[4],
+          inout("x6") info    => ret,
+        )
+
+//        : "={x0}"(badge), "={x1}"(args[0]), "={x2}"(args[1]), "={x3}"(args[2]),
+//          "={x4}"(args[3]), "={x5}"(args[4]), "={x6}"(ret)
+//        : "{x0}"(args[0]), "{x1}"(args[1]), "{x2}"(args[2]),
+//          "{x3}"(args[3]), "{x4}"(args[4]), "{x5}"(args[5]), "{x6}"(info)
+//        : "memory"
+//        : "volatile"
     };
 
     let retinfo = RespInfo::try_from(ret).unwrap();
@@ -249,6 +259,6 @@ pub fn syscall(
 
 pub fn nop() {
     unsafe {
-        llvm_asm! {"nop"}
+        asm! ("nop")
     }
 }

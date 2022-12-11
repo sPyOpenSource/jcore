@@ -15,10 +15,16 @@ use alloc::boxed::Box;
 use alloc::string::String;
 use alloc::vec::Vec;
 
+// use core::str::lossy::Utf8Chunk;
+// use core::str::lossy::{Utf8Lossy, Utf8Chunk};
 // use core::str::lossy::Utf8Lossy;
 
 use core::fmt::{Formatter, Write};
-use core::str::lossy::{Utf8Lossy, Utf8LossyChunk};
+use core::str::Utf8Chunk;
+
+// use core::str::lossy::{Utf8Lossy, Utf8LossyChunk};
+// use core::lossy::Utf8Lossy;
+
 #[doc(hidden)]
 pub trait AsInner<Inner: ?Sized> {
     fn as_inner(&self) -> &Inner;
@@ -52,12 +58,13 @@ pub fn debug_fmt_bytestring(slice: &[u8], f: &mut Formatter<'_>) -> core::fmt::R
     }
 
     f.write_str("\"")?;
-    for Utf8LossyChunk { valid, broken } in Utf8Lossy::from_bytes(slice).chunks() {
-        write_str_escaped(f, valid)?;
-        for b in broken {
-            write!(f, "\\x{:02X}", b)?;
-        }
-    }
+    // for Utf8LossyChunk { valid, broken } in Utf8Lossy::from_bytes(slice).chunks() {
+//    for c in slice {
+//        c.write_char(f);
+//        for b in invalid {
+//            write!(f, "\\x{:02X}", b)?;
+//        }
+//    }
     f.write_str("\"")
 }
 
@@ -85,7 +92,8 @@ impl fmt::Debug for Slice {
 
 impl fmt::Display for Slice {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
-        fmt::Display::fmt(&Utf8Lossy::from_bytes(&self.inner), formatter)
+        // fmt::Display::fmt(&Utf8Lossy::from_bytes(&self.inner), formatter)
+        fmt::Debug::fmt(self, formatter)
     }
 }
 

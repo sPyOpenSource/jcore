@@ -1,7 +1,10 @@
+use core::arch::asm;
+use core::convert::TryInto;
+
 pub fn mpidr_el1() -> u64 {
     let x;
     unsafe {
-        llvm_asm!("mrs $0, mpidr_el1":"=r"(x));
+        asm!("mrs {0}, mpidr_el1", out(reg) x);
     }
     x
 }
@@ -11,18 +14,18 @@ pub fn cpuid() -> usize {
 }
 
 pub fn isb() {
-    unsafe { llvm_asm!("isb":::"memory") }
+    unsafe { asm!("isb") }
 }
 
 #[inline(always)]
 pub fn dsb() {
-    unsafe { llvm_asm!("dsb sy":::"memory") }
+    unsafe { asm!("dsb sy") }
 }
 
 #[inline(always)]
 pub fn dmb() {
     unsafe {
-        llvm_asm!("dmb sy" ::: "memory": "volatile");
+        asm!("dmb sy");
     }
 }
 
@@ -30,44 +33,45 @@ pub fn dmb() {
 pub fn get_elr() -> usize {
     let elr;
     unsafe {
-        llvm_asm!("mrs $0, elr_el1":"=r"(elr));
+        asm!("mrs {0}, elr_el1", out(reg) elr);
     }
     elr
 }
 
 #[inline(always)]
 pub fn get_esr() -> u32 {
-    let esr;
+    let esr:u64;
     unsafe {
-        llvm_asm!("mrs $0, esr_el1":"=r"(esr));
+        asm!("mrs {0}, esr_el1", out(reg) esr);
     }
-    esr
+    esr.try_into().unwrap()
+//    esr
 }
 
 #[inline(always)]
 pub fn get_far() -> u64 {
     let far;
     unsafe {
-        llvm_asm!("mrs $0, far_el1":"=r"(far));
+        asm!("mrs {0}, far_el1", out(reg) far);
     }
     far
 }
 
 pub fn wfe() {
     unsafe {
-        llvm_asm!("wfe");
+        asm!("wfe");
     }
 }
 
 pub fn wfi() {
     unsafe {
-        llvm_asm!("wfi");
+        asm!("wfi");
     }
 }
 
 pub fn dc_clean_by_va_PoU(vaddr: usize) {
     unsafe {
-        llvm_asm!("dc cvau, $0":: "r"(vaddr));
+        asm!("dc cvau, {0}", in(reg) vaddr);
     }
     dsb();
 }
@@ -75,7 +79,7 @@ pub fn dc_clean_by_va_PoU(vaddr: usize) {
 pub fn clid() -> usize {
     let clid: usize;
     unsafe {
-        llvm_asm!("mrs $0, clidr_el1": "=r"(clid));
+        asm!("mrs {0}, clidr_el1", out(reg) clid);
     }
 
     return clid;
@@ -88,16 +92,18 @@ pub fn cache_type(clid: usize, level: usize) -> usize {
 pub fn read_cache_size(level: usize, instruction: bool) -> usize {
     let cssr_old: usize;
     let size: usize;
-    let selector = level < 1 | (instruction as usize);
+    let selector: usize;
+
+    if level < 1 { selector = instruction as usize }
+            else { selector = (instruction as usize) | 1 };
+
     unsafe {
-        llvm_asm!("
-            mrs $0, csselr_el1
-            msr csselr_el1, $1
-            " : "=r"(cssr_old) : "r" (selector));
-        llvm_asm!("
-            mrs $0, ccsidr_el1
-            msr csselr_el1, $1
-        ": "=r"(size) : "r"(cssr_old))
+        asm!("mrs {0}, csselr_el1",
+             "msr csselr_el1, {1}",
+             out(reg) cssr_old, in(reg) selector);
+        asm!("mrs {0}, ccsidr_el1",
+             "msr csselr_el1, {1}",
+             out(reg) size, in(reg) cssr_old);
     }
 
     size
@@ -119,7 +125,7 @@ pub fn clean_dcache_poc() {
             for w in 0..assoc {
                 for s in 0..nsets {
                     let wsl = w << (32 - assoc_bits) | (s << line_bits) | (l << 1);
-                    unsafe { llvm_asm!("dc cisw, $0"::"r"(wsl)) }
+                    unsafe { asm!("dc cisw, {0}", in(reg) wsl) }
                 }
             }
         }
@@ -130,7 +136,7 @@ pub fn clean_l1_cache() {
     dsb();
     clean_dcache_poc();
     dsb();
-    unsafe { llvm_asm!("ic iallu") }
+    unsafe { asm!("ic iallu") }
     isb();
     dsb();
 }

@@ -13,6 +13,8 @@ use crate::utils::tcb_queue::TcbQueueNode;
 use vspace::{Level, PhysAddr};
 use crate::vspace::{VSpace, PageGlobalDirectory, TopLevel, VirtAddr};
 
+use core::arch::asm;
+
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub enum ThreadState {
     Ready,
@@ -124,7 +126,7 @@ impl TcbObj {
     pub fn activate(&mut self) -> ! {
         unsafe {
             let cpuid = crate::arch::cpuid() << 48;
-            llvm_asm!("msr tpidrro_el0, $0"::"r"(cpuid | self.thread_id()));
+            asm!("msr tpidrro_el0, {0}", in(reg) (cpuid | self.thread_id()));
             self.switch_vspace().unwrap_or(()); // explicitly ignore error for idle thread
             self.tf.restore();
         }

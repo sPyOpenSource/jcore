@@ -1,6 +1,7 @@
 use crate::PhysAddr;
 use crate::permission::Permission;
 use super::asm::*;
+use core::arch::asm;
 
 #[allow(non_camel_case_types)]
 pub enum MairFlag {
@@ -67,11 +68,7 @@ pub unsafe fn init_mmu() {
 #[inline(always)]
 pub unsafe fn install_kernel_vspace(paddr: PhysAddr) {
     dsb();
-    llvm_asm!("msr     ttbr1_el1, $0"
-        :
-        : "r"(paddr.0)
-        : "memory"
-    );
+    asm!("msr     ttbr1_el1, {0}", in(reg) paddr.0);
     isb();
     flush_tlb_allel1_is();
 }
@@ -80,18 +77,13 @@ pub unsafe fn install_kernel_vspace(paddr: PhysAddr) {
 pub unsafe fn install_user_vspace(asid: usize, pgd: usize) {
     let entry = asid << 48 | (pgd & MASK!(48));
     dsb();
-    llvm_asm!("msr     ttbr0_el1, $0"
-        :
-        : "r"(entry)
-        : "memory"
-        : "volatile"
-    );
+    asm!("msr     ttbr0_el1, {0}", in(reg) entry);
     isb();
 }
 
 pub fn invalidate_local_tlb_asid(asid: usize) {
     dsb();
-    unsafe { llvm_asm!("tlbi aside1, $0"::"r"(asid)) }
+    unsafe { asm!("tlbi aside1, {0}", in(reg) asid) }
     dsb();
     isb();
 }

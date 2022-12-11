@@ -19,6 +19,8 @@ use elfloader::{ElfBinary, ElfLoader, Flags, LoadableHeaders, Rela, VAddr, P64};
 use log::{debug, info};
 use vspace::{Level1, Level2, Level3, Level4, Level, TableLevel};
 use crate::vspace::VirtAddr;
+use core::arch::global_asm;
+use core::arch::asm;
 
 #[derive(Copy, Clone)]
 #[repr(align(4096))]
@@ -145,6 +147,7 @@ lower64_irq:
 
 #[naked]
 #[no_mangle]
+#[allow(named_asm_labels)]
 unsafe extern "C" fn _start() {
     asm!(
         r#"
@@ -581,7 +584,7 @@ pub extern "C" fn kmain(bi_frame: usize) -> ! {
     }
 
     unsafe {
-        llvm_asm!("msr tpidrro_el0, $0"::"r"(cpuid));
+        asm!("msr tpidrro_el0, {0}", in(reg) cpuid);
     }
 
     let mut timer = crate::arch::generic_timer::Timer::new();

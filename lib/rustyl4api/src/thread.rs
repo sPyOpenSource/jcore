@@ -1,10 +1,11 @@
 use crate::utils::MASK;
+use core::arch::asm;
 
 fn tpidrro_el0() -> usize {
     let tpidrro: usize;
 
     unsafe {
-        llvm_asm!("mrs $0, tpidrro_el0" : "=r"(tpidrro));
+        asm!("mrs {0}, tpidrro_el0", out(reg) tpidrro);
     }
 
     tpidrro
