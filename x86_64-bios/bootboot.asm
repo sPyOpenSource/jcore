@@ -3006,30 +3006,30 @@ bsp_done:   db          0 ;flag to indicate APs can run
 fattype:    db          0
 bkp:        dd          '    '
 if BBDEBUG eq 1
-dbg_cpu     db          " * Detecting CPU",10,13,0
-dbg_A20     db          " * Enabling A20",10,13,0
-dbg_mem     db          " * E820 Memory Map",10,13,0
-dbg_systab  db          " * System tables",10,13,0
-dbg_time    db          " * System time",10,13,0
-dbg_serial  db          " * Initrd over serial",10,13,0
-dbg_gpt     db          " * Reading GPT",10,13,0
-dbg_cdrom   db          " * Detected CDROM boot",10,13,0
-dbg_env     db          " * Environment",10,13,0
-dbg_initrd  db          " * Initrd loaded",10,13,0
-dbg_gzinitrd db         " * Gzip compressed initrd",10,13,0
-dbg_scan    db          " * Autodetecting kernel",10,13,0
-dbg_elf     db          " * Parsing ELF64",10,13,0
-dbg_pe      db          " * Parsing PE32+",10,13,0
+dbg_cpu     db          " * Detecting CPU",13,10,0
+dbg_A20     db          " * Enabling A20",13,10,0
+dbg_mem     db          " * E820 Memory Map",13,10,0
+dbg_systab  db          " * System tables",13,10,0
+dbg_time    db          " * System time",13,10,0
+dbg_serial  db          " * Initrd over serial",13,10,0
+dbg_gpt     db          " * Reading GPT",13,10,0
+dbg_cdrom   db          " * Detected CDROM boot",13,10,0
+dbg_env     db          " * Environment",13,10,0
+dbg_initrd  db          " * Initrd loaded",13,10,0
+dbg_gzinitrd db         " * Gzip compressed initrd",13,10,0
+dbg_scan    db          " * Autodetecting kernel",13,10,0
+dbg_elf     db          " * Parsing ELF64",13,10,0
+dbg_pe      db          " * Parsing PE32+",13,10,0
 dbg_smp     db          " * SMP numcores ",0
 dbg_madt    db          " (bad MADT)",0
-dbg_vesa    db          " * Screen VESA VBE",10,13,0
+dbg_vesa    db          " * Screen VESA VBE",13,10,0
 end if
-backup:     db          " * Backup initrd",10,13,0
+backup:     db          " * Backup initrd",13,10,0
 passphrase: db          " * Passphrase? ",0
 decrypting: db          13," * Decrypting...",0
 clrdecrypt: db          13,"                ",13,0
 starting:   db          "Booting OS..."
-crlf:       db          10,13,0
+crlf:       db          13,10,0
 panic:      db          "-PANIC: ",0
 noarch:     db          "Hardware not supported",0
 a20err:     db          "Failed to enable A20",0
@@ -3047,8 +3047,8 @@ bigcore:    db          "Kernel is too big",0
 novbe:      db          "VESA VBE error, no framebuffer",0
 nogzip:     db          "Unable to uncompress",0
 notcdsect:  db          "Not 2048 sector aligned",0
-nocipher:   db          "Unsupported cipher",10,13,0
-badpass:    db          13,"BOOTBOOT-ERROR: Bad passphrase",10,13,0
+nocipher:   db          "Unsupported cipher",13,10,0
+badpass:    db          13,"BOOTBOOT-ERROR: Bad passphrase",13,10,0
 cfgfile:    db          "sys/config",0,0,0
 kernel:     db          "sys/core"
             db          (64-($-kernel)) dup 0
