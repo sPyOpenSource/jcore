@@ -302,15 +302,21 @@ realmode_start:
             mov         byte [cdromdev], al
 @@:
             ;-----initialize serial port COM1,115200,8N1------
-            mov         ax, 0401h
-            xor         bx, bx
-            mov         cx, 030Bh
-            xor         dx, dx
-            int         14h
-            ; if there's no serial, but BIOS incorrectly sets the IO port for it
+;            mov         ax, 0401h
+;            xor         bx, bx
+;            mov         cx, 030Bh
+;            xor         dx, dx
+;            int         14h
             mov         dx, word [400h]
             or          dx, dx
-            jz          @f
+            jnz         @f
+            ; if the IO port isn't set, try the default one of COM1
+            mov         dx, 3f8h
+            mov         word [400h], dx
+            ; initialize the serial outselves, because Bochs BIOS is buggy
+@@:         call        serialsetup
+            ; if there's no serial, but BIOS incorrectly sets the IO port for it
+            mov         dx, word [400h]
             add         dx, 5
             in          al, dx
             cmp         al, 0FFh
@@ -437,6 +443,32 @@ start_of_setup:
             ; fix: qemu forces address and set CS to 0x9020, but we must jump to segment 0x9000.
             jmp         9000h:realmode_start-loader
 ; --- end of Linux boot protocol header ---
+
+serialsetup:
+            inc         dx
+            xor         al, al
+            out         dx, al              ; IER int off
+            mov         al, 80h
+            add         dx, 2
+            out         dx, al              ; LCR set divisor mode
+            mov         al, 1
+            sub         dx, 3
+            out         dx, al              ; DLL divisor lo 115200
+            xor         al, al
+            inc         dx
+            out         dx, al              ; DLH divisor hi
+            inc         dx
+            out         dx, al              ; FCR fifo off
+            mov         al, 43h
+            inc         dx
+            out         dx, al              ; LCR 8N1, break on
+            mov         al, 8
+            inc         dx
+            out         dx, al              ; MCR Aux out 2
+            xor         al, al
+            sub         dx, 4
+            in          al, dx              ; clear receiver/transmitter
+            ret
 
 cpuok:      DBG         dbg_A20
 
