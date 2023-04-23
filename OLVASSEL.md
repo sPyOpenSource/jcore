@@ -104,6 +104,8 @@ mykernel/rust: Vinay Chandra
 
 mykernel/go: @TotallyGamerJet
 
+mykernel/zig: @binarycraft
+
 BOOTBOOT, FS/Z: bzt
 
 Kifejezések
