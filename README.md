@@ -108,6 +108,8 @@ raspbootcom: (GPL) Goswin von Brederlow
 
 mykernel/rust: Vinay Chandra
 
+mykernel/go: @TotallyGamerJet
+
 BOOTBOOT, FS/Z: bzt
 
 Glossary
