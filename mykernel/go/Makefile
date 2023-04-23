@@ -28,23 +28,23 @@
 #
 #
 
-GOFLAGS = -Wall -fpic -fno-stack-protector -static -nostdinc -nostdlib -nostartfiles -nodefaultlibs
-LDFLAGS = -nostdlib -n -T link.ld
+GOFLAGS = -trimpath -gcflags=gitlab.com/bztsrc/bootboot=-std -ldflags="-linkmode external -extld $(LD) -extldflags '$(LDFLAGS)'"
+LDFLAGS = -nostdlib -n -v -static -m $(M) -T link.ld
 STRIPFLAGS = -s -K mmio -K fb -K bootboot -K environment -K initstack
 
 all: mykernel.x86_64.elf mykernel.aarch64.elf
 
-mykernel.x86_64.elf: go_rt0.s kernel.go
-	x86_64-elf-gccgo $(GOFLAGS) -c kernel.go -o kernel.o
-	x86_64-elf-as -c go_rt0.s -o go_rt0.o
-	x86_64-elf-ld $(LDFLAGS) go_rt0.o kernel.o -o mykernel.x86_64.elf
+mykernel.x86_64.elf: kernel.go
+	$(eval LD := x86_64-elf-ld)
+	$(eval M := elf_x86_64)
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GOAMD64=v1 go build $(GOFLAGS) -o mykernel.x86_64.elf
 	x86_64-elf-strip $(STRIPFLAGS) mykernel.x86_64.elf
 	x86_64-elf-readelf -hls mykernel.x86_64.elf >mykernel.x86_64.txt
 
-mykernel.aarch64.elf: go_rt0.s kernel.go
-	aarch64-elf-gccgo $(GOFLAGS) -c kernel.go -o kernel.o
-	aarch64-elf-as -c go_rt0.s -o go_rt0.o
-	aarch64-elf-ld $(LDFLAGS) go_rt0.o kernel.o -o mykernel.aarch64.elf
+mykernel.aarch64.elf: kernel.go
+	$(eval LD := aarch64-elf-ld)
+	$(eval M := aarch64elf)
+	CGO_ENABLED=0 GOOS=linux GOARCH=arm64 GOARM=5 go build $(GOFLAGS) -o mykernel.aarch64.elf
 	aarch64-elf-strip $(STRIPFLAGS) mykernel.aarch64.elf
 	aarch64-elf-readelf -hls mykernel.aarch64.elf >mykernel.aarch64.txt
 
