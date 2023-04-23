@@ -13,4 +13,4 @@ Compilation
 -----------
 
 In the language's directory, just run `make`. You'll need `gcc`, `g++`, `gnat` (GNU Ada), `fpc` (FreePascal
-Compiler), `cargo` + `rust`, `gccgo` (GNU go-lang compiler, NOT the official go-lang compiler!), and `zig`.
+Compiler), `cargo` + `rust`, `go` (the official go toolchain, not the GNU go-lang compiler), and `zig`.
