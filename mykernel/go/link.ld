@@ -28,8 +28,7 @@
  *
  */
 
-/* you thought it's going to be called "go.kernel.init"? Think it again! */
-ENTRY(go.kernel.go.kernel..init0)
+ENTRY(_start)
 
 /* you can't access these labels from Go, so make sure the constants match */
 mmio        = 0xfffffffff8000000;              /* these are configurable for level 2 loaders */
