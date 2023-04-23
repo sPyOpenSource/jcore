@@ -13,5 +13,5 @@ Fordítás
 --------
 
 Az adott nyelv mappájában csak futtasd a `make` parancsot. Kelleni fog a `gcc`, `g++`, `gnat` (GNU Ada),
-`fpc` (FreePascal Compiler), `cargo` + `rust`, és a `gccgo` (GNU go-lang fordító, NEM a hivatalos go-lang fordító!).
+`fpc` (FreePascal Compiler), `cargo` + `rust`, `go` (a hivatalos go, nem a GNU go-lang fordító) és `zig`.
 
