@@ -61,7 +61,7 @@ extern jint n_pmc1_samples;
 extern jlong *pmc1_samples;
 #endif
 
-ClassDesc *sharedArrayClasses;
+static ClassDesc *sharedArrayClasses;
 
 #if 0
 #ifdef PROFILE_EVENT_THREADSWITCH

@@ -16,7 +16,7 @@ void receiveDomainDEPThread(void *arg);
 void jxbytecpy(char *source, char *target, jint nbytes);
 inline ThreadDesc *cpuState2thread(ObjectDesc * obj);
 
-ClassDesc *portalInterface = NULL;
+static ClassDesc *portalInterface = NULL;
 
 Proxy *getInitialNaming()
 {

@@ -1,6 +1,6 @@
 
-ATOMICFN(ObjectHandle, registerObject,
-	 (DomainDesc * domain, ObjectDesc * o));
+//ATOMICFN(ObjectHandle, registerObject,
+//	 (DomainDesc * domain, ObjectDesc * o));
 ATOMICFN(ObjectDesc *, unregisterObject,
 	 (DomainDesc * domain, ObjectHandle o));
 ATOMICFN(ClassDesc *, handle2ClassDesc, (ObjectDesc ** handle));
