@@ -55,7 +55,7 @@ pub const MMapEnt = extern struct {
     }
 
     pub inline fn getType(self: *Self) MMapType {
-        return @intToEnum(MMapType, @truncate(u4, self.size));
+        return @as(MMapType, @enumFromInt(@as(u4, @truncate(self.size))));
     }
 
     pub inline fn isFree(self: *Self) bool {

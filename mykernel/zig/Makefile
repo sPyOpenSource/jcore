@@ -1,7 +1,7 @@
 #
 # mykernel/zig/Makefile
 #
-# Copyright (C) 2022 binarycraft
+# Copyright (C) 2023 binarycraft
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -28,9 +28,19 @@
 #
 #
 
-all: mykernel.x86_64.elf
+all: mykernel.x86_64.elf mykernel.aarch64.elf mykernel.riscv64.elf
 
-# Kernel build
 mykernel.x86_64.elf: src/**
-	zig build -Drelease-fast
-	cp ./zig-out/bin/mykernel.x86_64.elf mykernel.x86_64.elf
+	zig build -Dtarget=x86_64-freestanding-none \
+		-Doptimize=ReleaseFast --prefix ./ --prefix-exe-dir ./
+
+mykernel.aarch64.elf: src/**
+	zig build -Dtarget=aarch64-freestanding-none \
+		-Doptimize=ReleaseFast --prefix ./ --prefix-exe-dir ./
+
+mykernel.riscv64.elf: src/**
+	zig build -Dtarget=riscv64-freestanding-none \
+		-Doptimize=ReleaseFast --prefix ./ --prefix-exe-dir ./
+
+clean:
+	rm -rf *.elf zig-cache || true

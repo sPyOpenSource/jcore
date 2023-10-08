@@ -1,6 +1,6 @@
 /// mykernel/zig/src/main.zig
 ///
-/// Copyright (C) 2022 binarycraft
+/// Copyright (C) 2023 binarycraft
 ///
 /// Permission is hereby granted, free of charge, to any person
 /// obtaining a copy of this software and associated documentation
@@ -47,11 +47,12 @@ const PsfFont = packed struct {
 };
 
 // function to display a string
-pub fn puts(string: []const u8) void {
-    const font = @bitCast(PsfFont, fontEmbedded[0..@sizeOf(PsfFont)].*);
+pub inline fn puts(comptime string: []const u8) void {
+    @setRuntimeSafety(false);
+    const font: PsfFont = @bitCast(fontEmbedded[0..@sizeOf(PsfFont)].*);
     var bytesperline = (font.width + 7) / 8;
-    var framebuffer = @intToPtr([*]u32, @ptrToInt(&fb));
-    for (string) |char, i| {
+    var framebuffer: [*]u32 = @ptrCast(@alignCast(&fb));
+    for (string, 0..) |char, i| {
         var offs = i * (font.width + 1) * 4;
         var idx = if (char > 0 and char < font.numglyph) blk: {
             break :blk font.headersize + (char * font.bytesperglyph);
@@ -59,29 +60,23 @@ pub fn puts(string: []const u8) void {
             break :blk font.headersize + (0 * font.bytesperglyph);
         };
 
-        {
-            var y: usize = 0;
-            while (y < font.height) : (y += 1) {
-                var line = offs;
-                var mask = @as(u32, 1) << @intCast(u5, font.width - 1);
+        for (0..font.height) |_| {
+            var line = offs;
+            var mask = @as(u32, 1) << @as(u5, @intCast(font.width - 1));
 
-                {
-                    var x: usize = 0;
-                    while (x < font.width) : (x += 1) {
-                        if ((fontEmbedded[idx] & mask) == 0) {
-                            framebuffer[line / @sizeOf(u32)] = 0x000000;
-                        } else {
-                            framebuffer[line / @sizeOf(u32)] = 0xFFFFFF;
-                        }
-                        mask >>= 1;
-                        line += 4;
-                    }
+            for (0..font.width) |_| {
+                if ((fontEmbedded[idx] & mask) == 0) {
+                    framebuffer[line / @sizeOf(u32)] = 0x000000;
+                } else {
+                    framebuffer[line / @sizeOf(u32)] = 0xFFFFFF;
                 }
-
-                framebuffer[line / @sizeOf(u32)] = 0;
-                idx += bytesperline;
-                offs += bootboot.fb_scanline;
+                mask >>= 1;
+                line += 4;
             }
+
+            framebuffer[line / @sizeOf(u32)] = 0;
+            idx += bytesperline;
+            offs += bootboot.fb_scanline;
         }
     }
 }
@@ -89,61 +84,44 @@ pub fn puts(string: []const u8) void {
 // Entry point, called by BOOTBOOT Loader
 export fn _start() callconv(.Naked) noreturn {
     // NOTE: this code runs on all cores in parallel
-    var s = bootboot.fb_scanline;
-    var w = bootboot.fb_width;
-    var h = bootboot.fb_height;
-    var framebuffer = @intToPtr([*]u32, @ptrToInt(&fb));
+    const s = bootboot.fb_scanline;
+    const w = bootboot.fb_width;
+    const h = bootboot.fb_height;
+    var framebuffer: [*]u32 = @ptrCast(@alignCast(&fb));
 
     if (s > 0) {
         // cross-hair to see screen dimension detected correctly
-        {
-            var y: usize = 0;
-            while (y < h) : (y += 1) {
-                framebuffer[(s * y + w * 2) / @sizeOf(u32)] = 0x00FFFFFF;
-            }
+        for (0..h) |y| {
+            framebuffer[(s * y + w * 2) / @sizeOf(u32)] = 0x00FFFFFF;
         }
 
-        {
-            var x: usize = 0;
-            while (x < w) : (x += 1) {
-                framebuffer[(s * (h / 2) + x * 4) / @sizeOf(u32)] = 0x00FFFFFF;
-            }
+        for (0..w) |x| {
+            framebuffer[(s * (h / 2) + x * 4) / @sizeOf(u32)] = 0x00FFFFFF;
         }
 
         // red, green, blue boxes in order
-        {
-            var y: usize = 0;
-            while (y < 20) : (y += 1) {
-                var x: usize = 0;
-                while (x < 20) : (x += 1) {
-                    framebuffer[(s * (y + 20) + (x + 20) * 4) / @sizeOf(u32)] = 0x00FF0000;
-                }
+        inline for (0..20) |y| {
+            for (0..20) |x| {
+                framebuffer[(s * (y + 20) + (x + 20) * 4) / @sizeOf(u32)] = 0x00FF0000;
             }
         }
 
-        {
-            var y: usize = 0;
-            while (y < 20) : (y += 1) {
-                var x: usize = 0;
-                while (x < 20) : (x += 1) {
-                    framebuffer[(s * (y + 20) + (x + 50) * 4) / @sizeOf(u32)] = 0x0000FF00;
-                }
+        inline for (0..20) |y| {
+            for (0..20) |x| {
+                framebuffer[(s * (y + 20) + (x + 50) * 4) / @sizeOf(u32)] = 0x0000FF00;
             }
         }
 
-        {
-            var y: usize = 0;
-            while (y < 20) : (y += 1) {
-                var x: usize = 0;
-                while (x < 20) : (x += 1) {
-                    framebuffer[(s * (y + 20) + (x + 80) * 4) / @sizeOf(u32)] = 0x000000FF;
-                }
+        inline for (0..20) |y| {
+            for (0..20) |x| {
+                framebuffer[(s * (y + 20) + (x + 80) * 4) / @sizeOf(u32)] = 0x000000FF;
             }
         }
 
         // say hello
         puts("Hello from a simple BOOTBOOT kernel");
     }
+
     // hang for now
     while (true) {}
 }
