@@ -110,7 +110,7 @@ mykernel/rust: Vinay Chandra
 
 mykernel/go: @TotallyGamerJet
 
-mykernel/zig: @binarycraft
+mykernel/zig: @binarycraft007
 
 BOOTBOOT, FS/Z: bzt
 
