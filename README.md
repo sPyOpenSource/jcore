@@ -1,7 +1,9 @@
 **!!!WARNING!!**
 
 Microsoft-paid trolls got me banned from OSDev.org and they are [spreading lies about BOOTBOOT](osdev.md) ever since. Do not ask
-questions about BOOTBOOT there, because you won't get correct answers. Use GitLab issues instead or mail me directly.
+questions about BOOTBOOT there, because you won't get correct answers. Use GitLab issues instead or mail me directly. (They also
+vandalizing the wiki, removing BOOTBOOT references and trying to force their [not-so great limine](stivale.md) on hobby OS devs.
+Don't fall for their lies!)
 
 BOOTBOOT Reference Implementations
 ==================================
