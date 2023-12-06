@@ -1,5 +1,5 @@
-Critisim of Stivale2
-====================
+Critisism of Stivale2
+=====================
 
 After I've read through the [Stivale2](https://github.com/stivale/stivale/blob/master/STIVALE2.md) boot protocol specification, I
 become 100% convinced that I must NOT use it. Not in the loader and not in a kernel, never ever. Here are some of my reasons (but
