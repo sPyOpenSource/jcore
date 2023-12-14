@@ -156,6 +156,37 @@ again:
 }
 
 /**
+ * Minix3 file system
+ * directories only checked for their first block, and kernel must be defragmented
+ */
+file_t mfs_initrd(unsigned char *initrd_p, char *kernel)
+{
+    uint32_t o, bs, ino_tbl;
+    uint8_t *ino, *d;
+    char *s = kernel, *e;
+    file_t ret = { NULL, 0 };
+    if(initrd_p[1048] != 'Z' || initrd_p[1049] != 'M') return ret;
+    DBG(" * MFS ");
+    DBG(kernel);
+    DBG("\n");
+    bs = *((uint16_t*)(initrd_p + 1052));
+    ino_tbl = (2 + *((uint16_t*)(initrd_p + 1030)) + *((uint16_t*)(initrd_p + 1032))) * bs;
+    ino = initrd_p + ino_tbl;
+again:
+    for(e = s; *e && *e != '/'; e++);
+    d = initrd_p + *((uint32_t*)(ino + 24)) * bs;
+    for(o = 0; o < *((uint32_t*)(ino + 8)) && o < bs; o += 64, d += 64) {
+        if(*((uint32_t*)d) && !memcmp(s, d + 4, e - s) && !d[e - s]) {
+            ino = initrd_p + ino_tbl + (*((uint32_t*)d) - 1) * 64;
+            d = initrd_p + *((uint32_t*)(ino + 24)) * bs;
+            if(!*e) { ret.ptr = d; ret.size = *((uint32_t*)(ino + 8)); return ret; }
+            s = e + 1; goto again;
+        }
+    }
+    return ret;
+}
+
+/**
  * cpio archive
  */
 file_t cpio_initrd(unsigned char *initrd_p, char *kernel)
@@ -329,6 +360,7 @@ file_t ech_initrd(unsigned char *initrd_p, char *kernel)
  */
 file_t (*fsdrivers[]) (unsigned char *, char *) = {
     fsz_initrd,
+    mfs_initrd,
     cpio_initrd,
     tar_initrd,
     sfs_initrd,

@@ -167,7 +167,7 @@ file_t mfs_initrd(unsigned char *initrd_p, char *kernel)
     char *s = kernel, *e;
     file_t ret = { NULL, 0 };
     if(initrd_p[1048] != 'Z' || initrd_p[1049] != 'M') return ret;
-    DBG(" * MFS %s\n",kernel);
+    DBG(L" * MFS %s\n",a2u(kernel));
     bs = *((UINT16*)(initrd_p + 1052));
     ino_tbl = (2 + *((UINT16*)(initrd_p + 1030)) + *((UINT16*)(initrd_p + 1032))) * bs;
     ino = initrd_p + ino_tbl;
