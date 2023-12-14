@@ -15,9 +15,9 @@ fájlrendszerek:
 | `tar`    | ✔Yes   | ✔Yes     | [wikipédia](https://wiki.osdev.org/USTAR)       |
 | `echfs`  | ✔Yes   | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md), [forrás](https://github.com/echfs/echfs) |
 | `FS/Z`   | ✔Yes   | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/fsz.pdf), [forrás](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
+| `minix`  | ✔Yes   | ✔Yes     | [spec](https://gitlab.com/bztsrc/minix3fs) (V3 támogatott) |
 | `boot`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf) (csak ESP, 8+3 nevek) |
 | `fat`    | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (csak nem-ESP, LFN-el) |
-| `minix`  | ✗No    | ✔Yes     | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf), [V3 forrás](https://github.com/Stichting-MINIX-Research-Foundation/minix/tree/master/minix/fs/mfs) (V3 támogatott, de csak V2-höz van spec) |
 | `ext2`   | ✗No    | ✔Yes     | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf), [dokumentáció](https://www.nongnu.org/ext2-doc/ext2.html) |
 | `lean`   | ✗No    | ✔Yes     | [V0.6 spec](http://freedos-32.sourceforge.net/lean/specification.php), [V0.8 spec](http://www.fysnet.net/leanfs/specification.php) |
 

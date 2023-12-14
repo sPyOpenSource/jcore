@@ -157,6 +157,35 @@ again:
 }
 
 /**
+ * Minix3 file system
+ * directories only checked for their first block, and kernel must be defragmented
+ */
+file_t mfs_initrd(unsigned char *initrd_p, char *kernel)
+{
+    UINT32 o, bs, ino_tbl;
+    UINT8 *ino, *d;
+    char *s = kernel, *e;
+    file_t ret = { NULL, 0 };
+    if(initrd_p[1048] != 'Z' || initrd_p[1049] != 'M') return ret;
+    DBG(" * MFS %s\n",kernel);
+    bs = *((UINT16*)(initrd_p + 1052));
+    ino_tbl = (2 + *((UINT16*)(initrd_p + 1030)) + *((UINT16*)(initrd_p + 1032))) * bs;
+    ino = initrd_p + ino_tbl;
+again:
+    for(e = s; *e && *e != '/'; e++);
+    d = initrd_p + *((UINT32*)(ino + 24)) * bs;
+    for(o = 0; o < *((UINT32*)(ino + 8)) && o < bs; o += 64, d += 64) {
+        if(*((UINT32*)d) && !CompareMem(s, d + 4, e - s) && !d[e - s]) {
+            ino = initrd_p + ino_tbl + (*((UINT32*)d) - 1) * 64;
+            d = initrd_p + *((UINT32*)(ino + 24)) * bs;
+            if(!*e) { ret.ptr = d; ret.size = *((UINT32*)(ino + 8)); return ret; }
+            s = e + 1; goto again;
+        }
+    }
+    return ret;
+}
+
+/**
  * cpio archive
  */
 file_t cpio_initrd(unsigned char *initrd_p, char *kernel)
@@ -319,6 +348,7 @@ file_t ech_initrd(unsigned char *initrd_p, char *kernel)
  */
 file_t (*fsdrivers[]) (unsigned char *, char *) = {
     fsz_initrd,
+    mfs_initrd,
     cpio_initrd,
     tar_initrd,
     sfs_initrd,

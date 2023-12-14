@@ -14,9 +14,9 @@ also creates an initrd or a disk partition from a directory. Supported file syst
 | `tar`    | ✔Yes   | ✔Yes      | [wikipedia](https://wiki.osdev.org/USTAR)       |
 | `echfs`  | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/blob/binaries/specs/echfs.md), [source](https://github.com/echfs/echfs) |
 | `FS/Z`   | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/fsz.pdf), [source](https://gitlab.com/bztsrc/bootboot/blob/master/mkbootimg/fsZ.h) |
+| `minix`  | ✔Yes   | ✔Yes      | [spec](https://gitlab.com/bztsrc/minix3fs) (V3 supported) |
 | `boot`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/efifat.pdf) (ESP only, 8+3 names) |
 | `fat`    | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/vfat.pdf) (non-ESP only, with LFN) |
-| `minix`  | ✗No    | ✔Yes      | [V2 spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/minix.pdf), [V3 source](https://github.com/Stichting-MINIX-Research-Foundation/minix/tree/master/minix/fs/mfs) (V3 supported, but there's only V2 spec) |
 | `ext2`   | ✗No    | ✔Yes      | [spec](https://gitlab.com/bztsrc/bootboot/raw/binaries/specs/ext2.pdf), [documentation](https://www.nongnu.org/ext2-doc/ext2.html) |
 | `lean`   | ✗No    | ✔Yes      | [V0.6 spec](http://freedos-32.sourceforge.net/lean/specification.php), [V0.8 spec](http://www.fysnet.net/leanfs/specification.php) |
 

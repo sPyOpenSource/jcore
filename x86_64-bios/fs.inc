@@ -34,6 +34,7 @@
             USE32
 fsdrivers:
             dw          fsz_initrd
+            dw          mfs_initrd
             dw          cpio_initrd
             dw          tar_initrd
             dw          sfs_initrd
@@ -323,6 +324,94 @@ fsz_initrd:
             mov         esi, dword [bootboot.initrd_ptr]
             add         esi, eax
             ret
+
+; ----------- Minix3 FS ----------
+; Find the kernel on initrd (must be defragmented)
+; IN:   esi: initrd pointer, ecx: initrd end, edi: kernel filename
+; OUT:  On Success
+;         esi: pointer to the first byte, ecx: size in bytes
+;       On Error
+;         ecx: 0
+mfs_initrd:
+            cmp         word[esi + 1048], 'ZM'
+            jne         .err
+            ; *((uint16_t*)(initrd_p + 1052));
+            xor         ebx, ebx
+            mov         bx, word [esi + 1052]
+            ; (2 + *((uint16_t*)(initrd_p + 1030)) + *((uint16_t*)(initrd_p + 1032))) * bs;
+            xor         edx, edx
+            xor         eax, eax
+            mov         ax, word [esi + 1030]
+            mov         dx, word [esi + 1032]
+            add         eax, edx
+            add         eax, 2
+            mul         ebx
+            mov         dword [.tbl], eax
+            ; initrd_p + ino_tbl;
+            add         eax, esi
+            mov         dword [.ino], eax
+.again:     mov         ecx, edi
+@@:         inc         ecx
+            cmp         byte [ecx], '/'
+            je          @f
+            cmp         byte [ecx], 0
+            jnz         @b
+@@:         ; initrd_p + *((uint32_t*)(ino + 24)) * bs;
+            mov         eax, dword [.ino]
+            mov         eax, dword [eax + 24]
+            xor         ebx, ebx
+            mov         bx, word [esi + 1052]
+            mul         ebx
+            add         eax, esi
+            mov         edx, ebx
+            shr         edx, 6
+            ; if(*((uint32_t*)d) && !memcmp(s, d + 4, e - s) && !d[e - s])
+.srchdir:   cmp         dword [eax], 0
+            jnz         .next
+            push        edi
+            push        eax
+            add         eax, 4
+@@:         mov         bl, byte [eax]
+            cmp         byte [edi], bl
+            jne         .nomatch
+            inc         eax
+            inc         edi
+            cmp         edi, ecx
+            jne         @b
+            ; initrd_p + ino_tbl + (*((uint32_t*)d) - 1) * 64;
+            pop         eax
+            pop         edi
+            mov         eax, dword [eax]
+            dec         eax
+            shl         eax, 6
+            add         eax, dword [.tbl]
+            add         eax, esi
+            mov         dword [.ino], eax
+            cmp         byte [ecx], 0
+            jnz         @f
+            ; *((uint32_t*)(ino + 8))
+            mov         ecx, dword [eax + 8]
+            ; initrd_p + *((uint32_t*)(ino + 24)) * bs;
+            mov         eax, dword [eax + 24]
+            xor         ebx, ebx
+            mov         bx, word [esi + 1052]
+            mul         ebx
+            add         esi, eax
+            ret
+@@:         mov         edi, ecx
+            inc         edi
+            jmp         .again
+.nomatch:   pop         eax
+            pop         edi
+.next:      add         eax, 64
+            dec         edx
+            jz          .err
+            cmp         byte[eax + 4], 0
+            jnz         .srchdir
+.err:       xor         ecx, ecx
+            ret
+.tbl:       dd          0
+.ino:       dd          0
 
 ; ----------- cpio ----------
 ; Find the kernel on initrd
