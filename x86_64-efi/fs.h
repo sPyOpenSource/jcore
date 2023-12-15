@@ -38,19 +38,19 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
         return ret;
     }
     unsigned char passphrase[256],chk[32],iv[32];
-    unsigned int i,j,k,l,ss=1<<(initrd_p[519]+11);
+    unsigned int i,j,k,l,ss=1<<(initrd_p[518]+11);
     unsigned char *ent, *in=(initrd_p+*((uint64_t*)(initrd_p+560))*ss);
     SHA256_CTX ctx;
     DBG(L" * FS/Z %s\n",a2u(kernel));
     //decrypt initrd
-    while(*((uint32_t*)(initrd_p+708))!=0) {
+    while(*((uint32_t*)(initrd_p+520))!=0) {
         Print(L" * Passphrase? ");
         l=ReadLine(passphrase,sizeof(passphrase));
         if(!l) {
             Print(L"\n");
             return ret;
         }
-        if(*((uint32_t*)(initrd_p+708))!=crc32_calc((char*)passphrase,l)) {
+        if(*((uint32_t*)(initrd_p+520))!=crc32_calc((char*)passphrase,l)) {
             Print(L"\rBOOTBOOT-ERROR: Bad passphrase\n");
             continue;
         }
@@ -59,16 +59,18 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
         SHA256_Update(&ctx,passphrase,l);
         SHA256_Update(&ctx,initrd_p+512,6);
         SHA256_Final(chk,&ctx);
-        for(i=0;i<28;i++) initrd_p[i+680]^=chk[i];
+        for(i=0;i<32;i++) initrd_p[i+680]^=chk[i];
         SHA256_Init(&ctx);
-        SHA256_Update(&ctx,initrd_p+680,28);
+        SHA256_Update(&ctx,initrd_p+680,32);
         SHA256_Final(iv,&ctx);
-        if(((initrd_p[518]>>2)&7)==1) {
+        if(((initrd_p[519]>>4)&15)==1) {
+            // FSZ_SB_EALG_AESCBC
             aes_init(iv);
             for(k=ss,j=1;j<*((uint32_t*)(initrd_p+528));k+=ss,j++) {
                 aes_dec(initrd_p+k,ss);
             }
         } else {
+            // FSZ_SB_EALG_SHACBC
             for(k=ss,j=1;j<*((uint32_t*)(initrd_p+528));j++) {
                 CopyMem(chk,iv,32);
                 for(i=0;i<ss;i++) {
@@ -82,7 +84,7 @@ file_t fsz_initrd(unsigned char *initrd_p, char *kernel)
                 }
             }
         }
-        ZeroMem(initrd_p+680,28+4);
+        ZeroMem(initrd_p+680,32); *((uint32_t*)(initrd_p+520)) = 0;
         *((uint32_t*)(initrd_p+1020))=crc32_calc((char *)initrd_p+512,508);
         Print(L"                \r");
     }
@@ -128,29 +130,25 @@ again:
         unsigned char *in=(initrd_p+i*ss);
         if(!CompareMem(in,"FSIN",4)){
             ret.size=*((uint64_t*)(in+464));
-            switch(in[488]) {
-                case 0xFF:
+            if(*((uint64_t*)(in+448)) == i) {
+                if(!(in[488]&31)) {
                     // inline data
                     ret.ptr=(uint8_t*)(initrd_p+i*ss+(initrd_p[520]&1? 2048 : 1024));
-                    break;
-                case 0x80:
-                case 0x7F:
+                } else {
                     // sector directory or list inlined
                     ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(initrd_p[520]&1? in + 2048 : in + 1024))*ss);
+                }
+            } else
+            if(*((uint64_t*)(in+448))) {
+                switch((in[488]&15) + (in[488]&16 ? 1 : 0)) {
+                    case 0: // direct data
+                        ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(in+448)) * ss);
                     break;
-                case 0:
-                    // direct data
-                    ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(in+448)) * ss);
+                    case 1: // sector directory or list (only one level supported here, and no holes in files)
+                        ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(initrd_p + *((uint64_t*)(in+448))*ss)) * ss);
                     break;
-                // sector directory (only one level supported here, and no holes in files)
-                case 0x81:
-                case 1:
-                    ret.ptr=(uint8_t*)(initrd_p + *((uint64_t*)(initrd_p + *((uint64_t*)(in+448))*ss)) * ss);
-                    break;
-                default:
-                    ret.size=0;
-                    break;
-            }
+                }
+            } else ret.size=0;
         }
     }
     return ret;

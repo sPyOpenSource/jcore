@@ -55,8 +55,8 @@ typedef struct {
     uint8_t     version_major;      /* 516 */
     uint8_t     version_minor;      /* 517 */
     uint8_t     logsec;             /* 518 logical sector size, 0=2048,1=4096(default),2=8192... */
-    uint8_t     enctype;            /* 519 encryption alogirthm */
-    uint32_t    flags;              /* 520 flags */
+    uint8_t     flags;              /* 519 bit 0..3: file system features, bit 4..7: encryption algorithm */
+    uint32_t    enchash;            /* 520 password CRC32, to avoid decryption with bad passwords */
     uint16_t    maxmounts;          /* 524 number of maximum mounts allowed to next fsck */
     uint16_t    currmounts;         /* 526 current mount counter */
     uint64_t    numsec;             /* 528 total number of logical sectors */
@@ -78,32 +78,27 @@ typedef struct {
     uint64_t    journalhead;        /* 656 logical sector offset inside journal file where buffer starts */
     uint64_t    journaltail;        /* 664 logical sector offset inside journal file where buffer ends */
     uint64_t    journalmax;         /* 672 number of logical sectors in journal file */
-    uint8_t     encrypt[28];        /* 680 encryption mask for AES or zero */
-    uint32_t    enchash;            /* 708 password CRC32, to avoid decryption with bad passwords */
+    uint8_t     encrypt[32];        /* 680 encryption mask for AES or zero */
     uint64_t    createdate;         /* 712 creation timestamp UTC */
     uint64_t    lastmountdate;      /* 720 last time fs was mounted */
     uint64_t    lastumountdate;     /* 728 time when superblock was written to disk, must be zero when its mounted */
     uint64_t    lastcheckdate;      /* 736 last time fs was checked with fsck */
     uint8_t     uuid[16];           /* 744 filesystem UUID */
-    uint8_t     reserved[256];      /* 760 reserved for access list */
+    uint8_t     reserved[256];      /* 760 reserved for future use */
     uint8_t     magic2[4];          /*1016 */
     uint32_t    checksum;           /*1020 CRC32 of bytes at 512-1020 */
     uint8_t     raidspecific[FSZ_SECSIZE-1024];
 } __attribute__((packed)) FSZ_SuperBlock;
 
 #define FSZ_MAGIC               "FS/Z"
-#define FSZ_RAID_MAGIC          "FSRD"
-
-#define FSZ_SB_EALG_SHACBC      0       /* encrypted with SHA-XOR-CBC */
-#define FSZ_SB_EALG_AESCBC      1       /* encrypted with AES-256-CBC */
-/* values 2 - 255 are reserved for future use */
 
 /* feature flags */
 #define FSZ_SB_BIGINODE         (1<<0)  /* indicates inode size is 2048 (ACL size 96 instead of 32) */
 #define FSZ_SB_JOURNAL_DATA     (1<<1)  /* also put file content records in journal file, not just metadata */
-#define FSZ_SB_SOFTRAID         (1<<2)  /* single disk when not set */
-#define FSZ_SB_ACCESSDATE       (1<<3)  /* store last access timestamp in i-nodes */
-/* bits 4 - 31 are reserved for future use */
+
+#define FSZ_SB_EALG_SHACBC     (0<<4)   /* encrypted with SHA-XOR-CBC */
+#define FSZ_SB_EALG_AESCBC     (1<<4)   /* encrypted with AES-256-CBC */
+#define FSZ_SB_EALG(x)         ((x>>4)&15)
 
 /*********************************************************
  *                    I-node sector                      *
@@ -222,7 +217,7 @@ typedef struct {
 
 /* mime types for filesystem specific files */
 /* for FSZ_FILETYPE_DIR */
-#define FSZ_MIMETYPE_DIR_ROOT    "fs-root"  /* root directory (for recovery it has a special mime type) */
+#define FSZ_MIMETYPE_DIR_ROOT    "fs-root"         /* root directory (for recovery it has a special mime type) */
 /* for FSZ_FILETYPE_INTERNAL */
 #define FSZ_MIMETYPE_INT_FREELST "fs-free-sectors" /* for free sector list */
 #define FSZ_MIMETYPE_INT_BADLST  "fs-bad-sectors"  /* for bad sector list */
@@ -235,107 +230,87 @@ typedef struct {
  * not zero sectors (holes) for all versions alltogether */
 
 /* flags */
-#define FSZ_IN_FLAG_HIST     (1<<8)   /* indicates that previous file versions are kept */
-#define FSZ_IN_FLAG_CHKSUM   (1<<9)   /* file has content data checksums too */
-/* bits 10 to 63 are reserved for future use */
+#define FSZ_IN_FLAG_LEVEL(x) ((x)&15) /* a szektorcímfordítás szintjeinek a száma */
+#define FSZ_IN_FLAG_SECLIST  (1<<4)   /* a szektorcímfordítás szektorlistát használ szektorkönyvtár helyett */
+#define FSZ_IN_FLAG_CHKSUM   (1<<5)   /* file has content data checksums too */
+#define FSZ_IN_FLAG_HIST     (1<<7)   /* indicates that previous file versions are kept */
+/* bits 8 to 63 are reserved for future use */
 
 /* (***) logical sector address to data sector translation. These file sizes
- * were calculated with 4096 sector size. That is configurable in the
- * FSZ_SuperBlock if you think 11 sector reads is too much to access
- * data at any arbitrary position in a Yotta magnitude file.
+ * were calculated with 4096 sector size. That is configurable in the FSZ_SuperBlock's logsec.
  * Sector directory supports 2^128 LSNs, except when FSZ_IN_FLAG_CHECKSUM is set on the
- * file version, in which case LSNs are limited to "only" 2^96 bits.
+ * file version, in which case FSZ_SDEntry used so LSNs are limited to "only" 2^96 bits.
  * If even that's not enough, you can use FSZ_SectorList (extents) to store file data, which
- * store contiguous runs of sectors with separated checksum fields. */
+ * store contiguous runs of sectors with separated checksum fields (FSZ_SectorList). */
 
-
-/* sector translation part of flags */
-#define FSZ_FLAG_TRANSLATION(x) (uint8_t)((x>>0)&0xFF)
-
-/*  data size < sector size - 1024 (3072 bytes)
-    FSZ_Inode.sec points to itself.
+/*  data size < sector size - 1024 (3072 bytes, current version only)
+    FSZ_IN_FLAG_LEVEL = 0, FSZ_IN_FLAG_SECLIST = 0, FSZ_Inode.sec points to itself.
     the data is included in the inode sector at 1024 (or 2048 if BIGINODE)
+    with BIGINODE, this format supports 2048 bytes mapping.
     FSZ_Inode.sec -> FSZ_Inode.sec; data  */
-#define FSZ_IN_FLAG_INLINE  (0xFF<<0)
 
 /*  data size < sector size (4096)
-    The inode points to data sector directly
+    FSZ_IN_FLAG_LEVEL = 0, FSZ_IN_FLAG_SECLIST = 0, sec points to data sector directly
     FSZ_Inode.sec -> data */
-#define FSZ_IN_FLAG_DIRECT   (0<<0)
 
-/*  data size < (sector size - 1024) * sector size / 16 (768k)
-    FSZ_Inode.sec points to itself, sector directory inlined.
+/*  data size < (sector size - 1024) * sector size / 16 (768k, current version only)
+    FSZ_IN_FLAG_LEVEL = 1, FSZ_IN_FLAG_SECLIST = 0, FSZ_Inode.sec points to itself,
+    sector directory inlined.
     with BIGINODE, this format supports 512k mapping.
     FSZ_Inode.sec -> FSZ_Inode.sec; sd -> data */
-#define FSZ_IN_FLAG_SD0      (0x7F<<0)
 
 /*  data size < sector size * sector size / 16 (1 M)
-    FSZ_Inode.sec points to a sector directory,
+    FSZ_IN_FLAG_LEVEL = 1, FSZ_IN_FLAG_SECLIST = 0, sec points to a sector directory,
     which is a sector with up to 256 sector addresses
     FSZ_Inode.sec -> sd -> data */
-#define FSZ_IN_FLAG_SD1      (1<<0)
 
 /*  data size < sector size * sector size / 16 * sector size / 16 (256 M)
-    FSZ_Inode.sec points to a sector directory,
+    FSZ_IN_FLAG_LEVEL = 2, FSZ_IN_FLAG_SECLIST = 0, sec points to a sector directory,
     which is a sector with up to 256 sector
     directory addresses, which in turn point
     to 256*256 sector addresses
     FSZ_Inode.sec -> sd -> sd -> data */
-#define FSZ_IN_FLAG_SD2      (2<<0)
 
 /*  data size < (64 G)
     FSZ_Inode.sec -> sd -> sd -> sd -> data */
-#define FSZ_IN_FLAG_SD3      (3<<0)
 
 /*  data size < (16 T)
     FSZ_Inode.sec -> sd -> sd -> sd -> sd -> data */
-#define FSZ_IN_FLAG_SD4      (4<<0)
 
 /*  data size < (4 Peta, equals 4096 Terra)
     FSZ_Inode.sec -> sd -> sd -> sd -> sd -> sd -> data */
-#define FSZ_IN_FLAG_SD5      (5<<0)
 
 /*  data size < (1 Exa, equals 1024 Peta)
     FSZ_Inode.sec -> sd -> sd -> sd -> sd -> sd -> sd -> data */
-#define FSZ_IN_FLAG_SD6      (6<<0)
 
 /*  data size < (256 Exa)
     FSZ_Inode.sec -> sd -> sd -> sd -> sd -> sd -> sd -> sd -> data */
-#define FSZ_IN_FLAG_SD7      (7<<0)
-
-/*  data size < (64 Zetta, equals 65536 Exa) */
-#define FSZ_IN_FLAG_SD8      (8<<0)
-
-/*  data size < (16 Yotta, equals 16384 Zetta) */
-#define FSZ_IN_FLAG_SD9      (9<<0)
 
 /*  as sector list contains a number of sectors field it's impossible to tell
  *  how big file it can store, so we measure it by the number of file fragments */
 
-/*  inlined sector list ((sector size - 1024) / 32, up to 96 entries)
-    FSZ_Inode.sec points to itself, FSZ_SectorList entries inlined.
+/*  inlined sector list ((sector size - 1024) / 32, up to 96 entries, current version only)
+    FSZ_IN_FLAG_LEVEL = 0, FSZ_IN_FLAG_SECLIST = 16, FSZ_Inode.sec points to itself,
+    FSZ_SectorList entries inlined.
     FSZ_Inode.sec -> FSZ_Inode.sec; sl -> data */
-#define FSZ_IN_FLAG_SECLIST0 (0x80<<0)
 
-/*  normal sector list ((sector size - 1024) * sector size / 16 / 32, up to 24576 entries)
-    FSZ_Inode.sec points to a sector list with FSZ_SectorList entries.
+/*  normal sector list sector size / 32, up to 128 entries)
+    FSZ_IN_FLAG_LEVEL = 0, FSZ_IN_FLAG_SECLIST = 16, sec points to a sector,
+    which contains FSZ_SectorList entries.
     FSZ_Inode.sec -> sl -> data */
-#define FSZ_IN_FLAG_SECLIST1 (0x81<<0)
 
 /*  indirect sector list (up to 32768 entries)
-    FSZ_Inode.sec points to a sector directory with FSZ_SectorLists
+    FSZ_IN_FLAG_LEVEL = 1, FSZ_IN_FLAG_SECLIST = 16, sec points to a sector directory,
+    where each sector points to FSZ_SectorLists
     FSZ_Inode.sec -> sd -> sl -> data */
-#define FSZ_IN_FLAG_SECLIST2 (0x82<<0)
 
 /*  double-indirect sector list (up to 8388608 entries)
-    FSZ_Inode.sec points to a sector directory pointing to
-    sector directories with FSZ_SectorLists
+    FSZ_IN_FLAG_LEVEL = 1, FSZ_IN_FLAG_SECLIST = 16, sec points to a sector directory,
+    pointing to sector directories with FSZ_SectorLists
     FSZ_Inode.sec -> sd -> sd -> sl -> data */
-#define FSZ_IN_FLAG_SECLIST3 (0x83<<0)
 
 /*  triple-indirect sector list (up to 2147483648 entries)
     FSZ_Inode.sec -> sd -> sd -> sd -> sl -> data */
-#define FSZ_IN_FLAG_SECLIST4 (0x84<<0)
 
 /*********************************************************
  *                      Directory                        *

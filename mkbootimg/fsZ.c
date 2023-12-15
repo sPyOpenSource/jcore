@@ -62,7 +62,7 @@ int fsz_add_inode(char *filetype, char *mimetype)
         if(!strcmp(filetype,FSZ_FILETYPE_DIR)){
             hdr=(FSZ_DirEntHeader *)(in->data.small.inlinedata);
             in->sec=hdr->fid=fs_len/fsz_secsize;
-            in->flags=FSZ_IN_FLAG_INLINE;
+            in->flags=0;
             in->size=sizeof(FSZ_DirEntHeader);
             memcpy(in->data.small.inlinedata,FSZ_DIR_MAGIC,4);
             hdr->checksum=crc32_calc((unsigned char*)hdr + 16, in->size - 16);
@@ -144,10 +144,11 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
     in=(FSZ_Inode *)(fs_base+inode*fsz_secsize);
     in->changedate=t * 1000000;
     in->modifydate=t * 1000000;
+    in->sec=inode+1;
     in->size=size;
     if(size<=(unsigned long int)fsz_secsize-1024) {
         in->sec=inode;
-        in->flags=FSZ_IN_FLAG_INLINE;
+        in->flags=0;
         in->numblocks=0;
         memcpy(in->data.small.inlinedata,data,size);
         s=0;
@@ -158,12 +159,13 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
             if(j*16>fsz_secsize){ fprintf(stderr,"mkbootimg: partition #%d %s: %s\n", fs_no, lang[ERR_TOOBIG], name); exit(1); }
             if(j*16<=fsz_secsize-1024) {
                 ptr=(unsigned char*)&in->data.small.inlinedata;
-                in->flags=FSZ_IN_FLAG_SD0;
+                in->sec=inode;
+                in->flags=1;
                 in->numblocks=0;
                 l=0;
             } else {
                 ptr=fs_base+size;
-                in->flags=FSZ_IN_FLAG_SD1;
+                in->flags=1;
                 in->numblocks=1;
                 l=1;
             }
@@ -181,10 +183,10 @@ void fsz_add_file(char *name, unsigned char *data, unsigned long int size)
                 }
                 ptr+=16;
             }
-            if(in->flags==FSZ_IN_FLAG_SD1)
+            if(in->flags==1)
                 size+=fsz_secsize;
         } else {
-            in->flags=FSZ_IN_FLAG_DIRECT;
+            in->flags=0;
             if(memcmp(data,fsz_emptysec,fsz_secsize)) {
                 in->numblocks=1;
                 memcpy(fs_base+fs_len,data,size);

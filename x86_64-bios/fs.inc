@@ -55,11 +55,13 @@ fsz_initrd:
             ; FS/Z superblock
             cmp         dword [esi+512], 'FS/Z' ; FSZ_SuperBlock.magic
             jne         .nolib
+            cmp         byte [esi+518], 1       ; FSZ_SuperBlock.logsec
+            jne         .nolib
             ; encrypted initrd?
-            cmp         dword [esi+708], 0      ; FSZ_SuperBlock.enchash
+            cmp         dword [esi+520], 0      ; FSZ_SuperBlock.enchash
             jz          .noenc
-            mov         al, byte [esi+519]      ; FSZ_SuperBlock.enctype
-            or          al, al
+            mov         al, byte [esi+519]      ; FSZ_SuperBlock.flags >> 4 (enctype)
+            and         al, 0F0h
             jz          @f
             prot_realmode
             real_print  loader.name
@@ -106,7 +108,7 @@ fsz_initrd:
             call        crc32_calc
             prot_realmode
             pop         esi
-            cmp         dword [esi+708], edx
+            cmp         dword [esi+520], edx
             je          .passok
             real_print  badpass
             jmp         .passagain
@@ -125,7 +127,7 @@ fsz_initrd:
             call        sha_final
             mov         edi, esi
             add         edi, 680                ; FSZ_SuperBlock.encrypt
-            mov         cl, 28
+            mov         cl, 32
             xor         ebx, ebx
 @@:         mov         al, byte [edi]
             xor         byte [chk+ebx], al
@@ -136,7 +138,7 @@ fsz_initrd:
             jnz         @b
             stosd
             call        sha_init
-            mov         ecx, 28
+            mov         ecx, 32
             mov         ebx, chk
             call        sha_upd
             mov         edi, iv
@@ -185,6 +187,12 @@ fsz_initrd:
             cmp         eax, dword [pl]
             jne         .decrypt
             mov         esi, dword [esp]
+            mov         edi, esi
+            add         edi, 680                ; FSZ_SuperBlock.encrypt
+            mov         cl, 8
+            xor         eax, eax
+            mov         dword[esi+520], eax
+            repnz       stosd
             add         esi, 512
             mov         ecx, 508
             call        crc32_calc
@@ -295,32 +303,38 @@ fsz_initrd:
             ; get data
             mov         eax, dword [esi+448]    ; FSZ_Inode.sec
             mov         ecx, dword [esi+464]    ; FSZ_Inode.size
-            mov         bl, byte [esi+488]      ; FSZ_Inode.flags
+            or          eax, eax
+            jz          .nocore
 
-            ; inline
-            cmp         bl, 0FFh                ; FSZ_IN_FLAG_INLINE
-            jne          @f
+            ; inline? (FSZ_Inode.sec == inode)
+            mov         ebx, esi
+            shr         ebx, 12
+            cmp         eax, ebx
+            jne         .notinline
+            mov         bl, byte [esi+488]      ; FSZ_Inode.flags
             add         esi, dword[_i]          ; FSZ_Inode.[big|small].inlinedata
+            and         bl, 01Fh
+            jnz         @f
             ret
-            ; direct data block
-@@:         or          bl, bl                  ; FSZ_IN_FLAG_DIRECT
-            je          .load
-            ; inlined sector directory or sector list
-@@:         cmp         bl, 07Fh                ; FSZ_IN_FLAG_SDINLINE
-            je          @f
-            cmp         bl, 080h                ; FSZ_IN_FLAG_SECLIST
-            je          @f
-            cmp         bl, 1                   ; FSZ_IN_FLAG_SD
-            jne         .nocore
+@@:         mov         eax, dword[esi]
+            jmp         @f
+            shl         eax, 12
+            mov         esi, dword [bootboot.initrd_ptr]
+            add         esi, eax
+            ret
+.notinline:
+            mov         bl, byte [esi+488]      ; FSZ_Inode.flags
+            mov         bh, bl
+            and         bl, 0Fh
+            shr         bh, 4
+            add         bl, bh                  ; 0 = direct, no seclist, 1 = indirect or seclist
+            or          bl, bl
+            jz          @f
             shl         eax, 12
             mov         esi, dword [bootboot.initrd_ptr]
             add         esi, eax
             mov         eax, dword [esi]        ; first FSZ_SectorList.sec
-            jmp         .load
-@@:         add         esi, dword[_i]          ; FSZ_Inode.[big|small].inlinedata
-            ; sector directory at esi, file size in ecx
-            mov         eax, dword [esi]        ; first FSZ_SectorList.sec
-.load:      shl         eax, 12
+@@:         shl         eax, 12
             mov         esi, dword [bootboot.initrd_ptr]
             add         esi, eax
             ret
