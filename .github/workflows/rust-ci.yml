@@ -18,7 +18,7 @@ jobs:
       - name: Install cargo-audit
         run: cargo install cargo-audit
       - name: Build
-        run: cd kernel || cargo build --verbose
+        run: ./build.sh
       - name: Test
         run: cd kernel | cargo test --verbose
       - name: Clippy
