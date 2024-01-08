@@ -20,8 +20,8 @@ jobs:
       - name: Build
         run: sh build.sh
       - name: Test
-        run: cd kernel | cargo test --verbose
+        run: cargo test --verbose
       - name: Clippy
-        run: cd kernel | cargo clippy --verbose -- -D warnings
+        run: cargo clippy --verbose -- -D warnings
       - name: Audit
-        run: cd kernel | cargo audit
+        run: cargo audit
