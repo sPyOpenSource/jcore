@@ -1,4 +1,3 @@
-//use std::io::{stdout, BufWriter};
 #![no_std]
 #![no_main]
 
@@ -20,6 +19,7 @@
     say(message.as_bytes(), width, &mut writer).unwrap();
 }*/
 
+//use std::io::{stdout, BufWriter};
 use core::panic::PanicInfo;
 
 #[panic_handler]
