@@ -14,6 +14,8 @@ use crate::{block::block_op,
 			process::{add_kernel_process_args, delete_process, get_by_pid, set_sleeping, set_waiting, PROCESS_LIST, PROCESS_LIST_MUTEX, Descriptor}};
 use crate::console::{IN_LOCK, IN_BUFFER, push_queue};
 use alloc::{boxed::Box, string::String};
+use core:option::Option::Some;
+use core::result::Result::Ok;
 
 /// do_syscall is called from trap.rs to invoke a system call. No discernment is
 /// made here whether this is a U-mode, S-mode, or M-mode system call.

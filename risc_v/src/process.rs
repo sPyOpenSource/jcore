@@ -15,6 +15,9 @@ use crate::{cpu::{get_mtime,
             syscall::{syscall_exit, syscall_yield}};
 use alloc::{string::String, collections::{vec_deque::VecDeque, BTreeMap}};
 use core::ptr::null_mut;
+use core::ops::Drop;
+use core::option::Option::{Some, None};
+use core::option::Option;
 use crate::lock::Mutex;
 
 // How many pages are we going to give a process for their

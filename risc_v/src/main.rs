@@ -1,6 +1,9 @@
 // Steve Operating System
 // Stephen Marz
 // 21 Sep 2019
+
+use core::arch::asm;
+
 #![no_main]
 #![no_std]
 #![feature(panic_info_message,
@@ -69,7 +72,7 @@ fn panic(info: &core::panic::PanicInfo) -> ! {
 extern "C" fn abort() -> ! {
 	loop {
 		unsafe {
-			llvm_asm!("wfi"::::"volatile");
+			asm!("wfi"::::"volatile");
 		}
 	}
 }

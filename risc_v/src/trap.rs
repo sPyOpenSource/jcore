@@ -67,7 +67,7 @@ extern "C" fn m_trap(epc: usize,
 				plic::handle_interrupt();
 			}
 			_ => {
-				panic!("Unhandled async trap CPU#{} -> {}\n", hart, cause_num);
+				core::panic!("Unhandled async trap CPU#{} -> {}\n", hart, cause_num);
 			}
 		}
 	}
@@ -132,7 +132,7 @@ extern "C" fn m_trap(epc: usize,
 				rust_switch_to_user(frame);
 			}
 			_ => {
-				panic!(
+				core::panic!(
 				       "Unhandled sync trap {}. CPU#{} -> 0x{:08x}: 0x{:08x}\n",
 				       cause_num, hart, epc, tval
 				);

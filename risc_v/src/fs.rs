@@ -10,6 +10,9 @@ use crate::{cpu::Registers,
 use crate::{buffer::Buffer, cpu::memcpy};
 use alloc::{boxed::Box, collections::BTreeMap, string::String};
 use core::mem::size_of;
+use core::result::Result::{Err, Ok};
+use core::result::Result;
+use core::option::Option::{Some, None};
 
 pub const MAGIC: u16 = 0x4d5a;
 pub const BLOCK_SIZE: u32 = 1024;

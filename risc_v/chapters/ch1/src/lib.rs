@@ -54,7 +54,7 @@ extern "C"
 fn abort() -> ! {
 	loop {
 		unsafe {
-			core::arch::asm!("wfi"::::"volatile");
+			core::arch::asm!("wfi","volatile");
 		}
 	}
 }

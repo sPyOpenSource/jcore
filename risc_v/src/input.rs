@@ -6,6 +6,7 @@ use crate::virtio::{Queue, MmioOffsets, MMIO_VIRTIO_START, StatusField, VIRTIO_R
 use crate::kmem::kmalloc;
 use crate::page::{PAGE_SIZE, zalloc};
 use core::mem::size_of;
+use core:option::Option::{Some, None}
 use alloc::collections::VecDeque;
 
 pub static mut ABS_EVENTS: Option<VecDeque<Event>> = None;

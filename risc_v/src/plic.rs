@@ -5,6 +5,8 @@
 
 use crate::uart;
 use crate::virtio;
+use core::option::Option::{Some, None};
+use core::option::Option;
 
 const PLIC_PRIORITY: usize = 0x0c00_0000;
 const PLIC_PENDING: usize = 0x0c00_1000;

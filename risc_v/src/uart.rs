@@ -4,6 +4,10 @@
 use core::{convert::TryInto,
 		   fmt::{Error, Write}};
 use crate::console::push_stdin;
+use core::option::Option::{Some, None};
+use core::option::Option;
+use core::result::Result::Ok;
+use core::result::Result;
 
 pub struct Uart {
 	base_address: usize,

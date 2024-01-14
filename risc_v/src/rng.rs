@@ -9,6 +9,8 @@ use crate::{kmem::{kfree, kmalloc},
             virtio,
             virtio::{Descriptor, MmioOffsets, Queue, StatusField, VIRTIO_RING_SIZE}};
 use core::{mem::size_of, ptr::null_mut};
+use core::option::Option::{Some, None};
+use core::option::Option;
 
 pub struct EntropyDevice {
 	queue:        *mut Queue,

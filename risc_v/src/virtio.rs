@@ -8,6 +8,8 @@ use crate::rng::setup_entropy_device;
 use crate::{gpu, gpu::setup_gpu_device};
 use crate::{input, input::setup_input_device};
 use core::mem::size_of;
+use core::option::Option::{Some, None};
+use core::option::Option;
 
 // Flags
 // Descriptor flags have VIRTIO_DESC_F as a prefix

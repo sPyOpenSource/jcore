@@ -5,6 +5,7 @@
 
 use crate::process::{ProcessState, PROCESS_LIST, PROCESS_LIST_MUTEX};
 use crate::cpu::get_mtime;
+use core::option::Option::Some;
 
 pub fn schedule() -> usize {
 	let mut frame_addr: usize = 0x1111;
