@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="65">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>BCM2837.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="LoadableFiles"
+                   displayName="Prebuilt Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>stm32f103/blink1/blink.c</itemPath>
+      <itemPath>stm32f103/blink1/locore.s</itemPath>
+      <itemPath>start.s</itemPath>
+      <itemPath>main.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>stm32f103/blink1/Makefile</itemPath>
+      <itemPath>stm32f103/blink1/blink.lds</itemPath>
+      <itemPath>stm32f103/blink1/ocd</itemPath>
+      <itemPath>stm32f103/blink1/README.md</itemPath>
+      <itemPath>linker.ld</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>stm32f103/blink1</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="default" type="9">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice>SAM9X60</targetDevice>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
+        <platformTool>noID</platformTool>
+        <languageToolchain>ARM</languageToolchain>
+        <languageToolchainVersion>4.8.3</languageToolchainVersion>
+        <platform>4</platform>
+      </toolsSet>
+      <packs>
+        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.7.85"/>
+      </packs>
+      <ScriptingSettings>
+      </ScriptingSettings>
+      <makefileType>
+        <makeTool>
+          <workingDirectory>/Users/xuyi/Source/C/group</workingDirectory>
+          <buildCommand>make</buildCommand>
+          <cleanCommand>make clean</cleanCommand>
+          <debugBuildCommand>make debug</debugBuildCommand>
+          <imageName>stm32</imageName>
+          <debugImageName>stm32.d</debugImageName>
+          <userIncludePaths></userIncludePaths>
+          <userMacros></userMacros>
+        </makeTool>
+      </makefileType>
+      <userMakefileProjectLoading>
+      </userMakefileProjectLoading>
+      <ARM-Global>
+        <property key="bin" value="false"/>
+        <property key="common-include-directories" value=""/>
+        <property key="eep" value="false"/>
+        <property key="hex" value="true"/>
+        <property key="lss" value="false"/>
+        <property key="omit-pack-options" value="false"/>
+        <property key="processor-mode" value="-mthumb"/>
+        <property key="srec" value="false"/>
+        <property key="user-pack-include" value=""/>
+      </ARM-Global>
+    </conf>
+  </confs>
+</configurationDescriptor>
