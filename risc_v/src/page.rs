@@ -6,6 +6,7 @@
 use core::{mem::size_of, ptr::null_mut};
 use core::option::Option::{None, Some};
 use core::option::Option;
+use core::iter::Iterator;
 
 // ////////////////////////////////
 // // Allocation routines
@@ -399,7 +400,7 @@ pub fn map(root: &mut Table,
 {
 	// Make sure that Read, Write, or Execute have been provided
 	// otherwise, we'll leak memory and always create a page fault.
-	assert(bits & 0xe != 0);
+	assert!(bits & 0xe != 0);
 	// Extract out each VPN from the virtual address
 	// On the virtual address, each VPN is exactly 9 bits,
 	// which is why we use the mask 0x1ff = 0b1_1111_1111 (9 bits)

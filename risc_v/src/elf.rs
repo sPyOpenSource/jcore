@@ -9,6 +9,9 @@ use crate::{buffer::Buffer,
             page::{map, zalloc, EntryBits, Table, PAGE_SIZE},
             process::{Process, ProcessData, ProcessState, NEXT_PID, STACK_ADDR, STACK_PAGES}};
 use alloc::collections::VecDeque;
+use core::result::Result;
+use core::result::Result::{Ok, Err};
+
 // Every ELF file starts with ELF "magic", which is a sequence of four bytes 0x7f followed by capital ELF, which is 0x45, 0x4c, and 0x46 respectively.
 pub const MAGIC: u32 = 0x464c_457f;
 

@@ -13,6 +13,8 @@ use core::mem::size_of;
 use core::result::Result::{Err, Ok};
 use core::result::Result;
 use core::option::Option::{Some, None};
+use core::option::Option;
+use core::convert::From;
 
 pub const MAGIC: u16 = 0x4d5a;
 pub const BLOCK_SIZE: u32 = 1024;

@@ -16,6 +16,11 @@ use crate::{kmem::{kfree, kmalloc},
                      StatusField,
                      VIRTIO_RING_SIZE}};
 use core::mem::size_of;
+use core::result::Result;
+use core::option::Option::None;
+use core::result::Result::{Err, Ok};
+use core::option::Option:Some;
+use core::option::Option;
 use alloc::boxed::Box;
 
 #[repr(C)]

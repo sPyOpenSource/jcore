@@ -6,6 +6,8 @@
 use alloc::collections::VecDeque;
 use crate::lock::Mutex;
 use crate::process::{get_by_pid, set_running};
+use core::option::Option::{Some, None};
+use core::option::Option;
 
 pub static mut IN_BUFFER: Option<VecDeque<u8>> = None;
 pub static mut OUT_BUFFER: Option<VecDeque<u8>> = None;

@@ -10,6 +10,7 @@ use crate::{input, input::setup_input_device};
 use core::mem::size_of;
 use core::option::Option::{Some, None};
 use core::option::Option;
+use core::iter::Iterator;
 
 // Flags
 // Descriptor flags have VIRTIO_DESC_F as a prefix

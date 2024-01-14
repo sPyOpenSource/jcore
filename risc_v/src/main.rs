@@ -3,6 +3,7 @@
 // 21 Sep 2019
 
 use core::arch::asm;
+use core::option::Option::Some;
 
 #![no_main]
 #![no_std]
@@ -155,5 +156,3 @@ pub mod uart;
 pub mod vfs;
 pub mod virtio;
 pub mod test;
-
-

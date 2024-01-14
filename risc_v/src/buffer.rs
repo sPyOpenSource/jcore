@@ -5,6 +5,10 @@
 
 use crate::{cpu::memcpy, kmem::{kmalloc, kfree}};
 use core::{ptr::null_mut, ops::{Index, IndexMut}};
+use core::default::Default;
+use core::clone::Clone;
+use core::ops::Drop;
+
 // We need a Buffer that can automatically be created and destroyed
 // in the lifetime of our read and write functions. In C, this would entail
 // goto statements that "unravel" all of the allocations that we made. Take

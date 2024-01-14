@@ -311,4 +311,3 @@ pub fn handle_interrupt(idx: usize) {
 		}
 	}
 }
-
