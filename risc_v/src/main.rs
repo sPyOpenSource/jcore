@@ -2,20 +2,16 @@
 // Stephen Marz
 // 21 Sep 2019
 
-use core::arch::asm;
-use core::option::Option::Some;
-
 #![no_main]
 #![no_std]
 #![feature(panic_info_message,
-           asm,
-		   llvm_asm,
-		   global_asm,
            allocator_api,
            alloc_error_handler,
-           alloc_prelude,
-		   const_raw_ptr_to_usize_cast,
 		   lang_items)]
+		   
+use core::arch::asm;
+use core::option::Option::Some;
+use core::write;
 
 #[lang = "eh_personality"] extern fn eh_personality() {}
 
@@ -73,7 +69,7 @@ fn panic(info: &core::panic::PanicInfo) -> ! {
 extern "C" fn abort() -> ! {
 	loop {
 		unsafe {
-			asm!("wfi"::::"volatile");
+			asm!("wfi", "volatile");
 		}
 	}
 }

@@ -9,7 +9,7 @@ use crate::{page::{zalloc, PAGE_SIZE},
             virtio,
             virtio::{MmioOffsets, Queue, StatusField, VIRTIO_RING_SIZE, Descriptor, VIRTIO_DESC_F_WRITE, VIRTIO_DESC_F_NEXT}};
 use core::{mem::size_of, ptr::null_mut};
-use core::option::Option::{None, Some}
+use core::option::Option::{None, Some};
 use core::option::Option;
 
 // use alloc::boxed::Box;

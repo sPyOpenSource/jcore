@@ -5,6 +5,7 @@
 
 use crate::page::{align_val, zalloc, Table, PAGE_SIZE};
 use core::{mem::size_of, ptr::null_mut};
+use core::{assert, panic};
 
 #[repr(usize)]
 enum AllocListFlags {

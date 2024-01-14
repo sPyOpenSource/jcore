@@ -10,4 +10,3 @@ pub fn test() {
 	syscall::syscall_execv(path,0);
 	println!("I should never get here, execv should destroy our process.");
 }
-#[cfg(test)]

@@ -7,6 +7,9 @@ use core::{mem::size_of, ptr::null_mut};
 use core::option::Option::{None, Some};
 use core::option::Option;
 use core::iter::Iterator;
+use core::assert;
+use core::panic;
+use core::write;
 
 // ////////////////////////////////
 // // Allocation routines

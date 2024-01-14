@@ -5,7 +5,7 @@
 
 use alloc::collections::VecDeque;
 use crate::lock::Mutex;
-use crate::process::{get_by_pid, set_running};
+use crate::process::{set_running};
 use core::option::Option::{Some, None};
 use core::option::Option;
 
