@@ -54,7 +54,7 @@ extern "C"
 fn abort() -> ! {
 	loop {
 		unsafe {
-			asm!("wfi"::::"volatile");
+			core::arch::asm!("wfi"::::"volatile");
 		}
 	}
 }
@@ -77,5 +77,3 @@ fn kmain() {
 // ///////////////////////////////////
 // / RUST MODULES
 // ///////////////////////////////////
-
-
