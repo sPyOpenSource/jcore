@@ -21,7 +21,6 @@ void putc(void *p, char c) {
 
 u32 get_el();
 
-
 #define BOOT_SIGNATURE 0xAA55
 
 typedef struct PACKED {
@@ -137,7 +136,7 @@ void kernel_main() {
 
     printf("I2C POWER STATE:\n");
 
-    for (int i=0; i<3; i++) {
+    for (int i = 0; i < 3; i++) {
         bool on = mailbox_power_check(i);
 
         printf("POWER DOMAIN STATUS FOR %d = %d\n", i, on);
@@ -145,7 +144,7 @@ void kernel_main() {
 
     //timer_sleep(2000);
 
-    for (int i=0; i<3; i++) {
+    for (int i = 0; i < 3; i++) {
         u32 on = 1;
         mailbox_generic_command(RPI_FIRMWARE_SET_DOMAIN_STATE, i, &on);
 
@@ -154,7 +153,7 @@ void kernel_main() {
 
     //timer_sleep(1000);
 
-    for (int i=0; i<3; i++) {
+    for (int i = 0; i < 3; i++) {
         bool on = mailbox_power_check(i);
 
         printf("POWER DOMAIN STATUS FOR %d = %d\n", i, on);
