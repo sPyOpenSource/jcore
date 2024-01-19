@@ -16,7 +16,7 @@
 
 #define PI3_UART
 
-#define PI3_BREAK				asm volatile("brk #0");
+#define PI3_BREAK			asm volatile("brk #0");
 
 #define BCM2837_GPIO_BASE	0x3F200000
 #define BCM2837_GPIO_SIZE	0xA0
@@ -25,8 +25,8 @@
 #define BCM2837_GPFSEL2		0x3F200008
 #define BCM2837_GPSET0  	0x3F20001C
 #define BCM2837_GPCLR0  	0x3F200028
-#define BCM2837_GPPUD       	0x3F200094
-#define BCM2837_GPPUDCLK0   	0x3F200098
+#define BCM2837_GPPUD       0x3F200094
+#define BCM2837_GPPUDCLK0   0x3F200098
 
 #define BCM2837_AUX_BASE	0x3F215000
 #define BCM2837_AUX_SIZE	0x70
@@ -46,8 +46,8 @@
 #define BCM2837_GPFSEL0_V		(pi3_gpio_base_vaddr + 0x0)
 #define BCM2837_GPSET0_V  		(pi3_gpio_base_vaddr + 0x1C)
 #define BCM2837_GPCLR0_V  		(pi3_gpio_base_vaddr + 0x28)
-#define BCM2837_GPPUD_V       		(pi3_gpio_base_vaddr + 0x94)
-#define BCM2837_GPPUDCLK0_V   		(pi3_gpio_base_vaddr + 0x98)
+#define BCM2837_GPPUD_V       	(pi3_gpio_base_vaddr + 0x94)
+#define BCM2837_GPPUDCLK0_V   	(pi3_gpio_base_vaddr + 0x98)
 
 #define BCM2837_FSEL_INPUT              0x0
 #define BCM2837_FSEL_OUTPUT             0x1
