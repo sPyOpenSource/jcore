@@ -4,7 +4,7 @@
 
 #define __AARCH64__ 1
 
-void _start()
+void start()
 {
     uint32_t reg;
     uint32_t *mmio_base;
@@ -27,20 +27,36 @@ void _start()
     }
 }
 
-typedef unsigned int uint;
-
-void write32(void *dst, uint val)
+static uint32_t MMIO_BASE;
+ 
+// The MMIO area base address, depends on board type
+static inline void mmio_init(int raspi)
 {
-	uint* dst_u = (uint*)dst;
-	*dst_u = val;
-
-	return;
+    switch (raspi) {
+        case 2:
+        case 3:  MMIO_BASE = 0x3F000000; break; // for raspi2 & 3
+        case 4:  MMIO_BASE = 0xFE000000; break; // for raspi4
+        default: MMIO_BASE = 0x20000000; break; // for raspi1, raspi zero etc.
+    }
 }
-
-uint read32(void *src)
+ 
+// Memory-Mapped I/O output
+static inline void mmio_write(uint32_t reg, uint32_t data)
 {
-	uint* src_u = (uint*)src;
-	return *src_u;
+	*(volatile uint32_t*)(MMIO_BASE + reg) = data;
+}
+ 
+// Memory-Mapped I/O input
+static inline uint32_t mmio_read(uint32_t reg)
+{
+	return *(volatile uint32_t*)(MMIO_BASE + reg);
+}
+ 
+// Loop <delay> times in a way that the compiler won't optimize away
+static inline void delay(int32_t count)
+{
+	asm volatile("__delay_%=: subs %[count], %[count], #1; bne __delay_%=\n"
+		 : "=r"(count): [count]"0"(count) : "cc");
 }
 
 enum
@@ -89,7 +105,7 @@ volatile unsigned int  __attribute__((aligned(16))) mbox[9] = {
     9*4, 0, 0x38002, 12, 8, 2, 3000000, 0 ,0
 };
 
-void uart_init(int raspi)
+void full_uart_init(int raspi)
 {
 	mmio_init(raspi);
  
@@ -166,16 +182,16 @@ void uart_puts(const char* str)
 
 void main(void)
 {
-	uint gpfsel2 = read32(BCM2837_GPFSEL2);
+	int gpfsel2 = mmio_read(BCM2837_GPFSEL2);
 	gpfsel2 |= (1<<3); //turn pin 21 into an output.
-	write32(BCM2837_GPFSEL2, gpfsel2);
+	mmio_write(BCM2837_GPFSEL2, gpfsel2);
 
 	int i = 0;
 
 	while(1)
 	{
 		//turn on pin 21
-		write32(BCM2837_GPSET0, 1 << 21);
+		mmio_write(BCM2837_GPSET0, 1 << 21);
 
 		//delay
 		i = 0;
@@ -185,7 +201,7 @@ void main(void)
 		}
 
 		//turn off pin 21
-		write32(BCM2837_GPCLR0, 1 << 21);
+		mmio_write(BCM2837_GPCLR0, 1 << 21);
 
 		//delay
 		i = 0;

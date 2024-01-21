@@ -31,18 +31,16 @@ extern struct irqInfos iInfos[NUM_IRQs];	// in zero.c
 
 /*Prototypes */
 
-int pic_init_pmode();
+int irq_enable();
 
 /* loads the Interrupt Description Table */
 /*   the first call of this function builds the table 
      following calls will only load the pointer in the IDT-Reg.*/
-void idt_load();
+void irq_init_vectors();
 
-/* adds or modifies an entry in the IDT */
-void int_gate(unsigned vec_nr, u4_t base, unsigned dpl_type);	// in multiboot.c
 
 /* sets the mask bit for irq in the corresponding (A)PIC */
-void disableIRQ(unsigned int irq);
+void irq_disable();
 
 #endif				/* no ASSEMBLER */
 
