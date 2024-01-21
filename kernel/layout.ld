@@ -32,7 +32,7 @@ SECTIONS
         *(.bss .bss.*)
         *(COMMON)
         . = ALIGN(8);
-        __bss_end__ = .;
+        __bss_end = .;
     }
 
     /* end of the binary */
@@ -46,3 +46,4 @@ SECTIONS
 
     /* /DISCARD/ : { *(.comment) *(.gnu*) *(.note*) *(.eh_frame*) *(.debug*)} */
 }
+__bss_end__ = ADDR(.bss) + SIZEOF(.bss);
