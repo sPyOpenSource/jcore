@@ -1,7 +1,8 @@
 #include "BCM2837.h"
 #include <stdint.h>
-#define __AARCH64__ 1
 #include <stddef.h>
+
+#define __AARCH64__ 1
 
 void _start()
 {
