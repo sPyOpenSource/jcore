@@ -1,5 +1,5 @@
 [build]
-target = "aarch64-unknown-none"
+target = "aarch64-none-elf"
 
 [target.'cfg(target_os = "none")']
 #rustflags = ["-C", "link-args= -Ttext 0xffff800000080000"]
