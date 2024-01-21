@@ -181,16 +181,16 @@ void uart_puts(const char* str)
 
 void main(void)
 {
-	uint gpfsel2 = read32(BCM2837_GPFSEL2);
+	uint gpfsel2 = mmio_read(BCM2837_GPFSEL2);
 	gpfsel2 |= (1<<3); //turn pin 21 into an output.
-	write32(BCM2837_GPFSEL2, gpfsel2);
+	mmio_write(BCM2837_GPFSEL2, gpfsel2);
 
 	int i = 0;
 
 	while(1)
 	{
 		//turn on pin 21
-		write32(BCM2837_GPSET0, 1 << 21);
+		mmio_write(BCM2837_GPSET0, 1 << 21);
 
 		//delay
 		i = 0;
@@ -200,7 +200,7 @@ void main(void)
 		}
 
 		//turn off pin 21
-		write32(BCM2837_GPCLR0, 1 << 21);
+		mmio_write(BCM2837_GPCLR0, 1 << 21);
 
 		//delay
 		i = 0;
