@@ -1,6 +1,5 @@
-rustup target add aarch64-unknown-linux-gnu
+rustup target add riscv64gc-unknown-none-elf
 rustup override set nightly
 rustup component add rust-src
-sudo apt-get install gcc-aarch64-linux-gnu binutils
 cd risc_v
 cargo build
