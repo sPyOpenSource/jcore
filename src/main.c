@@ -1,6 +1,7 @@
 #include "BCM2837.h"
 #include <stdint.h>
 #define __AARCH64__ 1
+#include <stddef.h>
 
 void _start()
 {
@@ -80,6 +81,11 @@ enum
     MBOX_READ    = (MBOX_BASE + 0x00),
     MBOX_STATUS  = (MBOX_BASE + 0x18),
     MBOX_WRITE   = (MBOX_BASE + 0x20)
+};
+
+// A Mailbox message with set clock rate of PL011 to 3MHz tag
+volatile unsigned int  __attribute__((aligned(16))) mbox[9] = {
+    9*4, 0, 0x38002, 12, 8, 2, 3000000, 0 ,0
 };
 
 void uart_init(int raspi)
