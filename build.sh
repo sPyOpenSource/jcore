@@ -3,4 +3,4 @@ rustup override set nightly
 rustup component add rust-src
 sudo apt-get install gcc-aarch64-linux-gnu binutils
 cd kernel
-make
+cargo build
