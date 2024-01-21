@@ -1,6 +1,7 @@
 #include "BCM2837.h"
 #include <stdint.h>
- 
+#define __AARCH64__ 1
+
 void _start()
 {
     uint32_t reg;
