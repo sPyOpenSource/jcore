@@ -1,6 +1,6 @@
 RPI_VERSION ?= 4
 
-BOOTMNT ?= /media/parallels/boot
+BOOTMNT ?= ./boot
 
 ARMGNU ?= aarch64-linux-gnu
 
