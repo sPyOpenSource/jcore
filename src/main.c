@@ -4,10 +4,11 @@
 
 #define __AARCH64__ 1
 
-void start()
+static uint32_t MMIO_BASE;
+
+void mmio_init()
 {
     uint32_t reg;
-    uint32_t *mmio_base;
     char *board;
  
     /* read the system register */
@@ -19,24 +20,11 @@ void start()
  
     /* get the PartNum, detect board and MMIO base address */
     switch ((reg >> 4) & 0xFFF) {
-        case 0xB76: board = "Rpi1"; mmio_base = 0x20000000; break;
-        case 0xC07: board = "Rpi2"; mmio_base = 0x3F000000; break;
-        case 0xD03: board = "Rpi3"; mmio_base = 0x3F000000; break;
-        case 0xD08: board = "Rpi4"; mmio_base = 0xFE000000; break;
-        default:    board = "????"; mmio_base = 0x20000000; break;
-    }
-}
-
-static uint32_t MMIO_BASE;
- 
-// The MMIO area base address, depends on board type
-static inline void mmio_init(int raspi)
-{
-    switch (raspi) {
-        case 2:
-        case 3:  MMIO_BASE = 0x3F000000; break; // for raspi2 & 3
-        case 4:  MMIO_BASE = 0xFE000000; break; // for raspi4
-        default: MMIO_BASE = 0x20000000; break; // for raspi1, raspi zero etc.
+        case 0xB76: board = "Rpi1"; MMIO_BASE = 0x20000000; break;
+        case 0xC07: board = "Rpi2"; MMIO_BASE = 0x3F000000; break;
+        case 0xD03: board = "Rpi3"; MMIO_BASE = 0x3F000000; break;
+        case 0xD08: board = "Rpi4"; MMIO_BASE = 0xFE000000; break;
+        default:    board = "????"; MMIO_BASE = 0x20000000; break;
     }
 }
  
@@ -107,7 +95,7 @@ volatile unsigned int  __attribute__((aligned(16))) mbox[9] = {
 
 void full_uart_init(int raspi)
 {
-	mmio_init(raspi);
+	mmio_init();
  
 	// Disable UART0.
 	mmio_write(UART0_CR, 0x00000000);
@@ -182,7 +170,7 @@ void uart_puts(const char* str)
 
 void main(void)
 {
-	int gpfsel2 = mmio_read(BCM2837_GPFSEL2);
+	uint32_t gpfsel2 = mmio_read(BCM2837_GPFSEL2);
 	gpfsel2 |= (1<<3); //turn pin 21 into an output.
 	mmio_write(BCM2837_GPFSEL2, gpfsel2);
 
