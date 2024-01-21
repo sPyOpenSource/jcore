@@ -46,3 +46,4 @@ SECTIONS
 
     /* /DISCARD/ : { *(.comment) *(.gnu*) *(.note*) *(.eh_frame*) *(.debug*)} */
 }
+__bss_end__ = ADDR(.bss) + SIZEOF(.bss);

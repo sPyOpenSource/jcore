@@ -3,7 +3,7 @@ TARGET ?= aarch64-unknown-linux-gnu
 CROSS ?= $(TARGET)
 
 GDB := $(CROSS)-gdb
-LDFLAGS ?= --gc-sections -static -nostdlib -nostartfiles --no-dynamic-linker
+LDFLAGS ?= --data-sections -static -nostdlib -nostartfiles --no-dynamic-linker
 CARGO ?= CARGO_INCREMENTAL=0 cargo
 
 LD_LAYOUT := layout.ld
