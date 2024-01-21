@@ -11,7 +11,6 @@
 		   
 use core::arch::asm;
 use core::option::Option::Some;
-use core::write;
 
 #[lang = "eh_personality"] extern fn eh_personality() {}
 
@@ -69,7 +68,7 @@ fn panic(info: &core::panic::PanicInfo) -> ! {
 extern "C" fn abort() -> ! {
 	loop {
 		unsafe {
-			asm!("wfi", "volatile");
+			asm!("wfi");//, "volatile");
 		}
 	}
 }

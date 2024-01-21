@@ -30,8 +30,8 @@ impl<'a> Mutex {
 	/// Try to lock the Mutex. If the mutex is already locked, this function returns false, otherwise it will return true if the mutex was acquired.
 	pub fn try_lock(&mut self) -> bool {
 		unsafe {
-			let state: MutexState;
-			asm!("amoswap.w.aq $0, $1, ($2)\n" : "=r"(state) : "r"(1), "r"(self) :: "volatile");
+			let state: MutexState = todo!();
+			//asm!("amoswap.w.aq {state}, 1, ({self})", state = inout(reg) state, self = in(reg) self);//, "volatile");
 			match state {
 				// amoswap returns the OLD state of the lock.  If it was already locked, we didn't acquire it.
 				MutexState::Locked => false,
@@ -57,7 +57,7 @@ impl<'a> Mutex {
 	/// Unlock a mutex without regard for its previous state.
 	pub fn unlock(&mut self) {
 		unsafe {
-			asm!("amoswap.w.rl zero, zero, ($0)" :: "r"(self) :: "volatile");
+			asm!("amoswap.w.rl zero, zero, ({self})", self = in(reg) self);//, "volatile");
 		}
 	}
 }

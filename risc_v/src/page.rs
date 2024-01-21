@@ -9,7 +9,6 @@ use core::option::Option;
 use core::iter::Iterator;
 use core::assert;
 use core::panic;
-use core::write;
 
 // ////////////////////////////////
 // // Allocation routines

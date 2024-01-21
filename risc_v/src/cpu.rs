@@ -158,62 +158,62 @@ pub const fn build_satp(mode: SatpMode, asid: usize, addr: usize) -> usize {
 pub fn mhartid_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr $0, mhartid" :"=r"(rval));
+		asm!("csrr {rval}, mhartid", rval = out(reg) rval);
 		rval
 	}
 }
 pub fn mie_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr $0, mie" :"=r"(rval));
+		asm!("csrr {rval}, mie", rval = out(reg) rval);
 		rval
 	}
 }
 
 pub fn mie_write(val: usize) {
 	unsafe {
-		asm!("csrw mie, $0" :: "r"(val));
+		asm!("csrw mie, {val}", val = in(reg) val);
 	}
 }
 
 pub fn mstatus_write(val: usize) {
 	unsafe {
-		asm!("csrw	mstatus, $0" ::"r"(val));
+		asm!("csrw	mstatus, {val}", val = in(reg) val);
 	}
 }
 
 pub fn mstatus_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr	$0, mstatus":"=r"(rval));
+		asm!("csrr	{rval}, mstatus", rval = out(reg) rval);
 		rval
 	}
 }
 
 pub fn stvec_write(val: usize) {
 	unsafe {
-		asm!("csrw	stvec, $0" ::"r"(val));
+		asm!("csrw	stvec, {val}", val = in(reg) val);
 	}
 }
 
 pub fn stvec_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr	$0, stvec" :"=r"(rval));
+		asm!("csrr	{rval}, stvec", rval = out(reg) rval);
 		rval
 	}
 }
 
 pub fn mscratch_write(val: usize) {
 	unsafe {
-		asm!("csrw	mscratch, $0" ::"r"(val));
+		asm!("csrw	mscratch, {val}", val = in(reg) val);
 	}
 }
 
 pub fn mscratch_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr	$0, mscratch" : "=r"(rval));
+		asm!("csrr	{rval}, mscratch", rval = out(reg) rval);
 		rval
 	}
 }
@@ -221,21 +221,21 @@ pub fn mscratch_read() -> usize {
 pub fn mscratch_swap(to: usize) -> usize {
 	unsafe {
 		let from;
-		asm!("csrrw	$0, mscratch, $1" : "=r"(from) : "r"(to));
+		asm!("csrrw	{from}, mscratch, {to}", from = out(reg) from, to = in(reg) to);
 		from
 	}
 }
 
 pub fn sscratch_write(val: usize) {
 	unsafe {
-		asm!("csrw	sscratch, $0" ::"r"(val));
+		asm!("csrw	sscratch, {val}", val = in(reg) val);
 	}
 }
 
 pub fn sscratch_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr	$0, sscratch" : "=r"(rval));
+		asm!("csrr	{rval}, sscratch", rval = out(reg) rval);
 		rval
 	}
 }
@@ -243,49 +243,49 @@ pub fn sscratch_read() -> usize {
 pub fn sscratch_swap(to: usize) -> usize {
 	unsafe {
 		let from;
-		asm!("csrrw	$0, sscratch, $1" : "=r"(from) : "r"(to));
+		asm!("csrrw	{from}, sscratch, {to}", from = out(reg) from, to = in(reg) to);
 		from
 	}
 }
 
 pub fn mepc_write(val: usize) {
 	unsafe {
-		asm!("csrw mepc, $0" :: "r"(val));
+		asm!("csrw mepc, {val}", val = in(reg) val);
 	}
 }
 
 pub fn mepc_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr $0, mepc" :"=r"(rval));
+		asm!("csrr {rval}, mepc", rval = out(reg) rval);
 		rval
 	}
 }
 
 pub fn sepc_write(val: usize) {
 	unsafe {
-		asm!("csrw sepc, $0" :: "r"(val));
+		asm!("csrw sepc, {val}", val = in(reg) val);
 	}
 }
 
 pub fn sepc_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr $0, sepc" :"=r"(rval));
+		asm!("csrr {rval}, sepc", rval = out(reg) rval);
 		rval
 	}
 }
 
 pub fn satp_write(val: usize) {
 	unsafe {
-		asm!("csrw satp, $0" :: "r"(val));
+		asm!("csrw satp, {val}", val = in(reg) val);
 	}
 }
 
 pub fn satp_read() -> usize {
 	unsafe {
 		let rval;
-		asm!("csrr $0, satp" :"=r"(rval));
+		asm!("csrr {rval}, satp", rval = out(reg) rval);
 		rval
 	}
 }
@@ -295,7 +295,7 @@ pub fn satp_read() -> usize {
 /// TLB.
 pub fn satp_fence(vaddr: usize, asid: usize) {
 	unsafe {
-		asm!("sfence.vma $0, $1" :: "r"(vaddr), "r"(asid));
+		asm!("sfence.vma {vaddr}, {asid}", vaddr = in(reg) vaddr, asid = in(reg) asid);
 	}
 }
 
@@ -308,7 +308,7 @@ pub fn satp_fence(vaddr: usize, asid: usize) {
 /// Intel/AMD's invtlb [] instruction.
 pub fn satp_fence_asid(asid: usize) {
 	unsafe {
-		asm!("sfence.vma zero, $0" :: "r"(asid));
+		asm!("sfence.vma zero, {asid}", asid = in(reg) asid);
 	}
 }
 
