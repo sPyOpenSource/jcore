@@ -1,0 +1,22 @@
+name: Rust CI
+
+on:
+  push:
+    branches:
+      - riscv
+  pull_request:
+    branches:
+      - riscv
+
+jobs:
+  build:
+    runs-on:  ubuntu-latest
+
+    steps:
+      - name: Set up Rust
+        uses: actions/checkout@v2
+      - name: Install cargo-audit
+        run: cargo install cargo-audit
+      - name: Build
+        run: sh build.sh
+        
