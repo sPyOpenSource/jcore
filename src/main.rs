@@ -23,6 +23,7 @@ mod vga_buffer;
 
 //use std::io::{stdout, BufWriter};
 use core::panic::PanicInfo;
+use core::fmt::Write;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
@@ -64,7 +65,6 @@ pub extern "C" fn _start() -> ! {
             }
         }
     }*/
-    use core::fmt::Write;
     vga_buffer::WRITER.lock().write_str("Hello again").unwrap();
     write!(vga_buffer::WRITER.lock(), ", some numbers: {} {}", 42, 1.337).unwrap();
     loop {}

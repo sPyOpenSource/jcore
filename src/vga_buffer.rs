@@ -1,3 +1,8 @@
+use volatile::Volatile;
+use core::fmt;
+use lazy_static::lazy_static;
+use spin::Mutex;
+
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u8)]
@@ -96,13 +101,9 @@ pub fn print_something() {
     write!(writer, "Wörld!{}", 42).unwrap();
 }
 
-use volatile::Volatile;
-
 struct Buffer {
     chars: [[Volatile<ScreenChar>; BUFFER_WIDTH]; BUFFER_HEIGHT],
 }
-
-use core::fmt;
 
 impl fmt::Write for Writer {
     fn write_str(&mut self, s: &str) -> fmt::Result {
@@ -135,9 +136,6 @@ impl Writer {
         }
     }
 }
-
-use lazy_static::lazy_static;
-use spin::Mutex;
 
 lazy_static! {
     pub static ref WRITER: Mutex<Writer> = Mutex::mew(Writer {
