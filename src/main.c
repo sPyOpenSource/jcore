@@ -181,7 +181,7 @@ void uart_puts(const char* str)
 
 void main(void)
 {
-	uint gpfsel2 = mmio_read(BCM2837_GPFSEL2);
+	int gpfsel2 = mmio_read(BCM2837_GPFSEL2);
 	gpfsel2 |= (1<<3); //turn pin 21 into an output.
 	mmio_write(BCM2837_GPFSEL2, gpfsel2);
 
