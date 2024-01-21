@@ -18,4 +18,3 @@ void dma_close_channel(dma_channel *channel);
 void dma_setup_mem_copy(dma_channel *channel, void *dest, void *src, u32 length, u32 burst_length);
 void dma_start(dma_channel *channel);
 bool dma_wait(dma_channel *channel);
-

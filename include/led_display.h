@@ -30,4 +30,3 @@ typedef enum {
     LD_SHUTDOWN,
     LD_DISPLAYTEST = 15
 } led_display_opcodes;
-

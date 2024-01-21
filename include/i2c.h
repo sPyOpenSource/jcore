@@ -14,6 +14,3 @@ void i2c_init();
 i2c_status i2c_recv(u8 address, u8 *buffer, u32 size);
 
 i2c_status i2c_send(u8 address, u8 *buffer, u32 size);
-
-
-

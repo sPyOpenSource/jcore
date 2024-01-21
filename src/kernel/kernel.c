@@ -87,7 +87,7 @@ void kernel_main() {
         printf("BAD BOOT SIGNATURE: %X\n", mbr.bootSignature);
     }
 
-    for (int i=0; i<4; i++) {
+    for (int i = 0; i < 4; i++) {
         if (mbr.partitions[i].type == 0) {
             break;
         }
@@ -117,7 +117,7 @@ void kernel_main() {
     printf("Initializing I2C...\n");
     i2c_init();
 
-    for (u8 i=0x20; i<0x30; i++) {
+    for (u8 i = 0x20; i < 0x30; i++) {
         if (i2c_send(i, &i, 1) == I2CS_SUCCESS) {
             //we know there is an i2c device here now.
             printf("Found device at address 0x%X\n", i);
