@@ -1,3 +1,6 @@
+[build]
+target = "aarch64-unknown-none-softfloat"
+
 [target.'cfg(target_arch = "aarch64")'.dependencies]
 aarch64-cpu = { version = "9.x.x" }
 
