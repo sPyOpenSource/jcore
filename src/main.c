@@ -3,7 +3,7 @@
 #define __AARCH64__ 1
 #include <stddef.h>
 
-void _start()
+void start()
 {
     uint32_t reg;
     uint32_t *mmio_base;
