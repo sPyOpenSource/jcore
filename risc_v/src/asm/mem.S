@@ -37,5 +37,3 @@ KERNEL_STACK_START: .dword _stack_start
 
 .global KERNEL_STACK_END
 KERNEL_STACK_END: .dword _stack_end
-
-
