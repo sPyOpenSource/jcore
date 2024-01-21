@@ -14,7 +14,7 @@
   "executables": true,
   "features": "+strict-align,+neon,+fp-armv8",
   "linker": "aarch64-linux-gnu-gcc",
-  "linker-flavor": "ld",
+  "linker-flavor": "ld.lld",
   "linker-is-gnu": false,
   "pre-link-args": {
     "ld.lld": ["-Tlayout.ld"]
