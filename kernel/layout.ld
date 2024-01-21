@@ -32,7 +32,7 @@ SECTIONS
         *(.bss .bss.*)
         *(COMMON)
         . = ALIGN(8);
-        __bss_end__ = .;
+        __bss_end = .;
     }
 
     /* end of the binary */
