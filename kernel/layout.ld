@@ -48,4 +48,4 @@ SECTIONS
 }
 
 __bss_start = ADDR(.bss);
-__bss_end = ADDR(.bss) + SIZEOF(.bss);
+__bss_end__ = ADDR(.bss) + SIZEOF(.bss);
