@@ -1,4 +1,4 @@
-# Write Your Own 64-bit Operating System Kernel From Scratch
+# Write A 64-bit Operating System Kernel From Scratch
 
 This respository holds all the source code for [this YouTube tutorial series](https://www.youtube.com/playlist?list=PLZQftyCk7_SeZRitx5MjBKzTtvk0pHMtp).
 
