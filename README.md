@@ -6,7 +6,7 @@ You can find the revision for a specific episode on [this page](https://github.c
 
 You can find pre-built ISO files for this kernel at [this repository](https://github.com/davidcallanan/os-series-isos).
 
-Considering supporting this work via [my Patreon page](http://patreon.com/codepulse).
+Considering supporting this work via [Patreon](http://patreon.com/codepulse).
 
 ## Prerequisites
 
