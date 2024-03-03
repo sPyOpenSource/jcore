@@ -60,6 +60,7 @@ initrd_close rd_close = NULL;
 int64_t read_size;
 unsigned char* readfileall(char *file)
 {
+    struct stat st;
     unsigned char *data=NULL;
 #ifdef __WIN32__
     HANDLE f;
@@ -85,6 +86,7 @@ unsigned char* readfileall(char *file)
         CloseHandle(f);
     }
 #else
+    if(stat(file, &st) || !S_ISREG(st.st_mode)) return NULL;
     f=fopen(file,"r");
     if(f){
         fseek(f,0L,SEEK_END);
