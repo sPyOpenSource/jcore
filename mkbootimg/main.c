@@ -140,7 +140,8 @@ void parsejson(char *json)
                 if(!strcmp(tmp, fsdrv[i].name)) { rd_open = fsdrv[i].open; rd_add = fsdrv[i].add; rd_close = fsdrv[i].close; break; }
         if(!rd_add) {
             fprintf(stderr,"mkbootimg: %s %s. %s:", lang[ERR_BADINITRDTYPE],tmp,lang[ERR_ACCEPTVALUES]);
-            for(i = 0; fsdrv[i].name && fsdrv[i].add; i++) fprintf(stderr,"%s %s",i ? "," : "",fsdrv[i].name);
+            for(i = 0; fsdrv[i].name && fsdrv[i].add; i++)
+                if(strcmp(fsdrv[i].name, "fat")) fprintf(stderr,"%s %s",i ? "," : "",fsdrv[i].name);
             fprintf(stderr,"\r\n");
             exit(1);
         }
