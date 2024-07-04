@@ -249,7 +249,6 @@ void installInitialNaming(DomainDesc * srcDomain, DomainDesc * dstDomain,
 Proxy *getDomainZeroNaming();
 Proxy *getInitialNaming();
 
-
 /* in zero_DomainManager */
 DomainProxy *domainManager_createDomain(ObjectDesc * self,
 					ObjectDesc * dname,

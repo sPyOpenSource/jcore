@@ -1,6 +1,6 @@
 #include "all.h"
 
-ClassDesc *vmmethodClass = NULL;
+static ClassDesc *vmmethodClass = NULL;
 
 
 /*

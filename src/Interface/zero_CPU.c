@@ -4,7 +4,7 @@
  * CPU DEP
  */
 
-ClassDesc *cpuClass;
+static ClassDesc *cpuClass;
 
 static void cpu_load(ObjectDesc * self, ObjectDesc * oldState, ObjectDesc * newState)
 {

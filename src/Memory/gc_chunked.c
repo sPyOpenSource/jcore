@@ -56,7 +56,7 @@ typedef struct gc_chunked_mem_s {
 
 /* FIXME prototypes */
 int eip_in_last_stackframe(u4_t eip);
-ObjectHandle(*registerObject) (DomainDesc * domain, ObjectDesc * o);
+//ObjectHandle(*registerObject) (DomainDesc * domain, ObjectDesc * o);
 extern unsigned char callnative_special_end[], callnative_special_portal_end[], callnative_static_end[], thread_exit_end[];
 void return_from_java0(ThreadDesc * next, ContextDesc * restore);
 void return_from_java1(long param, ContextDesc * restore, ThreadDesc * next);
