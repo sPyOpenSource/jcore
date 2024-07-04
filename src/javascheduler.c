@@ -45,7 +45,7 @@ struct runqueue_s {
 	volatile ThreadDesc *first;
 	volatile ThreadDesc *last;
 };
-static struct runqueue_s c_runq[MAX_NR_CPUS];	/*may be allocated dynamically */
+static struct runqueue_s c_runq[MAX_NR_CPUS];	/* may be allocated dynamically */
 
 #ifndef NEW_SCHED
 void runq_init(void)

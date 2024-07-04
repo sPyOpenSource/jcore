@@ -2,7 +2,7 @@
 #mkdir -p isodir/boot/grub
 #make
 #strip jxcore ; cat jxcore | gzip -9 -c > isodir/jxcore
-cd isodir/code
+cd Compiler/app/isodir/code
 zip -0 uncompressed.zip *.jll
 cat uncompressed.zip | gzip --fast -c > ../code.zip
 cd ../..

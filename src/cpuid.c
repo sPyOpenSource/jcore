@@ -19,6 +19,7 @@
  * received a copy of the GPL along with the OSKit; see the file COPYING.  If
  * not, write to the FSF, 59 Temple Place #330, Boston, MA 02111-1307, USA.
  */
+ 
 /*
  * CPU identification code for x86 processors.
  */
