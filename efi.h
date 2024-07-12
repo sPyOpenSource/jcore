@@ -1,5 +1,5 @@
 // UEFI From Scratch for AARCH64 - ThatOSDev ( 2024 )
-// https://github.com/ThatOSDev/EFI_AARCH64
+// https://codeberg.org/ThatOSDev/EFI_AARCH64
 
 #ifndef EFI_H
 #define EFI_H
