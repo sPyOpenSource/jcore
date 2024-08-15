@@ -7,7 +7,7 @@ ARMGNU ?= aarch64-linux-gnu
 INIT_MMU ?= 1
 
 COPS = -DRPI_VERSION=$(RPI_VERSION) -DINIT_MMU=$(INIT_MMU) -Wall -Wno-psabi -nostdlib -nostartfiles -ffreestanding \
-	   -Iinclude -mgeneral-regs-only
+	   -Iinclude -Isrc -mgeneral-regs-only
 
 ASMOPS = -Iinclude
 
