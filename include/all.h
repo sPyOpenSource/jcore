@@ -29,12 +29,12 @@
 #include "domain.h"
 #include "config.h"
 #include "interrupt.h"
-#include "Memory/gc.h"
+#include "mem/gc.h"
 #include "vmsupport.h"
 #include "execJAVA.h"
 #include "monitor.h"
-#include "Interface/zero.h"
-#include "Interface/zero_Profiler.h"
+#include "interface/zero.h"
+#include "interface/zero_Profiler.h"
 #include "malloc_proto.h"
 #include "portal_proto.h"
 #include "atomic.h"
@@ -52,7 +52,7 @@
 
 #include "irq.h"
 #include "smp.h"
-#include "Interface/zero.h"
+#include "interface/zero.h"
 
 #ifdef JAVASCHEDULER
 #include "javascheduler.h"
