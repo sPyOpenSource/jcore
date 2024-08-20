@@ -32,7 +32,7 @@ typedef struct MemoryProxy_s {
 #define CHECK_BEFORE_RANGE3 if (where + length > self->size >> 2 || where < 0 || length < 0) {exceptionHandler(THROW_MemoryIndexOutOfBounds); }
 #define CHECK_BEFORE_EXTERN(stmt) if (stmt) {exceptionHandler(THROW_MemoryIndexOutOfBounds); }
 
-#include "zero_Memory_simple.c"
+//#include "zero_Memory_simple.c"
 
 
 /*******************************************
