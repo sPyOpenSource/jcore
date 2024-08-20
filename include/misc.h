@@ -137,6 +137,7 @@ void sprintnum(char *s, u4_t u, int base);
 
 void setTimer();
 
+#define CPU_MHZ 500
 #define CYCL2NANOS(c)  ((u4_t)((((c)*(u8_t)1000))/(u8_t)CPU_MHZ))
 #define CYCL2MICROS(c)  ((u4_t)((c)/(u8_t)CPU_MHZ))
 #define CYCL2MILLIS(c)  ((u4_t)((c)/(u8_t)CPU_MHZ)/(u8_t)1000)
