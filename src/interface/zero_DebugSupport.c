@@ -52,7 +52,7 @@ void debugsupport_registerMonitorCommand(ObjectDesc * self, ObjectDesc * name, O
 
 void debugsupport_breakpoint(ObjectDesc * self)
 {
-	asm("int $3");
+	//asm("int $3");
 }
 
 MethodInfoDesc debugsupportMethods[] = {
