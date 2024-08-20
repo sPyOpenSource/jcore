@@ -18,6 +18,7 @@ static int event_createdomain_start, event_createdomain_end, event_initialthread
 #define CREATEDOMAIN_EVENT_INITIALTHREAD_ENDINIT
 #endif
 
+#define CREATEDOMAIN_PORTAL_QUOTA 5000
 #define CALLERDOMAIN (curthr()->mostRecentlyCalledBy?curthr()->mostRecentlyCalledBy->domain:domainZero)
 
 extern ClassDesc *domainClass;
