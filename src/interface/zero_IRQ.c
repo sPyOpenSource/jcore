@@ -336,13 +336,13 @@ void irq_disableIRQ(ObjectDesc * self, jint irq)
 void irq_enableAll(ObjectDesc * self)
 {
 	debugz(("IRQ enableAll\n"));
-	asm("sti");
+	//asm("sti");
 }
 
 void irq_disableAll(ObjectDesc * self)
 {
 	debugz(("IRQ disableAll\n"));
-	asm("cli");
+	//asm("cli");
 }
 
 void irq_set_destination(ObjectDesc * self, jint irq, jint new_dest)
