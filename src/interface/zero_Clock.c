@@ -15,7 +15,7 @@ jint clock_getTimeInMillis(ObjectDesc * self)
 #else
 	unsigned long long ret;
 	unsigned long r;
-	asm volatile ("rdtsc":"=A" (ret):);
+	//asm volatile ("rdtsc":"=A" (ret):);
 	return CYCL2MILLIS(ret);
 #endif
 }
@@ -23,28 +23,28 @@ jint clock_getTimeInMillis(ObjectDesc * self)
 jlong clock_getTicks(ObjectDesc * self)
 {
 	unsigned long long ret;
-	asm volatile ("rdtsc":"=A" (ret):);
+	//asm volatile ("rdtsc":"=A" (ret):);
 	return ret;
 }
 
 jint clock_getTicks_low(ObjectDesc * self)
 {
 	unsigned long long ret;
-	asm volatile ("rdtsc":"=A" (ret):);
+	//asm volatile ("rdtsc":"=A" (ret):);
 	return (jint) (ret & 0x000000007fffffff);
 }
 
 jint clock_getTicks_high(ObjectDesc * self)
 {
 	unsigned long long ret;
-	asm volatile ("rdtsc":"=A" (ret):);
+	//asm volatile ("rdtsc":"=A" (ret):);
 	return (jint) (ret >> 32);
 }
 
 jint clock_getCycles(ObjectDesc * self, ObjectDesc * cycleTime)
 {
 	unsigned long low, high;
-	asm volatile ("rdtsc":"=d" (high), "=a"(low));
+	//asm volatile ("rdtsc":"=d" (high), "=a"(low));
 	CHECK_NULL_PTR(cycleTime);
 	cycleTime->data[0] = low;
 	cycleTime->data[1] = high;
