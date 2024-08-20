@@ -10,6 +10,8 @@ static spinlock_t memory_revoke_lock = SPIN_LOCK_UNLOCKED;
 #define debugz(x)
 /*#define debugdm(x) printf x*/
 #define debugdm(x)
+#define HEAP_BYTES_INIT (512 * 1024 * 40)
+#define CODE_BYTES_DOMAININIT (256 * 1024)
 
 void registerPortal(DomainDesc * domain, ObjectDesc * dep, char *name);
 void receiveDomainDEPThread(void *arg);
