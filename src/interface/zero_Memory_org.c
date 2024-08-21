@@ -1,4 +1,5 @@
 #include "all.h"
+#define ENABLE_GC
 #include "mem/gc_impl.h"
 
 
