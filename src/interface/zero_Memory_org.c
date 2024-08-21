@@ -1130,17 +1130,17 @@ void memory_move(ObjectDesc * self, jint __dst, jint __src, jint count)
 		exceptionHandler(THROW_MemoryIndexOutOfBounds);
 
 	if (dst < src) {
-		__asm__ __volatile__("cld\n\t" "shrl $1,%%ecx\n\t" "jnc 1f\n\t" "movsb\n" "1:\tshrl $1,%%ecx\n\t" "jnc 2f\n\t"
+		/*__asm__ __volatile__("cld\n\t" "shrl $1,%%ecx\n\t" "jnc 1f\n\t" "movsb\n" "1:\tshrl $1,%%ecx\n\t" "jnc 2f\n\t"
 				     "movsw\n" "2:\trep\n\t" "movsl":"=&c"(d0), "=&D"(d1), "=&S"(d2)
 				     :"0"(count), "1"((long) dst), "2"((long) src)
-				     :"memory");
+				     :"memory");*/
 	} else {
-		__asm__ __volatile__("std\n\t" "shrl $1,%%ecx\n\t" "jnc 1f\n\t" "movb 3(%%esi),%%al\n\t" "movb %%al,3(%%edi)\n\t"
+		/*__asm__ __volatile__("std\n\t" "shrl $1,%%ecx\n\t" "jnc 1f\n\t" "movb 3(%%esi),%%al\n\t" "movb %%al,3(%%edi)\n\t"
 				     "decl %%esi\n\t" "decl %%edi\n" "1:\tshrl $1,%%ecx\n\t" "jnc 2f\n\t" "movw 2(%%esi),%%ax\n\t"
 				     "movw %%ax,2(%%edi)\n\t" "decl %%esi\n\t" "decl %%edi\n\t" "decl %%esi\n\t" "decl %%edi\n"
 				     "2:\trep\n\t" "movsl\n\t" "cld":"=&c"(d0), "=&D"(d1), "=&S"(d2), "=&a"(d3)
 				     :"0"(count), "1"(count - 4 + (long) dst), "2"(count - 4 + (long) src)
-				     :"memory");
+				     :"memory");*/
 	}
 	//return dst;
 }
@@ -1761,7 +1761,7 @@ jint memory_getBigEndian32(ObjectDesc * self, jint offset)
 	mem = (jbyte *) self->data[1];
 
 	data = *(jint *) (mem + offset);
-	asm volatile ("bswap %%eax":"=r" (data));
+	//asm volatile ("bswap %%eax":"=r" (data));
 
 	return data;
 }
@@ -1781,7 +1781,7 @@ void memory_setBigEndian32(ObjectDesc * self, jint offset, jint value)
 	if (offset + 4 > size)
 		exceptionHandler(THROW_MemoryIndexOutOfBounds);
 	mem = (jbyte *) self->data[1];
-	asm volatile ("bswap %%eax":"=r" (value));
+	//asm volatile ("bswap %%eax":"=r" (value));
 	*(jint *) (mem + offset) = value;
 }
 
