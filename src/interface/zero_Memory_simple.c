@@ -6,6 +6,8 @@ typedef struct MemoryProxy_s {
 	char *mem;
 	DZMem *dz;
 } MemoryProxy;
+#define CHECK_BEFORE
+#define CHECK_AFTER
 
 /* necessary defines:
    CHECK_BEFORE
