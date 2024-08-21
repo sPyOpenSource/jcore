@@ -1,11 +1,19 @@
 #include "all.h"
 
+typedef struct DZMem_s {
+	u4_t refcount;
+	u4_t flags;
+	char *mem;
+	u4_t size;
+} DZMem;
+
 typedef struct MemoryProxy_s {
 	code_t *vtable;
 	u4_t size;
 	char *mem;
 	DZMem *dz;
 } MemoryProxy;
+
 #define CHECK_BEFORE
 #define CHECK_AFTER
 
