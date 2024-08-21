@@ -94,7 +94,6 @@ typedef struct GCDesc_s {
 
 	u4_t epoch;                     /* GC epoch; incremented during GC run */
 
-#ifndef GC_USE_ONLY_ONE
 	 ObjectHandle(*allocDataInDomain) (struct DomainDesc_s * domain,
 					   int objsize, u4_t flags);
 	void (*done) (struct DomainDesc_s * domain);
@@ -127,7 +126,6 @@ typedef struct GCDesc_s {
 	/* support for portal param copy */
 	void (*setMark)(struct DomainDesc_s *domain);
 	ObjectDesc* (*atMark)(struct DomainDesc_s *domain);
-#endif
 #endif
 } GCDesc;
 
