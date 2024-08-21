@@ -2133,49 +2133,47 @@ MemoryProxyHandle internalallocMemoryProxyInDomain(DomainDesc * domain, ClassDes
  *            INIT
  *******************************************/
 
-#define MEMORY_METHODS {\
-    {"set8", "", memory_set8},\
-    {"get8", "", memory_get8},\
-    {"set16", "", memory_set16}, \
-    {"get16", "", memory_get16},\
-    {"set32", "", memory_set32},\
-    {"get32", "", memory_get32},\
-    {"fill16", "", memory_fill16},\
-    {"fill32", "", memory_fill32},\
-    {"clear", "", memory_clear},\
-    {"getStartAddress", "", memory_getStartAddress},\
-    {"size", "", memory_size},\
-    {"copy", "", memory_copy},\
-    {"move", "", memory_move}, \
-    {"copyToByteArray", "", memory_copyToByteArray},\
-    {"copyFromByteArray", "", memory_copyFromByteArray},\
-    {"copyToMemory", "", memory_copyToMemory},\
-    {"copyFromMemory", "", memory_copyFromMemory},\
-    {"getLittleEndian32", "", memory_getLittleEndian32},\
-    {"setLittleEndian32", "", memory_setLittleEndian32},\
-    {"getLittleEndian16", "", memory_getLittleEndian16},\
-    {"setLittleEndian16", "", memory_setLittleEndian16},\
-    {"getBigEndian32", "", memory_getBigEndian32},\
-    {"setBigEndian32", "", memory_setBigEndian32},\
-    {"getBigEndian16", "", memory_getBigEndian16},\
-    {"setBigEndian16", "", memory_setBigEndian16},\
-    {"revoke", "", memory_revoke},\
-    {"isValid", "", memory_isValid},\
-    {"split2", "", memory_split2},\
-    {"split3", "", memory_split3},\
-    {"getSubRange", "", memory_getSubRange},\
-    {"joinPrevious", "", memory_joinPrevious},\
-    {"joinNext", "", memory_joinNext},\
-    {"joinAll", "", memory_joinAll},\
-    {"getReadOnlySubRange", "", memory_getReadOnlySubRange},\
-    {"map", "", memory_map},\
+MethodInfoDesc memoryMethods[] = {
+    {"set8", "", memory_set8},
+    {"get8", "", memory_get8},
+    {"set16", "", memory_set16},
+    {"get16", "", memory_get16},
+    {"set32", "", memory_set32},
+    {"get32", "", memory_get32},
+    {"fill16", "", memory_fill16},
+    {"fill32", "", memory_fill32},
+    {"clear", "", memory_clear},
+    {"getStartAddress", "", memory_getStartAddress},
+    {"size", "", memory_size},
+    {"copy", "", memory_copy},
+    {"move", "", memory_move},
+    {"copyToByteArray", "", memory_copyToByteArray},
+    {"copyFromByteArray", "", memory_copyFromByteArray},
+    {"copyToMemory", "", memory_copyToMemory},
+    {"copyFromMemory", "", memory_copyFromMemory},
+    {"getLittleEndian32", "", memory_getLittleEndian32},
+    {"setLittleEndian32", "", memory_setLittleEndian32},
+    {"getLittleEndian16", "", memory_getLittleEndian16},
+    {"setLittleEndian16", "", memory_setLittleEndian16},
+    {"getBigEndian32", "", memory_getBigEndian32},
+    {"setBigEndian32", "", memory_setBigEndian32},
+    {"getBigEndian16", "", memory_getBigEndian16},
+    {"setBigEndian16", "", memory_setBigEndian16},
+    {"revoke", "", memory_revoke},
+    {"isValid", "", memory_isValid},
+    {"split2", "", memory_split2},
+    {"split3", "", memory_split3},
+    {"getSubRange", "", memory_getSubRange},
+    {"joinPrevious", "", memory_joinPrevious},
+    {"joinNext", "", memory_joinNext},
+    {"joinAll", "", memory_joinAll},
+    {"getReadOnlySubRange", "", memory_getReadOnlySubRange},
+    {"map", "", memory_map},
 }
 
 /* DANGER: DO NOT CHANGE THE memoryMethods METHODS LIST WITHOUT ADJUSTING THIS DEFINE! */
 #define SET32_INDEX 4
 #define GET32_INDEX 5
-
-MethodInfoDesc memoryMethods[] = MEMORY_METHODS;
 
 static jbyte memoryTypeMap[] = { 8 };	/* data[3] */
 
