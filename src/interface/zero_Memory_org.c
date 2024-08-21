@@ -2169,7 +2169,7 @@ MethodInfoDesc memoryMethods[] = {
     {"joinAll", "", memory_joinAll},
     {"getReadOnlySubRange", "", memory_getReadOnlySubRange},
     {"map", "", memory_map},
-}
+};
 
 /* DANGER: DO NOT CHANGE THE memoryMethods METHODS LIST WITHOUT ADJUSTING THIS DEFINE! */
 #define SET32_INDEX 4
