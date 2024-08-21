@@ -1,5 +1,7 @@
 #include "all.h"
 
+static ClassDesc *deviceMemoryClass = NULL;
+
 typedef struct DZMem_s {
 	u4_t refcount;
 	u4_t flags;
