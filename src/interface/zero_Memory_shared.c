@@ -93,6 +93,15 @@ void memory_copy_intradomain(struct MemoryProxy_s *dstObj, struct MemoryProxy_s 
 	dstObj->mem = srcObj->mem;
 }
 
+static DZMem *createDZMemory(u4_t size, char *mem)
+{
+	DZMem *dzm = dzmemory_alloc();
+	dzm->size = size;
+	dzm->mem = mem;
+	dzm->flags |= DZMEM_FLAGS_VALID;
+	dzm->flags &= ~DZMEM_FLAGS_DEVICEMEM;
+	return dzm;
+}
 
 /*******************************************
  *            COPY BETWEEN DOMAINS
@@ -160,16 +169,6 @@ void dzmemory_incRefcount(struct MemoryProxy_s *obj)
 /*******************************************
  *            ALLOC
  *******************************************/
-
-static DZMem *createDZMemory(u4_t size, char *mem)
-{
-	DZMem *dzm = dzmemory_alloc();
-	dzm->size = size;
-	dzm->mem = mem;
-	dzm->flags |= DZMEM_FLAGS_VALID;
-	dzm->flags &= ~DZMEM_FLAGS_DEVICEMEM;
-	return dzm;
-}
 
 MemoryProxyHandle allocMemoryProxyInDomain(DomainDesc * domain, ClassDesc * c, jint start, jint size)
 {
