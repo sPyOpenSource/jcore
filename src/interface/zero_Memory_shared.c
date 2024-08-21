@@ -43,7 +43,35 @@ typedef struct MemoryProxy_s {
 
 #define CHECK_AFTER  } RESTORE_IRQ; if (error==1) exceptionHandlerMsg(THROW_RuntimeException,"Invalid memory"); if (error==2) exceptionHandler(THROW_MemoryIndexOutOfBounds); }
 
-#include "zero_Memory_simple.c"
+//#include "zero_Memory_simple.c"
+void memory_set8(MemoryProxy * self, jint where, jbyte what);
+jbyte memory_get8(MemoryProxy * self, jint where);
+void memory_set16(MemoryProxy * self, jint where, jshort what);
+jshort memory_get16(MemoryProxy * self, jint where);
+void memory_set32(MemoryProxy * self, jint where, jint what);
+jint memory_get32(MemoryProxy * self, jint where);
+void memory_fill16(MemoryProxy * self, jshort what, jint where, jint length);
+void memory_fill32(MemoryProxy * self, jint what, jint where, jint length);
+void memory_clear(MemoryProxy * self);
+void memory_move(MemoryProxy * self, jint __dst, jint __src, jint count);
+void memory_copy(MemoryProxy * self, jint from, jint to, jint len);
+void memory_copyToByteArray(MemoryProxy * self, ArrayDesc * bytes, jint array_offset, jint mem_offset, jint len);
+void memory_copyFromByteArray(MemoryProxy * self, ArrayDesc * bytes, jint array_offset, jint mem_offset, jint len);
+void memory_copyToMemory(MemoryProxy * self, MemoryProxy * dst, jint srcOffset, jint dstOffset, jint len);
+void memory_copyFromMemory(MemoryProxy * self, MemoryProxy * src, jint srcOffset, jint dstOffset, jint len);
+jint memory_getLittleEndian32(MemoryProxy * self, jint offset);
+void memory_setLittleEndian32(MemoryProxy * self, jint offset, jint value);
+jshort memory_getLittleEndian16(MemoryProxy * self, jint offset);
+void memory_setLittleEndian16(MemoryProxy * self, jint offset, jshort value);
+jint memory_getBigEndian32(MemoryProxy * self, jint offset);
+void memory_setBigEndian32(MemoryProxy * self, jint offset, jint value);
+jshort memory_getBigEndian16(MemoryProxy * self, jint offset);
+void memory_setBigEndian16(MemoryProxy * self, jint offset, jshort value);
+jint memory_size(MemoryProxy * self);
+jint memory_getStartAddress(MemoryProxy * self);
+u4_t memory_sizeof_proxy();
+ClassDesc *mem_getDeviceMemoryClass();
+u4_t memory_getMem(MemoryProxy * self);
 
 /*******************************************
  *            DZ management
