@@ -1,3 +1,5 @@
+#include "all.h"
+
 /* necessary defines:
    CHECK_BEFORE
    CHECK_AFTER
