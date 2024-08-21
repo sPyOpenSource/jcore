@@ -29,14 +29,14 @@ void softint();
 static inline u4_t cas(u4_t * var, u4_t old, u4_t new)
 {
 	int result;
-	asm volatile ("   lock;"
+	/*asm volatile ("   lock;"
 		      "   cmpxchg %%edx, (%%ecx);"
 		      "   jne 2f;"
 		      "1: mov $1, %%eax;"
 		      "   jmp 3f;"
 		      "2: xor %%eax,%%eax;" "3:":"=a" ((result))
 		      :"c"((var)), "a"((old)), "d"((new))
-		      :"cc", "memory");
+		      :"cc", "memory");*/
 	return result;
 }
 #else
