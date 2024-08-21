@@ -1,5 +1,12 @@
 #include "all.h"
 
+typedef struct MemoryProxy_s {
+	code_t *vtable;
+	u4_t size;
+	char *mem;
+	DZMem *dz;
+} MemoryProxy;
+
 /* necessary defines:
    CHECK_BEFORE
    CHECK_AFTER
