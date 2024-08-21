@@ -37,7 +37,7 @@ void memory_set8(MemoryProxy * self, jint where, jbyte what);
 jbyte memory_get8(MemoryProxy * self, jint where);
 void memory_set16(MemoryProxy * self, jint where, jshort what);
 jshort memory_get16(MemoryProxy * self, jint where);
-void memory_set32(MemoryProxy * self, jint where, jint what)
+void memory_set32(MemoryProxy * self, jint where, jint what);
 jint memory_get32(MemoryProxy * self, jint where);
 void memory_fill16(MemoryProxy * self, jshort what, jint where, jint length);
 
