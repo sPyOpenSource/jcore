@@ -13,9 +13,9 @@ void _return_to_continue_thread()
 }
 
 void return_to_continue_thread();
-asm(".text\n" ".align 4\n" ".type  return_to_continue_thread,@function\n" "return_to_continue_thread:\n"
+/*asm(".text\n" ".align 4\n" ".type  return_to_continue_thread,@function\n" "return_to_continue_thread:\n"
     "     call save_context2current\n" "     jmp _return_to_continue_thread\n" ".Lreturn_to_continue_thread_end:\n"
-    "	         .size return_to_continue_thread, .Lreturn_to_continue_thread_end-return_to_continue_thread\n");
+    "	         .size return_to_continue_thread, .Lreturn_to_continue_thread_end-return_to_continue_thread\n");*/
 
 
 
