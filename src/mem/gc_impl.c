@@ -4,6 +4,8 @@
  * Copyright 2001-2002 Joerg Baumann
  *******************************************************************************/
 
+#define ENABLE_GC
+
 #ifdef ENABLE_GC
 #include "all.h"
 
