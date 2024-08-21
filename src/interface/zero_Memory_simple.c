@@ -287,7 +287,7 @@ jint memory_getBigEndian32(MemoryProxy * self, jint offset)
 	CHECK_BEFORE_EXTERN((offset + 4 > self->size || offset < 0));
 
 	data = *(jint *) (((jbyte *) self->mem) + offset);
-	asm volatile ("bswap %%eax":"=r" (data));
+	//asm volatile ("bswap %%eax":"=r" (data));
 
 	CHECK_AFTER;
 	return data;
@@ -296,7 +296,7 @@ jint memory_getBigEndian32(MemoryProxy * self, jint offset)
 void memory_setBigEndian32(MemoryProxy * self, jint offset, jint value)
 {
 	CHECK_BEFORE_EXTERN(offset + 4 > self->size || offset < 0);
-	asm volatile ("bswap %%eax":"=r" (value));
+	//asm volatile ("bswap %%eax":"=r" (value));
 	*(jint *) (((jbyte *) self->mem) + offset) = value;
 	CHECK_AFTER;
 }
