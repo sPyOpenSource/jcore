@@ -18,12 +18,12 @@ static inline int spin_trylock(spinlock_t * lock)
 
 static inline void spin_lock(spinlock_t * lock)
 {
-	/*__asm__ __volatile__("1: " "  lock ; decb %0;" "  js 2f;"	/* already locked */
-			     "  jmp 3f;"	/* lock aquired */
-			     "2: " "  cmpb $0,%0;"	/* while locked */
-			     "  rep;nop;"	/* do nothing */
-			     "  jle 2b;"	/*  loop */
-			     "  jmp 1b;"	/* unlocked -> try again */
+	/*__asm__ __volatile__("1: " "  lock ; decb %0;" "  js 2f;"	/* already locked 
+			     "  jmp 3f;"	/* lock aquired 
+			     "2: " "  cmpb $0,%0;"	/* while locked 
+			     "  rep;nop;"	/* do nothing 
+			     "  jle 2b;"	/*  loop 
+			     "  jmp 1b;"	/* unlocked -> try again 
 			     "3:":"=m"(*lock));*/
 }
 
