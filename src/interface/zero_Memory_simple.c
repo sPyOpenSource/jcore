@@ -18,6 +18,12 @@ typedef struct MemoryProxy_s {
 
 #define CHECK_BEFORE
 #define CHECK_AFTER
+#define CHECK_BEFORE_SIZE1 if (where >= self->size || where < 0) {exceptionHandler(THROW_MemoryIndexOutOfBounds); }
+#define CHECK_BEFORE_SIZE2 if (where >= self->size >> 1 || where < 0) {exceptionHandler(THROW_MemoryIndexOutOfBounds); }
+#define CHECK_BEFORE_SIZE3 if (where >= self->size >> 2 || where < 0) {exceptionHandler(THROW_MemoryIndexOutOfBounds); }
+
+#define CHECK_BEFORE_RANGE2 if (where + length > self->size >> 1 || where < 0 || length < 0) {exceptionHandler(THROW_MemoryIndexOutOfBounds); }
+#define CHECK_BEFORE_RANGE3 if (where + length > self->size >> 2 || where < 0 || length < 0) {exceptionHandler(THROW_MemoryIndexOutOfBounds); }
 
 /* necessary defines:
    CHECK_BEFORE
