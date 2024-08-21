@@ -22,7 +22,7 @@ int dprintf(const char *fmt, ...);
 static inline unsigned getEFlags()
 {
 	unsigned eflags;
-	asm volatile ("pushfl ; popl %0":"=r" (eflags));
+	//asm volatile ("pushfl ; popl %0":"=r" (eflags));
 	return eflags;
 }
 
@@ -41,15 +41,15 @@ static inline void setEFlags(unsigned eflags)
 static inline int test_and_set_bit(int nr, volatile long *lock)
 {
 	int oldbit;
-	asm volatile ("lock;"
+	/*asm volatile ("lock;"
 		      "tsl %2,%1;" "bbl %0,%0;":"=r" (oldbit), "=m"(*lock)
-		      :"Ir"(nr));
+		      :"Ir"(nr));*/
 	return oldbit;
 }
 static inline void atomic_inc(volatile int *v)
 {
-	asm volatile ("lock;" "incl %0;":"=m" (*v)
-		      :"m"(*v));
+	/*asm volatile ("lock;" "incl %0;":"=m" (*v)
+		      :"m"(*v));*/
 }
 
 #define get_cr4() \
@@ -74,13 +74,13 @@ static inline void atomic_inc(volatile int *v)
 static inline unsigned int inb(unsigned short int port)
 {
 	unsigned char ret;
-	asm volatile ("inb %1,%0": "=a" (ret): "d"(port));
+	//asm volatile ("inb %1,%0": "=a" (ret): "d"(port));
 	return ret;
 }
 
 static inline void outb(unsigned short int port, unsigned char val)
 {
-	asm volatile ("outb %0,%1"::"a" (val), "d"(port));
+	//asm volatile ("outb %0,%1"::"a" (val), "d"(port));
 }
 
 #define get_esp() \
