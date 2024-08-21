@@ -8,6 +8,7 @@
  *   of memory objects between domains            *
  **************************************************/
 #include "all.h"
+#define ENABLE_GC
 #include "mem/gc_impl.h"
 
 #define ALLOW_SHARING 1
