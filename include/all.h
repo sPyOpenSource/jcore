@@ -68,6 +68,7 @@
 #include "types.h"
 #include "intr.h"
 #include "debug_reg.h"
+#include "printf.h"
 
 #include "object.h"
 #include "bench.h"
