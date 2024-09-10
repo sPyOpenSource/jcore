@@ -5,8 +5,8 @@
 
 #define KERNEL_DS     0x18
 #define KERNEL_16_DS  0x28
-#define KERNEL_CS			0x10
-#define KERNEL_16_CS	0x20
+#define KERNEL_CS	  0x10
+#define KERNEL_16_CS  0x20
 
 #define REALCODE   0x9000
 #define STACKOFF   0x8000

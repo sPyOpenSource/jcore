@@ -37,7 +37,7 @@ static HELLO: &[u8] = b"Hello World!";
 //3F20_0028 gpio1_clear 1<<21 turns pin 21 off
 
 #[no_mangle]
-pub extern "C" fn main() -> ! {
+pub extern "C" fn _start() -> ! {
     /*let vga_buffer = 0xb8000 as *mut u8;
 
     for (i, &byte) in HELLO.iter().enumerate() {

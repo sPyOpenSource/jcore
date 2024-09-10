@@ -10,10 +10,12 @@ extern "C" {
     fn printf(_: *const libc::c_char, _: ...) -> libc::c_int;
 }
 pub type jint = unsafe extern "C" fn(*mut libc::c_int) -> libc::c_int;
+
 #[no_mangle]
 pub unsafe extern "C" fn getInitialNaming() -> *mut libc::c_int {
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn installInitialNaming(
     mut srcDomain: *mut libc::c_int,
@@ -22,8 +24,10 @@ pub unsafe extern "C" fn installInitialNaming(
 ) {
     thread_prepare_to_copy();
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn receive_dep(mut arg: *mut libc::c_void) {}
+
 #[no_mangle]
 pub unsafe extern "C" fn createClassDescImplementingInterface(
     mut domain: *mut libc::c_int,
@@ -34,6 +38,7 @@ pub unsafe extern "C" fn createClassDescImplementingInterface(
 ) -> *mut libc::c_int {
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn createSubClass(
     mut cl: *mut libc::c_int,
@@ -41,6 +46,7 @@ pub unsafe extern "C" fn createSubClass(
 ) -> *mut libc::c_int {
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn init_zero_class(
     mut ifname: *mut libc::c_char,
@@ -56,6 +62,7 @@ pub unsafe extern "C" fn init_zero_class(
     }
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn init_zero_dep(
     mut ifname: *mut libc::c_char,
@@ -67,6 +74,7 @@ pub unsafe extern "C" fn init_zero_dep(
     CHECK_STACK_SIZE(ifname, 256 as libc::c_int);
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn init_zero_dep_without_thread(
     mut ifname: *mut libc::c_char,
@@ -77,6 +85,7 @@ pub unsafe extern "C" fn init_zero_dep_without_thread(
 ) -> *mut libc::c_int {
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn jxbytecpy(
     mut source: *mut libc::c_char,
@@ -85,6 +94,7 @@ pub unsafe extern "C" fn jxbytecpy(
 ) {
     IN_jxbytecpy(source, target, nbytes);
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn addZeroVtables() {}
 unsafe extern "C" fn create_CPUObjs() {
@@ -94,9 +104,11 @@ unsafe extern "C" fn create_CPUObjs() {
     let mut cpu_ID: libc::c_int = 0;
     cpu_ID = 0 as libc::c_int;
 }
+
 #[no_mangle]
 pub static mut monitorThread: *mut libc::c_int = 0 as *const libc::c_int
     as *mut libc::c_int;
+
 #[no_mangle]
 pub unsafe extern "C" fn init_zero_from_lib(
     mut domain: *mut libc::c_int,

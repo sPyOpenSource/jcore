@@ -48,15 +48,15 @@
 #define COPROC_NOT_VECTOR   $7   /* coprocessor not available */
 #define DOUBLE_FAULT_VECTOR $8
 #define COPROC_SEG_VECTOR   $9   /* coprocessor segment overrun */
-#define INVAL_TSS_VECTOR   $10   /* invalid TSS */
-#define SEG_NOT_VECTOR     $11   /* segment not present */
-#define STACK_FAULT_VECTOR $12   /* stack exception */
-#define PROTECTION_VECTOR  $13   /* general protection */
+#define INVAL_TSS_VECTOR    $10  /* invalid TSS */
+#define SEG_NOT_VECTOR      $11  /* segment not present */
+#define STACK_FAULT_VECTOR  $12  /* stack exception */
+#define PROTECTION_VECTOR   $13  /* general protection */
 /* extra 386 Exception vector numbers. */
 #define PAGE_FAULT_VECTOR   $14
 #define COPROC_ERR_VECTOR   $16  /* coprocessor error */
 
-#define UNKNOWN_EXCEPTION      $0xff    /* divide error */
+#define UNKNOWN_EXCEPTION   $0xff    /* divide error */
 
 	
 divide_error:

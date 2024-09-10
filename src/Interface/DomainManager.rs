@@ -4,10 +4,13 @@
 extern "C" {
     fn printf(_: *const libc::c_char, _: ...) -> libc::c_int;
 }
+
 #[no_mangle]
 pub static mut dddd: libc::c_int = 9 as libc::c_int;
+
 #[no_mangle]
 pub static mut linenumber: libc::c_int = 0 as libc::c_int;
+
 #[no_mangle]
 pub unsafe extern "C" fn domainManager_createDomain(
     mut self_0: *mut libc::c_int,
@@ -31,6 +34,7 @@ pub unsafe extern "C" fn domainManager_createDomain(
 ) -> *mut libc::c_int {
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn domainManager_getDomainZero(
     mut self_0: *mut libc::c_int,
@@ -38,12 +42,14 @@ pub unsafe extern "C" fn domainManager_getDomainZero(
     printf(b"getDomainZero \n\0" as *const u8 as *const libc::c_char);
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn domainManager_getCurrentDomain(
     mut self_0: *mut libc::c_int,
 ) -> *mut libc::c_int {
     panic!("Reached end of non-void function without returning");
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn findZeroLibMethodIndex(
     mut domain: *mut libc::c_int,
@@ -59,6 +65,7 @@ pub unsafe extern "C" fn findZeroLibMethodIndex(
     );
     return 0 as libc::c_int;
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn domainManager_installInterceptor(
     mut self_0: *mut libc::c_int,
@@ -68,6 +75,7 @@ pub unsafe extern "C" fn domainManager_installInterceptor(
 ) {
     exceptionHandler(-(1 as libc::c_int));
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn installInterceptor(
     mut self_0: *mut libc::c_int,
@@ -77,19 +85,24 @@ pub unsafe extern "C" fn installInterceptor(
 ) {
     sys_panic(b"\0" as *const u8 as *const libc::c_char);
 }
+
 #[no_mangle]
 pub unsafe extern "C" fn domainManager_terminateCaller(mut self_0: *mut libc::c_int) {}
+
 #[no_mangle]
 pub unsafe extern "C" fn domainManager_freeze(
     mut self_0: *mut libc::c_int,
     mut domainObj: *mut libc::c_int,
 ) {}
+
 #[no_mangle]
 pub unsafe extern "C" fn domainManager_thaw(
     mut self_0: *mut libc::c_int,
     mut domainObj: *mut libc::c_int,
 ) {}
+
 #[no_mangle]
 pub static mut domainManagerMethods: [libc::c_int; 0] = [];
+
 #[no_mangle]
 pub unsafe extern "C" fn init_domainmanager_portal() {}
