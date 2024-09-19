@@ -1,4 +1,5 @@
 # Kernel of JavaOS
+The kernel is a fundamental part of an operating system. It acts as the main interface between the computer's hardware and the software applications running on it.
 This kernel is written in C and Assembly.
 
 ## Targets
