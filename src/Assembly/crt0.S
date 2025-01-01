@@ -5,10 +5,19 @@
 
 	.p2align  2
 boot_hdr:
-	.long	0x1BADB002
+	; magic number
+	dd 0xe85250d6 ; multiboot2
+	; architecture
+	dd 0 ; protected mode i386
+	; header length
+	dd header_end - header_start
+	; checksum
+	dd 0x100000000 - (0xe85250d6 + 0 + (header_end - header_start))
 
-	.long	0x00000000
-	.long	0-0x1BADB002-0x00000000
+	; end tag
+	dw 0
+	dw 0
+	dd 8
 boot_entry:
 	movl	$base_stack_end, %esp
 	pushl	$0
@@ -31,8 +40,8 @@ boot_entry:
 	pushl	%ebx
 
 	xorl	%ebp,%ebp
-
-	call	multiboot_main
+	lgdt[gdt64.pointer]
+	jmp gdt64.code_segment:long_mode_start
 
 1:
         int   $3

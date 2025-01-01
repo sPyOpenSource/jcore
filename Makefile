@@ -48,7 +48,7 @@ LINUXSOURCES = $(SOURCES) symfind.c
 ASMSOURCES   = Assembly/lowlevel.S Assembly/call.S Assembly/switch.S Assembly/schedSWITCH.S \
 			   Assembly/bench.S Assembly/vm_eventLog.S Interface/zero_FastMemory.S
 COREASMSOURCES = Assembly/crt0.S Assembly/stack.S Assembly/hwint.S Assembly/exception.S Assembly/timer.S \
-				 Assembly/smp_startup.S Assembly/ipiint.S
+				 Assembly/smp_startup.S Assembly/ipiint.S Assembly/main64.S
 
 COREINCLUDE = -Isrc -Isrc/Headers
 
@@ -93,7 +93,7 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
 COREOBJ2 = $(COREOBJ:.kernel/Memory/%=.kernel/%)
 COREOBJ3 = $(COREOBJ2:.kernel/Assembly/%=.kernel/%)
-COREBUILD = ld -m elf_i386 -Ttext 100000 -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
+COREBUILD = ld -Ttext 100000 -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
 
 jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)
@@ -117,8 +117,8 @@ jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	mkdir .kernel
 
 realmode: src/Assembly/asm.S
-	gcc -m32 -g -c -o asm.o src/Assembly/asm.S
-	ld -m elf_i386 -Ttext 0x9000 -o realmode asm.o
+	gcc -g -c -o asm.o src/Assembly/asm.S
+	ld -Ttext 0x9000 -o realmode asm.o
 	perl mksymtab.perl realmode src/Headers/realmode.h
 	touch src/main.c
 	$(MAKE) jxcore
@@ -129,7 +129,7 @@ realmode: src/Assembly/asm.S
 #	$(CC) $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -c -o .kernel/$(@F) $<
 
 .kernel/%.o: src/%.c
-	$(CC) -m32 $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -c -o .kernel/$(@F) $<
+	$(CC) $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -c -o .kernel/$(@F) $<
 
 #.kernel/%.o: .kernel/%.c
 #	$(CC) $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -I.  -c -o .kernel/$(@F) $<
@@ -137,16 +137,16 @@ realmode: src/Assembly/asm.S
 #	gcc -E $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE)  -o .kernel/$(@F) $<
 
 .kernel/%.o: src/%.s
-	$(AS) $(COREINCLUDE) --32 -c -nostdinc -o .kernel/$(@F) $<
+	$(AS) $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
 
 src/Interface/zero_FastMemory.s: src/Interface/zero_FastMemory.S
-	$(CC) -m32 -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
+	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
 
 src/%.s: src/%.S
-	$(CC) -m32 -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Assembly/$(@F)
+	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Assembly/$(@F)
 
 .kernel/%.s: src/%.c
-	$(CC) -m32 -S $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -o .kernel/$(@F) $<
+	$(CC) -S $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -o .kernel/$(@F) $<
 
 .SECONDARY: $(CORESEC)
 
