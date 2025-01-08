@@ -1,6 +1,6 @@
 INITSTACK EQU 00009BFFCh ;Stack in protected mode starts here
 ORG 07C00h
-BITS 16
+BITS 32
 section .multiboot_header
 begin:
  ; magic number
@@ -85,7 +85,6 @@ CallJava:
  db 0EAh ;jump to 32-Bit Code
  dw doit ; offset (linear physical address)
  dw 008h ; selector
-BITS 32
 ;________________ Initialise segments ____________________________
 doit:
  mov dx,010h ;helper for data-segment
