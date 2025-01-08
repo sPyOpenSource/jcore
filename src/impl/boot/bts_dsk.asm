@@ -16,7 +16,6 @@ begin:
  dw 0
  dd 8
 ; *** variables for primary image
-PIdest: dd 0 ;destination for image
 PICDAddr: dd 0 ;class-descriptor for pi
 PIExAddr: dd 0 ;method-offset for pi
 ; *** prepared gdt
