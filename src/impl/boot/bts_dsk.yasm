@@ -3,8 +3,19 @@ ORG 07C00h
 BITS 16
 begin:
  jmp start ;jump over header
- times 003h-($-$$) db 0 ;first byte of header is at pos 3
- times 01Eh-($-$$) db 0 ;fill up header(27) with zero
+ ; magic number
+	dd 0xe85250d6 ; multiboot2
+	; architecture
+	dd 0 ; protected mode i386
+	; header length
+	dd header_end - header_start
+	; checksum
+	dd 0x100000000 - (0xe85250d6 + 0 + (header_end - header_start))
+
+	; end tag
+	dw 0
+	dw 0
+	dd 8
 ; *** variables for primary image
 PIdest: dd 0 ;destination for image
 PICDAddr: dd 0 ;class-descriptor for pi
