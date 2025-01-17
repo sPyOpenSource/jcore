@@ -46,7 +46,7 @@ waitKeyboard: ;wait until inputbuffer empty
  test al,002h ;inputbuffer empty?
  jnz waitKeyboard ; no->retry
  ret
-start:
+start2:
 ;________________ Initialize stack and ds ___________________________
  cli ;disble interrupts while setting ss:sp
  xor ax,ax ;helper for ss, ds, es
