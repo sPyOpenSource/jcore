@@ -7,7 +7,7 @@ x86_64_asm_object_files := $(patsubst src/impl/boot/%.asm, build/x86_64/%.o, $(x
 
 x86_64_object_files := $(x86_64_c_object_files) $(x86_64_asm_object_files)
 
-$(x86_64_c_object_files): build/x86_64/%.o : src/impl/%.c
+$(x86_64_c_object_files): src/impl/%.c
 	mkdir -p $(dir $@) && \
 	gcc -c -I src/includes -ffreestanding $(patsubst build/x86_64/%.o, src/impl/%.c, $@) -o $@
 
