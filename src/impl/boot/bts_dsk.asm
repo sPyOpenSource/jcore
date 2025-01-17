@@ -14,7 +14,7 @@ begin:
  dw 0
  dw 0
  dd 8
-header_end
+header_end:
 ; *** variables for primary image
 PICDAddr: dd 0 ;class-descriptor for pi
 PIExAddr: dd 0 ;method-offset for pi
