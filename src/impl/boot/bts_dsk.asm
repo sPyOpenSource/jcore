@@ -1,14 +1,14 @@
 BITS 32
 section .multiboot_header
-begin:
+header_begin:
  ; magic number
  dd 0xe85250d6 ; multiboot2
  ; architecture
  dd 0 ; protected mode i386
  ; header length
- dd header_end - begin
+ dd header_end - header_begin
  ; checksum
- dd 0x100000000 - (0xe85250d6 + 0 + (header_end - begin))
+ dd 0x100000000 - (0xe85250d6 + 0 + (header_end - header_begin))
  ; end tag
  dw 0
  dw 0
