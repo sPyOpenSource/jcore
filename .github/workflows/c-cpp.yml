@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: make
-      run: apt install nasm -y & make
+      run: sudo apt install nasm -y && make
