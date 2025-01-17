@@ -1,3 +1,5 @@
+INITSTACK EQU 00009BFFCh ;Stack in protected mode starts here
+
 global long_mode_start
 extern kernel_main
 
