@@ -15,6 +15,7 @@ begin:
  dw 0
  dd 8
 header_end:
+BITS 32
 section .text
 ; *** variables for primary image
 PICDAddr: dd 0 ;class-descriptor for pi
