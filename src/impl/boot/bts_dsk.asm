@@ -1,5 +1,4 @@
 INITSTACK EQU 00009BFFCh ;Stack in protected mode starts here
-ORG 07C00h
 BITS 32
 section .multiboot_header
 begin:
@@ -8,13 +7,14 @@ begin:
  ; architecture
  dd 0 ; protected mode i386
  ; header length
- dd header_end - header_start
+ dd header_end - begin
  ; checksum
- dd 0x100000000 - (0xe85250d6 + 0 + (header_end - header_start))
+ dd 0x100000000 - (0xe85250d6 + 0 + (header_end - begin))
  ; end tag
  dw 0
  dw 0
  dd 8
+header_end
 ; *** variables for primary image
 PICDAddr: dd 0 ;class-descriptor for pi
 PIExAddr: dd 0 ;method-offset for pi
