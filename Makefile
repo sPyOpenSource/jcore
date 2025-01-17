@@ -5,7 +5,7 @@ x86_64_c_object_files = build/x86_64/main.o build/x86_64/print.o
 x86_64_asm_source_files = $(shell find src/impl/boot -name *.asm)
 x86_64_asm_object_files = $(patsubst src/impl/boot/%.asm, build/x86_64/%.o, $(x86_64_asm_source_files))
 
-x86_64_object_files = $(x86_64_c_source_files) $(x86_64_asm_object_files)
+x86_64_object_files = $(x86_64_c_object_files) $(x86_64_asm_object_files)
 
 all: $(x86_64_object_files)
 	mkdir -p dist/x86_64 && \
