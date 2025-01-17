@@ -1,6 +1,6 @@
 
 x86_64_c_source_files := src/impl/print.c src/impl/main.c
-x86_64_c_object_files := $(patsubst src/impl/%.c, build/x86_64/%.o, $(x86_64_c_source_files))
+x86_64_c_object_files := build/x86_64/print.o build/x86_64/main.o
 
 x86_64_asm_source_files := $(shell find src/impl/boot -name *.asm)
 x86_64_asm_object_files := $(patsubst src/impl/boot/%.asm, build/x86_64/%.o, $(x86_64_asm_source_files))
