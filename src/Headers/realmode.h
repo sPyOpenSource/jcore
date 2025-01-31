@@ -10,28 +10,10 @@ struct symbols_s {
   unsigned long size;
 };
 
-#define FKTSIZE_real_to_prot 0x00000000
-#define FKTADDR_real_to_prot 0x00009000
-#define FKTSIZE__start 0x00000000
-#define FKTADDR__start 0x00009000
-#define FKTSIZE_testreal 0x00000000
-#define FKTADDR_testreal 0x000090c9
-#define FKTSIZE_vesa2_detect 0x00000000
-#define FKTADDR_vesa2_detect 0x0000908b
-#define FKTSIZE_vesa2_get_mode_info 0x00000000
-#define FKTADDR_vesa2_get_mode_info 0x000090dd
-#define FKTSIZE_vesa2_set_mode 0x00000000
-#define FKTADDR_vesa2_set_mode 0x00009120
 
-static char strings[] __attribute__ ((unused)) = "real_to_prot\0_start\0testreal\0vesa2_detect\0vesa2_get_mode_info\0vesa2_set_mode\0";
+static char strings[] __attribute__ ((unused)) = "";
 
-static struct symbols_s symbols[] __attribute__ ((unused)) = {{ 0, 0x00009000, 0x00000000 },
-{ 13, 0x00009000, 0x00000000 },
-{ 20, 0x000090c9, 0x00000000 },
-{ 29, 0x0000908b, 0x00000000 },
-{ 42, 0x000090dd, 0x00000000 },
-{ 62, 0x00009120, 0x00000000 },
-
+static struct symbols_s symbols[] __attribute__ ((unused)) = {
 };
-static int n_symbols __attribute__ ((unused)) = 6;
+static int n_symbols __attribute__ ((unused)) = 0;
 #endif

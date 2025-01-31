@@ -3,12 +3,11 @@ ESSENTIALSOURCES = main.c libcache.c load.c thread.c interrupt.c \
 				   classes.c zip.c  execJAVA.c atomic.c \
                    exception_handler.c memfs.c atomicfn.c oneshot.c \
                    sched_global.c sched_local.c sched_local_rr.c sched_local_java.c sched_global_rr.c \
-		   		   runq.c syscalls.c 
-					  
+		   		   runq.c syscalls.c
+
 ESSENTIALSOURCES += Memory/gc.c Memory/gc_memcpy.c Memory/gc_move.c Memory/gc_alloc.c Memory/gc_checkheap.c \
                     Memory/gc_org.c Memory/gc_common.c Memory/gc_thread.c Memory/gc_stack.c Memory/gc_move_common.c \
                     Memory/gc_new.c Memory/gc_impl.c Memory/gc_compacting.c Memory/gc_bitmap.c Memory/gc_chunked.c
-                   
 
 SUPPORTSOURCES = profile.c thread_debug.c thread_emulation.c thread_profile.c \
                  monitor.c Memory/gc_pa.c Memory/gc_pgc.c minilzo.c bdt.c crc32.c ekhz.c
@@ -93,7 +92,7 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
 COREOBJ2 = $(COREOBJ:.kernel/Memory/%=.kernel/%)
 COREOBJ3 = $(COREOBJ2:.kernel/Assembly/%=.kernel/%)
-COREBUILD = ld -Ttext 100000 -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
+COREBUILD = $(LD) -Ttext 100000 -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
 
 jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)
@@ -117,8 +116,8 @@ jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	mkdir .kernel
 
 realmode: src/Assembly/asm.S
-	gcc -g -c -o asm.o src/Assembly/asm.S
-	ld -Ttext 0x9000 -o realmode asm.o
+	$(CC) -g -c -o asm.o src/Assembly/asm.S
+	$(LD) -Ttext 0x9000 -o realmode asm.o
 	perl mksymtab.perl realmode src/Headers/realmode.h
 	touch src/main.c
 	$(MAKE) jxcore

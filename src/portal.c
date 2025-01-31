@@ -279,7 +279,7 @@ void installVtables(DomainDesc * domain, ClassDesc * c, MethodInfoDesc * methods
 		}
 	}
 	if (failure) {
-    printf("Some DomainZero Portal methods are not implemented.");
+    	printf("Some DomainZero Portal methods are not implemented.");
 		sys_panic("Some DomainZero Portal methods are not implemented.");
 	}
 }

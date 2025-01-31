@@ -496,7 +496,6 @@ void multiboot_main(addr_t boot_info_pa)
 
 	/* Identify the CPU and get the processor tables set up.  */
 
-
 	base_gdt_init();
 	base_gdt_load();
 	idt_load();		/* in irq.c */

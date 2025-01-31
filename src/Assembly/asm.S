@@ -338,7 +338,6 @@ ENTRY(vesa2_set_mode)
         ret
 
 
-
 	.p2align	2	/* force 4-byte alignment */
 
 	/* this is the place where the stack pointer is saved

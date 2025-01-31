@@ -144,7 +144,7 @@ int main(int argc, char *argv[])
 	portals_init();
 
 	//irq_disable(); /* don't need to disable interrupts, because there are none - timer not yet initialized */
-asm("int $0x80");
+//asm("int $0x80");
 #ifdef PROFILE
 	profile_init();
 #endif
