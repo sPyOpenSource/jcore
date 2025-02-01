@@ -135,23 +135,23 @@ realmode: src/Assembly/asm.S
 #.kernel/%.c: %.c
 #	gcc -E $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE)  -o .kernel/$(@F) $<
 
-.kernel/%.o: src/%.s
+.kernel/%.o: src/%.asm
 	$(AS) $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
 
-src/Interface/zero_FastMemory.s: src/Interface/zero_FastMemory.S
-	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
+#src/Interface/zero_FastMemory.asm: src/Interface/zero_FastMemory.S
+#	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
 
-src/%.s: src/%.S
+src/%.asm: src/%.S
 	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Assembly/$(@F)
 
-.kernel/%.s: src/%.c
-	$(CC) -S $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -o .kernel/$(@F) $<
+#.kernel/%.asm: src/%.c
+#	$(CC) -S $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE) -o .kernel/$(@F) $<
 
 .SECONDARY: $(CORESEC)
 
 
 # hidden dependencies
-src/Interface/zero_Memory.c: src/Interface/zero_Memory_new.c src/Interface/zero_Memory_org.c src/Interface/zero_Memory_shared.c src/Interface/zero_Memory_simple.c
+#src/Interface/zero_Memory.c: src/Interface/zero_Memory_new.c src/Interface/zero_Memory_org.c src/Interface/zero_Memory_shared.c src/Interface/zero_Memory_simple.c
 
 ifeq ($(findstring jxcore, $(MAKECMDGOALS)), jxcore)
  #-include kernel.dep
