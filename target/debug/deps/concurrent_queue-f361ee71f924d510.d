@@ -1,0 +1,11 @@
+/Users/xuyi/Source/Rust/os/target/debug/deps/libconcurrent_queue-f361ee71f924d510.rmeta: /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/lib.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/bounded.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/single.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/unbounded.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/sync.rs
+
+/Users/xuyi/Source/Rust/os/target/debug/deps/libconcurrent_queue-f361ee71f924d510.rlib: /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/lib.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/bounded.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/single.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/unbounded.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/sync.rs
+
+/Users/xuyi/Source/Rust/os/target/debug/deps/concurrent_queue-f361ee71f924d510.d: /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/lib.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/bounded.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/single.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/unbounded.rs /Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/sync.rs
+
+/Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/lib.rs:
+/Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/bounded.rs:
+/Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/single.rs:
+/Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/unbounded.rs:
+/Users/xuyi/.cargo/registry/src/index.crates.io-6f17d22bba15001f/concurrent-queue-2.5.0/src/sync.rs:
