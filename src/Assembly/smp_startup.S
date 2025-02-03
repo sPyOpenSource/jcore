@@ -43,7 +43,6 @@ dummy_gdt:
 smp_startup_end:	
 
 
-	
 .code32	
 .p2align 4,0x90			/* fill with NOP */
 setup_stack:	

@@ -30,7 +30,7 @@ fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
 
-static HELLO: &[u8] = b"Hello World!";
+//static HELLO: &[u8] = b"Hello World!";
 
 //3F20_0008 fsel2 1<<3 turn pin21 into an output
 //3F20_001c gpio1_set 1<<21 pin 21 on

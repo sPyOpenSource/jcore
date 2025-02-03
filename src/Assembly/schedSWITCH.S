@@ -191,7 +191,6 @@ tiny_destroy_switch_to:
 #endif  /* JAVASCHEDULER */	
 
 
-
 	/* backups the current context and activate PARTIAL next context 
 	 *  only the ESP an the IP are activated from the new context 
 	 *  the EFlags are not touched ! */
@@ -232,7 +231,6 @@ call_java:
 	ret
 .Lcall_java_end:		
 	.size call_java, .Lcall_java_end-call_java
-
 		
 	
 /*******************************************************************************/
@@ -397,8 +395,6 @@ return_from_javaX_end:
 	.size return_from_java0, return_from_javaX_end-return_from_java0
 	.size return_from_java1, return_from_javaX_end-return_from_java1
 	.size return_from_java2, return_from_javaX_end-return_from_java2
-
-	
 
 	
 	/* a sub-routine to save the current context */
