@@ -4,21 +4,6 @@
 /* functions used to execute a JAVA method in a worker Thread */
 #ifdef JAVASCHEDULER
 
-#if 0  //not maintained anymore
-#define SAVE_CONTEXT \
-	movl	0(%esp),%eax		/* get eip (return address) */ ; \
-	movl	%eax,PCB_EIP(%ecx) ; \
-	movl	%ebx,PCB_EBX(%ecx) ;\
-	movl	%esp,%eax	; \
-	addl	$4, %eax		/* clean up the Stack */ ; \
-	movl	%eax, PCB_ESP(%ecx) ; \
-	movl	%ebp,PCB_EBP(%ecx) ; \
-	movl	%esi,PCB_ESI(%ecx) ; \
-	movl	%edi,PCB_EDI(%ecx) ; \
-#ifdef KERNEL			; \
-/*	movl	%gs, PCB_GS(%ecx)*/ ; \
-/*	movl	%fs, PCB_FS(%ecx)*/ ; \
-#endif				; \
 #ifdef KERNEL			; \
 	/* save eflags */	; \
         pushf			; \

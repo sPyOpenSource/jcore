@@ -13,16 +13,7 @@
 #define SCRATCHMEM 0x7000
 #define OTHERMEM   0x6000
 
-#if 0
-#define WRITE(c)\
-	mov    $0x3fd,%dx	; \
-123:	in     (%dx),%al	; \
-	and    $0x20,%ax	; \
-	je     123b		; \
-	mov    $0x3f8,%dx	; \
-	mov    $c,%al	; \
-	out    %al,(%dx)
-#endif
+
 #define WRITE(c)
 
 

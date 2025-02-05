@@ -256,31 +256,3 @@ irq_destroy_switch_to:
 
 	iret
 	
-	
-	
-#if 0
-/* (bitte nicht loeschen)
-   meiks IRQ test funktion:	
-   gibt Zeichen am Bildschirm aus */
-	
-pos:	.long  753664 
-color:	.value 0x0431 /* rot */
-writetoscreen:
-	pushl %eax
-	pushl %edx
-	
-	movw color,%dx  
-	movl pos,%eax
-	movw %dx,(%eax)
-	
-	addl $2,pos
-	cmpl $757504,%eax
-	jbe endoffkt
-	movl $753664,pos
-	incw color
-endoffkt:
-	popl %edx
-	popl %eax
-	ret
-#endif
-	

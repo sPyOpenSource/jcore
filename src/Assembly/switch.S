@@ -353,39 +353,12 @@ destroy_switch_to_end:
 
 #endif
 
-
-#if 0
-	/* save current context:	 context continues at caller frame!!!  
-	*/
-	/* Prototype:	 jint save_state(ThreadDesc *current) ;  */
-	.text
-	.align 8
-	.globl	save_state
-	.type	save_state,@function
-save_state:	
-	movl    4(%esp),%ecx
-	movl	THREAD_PPCB(%ecx),%ecx
-	movl	0(%esp),%eax			/* get eip (save_state return address) */
-	movl	%eax,PCB_EIP(%ecx)
-	movl	%ebx,PCB_EBX(%ecx)
-	movl	%esp,%eax
-	addl	$4, %eax
-	movl	%eax, PCB_ESP(%ecx)
-	movl	%ebp,PCB_EBP(%ecx)
-	movl	%esi,PCB_ESI(%ecx)
-	movl	%edi,PCB_EDI(%ecx)
-#ifdef KERNEL	
-	movl	%es, PCB_ES(%ecx)
-	movl	%gs, PCB_GS(%ecx)
-	movl	%fs, PCB_FS(%ecx) 
-#endif /* KERNEL */
 	pushf
 	popl    PCB_EFLAGS(%ecx)
 	ret
 #endif		
 	
 	
-
 #ifdef NOPREEMPT	
 
 	/*

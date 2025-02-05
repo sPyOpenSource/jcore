@@ -1,7 +1,0 @@
-cargo:rerun-if-changed=/Users/xuyi/Source/Rust/os/Cargo.toml
-cargo:rustc-link-search=native=/Users/xuyi/Source/Rust/os/target/bootimage/bootloader/x86_64-bootloader/release/build/bootloader-2af3289f5ba48211/out
-cargo:rustc-link-lib=static=kernel_bin-os
-cargo:rerun-if-env-changed=KERNEL
-cargo:rerun-if-env-changed=KERNEL_MANIFEST
-cargo:rerun-if-changed=/Users/xuyi/Source/Rust/os/target/target/debug/os
-cargo:rerun-if-changed=build.rs

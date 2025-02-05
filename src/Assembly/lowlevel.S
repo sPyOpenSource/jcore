@@ -1,5 +1,5 @@
-#define SAVE_EFLAGS	1
-#define MASK_IF_FLAG	0
+#define SAVE_EFLAGS	 1
+#define MASK_IF_FLAG 0
 
 /*
  * Low level code to:	
@@ -49,7 +49,7 @@ ENTRY(jxbcopy)
 1:
 	popl	%esi
 	popl	%edi
-	popl   %ebp
+	popl    %ebp
 	ret	
 
 	
@@ -177,29 +177,6 @@ ENTRY(get_processor_id)
 #endif
 .Lget_processor_id_end:
 	.size	 get_processor_id, .Lget_processor_id_end-get_processor_id
-
-#if 0
-/* Prototype:
- *	int cas(u4_t *var, u4_t old, u4_t new) ;
-	returns 0 if failed 1 on success
-*/
-.align 4
-cas:
-	movl  4(%esp),%ecx	/* var */    
- 	movl  8(%esp),%eax	/* old */
-	movl 12(%esp),%edx	/* new */
-        lock;
-        cmpxchg %edx, (%ecx);
-        jne .cas_failed
-.cas_successful:	
-	mov $1, %eax
-        ret	
-.cas_failed:	
-	xorl %eax,%eax	
-	ret
-.cas_end:
-	.size	 cas,.cas_end-cas
-#endif
 
 
 ENTRY(disable_cache)
