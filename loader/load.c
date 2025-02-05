@@ -641,7 +641,7 @@ Class *findClass(DomainDesc * domain, char *name)
 
 	if (name[0] == '[') {
 		Class *acl;
-		DISABLE_IRQ;
+		//DISABLE_IRQ;
 		acl = domain->arrayClasses;
 		for (; acl != NULL; acl = ((ArrayClassDesc *) (acl->classDesc))->nextInDomain) {
 			if (strcmp(acl->classDesc->name, name) == 0) {
@@ -651,7 +651,7 @@ Class *findClass(DomainDesc * domain, char *name)
 		}
 		cl = createArrayClass(domain, name);
 	      finished:
-		RESTORE_IRQ;
+		//RESTORE_IRQ;
 		return cl;
 	}
 	return NULL;

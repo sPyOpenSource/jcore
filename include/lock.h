@@ -25,7 +25,7 @@ void check_threadindomain(struct DomainDesc_s *domain);
 #  define ASSERTSTI ASSERT((getEFlags() & 0x00000200) != 0)
 #  define CLI  asm volatile("cli");
 #else				/* KERNEL */
-#  include <signal.h>
+//#  include <signal.h>
 #  ifdef CHECK_RUNNABLE_IN_RUNQ
 #    define DISABLE_IRQ   {   sigset_t set, oldset; disable_irq(&set, &oldset);  if (!sigismember(&oldset,SIGALRM)) foreachDomainRUNQ(check_runnable);
 #    define RESTORE_IRQ     if (!sigismember(&oldset,SIGALRM)) foreachDomainRUNQ(check_runnable); restore_irq(&oldset);}

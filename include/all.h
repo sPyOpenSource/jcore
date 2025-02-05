@@ -4,18 +4,18 @@
 #include "config.h"
 
 #ifndef KERNEL
-#include <stdio.h>
-#include <signal.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <stdlib.h>
-#include <termios.h>
-#include <sys/mman.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+//#include <stdio.h>
+//#include <signal.h>
+//#include <unistd.h>
+//#include <sys/time.h>
+//#include <stdlib.h>
+//#include <termios.h>
+//#include <sys/mman.h>
+//#include <sys/types.h>
+//#include <sys/stat.h>
+//#include <fcntl.h>
 #include <stdarg.h>
-#include <string.h>
+//#include <string.h>
 #else
 #include "minic.h"
 #endif

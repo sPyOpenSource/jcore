@@ -97,48 +97,48 @@ OSKIT_INLINE void set_b3(unsigned addr, unsigned len, unsigned rw);
 OSKIT_INLINE unsigned get_dr0(void)
 {
 	unsigned val;
-	asm volatile ("movl %%dr0,%0":"=r" (val));
+	//asm volatile ("movl %%dr0,%0":"=r" (val));
 	return val;
 }
 
 OSKIT_INLINE unsigned get_dr1(void)
 {
 	unsigned val;
-	asm volatile ("movl %%dr1,%0":"=r" (val));
+	//asm volatile ("movl %%dr1,%0":"=r" (val));
 	return val;
 }
 
 OSKIT_INLINE unsigned get_dr2(void)
 {
 	unsigned val;
-	asm volatile ("movl %%dr2,%0":"=r" (val));
+	//asm volatile ("movl %%dr2,%0":"=r" (val));
 	return val;
 }
 
 OSKIT_INLINE unsigned get_dr3(void)
 {
 	unsigned val;
-	asm volatile ("movl %%dr3,%0":"=r" (val));
+	//asm volatile ("movl %%dr3,%0":"=r" (val));
 	return val;
 }
 
 OSKIT_INLINE unsigned get_dr6(void)
 {
 	unsigned val;
-	asm volatile ("movl %%dr6,%0":"=r" (val));
+	//asm volatile ("movl %%dr6,%0":"=r" (val));
 	return val;
 }
 
 OSKIT_INLINE unsigned get_dr7(void)
 {
 	unsigned val;
-	asm volatile ("movl %%dr7,%0":"=r" (val));
+	//asm volatile ("movl %%dr7,%0":"=r" (val));
 	return val;
 }
 
 OSKIT_INLINE void set_dr0(unsigned val)
 {
-	asm volatile ("movl %0,%%dr0"::"r" (val));
+	//asm volatile ("movl %0,%%dr0"::"r" (val));
 }
 
 
@@ -146,27 +146,27 @@ OSKIT_INLINE void set_dr0(unsigned val)
 
 OSKIT_INLINE void set_dr1(unsigned val)
 {
-	asm volatile ("movl %0,%%dr1"::"r" (val));
+	//asm volatile ("movl %0,%%dr1"::"r" (val));
 }
 
 OSKIT_INLINE void set_dr2(unsigned val)
 {
-	asm volatile ("movl %0,%%dr2"::"r" (val));
+	//asm volatile ("movl %0,%%dr2"::"r" (val));
 }
 
 OSKIT_INLINE void set_dr3(unsigned val)
 {
-	asm volatile ("movl %0,%%dr3"::"r" (val));
+	//asm volatile ("movl %0,%%dr3"::"r" (val));
 }
 
 OSKIT_INLINE void set_dr6(unsigned val)
 {
-	asm volatile ("movl %0,%%dr6"::"r" (val));
+	//asm volatile ("movl %0,%%dr6"::"r" (val));
 }
 
 OSKIT_INLINE void set_dr7(unsigned val)
 {
-	asm volatile ("movl %0,%%dr7"::"r" (val));
+	//asm volatile ("movl %0,%%dr7"::"r" (val));
 }
 
 
