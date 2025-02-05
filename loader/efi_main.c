@@ -11,7 +11,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     EFI_PHYSICAL_ADDRESS ExternalFileBuffer = 0;
 
-    EFI_FILE_PROTOCOL* efimyfile = openFile(u"EFI\\Boot\\testfile.bin");
+    EFI_FILE_PROTOCOL* efimyfile = openFile(u"testfile.bin");
 
     UINT64 fsize = 0x00001000;
 
