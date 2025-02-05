@@ -19,7 +19,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
 	SetTextColor(EFI_BROWN);
     wprintf(u"AllocatePool ExternalFileBuffer");
-	SetTextColor(EFI_LIGHTCYAN);  
+	SetTextColor(EFI_LIGHTCYAN);
     wprintf(CheckStandardEFIError(Status));
 
     efimyfile->SetPosition(efimyfile, 0);
@@ -28,12 +28,12 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     SetTextColor(EFI_GREEN);
     wprintf(u"\r\nRead ExternalFileBuffer");
-	SetTextColor(EFI_LIGHTCYAN);  
+	SetTextColor(EFI_LIGHTCYAN);
     wprintf(CheckStandardEFIError(Status));
 
-    SetTextColor(EFI_LIGHTCYAN);    
+    SetTextColor(EFI_LIGHTCYAN);
     wprintf(u"\r\nFirst 5 Bytes\r\n");
-    SetTextColor(EFI_LIGHTRED);    
+    SetTextColor(EFI_LIGHTRED);
     UINT8* test = (UINT8*)ExternalFileBuffer;
 
     for(int m = 0; m < 5; m++)
@@ -62,7 +62,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     int g = KernelBinFile();
 
-    SetTextColor(EFI_LIGHTMAGENTA);	
+    SetTextColor(EFI_LIGHTMAGENTA);
     wprintf(u"\r\n\r\nThe returned number is : %d", g);
 
     SetTextColor(EFI_GREEN);
