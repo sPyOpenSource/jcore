@@ -4,35 +4,21 @@
 #include "efi.h"
 #include "ErrorCodes.h"
 #include "efilibs.h"
+#include "all.h"
 
-#define EFI_FILE_INFO_ID \
+/*#define EFI_FILE_INFO_ID \
   { \
     0x9576e92, 0x6d3f, 0x11d2, {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
   }
 
-/*UINT64* FileSize(EFI_FILE_PROTOCOL *FileHandle)
+UINT64* FileSize(EFI_FILE_PROTOCOL *FileHandle)
 {
   UINT64* FileSize = 0;
   FileHandle->SetPosition(FileHandle, 0xFFFFFFFFFFFFFFFFULL);
   FileHandle->GetPosition(FileHandle, FileSize);
   return FileSize;
 }*/
-
-/*EFI_FILE_HANDLE GetVolume(EFI_HANDLE image)
-{
-  EFI_LOADED_IMAGE *loaded_image = NULL;                  /* image interface 
-  EFI_GUID lipGuid = EFI_LOADED_IMAGE_PROTOCOL_GUID;      /* image interface GUID 
-  EFI_FILE_IO_INTERFACE *IOVolume;                        /* file system interface 
-  EFI_GUID fsGuid = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID; /* file system interface GUID 
-  EFI_FILE_HANDLE Volume;                                 /* the volume's interface 
-
-  /* get the loaded image protocol interface for our "image" 
-  uefi_call_wrapper(BS->HandleProtocol, 3, image, &lipGuid, (void **) &loaded_image);
-  /* get the volume handle 
-  uefi_call_wrapper(BS->HandleProtocol, 3, loaded_image->DeviceHandle, &fsGuid, (VOID*)&IOVolume);
-  uefi_call_wrapper(IOVolume->OpenVolume, 2, IOVolume, &Volume);
-  return Volume;
-}*/
+void loadIt(DomainDesc * domain, char *libname, char* codefilepos);
 
 EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 {
@@ -43,19 +29,20 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     EFI_FILE_PROTOCOL* efimyfile = openFile(u"testfile.bin");
     EFI_FILE_PROTOCOL* zero = openFile(u"zero.jll");
-    EFI_GUID gEfiFileInfoGuid = EFI_FILE_INFO_ID;
+    //EFI_GUID gEfiFileInfoGuid = EFI_FILE_INFO_ID;
 	UINTN FileInfoSize = 0x00001000;
     EFI_FILE_INFO *FileInfo;
     EFI_ALLOCATE_POOL AllocatePool = SystemTable->BootServices->AllocatePool;
     EFI_STATUS Status;// = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, NULL);
-    Status = SystemTable->BootServices->AllocatePages(AllocateAnyPages, EfiLoaderCode, 2, &ExternalFileBuffer1);
-    AllocatePool(EfiLoaderData, FileInfoSize, (void**)&FileInfo);
+    AllocatePool(EfiLoaderCode, FileInfoSize, (void**)&ExternalFileBuffer1);
+    //AllocatePool(EfiLoaderData, FileInfoSize, (void**)&FileInfo);
     //Status = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, (void**)&FileInfo);
-/*UINT64* FileSize = 0;
-		efimyfile->SetPosition(efimyfile, 0xFFFFFFFFFFFFFFFFULL);
-		efimyfile->GetPosition(efimyfile, FileSize);
-		efimyfile->SetPosition(efimyfile, 0);*/
-    AllocatePool(EfiLoaderCode, FileInfoSize, (void**)&ExternalFileBuffer);
+    /*UINT64* FileSize = 0;
+	//efimyfile->SetPosition(efimyfile, 0xFFFFFFFFFFFFFFFFULL);
+	efimyfile->SetPosition(efimyfile, 0);
+    efimyfile->GetPosition(efimyfile, FileSize);*/
+
+    Status = AllocatePool(EfiLoaderCode, FileInfoSize, (void**)&ExternalFileBuffer);
 
 	SetTextColor(EFI_BROWN);
     wprintf(u"AllocatePool ExternalFileBuffer");
@@ -63,29 +50,28 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     wprintf(CheckStandardEFIError(Status));
 
     efimyfile->SetPosition(efimyfile, 0);
-    
     efimyfile->Read(efimyfile, &FileInfoSize, (void *)ExternalFileBuffer);
 
 zero->SetPosition(zero, 0);
 zero->Read(zero, &FileInfoSize, (void *)ExternalFileBuffer1);
 
     SetTextColor(EFI_GREEN);
-    wprintf(u"\r\nRead ExternalFileBuffer");
+    wprintf(u"Read ExternalFileBuffer");
 	SetTextColor(EFI_LIGHTCYAN);
     wprintf(CheckStandardEFIError(Status));
 
     SetTextColor(EFI_LIGHTCYAN);
-    wprintf(u"\r\nFirst 5 Bytes\r\n");
+    //wprintf(u"\r\nFirst 5 Bytes\r\n");
     SetTextColor(EFI_LIGHTRED);
-    UINT8* test = (UINT8*)ExternalFileBuffer1;
+    char* codefile = (char*)ExternalFileBuffer1;
 
-    for(int m = 0; m < 5; m++)
+    /*for(int m = 0; m < 5; m++)
     {
-        int j = *test;
+        int j = *codefile;
         wprintf(u"%x ", j);
-        test++;
-    }
-	
+        codefile++;
+    }*/
+	loadIt(NULL, "zero.jll", codefile);
 	efimyfile->SetPosition(efimyfile, 0);
     
     SetTextColor(EFI_GREEN);

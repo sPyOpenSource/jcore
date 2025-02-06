@@ -297,7 +297,7 @@ void CreateFilledBox(UINT32 xPos, UINT32 yPos, UINT32 w, UINT32 h)
 void InitializeGOP(void)
 {
     SetTextColor(EFI_BROWN);
-    wprintf(L"\r\n\r\nLoading Graphics Output Protocol ... ");
+    wprintf(L"\r\nLoading Graphics Output Protocol ... ");
     EFI_STATUS Status = SystemTable->BootServices->LocateProtocol(&EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID, 0, (void**)&gop);
     SetTextColor(EFI_CYAN);
     wprintf(CheckStandardEFIError(Status));
@@ -397,7 +397,7 @@ void InitEFI(EFI_HANDLE handle, EFI_SYSTEM_TABLE  *table)
 	ResetScreen();
 
     SetTextColor(EFI_WHITE);
-    wprintf(u"EFI loaded on AARCH64 Hardware !\r\n\r\n");
+    wprintf(u"EFI loaded on AARCH64 Hardware !\r\n");
     
     SetTextColor(EFI_GREEN);
     wprintf(u"Hit Any Key to see Graphics and setup the FileSystem.");
@@ -410,10 +410,10 @@ void InitEFI(EFI_HANDLE handle, EFI_SYSTEM_TABLE  *table)
 
 	InitializeGOP();
 	
-	SetGraphicsColor(ORANGE);
-	CreateFilledBox(50, 50, 100, 200);
-	SetGraphicsColor(RED);
-	CreateFilledBox(60, 60, 80, 30);
+	//SetGraphicsColor(ORANGE);
+	//CreateFilledBox(50, 50, 100, 200);
+	//SetGraphicsColor(RED);
+	//CreateFilledBox(60, 60, 80, 30);
 	SetTextPosition(0, 8);
 	SetTextColor(EFI_YELLOW);
 	wprintf(u"We have Graphics !!");

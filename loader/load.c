@@ -224,7 +224,7 @@ ObjectDesc *newString(DomainDesc * domain, char *value);
 
 ArrayClassDesc *createSharedArrayClassDesc(char *name);
 ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass);
-SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem);
+SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem, char* codefilepos);
 static LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib);
 
 /*
@@ -1100,10 +1100,10 @@ LibDesc *load(DomainDesc * domain, char *filename)
 	return loadLib(domain, sharedLib);
 }
 
-void loadIt(DomainDesc * domain, char *libname)
+void loadIt(DomainDesc * domain, char *libname, char* codefilepos)
 {
 	TempMemory *tmp_mem;// = jxmalloc_tmp(5000);
-	SharedLibDesc *sharedLib = loadSharedLibrary(domain, libname, tmp_mem);
+	SharedLibDesc *sharedLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos);
 	loadLib(domain, sharedLib);
 	//linksharedlib(domain, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
 	//jxfree_tmp(tmp_mem);
@@ -1231,11 +1231,11 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 
 char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 {
-	jint i, checksum, version;
-	char *codefilepos;
+	jint i, checksum;
+	int version;
 	char processor[20];
 
-	codefilepos = codefile;
+	char *codefilepos = codefile;
 
 	checksum = 0;
 	for (i = 0; i < size - 4; i++) {
@@ -1245,23 +1245,29 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 	if (checksum != *(jint *) (codefile + size - 4)) {
 		//printf("%s: COMPUTED CHECKSUM: %ld\n", filename, checksum);
 		//printf("    STORED CHECKSUM: %ld \n", *(jint*)(codefile + size - 4));
-		wprintf("WRONG CHECKSUM");
+		wprintf(u"WRONG CHECKSUM");
 	}
 
 	readInt(version);
-	debugf(("Version: %ld\n", version));
+	/*for(int m = 0; m < 4; m++)
+    {
+        int j = *codefilepos;
+        wprintf(u" %x", j);
+        codefilepos++;
+    }*/
+	//wprintf((u"Version: %d", (int)version));
 	if (version != CURRENT_COMPILER_VERSION) {
 		//printf("Library name=%s version=%ld. ", filename, version);
 		//printf("Cannot load code with version != %d\n", CURRENT_COMPILER_VERSION);
 		wprintf("Mismatch between library version and version supported by jxcore");
 	}
 	readString(processor, sizeof(processor));
-	//debugf(("Processor: %s\n", processor));
+	wprintf(u"\r\nProcessor: %s", processor);
 
 	return codefilepos;
 }
 
-SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem)
+SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem, char* codefilepos)
 {
 	jint i, j, k, m;
 	jint completeCodeBytes;
@@ -1272,7 +1278,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	SharedLibDesc *lib;
 	jint totalNumberOfClasses;
 	SharedLibDesc *neededLib;
-	char *codefilepos;
+	//char *codefilepos;
 	char **string_table;
 	jint dummy;
 	jint size;
@@ -1284,17 +1290,17 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	//DISABLE_IRQ;
 
 	/* FIXME: Don't check DomainZero */
-	if (domain->id != 0) {
-		/* check if sufficient stack space exist to run this function */
+	/*if (domain->id != 0) {
+		/* check if sufficient stack space exist to run this function 
 		//CHECK_STACK_SIZE(domain, 512);
-	}
+	}*/
 
-	if ((codefilepos = read_codefile(filename, &size)) == NULL) {
+	/*if ((codefilepos = read_codefile(filename, &size)) == NULL) {
 		//printf("%s not found!\n",filename);
 		return NULL;
-	}
+	}*/
 
-	codefilepos = testCheckSumAndVersion(filename, codefilepos, size);
+	codefilepos = testCheckSumAndVersion(filename, codefilepos, 0x1000);
 
 	//lib = malloc_sharedlibdesc(domain, strlen(filename) + 1);
 #ifdef USE_QMAGIC
@@ -1310,7 +1316,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	 */
 
 	readInt(i);
-
+//wprintf(u"load lib");
 	/*
 	   load needed libs
 	 */
@@ -1333,7 +1339,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 			/* FIXME:  shared libraries should not always be loaded into domainzero  */
 			//printf("slib %s load %s\n",lib->name,libname);
-			neededLib = loadSharedLibrary(domain, libname, tmp_mem);
+			neededLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos);
 			if (neededLib == NULL) {
 				//printf("Could not load shared library %s needed by %s!\n",libname,filename);
 			} else {
