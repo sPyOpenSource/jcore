@@ -80,11 +80,11 @@ NOT IMPL jint readInt()
 
 #define readStringData(buf, nBytes) { memcpy(buf, codefilepos, nBytes); codefilepos += nBytes; buf[nBytes] = '\0';}
 
-#define readString(buf,nbuf) { jint nBytes; readInt(nBytes); if (nBytes >= nbuf) sys_panic("buf too small\n"); readStringData(buf, nBytes);}
+#define readString(buf,nbuf) { jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);}
 
 #define readStringID(buf) { jint id ; readInt(id); buf = string_table[id]; }
 
-#define readAllocString(buf) {jint nBytes; readInt(nBytes);  if (nBytes >= 10000) sys_panic("nBytes too large\n"); buf = malloc_string(domain, nBytes+1); readStringData(buf, nBytes);}
+#define readAllocString(buf) {jint nBytes; readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); /*buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
 
 #define readCode(buf, nbytes) {  memcpy(buf, codefilepos, nbytes); codefilepos += nbytes;}
 
@@ -207,7 +207,7 @@ MethodDesc *findMethodInSharedLibs(char *classname, char *methodname, char *sign
 int findSubClasses(DomainDesc * domain, Class * c, Class ** subclassesFound, int bufsize);
 int findSubClassesInLib(LibDesc * lib, Class * c, Class ** subclassesFound, int bufsize);
 ObjectDesc *newString(DomainDesc * domain, char *value);
-void sys_panic(char *msg, ...);
+void wprintf(char *msg, ...);
 Class *findClassOrPrimitive(DomainDesc * domain, char *name);
 
 jint *specialAllocStaticFields(DomainDesc * domain, int numberFields);
@@ -246,7 +246,7 @@ Class *specialAllocClass(DomainDesc * domain, int number)
 {
 	int i;
 	Class *ret;
-	Class *c = malloc_classes(domain, number);
+	Class *c;// = malloc_classes(domain, number);
 	memset(c, 0, sizeof(Class) * number);
 	ret = c;
 	for (i = 0; i < number; i++) {
@@ -265,14 +265,14 @@ Class *specialAllocClass(DomainDesc * domain, int number)
 
 Class *createPrimitiveClass(char *name)
 {
-	PrimitiveClassDesc *cd = malloc_primitiveclassdesc(domainZero, strlen(name) + 1);
-	Class *c = specialAllocClass(domainZero, 1);
+	PrimitiveClassDesc *cd;// = malloc_primitiveclassdesc(domainZero, strlen(name) + 1);
+	Class *c;// = specialAllocClass(domainZero, 1);
 #ifdef USE_QMAGIC
 	cd->magic = MAGIC_CLASSDESC;
 #endif
 	c->classDesc = (ClassDesc *) cd;
 	cd->classType = CLASSTYPE_PRIMITIVE;
-	strcpy(cd->name, name);
+	//strcpy(cd->name, name);
 	return c;
 }
 
@@ -338,7 +338,7 @@ Class *createArrayClass(DomainDesc * domain, char *name)
 	Class *cl;
 	char *n = name + 1;
 	Class *c = findClassOrPrimitive(domain, n);
-	ArrayClassDesc *arrayClass = (ArrayClassDesc *) jxmalloc(sizeof(ArrayClassDesc) MEMTYPE_OTHER);
+	ArrayClassDesc *arrayClass;// = (ArrayClassDesc *) jxmalloc(sizeof(ArrayClassDesc) MEMTYPE_OTHER);
 	memset(arrayClass, 0, sizeof(ArrayClassDesc));
 	//printf("CREATEARRAYCLASS %s\n", name);
 
@@ -346,8 +346,8 @@ Class *createArrayClass(DomainDesc * domain, char *name)
 	arrayClass->magic = MAGIC_CLASSDESC;
 #endif
 	arrayClass->classType = CLASSTYPE_ARRAYCLASS;
-	arrayClass->name = (char *) jxmalloc(strlen(name) + 1 MEMTYPE_OTHER);
-	strcpy(arrayClass->name, name);
+	arrayClass->name;// = (char *) jxmalloc(strlen(name) + 1 MEMTYPE_OTHER);
+	//strcpy(arrayClass->name, name);
 	arrayClass->elementClass = c->classDesc;
 
 	/* create class */
@@ -374,7 +374,7 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 
 	//printf("CREATESHAREDARRAY %s\n", name);
 	if (*n == 'L') {
-		strncpy(value, name + 2, strlen(name) - 3);
+		//strncpy(value, name + 2, strlen(name) - 3);
 		value[strlen(name) - 3] = '\0';
 		c = findClassDesc(value);
 	} else if (*n == '[') {
@@ -382,22 +382,22 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 	} else {
 		cl = findPrimitiveClass(*n);
 		if (cl == NULL)
-			sys_panic("creating class");
+			wprintf("creating class");
 		c = cl->classDesc;
 	}
 	if (c == NULL)
-		sys_panic("not a shared element class");
+		wprintf("not a shared element class");
 	namelen = strlen(name) + 1;
-	arrayClass = malloc_arrayclassdesc(domainZero, namelen);
+	//arrayClass = malloc_arrayclassdesc(domainZero, namelen);
 #ifdef USE_QMAGIC
 	arrayClass->magic = MAGIC_CLASSDESC;
 #endif
 	arrayClass->classType = CLASSTYPE_ARRAYCLASS;
-	strcpy(arrayClass->name, name);
+	//strcpy(arrayClass->name, name);
 	arrayClass->elementClass = c;
 
 	//printf("createSharedArrayClassDesc1: %s \n", arrayClass->name);
-	memcpy(arrayClass->vtable, array_vtable, 11 * 4);
+	//memcpy(arrayClass->vtable, array_vtable, 11 * 4);
 	*((u4_t *) (arrayClass->vtable) - 1) = arrayClass;
 
 	//printf("createSharedArrayClassDesc2: %s\n", ( *(ClassDesc**)(( arrayClass->vtable-1) ))->name);
@@ -429,7 +429,7 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 
 	//printf("CREATESHAREDARRAYUsingElem %s\n", elemClass->name);
 	if (c == NULL)
-		sys_panic("not a shared element class");
+		wprintf("not a shared element class");
 
 	primitiveElems = *elemClass->name == '[' || elemClass->classType == CLASSTYPE_PRIMITIVE;
 	if (primitiveElems) {
@@ -438,23 +438,23 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 		namelen = strlen(elemClass->name) + 1 + 3;	/* [L  ... ; */
 	}
 
-	arrayClass = malloc_arrayclassdesc(domainZero, namelen + 1);
+	//arrayClass = malloc_arrayclassdesc(domainZero, namelen + 1);
 #ifdef USE_QMAGIC
 	arrayClass->magic = MAGIC_CLASSDESC;
 #endif
 	arrayClass->classType = CLASSTYPE_ARRAYCLASS;
 	if (primitiveElems) {
-		strcpy(arrayClass->name, "[");
-		strcat(arrayClass->name, elemClass->name);
+		//strcpy(arrayClass->name, "[");
+		//strcat(arrayClass->name, elemClass->name);
 	} else {
-		strcpy(arrayClass->name, "[L");
-		strcat(arrayClass->name, elemClass->name);
-		strcat(arrayClass->name, ";");
+		//strcpy(arrayClass->name, "[L");
+		//strcat(arrayClass->name, elemClass->name);
+		//strcat(arrayClass->name, ";");
 	}
 
 	arrayClass->elementClass = elemClass;
 
-	memcpy(arrayClass->vtable, array_vtable, 11 * 4);
+	//memcpy(arrayClass->vtable, array_vtable, 11 * 4);
 	*((u4_t *) (arrayClass->vtable) - 1) = arrayClass;
 	//printf("createSharedArrayClassDescUsingElemClass1: %s \n", arrayClass->name);
 	//printf("createSharedArrayClassDescUsingElemClass2: %s\n", ( *(ClassDesc**)(( arrayClass->vtable-1) ))->name);
@@ -497,7 +497,7 @@ Class *findPrimitiveClass(char name)
 	case 'Z':
 		return class_Z;
 	}
-	sys_panic("unknown primitive type %c", name);
+	wprintf("unknown primitive type %c", name);
 	return NULL;
 }
 
@@ -558,11 +558,11 @@ Class *findClassOrPrimitive(DomainDesc * domain, char *name)
 	} else {
 		// FIXME: name is not a real class name but a signature
 		char tmp[80];
-		strncpy(tmp, name + 1, strlen(name) - 2);
+		//strncpy(tmp, name + 1, strlen(name) - 2);
 		tmp[strlen(name) - 2] = '\0';
 		return findClass(domain, tmp);
 	}
-	sys_panic("findClOrPrim error name=%s", name);
+	wprintf("findClOrPrim error name=%s", name);
 	return NULL;
 }
 
@@ -714,7 +714,7 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 			return &(lib->allClasses[ndx]);
 		}
 
-		sys_panic("Could not find class %s in domain %s!\n", name, domain->domainName);
+		wprintf("Could not find class %s in domain %s!\n", name, domain->domainName);
 	} else {
 
 		Class *acl = domain->arrayClasses;
@@ -847,13 +847,13 @@ code_t findAddrOfMethodBytecode(char *className, char *method, char *signature, 
 ObjectDesc *allocObject(ClassDesc * c)
 {
 	ASSERTCLASSDESC(c);
-	return allocObjectInDomain(curdom(), c);
+	return 0;//allocObjectInDomain(curdom(), c);
 }
 
 jint getArraySize(ArrayDesc * array)
 {
 	if (array == NULL)
-		sys_panic("array NULLPOINTER");
+		wprintf("array NULLPOINTER");
 	return array->size;
 }
 
@@ -932,7 +932,7 @@ int string_CompareChar(ObjectDesc * str, const char *c)
 {
 	ArrayDesc *charArray;
 	charArray = (ArrayDesc *) str->data[0];
-	return strncmp(c, charArray->data, charArray->size);
+	return 0;//strncmp(c, charArray->data, charArray->size);
 }
 
 ObjectDesc *string_replace_char(ObjectDesc * str, jint c1, jint c2)
@@ -960,9 +960,9 @@ ObjectDesc *newString(DomainDesc * domain, char *value)
 	ArrayDesc *arrObj;
 	jint size;
 
-	s = (ObjectDesc *) allocObjectInDomain(domain, findClassDesc("java/lang/String"));
+	//s = (ObjectDesc *) allocObjectInDomain(domain, findClassDesc("java/lang/String"));
 	size = strlen(value);
-	arrObj = allocArrayInDomain(domain, class_C->classDesc, size);
+	//arrObj = allocArrayInDomain(domain, class_C->classDesc, size);
 	s->data[0] = (jint) arrObj;
 	copyIntoCharArray(arrObj, value, size);
 	return s;
@@ -979,7 +979,7 @@ ObjectDesc *newStringArray(DomainDesc * domain, int size, char *arr[])
 	//printf("SIZE: %d\n", size);
 
 	acl = findClass(domain, "[Ljava/lang/String;")->classDesc;
-	arrObj = allocArrayInDomain(domain, acl, size);
+	//arrObj = allocArrayInDomain(domain, acl, size);
 
 	for (i = 0; i < size; i++) {
 		s = arr[i];
@@ -995,9 +995,9 @@ ObjectDesc *newStringFromClassname(DomainDesc * domain, char *value)
 	ArrayDesc *arrObj;
 	jint size, i;
 
-	s = (ObjectDesc *) allocObjectInDomain(domain, findClassDesc("java/lang/String"));
+	//s = (ObjectDesc *) allocObjectInDomain(domain, findClassDesc("java/lang/String"));
 	size = strlen(value);
-	arrObj = allocArrayInDomain(domain, class_C->classDesc, size);
+	//arrObj = allocArrayInDomain(domain, class_C->classDesc, size);
 	s->data[0] = (jint) arrObj;
 
 	for (i = 0; i < size; i++) {
@@ -1014,7 +1014,7 @@ ObjectDesc *newStringFromClassname(DomainDesc * domain, char *value)
 /* TODO: alloc shared strings in non-movable area (code area); this would allow to GC the heap of DomainZero */
 ObjectDesc *newDomainZeroString(char *value)
 {
-	ObjectDesc *o = newString(domainZero, value);
+	ObjectDesc *o;// = newString(domainZero, value);
 	setObjFlags(o, OBJFLAGS_EXTERNAL_STRING);
 	return o;
 }
@@ -1117,18 +1117,17 @@ LibDesc *load(DomainDesc * domain, char *filename)
 
 	if (sharedLib == NULL) {
 		/* could not find a loaded lib, now try to load it */
-		TempMemory *tmp_mem = jxmalloc_tmp(6000);
+		TempMemory *tmp_mem;// = jxmalloc_tmp(6000);
 
 		/*FIXME:  shared libraries should not always be loaded into domainzero */
-		sharedLib = loadSharedLibrary(domainZero, filename, tmp_mem);
+		//sharedLib = loadSharedLibrary(domainZero, filename, tmp_mem);
 
 		if (sharedLib == NULL)
-			sys_panic("could not load shared library \"%s\"", filename);
+			wprintf("could not load shared library \"%s\"", filename);
 		ASSERTSLIB(sharedLib);
 
-		linksharedlib(domainZero, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
-		jxfree_tmp(tmp_mem);
-
+		//linksharedlib(domainZero, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
+		//jxfree_tmp(tmp_mem);
 	}
 
 	return loadLib(domain, sharedLib);
@@ -1136,11 +1135,11 @@ LibDesc *load(DomainDesc * domain, char *filename)
 
 void loadIt(DomainDesc * domain, char *libname)
 {
-	TempMemory *tmp_mem = jxmalloc_tmp(5000);
+	TempMemory *tmp_mem;// = jxmalloc_tmp(5000);
 	SharedLibDesc *sharedLib = loadSharedLibrary(domain, libname, tmp_mem);
 	loadLib(domain, sharedLib);
-	linksharedlib(domain, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
-	jxfree_tmp(tmp_mem);
+	//linksharedlib(domain, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
+	//jxfree_tmp(tmp_mem);
 }
 
 
@@ -1163,11 +1162,11 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 	}
 
 	if (domain->numberOfLibs == domain->maxNumberOfLibs) {
-		sys_panic("max number of libs in domain %s reached!", domain->domainName);
+		wprintf("max number of libs in domain %s reached!", domain->domainName);
 		return NULL;
 	}
 
-	lib = malloc_libdesc(domain);
+	//lib = malloc_libdesc(domain);
 	memset(lib, 0, sizeof(LibDesc));
 #ifdef USE_QMAGIC
 	lib->magic = MAGIC_LIB;
@@ -1180,7 +1179,7 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 	if (sharedLib->ndx < domain->maxNumberOfLibs) {
 		domain->ndx_libs[sharedLib->ndx] = lib;
 	} else {
-		sys_panic("max number of libs reached! %d\n", domain->maxNumberOfLibs);
+		wprintf("max number of libs reached! %d\n", domain->maxNumberOfLibs);
 	}
 #endif
 
@@ -1252,8 +1251,7 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 		}
 		/* static fields */
 		if (sharedLib->allClasses[i].staticFieldsSize != 0) {
-			lib->allClasses[i].staticFields =
-			    specialAllocStaticFields(domain, sharedLib->allClasses[i].staticFieldsSize);
+			//lib->allClasses[i].staticFields = specialAllocStaticFields(domain, sharedLib->allClasses[i].staticFieldsSize);
 			memset(lib->allClasses[i].staticFields, 0, sharedLib->allClasses[i].staticFieldsSize * 4);
 		} else {
 			lib->allClasses[i].staticFields = 0;
@@ -1281,7 +1279,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 	if (checksum != *(jint *) (codefile + size - 4)) {
 		//printf("%s: COMPUTED CHECKSUM: %ld\n", filename, checksum);
 		//printf("    STORED CHECKSUM: %ld \n", *(jint*)(codefile + size - 4));
-		sys_panic("WRONG CHECKSUM");
+		wprintf("WRONG CHECKSUM");
 	}
 
 	readInt(version);
@@ -1289,7 +1287,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 	if (version != CURRENT_COMPILER_VERSION) {
 		//printf("Library name=%s version=%ld. ", filename, version);
 		//printf("Cannot load code with version != %d\n", CURRENT_COMPILER_VERSION);
-		sys_panic("Mismatch between library version and version supported by jxcore");
+		wprintf("Mismatch between library version and version supported by jxcore");
 	}
 	readString(processor, sizeof(processor));
 	//debugf(("Processor: %s\n", processor));
@@ -1322,7 +1320,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	/* FIXME: Don't check DomainZero */
 	if (domain->id != 0) {
 		/* check if sufficient stack space exist to run this function */
-		CHECK_STACK_SIZE(domain, 512);
+		//CHECK_STACK_SIZE(domain, 512);
 	}
 
 	if ((codefilepos = read_codefile(filename, &size)) == NULL) {
@@ -1332,11 +1330,11 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 	codefilepos = testCheckSumAndVersion(filename, codefilepos, size);
 
-	lib = malloc_sharedlibdesc(domain, strlen(filename) + 1);
+	//lib = malloc_sharedlibdesc(domain, strlen(filename) + 1);
 #ifdef USE_QMAGIC
 	lib->magic = MAGIC_SLIB;
 #endif
-	strcpy(lib->name, filename);
+	//strcpy(lib->name, filename);
 #ifdef USE_LIB_INDEX
 	lib->ndx = -1;
 #endif
@@ -1356,7 +1354,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	if (lib->numberOfNeededLibs == 0) {
 		lib->neededLibs == NULL;
 	} else {
-		lib->neededLibs = malloc_sharedlibdesctable(domain, lib->numberOfNeededLibs);
+		//lib->neededLibs = malloc_sharedlibdesctable(domain, lib->numberOfNeededLibs);
 	}
 
 	for (i = 0; i < lib->numberOfNeededLibs; i++) {
@@ -1365,7 +1363,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 		if (neededLib == NULL) {
 			/*  could not find a loaded lib, now try to load it  */
-			TempMemory *tmp_mem = jxmalloc_tmp(5000);
+			TempMemory *tmp_mem;// = jxmalloc_tmp(5000);
 
 			/* FIXME:  shared libraries should not always be loaded into domainzero  */
 			//printf("slib %s load %s\n",lib->name,libname);
@@ -1374,11 +1372,11 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				//printf("Could not load shared library %s needed by %s!\n",libname,filename);
 			} else {
 				//printf("link %s ",libname);
-				linksharedlib(domain, neededLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
+				//linksharedlib(domain, neededLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
 				//printf("done.\n");
 			}
 
-			jxfree_tmp(tmp_mem);
+			//jxfree_tmp(tmp_mem);
 		}
 
 		ASSERTSLIB(neededLib);
@@ -1390,7 +1388,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	   load meta
 	 */
 	readInt(lib->numberOfMeta);
-	lib->meta = malloc_metatable(domain, lib->numberOfMeta);
+	//lib->meta = malloc_metatable(domain, lib->numberOfMeta);
 	for (i = 0; i < lib->numberOfMeta; i++) {
 		readAllocString(lib->meta[i].var);
 		readAllocString(lib->meta[i].val);
@@ -1405,7 +1403,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	if (i == 0) {
 		string_table = NULL;
 	} else {
-		string_table = (char **) malloc_code(domain, i * sizeof(char *));
+		string_table;// = (char **) malloc_code(domain, i * sizeof(char *));
 		for (j = 0; j < i; j++)
 			readAllocString(string_table[j]);
 	}
@@ -1420,15 +1418,15 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		for (j = 0; j < i; j++) {
 			readString(symbol, sizeof(symbol));
 			/* printf("%2d %s ",j,symbol); */
-			if (j == numberVMOperations)
-				sys_panic("to many symbols");
+			/*if (j == numberVMOperations)
+				wprintf("to many symbols");
 			vmsupport[j].index = 0;
 			for (k = 0; k < numberVMOperations; k++) {
 				if (strcmp(symbol, vmsupport[k].name) == 0) {
 					vmsupport[j].index = k;
 					break;
 				}
-			}
+			}*/
 			/* printf("-> %2d 0x%lx %s\n",vmsupport[j].index,VMSUPPORT(j).fkt,VMSUPPORT(j).name); */
 		}
 	}
@@ -1439,7 +1437,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 	readInt(totalNumberOfClasses);
 	lib->numberOfClasses = 0;
-	lib->allClasses = malloc_classdescs(domain, totalNumberOfClasses);
+	//lib->allClasses = malloc_classdescs(domain, totalNumberOfClasses);
 	memset(lib->allClasses, 0, sizeof(ClassDesc) * totalNumberOfClasses);
 	completeCodeBytes = 0;
 #ifdef USE_LIB_INDEX
@@ -1471,7 +1469,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 			if (scl == NULL)
 				scl = findClassDesc(supername);
 			if (scl == NULL)
-				sys_panic("find superclass");
+				wprintf("find superclass");
 			lib->allClasses[i].superclass = scl;
 		}
 
@@ -1481,9 +1479,8 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		}
 		readInt(lib->allClasses[i].numberOfInterfaces);
 		if (lib->allClasses[i].numberOfInterfaces > 0) {
-			lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
-			lib->allClasses[i].ifname =
-			    malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
+			//lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
+			lib->allClasses[i].ifname;// = malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
 		} else {
 			lib->allClasses[i].interfaces = (ClassDesc **) NULL;
 			lib->allClasses[i].ifname = NULL;
@@ -1493,7 +1490,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		}
 		readInt(lib->allClasses[i].numberOfMethods);
 		if (lib->allClasses[i].numberOfMethods > 0) {
-			lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
+			//lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
 		} else {
 			lib->allClasses[i].methods = NULL;
 		}
@@ -1503,7 +1500,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		readInt(lib->allClasses[i].mapBytes);
 		lib->allClasses[i].map = NULL;
 		if (lib->allClasses[i].mapBytes > 0) {
-			lib->allClasses[i].map = malloc_objectmap(domain, lib->allClasses[i].mapBytes);
+			//lib->allClasses[i].map = malloc_objectmap(domain, lib->allClasses[i].mapBytes);
 			for (j = 0; j < lib->allClasses[i].mapBytes; j++) {
 				readByte(lib->allClasses[i].map[j]);
 			}
@@ -1513,7 +1510,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		readInt(lib->allClasses[i].numberFields);
 		lib->allClasses[i].fields = NULL;
 		if (lib->allClasses[i].numberFields > 0) {
-			lib->allClasses[i].fields = malloc_fielddescs(domain, lib->allClasses[i].numberFields);
+			//lib->allClasses[i].fields = malloc_fielddescs(domain, lib->allClasses[i].numberFields);
 			for (j = 0; j < lib->allClasses[i].numberFields; j++) {
 				readStringID(lib->allClasses[i].fields[j].fieldName);
 				readStringID(lib->allClasses[i].fields[j].fieldType);
@@ -1534,7 +1531,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		readInt(lib->allClasses[i].staticsMapBytes);
 		lib->allClasses[i].staticsMap = NULL;
 		if (lib->allClasses[i].staticsMapBytes > 0) {
-			lib->allClasses[i].staticsMap = malloc_staticsmap(domain, lib->allClasses[i].staticsMapBytes);
+			//lib->allClasses[i].staticsMap = malloc_staticsmap(domain, lib->allClasses[i].staticsMapBytes);
 			for (j = 0; j < lib->allClasses[i].staticsMapBytes; j++) {
 				readByte(lib->allClasses[i].staticsMap[j]);
 			}
@@ -1551,7 +1548,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		readInt(lib->allClasses[i].vtableSize);
 		completeVtableSize += lib->allClasses[i].vtableSize;
 		if (lib->allClasses[i].vtableSize != 0) {
-			lib->allClasses[i].vtableSym = malloc_vtableSym(domain, lib->allClasses[i].vtableSize);
+			//lib->allClasses[i].vtableSym = malloc_vtableSym(domain, lib->allClasses[i].vtableSize);
 			for (j = 0; j < lib->allClasses[i].vtableSize * 3; j += 3) {
 				readStringID(lib->allClasses[i].vtableSym[j]);	/* class */
 				readStringID(lib->allClasses[i].vtableSym[j + 1]);	/* name */
@@ -1593,8 +1590,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 			readInt(lib->allClasses[i].methods[j].numberOfArgs);
 			lib->allClasses[i].methods[j].argTypeMap = NULL;
 			if (lib->allClasses[i].methods[j].numberOfArgTypeMapBytes > 0) {
-				lib->allClasses[i].methods[j].argTypeMap =
-				    malloc_argsmap(domain, lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
+				//lib->allClasses[i].methods[j].argTypeMap = malloc_argsmap(domain, lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
 				for (m = 0; m < lib->allClasses[i].methods[j].numberOfArgTypeMapBytes; m++) {
 					readByte(lib->allClasses[i].methods[j].argTypeMap[m]);
 				}
@@ -1609,7 +1605,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 			completeCodeBytes += lib->allClasses[i].methods[j].numberOfCodeBytes;
 			readInt(lib->allClasses[i].methods[j].numberOfSymbols);
 			if (lib->allClasses[i].methods[j].numberOfSymbols > 0) {
-				lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? */
+				//lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? */
 			} else {
 				lib->allClasses[i].methods[j].symbols = NULL;
 			}
@@ -1631,32 +1627,29 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				readShort(nextInstrNCIndex);
 */
 				if ((immediateNCIndex + numBytes) > lib->allClasses[i].methods[j].numberOfCodeBytes) {
-					sys_panic
+					wprintf
 					    ("wrong patch index: %d in method %s.%s\nMethod has %d codebytes.\nNumber of bytes to patch is %d.\n",
 					     immediateNCIndex, lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
 					     lib->allClasses[i].methods[j].numberOfCodeBytes, numBytes);
 				}
 				switch (type) {
 				case 0:
-					sys_panic("Error: Symboltype 0");
+					wprintf("Error: Symboltype 0");
 					break;
 				case 1:{	/* DomainZeroSTEntry */
 						debugs(("     Symbol: DomainZero\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescDomainZero));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDomainZero));
 						break;
 					}
 				case 2:{	/* ExceptionHandlerSTEntry */
 						debugs(("     Symbol: ExceptionHandler\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescExceptionHandler));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescExceptionHandler));
 						break;
 					}
 				case 3:{	/* DEPFunctionSTEntry */
 						SymbolDescDEPFunction *s;
 						debugs(("     Symbol: DEPFunction\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescDEPFunction));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDEPFunction));
 						s = (SymbolDescDEPFunction *) lib->allClasses[i].methods[j].symbols[k];
 						readAllocString(s->className);
 						readAllocString(s->methodName);
@@ -1666,8 +1659,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				case 4:{	/* StaticFieldSTEntry */
 						SymbolDescStaticField *s;
 						debugs(("     Symbol: StaticField\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescStaticField));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStaticField));
 						s = (SymbolDescStaticField *) lib->allClasses[i].methods[j].symbols[k];
 						readStringID(s->className);
 						readInt(s->kind);
@@ -1676,15 +1668,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 5:{	/* AllocObjectSTEntry */
 						debugs(("     Symbol: AllocObject\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescAllocObject));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocObject));
 						break;
 					}
 				case 6:{	/* ClassSTEntry */
 						SymbolDescClass *s;
 						debugs(("     Symbol: Class\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescClass));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescClass));
 						s = (SymbolDescClass *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readStringID(s->className);
@@ -1692,8 +1682,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 7:{	/* DirectMethodCallSTEntry */
 						SymbolDescDirectMethodCall *s;
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescDirectMethodCall));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDirectMethodCall));
 						s = (SymbolDescDirectMethodCall *) lib->allClasses[i].methods[j].symbols[k];
 						//readAllocString(s->className);
 						//readAllocString(s->methodName);
@@ -1708,8 +1697,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				case 8:{	/* StringSTEntry */
 						SymbolDescString *s;
 						debugs(("     Symbol: String\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescString));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescString));
 						s = (SymbolDescString *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readStringID(s->value);
@@ -1718,21 +1706,18 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 9:{	/* AllocArraySTEntry */
 						debugs(("     Symbol: AllocArray\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescAllocArray));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocArray));
 						break;
 					}
 				case 10:{	/* AllocMultiArraySTEntry */
 						debugs(("     Symbol: MultiAllocArray\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescAllocMultiArray));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocMultiArray));
 						break;
 					}
 				case 11:{	/* LongArithmeticSTEntry */
 						SymbolDescLongArithmetic *s;
 						debugs(("     Symbol: LongArithmetic\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescLongArithmetic));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescLongArithmetic));
 						s = (SymbolDescLongArithmetic *) lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->operation);
 						break;
@@ -1740,8 +1725,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				case 12:{	/* VMSupportSTEntry */
 						SymbolDescVMSupport *s;
 						debugs(("     Symbol: VMSupport\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescVMSupport));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescVMSupport));
 						s = (SymbolDescVMSupport *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->operation);
@@ -1750,8 +1734,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				case 13:{	/* PrimitiveClassSTEntry */
 						SymbolDescPrimitiveClass *s;
 						debugs(("     Symbol: PrimitiveClass\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescPrimitiveClass));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescPrimitiveClass));
 						s = (SymbolDescPrimitiveClass *) lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->primitiveType);
 						break;
@@ -1759,8 +1742,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				case 14:{	/* UnresolvedJump */
 						SymbolDescUnresolvedJump *s;
 						debugs(("     Symbol: UnresolvedJump\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescUnresolvedJump));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescUnresolvedJump));
 						s = (SymbolDescUnresolvedJump *) lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->targetNCIndex);
 						break;
@@ -1768,8 +1750,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				case 15:{	/* VMAbsoluteSTEntry */
 						SymbolDescVMSupport *s;
 						debugs(("     Symbol: VMAbsolute\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescVMSupport));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescVMSupport));
 						s = (SymbolDescVMSupport *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->operation);
@@ -1780,15 +1761,14 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						SymbolDescStackMap *s;
 						int mapPos;
 						debugs(("     Symbol: StackMap\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescStackMap));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackMap));
 						s = (SymbolDescStackMap *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->n_bytes);
 						readInt(s->n_bits);
-						if (s->n_bytes > 0)
-							s->map = malloc_stackmap(domain, s->n_bytes);
-						else
+						if (s->n_bytes > 0){
+							//s->map = malloc_stackmap(domain, s->n_bytes);
+						}else
 							s->map = NULL;
 						for (mapPos = 0; mapPos < s->n_bytes; mapPos++) {
 							readByte(s->map[mapPos]);
@@ -1800,16 +1780,15 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						SymbolDescStackMap *s;
 						int mapPos;
 						debugs(("     Symbol: StackMap\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescStackMap));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackMap));
 						s = (SymbolDescStackMap *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->immediateNCIndexPre);
 						readInt(s->n_bytes);
 						readInt(s->n_bits);
-						if (s->n_bytes > 0)
-							s->map = malloc_stackmap(domain, s->n_bytes);
-						else
+						if (s->n_bytes > 0){
+							//s->map = malloc_stackmap(domain, s->n_bytes);
+						}else
 							s->map = NULL;
 						for (mapPos = 0; mapPos < s->n_bytes; mapPos++) {
 							readByte(s->map[mapPos]);
@@ -1818,8 +1797,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 18:{	/* jx.compiler.symbols.ExceptionTableSTEntry %d %d %s %p */
 						SymbolDescExceptionTable *s;
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescExceptionTable));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescExceptionTable));
 						lib->allClasses[i].methods[j].sizeOfExceptionTable++;
 						s = (SymbolDescExceptionTable *) lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->targetNCIndex);	/* UnresolvedJump */
@@ -1833,21 +1811,18 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 19:{	/* CurrentThreadPointerSTEntry */
 						debugs(("     Symbol: CurrentThreadPointerSTEntry\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescThreadPointer));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescThreadPointer));
 						break;
 					}
 				case 20:{	/* StackChunkSizeSTEntry */
 						debugs(("     Symbol: StackChunkSizeSTEntry\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescStackChunkSize));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackChunkSize));
 						break;
 					}
 				case 21:{	/* ProfileSTEntry */
 						SymbolDescProfile *s;
 						debugs(("     Symbol: ProfileSTEntry\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescProfile));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescProfile));
 						s = (SymbolDescProfile *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->kind);
@@ -1855,22 +1830,20 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 22:{	/* MethodeDescSTEntry */
 						debugs(("     Symbol: MethodeDescSTEntry\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescMethodeDesc));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescMethodeDesc));
 						break;
 					}
 				case 23:{	/* TCBOffsetSTEntry */
 						SymbolDescTCBOffset *s;
 						debugs(("     Symbol: TCBOffsetSTEntry\n"));
-						lib->allClasses[i].methods[j].symbols[k] =
-						    malloc_symbol(domain, sizeof(SymbolDescTCBOffset));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescTCBOffset));
 						s = (SymbolDescTCBOffset *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->kind);
 						break;
 					}
 				default:
-					sys_panic("Unknown symbol %d", type);
+					wprintf("Unknown symbol %d", type);
 				}
 				if (lib->allClasses[i].methods[j].symbols[k]) {
 					lib->allClasses[i].methods[j].symbols[k]->type = type;
@@ -1881,16 +1854,14 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 			}
 
 			if (lib->allClasses[i].methods[j].sizeOfExceptionTable > 0) {
-				lib->allClasses[i].methods[j].exceptionTable =
-				    malloc_exceptiondescs(domain, lib->allClasses[i].methods[j].sizeOfExceptionTable);
+				//lib->allClasses[i].methods[j].exceptionTable = malloc_exceptiondescs(domain, lib->allClasses[i].methods[j].sizeOfExceptionTable);
 			} else {
 				lib->allClasses[i].methods[j].exceptionTable = NULL;
 			}
 
 			readInt(lib->allClasses[i].methods[j].numberOfByteCodes);
 			if (lib->allClasses[i].methods[j].numberOfByteCodes > 0) {
-				lib->allClasses[i].methods[j].bytecodeTable =
-				    malloc_bytecodetable(domain, lib->allClasses[i].methods[j].numberOfByteCodes);
+				//lib->allClasses[i].methods[j].bytecodeTable = malloc_bytecodetable(domain, lib->allClasses[i].methods[j].numberOfByteCodes);
 				for (k = 0; k < lib->allClasses[i].methods[j].numberOfByteCodes; k++) {
 					readInt(lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos);
 					readInt(lib->allClasses[i].methods[j].bytecodeTable[k].start);
@@ -1907,8 +1878,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 			readInt(lib->allClasses[i].methods[j].numberOfSourceLines);
 			debugf(("   BC->SC: %ld\n", lib->allClasses[i].methods[j].numberOfSourceLines));
 			if (lib->allClasses[i].methods[j].numberOfSourceLines > 0) {
-				lib->allClasses[i].methods[j].sourceLineTable =
-				    malloc_sourcelinetable(domain, lib->allClasses[i].methods[j].numberOfSourceLines);
+				//lib->allClasses[i].methods[j].sourceLineTable = malloc_sourcelinetable(domain, lib->allClasses[i].methods[j].numberOfSourceLines);
 				for (k = 0; k < lib->allClasses[i].methods[j].numberOfSourceLines; k++) {
 					readInt(lib->allClasses[i].methods[j].sourceLineTable[k].startBytecode);
 					readInt(lib->allClasses[i].methods[j].sourceLineTable[k].lineNumber);
@@ -1923,7 +1893,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	}
 
 	/* read code */
-	lib->code = malloc_nativecode(domainZero, completeCodeBytes);
+	//lib->code = malloc_nativecode(domainZero, completeCodeBytes);
 #ifdef ASSERT_ALIGNED_CODE
 #define ALIGN_CODE_TO_IBUFFERSIZE 1
 #ifdef ALIGN_CODE_TO_IBUFFERSIZE
@@ -1995,7 +1965,7 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 	s = (SymbolDescStaticField *) symbol;
 	c = findClassDesc(s->className);
 	if (c == NULL)
-		sys_panic("could not find class");
+		wprintf("could not find class");
 	libindex = c->definingLib->ndx;
 
 	switch (s->kind) {
@@ -2004,7 +1974,7 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 		break;
 	case 1:
 		if (libindex < 0 || libindex > sharedLibsIndexNumber)
-			sys_panic("invalid lib index\n");
+			wprintf("invalid lib index\n");
 		patchConstant(code, symbol, c->definingLib->ndx * sizeof(jint *));
 		break;
 	case 2:
@@ -2014,11 +1984,11 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 #ifndef STACK_ON_HEAP
 		patchConstant(code, symbol, (0xffffffff << STACK_CHUNK));
 #else
-		sys_panic("stackchunk");
+		wprintf("stackchunk");
 #endif
 		break;
 	default:
-		sys_panic("unknown static field symbol %d\n", s->kind);
+		wprintf("unknown static field symbol %d\n", s->kind);
 	}
 #else
 	ClassDesc *c;
@@ -2026,10 +1996,10 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 
 	c = findClassDesc(s->className);
 	if (c == NULL)
-		sys_panic("could not find class");
+		wprintf("could not find class");
 
 	if (s->kind != 0)
-		sys_panic("unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\n", s->kind);
+		wprintf("unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\n", s->kind);
 
 	patchConstant(code, symbol, s->fieldOffset);
 #endif
@@ -2048,14 +2018,14 @@ void patchClassPointer(code_t code, SymbolDesc * symbol)
 	}
 
 	if (c == NULL)
-		sys_panic("Link error: Required class not found: %s", s->className);
+		wprintf("Link error: Required class not found: %s", s->className);
 
 	patchConstant(code, symbol, (jint) c);
 }
 
 void should_not_be_called()
 {
-	sys_panic("Unknown method called.");
+	wprintf("Unknown method called.");
 }
 
 void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
@@ -2098,7 +2068,7 @@ void patchStringAddress(code_t code, SymbolDesc * symbol)
 	obj = newDomainZeroString(s->value);	/* shared libs are part of domainzero and so are these constant strings */
 
 	if (obj == NULL)
-		sys_panic("could not create string object");
+		wprintf("could not create string object");
 	patchConstant(code, symbol, (jint) obj);
 }
 
@@ -2192,7 +2162,7 @@ void patchPrimitiveClassPointer(code_t code, SymbolDesc * symbol)
 		t = (jint) class_Z->classDesc;
 		break;
 	default:
-		sys_panic("not primitive");
+		wprintf("not primitive");
 	}
 	patchConstant(code, symbol, t);
 }
@@ -2234,7 +2204,7 @@ void createVTable(DomainDesc * domain, ClassDesc * c)
 {
 	char **vtable;
 	ASSERTCLASSDESC(c);
-	vtable = malloc_vtable(domain, c->vtableSize + 1);
+	//vtable = malloc_vtable(domain, c->vtableSize + 1);
 	ASSERT(vtable != NULL);
 	memset(vtable, 0, 4 * c->vtableSize + 4);
 
@@ -2242,7 +2212,7 @@ void createVTable(DomainDesc * domain, ClassDesc * c)
 	*vtable = (char *) c;
 
 	if (c != java_lang_Object) {
-		c->methodVtable = malloc_methodVtable(domain, c->vtableSize);
+		//c->methodVtable = malloc_methodVtable(domain, c->vtableSize);
 	}
 }
 
@@ -2259,19 +2229,18 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 			continue;
 		switch (method->symbols[k]->type) {
 		case 0:
-			sys_panic("Error: Symboltype 0");
+			wprintf("Error: Symboltype 0");
 			break;
 		case 1:{	/* DomainZeroSTEntry */
-				sys_panic("DomainZeroSTEntry no longer used.");
+				wprintf("DomainZeroSTEntry no longer used.");
 				break;
 			}
 		case 2:{	/* ExceptionHandlerSTEntry */
-				patchRelativeAddress(code, method->symbols[k], (jint)
-						     exceptionHandler);
+				//patchRelativeAddress(code, method->symbols[k], (jint)exceptionHandler);
 				break;
 			}
 		case 3:{	/* DEPFunctionSTEntry */
-				sys_panic("DEPFUNCTION no longer supported");
+				wprintf("DEPFUNCTION no longer supported");
 				break;
 			}
 		case 4:{	/* StaticFieldSTEntry */
@@ -2301,8 +2270,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				break;
 			}
 		case 10:{	/* AllocMultiArraySTEntry */
-				patchRelativeAddress(code, method->symbols[k], (jint)
-						     vmSpecialAllocMultiArray);
+				//patchRelativeAddress(code, method->symbols[k], (jint)vmSpecialAllocMultiArray);
 				break;
 			}
 		case 11:{	/* LongArithmeticSTEntry */
@@ -2311,10 +2279,10 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 			}
 		case 12:{	/* VMSupportSTEntry */
 				SymbolDescVMSupport *s = (SymbolDescVMSupport *) method->symbols[k];
-				if (s->operation <= 0 || s->operation > numberVMOperations) {
-					sys_panic("wrong vmsupport index");
-				}
-				patchRelativeAddress(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
+				/*if (s->operation <= 0 || s->operation > numberVMOperations) {
+					wprintf("wrong vmsupport index");
+				}*/
+				//patchRelativeAddress(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
 				break;
 			}
 		case 13:{	/* PrimitveClassSTEntry */
@@ -2327,10 +2295,10 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 			}
 		case 15:{	/* VMAbsoluteSTEntry */
 				SymbolDescVMSupport *s = (SymbolDescVMSupport *) method->symbols[k];
-				if (s->operation <= 0 || s->operation > numberVMOperations) {
-					sys_panic("wrong vmabssupport index");
-				}
-				patchConstant(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
+				/*if (s->operation <= 0 || s->operation > numberVMOperations) {
+					wprintf("wrong vmabssupport index");
+				}*/
+				//patchConstant(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
 				break;
 			}
 		case 16:
@@ -2367,7 +2335,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 #ifndef STACK_ON_HEAP
 				patchByte(code, method->symbols[k], (jint) STACK_CHUNK);
 #else
-				sys_panic("");
+				wprintf("");
 #endif
 				break;
 			}
@@ -2391,7 +2359,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				case 3:{
 						jint event_id = cpuManager_createNewEventID(method->name);
 						if (event_id < 0) {
-							sys_panic("warn: out of event types MAX_EVENT_TYPES=%d", MAX_EVENT_TYPES);
+							wprintf("warn: out of event types MAX_EVENT_TYPES=%d", MAX_EVENT_TYPES);
 							event_id = 0;
 						}
 						patchConstant(code, s, event_id);
@@ -2418,7 +2386,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 					}
 #endif
 				default:
-					sys_panic("Linker unknown profile symbol %d", s->kind);
+					wprintf("Linker unknown profile symbol %d", s->kind);
 				}
 				break;
 			}
@@ -2436,12 +2404,12 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 						break;
 					}
 				default:
-					sys_panic("Linker unknown TCBOffset symbol %d", s->kind);
+					wprintf("Linker unknown TCBOffset symbol %d", s->kind);
 				}
 				break;
 			}
 		default:
-			sys_panic("Linker unknown symbol %d", method->symbols[k]->type);
+			wprintf("Linker unknown symbol %d", method->symbols[k]->type);
 		}
 	}
 }
@@ -2455,19 +2423,18 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 			continue;
 		switch (method->symbols[k]->type) {
 		case 0:
-			sys_panic("Error: Symboltype 0");
+			wprintf("Error: Symboltype 0");
 			break;
 		case 1:{	/* DomainZeroSTEntry */
 				/* patchConstant(code, method->symbols[k],  (jint)getDomainZeroProxy()); */
 				break;
 			}
 		case 2:{	/* ExceptionHandlerSTEntry */
-				patchRelativeAddress(code, method->symbols[k], (jint)
-						     exceptionHandler);
+				//patchRelativeAddress(code, method->symbols[k], (jint)exceptionHandler);
 				break;
 			}
 		case 3:{	/* DEPFunctionSTEntry */
-				sys_panic("DEPFUNCTION no longer supported");
+				wprintf("DEPFUNCTION no longer supported");
 				break;
 			}
 		case 4:{	/* StaticFieldSTEntry */
@@ -2496,8 +2463,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 				break;
 			}
 		case 10:{	/* AllocMultiArraySTEntry */
-				patchRelativeAddress(code, method->symbols[k], (jint)
-						     vmSpecialAllocMultiArray);
+				//patchRelativeAddress(code, method->symbols[k], (jint)vmSpecialAllocMultiArray);
 				break;
 			}
 		case 11:{	/* LongArithmeticSTEntry */
@@ -2506,10 +2472,10 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 			}
 		case 12:{	/* VMSupportSTEntry */
 				SymbolDescVMSupport *s = (SymbolDescVMSupport *) method->symbols[k];
-				if (s->operation <= 0 || s->operation > numberVMOperations) {
-					sys_panic("wrong vmsupport index");
-				}
-				patchRelativeAddress(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
+				/*if (s->operation <= 0 || s->operation > numberVMOperations) {
+					wprintf("wrong vmsupport index");
+				}*/
+				//patchRelativeAddress(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
 				break;
 			}
 		case 13:{	/* PrimitveClassSTEntry */
@@ -2598,7 +2564,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 					}
 #endif
 				default:
-					sys_panic("Linker unknown profile symbol %d", s->kind);
+					wprintf("Linker unknown profile symbol %d", s->kind);
 				}
 				break;
 			}
@@ -2607,7 +2573,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 				break;
 			}
 		default:
-			sys_panic("Linker unknown symbol %d", method->symbols[k]->type);
+			wprintf("Linker unknown symbol %d", method->symbols[k]->type);
 		}
 	}
 }
@@ -2616,15 +2582,15 @@ MethodDesc *cloneMethodInDomain(DomainDesc * domain, MethodDesc * method)
 {
 	MethodDesc *new_method;
 
-	new_method = malloc_methoddescs(domain, 1);
+	//new_method = malloc_methoddescs(domain, 1);
 	if (new_method == NULL)
 		return NULL;
 	memcpy(new_method, method, sizeof(MethodDesc));
 
-	new_method->code = malloc_nativecode(domain, method->numberOfCodeBytes);
+	//new_method->code = malloc_nativecode(domain, method->numberOfCodeBytes);
 	memcpy(new_method->code, method->code, method->numberOfCodeBytes);
 
-	repatchMethodSymbols(new_method, new_method->code, (jint) specialAllocObject, (jint) vmSpecialAllocArray);
+	//repatchMethodSymbols(new_method, new_method->code, (jint) specialAllocObject, (jint) vmSpecialAllocArray);
 
 	return new_method;
 }
@@ -2655,7 +2621,7 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 			if (scl == NULL)
 				scl = findClassDesc(ifname);
 			if (scl == NULL) {
-				sys_panic("Cannot find interface %s while linking class %s of library %s\n", ifname,
+				wprintf("Cannot find interface %s while linking class %s of library %s\n", ifname,
 					  lib->allClasses[i].name, lib->name);
 			}
 			lib->allClasses[i].interfaces[j] = scl;
@@ -2669,7 +2635,7 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 
 		/* build vtable */
 		if (lib->allClasses[i].vtableSize < 11)
-			sys_panic("vtableSize<11");
+			wprintf("vtableSize<11");
 
 		for (j = 0; j < lib->allClasses[i].vtableSize; j++) {
 			if (lib->allClasses[i].vtableSym[j * 3][0] == '\0')
@@ -2685,7 +2651,7 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 			/* align code to instruction buffer size (PIII = 16 byte) */
 			if ((((int) method->code) % 16) != 0) {
 				printf("%s not aligned to 16 byte addr: %p\n", method->name, method->code);
-				sys_panic("");
+				wprintf("");
 			}
 #else
 			/* align code to 32 Bit == 4 Byte */
@@ -2756,7 +2722,7 @@ void findClassDescAndMethodInLib(SharedLibDesc * lib, char *classname, char *met
 	jint i, j;
 
 	if (strcmp(classname, "java/lang/Object") == 0) {	/* Object is part of every lib */
-		findClassDescAndMethodInObject(lib, classname, methodname, signature, classFound, methodFound);
+		//findClassDescAndMethodInObject(lib, classname, methodname, signature, classFound, methodFound);
 		return;
 	}
 
@@ -2848,7 +2814,7 @@ MethodDesc *findMethod(DomainDesc * domain, char *classname, char *methodname, c
 		if (!testHashKey(classname, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
 			m = findMethodInLib(domain->libs[i], classname, methodname, signature);
 			if (m != NULL) {
-				sys_panic("warn: Bug in findMethod of testHashKey!\n");
+				wprintf("warn: Bug in findMethod of testHashKey!\n");
 				return m;
 			}
 		}
@@ -2868,7 +2834,7 @@ code_t findVirtualMethodCode(DomainDesc * domain, char *classname, char *methodn
 	Class *c = findClass(domain, classname);
 	ClassDesc *cl = c->classDesc;
 	if (cl == NULL) {
-		sys_panic("Cannot find class %s\n", classname);
+		wprintf("Cannot find class %s\n", classname);
 	}
 	for (j = 0; j < cl->vtableSize; j++) {
 		if (cl->vtableSym[j * 3][0] == '\0')
@@ -2879,7 +2845,7 @@ code_t findVirtualMethodCode(DomainDesc * domain, char *classname, char *methodn
 			return obj->vtable[j];
 		}
 	}
-	sys_panic("Cannot find method %s::%s%s\n", classname, methodname, signature);
+	wprintf("Cannot find method %s::%s%s\n", classname, methodname, signature);
 	return NULL;
 }
 
@@ -2891,7 +2857,7 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 	Class *c = findClass(domain, className);
 	ASSERTCLASS(c);
 	if (c == NULL) {
-		sys_panic("Cannot find DEP %s\n", className);
+		wprintf("Cannot find DEP %s\n", className);
 	}
 	cl = c->classDesc;
 	ASSERTCLASSDESC(cl);
@@ -2903,7 +2869,7 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 			return j;
 		}
 	}
-	sys_panic("Cannot find DEP method %s:: %s%s\n", className, methodName, signature);
+	wprintf("Cannot find DEP method %s:: %s%s\n", className, methodName, signature);
 	return 0;
 }
 void callClassConstructor(Class * cl);
@@ -2915,7 +2881,7 @@ void callClassConstructors(DomainDesc * domain, LibDesc * lib)
 	ASSERTLIB(lib);
 
 	if (domain != curdom())
-		sys_panic("WRONG DOMAIN called in class constructor");
+		wprintf("WRONG DOMAIN called in class constructor");
 
 	if (lib->initialized == 1)
 		return;		/* already done */
@@ -2950,13 +2916,13 @@ u4_t executeStatic(DomainDesc * domain, char *className, char *methodname, char 
 
 	method = findMethod(domain, className, methodname, signature);
 	if (method == 0)
-		sys_panic("StaticMethod not found: %s.%s%s", className, methodname, signature);
+		wprintf("StaticMethod not found: %s.%s%s", className, methodname, signature);
 	//printf("callnative static %s.%s%s %p\n",className, methodname, signature, method->code);
 
 	c = (code_t) method->code;
 
 	ASSERT(c != NULL);
-	return callnative_static(params, c, params_size);
+	return 0;//callnative_static(params, c, params_size);
 }
 
 void executeSpecial(DomainDesc * domain, char *className, char *methodname, char *signature, ObjectDesc * obj, jint * params,
@@ -2968,11 +2934,11 @@ void executeSpecial(DomainDesc * domain, char *className, char *methodname, char
 
 	method = findMethod(domain, className, methodname, signature);
 	if (method == 0)
-		sys_panic("SpecialMethod not found: %s %s %s", className, methodname, signature);
+		wprintf("SpecialMethod not found: %s %s %s", className, methodname, signature);
 
 	c = (code_t) method->code;
 	ASSERT(c != 0);
-	ret = callnative_special(params, obj, c, params_size);
+	//ret = callnative_special(params, obj, c, params_size);
 }
 
 void executeInterface(DomainDesc * domain, char *className, char *methodname, char *signature, ObjectDesc * obj, jint * params,
@@ -2984,7 +2950,7 @@ void executeInterface(DomainDesc * domain, char *className, char *methodname, ch
 	ASSERTOBJECT(obj);
 	c = findVirtualMethodCode(domain, className, methodname, signature, obj);
 	ASSERT(c != 0);
-	ret = callnative_special(params, obj, c, params_size);
+	//ret = callnative_special(params, obj, c, params_size);
 }
 
 u4_t executeVirtual(DomainDesc * domain, char *className, char *methodname, char *signature, ObjectDesc * obj, jint * params,
@@ -2995,7 +2961,7 @@ u4_t executeVirtual(DomainDesc * domain, char *className, char *methodname, char
 	ASSERTOBJECT(obj);
 	c = findVirtualMethodCode(domain, className, methodname, signature, obj);
 	ASSERT(c != 0);
-	return callnative_special(params, obj, c, params_size);
+	return 0;//callnative_special(params, obj, c, params_size);
 }
 
 void set_message(ObjectDesc * obj, jint value)

@@ -238,18 +238,18 @@ u4_t start_thread_using_code1(ObjectDesc * obj, ThreadDesc * thread,
 			      code_t c, u4_t param);
 
 #ifndef DEBUG
-extern ThreadDesc *__current[MAX_NR_CPUS];
+//extern ThreadDesc *__current[MAX_NR_CPUS];
 static inline ThreadDesc *curthr()
 {
-	return __current[get_processor_id()];
+	return 0;//__current[get_processor_id()];
 }
 static inline ThreadDesc **curthrP()
 {
-	return &__current[get_processor_id()];
+	return 0;//&__current[get_processor_id()];
 }
 static inline void set_current(ThreadDesc * t)
 {
-	__current[get_processor_id()] = t;
+	//__current[get_processor_id()] = t;
 }
 static inline DomainDesc *curdom()
 {
