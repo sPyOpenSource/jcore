@@ -10,12 +10,15 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 	InitEFI(image, system);
 
     EFI_PHYSICAL_ADDRESS ExternalFileBuffer = 0;
+    EFI_PHYSICAL_ADDRESS ExternalFileBuffer1 = 0;
 
     EFI_FILE_PROTOCOL* efimyfile = openFile(u"testfile.bin");
+    EFI_FILE_PROTOCOL* zero = openFile(u"zero.jll");
 
     UINT64 fsize = 0x00001000;
 
     EFI_STATUS Status = SystemTable->BootServices->AllocatePages(AllocateAnyPages, EfiLoaderCode, 1, &ExternalFileBuffer);
+    EFI_STATUS Status1 = SystemTable->BootServices->AllocatePages(AllocateAnyPages, EfiLoaderCode, 2, &ExternalFileBuffer1);
 
 	SetTextColor(EFI_BROWN);
     wprintf(u"AllocatePool ExternalFileBuffer");
@@ -26,6 +29,9 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     
     efimyfile->Read(efimyfile, &fsize, (void *)ExternalFileBuffer);
 
+zero->SetPosition(zero, 0);
+zero->Read(zero, &fsize, (void *)ExternalFileBuffer1);
+
     SetTextColor(EFI_GREEN);
     wprintf(u"\r\nRead ExternalFileBuffer");
 	SetTextColor(EFI_LIGHTCYAN);
@@ -34,7 +40,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     SetTextColor(EFI_LIGHTCYAN);
     wprintf(u"\r\nFirst 5 Bytes\r\n");
     SetTextColor(EFI_LIGHTRED);
-    UINT8* test = (UINT8*)ExternalFileBuffer;
+    UINT8* test = (UINT8*)ExternalFileBuffer1;
 
     for(int m = 0; m < 5; m++)
     {

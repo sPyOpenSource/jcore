@@ -194,36 +194,43 @@ typedef struct {
  */
 MethodDesc *findMethod(DomainDesc * domain, char *classname, char *methodname, char *signature);
 MethodDesc *findMethodInLib(LibDesc * lib, char *classname, char *methodname, char *signature);
+MethodDesc *findMethodInSharedLibs(char *classname, char *methodname, char *signature);
+
 Class *findClass(DomainDesc * domain, char *name);
+Class *findClassOrPrimitive(DomainDesc * domain, char *name);
+Class *findPrimitiveClass(char name);
+
 ClassDesc *findClassDesc(char *name);
 ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, char *name);
+
 void findClassAndMethod(DomainDesc * domain, char *classname, char *methodname, char *signature, Class ** classFound,
 			MethodDesc ** methodFound);
 void findClassDescAndMethod(char *classname, char *methodname, char *signature, ClassDesc ** classFound,
 			    MethodDesc ** methodFound);
 void findClassAndMethodInLib(LibDesc * lib, char *classname, char *methodname, char *signature, Class ** classFound,
 			     MethodDesc ** methodFound);
-MethodDesc *findMethodInSharedLibs(char *classname, char *methodname, char *signature);
+void wprintf(char *msg, ...);
+
 int findSubClasses(DomainDesc * domain, Class * c, Class ** subclassesFound, int bufsize);
 int findSubClassesInLib(LibDesc * lib, Class * c, Class ** subclassesFound, int bufsize);
-ObjectDesc *newString(DomainDesc * domain, char *value);
-void wprintf(char *msg, ...);
-Class *findClassOrPrimitive(DomainDesc * domain, char *name);
 
 jint *specialAllocStaticFields(DomainDesc * domain, int numberFields);
 
 ArrayDesc *allocArrayInDomain(DomainDesc * domain, ClassDesc * type, jint size);
-
-
 ArrayDesc *specialAllocArray(ClassDesc * elemClass, jint size);
-ObjectDesc *specialAllocObject(ClassDesc * c);
 
+ObjectDesc *specialAllocObject(ClassDesc * c);
+ObjectDesc *newString(DomainDesc * domain, char *value);
+
+ArrayClassDesc *createSharedArrayClassDesc(char *name);
+ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass);
+SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem);
+static LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib);
 
 /*
 int numDEPInstances = 0;
 DEPDesc **allDEPInstances = NULL;
 */
-
 
 /*
  * Class management
@@ -244,12 +251,11 @@ ClassDesc *vmmethodClass;
 
 Class *specialAllocClass(DomainDesc * domain, int number)
 {
-	int i;
 	Class *ret;
 	Class *c;// = malloc_classes(domain, number);
 	memset(c, 0, sizeof(Class) * number);
 	ret = c;
-	for (i = 0; i < number; i++) {
+	for (int i = 0; i < number; i++) {
 #ifdef USE_QMAGIC
 		c->magic = MAGIC_CLASS;
 		c->objectDesc_magic = MAGIC_OBJECT;
@@ -287,9 +293,6 @@ void initPrimitiveClasses()
 	class_S = createPrimitiveClass("S");
 	class_Z = createPrimitiveClass("Z");
 }
-
-ArrayClassDesc *createSharedArrayClassDesc(char *name);
-ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass);
 
 ClassDesc *findSharedArrayClassDesc(char *name)
 {
@@ -361,8 +364,6 @@ Class *createArrayClass(DomainDesc * domain, char *name)
 	return cl;
 }
 
-Class *findPrimitiveClass(char name);
-
 ArrayClassDesc *createSharedArrayClassDesc(char *name)
 {
 	ClassDesc *c;
@@ -419,7 +420,6 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 	return arrayClass;
 }
 
-
 ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 {
 	ArrayClassDesc *arrayClass;
@@ -472,7 +472,6 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 	//arrayClass->nextInDomain = curdom()->arrayClasses;
 	//curdom()->arrayClasses = cl;
 
-
 	return arrayClass;
 }
 
@@ -503,11 +502,10 @@ Class *findPrimitiveClass(char name)
 
 ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, char *name)
 {
-	int i;
 	ASSERTSLIB(lib);
 	if (strcmp(name, "java/lang/Object") == 0)
 		return java_lang_Object;
-	for (i = 0; i < lib->numberOfClasses; i++) {
+	for (int i = 0; i < lib->numberOfClasses; i++) {
 		if (strcmp(lib->allClasses[i].name, name) == 0)
 			return &lib->allClasses[i];
 	}
@@ -520,8 +518,6 @@ extern int do_sampling;
 
 Class *findClassInLib(LibDesc * lib, char *name)
 {
-	int i;
-
 #ifdef SAMPLE_FASTPATH
 #ifdef PROFILE_SAMPLE
 	if (do_sampling)
@@ -533,7 +529,7 @@ Class *findClassInLib(LibDesc * lib, char *name)
 
 	if (strcmp(name, "java/lang/Object") == 0)
 		return java_lang_Object_class;
-	for (i = 0; i < lib->numberOfClasses; i++) {
+	for (int i = 0; i < lib->numberOfClasses; i++) {
 		if (strcmp(lib->allClasses[i].classDesc->name, name) == 0)
 			return &lib->allClasses[i];
 	}
@@ -578,8 +574,7 @@ void addHashKey(char *name, char *key, int len)
 
 jint testHashKey(char *name, char *key, int len)
 {
-	int i;
-	for (i = 0; i < len; i++) {
+	for (int i = 0; i < len; i++) {
 		if (name[i] == 0)
 			return JNI_TRUE;
 		if ((name[i] & key[i]) != name[i])
@@ -590,8 +585,7 @@ jint testHashKey(char *name, char *key, int len)
 
 u4_t findFieldOffset(ClassDesc * c, char *fieldname)
 {
-	u4_t i;
-	for (i = 0; i < c->numberFields; i++) {
+	for (u4_t i = 0; i < c->numberFields; i++) {
 		if (strcmp(c->fields[i].fieldName, fieldname) == 0)
 			return c->fields[i].fieldOffset;
 	}
@@ -624,13 +618,12 @@ ClassDesc *findClassDesc(char *name)
 
 Class *findClass(DomainDesc * domain, char *name)
 {
-	jint i;
 	Class *cl;
 
 	if (strcmp(name, "java/lang/Object") == 0)
 		return java_lang_Object_class;
 
-	for (i = 0; i < domain->numberOfLibs; i++) {
+	for (jint i = 0; i < domain->numberOfLibs; i++) {
 		if (testHashKey(name, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
 			cl = findClassInLib(domain->libs[i], name);
 			if (cl != NULL)
@@ -668,14 +661,10 @@ LibDesc *sharedLib2Lib(DomainDesc * domain, SharedLibDesc * slib)
 #endif
 	return domain->ndx_libs[slib->ndx];
 #else
-	int i;
-	jint nlibs;
-	LibDesc **libs;
+	jint nlibs = domain->numberOfLibs;
+	LibDesc **libs = domain->libs;
 
-	nlibs = domain->numberOfLibs;
-	libs = domain->libs;
-
-	for (i = 0; i < nlibs; i++) {
+	for (int i = 0; i < nlibs; i++) {
 		if (slib != libs[i]->sharedLib)
 			continue;
 		return libs[i];
@@ -693,12 +682,10 @@ ClassDesc *nonatomic_handle2ClassDesc(ObjectDesc ** handle)
 
 Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 {
-	int ndx;
-	char *name;
 	LibDesc *lib;
 	SharedLibDesc *slib;
 
-	name = classDesc->name;
+	char *name = classDesc->name;
 	if (strcmp(name, "java/lang/Object") == 0)
 		return java_lang_Object_class;
 
@@ -710,7 +697,7 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 
 		slib = classDesc->definingLib;
 		if ((lib = sharedLib2Lib(domain, slib))) {
-			ndx = (int) (classDesc - (slib->allClasses));
+			int ndx = (int) (classDesc - (slib->allClasses));
 			return &(lib->allClasses[ndx]);
 		}
 
@@ -733,11 +720,10 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 /* returns number of found classes */
 int findSubClassesInLib(LibDesc * lib, Class * c, Class ** subclassesFound, int bufsize)
 {
-	jint i, j;
 	if (bufsize == 0)
 		return 0;
-	j = 0;
-	for (i = 0; i < lib->numberOfClasses; i++) {
+	jint j = 0;
+	for (jint i = 0; i < lib->numberOfClasses; i++) {
 		if (lib->allClasses[i].superclass == c) {
 			subclassesFound[j++] = &(lib->allClasses[i]);
 			//printf("**FOUND SUB: %s\n", lib->allClasses[i].classDesc->name);
@@ -750,10 +736,9 @@ int findSubClassesInLib(LibDesc * lib, Class * c, Class ** subclassesFound, int 
 
 int findSubClasses(DomainDesc * domain, Class * c, Class ** subclassesFound, int bufsize)
 {
-	jint i;
 	jint found;
 	jint total = 0;
-	for (i = 0; i < domain->numberOfLibs; i++) {
+	for (int i = 0; i < domain->numberOfLibs; i++) {
 		found = findSubClassesInLib(domain->libs[i], c, subclassesFound, bufsize);
 		total += found;
 		subclassesFound += found;
@@ -843,7 +828,6 @@ code_t findAddrOfMethodBytecode(char *className, char *method, char *signature, 
 	return m->code;
 }
 
-
 ObjectDesc *allocObject(ClassDesc * c)
 {
 	ASSERTCLASSDESC(c);
@@ -911,14 +895,13 @@ void copyFromCharArray(char *buf, jint buflen, ArrayDesc * array)
 
 void copyIntoByteArray(ArrayDesc * array, char *str, jint size)
 {
-	jint i;
 #ifdef ALL_ARRAYS_32BIT
 	u4_t *field = (u4_t *) (array->data);
 #else
 	u1_t *field = (u1_t *) (array->data);
 #endif
 
-	for (i = 0; i < size; i++) {
+	for (jint i = 0; i < size; i++) {
 		field[i] = str[i];
 	}
 }
@@ -930,17 +913,14 @@ jint string_Length(ObjectDesc * str)
 
 int string_CompareChar(ObjectDesc * str, const char *c)
 {
-	ArrayDesc *charArray;
-	charArray = (ArrayDesc *) str->data[0];
+	ArrayDesc *charArray = (ArrayDesc *) str->data[0];
 	return 0;//strncmp(c, charArray->data, charArray->size);
 }
 
 ObjectDesc *string_replace_char(ObjectDesc * str, jint c1, jint c2)
 {
-	jint i;
-	ArrayDesc *array;
-	array = (ArrayDesc *) str->data[0];
-	for (i = 0; i < array->size; i++) {
+	ArrayDesc *array = (ArrayDesc *) str->data[0];
+	for (jint i = 0; i < array->size; i++) {
 		if (array->data[i] == c1)
 			array->data[i] = c2;
 	}
@@ -949,8 +929,7 @@ ObjectDesc *string_replace_char(ObjectDesc * str, jint c1, jint c2)
 
 void stringToChar(ObjectDesc * str, char *c, jint buflen)
 {
-	ArrayDesc *arrObj;
-	arrObj = (ArrayDesc *) str->data[0];
+	ArrayDesc *arrObj = (ArrayDesc *) str->data[0];
 	copyFromCharArray(c, buflen, arrObj);
 }
 
@@ -958,10 +937,9 @@ ObjectDesc *newString(DomainDesc * domain, char *value)
 {
 	ObjectDesc *s;
 	ArrayDesc *arrObj;
-	jint size;
 
 	//s = (ObjectDesc *) allocObjectInDomain(domain, findClassDesc("java/lang/String"));
-	size = strlen(value);
+	jint size = strlen(value);
 	//arrObj = allocArrayInDomain(domain, class_C->classDesc, size);
 	s->data[0] = (jint) arrObj;
 	copyIntoCharArray(arrObj, value, size);
@@ -972,16 +950,14 @@ ObjectDesc *newStringArray(DomainDesc * domain, int size, char *arr[])
 {
 	ObjectDesc *sObj;
 	ArrayDesc *arrObj;
-	ClassDesc *acl;
 	char *s;
-	int i;
 
 	//printf("SIZE: %d\n", size);
 
-	acl = findClass(domain, "[Ljava/lang/String;")->classDesc;
+	ClassDesc *acl = findClass(domain, "[Ljava/lang/String;")->classDesc;
 	//arrObj = allocArrayInDomain(domain, acl, size);
 
-	for (i = 0; i < size; i++) {
+	for (int i = 0; i < size; i++) {
 		s = arr[i];
 		sObj = newString(domain, s);
 		arrObj->data[i] = sObj;
@@ -993,14 +969,13 @@ ObjectDesc *newStringFromClassname(DomainDesc * domain, char *value)
 {
 	ObjectDesc *s;
 	ArrayDesc *arrObj;
-	jint size, i;
 
 	//s = (ObjectDesc *) allocObjectInDomain(domain, findClassDesc("java/lang/String"));
-	size = strlen(value);
+	jint size = strlen(value);
 	//arrObj = allocArrayInDomain(domain, class_C->classDesc, size);
 	s->data[0] = (jint) arrObj;
 
-	for (i = 0; i < size; i++) {
+	for (jint i = 0; i < size; i++) {
 		if (value[i] == '/') {
 			arrObj->data[i] = '.';
 		} else {
@@ -1018,7 +993,6 @@ ObjectDesc *newDomainZeroString(char *value)
 	setObjFlags(o, OBJFLAGS_EXTERNAL_STRING);
 	return o;
 }
-
 
 /*
  * load/link/execute
@@ -1087,14 +1061,9 @@ char *read_codefile(char *filename, jint * size)
 }
 #endif
 
-SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem);
-static LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib);
-
 SharedLibDesc *findSharedLib(char *libname)
 {
-	SharedLibDesc *sharedLib;
-
-	sharedLib = sharedLibs;
+	SharedLibDesc *sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
 		if (strcmp(sharedLib->name, libname) == 0) {
 			/* found lib */
@@ -1108,12 +1077,10 @@ SharedLibDesc *findSharedLib(char *libname)
 
 LibDesc *load(DomainDesc * domain, char *filename)
 {
-	SharedLibDesc *sharedLib;
-
 	//printf("load %s\n",filename);
 
 	/* try to find an already loaded library */
-	sharedLib = findSharedLib(filename);
+	SharedLibDesc *sharedLib = findSharedLib(filename);
 
 	if (sharedLib == NULL) {
 		/* could not find a loaded lib, now try to load it */
@@ -1141,7 +1108,6 @@ void loadIt(DomainDesc * domain, char *libname)
 	//linksharedlib(domain, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
 	//jxfree_tmp(tmp_mem);
 }
-
 
 /* is called by no more than one thread per domain at a time */
 LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
@@ -1934,15 +1900,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 void patchByte(code_t code, SymbolDesc * symbol, jint value)
 {
-	char *addr;
-	addr = (char *) ((char *) code + symbol->immediateNCIndex);
+	char *addr = (char *) ((char *) code + symbol->immediateNCIndex);
 	addr[0] = value & 0xff;
 }
 
 void patchConstant(code_t code, SymbolDesc * symbol, jint value)
 {
-	char *addr;
-	addr = (char *) ((char *) code + symbol->immediateNCIndex);
+	char *addr = (char *) ((char *) code + symbol->immediateNCIndex);
 	addr[0] = value & 0xff;
 	addr[1] = (value >> 8) & 0xff;
 	addr[2] = (value >> 16) & 0xff;
@@ -2010,7 +1974,6 @@ void patchClassPointer(code_t code, SymbolDesc * symbol)
 	ClassDesc *c;
 	SymbolDescClass *s = (SymbolDescClass *) symbol;
 
-
 	if (*s->className == '[') {
 		c = findSharedArrayClassDesc(s->className);
 	} else {
@@ -2062,10 +2025,9 @@ void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
 
 void patchStringAddress(code_t code, SymbolDesc * symbol)
 {
-	ObjectDesc *obj;
 	SymbolDescString *s = (SymbolDescString *) symbol;
 
-	obj = newDomainZeroString(s->value);	/* shared libs are part of domainzero and so are these constant strings */
+	ObjectDesc *obj = newDomainZeroString(s->value);	/* shared libs are part of domainzero and so are these constant strings */
 
 	if (obj == NULL)
 		wprintf("could not create string object");
@@ -2169,22 +2131,18 @@ void patchPrimitiveClassPointer(code_t code, SymbolDesc * symbol)
 
 void patchUnresolvedJump(code_t code, SymbolDesc * symbol)
 {
-	u4_t targetAddr;
 	SymbolDescUnresolvedJump *s = (SymbolDescUnresolvedJump *) symbol;
 
-	targetAddr = (u4_t) s->targetNCIndex;
+	u4_t targetAddr = (u4_t) s->targetNCIndex;
 	targetAddr += (u4_t) code;
 	patchConstant(code, symbol, (jint) targetAddr);
 }
 
-
-
 void setCodeStart(SharedLibDesc * lib)
 {
-	jint i, j;
 	ASSERT(lib != NULL);
-	for (i = 0; i < lib->numberOfClasses; i++) {
-		for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
+	for (jint i = 0; i < lib->numberOfClasses; i++) {
+		for (jint j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
 			if (lib->allClasses[i].methods[j].numberOfCodeBytes == 0) {
 				/* abstract method */
 				lib->allClasses[i].methods[j].code = 0;
@@ -2198,7 +2156,6 @@ void setCodeStart(SharedLibDesc * lib)
 		}
 	}
 }
-
 
 void createVTable(DomainDesc * domain, ClassDesc * c)
 {
@@ -2214,10 +2171,6 @@ void createVTable(DomainDesc * domain, ClassDesc * c)
 	if (c != java_lang_Object) {
 		//c->methodVtable = malloc_methodVtable(domain, c->vtableSize);
 	}
-}
-
-void stackMap(MethodDesc * method, SymbolDesc * symbol)
-{
 }
 
 void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunction, jint allocArrayFunction)
@@ -2303,7 +2256,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 			}
 		case 16:
 		case 17:{	/* StackMap */
-				stackMap(method, method->symbols[k]);
+				//stackMap(method, method->symbols[k]);
 				break;
 			}
 		case 18:{	/* jx.compiler.symbols.ExceptionTableSTEntry  */
@@ -2491,7 +2444,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 			}
 		case 16:
 		case 17:{	/* StackMap */
-				stackMap(method, method->symbols[k]);
+				//stackMap(method, method->symbols[k]);
 				break;
 			}
 		case 18:{	/* jx.compiler.symbols.ExceptionTableSTEntry  */
@@ -2715,7 +2668,6 @@ void findClassAndMethod(DomainDesc * domain, char *classname, char *methodname, 
 	}
 }
 
-
 void findClassDescAndMethodInLib(SharedLibDesc * lib, char *classname, char *methodname, char *signature, ClassDesc ** classFound,
 				 MethodDesc ** methodFound)
 {
@@ -2783,7 +2735,6 @@ MethodDesc *findMethodInSharedLibs(char *classname, char *methodname, char *sign
 	return methodFound;
 }
 
-
 MethodDesc *findMethodInLib(LibDesc * lib, char *classname, char *methodname, char *signature)
 {
 	Class *classFound;
@@ -2830,13 +2781,12 @@ MethodDesc *findMethod(DomainDesc * domain, char *classname, char *methodname, c
 
 code_t findVirtualMethodCode(DomainDesc * domain, char *classname, char *methodname, char *signature, ObjectDesc * obj)
 {
-	jint j;
 	Class *c = findClass(domain, classname);
 	ClassDesc *cl = c->classDesc;
 	if (cl == NULL) {
 		wprintf("Cannot find class %s\n", classname);
 	}
-	for (j = 0; j < cl->vtableSize; j++) {
+	for (jint j = 0; j < cl->vtableSize; j++) {
 		if (cl->vtableSym[j * 3][0] == '\0')
 			continue;	/* hole */
 //printf("%s\n",cl->vtableSym[j*3+1]);
@@ -2849,10 +2799,8 @@ code_t findVirtualMethodCode(DomainDesc * domain, char *classname, char *methodn
 	return NULL;
 }
 
-
 jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, char *signature)
 {
-	jint j;
 	ClassDesc *cl;
 	Class *c = findClass(domain, className);
 	ASSERTCLASS(c);
@@ -2861,7 +2809,7 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 	}
 	cl = c->classDesc;
 	ASSERTCLASSDESC(cl);
-	for (j = 0; j < cl->vtableSize; j++) {
+	for (jint j = 0; j < cl->vtableSize; j++) {
 		if (cl->vtableSym[j * 3][0] == '\0')
 			continue;	/* hole */
 		if ((strcmp(cl->vtableSym[j * 3 + 1], methodName) == 0)
@@ -2872,12 +2820,26 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 	wprintf("Cannot find DEP method %s:: %s%s\n", className, methodName, signature);
 	return 0;
 }
-void callClassConstructor(Class * cl);
+
+void callClassConstructor(Class * cl)
+{
+	code_t c;
+	ASSERTCLASS(cl);
+	if (cl->state == CLASS_READY)
+		return;
+	cl->state = CLASS_READY;
+	for (jint i = 0; i < cl->classDesc->numberOfMethods; i++) {
+		if (strcmp("<clinit>", cl->classDesc->methods[i].name) == 0) {
+			c = (code_t) cl->classDesc->methods[i].code;
+			c();
+			break;
+		}
+	}
+}
+
 /* this conforms not exactly to the JVM spec */
 void callClassConstructors(DomainDesc * domain, LibDesc * lib)
 {
-	jint i;
-
 	ASSERTLIB(lib);
 
 	if (domain != curdom())
@@ -2886,27 +2848,10 @@ void callClassConstructors(DomainDesc * domain, LibDesc * lib)
 	if (lib->initialized == 1)
 		return;		/* already done */
 
-	for (i = 0; i < lib->numberOfClasses; i++)
+	for (jint i = 0; i < lib->numberOfClasses; i++)
 		callClassConstructor(&lib->allClasses[i]);
 
 	lib->initialized = 1;
-}
-
-void callClassConstructor(Class * cl)
-{
-	jint i;
-	code_t c;
-	ASSERTCLASS(cl);
-	if (cl->state == CLASS_READY)
-		return;
-	cl->state = CLASS_READY;
-	for (i = 0; i < cl->classDesc->numberOfMethods; i++) {
-		if (strcmp("<clinit>", cl->classDesc->methods[i].name) == 0) {
-			c = (code_t) cl->classDesc->methods[i].code;
-			c();
-			break;
-		}
-	}
 }
 
 u4_t executeStatic(DomainDesc * domain, char *className, char *methodname, char *signature, jint * params, jint params_size)
@@ -2999,5 +2944,4 @@ void test_irq_missed(DEPDesc * dep)
 {
 	ASSERTDEP(dep);
 	//printf("MISSED IRQ at dep %p, no receiver %p\n", dep, dep->firstWaitingReceiver);
-
 }
