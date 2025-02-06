@@ -5,6 +5,35 @@
 #include "ErrorCodes.h"
 #include "efilibs.h"
 
+#define EFI_FILE_INFO_ID \
+  { \
+    0x9576e92, 0x6d3f, 0x11d2, {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
+  }
+
+/*UINT64* FileSize(EFI_FILE_PROTOCOL *FileHandle)
+{
+  UINT64* FileSize = 0;
+  FileHandle->SetPosition(FileHandle, 0xFFFFFFFFFFFFFFFFULL);
+  FileHandle->GetPosition(FileHandle, FileSize);
+  return FileSize;
+}*/
+
+/*EFI_FILE_HANDLE GetVolume(EFI_HANDLE image)
+{
+  EFI_LOADED_IMAGE *loaded_image = NULL;                  /* image interface 
+  EFI_GUID lipGuid = EFI_LOADED_IMAGE_PROTOCOL_GUID;      /* image interface GUID 
+  EFI_FILE_IO_INTERFACE *IOVolume;                        /* file system interface 
+  EFI_GUID fsGuid = EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID; /* file system interface GUID 
+  EFI_FILE_HANDLE Volume;                                 /* the volume's interface 
+
+  /* get the loaded image protocol interface for our "image" 
+  uefi_call_wrapper(BS->HandleProtocol, 3, image, &lipGuid, (void **) &loaded_image);
+  /* get the volume handle 
+  uefi_call_wrapper(BS->HandleProtocol, 3, loaded_image->DeviceHandle, &fsGuid, (VOID*)&IOVolume);
+  uefi_call_wrapper(IOVolume->OpenVolume, 2, IOVolume, &Volume);
+  return Volume;
+}*/
+
 EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 {
 	InitEFI(image, system);
@@ -14,11 +43,19 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     EFI_FILE_PROTOCOL* efimyfile = openFile(u"testfile.bin");
     EFI_FILE_PROTOCOL* zero = openFile(u"zero.jll");
-
-    UINT64 fsize = 0x00001000;
-
-    EFI_STATUS Status = SystemTable->BootServices->AllocatePages(AllocateAnyPages, EfiLoaderCode, 1, &ExternalFileBuffer);
-    EFI_STATUS Status1 = SystemTable->BootServices->AllocatePages(AllocateAnyPages, EfiLoaderCode, 2, &ExternalFileBuffer1);
+    EFI_GUID gEfiFileInfoGuid = EFI_FILE_INFO_ID;
+	UINTN FileInfoSize = 0x00001000;
+    EFI_FILE_INFO *FileInfo;
+    EFI_ALLOCATE_POOL AllocatePool = SystemTable->BootServices->AllocatePool;
+    EFI_STATUS Status;// = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, NULL);
+    Status = SystemTable->BootServices->AllocatePages(AllocateAnyPages, EfiLoaderCode, 2, &ExternalFileBuffer1);
+    AllocatePool(EfiLoaderData, FileInfoSize, (void**)&FileInfo);
+    //Status = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, (void**)&FileInfo);
+/*UINT64* FileSize = 0;
+		efimyfile->SetPosition(efimyfile, 0xFFFFFFFFFFFFFFFFULL);
+		efimyfile->GetPosition(efimyfile, FileSize);
+		efimyfile->SetPosition(efimyfile, 0);*/
+    AllocatePool(EfiLoaderCode, FileInfoSize, (void**)&ExternalFileBuffer);
 
 	SetTextColor(EFI_BROWN);
     wprintf(u"AllocatePool ExternalFileBuffer");
@@ -27,10 +64,10 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     efimyfile->SetPosition(efimyfile, 0);
     
-    efimyfile->Read(efimyfile, &fsize, (void *)ExternalFileBuffer);
+    efimyfile->Read(efimyfile, &FileInfoSize, (void *)ExternalFileBuffer);
 
 zero->SetPosition(zero, 0);
-zero->Read(zero, &fsize, (void *)ExternalFileBuffer1);
+zero->Read(zero, &FileInfoSize, (void *)ExternalFileBuffer1);
 
     SetTextColor(EFI_GREEN);
     wprintf(u"\r\nRead ExternalFileBuffer");
