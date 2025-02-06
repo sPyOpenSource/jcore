@@ -63,7 +63,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     int g = KernelBinFile();
 
     SetTextColor(EFI_LIGHTMAGENTA);
-    wprintf(u"\r\n\r\nThe returned number is : %d", g);
+    wprintf(u"\r\nThe returned number is : %d", g);
 
     SetTextColor(EFI_GREEN);
     SetTextPosition(10, 13);

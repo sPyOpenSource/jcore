@@ -116,7 +116,7 @@ typedef struct ThreadDesc_s {
 	ProfileDesc *profile;
 #endif
 #ifndef KERNEL
-	sigset_t sigmask;
+	//sigset_t sigmask;
 	jint preempted;
 #endif
 #ifdef USE_QMAGIC
@@ -297,7 +297,7 @@ char *get_state(ThreadDesc * t);
 jint internal_switch_to(ThreadDesc ** current, ThreadDesc * to);
 
 #ifndef KERNEL
-void disable_irq(sigset_t * set, sigset_t * oldset);
+//void disable_irq(sigset_t * set, sigset_t * oldset);
 #endif
 
 

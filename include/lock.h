@@ -35,7 +35,7 @@ void check_threadindomain(struct DomainDesc_s *domain);
 #  endif			/* CHECK_RUNNABLE_IN_RUNQ */
 #  define ASSERTCLI {sigset_t set, oldset; sigemptyset(&set); sigprocmask(SIG_BLOCK, &set, &oldset); if (!sigismember(&oldset,SIGALRM)) sys_panic("ALARM NOT BLOCKED"); }
 #  define CLI  {sigset_t set; disable_irq(&set, (void*)0); }
-void restore_irq(const sigset_t * set);
+//void restore_irq(const sigset_t * set);
 #endif
 
 #ifndef DEBUG

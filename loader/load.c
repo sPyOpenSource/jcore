@@ -16,7 +16,6 @@
 #define debugc(x)
 #endif				/* DBG_LOAD */
 
-
 /*
 #define DBG_CLINIT 1
 */
@@ -47,15 +46,15 @@ static char *codefilepos;
 
 void install_handler(int sig, void (*handler) (int))
 {
-	struct sigaction act;
+	/*struct sigaction act;
 
 	memset(&act, 0, sizeof(act));
 	act.sa_handler = handler;
-	act.sa_flags = 0;	/*SA_SIGINFO; */
+	act.sa_flags = 0;	//SA_SIGINFO; 
 	if (sigaction(sig, &act, NULL) != 0) {
 		perror("Error installing signal handler");
-		exit(EXIT_FAILURE);
-	}
+		//exit(EXIT_FAILURE);
+	}*/
 }
 
 #endif
@@ -295,7 +294,7 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass);
 ClassDesc *findSharedArrayClassDesc(char *name)
 {
 	ClassDesc *c;
-	DISABLE_IRQ;
+	//DISABLE_IRQ;
 	//printf("FINDARRACLASS: %s\n", name);
 	for (c = (ClassDesc *) sharedArrayClasses; c != NULL; c = c->next) {
 		if (strcmp(c->name, name) == 0) {
@@ -307,14 +306,14 @@ ClassDesc *findSharedArrayClassDesc(char *name)
 	c->next = (ClassDesc *) sharedArrayClasses;
 	sharedArrayClasses = (ArrayClassDesc *) c;
       finished:
-	RESTORE_IRQ;
+	//RESTORE_IRQ;
 	return c;
 }
 
 ArrayClassDesc *findSharedArrayClassDescByElemClass(ClassDesc * elemClass)
 {
 	ArrayClassDesc *c;
-	DISABLE_IRQ;
+	//DISABLE_IRQ;
 	//   printf("FINDARRACLASS: %s ", elemClass->name);
 	if (elemClass->arrayClass != NULL) {
 		c = elemClass->arrayClass;
@@ -327,7 +326,7 @@ ArrayClassDesc *findSharedArrayClassDescByElemClass(ClassDesc * elemClass)
 	sharedArrayClasses = c;
 	//printf(" create %p\n", c);
       finished:
-	RESTORE_IRQ;
+	//RESTORE_IRQ;
 	return c;
 }
 
@@ -1055,23 +1054,23 @@ char *read_codefile(char *filename, jint * size)
 char *read_codefile(char *filename, jint * size)
 {
 	int fd;
-	struct stat statbuf;
+	//struct stat statbuf;
 	char path[128];
 	char *codefile;
 
-	if ((codefile = libcache_lookup_jll(filename, size)) != NULL) {
+	/*if ((codefile = libcache_lookup_jll(filename, size)) != NULL) {
 		return codefile;
 	}
 
-	fd = open(filename, O_RDONLY);
+	fd = open(filename);
 	if (fd == -1) {
 		strcpy(path, "../libs/");
 		strcat(path, filename);
-		fd = open(path, O_RDONLY);
+		fd = open(path);
 		if (fd == -1) {
 			strcpy(path, "../domains/");
 			strcat(path, filename);
-			fd = open(path, O_RDONLY);
+			fd = open(path);
 			if (fd == -1) {
 				return NULL;
 			}
@@ -1083,7 +1082,7 @@ char *read_codefile(char *filename, jint * size)
 	if (read(fd, codefile, statbuf.st_size) != statbuf.st_size)
 		return NULL;
 	close(fd);
-	*size = statbuf.st_size;
+	*size = statbuf.st_size;*/
 	return codefile;
 }
 #endif
@@ -1318,7 +1317,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	jint sfields_offset;
 #endif
 
-	DISABLE_IRQ;
+	//DISABLE_IRQ;
 
 	/* FIXME: Don't check DomainZero */
 	if (domain->id != 0) {
@@ -1958,7 +1957,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	lib->next = sharedLibs;
 	sharedLibs = lib;
 
-	RESTORE_IRQ;
+	//RESTORE_IRQ;
 
 	return lib;
 }
@@ -2907,7 +2906,7 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 	sys_panic("Cannot find DEP method %s:: %s%s\n", className, methodName, signature);
 	return 0;
 }
-
+void callClassConstructor(Class * cl);
 /* this conforms not exactly to the JVM spec */
 void callClassConstructors(DomainDesc * domain, LibDesc * lib)
 {
