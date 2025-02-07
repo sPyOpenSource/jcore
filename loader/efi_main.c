@@ -9,16 +9,18 @@
 /*#define EFI_FILE_INFO_ID \
   { \
     0x9576e92, 0x6d3f, 0x11d2, {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
-  }
+  }*/
 
-UINT64* FileSize(EFI_FILE_PROTOCOL *FileHandle)
+UINT64 getFileSize(EFI_FILE_PROTOCOL *FileHandle)
 {
   UINT64* FileSize = 0;
   FileHandle->SetPosition(FileHandle, 0xFFFFFFFFFFFFFFFFULL);
   FileHandle->GetPosition(FileHandle, FileSize);
-  return FileSize;
-}*/
-void loadIt(DomainDesc * domain, char *libname, char* codefilepos);
+  FileHandle->SetPosition(FileHandle, 0);
+  return *FileSize;
+}
+
+void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size);
 
 EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 {
@@ -30,19 +32,16 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     EFI_FILE_PROTOCOL* efimyfile = openFile(u"testfile.bin");
     EFI_FILE_PROTOCOL* zero = openFile(u"zero.jll");
     //EFI_GUID gEfiFileInfoGuid = EFI_FILE_INFO_ID;
-	UINTN FileInfoSize = 0x00001000;
+	UINTN FileInfoSize = getFileSize(zero);
     EFI_FILE_INFO *FileInfo;
     EFI_ALLOCATE_POOL AllocatePool = SystemTable->BootServices->AllocatePool;
     EFI_STATUS Status;// = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, NULL);
     AllocatePool(EfiLoaderCode, FileInfoSize, (void**)&ExternalFileBuffer1);
     //AllocatePool(EfiLoaderData, FileInfoSize, (void**)&FileInfo);
     //Status = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, (void**)&FileInfo);
-    /*UINT64* FileSize = 0;
-	//efimyfile->SetPosition(efimyfile, 0xFFFFFFFFFFFFFFFFULL);
-	efimyfile->SetPosition(efimyfile, 0);
-    efimyfile->GetPosition(efimyfile, FileSize);*/
+    UINT64 FileSize = getFileSize(efimyfile);
 
-    Status = AllocatePool(EfiLoaderCode, FileInfoSize, (void**)&ExternalFileBuffer);
+    Status = AllocatePool(EfiLoaderCode, FileSize, (void**)&ExternalFileBuffer);
 
 	SetTextColor(EFI_BROWN);
     wprintf(u"AllocatePool ExternalFileBuffer");
@@ -50,7 +49,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     wprintf(CheckStandardEFIError(Status));
 
     efimyfile->SetPosition(efimyfile, 0);
-    efimyfile->Read(efimyfile, &FileInfoSize, (void *)ExternalFileBuffer);
+    efimyfile->Read(efimyfile, &FileSize, (void *)ExternalFileBuffer);
 
 zero->SetPosition(zero, 0);
 zero->Read(zero, &FileInfoSize, (void *)ExternalFileBuffer1);
@@ -71,7 +70,7 @@ zero->Read(zero, &FileInfoSize, (void *)ExternalFileBuffer1);
         wprintf(u"%x ", j);
         codefile++;
     }*/
-	loadIt(NULL, "zero.jll", codefile);
+	loadIt(NULL, "zero.jll", codefile, FileInfoSize);
 	efimyfile->SetPosition(efimyfile, 0);
     
     SetTextColor(EFI_GREEN);
@@ -106,7 +105,8 @@ zero->Read(zero, &FileInfoSize, (void *)ExternalFileBuffer1);
     SetTextPosition(0, 22);
     wprintf(u"If you see this, something went wrong. Manually turn off the computer.");
 	
-	while(1){__asm__("wfi\n\t");}   // WFI is similar to the HLT in x86_64
+	//while(1){__asm__("wfi\n\t");}   // WFI is similar to the HLT in x86_64
+	while(1){__asm__("hlt\n\t");}   // WFI is similar to the HLT in x86_64
 
     return EFI_SUCCESS;
 }

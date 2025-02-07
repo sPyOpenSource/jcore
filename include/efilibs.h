@@ -213,7 +213,8 @@ void HitAnyKey(void)
 
     // In a while loop to see if the keyboard has a key stroke in the buffer.
 	// Added the __asm__("wfi\n\t"); code to slow the CPU down.
-    while((SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key)) == EFI_NOT_READY) {__asm__("wfi\n\t");};
+    //while((SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key)) == EFI_NOT_READY) {__asm__("wfi\n\t");};
+    while((SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, &Key)) == EFI_NOT_READY) {__asm__("hlt\n\t");};
 }
 
 void ResetKeyboard(void)
@@ -397,14 +398,14 @@ void InitEFI(EFI_HANDLE handle, EFI_SYSTEM_TABLE  *table)
 	ResetScreen();
 
     SetTextColor(EFI_WHITE);
-    wprintf(u"EFI loaded on AARCH64 Hardware !\r\n");
+    wprintf(u"EFI loaded on Hardware !\r\n");
     
     SetTextColor(EFI_GREEN);
-    wprintf(u"Hit Any Key to see Graphics and setup the FileSystem.");
+    //wprintf(u"Hit Any Key to see Graphics and setup the FileSystem.");
 
-    HitAnyKey();
+    //HitAnyKey();
 	
-	SetTextPosition(0, 5);
+	//SetTextPosition(0, 5);
 
 	InitializeFILESYSTEM();
 

@@ -224,7 +224,7 @@ ObjectDesc *newString(DomainDesc * domain, char *value);
 
 ArrayClassDesc *createSharedArrayClassDesc(char *name);
 ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass);
-SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem, char* codefilepos);
+SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem, char* codefilepos, int size);
 static LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib);
 
 /*
@@ -1100,10 +1100,10 @@ LibDesc *load(DomainDesc * domain, char *filename)
 	return loadLib(domain, sharedLib);
 }
 
-void loadIt(DomainDesc * domain, char *libname, char* codefilepos)
+void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size)
 {
 	TempMemory *tmp_mem;// = jxmalloc_tmp(5000);
-	SharedLibDesc *sharedLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos);
+	SharedLibDesc *sharedLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos, size);
 	loadLib(domain, sharedLib);
 	//linksharedlib(domain, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
 	//jxfree_tmp(tmp_mem);
@@ -1267,7 +1267,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 	return codefilepos;
 }
 
-SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem, char* codefilepos)
+SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem, char* codefilepos, int size)
 {
 	jint i, j, k, m;
 	jint completeCodeBytes;
@@ -1281,7 +1281,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	//char *codefilepos;
 	char **string_table;
 	jint dummy;
-	jint size;
+	//jint size;
 	jint isinterface;
 #ifdef USE_LIB_INDEX
 	jint sfields_offset;
@@ -1300,7 +1300,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		return NULL;
 	}*/
 
-	codefilepos = testCheckSumAndVersion(filename, codefilepos, 0x1000);
+	codefilepos = testCheckSumAndVersion(filename, codefilepos, size);
 
 	//lib = malloc_sharedlibdesc(domain, strlen(filename) + 1);
 #ifdef USE_QMAGIC
@@ -1339,7 +1339,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 			/* FIXME:  shared libraries should not always be loaded into domainzero  */
 			//printf("slib %s load %s\n",lib->name,libname);
-			neededLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos);
+			neededLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos, size);
 			if (neededLib == NULL) {
 				//printf("Could not load shared library %s needed by %s!\n",libname,filename);
 			} else {
