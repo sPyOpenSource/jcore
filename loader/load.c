@@ -1321,9 +1321,9 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	   load needed libs
 	 */
 
-	readInt(lib->numberOfNeededLibs);
-
-	if (lib->numberOfNeededLibs == 0) {
+	//readInt(lib->numberOfNeededLibs);
+	readInt(i);
+	/*if (lib->numberOfNeededLibs == 0) {
 		lib->neededLibs == NULL;
 	} else {
 		//lib->neededLibs = malloc_sharedlibdesctable(domain, lib->numberOfNeededLibs);
@@ -1334,10 +1334,10 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		neededLib = findSharedLib(libname);
 
 		if (neededLib == NULL) {
-			/*  could not find a loaded lib, now try to load it  */
+			/*  could not find a loaded lib, now try to load it  
 			TempMemory *tmp_mem;// = jxmalloc_tmp(5000);
 
-			/* FIXME:  shared libraries should not always be loaded into domainzero  */
+			/* FIXME:  shared libraries should not always be loaded into domainzero  
 			//printf("slib %s load %s\n",lib->name,libname);
 			neededLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos, size);
 			if (neededLib == NULL) {
@@ -1353,19 +1353,20 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 		ASSERTSLIB(neededLib);
 		lib->neededLibs[i] = neededLib;
-	}
+	}*/
 
 	//printf("load %s\n", filename);
 	/*
 	   load meta
 	 */
-	readInt(lib->numberOfMeta);
+	//readInt(lib->numberOfMeta);
+	readInt(i);
 	//lib->meta = malloc_metatable(domain, lib->numberOfMeta);
-	for (i = 0; i < lib->numberOfMeta; i++) {
+	/*for (i = 0; i < lib->numberOfMeta; i++) {
 		readAllocString(lib->meta[i].var);
 		readAllocString(lib->meta[i].val);
 		//printf("%s = %s\n", lib->meta[i].var, lib->meta[i].val);
-	}
+	}*/
 
 	/*
 	   read string table
@@ -1528,7 +1529,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				readInt(dummy);
 			}
 		} else {
-			debugf(("VTableSize == 0\n"));
+			debugf("VTableSize == 0\n");
 		}
 
 		for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
@@ -1551,10 +1552,10 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 #ifdef PROFILE
 			lib->allClasses[i].methods[j].isprofiled = JNI_FALSE;
 #endif
-			debugf(("  Method: %s.%s%s\n", lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
-				lib->allClasses[i].methods[j].signature));
+			wprintf(u"  Method: %s.%s%s\n", lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
+				lib->allClasses[i].methods[j].signature);
 			readInt(lib->allClasses[i].methods[j].numberOfCodeBytes);
-			debugf(("     NumberOfCodeBytes: %ld\n", lib->allClasses[i].methods[j].numberOfCodeBytes));
+			wprintf(u"     NumberOfCodeBytes: %ld\n", lib->allClasses[i].methods[j].numberOfCodeBytes);
 			ASSERT(lib->allClasses[i].methods[j].numberOfCodeBytes >= 0);
 			lib->allClasses[i].methods[j].sizeOfExceptionTable = 0;
 
@@ -1609,18 +1610,18 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					wprintf("Error: Symboltype 0");
 					break;
 				case 1:{	/* DomainZeroSTEntry */
-						debugs(("     Symbol: DomainZero\n"));
+						debugs("     Symbol: DomainZero\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDomainZero));
 						break;
 					}
 				case 2:{	/* ExceptionHandlerSTEntry */
-						debugs(("     Symbol: ExceptionHandler\n"));
+						debugs("     Symbol: ExceptionHandler\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescExceptionHandler));
 						break;
 					}
 				case 3:{	/* DEPFunctionSTEntry */
 						SymbolDescDEPFunction *s;
-						debugs(("     Symbol: DEPFunction\n"));
+						debugs("     Symbol: DEPFunction\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDEPFunction));
 						s = (SymbolDescDEPFunction *) lib->allClasses[i].methods[j].symbols[k];
 						readAllocString(s->className);
@@ -1630,7 +1631,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 4:{	/* StaticFieldSTEntry */
 						SymbolDescStaticField *s;
-						debugs(("     Symbol: StaticField\n"));
+						debugs("     Symbol: StaticField\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStaticField));
 						s = (SymbolDescStaticField *) lib->allClasses[i].methods[j].symbols[k];
 						readStringID(s->className);
@@ -1639,13 +1640,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						break;
 					}
 				case 5:{	/* AllocObjectSTEntry */
-						debugs(("     Symbol: AllocObject\n"));
+						debugs("     Symbol: AllocObject\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocObject));
 						break;
 					}
 				case 6:{	/* ClassSTEntry */
 						SymbolDescClass *s;
-						debugs(("     Symbol: Class\n"));
+						debugs("     Symbol: Class\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescClass));
 						s = (SymbolDescClass *)
 						    lib->allClasses[i].methods[j].symbols[k];
@@ -1662,13 +1663,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						readStringID(s->className);
 						readStringID(s->methodName);
 						readStringID(s->methodSignature);
-						debugs(("     Symbol: DirectMethodCall %s.%s%s\n", s->className, s->methodName,
-							s->methodSignature));
+						wprintf(u"     Symbol: DirectMethodCall %s.%s%s\n", s->className, s->methodName,
+							s->methodSignature);
 						break;
 					}
 				case 8:{	/* StringSTEntry */
 						SymbolDescString *s;
-						debugs(("     Symbol: String\n"));
+						debugs("     Symbol: String\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescString));
 						s = (SymbolDescString *)
 						    lib->allClasses[i].methods[j].symbols[k];
@@ -1677,18 +1678,18 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						break;
 					}
 				case 9:{	/* AllocArraySTEntry */
-						debugs(("     Symbol: AllocArray\n"));
+						debugs("     Symbol: AllocArray\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocArray));
 						break;
 					}
 				case 10:{	/* AllocMultiArraySTEntry */
-						debugs(("     Symbol: MultiAllocArray\n"));
+						debugs("     Symbol: MultiAllocArray\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocMultiArray));
 						break;
 					}
 				case 11:{	/* LongArithmeticSTEntry */
 						SymbolDescLongArithmetic *s;
-						debugs(("     Symbol: LongArithmetic\n"));
+						debugs("     Symbol: LongArithmetic\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescLongArithmetic));
 						s = (SymbolDescLongArithmetic *) lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->operation);
@@ -1696,7 +1697,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 12:{	/* VMSupportSTEntry */
 						SymbolDescVMSupport *s;
-						debugs(("     Symbol: VMSupport\n"));
+						debugs("     Symbol: VMSupport\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescVMSupport));
 						s = (SymbolDescVMSupport *)
 						    lib->allClasses[i].methods[j].symbols[k];
