@@ -26,22 +26,21 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 {
 	InitEFI(image, system);
 
-    EFI_PHYSICAL_ADDRESS ExternalFileBuffer = 0;
+    EFI_PHYSICAL_ADDRESS ExternalFileBuffer0 = 0;
     EFI_PHYSICAL_ADDRESS ExternalFileBuffer1 = 0;
 
     EFI_FILE_PROTOCOL* efimyfile = openFile(u"testfile.bin");
-    EFI_FILE_PROTOCOL* zero = openFile(u"zero.jll");
+    EFI_FILE_PROTOCOL* zero      = openFile(u"zero.jll");
     //EFI_GUID gEfiFileInfoGuid = EFI_FILE_INFO_ID;
-	UINTN FileInfoSize = getFileSize(zero);
-    EFI_FILE_INFO *FileInfo;
+    //EFI_FILE_INFO *FileInfo;
     EFI_ALLOCATE_POOL AllocatePool = SystemTable->BootServices->AllocatePool;
     EFI_STATUS Status;// = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, NULL);
-    AllocatePool(EfiLoaderCode, FileInfoSize, (void**)&ExternalFileBuffer1);
+    UINTN FileSize1 = getFileSize(zero);
+    AllocatePool(EfiLoaderCode, FileSize1, (void**)&ExternalFileBuffer1);
     //AllocatePool(EfiLoaderData, FileInfoSize, (void**)&FileInfo);
     //Status = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, (void**)&FileInfo);
-    UINT64 FileSize = getFileSize(efimyfile);
-
-    Status = AllocatePool(EfiLoaderCode, FileSize, (void**)&ExternalFileBuffer);
+    UINT64 FileSize0 = getFileSize(efimyfile);
+    Status = AllocatePool(EfiLoaderCode, FileSize0, (void**)&ExternalFileBuffer0);
 
 	SetTextColor(EFI_BROWN);
     wprintf(u"AllocatePool ExternalFileBuffer");
@@ -49,10 +48,10 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     wprintf(CheckStandardEFIError(Status));
 
     efimyfile->SetPosition(efimyfile, 0);
-    efimyfile->Read(efimyfile, &FileSize, (void *)ExternalFileBuffer);
+    efimyfile->Read(efimyfile, &FileSize0, (void *)ExternalFileBuffer0);
 
-zero->SetPosition(zero, 0);
-zero->Read(zero, &FileInfoSize, (void *)ExternalFileBuffer1);
+    zero->SetPosition(zero, 0);
+    zero->Read(zero, &FileSize1, (void *)ExternalFileBuffer1);
 
     SetTextColor(EFI_GREEN);
     wprintf(u"Read ExternalFileBuffer");
@@ -70,7 +69,8 @@ zero->Read(zero, &FileInfoSize, (void *)ExternalFileBuffer1);
         wprintf(u"%x ", j);
         codefile++;
     }*/
-	loadIt(NULL, "zero.jll", codefile, FileInfoSize);
+    
+	loadIt(NULL, "zero.jll", codefile, FileSize1);
 	efimyfile->SetPosition(efimyfile, 0);
     
     SetTextColor(EFI_GREEN);
@@ -86,7 +86,7 @@ zero->Read(zero, &FileInfoSize, (void *)ExternalFileBuffer1);
 	SetGraphicsColor(ORANGE);
 	
 	// Execute File, get return number --> 349587 \ 055593
-	int (*KernelBinFile)(void) = (int (*)(void)) ((UINT8 *)ExternalFileBuffer);
+	int (*KernelBinFile)(void) = (int (*)(void)) ((UINT8 *)ExternalFileBuffer0);
 
     int g = KernelBinFile();
 
