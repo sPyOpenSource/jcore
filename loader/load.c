@@ -78,13 +78,13 @@ NOT IMPL jint readInt()
 
 #define readByte(i) {i = *(jbyte*)codefilepos; codefilepos += 1;}
 
-#define readStringData(buf, nBytes) { memcpy(buf, codefilepos, nBytes); codefilepos += nBytes; buf[nBytes] = '\0';}
+#define readStringData(buf, nBytes) { memcpy(buf, codefilepos, nBytes); codefilepos += nBytes; /*buf[nBytes] = '\0';*/}
 
 #define readString(buf,nbuf) { jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);}
 
 #define readStringID(buf) { jint id ; readInt(id); buf = string_table[id]; }
 
-#define readAllocString(buf) {jint nBytes; readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); /*buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
+#define readAllocString(buf) {jint nBytes; /*readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
 
 #define readCode(buf, nbytes) {  memcpy(buf, codefilepos, nbytes); codefilepos += nbytes;}
 
@@ -1261,8 +1261,13 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 		//printf("Cannot load code with version != %d\n", CURRENT_COMPILER_VERSION);
 		wprintf("Mismatch between library version and version supported by jxcore");
 	}
-	readString(processor, sizeof(processor));
-	wprintf(u"\r\nProcessor: %s", processor);
+	//readString(processor, sizeof(processor));
+	readInt(i);
+	for(int j = 0; j < i; j++){
+		wprintf(u"%c", *codefilepos);
+		codefilepos++;
+	}
+	//wprintf(u"\r\nProcessor: ", processor);
 
 	return codefilepos;
 }
@@ -1316,7 +1321,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	 */
 
 	readInt(i);
-//wprintf(u"load lib");
+//wprintf(u"\r\nload lib");
 	/*
 	   load needed libs
 	 */
@@ -1355,18 +1360,31 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		lib->neededLibs[i] = neededLib;
 	}*/
 
-	//printf("load %s\n", filename);
+	//wprintf(u"\r\nload %s", filename);
 	/*
 	   load meta
 	 */
 	//readInt(lib->numberOfMeta);
 	readInt(i);
 	//lib->meta = malloc_metatable(domain, lib->numberOfMeta);
-	/*for (i = 0; i < lib->numberOfMeta; i++) {
-		readAllocString(lib->meta[i].var);
-		readAllocString(lib->meta[i].val);
-		//printf("%s = %s\n", lib->meta[i].var, lib->meta[i].val);
-	}*/
+	for (int j = 0; j < /*lib->numberOfMeta*/i; j++) {
+		jint n;
+		readInt(n);
+		//lib->meta[j].var = codefilepos;
+		for(int k = 0; k < n; k++){
+			//wprintf(u"%c", *codefilepos);
+			codefilepos++;
+		}
+		//readAllocString(lib->meta[j].var);
+		readInt(n);
+		//lib->meta[j].val = codefilepos;
+		for(int k = 0; k < n; k++){
+			//wprintf(u"%c",*codefilepos);
+			codefilepos++;
+		}
+		//readAllocString(lib->meta[j].val);
+		//wprintf(u"%s = %s\n", lib->meta[i].var, lib->meta[i].val);
+	}
 
 	/*
 	   read string table
@@ -1377,8 +1395,16 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		string_table = NULL;
 	} else {
 		string_table;// = (char **) malloc_code(domain, i * sizeof(char *));
-		for (j = 0; j < i; j++)
-			readAllocString(string_table[j]);
+		for (j = 0; j < i; j++){
+			int n;
+			readInt(n);
+			//readAllocString(string_table[j]);
+			//wprintf(u"\r\n");
+			for(int k = 0; k < n; k++){
+				//wprintf(u"%c", *codefilepos);
+				codefilepos++;
+			}
+		}
 	}
 
 	/*
@@ -1389,8 +1415,14 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	if (i > 0) {
 		char symbol[30];
 		for (j = 0; j < i; j++) {
-			readString(symbol, sizeof(symbol));
-			/* printf("%2d %s ",j,symbol); */
+			//readString(symbol, sizeof(symbol));
+			//wprintf(u"%d ",j);
+			int n;
+			readInt(n);
+			for(int k = 0; k < n; k++){
+				wprintf(u"%c", *codefilepos);
+				codefilepos++;
+			}
 			/*if (j == numberVMOperations)
 				wprintf("to many symbols");
 			vmsupport[j].index = 0;
@@ -1409,31 +1441,34 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	 */
 
 	readInt(totalNumberOfClasses);
-	lib->numberOfClasses = 0;
+	//lib->numberOfClasses = 0;
 	//lib->allClasses = malloc_classdescs(domain, totalNumberOfClasses);
-	memset(lib->allClasses, 0, sizeof(ClassDesc) * totalNumberOfClasses);
+	//memset(lib->allClasses, 0, sizeof(ClassDesc) * totalNumberOfClasses);
 	completeCodeBytes = 0;
 #ifdef USE_LIB_INDEX
 	sfields_offset = 0;
 	lib->memSizeStaticFields = 0;
 #endif
 	for (i = 0; i < totalNumberOfClasses; i++) {
-		lib->allClasses[i].classType = CLASSTYPE_CLASS;
+		//lib->allClasses[i].classType = CLASSTYPE_CLASS;
 #ifdef USE_QMAGIC
 		lib->allClasses[i].magic = MAGIC_CLASSDESC;
 #endif
-		lib->allClasses[i].definingLib = lib;
+		//lib->allClasses[i].definingLib = lib;
 
-		readStringID(lib->allClasses[i].name);
-		addHashKey(lib->allClasses[i].name, lib->key, LIB_HASHKEY_LEN);
+		//readStringID(lib->allClasses[i].name);
+		int n;
+		readInt(n);
+		//addHashKey(lib->allClasses[i].name, lib->key, LIB_HASHKEY_LEN);
 
 		//printf("Class: %s\n", lib->allClasses[i].name);
 
-		readStringID(supername);
+		//readStringID(supername);
+		readInt(n);
 		if (supername[0] == '\0') {
 			lib->allClasses[i].superclass = NULL;
 		} else {
-			ClassDesc *scl = NULL;
+			/*ClassDesc *scl = NULL;
 			if (strcmp(supername, "java/lang/Object") == 0) {
 				scl = java_lang_Object;
 			}
@@ -1442,35 +1477,40 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 			if (scl == NULL)
 				scl = findClassDesc(supername);
 			if (scl == NULL)
-				wprintf("find superclass");
-			lib->allClasses[i].superclass = scl;
+				wprintf(u"find superclass");
+			lib->allClasses[i].superclass = scl;*/
 		}
 
 		readInt(isinterface);
 		if (isinterface) {
-			lib->allClasses[i].classType = CLASSTYPE_INTERFACE;
+			//lib->allClasses[i].classType = CLASSTYPE_INTERFACE;
 		}
-		readInt(lib->allClasses[i].numberOfInterfaces);
+		//readInt(lib->allClasses[i].numberOfInterfaces);
+		readInt(n);
 		if (lib->allClasses[i].numberOfInterfaces > 0) {
 			//lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
 			lib->allClasses[i].ifname;// = malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
 		} else {
-			lib->allClasses[i].interfaces = (ClassDesc **) NULL;
-			lib->allClasses[i].ifname = NULL;
+			//lib->allClasses[i].interfaces = (ClassDesc **) NULL;
+			//lib->allClasses[i].ifname = NULL;
 		}
-		for (j = 0; j < lib->allClasses[i].numberOfInterfaces; j++) {
-			readStringID(lib->allClasses[i].ifname[j]);
+		for (j = 0; j < /*lib->allClasses[i].numberOfInterfaces*/i; j++) {
+			//readStringID(lib->allClasses[i].ifname[j]);
+			int n;
+			readInt(n);
 		}
-		readInt(lib->allClasses[i].numberOfMethods);
+		//readInt(lib->allClasses[i].numberOfMethods);
+		readInt(n);
 		if (lib->allClasses[i].numberOfMethods > 0) {
 			//lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
 		} else {
-			lib->allClasses[i].methods = NULL;
+			//lib->allClasses[i].methods = NULL;
 		}
-		readInt(lib->allClasses[i].instanceSize);
-
+		//readInt(lib->allClasses[i].instanceSize);
+readInt(n);
 		/* fieldmap */
-		readInt(lib->allClasses[i].mapBytes);
+		//readInt(lib->allClasses[i].mapBytes);
+		readInt(n);
 		lib->allClasses[i].map = NULL;
 		if (lib->allClasses[i].mapBytes > 0) {
 			//lib->allClasses[i].map = malloc_objectmap(domain, lib->allClasses[i].mapBytes);

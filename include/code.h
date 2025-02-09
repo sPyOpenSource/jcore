@@ -250,7 +250,9 @@ typedef struct PrimitiveClassDesc_s {
  * Libs
  */
 struct meta_s {
+	int r_size;
 	char *var;
+	int l_size;
 	char *val;
 };
 

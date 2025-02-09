@@ -86,12 +86,16 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 	SetGraphicsColor(ORANGE);
 	
 	// Execute File, get return number --> 349587 \ 055593
-	int (*KernelBinFile)(void) = (int (*)(void)) ((UINT8 *)ExternalFileBuffer0);
-
-    int g = KernelBinFile();
-
+	//int (*KernelBinFile)(void) = (int (*)(void)) ((UINT8 *)ExternalFileBuffer0);
+    //void (*KernelBinFile)(void) = (void (*)(void))((UINT8*)ExternalFileBuffer0); 
+    //int g = KernelBinFile();
+//KernelBinFile();
+//__asm__("mov esp,INITSTACK");
+ //__asm__("mov 0,%edi");
+ //__asm__("mov 0,%rax");
+ //__asm__("call *%rax");
     SetTextColor(EFI_LIGHTMAGENTA);
-    wprintf(u"\r\nThe returned number is : %d", g);
+    //wprintf(u"\r\nThe returned number is : %d", g);
 
     SetTextColor(EFI_GREEN);
     SetTextPosition(10, 13);
