@@ -562,13 +562,12 @@ Class *findClassOrPrimitive(DomainDesc * domain, char *name)
 	return NULL;
 }
 
-void addHashKey(char *name, char *key, int len)
+void addHashKey(String *name, char *key, int len)
 {
-	int i;
-	for (i = 0; i < len; i++) {
-		if (name[i] == 0)
+	for (int i = 0; i < len; i++) {
+		if (name->size == i)
 			return;
-		key[i] = key[i] | name[i];
+		key[i] = key[i] | *(&name->value + i);
 	}
 }
 
@@ -1389,14 +1388,6 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	} else {
 		string_table = (String *) codefilepos;
 		String * n = string_table;
-		/*char * x = (char *) string_table;
-		for(int ii = 0; ii < 1; ii++){
-x += n->size + 4;
-n = (String *)x;
-		}
-		for(int k = 0; k < n->size; k++){
-				wprintf(u"%c", *(&n->value + k));
-		}*/
 		for (j = 0; j < i; j++){
 			readString(n);
 			/*wprintf(u"\r\n");
@@ -1457,7 +1448,7 @@ n = (String *)x;
 		/*for(int l = 0; l < lib->allClasses[i].name->size; l++){
 			wprintf(u"%c", *(&lib->allClasses[i].name->value + l));
 		}*/
-		//addHashKey(lib->allClasses[i].name, lib->key, LIB_HASHKEY_LEN);
+		addHashKey(lib->allClasses[i].name, lib->key, LIB_HASHKEY_LEN);
 
 		//printf("Class: %s\n", lib->allClasses[i].name);
 
@@ -1713,7 +1704,7 @@ readInt(argbyte);
 					}
 				case 6:{	/* ClassSTEntry */
 						SymbolDescClass *s;
-						wprintf(u"     Symbol: Class\r\n");
+						//wprintf(u"     Symbol: Class\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescClass));
 						/*s = (SymbolDescClass *)
 						    lib->allClasses[i].methods[j].symbols[k];
@@ -1766,7 +1757,7 @@ readInt(argbyte);
 					}
 				case 12:{	/* VMSupportSTEntry */
 						SymbolDescVMSupport *s;
-						wprintf(u"     Symbol: VMSupport\r\n");
+						//wprintf(u"     Symbol: VMSupport\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescVMSupport));
 						/*s = (SymbolDescVMSupport *)
 						    lib->allClasses[i].methods[j].symbols[k];
@@ -1806,7 +1797,7 @@ readInt(argbyte);
 					{	/* StackMap */
 						SymbolDescStackMap *s;
 						int mapPos;
-						wprintf(u"     Symbol: StackMap\r\n");
+						//wprintf(u"     Symbol: StackMap\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackMap));
 						/*s = (SymbolDescStackMap *)
 						    lib->allClasses[i].methods[j].symbols[k];
