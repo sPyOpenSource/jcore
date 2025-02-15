@@ -1479,20 +1479,21 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		}
 		readInt(lib->allClasses[i].numberOfInterfaces);
 		if (lib->allClasses[i].numberOfInterfaces > 0) {
-			lib->allClasses[i].interfaces;// = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
-			lib->allClasses[i].ifname;// = malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
+			//lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
+			rm(EfiLoaderData, sizeof(ClassDesc) * lib->allClasses[i].numberOfInterfaces, (void**)&lib->allClasses[i].interfaces);
+			//lib->allClasses[i].ifname = malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
+			rm(EfiLoaderData, sizeof(String *) * lib->allClasses[i].numberOfInterfaces, (void**)&lib->allClasses[i].ifname);
 		} else {
 			lib->allClasses[i].interfaces = (ClassDesc **) NULL;
 			lib->allClasses[i].ifname = NULL;
 		}
 		for (j = 0; j < lib->allClasses[i].numberOfInterfaces; j++) {
-			//readStringID(lib->allClasses[i].ifname[j]);
-			int m;
-			readInt(m);
+			readStringID(lib->allClasses[i].ifname[j]);
 		}
 		readInt(lib->allClasses[i].numberOfMethods);
 		if (lib->allClasses[i].numberOfMethods > 0) {
 			//lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
+			rm(EfiLoaderData, sizeof(MethodDesc) * lib->allClasses[i].numberOfMethods, (void**)&lib->allClasses[i].methods);
 		} else {
 			lib->allClasses[i].methods = NULL;
 		}
@@ -1580,7 +1581,7 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 
 		for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
 			int symsize;
-			//lib->allClasses[i].methods[j].objectDesc_flags = OBJFLAGS_EXTERNAL_METHOD;
+			lib->allClasses[i].methods[j].objectDesc_flags = OBJFLAGS_EXTERNAL_METHOD;
 #ifdef USE_QMAGIC
 			lib->allClasses[i].methods[j].magic = MAGIC_METHODDESC;
 			lib->allClasses[i].methods[j].objectDesc_magic = MAGIC_OBJECT;
@@ -1588,59 +1589,49 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 			if (vmmethodClass)
 				lib->allClasses[i].methods[j].objectDesc_vtable = vmmethodClass->vtable;
 
-			//readStringID(lib->allClasses[i].methods[j].name);
-			//readStringID(lib->allClasses[i].methods[j].signature);
-readInt(symsize);
-readInt(symsize);
+			readStringID(lib->allClasses[i].methods[j].name);
+			readStringID(lib->allClasses[i].methods[j].signature);
+
 			//printf("  Method: %s%s\n", lib->allClasses[i].methods[j].name, lib->allClasses[i].methods[j].signature);
 
-			//readInt(lib->allClasses[i].methods[j].sizeLocalVars);
-			readInt(symsize);
-			//lib->allClasses[i].methods[j].classDesc = &(lib->allClasses[i]);
+			readInt(lib->allClasses[i].methods[j].sizeLocalVars);
+			lib->allClasses[i].methods[j].classDesc = &(lib->allClasses[i]);
 #ifdef PROFILE
 			lib->allClasses[i].methods[j].isprofiled = JNI_FALSE;
 #endif
 			//wprintf(u"  Method: %s.%s%s\n", lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
 			//	lib->allClasses[i].methods[j].signature);
-			//readInt(lib->allClasses[i].methods[j].numberOfCodeBytes);
-			int noc;
-			readInt(noc);
+			readInt(lib->allClasses[i].methods[j].numberOfCodeBytes);
 			//wprintf(u"     NumberOfCodeBytes: %ld\n", lib->allClasses[i].methods[j].numberOfCodeBytes);
-			//ASSERT(lib->allClasses[i].methods[j].numberOfCodeBytes >= 0);
-			//lib->allClasses[i].methods[j].sizeOfExceptionTable = 0;
+			ASSERT(lib->allClasses[i].methods[j].numberOfCodeBytes >= 0);
+			lib->allClasses[i].methods[j].sizeOfExceptionTable = 0;
 
-			//readInt(lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
-			//readInt(lib->allClasses[i].methods[j].numberOfArgs);
-			int argbyte;
-			readInt(argbyte);
-			readInt(symsize);
-			//lib->allClasses[i].methods[j].argTypeMap = NULL;
-			//if (lib->allClasses[i].methods[j].numberOfArgTypeMapBytes > 0) {
+			readInt(lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
+			readInt(lib->allClasses[i].methods[j].numberOfArgs);
+			lib->allClasses[i].methods[j].argTypeMap = NULL;
+			if (lib->allClasses[i].methods[j].numberOfArgTypeMapBytes > 0) {
 				//lib->allClasses[i].methods[j].argTypeMap = malloc_argsmap(domain, lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
-				for (m = 0; m < /*lib->allClasses[i].methods[j].numberOfArgTypeMapBytes*/argbyte; m++) {
+				for (m = 0; m < lib->allClasses[i].methods[j].numberOfArgTypeMapBytes; m++) {
 					//readByte(lib->allClasses[i].methods[j].argTypeMap[m]);
 					char o;
 					readByte(o);
 				}
-			//}
-			//readInt(lib->allClasses[i].methods[j].returnType);
-			readInt(argbyte);
+			}
+			readInt(lib->allClasses[i].methods[j].returnType);
 			/* printf("  Method: %s %s %d\n", lib->allClasses[i].methods[j].name, lib->allClasses[i].methods[j].signature,
 			   lib->allClasses[i].methods[j].returnType
 			   ); */
-			//readInt(lib->allClasses[i].methods[j].flags);
-readInt(argbyte);
-			//lib->allClasses[i].methods[j].codeOffset = completeCodeBytes;
-			completeCodeBytes += noc;//lib->allClasses[i].methods[j].numberOfCodeBytes;
-			//readInt(lib->allClasses[i].methods[j].numberOfSymbols);
-			readInt(argbyte);
-			/*if (lib->allClasses[i].methods[j].numberOfSymbols > 0) {
-				lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? 
+			readInt(lib->allClasses[i].methods[j].flags);
+			lib->allClasses[i].methods[j].codeOffset = completeCodeBytes;
+			completeCodeBytes += lib->allClasses[i].methods[j].numberOfCodeBytes;
+			readInt(lib->allClasses[i].methods[j].numberOfSymbols);
+			if (lib->allClasses[i].methods[j].numberOfSymbols > 0) {
+				//lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? 
 			} else {
 				lib->allClasses[i].methods[j].symbols = NULL;
-			}*/
+			}
 			//kprintf(u"     NumberOfSymbols: %ld\n", lib->allClasses[i].methods[j].numberOfSymbols);
-			for (k = 0; k < /*lib->allClasses[i].methods[j].numberOfSymbols*/argbyte; k++) {
+			for (k = 0; k < lib->allClasses[i].methods[j].numberOfSymbols; k++) {
 				jint type;
 				jint immediateNCIndex;
 				jint numBytes;
@@ -1879,18 +1870,16 @@ readInt(argbyte);
 				}*/
 			}
 
-			/*if (lib->allClasses[i].methods[j].sizeOfExceptionTable > 0) {
-				lib->allClasses[i].methods[j].exceptionTable = malloc_exceptiondescs(domain, lib->allClasses[i].methods[j].sizeOfExceptionTable);
+			if (lib->allClasses[i].methods[j].sizeOfExceptionTable > 0) {
+				//lib->allClasses[i].methods[j].exceptionTable = malloc_exceptiondescs(domain, lib->allClasses[i].methods[j].sizeOfExceptionTable);
 			} else {
 				lib->allClasses[i].methods[j].exceptionTable = NULL;
-			}*/
+			}
 
-			//readInt(lib->allClasses[i].methods[j].numberOfByteCodes);
-			int b;
-			readInt(b);
-			//if (lib->allClasses[i].methods[j].numberOfByteCodes > 0) {
+			readInt(lib->allClasses[i].methods[j].numberOfByteCodes);
+			if (lib->allClasses[i].methods[j].numberOfByteCodes > 0) {
 				//lib->allClasses[i].methods[j].bytecodeTable = malloc_bytecodetable(domain, lib->allClasses[i].methods[j].numberOfByteCodes);
-				for (k = 0; k < /*lib->allClasses[i].methods[j].numberOfByteCodes*/b; k++) {
+				for (k = 0; k < lib->allClasses[i].methods[j].numberOfByteCodes; k++) {
 					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos);
 					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].start);
 					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].end);
@@ -1900,28 +1889,27 @@ readInt(argbyte);
 					readInt(o);
 					//debugbt(("POS: %ld\n", lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos));
 				}
-			//} else {
-				//lib->allClasses[i].methods[j].bytecodeTable = NULL;
-			//}
+			} else {
+				lib->allClasses[i].methods[j].bytecodeTable = NULL;
+			}
 
 
 			/* read BC -> SOURCELINE mapping */
 
-			//readInt(lib->allClasses[i].methods[j].numberOfSourceLines);
-			readInt(b);
+			readInt(lib->allClasses[i].methods[j].numberOfSourceLines);
 			//debugf(("   BC->SC: %ld\n", lib->allClasses[i].methods[j].numberOfSourceLines));
-			//if (lib->allClasses[i].methods[j].numberOfSourceLines > 0) {
+			if (lib->allClasses[i].methods[j].numberOfSourceLines > 0) {
 				//lib->allClasses[i].methods[j].sourceLineTable = malloc_sourcelinetable(domain, lib->allClasses[i].methods[j].numberOfSourceLines);
-				for (k = 0; k < /*lib->allClasses[i].methods[j].numberOfSourceLines*/b; k++) {
+				for (k = 0; k < lib->allClasses[i].methods[j].numberOfSourceLines; k++) {
 					//readInt(lib->allClasses[i].methods[j].sourceLineTable[k].startBytecode);
 					//readInt(lib->allClasses[i].methods[j].sourceLineTable[k].lineNumber);
 					int o;
 					readInt(o);
 					readInt(o);
 				}
-			//} else {
-				//lib->allClasses[i].methods[j].sourceLineTable = NULL;
-			//}
+			} else {
+				lib->allClasses[i].methods[j].sourceLineTable = NULL;
+			}
 
 
 		}
@@ -2618,8 +2606,7 @@ MethodDesc *cloneMethodInDomain(DomainDesc * domain, MethodDesc * method)
 	return new_method;
 }
 
-void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFunction, jint allocArrayFunction,
-		   TempMemory * tmp_mem)
+void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFunction, jint allocArrayFunction)
 {
 	jint i, j;
 	MethodDesc *method;

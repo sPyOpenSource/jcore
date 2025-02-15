@@ -146,7 +146,7 @@ struct ArrayClassDesc_s;
     String *name;\
     struct ClassDesc_s *superclass;\
     jint numberOfInterfaces;\
-    char **ifname;\
+    String **ifname;\
     struct ClassDesc_s **interfaces;\
     jint numberOfMethods;\
     jint vtableSize;\

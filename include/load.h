@@ -53,8 +53,7 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc);
 ObjectDesc *allocObject(ClassDesc * c);
 void callClassConstructors(DomainDesc * domain, LibDesc * lib);
 void linksharedlib(DomainDesc * domain, SharedLibDesc * lib,
-		   jint allocObjectFunction, jint allocArrayFunction,
-		   TempMemory * tmp_mem);
+		   jint allocObjectFunction, jint allocArrayFunction);
 void executeInterface(DomainDesc * domain, char *className,
 		      char *methodname, char *signature, ObjectDesc * obj,
 		      jint * params, int params_size);

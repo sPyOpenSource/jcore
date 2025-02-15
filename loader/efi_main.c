@@ -91,9 +91,9 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     //int g = KernelBinFile();
 //KernelBinFile();
 //__asm__("mov esp,INITSTACK");
- //__asm__("mov 0,%edi");
- //__asm__("mov 0,%rax");
- //__asm__("call *%rax");
+//__asm__("mov 0,%edi");
+//__asm__("mov 0,%rax");
+//__asm__("call *%rax");
     SetTextColor(EFI_LIGHTMAGENTA);
     //wprintf(u"\r\nThe returned number is : %d", g);
 
