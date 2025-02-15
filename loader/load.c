@@ -1259,7 +1259,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 	if (version != CURRENT_COMPILER_VERSION) {
 		//printf("Library name=%s version=%ld. ", filename, version);
 		//printf("Cannot load code with version != %d\n", CURRENT_COMPILER_VERSION);
-		wprintf("Mismatch between library version and version supported by jxcore");
+		wprintf(u"Mismatch between library version and version supported by jxcore");
 	}
 	//readString(processor, sizeof(processor));
 	readInt(i);
@@ -1465,10 +1465,10 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 		//readStringID(supername);
 		readInt(n);
-		if (supername[0] == '\0') {
+		/*if (supername[0] == '\0') {
 			lib->allClasses[i].superclass = NULL;
 		} else {
-			/*ClassDesc *scl = NULL;
+			ClassDesc *scl = NULL;
 			if (strcmp(supername, "java/lang/Object") == 0) {
 				scl = java_lang_Object;
 			}
@@ -1478,8 +1478,8 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 				scl = findClassDesc(supername);
 			if (scl == NULL)
 				wprintf(u"find superclass");
-			lib->allClasses[i].superclass = scl;*/
-		}
+			lib->allClasses[i].superclass = scl;
+		}*/
 
 		readInt(isinterface);
 		if (isinterface) {
@@ -1487,53 +1487,63 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		}
 		//readInt(lib->allClasses[i].numberOfInterfaces);
 		readInt(n);
-		if (lib->allClasses[i].numberOfInterfaces > 0) {
+		/*if (lib->allClasses[i].numberOfInterfaces > 0) {
 			//lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
 			lib->allClasses[i].ifname;// = malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
 		} else {
 			//lib->allClasses[i].interfaces = (ClassDesc **) NULL;
 			//lib->allClasses[i].ifname = NULL;
-		}
-		for (j = 0; j < /*lib->allClasses[i].numberOfInterfaces*/i; j++) {
+		}*/
+		for (j = 0; j < /*lib->allClasses[i].numberOfInterfaces*/n; j++) {
 			//readStringID(lib->allClasses[i].ifname[j]);
-			int n;
-			readInt(n);
+			int m;
+			readInt(m);
 		}
 		//readInt(lib->allClasses[i].numberOfMethods);
-		readInt(n);
-		if (lib->allClasses[i].numberOfMethods > 0) {
+		int number;
+		readInt(number);
+		/*if (lib->allClasses[i].numberOfMethods > 0) {
 			//lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
 		} else {
 			//lib->allClasses[i].methods = NULL;
-		}
+		}*/
 		//readInt(lib->allClasses[i].instanceSize);
 readInt(n);
 		/* fieldmap */
 		//readInt(lib->allClasses[i].mapBytes);
 		readInt(n);
-		lib->allClasses[i].map = NULL;
+		char m;
+		for(j = 0; j < n; j++) readByte(m);
+		/*lib->allClasses[i].map = NULL;
 		if (lib->allClasses[i].mapBytes > 0) {
 			//lib->allClasses[i].map = malloc_objectmap(domain, lib->allClasses[i].mapBytes);
 			for (j = 0; j < lib->allClasses[i].mapBytes; j++) {
 				readByte(lib->allClasses[i].map[j]);
 			}
-		}
+		}*/
 
 		/* fieldlist */
-		readInt(lib->allClasses[i].numberFields);
-		lib->allClasses[i].fields = NULL;
-		if (lib->allClasses[i].numberFields > 0) {
+		//readInt(lib->allClasses[i].numberFields);
+		readInt(n);
+		//lib->allClasses[i].fields = NULL;
+		/*if (lib->allClasses[i].numberFields > 0) {
 			//lib->allClasses[i].fields = malloc_fielddescs(domain, lib->allClasses[i].numberFields);
 			for (j = 0; j < lib->allClasses[i].numberFields; j++) {
 				readStringID(lib->allClasses[i].fields[j].fieldName);
 				readStringID(lib->allClasses[i].fields[j].fieldType);
 				readInt(lib->allClasses[i].fields[j].fieldOffset);
 			}
-		}
-
+		}*/
+for(j = 0; j < n; j++){
+	jint o;
+	readInt(o);
+	readInt(o);
+	readInt(o);
+}
 
 		/* static fields */
-		readInt(lib->allClasses[i].staticFieldsSize);
+		//readInt(lib->allClasses[i].staticFieldsSize);
+		readInt(n);
 #ifdef USE_LIB_INDEX
 		lib->allClasses[i].sfield_offset = sfields_offset;
 		sfields_offset += lib->allClasses[i].staticFieldsSize;
@@ -1541,14 +1551,19 @@ readInt(n);
 #endif
 
 		/* static maps */
-		readInt(lib->allClasses[i].staticsMapBytes);
-		lib->allClasses[i].staticsMap = NULL;
+		//readInt(lib->allClasses[i].staticsMapBytes);
+		readInt(n);
+		for(int j = 0; j < n; j++) {
+			char o;
+			readByte(o);
+		}
+		/*lib->allClasses[i].staticsMap = NULL;
 		if (lib->allClasses[i].staticsMapBytes > 0) {
 			//lib->allClasses[i].staticsMap = malloc_staticsmap(domain, lib->allClasses[i].staticsMapBytes);
 			for (j = 0; j < lib->allClasses[i].staticsMapBytes; j++) {
 				readByte(lib->allClasses[i].staticsMap[j]);
 			}
-		}
+		}*/
 		readInt(dummy);
 
 
@@ -1558,23 +1573,27 @@ readInt(n);
 		readInt(dummy);
 
 		/* read vtable */
-		readInt(lib->allClasses[i].vtableSize);
-		completeVtableSize += lib->allClasses[i].vtableSize;
-		if (lib->allClasses[i].vtableSize != 0) {
+		//readInt(lib->allClasses[i].vtableSize);
+		readInt(n);
+		//completeVtableSize += lib->allClasses[i].vtableSize;
+		if (/*lib->allClasses[i].vtableSize*/n != 0) {
 			//lib->allClasses[i].vtableSym = malloc_vtableSym(domain, lib->allClasses[i].vtableSize);
-			for (j = 0; j < lib->allClasses[i].vtableSize * 3; j += 3) {
-				readStringID(lib->allClasses[i].vtableSym[j]);	/* class */
-				readStringID(lib->allClasses[i].vtableSym[j + 1]);	/* name */
+			for (j = 0; j < /*lib->allClasses[i].vtableSize*/n * 3; j += 3) {
+				/*readStringID(lib->allClasses[i].vtableSym[j]);	/* class 
+				readStringID(lib->allClasses[i].vtableSym[j + 1]);	/* name 
 				readStringID(lib->allClasses[i].vtableSym[j + 2]);	/* type */
+				readInt(dummy);
+				readInt(dummy);
+				readInt(dummy);
 				readInt(dummy);
 			}
 		} else {
-			debugf("VTableSize == 0\n");
+			wprintf(u"VTableSize == 0\r\n");
 		}
 
-		for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
+		for (j = 0; j < /*lib->allClasses[i].numberOfMethods*/number; j++) {
 			int symsize;
-			lib->allClasses[i].methods[j].objectDesc_flags = OBJFLAGS_EXTERNAL_METHOD;
+			//lib->allClasses[i].methods[j].objectDesc_flags = OBJFLAGS_EXTERNAL_METHOD;
 #ifdef USE_QMAGIC
 			lib->allClasses[i].methods[j].magic = MAGIC_METHODDESC;
 			lib->allClasses[i].methods[j].objectDesc_magic = MAGIC_OBJECT;
@@ -1582,48 +1601,58 @@ readInt(n);
 			if (vmmethodClass)
 				lib->allClasses[i].methods[j].objectDesc_vtable = vmmethodClass->vtable;
 
-			readStringID(lib->allClasses[i].methods[j].name);
-			readStringID(lib->allClasses[i].methods[j].signature);
-
+			//readStringID(lib->allClasses[i].methods[j].name);
+			//readStringID(lib->allClasses[i].methods[j].signature);
+readInt(symsize);
+readInt(symsize);
 			//printf("  Method: %s%s\n", lib->allClasses[i].methods[j].name, lib->allClasses[i].methods[j].signature);
 
-			readInt(lib->allClasses[i].methods[j].sizeLocalVars);
-			lib->allClasses[i].methods[j].classDesc = &(lib->allClasses[i]);
+			//readInt(lib->allClasses[i].methods[j].sizeLocalVars);
+			readInt(symsize);
+			//lib->allClasses[i].methods[j].classDesc = &(lib->allClasses[i]);
 #ifdef PROFILE
 			lib->allClasses[i].methods[j].isprofiled = JNI_FALSE;
 #endif
-			wprintf(u"  Method: %s.%s%s\n", lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
-				lib->allClasses[i].methods[j].signature);
-			readInt(lib->allClasses[i].methods[j].numberOfCodeBytes);
-			wprintf(u"     NumberOfCodeBytes: %ld\n", lib->allClasses[i].methods[j].numberOfCodeBytes);
-			ASSERT(lib->allClasses[i].methods[j].numberOfCodeBytes >= 0);
-			lib->allClasses[i].methods[j].sizeOfExceptionTable = 0;
+			//wprintf(u"  Method: %s.%s%s\n", lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
+			//	lib->allClasses[i].methods[j].signature);
+			//readInt(lib->allClasses[i].methods[j].numberOfCodeBytes);
+			readInt(symsize);
+			//wprintf(u"     NumberOfCodeBytes: %ld\n", lib->allClasses[i].methods[j].numberOfCodeBytes);
+			//ASSERT(lib->allClasses[i].methods[j].numberOfCodeBytes >= 0);
+			//lib->allClasses[i].methods[j].sizeOfExceptionTable = 0;
 
-			readInt(lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
-			readInt(lib->allClasses[i].methods[j].numberOfArgs);
-			lib->allClasses[i].methods[j].argTypeMap = NULL;
-			if (lib->allClasses[i].methods[j].numberOfArgTypeMapBytes > 0) {
+			//readInt(lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
+			//readInt(lib->allClasses[i].methods[j].numberOfArgs);
+			int argbyte;
+			readInt(argbyte);
+			readInt(symsize);
+			//lib->allClasses[i].methods[j].argTypeMap = NULL;
+			//if (lib->allClasses[i].methods[j].numberOfArgTypeMapBytes > 0) {
 				//lib->allClasses[i].methods[j].argTypeMap = malloc_argsmap(domain, lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
-				for (m = 0; m < lib->allClasses[i].methods[j].numberOfArgTypeMapBytes; m++) {
-					readByte(lib->allClasses[i].methods[j].argTypeMap[m]);
+				for (m = 0; m < /*lib->allClasses[i].methods[j].numberOfArgTypeMapBytes*/argbyte; m++) {
+					//readByte(lib->allClasses[i].methods[j].argTypeMap[m]);
+					char o;
+					readByte(o);
 				}
-			}
-			readInt(lib->allClasses[i].methods[j].returnType);
+			//}
+			//readInt(lib->allClasses[i].methods[j].returnType);
+			readInt(argbyte);
 			/* printf("  Method: %s %s %d\n", lib->allClasses[i].methods[j].name, lib->allClasses[i].methods[j].signature,
 			   lib->allClasses[i].methods[j].returnType
 			   ); */
-			readInt(lib->allClasses[i].methods[j].flags);
-
-			lib->allClasses[i].methods[j].codeOffset = completeCodeBytes;
-			completeCodeBytes += lib->allClasses[i].methods[j].numberOfCodeBytes;
-			readInt(lib->allClasses[i].methods[j].numberOfSymbols);
-			if (lib->allClasses[i].methods[j].numberOfSymbols > 0) {
-				//lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? */
+			//readInt(lib->allClasses[i].methods[j].flags);
+readInt(argbyte);
+			//lib->allClasses[i].methods[j].codeOffset = completeCodeBytes;
+			//completeCodeBytes += lib->allClasses[i].methods[j].numberOfCodeBytes;
+			//readInt(lib->allClasses[i].methods[j].numberOfSymbols);
+			readInt(argbyte);
+			/*if (lib->allClasses[i].methods[j].numberOfSymbols > 0) {
+				//lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? 
 			} else {
-				lib->allClasses[i].methods[j].symbols = NULL;
-			}
-			debugf(("     NumberOfSymbols: %ld\n", lib->allClasses[i].methods[j].numberOfSymbols));
-			for (k = 0; k < lib->allClasses[i].methods[j].numberOfSymbols; k++) {
+				//lib->allClasses[i].methods[j].symbols = NULL;
+			}*/
+			//kprintf(u"     NumberOfSymbols: %ld\n", lib->allClasses[i].methods[j].numberOfSymbols);
+			for (k = 0; k < /*lib->allClasses[i].methods[j].numberOfSymbols*/argbyte; k++) {
 				jint type;
 				jint immediateNCIndex;
 				jint numBytes;
@@ -1633,178 +1662,173 @@ readInt(n);
 				readInt(immediateNCIndex);
 				readInt(numBytes);
 				readInt(nextInstrNCIndex);
-/*
-				readShort(type);
-				readShort(immediateNCIndex);
-				readShort(numBytes);
-				readShort(nextInstrNCIndex);
-*/
-				if ((immediateNCIndex + numBytes) > lib->allClasses[i].methods[j].numberOfCodeBytes) {
-					wprintf
-					    ("wrong patch index: %d in method %s.%s\nMethod has %d codebytes.\nNumber of bytes to patch is %d.\n",
-					     immediateNCIndex, lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
-					     lib->allClasses[i].methods[j].numberOfCodeBytes, numBytes);
-				}
+
+				/*if ((immediateNCIndex + numBytes) > lib->allClasses[i].methods[j].numberOfCodeBytes) {
+					//wprintf
+					  //  (u"wrong patch index: %d in method %s.%s\nMethod has %d codebytes.\nNumber of bytes to patch is %d.\n",
+					    // immediateNCIndex, lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
+					     //lib->allClasses[i].methods[j].numberOfCodeBytes, numBytes);
+				}*/
 				switch (type) {
 				case 0:
-					wprintf("Error: Symboltype 0");
+					wprintf(u"Error: Symboltype 0\r\n");
 					break;
 				case 1:{	/* DomainZeroSTEntry */
-						debugs("     Symbol: DomainZero\n");
+						wprintf(u"     Symbol: DomainZero\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDomainZero));
 						break;
 					}
 				case 2:{	/* ExceptionHandlerSTEntry */
-						debugs("     Symbol: ExceptionHandler\n");
+						wprintf(u"     Symbol: ExceptionHandler\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescExceptionHandler));
 						break;
 					}
 				case 3:{	/* DEPFunctionSTEntry */
 						SymbolDescDEPFunction *s;
-						debugs("     Symbol: DEPFunction\n");
+						wprintf(u"     Symbol: DEPFunction\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDEPFunction));
-						s = (SymbolDescDEPFunction *) lib->allClasses[i].methods[j].symbols[k];
-						readAllocString(s->className);
-						readAllocString(s->methodName);
-						readAllocString(s->methodSignature);
+						//s = (SymbolDescDEPFunction *) lib->allClasses[i].methods[j].symbols[k];
+						//readAllocString(s->className);
+						//readAllocString(s->methodName);
+						//readAllocString(s->methodSignature);
+						readInt(s);
+						readInt(s);
+						readInt(s);
 						break;
 					}
 				case 4:{	/* StaticFieldSTEntry */
 						SymbolDescStaticField *s;
-						debugs("     Symbol: StaticField\n");
+						wprintf(u"     Symbol: StaticField\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStaticField));
-						s = (SymbolDescStaticField *) lib->allClasses[i].methods[j].symbols[k];
-						readStringID(s->className);
-						readInt(s->kind);
-						readInt(s->fieldOffset);
+						//s = (SymbolDescStaticField *) lib->allClasses[i].methods[j].symbols[k];
+						//readStringID(s->className);
+						//readInt(s->kind);
+						//readInt(s->fieldOffset);
+						readInt(s);
+						readInt(s);
+						readInt(s);
 						break;
 					}
 				case 5:{	/* AllocObjectSTEntry */
-						debugs("     Symbol: AllocObject\n");
+						wprintf(u"     Symbol: AllocObject\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocObject));
 						break;
 					}
 				case 6:{	/* ClassSTEntry */
 						SymbolDescClass *s;
-						debugs("     Symbol: Class\n");
+						wprintf(u"     Symbol: Class\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescClass));
-						s = (SymbolDescClass *)
+						/*s = (SymbolDescClass *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readStringID(s->className);
+						readStringID(s->className);*/
+						readInt(s);
 						break;
 					}
 				case 7:{	/* DirectMethodCallSTEntry */
 						SymbolDescDirectMethodCall *s;
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDirectMethodCall));
-						s = (SymbolDescDirectMethodCall *) lib->allClasses[i].methods[j].symbols[k];
-						//readAllocString(s->className);
-						//readAllocString(s->methodName);
-						//readAllocString(s->methodSignature);
-						readStringID(s->className);
-						readStringID(s->methodName);
-						readStringID(s->methodSignature);
-						wprintf(u"     Symbol: DirectMethodCall %s.%s%s\n", s->className, s->methodName,
-							s->methodSignature);
+						//s = (SymbolDescDirectMethodCall *) lib->allClasses[i].methods[j].symbols[k];
+						//readStringID(s->className);
+						//readStringID(s->methodName);
+						//readStringID(s->methodSignature);
+						readInt(s);
+						readInt(s);
+						readInt(s);
+						/*wprintf(u"     Symbol: DirectMethodCall %s.%s%s\n", s->className, s->methodName,
+							s->methodSignature);*/
 						break;
 					}
 				case 8:{	/* StringSTEntry */
 						SymbolDescString *s;
-						debugs("     Symbol: String\n");
+						wprintf(u"     Symbol: String\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescString));
-						s = (SymbolDescString *)
+						/*s = (SymbolDescString *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readStringID(s->value);
-						//readAllocString(s->value);
+						readStringID(s->value);*/
+						readInt(s);
 						break;
 					}
 				case 9:{	/* AllocArraySTEntry */
-						debugs("     Symbol: AllocArray\n");
+						wprintf(u"     Symbol: AllocArray\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocArray));
 						break;
 					}
 				case 10:{	/* AllocMultiArraySTEntry */
-						debugs("     Symbol: MultiAllocArray\n");
+						wprintf(u"     Symbol: MultiAllocArray\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocMultiArray));
 						break;
 					}
 				case 11:{	/* LongArithmeticSTEntry */
 						SymbolDescLongArithmetic *s;
-						debugs("     Symbol: LongArithmetic\n");
+						wprintf(u"     Symbol: LongArithmetic\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescLongArithmetic));
-						s = (SymbolDescLongArithmetic *) lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->operation);
+						//s = (SymbolDescLongArithmetic *) lib->allClasses[i].methods[j].symbols[k];
+						//readInt(s->operation);
+						readInt(s);
 						break;
 					}
 				case 12:{	/* VMSupportSTEntry */
 						SymbolDescVMSupport *s;
-						debugs("     Symbol: VMSupport\n");
+						wprintf(u"     Symbol: VMSupport\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescVMSupport));
-						s = (SymbolDescVMSupport *)
+						/*s = (SymbolDescVMSupport *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->operation);
+						readInt(s->operation);*/
+						readInt(s);
 						break;
 					}
 				case 13:{	/* PrimitiveClassSTEntry */
 						SymbolDescPrimitiveClass *s;
-						debugs(("     Symbol: PrimitiveClass\n"));
+						wprintf(u"     Symbol: PrimitiveClass\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescPrimitiveClass));
-						s = (SymbolDescPrimitiveClass *) lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->primitiveType);
+						//s = (SymbolDescPrimitiveClass *) lib->allClasses[i].methods[j].symbols[k];
+						//readInt(s->primitiveType);
+						readInt(s);
 						break;
 					}
 				case 14:{	/* UnresolvedJump */
 						SymbolDescUnresolvedJump *s;
-						debugs(("     Symbol: UnresolvedJump\n"));
+						wprintf(u"     Symbol: UnresolvedJump\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescUnresolvedJump));
-						s = (SymbolDescUnresolvedJump *) lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->targetNCIndex);
+						//s = (SymbolDescUnresolvedJump *) lib->allClasses[i].methods[j].symbols[k];
+						//readInt(s->targetNCIndex);
+						readInt(s);
 						break;
 					}
 				case 15:{	/* VMAbsoluteSTEntry */
 						SymbolDescVMSupport *s;
-						debugs(("     Symbol: VMAbsolute\n"));
+						wprintf(u"     Symbol: VMAbsolute\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescVMSupport));
-						s = (SymbolDescVMSupport *)
-						    lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->operation);
-						break;
-					}
-				case 16:	// old version
-					{	/* StackMap */
-						SymbolDescStackMap *s;
-						int mapPos;
-						debugs(("     Symbol: StackMap\n"));
-						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackMap));
-						s = (SymbolDescStackMap *)
-						    lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->n_bytes);
-						readInt(s->n_bits);
-						if (s->n_bytes > 0){
-							//s->map = malloc_stackmap(domain, s->n_bytes);
-						}else
-							s->map = NULL;
-						for (mapPos = 0; mapPos < s->n_bytes; mapPos++) {
-							readByte(s->map[mapPos]);
-						}
+						/*s = (SymbolDescVMSupport *)
+						    lib->allClasses[i].methods[j].symbols[k];*/
+						//readInt(s->operation);
+						readInt(s);
 						break;
 					}
 				case 17:	// new version 
 					{	/* StackMap */
 						SymbolDescStackMap *s;
 						int mapPos;
-						debugs(("     Symbol: StackMap\n"));
+						wprintf(u"     Symbol: StackMap\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackMap));
-						s = (SymbolDescStackMap *)
+						/*s = (SymbolDescStackMap *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->immediateNCIndexPre);
 						readInt(s->n_bytes);
-						readInt(s->n_bits);
-						if (s->n_bytes > 0){
+						readInt(s->n_bits);*/
+						readInt(s);
+						readInt(s);
+						int b;
+						readInt(b);
+						if (s/*->n_bytes*/ > 0){
 							//s->map = malloc_stackmap(domain, s->n_bytes);
-						}else
-							s->map = NULL;
-						for (mapPos = 0; mapPos < s->n_bytes; mapPos++) {
-							readByte(s->map[mapPos]);
+						} else {
+							//s->map = NULL;
+						}
+						for (mapPos = 0; mapPos < s/*->n_bytes*/; mapPos++) {
+							char o;
+							//readByte(s->map[mapPos]);
+							readByte(o);
 						}
 						break;
 					}
@@ -1816,93 +1840,104 @@ readInt(n);
 						readInt(s->targetNCIndex);	/* UnresolvedJump */
 						readInt(s->rangeStart);
 						readInt(s->rangeEnd);
-						//readAllocString(s->className);
 						readStringID(s->className);
-						debugs(("     Symbol: ExceptionTableSTEntry %d %d %s %p\n", s->rangeStart,
-							s->rangeEnd, s->className, s->targetNCIndex));
+						wprintf(u"     Symbol: ExceptionTableSTEntry %d %d %s %p\n", s->rangeStart,
+							s->rangeEnd, s->className, s->targetNCIndex);
 						break;
 					}
 				case 19:{	/* CurrentThreadPointerSTEntry */
-						debugs(("     Symbol: CurrentThreadPointerSTEntry\n"));
+						wprintf(u"     Symbol: CurrentThreadPointerSTEntry\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescThreadPointer));
 						break;
 					}
 				case 20:{	/* StackChunkSizeSTEntry */
-						debugs(("     Symbol: StackChunkSizeSTEntry\n"));
+						wprintf(u"     Symbol: StackChunkSizeSTEntry\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackChunkSize));
 						break;
 					}
 				case 21:{	/* ProfileSTEntry */
 						SymbolDescProfile *s;
-						debugs(("     Symbol: ProfileSTEntry\n"));
-						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescProfile));
+						wprintf(u"     Symbol: ProfileSTEntry\r\n");
+						/*lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescProfile));
 						s = (SymbolDescProfile *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->kind);
+						readInt(s->kind);*/
+						readInt(s);
 						break;
 					}
 				case 22:{	/* MethodeDescSTEntry */
-						debugs(("     Symbol: MethodeDescSTEntry\n"));
+						wprintf(u"     Symbol: MethodeDescSTEntry\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescMethodeDesc));
 						break;
 					}
 				case 23:{	/* TCBOffsetSTEntry */
 						SymbolDescTCBOffset *s;
-						debugs(("     Symbol: TCBOffsetSTEntry\n"));
-						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescTCBOffset));
+						wprintf(u"     Symbol: TCBOffsetSTEntry\r\n");
+						/*lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescTCBOffset));
 						s = (SymbolDescTCBOffset *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->kind);
+						readInt(s->kind);*/
+						readInt(s);
 						break;
 					}
 				default:
-					wprintf("Unknown symbol %d", type);
+					wprintf(u"Unknown symbol %d\r\n", type);
 				}
-				if (lib->allClasses[i].methods[j].symbols[k]) {
+				/*if (lib->allClasses[i].methods[j].symbols[k]) {
 					lib->allClasses[i].methods[j].symbols[k]->type = type;
 					lib->allClasses[i].methods[j].symbols[k]->immediateNCIndex = immediateNCIndex;
 					lib->allClasses[i].methods[j].symbols[k]->numBytes = numBytes;
 					lib->allClasses[i].methods[j].symbols[k]->nextInstrNCIndex = nextInstrNCIndex;
-				}
+				}*/
 			}
 
-			if (lib->allClasses[i].methods[j].sizeOfExceptionTable > 0) {
+			/*if (lib->allClasses[i].methods[j].sizeOfExceptionTable > 0) {
 				//lib->allClasses[i].methods[j].exceptionTable = malloc_exceptiondescs(domain, lib->allClasses[i].methods[j].sizeOfExceptionTable);
 			} else {
-				lib->allClasses[i].methods[j].exceptionTable = NULL;
-			}
+				//lib->allClasses[i].methods[j].exceptionTable = NULL;
+			}*/
 
-			readInt(lib->allClasses[i].methods[j].numberOfByteCodes);
-			if (lib->allClasses[i].methods[j].numberOfByteCodes > 0) {
+			//readInt(lib->allClasses[i].methods[j].numberOfByteCodes);
+			int b;
+			readInt(b);
+			//if (lib->allClasses[i].methods[j].numberOfByteCodes > 0) {
 				//lib->allClasses[i].methods[j].bytecodeTable = malloc_bytecodetable(domain, lib->allClasses[i].methods[j].numberOfByteCodes);
-				for (k = 0; k < lib->allClasses[i].methods[j].numberOfByteCodes; k++) {
-					readInt(lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos);
-					readInt(lib->allClasses[i].methods[j].bytecodeTable[k].start);
-					readInt(lib->allClasses[i].methods[j].bytecodeTable[k].end);
-					debugbt(("POS: %ld\n", lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos));
+				for (k = 0; k < /*lib->allClasses[i].methods[j].numberOfByteCodes*/b; k++) {
+					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos);
+					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].start);
+					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].end);
+					int o;
+					readInt(o);
+					readInt(o);
+					readInt(o);
+					//debugbt(("POS: %ld\n", lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos));
 				}
-			} else {
-				lib->allClasses[i].methods[j].bytecodeTable = NULL;
-			}
+			//} else {
+				//lib->allClasses[i].methods[j].bytecodeTable = NULL;
+			//}
 
 
 			/* read BC -> SOURCELINE mapping */
 
-			readInt(lib->allClasses[i].methods[j].numberOfSourceLines);
-			debugf(("   BC->SC: %ld\n", lib->allClasses[i].methods[j].numberOfSourceLines));
-			if (lib->allClasses[i].methods[j].numberOfSourceLines > 0) {
+			//readInt(lib->allClasses[i].methods[j].numberOfSourceLines);
+			readInt(b);
+			//debugf(("   BC->SC: %ld\n", lib->allClasses[i].methods[j].numberOfSourceLines));
+			//if (lib->allClasses[i].methods[j].numberOfSourceLines > 0) {
 				//lib->allClasses[i].methods[j].sourceLineTable = malloc_sourcelinetable(domain, lib->allClasses[i].methods[j].numberOfSourceLines);
-				for (k = 0; k < lib->allClasses[i].methods[j].numberOfSourceLines; k++) {
-					readInt(lib->allClasses[i].methods[j].sourceLineTable[k].startBytecode);
-					readInt(lib->allClasses[i].methods[j].sourceLineTable[k].lineNumber);
+				for (k = 0; k < /*lib->allClasses[i].methods[j].numberOfSourceLines*/b; k++) {
+					//readInt(lib->allClasses[i].methods[j].sourceLineTable[k].startBytecode);
+					//readInt(lib->allClasses[i].methods[j].sourceLineTable[k].lineNumber);
+					int o;
+					readInt(o);
+					readInt(o);
 				}
-			} else {
-				lib->allClasses[i].methods[j].sourceLineTable = NULL;
-			}
+			//} else {
+				//lib->allClasses[i].methods[j].sourceLineTable = NULL;
+			//}
 
 
 		}
-		lib->numberOfClasses++;
+		//lib->numberOfClasses++;
 	}
 
 	/* read code */
@@ -1919,9 +1954,9 @@ readInt(n);
 		printf("lib code not aligned to 4 byte addr: %p\n", lib->code);
 #endif
 #endif
-	lib->codeBytes = completeCodeBytes;
-	lib->vtablesize = completeVtableSize;
-	lib->bytecodes = completeBytecodeSize;
+	//lib->codeBytes = completeCodeBytes;
+	//lib->vtablesize = completeVtableSize;
+	//lib->bytecodes = completeBytecodeSize;
 	/*printf("Code: 0x%x (numBytes=%d)\n", (jint)code, completeCodeBytes); */
 	readCode(lib->code, completeCodeBytes);
 
@@ -1937,7 +1972,7 @@ readInt(n);
 	sharedLibsIndexNumber++;
 #endif
 
-	lib->next = sharedLibs;
+	//lib->next = sharedLibs;
 	sharedLibs = lib;
 
 	//RESTORE_IRQ;
