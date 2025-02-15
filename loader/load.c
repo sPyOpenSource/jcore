@@ -78,15 +78,15 @@ NOT IMPL jint readInt()
 
 #define readByte(i) {i = *(jbyte*)codefilepos; codefilepos += 1;}
 
-#define readStringData(buf, nBytes) { memcpy(buf, codefilepos, nBytes); codefilepos += nBytes; /*buf[nBytes] = '\0';*/}
+//#define readStringData(buf, nBytes) { memcpy(buf, codefilepos, nBytes); codefilepos += nBytes; /*buf[nBytes] = '\0';*/}
 
-#define readString(buf,nbuf) { jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);}
+#define readString(buf) { buf = (String*)codefilepos; codefilepos += *(jint*)codefilepos + 4;/*jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);*/}
 
-#define readStringID(buf) { jint id ; readInt(id); buf = string_table[id]; }
+#define readStringID(buf) { jint id ; readInt(id); buf = id;/*string_table[id];*/ }
 
 #define readAllocString(buf) {jint nBytes; /*readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
 
-#define readCode(buf, nbytes) {  memcpy(buf, codefilepos, nbytes); codefilepos += nbytes;}
+#define readCode(buf) {  buf = codefilepos;/*memcpy(buf, codefilepos, nbytes); codefilepos += nbytes;*/}
 
 
 ArrayDesc *vmSpecialAllocMultiArray(ClassDesc * elemClass, jint dim, jint sizes);
@@ -1233,7 +1233,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 {
 	jint i, checksum;
 	int version;
-	char processor[20];
+	String* processor;
 
 	char *codefilepos = codefile;
 
@@ -1249,24 +1249,17 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 	}
 
 	readInt(version);
-	/*for(int m = 0; m < 4; m++)
-    {
-        int j = *codefilepos;
-        wprintf(u" %x", j);
-        codefilepos++;
-    }*/
-	//wprintf((u"Version: %d", (int)version));
+	//wprintf(u"Version: %d", version);
 	if (version != CURRENT_COMPILER_VERSION) {
 		//printf("Library name=%s version=%ld. ", filename, version);
 		//printf("Cannot load code with version != %d\n", CURRENT_COMPILER_VERSION);
 		wprintf(u"Mismatch between library version and version supported by jxcore");
 	}
-	//readString(processor, sizeof(processor));
-	readInt(i);
-	for(int j = 0; j < i; j++){
-		wprintf(u"%c", *codefilepos);
-		codefilepos++;
-	}
+	readString(processor);
+	//readInt(i);
+	/*for(int j = 0; j < processor->size; j++){
+		wprintf(u"%c", *(&processor->value + j));
+	}*/
 	//wprintf(u"\r\nProcessor: ", processor);
 
 	return codefilepos;
@@ -1278,13 +1271,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	jint completeCodeBytes;
 	jint completeVtableSize = 0;
 	jint completeBytecodeSize = 0;
-	char *supername;
+	jint supername;
 	char libname[32];
 	SharedLibDesc *lib;
 	jint totalNumberOfClasses;
 	SharedLibDesc *neededLib;
 	//char *codefilepos;
-	char **string_table;
+	String **string_table;
 	jint dummy;
 	//jint size;
 	jint isinterface;
@@ -1321,7 +1314,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	 */
 
 	readInt(i);
-//wprintf(u"\r\nload lib");
+
 	/*
 	   load needed libs
 	 */
@@ -1368,21 +1361,17 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	readInt(i);
 	//lib->meta = malloc_metatable(domain, lib->numberOfMeta);
 	for (int j = 0; j < /*lib->numberOfMeta*/i; j++) {
-		jint n;
-		readInt(n);
+		String *n;
+		readString(n);
 		//lib->meta[j].var = codefilepos;
-		for(int k = 0; k < n; k++){
-			//wprintf(u"%c", *codefilepos);
-			codefilepos++;
-		}
-		//readAllocString(lib->meta[j].var);
-		readInt(n);
+		/*for(int k = 0; k < n->size; k++){
+			wprintf(u"%c", *codefilepos);
+		}*/
+		readString(n);
 		//lib->meta[j].val = codefilepos;
-		for(int k = 0; k < n; k++){
+		/*for(int k = 0; k < n->size; k++){
 			//wprintf(u"%c",*codefilepos);
-			codefilepos++;
-		}
-		//readAllocString(lib->meta[j].val);
+		}*/
 		//wprintf(u"%s = %s\n", lib->meta[i].var, lib->meta[i].val);
 	}
 
@@ -1396,14 +1385,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	} else {
 		string_table;// = (char **) malloc_code(domain, i * sizeof(char *));
 		for (j = 0; j < i; j++){
-			int n;
-			readInt(n);
+			String *n;
+			readString(n);
 			//readAllocString(string_table[j]);
 			//wprintf(u"\r\n");
-			for(int k = 0; k < n; k++){
+			/*for(int k = 0; k < n->size; k++){
 				//wprintf(u"%c", *codefilepos);
-				codefilepos++;
-			}
+			}*/
 		}
 	}
 
@@ -1413,16 +1401,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 	readInt(i);
 	if (i > 0) {
-		char symbol[30];
+		String *symbol;
 		for (j = 0; j < i; j++) {
-			//readString(symbol, sizeof(symbol));
+			readString(symbol);
 			//wprintf(u"%d ",j);
-			int n;
-			readInt(n);
-			for(int k = 0; k < n; k++){
+			/*for(int k = 0; k < symbol->size; k++){
 				wprintf(u"%c", *codefilepos);
-				codefilepos++;
-			}
+			}*/
 			/*if (j == numberVMOperations)
 				wprintf("to many symbols");
 			vmsupport[j].index = 0;
@@ -1463,8 +1448,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 		//printf("Class: %s\n", lib->allClasses[i].name);
 
-		//readStringID(supername);
-		readInt(n);
+		readStringID(supername);
 		/*if (supername[0] == '\0') {
 			lib->allClasses[i].superclass = NULL;
 		} else {
@@ -1893,9 +1877,9 @@ readInt(argbyte);
 			}
 
 			/*if (lib->allClasses[i].methods[j].sizeOfExceptionTable > 0) {
-				//lib->allClasses[i].methods[j].exceptionTable = malloc_exceptiondescs(domain, lib->allClasses[i].methods[j].sizeOfExceptionTable);
+				lib->allClasses[i].methods[j].exceptionTable = malloc_exceptiondescs(domain, lib->allClasses[i].methods[j].sizeOfExceptionTable);
 			} else {
-				//lib->allClasses[i].methods[j].exceptionTable = NULL;
+				lib->allClasses[i].methods[j].exceptionTable = NULL;
 			}*/
 
 			//readInt(lib->allClasses[i].methods[j].numberOfByteCodes);
@@ -1959,7 +1943,7 @@ readInt(argbyte);
 	//lib->vtablesize = completeVtableSize;
 	//lib->bytecodes = completeBytecodeSize;
 	wprintf(u"Code: 0x%x (numBytes=%d)\n", (jint)codefilepos, completeCodeBytes);
-	//readCode(lib->code, completeCodeBytes);
+	//readCode(lib->code);
 
 #if 0				/* TODO: check whether we can free codefile */
 #ifndef READFROMZIP
