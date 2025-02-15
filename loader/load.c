@@ -84,12 +84,10 @@ NOT IMPL jint readInt()
 
 #define readStringID(buf) { jint id ; readInt(id); buf = string_table; char *x = (char *) buf; for(int ii = 0; ii < id; ii++) {x += buf->size + 4; buf = (String *) x;} }
 
-#define readAllocString(buf) {jint nBytes; /*readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
+//#define readAllocString(buf) {jint nBytes; /*readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
 
 #define readCode(buf) {  buf = codefilepos;/*memcpy(buf, codefilepos, nbytes); codefilepos += nbytes;*/}
 
-
-ArrayDesc *vmSpecialAllocMultiArray(ClassDesc * elemClass, jint dim, jint sizes);
 
 /**
  * SYMBOLS
@@ -206,9 +204,9 @@ ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, char *name);
 void findClassAndMethod(DomainDesc * domain, char *classname, char *methodname, char *signature, Class ** classFound,
 			MethodDesc ** methodFound);
 void findClassDescAndMethod(char *classname, char *methodname, char *signature, ClassDesc ** classFound,
-			    MethodDesc ** methodFound);
+			MethodDesc ** methodFound);
 void findClassAndMethodInLib(LibDesc * lib, char *classname, char *methodname, char *signature, Class ** classFound,
-			     MethodDesc ** methodFound);
+			MethodDesc ** methodFound);
 void wprintf(char *msg, ...);
 
 int findSubClasses(DomainDesc * domain, Class * c, Class ** subclassesFound, int bufsize);
@@ -218,6 +216,7 @@ jint *specialAllocStaticFields(DomainDesc * domain, int numberFields);
 
 ArrayDesc *allocArrayInDomain(DomainDesc * domain, ClassDesc * type, jint size);
 ArrayDesc *specialAllocArray(ClassDesc * elemClass, jint size);
+ArrayDesc *vmSpecialAllocMultiArray(ClassDesc * elemClass, jint dim, jint sizes);
 
 ObjectDesc *specialAllocObject(ClassDesc * c);
 ObjectDesc *newString(DomainDesc * domain, char *value);
@@ -416,7 +415,6 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 	//arrayClass->nextInDomain = curdom()->arrayClasses;
 	//curdom()->arrayClasses = cl;
 
-
 	return arrayClass;
 }
 
@@ -429,7 +427,7 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 
 	//printf("CREATESHAREDARRAYUsingElem %s\n", elemClass->name);
 	if (c == NULL)
-		wprintf("not a shared element class");
+		wprintf(u"not a shared element class");
 
 	primitiveElems = (*elemClass->name).value == '[' || elemClass->classType == CLASSTYPE_PRIMITIVE;
 	if (primitiveElems) {
@@ -496,7 +494,7 @@ Class *findPrimitiveClass(char name)
 	case 'Z':
 		return class_Z;
 	}
-	wprintf("unknown primitive type %c", name);
+	wprintf(u"unknown primitive type %c", name);
 	return NULL;
 }
 
@@ -693,16 +691,14 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 	}
 
 	if (name[0] != '[') {
-
 		slib = classDesc->definingLib;
 		if ((lib = sharedLib2Lib(domain, slib))) {
 			int ndx = (int) (classDesc - (slib->allClasses));
 			return &(lib->allClasses[ndx]);
 		}
 
-		wprintf("Could not find class %s in domain %s!\n", name, domain->domainName);
+		wprintf(u"Could not find class %s in domain %s!\n", name, domain->domainName);
 	} else {
-
 		Class *acl = domain->arrayClasses;
 		for (; acl != NULL; acl = ((ArrayClassDesc *) (acl->classDesc))->nextInDomain) {
 			if (strcmp(acl->classDesc->name, name) == 0) {
@@ -710,7 +706,6 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 			}
 		}
 		return createArrayClass(domain, name);
-
 	}
 
 	return NULL;
@@ -836,7 +831,7 @@ ObjectDesc *allocObject(ClassDesc * c)
 jint getArraySize(ArrayDesc * array)
 {
 	if (array == NULL)
-		wprintf("array NULLPOINTER");
+		wprintf(u"array NULLPOINTER");
 	return array->size;
 }
 
@@ -1089,7 +1084,7 @@ LibDesc *load(DomainDesc * domain, char *filename)
 		//sharedLib = loadSharedLibrary(domainZero, filename, tmp_mem);
 
 		if (sharedLib == NULL)
-			wprintf("could not load shared library \"%s\"", filename);
+			wprintf(u"could not load shared library \"%s\"", filename);
 		ASSERTSLIB(sharedLib);
 
 		//linksharedlib(domainZero, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
@@ -1148,7 +1143,7 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 	if (sharedLib->ndx < domain->maxNumberOfLibs) {
 		domain->ndx_libs[sharedLib->ndx] = lib;
 	} else {
-		wprintf("max number of libs reached! %d\n", domain->maxNumberOfLibs);
+		wprintf(u"max number of libs reached! %d\n", domain->maxNumberOfLibs);
 	}
 #endif
 
@@ -1270,7 +1265,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory * tmp_mem, char* codefilepos, int size)
 {
 	jint i, j, k, m;
-	jint completeCodeBytes;
+	jint completeCodeBytes = 0;
 	jint completeVtableSize = 0;
 	jint completeBytecodeSize = 0;
 	String* supername;
@@ -1432,7 +1427,6 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	//lib->allClasses = malloc_classdescs(domain, totalNumberOfClasses);
 	//memset(lib->allClasses, 0, sizeof(ClassDesc) * totalNumberOfClasses);
 	rm(EfiLoaderData, totalNumberOfClasses * sizeof(ClassDesc), (void**)&lib->allClasses);
-	completeCodeBytes = 0;
 #ifdef USE_LIB_INDEX
 	sfields_offset = 0;
 	lib->memSizeStaticFields = 0;
@@ -1501,15 +1495,14 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 		/* fieldmap */
 		readInt(lib->allClasses[i].mapBytes);
-		char m;
-		for(j = 0; j < lib->allClasses[i].mapBytes; j++) readByte(m);
 		lib->allClasses[i].map = NULL;
-		/*if (lib->allClasses[i].mapBytes > 0) {
-			lib->allClasses[i].map = malloc_objectmap(domain, lib->allClasses[i].mapBytes);
-			for (j = 0; j < lib->allClasses[i].mapBytes; j++) {
+		if (lib->allClasses[i].mapBytes > 0) {
+			lib->allClasses[i].map = codefilepos;//malloc_objectmap(domain, lib->allClasses[i].mapBytes);
+			/*for (j = 0; j < lib->allClasses[i].mapBytes; j++) {
 				readByte(lib->allClasses[i].map[j]);
-			}
-		}*/
+			}*/
+			codefilepos += lib->allClasses[i].mapBytes;
+		}
 
 		/* fieldlist */
 		readInt(lib->allClasses[i].numberFields);
@@ -1541,17 +1534,14 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 
 		/* static maps */
 		readInt(lib->allClasses[i].staticsMapBytes);
-		for(int j = 0; j < lib->allClasses[i].staticsMapBytes; j++) {
-			char o;
-			readByte(o);
-		}
 		lib->allClasses[i].staticsMap = NULL;
-		/*if (lib->allClasses[i].staticsMapBytes > 0) {
-			lib->allClasses[i].staticsMap = malloc_staticsmap(domain, lib->allClasses[i].staticsMapBytes);
-			for (j = 0; j < lib->allClasses[i].staticsMapBytes; j++) {
+		if (lib->allClasses[i].staticsMapBytes > 0) {
+			lib->allClasses[i].staticsMap = codefilepos;//malloc_staticsmap(domain, lib->allClasses[i].staticsMapBytes);
+			/*for (j = 0; j < lib->allClasses[i].staticsMapBytes; j++) {
 				readByte(lib->allClasses[i].staticsMap[j]);
-			}
-		}*/
+			}*/
+			codefilepos += lib->allClasses[i].staticsMapBytes;
+		}
 		readInt(dummy);
 
 
@@ -1564,7 +1554,7 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 		readInt(lib->allClasses[i].vtableSize);
 
 		completeVtableSize += lib->allClasses[i].vtableSize;
-		if (lib->allClasses[i].vtableSize != 0) {
+		if (lib->allClasses[i].vtableSize > 0) {
 			//lib->allClasses[i].vtableSym = malloc_vtableSym(domain, lib->allClasses[i].vtableSize);
 			for (j = 0; j < lib->allClasses[i].vtableSize * 3; j += 3) {
 				/*readStringID(lib->allClasses[i].vtableSym[j]);	/* class 
@@ -1610,12 +1600,11 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 			readInt(lib->allClasses[i].methods[j].numberOfArgs);
 			lib->allClasses[i].methods[j].argTypeMap = NULL;
 			if (lib->allClasses[i].methods[j].numberOfArgTypeMapBytes > 0) {
-				//lib->allClasses[i].methods[j].argTypeMap = malloc_argsmap(domain, lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
-				for (m = 0; m < lib->allClasses[i].methods[j].numberOfArgTypeMapBytes; m++) {
-					//readByte(lib->allClasses[i].methods[j].argTypeMap[m]);
-					char o;
-					readByte(o);
-				}
+				lib->allClasses[i].methods[j].argTypeMap = codefilepos;//malloc_argsmap(domain, lib->allClasses[i].methods[j].numberOfArgTypeMapBytes);
+				/*for (m = 0; m < lib->allClasses[i].methods[j].numberOfArgTypeMapBytes; m++) {
+					readByte(lib->allClasses[i].methods[j].argTypeMap[m]);
+				}*/
+				codefilepos += lib->allClasses[i].methods[j].numberOfArgTypeMapBytes;
 			}
 			readInt(lib->allClasses[i].methods[j].returnType);
 			/* printf("  Method: %s %s %d\n", lib->allClasses[i].methods[j].name, lib->allClasses[i].methods[j].signature,
@@ -1878,17 +1867,14 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 
 			readInt(lib->allClasses[i].methods[j].numberOfByteCodes);
 			if (lib->allClasses[i].methods[j].numberOfByteCodes > 0) {
-				//lib->allClasses[i].methods[j].bytecodeTable = malloc_bytecodetable(domain, lib->allClasses[i].methods[j].numberOfByteCodes);
-				for (k = 0; k < lib->allClasses[i].methods[j].numberOfByteCodes; k++) {
+				lib->allClasses[i].methods[j].bytecodeTable = codefilepos;//malloc_bytecodetable(domain, lib->allClasses[i].methods[j].numberOfByteCodes);
+				/*for (k = 0; k < lib->allClasses[i].methods[j].numberOfByteCodes; k++) {
 					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos);
 					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].start);
 					//readInt(lib->allClasses[i].methods[j].bytecodeTable[k].end);
-					int o;
-					readInt(o);
-					readInt(o);
-					readInt(o);
 					//debugbt(("POS: %ld\n", lib->allClasses[i].methods[j].bytecodeTable[k].bytecodePos));
-				}
+				}*/
+				codefilepos += lib->allClasses[i].methods[j].numberOfByteCodes * 3 * 4;
 			} else {
 				lib->allClasses[i].methods[j].bytecodeTable = NULL;
 			}
@@ -1899,14 +1885,12 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 			readInt(lib->allClasses[i].methods[j].numberOfSourceLines);
 			//debugf(("   BC->SC: %ld\n", lib->allClasses[i].methods[j].numberOfSourceLines));
 			if (lib->allClasses[i].methods[j].numberOfSourceLines > 0) {
-				//lib->allClasses[i].methods[j].sourceLineTable = malloc_sourcelinetable(domain, lib->allClasses[i].methods[j].numberOfSourceLines);
-				for (k = 0; k < lib->allClasses[i].methods[j].numberOfSourceLines; k++) {
+				lib->allClasses[i].methods[j].sourceLineTable = codefilepos; //malloc_sourcelinetable(domain, lib->allClasses[i].methods[j].numberOfSourceLines);
+				/*for (k = 0; k < lib->allClasses[i].methods[j].numberOfSourceLines; k++) {
 					//readInt(lib->allClasses[i].methods[j].sourceLineTable[k].startBytecode);
 					//readInt(lib->allClasses[i].methods[j].sourceLineTable[k].lineNumber);
-					int o;
-					readInt(o);
-					readInt(o);
-				}
+				}*/
+				codefilepos += lib->allClasses[i].methods[j].numberOfSourceLines * 2 * 4;
 			} else {
 				lib->allClasses[i].methods[j].sourceLineTable = NULL;
 			}
