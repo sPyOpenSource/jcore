@@ -1256,7 +1256,6 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 		wprintf(u"Mismatch between library version and version supported by jxcore");
 	}
 	readString(processor);
-	//readInt(i);
 	/*for(int j = 0; j < processor->size; j++){
 		wprintf(u"%c", *(&processor->value + j));
 	}*/
@@ -1272,7 +1271,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	jint completeVtableSize = 0;
 	jint completeBytecodeSize = 0;
 	String* supername;
-	char libname[32];
+	String* libname;
 	SharedLibDesc *lib;
 	jint totalNumberOfClasses;
 	SharedLibDesc *neededLib;
@@ -1324,11 +1323,11 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	/*if (lib->numberOfNeededLibs == 0) {
 		lib->neededLibs == NULL;
 	} else {
-		//lib->neededLibs = malloc_sharedlibdesctable(domain, lib->numberOfNeededLibs);
+		lib->neededLibs = malloc_sharedlibdesctable(domain, lib->numberOfNeededLibs);
 	}
 
 	for (i = 0; i < lib->numberOfNeededLibs; i++) {
-		readString(libname, sizeof(libname));
+		readString(libname);
 		neededLib = findSharedLib(libname);
 
 		if (neededLib == NULL) {
@@ -1354,6 +1353,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	}*/
 
 	//wprintf(u"\r\nload %s", filename);
+
 	/*
 	   load meta
 	 */
@@ -1370,7 +1370,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		readString(n);
 		//lib->meta[j].val = codefilepos;
 		/*for(int k = 0; k < n->size; k++){
-			//wprintf(u"%c",*codefilepos);
+			wprintf(u"%c",*codefilepos);
 		}*/
 		//wprintf(u"%s = %s\n", lib->meta[i].var, lib->meta[i].val);
 	}
@@ -1471,11 +1471,11 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		//readInt(lib->allClasses[i].numberOfInterfaces);
 		readInt(n);
 		/*if (lib->allClasses[i].numberOfInterfaces > 0) {
-			//lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
+			lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
 			lib->allClasses[i].ifname;// = malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
 		} else {
-			//lib->allClasses[i].interfaces = (ClassDesc **) NULL;
-			//lib->allClasses[i].ifname = NULL;
+			lib->allClasses[i].interfaces = (ClassDesc **) NULL;
+			lib->allClasses[i].ifname = NULL;
 		}*/
 		for (j = 0; j < /*lib->allClasses[i].numberOfInterfaces*/n; j++) {
 			//readStringID(lib->allClasses[i].ifname[j]);
