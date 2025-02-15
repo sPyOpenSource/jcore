@@ -82,7 +82,7 @@ NOT IMPL jint readInt()
 
 #define readString(buf) { buf = (String*)codefilepos; codefilepos += *(jint*)codefilepos + 4;/*jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);*/}
 
-#define readStringID(buf) { jint id ; readInt(id); buf = string_table; for(int i = 0; i < id; i++) buf += buf->size + 4; }
+#define readStringID(buf) { jint id ; readInt(id); buf = string_table; char *x = (char *) buf; for(int ii = 0; ii < id; ii++) {x += buf->size + 4; buf = (String *) x;} }
 
 #define readAllocString(buf) {jint nBytes; /*readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
 
@@ -1388,12 +1388,20 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		string_table = NULL;
 	} else {
 		string_table = (String *) codefilepos;
+		String * n = string_table;
+		/*char * x = (char *) string_table;
+		for(int ii = 0; ii < 1; ii++){
+x += n->size + 4;
+n = (String *)x;
+		}
+		for(int k = 0; k < n->size; k++){
+				wprintf(u"%c", *(&n->value + k));
+		}*/
 		for (j = 0; j < i; j++){
-			String *n;
 			readString(n);
-			//wprintf(u"\r\n");
-			/*for(int k = 0; k < n->size; k++){
-				//wprintf(u"%c", *codefilepos);
+			/*wprintf(u"\r\n");
+			for(int k = 0; k < n->size; k++){
+				wprintf(u"%c", *(&n->value + k));
 			}*/
 		}
 	}
@@ -1432,77 +1440,79 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	lib->numberOfClasses = 0;
 	//lib->allClasses = malloc_classdescs(domain, totalNumberOfClasses);
 	//memset(lib->allClasses, 0, sizeof(ClassDesc) * totalNumberOfClasses);
+	rm(EfiLoaderData, totalNumberOfClasses * sizeof(ClassDesc), (void**)&lib->allClasses);
 	completeCodeBytes = 0;
 #ifdef USE_LIB_INDEX
 	sfields_offset = 0;
 	lib->memSizeStaticFields = 0;
 #endif
 	for (i = 0; i < totalNumberOfClasses; i++) {
-		//lib->allClasses[i].classType = CLASSTYPE_CLASS;
+		lib->allClasses[i].classType = CLASSTYPE_CLASS;
 #ifdef USE_QMAGIC
 		lib->allClasses[i].magic = MAGIC_CLASSDESC;
 #endif
-		//lib->allClasses[i].definingLib = lib;
+		lib->allClasses[i].definingLib = lib;
 
-		//readStringID(lib->allClasses[i].name);
-		int n;
-		readInt(n);
+		readStringID(lib->allClasses[i].name);
+		/*for(int l = 0; l < lib->allClasses[i].name->size; l++){
+			wprintf(u"%c", *(&lib->allClasses[i].name->value + l));
+		}*/
 		//addHashKey(lib->allClasses[i].name, lib->key, LIB_HASHKEY_LEN);
 
 		//printf("Class: %s\n", lib->allClasses[i].name);
 
 		readStringID(supername);
-		/*if (supername->size == 0) {
+		if (supername->size == 0) {
 			lib->allClasses[i].superclass = NULL;
 		} else {
 			ClassDesc *scl = NULL;
-			if (strcmp(supername, "java/lang/Object") == 0) {
+			if (strcmp("java/lang/Object", &supername->value) == 0) {
 				scl = java_lang_Object;
 			}
 			if (scl == NULL)
 				scl = findClassDescInSharedLib(lib, supername);
 			if (scl == NULL)
 				scl = findClassDesc(supername);
-			if (scl == NULL)
-				wprintf(u"find superclass");
+			if (scl == NULL){
+				wprintf(u"\r\nfind superclass: ");
+				/*for(int l = 0; l < supername->size; l++){
+					wprintf(u"%c", *(&supername->value + l));
+				}*/
+			}
 			lib->allClasses[i].superclass = scl;
-		}*/
+		}
 
 		readInt(isinterface);
 		if (isinterface) {
-			//lib->allClasses[i].classType = CLASSTYPE_INTERFACE;
+			lib->allClasses[i].classType = CLASSTYPE_INTERFACE;
 		}
-		//readInt(lib->allClasses[i].numberOfInterfaces);
-		readInt(n);
-		/*if (lib->allClasses[i].numberOfInterfaces > 0) {
-			lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
+		readInt(lib->allClasses[i].numberOfInterfaces);
+		if (lib->allClasses[i].numberOfInterfaces > 0) {
+			lib->allClasses[i].interfaces;// = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
 			lib->allClasses[i].ifname;// = malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
 		} else {
 			lib->allClasses[i].interfaces = (ClassDesc **) NULL;
 			lib->allClasses[i].ifname = NULL;
-		}*/
-		for (j = 0; j < /*lib->allClasses[i].numberOfInterfaces*/n; j++) {
+		}
+		for (j = 0; j < lib->allClasses[i].numberOfInterfaces; j++) {
 			//readStringID(lib->allClasses[i].ifname[j]);
 			int m;
 			readInt(m);
 		}
-		//readInt(lib->allClasses[i].numberOfMethods);
-		int number;
-		readInt(number);
-		/*if (lib->allClasses[i].numberOfMethods > 0) {
-			lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
+		readInt(lib->allClasses[i].numberOfMethods);
+		if (lib->allClasses[i].numberOfMethods > 0) {
+			//lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
 		} else {
 			lib->allClasses[i].methods = NULL;
-		}*/
-		//readInt(lib->allClasses[i].instanceSize);
-readInt(n);
+		}
+		readInt(lib->allClasses[i].instanceSize);
+
 		/* fieldmap */
-		//readInt(lib->allClasses[i].mapBytes);
-		readInt(n);
+		readInt(lib->allClasses[i].mapBytes);
 		char m;
-		for(j = 0; j < n; j++) readByte(m);
-		/*lib->allClasses[i].map = NULL;
-		if (lib->allClasses[i].mapBytes > 0) {
+		for(j = 0; j < lib->allClasses[i].mapBytes; j++) readByte(m);
+		lib->allClasses[i].map = NULL;
+		/*if (lib->allClasses[i].mapBytes > 0) {
 			lib->allClasses[i].map = malloc_objectmap(domain, lib->allClasses[i].mapBytes);
 			for (j = 0; j < lib->allClasses[i].mapBytes; j++) {
 				readByte(lib->allClasses[i].map[j]);
@@ -1510,9 +1520,9 @@ readInt(n);
 		}*/
 
 		/* fieldlist */
-		//readInt(lib->allClasses[i].numberFields);
-		readInt(n);
-		//lib->allClasses[i].fields = NULL;
+		readInt(lib->allClasses[i].numberFields);
+
+		lib->allClasses[i].fields = NULL;
 		/*if (lib->allClasses[i].numberFields > 0) {
 			lib->allClasses[i].fields = malloc_fielddescs(domain, lib->allClasses[i].numberFields);
 			for (j = 0; j < lib->allClasses[i].numberFields; j++) {
@@ -1521,7 +1531,7 @@ readInt(n);
 				readInt(lib->allClasses[i].fields[j].fieldOffset);
 			}
 		}*/
-for(j = 0; j < n; j++){
+for(j = 0; j < lib->allClasses[i].numberFields; j++){
 	jint o;
 	readInt(o);
 	readInt(o);
@@ -1529,8 +1539,8 @@ for(j = 0; j < n; j++){
 }
 
 		/* static fields */
-		//readInt(lib->allClasses[i].staticFieldsSize);
-		readInt(n);
+		readInt(lib->allClasses[i].staticFieldsSize);
+
 #ifdef USE_LIB_INDEX
 		lib->allClasses[i].sfield_offset = sfields_offset;
 		sfields_offset += lib->allClasses[i].staticFieldsSize;
@@ -1538,14 +1548,13 @@ for(j = 0; j < n; j++){
 #endif
 
 		/* static maps */
-		//readInt(lib->allClasses[i].staticsMapBytes);
-		readInt(n);
-		for(int j = 0; j < n; j++) {
+		readInt(lib->allClasses[i].staticsMapBytes);
+		for(int j = 0; j < lib->allClasses[i].staticsMapBytes; j++) {
 			char o;
 			readByte(o);
 		}
-		/*lib->allClasses[i].staticsMap = NULL;
-		if (lib->allClasses[i].staticsMapBytes > 0) {
+		lib->allClasses[i].staticsMap = NULL;
+		/*if (lib->allClasses[i].staticsMapBytes > 0) {
 			lib->allClasses[i].staticsMap = malloc_staticsmap(domain, lib->allClasses[i].staticsMapBytes);
 			for (j = 0; j < lib->allClasses[i].staticsMapBytes; j++) {
 				readByte(lib->allClasses[i].staticsMap[j]);
@@ -1560,12 +1569,12 @@ for(j = 0; j < n; j++){
 		readInt(dummy);
 
 		/* read vtable */
-		//readInt(lib->allClasses[i].vtableSize);
-		readInt(n);
-		//completeVtableSize += lib->allClasses[i].vtableSize;
-		if (/*lib->allClasses[i].vtableSize*/n != 0) {
+		readInt(lib->allClasses[i].vtableSize);
+
+		completeVtableSize += lib->allClasses[i].vtableSize;
+		if (lib->allClasses[i].vtableSize != 0) {
 			//lib->allClasses[i].vtableSym = malloc_vtableSym(domain, lib->allClasses[i].vtableSize);
-			for (j = 0; j < /*lib->allClasses[i].vtableSize*/n * 3; j += 3) {
+			for (j = 0; j < lib->allClasses[i].vtableSize * 3; j += 3) {
 				/*readStringID(lib->allClasses[i].vtableSym[j]);	/* class 
 				readStringID(lib->allClasses[i].vtableSym[j + 1]);	/* name 
 				readStringID(lib->allClasses[i].vtableSym[j + 2]);	/* type */
@@ -1578,7 +1587,7 @@ for(j = 0; j < n; j++){
 			wprintf(u"VTableSize == 0\r\n");
 		}
 
-		for (j = 0; j < /*lib->allClasses[i].numberOfMethods*/number; j++) {
+		for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
 			int symsize;
 			//lib->allClasses[i].methods[j].objectDesc_flags = OBJFLAGS_EXTERNAL_METHOD;
 #ifdef USE_QMAGIC
