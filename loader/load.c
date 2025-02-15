@@ -2002,10 +2002,10 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 
 	c = findClassDesc(s->className);
 	if (c == NULL)
-		wprintf("could not find class");
+		wprintf(u"could not find class");
 
 	if (s->kind != 0)
-		wprintf("unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\n", s->kind);
+		wprintf(u"unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\n", s->kind);
 
 	patchConstant(code, symbol, s->fieldOffset);
 #endif
@@ -2023,14 +2023,14 @@ void patchClassPointer(code_t code, SymbolDesc * symbol)
 	}
 
 	if (c == NULL)
-		wprintf("Link error: Required class not found: %s", s->className);
+		wprintf(u"Link error: Required class not found: %s", s->className);
 
 	patchConstant(code, symbol, (jint) c);
 }
 
 void should_not_be_called()
 {
-	wprintf("Unknown method called.");
+	wprintf(u"Unknown method called.");
 }
 
 void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
@@ -2072,7 +2072,7 @@ void patchStringAddress(code_t code, SymbolDesc * symbol)
 	ObjectDesc *obj = newDomainZeroString(s->value);	/* shared libs are part of domainzero and so are these constant strings */
 
 	if (obj == NULL)
-		wprintf("could not create string object");
+		wprintf(u"could not create string object");
 	patchConstant(code, symbol, (jint) obj);
 }
 
@@ -2166,7 +2166,7 @@ void patchPrimitiveClassPointer(code_t code, SymbolDesc * symbol)
 		t = (jint) class_Z->classDesc;
 		break;
 	default:
-		wprintf("not primitive");
+		wprintf(u"not primitive");
 	}
 	patchConstant(code, symbol, t);
 }
@@ -2224,10 +2224,10 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 			continue;
 		switch (method->symbols[k]->type) {
 		case 0:
-			wprintf("Error: Symboltype 0");
+			wprintf(u"Error: Symboltype 0");
 			break;
 		case 1:{	/* DomainZeroSTEntry */
-				wprintf("DomainZeroSTEntry no longer used.");
+				wprintf(u"DomainZeroSTEntry no longer used.");
 				break;
 			}
 		case 2:{	/* ExceptionHandlerSTEntry */
@@ -2235,7 +2235,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				break;
 			}
 		case 3:{	/* DEPFunctionSTEntry */
-				wprintf("DEPFUNCTION no longer supported");
+				wprintf(u"DEPFUNCTION no longer supported");
 				break;
 			}
 		case 4:{	/* StaticFieldSTEntry */
@@ -2330,7 +2330,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 #ifndef STACK_ON_HEAP
 				patchByte(code, method->symbols[k], (jint) STACK_CHUNK);
 #else
-				wprintf("");
+				wprintf(u"");
 #endif
 				break;
 			}
@@ -2354,7 +2354,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				case 3:{
 						jint event_id = cpuManager_createNewEventID(method->name);
 						if (event_id < 0) {
-							wprintf("warn: out of event types MAX_EVENT_TYPES=%d", MAX_EVENT_TYPES);
+							wprintf(u"warn: out of event types MAX_EVENT_TYPES=%d", MAX_EVENT_TYPES);
 							event_id = 0;
 						}
 						patchConstant(code, s, event_id);
@@ -2381,7 +2381,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 					}
 #endif
 				default:
-					wprintf("Linker unknown profile symbol %d", s->kind);
+					wprintf(u"Linker unknown profile symbol %d", s->kind);
 				}
 				break;
 			}
@@ -2399,12 +2399,12 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 						break;
 					}
 				default:
-					wprintf("Linker unknown TCBOffset symbol %d", s->kind);
+					wprintf(u"Linker unknown TCBOffset symbol %d", s->kind);
 				}
 				break;
 			}
 		default:
-			wprintf("Linker unknown symbol %d", method->symbols[k]->type);
+			wprintf(u"Linker unknown symbol %d", method->symbols[k]->type);
 		}
 	}
 }
@@ -2418,7 +2418,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 			continue;
 		switch (method->symbols[k]->type) {
 		case 0:
-			wprintf("Error: Symboltype 0");
+			wprintf(u"Error: Symboltype 0");
 			break;
 		case 1:{	/* DomainZeroSTEntry */
 				/* patchConstant(code, method->symbols[k],  (jint)getDomainZeroProxy()); */
@@ -2429,7 +2429,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 				break;
 			}
 		case 3:{	/* DEPFunctionSTEntry */
-				wprintf("DEPFUNCTION no longer supported");
+				wprintf(u"DEPFUNCTION no longer supported");
 				break;
 			}
 		case 4:{	/* StaticFieldSTEntry */
@@ -2559,7 +2559,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 					}
 #endif
 				default:
-					wprintf("Linker unknown profile symbol %d", s->kind);
+					wprintf(u"Linker unknown profile symbol %d", s->kind);
 				}
 				break;
 			}
@@ -2568,7 +2568,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 				break;
 			}
 		default:
-			wprintf("Linker unknown symbol %d", method->symbols[k]->type);
+			wprintf(u"Linker unknown symbol %d", method->symbols[k]->type);
 		}
 	}
 }
@@ -2615,7 +2615,7 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 			if (scl == NULL)
 				scl = findClassDesc(ifname);
 			if (scl == NULL) {
-				wprintf("Cannot find interface %s while linking class %s of library %s\n", ifname,
+				wprintf(u"Cannot find interface %s while linking class %s of library %s\n", ifname,
 					  lib->allClasses[i].name, lib->name);
 			}
 			lib->allClasses[i].interfaces[j] = scl;
@@ -2629,7 +2629,7 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 
 		/* build vtable */
 		if (lib->allClasses[i].vtableSize < 11)
-			wprintf("vtableSize<11");
+			wprintf(u"vtableSize<11");
 
 		for (j = 0; j < lib->allClasses[i].vtableSize; j++) {
 			if (lib->allClasses[i].vtableSym[j * 3][0] == '\0')
@@ -2836,7 +2836,7 @@ code_t findVirtualMethodCode(DomainDesc * domain, char *classname, char *methodn
 			return obj->vtable[j];
 		}
 	}
-	wprintf("Cannot find method %s::%s%s\n", classname, methodname, signature);
+	wprintf(u"Cannot find method %s::%s%s\n", classname, methodname, signature);
 	return NULL;
 }
 
