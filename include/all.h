@@ -2,6 +2,7 @@
 #define ALL_H
 
 #include "config.h"
+#include "efi.h"
 
 #ifndef KERNEL
 //#include <stdio.h>

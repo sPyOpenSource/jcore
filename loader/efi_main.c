@@ -20,7 +20,7 @@ UINT64 getFileSize(EFI_FILE_PROTOCOL *FileHandle)
   return *FileSize;
 }
 
-void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size);
+void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size, EFI_ALLOCATE_POOL AllocatePool);
 
 EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 {
@@ -70,7 +70,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
         codefile++;
     }*/
     
-	loadIt(NULL, "zero.jll", codefile, FileSize1);
+	loadIt(NULL, "zero.jll", codefile, FileSize1, AllocatePool);
 	efimyfile->SetPosition(efimyfile, 0);
     
     SetTextColor(EFI_GREEN);

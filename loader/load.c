@@ -1100,9 +1100,13 @@ LibDesc *load(DomainDesc * domain, char *filename)
 	return loadLib(domain, sharedLib);
 }
 
-void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size)
+EFI_ALLOCATE_POOL rm;
+
+void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size, EFI_ALLOCATE_POOL AllocatePool)
 {
 	TempMemory *tmp_mem;// = jxmalloc_tmp(5000);
+	rm = AllocatePool;
+	rm(EfiLoaderData, 5000, (void**)&tmp_mem);
 	SharedLibDesc *sharedLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos, size);
 	//loadLib(domain, sharedLib);
 	//linksharedlib(domain, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
@@ -1299,7 +1303,8 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 	codefilepos = testCheckSumAndVersion(filename, codefilepos, size);
 
-	//lib = malloc_sharedlibdesc(domain, strlen(filename) + 1);
+	//lib = malloc_sharedlibdesc(domain, strlen(filename) + 4);
+	rm(EfiLoaderData, sizeof(SharedLibDesc), (void**)&lib);
 #ifdef USE_QMAGIC
 	lib->magic = MAGIC_SLIB;
 #endif
@@ -1318,12 +1323,11 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	   load needed libs
 	 */
 
-	//readInt(lib->numberOfNeededLibs);
-	readInt(i);
-	/*if (lib->numberOfNeededLibs == 0) {
+	readInt(lib->numberOfNeededLibs);
+	if (lib->numberOfNeededLibs == 0) {
 		lib->neededLibs == NULL;
 	} else {
-		lib->neededLibs = malloc_sharedlibdesctable(domain, lib->numberOfNeededLibs);
+		//lib->neededLibs = malloc_sharedlibdesctable(domain, lib->numberOfNeededLibs);
 	}
 
 	for (i = 0; i < lib->numberOfNeededLibs; i++) {
@@ -1331,10 +1335,10 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		neededLib = findSharedLib(libname);
 
 		if (neededLib == NULL) {
-			/*  could not find a loaded lib, now try to load it  
+			//  could not find a loaded lib, now try to load it  
 			TempMemory *tmp_mem;// = jxmalloc_tmp(5000);
 
-			/* FIXME:  shared libraries should not always be loaded into domainzero  
+			// FIXME:  shared libraries should not always be loaded into domainzero  
 			//printf("slib %s load %s\n",lib->name,libname);
 			neededLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos, size);
 			if (neededLib == NULL) {
@@ -1350,17 +1354,17 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 		ASSERTSLIB(neededLib);
 		lib->neededLibs[i] = neededLib;
-	}*/
+	}
 
 	//wprintf(u"\r\nload %s", filename);
 
 	/*
 	   load meta
 	 */
-	//readInt(lib->numberOfMeta);
-	readInt(i);
+	readInt(lib->numberOfMeta);
+
 	//lib->meta = malloc_metatable(domain, lib->numberOfMeta);
-	for (int j = 0; j < /*lib->numberOfMeta*/i; j++) {
+	for (int j = 0; j < lib->numberOfMeta; j++) {
 		String *n;
 		readString(n);
 		//lib->meta[j].var = codefilepos;
@@ -1425,7 +1429,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	 */
 
 	readInt(totalNumberOfClasses);
-	//lib->numberOfClasses = 0;
+	lib->numberOfClasses = 0;
 	//lib->allClasses = malloc_classdescs(domain, totalNumberOfClasses);
 	//memset(lib->allClasses, 0, sizeof(ClassDesc) * totalNumberOfClasses);
 	completeCodeBytes = 0;
@@ -1921,7 +1925,7 @@ readInt(argbyte);
 
 
 		}
-		//lib->numberOfClasses++;
+		lib->numberOfClasses++;
 	}
 
 	/* read code */
@@ -1938,11 +1942,11 @@ readInt(argbyte);
 		printf("lib code not aligned to 4 byte addr: %p\n", lib->code);
 #endif
 #endif
-	//lib->codeBytes = completeCodeBytes;
-	//lib->vtablesize = completeVtableSize;
-	//lib->bytecodes = completeBytecodeSize;
+	lib->codeBytes = completeCodeBytes;
+	lib->vtablesize = completeVtableSize;
+	lib->bytecodes = completeBytecodeSize;
 	wprintf(u"Code: 0x%x (numBytes=%d)\n", (jint)codefilepos, completeCodeBytes);
-	//readCode(lib->code);
+	readCode(lib->code);
 
 #if 0				/* TODO: check whether we can free codefile */
 #ifndef READFROMZIP
@@ -1956,7 +1960,7 @@ readInt(argbyte);
 	sharedLibsIndexNumber++;
 #endif
 
-	//lib->next = sharedLibs;
+	lib->next = sharedLibs;
 	sharedLibs = lib;
 
 	//RESTORE_IRQ;
