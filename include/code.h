@@ -76,8 +76,8 @@ typedef struct MethodDesc_s {
 #ifdef USE_QMAGIC
 	u4_t magic;
 #endif
-	char *name;
-	char *signature;
+	String *name;
+	String *signature;
 	jint numberOfCodeBytes;
 	jint numberOfSymbols;
 	SymbolDesc **symbols;
@@ -143,7 +143,7 @@ struct ArrayClassDesc_s;
 
 #define CLASSDESC0\
     jint classType;\
-    char *name;\
+    String *name;\
     struct ClassDesc_s *superclass;\
     jint numberOfInterfaces;\
     char **ifname;\
@@ -250,17 +250,15 @@ typedef struct PrimitiveClassDesc_s {
  * Libs
  */
 struct meta_s {
-	int r_size;
-	char *var;
-	int l_size;
-	char *val;
+	String *var;
+	String *val;
 };
 
 typedef struct SharedLibDesc_s {
 #ifdef USE_QMAGIC
 	u4_t magic;
 #endif
-	char *name;
+	String *name;
 #ifdef USE_LIB_INDEX
 	jint ndx;
 	jint memSizeStaticFields;

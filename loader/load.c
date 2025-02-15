@@ -102,16 +102,16 @@ typedef SymbolDesc SymbolDescExceptionHandler;
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	char *className;
-	char *methodName;
-	char *methodSignature;
+	String *className;
+	String *methodName;
+	String *methodSignature;
 } SymbolDescDEPFunction;
 
 typedef SymbolDesc SymbolDescAllocObject;
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	char *className;
+	String *className;
 	jint kind;
 	jint fieldOffset;
 } SymbolDescStaticField;
@@ -123,19 +123,19 @@ typedef struct {
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	char *className;
+	String *className;
 } SymbolDescClass;
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	char *className;
-	char *methodName;
-	char *methodSignature;
+	String *className;
+	String *methodName;
+	String *methodSignature;
 } SymbolDescDirectMethodCall;
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	char *value;
+	String *value;
 } SymbolDescString;
 
 typedef SymbolDesc SymbolDescAllocArray;
@@ -167,7 +167,7 @@ typedef struct {
 	int targetNCIndex;	/* extends UnresolvedJump ! */
 	int rangeStart;
 	int rangeEnd;
-	char *className;
+	String *className;
 } SymbolDescExceptionTable;
 
 typedef struct {
@@ -431,7 +431,7 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 	if (c == NULL)
 		wprintf("not a shared element class");
 
-	primitiveElems = *elemClass->name == '[' || elemClass->classType == CLASSTYPE_PRIMITIVE;
+	primitiveElems = (*elemClass->name).value == '[' || elemClass->classType == CLASSTYPE_PRIMITIVE;
 	if (primitiveElems) {
 		namelen = strlen(elemClass->name) + 1 + 1;	/* [ ...  */
 	} else {
@@ -1104,7 +1104,7 @@ void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size)
 {
 	TempMemory *tmp_mem;// = jxmalloc_tmp(5000);
 	SharedLibDesc *sharedLib = loadSharedLibrary(domain, libname, tmp_mem, codefilepos, size);
-	loadLib(domain, sharedLib);
+	//loadLib(domain, sharedLib);
 	//linksharedlib(domain, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
 	//jxfree_tmp(tmp_mem);
 }
@@ -1616,7 +1616,8 @@ readInt(symsize);
 			//wprintf(u"  Method: %s.%s%s\n", lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
 			//	lib->allClasses[i].methods[j].signature);
 			//readInt(lib->allClasses[i].methods[j].numberOfCodeBytes);
-			readInt(symsize);
+			int noc;
+			readInt(noc);
 			//wprintf(u"     NumberOfCodeBytes: %ld\n", lib->allClasses[i].methods[j].numberOfCodeBytes);
 			//ASSERT(lib->allClasses[i].methods[j].numberOfCodeBytes >= 0);
 			//lib->allClasses[i].methods[j].sizeOfExceptionTable = 0;
@@ -1643,7 +1644,7 @@ readInt(symsize);
 			//readInt(lib->allClasses[i].methods[j].flags);
 readInt(argbyte);
 			//lib->allClasses[i].methods[j].codeOffset = completeCodeBytes;
-			//completeCodeBytes += lib->allClasses[i].methods[j].numberOfCodeBytes;
+			completeCodeBytes += noc;//lib->allClasses[i].methods[j].numberOfCodeBytes;
 			//readInt(lib->allClasses[i].methods[j].numberOfSymbols);
 			readInt(argbyte);
 			/*if (lib->allClasses[i].methods[j].numberOfSymbols > 0) {
@@ -1957,8 +1958,8 @@ readInt(argbyte);
 	//lib->codeBytes = completeCodeBytes;
 	//lib->vtablesize = completeVtableSize;
 	//lib->bytecodes = completeBytecodeSize;
-	/*printf("Code: 0x%x (numBytes=%d)\n", (jint)code, completeCodeBytes); */
-	readCode(lib->code, completeCodeBytes);
+	wprintf(u"Code: 0x%x (numBytes=%d)\n", (jint)codefilepos, completeCodeBytes);
+	//readCode(lib->code, completeCodeBytes);
 
 #if 0				/* TODO: check whether we can free codefile */
 #ifndef READFROMZIP
@@ -2056,7 +2057,7 @@ void patchClassPointer(code_t code, SymbolDesc * symbol)
 	ClassDesc *c;
 	SymbolDescClass *s = (SymbolDescClass *) symbol;
 
-	if (*s->className == '[') {
+	if ((*s->className).value == '[') {
 		c = findSharedArrayClassDesc(s->className);
 	} else {
 		c = findClassDesc(s->className);
