@@ -82,7 +82,7 @@ NOT IMPL jint readInt()
 
 #define readString(buf) { buf = (String*)codefilepos; codefilepos += *(jint*)codefilepos + 4;/*jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);*/}
 
-#define readStringID(buf) { jint id ; readInt(id); buf = id;/*string_table[id];*/ }
+#define readStringID(buf) { jint id ; readInt(id); buf = string_table; for(int i = 0; i < id; i++) buf += buf->size + 4; }
 
 #define readAllocString(buf) {jint nBytes; /*readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
 
@@ -1271,13 +1271,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	jint completeCodeBytes;
 	jint completeVtableSize = 0;
 	jint completeBytecodeSize = 0;
-	jint supername;
+	String* supername;
 	char libname[32];
 	SharedLibDesc *lib;
 	jint totalNumberOfClasses;
 	SharedLibDesc *neededLib;
 	//char *codefilepos;
-	String **string_table;
+	String *string_table;
 	jint dummy;
 	//jint size;
 	jint isinterface;
@@ -1383,11 +1383,10 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	if (i == 0) {
 		string_table = NULL;
 	} else {
-		string_table;// = (char **) malloc_code(domain, i * sizeof(char *));
+		string_table = (String *) codefilepos;
 		for (j = 0; j < i; j++){
 			String *n;
 			readString(n);
-			//readAllocString(string_table[j]);
 			//wprintf(u"\r\n");
 			/*for(int k = 0; k < n->size; k++){
 				//wprintf(u"%c", *codefilepos);
@@ -1449,7 +1448,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		//printf("Class: %s\n", lib->allClasses[i].name);
 
 		readStringID(supername);
-		/*if (supername[0] == '\0') {
+		/*if (supername->size == 0) {
 			lib->allClasses[i].superclass = NULL;
 		} else {
 			ClassDesc *scl = NULL;
@@ -1487,9 +1486,9 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		int number;
 		readInt(number);
 		/*if (lib->allClasses[i].numberOfMethods > 0) {
-			//lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
+			lib->allClasses[i].methods = malloc_methoddescs(domain, lib->allClasses[i].numberOfMethods);
 		} else {
-			//lib->allClasses[i].methods = NULL;
+			lib->allClasses[i].methods = NULL;
 		}*/
 		//readInt(lib->allClasses[i].instanceSize);
 readInt(n);
@@ -1500,7 +1499,7 @@ readInt(n);
 		for(j = 0; j < n; j++) readByte(m);
 		/*lib->allClasses[i].map = NULL;
 		if (lib->allClasses[i].mapBytes > 0) {
-			//lib->allClasses[i].map = malloc_objectmap(domain, lib->allClasses[i].mapBytes);
+			lib->allClasses[i].map = malloc_objectmap(domain, lib->allClasses[i].mapBytes);
 			for (j = 0; j < lib->allClasses[i].mapBytes; j++) {
 				readByte(lib->allClasses[i].map[j]);
 			}
@@ -1511,7 +1510,7 @@ readInt(n);
 		readInt(n);
 		//lib->allClasses[i].fields = NULL;
 		/*if (lib->allClasses[i].numberFields > 0) {
-			//lib->allClasses[i].fields = malloc_fielddescs(domain, lib->allClasses[i].numberFields);
+			lib->allClasses[i].fields = malloc_fielddescs(domain, lib->allClasses[i].numberFields);
 			for (j = 0; j < lib->allClasses[i].numberFields; j++) {
 				readStringID(lib->allClasses[i].fields[j].fieldName);
 				readStringID(lib->allClasses[i].fields[j].fieldType);
@@ -1543,7 +1542,7 @@ for(j = 0; j < n; j++){
 		}
 		/*lib->allClasses[i].staticsMap = NULL;
 		if (lib->allClasses[i].staticsMapBytes > 0) {
-			//lib->allClasses[i].staticsMap = malloc_staticsmap(domain, lib->allClasses[i].staticsMapBytes);
+			lib->allClasses[i].staticsMap = malloc_staticsmap(domain, lib->allClasses[i].staticsMapBytes);
 			for (j = 0; j < lib->allClasses[i].staticsMapBytes; j++) {
 				readByte(lib->allClasses[i].staticsMap[j]);
 			}
@@ -1632,9 +1631,9 @@ readInt(argbyte);
 			//readInt(lib->allClasses[i].methods[j].numberOfSymbols);
 			readInt(argbyte);
 			/*if (lib->allClasses[i].methods[j].numberOfSymbols > 0) {
-				//lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? 
+				lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? 
 			} else {
-				//lib->allClasses[i].methods[j].symbols = NULL;
+				lib->allClasses[i].methods[j].symbols = NULL;
 			}*/
 			//kprintf(u"     NumberOfSymbols: %ld\n", lib->allClasses[i].methods[j].numberOfSymbols);
 			for (k = 0; k < /*lib->allClasses[i].methods[j].numberOfSymbols*/argbyte; k++) {
@@ -1649,10 +1648,10 @@ readInt(argbyte);
 				readInt(nextInstrNCIndex);
 
 				/*if ((immediateNCIndex + numBytes) > lib->allClasses[i].methods[j].numberOfCodeBytes) {
-					//wprintf
-					  //  (u"wrong patch index: %d in method %s.%s\nMethod has %d codebytes.\nNumber of bytes to patch is %d.\n",
-					    // immediateNCIndex, lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
-					     //lib->allClasses[i].methods[j].numberOfCodeBytes, numBytes);
+					wprintf
+					    (u"wrong patch index: %d in method %s.%s\nMethod has %d codebytes.\nNumber of bytes to patch is %d.\n",
+					     immediateNCIndex, lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
+					     lib->allClasses[i].methods[j].numberOfCodeBytes, numBytes);
 				}*/
 				switch (type) {
 				case 0:
