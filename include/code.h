@@ -37,8 +37,8 @@ typedef struct {
  */
 
 typedef struct FieldDesc_s {
-	char *fieldName;
-	char *fieldType;
+	String *fieldName;
+	String *fieldType;
 	char fieldOffset;
 } FieldDesc;
 
@@ -152,7 +152,7 @@ struct ArrayClassDesc_s;
     jint vtableSize;\
     MethodDesc *methods;\
     code_t *vtable;\
-    char **vtableSym;\
+    String **vtableSym;\
     jint instanceSize;\
     jint staticFieldsSize;\
     struct SharedLibDesc_s *definingLib;\

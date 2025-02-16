@@ -1508,20 +1508,15 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		readInt(lib->allClasses[i].numberFields);
 
 		lib->allClasses[i].fields = NULL;
-		/*if (lib->allClasses[i].numberFields > 0) {
-			lib->allClasses[i].fields = malloc_fielddescs(domain, lib->allClasses[i].numberFields);
+		if (lib->allClasses[i].numberFields > 0) {
+			//lib->allClasses[i].fields = malloc_fielddescs(domain, lib->allClasses[i].numberFields);
+			rm(EfiLoaderData, sizeof(FieldDesc) * lib->allClasses[i].numberFields, (void**)&lib->allClasses[i].fields);
 			for (j = 0; j < lib->allClasses[i].numberFields; j++) {
 				readStringID(lib->allClasses[i].fields[j].fieldName);
 				readStringID(lib->allClasses[i].fields[j].fieldType);
 				readInt(lib->allClasses[i].fields[j].fieldOffset);
 			}
-		}*/
-for(j = 0; j < lib->allClasses[i].numberFields; j++){
-	jint o;
-	readInt(o);
-	readInt(o);
-	readInt(o);
-}
+		}
 
 		/* static fields */
 		readInt(lib->allClasses[i].staticFieldsSize);
@@ -1556,13 +1551,11 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 		completeVtableSize += lib->allClasses[i].vtableSize;
 		if (lib->allClasses[i].vtableSize > 0) {
 			//lib->allClasses[i].vtableSym = malloc_vtableSym(domain, lib->allClasses[i].vtableSize);
+			rm(EfiLoaderData, sizeof(String*) * 3 * lib->allClasses[i].vtableSize, (void**)&lib->allClasses[i].vtableSym);
 			for (j = 0; j < lib->allClasses[i].vtableSize * 3; j += 3) {
-				/*readStringID(lib->allClasses[i].vtableSym[j]);	/* class 
-				readStringID(lib->allClasses[i].vtableSym[j + 1]);	/* name 
-				readStringID(lib->allClasses[i].vtableSym[j + 2]);	/* type */
-				readInt(dummy);
-				readInt(dummy);
-				readInt(dummy);
+				readStringID(lib->allClasses[i].vtableSym[j]);	    // class 
+				readStringID(lib->allClasses[i].vtableSym[j + 1]);	// name 
+				readStringID(lib->allClasses[i].vtableSym[j + 2]);	// type 
 				readInt(dummy);
 			}
 		} else {
@@ -1615,7 +1608,8 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 			completeCodeBytes += lib->allClasses[i].methods[j].numberOfCodeBytes;
 			readInt(lib->allClasses[i].methods[j].numberOfSymbols);
 			if (lib->allClasses[i].methods[j].numberOfSymbols > 0) {
-				//lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ? 
+				//lib->allClasses[i].methods[j].symbols = malloc_symboltable(domain, lib->allClasses[i].methods[j].numberOfSymbols);	/* FIXME: alloc them in temp memory ?
+				rm(EfiLoaderData, sizeof(SymbolDesc*) * lib->allClasses[i].methods[j].numberOfSymbols, (void**)&lib->allClasses[i].methods[j].symbols);
 			} else {
 				lib->allClasses[i].methods[j].symbols = NULL;
 			}
@@ -1644,64 +1638,61 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 				case 1:{	/* DomainZeroSTEntry */
 						wprintf(u"     Symbol: DomainZero\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDomainZero));
+						rm(EfiLoaderData, sizeof(SymbolDescDomainZero), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 2:{	/* ExceptionHandlerSTEntry */
 						wprintf(u"     Symbol: ExceptionHandler\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescExceptionHandler));
+						rm(EfiLoaderData, sizeof(SymbolDescExceptionHandler), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 3:{	/* DEPFunctionSTEntry */
 						SymbolDescDEPFunction *s;
 						wprintf(u"     Symbol: DEPFunction\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDEPFunction));
-						//s = (SymbolDescDEPFunction *) lib->allClasses[i].methods[j].symbols[k];
-						//readAllocString(s->className);
-						//readAllocString(s->methodName);
-						//readAllocString(s->methodSignature);
-						readInt(s);
-						readInt(s);
-						readInt(s);
+						rm(EfiLoaderData, sizeof(SymbolDescDEPFunction), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescDEPFunction *) lib->allClasses[i].methods[j].symbols[k];
+						readString(s->className);
+						readString(s->methodName);
+						readString(s->methodSignature);
 						break;
 					}
 				case 4:{	/* StaticFieldSTEntry */
 						SymbolDescStaticField *s;
 						wprintf(u"     Symbol: StaticField\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStaticField));
-						//s = (SymbolDescStaticField *) lib->allClasses[i].methods[j].symbols[k];
-						//readStringID(s->className);
-						//readInt(s->kind);
-						//readInt(s->fieldOffset);
-						readInt(s);
-						readInt(s);
-						readInt(s);
+						rm(EfiLoaderData, sizeof(SymbolDescStaticField), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescStaticField *) lib->allClasses[i].methods[j].symbols[k];
+						readStringID(s->className);
+						readInt(s->kind);
+						readInt(s->fieldOffset);
 						break;
 					}
 				case 5:{	/* AllocObjectSTEntry */
 						wprintf(u"     Symbol: AllocObject\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocObject));
+						rm(EfiLoaderData, sizeof(SymbolDescAllocObject), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 6:{	/* ClassSTEntry */
 						SymbolDescClass *s;
 						//wprintf(u"     Symbol: Class\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescClass));
-						/*s = (SymbolDescClass *)
+						rm(EfiLoaderData, sizeof(SymbolDescClass), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescClass *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readStringID(s->className);*/
-						readInt(s);
+						readStringID(s->className);
 						break;
 					}
 				case 7:{	/* DirectMethodCallSTEntry */
 						SymbolDescDirectMethodCall *s;
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescDirectMethodCall));
-						//s = (SymbolDescDirectMethodCall *) lib->allClasses[i].methods[j].symbols[k];
-						//readStringID(s->className);
-						//readStringID(s->methodName);
-						//readStringID(s->methodSignature);
-						readInt(s);
-						readInt(s);
-						readInt(s);
+						rm(EfiLoaderData, sizeof(SymbolDescDirectMethodCall), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescDirectMethodCall *) lib->allClasses[i].methods[j].symbols[k];
+						readStringID(s->className);
+						readStringID(s->methodName);
+						readStringID(s->methodSignature);
 						/*wprintf(u"     Symbol: DirectMethodCall %s.%s%s\n", s->className, s->methodName,
 							s->methodSignature);*/
 						break;
@@ -1710,67 +1701,69 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 						SymbolDescString *s;
 						wprintf(u"     Symbol: String\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescString));
-						/*s = (SymbolDescString *)
+						rm(EfiLoaderData, sizeof(SymbolDescString), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescString *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readStringID(s->value);*/
-						readInt(s);
+						readStringID(s->value);
 						break;
 					}
 				case 9:{	/* AllocArraySTEntry */
 						wprintf(u"     Symbol: AllocArray\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocArray));
+						rm(EfiLoaderData, sizeof(SymbolDescAllocArray), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 10:{	/* AllocMultiArraySTEntry */
 						wprintf(u"     Symbol: MultiAllocArray\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocMultiArray));
+						rm(EfiLoaderData, sizeof(SymbolDescAllocMultiArray), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 11:{	/* LongArithmeticSTEntry */
 						SymbolDescLongArithmetic *s;
 						wprintf(u"     Symbol: LongArithmetic\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescLongArithmetic));
-						//s = (SymbolDescLongArithmetic *) lib->allClasses[i].methods[j].symbols[k];
-						//readInt(s->operation);
-						readInt(s);
+						rm(EfiLoaderData, sizeof(SymbolDescLongArithmetic), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescLongArithmetic *) lib->allClasses[i].methods[j].symbols[k];
+						readInt(s->operation);
 						break;
 					}
 				case 12:{	/* VMSupportSTEntry */
 						SymbolDescVMSupport *s;
 						//wprintf(u"     Symbol: VMSupport\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescVMSupport));
-						/*s = (SymbolDescVMSupport *)
+						rm(EfiLoaderData, sizeof(SymbolDescVMSupport), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescVMSupport *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->operation);*/
-						readInt(s);
+						readInt(s->operation);
 						break;
 					}
 				case 13:{	/* PrimitiveClassSTEntry */
 						SymbolDescPrimitiveClass *s;
 						wprintf(u"     Symbol: PrimitiveClass\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescPrimitiveClass));
-						//s = (SymbolDescPrimitiveClass *) lib->allClasses[i].methods[j].symbols[k];
-						//readInt(s->primitiveType);
-						readInt(s);
+						rm(EfiLoaderData, sizeof(SymbolDescPrimitiveClass), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescPrimitiveClass *) lib->allClasses[i].methods[j].symbols[k];
+						readInt(s->primitiveType);
 						break;
 					}
 				case 14:{	/* UnresolvedJump */
 						SymbolDescUnresolvedJump *s;
 						wprintf(u"     Symbol: UnresolvedJump\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescUnresolvedJump));
-						//s = (SymbolDescUnresolvedJump *) lib->allClasses[i].methods[j].symbols[k];
-						//readInt(s->targetNCIndex);
-						readInt(s);
+						rm(EfiLoaderData, sizeof(SymbolDescUnresolvedJump), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescUnresolvedJump *) lib->allClasses[i].methods[j].symbols[k];
+						readInt(s->targetNCIndex);
 						break;
 					}
 				case 15:{	/* VMAbsoluteSTEntry */
 						SymbolDescVMSupport *s;
 						wprintf(u"     Symbol: VMAbsolute\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescVMSupport));
-						/*s = (SymbolDescVMSupport *)
-						    lib->allClasses[i].methods[j].symbols[k];*/
-						//readInt(s->operation);
-						readInt(s);
+						rm(EfiLoaderData, sizeof(SymbolDescVMSupport), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescVMSupport *)
+						    lib->allClasses[i].methods[j].symbols[k];
+						readInt(s->operation);
 						break;
 					}
 				case 17:	// new version 
@@ -1779,30 +1772,24 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 						int mapPos;
 						//wprintf(u"     Symbol: StackMap\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackMap));
-						/*s = (SymbolDescStackMap *)
+						rm(EfiLoaderData, sizeof(SymbolDescStackMap), (void**)&lib->allClasses[i].methods[j].symbols[k]);
+						s = (SymbolDescStackMap *)
 						    lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->immediateNCIndexPre);
 						readInt(s->n_bytes);
-						readInt(s->n_bits);*/
-						readInt(s);
-						readInt(s);
-						int b;
-						readInt(b);
-						if (s/*->n_bytes*/ > 0){
-							//s->map = malloc_stackmap(domain, s->n_bytes);
+						readInt(s->n_bits);
+						if (s->n_bytes > 0){
+							s->map = codefilepos;
+							codefilepos += s->n_bytes;
 						} else {
-							//s->map = NULL;
-						}
-						for (mapPos = 0; mapPos < s/*->n_bytes*/; mapPos++) {
-							char o;
-							//readByte(s->map[mapPos]);
-							readByte(o);
+							s->map = NULL;
 						}
 						break;
 					}
 				case 18:{	/* jx.compiler.symbols.ExceptionTableSTEntry %d %d %s %p */
 						SymbolDescExceptionTable *s;
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescExceptionTable));
+						rm(EfiLoaderData, sizeof(SymbolDescExceptionTable), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						lib->allClasses[i].methods[j].sizeOfExceptionTable++;
 						s = (SymbolDescExceptionTable *) lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->targetNCIndex);	/* UnresolvedJump */
@@ -1816,47 +1803,50 @@ for(j = 0; j < lib->allClasses[i].numberFields; j++){
 				case 19:{	/* CurrentThreadPointerSTEntry */
 						wprintf(u"     Symbol: CurrentThreadPointerSTEntry\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescThreadPointer));
+						rm(EfiLoaderData, sizeof(SymbolDescThreadPointer), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 20:{	/* StackChunkSizeSTEntry */
 						wprintf(u"     Symbol: StackChunkSizeSTEntry\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStackChunkSize));
+						rm(EfiLoaderData, sizeof(SymbolDescStackChunkSize), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 21:{	/* ProfileSTEntry */
 						SymbolDescProfile *s;
 						wprintf(u"     Symbol: ProfileSTEntry\r\n");
-						/*lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescProfile));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescProfile));
+						rm(EfiLoaderData, sizeof(SymbolDescProfile), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescProfile *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->kind);*/
-						readInt(s);
+						readInt(s->kind);
 						break;
 					}
 				case 22:{	/* MethodeDescSTEntry */
 						wprintf(u"     Symbol: MethodeDescSTEntry\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescMethodeDesc));
+						rm(EfiLoaderData, sizeof(SymbolDescMethodeDesc), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 23:{	/* TCBOffsetSTEntry */
 						SymbolDescTCBOffset *s;
 						wprintf(u"     Symbol: TCBOffsetSTEntry\r\n");
-						/*lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescTCBOffset));
+						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescTCBOffset));
+						rm(EfiLoaderData, sizeof(SymbolDescTCBOffset), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescTCBOffset *)
 						    lib->allClasses[i].methods[j].symbols[k];
-						readInt(s->kind);*/
-						readInt(s);
+						readInt(s->kind);
 						break;
 					}
 				default:
 					wprintf(u"Unknown symbol %d\r\n", type);
 				}
-				/*if (lib->allClasses[i].methods[j].symbols[k]) {
+				if (lib->allClasses[i].methods[j].symbols[k]) {
 					lib->allClasses[i].methods[j].symbols[k]->type = type;
 					lib->allClasses[i].methods[j].symbols[k]->immediateNCIndex = immediateNCIndex;
 					lib->allClasses[i].methods[j].symbols[k]->numBytes = numBytes;
 					lib->allClasses[i].methods[j].symbols[k]->nextInstrNCIndex = nextInstrNCIndex;
-				}*/
+				}
 			}
 
 			if (lib->allClasses[i].methods[j].sizeOfExceptionTable > 0) {
@@ -2632,7 +2622,7 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 			wprintf(u"vtableSize<11");
 
 		for (j = 0; j < lib->allClasses[i].vtableSize; j++) {
-			if (lib->allClasses[i].vtableSym[j * 3][0] == '\0')
+			if (lib->allClasses[i].vtableSym[j * 3]->size == 0)
 				continue;	/* hole */
 			method =
 			    findMethodInSharedLibs(lib->allClasses[i].vtableSym[j * 3], lib->allClasses[i].vtableSym[j * 3 + 1],
@@ -2668,11 +2658,11 @@ void findClassAndMethodInLib(LibDesc * lib, char *classname, char *methodname, c
 	for (i = 0; i < lib->numberOfClasses; i++) {
 		cl = lib->allClasses[i].classDesc;
 		//printf("findClassAndMethodInLib: %s %s =?= %s \n", lib->sharedLib->name, classname, cl->name);
-		if (strcmp(classname, cl->name) == 0) {
+		if (strcmp(classname, cl->name->value) == 0) {
 			for (j = 0; j < cl->numberOfMethods; j++) {
-				if (strcmp(methodname, cl->methods[j].name)
+				if (strcmp(methodname, cl->methods[j].name->value)
 				    == 0) {
-					if (strcmp(signature, cl->methods[j].signature) == 0) {
+					if (strcmp(signature, cl->methods[j].signature->value) == 0) {
 						*classFound = &(lib->allClasses[i]);
 						*methodFound = &(cl->methods[j]);
 						return;
@@ -2720,10 +2710,10 @@ void findClassDescAndMethodInLib(SharedLibDesc * lib, char *classname, char *met
 	}
 
 	for (i = 0; i < lib->numberOfClasses; i++) {
-		if (strcmp(classname, lib->allClasses[i].name) == 0) {
+		if (strcmp(classname, lib->allClasses[i].name->value) == 0) {
 			for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
-				if (strcmp(methodname, lib->allClasses[i].methods[j].name) == 0) {
-					if (strcmp(signature, lib->allClasses[i].methods[j].signature) == 0) {
+				if (strcmp(methodname, lib->allClasses[i].methods[j].name->value) == 0) {
+					if (strcmp(signature, lib->allClasses[i].methods[j].signature->value) == 0) {
 						*classFound = &(lib->allClasses[i]);
 						*methodFound = &(lib->allClasses[i].methods[j]);
 						return;
@@ -2828,11 +2818,11 @@ code_t findVirtualMethodCode(DomainDesc * domain, char *classname, char *methodn
 		wprintf("Cannot find class %s\n", classname);
 	}
 	for (jint j = 0; j < cl->vtableSize; j++) {
-		if (cl->vtableSym[j * 3][0] == '\0')
+		if (cl->vtableSym[j * 3]->size == 0)
 			continue;	/* hole */
 //printf("%s\n",cl->vtableSym[j*3+1]);
-		if ((strcmp(cl->vtableSym[j * 3 + 1], methodname) == 0)
-		    && (strcmp(cl->vtableSym[j * 3 + 2], signature) == 0)) {
+		if ((strcmp(methodname, cl->vtableSym[j * 3 + 1]->value) == 0)
+		    && (strcmp(signature, cl->vtableSym[j * 3 + 2]->value) == 0)) {
 			return obj->vtable[j];
 		}
 	}
@@ -2851,10 +2841,10 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 	cl = c->classDesc;
 	ASSERTCLASSDESC(cl);
 	for (jint j = 0; j < cl->vtableSize; j++) {
-		if (cl->vtableSym[j * 3][0] == '\0')
+		if (cl->vtableSym[j * 3]->size == 0)
 			continue;	/* hole */
-		if ((strcmp(cl->vtableSym[j * 3 + 1], methodName) == 0)
-		    && (strcmp(cl->vtableSym[j * 3 + 2], signature) == 0)) {
+		if ((strcmp(methodName, cl->vtableSym[j * 3 + 1]->value) == 0)
+		    && (strcmp(signature, cl->vtableSym[j * 3 + 2]->value) == 0)) {
 			return j;
 		}
 	}
