@@ -1059,7 +1059,7 @@ SharedLibDesc *findSharedLib(char *libname)
 {
 	SharedLibDesc *sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
-		if (strcmp(sharedLib->name, libname) == 0) {
+		if (strcmp(libname, sharedLib->name->value) == 0) {
 			/* found lib */
 			break;
 		}
@@ -1126,7 +1126,7 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 	}
 
 	if (domain->numberOfLibs == domain->maxNumberOfLibs) {
-		wprintf("max number of libs in domain %s reached!", domain->domainName);
+		wprintf(u"max number of libs in domain %s reached!", domain->domainName);
 		return NULL;
 	}
 
@@ -1459,7 +1459,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 			if (scl == NULL)
 				scl = findClassDesc(supername);
 			if (scl == NULL){
-				wprintf(u"\r\nfind superclass: ");
+				//wprintf(u"\r\nfind superclass: ");
 				/*for(int l = 0; l < supername->size; l++){
 					wprintf(u"%c", *(&supername->value + l));
 				}*/
@@ -1642,7 +1642,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						break;
 					}
 				case 2:{	/* ExceptionHandlerSTEntry */
-						wprintf(u"     Symbol: ExceptionHandler\r\n");
+						//wprintf(u"     Symbol: ExceptionHandler\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescExceptionHandler));
 						rm(EfiLoaderData, sizeof(SymbolDescExceptionHandler), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
@@ -1660,7 +1660,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 4:{	/* StaticFieldSTEntry */
 						SymbolDescStaticField *s;
-						wprintf(u"     Symbol: StaticField\r\n");
+						//wprintf(u"     Symbol: StaticField\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescStaticField));
 						rm(EfiLoaderData, sizeof(SymbolDescStaticField), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescStaticField *) lib->allClasses[i].methods[j].symbols[k];
@@ -1670,7 +1670,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						break;
 					}
 				case 5:{	/* AllocObjectSTEntry */
-						wprintf(u"     Symbol: AllocObject\r\n");
+						//wprintf(u"     Symbol: AllocObject\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocObject));
 						rm(EfiLoaderData, sizeof(SymbolDescAllocObject), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
@@ -1699,7 +1699,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 8:{	/* StringSTEntry */
 						SymbolDescString *s;
-						wprintf(u"     Symbol: String\r\n");
+						//wprintf(u"     Symbol: String\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescString));
 						rm(EfiLoaderData, sizeof(SymbolDescString), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescString *)
@@ -1708,7 +1708,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						break;
 					}
 				case 9:{	/* AllocArraySTEntry */
-						wprintf(u"     Symbol: AllocArray\r\n");
+						//wprintf(u"     Symbol: AllocArray\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescAllocArray));
 						rm(EfiLoaderData, sizeof(SymbolDescAllocArray), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
@@ -1740,7 +1740,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 13:{	/* PrimitiveClassSTEntry */
 						SymbolDescPrimitiveClass *s;
-						wprintf(u"     Symbol: PrimitiveClass\r\n");
+						//wprintf(u"     Symbol: PrimitiveClass\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescPrimitiveClass));
 						rm(EfiLoaderData, sizeof(SymbolDescPrimitiveClass), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescPrimitiveClass *) lib->allClasses[i].methods[j].symbols[k];
@@ -1749,7 +1749,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 14:{	/* UnresolvedJump */
 						SymbolDescUnresolvedJump *s;
-						wprintf(u"     Symbol: UnresolvedJump\r\n");
+						//wprintf(u"     Symbol: UnresolvedJump\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescUnresolvedJump));
 						rm(EfiLoaderData, sizeof(SymbolDescUnresolvedJump), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescUnresolvedJump *) lib->allClasses[i].methods[j].symbols[k];
@@ -1796,12 +1796,12 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						readInt(s->rangeStart);
 						readInt(s->rangeEnd);
 						readStringID(s->className);
-						wprintf(u"     Symbol: ExceptionTableSTEntry %d %d %s %p\n", s->rangeStart,
-							s->rangeEnd, s->className, s->targetNCIndex);
+						/*wprintf(u"     Symbol: ExceptionTableSTEntry %d %d %s %p\n", s->rangeStart,
+							s->rangeEnd, s->className, s->targetNCIndex);*/
 						break;
 					}
 				case 19:{	/* CurrentThreadPointerSTEntry */
-						wprintf(u"     Symbol: CurrentThreadPointerSTEntry\r\n");
+						//wprintf(u"     Symbol: CurrentThreadPointerSTEntry\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescThreadPointer));
 						rm(EfiLoaderData, sizeof(SymbolDescThreadPointer), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
@@ -1830,7 +1830,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 					}
 				case 23:{	/* TCBOffsetSTEntry */
 						SymbolDescTCBOffset *s;
-						wprintf(u"     Symbol: TCBOffsetSTEntry\r\n");
+						//wprintf(u"     Symbol: TCBOffsetSTEntry\r\n");
 						//lib->allClasses[i].methods[j].symbols[k] = malloc_symbol(domain, sizeof(SymbolDescTCBOffset));
 						rm(EfiLoaderData, sizeof(SymbolDescTCBOffset), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescTCBOffset *)
@@ -1884,7 +1884,6 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 			} else {
 				lib->allClasses[i].methods[j].sourceLineTable = NULL;
 			}
-
 
 		}
 		lib->numberOfClasses++;
