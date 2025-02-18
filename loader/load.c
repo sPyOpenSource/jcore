@@ -1906,7 +1906,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	lib->codeBytes = completeCodeBytes;
 	lib->vtablesize = completeVtableSize;
 	lib->bytecodes = completeBytecodeSize;
-	wprintf(u"Code: 0x%x (numBytes=%d)\n", (jint)codefilepos, completeCodeBytes);
+	wprintf(u"Code: 0x%x (numBytes=%d)\r\n", (jint)codefilepos, completeCodeBytes);
 	readCode(lib->code);
 
 #if 0				/* TODO: check whether we can free codefile */

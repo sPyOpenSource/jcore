@@ -39,9 +39,9 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     EFI_ALLOCATE_POOL AllocatePool = SystemTable->BootServices->AllocatePool;
     EFI_STATUS Status;// = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, NULL);
 
-    UINT64 FileSize0 = getFileSize(init);
-    UINT64 FileSize1 = getFileSize(zero);
-    UINT64 FileSize2 = getFileSize(jdk);
+    UINT64 FileSize0 = getFileSize(zero);
+    UINT64 FileSize1 = getFileSize(jdk);
+    UINT64 FileSize2 = getFileSize(init);
 
     Status = AllocatePool(EfiLoaderCode, FileSize0, (void**)&ExternalFileBuffer0);
     Status = AllocatePool(EfiLoaderCode, FileSize1, (void**)&ExternalFileBuffer1);
@@ -55,14 +55,14 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 	SetTextColor(EFI_LIGHTCYAN);
     wprintf(CheckStandardEFIError(Status));
 
-    init->SetPosition(init, 0);
-    init->Read(init, &FileSize0, (void *)ExternalFileBuffer0);
-
     zero->SetPosition(zero, 0);
-    zero->Read(zero, &FileSize1, (void *)ExternalFileBuffer1);
+    zero->Read(zero, &FileSize0, (void *)ExternalFileBuffer0);
 
     jdk->SetPosition(jdk, 0);
-    jdk->Read(jdk,   &FileSize2, (void *)ExternalFileBuffer2);
+    jdk->Read(jdk,   &FileSize1, (void *)ExternalFileBuffer1);
+
+    init->SetPosition(init, 0);
+    init->Read(init, &FileSize2, (void *)ExternalFileBuffer2);
 
     SetTextColor(EFI_GREEN);
     wprintf(u"Read ExternalFileBuffer");
@@ -72,7 +72,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     SetTextColor(EFI_LIGHTCYAN);
     //wprintf(u"\r\nFirst 5 Bytes\r\n");
     SetTextColor(EFI_LIGHTRED);
-    char* codefile = (char*)ExternalFileBuffer1;
+    char* codefile = (char*)ExternalFileBuffer0;
 
     /*for(int m = 0; m < 5; m++)
     {
@@ -81,12 +81,11 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
         codefile++;
     }*/
     
-	loadIt(NULL, "zero.jll", codefile, FileSize1, AllocatePool);
-    codefile = (char*)ExternalFileBuffer0;
-    loadIt(NULL, "init.jll", codefile, FileSize0, AllocatePool);
+	loadIt(NULL, "zero.jll", codefile, FileSize0, AllocatePool);
+    codefile = (char*)ExternalFileBuffer1;
+    loadIt(NULL, "jdk.jll",  codefile, FileSize1, AllocatePool);
     codefile = (char*)ExternalFileBuffer2;
-    loadIt(NULL, "jdk.jll",  codefile, FileSize2, AllocatePool);
-	init->SetPosition(init, 0);
+    loadIt(NULL, "init.jll", codefile, FileSize2, AllocatePool);
     
     SetTextColor(EFI_GREEN);
     SetTextPosition(10, 20);
