@@ -6,10 +6,8 @@
 //#include "efilibs.h"
 #include "all.h"
 
-/*#define EFI_FILE_INFO_ID \
-  { \
-    0x9576e92, 0x6d3f, 0x11d2, {0x8e, 0x39, 0x0, 0xa0, 0xc9, 0x69, 0x72, 0x3b } \
-  }*/
+void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size);
+
 // The GUID to set the correct Protocol.
 struct EFI_GUID EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID    = {0x9042a9de, 0x23dc, 0x4a38, {0x96, 0xfb, 0x7a, 0xde, 0xd0, 0x80, 0x51, 0x6a}};
 struct EFI_GUID EFI_FILE_INFO_GUID                   = {0x09576e92, 0x6d3f, 0x11d2, {0x8e, 0x39, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b}};
@@ -30,6 +28,7 @@ uint32_t DisplayHeight = 0;
 void* OSBuffer_Handle;
 EFI_EVENT timer_event;
 EFI_INPUT_KEY CheckKeystroke;
+DomainDesc * domainZero;
 
 UINT64 getFileSize(EFI_FILE_PROTOCOL *FileHandle)
 {
@@ -39,9 +38,6 @@ UINT64 getFileSize(EFI_FILE_PROTOCOL *FileHandle)
   FileHandle->SetPosition(FileHandle, 0);
   return *FileSize;
 }
-
-void loadIt(DomainDesc * domain, char *libname, char* codefilepos, int size);
-DomainDesc * domainZero;
 
 EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 {
@@ -55,7 +51,6 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     EFI_FILE_PROTOCOL* jdk  = openFile(u"jdk.jll");
     EFI_FILE_PROTOCOL* init = openFile(u"init.jll");
 
-    //EFI_GUID gEfiFileInfoGuid = EFI_FILE_INFO_ID;
     //EFI_FILE_INFO *FileInfo;
     EFI_ALLOCATE_POOL AllocatePool = SystemTable->BootServices->AllocatePool;
     EFI_STATUS Status;// = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, NULL);
@@ -563,7 +558,6 @@ void ResetKeyboard(void)
     SystemTable->ConIn->Reset(SystemTable->ConIn, 1);
 }
 
-//EFI_INPUT_KEY CheckKeystroke;
 BOOLEAN GetKey(CHAR16 key)
 {
     if(CheckKeystroke.UnicodeChar == key)

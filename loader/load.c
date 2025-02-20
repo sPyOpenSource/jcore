@@ -37,7 +37,6 @@ Class *java_lang_Object_class;
 
 code_t *array_vtable_prototype;
 
-
 /*static char *codefile;
 static char *codefilepos;
 */
@@ -204,7 +203,6 @@ void findClassDescAndMethod(String *classname, String *methodname, String *signa
 			MethodDesc ** methodFound);
 void findClassAndMethodInLib(LibDesc * lib, char *classname, char *methodname, char *signature, Class ** classFound,
 			MethodDesc ** methodFound);
-//void wprintf(char *msg, ...);
 
 int findSubClasses(DomainDesc * domain, Class * c, Class ** subclassesFound, int bufsize);
 int findSubClassesInLib(LibDesc * lib, Class * c, Class ** subclassesFound, int bufsize);
@@ -245,7 +243,7 @@ ArrayClassDesc *sharedArrayClasses = NULL;
 ClassDesc *vmclassClass;
 ClassDesc *vmmethodClass;
 
-extern EFI_SYSTEM_TABLE                *SystemTable;
+extern EFI_SYSTEM_TABLE *SystemTable;
 
 Class *specialAllocClass(DomainDesc * domain, int number)
 {
@@ -2977,7 +2975,6 @@ void set_breakpoint(DomainDesc * domain, char *classname, char *methodname, char
 	backup = ((u1_t *) (m->code))[offset];
 	((u1_t *) (m->code))[offset] = 0xcc;
 }
-
 
 void test_irq_no()
 {
