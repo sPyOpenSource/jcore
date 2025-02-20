@@ -54,16 +54,20 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     wprintf(u"AllocatePool ExternalFileBuffer");
 	SetTextColor(EFI_LIGHTCYAN);
     wprintf(CheckStandardEFIError(Status));
-
+    DomainDesc * domainZero;
+    AllocatePool(EfiLoaderData, sizeof(DomainDesc), (void**)&domainZero);
+    domainZero->numberOfLibs = 0;
+    domainZero->maxNumberOfLibs = 100;
+    AllocatePool(EfiLoaderData, sizeof(LibDesc) * domainZero->maxNumberOfLibs, (void**)&domainZero->libs);
     zero->SetPosition(zero, 0);
     zero->Read(zero, &FileSize0, (void *)ExternalFileBuffer0);
     char* codefile = (char*)ExternalFileBuffer0;
-    loadIt(NULL, "zero.jll", codefile, FileSize0, AllocatePool);
+    loadIt(domainZero, "zero.jll", codefile, FileSize0, AllocatePool);
 
     jdk->SetPosition(jdk, 0);
     jdk->Read(jdk, &FileSize1, (void *)ExternalFileBuffer1);
     codefile = (char*)ExternalFileBuffer1;
-    loadIt(NULL, "jdk.jll", codefile, FileSize1, AllocatePool);
+    loadIt(domainZero, "jdk.jll", codefile, FileSize1, AllocatePool);
 
     init->SetPosition(init, 0);
     init->Read(init, &FileSize2, (void *)ExternalFileBuffer2);
@@ -85,7 +89,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     }*/
     
     codefile = (char*)ExternalFileBuffer2;
-    loadIt(NULL, "init.jll", codefile, FileSize2, AllocatePool);
+    loadIt(domainZero, "init.jll", codefile, FileSize2, AllocatePool);
     
     SetTextColor(EFI_GREEN);
     SetTextPosition(10, 20);

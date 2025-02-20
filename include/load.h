@@ -47,7 +47,7 @@ MethodDesc *cloneMethodInDomain(DomainDesc * domain, MethodDesc * method);
 ArrayClassDesc *findSharedArrayClassDescByElemClass(ClassDesc * elemClass);
 ObjectDesc *newString(DomainDesc * domain, char *value);
 ObjectDesc *newStringArray(DomainDesc * domain, int size, char *arr[]);
-ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, char *name);
+ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, String *name);
 ClassDesc *obj2ClassDesc(ObjectDesc * obj);
 Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc);
 ObjectDesc *allocObject(ClassDesc * c);
@@ -64,7 +64,7 @@ void createVTable(DomainDesc * domain, ClassDesc * c);
 
 Class *specialAllocClass(DomainDesc * domain, int number);
 
-ClassDesc *findClassDesc(char *name);
+ClassDesc *findClassDesc(String *name);
 
 #ifndef KERNEL
 void install_handler(int sig, void (*handler) (int));
