@@ -3,6 +3,8 @@
 
 #include "config.h"
 #include "efi.h"
+#include "ErrorCodes.h"
+#include "efilibs.h"
 
 #ifndef KERNEL
 //#include <stdio.h>
