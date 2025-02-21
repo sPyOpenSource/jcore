@@ -267,6 +267,7 @@ Class *specialAllocClass(DomainDesc * domain, int number)
 Class *createPrimitiveClass(char *name)
 {
 	PrimitiveClassDesc *cd;// = malloc_primitiveclassdesc(domainZero, strlen(name) + 1);
+	SystemTable->BootServices->AllocatePool(EfiLoaderData, sizeof(PrimitiveClassDesc) + strlen(name) + 1, (void**)&cd);
 	Class *c = specialAllocClass(domainZero, 1);
 #ifdef USE_QMAGIC
 	cd->magic = MAGIC_CLASSDESC;
@@ -295,7 +296,7 @@ ClassDesc *findSharedArrayClassDesc(char *name)
 	//DISABLE_IRQ;
 	//printf("FINDARRACLASS: %s\n", name);
 	for (c = (ClassDesc *) sharedArrayClasses; c != NULL; c = c->next) {
-		if (c->name == name) {
+		if (strcmp(c->name, name) == 0) {
 			goto finished;
 		}
 	}
@@ -365,8 +366,7 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 	ClassDesc *c;
 	Class *cl;
 	ArrayClassDesc *arrayClass;
-	char value[80];
-	u4_t namelen;
+	//char value[80];
 	char *n = &name + 1;
 
 	//printf("CREATESHAREDARRAY %s\n", name);
@@ -375,10 +375,10 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 	}
 	if (*n == 'L') {
 		//strncpy(value, name + 2, strlen(name) - 3);
-		value[strlen(name) - 3] = '\0';
-		c = findClassDesc(value);
+		//value[strlen(name) - 3] = '\0';
+		c = findClassDesc(&name + 2);
 	} else if (*n == '[') {
-		//c = findSharedArrayClassDesc(n);
+		c = findSharedArrayClassDesc(n);
 	} else {
 		cl = findPrimitiveClass(*n);
 		if (cl == NULL)
@@ -387,8 +387,11 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 	}
 	if (c == NULL)
 		wprintf(u"not a shared element class\r\n");
-	namelen = strlen(name) + 1;
 	//arrayClass = malloc_arrayclassdesc(domainZero, namelen);
+	SystemTable->BootServices->AllocatePool(EfiLoaderData, sizeof(ArrayClassDesc) + (11 + 1) * 4, (void**)&arrayClass);
+	//memset(arrayClass, 0, sizeof(ArrayClassDesc) + namelen);
+	arrayClass->name = name;//(char *)arrayClass + sizeof(ArrayClassDesc);
+	arrayClass->vtable = (char *)arrayClass + 4;
 #ifdef USE_QMAGIC
 	arrayClass->magic = MAGIC_CLASSDESC;
 #endif
@@ -502,18 +505,14 @@ ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, char *name)
 	if (strcmp("java/lang/Object", name) == 0)
 		return java_lang_Object;
 	for (int i = 0; i < lib->numberOfClasses; i++) {
-		if (lib->allClasses[i].name == name){
+		/*if (lib->allClasses[i].name == name){
 			return &lib->allClasses[i];
-		} else {
-			for(int j = 0; j < strlen(name); j++){
-				if(*(&lib->allClasses[i].name + j) != *(&name + j)) goto for_loop;
-			}
+		} else*/ if(strcmp(lib->allClasses[i].name, name) == 0){
 			/*for(int j = 0; j < lib->allClasses[i].name->size; j++){
 				wprintf(u"%c", *(&lib->allClasses[i].name->value + j));
 			}*/
 			return &lib->allClasses[i];
 		}
-		for_loop: continue;
 	}
 	return NULL;
 }
@@ -611,11 +610,11 @@ ClassDesc *findClassDesc(char *name)
 
 	sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
-		if (testHashKey(name, sharedLib->key, LIB_HASHKEY_LEN)) {
+		//if (testHashKey(name, sharedLib->key, LIB_HASHKEY_LEN)) {
 			cl = findClassDescInSharedLib(sharedLib, name);
 			if (cl != NULL)
 				return cl;
-		}
+		//}
 		sharedLib = (SharedLibDesc *) sharedLib->next;
 	}
 	return NULL;
@@ -629,11 +628,11 @@ Class *findClass(DomainDesc * domain, char *name)
 		return java_lang_Object_class;
 
 	for (jint i = 0; i < domain->numberOfLibs; i++) {
-		if (testHashKey(name, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
+		//if (testHashKey(name, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
 			cl = findClassInLib(domain->libs[i], name);
 			if (cl != NULL)
 				return cl;
-		}
+		//}
 	}
 
 	if (name[0] == '[') {
@@ -1335,13 +1334,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 
 	for (i = 0; i < lib->numberOfNeededLibs; i++) {
 		readString(libname);
-		char name[80];
+		/*char name[80];
 		for(int i = 0; i < strlen(libname); i++){
 			name[i] = libname[i];
 			wprintf(u"%c", name[i]);
 		}
-		name[strlen(libname)] = 0;
-		neededLib = findSharedLib(name);
+		name[strlen(libname)] = 0;*/
+		neededLib = findSharedLib(libname);
 
 		if (neededLib == NULL) {
 			//  could not find a loaded lib, now try to load it  
@@ -1955,7 +1954,6 @@ void patchByte(code_t code, SymbolDesc * symbol, jint value)
 void patchConstant(code_t code, SymbolDesc * symbol, jint value)
 {
 	char *addr = (char *) ((char *) code + symbol->immediateNCIndex);
-	//wprintf(u"%d ", addr);
 	addr[0] = value & 0xff;
 	addr[1] = (value >> 8) & 0xff;
 	addr[2] = (value >> 16) & 0xff;
@@ -2024,24 +2022,11 @@ void patchClassPointer(code_t code, SymbolDesc * symbol)
 	SymbolDescClass *s = (SymbolDescClass *) symbol;
 
 	if (s->className[0] == '[') {
-		//c = findSharedArrayClassDesc(s->className);
+		c = findSharedArrayClassDesc(s->className);
 	} else {
 		c = findClassDesc(s->className);
 	}
-/*for(int i = 0; i < s->className->size; i++){
-	wprintf(u"%c", *(&s->className->value + i));
-}*/
-for (int i = 0; i < sharedLibs->numberOfClasses; i++) {
-			/*for(int j = 0; j < s->className->size; j++){
-				if(*(&sharedLibs->allClasses[i].name->value + j) != *(&s->className->value + j)) goto for_loop;
-			}*/
-			if(sharedLibs->allClasses[i].name != s->className) goto for_loop;
-		/*for(int j = 0; j < sharedLibs->allClasses[i].name->size; j++){
-			wprintf(u"%c", *(&sharedLibs->allClasses[i].name->value + j));
-		}*/
-		c = &sharedLibs->allClasses[i];
-		for_loop: continue;
-	}
+
 	/*if (c == NULL)
 		wprintf(u"Link error: Required class not found: %s\r\n", s->className);*/
 
@@ -2278,7 +2263,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				break;
 			}
 		case 8:{	/* StringSTEntry */
-				wprintf(u"StringSTEntry\r\n");
+				//wprintf(u"StringSTEntry\r\n");
 				//patchStringAddress(code, method->symbols[k]);
 				break;
 			}
@@ -2713,20 +2698,20 @@ void findClassAndMethod(DomainDesc * domain, char *classname, char *methodname, 
 	*methodFound = NULL;
 
 	for (i = 0; i < domain->numberOfLibs; i++) {
-		if (testHashKey(classname, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
+		//if (testHashKey(classname, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
 			findClassAndMethodInLib(domain->libs[i], classname, methodname, signature, classFound, methodFound);
 			if (*classFound != NULL)
 				return;
-		}
+		//}
 	}
 
-	for (i = 0; i < domain->numberOfLibs; i++) {
+	/*for (i = 0; i < domain->numberOfLibs; i++) {
 		if (!testHashKey(classname, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
 			findClassAndMethodInLib(domain->libs[i], classname, methodname, signature, classFound, methodFound);
 			if (*classFound != NULL)
 				return;
 		}
-	}
+	}*/
 }
 
 void findClassDescAndMethodInLib(SharedLibDesc * lib, char *classname, char *methodname, char *signature, ClassDesc ** classFound,
@@ -2770,17 +2755,17 @@ for(int i = 0; i < methodname->size; i++){
 	wprintf(u"%c", *(&methodname->value+i));
 }*/
 	while (sharedLib != NULL) {
-		if (testHashKey(classname, sharedLib->key, LIB_HASHKEY_LEN)) {
+		//if (testHashKey(classname, sharedLib->key, LIB_HASHKEY_LEN)) {
 			findClassDescAndMethodInLib(sharedLib, classname, methodname, signature, classFound, methodFound);
 			if (*classFound != NULL)
 				return;
-		}
+		//}
 		sharedLib = sharedLib->next;
 	}
 
 //wprintf(u" %s::%s%s not found with hashkey\r\n",classname,methodname,signature);
 
-	sharedLib = sharedLibs;
+	/*sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
 		if (!testHashKey(classname, sharedLib->key, LIB_HASHKEY_LEN)) {
 			findClassDescAndMethodInLib(sharedLib, classname, methodname, signature, classFound, methodFound);
@@ -2788,7 +2773,7 @@ for(int i = 0; i < methodname->size; i++){
 				return;
 		}
 		sharedLib = sharedLib->next;
-	}
+	}*/
 }
 
 MethodDesc *findMethodInSharedLibs(char *classname, char *methodname, char *signature)
@@ -2816,13 +2801,13 @@ MethodDesc *findMethod(DomainDesc * domain, char *classname, char *methodname, c
 
 	//printf("findMethod: %s %s %s\n", classname, methodname, signature);
 	for (i = 0; i < domain->numberOfLibs; i++) {
-		if (testHashKey(classname, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
+		//if (testHashKey(classname, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
 			m = findMethodInLib(domain->libs[i], classname, methodname, signature);
 			if (m != NULL) {
 				ASSERT(m->code != NULL);
 				return m;
 			}
-		}
+		//}
 	}
 
 #if DEBUG
