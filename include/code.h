@@ -37,8 +37,8 @@ typedef struct {
  */
 
 typedef struct FieldDesc_s {
-	String *fieldName;
-	String *fieldType;
+	char *fieldName;
+	char *fieldType;
 	char fieldOffset;
 } FieldDesc;
 
@@ -76,8 +76,8 @@ typedef struct MethodDesc_s {
 #ifdef USE_QMAGIC
 	u4_t magic;
 #endif
-	String *name;
-	String *signature;
+	char *name;
+	char *signature;
 	jint numberOfCodeBytes;
 	jint numberOfSymbols;
 	SymbolDesc **symbols;
@@ -143,16 +143,16 @@ struct ArrayClassDesc_s;
 
 #define CLASSDESC0\
     jint classType;\
-    String *name;\
+    char *name;\
     struct ClassDesc_s *superclass;\
     jint numberOfInterfaces;\
-    String **ifname;\
+    char **ifname;\
     struct ClassDesc_s **interfaces;\
     jint numberOfMethods;\
     jint vtableSize;\
     MethodDesc *methods;\
     code_t *vtable;\
-    String **vtableSym;\
+    char **vtableSym;\
     jint instanceSize;\
     jint staticFieldsSize;\
     struct SharedLibDesc_s *definingLib;\
@@ -250,15 +250,15 @@ typedef struct PrimitiveClassDesc_s {
  * Libs
  */
 struct meta_s {
-	String *var;
-	String *val;
+	char *var;
+	char *val;
 };
 
 typedef struct SharedLibDesc_s {
 #ifdef USE_QMAGIC
 	u4_t magic;
 #endif
-	String *name;
+	char *name;
 #ifdef USE_LIB_INDEX
 	jint ndx;
 	jint memSizeStaticFields;

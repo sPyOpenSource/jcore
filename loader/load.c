@@ -79,9 +79,9 @@ NOT IMPL jint readInt()
 
 //#define readStringData(buf, nBytes) { memcpy(buf, codefilepos, nBytes); codefilepos += nBytes; /*buf[nBytes] = '\0';*/}
 
-#define readString(buf) { buf = (String*)codefilepos; codefilepos += *(jint*)codefilepos + 4;/*jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);*/}
+#define readString(buf) { buf = codefilepos; while(*codefilepos != 0){codefilepos++;}; codefilepos++;/*jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);*/}
 
-#define readStringID(buf) { jint id ; readInt(id); buf = string_table; char *x = (char *) buf; for(int ii = 0; ii < id; ii++) {x += buf->size + 4; buf = (String *) x;} }
+#define readStringID(buf) { jint id ; readInt(id); buf = string_table; for(int ii = 0; ii < id; ii++) {while(*buf != 0){buf++;}; buf++;} }
 
 //#define readAllocString(buf) {jint nBytes; /*readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
 
@@ -98,16 +98,16 @@ typedef SymbolDesc SymbolDescExceptionHandler;
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	String *className;
-	String *methodName;
-	String *methodSignature;
+	char *className;
+	char *methodName;
+	char *methodSignature;
 } SymbolDescDEPFunction;
 
 typedef SymbolDesc SymbolDescAllocObject;
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	String *className;
+	char *className;
 	jint kind;
 	jint fieldOffset;
 } SymbolDescStaticField;
@@ -119,19 +119,19 @@ typedef struct {
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	String *className;
+	char *className;
 } SymbolDescClass;
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	String *className;
-	String *methodName;
-	String *methodSignature;
+	char *className;
+	char *methodName;
+	char *methodSignature;
 } SymbolDescDirectMethodCall;
 
 typedef struct {
 	SYMBOLDESC_BASE;
-	String *value;
+	char *value;
 } SymbolDescString;
 
 typedef SymbolDesc SymbolDescAllocArray;
@@ -163,7 +163,7 @@ typedef struct {
 	int targetNCIndex;	/* extends UnresolvedJump ! */
 	int rangeStart;
 	int rangeEnd;
-	String *className;
+	char *className;
 } SymbolDescExceptionTable;
 
 typedef struct {
@@ -198,7 +198,7 @@ Class *findPrimitiveClass(char name);
 
 void findClassAndMethod(DomainDesc * domain, char *classname, char *methodname, char *signature, Class ** classFound,
 			MethodDesc ** methodFound);
-void findClassDescAndMethod(String *classname, String *methodname, String *signature, ClassDesc ** classFound,
+void findClassDescAndMethod(char *classname, char *methodname, char *signature, ClassDesc ** classFound,
 			MethodDesc ** methodFound);
 void findClassAndMethodInLib(LibDesc * lib, char *classname, char *methodname, char *signature, Class ** classFound,
 			MethodDesc ** methodFound);
@@ -214,7 +214,7 @@ ArrayDesc *vmSpecialAllocMultiArray(ClassDesc * elemClass, jint dim, jint sizes)
 
 ObjectDesc *specialAllocObject(ClassDesc * c);
 
-ArrayClassDesc *createSharedArrayClassDesc(String *name);
+ArrayClassDesc *createSharedArrayClassDesc(char *name);
 ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass);
 SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* codefilepos, int size);
 static LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib);
@@ -289,7 +289,7 @@ void initPrimitiveClasses()
 	class_Z = createPrimitiveClass("Z");
 }
 
-ClassDesc *findSharedArrayClassDesc(String *name)
+ClassDesc *findSharedArrayClassDesc(char *name)
 {
 	ClassDesc *c;
 	//DISABLE_IRQ;
@@ -360,22 +360,22 @@ Class *createArrayClass(DomainDesc * domain, char *name)
 	return cl;
 }
 
-ArrayClassDesc *createSharedArrayClassDesc(String *name)
+ArrayClassDesc *createSharedArrayClassDesc(char *name)
 {
 	ClassDesc *c;
 	Class *cl;
 	ArrayClassDesc *arrayClass;
 	char value[80];
 	u4_t namelen;
-	char *n = &name->value + 1;
+	char *n = &name + 1;
 
 	//printf("CREATESHAREDARRAY %s\n", name);
-	for(int i = 0; i < name->size; i++){
-		wprintf(u"%c", *(&name->value+i));
+	for(int i = 0; i < strlen(name); i++){
+		wprintf(u"%c", *(&name+i));
 	}
 	if (*n == 'L') {
 		//strncpy(value, name + 2, strlen(name) - 3);
-		value[name->size - 3] = '\0';
+		value[strlen(name) - 3] = '\0';
 		c = findClassDesc(value);
 	} else if (*n == '[') {
 		//c = findSharedArrayClassDesc(n);
@@ -387,7 +387,7 @@ ArrayClassDesc *createSharedArrayClassDesc(String *name)
 	}
 	if (c == NULL)
 		wprintf(u"not a shared element class\r\n");
-	namelen = name->size + 1;
+	namelen = strlen(name) + 1;
 	//arrayClass = malloc_arrayclassdesc(domainZero, namelen);
 #ifdef USE_QMAGIC
 	arrayClass->magic = MAGIC_CLASSDESC;
@@ -428,11 +428,11 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 	if (c == NULL)
 		wprintf(u"not a shared element class");
 
-	primitiveElems = (*elemClass->name).value == '[' || elemClass->classType == CLASSTYPE_PRIMITIVE;
+	primitiveElems = elemClass->name[0] == '[' || elemClass->classType == CLASSTYPE_PRIMITIVE;
 	if (primitiveElems) {
-		namelen = elemClass->name->size + 1 + 1;	/* [ ...  */
+		namelen = strlen(elemClass->name) + 1 + 1;	/* [ ...  */
 	} else {
-		namelen = elemClass->name->size + 1 + 3;	/* [L  ... ; */
+		namelen = strlen(elemClass->name) + 1 + 3;	/* [L  ... ; */
 	}
 
 	//arrayClass = malloc_arrayclassdesc(domainZero, namelen + 1);
@@ -496,17 +496,17 @@ Class *findPrimitiveClass(char name)
 	return NULL;
 }
 
-ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, String *name)
+ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, char *name)
 {
 	ASSERTSLIB(lib);
-	if (strcmp("java/lang/Object", name->value) == 0)
+	if (strcmp("java/lang/Object", name) == 0)
 		return java_lang_Object;
 	for (int i = 0; i < lib->numberOfClasses; i++) {
 		if (lib->allClasses[i].name == name){
 			return &lib->allClasses[i];
 		} else {
-			for(int j = 0; j < name->size; j++){
-				if(*(&lib->allClasses[i].name->value + j) != *(&name->value + j)) goto for_loop;
+			for(int j = 0; j < strlen(name); j++){
+				if(*(&lib->allClasses[i].name + j) != *(&name + j)) goto for_loop;
 			}
 			/*for(int j = 0; j < lib->allClasses[i].name->size; j++){
 				wprintf(u"%c", *(&lib->allClasses[i].name->value + j));
@@ -568,21 +568,21 @@ Class *findClassOrPrimitive(DomainDesc * domain, char *name)
 	return NULL;
 }
 
-void addHashKey(String *name, char *key, int len)
+void addHashKey(char *name, char *key, int len)
 {
 	for (int i = 0; i < len; i++) {
-		if (name->size == i)
+		if (name[i] == 0)
 			return;
-		key[i] = key[i] | *(&name->value + i);
+		key[i] = key[i] | name[i];
 	}
 }
 
-jint testHashKey(String *name, char *key, int len)
+jint testHashKey(char *name, char *key, int len)
 {
 	for (int i = 0; i < len; i++) {
-		if (name->size == i)
+		if (name[i] == 0)
 			return JNI_TRUE;
-		if (*(&name->value + i) & key[i] != *(&name->value + i))
+		if (name[i] & key[i] != name[i])
 			return JNI_FALSE;
 	}
 	return JNI_TRUE;
@@ -601,21 +601,21 @@ u4_t findFieldOffset(ClassDesc * c, char *fieldname)
 /* TODO: the same classname could be used in different
    shared libs. These libs cannot be used together but
    can both be available as global shared lib! */
-ClassDesc *findClassDesc(String *name)
+ClassDesc *findClassDesc(char *name)
 {
 	SharedLibDesc *sharedLib;
 	ClassDesc *cl;
 
-	if (strcmp("java/lang/Object", name->value) == 0)
+	if (strcmp("java/lang/Object", name) == 0)
 		return java_lang_Object;
 
 	sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
-		//if (testHashKey(name, sharedLib->key, LIB_HASHKEY_LEN)) {
+		if (testHashKey(name, sharedLib->key, LIB_HASHKEY_LEN)) {
 			cl = findClassDescInSharedLib(sharedLib, name);
 			if (cl != NULL)
 				return cl;
-		//}
+		}
 		sharedLib = (SharedLibDesc *) sharedLib->next;
 	}
 	return NULL;
@@ -690,25 +690,25 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 	LibDesc *lib;
 	SharedLibDesc *slib;
 
-	String *name = classDesc->name;
+	char *name = classDesc->name;
 	/*for(int i = 0; i < name->size; i++){
 		wprintf(u"%c", *(&name->value + i));
 	}*/
-	if (strcmp("java/lang/Object", name->value) == 0)
+	if (strcmp("java/lang/Object", name) == 0)
 		return java_lang_Object_class;
 
-	if (name->value == '<') {
+	if (name[0] == '<') {
 		return NULL;	/* domainzero class */
 	}
 
-	if (name->value != '[') {
+	if (name[0] != '[') {
 		slib = classDesc->definingLib;
 		if ((lib = sharedLib2Lib(domain, slib))) {
 			int ndx = (int) (classDesc - (slib->allClasses));
 			return &(lib->allClasses[ndx]);
 		}
 
-		wprintf(u"Could not find class %s in domain %s!\n", name->value, domain->domainName);
+		wprintf(u"Could not find class %s in domain %s!\n", name, domain->domainName);
 	} else {
 		Class *acl = domain->arrayClasses;
 		for (; acl != NULL; acl = ((ArrayClassDesc *) (acl->classDesc))->nextInDomain) {
@@ -762,7 +762,7 @@ char *methodName2str(ClassDesc * class, MethodDesc * method, char *buffer, int s
 #ifdef COMPACT_EIP_INFO
 	int o;
 #endif
-	String *src;
+	char *src;
 
 	if (class == NULL) {
 		buffer[0] = 0;
@@ -772,12 +772,12 @@ char *methodName2str(ClassDesc * class, MethodDesc * method, char *buffer, int s
 	src = class->name;
 	p = 0;
 	for (i = 0; p < (size - 2); i++) {
-		if (src->size == i)
+		if (src[i] == 0)
 			break;
-		if ((*(&src->value + i) == '/') || (*(&src->value + i) == '\\')) {
+		if ((src[i] == '/') || (src[i] == '\\')) {
 			buffer[p++] = '.';
 		} else {
-			buffer[p++] = *(&src->value + i);
+			buffer[p++] = src[i];
 		}
 	}
 	buffer[p++] = '.';
@@ -789,9 +789,9 @@ char *methodName2str(ClassDesc * class, MethodDesc * method, char *buffer, int s
 
 	src = method->name;
 	for (i = 0; p < (size - 1); i++) {
-		if (src->size == i)
+		if (src[i] == 0)
 			break;
-		buffer[p++] = *(&src->value + i);
+		buffer[p++] = src[i];
 	}
 	src = method->signature;
 #ifdef COMPACT_EIP_INFO
@@ -815,9 +815,9 @@ char *methodName2str(ClassDesc * class, MethodDesc * method, char *buffer, int s
 	}
 #else
 	for (i = 0; p < (size - 1); i++) {
-		if (src->size == i)
+		if (src[i] == 0)
 			break;
-		buffer[p++] = *(&src->value + i);
+		buffer[p++] = src[i];
 	}
 #endif
 	buffer[p++] = 0;
@@ -938,16 +938,16 @@ void stringToChar(ObjectDesc * str, char *c, jint buflen)
 	copyFromCharArray(c, buflen, arrObj);
 }
 
-ObjectDesc *newString(DomainDesc * domain, String *value)
+ObjectDesc *newString(DomainDesc * domain, char *value)
 {
 	ObjectDesc *s;
 	ArrayDesc *arrObj;
 
 	//s = (ObjectDesc *) allocObjectInDomain(domain, findClassDesc("java/lang/String"));
-	jint size = value->size;
+	jint size = strlen(value);
 	//arrObj = allocArrayInDomain(domain, class_C->classDesc, size);
 	s->data[0] = (jint) arrObj;
-	copyIntoCharArray(arrObj, value->value, size);
+	copyIntoCharArray(arrObj, value, size);
 	return s;
 }
 
@@ -992,7 +992,7 @@ ObjectDesc *newStringFromClassname(DomainDesc * domain, char *value)
 }
 
 /* TODO: alloc shared strings in non-movable area (code area); this would allow to GC the heap of DomainZero */
-ObjectDesc *newDomainZeroString(String *value)
+ObjectDesc *newDomainZeroString(char *value)
 {
 	ObjectDesc *o = newString(domainZero, value);
 	setObjFlags(o, OBJFLAGS_EXTERNAL_STRING);
@@ -1070,7 +1070,7 @@ SharedLibDesc *findSharedLib(char *libname)
 {
 	SharedLibDesc *sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
-		if (strcmp(libname, sharedLib->name->value) == 0) {
+		if (strcmp(libname, sharedLib->name) == 0) {
 			wprintf(u"\r\nfound lib");
 			break;
 		}
@@ -1237,7 +1237,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 {
 	jint i, checksum;
 	int version;
-	String* processor;
+	char* processor;
 
 	char *codefilepos = codefile;
 
@@ -1274,13 +1274,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 	jint completeCodeBytes = 0;
 	jint completeVtableSize = 0;
 	jint completeBytecodeSize = 0;
-	String* supername;
-	String* libname;
+	char* supername;
+	char* libname;
 	SharedLibDesc *lib;
 	jint totalNumberOfClasses;
 	SharedLibDesc *neededLib;
 	//char *codefilepos;
-	String *string_table;
+	char *string_table;
 	jint dummy;
 	//jint size;
 	jint isinterface;
@@ -1336,11 +1336,11 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 	for (i = 0; i < lib->numberOfNeededLibs; i++) {
 		readString(libname);
 		char name[80];
-		for(int i = 0; i < libname->size; i++){
-			name[i] = *(&libname->value + i);
+		for(int i = 0; i < strlen(libname); i++){
+			name[i] = libname[i];
 			wprintf(u"%c", name[i]);
 		}
-		name[libname->size] = 0;
+		name[strlen(libname)] = 0;
 		neededLib = findSharedLib(name);
 
 		if (neededLib == NULL) {
@@ -1374,7 +1374,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 
 	//lib->meta = malloc_metatable(domain, lib->numberOfMeta);
 	for (int j = 0; j < lib->numberOfMeta; j++) {
-		String *n;
+		char *n;
 		readString(n);
 		//lib->meta[j].var = codefilepos;
 		/*for(int k = 0; k < n->size; k++){
@@ -1396,15 +1396,16 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 	if (i == 0) {
 		string_table = NULL;
 	} else {
-		string_table = (String *) codefilepos;
-		String * n = string_table;
-		for (j = 0; j < i; j++){
-			readString(n);
+		string_table = (char *) codefilepos;
+		codefilepos += i;
+		//char * n = string_table;
+		//for (j = 0; j < i; j++){
+			//readString(n);
 			/*wprintf(u"\r\n");
 			for(int k = 0; k < n->size; k++){
 				wprintf(u"%c", *(&n->value + k));
 			}*/
-		}
+		//}
 	}
 
 	/*
@@ -1413,7 +1414,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 
 	readInt(i);
 	if (i > 0) {
-		String *symbol;
+		char *symbol;
 		for (j = 0; j < i; j++) {
 			readString(symbol);
 			//wprintf(u"%d ",j);
@@ -1462,11 +1463,11 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 		//printf("Class: %s\n", lib->allClasses[i].name);
 
 		readStringID(supername);
-		if (supername->size == 0) {
+		if (supername[0] == 0) {
 			lib->allClasses[i].superclass = NULL;
 		} else {
 			ClassDesc *scl = NULL;
-			if (strcmp("java/lang/Object", &supername->value) == 0) {
+			if (strcmp("java/lang/Object", supername) == 0) {
 				scl = java_lang_Object;
 			}
 			if (scl == NULL)
@@ -1491,7 +1492,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 			//lib->allClasses[i].interfaces = malloc_classdesctable(domain, lib->allClasses[i].numberOfInterfaces);
 			AllocatePool(EfiLoaderData, sizeof(ClassDesc) * lib->allClasses[i].numberOfInterfaces, (void**)&lib->allClasses[i].interfaces);
 			//lib->allClasses[i].ifname = malloc_tmp_stringtable(domain, tmp_mem, lib->allClasses[i].numberOfInterfaces);
-			AllocatePool(EfiLoaderData, sizeof(String *) * lib->allClasses[i].numberOfInterfaces, (void**)&lib->allClasses[i].ifname);
+			AllocatePool(EfiLoaderData, sizeof(char *) * lib->allClasses[i].numberOfInterfaces, (void**)&lib->allClasses[i].ifname);
 		} else {
 			lib->allClasses[i].interfaces = (ClassDesc **) NULL;
 			lib->allClasses[i].ifname = NULL;
@@ -1566,7 +1567,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 		completeVtableSize += lib->allClasses[i].vtableSize;
 		if (lib->allClasses[i].vtableSize > 0) {
 			//lib->allClasses[i].vtableSym = malloc_vtableSym(domain, lib->allClasses[i].vtableSize);
-			AllocatePool(EfiLoaderData, sizeof(String*) * 3 * lib->allClasses[i].vtableSize, (void**)&lib->allClasses[i].vtableSym);
+			AllocatePool(EfiLoaderData, sizeof(char*) * 3 * lib->allClasses[i].vtableSize, (void**)&lib->allClasses[i].vtableSym);
 			for (j = 0; j < lib->allClasses[i].vtableSize * 3; j += 3) {
 				readStringID(lib->allClasses[i].vtableSym[j]);	    // class 
 				readStringID(lib->allClasses[i].vtableSym[j + 1]);	// name 
@@ -2022,7 +2023,7 @@ void patchClassPointer(code_t code, SymbolDesc * symbol)
 	ClassDesc *c;
 	SymbolDescClass *s = (SymbolDescClass *) symbol;
 
-	if ((*s->className).value == '[') {
+	if (s->className[0] == '[') {
 		//c = findSharedArrayClassDesc(s->className);
 	} else {
 		c = findClassDesc(s->className);
@@ -2041,8 +2042,8 @@ for (int i = 0; i < sharedLibs->numberOfClasses; i++) {
 		c = &sharedLibs->allClasses[i];
 		for_loop: continue;
 	}
-	if (c == NULL)
-		wprintf(u"Link error: Required class not found: %s\r\n", s->className);
+	/*if (c == NULL)
+		wprintf(u"Link error: Required class not found: %s\r\n", s->className);*/
 
 	patchConstant(code, symbol, (jint) c);
 }
@@ -2062,7 +2063,7 @@ void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
 
 	if (m == NULL) {
 		//#ifdef DEBUG
-		wprintf(u"!!! no direct method found: %s.%s%s\r\n", s->className, s->methodName, s->methodSignature);
+		//wprintf(u"!!! no direct method found: %s.%s%s\r\n", s->className, s->methodName, s->methodSignature);
 		//#endif
 		patchRelativeAddress(code, symbol, (jint) should_not_be_called);
 		return;
@@ -2073,7 +2074,7 @@ void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
 
 	if (m->code == NULL) {
 		//#ifdef DEBUG
-		wprintf(u"!!! bad direct method address found: %s.%s%s\r\n", s->className, s->methodName, s->methodSignature);
+		//wprintf(u"!!! bad direct method address found: %s.%s%s\r\n", s->className, s->methodName, s->methodSignature);
 		//#endif
 		patchRelativeAddress(code, symbol, (jint) should_not_be_called);
 		return;
@@ -2335,7 +2336,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				e[exCount].start = s->rangeStart;
 				e[exCount].end   = s->rangeEnd;
 
-				if (strcmp("any", s->className->value) == 0) {
+				if (strcmp("any", s->className) == 0) {
 					e[exCount].type = NULL;
 				} else {
 					e[exCount].type = findClassDesc(s->className);
@@ -2629,13 +2630,13 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 		/* find and link interfaces to this class */
 		for (j = 0; j < lib->allClasses[i].numberOfInterfaces; j++) {
 			ClassDesc *scl = NULL;
-			String *ifname = lib->allClasses[i].ifname[j];
+			char *ifname = lib->allClasses[i].ifname[j];
 			scl = findClassDescInSharedLib(lib, ifname);
 			if (scl == NULL)
 				scl = findClassDesc(ifname);
 			if (scl == NULL) {
-				wprintf(u"Cannot find interface %s while linking class %s of library %s\n", ifname,
-					  lib->allClasses[i].name, lib->name);
+				/*wprintf(u"Cannot find interface %s while linking class %s of library %s\n", ifname,
+					  lib->allClasses[i].name, lib->name);*/
 			}
 			lib->allClasses[i].interfaces[j] = scl;
 		}
@@ -2651,7 +2652,7 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 			wprintf(u"vtableSize<11");
 
 		for (j = 0; j < lib->allClasses[i].vtableSize; j++) {
-			if (lib->allClasses[i].vtableSym[j * 3]->size == 0)
+			if (lib->allClasses[i].vtableSym[j * 3][0] == 0)
 				continue;	/* hole */
 			method =
 			    findMethodInSharedLibs(lib->allClasses[i].vtableSym[j * 3], lib->allClasses[i].vtableSym[j * 3 + 1],
@@ -2687,11 +2688,11 @@ void findClassAndMethodInLib(LibDesc * lib, char *classname, char *methodname, c
 	for (i = 0; i < lib->numberOfClasses; i++) {
 		cl = lib->allClasses[i].classDesc;
 		//printf("findClassAndMethodInLib: %s %s =?= %s \n", lib->sharedLib->name, classname, cl->name);
-		if (strcmp(classname, cl->name->value) == 0) {
+		if (strcmp(classname, cl->name) == 0) {
 			for (j = 0; j < cl->numberOfMethods; j++) {
-				if (strcmp(methodname, cl->methods[j].name->value)
+				if (strcmp(methodname, cl->methods[j].name)
 				    == 0) {
-					if (strcmp(signature, cl->methods[j].signature->value) == 0) {
+					if (strcmp(signature, cl->methods[j].signature) == 0) {
 						*classFound = &(lib->allClasses[i]);
 						*methodFound = &(cl->methods[j]);
 						return;
@@ -2728,12 +2729,12 @@ void findClassAndMethod(DomainDesc * domain, char *classname, char *methodname, 
 	}
 }
 
-void findClassDescAndMethodInLib(SharedLibDesc * lib, String *classname, String *methodname, String *signature, ClassDesc ** classFound,
+void findClassDescAndMethodInLib(SharedLibDesc * lib, char *classname, char *methodname, char *signature, ClassDesc ** classFound,
 				 MethodDesc ** methodFound)
 {
 	jint i, j;
 
-	if (strcmp("java/lang/Object", classname->value) == 0) {	/* Object is part of every lib */
+	if (strcmp("java/lang/Object", classname) == 0) {	/* Object is part of every lib */
 		//findClassDescAndMethodInObject(lib, classname, methodname, signature, classFound, methodFound);
 		return;
 	}
@@ -2755,7 +2756,7 @@ void findClassDescAndMethodInLib(SharedLibDesc * lib, String *classname, String 
 	*methodFound = NULL;
 }
 
-void findClassDescAndMethod(String *classname, String *methodname, String *signature, ClassDesc ** classFound,
+void findClassDescAndMethod(char *classname, char *methodname, char *signature, ClassDesc ** classFound,
 			    MethodDesc ** methodFound)
 {
 	SharedLibDesc *sharedLib;
@@ -2848,18 +2849,18 @@ code_t findVirtualMethodCode(DomainDesc * domain, char *classname, char *methodn
 	Class *c = findClass(domain, classname);
 	ClassDesc *cl = c->classDesc;
 	if (cl == NULL) {
-		wprintf(u"Cannot find class %s\n", classname);
+		//wprintf(u"Cannot find class %s\n", classname);
 	}
 	for (jint j = 0; j < cl->vtableSize; j++) {
-		if (cl->vtableSym[j * 3]->size == 0)
+		if (cl->vtableSym[j * 3][0] == 0)
 			continue;	/* hole */
 //printf("%s\n",cl->vtableSym[j*3+1]);
-		if ((strcmp(methodname, cl->vtableSym[j * 3 + 1]->value) == 0)
-		    && (strcmp(signature, cl->vtableSym[j * 3 + 2]->value) == 0)) {
+		if ((strcmp(methodname, cl->vtableSym[j * 3 + 1]) == 0)
+		    && (strcmp(signature, cl->vtableSym[j * 3 + 2]) == 0)) {
 			return obj->vtable[j];
 		}
 	}
-	wprintf(u"Cannot find method %s::%s%s\n", classname, methodname, signature);
+	//wprintf(u"Cannot find method %s::%s%s\n", classname, methodname, signature);
 	return NULL;
 }
 
@@ -2874,10 +2875,10 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 	cl = c->classDesc;
 	ASSERTCLASSDESC(cl);
 	for (jint j = 0; j < cl->vtableSize; j++) {
-		if (cl->vtableSym[j * 3]->size == 0)
+		if (cl->vtableSym[j * 3][0] == 0)
 			continue;	/* hole */
-		if ((strcmp(methodName, cl->vtableSym[j * 3 + 1]->value) == 0)
-		    && (strcmp(signature, cl->vtableSym[j * 3 + 2]->value) == 0)) {
+		if ((strcmp(methodName, cl->vtableSym[j * 3 + 1]) == 0)
+		    && (strcmp(signature, cl->vtableSym[j * 3 + 2]) == 0)) {
 			return j;
 		}
 	}
@@ -2893,7 +2894,7 @@ void callClassConstructor(Class * cl)
 		return;
 	cl->state = CLASS_READY;
 	for (jint i = 0; i < cl->classDesc->numberOfMethods; i++) {
-		if (strcmp("<clinit>", cl->classDesc->methods[i].name->value) == 0) {
+		if (strcmp("<clinit>", cl->classDesc->methods[i].name) == 0) {
 			c = (code_t) cl->classDesc->methods[i].code;
 			c();
 			break;

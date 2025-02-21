@@ -30,9 +30,5 @@ typedef u4_t size_t;
 typedef void (*code_t) ();
 typedef int (*int_code_t) ();
 typedef jlong(*longop_t) (jlong a, jlong b);
-typedef struct {
-	int size;
-	char value;
-} String;
 
 #endif				/* TYPES_H */
