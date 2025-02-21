@@ -92,7 +92,6 @@ NOT IMPL jint readInt()
  * SYMBOLS
  */
 
-
 typedef SymbolDesc SymbolDescDomainZero;
 
 typedef SymbolDesc SymbolDescExceptionHandler;
@@ -214,7 +213,6 @@ ArrayDesc *specialAllocArray(ClassDesc * elemClass, jint size);
 ArrayDesc *vmSpecialAllocMultiArray(ClassDesc * elemClass, jint dim, jint sizes);
 
 ObjectDesc *specialAllocObject(ClassDesc * c);
-ObjectDesc *newString(DomainDesc * domain, char *value);
 
 ArrayClassDesc *createSharedArrayClassDesc(String *name);
 ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass);
@@ -339,6 +337,7 @@ Class *createArrayClass(DomainDesc * domain, char *name)
 	char *n = name + 1;
 	Class *c = findClassOrPrimitive(domain, n);
 	ArrayClassDesc *arrayClass;// = (ArrayClassDesc *) jxmalloc(sizeof(ArrayClassDesc) MEMTYPE_OTHER);
+	SystemTable->BootServices->AllocatePool(EfiLoaderData, sizeof(ArrayClassDesc), (void**)&arrayClass);
 	memset(arrayClass, 0, sizeof(ArrayClassDesc));
 	//printf("CREATEARRAYCLASS %s\n", name);
 
@@ -371,20 +370,23 @@ ArrayClassDesc *createSharedArrayClassDesc(String *name)
 	char *n = &name->value + 1;
 
 	//printf("CREATESHAREDARRAY %s\n", name);
+	for(int i = 0; i < name->size; i++){
+		wprintf(u"%c", *(&name->value+i));
+	}
 	if (*n == 'L') {
 		//strncpy(value, name + 2, strlen(name) - 3);
 		value[name->size - 3] = '\0';
 		c = findClassDesc(value);
 	} else if (*n == '[') {
-		c = findSharedArrayClassDesc(n);
+		//c = findSharedArrayClassDesc(n);
 	} else {
 		cl = findPrimitiveClass(*n);
 		if (cl == NULL)
-			wprintf(u"creating class");
+			wprintf(u"creating class\r\n");
 		c = cl->classDesc;
 	}
 	if (c == NULL)
-		wprintf(u"not a shared element class");
+		wprintf(u"not a shared element class\r\n");
 	namelen = name->size + 1;
 	//arrayClass = malloc_arrayclassdesc(domainZero, namelen);
 #ifdef USE_QMAGIC
@@ -401,7 +403,6 @@ ArrayClassDesc *createSharedArrayClassDesc(String *name)
 	//printf("createSharedArrayClassDesc2: %s\n", ( *(ClassDesc**)(( arrayClass->vtable-1) ))->name);
 
 	//  printf("   <- created arrayClass %s\n", arrayClass->name);
-
 
 	/* add to list of shared array classes */
 	/*
@@ -454,7 +455,6 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 	*((u4_t *) (arrayClass->vtable) - 1) = arrayClass;
 	//printf("createSharedArrayClassDescUsingElemClass1: %s \n", arrayClass->name);
 	//printf("createSharedArrayClassDescUsingElemClass2: %s\n", ( *(ClassDesc**)(( arrayClass->vtable-1) ))->name);
-
 
 	//printf("   <- created arrayClass %s\n", arrayClass->name);
 
@@ -611,11 +611,11 @@ ClassDesc *findClassDesc(String *name)
 
 	sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
-		if (testHashKey(name, sharedLib->key, LIB_HASHKEY_LEN)) {
+		//if (testHashKey(name, sharedLib->key, LIB_HASHKEY_LEN)) {
 			cl = findClassDescInSharedLib(sharedLib, name);
 			if (cl != NULL)
 				return cl;
-		}
+		//}
 		sharedLib = (SharedLibDesc *) sharedLib->next;
 	}
 	return NULL;
@@ -691,6 +691,9 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 	SharedLibDesc *slib;
 
 	String *name = classDesc->name;
+	/*for(int i = 0; i < name->size; i++){
+		wprintf(u"%c", *(&name->value + i));
+	}*/
 	if (strcmp("java/lang/Object", name->value) == 0)
 		return java_lang_Object_class;
 
@@ -705,7 +708,7 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 			return &(lib->allClasses[ndx]);
 		}
 
-		//wprintf(u"Could not find class %s in domain %s!\n", name->value, domain->domainName);
+		wprintf(u"Could not find class %s in domain %s!\n", name->value, domain->domainName);
 	} else {
 		Class *acl = domain->arrayClasses;
 		for (; acl != NULL; acl = ((ArrayClassDesc *) (acl->classDesc))->nextInDomain) {
@@ -935,16 +938,16 @@ void stringToChar(ObjectDesc * str, char *c, jint buflen)
 	copyFromCharArray(c, buflen, arrObj);
 }
 
-ObjectDesc *newString(DomainDesc * domain, char *value)
+ObjectDesc *newString(DomainDesc * domain, String *value)
 {
 	ObjectDesc *s;
 	ArrayDesc *arrObj;
 
 	//s = (ObjectDesc *) allocObjectInDomain(domain, findClassDesc("java/lang/String"));
-	jint size = strlen(value);
+	jint size = value->size;
 	//arrObj = allocArrayInDomain(domain, class_C->classDesc, size);
 	s->data[0] = (jint) arrObj;
-	copyIntoCharArray(arrObj, value, size);
+	copyIntoCharArray(arrObj, value->value, size);
 	return s;
 }
 
@@ -989,9 +992,9 @@ ObjectDesc *newStringFromClassname(DomainDesc * domain, char *value)
 }
 
 /* TODO: alloc shared strings in non-movable area (code area); this would allow to GC the heap of DomainZero */
-ObjectDesc *newDomainZeroString(char *value)
+ObjectDesc *newDomainZeroString(String *value)
 {
-	ObjectDesc *o;// = newString(domainZero, value);
+	ObjectDesc *o = newString(domainZero, value);
 	setObjFlags(o, OBJFLAGS_EXTERNAL_STRING);
 	return o;
 }
@@ -1068,7 +1071,7 @@ SharedLibDesc *findSharedLib(char *libname)
 	SharedLibDesc *sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
 		if (strcmp(libname, sharedLib->name->value) == 0) {
-			/* found lib */
+			wprintf(u"\r\nfound lib");
 			break;
 		}
 		sharedLib = (SharedLibDesc *) sharedLib->next;
@@ -1219,12 +1222,11 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 		/* static fields */
 		if (sharedLib->allClasses[i].staticFieldsSize != 0) {
 			//lib->allClasses[i].staticFields = specialAllocStaticFields(domain, sharedLib->allClasses[i].staticFieldsSize);
-			SystemTable->BootServices->AllocatePool(EfiLoaderCode, 4 * sharedLib->allClasses[i].staticFieldsSize, (void**)&lib->allClasses[i].staticFields);
+			SystemTable->BootServices->AllocatePool(EfiLoaderData, 4 * sharedLib->allClasses[i].staticFieldsSize, (void**)&lib->allClasses[i].staticFields);
 			memset(lib->allClasses[i].staticFields, 0, sharedLib->allClasses[i].staticFieldsSize * 4);
 		} else {
 			lib->allClasses[i].staticFields = 0;
 		}
-
 	}
 #endif
 
@@ -1323,15 +1325,23 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 	 */
 
 	readInt(lib->numberOfNeededLibs);
+	//wprintf(u"%d\r\n", lib->numberOfNeededLibs);
 	if (lib->numberOfNeededLibs == 0) {
 		lib->neededLibs == NULL;
 	} else {
 		//lib->neededLibs = malloc_sharedlibdesctable(domain, lib->numberOfNeededLibs);
+		AllocatePool(EfiLoaderData, sizeof(SharedLibDesc*) * lib->numberOfNeededLibs, (void **)&lib->neededLibs);
 	}
 
 	for (i = 0; i < lib->numberOfNeededLibs; i++) {
 		readString(libname);
-		neededLib = findSharedLib(libname);
+		char name[80];
+		for(int i = 0; i < libname->size; i++){
+			name[i] = *(&libname->value + i);
+			wprintf(u"%c", name[i]);
+		}
+		name[libname->size] = 0;
+		neededLib = findSharedLib(name);
 
 		if (neededLib == NULL) {
 			//  could not find a loaded lib, now try to load it  
@@ -1344,7 +1354,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 				//printf("Could not load shared library %s needed by %s!\n",libname,filename);
 			} else {
 				//printf("link %s ",libname);
-				//linksharedlib(domain, neededLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
+				linksharedlib(domain, neededLib, /*(jint) specialAllocObject*/NULL, /*(jint) vmSpecialAllocArray*/NULL);
 				//printf("done.\n");
 			}
 
@@ -1856,6 +1866,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 
 			if (lib->allClasses[i].methods[j].sizeOfExceptionTable > 0) {
 				//lib->allClasses[i].methods[j].exceptionTable = malloc_exceptiondescs(domain, lib->allClasses[i].methods[j].sizeOfExceptionTable);
+				AllocatePool(EfiLoaderData, sizeof(ExceptionDesc) * lib->allClasses[i].methods[j].sizeOfExceptionTable, (void **)&lib->allClasses[i].methods[j].exceptionTable);
 			} else {
 				lib->allClasses[i].methods[j].exceptionTable = NULL;
 			}
@@ -1943,6 +1954,7 @@ void patchByte(code_t code, SymbolDesc * symbol, jint value)
 void patchConstant(code_t code, SymbolDesc * symbol, jint value)
 {
 	char *addr = (char *) ((char *) code + symbol->immediateNCIndex);
+	//wprintf(u"%d ", addr);
 	addr[0] = value & 0xff;
 	addr[1] = (value >> 8) & 0xff;
 	addr[2] = (value >> 16) & 0xff;
@@ -1996,10 +2008,10 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 
 	c = findClassDesc(s->className);
 	if (c == NULL)
-		wprintf(u"could not find class");
+		wprintf(u"could not find class\r\n");
 
 	if (s->kind != 0)
-		wprintf(u"unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\n", s->kind);
+		wprintf(u"unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\r\n", s->kind);
 
 	patchConstant(code, symbol, s->fieldOffset);
 #endif
@@ -2011,7 +2023,7 @@ void patchClassPointer(code_t code, SymbolDesc * symbol)
 	SymbolDescClass *s = (SymbolDescClass *) symbol;
 
 	if ((*s->className).value == '[') {
-		c = findSharedArrayClassDesc(s->className);
+		//c = findSharedArrayClassDesc(s->className);
 	} else {
 		c = findClassDesc(s->className);
 	}
@@ -2050,7 +2062,7 @@ void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
 
 	if (m == NULL) {
 		//#ifdef DEBUG
-		printf("!!! no direct method found: %s.%s%s\n", s->className, s->methodName, s->methodSignature);
+		wprintf(u"!!! no direct method found: %s.%s%s\r\n", s->className, s->methodName, s->methodSignature);
 		//#endif
 		patchRelativeAddress(code, symbol, (jint) should_not_be_called);
 		return;
@@ -2061,13 +2073,13 @@ void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
 
 	if (m->code == NULL) {
 		//#ifdef DEBUG
-		printf("!!! bad direct method address found: %s.%s%s\n", s->className, s->methodName, s->methodSignature);
+		wprintf(u"!!! bad direct method address found: %s.%s%s\r\n", s->className, s->methodName, s->methodSignature);
 		//#endif
 		patchRelativeAddress(code, symbol, (jint) should_not_be_called);
 		return;
 	}
 
-	debugp(("patch direct method %s.%s%s -> %p\n", s->className, s->methodName, s->methodSignature, m->code));
+	//wprintf(u"patch direct method %s.%s%s -> %p\r\n", s->className, s->methodName, s->methodSignature, m->code);
 
 	patchRelativeAddress(code, symbol, (jint) m->code);
 }
@@ -2200,8 +2212,8 @@ void setCodeStart(SharedLibDesc * lib)
 				lib->allClasses[i].methods[j].code =
 				    (code_t) (lib->code + lib->allClasses[i].methods[j].codeOffset);
 			}
-			debugc((" Codestart %s %s%s = 0x%lx\n", lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
-				lib->allClasses[i].methods[j].signature, (jint) lib->allClasses[i].methods[j].code));
+			//wprintf(u" Codestart %s %s%s = 0x%lx\r\n", lib->allClasses[i].name, lib->allClasses[i].methods[j].name,
+			//	lib->allClasses[i].methods[j].signature, (jint) lib->allClasses[i].methods[j].code);
 		}
 	}
 }
@@ -2226,11 +2238,11 @@ void createVTable(DomainDesc * domain, ClassDesc * c)
 
 void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunction, jint allocArrayFunction)
 {
-	int exCount, k;
-	exCount = 0;
-	for (k = 0; k < method->numberOfSymbols; k++) {
+	int exCount = 0;
+	for (int k = 0; k < method->numberOfSymbols; k++) {
 		if (method->symbols[k] == NULL)
 			continue;
+		//wprintf(u"%d ", method->symbols[k]->type);
 		switch (method->symbols[k]->type) {
 		case 0:
 			wprintf(u"Error: Symboltype 0");
@@ -2265,7 +2277,8 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				break;
 			}
 		case 8:{	/* StringSTEntry */
-				patchStringAddress(code, method->symbols[k]);
+				wprintf(u"StringSTEntry\r\n");
+				//patchStringAddress(code, method->symbols[k]);
 				break;
 			}
 		case 9:{	/* AllocArraySTEntry */
@@ -2284,7 +2297,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 		case 12:{	/* VMSupportSTEntry */
 				SymbolDescVMSupport *s = (SymbolDescVMSupport *) method->symbols[k];
 				/*if (s->operation <= 0 || s->operation > numberVMOperations) {
-					wprintf("wrong vmsupport index");
+					wprintf(u"wrong vmsupport index");
 				}*/
 				//patchRelativeAddress(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
 				break;
@@ -2300,7 +2313,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 		case 15:{	/* VMAbsoluteSTEntry */
 				SymbolDescVMSupport *s = (SymbolDescVMSupport *) method->symbols[k];
 				/*if (s->operation <= 0 || s->operation > numberVMOperations) {
-					wprintf("wrong vmabssupport index");
+					wprintf(u"wrong vmabssupport index");
 				}*/
 				//patchConstant(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
 				break;
@@ -2318,9 +2331,9 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				e = method->exceptionTable;
 
 				/* e[exCount].addr  = (u4_t)s->targetNCIndex + (u4_t)code; */
-				e[exCount].addr = s->targetNCIndex;
+				e[exCount].addr  = s->targetNCIndex;
 				e[exCount].start = s->rangeStart;
-				e[exCount].end = s->rangeEnd;
+				e[exCount].end   = s->rangeEnd;
 
 				if (strcmp("any", s->className->value) == 0) {
 					e[exCount].type = NULL;
@@ -2477,7 +2490,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 		case 12:{	/* VMSupportSTEntry */
 				SymbolDescVMSupport *s = (SymbolDescVMSupport *) method->symbols[k];
 				/*if (s->operation <= 0 || s->operation > numberVMOperations) {
-					wprintf("wrong vmsupport index");
+					wprintf(u"wrong vmsupport index");
 				}*/
 				//patchRelativeAddress(code, method->symbols[k], (jint) VMSUPPORT(s->operation).fkt);
 				break;
@@ -2749,7 +2762,12 @@ void findClassDescAndMethod(String *classname, String *methodname, String *signa
 	*classFound = NULL;
 	*methodFound = NULL;
 	sharedLib = sharedLibs;
-
+/*for(int i = 0; i < classname->size; i++){
+	wprintf(u"%c", *(&classname->value+i));
+}
+for(int i = 0; i < methodname->size; i++){
+	wprintf(u"%c", *(&methodname->value+i));
+}*/
 	while (sharedLib != NULL) {
 		if (testHashKey(classname, sharedLib->key, LIB_HASHKEY_LEN)) {
 			findClassDescAndMethodInLib(sharedLib, classname, methodname, signature, classFound, methodFound);
@@ -2759,7 +2777,7 @@ void findClassDescAndMethod(String *classname, String *methodname, String *signa
 		sharedLib = sharedLib->next;
 	}
 
-//printf(" %s::%s%s not found with hashkey\n",classname,methodname,signature);
+//wprintf(u" %s::%s%s not found with hashkey\r\n",classname,methodname,signature);
 
 	sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
@@ -2770,7 +2788,6 @@ void findClassDescAndMethod(String *classname, String *methodname, String *signa
 		}
 		sharedLib = sharedLib->next;
 	}
-
 }
 
 MethodDesc *findMethodInSharedLibs(char *classname, char *methodname, char *signature)

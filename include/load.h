@@ -45,7 +45,7 @@ int findMethodAtAddr(u1_t * addr, MethodDesc ** method,
 MethodDesc *cloneMethodInDomain(DomainDesc * domain, MethodDesc * method);
 
 ArrayClassDesc *findSharedArrayClassDescByElemClass(ClassDesc * elemClass);
-ObjectDesc *newString(DomainDesc * domain, char *value);
+ObjectDesc *newString(DomainDesc * domain, String *value);
 ObjectDesc *newStringArray(DomainDesc * domain, int size, char *arr[]);
 ClassDesc *findClassDescInSharedLib(SharedLibDesc * lib, String *name);
 ClassDesc *obj2ClassDesc(ObjectDesc * obj);
