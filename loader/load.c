@@ -81,7 +81,7 @@ NOT IMPL jint readInt()
 
 #define readString(buf) { buf = codefilepos; while(*codefilepos != 0){codefilepos++;}; codefilepos++;/*jint nBytes; readInt(nBytes); if (nBytes >= nbuf) wprintf("buf too small\n"); readStringData(buf, nBytes);*/}
 
-#define readStringID(buf) { jint id ; readInt(id); buf = string_table; for(int ii = 0; ii < id; ii++) {while(*buf != 0){buf++;}; buf++;} }
+#define readStringID(buf) { jint id ; readInt(id); if(id < sizeof(string_table) / sizeof(string_table[0])) {buf = (char *)string_table[id];} else { buf = (char*)string_table[-1]; for(int ii = 0; ii < id - sizeof(string_table) / sizeof(string_table[0]); ii++) {while(*buf != 0){buf++;}; buf++;} } }
 
 //#define readAllocString(buf) {jint nBytes; /*readInt(nBytes);  if (nBytes >= 10000) wprintf("nBytes too large\n"); buf = malloc_string(domain, nBytes+1);*/ readStringData(buf, nBytes);}
 
@@ -1278,8 +1278,8 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 	SharedLibDesc *lib;
 	jint totalNumberOfClasses;
 	SharedLibDesc *neededLib;
-	//char *codefilepos;
-	char *string_table;
+	//jint codefilepos[800];
+	jint string_table[800];
 	jint dummy;
 	//jint size;
 	jint isinterface;
@@ -1393,10 +1393,19 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 
 	readInt(i);
 	if (i == 0) {
-		string_table = NULL;
+		//string_table = NULL;
 	} else {
-		string_table = (char *) codefilepos;
-		codefilepos += i;
+		string_table[0] = codefilepos;
+		//codefilepos += i;
+		for(int j = 1; j < sizeof(string_table) / sizeof(string_table[0]); j++) {
+			//wprintf(u"%d\r\n", j);
+			while(*codefilepos != 0){
+				codefilepos++;
+			}
+			codefilepos++;
+			string_table[j] = codefilepos;
+		}
+		codefilepos = string_table[0] + i;
 		//char * n = string_table;
 		//for (j = 0; j < i; j++){
 			//readString(n);
