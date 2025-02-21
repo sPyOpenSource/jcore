@@ -367,16 +367,16 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 	Class *cl;
 	ArrayClassDesc *arrayClass;
 	//char value[80];
-	char *n = &name + 1;
+	char *n = name + 1;
 
 	//printf("CREATESHAREDARRAY %s\n", name);
-	for(int i = 0; i < strlen(name); i++){
-		wprintf(u"%c", *(&name+i));
-	}
+	/*for(int i = 0; i < strlen(name); i++){
+		wprintf(u"%c", name[i]);
+	}*/
 	if (*n == 'L') {
 		//strncpy(value, name + 2, strlen(name) - 3);
 		//value[strlen(name) - 3] = '\0';
-		c = findClassDesc(&name + 2);
+		c = findClassDesc(name + 2);
 	} else if (*n == '[') {
 		c = findSharedArrayClassDesc(n);
 	} else {
@@ -2018,8 +2018,8 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 	if (c == NULL)
 		wprintf(u"could not find class\r\n");
 
-	if (s->kind != 0)
-		wprintf(u"unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\r\n", s->kind);
+	/*if (s->kind != 0)
+		wprintf(u"unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\r\n", s->kind);*/
 
 	patchConstant(code, symbol, s->fieldOffset);
 #endif
