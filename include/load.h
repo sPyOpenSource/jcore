@@ -1,7 +1,7 @@
 #ifndef LOAD_H
 #define LOAD_H
 
-#define CURRENT_COMPILER_VERSION 9
+#define CURRENT_COMPILER_VERSION 10
 
 #ifndef ASSEMBLER
 
