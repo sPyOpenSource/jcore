@@ -272,6 +272,7 @@ Class *createPrimitiveClass(char *name)
 #endif
 	c->classDesc = (ClassDesc *) cd;
 	cd->classType = CLASSTYPE_PRIMITIVE;
+	cd->name = (char*)cd + sizeof(PrimitiveClassDesc);
 	cd->name[0] = name[0];
 	return c;
 }
@@ -2610,8 +2611,7 @@ void findClassAndMethodInLib(LibDesc * lib, char *classname, char *methodname, c
 		//printf("findClassAndMethodInLib: %s %s =?= %s \n", lib->sharedLib->name, classname, cl->name);
 		if (strcmp(classname, cl->name) == 0) {
 			for (j = 0; j < cl->numberOfMethods; j++) {
-				if (strcmp(methodname, cl->methods[j].name)
-				    == 0) {
+				if (strcmp(methodname, cl->methods[j].name) == 0) {
 					if (strcmp(signature, cl->methods[j].signature) == 0) {
 						*classFound = &(lib->allClasses[i]);
 						*methodFound = &(cl->methods[j]);
