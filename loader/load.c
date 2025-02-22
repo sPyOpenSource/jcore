@@ -346,7 +346,7 @@ Class *createArrayClass(DomainDesc * domain, char *name)
 	arrayClass->magic = MAGIC_CLASSDESC;
 #endif
 	arrayClass->classType = CLASSTYPE_ARRAYCLASS;
-	arrayClass->name;// = (char *) jxmalloc(strlen(name) + 1 MEMTYPE_OTHER);
+	arrayClass->name = name;// (char *) jxmalloc(strlen(name) + 1 MEMTYPE_OTHER);
 	//strcpy(arrayClass->name, name);
 	arrayClass->elementClass = c->classDesc;
 
@@ -391,7 +391,7 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 	SystemTable->BootServices->AllocatePool(EfiLoaderData, sizeof(ArrayClassDesc) + (11 + 1) * 4, (void**)&arrayClass);
 	//memset(arrayClass, 0, sizeof(ArrayClassDesc) + namelen);
 	arrayClass->name = name;//(char *)arrayClass + sizeof(ArrayClassDesc);
-	arrayClass->vtable = (char *)arrayClass + 4;
+	arrayClass->vtable = (char *)arrayClass + sizeof(ArrayClassDesc) + 4;
 #ifdef USE_QMAGIC
 	arrayClass->magic = MAGIC_CLASSDESC;
 #endif
@@ -439,6 +439,10 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass)
 	}
 
 	//arrayClass = malloc_arrayclassdesc(domainZero, namelen + 1);
+	SystemTable->BootServices->AllocatePool(EfiLoaderData, sizeof(ArrayClassDesc) + namelen + (11 + 1) * 4, (void**)&arrayClass);
+	memset(arrayClass, 0, sizeof(ArrayClassDesc) + namelen);
+	arrayClass->name = (char*)arrayClass + sizeof(ArrayClassDesc);
+	arrayClass->vtable = arrayClass->name + namelen + 4;
 #ifdef USE_QMAGIC
 	arrayClass->magic = MAGIC_CLASSDESC;
 #endif
@@ -558,10 +562,10 @@ Class *findClassOrPrimitive(DomainDesc * domain, char *name)
 		}
 	} else {
 		// FIXME: name is not a real class name but a signature
-		char tmp[80];
+		//char tmp[80];
 		//strncpy(tmp, name + 1, strlen(name) - 2);
-		tmp[strlen(name) - 2] = '\0';
-		return findClass(domain, tmp);
+		//tmp[strlen(name) - 2] = '\0';
+		return findClass(domain, name + 1);
 	}
 	wprintf(u"findClOrPrim error name=%s", name);
 	return NULL;
@@ -1088,16 +1092,16 @@ LibDesc *load(DomainDesc * domain, char *filename)
 
 	if (sharedLib == NULL) {
 		/* could not find a loaded lib, now try to load it */
-		TempMemory *tmp_mem;// = jxmalloc_tmp(6000);
+		//TempMemory *tmp_mem = jxmalloc_tmp(6000);
 
 		/*FIXME:  shared libraries should not always be loaded into domainzero */
-		//sharedLib = loadSharedLibrary(domainZero, filename, tmp_mem);
+		//sharedLib = loadSharedLibrary(domainZero, filename);
 
 		if (sharedLib == NULL)
 			wprintf(u"could not load shared library \"%s\"", filename);
 		ASSERTSLIB(sharedLib);
 
-		//linksharedlib(domainZero, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray, tmp_mem);
+		//linksharedlib(domainZero, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray);
 		//jxfree_tmp(tmp_mem);
 	}
 
@@ -1348,12 +1352,12 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 
 			// FIXME:  shared libraries should not always be loaded into domainzero  
 			//printf("slib %s load %s\n",lib->name,libname);
-			neededLib = loadSharedLibrary(domain, libname, codefilepos, size);
+			//neededLib = loadSharedLibrary(domain, libname, codefilepos, size);
 			if (neededLib == NULL) {
 				//printf("Could not load shared library %s needed by %s!\n",libname,filename);
 			} else {
 				//printf("link %s ",libname);
-				linksharedlib(domain, neededLib, /*(jint) specialAllocObject*/NULL, /*(jint) vmSpecialAllocArray*/NULL);
+				//linksharedlib(domain, neededLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray);
 				//printf("done.\n");
 			}
 
@@ -2734,10 +2738,10 @@ void findClassDescAndMethodInLib(SharedLibDesc * lib, char *classname, char *met
 	}
 
 	for (i = 0; i < lib->numberOfClasses; i++) {
-		if (classname == lib->allClasses[i].name) {
+		if (strcmp(classname, lib->allClasses[i].name) == 0) {
 			for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
-				if (methodname == lib->allClasses[i].methods[j].name) {
-					if (signature == lib->allClasses[i].methods[j].signature) {
+				if (strcmp(methodname, lib->allClasses[i].methods[j].name) == 0) {
+					if (strcmp(signature, lib->allClasses[i].methods[j].signature) == 0) {
 						*classFound = &(lib->allClasses[i]);
 						*methodFound = &(lib->allClasses[i].methods[j]);
 						return;
