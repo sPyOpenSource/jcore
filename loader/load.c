@@ -79,7 +79,9 @@ NOT IMPL jint readInt()
 
 #define readString(buf) { buf = codefilepos; while(*codefilepos != 0){codefilepos++;}; codefilepos++; }
 
-#define readStringID(buf) { jint id ; readInt(id); if(id < sizeof(string_table) / sizeof(string_table[0])) {buf = (char *)string_table[id];} else {buf = (char*)string_table[-1]; for(int ii = 0; ii < id - sizeof(string_table) / sizeof(string_table[0]); ii++) {while(*buf != 0){buf++;}; buf++;}} }
+#define readStringID(buf) { jint id ; readInt(id); \
+	if(id < sizeof(string_table) / sizeof(string_table[0])) {buf = (char *)string_table[id];} \
+	else {buf = (char*)string_table[-1]; for(int ii = 0; ii <= id - sizeof(string_table) / sizeof(string_table[0]); ii++) {while(*buf != 0){buf++;}; buf++;}} }
 
 #define readCode(buf) {  buf = codefilepos; }
 
