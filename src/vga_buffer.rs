@@ -42,6 +42,12 @@ struct ScreenChar {
     color_code: ColorCode,
 }
 
+/*impl Deref for ScreenChar {
+    fn deref(&self) -> &Self {
+        &self.0
+    }
+}*/
+
 const BUFFER_HEIGHT: usize = 25;
 const BUFFER_WIDTH: usize = 80;
 
