@@ -124,5 +124,3 @@ _start:
 	# with QEMU, this will save some CPU!
 	wfi
 	j		4b
-
-
