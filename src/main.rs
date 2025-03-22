@@ -2,7 +2,8 @@
 #![no_main]
 //#![feature(uefi_std)]
 
-mod vga_buffer;
+//mod vga_buffer;
+mod serial;
 //extern crate alloc;
 
 /*mod boot {
@@ -29,7 +30,7 @@ use core::fmt::Write;
 //use alloc::vec;
 //use alloc::vec::Vec;
 //use std::os::uefi as uefi_std;
-//use uefi::runtime::ResetType;
+use uefi::runtime::ResetType;
 use uefi::{Handle, Status};
 use uefi::prelude::*;
 use uefi::proto::console::gop::GraphicsOutput;
@@ -58,24 +59,13 @@ fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
 
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
-    vga_buffer::WRITER.lock().write_str("Hello again").unwrap();
-    write!(vga_buffer::WRITER.lock(), ", some numbers: {} {}", 42, 1.337).unwrap();
-    loop {}
-}
-
 #[entry]
-fn main(ih: Handle, st: SystemTable<Boot>) -> Status {
-    // Mandatory setup code for `uefi` crate.
-    /*unsafe {
-        uefi::table::set_system_table(st.as_ptr().cast());
+fn main() -> Status {
+    //vga_buffer::WRITER.lock().write_str("Hello again").unwrap();
+    //write!(vga_buffer::WRITER.lock(), ", some numbers: {} {}", 42, 1.337).unwrap();
 
-        let ih = Handle::from_ptr(ih.as_ptr().cast()).unwrap();
-        uefi::boot::set_image_handle(ih);
-    }*/
-    info!("Hello World from uefi_std");
-    //uefi_services::init(&st).expect("Failed to initialize UEFI services");
+    serial_println!("Hello World from uefi_std");
+    uefi::helpers::init().unwrap();
     //let stdout = st.stdout();
 
     //writeln!(stdout, "Hello, UEFI in Rust!").unwrap();
@@ -90,10 +80,11 @@ fn main(ih: Handle, st: SystemTable<Boot>) -> Status {
     // Create a buffer to draw into.
     //let (width, height) = gop.current_mode_info().resolution();
     //let mut buffer = Buffer::new(width, height);
+    //setup_uefi_crate();
+
     loop {}
     Status::SUCCESS
     //println!("Hello World from uefi_std");
-    //setup_uefi_crate();
     //println!("UEFI-Version is {}", uefi::system::uefi_revision());
     //uefi::runtime::reset(ResetType::SHUTDOWN, Status::SUCCESS, None);
 }
