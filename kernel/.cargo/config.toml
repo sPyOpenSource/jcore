@@ -1,6 +1,7 @@
 [build]
-target = "aarch64-none-elf.json"
+#target = "aarch64-unknown-none"
 #target = "armv7a-none-eabi"
+target = "aarch64-none-elf.json"
 
 [target.'cfg(target_os = "none")']
 #rustflags = ["-C", "link-args= -Ttext 0xffff800000080000"]

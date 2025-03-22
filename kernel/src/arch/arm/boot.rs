@@ -15,12 +15,13 @@ use sysapi::process::{
 use sysapi::vspace::{Permission, FRAME_BIT_SIZE, FRAME_SIZE};
 
 use bootloader::boot_info::{BootInfo, BootInfoEntry, RamType};
-use elfloader::{ElfBinary, ElfLoader, Flags, LoadableHeaders, Rela, VAddr, P64};
+use elfloader::{ElfBinary, ElfLoader, Flags, LoadableHeaders, Rela, VAddr, P64, RelocationEntry, ElfLoaderErr};
 use log::{debug, info};
 use vspace::{Level1, Level2, Level3, Level4, Level, TableLevel};
 use crate::vspace::VirtAddr;
 use core::arch::global_asm;
 use core::arch::asm;
+use core::arch::naked_asm;
 
 #[derive(Copy, Clone)]
 #[repr(align(4096))]
@@ -149,7 +150,7 @@ lower64_irq:
 #[no_mangle]
 #[allow(named_asm_labels)]
 unsafe extern "C" fn _start() {
-    asm!(
+    naked_asm!(
         r#"
     mov     x20, x0              // save BootInfo register to x20
 
@@ -195,7 +196,7 @@ jump_to_el1:
     mov     x0, x20            // restore BootInfo register
     b kmain    
     "#,
-        options(noreturn)
+        //options(noreturn)
     )
 }
 
@@ -374,7 +375,7 @@ struct InitThreadLoader<'a> {
 }
 
 impl<'a> ElfLoader for InitThreadLoader<'a> {
-    fn allocate(&mut self, load_headers: LoadableHeaders) -> Result<(), &'static str> {
+    fn allocate(&mut self, load_headers: LoadableHeaders) -> Result<(), ElfLoaderErr> {
         for header in load_headers {
             let flags = header.flags();
             let perm = Permission::new(flags.is_read(), flags.is_write(), flags.is_execute());
@@ -392,11 +393,11 @@ impl<'a> ElfLoader for InitThreadLoader<'a> {
         Ok(())
     }
 
-    fn relocate(&mut self, _entry: &Rela<P64>) -> Result<(), &'static str> {
+    fn relocate(&mut self, _entry: RelocationEntry) -> Result<(), ElfLoaderErr> {
         unimplemented!()
     }
 
-    fn load(&mut self, _flags: Flags, base: VAddr, region: &[u8]) -> Result<(), &'static str> {
+    fn load(&mut self, _flags: Flags, base: VAddr, region: &[u8]) -> Result<(), ElfLoaderErr> {
         let vspace = self.init_tcb.vspace().unwrap();
         let mut vaddr = align_down(base as usize, FRAME_SIZE);
 
@@ -429,7 +430,7 @@ fn load_init_thread(tcb: &mut TcbObj, elf_file: &[u8], cur_free_slot: &mut usize
         .expect("Init PGD cap not installed");
     tcb.install_vspace(pgd_cap);
 
-    let init_binary = ElfBinary::new("init", elf_file).expect("Invalid ELF file");
+    let init_binary = ElfBinary::new(elf_file).expect("Invalid ELF file");
     let mut init_loader = InitThreadLoader {
         init_tcb: tcb,
         cur_free_slot,

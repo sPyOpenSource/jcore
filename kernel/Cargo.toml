@@ -23,12 +23,12 @@ build-std = ["core", "compiler_builtins"]
 rustyl4api = { path = "../lib/rustyl4api" }
 num-traits = { version = "0.2", default-features = false }
 num-derive = { git = "https://github.com/vincenthouyi/num-derive" }
-spin = "0.5.2"
+spin = "0.9.8"
 atags = { path = "../lib/atags" }
 pi = { path = "../lib/pi" }
 static_assertions = "1.1.0"
 align-data = "0.1.0"
-elfloader = "0.12.0"
+elfloader = "0.16.0"
 cpio = { path = "../lib/cpio" }
 vspace = { path = "../lib/vspace" }
 bootloader = { path = "../tools/bootloader" }

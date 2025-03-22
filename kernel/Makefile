@@ -62,4 +62,3 @@ qemu: $(KERNEL).bin
 
 gdb:
 	$(GDB)
-
