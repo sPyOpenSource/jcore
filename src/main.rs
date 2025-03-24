@@ -38,6 +38,8 @@ use uefi::proto::console::gop::BltPixel;
 use uefi::proto::console::gop::BltOp;
 use uefi::proto::console::gop::BltRegion;
 use uefi::proto::rng::Rng;
+use uefi::proto::loaded_image::LoadedImage;
+use uefi::boot;
 use log::info;
 
 // Performs the necessary setup code for the `uefi` crate.
@@ -64,7 +66,7 @@ fn main() -> Status {
     //vga_buffer::WRITER.lock().write_str("Hello again").unwrap();
     //write!(vga_buffer::WRITER.lock(), ", some numbers: {} {}", 42, 1.337).unwrap();
 
-    serial_println!("Hello World from uefi_std");
+    serial_println!("Hello World");
     uefi::helpers::init().unwrap();
     //let stdout = st.stdout();
 
@@ -81,10 +83,10 @@ fn main() -> Status {
     //let (width, height) = gop.current_mode_info().resolution();
     //let mut buffer = Buffer::new(width, height);
     //setup_uefi_crate();
+let loaded_image = boot::open_protocol_exclusive::<LoadedImage>(boot::image_handle());
 
-    loop {}
+    loop {};
     Status::SUCCESS
-    //println!("Hello World from uefi_std");
     //println!("UEFI-Version is {}", uefi::system::uefi_revision());
     //uefi::runtime::reset(ResetType::SHUTDOWN, Status::SUCCESS, None);
 }
