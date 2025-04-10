@@ -63,7 +63,7 @@ Will create a cdrom image using grub-mkrescue and boot BOOTBOOT using Multiboot.
 ```
 make linux
 ```
-Will boot the example kernel by booting BOOTBOOT via the [Linux/x86 Boot Protocol](https://www.kernel.org/doc/html/latest/x86/boot.html).
+Will boot the example kernel by booting BOOTBOOT via the [Linux/x86 Boot Protocol](https://www.kernel.org/doc/html/latest/arch/x86/boot.html).
 ```
 make sdcard
 ```
