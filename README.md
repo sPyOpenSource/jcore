@@ -2,7 +2,7 @@
 The kernel is a fundamental part of an operating system. It acts as the main interface between the computer's hardware and the software applications running on it.
 This kernel is written in C and Assembly.
 
-## Targets
+## Build target
 Current is only support for x86 processors with 32bit memory address.
 
 ## Future work
