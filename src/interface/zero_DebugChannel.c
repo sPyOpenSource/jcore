@@ -19,7 +19,7 @@ void debug_write(ObjectDesc * self, jint c)
 		ser_putchar(debug_port, c);
 #endif
 	} else {
-		//         debugl(("DEBUG WRITE %lx %ld (%c)\n",(jint)self,c,(char)c));
+		// debugl(("DEBUG WRITE %lx %ld (%c)\n",(jint)self,c,(char)c));
 	}
 #endif				/* NO_DEBUG_OUT */
 }
@@ -35,11 +35,11 @@ void debug_writeBuf(ObjectDesc * self, ArrayDesc * arr, jint off, jint len)
 	u1_t *field = (u1_t *) (arr->data);
 #endif
 
-	DISABLE_IRQ;
+	//DISABLE_IRQ;
 	for (i = off; i < off + len; i++) {
 		debug_write(self, field[i]);
 	}
-	RESTORE_IRQ;
+	//RESTORE_IRQ;
 #else				/* use a spinlock to prevent trouble with other CPUs */
 	static spinlock_t printf_lock = SPIN_LOCK_UNLOCKED;
 	jint i;

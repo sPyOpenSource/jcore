@@ -55,7 +55,7 @@ ClassDesc *createClassDescImplementingInterface(DomainDesc * domain, ClassDesc *
 
 	ASSERTCLASSDESC(cl);
 
-	c = malloc_classdesc(domain, strlen(name) + 1);
+	//c = malloc_classdesc(domain, strlen(name) + 1);
 	c->classType = CLASSTYPE_CLASS;
 #ifdef USE_QMAGIC
 	c->magic = MAGIC_CLASSDESC;
@@ -64,11 +64,11 @@ ClassDesc *createClassDescImplementingInterface(DomainDesc * domain, ClassDesc *
 	c->superclass = java_lang_Object;
 	c->instanceSize = 0;
 	c->numberOfInterfaces = 1;
-	c->interfaces = malloc_classdesctable(domain, c->numberOfInterfaces);
+	//c->interfaces = malloc_classdesctable(domain, c->numberOfInterfaces);
 	c->interfaces[0] = cl;
 	c->vtableSym = cl->vtableSym;
 	c->vtableSize = cl->vtableSize;
-	strcpy(c->name, name);
+	//strcpy(c->name, name);
 	createVTable(domain, c);
 	installVtables(domain, c, methods, numMethods, cl);
 	return c;
@@ -80,7 +80,7 @@ Class *createSubClass(Class * cl, ClassDesc * classDesc)
 
 	ASSERTCLASS(cl);
 
-	c = (Class *) jxmalloc(sizeof(Class) MEMTYPE_OTHER);
+	//c = (Class *) jxmalloc(sizeof(Class) MEMTYPE_OTHER);
 	memset(c, 0, sizeof(Class));
 
 	c->classDesc = classDesc;
@@ -103,7 +103,7 @@ ClassDesc *createDZClass(SharedLibDesc * zeroLib, char *name, MethodInfoDesc * m
 	ASSERTSLIB(zeroLib);
 	c = findClassDescInSharedLib(zeroLib, name);
 	if (c == NULL)
-		sys_panic("Cannot find class %s. Perhaps you are using a wrong zero lib.", name);
+		wprintf(u"Cannot find class %s. Perhaps you are using a wrong zero lib.", name);
 	ASSERT(c != NULL);
 	ASSERTCLASSDESC(c);
 	cd = createClassDescImplementingInterface(domainZero, c, methods, numberOfMethods, subname);
@@ -218,7 +218,7 @@ static char *start_domain = INIT_LIB;
 
 static inline void sti(void)
 {
-	asm volatile ("sti");
+	//asm volatile ("sti");
 }
 
 static void create_CPUObjs(void)
@@ -267,7 +267,7 @@ void start_domain_zero()
 #endif
 	ArrayDesc *arr;
 
-	DISABLE_IRQ;
+	//DISABLE_IRQ;
 
 	printf("Started DomainZero.\n");
 
@@ -290,7 +290,7 @@ void start_domain_zero()
 #endif
 #endif
 
-	setTimer();
+	//setTimer();
 
 #ifdef KERNEL
 #if defined(TIMESLICING_TIMER_IRQ) || defined(CHECK_SERIAL_IN_TIMER) || defined(SAMPLING_TIMER_IRQ)
@@ -313,7 +313,7 @@ void start_domain_zero()
 	//printf("zero start\n");
 	lib = load(domainZero, "zero.jll");
 	if (lib == NULL)
-		sys_panic("Cannot load lib %s\n", "zero.jll");
+		wprintf(u"Cannot load lib %s\n", "zero.jll");
 	ASSERTLIB(lib);
 
 	/*
@@ -330,22 +330,22 @@ void start_domain_zero()
 	domainZero->initialNamingProxy = initialNamingProxy;
 	//console(4, "call zero");
 	callClassConstructors(domainZero, lib);
-	console(7, "zero OK");
+	//console(7, "zero OK");
 	//printf("zero ok\n");
 	lib = load(domainZero, "jdk0.jll");
 	if (lib == NULL)
-		sys_panic("Cannot load lib %s\n", "jdk0.jll");
+		wprintf(u"Cannot load lib %s\n", "jdk0.jll");
 	ASSERTLIB(lib);
 	callClassConstructors(domainZero, lib);
 
-	DISABLE_IRQ;
+	//DISABLE_IRQ;
 
 	/*********************************
 	 * Create monitor thread
 	 *********************************/
 	monitorThread = createThread(domainZero, NULL, NULL, STATE_AVAILABLE, SCHED_CREATETHREAD_NORUNQ);
 
-	RESTORE_IRQ;
+	//RESTORE_IRQ;
 
 
 #ifdef EVENT_CALIBRATION
@@ -371,7 +371,7 @@ void start_domain_zero()
 	dm = lookupPortal("DomainManager");
 	arr = newStringArray(domainZero, sizeof(start_libs) / sizeof(char *), start_libs);
 
-	DISABLE_IRQ;
+	//DISABLE_IRQ;
 
 	thread_prepare_to_copy();
 
@@ -382,7 +382,7 @@ void start_domain_zero()
 				       GC_IMPLEMENTATION_DEFAULT, NULL);
 	domainInit = domainProxy->domain;
 
-	RESTORE_IRQ;
+	//RESTORE_IRQ;
 
   /*********************************
    * CPU and Scheduler initialization
@@ -437,7 +437,7 @@ void start_domain_zero()
 
 	printf("Terminate DomainZero initial thread.\n\n");
 
-	RESTORE_IRQ;
+	//RESTORE_IRQ;
 
 	/* initial thread of DomainZero exists here */
 }
@@ -460,14 +460,14 @@ void init_zero_from_lib(DomainDesc * domain, SharedLibDesc * zeroLib)
 
 
 	init_atomicvariable_portal();
-	init_bootfs_portal();
+	//init_bootfs_portal();
 	init_cas_portal();
 	init_clock_portal();
 	init_componentmanager_portal();
 	init_cpu_portal();
 	init_cpumanager_portal();
 	init_cpustate_portal();
-	init_credential_portal();
+	//init_credential_portal();
 	init_debugchannel_portal();
 	init_debugsupport_portal();
 	init_domain_portal();
@@ -484,7 +484,7 @@ void init_zero_from_lib(DomainDesc * domain, SharedLibDesc * zeroLib)
 	init_mutex_portal();
 	init_naming_portal();
 	init_ports_portal();
-	init_profiler_portal();
+	//init_profiler_portal();
 	init_scheduler_portal();
 	init_smpcpumanager_portal();
 	init_vmclass_portal();

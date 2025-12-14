@@ -6,7 +6,6 @@
  */
 
 
-
 void object_constructor(ObjectDesc * self)
 {
 }
@@ -17,8 +16,7 @@ ObjectDesc *object_getClass(ObjectDesc * self)
 	ClassDesc *c = obj2ClassDesc(self);
 	Class *cl = classDesc2Class(curdom(), c);
 	ObjectDesc *vmclassObj = class2Obj(cl);
-	ObjectDesc *classObj = (ObjectDesc *) allocObjectInDomain(curdom(),
-								  findClassDesc("java/lang/Class"));
+	ObjectDesc *classObj;// = (ObjectDesc *) allocObjectInDomain(curdom(), findClassDesc("java/lang/Class"));
 	//printf("getClass: %s\n", c->name);
 #ifdef DEBUG
 	{
@@ -54,29 +52,29 @@ ThreadDesc *twaiting;
 /*wait()V*/
 void object_wait0(ObjectDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 /*wait(J)V*/
 void object_wait1(ObjectDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 /*wait(JI)V*/
 void object_wait2(ObjectDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 void object_notify(ObjectDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 void object_notifyAll(ObjectDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 ObjectDesc *object_toString(ObjectDesc * self)
@@ -86,7 +84,7 @@ ObjectDesc *object_toString(ObjectDesc * self)
 
 	printf("TOSTRING %p\n", self);
 	if (self == NULL)
-		return;
+		return NULL;
 	oclass = obj2ClassDesc(self);
 	s = newString(curdom(), oclass-> /*classDesc-> */ name);
 	return s;
@@ -99,7 +97,7 @@ jboolean object_equals(ObjectDesc * self, ObjectDesc * other)
 
 void object_finalize(ObjectDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 MethodInfoDesc objectMethods[] = {
@@ -169,7 +167,7 @@ void installObjectVtable(ClassDesc * c)
 		c->methodVtable[j] = &(objectMethodDescs[j]);
 
 		if (java_lang_Object->vtableSym[j * 3][0] == '\0') {
-			sys_panic("OBJECT");
+			wprintf(u"OBJECT");
 		} else {
 			/*printf("%s:%s:%s\n", java_lang_Object->vtableSym[j*3], java_lang_Object->vtableSym[j*3+1], java_lang_Object->vtableSym[j*3+2]); */
 		}
@@ -177,7 +175,7 @@ void installObjectVtable(ClassDesc * c)
 		c->vtable[j] = objectMethods[j].code;
 	}
 	for (j = n_methods; j < c->vtableSize; j++) {
-		c->vtable[j] = abstract_method_error;
+		//c->vtable[j] = abstract_method_error;
 	}
 
 }
@@ -201,35 +199,35 @@ jint array_hashCode(ArrayDesc * self)
 
 ArrayDesc *array_clone(ArrayDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 	return NULL;
 }
 
 void array_wait0(ArrayDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 /*wait(J)V*/
 void array_wait1(ArrayDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 /*wait(JI)V*/
 void array_wait2(ArrayDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 void array_notify(ArrayDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 void array_notifyAll(ArrayDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 ObjectDesc *array_toString(ArrayDesc * self)
@@ -239,9 +237,9 @@ ObjectDesc *array_toString(ArrayDesc * self)
 	//  jint size;
 	if (self == NULL)
 		return newString(curdom(), "ARRAY: null");
-	strcpy(s, "ARRAY");
-	strcat(s, self->arrayClass->name);
-	sprintnum(s + strlen(s), self->size, 10);
+	//strcpy(s, "ARRAY");
+	//strcat(s, self->arrayClass->name);
+	//sprintnum(s + strlen(s), self->size, 10);
 	return newString(curdom(), s);
 	//    sys_panic("not implemented");
 }
@@ -253,7 +251,7 @@ jboolean array_equals(ArrayDesc * self, ArrayDesc * other)
 
 void array_finalize(ArrayDesc * self)
 {
-	sys_panic("not implemented");
+	wprintf(u"not implemented");
 }
 
 MethodInfoDesc arrayMethods[] = {
@@ -280,21 +278,21 @@ ClassDesc *createObjectClassDesc()
 	char *name = "java/lang/Object";
 	/* create and init java/lang/Object */
 	n_methods = sizeof(objectMethods) / sizeof(MethodInfoDesc);
-	java_lang_Object = malloc_classdesc(domainZero, strlen(name) + 1);
+	//java_lang_Object = malloc_classdesc(domainZero, strlen(name) + 1);
 	java_lang_Object->classType = CLASSTYPE_CLASS;
 #ifdef USE_QMAGIC
 	java_lang_Object->magic = MAGIC_CLASSDESC;
 #endif
-	strcpy(java_lang_Object->name, name);
+	//strcpy(java_lang_Object->name, name);
 	java_lang_Object->definingLib = NULL;
 	java_lang_Object->superclass = NULL;
 	java_lang_Object->instanceSize = 0;
 	java_lang_Object->vtableSize = n_methods;
-	java_lang_Object->vtableSym = malloc_vtableSym(domainZero, java_lang_Object->vtableSize);
+	//java_lang_Object->vtableSym = malloc_vtableSym(domainZero, java_lang_Object->vtableSize);
 	i = 0;
 	java_lang_Object->numberOfMethods = n_methods;
-	java_lang_Object->methods = malloc_methods(domainZero, n_methods);
-	java_lang_Object->methodVtable = malloc_methodVtable(domainZero, n_methods);
+	//java_lang_Object->methods = malloc_methods(domainZero, n_methods);
+	//java_lang_Object->methodVtable = malloc_methodVtable(domainZero, n_methods);
 	memset(java_lang_Object->methods, 0, sizeof(MethodDesc) * n_methods);
 	for (j = 0; j < java_lang_Object->vtableSize * 3; j += 3) {
 		java_lang_Object->vtableSym[j] = "java/lang/Object";	/* class */
@@ -307,13 +305,13 @@ ClassDesc *createObjectClassDesc()
 		i++;
 	}
 	createVTable(domainZero, java_lang_Object);
-	installVtables(domainZero, java_lang_Object, objectMethods, n_methods, NULL);
+	//installVtables(domainZero, java_lang_Object, objectMethods, n_methods, NULL);
 	return java_lang_Object;
 }
 
 Class *createObjectClass(ClassDesc * java_lang_Object)
 {
-	Class *c = malloc_class(domainZero);
+	Class *c;// = malloc_class(domainZero);
 	c->classDesc = java_lang_Object;
 #ifdef USE_QMAGIC
 	c->magic = MAGIC_CLASS;
@@ -335,17 +333,17 @@ void createArrayObjectVTableProto(DomainDesc * domain)
 	char *name = "<Array>";
 	/* create and init java/lang/Array */
 	n_methods = sizeof(arrayMethods) / sizeof(MethodInfoDesc);
-	java_lang_Array = malloc_classdesc(domain, strlen(name) + 1);
+	//java_lang_Array = malloc_classdesc(domain, strlen(name) + 1);
 	java_lang_Array->classType = CLASSTYPE_CLASS;
 #ifdef USE_QMAGIC
 	java_lang_Array->magic = MAGIC_CLASSDESC;
 #endif
-	strcpy(java_lang_Array->name, name);
+	//strcpy(java_lang_Array->name, name);
 	java_lang_Array->definingLib = NULL;
 	java_lang_Array->superclass = NULL;
 	java_lang_Array->instanceSize = 0;
 	java_lang_Array->vtableSize = n_methods;
-	java_lang_Array->vtableSym = malloc_vtableSym(domain, java_lang_Array->vtableSize);
+	//java_lang_Array->vtableSym = malloc_vtableSym(domain, java_lang_Array->vtableSize);
 	i = 0;
 	for (j = 0; j < java_lang_Array->vtableSize * 3; j += 3) {
 		java_lang_Array->vtableSym[j] = "<Array>";	/* class */
@@ -355,7 +353,7 @@ void createArrayObjectVTableProto(DomainDesc * domain)
 	}
 
 	createVTable(domain, java_lang_Array);
-	installVtables(domain, java_lang_Array, arrayMethods, n_methods, java_lang_Object);
+	//installVtables(domain, java_lang_Array, arrayMethods, n_methods, java_lang_Object);
 	array_vtable = java_lang_Array->vtable;
 }
 
