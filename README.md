@@ -6,7 +6,7 @@ This kernel is written in C and Assembly.
 Current is only support for x86 processors with 32bit memory address.
 
 ## Future work
-An AI assistence for x86_64, ARM and RiscV processors
+Why an AI assistence for x86_64, ARM and RiscV processors
 
 # Legal issues
 This Java runtime environment is a clean-room implementation of the [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine) specification. We have not obtained a Java license from Sun and therefore the system can not be called a Java system.
