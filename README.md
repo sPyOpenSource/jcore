@@ -61,12 +61,6 @@ Note: BOOTBOOT is not a boot manager, it's a boot loader protocol. If you want a
 integrate that *before* a BOOTBOOT compatible loader is called. Like GRUB chainloading boot.bin (or loading bootboot.bin as a
 multiboot "kernel" and initrd as a module) or adding bootboot.efi to UEFI Boot Manager's menu for example.
 
-Support the Development by Donation
------------------------------------
-
-If you like it or find it useful, your donation of any amount will be very much appreciated:<br>
-<a href="bitcoin:3G9vcV91S19fHMoBcmSksUpaxGPR5MUGCk"><img src="https://gitlab.com/bztsrc/bootboot/raw/master/donate.png"><br>BTC 3G9vcV91S19fHMoBcmSksUpaxGPR5MUGCk</a>
-
 Licence
 -------
 

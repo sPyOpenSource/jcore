@@ -53,12 +53,6 @@ Megjegyzés: a BOOTBOOT nem egy boot menedzser, hanem egy boot protokoll. Ha int
 azt a BOOTBOOT kompatíbilis betöltő *elé* kell integrálnod. Például a GRUB lánctöltheti a boot.bin-t (vagy Multiboot
 "kernel"-ként a bootboot.bin-t és modulként a memórialemezt) vagy a bootboot.efi hozzáadható az UEFI Boot menedzser menüjéhez.
 
-Támogasd a fejlesztést adománnyal
----------------------------------
-
-Ha tetszik, vagy hasznosnak találod, szívesen fogadok akármekkora adományt:<br>
-<a href="bitcoin:3G9vcV91S19fHMoBcmSksUpaxGPR5MUGCk"><img src="https://gitlab.com/bztsrc/bootboot/raw/master/donate.png"><br>BTC 3G9vcV91S19fHMoBcmSksUpaxGPR5MUGCk</a>
-
 Licensz
 -------
 
