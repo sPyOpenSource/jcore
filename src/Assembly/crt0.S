@@ -1,49 +1,42 @@
 	.text
-.p2align  2   , 0x90 ; .type       _start   ,@function ; .globl     _start     ;     _start:
+.p2align  2   , 0x90 ; .type       _start   ,@function ; .globl     _start     ;     _start:    
 	jmp	boot_entry
 
-	.p2align  2
+	 
+	.p2align  2  
 boot_hdr:
-	// magic number
-	.long 0xe85250d6 // multiboot2
-	// architecture
-	.long 0 // protected mode i386
-	// header length
-	.long boot_entry - boot_hdr
-	// checksum
-	.long 0x100000000 - (0xe85250d6 + (boot_entry - boot_hdr))
+	.long	0x1BADB002		 
 
-	// end tag
-	.long 0
-	.long 8
+	.long	0x00000000		 
+	.long	0-0x1BADB002-0x00000000	 
 boot_entry:
 	movl	$base_stack_end, %esp
-	push	$0
+	pushl	$0
 	popf
-	lea		edata, %edi
-	lea		end, %ecx
+	lea	edata, %edi
+	lea	end, %ecx
 	subl	%edi,%ecx
 	xorl	%eax,%eax
 	rep
 	stosb
 
-
+	 
 	xorb	%al,%al
-	movw	$0x3f2,%dx
+	movw	$0x3f2,%dx		 
 	outb	%al,%dx
-	movw	$0x372,%dx
+	movw	$0x372,%dx		 
 	outb	%al,%dx
 
 
-	push	%ebx
+	pushl	%ebx
 
 	xorl	%ebp,%ebp
-	lgdt[gdt64.pointer]
-	jmp gdt64.code_segment:long_mode_start
+	 
+	call	 multiboot_main  
 
-1:
+1:      
         int   $3
         jmp   2f
         .ascii "PANIC: main returned!"
-2:
+2:      
         jmp   1b

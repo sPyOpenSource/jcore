@@ -196,7 +196,7 @@
 
 #define HEAP_BYTES_OTHER (30 * 1024 * 1024)
 #define CODE_BYTES (16 * 40 * 1024)
-#define CODE_FRAGMENTS   30
+#define CODE_FRAGMENTS 30
 #define HEAP_RESERVE (10 * 1024)
 
 //#ifndef STACK_ON_HEAP

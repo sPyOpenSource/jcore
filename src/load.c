@@ -12,7 +12,7 @@
 #define debugbt(x)
 #ifdef DBG_LOAD
 #define debugc(x) printf x
-#else				/* DBG_LOAD */
+#else			/* DBG_LOAD */
 #define debugc(x)
 #endif			/* DBG_LOAD */
 

@@ -71,13 +71,13 @@ static int numberModes = 0;
 #define SEG2LIN(x) ((((u4_t)(x)) / 65536) * 16 + (((u4_t)(x)) % 65536))
 
 typedef int (*vesa2_get_mode_info_t) (int mode, struct vesa_mode_info * vesa_mode_info);
-vesa2_get_mode_info_t extern_vesa2_get_mode_info = (vesa2_get_mode_info_t) FKTADDR_vesa2_get_mode_info;
+vesa2_get_mode_info_t extern_vesa2_get_mode_info = 0;//(vesa2_get_mode_info_t) FKTADDR_vesa2_get_mode_info;
 
 typedef int (*vesa2_set_mode_t) (int mode);
-vesa2_set_mode_t extern_vesa2_set_mode = (vesa2_set_mode_t) FKTADDR_vesa2_set_mode;
+vesa2_set_mode_t extern_vesa2_set_mode = 0;//(vesa2_set_mode_t) FKTADDR_vesa2_set_mode;
 
 typedef int (*vesa2_detect_t) (void);
-vesa2_detect_t extern_vesa2_detect = (vesa2_detect_t) FKTADDR_vesa2_detect;
+vesa2_detect_t extern_vesa2_detect = 0;//(vesa2_detect_t) FKTADDR_vesa2_detect;
 
 //#define DBG_VESA 1
 //#define TEST_FRAMEBUFFER 1

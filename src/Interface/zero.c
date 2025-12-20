@@ -39,7 +39,6 @@ void installInitialNaming(DomainDesc * srcDomain, DomainDesc * dstDomain, Proxy 
 
 typedef jint(*code2_f) (jint a, jint b);
 
-
 void receive_dep(void *arg)
 {
 	u4_t depIndex = (u4_t) arg;
@@ -108,7 +107,6 @@ ClassDesc *createDZClass(SharedLibDesc * zeroLib, char *name, MethodInfoDesc * m
 	return cd;
 }
 
-
 extern SharedLibDesc *zeroLib;
 
 ClassDesc *init_zero_class(char *ifname, MethodInfoDesc * methods, jint size, jint instanceSize, jbyte * typeMap, char *subname)
@@ -174,8 +172,8 @@ ObjectDesc *init_zero_dep_without_thread(char *ifname, char *depname, MethodInfo
 	return instance;
 }
 
-
 void IN_jxbytecpy(char *source, char *target, jint nbytes);
+
 void jxbytecpy(char *source, char *target, jint nbytes)
 {
 #ifdef SAMPLE_FASTPATH
@@ -184,7 +182,6 @@ void jxbytecpy(char *source, char *target, jint nbytes)
 #endif
 	IN_jxbytecpy(source, target, nbytes);
 }
-
 
 extern ClassDesc *vmmethodClass;
 

@@ -47,7 +47,6 @@ static void malloc_dump();
 static void test();
 
 
-
 #define BLOCKADDR_MASK (~(BLOCKSIZE-1))
 #define ALIGN_NEXT_BLOCK(a) ((((u4_t)(a))+(BLOCKSIZE-1)) & BLOCKADDR_MASK)
 #define ALIGN_PREV_BLOCK(a) (((u4_t)(a)) & BLOCKADDR_MASK)

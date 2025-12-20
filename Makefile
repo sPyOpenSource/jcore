@@ -47,7 +47,7 @@ LINUXSOURCES = $(SOURCES) symfind.c
 ASMSOURCES   = Assembly/lowlevel.S Assembly/call.S Assembly/switch.S Assembly/schedSWITCH.S \
 			   Assembly/bench.S Assembly/vm_eventLog.S Interface/zero_FastMemory.S
 COREASMSOURCES = Assembly/crt0.S Assembly/stack.S Assembly/hwint.S Assembly/exception.S Assembly/timer.S \
-				 Assembly/smp_startup.S Assembly/ipiint.S Assembly/main64.S
+				 Assembly/smp_startup.S Assembly/ipiint.S #Assembly/main64.S
 
 COREINCLUDE = -Isrc -Isrc/Headers
 
@@ -58,7 +58,7 @@ ifeq ($(strip $(CC)), icc)
 CORECCFLAGS  = -g -w -X
 else
 #CORECCFLAGS = -g -Wall -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc
-CORECCFLAGS = -g -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc
+CORECCFLAGS = -g -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc -m32
 endif
 
 
@@ -92,7 +92,7 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
 COREOBJ2 = $(COREOBJ:.kernel/Memory/%=.kernel/%)
 COREOBJ3 = $(COREOBJ2:.kernel/Assembly/%=.kernel/%)
-COREBUILD = $(LD) -Ttext 100000 -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
+COREBUILD = $(LD) -Ttext 0x10000 --ignore-unresolved-symbol __stack_chk_fail_local -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
 
 jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)
@@ -136,10 +136,10 @@ realmode: src/Assembly/asm.S
 #	gcc -E $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE)  -o .kernel/$(@F) $<
 
 .kernel/%.o: src/%.asm
-	$(AS) $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
+	$(AS) --32 $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
 
-#src/Interface/zero_FastMemory.asm: src/Interface/zero_FastMemory.S
-#	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
+src/Interface/zero_FastMemory.asm: src/Interface/zero_FastMemory.S
+	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
 
 src/%.asm: src/%.S
 	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Assembly/$(@F)
