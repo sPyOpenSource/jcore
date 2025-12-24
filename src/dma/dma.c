@@ -87,5 +87,4 @@ bool dma_wait(dma_channel *channel) {
     channel->status = REGS_DMA(channel->channel)->control & CS_ERROR ? false : true;
 
     return channel->status;
-
 }
