@@ -1,6 +1,6 @@
 # Kernel of JavaOS
 The kernel is a fundamental part of an operating system. It acts as the main interface between the computer's hardware and the software applications running on it.
-This micro kernel is written in C and Assembly.
+This is a micro kernel which is written in C and Assembly.
 
 ## Build target
 Current is only support for x86 processors with 32bit memory address.
