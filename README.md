@@ -5,8 +5,9 @@ This is a micro kernel which is written in C and Assembly.
 ## Build target
 Current is only support for x86 processors with 32bit memory address.
 
-## Future work
+## Our Mission
 Why an Java AI assistence on x86?
+Who is going to use this operating system?
 
 # Legal issues
 This Java runtime environment is a clean-room implementation of the [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine) specification. We have not obtained a Java license from Sun and therefore the system can not be called a Java system.
