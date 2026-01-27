@@ -2190,4 +2190,3 @@ get_memory_map:
     }
     return report(status,L"Initrd not found");
 }
-

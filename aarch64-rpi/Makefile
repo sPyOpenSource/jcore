@@ -1,11 +1,11 @@
 all: boot.S bootboot.c fs.h
 	@echo "  src		aarch64-rpi (Raspberry Pi 3+)"
-	@aarch64-elf-gcc -Wall -Wextra -pedantic -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles -fno-stack-protector -c boot.S -o boot.o
-	@aarch64-elf-gcc -Wall -Wextra -pedantic -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles -fno-stack-protector -I ./ -c tinflate.c -o tinflate.o
-	@aarch64-elf-gcc -Wall -Wextra -pedantic -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles -fno-stack-protector -I ./ -c bootboot.c -o bootboot.o
-	@aarch64-elf-ld -r -b binary -o font.o font.psf
-	@aarch64-elf-ld -nostdlib -nostartfiles boot.o bootboot.o tinflate.o font.o -T link.ld -o bootboot.elf
-	@aarch64-elf-objcopy -O binary bootboot.elf ../dist/bootboot.img
+	@/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-gcc -Wall -Wextra -pedantic -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles -fno-stack-protector -c boot.S -o boot.o
+	@/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-gcc -Wall -Wextra -pedantic -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles -fno-stack-protector -I ./ -c tinflate.c -o tinflate.o
+	@/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-gcc -Wall -Wextra -pedantic -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles -fno-stack-protector -I ./ -c bootboot.c -o bootboot.o
+	@/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld -r -b binary -o font.o font.psf
+	@/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld -nostdlib boot.o bootboot.o tinflate.o font.o -T link.ld -o bootboot.elf
+	@/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-objcopy -O binary bootboot.elf ../dist/bootboot.img
 	@rm *.o bootboot.elf
 
 mkboot: mkboot.c

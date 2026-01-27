@@ -1320,7 +1320,8 @@ gpterr:
                 // ESP?
             if((part->type[0]==0xC12A7328 && part->type[1]==0x11D2F81F) ||
                 // or OS/Z root partition for this architecture?
-                (part->type[0]==0x5A2F534F && (part->type[1]&0xFFFF)==0xAA64 && part->type[3]==0x746F6F72))
+                (part->type[0]==0x5A2F534F && (part->type[1]&0xFFFF)==0xAA64 && part->type[3]==0x746F6F72) ||
+                (part->type[0]==0xEBD0A0A2)) 
                 break;
         }
     }

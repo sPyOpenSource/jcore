@@ -40,6 +40,14 @@ mod bootboot;
 // Required for -Z build-std flag.
 extern crate rlibc;
 
+#[panic_handler]
+fn panic(info: &core::panic::PanicInfo) -> ! {
+    //error!("Panic! {:?}", info);
+    loop {
+        //arch::wfe();
+    }
+}
+
 /******************************************
  * Entry point, called by BOOTBOOT Loader *
  ******************************************/
@@ -96,7 +104,7 @@ fn _start() -> ! {
         }
 
         // say hello
-        puts("Hello from a simple BOOTBOOT kernel");
+        //puts("Hello from a simple BOOTBOOT kernel");
     }
 
     // hang for now
