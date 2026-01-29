@@ -224,6 +224,36 @@ ArrayClassDesc *createSharedArrayClassDescUsingElemClass(ClassDesc * elemClass);
 SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* codefilepos, int size);
 static LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib);
 
+void puts(char *s);
+
+void memset (void *dest, register int val, register int len)
+{
+  register unsigned char *ptr = (unsigned char*)dest;
+  while (len-- > 0)
+    *ptr++ = val;
+
+  //return dest;
+}
+
+int strlen(const char* str)
+{
+	const char* strCount = str;
+
+	while (*strCount++);
+	return strCount - str - 1;
+}
+
+int strcmp(const char* a, const char* b)
+{
+	int length = strlen(a);
+	for(int i = 0; i < length; i++)
+	{
+		if(a[i] < b[i]){return -1;}
+		if(a[i] > b[i]){return 1;}
+	}
+	return 0;
+}
+
 /*
 int numDEPInstances = 0;
 DEPDesc **allDEPInstances = NULL;
@@ -246,13 +276,11 @@ ArrayClassDesc *sharedArrayClasses = NULL;
 ClassDesc *vmclassClass;
 ClassDesc *vmmethodClass;
 
-extern EFI_SYSTEM_TABLE *SystemTable;
-
 Class *specialAllocClass(DomainDesc * domain, int number)
 {
 	Class *ret;
 	Class *c;
-	SystemTable->BootServices->AllocatePool(EfiLoaderData, sizeof(Class) * number, (void**)&c);
+	//SystemTable->BootServices->AllocatePool(EfiLoaderData, sizeof(Class) * number, (void**)&c);
 	memset(c, 0, sizeof(Class) * number);
 	ret = c;
 	for (int i = 0; i < number; i++) {
@@ -387,12 +415,12 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 			puts("creating class\r\n");
 		c = cl->classDesc;
 	}
-	if (c == NULL)
-		wprintf(u"not a shared element class\r\n");
+	/*if (c == NULL)
+		wprintf(u"not a shared element class\r\n");*/
 	//SystemTable->BootServices->AllocatePool(EfiLoaderData, sizeof(ArrayClassDesc) + (11 + 1) * 4, (void**)&arrayClass);
 	//memset(arrayClass, 0, sizeof(ArrayClassDesc) + namelen);
 	arrayClass->name = name;
-	arrayClass->vtable = (char *)arrayClass + sizeof(ArrayClassDesc) + 4;
+	arrayClass->vtable = (void(**)(void))((char *)arrayClass + sizeof(ArrayClassDesc) + 4);
 #ifdef USE_QMAGIC
 	arrayClass->magic = MAGIC_CLASSDESC;
 #endif
@@ -401,7 +429,7 @@ ArrayClassDesc *createSharedArrayClassDesc(char *name)
 
 	//printf("createSharedArrayClassDesc1: %s \n", arrayClass->name);
 	//memcpy(arrayClass->vtable, array_vtable, 11 * 4);
-	*((u4_t *) (arrayClass->vtable) - 1) = arrayClass;
+	*((u4_t *) (arrayClass->vtable) - 1) = (u4_t)arrayClass;
 
 	//printf("createSharedArrayClassDesc2: %s\n", ( *(ClassDesc**)(( arrayClass->vtable-1) ))->name);
 
@@ -498,7 +526,7 @@ Class *findPrimitiveClass(char name)
 	case 'Z':
 		return class_Z;
 	}
-	wprintf(u"unknown primitive type %c", name);
+	//wprintf(u"unknown primitive type %c", name);
 	return NULL;
 }
 
@@ -561,7 +589,7 @@ Class *findClassOrPrimitive(DomainDesc * domain, char *name)
 		// FIXME: name is not a real class name but a signature
 		return findClass(domain, name + 1);
 	}
-	wprintf(u"findClOrPrim error name=%s", name);
+	//wprintf(u"findClOrPrim error name=%s", name);
 	return NULL;
 }
 
@@ -838,8 +866,8 @@ ObjectDesc *allocObject(ClassDesc * c)
 
 jint getArraySize(ArrayDesc * array)
 {
-	if (array == NULL)
-		wprintf(u"array NULLPOINTER");
+	/*if (array == NULL)
+		wprintf(u"array NULLPOINTER");*/
 	return array->size;
 }
 
@@ -1068,7 +1096,7 @@ SharedLibDesc *findSharedLib(char *libname)
 	SharedLibDesc *sharedLib = sharedLibs;
 	while (sharedLib != NULL) {
 		if (strcmp(libname, sharedLib->name) == 0) {
-			wprintf(u"\r\nfound lib");
+			//wprintf(u"\r\nfound lib");
 			break;
 		}
 		sharedLib = (SharedLibDesc *) sharedLib->next;
@@ -1090,8 +1118,8 @@ LibDesc *load(DomainDesc * domain, char *filename)
 		/*FIXME:  shared libraries should not always be loaded into domainzero */
 		//sharedLib = loadSharedLibrary(domainZero, filename);
 
-		if (sharedLib == NULL)
-			wprintf(u"could not load shared library \"%s\"", filename);
+		/*if (sharedLib == NULL)
+			wprintf(u"could not load shared library \"%s\"", filename);*/
 		ASSERTSLIB(sharedLib);
 
 		//linksharedlib(domainZero, sharedLib, (jint) specialAllocObject, (jint) vmSpecialAllocArray);
@@ -1126,7 +1154,7 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 	}
 
 	if (domain->numberOfLibs == domain->maxNumberOfLibs) {
-		wprintf(u"max number of libs in domain %s reached!", domain->domainName);
+		//wprintf(u"max number of libs in domain %s reached!", domain->domainName);
 		return NULL;
 	}
 
@@ -1143,7 +1171,7 @@ LibDesc *loadLib(DomainDesc * domain, SharedLibDesc * sharedLib)
 	if (sharedLib->ndx < domain->maxNumberOfLibs) {
 		domain->ndx_libs[sharedLib->ndx] = lib;
 	} else {
-		wprintf(u"max number of libs reached! %d\n", domain->maxNumberOfLibs);
+		//wprintf(u"max number of libs reached! %d\n", domain->maxNumberOfLibs);
 	}
 #endif
 
@@ -1242,7 +1270,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 	if (checksum != *(jint *) (codefile + size - 4)) {
 		//printf("%s: COMPUTED CHECKSUM: %ld\n", filename, checksum);
 		//printf("    STORED CHECKSUM: %ld \n", *(jint*)(codefile + size - 4));
-		wprintf(u"WRONG CHECKSUM");
+		//wprintf(u"WRONG CHECKSUM");
 	}
 
 	readInt(version);
@@ -1250,7 +1278,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 	if (version != CURRENT_COMPILER_VERSION) {
 		//printf("Library name=%s version=%ld. ", filename, version);
 		//printf("Cannot load code with version != %d\n", CURRENT_COMPILER_VERSION);
-		wprintf(u"Mismatch between library version and version supported by jxcore");
+		//wprintf(u"Mismatch between library version and version supported by jxcore");
 	}
 	readString(processor);
 	/*for(int j = 0; j < processor->size; j++){
@@ -1556,7 +1584,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 				readInt(dummy);
 			}
 		} else {
-			wprintf(u"VTableSize == 0\r\n");
+			//wprintf(u"VTableSize == 0\r\n");
 		}
 
 		for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
@@ -1627,10 +1655,10 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 				}*/
 				switch (type) {
 				case 0:
-					wprintf(u"Error: Symboltype 0\r\n");
+					//wprintf(u"Error: Symboltype 0\r\n");
 					break;
 				case 1:{	/* DomainZeroSTEntry */
-						wprintf(u"     Symbol: DomainZero\r\n");
+						//wprintf(u"     Symbol: DomainZero\r\n");
 						//AllocatePool(EfiLoaderData, sizeof(SymbolDescDomainZero), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
@@ -1641,7 +1669,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 					}
 				case 3:{	/* DEPFunctionSTEntry */
 						SymbolDescDEPFunction *s;
-						wprintf(u"     Symbol: DEPFunction\r\n");
+						//wprintf(u"     Symbol: DEPFunction\r\n");
 						//AllocatePool(EfiLoaderData, sizeof(SymbolDescDEPFunction), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescDEPFunction *) lib->allClasses[i].methods[j].symbols[k];
 						readString(s->className);
@@ -1699,13 +1727,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 						break;
 					}
 				case 10:{	/* AllocMultiArraySTEntry */
-						wprintf(u"     Symbol: MultiAllocArray\r\n");
+						//wprintf(u"     Symbol: MultiAllocArray\r\n");
 						//AllocatePool(EfiLoaderData, sizeof(SymbolDescAllocMultiArray), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 11:{	/* LongArithmeticSTEntry */
 						SymbolDescLongArithmetic *s;
-						wprintf(u"     Symbol: LongArithmetic\r\n");
+						//wprintf(u"     Symbol: LongArithmetic\r\n");
 						//AllocatePool(EfiLoaderData, sizeof(SymbolDescLongArithmetic), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescLongArithmetic *) lib->allClasses[i].methods[j].symbols[k];
 						readInt(s->operation);
@@ -1738,7 +1766,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 					}
 				case 15:{	/* VMAbsoluteSTEntry */
 						SymbolDescVMSupport *s;
-						wprintf(u"     Symbol: VMAbsolute\r\n");
+						//wprintf(u"     Symbol: VMAbsolute\r\n");
 						//AllocatePool(EfiLoaderData, sizeof(SymbolDescVMSupport), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescVMSupport *)
 						    lib->allClasses[i].methods[j].symbols[k];
@@ -1783,13 +1811,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 						break;
 					}
 				case 20:{	/* StackChunkSizeSTEntry */
-						wprintf(u"     Symbol: StackChunkSizeSTEntry\r\n");
+						//wprintf(u"     Symbol: StackChunkSizeSTEntry\r\n");
 						//AllocatePool(EfiLoaderData, sizeof(SymbolDescStackChunkSize), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
 				case 21:{	/* ProfileSTEntry */
 						SymbolDescProfile *s;
-						wprintf(u"     Symbol: ProfileSTEntry\r\n");
+						//wprintf(u"     Symbol: ProfileSTEntry\r\n");
 						//AllocatePool(EfiLoaderData, sizeof(SymbolDescProfile), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						s = (SymbolDescProfile *)
 						    lib->allClasses[i].methods[j].symbols[k];
@@ -1797,7 +1825,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, char* code
 						break;
 					}
 				case 22:{	/* MethodeDescSTEntry */
-						wprintf(u"     Symbol: MethodeDescSTEntry\r\n");
+						//wprintf(u"     Symbol: MethodeDescSTEntry\r\n");
 						//AllocatePool(EfiLoaderData, sizeof(SymbolDescMethodeDesc), (void**)&lib->allClasses[i].methods[j].symbols[k]);
 						break;
 					}
@@ -1920,8 +1948,8 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 
 	s = (SymbolDescStaticField *) symbol;
 	c = findClassDesc(s->className);
-	if (c == NULL)
-		wprintf("could not find class");
+	/*if (c == NULL)
+		wprintf("could not find class");*/
 	libindex = c->definingLib->ndx;
 
 	switch (s->kind) {
@@ -1929,8 +1957,8 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 		patchConstant(code, symbol, c->sfield_offset + s->fieldOffset);
 		break;
 	case 1:
-		if (libindex < 0 || libindex > sharedLibsIndexNumber)
-			wprintf("invalid lib index\n");
+		/*if (libindex < 0 || libindex > sharedLibsIndexNumber)
+			wprintf("invalid lib index\n");*/
 		patchConstant(code, symbol, c->definingLib->ndx * sizeof(jint *));
 		break;
 	case 2:
@@ -1951,8 +1979,8 @@ void patchStaticFieldAddress(code_t code, SymbolDesc * symbol)
 	SymbolDescStaticField *s = (SymbolDescStaticField *) symbol;
 
 	c = findClassDesc(s->className);
-	if (c == NULL)
-		wprintf(u"could not find class\r\n");
+	/*if (c == NULL)
+		wprintf(u"could not find class\r\n");*/
 
 	/*if (s->kind != 0)
 		wprintf(u"unknown static field symbol (%d)! compile with -DUSE_LIB_INDEX\r\n", s->kind);*/
@@ -1980,7 +2008,7 @@ void patchClassPointer(code_t code, SymbolDesc * symbol)
 
 void should_not_be_called()
 {
-	wprintf(u"Unknown method called.");
+	//wprintf(u"Unknown method called.");
 }
 
 void patchDirectMethodAddress(code_t code, SymbolDesc * symbol)
@@ -2021,8 +2049,8 @@ void patchStringAddress(code_t code, SymbolDesc * symbol)
 
 	ObjectDesc *obj = newDomainZeroString(s->value);	/* shared libs are part of domainzero and so are these constant strings */
 
-	if (obj == NULL)
-		wprintf(u"could not create string object");
+	/*if (obj == NULL)
+		wprintf(u"could not create string object");*/
 	patchConstant(code, symbol, (jint) obj);
 }
 
@@ -2174,10 +2202,10 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 		//wprintf(u"%d ", method->symbols[k]->type);
 		switch (method->symbols[k]->type) {
 		case 0:
-			wprintf(u"Error: Symboltype 0");
+			//wprintf(u"Error: Symboltype 0");
 			break;
 		case 1:{	/* DomainZeroSTEntry */
-				wprintf(u"DomainZeroSTEntry no longer used.");
+				//wprintf(u"DomainZeroSTEntry no longer used.");
 				break;
 			}
 		case 2:{	/* ExceptionHandlerSTEntry */
@@ -2185,7 +2213,7 @@ void patchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFuncti
 				break;
 			}
 		case 3:{	/* DEPFunctionSTEntry */
-				wprintf(u"DEPFUNCTION no longer supported");
+				//wprintf(u"DEPFUNCTION no longer supported");
 				break;
 			}
 		case 4:{	/* StaticFieldSTEntry */
@@ -2368,7 +2396,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 			continue;
 		switch (method->symbols[k]->type) {
 		case 0:
-			wprintf(u"Error: Symboltype 0");
+			//wprintf(u"Error: Symboltype 0");
 			break;
 		case 1:{	/* DomainZeroSTEntry */
 				/* patchConstant(code, method->symbols[k],  (jint)getDomainZeroProxy()); */
@@ -2379,7 +2407,7 @@ void repatchMethodSymbols(MethodDesc * method, code_t code, jint allocObjectFunc
 				break;
 			}
 		case 3:{	/* DEPFunctionSTEntry */
-				wprintf(u"DEPFUNCTION no longer supported");
+				//wprintf(u"DEPFUNCTION no longer supported");
 				break;
 			}
 		case 4:{	/* StaticFieldSTEntry */
@@ -2575,8 +2603,8 @@ void linksharedlib(DomainDesc * domain, SharedLibDesc * lib, jint allocObjectFun
 		}
 
 		/* build vtable */
-		if (lib->allClasses[i].vtableSize < 11)
-			wprintf(u"vtableSize<11");
+		/*if (lib->allClasses[i].vtableSize < 11)
+			wprintf(u"vtableSize<11");*/
 
 		for (j = 0; j < lib->allClasses[i].vtableSize; j++) {
 			if (lib->allClasses[i].vtableSym[j * 3][0] == 0)
@@ -2756,7 +2784,7 @@ MethodDesc *findMethod(DomainDesc * domain, char *classname, char *methodname, c
 		if (!testHashKey(classname, domain->libs[i]->key, LIB_HASHKEY_LEN)) {
 			m = findMethodInLib(domain->libs[i], classname, methodname, signature);
 			if (m != NULL) {
-				wprintf("warn: Bug in findMethod of testHashKey!\n");
+				//wprintf("warn: Bug in findMethod of testHashKey!\n");
 				return m;
 			}
 		}
@@ -2795,9 +2823,9 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 	ClassDesc *cl;
 	Class *c = findClass(domain, className);
 	ASSERTCLASS(c);
-	if (c == NULL) {
+	/*if (c == NULL) {
 		wprintf(u"Cannot find DEP %s\n", className);
-	}
+	}*/
 	cl = c->classDesc;
 	ASSERTCLASSDESC(cl);
 	for (jint j = 0; j < cl->vtableSize; j++) {
@@ -2808,7 +2836,7 @@ jint findDEPMethodIndex(DomainDesc * domain, char *className, char *methodName, 
 			return j;
 		}
 	}
-	wprintf(u"Cannot find DEP method %s:: %s%s\n", className, methodName, signature);
+	//wprintf(u"Cannot find DEP method %s:: %s%s\n", className, methodName, signature);
 	return 0;
 }
 
@@ -2833,8 +2861,8 @@ void callClassConstructors(DomainDesc * domain, LibDesc * lib)
 {
 	ASSERTLIB(lib);
 
-	if (domain != curdom())
-		wprintf(u"WRONG DOMAIN called in class constructor");
+	/*if (domain != curdom())
+		wprintf(u"WRONG DOMAIN called in class constructor");*/
 
 	if (lib->initialized == 1)
 		return;		/* already done */
@@ -2851,8 +2879,8 @@ u4_t executeStatic(DomainDesc * domain, char *className, char *methodname, char 
 	code_t c;
 
 	method = findMethod(domain, className, methodname, signature);
-	if (method == 0)
-		wprintf(u"StaticMethod not found: %s.%s%s", className, methodname, signature);
+	/*if (method == 0)
+		wprintf(u"StaticMethod not found: %s.%s%s", className, methodname, signature);*/
 	//printf("callnative static %s.%s%s %p\n",className, methodname, signature, method->code);
 
 	c = (code_t) method->code;
@@ -2869,8 +2897,8 @@ void executeSpecial(DomainDesc * domain, char *className, char *methodname, char
 	jint ret;
 
 	method = findMethod(domain, className, methodname, signature);
-	if (method == 0)
-		wprintf(u"SpecialMethod not found: %s %s %s", className, methodname, signature);
+	/*if (method == 0)
+		wprintf(u"SpecialMethod not found: %s %s %s", className, methodname, signature);*/
 
 	c = (code_t) method->code;
 	ASSERT(c != 0);

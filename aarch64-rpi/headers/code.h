@@ -32,10 +32,6 @@ typedef struct {
 	jbyte *map;
 } SymbolDescStackMap;
 
-/*
- *
- */
-
 typedef struct FieldDesc_s {
 	char *fieldName;
 	char *fieldType;

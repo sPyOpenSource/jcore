@@ -5,7 +5,6 @@
  * java/lang/Object
  */
 
-
 void object_constructor(ObjectDesc * self)
 {
 }

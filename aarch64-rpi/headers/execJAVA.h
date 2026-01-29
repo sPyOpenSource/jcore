@@ -16,8 +16,9 @@ int call_JAVA_method2(ObjectDesc * Object, ThreadDesc * worker,
 		      java_method2_t function, long param1, long param2);
 
 /* activates a Java mthod but does not save the current context
-   eflags specifies the EFLAGS for the worker-Thread
-   see CALL_WITH_... defines below */
+ * eflags specifies the EFLAGS for the worker-Thread
+ * see CALL_WITH_... defines below 
+ */
 void destroy_call_JAVA_function(ObjectDesc * Object, ThreadDesc * worker,
 				java_method0_t function, long eflags);
 void destroy_call_JAVA_method1(ObjectDesc * Object, ThreadDesc * worker,

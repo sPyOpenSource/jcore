@@ -283,7 +283,6 @@ printStackTrace("SLOWOPT ", curthr(), &domain-2); }
 #endif
 #endif
 
-
 /* defines for assembler code */
 #define ENTRY(x) 	.type	 x,@function ;.globl x	;  x:	 
 #define ENDENTRY(x)	.L##x##_end:	; .size	 x, .L##x##_end-x

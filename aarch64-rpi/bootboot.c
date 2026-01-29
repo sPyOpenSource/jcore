@@ -779,11 +779,11 @@ file_t env;         // environment file descriptor
 file_t initrd;      // initrd file descriptor
 file_t core;        // kernel file descriptor
 BOOTBOOT *bootboot; // the BOOTBOOT structure
-uint64_t mm_addr = BOOTBOOT_MMIO;   // virtual addresses
-uint64_t fb_addr = BOOTBOOT_FB;
-uint64_t bb_addr = BOOTBOOT_INFO;
-uint64_t env_addr= BOOTBOOT_ENV;
-uint64_t core_addr=BOOTBOOT_CORE;
+uint64_t mm_addr  = BOOTBOOT_MMIO;   // virtual addresses
+uint64_t fb_addr  = BOOTBOOT_FB;
+uint64_t bb_addr  = BOOTBOOT_INFO;
+uint64_t env_addr = BOOTBOOT_ENV;
+uint64_t core_addr= BOOTBOOT_CORE;
 
 uint64_t initstack = 1024;
 
@@ -1031,7 +1031,7 @@ int GetLFB(uint32_t width, uint32_t height)
     mbox[30] = 0x40008; //get pitch
     mbox[31] = 4;
     mbox[32] = 4;
-    mbox[33] = 0;           //FrameBufferInfo.pitch
+    mbox[33] = 0;       //FrameBufferInfo.pitch
 
     mbox[34] = 0;       //Arnold Schwarzenegger
 
