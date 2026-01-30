@@ -10,6 +10,8 @@ clang -std=c17 -target x86_64-unknown-windows -Wall -Wextra -Wpedantic -mno-red-
 clang -std=c17 -target x86_64-unknown-windows -Wall -Wextra -Wpedantic -mno-red-zone -ffreestanding -c src/interface/zero_object.c -o build/zero_object.o -Iinclude -Isrc
 clang -std=c17 -target x86_64-unknown-windows -Wall -Wextra -Wpedantic -mno-red-zone -ffreestanding -c src/interface/zero_DebugChannel.c -o build/zero_DebugChannel.o -Iinclude -Isrc
 clang -std=c17 -target x86_64-unknown-windows -Wall -Wextra -Wpedantic -mno-red-zone -ffreestanding -c src/interface/zero.c -o build/zero.o -Iinclude -Isrc
-
+clang -S -target x86_64-unknown-windows -o build/smp.o loader/smp.S
+#clang -std=c17 -target x86_64-unknown-windows -Wall -Wextra -Wpedantic -mno-red-zone -ffreestanding -c loader/efirom.c -o build/efirom.o -Iinclude -Isrc
+#clang -std=c17 -target x86_64-unknown-windows -Wall -Wextra -Wpedantic -mno-red-zone -ffreestanding -c loader/bootboot.c -o build/bootboot.o -Iinclude -Isrc
 #lld -flavor link -subsystem:efi_application -entry:efi_main build/efi_main.o build/load.o build/zero_object.o build/zero_DebugChannel.o build/zero.o -out:BOOTAA64.EFI
 lld -flavor link -subsystem:efi_application -entry:efi_main build/efi_main.o build/load.o build/zero_object.o -out:BOOTAA64.EFI
