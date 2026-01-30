@@ -10,6 +10,11 @@
 #include "video.h"
 #include <io.h>
 #include "peripherals/emmc.h"
+#include <mem.h>
+
+void video_init();
+void video_set_dma(bool b);
+void enable_interrupt_controller();
 
 void putc(void *p, char c) {
     if (c == '\n') {

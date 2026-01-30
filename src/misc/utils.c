@@ -1,5 +1,6 @@
 #include "utils.h"
 #include "mem.h"
+#include "clib.h"
 
 bool str_eq(char *a, char *b) {
     while(*a) {
@@ -29,7 +30,7 @@ int strcpy(char *dst, char *src) {
     return count;
 }
 
-int strlen(char *s) {
+size_t strlen(const char *s) {
     int count = 0;
     while(*s++) {
         count++;

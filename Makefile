@@ -2,7 +2,7 @@ RPI_VERSION ?= 4
 
 BOOTMNT ?= ./boot
 
-ARMGNU ?= aarch64-linux-gnu
+ARMGNU ?= /Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf
 
 INIT_MMU ?= 1
 
@@ -28,7 +28,9 @@ $(BUILD_DIR)/%_s.o: $(SRC_DIR)/%.S
 	$(ARMGNU)-gcc $(COPS) -MMD -c $< -o $@
 
 C_FILES = $(wildcard $(SRC_DIR)/*.c)
-C_FILES += $(wildcard $(SRC_DIR)/*/*.c)
+C_FILES += $(wildcard $(SRC_DIR)/dma/*.c)
+C_FILES += $(wildcard $(SRC_DIR)/kernel/*.c)
+C_FILES += $(wildcard $(SRC_DIR)/misc/*.c)
 C_FILES += $(wildcard $(SRC_DIR)/*/*/*.c)
 
 ASM_FILES = $(wildcard $(SRC_DIR)/*.S)
