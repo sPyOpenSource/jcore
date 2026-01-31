@@ -181,17 +181,17 @@ typedef enum EFI_MEMORY_TYPE
 // STRUCTS
 typedef struct EFI_TIME
 {
-	uint16_t     Year;
-	uint8_t      Month;
-	uint8_t      Day;
-	uint8_t      Hour;
-	uint8_t      Minute;
-	uint8_t      Second;
-	uint8_t      Pad1;
-	uint32_t     Nanosecond;
-	uint16_t     TimeZone;
-	uint8_t      DayLight;
-	uint8_t      Pad2;
+    uint16_t     Year;
+    uint8_t      Month;
+    uint8_t      Day;
+    uint8_t      Hour;
+    uint8_t      Minute;
+    uint8_t      Second;
+    uint8_t      Pad1;
+    uint32_t     Nanosecond;
+    uint16_t     TimeZone;
+    uint8_t      DayLight;
+    uint8_t      Pad2;
 } EFI_TIME;
 
 typedef struct EFI_CONFIGURATION_TABLE
@@ -238,8 +238,8 @@ typedef struct EFI_DEVICE_PATH_PROTOCOL
 // This is because EFI uses UNICODE. You do not need to define it for AARCH64.
 typedef struct EFI_INPUT_KEY
 {
-	UINT16    ScanCode;
-	UINT16    UnicodeChar;
+    UINT16    ScanCode;
+    UINT16    UnicodeChar;
 }EFI_INPUT_KEY;
 
 typedef struct EFI_FILE_INFO {
@@ -271,9 +271,9 @@ typedef struct EFI_CAPSULE_HEADER
 
 typedef struct EFI_TIME_CAPABILITIES
 {
-	uint32_t      Resolution;
-	uint32_t      Accuracy;
-	uint8_t       SetsToZero;
+    uint32_t      Resolution;
+    uint32_t      Accuracy;
+    uint8_t       SetsToZero;
 } EFI_TIME_CAPABILITIES;
 
 typedef struct EFI_GRAPHICS_OUTPUT_BLT_PIXEL
@@ -304,9 +304,9 @@ typedef EFI_STATUS (*EFI_INPUT_READ_KEY)(struct EFI_SIMPLE_TEXT_INPUT_PROTOCOL *
 // The struct for the keyboard input.
 typedef struct EFI_SIMPLE_TEXT_INPUT_PROTOCOL
 {
-	EFI_INPUT_RESET        Reset;
-	EFI_INPUT_READ_KEY     ReadKeyStroke;
-	EFI_EVENT              WaitForKey;
+    EFI_INPUT_RESET        Reset;
+    EFI_INPUT_READ_KEY     ReadKeyStroke;
+    EFI_EVENT              WaitForKey;
 } EFI_SIMPLE_TEXT_INPUT_PROTOCOL;
 
 // We use this for setting the cursor position.

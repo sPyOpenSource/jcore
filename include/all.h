@@ -2,8 +2,8 @@
 #define ALL_H
 
 #include "config.h"
-#include "lib/efi.h"
 #include "ErrorCodes.h"
+#include "lib/efi.h"
 #include "lib/efilibs.h"
 
 #ifndef KERNEL
@@ -24,27 +24,29 @@
 #endif
 
 #include "mem/malloc.h"
+#include "mem/gc.h"
+#include "mem/malloc_proto.h"
+
+#include "interface/execJAVA.h"
+#include "interface/portal.h"
+#include "interface/zero.h"
+#include "interface/zero_Profiler.h"
+#include "interface/portal_proto.h"
+#include "interface/exception_handler.h"
+#include "interface/zero.h"
+
 #include "load.h"
 #include "context.h"
 #include "lowlevel.h"
 #include "thread.h"
-#include "interface/portal.h"
 #include "domain.h"
 #include "config.h"
 #include "interrupt.h"
-#include "mem/gc.h"
 #include "vmsupport.h"
-#include "interface/execJAVA.h"
 #include "monitor.h"
-#include "interface/zero.h"
-#include "interface/zero_Profiler.h"
-#include "mem/malloc_proto.h"
-#include "interface/portal_proto.h"
 #include "atomic.h"
-#include "interface/exception_handler.h"
 
 #include "thread.h"
-#include "lib/misc.h"
 #include "monitor.h"
 #include "lapic.h"
 #include "smp.h"
@@ -55,7 +57,7 @@
 
 #include "irq.h"
 #include "smp.h"
-#include "interface/zero.h"
+#include "lib/misc.h"
 
 #ifdef JAVASCHEDULER
 #include "javascheduler.h"
@@ -68,9 +70,10 @@
 #include "lib/misc.h"
 #include "lib/zip.h"
 #include "lib/types.h"
+#include "lib/printf.h"
+
 #include "intr.h"
 #include "debug_reg.h"
-#include "lib/printf.h"
 
 #include "interface/object.h"
 #include "bench.h"
