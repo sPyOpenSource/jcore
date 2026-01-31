@@ -39,8 +39,8 @@
 #endif
 
 // get UEFI functions and environment
-#include <efi.h>
-//#include <efilib.h>
+#include <lib/efi.h>
+#include <lib/efilibs.h>
 //#include <eficon.h>
 //#include <efiprot.h>
 //#include <efigpt.h>

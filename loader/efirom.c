@@ -28,7 +28,7 @@
 //#include <errno.h>
 //#include <assert.h>
 //#include <getopt.h>
-#include <efi.h>
+#include <lib/efi.h>
 //#include <efilink.h>
 //#include <pe.h>
 //#include <pci22.h>

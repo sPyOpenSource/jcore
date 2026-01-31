@@ -41,7 +41,7 @@ UINT64 getFileSize(EFI_FILE_PROTOCOL *FileHandle)
 
 EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 {
-	InitEFI(image, system);
+    InitEFI(image, system);
 
     EFI_PHYSICAL_ADDRESS ExternalFileBuffer0 = 0;
     EFI_PHYSICAL_ADDRESS ExternalFileBuffer1 = 0;
@@ -71,9 +71,9 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
     //AllocatePool(EfiLoaderData, FileInfoSize, (void**)&FileInfo);
     //Status = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, (void**)&FileInfo);
 
-	SetTextColor(EFI_BROWN);
+    SetTextColor(EFI_BROWN);
     wprintf(u"AllocatePool ExternalFileBuffer");
-	SetTextColor(EFI_LIGHTCYAN);
+    SetTextColor(EFI_LIGHTCYAN);
     wprintf(CheckStandardEFIError(Status));
     //AllocatePool(EfiLoaderData, sizeof(DomainDesc), (void**)&domainZero);
     //domainZero->numberOfLibs = 0;
@@ -97,7 +97,7 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     SetTextColor(EFI_GREEN);
     wprintf(u"Read ExternalFileBuffer");
-	SetTextColor(EFI_LIGHTCYAN);
+    SetTextColor(EFI_LIGHTCYAN);
     wprintf(CheckStandardEFIError(Status));
 
     SetTextColor(EFI_LIGHTCYAN);
@@ -120,14 +120,14 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     HitAnyKey();
 	
-	SetGraphicsColor(BLACK);
+    SetGraphicsColor(BLACK);
 	
-	CreateFilledBox(150, 150, 800, 500);
+    CreateFilledBox(150, 150, 800, 500);
 	
-	SetGraphicsColor(ORANGE);
+    SetGraphicsColor(ORANGE);
 	
-	// Execute File, get return number --> 349587 \ 055593
-	int (*main)(int) = (int (*)(int)) ((UINT8 *)ExternalFileBuffer3+11864);//11200);
+    // Execute File, get return number --> 349587 \ 055593
+    int (*main)(int) = (int (*)(int)) ((UINT8 *)ExternalFileBuffer3+11864);//11200);
     //int g = main(1049496);
     main(1049496);
 //__asm__("mov esp,INITSTACK");
@@ -143,14 +143,14 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 
     HitAnyKey();
 	
-	SHUTDOWN();
+    SHUTDOWN();
 	
     SetTextColor(EFI_GREEN);
     SetTextPosition(0, 22);
     wprintf(u"If you see this, something went wrong. Manually turn off the computer.");
 	
-	//while(1){__asm__("wfi\n\t");}   // WFI is similar to the HLT in x86_64
-	while(1){__asm__("hlt\n\t");}   // WFI is similar to the HLT in x86_64
+    //while(1){__asm__("wfi\n\t");}   // WFI is similar to the HLT in x86_64
+    while(1){__asm__("hlt\n\t");}   // WFI is similar to the HLT in x86_64
 
     return EFI_SUCCESS;
 }
@@ -329,10 +329,10 @@ unsigned short int* CheckStandardEFIError(unsigned long long s)
 
 size_t strlen(const char* str)
 {
-	const char* strCount = str;
+    const char* strCount = str;
 
-	while (*strCount++);
-	return strCount - str - 1;
+    while (*strCount++);
+    return strCount - str - 1;
 }
 
 int strcmp(const char* a, const char* b)
@@ -423,54 +423,54 @@ void printUInt64Digits(uint64_t num, uint64_t base)
 {
     CHAR16 uint64Str[MAX_LENGTH] = {'\0'};
 	
-	const CHAR16* digits = u"0123456789ABCDEF";
-	uint64_t i = 0;
+    const CHAR16* digits = u"0123456789ABCDEF";
+    uint64_t i = 0;
 
-	do
-	{
-		uint64Str[i++] = digits[num % base];
+    do
+    {
+        uint64Str[i++] = digits[num % base];
         num /= base;
-	} while(num > 0);
+    } while(num > 0);
 	
     uint64Str[i--] = '\0';
 	
-	for(uint64_t j = 0; j < i; j++, i--)
-	{
-		CHAR16 temp = uint64Str[i];
-		uint64Str[i]  = uint64Str[j];
-		uint64Str[j]  = temp;
-	}
-	
-	SystemTable->ConOut->OutputString(SystemTable->ConOut, uint64Str);
+    for(uint64_t j = 0; j < i; j++, i--)
+    {
+        CHAR16 temp = uint64Str[i];
+        uint64Str[i]  = uint64Str[j];
+        uint64Str[j]  = temp;
+    }
+
+    SystemTable->ConOut->OutputString(SystemTable->ConOut, uint64Str);
 }
 
 void printIntDigits(int32_t num)
 {
     CHAR16 int32Str[12] = {'\0'};
 	
-	const CHAR16* digits = u"0123456789";
-	uint64_t i = 0;
-	int negative = (num < 0);
-	if(negative) {num = -num;}
-	
-	do
-	{
-		int32Str[i++] = digits[num % 10];
-		num /= 10;
-	} while(num > 0);
-	
-	if(negative) {int32Str[i++] = '-';}
-	
-	int32Str[i--] = '\0';
-	
-	for(uint64_t j = 0; j < i; j++, i--)
-	{
-		CHAR16 temp = int32Str[i];
-		int32Str[i] = int32Str[j];
-		int32Str[j] = temp;
-	}
-	
-	SystemTable->ConOut->OutputString(SystemTable->ConOut, int32Str);
+    const CHAR16* digits = u"0123456789";
+    uint64_t i = 0;
+    int negative = (num < 0);
+    if(negative) {num = -num;}
+
+    do
+    {
+            int32Str[i++] = digits[num % 10];
+            num /= 10;
+    } while(num > 0);
+
+    if(negative) {int32Str[i++] = '-';}
+
+    int32Str[i--] = '\0';
+
+    for(uint64_t j = 0; j < i; j++, i--)
+    {
+            CHAR16 temp = int32Str[i];
+            int32Str[i] = int32Str[j];
+            int32Str[j] = temp;
+    }
+
+    SystemTable->ConOut->OutputString(SystemTable->ConOut, int32Str);
 }
 
 void wprintf(CHAR16* txt, ...)
@@ -482,66 +482,65 @@ void wprintf(CHAR16* txt, ...)
 	
 	for(uint64_t i = 0; txt[i] != '\0'; i++)
 	{
-		if(txt[i] == '%')
-		{
-			i++;
-			switch(txt[i])
-			{
+            if(txt[i] == '%')
+            {
+                i++;
+                switch(txt[i])
+                {
                 case 'c': {
                     charStr[0] = (CHAR16)va_arg(args, int);
                     SystemTable->ConOut->OutputString(SystemTable->ConOut, charStr);
 					break;
                 }
-				case 's':
-				{
-					uint16_t* varString = va_arg(args, uint16_t*);
-					SystemTable->ConOut->OutputString(SystemTable->ConOut, varString);
-					break;
-				}
-				case 'd':
-				{
-					int32_t number = va_arg(args, int32_t);
-					printIntDigits(number);
-					break;
-				}
-                case 'b':
-				{
-					uint64_t bin = va_arg(args, uint64_t);
-					printUInt64Digits(bin, 2);
-					break;
+                case 's':
+                {
+                        uint16_t* varString = va_arg(args, uint16_t*);
+                        SystemTable->ConOut->OutputString(SystemTable->ConOut, varString);
+                        break;
                 }
-				case 'x':
-				{
-					uint64_t hex = va_arg(args, uint64_t);
-					printUInt64Digits(hex, 16);
-					break;
-				}
-				case 'l':
-				{
-					if(txt[i+1] == 'l' && txt[i+2] == 'u')
-					{
-						i+=2;
-                        uint64_t num = va_arg(args, uint64_t);
-						printUInt64Digits(num, 10);
-					}
-					break;
-				}
-
-				default:
-				{
-					SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_RED);
-				    SystemTable->ConOut->OutputString(SystemTable->ConOut, u"\r\nERROR : Invalid format: %");
-					SystemTable->ConOut->OutputString(SystemTable->ConOut, &txt[i]);
-					SystemTable->ConOut->OutputString(SystemTable->ConOut, u"\r\n");
-					return;
-					break;
-				}
-			}
-		} else {
-			charStr[0] = txt[i];
-			charStr[1] = '\0';
-			SystemTable->ConOut->OutputString(SystemTable->ConOut, charStr);
-		}
+                case 'd':
+                {
+                        int32_t number = va_arg(args, int32_t);
+                        printIntDigits(number);
+                        break;
+                }
+                case 'b':
+                {
+                        uint64_t bin = va_arg(args, uint64_t);
+                        printUInt64Digits(bin, 2);
+                        break;
+                }
+                case 'x':
+                {
+                        uint64_t hex = va_arg(args, uint64_t);
+                        printUInt64Digits(hex, 16);
+                        break;
+                }
+                case 'l':
+                {
+                        if(txt[i+1] == 'l' && txt[i+2] == 'u')
+                        {
+                                i+=2;
+                                uint64_t num = va_arg(args, uint64_t);
+                                printUInt64Digits(num, 10);
+                        }
+                        break;
+                }
+                default:
+                {
+                    SystemTable->ConOut->SetAttribute(SystemTable->ConOut, EFI_RED);
+                    SystemTable->ConOut->OutputString(SystemTable->ConOut, u"\r\nERROR : Invalid format: %");
+                    SystemTable->ConOut->OutputString(SystemTable->ConOut, &txt[i]);
+                    SystemTable->ConOut->OutputString(SystemTable->ConOut, u"\r\n");
+                    return;
+                    break;
+                }
+                }
+            } else {
+                    charStr[0] = txt[i];
+                    charStr[1] = '\0';
+                    SystemTable->ConOut->OutputString(SystemTable->ConOut, charStr);
+            }
 	}
 
 	va_end(args);
@@ -589,7 +588,7 @@ void Delay(uint64_t d)
 
 void SetTextColor(uint64_t color)
 {
-	SystemTable->ConOut->SetAttribute(SystemTable->ConOut, color);
+    SystemTable->ConOut->SetAttribute(SystemTable->ConOut, color);
 }
 
 void COLD_REBOOT(void)
@@ -646,8 +645,8 @@ void InitializeGOP(void)
     SetTextColor(EFI_CYAN);
     wprintf(CheckStandardEFIError(Status));
 	
-	DisplayWidth  = gop->Mode->Info->HorizontalResolution;
-	DisplayHeight = gop->Mode->Info->VerticalResolution;
+    DisplayWidth  = gop->Mode->Info->HorizontalResolution;
+    DisplayHeight = gop->Mode->Info->VerticalResolution;
 }
 
 void InitializeFILESYSTEM(void)
@@ -711,7 +710,7 @@ void closeFile(EFI_FILE_PROTOCOL* FileHandle)
 
 void readFile(CHAR16* FileName)
 {
-	EFI_STATUS Status = 0;
+    EFI_STATUS Status = 0;
     EFI_FILE_PROTOCOL* mytextfile = openFile(FileName);
     if(mytextfile != NULL)
     {
@@ -735,10 +734,10 @@ void readFile(CHAR16* FileName)
 
 void InitEFI(EFI_HANDLE handle, EFI_SYSTEM_TABLE  *table)
 {
-	ImageHandle   = handle;
-	SystemTable   = table;
-	ERROR_STATUS  = 0;
-	ResetScreen();
+    ImageHandle   = handle;
+    SystemTable   = table;
+    ERROR_STATUS  = 0;
+    ResetScreen();
 
     SetTextColor(EFI_WHITE);
     wprintf(u"EFI loaded on Hardware !\r\n");
@@ -748,21 +747,21 @@ void InitEFI(EFI_HANDLE handle, EFI_SYSTEM_TABLE  *table)
 
     //HitAnyKey();
 	
-	//SetTextPosition(0, 5);
+    //SetTextPosition(0, 5);
 
-	InitializeFILESYSTEM();
+    InitializeFILESYSTEM();
 
-	InitializeGOP();
-	
-	//SetGraphicsColor(ORANGE);
-	//CreateFilledBox(50, 50, 100, 200);
-	//SetGraphicsColor(RED);
-	//CreateFilledBox(60, 60, 80, 30);
-	SetTextPosition(0, 8);
-	SetTextColor(EFI_YELLOW);
-	wprintf(u"We have Graphics !!");
+    InitializeGOP();
 
-	SetTextColor(EFI_GREEN);
-	
-	SetTextPosition(0, 11);
+    //SetGraphicsColor(ORANGE);
+    //CreateFilledBox(50, 50, 100, 200);
+    //SetGraphicsColor(RED);
+    //CreateFilledBox(60, 60, 80, 30);
+    SetTextPosition(0, 8);
+    SetTextColor(EFI_YELLOW);
+    wprintf(u"We have Graphics !!");
+
+    SetTextColor(EFI_GREEN);
+
+    SetTextPosition(0, 11);
 }

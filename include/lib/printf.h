@@ -79,7 +79,7 @@ void tfp_sprintf(char* s,char *fmt, ...);
 
 void tfp_format(void* putp,void (*putf) (void*,char),char *fmt, va_list va);
 
-#define printf tfp_printf//wprintf
+#define printf wprintf//tfp_printf
 #define sprintf tfp_sprintf
 
 #endif
