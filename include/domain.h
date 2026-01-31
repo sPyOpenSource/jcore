@@ -14,10 +14,10 @@
 struct ThreadDesc_s;
 struct HLSchedDesc_s;		//form scheduler.h
 
-#include "portal.h"
+#include "interface/portal.h"
 #include "smp.h"
-#include "malloc.h"
-#include "object.h"
+#include "mem/malloc.h"
+#include "interface/object.h"
 
 #define DOMAIN_TERMINATED_EXCEPTION  (-1)
 

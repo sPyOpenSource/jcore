@@ -3,7 +3,7 @@
 
 #ifndef ASSEMBLER
 
-#include "types.h"
+#include "lib/types.h"
 
 #ifdef DEBUG
 struct DomainDesc_s;

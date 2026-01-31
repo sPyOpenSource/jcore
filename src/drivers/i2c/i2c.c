@@ -1,7 +1,6 @@
-#include "gpio.h"
+#include "peripherals/gpio.h"
 #include "peripherals/i2c.h"
-#include "i2c.h"
-#include "printf.h"
+#include <lib/printf.h>
 
 #define I2C_SPEED 100000
 

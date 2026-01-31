@@ -7,12 +7,12 @@
 #ifndef THREAD_H
 #define THREAD_H
 
-#include "misc.h"
+#include "lib/misc.h"
 #include "load.h"
 #include "context.h"
 #include "lock.h"
 #include "profile.h"
-#include "portal.h"
+#include "interface/portal.h"
 #include "smp.h"
 #include "intr.h"
 

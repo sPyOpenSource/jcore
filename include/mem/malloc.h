@@ -1,6 +1,6 @@
 #ifndef MALLOC_H
 #define MALLOC_H
-#include "types.h"
+#include "lib/types.h"
 
 typedef struct TempMemory_s {
 	u4_t size;

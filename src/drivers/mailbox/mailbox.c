@@ -1,7 +1,7 @@
 #include <mailbox.h>
 #include <peripherals/base.h>
-#include "printf.h"
-#include <mem.h>
+#include "lib/printf.h"
+#include <mem/mem.h>
 
 typedef struct {
     reg32 read;

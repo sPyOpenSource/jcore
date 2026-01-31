@@ -9,8 +9,8 @@
 #ifndef LIBCACHE
 #define LIBCACHE 1
 
-#include "types.h"
-#include "object.h"
+#include "lib/types.h"
+#include "interface/object.h"
 
 typedef struct libcache_entry_s {
 	ObjectDesc *name;	/* Java String object */

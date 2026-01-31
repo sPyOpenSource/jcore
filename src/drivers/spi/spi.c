@@ -1,7 +1,6 @@
-#include "spi.h"
 #include "peripherals/spi.h"
-#include "gpio.h"
-#include "printf.h"
+#include "peripherals/gpio.h"
+#include "lib/printf.h"
 
 void spi_init() {
     gpio_pin_set_func(7, GFAlt0); //CS1

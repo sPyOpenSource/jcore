@@ -1,6 +1,6 @@
-#include "mm.h"
+#include "mem/mm.h"
 #include "sysregs.h"
-#include "mmu.h"
+#include "mem/mmu.h"
 
 .section ".text.boot"
 

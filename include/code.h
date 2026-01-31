@@ -14,7 +14,7 @@
 #define DEPFLAG_NONE   0
 #define DEPFLAG_REDO   1
 
-#include "types.h"
+#include "lib/types.h"
 #include "config.h"
 #include "lock.h"
 

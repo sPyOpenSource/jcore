@@ -1,7 +1,7 @@
 #include "peripherals/emmc.h"
 #include <mailbox.h>
-#include <printf.h>
-#include <timer.h>
+#include <lib/printf.h>
+#include <peripherals/timer.h>
 
 bool wait_reg_mask(reg32 *reg, u32 mask, bool set, u32 timeout);
 

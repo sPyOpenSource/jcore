@@ -22,7 +22,7 @@
 #define THROW_DomainTerminatedException ((jint*)-14)
 
 #ifndef ASSEMBLER
-#include "types.h"
+#include "lib/types.h"
 #include "domain.h"
 
 #ifdef KERNEL

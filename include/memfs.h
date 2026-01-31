@@ -1,7 +1,7 @@
 #ifndef MEMFS
 #define MEMFS
 
-#include "types.h"
+#include "lib/types.h"
 #include "domain.h"
 
 #ifdef USE_QMAGIC

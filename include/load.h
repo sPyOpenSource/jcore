@@ -6,7 +6,7 @@
 #ifndef ASSEMBLER
 
 #include "domain.h"
-#include "object.h"
+#include "interface/object.h"
 #include "code.h"
 
 #ifdef PROFILE_SAMPLE_HEAPUSAGE

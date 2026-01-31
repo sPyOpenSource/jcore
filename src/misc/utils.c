@@ -1,6 +1,8 @@
-#include "utils.h"
-#include "mem.h"
-#include "clib.h"
+#include "lib/utils.h"
+#include "mem/mem.h"
+#include "lib/clib.h"
+
+int strcpy(char *dst, char *src);
 
 bool str_eq(char *a, char *b) {
     while(*a) {

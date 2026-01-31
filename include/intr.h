@@ -2,7 +2,7 @@
 #define INTR_H
 
 #ifndef ASSEMBLER
-#include "types.h"
+#include "lib/types.h"
 
 /* must be consistent with assenmbler code in debug_ex in irq.c ! */
 struct irqcontext {

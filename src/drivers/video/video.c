@@ -1,10 +1,10 @@
 #include "mailbox.h"
-#include "printf.h"
-#include "timer.h"
-#include "video.h"
-#include "dma.h"
-#include "mm.h"
-#include "mem.h"
+#include "lib/printf.h"
+#include "peripherals/timer.h"
+#include "peripherals/video.h"
+#include "mem/dma.h"
+#include "mem/mm.h"
+#include "mem/mem.h"
 
 typedef struct {
     mailbox_tag tag;
@@ -70,7 +70,7 @@ void video_init() {
 
 static bool use_dma = false;
 
-#define BUS_ADDR(x) (((u64)x | 0x40000000) & ~0xC0000000)
+#define BUS_ADDR(x) (void *)(((u64)x | 0x40000000) & ~0xC0000000)
 
 #define FRAMEBUFFER ((volatile u8 *)BUS_ADDR(fb_req.buff.base))
 #define DMABUFFER ((volatile u8 *)vid_buffer)

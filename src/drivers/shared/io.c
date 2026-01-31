@@ -4,6 +4,8 @@
 
 static io_device *devices[MAX_DEVS] = {0};
 
+bool str_eq(char *a, char *b);
+
 bool io_device_register(io_device *dev) {
     for (int i=0; i<MAX_DEVS; i++) {
         if (devices[i] == 0) {

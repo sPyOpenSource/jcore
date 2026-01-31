@@ -1,7 +1,7 @@
-#include "lcd.h"
-#include "i2c.h"
-#include "timer.h"
-#include "printf.h"
+#include "peripherals/lcd.h"
+#include "peripherals/i2c.h"
+#include "peripherals/timer.h"
+#include "lib/printf.h"
 
 /*
    P0 -> RS

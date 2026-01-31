@@ -14,3 +14,9 @@ struct timer_regs {
 };
 
 #define REGS_TIMER ((struct timer_regs *)(PBASE + 0x00003000))
+
+void timer_init();
+void handle_timer_1();
+void handle_timer_3();
+void timer_sleep(u32 ms);
+u64 timer_get_ticks();

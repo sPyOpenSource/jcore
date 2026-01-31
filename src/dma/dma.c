@@ -1,8 +1,8 @@
-#include <dma.h>
-#include <mem.h>
-#include <mm.h>
-#include <timer.h>
-#include <printf.h>
+#include <mem/dma.h>
+#include <mem/mem.h>
+#include <mem/mm.h>
+#include <peripherals/timer.h>
+#include <lib/printf.h>
 
 dma_channel channels[15];
 

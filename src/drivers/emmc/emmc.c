@@ -1,12 +1,12 @@
 #include <common.h>
-#include <gpio.h>
+#include <peripherals/gpio.h>
 #include <mailbox.h>
-#include <timer.h>
-#include <mem.h>
-#include <printf.h>
+#include <peripherals/timer.h>
+#include <mem/mem.h>
+#include <lib/printf.h>
 #include <peripherals/emmc.h>
-#include <utils.h>
-#include <timer.h>
+#include <lib/utils.h>
+#include <peripherals/timer.h>
 
 bool emmc_setup_clock();
 bool switch_clock_rate(u32 base_clock, u32 target_rate);

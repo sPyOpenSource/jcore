@@ -4,7 +4,7 @@ BOOTMNT ?= ./boot
 
 ARMGNU ?= /Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf
 
-INIT_MMU ?= 1
+INIT_MMU ?= 0
 
 COPS = -DRPI_VERSION=$(RPI_VERSION) -DINIT_MMU=$(INIT_MMU) -Wall -Wno-psabi -nostdlib -nostartfiles -ffreestanding \
 	   -Iinclude -Isrc -mgeneral-regs-only
