@@ -1,8 +1,8 @@
-#include <mem.h>
+#include <mem/mem.h>
 #include <peripherals/base.h>
-#include <mm.h>
-#include <mmu.h>
-#include <printf.h>
+#include <mem/mm.h>
+#include <mem/mmu.h>
+#include <lib/printf.h>
 
 static u16 mem_map [ PAGING_PAGES ] = {0,};
 

@@ -31,6 +31,7 @@ C_FILES = $(wildcard $(SRC_DIR)/*.c)
 C_FILES += $(wildcard $(SRC_DIR)/dma/*.c)
 C_FILES += $(wildcard $(SRC_DIR)/kernel/*.c)
 C_FILES += $(wildcard $(SRC_DIR)/misc/*.c)
+C_FILES += src/mem/mem.c
 C_FILES += $(wildcard $(SRC_DIR)/*/*/*.c)
 
 ASM_FILES = $(wildcard $(SRC_DIR)/*.S)

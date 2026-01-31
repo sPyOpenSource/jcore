@@ -1,16 +1,17 @@
 #include "common.h"
-#include "peripherals/mini_uart.h"
+#include "mailbox.h"
+#include <mem/mem.h>
 #include "lib/printf.h"
 #include "irq.h"
+
+#include "peripherals/mini_uart.h"
 #include "peripherals/timer.h"
 #include "peripherals/i2c.h"
 #include "peripherals/spi.h"
 #include "peripherals/led_display.h"
-#include "mailbox.h"
 #include "peripherals/video.h"
 #include <peripherals/io.h>
 #include "peripherals/emmc.h"
-#include <mem/mem.h>
 
 void video_init();
 void video_set_dma(bool b);
