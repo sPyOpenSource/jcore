@@ -70,7 +70,7 @@
 #define __TFP_PRINTF__
 
 #include <stdarg.h>
-#include <io.h>
+#include <peripherals/io.h>
 
 void init_printf(void* putp, io_device *dev);
 

@@ -2,7 +2,7 @@
 #include "lib/utils.h"
 #include "peripherals/aux.h"
 #include "peripherals/mini_uart.h"
-#include <io.h>
+#include <peripherals/io.h>
 
 #define TXD 14
 #define RXD 15

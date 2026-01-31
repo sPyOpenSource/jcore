@@ -3,7 +3,7 @@
 #include "peripherals/base.h"
 
 #include <common.h>
-#include <io.h>
+#include <peripherals/io.h>
 
 #define EMMC_DEBUG 0
 

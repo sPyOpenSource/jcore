@@ -8,7 +8,7 @@
 #include "peripherals/led_display.h"
 #include "mailbox.h"
 #include "peripherals/video.h"
-#include <io.h>
+#include <peripherals/io.h>
 #include "peripherals/emmc.h"
 #include <mem/mem.h>
 
