@@ -67,9 +67,11 @@
 // UINTN can be used for both 64-Bit ( 8 Bytes ) and 32-Bit ( 4 Bytes ).
 // We set this for 64-Bit since this tutorial series is 64-Bit only.
 typedef unsigned long long  UINTN;
+typedef long long           INTN;
 typedef unsigned char       BOOLEAN;
 typedef uint_least16_t      CHAR16;
 typedef unsigned char       UINT8;
+typedef unsigned char       CHAR8;
 typedef unsigned short      UINT16;
 typedef unsigned int        UINT32;
 typedef unsigned long long  UINT64;

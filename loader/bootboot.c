@@ -41,6 +41,7 @@
 // get UEFI functions and environment
 #include <lib/efi.h>
 #include <lib/efilibs.h>
+#include <ErrorCodes.h>
 //#include <eficon.h>
 //#include <efiprot.h>
 //#include <efigpt.h>
@@ -1195,7 +1196,7 @@ GetLFB()
  * Load a file from FS0 into memory
  */
 EFI_STATUS
-LoadFile(IN CHAR16 *FileName, OUT UINT8 **FileData, OUT UINTN *FileDataLength)
+LoadFile(CHAR16 *FileName, UINT8 **FileData, UINTN *FileDataLength)
 {
     EFI_STATUS          status;
     EFI_FILE_HANDLE     FileHandle;
