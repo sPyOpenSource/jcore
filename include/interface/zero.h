@@ -11,7 +11,7 @@
 #include "irq.h"
 #include "thread.h"
 #include "zero_Memory.h"
-
+#include "mem/gc.h"
 
 extern jint gc_methodindex;
 

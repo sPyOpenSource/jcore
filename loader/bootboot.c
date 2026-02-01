@@ -172,19 +172,19 @@ typedef struct {
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_MP_SERVICES_DUMMY)(
+(*EFI_MP_SERVICES_DUMMY)(
   IN  EFI_MP_SERVICES_PROTOCOL  *This
   );
 
 typedef
 VOID
-(EFIAPI *EFI_AP_PROCEDURE)(
+(*EFI_AP_PROCEDURE)(
   IN OUT VOID *Buffer
   );
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_MP_SERVICES_GET_NUMBER_OF_PROCESSORS)(
+(*EFI_MP_SERVICES_GET_NUMBER_OF_PROCESSORS)(
   IN  EFI_MP_SERVICES_PROTOCOL  *This,
   OUT UINTN                     *NumberOfProcessors,
   OUT UINTN                     *NumberOfEnabledProcessors
@@ -192,7 +192,7 @@ EFI_STATUS
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_MP_SERVICES_GET_PROCESSOR_INFO)(
+(*EFI_MP_SERVICES_GET_PROCESSOR_INFO)(
   IN  EFI_MP_SERVICES_PROTOCOL   *This,
   IN  UINTN                      ProcessorNumber,
   OUT EFI_PROCESSOR_INFORMATION  *ProcessorInfoBuffer
@@ -200,7 +200,7 @@ EFI_STATUS
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_MP_SERVICES_STARTUP_THIS_AP)(
+(*EFI_MP_SERVICES_STARTUP_THIS_AP)(
   IN  EFI_MP_SERVICES_PROTOCOL  *This,
   IN  EFI_AP_PROCEDURE          Procedure,
   IN  UINTN                     ProcessorNumber,
@@ -226,12 +226,12 @@ UINT16 lapic_ids[1024];
 UINT64 lapic_addr=0;
 #endif
 
-typedef
+/*typedef
 EFI_STATUS
-(EFIAPI *EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_OPEN_VOLUME)(
+(*EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_OPEN_VOLUME)(
   IN struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL    *This,
   OUT struct EFI_FILE_PROTOCOL                 **Root
-  );
+  );*/
 
 /* Intel EFI headers has simple file protocol, but not GNU EFI */
 #ifndef EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION
@@ -298,36 +298,36 @@ typedef enum {
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_SERIAL_DUMMY)(
+(*EFI_SERIAL_DUMMY)(
   IN  EFI_SERIAL_IO_PROTOCOL  *This
   );
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_SERIAL_SET_ATTRIBUTES) (
-    IN struct _EFI_SERIAL_IO_PROTOCOL  *This,
-    IN UINT64                          BaudRate,
-    IN UINT32                          ReceiveFifoDepth,
-    IN UINT32                          Timeout,
-    IN EFI_PARITY_TYPE                 Parity,
-    IN UINT8                           DataBits,
-    IN EFI_STOP_BITS_TYPE              StopBits
+(*EFI_SERIAL_SET_ATTRIBUTES) (
+    struct _EFI_SERIAL_IO_PROTOCOL  *This,
+    UINT64                          BaudRate,
+    UINT32                          ReceiveFifoDepth,
+    UINT32                          Timeout,
+    EFI_PARITY_TYPE                 Parity,
+    UINT8                           DataBits,
+    EFI_STOP_BITS_TYPE              StopBits
     );
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_SERIAL_WRITE) (
-    IN struct _EFI_SERIAL_IO_PROTOCOL  *This,
-    IN OUT UINTN                       *BufferSize,
-    IN VOID                            *Buffer
+(*EFI_SERIAL_WRITE) (
+    struct _EFI_SERIAL_IO_PROTOCOL  *This,
+    UINTN                       *BufferSize,
+    void                            *Buffer
     );
 
 typedef
 EFI_STATUS
-(EFIAPI *EFI_SERIAL_READ) (
-    IN struct _EFI_SERIAL_IO_PROTOCOL  *This,
-    IN OUT UINTN                       *BufferSize,
-    OUT VOID                           *Buffer
+(*EFI_SERIAL_READ) (
+    struct _EFI_SERIAL_IO_PROTOCOL  *This,
+    UINTN                       *BufferSize,
+    void                            *Buffer
     );
 
 typedef struct _EFI_SERIAL_IO_PROTOCOL {
@@ -1388,7 +1388,7 @@ LoadCore()
  * Initialize logical cores
  * Because Local APIC ID is not contiguous, core id != core num
  */
-VOID EFIAPI bootboot_startcore(IN VOID* buf)
+VOID bootboot_startcore(IN VOID* buf)
 {
 #if USE_MP_SERVICES
     // we have a scalar number, not a pointer, so cast it

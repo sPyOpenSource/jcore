@@ -23,17 +23,16 @@
 #include "minic.h"
 #endif
 
-#include "mem/malloc.h"
-#include "mem/gc.h"
-#include "mem/malloc_proto.h"
-
 #include "interface/execJAVA.h"
 #include "interface/portal.h"
-#include "interface/zero.h"
 #include "interface/zero_Profiler.h"
 #include "interface/portal_proto.h"
 #include "interface/exception_handler.h"
 #include "interface/zero.h"
+
+#include "mem/malloc.h"
+#include "mem/gc.h"
+#include "mem/malloc_proto.h"
 
 #include "load.h"
 #include "context.h"
