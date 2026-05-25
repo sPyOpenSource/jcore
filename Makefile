@@ -58,7 +58,17 @@ ifeq ($(strip $(CC)), icc)
 CORECCFLAGS  = -g -w -X
 else
 #CORECCFLAGS = -g -Wall -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc
-CORECCFLAGS = -g -nostdinc -m32 -target x86_64-pc-linux-gnu
+CORECCFLAGS = -g -nostdinc -m32 -target i386-pc-linux-gnu -std=gnu89 -fno-builtin -fno-stack-protector -Wno-error=return-type
+endif
+
+ifeq ($(shell uname -s),Darwin)
+AS = $(CC)
+LD = ld.lld
+COREASFLAGS = $(CORECCFLAGS)
+CORELDOPTS = -m elf_i386 --image-base=0
+else
+COREASFLAGS =
+CORELDOPTS =
 endif
 
 
@@ -92,7 +102,7 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
 COREOBJ2 = $(COREOBJ:.kernel/Memory/%=.kernel/%)
 COREOBJ3 = $(COREOBJ2:.kernel/Assembly/%=.kernel/%)
-COREBUILD = $(LD) -Ttext 0x10000 --ignore-unresolved-symbol __stack_chk_fail_local -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
+COREBUILD = $(LD) $(CORELDOPTS) -Ttext 0x10000 -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
 
 jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)
@@ -136,7 +146,7 @@ realmode: src/Assembly/asm.S
 #	gcc -E $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE)  -o .kernel/$(@F) $<
 
 .kernel/%.o: src/%.asm
-	$(AS) $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
+	$(AS) $(COREASFLAGS) $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
 
 src/Interface/zero_FastMemory.asm: src/Interface/zero_FastMemory.S
 	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)

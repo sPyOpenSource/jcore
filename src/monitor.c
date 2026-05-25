@@ -62,6 +62,7 @@ extern jlong *pmc1_samples;
 #endif
 
 static ClassDesc *sharedArrayClasses;
+void console(int line, char *msg);
 
 #if 0
 #ifdef PROFILE_EVENT_THREADSWITCH

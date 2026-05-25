@@ -14,6 +14,8 @@
 #include "minilzo.h"
 
 int debug_port = -1;
+void ser_putchar(int port, int ch);
+
 #ifdef LOG_PRINTF
 #define LOG_SPACE_SIZE       1024 * 1024 * 5
 #define COMPRESS_BLOCK_LEN	(64 * 1024L)

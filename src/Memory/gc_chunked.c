@@ -66,6 +66,8 @@ void never_return(void);
 jint cpuManager_receive(ObjectDesc * self, Proxy * portal);
 extern unsigned char cpuManager_receive_end[];
 extern Proxy *initialNamingProxy;
+DomainDesc *findDomainByName(char *name);
+void gc_chunked_printInfo(struct DomainDesc_s *domain);
 
 
 jint *allocChunk(DomainDesc * domain, u4_t size)

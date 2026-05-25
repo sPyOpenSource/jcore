@@ -91,6 +91,7 @@ NOT IMPL jint readInt()
 
 
 ArrayDesc *vmSpecialAllocMultiArray(ClassDesc * elemClass, jint dim, jint sizes);
+void callClassConstructor(Class * cl);
 
 /**
  * SYMBOLS

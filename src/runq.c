@@ -24,6 +24,10 @@ static inline void check_completerunnable()
 
 volatile struct runqueue_s domain_runqueue = { NULL, NULL };
 
+void Sched_blocked(ThreadDesc * thread);
+void Sched_destroy_switch_to_nextThread(DomainDesc * currentDomain);
+void domainrunq_remove_domain(DomainDesc * domain);
+
 #ifndef PRODUCTION
 #define INLINE
 #include "runq_inline.c"

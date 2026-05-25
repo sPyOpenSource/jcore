@@ -41,6 +41,8 @@ jint cpuManager_receive(ObjectDesc * self, Proxy * portal);
 extern unsigned char cpuManager_receive_end[];
 /* FIXME prototypes */
 void profile_sample_heapusage_alloc(DomainDesc * domain, u4_t objSize);
+void gc_org_finalizeMemory(DomainDesc * domain);
+void gc_org_finalizePortals(DomainDesc * domain);
 
 #ifdef JAVASCHEDULER
 void gc_org_moveSchedulerObject(DomainDesc * domain)

@@ -26,6 +26,7 @@ static char *domainMemCurrent = NULL;
 #undef FASTER_METHOD_LOOKUP
 
 void check_threadindomain(DomainDesc * domain);
+void terminateDomain(DomainDesc * domain);
 
 void init_domainsys()
 {

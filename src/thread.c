@@ -37,6 +37,7 @@ void idle(void *x)
 
 
 static void destroyCurrentThread();
+void terminateThread_internal(ThreadDesc * thread);
 
 void thread_exit()
 {
