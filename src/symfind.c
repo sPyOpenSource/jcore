@@ -50,7 +50,7 @@ void printCoreSymbolInformation(char *name)
 	return;
 }
 
-#define NOINTIN(x) if (eip >= (u4_t)x && eip <= (u4_t)x + FKTSIZE_##x) return 1;
+#define NOINTIN(x) if ((u4_t)eip >= (u4_t)x && (u4_t)eip <= (u4_t)x + FKTSIZE_##x) return 1;
 
 void thread_exit();
 void receive_portalcall();

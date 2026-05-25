@@ -64,6 +64,11 @@ endif
 ifeq ($(shell uname -s),Darwin)
 AS = $(CC)
 LD = ld.lld
+CORECCFLAGS += -Qunused-arguments -Wno-unused-command-line-argument
+CORECCFLAGS += -Wno-visibility -Wno-incompatible-pointer-types -Wno-int-conversion
+CORECCFLAGS += -Wno-extra-tokens -Wno-incompatible-function-pointer-types
+CORECCFLAGS += -Wno-pointer-sign -Wno-return-type -Wno-compare-distinct-pointer-types
+CORECCFLAGS += -Wno-pointer-integer-compare -Wno-parentheses
 COREASFLAGS = $(CORECCFLAGS)
 CORELDOPTS = -m elf_i386 --image-base=0
 else
