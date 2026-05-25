@@ -58,7 +58,7 @@ ifeq ($(strip $(CC)), icc)
 CORECCFLAGS  = -g -w -X
 else
 #CORECCFLAGS = -g -Wall -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc
-CORECCFLAGS = -g -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc -m32
+CORECCFLAGS = -g -nostdinc -m32 -target x86_64-pc-linux-gnu
 endif
 
 
@@ -136,7 +136,7 @@ realmode: src/Assembly/asm.S
 #	gcc -E $(CORECCFLAGS) $(COREDEFINES) $(COREINCLUDE)  -o .kernel/$(@F) $<
 
 .kernel/%.o: src/%.asm
-	$(AS) --32 $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
+	$(AS) $(COREINCLUDE) -c -nostdinc -o .kernel/$(@F) $<
 
 src/Interface/zero_FastMemory.asm: src/Interface/zero_FastMemory.S
 	$(CC) -E $< $(CORECCFLAGS) -DASSEMBLER $(COREDEFINES) $(COREINCLUDE) > src/Interface/$(@F)
