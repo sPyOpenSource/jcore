@@ -23,10 +23,10 @@
 #include <circle/actled.h>
 #include <circle/koptions.h>
 #include <circle/devicenameservice.h>
-#include <circle/bcmframebuffer.h>
+#include <circle/rpi/bcmframebuffer.h>
 #include <circle/windowdisplay.h>
 #include <circle/terminal.h>
-#include <circle/serial.h>
+#include <circle/peripherals/serial.h>
 #include <circle/exceptionhandler.h>
 #include <circle/interrupt.h>
 #include <circle/timer.h>

@@ -1,0 +1,158 @@
+
+#include "Flint.h"
+#include "flint_common.h"
+#include "flint_native_io_file_input_stream.h"
+
+static jint GetFd(FNIEnv *env, jobject obj) {
+    jobject fdObj = obj->getFieldByIndex(0)->getObj();
+    jint fd = fdObj->getFieldByIndex(0)->getInt32();
+    if(fd == -1)
+        env->throwNew(env->findClass("java/io/IOException"), "File has not been opened");
+    return fd;
+}
+
+static bool CheckArrayIndexSize(FNIEnv *env, jarray arr, int32_t index, int32_t count) {
+    if(arr == NULL) {
+        env->throwNew(env->findClass("java/lang/NullPointerException"));
+        return false;
+    }
+    else if(index < 0) {
+        jclass excpCls = env->findClass("java/lang/ArrayIndexOutOfBoundsException");
+        uint16_t len;
+        const char *name = arr->getCompTypeName(&len);
+        env->throwNew(excpCls, "index %d out of bounds for %.*s[%d]", index, len, name, arr->getLength());
+        return false;
+    }
+    else if((index + count) > arr->getLength()) {
+        jclass excpCls = env->findClass("java/lang/ArrayIndexOutOfBoundsException");
+        uint16_t len;
+        const char *name = arr->getCompTypeName(&len);
+        env->throwNew(excpCls, "last index %d out of bounds for %.*s[%d]", index + count - 1, len, name, arr->getLength());
+        return false;
+    }
+    return true;
+}
+
+jvoid NativeFileInputStream_Open(FNIEnv *env, jobject obj, jstring name) {
+    char buff[FILE_NAME_BUFF_SIZE];
+    jobject fdObj = obj->getFieldByIndex(0)->getObj();
+    jint fd = fdObj->getFieldByIndex(0)->getInt32();
+    if(ResolvePath(name->getAscii(), name->getLength(), buff, sizeof(buff)) == -1) return;
+    Flint::lock();
+    if(fd != -1)
+        env->throwNew(env->findClass("java/io/IOException"), "File has been opened");
+    else {
+        auto handle = FlintAPI::IO::fopen(buff, FlintAPI::IO::FILE_MODE_READ);
+        if(handle == NULL)
+            env->throwNew(env->findClass("java/io/FileNotFoundException"), "File opening failed");
+        else
+            fdObj->getFieldByIndex(0)->setInt32((int32_t)handle);
+    }
+    Flint::unlock();
+}
+
+jint NativeFileInputStream_Read(FNIEnv *env, jobject obj) {
+    jint fd = GetFd(env, obj);
+    if(fd == -1) return 0;
+    else if(fd == 0) {  /* in */
+        return -1;
+    }
+    else if(fd == 1) {  /* out */
+        return -1;
+    }
+    else if(fd == 2) {  /* err */
+        return -1;
+    }
+    else {
+        uint8_t data;
+        uint32_t br = 0;
+        auto result = FlintAPI::IO::fread((FlintAPI::IO::FileHandle)fd, &data, 1, &br);
+        if(result != FlintAPI::IO::FILE_RESULT_OK)
+            env->throwNew(env->findClass("java/io/IOException"), "Error while writing file");
+        return (br == 1) ? data : -1;
+    }
+}
+
+jint NativeFileInputStream_ReadBytes(FNIEnv *env, jobject obj, jbyteArray b, jint off, jint len) {
+    if(b == NULL) {
+        env->throwNew(env->findClass("java/lang/NullPointerException"));
+        return 0;
+    }
+    if(off < 0 || (off + len) > b->getLength()) {
+        jclass excpCls = env->findClass("java/lang/IndexOutOfBoundsException");
+        if(off < 0)
+            env->throwNew(excpCls, "Index %d out of bounds for byte[%d]", off, b->getLength());
+        else
+            env->throwNew(excpCls, "Last index %d out of bounds for byte[%d]", off + len - 1, b->getLength());
+        return 0;
+    }
+    jint fd = GetFd(env, obj);
+    if(!CheckArrayIndexSize(env, b, off, len)) return 0;
+    else if(fd == -1) {
+        env->throwNew(env->findClass("java/io/IOException"), "File has not been opened");
+        return 0;
+    }
+    else if(fd == 0) {  /* in */
+        return 0;
+    }
+    else if(fd == 1) {  /* out */
+        return 0;
+    }
+    else if(fd == 2) {  /* err */
+        return 0;
+    }
+    else {
+        int8_t *buff = &b->getData()[off];
+        uint32_t br = 0;
+        auto result = FlintAPI::IO::fread((FlintAPI::IO::FileHandle)fd, buff, len, &br);
+        if(result != FlintAPI::IO::FILE_RESULT_OK)
+            env->throwNew(env->findClass("java/io/IOException"), "Error while writing file");
+        return br;
+    }
+}
+
+jlong NativeFileInputStream_Length(FNIEnv *env, jobject obj) {
+    jint fd = GetFd(env, obj);
+    if(fd == -1) return 0;
+    return FlintAPI::IO::fsize((FlintAPI::IO::FileHandle)fd);
+}
+
+jlong NativeFileInputStream_Position(FNIEnv *env, jobject obj) {
+    jint fd = GetFd(env, obj);
+    if(fd == -1) return 0;
+    return FlintAPI::IO::ftell((FlintAPI::IO::FileHandle)fd);
+}
+
+jlong NativeFileInputStream_Skip(FNIEnv *env, jobject obj, jlong n) {
+    jint fd = GetFd(env, obj);
+    if(fd == -1) return 0;
+    if(n > 0xFFFFFFFF) n = 0xFFFFFFFF;
+    jint oldPos = FlintAPI::IO::ftell((FlintAPI::IO::FileHandle)fd);
+    if(FlintAPI::IO::fseek((FlintAPI::IO::FileHandle)fd, (uint32_t)(n + oldPos)) != FlintAPI::IO::FILE_RESULT_OK)
+        return 0;
+    return FlintAPI::IO::ftell((FlintAPI::IO::FileHandle)fd) - oldPos;
+}
+
+jint NativeFileInputStream_Available(FNIEnv *env, jobject obj) {
+    jint fd = GetFd(env, obj);
+    if(fd == -1) return 0;
+    auto h = (FlintAPI::IO::FileHandle)fd;
+    return FlintAPI::IO::fsize(h) - FlintAPI::IO::ftell(h);
+}
+
+jvoid NativeFileInputStream_Close(FNIEnv *env, jobject obj) {
+    jobject fdObj = obj->getFieldByIndex(0)->getObj();
+    jint fd = fdObj->getFieldByIndex(0)->getInt32();
+    Flint::lock();
+    if(fd != -1) {
+        if(!(0 <= fd && fd <= 2)) {
+            if(FlintAPI::IO::fclose((FlintAPI::IO::FileHandle)fd) == FlintAPI::IO::FILE_RESULT_OK)
+                fdObj->getFieldByIndex(0)->setInt32(-1);
+            else
+                env->throwNew(env->findClass("java/io/IOException"), "File closing failed");
+        }
+    }
+    else
+        env->throwNew(env->findClass("java/io/IOException"), "File has not been opened");
+    Flint::unlock();
+}

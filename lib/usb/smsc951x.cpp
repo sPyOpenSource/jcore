@@ -26,7 +26,7 @@
 //
 #include <circle/usb/smsc951x.h>
 #include <circle/usb/usbhostcontroller.h>
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/synchronize.h>
 #include <circle/logger.h>
 #include <circle/timer.h>

@@ -19,9 +19,9 @@
 //
 #include <circle/startup.h>
 #include <circle/memio.h>
-#include <circle/bcm2835.h>
-#include <circle/bcm2836.h>
-#include <circle/bcm2712.h>
+#include <circle/rpi/bcm2835.h>
+#include <circle/rpi/bcm2711.h>
+#include <circle/rpi/bcm2712.h>
 #include <circle/machineinfo.h>
 #include <circle/memory.h>
 #include <circle/interrupt.h>

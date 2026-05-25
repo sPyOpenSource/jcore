@@ -14,7 +14,7 @@
 
 #include <circle/netdevice.h>
 #include <circle/macaddress.h>
-#include <circle/gpiopin.h>
+#include <circle/peripherals/gpiopin.h>
 #include <circle/types.h>
 
 class CMACBDevice : public CNetDevice	/// Driver for MACB/GEM Ethernet NIC of Raspberry Pi 5

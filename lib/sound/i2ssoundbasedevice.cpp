@@ -28,8 +28,8 @@
 //
 #include <circle/sound/i2ssoundbasedevice.h>
 #include <circle/devicenameservice.h>
-#include <circle/bcm2835.h>
-#include <circle/bcm2835int.h>
+#include <circle/rpi/bcm2835.h>
+#include <circle/rpi/bcm2835int.h>
 #include <circle/memio.h>
 #include <circle/timer.h>
 #include <assert.h>

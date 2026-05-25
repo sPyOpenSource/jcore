@@ -19,7 +19,7 @@
  */
 #include <circle/sysconfig.h>
 #include <circle/exception.h>
-#include <circle/bcm2835.h>
+#include <circle/rpi/bcm2835.h>
 
 	.macro	vector handler
 

@@ -18,12 +18,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include <circle/usb/xhcidevice.h>
-#include <circle/bcm2711.h>
+#include <circle/rpi/bcm2711.h>
 #include <circle/memio.h>
 #include <circle/logger.h>
 #include <circle/memory.h>
 #include <circle/util.h>
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/machineinfo.h>
 #include <circle/rp1int.h>
 #include <assert.h>

@@ -18,10 +18,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include <circle/machineinfo.h>
-#include <circle/gpioclock.h>
+#include <circle/peripherals/gpioclock.h>
 #include <circle/sysconfig.h>
 #include <circle/startup.h>
-#include <circle/bcm2712.h>
+#include <circle/rpi/bcm2712.h>
 #include <circle/memio.h>
 #include <circle/util.h>
 #include <assert.h>

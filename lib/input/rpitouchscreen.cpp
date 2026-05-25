@@ -14,9 +14,9 @@
 // published by the Free Software Foundation.
 //
 #include <circle/input/rpitouchscreen.h>
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/memory.h>
-#include <circle/bcm2835.h>
+#include <circle/rpi/bcm2835.h>
 #include <circle/logger.h>
 #include <circle/util.h>
 #include <assert.h>

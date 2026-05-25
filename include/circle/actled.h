@@ -20,7 +20,7 @@
 #ifndef _actled_h
 #define _actled_h
 
-#include <circle/gpiopin.h>
+#include <circle/peripherals/gpiopin.h>
 #include <circle/virtualgpiopin.h>
 #include <circle/types.h>
 

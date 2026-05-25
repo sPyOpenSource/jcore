@@ -103,8 +103,8 @@ TShutdownMode CKernel::Run (void)
 		m_Logger.Write (FromKernel, LogPanic, "Not enough memory");
 	}
 
-	CleanDataCache ();
-	InvalidateDataCache ();
+	//CleanDataCache ();
+	//InvalidateDataCache ();
 
 	u32 nRunTime = Sampler (pBuffer, nSamples, 0, 0, SAMPLING_DELAY);
 	if (nRunTime == 0)

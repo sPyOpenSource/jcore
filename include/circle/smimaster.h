@@ -24,7 +24,7 @@
 #define _circle_smimaster_h
 
 #include <circle/dmachannel.h>
-#include <circle/gpiopin.h>
+#include <circle/peripherals/gpiopin.h>
 
 #define SMI_NUM_ADDRESS_LINES		6
 #define SMI_NUM_DATA_LINES			18

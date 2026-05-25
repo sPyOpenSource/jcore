@@ -21,7 +21,7 @@
 #include <circle/logger.h>
 #include <circle/string.h>
 #include <circle/sysconfig.h>
-#include <circle/gpiopin.h>
+#include <circle/peripherals/gpiopin.h>
 
 #ifndef NDEBUG
 

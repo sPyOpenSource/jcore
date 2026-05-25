@@ -24,7 +24,7 @@
 #include <circle/usb/gadget/dwusbgadgetendpoint0.h>
 #include <circle/sched/scheduler.h>
 #include <circle/machineinfo.h>
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/synchronize.h>
 #include <circle/sysconfig.h>
 #include <circle/logger.h>

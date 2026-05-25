@@ -18,7 +18,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include <circle/cputhrottle.h>
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/timer.h>
 #include <circle/koptions.h>
 #include <circle/logger.h>

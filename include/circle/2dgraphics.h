@@ -24,7 +24,7 @@
 #define _circle_2dgraphics_h
 
 #include <circle/display.h>
-#include <circle/bcmframebuffer.h>
+#include <circle/rpi/bcmframebuffer.h>
 #include <circle/chargenerator.h>
 #include <circle/types.h>
 

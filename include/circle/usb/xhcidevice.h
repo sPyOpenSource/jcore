@@ -24,7 +24,7 @@
 #include <circle/interrupt.h>
 #include <circle/timer.h>
 #include <circle/usb/usbrequest.h>
-#include <circle/bcmpciehostbridge.h>
+#include <circle/rpi/bcmpciehostbridge.h>
 #include <circle/usb/xhcisharedmemallocator.h>
 #include <circle/usb/xhcimmiospace.h>
 #include <circle/usb/xhcislotmanager.h>

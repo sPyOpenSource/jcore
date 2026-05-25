@@ -20,8 +20,8 @@
 #include <circle/interrupt.h>
 #include <circle/synchronize.h>
 #include <circle/multicore.h>
-#include <circle/bcm2835.h>
-#include <circle/bcm2836.h>
+#include <circle/rpi/bcm2835.h>
+#include <circle/rpi/bcm2836.h>
 #include <circle/memio.h>
 #include <circle/sysconfig.h>
 #include <circle/types.h>

@@ -21,7 +21,7 @@
 #define _circle_sound_wm8960soundcontroller_h
 
 #include <circle/sound/soundcontroller.h>
-#include <circle/i2cmaster.h>
+#include <circle/peripherals/i2cmaster.h>
 #include <circle/types.h>
 
 class CWM8960SoundController : public CSoundController		/// Sound controller for WM8960

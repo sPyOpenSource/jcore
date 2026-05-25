@@ -20,7 +20,7 @@
 #include <circle/actled.h>
 #include <circle/machineinfo.h>
 #include <circle/timer.h>
-#include <circle/bcm2712.h>
+#include <circle/rpi/bcm2712.h>
 #include <circle/memio.h>
 #include <circle/macros.h>
 

@@ -1,0 +1,43 @@
+#
+# Makefile
+#
+# Circle - A C++ bare metal environment for Raspberry Pi
+# Copyright (C) 2014-2025  R. Stange <rsta2@gmx.net>
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+CIRCLEHOME = ../..
+
+OBJS	= bcmframebuffer.o bcmmailbox.o \
+	  bcmpropertytags.o bcmwatchdog.o
+
+ifneq ($(filter 1 2 3,$(RASPPI)),)
+OBJS	+= bcmrandom.o
+else
+OBJS	+= bcmpciehostbridge.o bcmrandom200.o
+endif
+
+ifeq ($(strip $(RASPPI)),4)
+OBJS	+= bcm54213.o
+endif
+
+libbcm.a: $(OBJS)
+	@echo "  AR    $@"
+	@rm -f $@
+	@$(AR) cr $@ $(OBJS)
+
+include $(CIRCLEHOME)/Rules.mk
+
+-include $(DEPS)

@@ -18,8 +18,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include <circle/dma4channel.h>
-#include <circle/bcm2711.h>
-#include <circle/bcm2711int.h>
+#include <circle/rpi/bcm2711.h>
+#include <circle/rpi/bcm2711int.h>
 #include <circle/memio.h>
 #include <circle/timer.h>
 #include <circle/synchronize.h>

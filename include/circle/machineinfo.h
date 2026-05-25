@@ -20,9 +20,9 @@
 #ifndef _circle_machineinfo_h
 #define _circle_machineinfo_h
 
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/devicetreeblob.h>
-#include <circle/gpiopin.h>
+#include <circle/peripherals/gpiopin.h>
 #include <circle/macros.h>
 #include <circle/types.h>
 

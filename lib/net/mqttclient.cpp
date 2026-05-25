@@ -22,7 +22,7 @@
 #include <circle/net/ipaddress.h>
 #include <circle/net/in.h>
 #include <circle/sched/scheduler.h>
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/logger.h>
 #include <assert.h>
 

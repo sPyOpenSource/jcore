@@ -21,7 +21,7 @@
 #define _circle_screen_h
 
 #include <circle/device.h>
-#include <circle/bcmframebuffer.h>
+#include <circle/rpi/bcmframebuffer.h>
 #include <circle/terminal.h>
 #include <circle/chargenerator.h>
 #include <circle/sysconfig.h>

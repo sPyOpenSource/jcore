@@ -20,7 +20,7 @@
 #ifndef _circle_koptions_h
 #define _circle_koptions_h
 
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/cputhrottle.h>
 #include <circle/types.h>
 

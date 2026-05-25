@@ -23,7 +23,7 @@
 #include <circle/net/netconfig.h>
 #include <circle/netdevice.h>
 #include <circle/net/netqueue.h>
-#include <circle/bcm54213.h>
+#include <circle/rpi/bcm54213.h>
 #include <circle/macb.h>
 #include <circle/types.h>
 

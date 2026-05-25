@@ -20,7 +20,7 @@
 #ifndef _circle_dmacommon_h
 #define _circle_dmacommon_h
 
-#include <circle/bcm2835.h>
+#include <circle/rpi/bcm2835.h>
 #include <circle/types.h>
 
 enum TDREQ

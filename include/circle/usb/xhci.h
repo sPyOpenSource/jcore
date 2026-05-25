@@ -21,7 +21,7 @@
 #define _circle_usb_xhci_h
 
 #include <circle/usb/xhciconfig.h>
-#include <circle/bcmpciehostbridge.h>
+#include <circle/rpi/bcmpciehostbridge.h>
 #include <circle/sysconfig.h>
 #include <circle/macros.h>
 #include <circle/types.h>

@@ -26,8 +26,8 @@
 
 #include <circle/sound/soundbasedevice.h>
 #include <circle/interrupt.h>
-#include <circle/gpiopin.h>
-#include <circle/gpioclock.h>
+#include <circle/peripherals/gpiopin.h>
+#include <circle/peripherals/gpioclock.h>
 #include <circle/dmachannel.h>
 #include <circle/spinlock.h>
 #include <circle/types.h>

@@ -55,6 +55,16 @@ cd sound
 $make $1 $2 || exit
 cd ..
 
+cd fonts
+$make $1 $2 || exit
+cd ..
+
+cd rpi
+$make $1 $2 || exit
+cd ..
+
+cd peripherals
+$make $1 $2 || exit
 cd ..
 
 if [[ $makesample == true ]]

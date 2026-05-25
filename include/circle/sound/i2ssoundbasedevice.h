@@ -27,9 +27,9 @@
 #include <circle/sound/soundbasedevice.h>
 #include <circle/sound/soundcontroller.h>
 #include <circle/interrupt.h>
-#include <circle/i2cmaster.h>
-#include <circle/gpiopin.h>
-#include <circle/gpioclock.h>
+#include <circle/peripherals/i2cmaster.h>
+#include <circle/peripherals/gpiopin.h>
+#include <circle/peripherals/gpioclock.h>
 #include <circle/sound/dmasoundbuffers.h>
 #include <circle/logger.h>
 #include <circle/types.h>

@@ -20,7 +20,7 @@
 #ifndef _circle_cputhrottle_h
 #define _circle_cputhrottle_h
 
-#include <circle/gpiopin.h>
+#include <circle/peripherals/gpiopin.h>
 #include <circle/macros.h>
 #include <circle/types.h>
 

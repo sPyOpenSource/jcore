@@ -28,11 +28,12 @@ CIRCLEHOME ?= ..
 # set this to 1 to build with clang (experimental)
 CLANG	 ?= 0
 
-AARCH	 ?= 32
-RASPPI	 ?= 1
+AARCH	 ?= 64
+RASPPI	 ?= 4
+QEMU = 1
 
-PREFIX	 ?= arm-none-eabi-
-PREFIX64 ?= aarch64-none-elf-
+PREFIX	 ?= /Users/xuyi/opt/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-
+PREFIX64 ?= /Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-
 
 # see: doc/stdlib-support.txt
 ifneq ($(strip $(CLANG)),1)
@@ -42,7 +43,7 @@ STDLIB_SUPPORT ?= 0
 endif
 
 # set this to 0 to globally disable dependency checking
-CHECK_DEPS ?= 1
+CHECK_DEPS ?= 0
 
 # set this to "softfp" if you want to link specific libraries
 FLOAT_ABI ?= hard
@@ -171,7 +172,7 @@ WARNINGS += -Wno-vla-cxx-extension
 endif
 
 INCLUDE	+= -I $(CIRCLEHOME)/include -I $(CIRCLEHOME)/addon -I $(CIRCLEHOME)/app/lib \
-	   -I $(CIRCLEHOME)/addon/vc4 -I $(CIRCLEHOME)/addon/vc4/interface/khronos/include
+	   -I $(CIRCLEHOME)/addon/vc4 -I $(CIRCLEHOME)/addon/vc4/interface/khronos/include -I ./Inc
 DEFINE	+= -D__circle__=$(CIRCLEVER) -DRASPPI=$(RASPPI) -DSTDLIB_SUPPORT=$(STDLIB_SUPPORT) \
 	   -D__VCCOREVER__=0x04000000 -U__unix__ -U__linux__ #-DNDEBUG
 

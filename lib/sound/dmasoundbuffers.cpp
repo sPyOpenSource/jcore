@@ -20,8 +20,8 @@
 #include <circle/sound/dmasoundbuffers.h>
 #include <circle/machineinfo.h>
 #include <circle/synchronize.h>
-#include <circle/bcm2835int.h>
-#include <circle/bcm2835.h>
+#include <circle/rpi/bcm2835int.h>
+#include <circle/rpi/bcm2835.h>
 #include <circle/memio.h>
 #include <circle/timer.h>
 #include <circle/util.h>

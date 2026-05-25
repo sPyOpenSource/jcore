@@ -12,6 +12,6 @@ LIBS	= $(CIRCLEHOME)/addon/lvgl/liblvgl.a \
 	  $(CIRCLEHOME)/lib/fs/libfs.a \
 	  $(CIRCLEHOME)/lib/libcircle.a
 
-include $(CIRCLEHOME)/Rules.mk
+include ../Rules.mk
 
 -include $(DEPS)

@@ -21,7 +21,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include <circle/smimaster.h>
-#include <circle/bcm2835.h>
+#include <circle/rpi/bcm2835.h>
 #include <circle/memio.h>
 #include <circle/timer.h>
 #include <assert.h>

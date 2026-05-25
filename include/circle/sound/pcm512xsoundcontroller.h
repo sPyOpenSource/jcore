@@ -21,7 +21,7 @@
 #define _circle_sound_pcm512xsoundcontroller_h
 
 #include <circle/sound/soundcontroller.h>
-#include <circle/i2cmaster.h>
+#include <circle/peripherals/i2cmaster.h>
 #include <circle/types.h>
 
 class CPCM512xSoundController : public CSoundController		/// Sound controller for PCM512x

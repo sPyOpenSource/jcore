@@ -20,7 +20,7 @@
 #ifndef _circle_interrupt_h
 #define _circle_interrupt_h
 
-#include <circle/bcm2835int.h>
+#include <circle/rpi/bcm2835int.h>
 #include <circle/exceptionstub.h>
 #include <circle/types.h>
 

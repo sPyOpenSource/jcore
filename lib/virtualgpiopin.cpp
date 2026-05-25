@@ -23,10 +23,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include <circle/virtualgpiopin.h>
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/memio.h>
 #include <circle/memory.h>
-#include <circle/bcm2835.h>
+#include <circle/rpi/bcm2835.h>
 
 uintptr CVirtualGPIOPin::s_nGPIOBaseAddress = 0;
 

@@ -21,9 +21,9 @@
 #define _circle_input_xpt2046touchscreen_h
 
 #include <circle/input/touchscreen.h>
-#include <circle/spimaster.h>
-#include <circle/gpiomanager.h>
-#include <circle/gpiopin.h>
+#include <circle/peripherals/spimaster.h>
+#include <circle/peripherals/gpiomanager.h>
+#include <circle/peripherals/gpiopin.h>
 #include <circle/types.h>
 
 class CXPT2046TouchScreen	/// Driver for XPT2046-based touch screens

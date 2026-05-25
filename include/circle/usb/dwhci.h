@@ -8,7 +8,7 @@
 #ifndef _circle_usb_dwhci_h
 #define _circle_usb_dwhci_h
 
-#include <circle/bcm2835.h>
+#include <circle/rpi/bcm2835.h>
 
 #define DWHCI_MAX_CHANNELS		16		// host mode
 #define DWHCI_MAX_EPS_CHANNELS		16		// device mode

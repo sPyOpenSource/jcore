@@ -22,7 +22,7 @@
 #include <circle/interrupt.h>
 #include <circle/synchronize.h>
 #include <circle/multicore.h>
-#include <circle/bcm2711.h>
+#include <circle/rpi/bcm2711.h>
 #include <circle/memio.h>
 #include <circle/logger.h>
 #include <circle/sysconfig.h>

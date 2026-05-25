@@ -24,7 +24,7 @@
 //
 #include <circle/usb/lan7800.h>
 #include <circle/usb/usbhostcontroller.h>
-#include <circle/bcmpropertytags.h>
+#include <circle/rpi/bcmpropertytags.h>
 #include <circle/synchronize.h>
 #include <circle/logger.h>
 #include <circle/util.h>
