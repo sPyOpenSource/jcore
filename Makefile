@@ -107,7 +107,7 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
 COREOBJ2 = $(COREOBJ:.kernel/Memory/%=.kernel/%)
 COREOBJ3 = $(COREOBJ2:.kernel/Assembly/%=.kernel/%)
-COREBUILD = $(LD) $(CORELDOPTS) -Ttext 0x10000 -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
+COREBUILD = $(LD) $(CORELDOPTS) --build-id=none -T linker.ld -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
 
 jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)

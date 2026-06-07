@@ -1,15 +1,16 @@
-	.text
-.p2align  2   , 0x90 ; .type       _start   ,@function ; .globl     _start     ;     _start:    
-	jmp	boot_entry
-
-	 
-	.p2align  2  
+.section .multiboot_header
+.align  8  
 boot_hdr:
-	.long	0x1BADB002		 
-
-	.long	0x00000000		 
-	.long	0-0x1BADB002-0x00000000	 
+	.long 0xe85250d6                             /* magic number */
+    .long 0                                      /* architecture (0 = i386) */
+	.long (boot_entry - boot_hdr)
+    .long 0x100000000 - (0xe85250d6 + 0 + (boot_entry - boot_hdr))   
+    .word 0                         
+	.word 0                         
+    .long 8                                   /* header length */
 boot_entry:
+.section .text
+.p2align  2   , 0x90 ; .type       _start   ,@function ; .globl     _start     ;     _start:    
 	movl	$base_stack_end, %esp
 	pushl	$0
 	popf

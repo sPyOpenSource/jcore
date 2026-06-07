@@ -1,4 +1,4 @@
-ENTRY(start)
+ENTRY(_start)
 
 SECTIONS
 {
@@ -6,11 +6,22 @@ SECTIONS
 
 	.boot :
 	{
-		KEEP(*(.boot_hdr))
+		KEEP(*(.multiboot_header))
 	}
 
 	.text :
 	{
 		*(.text)
 	}
+
+	.data : {
+        *(.data)
+    }
+    edata = .; /* Markeert het einde van de data / begin van bss */
+
+    .bss : {
+        *(.bss)
+        *(COMMON)
+    }
+    end = .;   /* Markeert het einde van de BSS / begin van de heap */
 }
