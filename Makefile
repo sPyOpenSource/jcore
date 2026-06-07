@@ -70,7 +70,7 @@ CORECCFLAGS += -Wno-extra-tokens -Wno-incompatible-function-pointer-types
 CORECCFLAGS += -Wno-pointer-sign -Wno-return-type -Wno-compare-distinct-pointer-types
 CORECCFLAGS += -Wno-pointer-integer-compare -Wno-parentheses
 COREASFLAGS = $(CORECCFLAGS)
-CORELDOPTS = -m elf_i386 --image-base=0
+CORELDOPTS = -m elf_i386
 else
 COREASFLAGS =
 CORELDOPTS =
@@ -107,7 +107,7 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
 COREOBJ2 = $(COREOBJ:.kernel/Memory/%=.kernel/%)
 COREOBJ3 = $(COREOBJ2:.kernel/Assembly/%=.kernel/%)
-COREBUILD = $(LD) $(CORELDOPTS) --build-id=none -T linker.ld -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
+COREBUILD = $(LD) $(CORELDOPTS) -T linker.ld -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
 
 jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)

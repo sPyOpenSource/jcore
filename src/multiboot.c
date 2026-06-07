@@ -475,6 +475,7 @@ void multiboot_main(addr_t boot_info_pa)
 
 	asm volatile ("cli");
 	init_serial(port);
+	printf("jxCore running\n");
 
 	/* Copy the multiboot_info structure into our pre-reserved area.
 	   This avoids one loose fragment of memory that has to be avoided. */

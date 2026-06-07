@@ -2,17 +2,21 @@ ENTRY(_start)
 
 SECTIONS
 {
-	. = 1M;
-
-	.boot :
-	{
-		KEEP(*(.multiboot_header))
-	}
+	. = 2M;
 
 	.text :
 	{
+		KEEP(*(.multiboot_header))
 		*(.text)
+		*(.text.*)
 	}
+
+	.rodata : 
+    {
+        /* 3. Alle read-only data (inclusief strings uit .rodata.str1.1) sluiten hier naadloos op aan */
+        *(.rodata)
+        *(.rodata.*) 
+    }
 
 	.data : {
         *(.data)
