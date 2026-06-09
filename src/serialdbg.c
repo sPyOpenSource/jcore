@@ -62,7 +62,6 @@ void init_serial(int port)
 
 	/* now really init serial */
 
-
 	dfr = 0x00;
 	dfr &= ~0x18;		/* no parity */
 	dfr &= ~0x04;		/* 1 stop bit */

@@ -23,7 +23,29 @@ boot_entry:
 .section .text
 .globl     _start
 _start:    
-movl %ebx, %esi
+	movl	$base_stack_end, %esp
+    andl    $-16, %esp
+	pushl	$0
+	popf
+	lea		edata, %edi
+	lea		end, %ecx
+	subl	%edi,%ecx
+	xorl	%eax,%eax
+	rep
+	stosb
+
+
+	#xorb	%al,%al
+	#movw	$0x3f2,%dx
+	#outb	%al,%dx
+	#movw	$0x372,%dx
+	#outb	%al,%dx
+
+    subl $12, %esp
+	pushl	%ebx
+
+	xorl	%ebp,%ebp
+    movl %ebx, %esi
     addl $8, %esi                              # Sla de eerste 8 bytes (mbi_size + gereserveerd) over. Hier starten de tags.
 
 find_framebuffer_tag:
@@ -31,7 +53,7 @@ find_framebuffer_tag:
     movl 4(%esi), %ecx                         # ECX = Tag Size
 
     cmpl $0, %eax                              # Is het de End Tag (Type 0)?
-    je 1                                   # Framebuffer niet gevonden, stop hier.
+    je 1                                       # Framebuffer niet gevonden, stop hier.
 
     cmpl $8, %eax                              # Is het de Framebuffer Tag (Type 8)?
     je framebuffer_found                       # Gevonden! Spring naar het tekenen.
@@ -55,32 +77,6 @@ draw_loop:
     movl %eax, (%edi)                          # Schrijf pixel (32-bit)
     addl $4, %edi                              # Volgende pixel (+4 bytes voor 32-bpp)
     loop draw_loop
-	#movl	$base_stack_end, %esp
-	movl $0xB8000, %edi  # Laad het 32-bit fysieke adres van linksboven op het scherm
-
-    movw $0x024F, (%edi)
-
-    movw $0x024b, 2(%edi)
-	pushl	$0
-	popf
-	lea		edata, %edi
-	lea		end, %ecx
-	subl	%edi,%ecx
-	xorl	%eax,%eax
-	rep
-	stosb
-
-
-	xorb	%al,%al
-	movw	$0x3f2,%dx
-	outb	%al,%dx
-	movw	$0x372,%dx
-	outb	%al,%dx
-
-
-	pushl	%ebx
-
-	xorl	%ebp,%ebp
 	call	 multiboot_main  
 
 1:      

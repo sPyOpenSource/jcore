@@ -464,7 +464,17 @@ void icore_base_cpu_load(void)
 	/* base_tss_load(); */
 }
 
-void multiboot_main(addr_t boot_info_pa)
+void ser_putchar(int port, int ch);
+
+int printf(int file, char *ptr, int len) {
+    for (int i = 0; i < len; i++) {
+        if (ptr[i] == '\n') ser_putchar(0, '\r'); // Voeg carriage return toe
+        ser_putchar(0, ptr[i]);
+    }
+    return len;
+}
+
+void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 {
 	u2_t *screen_start = (u2_t *) 0xb8000;
 	u2_t *screen_end = screen_start + 80 * 24;
@@ -475,6 +485,9 @@ void multiboot_main(addr_t boot_info_pa)
 
 	asm volatile ("cli");
 	init_serial(port);
+	ser_putchar(0, 'J');
+    ser_putchar(0, 'X');
+    ser_putchar(0, '\n');
 	printf("jxCore running\n");
 
 	/* Copy the multiboot_info structure into our pre-reserved area.
