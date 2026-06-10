@@ -24,15 +24,14 @@ boot_entry:
 .globl     _start
 _start:    
 	movl	$base_stack_end, %esp
-    andl    $-16, %esp
-	pushl	$0
-	popf
-	lea		edata, %edi
-	lea		end, %ecx
-	subl	%edi,%ecx
-	xorl	%eax,%eax
-	rep
-	stosb
+	#pushl	$0
+	#popf
+	#lea		edata, %edi
+	#lea		end, %ecx
+	#subl	%edi,%ecx
+	#xorl	%eax,%eax
+	#rep
+	#stosb
 
 
 	#xorb	%al,%al
@@ -41,10 +40,9 @@ _start:
 	#movw	$0x372,%dx
 	#outb	%al,%dx
 
-    subl $12, %esp
 	pushl	%ebx
-
-	xorl	%ebp,%ebp
+    pushl %eax
+	#xorl	%ebp,%ebp
     call	 multiboot_main  
     movl %ebx, %esi
     addl $8, %esi                              # Sla de eerste 8 bytes (mbi_size + gereserveerd) over. Hier starten de tags.
