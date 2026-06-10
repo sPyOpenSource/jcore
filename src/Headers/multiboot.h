@@ -69,47 +69,53 @@ struct AddrRangeDesc {
 
 struct multiboot_module {
 	/* Physical start and end addresses of the module data itself.  */
-	char *mod_start;
-	char *mod_end;
+	u4_t type;
+	u4_t size;
+	u4_t mod_start;
+	u4_t mod_end;
 
 	/* Arbitrary ASCII string associated with the module.  */
-	char *string;
+	char string[];
 
 	/* Boot loader must set to 0; OS must ignore.  */
-	unsigned reserved;
+	//unsigned reserved;
 };
 
+struct multiboot_tag {
+    u4_t type;
+    u4_t size;
+};
 
 /* The boot loader passes this data structure to the kernel in
    register EBX on entry.  */
 struct multiboot_info {
 	/* These flags indicate which parts of the multiboot_info are valid;
 	   see below for the actual flag bit definitions.  */
-	unsigned flags;
+	//unsigned flags;
 
 	/* Lower/Upper memory installed in the machine.
 	   Valid only if MULTIBOOT_MEMORY is set in flags word above.  */
-	size_t mem_lower;
-	size_t mem_upper;
+	//size_t mem_lower;
+	//size_t mem_upper;
 
 	/* BIOS disk device the kernel was loaded from.
 	   Valid only if MULTIBOOT_BOOT_DEVICE is set in flags word above.  */
-	unsigned char boot_device[4];
+	//unsigned char boot_device[4];
 
 	/* Command-line for the OS kernel: a null-terminated ASCII string.
 	   Valid only if MULTIBOOT_CMDLINE is set in flags word above.  */
-	addr_t cmdline;
+	//addr_t cmdline;
 
 	/* List of boot modules loaded with the kernel.
 	   Valid only if MULTIBOOT_MODS is set in flags word above.  */
-	unsigned mods_count;
-	addr_t mods_addr;
+	//unsigned mods_count;
+	//addr_t mods_addr;
 
 	/* Symbol information for a.out or ELF executables. */
-	union {
+	/*union {
 		struct {
-			/* a.out symbol information valid only if MULTIBOOT_AOUT_SYMS
-			   is set in flags word above.  */
+			// a.out symbol information valid only if MULTIBOOT_AOUT_SYMS
+			//   is set in flags word above.  
 			size_t tabsize;
 			size_t strsize;
 			addr_t addr;
@@ -117,19 +123,22 @@ struct multiboot_info {
 		} a;
 
 		struct {
-			/* ELF section header information valid only if
-			   MULTIBOOT_ELF_SHDR is set in flags word above.  */
+			// ELF section header information valid only if
+			//   MULTIBOOT_ELF_SHDR is set in flags word above.  
 			unsigned num;
 			size_t size;
 			addr_t addr;
 			unsigned shndx;
 		} e;
-	} syms;
+	} syms;*/
 
 	/* Memory map buffer.
 	   Valid only if MULTIBOOT_MEM_MAP is set in flags word above.  */
-	size_t mmap_count;
-	addr_t mmap_addr;
+	//size_t mmap_count;
+	//addr_t mmap_addr;
+	u4_t total_size;
+	u4_t reserved;
+	struct multiboot_tag tags[0];
 };
 
 

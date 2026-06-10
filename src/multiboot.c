@@ -516,8 +516,7 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	set_b1(0, DR7_LEN_4, DR7_RW_DATA);
 	/* The  manual recommends executing an LGDT instruction after modifying breakpoint registers. */
 	base_gdt_load();
-	//asm("sti");
-	//asm("int $0x80");
+	
 	printf("CPU OK\n\n");
 
 	jxmalloc_init();
