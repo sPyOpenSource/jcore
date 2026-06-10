@@ -74,7 +74,7 @@ static void test_mem();
 
 #ifdef KERNEL
 #include "multiboot.h"
-extern struct multiboot_info boot_info;
+extern unsigned int boot_info;
 #endif
 
 #ifdef PROFILE_EVENT_JXMALLOC
@@ -89,7 +89,7 @@ void jxmalloc_init()
 	printf("jxmalloc_init\n");
 #ifdef KERNEL
 	{
-		struct multiboot_tag *tag = (struct multiboot_tag *) boot_info.tags;
+		struct multiboot_tag *tag = (struct multiboot_tag *) (boot_info + 8);
 		struct multiboot_meminfo *meminfo = NULL;
     struct multiboot_module *m[2] = { NULL, NULL };
     int mods_count = 0;
@@ -108,7 +108,7 @@ void jxmalloc_init()
 
         // Ga naar de volgende tag. Belangrijk: Multiboot2 tags zijn ALTIJD 8-byte aligned!
         // (tag->size + 7) & ~7 zorgt voor de correcte afronding naar boven naar de volgende 8 bytes.
-        tag = (struct multiboot_tag *)((u1_t)tag + ((tag->size + 7) & ~7));
+        tag = (struct multiboot_tag *)((u4_t)tag + ((tag->size + 7) & ~7));
     }
 
     // Veiligheidscontroles

@@ -157,10 +157,9 @@ struct multiboot_info {
 	//addr_t mmap_addr;
 	u4_t total_size;
 	u4_t reserved;
-	u1_t tags[];
 };
 
 
-extern struct multiboot_info boot_info;
+extern unsigned int boot_info;
 
 #endif				/* MULTIBOOT_H */

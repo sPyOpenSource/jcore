@@ -5,7 +5,7 @@
 
 #define assert(x)
 
-struct multiboot_info boot_info;
+unsigned int boot_info;
 
 extern addr_t return_address;
 
@@ -493,7 +493,7 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 
 	/* Copy the multiboot_info structure into our pre-reserved area.
 	   This avoids one loose fragment of memory that has to be avoided. */
-	boot_info = *(struct multiboot_info *) boot_info_pa;
+	boot_info = boot_info_pa;
 
 	for (s = screen_start; s < screen_end; s++)
 		*s = 0x0f00;
@@ -522,37 +522,10 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	base_gdt_load();
 	
 	printf("CPU OK\n\n");
-struct multiboot_tag *tag = (struct multiboot_tag *) boot_info.tags;
-	struct multiboot_meminfo *meminfo = NULL;
-    struct multiboot_module *m[2] = { NULL, NULL };
-    int mods_count = 0;
 
-    // Loop door alle beschikbare tags heen
-    while (tag->type != 0) {
-        if (tag->type == 4) {
-            meminfo = (struct multiboot_meminfo *)m;
-        } 
-        else if (tag->type == 3) {
-            if (mods_count < 2) {
-                m[mods_count] = (struct multiboot_module *)m;
-            }
-            mods_count++; // Blijf tellen om eventuele overschrijdingen te detecteren
-        }
-
-        // Ga naar de volgende tag. Belangrijk: Multiboot2 tags zijn ALTIJD 8-byte aligned!
-        // (tag->size + 7) & ~7 zorgt voor de correcte afronding naar boven naar de volgende 8 bytes.
-        tag = (struct multiboot_tag *)((u4_t)tag + ((tag->size + 7) & ~7));
-    }
-
-    // Veiligheidscontroles
-    if (meminfo) {
-        printf("Memory information tag found\n");
-    } else {
-        printf("No memory information tag found\n");
-    }
 	jxmalloc_init();
 printf("Memory OK\n\n");
-	jxmalloc_stat();
+	//jxmalloc_stat();
 
 	/* Invoke the main program. */
 

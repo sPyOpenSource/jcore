@@ -2,6 +2,7 @@
 
 static char *zipstart = NULL;
 static char *zipend = NULL;
+extern unsigned int boot_info;
 
 #ifdef LOG_PRINTF
 int printf2mem = 0;
@@ -12,7 +13,7 @@ int printf2mem = 0;
 struct multiboot_module *multiboot_get_module()
 {
 	//struct multiboot_module *m = (struct multiboot_module *) boot_info.tag;
-    struct multiboot_tag *tag = (struct multiboot_tag *)boot_info.tags;
+    struct multiboot_tag *tag = (struct multiboot_tag *) (boot_info + 8);
 
 	//if (!(boot_info.flags & MULTIBOOT_MODS))
 	//	return NULL;
@@ -29,7 +30,7 @@ struct multiboot_module *multiboot_get_module()
 			return (struct multiboot_module *)tag;
 		}
 		// Spring correct naar de volgende 8-byte aligned tag
-        tag = (struct multiboot_tag *)((u1_t)tag + ((tag->size + 7) & ~7));
+        tag = (struct multiboot_tag *)((u4_t)tag + ((tag->size + 7) & ~7));
 	}
 
 	return NULL;
