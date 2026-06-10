@@ -507,7 +507,7 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	   if(c=='#') break;
 	   }
 	 */
-	printf("jxCore running\n");
+	//printf("jxCore running\n");
 
 	/* Identify the CPU and get the processor tables set up.  */
 
@@ -521,11 +521,10 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	/* The  manual recommends executing an LGDT instruction after modifying breakpoint registers. */
 	base_gdt_load();
 	
-	printf("CPU OK\n\n");
+	//printf("CPU OK\n\n");
 
 	jxmalloc_init();
-printf("Memory OK\n\n");
-	//jxmalloc_stat();
+	jxmalloc_stat();
 
 	/* Invoke the main program. */
 

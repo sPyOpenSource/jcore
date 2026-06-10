@@ -86,7 +86,7 @@ void jxmalloc_init()
 {
 	if (inited)
 		sys_panic("jxmalloc already initialized!");
-	printf("jxmalloc_init\n");
+	//printf("jxmalloc_init\n");
 #ifdef KERNEL
 	{
 		struct multiboot_tag *tag = (struct multiboot_tag *) (boot_info + 8);

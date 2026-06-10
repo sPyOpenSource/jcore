@@ -63,12 +63,12 @@ int strncmp(const char *s1, const char *s2, size_t n);
 int vprintf(const char *fmt, va_list args);
 char *strncpy(char *to, const char *from, size_t count);
 
-#ifdef NO_PRINTF
+/*#ifdef NO_PRINTF
 static inline int printf(const char *fmt, ...)
 {
 }
-#else
+#else*/
 int printf(const char *fmt, ...);
-#endif
+//#endif
 
 #endif
