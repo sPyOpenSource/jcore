@@ -88,6 +88,23 @@ struct multiboot_meminfo {
     u4_t mem_upper;
 };
 
+struct multiboot_framebuffer {
+    u4_t type;               // Dit zal 8 zijn bij het uitlezen
+    u4_t size;
+    u8_t framebuffer_addr;   // Fysiek adres van de video RAM (pointer)
+    u4_t framebuffer_pitch;  // Aantal bytes per horizontale regel
+    u4_t framebuffer_width;  // Werkelijke breedte
+    u4_t framebuffer_height; // Werkelijke hoogte
+    u1_t  framebuffer_bpp;    // Werkelijke bits per pixel (bijv. 32)
+    u1_t  framebuffer_type;   // 0 = Indexed, 1 = Direct RGB, 2 = EGA Text
+    u2_t reserved;
+};
+
+struct multiboot_tag {
+	u4_t type;
+	u4_t size;
+};
+
 /* The boot loader passes this data structure to the kernel in
    register EBX on entry.  */
 struct multiboot_info {
@@ -140,7 +157,7 @@ struct multiboot_info {
 	//addr_t mmap_addr;
 	u4_t total_size;
 	u4_t reserved;
-	struct multiboot_module tags[0];
+	u1_t tags[];
 };
 
 

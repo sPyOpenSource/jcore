@@ -89,27 +89,26 @@ void jxmalloc_init()
 	printf("jxmalloc_init\n");
 #ifdef KERNEL
 	{
-		struct multiboot_module *m = (struct multiboot_module *) boot_info.tags;
+		struct multiboot_tag *tag = (struct multiboot_tag *) boot_info.tags;
 		struct multiboot_meminfo *meminfo = NULL;
-    struct multiboot_module *modules[2] = { NULL, NULL };
+    struct multiboot_module *m[2] = { NULL, NULL };
     int mods_count = 0;
 
     // Loop door alle beschikbare tags heen
-    while (m->type != 0) {
-        
-        if (m->type == 2) {
+    while (tag->type != 0) {
+        if (tag->type == 2) {
             meminfo = (struct multiboot_meminfo *)m;
         } 
-        else if (m->type == 3) {
+        else if (tag->type == 3) {
             if (mods_count < 2) {
-                modules[mods_count] = (struct multiboot_module *)m;
+                m[mods_count] = (struct multiboot_module *)m;
             }
             mods_count++; // Blijf tellen om eventuele overschrijdingen te detecteren
         }
 
         // Ga naar de volgende tag. Belangrijk: Multiboot2 tags zijn ALTIJD 8-byte aligned!
         // (tag->size + 7) & ~7 zorgt voor de correcte afronding naar boven naar de volgende 8 bytes.
-        m = (struct multiboot_tag *)((u4_t)m + ((m->size + 7) & ~7));
+        tag = (struct multiboot_tag *)((u1_t)tag + ((tag->size + 7) & ~7));
     }
 
     // Veiligheidscontroles
@@ -121,9 +120,9 @@ void jxmalloc_init()
     }
 		jxmem_end = (char *) ALIGN_PREV_BLOCK(0x100000 + meminfo->mem_upper * 1024);
 		if (mods_count == 1) {
-			jxmem_start = (char *) ALIGN_NEXT_BLOCK(m[0].mod_end + 1);
+			jxmem_start = (char *) ALIGN_NEXT_BLOCK(m[0]->mod_end + 1);
 		} else if (mods_count == 2) {
-			jxmem_start = (char *) ALIGN_NEXT_BLOCK(m[1].mod_end + 1);
+			jxmem_start = (char *) ALIGN_NEXT_BLOCK(m[1]->mod_end + 1);
 		} else {
 			sys_panic("max 2 modules expected");
 		}

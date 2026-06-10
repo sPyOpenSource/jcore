@@ -91,7 +91,6 @@ int main(int argc, char *argv[])
 #else				/* KERNEL */
 	/* read zip from boot module */
 	/* module = base_multiboot_find(ZIPFILE); */
-	printf("start system init\n");
 	module = multiboot_get_module();
 
 	if (module == NULL)
@@ -145,7 +144,7 @@ int main(int argc, char *argv[])
 	portals_init();
 
 	//irq_disable(); /* don't need to disable interrupts, because there are none - timer not yet initialized */
-//asm("int $0x80");
+
 #ifdef PROFILE
 	profile_init();
 #endif

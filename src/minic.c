@@ -12,8 +12,7 @@ int printf2mem = 0;
 struct multiboot_module *multiboot_get_module()
 {
 	//struct multiboot_module *m = (struct multiboot_module *) boot_info.tag;
-	u4_t current_address = (u4_t)boot_info.tags;
-    struct multiboot_module *tag = (struct multiboot_module *)current_address;
+    struct multiboot_tag *tag = (struct multiboot_tag *)boot_info.tags;
 
 	//if (!(boot_info.flags & MULTIBOOT_MODS))
 	//	return NULL;
@@ -21,7 +20,7 @@ struct multiboot_module *multiboot_get_module()
 	while (tag->type != 0) {
 		//printf("mods_count != 1\n");
 		if (tag->type == 3) {
-			printf("Module: %s\n", tag->string);
+			//printf("Module: %s\n", tag->string);
 
             // Verkrijg de vitale geheugenlocaties
             //u_t *module_data_start = (uint8_t *)mod->mod_start;
@@ -30,8 +29,7 @@ struct multiboot_module *multiboot_get_module()
 			return (struct multiboot_module *)tag;
 		}
 		// Spring correct naar de volgende 8-byte aligned tag
-        current_address += ((tag->size + 7) & ~7);
-        tag = (struct multiboot2_tag *)current_address;
+        tag = (struct multiboot_tag *)((u1_t)tag + ((tag->size + 7) & ~7));
 	}
 
 	return NULL;

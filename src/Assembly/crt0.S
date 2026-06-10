@@ -4,7 +4,16 @@ boot_hdr:
 	.long 0xe85250d6                             /* magic number */
     .long 0x0000000                              /* architecture (0 = i386) */
 	.long boot_entry - boot_hdr         
-    .long 0x100000000 - (0xe85250d6 + 0x00000000 + (boot_entry - boot_hdr))  
+    .long 0x100000000 - (0xe85250d6 + 0x00000000 + (boot_entry - boot_hdr)) 
+    .align 8
+request_start:
+    .word 1
+    .word 0 
+    .long request_end - request_start
+    .long 4
+    .long 6
+    .long 3
+request_end:
 	# TAG 1: Framebuffer Request (Vraag GRUB om een grafische modus)
     .align 8
     .word 5                                    # Type 5 = Framebuffer request
