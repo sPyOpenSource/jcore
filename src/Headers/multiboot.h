@@ -81,6 +81,13 @@ struct multiboot_module {
 	//unsigned reserved;
 };
 
+struct multiboot_meminfo {
+    u4_t type;
+    u4_t size;
+    u4_t mem_lower;
+    u4_t mem_upper;
+};
+
 struct multiboot_tag {
     u4_t type;
     u4_t size;

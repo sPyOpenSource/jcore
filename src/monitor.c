@@ -1025,7 +1025,7 @@ void monitor(struct sigcontext *ctx)
 				extern char _start[], end[];
 
 				printf("Core text/data/bbs: %p .. %p\n", _start, end);
-				if ((boot_info.flags & MULTIBOOT_MODS)
+				/*if ((boot_info.flags & MULTIBOOT_MODS)
 				    && (boot_info.mods_count > 0)) {
 					struct multiboot_module *m = (struct multiboot_module *) boot_info.mods_addr;
 					jint i;
@@ -1047,7 +1047,7 @@ void monitor(struct sigcontext *ctx)
 
 				} else {
 					printf("No Boot-Modules.\n");
-				}
+				}*/
 			}
 #endif
 #ifdef SAMPLING_TIMER_IRQ

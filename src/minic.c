@@ -21,8 +21,8 @@ struct multiboot_module *multiboot_get_module()
 	while (tag->type != 0) {
 		//printf("mods_count != 1\n");
 		if (tag->type == 3) {
-			//printf("Module: %s\n", m[i].string);
-			struct multiboot2_tag_module *mod = (struct multiboot2_tag_module *)tag;
+			struct multiboot_module *mod = (struct multiboot_module *)tag;
+			printf("Module: %s\n", mod->string);
 
             // Verkrijg de vitale geheugenlocaties
             //u_t *module_data_start = (uint8_t *)mod->mod_start;

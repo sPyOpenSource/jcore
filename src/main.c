@@ -91,6 +91,7 @@ int main(int argc, char *argv[])
 #else				/* KERNEL */
 	/* read zip from boot module */
 	/* module = base_multiboot_find(ZIPFILE); */
+	printf("start system init\n");
 	module = multiboot_get_module();
 
 	if (module == NULL)
