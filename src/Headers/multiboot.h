@@ -88,11 +88,6 @@ struct multiboot_meminfo {
     u4_t mem_upper;
 };
 
-struct multiboot_tag {
-    u4_t type;
-    u4_t size;
-};
-
 /* The boot loader passes this data structure to the kernel in
    register EBX on entry.  */
 struct multiboot_info {
@@ -145,7 +140,7 @@ struct multiboot_info {
 	//addr_t mmap_addr;
 	u4_t total_size;
 	u4_t reserved;
-	struct multiboot_tag tags[0];
+	struct multiboot_module tags[0];
 };
 
 

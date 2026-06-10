@@ -45,6 +45,7 @@ _start:
 	pushl	%ebx
 
 	xorl	%ebp,%ebp
+    call	 multiboot_main  
     movl %ebx, %esi
     addl $8, %esi                              # Sla de eerste 8 bytes (mbi_size + gereserveerd) over. Hier starten de tags.
 
@@ -77,7 +78,6 @@ draw_loop:
     movl %eax, (%edi)                          # Schrijf pixel (32-bit)
     addl $4, %edi                              # Volgende pixel (+4 bytes voor 32-bpp)
     loop draw_loop
-	call	 multiboot_main  
 
 1:      
         int   $3
