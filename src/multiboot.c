@@ -466,12 +466,13 @@ void icore_base_cpu_load(void)
 
 void ser_putchar(int port, int ch);
 
-int printf(int file, char *ptr, int len) {
-    for (int i = 0; i < len; i++) {
-        if (ptr[i] == '\n') ser_putchar(0, '\r'); // Voeg carriage return toe
-        ser_putchar(0, ptr[i]);
-    }
-    return len;
+int printf(char *ptr) {
+	while (*ptr != '\0') {
+		if (*ptr == '\n') ser_putchar(0, '\r'); // Voeg carriage return toe
+		ser_putchar(0, *ptr);
+		ptr++;
+	}
+	return 0;
 }
 
 void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
@@ -485,10 +486,6 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 
 	asm volatile ("cli");
 	init_serial(port);
-	ser_putchar(0, 'J');
-    ser_putchar(0, 'X');
-    ser_putchar(0, '\n');
-	printf("jxCore running\n");
 
 	/* Copy the multiboot_info structure into our pre-reserved area.
 	   This avoids one loose fragment of memory that has to be avoided. */

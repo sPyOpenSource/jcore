@@ -196,11 +196,6 @@ char *strcat(char *s, const char *add)
 }
 
 
-
-
-
-
-
 char *getenv(const char *name)
 {
 	return NULL;
