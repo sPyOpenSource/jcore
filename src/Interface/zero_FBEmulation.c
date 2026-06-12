@@ -220,12 +220,12 @@ jboolean fbemulation_checkEvent(ObjectDesc * self, ObjectDesc * event)
 
 void init_realmode()
 {
-	printf("realmode\n\n");
 	zipentry entry;
 	int ret;
 	u2_t mode;
 	zip_reset();
 	while ((ret = zip_next_entry(&entry)) != -1) {
+		printf(entry.filename);
 		if (strcmp(entry.filename, REALMODE_MODULE) == 0) {
 			memcpy(REALCODE, entry.data + 0x1000, entry.uncompressed_size - 0x1000);
 			break;
@@ -258,7 +258,7 @@ void init_realmode()
 
 		ret = extern_vesa2_detect();
 		if (ret != 0) {
-			console(0, "VESA NOT SUPPORTED");
+			printf("VESA NOT SUPPORTED");
 			sys_panic("VESA NOT SUPPORTED");
 		}
 #ifdef DBG_VESA

@@ -421,7 +421,6 @@ static void *jxmalloc_internal(u4_t size_blk, u4_t align, u4_t ** start MEMTYPE_
 	}
 */
 
-
 #endif
 
 
@@ -443,33 +442,20 @@ static void *jxmalloc_internal(u4_t size_blk, u4_t align, u4_t ** start MEMTYPE_
 #endif				/* VERBOSE_MALLOC */
 
 	alignmask = align - 1;
-
 	for (;;) {
-		if (isFree(size_blk, start_block)) {
-			mem_dprintf("jxmalloc_align: free %ld at addr %p\n", current_block, GETADDR(current_block));
-			if (((u4_t) (GETADDR(current_block)) & alignmask)
-			    == 0) {
+				nextFree(start_block);
+
+			if (((u4_t) (GETADDR(current_block)) & alignmask) == 0) {
 				addr = markUsed(size_blk);
 				goto finish;
-			} else {
-				current_block++;
-				current_block %= n_blocks;
+			}
+				current_block = (current_block + 1) % n_blocks;
 				if (start_block == current_block) {
 					printf("Request for %d blocks at alignment %d cannot be satisfied.\n", size_blk, align);
 					malloc_dump();
 					sys_panic("NO MORE MEM BLOCKS");
+					return NULL;
 				}
-			}
-		} else {
-			current_block++;
-			current_block %= n_blocks;
-			if (start_block == current_block) {
-				printf("Request for %d blocks at alignment %d cannot be satisfied.\n", size_blk, align);
-				malloc_dump();
-				sys_panic("NO MORE MEM BLOCKS");
-			}
-		}
-		nextFree(start_block);
 	}
       finish:
 

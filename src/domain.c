@@ -46,13 +46,13 @@ void init_domainsys()
 		d->state = DOMAIN_STATE_FREE;
 		domainMemStart += DOMAINMEM_SIZEBYTES;
 	}
-
 	domainsys_inited = 1;
 	domainZero =
 	    createDomain("DomainZero", HEAP_BYTES_DOMAINZERO, -1, -1, NULL, -1, CODE_BYTES_DOMAINZERO,
 				GC_IMPLEMENTATION_DEFAULT, NULL);
 	if (domainZero == NULL)
 		sys_panic("Cannot create domainzero");
+
 #ifdef PORTAL_INTERCEPTOR
 	domainZero->memberOfTCB = JNI_TRUE;
 #endif

@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 
 #ifdef KERNEL
 #ifdef FRAMEBUFFER_EMULATION
-	init_realmode();
+	//init_realmode();
 #endif
 #endif
 
