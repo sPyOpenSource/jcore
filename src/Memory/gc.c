@@ -134,7 +134,6 @@ ObjectHandle nonatomic_registerObject(DomainDesc * domain, ObjectDesc * o)
 			goto ok;
 		}
 	}
-
 	/* error */
 #ifdef DEBUG_HANDLE
 	for (i = 0; i < MAX_REGISTERED; i++) {

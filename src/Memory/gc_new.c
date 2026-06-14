@@ -13,7 +13,6 @@
 
 #include "gc_move_common.h"
 
-
 /*#define DELAY_ALLOC_SECOND_HEAP 1*/
 
 typedef struct gc_new_mem_s {
@@ -212,9 +211,7 @@ ObjectHandle gc_new_allocDataInDomain(DomainDesc * domain, int objSize, u4_t fla
 #ifdef USE_QMAGIC
 	setObjMagic(obj, MAGIC_OBJECT);
 #endif
-
 	handle = registerObject(domain, obj);
-
 #ifdef CHECK_HEAP_AFTER_ALLOC
 	{
 		// last object on heap is not properly initialized (no vtable)

@@ -245,7 +245,7 @@ static void nextFree(u4_t dont_cross_this_block)
 	}
 }
 
-static int isFree(u4_t nblocks, u4_t dont_cross_this_block)
+static int isFree(u4_t nblocks)
 {
 	u4_t i;
 	if (current_block + nblocks > n_blocks) {
@@ -443,22 +443,20 @@ static void *jxmalloc_internal(u4_t size_blk, u4_t align, u4_t ** start MEMTYPE_
 
 	alignmask = align - 1;
 	for (;;) {
-				nextFree(start_block);
-
+		if (isFree(size_blk)){
 			if (((u4_t) (GETADDR(current_block)) & alignmask) == 0) {
 				addr = markUsed(size_blk);
 				goto finish;
 			}
-				current_block = (current_block + 1) % n_blocks;
-				if (start_block == current_block) {
-					printf("Request for %d blocks at alignment %d cannot be satisfied.\n", size_blk, align);
-					malloc_dump();
-					sys_panic("NO MORE MEM BLOCKS");
-					return NULL;
-				}
+		} else if (current_block == start_block) {
+				printf("Out of memory. You should increase JX_RAM.\n");
+				sys_panic("Out of memory");
+		}
+
+		nextFree(current_block);
 	}
       finish:
-
+printf("here");
 #ifdef ZERO_MALLOCED_MEM
 	memset(addr, 0, size_blk * BLOCKSIZE);
 #endif
@@ -871,10 +869,10 @@ u4_t *malloc_threadstack(DomainDesc * domain, u4_t size, u4_t align)
 	if (align % BLOCKSIZE != 0)
 		sys_panic("align must be multiple of blocksize");
 */
-
 	m = jxmalloc_align(size >> BLOCKADDR_N_NULLBITS, align, &start MEMTYPE_STACK);
+	printf("here");
 	ASSERT(start == m);	// FIXME: remember start
-
+printf("here");
 	ASSERT(((u4_t) m & (align - 1)) == 0);
 	return m;
 }

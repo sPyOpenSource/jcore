@@ -191,9 +191,10 @@ ThreadDesc *createThreadInMem(DomainDesc * domain, thread_start_t thread_start, 
 #endif
 #else
 	thread->stack = malloc_threadstack(domain, STACK_CHUNK_SIZE, STACK_ALIGN);
+	printf("here");
 	thread->stackTop = thread->stack + (STACK_CHUNK_SIZE >> 2);
 #endif
-
+printf("here");
 	thread->entry = entry;
 
 #ifdef USE_QMAGIC
@@ -244,7 +245,7 @@ ThreadDesc *createThreadInMem(DomainDesc * domain, thread_start_t thread_start, 
 	/*dprintf("     THREAD-> 0x%lx,\n", thread);
 	   dprintf("     THREADCTX-> at 0x%lx\n",  thread->contextPtr); */
 
-//      printf("STACK : %p .. %p obj=%p\n", thread->stackTop, thread->stack, thread->stackObj);
+      printf("STACK : %p .. %p obj=%p\n", thread->stackTop, thread->stack);//, thread->stackObj);
 	sp1 = thread->stackTop;
 	*--sp1 = (u4_t) thread_exit;
 	*--sp1 = (u4_t) param;
