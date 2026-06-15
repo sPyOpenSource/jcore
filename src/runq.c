@@ -296,6 +296,8 @@ void domainrunq_remove_domain(DomainDesc * domain)
 	}
 }
 
+void check_completerunnable();
+
 static inline ThreadDesc *runqueue_removeFirstOrNULL(DomainDesc * currentDomain)
 {
 	DomainDesc *newdom;

@@ -249,10 +249,17 @@ static int isFree(u4_t nblocks)
 {
 	u4_t i;
 	if (current_block + nblocks > n_blocks) {
+		if (current_block == 0) {
+			printf("Out of memory. You should increase JX_RAM.\n");
+			sys_panic("Out of memory");
+		}
+		current_block = 0;
 		return JNI_FALSE;
 	}
 	for (i = 0; i < nblocks; i++) {
 		if (bitmap[(current_block + i) >> 3] & 1 << ((current_block + i) & 0x7)) {
+			current_block += i + 1;
+			current_block %= n_blocks;
 			return JNI_FALSE;
 		}
 	}
@@ -456,7 +463,6 @@ static void *jxmalloc_internal(u4_t size_blk, u4_t align, u4_t ** start MEMTYPE_
 		nextFree(current_block);
 	}
       finish:
-printf("here");
 #ifdef ZERO_MALLOCED_MEM
 	memset(addr, 0, size_blk * BLOCKSIZE);
 #endif
@@ -870,9 +876,7 @@ u4_t *malloc_threadstack(DomainDesc * domain, u4_t size, u4_t align)
 		sys_panic("align must be multiple of blocksize");
 */
 	m = jxmalloc_align(size >> BLOCKADDR_N_NULLBITS, align, &start MEMTYPE_STACK);
-	printf("here");
 	ASSERT(start == m);	// FIXME: remember start
-printf("here");
 	ASSERT(((u4_t) m & (align - 1)) == 0);
 	return m;
 }

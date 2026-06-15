@@ -191,10 +191,8 @@ ThreadDesc *createThreadInMem(DomainDesc * domain, thread_start_t thread_start, 
 #endif
 #else
 	thread->stack = malloc_threadstack(domain, STACK_CHUNK_SIZE, STACK_ALIGN);
-	printf("here");
 	thread->stackTop = thread->stack + (STACK_CHUNK_SIZE >> 2);
 #endif
-printf("here");
 	thread->entry = entry;
 
 #ifdef USE_QMAGIC
@@ -793,7 +791,7 @@ void smp_idle_threads_init()
 #endif
 
 #ifdef DEBUG
-int check_current = 1;
+//int check_current = 1;
 
 #ifdef DEBUG
 char *emergency_stack[1024];

@@ -466,14 +466,14 @@ void icore_base_cpu_load(void)
 
 void ser_putchar(int port, int ch);
 
-int printf(char *ptr, ...) {
+/*int printf(char *ptr, ...) {
 	while (*ptr != '\0') {
 		if (*ptr == '\n') ser_putchar(0, '\r'); // Voeg carriage return toe
 		ser_putchar(0, *ptr);
 		ptr++;
 	}
 	return 0;
-}
+}*/
 
 void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 {

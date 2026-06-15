@@ -30,9 +30,9 @@ struct runqueue_s {
 static inline void runqueue_remove(ThreadDesc * thread);
 static inline ThreadDesc *runqueue_removeFirstOrNULL(DomainDesc * currentDomain);
 #if defined (DEBUG) || defined(CHECK_RUNNABLE_IN_RUNQ)
-jboolean check_in_runq(ThreadDesc * thread);
+static jboolean check_in_runq(ThreadDesc * thread);
 void check_not_in_runq(ThreadDesc * thread);
-inline void check_runq(void);
+//inline void check_runq(void);
 #endif
 
 

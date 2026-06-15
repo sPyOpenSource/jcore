@@ -15,13 +15,13 @@ request_start:
     .long 3
 request_end:
 	# TAG 1: Framebuffer Request (Vraag GRUB om een grafische modus)
-    .align 8
-    .word 5                                    # Type 5 = Framebuffer request
-    .word 0                                    # Flags
-    .long 20                                   # Grootte van deze tag (20 bytes)
-    .long 1024                                 # Breedte (X)
-    .long 768                                  # Hoogte (Y)
-    .long 32                                   # Bits per pixel (BPP)
+    #.align 8
+    #.word 5                                    # Type 5 = Framebuffer request
+    #.word 0                                    # Flags
+    #.long 20                                   # Grootte van deze tag (20 bytes)
+    #.long 1024                                 # Breedte (X)
+    #.long 768                                  # Hoogte (Y)
+    #.long 32                                   # Bits per pixel (BPP)
 
     # TAG 2: End Tag
     .align 8

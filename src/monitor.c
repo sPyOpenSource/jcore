@@ -2153,6 +2153,8 @@ u2_t monchecksum(u4_t len, u2_t * data)
 
 #ifdef KERNEL
 
+void write_data(char *data, u4_t len);
+
 void send_name(char *name)
 {
 	char tmp[200];
@@ -2163,7 +2165,9 @@ void send_name(char *name)
 	write_data(tmp, len);
 }
 
-void send_binary(char *name, u1_t * data, u4_t size)
+void last_data();
+
+void send_binary(char *name, char * data, u4_t size)
 {
 	send_name(name);
 	write_data(data, size);

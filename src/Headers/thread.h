@@ -256,12 +256,13 @@ static inline DomainDesc *curdom()
 	return curthr()->domain;
 }
 #else
-extern int check_current;
 ThreadDesc *curthr();
 ThreadDesc **curthrP();
 void set_current(ThreadDesc * t);
 DomainDesc *curdom();
 #endif
+
+extern int check_current;
 
 extern ThreadDesc *__idle_thread[MAX_NR_CPUS];
 static inline ThreadDesc *cur_idle_thread(void)
