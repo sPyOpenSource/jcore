@@ -305,7 +305,6 @@ void start_domain_zero()
 
 	/* load zero lib and create portals */
 	//console(6, "zero start");
-	//printf("zero start\n");
 	lib = load(domainZero, "zero.jll");
 	if (lib == NULL)
 		sys_panic("Cannot load lib %s\n", "zero.jll");

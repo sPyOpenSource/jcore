@@ -608,7 +608,7 @@ char *malloc_code(DomainDesc * domain, u4_t size)
 	DISABLE_IRQ;
 
 	if (domain->cur_code == -1) {
-		//printf("Chunksize domain %d: %d\n", domain->id, chunksize);
+		printf("Chunksize domain %d: %d\n", domain->id, chunksize);
 		domain->code[0] = (char *) jxmalloc(chunksize MEMTYPE_CODE);
 		domain->codeBorder[0] = domain->code[0] + chunksize;
 		domain->codeTop[0] = domain->code[0];

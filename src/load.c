@@ -1035,15 +1035,15 @@ char *read_codefile(char *filename, jint * size)
 	zipentry entry;
 	char *codefile;
 
-	if ((codefile = libcache_lookup_jll(filename, size)) != NULL) {
+	/*if ((codefile = libcache_lookup_jll(filename, size)) != NULL) {
 		return codefile;
-	}
+	}*/
 
 	zip_reset();
 	for (;;) {
 		if (zip_next_entry(&entry) == -1)
 			return NULL;
-		//printf("%s\n",entry.filename);
+		printf("%s\n",entry.filename);
 		if (strcmp(entry.filename, filename) == 0) {
 			codefile = entry.data;
 			*size = entry.uncompressed_size;
@@ -1112,7 +1112,7 @@ LibDesc *load(DomainDesc * domain, char *filename)
 {
 	SharedLibDesc *sharedLib;
 
-	//printf("load %s\n",filename);
+	printf("load %s\n",filename);
 
 	/* try to find an already loaded library */
 	sharedLib = findSharedLib(filename);

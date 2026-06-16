@@ -567,7 +567,7 @@ struct irqfunctions legacyPIC = {
 int pic_init_pmode()
 {
 	int i;
-	dprintf("init system\n");
+	printf("init system\n");
 	/*
 	 * IRQ
 	 */

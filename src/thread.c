@@ -243,7 +243,7 @@ ThreadDesc *createThreadInMem(DomainDesc * domain, thread_start_t thread_start, 
 	/*dprintf("     THREAD-> 0x%lx,\n", thread);
 	   dprintf("     THREADCTX-> at 0x%lx\n",  thread->contextPtr); */
 
-      printf("STACK : %p .. %p obj=%p\n", thread->stackTop, thread->stack);//, thread->stackObj);
+      //printf("STACK : %p .. %p obj=%p\n", thread->stackTop, thread->stack, thread->stackObj);
 	sp1 = thread->stackTop;
 	*--sp1 = (u4_t) thread_exit;
 	*--sp1 = (u4_t) param;
