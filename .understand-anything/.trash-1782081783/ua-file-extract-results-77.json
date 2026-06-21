@@ -1,0 +1,3488 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "sample/44-ESPJVM/Native/esp_native_spi_master.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 258,
+      "nonEmptyLines": 230,
+      "functions": [
+        {
+          "name": "NativeSpiMaster_IsOpen",
+          "startLine": 32,
+          "endLine": 36,
+          "params": [
+            "spiId"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_Transfer",
+          "startLine": 38,
+          "endLine": 44,
+          "params": [
+            "spiId",
+            "txBuff",
+            "txOff",
+            "rxBuff",
+            "rxOff",
+            "length"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_Close",
+          "startLine": 46,
+          "endLine": 53,
+          "params": [
+            "spiId"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_Reset",
+          "startLine": 55,
+          "endLine": 58,
+          "params": []
+        },
+        {
+          "name": "CheckSpiPin",
+          "startLine": 60,
+          "endLine": 86,
+          "params": [
+            "env",
+            "spiObj"
+          ]
+        },
+        {
+          "name": "CheckSpiTransferCondition",
+          "startLine": 88,
+          "endLine": 95,
+          "params": [
+            "env",
+            "spiObj"
+          ]
+        },
+        {
+          "name": "GetSpiId",
+          "startLine": 97,
+          "endLine": 126,
+          "params": [
+            "env",
+            "spiName"
+          ]
+        },
+        {
+          "name": "InitDefaultValues",
+          "startLine": 129,
+          "endLine": 145,
+          "params": [
+            "spiObj",
+            "spiId"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_Open",
+          "startLine": 147,
+          "endLine": 193,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_IsOpen",
+          "startLine": 195,
+          "endLine": 199,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_GetSpeed",
+          "startLine": 201,
+          "endLine": 213,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_Read",
+          "startLine": 215,
+          "endLine": 224,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_Write",
+          "startLine": 226,
+          "endLine": 232,
+          "params": [
+            "env",
+            "obj",
+            "b"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_ReadWrite",
+          "startLine": 234,
+          "endLine": 250,
+          "params": [
+            "env",
+            "obj",
+            "tx",
+            "txOff",
+            "rx",
+            "rxOff",
+            "length"
+          ]
+        },
+        {
+          "name": "NativeSpiMaster_Close",
+          "startLine": 252,
+          "endLine": 258,
+          "params": [
+            "env",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeSpiMaster_Reset",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSpiMaster_Open",
+          "line": 147,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSpiMaster_IsOpen",
+          "line": 195,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSpiMaster_GetSpeed",
+          "line": 201,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSpiMaster_Read",
+          "line": 215,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSpiMaster_Write",
+          "line": 226,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSpiMaster_ReadWrite",
+          "line": 234,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSpiMaster_Close",
+          "line": 252,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getSpiName",
+          "callee": "getObj",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getSpiName",
+          "callee": "getFieldByIndex",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getSpiId",
+          "callee": "getInt32",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getSpiId",
+          "callee": "getFieldByIndex",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getMode",
+          "callee": "getInt32",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getMode",
+          "callee": "getFieldByIndex",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getSpeed",
+          "callee": "getInt32",
+          "lineNumber": 16
+        },
+        {
+          "caller": "getSpeed",
+          "callee": "getFieldByIndex",
+          "lineNumber": 16
+        },
+        {
+          "caller": "getMosi",
+          "callee": "getInt32",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getMosi",
+          "callee": "getFieldByIndex",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getMiso",
+          "callee": "getInt32",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getMiso",
+          "callee": "getFieldByIndex",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getClk",
+          "callee": "getInt32",
+          "lineNumber": 19
+        },
+        {
+          "caller": "getClk",
+          "callee": "getFieldByIndex",
+          "lineNumber": 19
+        },
+        {
+          "caller": "getCs",
+          "callee": "getInt32",
+          "lineNumber": 20
+        },
+        {
+          "caller": "getCs",
+          "callee": "getFieldByIndex",
+          "lineNumber": 20
+        },
+        {
+          "caller": "setSpiId",
+          "callee": "setInt32",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setSpiId",
+          "callee": "getFieldByIndex",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setSpeed",
+          "callee": "setInt32",
+          "lineNumber": 23
+        },
+        {
+          "caller": "setSpeed",
+          "callee": "getFieldByIndex",
+          "lineNumber": 23
+        },
+        {
+          "caller": "setMosi",
+          "callee": "setInt32",
+          "lineNumber": 24
+        },
+        {
+          "caller": "setMosi",
+          "callee": "getFieldByIndex",
+          "lineNumber": 24
+        },
+        {
+          "caller": "setMiso",
+          "callee": "setInt32",
+          "lineNumber": 25
+        },
+        {
+          "caller": "setMiso",
+          "callee": "getFieldByIndex",
+          "lineNumber": 25
+        },
+        {
+          "caller": "setClk",
+          "callee": "setInt32",
+          "lineNumber": 26
+        },
+        {
+          "caller": "setClk",
+          "callee": "getFieldByIndex",
+          "lineNumber": 26
+        },
+        {
+          "caller": "setCs",
+          "callee": "setInt32",
+          "lineNumber": 27
+        },
+        {
+          "caller": "setCs",
+          "callee": "getFieldByIndex",
+          "lineNumber": 27
+        },
+        {
+          "caller": "NativeSpiMaster_Transfer",
+          "callee": "spi_device_polling_transmit",
+          "lineNumber": 43
+        },
+        {
+          "caller": "NativeSpiMaster_Close",
+          "callee": "NativeSpiMaster_IsOpen",
+          "lineNumber": 47
+        },
+        {
+          "caller": "NativeSpiMaster_Close",
+          "callee": "spi_bus_remove_device",
+          "lineNumber": 49
+        },
+        {
+          "caller": "NativeSpiMaster_Close",
+          "callee": "spi_bus_free",
+          "lineNumber": 50
+        },
+        {
+          "caller": "NativeSpiMaster_Reset",
+          "callee": "LENGTH",
+          "lineNumber": 56
+        },
+        {
+          "caller": "NativeSpiMaster_Reset",
+          "callee": "NativeSpiMaster_Close",
+          "lineNumber": 57
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "getMosi",
+          "lineNumber": 62
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "throwNew",
+          "lineNumber": 63
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "findClass",
+          "lineNumber": 63
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "getMiso",
+          "lineNumber": 66
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "NativePin_CheckPin",
+          "lineNumber": 67
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "throwNew",
+          "lineNumber": 68
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "findClass",
+          "lineNumber": 68
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "getClk",
+          "lineNumber": 71
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "throwNew",
+          "lineNumber": 73
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "findClass",
+          "lineNumber": 73
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "NativePin_CheckPin",
+          "lineNumber": 76
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "throwNew",
+          "lineNumber": 77
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "findClass",
+          "lineNumber": 77
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "getCs",
+          "lineNumber": 80
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "NativePin_CheckPin",
+          "lineNumber": 81
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "throwNew",
+          "lineNumber": 82
+        },
+        {
+          "caller": "CheckSpiPin",
+          "callee": "findClass",
+          "lineNumber": 82
+        },
+        {
+          "caller": "CheckSpiTransferCondition",
+          "callee": "getSpiId",
+          "lineNumber": 89
+        },
+        {
+          "caller": "CheckSpiTransferCondition",
+          "callee": "NativeSpiMaster_IsOpen",
+          "lineNumber": 90
+        },
+        {
+          "caller": "CheckSpiTransferCondition",
+          "callee": "throwNew",
+          "lineNumber": 91
+        },
+        {
+          "caller": "CheckSpiTransferCondition",
+          "callee": "findClass",
+          "lineNumber": 91
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "throwNew",
+          "lineNumber": 99
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "findClass",
+          "lineNumber": 99
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "compareTo",
+          "lineNumber": 102
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "strlen",
+          "lineNumber": 102
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "compareTo",
+          "lineNumber": 102
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "strlen",
+          "lineNumber": 102
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "throwNew",
+          "lineNumber": 103
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "findClass",
+          "lineNumber": 103
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "compareTo",
+          "lineNumber": 106
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "strlen",
+          "lineNumber": 106
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "compareTo",
+          "lineNumber": 109
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "strlen",
+          "lineNumber": 109
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "compareTo",
+          "lineNumber": 113
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "strlen",
+          "lineNumber": 113
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "compareTo",
+          "lineNumber": 115
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "strlen",
+          "lineNumber": 115
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "compareTo",
+          "lineNumber": 118
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "strlen",
+          "lineNumber": 118
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "compareTo",
+          "lineNumber": 120
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "strlen",
+          "lineNumber": 120
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "throwNew",
+          "lineNumber": 124
+        },
+        {
+          "caller": "GetSpiId",
+          "callee": "findClass",
+          "lineNumber": 124
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getSpeed",
+          "lineNumber": 140
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setSpeed",
+          "lineNumber": 140
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getMosi",
+          "lineNumber": 141
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setMosi",
+          "lineNumber": 141
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getMiso",
+          "lineNumber": 142
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setMiso",
+          "lineNumber": 142
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getClk",
+          "lineNumber": 143
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setClk",
+          "lineNumber": 143
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getCs",
+          "lineNumber": 144
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setCs",
+          "lineNumber": 144
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "getSpiId",
+          "lineNumber": 149
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "throwNew",
+          "lineNumber": 150
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "findClass",
+          "lineNumber": 150
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "GetSpiId",
+          "lineNumber": 153
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "getSpiName",
+          "lineNumber": 153
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "InitDefaultValues",
+          "lineNumber": 156
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "NativeSpiMaster_IsOpen",
+          "lineNumber": 158
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "throwNew",
+          "lineNumber": 159
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "findClass",
+          "lineNumber": 159
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "CheckSpiPin",
+          "lineNumber": 163
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "getMode",
+          "lineNumber": 165
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "getMosi",
+          "lineNumber": 168
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "getMiso",
+          "lineNumber": 169
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "getClk",
+          "lineNumber": 170
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "getSpeed",
+          "lineNumber": 175
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "getCs",
+          "lineNumber": 177
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "spi_bus_initialize",
+          "lineNumber": 182
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "throwNew",
+          "lineNumber": 183
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "findClass",
+          "lineNumber": 183
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "spi_bus_add_device",
+          "lineNumber": 186
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "throwNew",
+          "lineNumber": 187
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "findClass",
+          "lineNumber": 187
+        },
+        {
+          "caller": "NativeSpiMaster_Open",
+          "callee": "setSpiId",
+          "lineNumber": 191
+        },
+        {
+          "caller": "NativeSpiMaster_IsOpen",
+          "callee": "getSpiId",
+          "lineNumber": 197
+        },
+        {
+          "caller": "NativeSpiMaster_IsOpen",
+          "callee": "NativeSpiMaster_IsOpen",
+          "lineNumber": 198
+        },
+        {
+          "caller": "NativeSpiMaster_GetSpeed",
+          "callee": "getSpiId",
+          "lineNumber": 203
+        },
+        {
+          "caller": "NativeSpiMaster_GetSpeed",
+          "callee": "NativeSpiMaster_IsOpen",
+          "lineNumber": 204
+        },
+        {
+          "caller": "NativeSpiMaster_GetSpeed",
+          "callee": "spi_device_get_actual_freq",
+          "lineNumber": 206
+        },
+        {
+          "caller": "NativeSpiMaster_GetSpeed",
+          "callee": "throwNew",
+          "lineNumber": 207
+        },
+        {
+          "caller": "NativeSpiMaster_GetSpeed",
+          "callee": "findClass",
+          "lineNumber": 207
+        },
+        {
+          "caller": "NativeSpiMaster_GetSpeed",
+          "callee": "getSpeed",
+          "lineNumber": 212
+        },
+        {
+          "caller": "NativeSpiMaster_Read",
+          "callee": "CheckSpiTransferCondition",
+          "lineNumber": 218
+        },
+        {
+          "caller": "NativeSpiMaster_Read",
+          "callee": "NativeSpiMaster_Transfer",
+          "lineNumber": 219
+        },
+        {
+          "caller": "NativeSpiMaster_Read",
+          "callee": "getSpiId",
+          "lineNumber": 219
+        },
+        {
+          "caller": "NativeSpiMaster_Read",
+          "callee": "throwNew",
+          "lineNumber": 220
+        },
+        {
+          "caller": "NativeSpiMaster_Read",
+          "callee": "findClass",
+          "lineNumber": 220
+        },
+        {
+          "caller": "NativeSpiMaster_Write",
+          "callee": "CheckSpiTransferCondition",
+          "lineNumber": 229
+        },
+        {
+          "caller": "NativeSpiMaster_Write",
+          "callee": "NativeSpiMaster_Transfer",
+          "lineNumber": 230
+        },
+        {
+          "caller": "NativeSpiMaster_Write",
+          "callee": "getSpiId",
+          "lineNumber": 230
+        },
+        {
+          "caller": "NativeSpiMaster_Write",
+          "callee": "throwNew",
+          "lineNumber": 231
+        },
+        {
+          "caller": "NativeSpiMaster_Write",
+          "callee": "findClass",
+          "lineNumber": 231
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "CheckSpiTransferCondition",
+          "lineNumber": 236
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "throwNew",
+          "lineNumber": 238
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "findClass",
+          "lineNumber": 238
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "CheckArrayIndexSize",
+          "lineNumber": 241
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "CheckArrayIndexSize",
+          "lineNumber": 242
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "getData",
+          "lineNumber": 243
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "getData",
+          "lineNumber": 244
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "NativeSpiMaster_Transfer",
+          "lineNumber": 245
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "getSpiId",
+          "lineNumber": 245
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "throwNew",
+          "lineNumber": 246
+        },
+        {
+          "caller": "NativeSpiMaster_ReadWrite",
+          "callee": "findClass",
+          "lineNumber": 246
+        },
+        {
+          "caller": "NativeSpiMaster_Close",
+          "callee": "getSpiId",
+          "lineNumber": 254
+        },
+        {
+          "caller": "NativeSpiMaster_Close",
+          "callee": "NativeSpiMaster_IsOpen",
+          "lineNumber": 255
+        },
+        {
+          "caller": "NativeSpiMaster_Close",
+          "callee": "NativeSpiMaster_Close",
+          "lineNumber": 256
+        },
+        {
+          "caller": "NativeSpiMaster_Close",
+          "callee": "setSpiId",
+          "lineNumber": 257
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/esp_native_touch_pad.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 139,
+      "nonEmptyLines": 120,
+      "callGraph": [
+        {
+          "caller": "NativeTouchPad_Reset",
+          "callee": "touch_pad_deinit",
+          "lineNumber": 27
+        },
+        {
+          "caller": "NativeTouchPad_GetPadNum",
+          "callee": "NativePin_CheckPin",
+          "lineNumber": 33
+        },
+        {
+          "caller": "NativeTouchPad_GetPadNum",
+          "callee": "throwNew",
+          "lineNumber": 35
+        },
+        {
+          "caller": "NativeTouchPad_GetPadNum",
+          "callee": "findClass",
+          "lineNumber": 35
+        },
+        {
+          "caller": "NativeTouchPad_GetPadNum",
+          "callee": "LENGTH",
+          "lineNumber": 38
+        },
+        {
+          "caller": "NativeTouchPad_GetPadNum",
+          "callee": "throwNew",
+          "lineNumber": 43
+        },
+        {
+          "caller": "NativeTouchPad_GetPadNum",
+          "callee": "findClass",
+          "lineNumber": 43
+        },
+        {
+          "caller": "NativeTouchPad_DriverInit",
+          "callee": "touch_pad_init",
+          "lineNumber": 48
+        },
+        {
+          "caller": "NativeTouchPad_DriverInit",
+          "callee": "touch_pad_set_voltage",
+          "lineNumber": 50
+        },
+        {
+          "caller": "NativeTouchPad_DriverInit",
+          "callee": "touch_pad_filter_start",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NativeTouchPad_DriverInit",
+          "callee": "touch_pad_fsm_start",
+          "lineNumber": 54
+        },
+        {
+          "caller": "NativeTouchPad_DriverInit",
+          "callee": "touch_pad_deinit",
+          "lineNumber": 57
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "touch_pad_read_raw_data",
+          "lineNumber": 65
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "throwNew",
+          "lineNumber": 67
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "findClass",
+          "lineNumber": 67
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "touch_pad_read_raw_data",
+          "lineNumber": 71
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "throwNew",
+          "lineNumber": 73
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "findClass",
+          "lineNumber": 73
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "NativeTouchPad_GetPadNum",
+          "lineNumber": 81
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "Flint::lock",
+          "lineNumber": 85
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "NativeTouchPad_DriverInit",
+          "lineNumber": 87
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "Flint::unlock",
+          "lineNumber": 91
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "touch_pad_config",
+          "lineNumber": 94
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "touch_pad_config",
+          "lineNumber": 96
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "throwNew",
+          "lineNumber": 101
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "findClass",
+          "lineNumber": 101
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "setInt32",
+          "lineNumber": 104
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "getFieldByIndex",
+          "lineNumber": 104
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "getInt32",
+          "lineNumber": 109
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "getFieldByIndex",
+          "lineNumber": 109
+        },
+        {
+          "caller": "NativeTouchPad_Read",
+          "callee": "NativeTouchPad_Read",
+          "lineNumber": 110
+        },
+        {
+          "caller": "NativeTouchPad_IsTouched",
+          "callee": "getInt32",
+          "lineNumber": 114
+        },
+        {
+          "caller": "NativeTouchPad_IsTouched",
+          "callee": "getFieldByIndex",
+          "lineNumber": 114
+        },
+        {
+          "caller": "NativeTouchPad_IsTouched",
+          "callee": "getInt32",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeTouchPad_IsTouched",
+          "callee": "getFieldByIndex",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeTouchPad_IsTouched",
+          "callee": "NativeTouchPad_Read",
+          "lineNumber": 116
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "throwNew",
+          "lineNumber": 127
+        },
+        {
+          "caller": "NativeTouchPad_InitTouchPad",
+          "callee": "findClass",
+          "lineNumber": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/esp_native_uart.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 262,
+      "nonEmptyLines": 235,
+      "functions": [
+        {
+          "name": "NativeUart_IsOpen",
+          "startLine": 32,
+          "endLine": 36,
+          "params": [
+            "uartId"
+          ]
+        },
+        {
+          "name": "NativeUart_Close",
+          "startLine": 38,
+          "endLine": 41,
+          "params": [
+            "uartId"
+          ]
+        },
+        {
+          "name": "NativeUart_Reset",
+          "startLine": 43,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "GetUartId",
+          "startLine": 53,
+          "endLine": 88,
+          "params": [
+            "env",
+            "portName"
+          ]
+        },
+        {
+          "name": "InitDefaultValues",
+          "startLine": 91,
+          "endLine": 118,
+          "params": [
+            "uartObj",
+            "uartId"
+          ]
+        },
+        {
+          "name": "CheckUartPin",
+          "startLine": 120,
+          "endLine": 137,
+          "params": [
+            "env",
+            "portObj"
+          ]
+        },
+        {
+          "name": "CheckPrecondition",
+          "startLine": 139,
+          "endLine": 146,
+          "params": [
+            "env",
+            "portObj"
+          ]
+        },
+        {
+          "name": "NativeUart_Open",
+          "startLine": 148,
+          "endLine": 186,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeUart_IsOpen",
+          "startLine": 188,
+          "endLine": 194,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeUart_GetBaudrate",
+          "startLine": 196,
+          "endLine": 205,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeUart_ReadByte",
+          "startLine": 207,
+          "endLine": 217,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeUart_Read",
+          "startLine": 219,
+          "endLine": 229,
+          "params": [
+            "env",
+            "obj",
+            "b",
+            "off",
+            "count"
+          ]
+        },
+        {
+          "name": "NativeUart_WriteByte",
+          "startLine": 231,
+          "endLine": 237,
+          "params": [
+            "env",
+            "obj",
+            "b"
+          ]
+        },
+        {
+          "name": "NativeUart_Write",
+          "startLine": 239,
+          "endLine": 254,
+          "params": [
+            "env",
+            "obj",
+            "b",
+            "off",
+            "count"
+          ]
+        },
+        {
+          "name": "NativeUart_Close",
+          "startLine": 256,
+          "endLine": 262,
+          "params": [
+            "env",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeUart_Reset",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "NativeUart_Open",
+          "line": 148,
+          "isDefault": false
+        },
+        {
+          "name": "NativeUart_IsOpen",
+          "line": 188,
+          "isDefault": false
+        },
+        {
+          "name": "NativeUart_GetBaudrate",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "NativeUart_ReadByte",
+          "line": 207,
+          "isDefault": false
+        },
+        {
+          "name": "NativeUart_Read",
+          "line": 219,
+          "isDefault": false
+        },
+        {
+          "name": "NativeUart_WriteByte",
+          "line": 231,
+          "isDefault": false
+        },
+        {
+          "name": "NativeUart_Write",
+          "line": 239,
+          "isDefault": false
+        },
+        {
+          "name": "NativeUart_Close",
+          "line": 256,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getPortName",
+          "callee": "getObj",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getPortName",
+          "callee": "getFieldByIndex",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getPortId",
+          "callee": "getInt32",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getPortId",
+          "callee": "getFieldByIndex",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getBaudrate",
+          "callee": "getInt32",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getBaudrate",
+          "callee": "getFieldByIndex",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getStopBits",
+          "callee": "getInt32",
+          "lineNumber": 16
+        },
+        {
+          "caller": "getStopBits",
+          "callee": "getFieldByIndex",
+          "lineNumber": 16
+        },
+        {
+          "caller": "getParity",
+          "callee": "getInt32",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getParity",
+          "callee": "getFieldByIndex",
+          "lineNumber": 17
+        },
+        {
+          "caller": "getDataBits",
+          "callee": "getInt32",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getDataBits",
+          "callee": "getFieldByIndex",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getBufSize",
+          "callee": "getInt32",
+          "lineNumber": 19
+        },
+        {
+          "caller": "getBufSize",
+          "callee": "getFieldByIndex",
+          "lineNumber": 19
+        },
+        {
+          "caller": "getTxPin",
+          "callee": "getInt32",
+          "lineNumber": 20
+        },
+        {
+          "caller": "getTxPin",
+          "callee": "getFieldByIndex",
+          "lineNumber": 20
+        },
+        {
+          "caller": "getRxPin",
+          "callee": "getInt32",
+          "lineNumber": 21
+        },
+        {
+          "caller": "getRxPin",
+          "callee": "getFieldByIndex",
+          "lineNumber": 21
+        },
+        {
+          "caller": "setPortId",
+          "callee": "setInt32",
+          "lineNumber": 23
+        },
+        {
+          "caller": "setPortId",
+          "callee": "getFieldByIndex",
+          "lineNumber": 23
+        },
+        {
+          "caller": "setBaudrate",
+          "callee": "setInt32",
+          "lineNumber": 24
+        },
+        {
+          "caller": "setBaudrate",
+          "callee": "getFieldByIndex",
+          "lineNumber": 24
+        },
+        {
+          "caller": "setBufSize",
+          "callee": "setInt32",
+          "lineNumber": 25
+        },
+        {
+          "caller": "setBufSize",
+          "callee": "getFieldByIndex",
+          "lineNumber": 25
+        },
+        {
+          "caller": "setTxPin",
+          "callee": "setInt32",
+          "lineNumber": 26
+        },
+        {
+          "caller": "setTxPin",
+          "callee": "getFieldByIndex",
+          "lineNumber": 26
+        },
+        {
+          "caller": "setRxPin",
+          "callee": "setInt32",
+          "lineNumber": 27
+        },
+        {
+          "caller": "setRxPin",
+          "callee": "getFieldByIndex",
+          "lineNumber": 27
+        },
+        {
+          "caller": "NativeUart_IsOpen",
+          "callee": "LENGTH",
+          "lineNumber": 33
+        },
+        {
+          "caller": "NativeUart_Close",
+          "callee": "uart_driver_delete",
+          "lineNumber": 39
+        },
+        {
+          "caller": "NativeUart_Reset",
+          "callee": "LENGTH",
+          "lineNumber": 45
+        },
+        {
+          "caller": "NativeUart_Reset",
+          "callee": "NativeUart_Close",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NativeUart_Reset",
+          "callee": "LENGTH",
+          "lineNumber": 48
+        },
+        {
+          "caller": "NativeUart_Reset",
+          "callee": "NativeUart_Close",
+          "lineNumber": 49
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "throwNew",
+          "lineNumber": 55
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "findClass",
+          "lineNumber": 55
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "compareTo",
+          "lineNumber": 59
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "strlen",
+          "lineNumber": 59
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "throwNew",
+          "lineNumber": 60
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "findClass",
+          "lineNumber": 60
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "compareTo",
+          "lineNumber": 64
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "strlen",
+          "lineNumber": 64
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "compareTo",
+          "lineNumber": 67
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "strlen",
+          "lineNumber": 67
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "compareTo",
+          "lineNumber": 70
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "strlen",
+          "lineNumber": 70
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "compareTo",
+          "lineNumber": 74
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "strlen",
+          "lineNumber": 74
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "compareTo",
+          "lineNumber": 78
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "strlen",
+          "lineNumber": 78
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "compareTo",
+          "lineNumber": 82
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "strlen",
+          "lineNumber": 82
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "throwNew",
+          "lineNumber": 86
+        },
+        {
+          "caller": "GetUartId",
+          "callee": "findClass",
+          "lineNumber": 86
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getBufSize",
+          "lineNumber": 114
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setBufSize",
+          "lineNumber": 114
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getTxPin",
+          "lineNumber": 115
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setTxPin",
+          "lineNumber": 115
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getRxPin",
+          "lineNumber": 116
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setRxPin",
+          "lineNumber": 116
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "getBaudrate",
+          "lineNumber": 117
+        },
+        {
+          "caller": "InitDefaultValues",
+          "callee": "setBaudrate",
+          "lineNumber": 117
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "getTxPin",
+          "lineNumber": 122
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "getRxPin",
+          "lineNumber": 123
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "throwNew",
+          "lineNumber": 125
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "findClass",
+          "lineNumber": 125
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "NativePin_CheckPin",
+          "lineNumber": 128
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "throwNew",
+          "lineNumber": 129
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "findClass",
+          "lineNumber": 129
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "NativePin_CheckPin",
+          "lineNumber": 132
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "throwNew",
+          "lineNumber": 133
+        },
+        {
+          "caller": "CheckUartPin",
+          "callee": "findClass",
+          "lineNumber": 133
+        },
+        {
+          "caller": "CheckPrecondition",
+          "callee": "getPortId",
+          "lineNumber": 140
+        },
+        {
+          "caller": "CheckPrecondition",
+          "callee": "NativeUart_IsOpen",
+          "lineNumber": 141
+        },
+        {
+          "caller": "CheckPrecondition",
+          "callee": "throwNew",
+          "lineNumber": 142
+        },
+        {
+          "caller": "CheckPrecondition",
+          "callee": "findClass",
+          "lineNumber": 142
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getPortId",
+          "lineNumber": 150
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "throwNew",
+          "lineNumber": 151
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "findClass",
+          "lineNumber": 151
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "GetUartId",
+          "lineNumber": 154
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getPortName",
+          "lineNumber": 154
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "InitDefaultValues",
+          "lineNumber": 157
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "NativeUart_IsOpen",
+          "lineNumber": 159
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "throwNew",
+          "lineNumber": 160
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "findClass",
+          "lineNumber": 160
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "CheckUartPin",
+          "lineNumber": 164
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getParity",
+          "lineNumber": 166
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getBaudrate",
+          "lineNumber": 169
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "(uart_word_length_t)",
+          "lineNumber": 170
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getDataBits",
+          "lineNumber": 170
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "(uart_stop_bits_t)",
+          "lineNumber": 172
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getStopBits",
+          "lineNumber": 172
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "uart_param_config",
+          "lineNumber": 174
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "uart_set_pin",
+          "lineNumber": 175
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getTxPin",
+          "lineNumber": 175
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getRxPin",
+          "lineNumber": 175
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "uart_driver_install",
+          "lineNumber": 176
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "getBufSize",
+          "lineNumber": 176
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "throwNew",
+          "lineNumber": 180
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "findClass",
+          "lineNumber": 180
+        },
+        {
+          "caller": "NativeUart_Open",
+          "callee": "setPortId",
+          "lineNumber": 184
+        },
+        {
+          "caller": "NativeUart_IsOpen",
+          "callee": "getPortId",
+          "lineNumber": 190
+        },
+        {
+          "caller": "NativeUart_IsOpen",
+          "callee": "NativeUart_IsOpen",
+          "lineNumber": 191
+        },
+        {
+          "caller": "NativeUart_GetBaudrate",
+          "callee": "getPortId",
+          "lineNumber": 198
+        },
+        {
+          "caller": "NativeUart_GetBaudrate",
+          "callee": "NativeUart_IsOpen",
+          "lineNumber": 199
+        },
+        {
+          "caller": "NativeUart_GetBaudrate",
+          "callee": "uart_get_baudrate",
+          "lineNumber": 201
+        },
+        {
+          "caller": "NativeUart_GetBaudrate",
+          "callee": "getBaudrate",
+          "lineNumber": 204
+        },
+        {
+          "caller": "NativeUart_ReadByte",
+          "callee": "getPortId",
+          "lineNumber": 210
+        },
+        {
+          "caller": "NativeUart_ReadByte",
+          "callee": "CheckPrecondition",
+          "lineNumber": 211
+        },
+        {
+          "caller": "NativeUart_ReadByte",
+          "callee": "hasTerminateRequest",
+          "lineNumber": 212
+        },
+        {
+          "caller": "NativeUart_ReadByte",
+          "callee": "uart_read_bytes",
+          "lineNumber": 213
+        },
+        {
+          "caller": "NativeUart_ReadByte",
+          "callee": "pdMS_TO_TICKS",
+          "lineNumber": 213
+        },
+        {
+          "caller": "NativeUart_Read",
+          "callee": "getPortId",
+          "lineNumber": 221
+        },
+        {
+          "caller": "NativeUart_Read",
+          "callee": "CheckPrecondition",
+          "lineNumber": 222
+        },
+        {
+          "caller": "NativeUart_Read",
+          "callee": "CheckArrayIndexSize",
+          "lineNumber": 223
+        },
+        {
+          "caller": "NativeUart_Read",
+          "callee": "hasTerminateRequest",
+          "lineNumber": 224
+        },
+        {
+          "caller": "NativeUart_Read",
+          "callee": "uart_read_bytes",
+          "lineNumber": 225
+        },
+        {
+          "caller": "NativeUart_Read",
+          "callee": "getData",
+          "lineNumber": 225
+        },
+        {
+          "caller": "NativeUart_Read",
+          "callee": "pdMS_TO_TICKS",
+          "lineNumber": 225
+        },
+        {
+          "caller": "NativeUart_WriteByte",
+          "callee": "CheckPrecondition",
+          "lineNumber": 234
+        },
+        {
+          "caller": "NativeUart_WriteByte",
+          "callee": "uart_write_bytes",
+          "lineNumber": 235
+        },
+        {
+          "caller": "NativeUart_WriteByte",
+          "callee": "getPortId",
+          "lineNumber": 235
+        },
+        {
+          "caller": "NativeUart_WriteByte",
+          "callee": "throwNew",
+          "lineNumber": 236
+        },
+        {
+          "caller": "NativeUart_WriteByte",
+          "callee": "findClass",
+          "lineNumber": 236
+        },
+        {
+          "caller": "NativeUart_Write",
+          "callee": "CheckPrecondition",
+          "lineNumber": 241
+        },
+        {
+          "caller": "NativeUart_Write",
+          "callee": "CheckArrayIndexSize",
+          "lineNumber": 242
+        },
+        {
+          "caller": "NativeUart_Write",
+          "callee": "getData",
+          "lineNumber": 243
+        },
+        {
+          "caller": "NativeUart_Write",
+          "callee": "getPortId",
+          "lineNumber": 244
+        },
+        {
+          "caller": "NativeUart_Write",
+          "callee": "uart_write_bytes",
+          "lineNumber": 246
+        },
+        {
+          "caller": "NativeUart_Write",
+          "callee": "throwNew",
+          "lineNumber": 248
+        },
+        {
+          "caller": "NativeUart_Write",
+          "callee": "findClass",
+          "lineNumber": 248
+        },
+        {
+          "caller": "NativeUart_Close",
+          "callee": "getPortId",
+          "lineNumber": 258
+        },
+        {
+          "caller": "NativeUart_Close",
+          "callee": "NativeUart_IsOpen",
+          "lineNumber": 259
+        },
+        {
+          "caller": "NativeUart_Close",
+          "callee": "NativeUart_Close",
+          "lineNumber": 260
+        },
+        {
+          "caller": "NativeUart_Close",
+          "callee": "setPortId",
+          "lineNumber": 261
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 9,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/esp_native_wifi.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 222,
+      "nonEmptyLines": 191,
+      "functions": [
+        {
+          "name": "CheckParams",
+          "startLine": 29,
+          "endLine": 59,
+          "params": [
+            "env",
+            "ssid",
+            "password",
+            "authMode"
+          ]
+        },
+        {
+          "name": "CheckReturn",
+          "startLine": 61,
+          "endLine": 67,
+          "params": [
+            "env",
+            "value",
+            "msg"
+          ]
+        },
+        {
+          "name": "NativeWiFi_IsSupported",
+          "startLine": 69,
+          "endLine": 71,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeWiFi_Connect",
+          "startLine": 73,
+          "endLine": 96,
+          "params": [
+            "env",
+            "ssid",
+            "password",
+            "authMode"
+          ]
+        },
+        {
+          "name": "NativeWiFi_IsConnected",
+          "startLine": 98,
+          "endLine": 107,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "createAccessPointRecordObj",
+          "startLine": 109,
+          "endLine": 129,
+          "params": [
+            "env",
+            "apRecord"
+          ]
+        },
+        {
+          "name": "NativeWiFi_GetAPinfo",
+          "startLine": 131,
+          "endLine": 140,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeWiFi_Disconnect",
+          "startLine": 142,
+          "endLine": 144,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeWiFi_SoftAP",
+          "startLine": 146,
+          "endLine": 173,
+          "params": [
+            "env",
+            "ssid",
+            "password",
+            "authMode",
+            "channel",
+            "maxConnection"
+          ]
+        },
+        {
+          "name": "NativeWiFi_SoftAPdisconnect",
+          "startLine": 175,
+          "endLine": 177,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeWiFi_StartScan",
+          "startLine": 179,
+          "endLine": 184,
+          "params": [
+            "env",
+            "blocked"
+          ]
+        },
+        {
+          "name": "NativeWiFi_GetScanResult",
+          "startLine": 186,
+          "endLine": 218,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeWiFi_StopScan",
+          "startLine": 220,
+          "endLine": 222,
+          "params": [
+            "env"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeWiFi_IsSupported",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_Connect",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_IsConnected",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_GetAPinfo",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_Disconnect",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_SoftAP",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_SoftAPdisconnect",
+          "line": 175,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_StartScan",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_GetScanResult",
+          "line": 186,
+          "isDefault": false
+        },
+        {
+          "name": "NativeWiFi_StopScan",
+          "line": 220,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CheckParams",
+          "callee": "throwNew",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "findClass",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "throwNew",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "findClass",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "throwNew",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "findClass",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "getLength",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "getLength",
+          "lineNumber": 46
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "throwNew",
+          "lineNumber": 49
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "findClass",
+          "lineNumber": 49
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "throwNew",
+          "lineNumber": 53
+        },
+        {
+          "caller": "CheckParams",
+          "callee": "findClass",
+          "lineNumber": 53
+        },
+        {
+          "caller": "CheckReturn",
+          "callee": "throwNew",
+          "lineNumber": 63
+        },
+        {
+          "caller": "CheckReturn",
+          "callee": "findClass",
+          "lineNumber": 63
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "CheckParams",
+          "lineNumber": 74
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "getLength",
+          "lineNumber": 76
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "getLength",
+          "lineNumber": 77
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "getAscii",
+          "lineNumber": 78
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "getAscii",
+          "lineNumber": 79
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "memcpy",
+          "lineNumber": 81
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "memcpy",
+          "lineNumber": 82
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "Flint::lock",
+          "lineNumber": 87
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "esp_wifi_set_config",
+          "lineNumber": 88
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "esp_wifi_start",
+          "lineNumber": 90
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "esp_wifi_connect",
+          "lineNumber": 92
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "Flint::unlock",
+          "lineNumber": 93
+        },
+        {
+          "caller": "NativeWiFi_Connect",
+          "callee": "CheckReturn",
+          "lineNumber": 95
+        },
+        {
+          "caller": "NativeWiFi_IsConnected",
+          "callee": "esp_wifi_sta_get_ap_info",
+          "lineNumber": 100
+        },
+        {
+          "caller": "NativeWiFi_IsConnected",
+          "callee": "esp_netif_get_handle_from_ifkey",
+          "lineNumber": 103
+        },
+        {
+          "caller": "NativeWiFi_IsConnected",
+          "callee": "esp_netif_get_ip_info",
+          "lineNumber": 105
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "newObject",
+          "lineNumber": 110
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "findClass",
+          "lineNumber": 110
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "newByteArray",
+          "lineNumber": 114
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "memcpy",
+          "lineNumber": 116
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "getData",
+          "lineNumber": 116
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "setObj",
+          "lineNumber": 118
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "getField",
+          "lineNumber": 118
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "newString",
+          "lineNumber": 119
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "freeObject",
+          "lineNumber": 121
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "setObj",
+          "lineNumber": 124
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "getField",
+          "lineNumber": 124
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "setInt32",
+          "lineNumber": 125
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "getField",
+          "lineNumber": 125
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "setInt32",
+          "lineNumber": 126
+        },
+        {
+          "caller": "createAccessPointRecordObj",
+          "callee": "getField",
+          "lineNumber": 126
+        },
+        {
+          "caller": "NativeWiFi_GetAPinfo",
+          "callee": "esp_wifi_sta_get_ap_info",
+          "lineNumber": 133
+        },
+        {
+          "caller": "NativeWiFi_GetAPinfo",
+          "callee": "createAccessPointRecordObj",
+          "lineNumber": 135
+        },
+        {
+          "caller": "NativeWiFi_Disconnect",
+          "callee": "esp_wifi_disconnect",
+          "lineNumber": 143
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "CheckParams",
+          "lineNumber": 147
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "getLength",
+          "lineNumber": 149
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "getLength",
+          "lineNumber": 150
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "getAscii",
+          "lineNumber": 151
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "getAscii",
+          "lineNumber": 152
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "Flint::lock",
+          "lineNumber": 164
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "esp_wifi_set_mode",
+          "lineNumber": 165
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "esp_wifi_set_config",
+          "lineNumber": 167
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "esp_wifi_start",
+          "lineNumber": 169
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "Flint::unlock",
+          "lineNumber": 170
+        },
+        {
+          "caller": "NativeWiFi_SoftAP",
+          "callee": "CheckReturn",
+          "lineNumber": 172
+        },
+        {
+          "caller": "NativeWiFi_SoftAPdisconnect",
+          "callee": "esp_wifi_set_mode",
+          "lineNumber": 176
+        },
+        {
+          "caller": "NativeWiFi_StartScan",
+          "callee": "Flint::lock",
+          "lineNumber": 180
+        },
+        {
+          "caller": "NativeWiFi_StartScan",
+          "callee": "esp_wifi_scan_start",
+          "lineNumber": 181
+        },
+        {
+          "caller": "NativeWiFi_StartScan",
+          "callee": "Flint::unlock",
+          "lineNumber": 182
+        },
+        {
+          "caller": "NativeWiFi_StartScan",
+          "callee": "CheckReturn",
+          "lineNumber": 183
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "esp_wifi_scan_get_ap_num",
+          "lineNumber": 188
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "CheckReturn",
+          "lineNumber": 190
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "Flint::lock",
+          "lineNumber": 194
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "newObjectArray",
+          "lineNumber": 195
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "findClass",
+          "lineNumber": 195
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "clearData",
+          "lineNumber": 197
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "getData",
+          "lineNumber": 198
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "esp_wifi_scan_get_ap_record",
+          "lineNumber": 201
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "CheckReturn",
+          "lineNumber": 202
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "Flint::unlock",
+          "lineNumber": 203
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "createAccessPointRecordObj",
+          "lineNumber": 206
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "Flint::unlock",
+          "lineNumber": 208
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "freeObject",
+          "lineNumber": 209
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "freeObject",
+          "lineNumber": 210
+        },
+        {
+          "caller": "NativeWiFi_GetScanResult",
+          "callee": "Flint::unlock",
+          "lineNumber": 216
+        },
+        {
+          "caller": "NativeWiFi_StopScan",
+          "callee": "esp_wifi_scan_stop",
+          "lineNumber": 221
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 13,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/esp_native.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 75,
+      "functions": [
+        {
+          "name": "System::reset",
+          "startLine": 46,
+          "endLine": 56,
+          "params": []
+        },
+        {
+          "name": "System::findNativeMethod",
+          "startLine": 58,
+          "endLine": 79,
+          "params": [
+            "methodInfo"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "System::reset",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "System::findNativeMethod",
+          "line": 58,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "System::reset",
+          "callee": "NativeAdc_Reset",
+          "lineNumber": 47
+        },
+        {
+          "caller": "System::reset",
+          "callee": "NativeDac_Reset",
+          "lineNumber": 48
+        },
+        {
+          "caller": "System::reset",
+          "callee": "NativePin_Reset",
+          "lineNumber": 49
+        },
+        {
+          "caller": "System::reset",
+          "callee": "NativeUart_Reset",
+          "lineNumber": 50
+        },
+        {
+          "caller": "System::reset",
+          "callee": "NativeTouchPad_Reset",
+          "lineNumber": 51
+        },
+        {
+          "caller": "System::reset",
+          "callee": "NativeSpiMaster_Reset",
+          "lineNumber": 52
+        },
+        {
+          "caller": "System::reset",
+          "callee": "NativeI2cMaster_Reset",
+          "lineNumber": 53
+        },
+        {
+          "caller": "System::reset",
+          "callee": "NativeI2sMaster_Reset",
+          "lineNumber": 54
+        },
+        {
+          "caller": "System::reset",
+          "callee": "Socket_Reset",
+          "lineNumber": 55
+        },
+        {
+          "caller": "System::findNativeMethod",
+          "callee": "getHashKey",
+          "lineNumber": 59
+        },
+        {
+          "caller": "System::findNativeMethod",
+          "callee": "LENGTH",
+          "lineNumber": 60
+        },
+        {
+          "caller": "System::findNativeMethod",
+          "callee": "strcmp",
+          "lineNumber": 64
+        },
+        {
+          "caller": "System::findNativeMethod",
+          "callee": "getName",
+          "lineNumber": 64
+        },
+        {
+          "caller": "System::findNativeMethod",
+          "callee": "strcmp",
+          "lineNumber": 69
+        },
+        {
+          "caller": "System::findNativeMethod",
+          "callee": "strcmp",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/esp_socket.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 189,
+      "nonEmptyLines": 167,
+      "functions": [
+        {
+          "name": "SockList_Add",
+          "startLine": 8,
+          "endLine": 27,
+          "params": [
+            "sock"
+          ]
+        },
+        {
+          "name": "SockList_Remove",
+          "startLine": 29,
+          "endLine": 39,
+          "params": [
+            "sock"
+          ]
+        },
+        {
+          "name": "Socket_Create",
+          "startLine": 41,
+          "endLine": 54,
+          "params": [
+            "stream"
+          ]
+        },
+        {
+          "name": "Socket_Connect",
+          "startLine": 56,
+          "endLine": 61,
+          "params": [
+            "sock",
+            "addr"
+          ]
+        },
+        {
+          "name": "Socket_GetConnectionStatus",
+          "startLine": 63,
+          "endLine": 89,
+          "params": [
+            "sock",
+            "isConnected"
+          ]
+        },
+        {
+          "name": "Socket_Bind",
+          "startLine": 91,
+          "endLine": 93,
+          "params": [
+            "sock",
+            "addr"
+          ]
+        },
+        {
+          "name": "Socket_Listen",
+          "startLine": 95,
+          "endLine": 97,
+          "params": [
+            "sock",
+            "count"
+          ]
+        },
+        {
+          "name": "Socket_Accept",
+          "startLine": 99,
+          "endLine": 109,
+          "params": [
+            "server",
+            "addr",
+            "client"
+          ]
+        },
+        {
+          "name": "Socket_Send",
+          "startLine": 111,
+          "endLine": 121,
+          "params": [
+            "sock",
+            "data",
+            "len",
+            "sent"
+          ]
+        },
+        {
+          "name": "Socket_SendTo",
+          "startLine": 123,
+          "endLine": 132,
+          "params": [
+            "sock",
+            "addr",
+            "data",
+            "len",
+            "sent"
+          ]
+        },
+        {
+          "name": "Socket_Receive",
+          "startLine": 134,
+          "endLine": 145,
+          "params": [
+            "sock",
+            "buf",
+            "len",
+            "read"
+          ]
+        },
+        {
+          "name": "Socket_ReceiveFrom",
+          "startLine": 147,
+          "endLine": 157,
+          "params": [
+            "sock",
+            "addr",
+            "buf",
+            "len",
+            "read"
+          ]
+        },
+        {
+          "name": "Socket_Available",
+          "startLine": 159,
+          "endLine": 164,
+          "params": [
+            "sock"
+          ]
+        },
+        {
+          "name": "Socket_SetOption",
+          "startLine": 166,
+          "endLine": 168,
+          "params": [
+            "sock",
+            "level",
+            "optname",
+            "optval",
+            "optlen"
+          ]
+        },
+        {
+          "name": "Socket_GetOption",
+          "startLine": 170,
+          "endLine": 172,
+          "params": [
+            "sock",
+            "level",
+            "optname",
+            "optval",
+            "optlen"
+          ]
+        },
+        {
+          "name": "Socket_Close",
+          "startLine": 174,
+          "endLine": 177,
+          "params": [
+            "sock"
+          ]
+        },
+        {
+          "name": "Socket_Reset",
+          "startLine": 179,
+          "endLine": 189,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Socket_Create",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Connect",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_GetConnectionStatus",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Bind",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Listen",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Accept",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Send",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_SendTo",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Receive",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_ReceiveFrom",
+          "line": 147,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Available",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_SetOption",
+          "line": 166,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_GetOption",
+          "line": 170,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Close",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "Socket_Reset",
+          "line": 179,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SockList_Add",
+          "callee": "Flint::lock",
+          "lineNumber": 9
+        },
+        {
+          "caller": "SockList_Add",
+          "callee": "Flint::unlock",
+          "lineNumber": 13
+        },
+        {
+          "caller": "SockList_Add",
+          "callee": "Flint::realloc",
+          "lineNumber": 17
+        },
+        {
+          "caller": "SockList_Add",
+          "callee": "Flint::unlock",
+          "lineNumber": 19
+        },
+        {
+          "caller": "SockList_Add",
+          "callee": "Flint::unlock",
+          "lineNumber": 25
+        },
+        {
+          "caller": "SockList_Remove",
+          "callee": "Flint::lock",
+          "lineNumber": 30
+        },
+        {
+          "caller": "SockList_Remove",
+          "callee": "Flint::unlock",
+          "lineNumber": 34
+        },
+        {
+          "caller": "SockList_Remove",
+          "callee": "Flint::unlock",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Socket_Create",
+          "callee": "socket",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Socket_Create",
+          "callee": "SockList_Add",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Socket_Create",
+          "callee": "Socket_Close",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Socket_Create",
+          "callee": "fcntl",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Socket_Create",
+          "callee": "fcntl",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Socket_Connect",
+          "callee": "connect",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Socket_GetConnectionStatus",
+          "callee": "poll",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Socket_GetConnectionStatus",
+          "callee": "getsockopt",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Socket_Bind",
+          "callee": "bind",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Socket_Listen",
+          "callee": "listen",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Socket_Accept",
+          "callee": "accept",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Socket_Accept",
+          "callee": "SockList_Add",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Socket_Send",
+          "callee": "send",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Socket_SendTo",
+          "callee": "sendto",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Socket_Receive",
+          "callee": "recv",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Socket_ReceiveFrom",
+          "callee": "recvfrom",
+          "lineNumber": 149
+        },
+        {
+          "caller": "Socket_Available",
+          "callee": "ioctl",
+          "lineNumber": 161
+        },
+        {
+          "caller": "Socket_SetOption",
+          "callee": "setsockopt",
+          "lineNumber": 167
+        },
+        {
+          "caller": "Socket_GetOption",
+          "callee": "getsockopt",
+          "lineNumber": 171
+        },
+        {
+          "caller": "Socket_Close",
+          "callee": "close",
+          "lineNumber": 175
+        },
+        {
+          "caller": "Socket_Close",
+          "callee": "SockList_Remove",
+          "lineNumber": 176
+        },
+        {
+          "caller": "Socket_Reset",
+          "callee": "close",
+          "lineNumber": 183
+        },
+        {
+          "caller": "Socket_Reset",
+          "callee": "Flint::free",
+          "lineNumber": 185
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 15,
+        "functionCount": 17,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_flint_java_inet_address.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 27,
+      "callGraph": [
+        {
+          "caller": "getHostName",
+          "callee": "getObj",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getHostName",
+          "callee": "getFieldByIndex",
+          "lineNumber": 12
+        },
+        {
+          "caller": "setHostName",
+          "callee": "setObj",
+          "lineNumber": 13
+        },
+        {
+          "caller": "setHostName",
+          "callee": "getFieldByIndex",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getFamily",
+          "callee": "getInt32",
+          "lineNumber": 15
+        },
+        {
+          "caller": "getFamily",
+          "callee": "getFieldByIndex",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setFamily",
+          "callee": "setInt32",
+          "lineNumber": 16
+        },
+        {
+          "caller": "setFamily",
+          "callee": "getFieldByIndex",
+          "lineNumber": 16
+        },
+        {
+          "caller": "getAddress",
+          "callee": "getInt32",
+          "lineNumber": 21
+        },
+        {
+          "caller": "getAddress",
+          "callee": "getFieldByIndex",
+          "lineNumber": 21
+        },
+        {
+          "caller": "setAddress",
+          "callee": "setInt32",
+          "lineNumber": 22
+        },
+        {
+          "caller": "setAddress",
+          "callee": "getFieldByIndex",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getAddress",
+          "callee": "getObj",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getAddress",
+          "callee": "getFieldByIndex",
+          "lineNumber": 27
+        },
+        {
+          "caller": "setAddress",
+          "callee": "setObj",
+          "lineNumber": 28
+        },
+        {
+          "caller": "setAddress",
+          "callee": "getFieldByIndex",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getScopeId",
+          "callee": "getInt32",
+          "lineNumber": 30
+        },
+        {
+          "caller": "getScopeId",
+          "callee": "getFieldByIndex",
+          "lineNumber": 30
+        },
+        {
+          "caller": "setScopeId",
+          "callee": "setInt32",
+          "lineNumber": 31
+        },
+        {
+          "caller": "setScopeId",
+          "callee": "getFieldByIndex",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getScopeIdSet",
+          "callee": "getInt32",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getScopeIdSet",
+          "callee": "getFieldByIndex",
+          "lineNumber": 33
+        },
+        {
+          "caller": "setScopeIdSet",
+          "callee": "setInt32",
+          "lineNumber": 34
+        },
+        {
+          "caller": "setScopeIdSet",
+          "callee": "getFieldByIndex",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_adc.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_bitstream.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_common.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_dac.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_flint_datagram_socket_impl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 30,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_flint_inet_address_impl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 14,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_flint_socket_impl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 26,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_flint_socket_input_stream.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_flint_socket_output_stream.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_i2c_master.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 32,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_i2s_master.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 26,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_onewire.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_pin.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 21,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_port.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 14,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_spi_master.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 22,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_touch_pad.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_uart.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 24,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_native_wifi.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 26,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

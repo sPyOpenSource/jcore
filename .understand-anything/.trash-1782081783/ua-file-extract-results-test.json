@@ -1,0 +1,165 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "test/sound-controller/oscillator.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 173,
+      "nonEmptyLines": 154,
+      "functions": [
+        {
+          "name": "COscillator",
+          "startLine": 75,
+          "endLine": 84,
+          "params": [
+            "pModulator"
+          ]
+        },
+        {
+          "name": "~COscillator",
+          "startLine": 86,
+          "endLine": 89,
+          "params": []
+        },
+        {
+          "name": "SetWaveform",
+          "startLine": 91,
+          "endLine": 95,
+          "params": [
+            "Waveform"
+          ]
+        },
+        {
+          "name": "SetFrequency",
+          "startLine": 97,
+          "endLine": 101,
+          "params": [
+            "fFrequency"
+          ]
+        },
+        {
+          "name": "SetModulationVolume",
+          "startLine": 103,
+          "endLine": 107,
+          "params": [
+            "fVolume"
+          ]
+        },
+        {
+          "name": "NextSample",
+          "startLine": 109,
+          "endLine": 161,
+          "params": []
+        },
+        {
+          "name": "GetOutputLevel",
+          "startLine": 163,
+          "endLine": 166,
+          "params": []
+        },
+        {
+          "name": "GetRandom",
+          "startLine": 168,
+          "endLine": 173,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "COscillator",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "~COscillator",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "SetWaveform",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "SetFrequency",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "SetModulationVolume",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "NextSample",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "GetOutputLevel",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "GetRandom",
+          "line": 168,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SetWaveform",
+          "callee": "assert",
+          "lineNumber": 93
+        },
+        {
+          "caller": "SetFrequency",
+          "callee": "assert",
+          "lineNumber": 99
+        },
+        {
+          "caller": "SetModulationVolume",
+          "callee": "assert",
+          "lineNumber": 105
+        },
+        {
+          "caller": "NextSample",
+          "callee": "GetOutputLevel",
+          "lineNumber": 114
+        },
+        {
+          "caller": "NextSample",
+          "callee": "GetRandom",
+          "lineNumber": 154
+        },
+        {
+          "caller": "NextSample",
+          "callee": "assert",
+          "lineNumber": 158
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test/sound-controller/oscillator.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

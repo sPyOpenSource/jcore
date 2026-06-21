@@ -1,0 +1,3731 @@
+{
+  "batch": 1,
+  "nodes": [
+    {
+      "id": "file:addon/display/font6x8.h",
+      "type": "file",
+      "name": "font6x8.h",
+      "filePath": "addon/display/font6x8.h",
+      "summary": "font6x8.h - 1007 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "addon",
+        "display"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:addon/display/ssd1306device.cpp",
+      "type": "file",
+      "name": "ssd1306device.cpp",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "Implements SingleColumn, DoubleColumn, CSSD1306Device and 15 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:SingleColumn",
+      "type": "function",
+      "name": "SingleColumn",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "SingleColumn(CharData, nColumn) - 10 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:DoubleColumn",
+      "type": "function",
+      "name": "DoubleColumn",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "DoubleColumn(CharData, nColumn) - 13 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:CSSD1306Device",
+      "type": "function",
+      "name": "CSSD1306Device",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "CSSD1306Device(nWidth, nHeight, pI2CMaster, nAddress...) - 14 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:~CSSD1306Device",
+      "type": "function",
+      "name": "~CSSD1306Device",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "~CSSD1306Device() - 3 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "Initialize() - 47 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:DevClearCursor",
+      "type": "function",
+      "name": "DevClearCursor",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "DevClearCursor() - 5 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:DevSetCursorMode",
+      "type": "function",
+      "name": "DevSetCursorMode",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "DevSetCursorMode(bVisible) - 3 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:DevSetChar",
+      "type": "function",
+      "name": "DevSetChar",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "DevSetChar(nPosX, nPosY, chChar) - 5 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:DevSetCursor",
+      "type": "function",
+      "name": "DevSetCursor",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "DevSetCursor(nCursorX, nCursorY) - 3 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:DevUpdateDisplay",
+      "type": "function",
+      "name": "DevUpdateDisplay",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "DevUpdateDisplay() - 3 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:WriteCommand",
+      "type": "function",
+      "name": "WriteCommand",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "WriteCommand(nCommand) - 5 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:WriteFrameBuffer",
+      "type": "function",
+      "name": "WriteFrameBuffer",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "WriteFrameBuffer(bForceFullUpdate) - 13 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:SwapFrameBuffers",
+      "type": "function",
+      "name": "SwapFrameBuffers",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "SwapFrameBuffers() - 5 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:DrawChar",
+      "type": "function",
+      "name": "DrawChar",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "DrawChar(chChar, nCursorX, nCursorY, bInverted...) - 36 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:Flip",
+      "type": "function",
+      "name": "Flip",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "Flip() - 5 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:Print",
+      "type": "function",
+      "name": "Print",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "Print(pText, nCursorX, nCursorY, bClearLine...) - 23 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:Clear",
+      "type": "function",
+      "name": "Clear",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "Clear(bImmediate) - 8 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306device.cpp:SetBacklightState",
+      "type": "function",
+      "name": "SetBacklightState",
+      "filePath": "addon/display/ssd1306device.cpp",
+      "summary": "SetBacklightState(bEnabled) - 7 lines in ssd1306device.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/display/ssd1306device.h",
+      "type": "file",
+      "name": "ssd1306device.h",
+      "filePath": "addon/display/ssd1306device.h",
+      "summary": "ssd1306device.h - 92 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/linux/raspberrypi-firmware.cpp",
+      "type": "file",
+      "name": "raspberrypi-firmware.cpp",
+      "filePath": "addon/linux/raspberrypi-firmware.cpp",
+      "summary": "Defines TPropertyTagGeneric | Implements rpi_firmware_property",
+      "tags": [
+        "cpp",
+        "addon",
+        "firmware",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/linux/raspberrypi-firmware.cpp:rpi_firmware_property",
+      "type": "function",
+      "name": "rpi_firmware_property",
+      "filePath": "addon/linux/raspberrypi-firmware.cpp",
+      "summary": "rpi_firmware_property(fw, tag, data, len) - 22 lines in raspberrypi-firmware.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "firmware"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:addon/linux/raspberrypi-firmware.cpp:TPropertyTagGeneric",
+      "type": "class",
+      "name": "TPropertyTagGeneric",
+      "filePath": "addon/linux/raspberrypi-firmware.cpp",
+      "summary": "TPropertyTagGeneric class with 2 properties in raspberrypi-firmware.cpp",
+      "tags": [
+        "class",
+        "cpp",
+        "addon",
+        "firmware",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/atomic.h",
+      "type": "file",
+      "name": "atomic.h",
+      "filePath": "include/circle/atomic.h",
+      "summary": "atomic.h - 88 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "atomic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/rpi/bcmframebuffer.h",
+      "type": "file",
+      "name": "bcmframebuffer.h",
+      "filePath": "include/circle/rpi/bcmframebuffer.h",
+      "summary": "bcmframebuffer.h - 121 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/sched/semaphore.h",
+      "type": "file",
+      "name": "semaphore.h",
+      "filePath": "include/circle/sched/semaphore.h",
+      "summary": "semaphore.h - 54 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "scheduler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/types.h",
+      "type": "file",
+      "name": "types.h",
+      "filePath": "include/circle/types.h",
+      "summary": "types.h - 64 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "types"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/usb/gadget/usbmidigadget.h",
+      "type": "file",
+      "name": "usbmidigadget.h",
+      "filePath": "include/circle/usb/gadget/usbmidigadget.h",
+      "summary": "usbmidigadget.h - 106 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/usb/gadget/usbmidigadgetendpoint.h",
+      "type": "file",
+      "name": "usbmidigadgetendpoint.h",
+      "filePath": "include/circle/usb/gadget/usbmidigadgetendpoint.h",
+      "summary": "usbmidigadgetendpoint.h - 73 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/usb/usbhcidevice.h",
+      "type": "file",
+      "name": "usbhcidevice.h",
+      "filePath": "include/circle/usb/usbhcidevice.h",
+      "summary": "usbhcidevice.h - c source file in the Circle project (37 lines)",
+      "tags": [
+        "c",
+        "header",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/assert.cpp",
+      "type": "file",
+      "name": "assert.cpp",
+      "filePath": "lib/assert.cpp",
+      "summary": "assert.cpp - 56 lines of cpp source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "cpp",
+        "library",
+        "assert"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/cxa_guard.cpp",
+      "type": "file",
+      "name": "cxa_guard.cpp",
+      "filePath": "lib/cxa_guard.cpp",
+      "summary": "cxa_guard.cpp - 159 lines of cpp source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/rpi/bcmframebuffer.cpp",
+      "type": "file",
+      "name": "bcmframebuffer.cpp",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "Implements CBcmFrameBuffer, ~CBcmFrameBuffer, SetPalette and 18 more",
+      "tags": [
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:CBcmFrameBuffer",
+      "type": "function",
+      "name": "CBcmFrameBuffer",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "CBcmFrameBuffer(nWidth, nHeight, nDepth, nVirtualWidth...) - 76 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:~CBcmFrameBuffer",
+      "type": "function",
+      "name": "~CBcmFrameBuffer",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "~CBcmFrameBuffer() - 5 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:SetPalette",
+      "type": "function",
+      "name": "SetPalette",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "SetPalette(nIndex, nRGB565) - 13 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:SetPalette32",
+      "type": "function",
+      "name": "SetPalette32",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "SetPalette32(nIndex, nRGBA) - 7 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "Initialize() - 47 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:SetPixel",
+      "type": "function",
+      "name": "SetPixel",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "SetPixel(nPosX, nPosY, nColor) - 20 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:SetArea",
+      "type": "function",
+      "name": "SetArea",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "SetArea(rArea, pPixels, pRoutine, pParam) - 85 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetWidth",
+      "type": "function",
+      "name": "GetWidth",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetWidth() - 4 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetHeight",
+      "type": "function",
+      "name": "GetHeight",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetHeight() - 4 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetVirtWidth",
+      "type": "function",
+      "name": "GetVirtWidth",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetVirtWidth() - 4 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetVirtHeight",
+      "type": "function",
+      "name": "GetVirtHeight",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetVirtHeight() - 4 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetPitch",
+      "type": "function",
+      "name": "GetPitch",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetPitch() - 4 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetDepth",
+      "type": "function",
+      "name": "GetDepth",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetDepth() - 4 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetBuffer",
+      "type": "function",
+      "name": "GetBuffer",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetBuffer() - 4 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetSize",
+      "type": "function",
+      "name": "GetSize",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetSize() - 4 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:UpdatePalette",
+      "type": "function",
+      "name": "UpdatePalette",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "UpdatePalette() - 25 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:SetVirtualOffset",
+      "type": "function",
+      "name": "SetVirtualOffset",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "SetVirtualOffset(nOffsetX, nOffsetY) - 17 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:WaitForVerticalSync",
+      "type": "function",
+      "name": "WaitForVerticalSync",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "WaitForVerticalSync() - 8 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:SetBacklightBrightness",
+      "type": "function",
+      "name": "SetBacklightBrightness",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "SetBacklightBrightness(nBrightness) - 9 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:SetDisplay",
+      "type": "function",
+      "name": "SetDisplay",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "SetDisplay() - 17 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmframebuffer.cpp:GetNumDisplays",
+      "type": "function",
+      "name": "GetNumDisplays",
+      "filePath": "lib/rpi/bcmframebuffer.cpp",
+      "summary": "GetNumDisplays() - 24 lines in bcmframebuffer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/sched/semaphore.cpp",
+      "type": "file",
+      "name": "semaphore.cpp",
+      "filePath": "lib/sched/semaphore.cpp",
+      "summary": "Implements CSemaphore, ~CSemaphore, GetState and 3 more",
+      "tags": [
+        "cpp",
+        "library",
+        "scheduler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sched/semaphore.cpp:CSemaphore",
+      "type": "function",
+      "name": "CSemaphore",
+      "filePath": "lib/sched/semaphore.cpp",
+      "summary": "CSemaphore(nInitialCount) - 6 lines in semaphore.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "scheduler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sched/semaphore.cpp:~CSemaphore",
+      "type": "function",
+      "name": "~CSemaphore",
+      "filePath": "lib/sched/semaphore.cpp",
+      "summary": "~CSemaphore() - 4 lines in semaphore.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "scheduler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sched/semaphore.cpp:GetState",
+      "type": "function",
+      "name": "GetState",
+      "filePath": "lib/sched/semaphore.cpp",
+      "summary": "GetState() - 4 lines in semaphore.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "scheduler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sched/semaphore.cpp:Down",
+      "type": "function",
+      "name": "Down",
+      "filePath": "lib/sched/semaphore.cpp",
+      "summary": "Down() - 13 lines in semaphore.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "scheduler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sched/semaphore.cpp:Up",
+      "type": "function",
+      "name": "Up",
+      "filePath": "lib/sched/semaphore.cpp",
+      "summary": "Up() - 15 lines in semaphore.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "scheduler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sched/semaphore.cpp:TryDown",
+      "type": "function",
+      "name": "TryDown",
+      "filePath": "lib/sched/semaphore.cpp",
+      "summary": "TryDown() - 15 lines in semaphore.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "scheduler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/synchronize.cpp",
+      "type": "file",
+      "name": "synchronize.cpp",
+      "filePath": "lib/synchronize.cpp",
+      "summary": "Implements CurrentExecutionLevel, SyncDataAndInstructionCache",
+      "tags": [
+        "cpp",
+        "library",
+        "synchronization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/synchronize.cpp:CurrentExecutionLevel",
+      "type": "function",
+      "name": "CurrentExecutionLevel",
+      "filePath": "lib/synchronize.cpp",
+      "summary": "CurrentExecutionLevel() - 17 lines in synchronize.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/synchronize.cpp:SyncDataAndInstructionCache",
+      "type": "function",
+      "name": "SyncDataAndInstructionCache",
+      "filePath": "lib/synchronize.cpp",
+      "summary": "SyncDataAndInstructionCache() - 11 lines in synchronize.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "type": "file",
+      "name": "usbmidigadget.cpp",
+      "filePath": "lib/usb/gadget/usbmidigadget.cpp",
+      "summary": "Implements CUSBMIDIGadget, ~CUSBMIDIGadget, AddEndpoints and 2 more",
+      "tags": [
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadget.cpp:CUSBMIDIGadget",
+      "type": "function",
+      "name": "CUSBMIDIGadget",
+      "filePath": "lib/usb/gadget/usbmidigadget.cpp",
+      "summary": "CUSBMIDIGadget(pInterruptSystem) - 6 lines in usbmidigadget.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadget.cpp:~CUSBMIDIGadget",
+      "type": "function",
+      "name": "~CUSBMIDIGadget",
+      "filePath": "lib/usb/gadget/usbmidigadget.cpp",
+      "summary": "~CUSBMIDIGadget() - 4 lines in usbmidigadget.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadget.cpp:AddEndpoints",
+      "type": "function",
+      "name": "AddEndpoints",
+      "filePath": "lib/usb/gadget/usbmidigadget.cpp",
+      "summary": "AddEndpoints() - 14 lines in usbmidigadget.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadget.cpp:CreateDevice",
+      "type": "function",
+      "name": "CreateDevice",
+      "filePath": "lib/usb/gadget/usbmidigadget.cpp",
+      "summary": "CreateDevice() - 12 lines in usbmidigadget.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadget.cpp:OnSuspend",
+      "type": "function",
+      "name": "OnSuspend",
+      "filePath": "lib/usb/gadget/usbmidigadget.cpp",
+      "summary": "OnSuspend() - 11 lines in usbmidigadget.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "type": "file",
+      "name": "usbmidigadgetendpoint.cpp",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "Implements CUSBMIDIGadgetEndpoint, ~CUSBMIDIGadgetEndpoint, AttachInterface and 9 more",
+      "tags": [
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:CUSBMIDIGadgetEndpoint",
+      "type": "function",
+      "name": "CUSBMIDIGadgetEndpoint",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "CUSBMIDIGadgetEndpoint(pDesc, pGadget) - 15 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:~CUSBMIDIGadgetEndpoint",
+      "type": "function",
+      "name": "~CUSBMIDIGadgetEndpoint",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "~CUSBMIDIGadgetEndpoint() - 5 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:AttachInterface",
+      "type": "function",
+      "name": "AttachInterface",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "AttachInterface(pInterface) - 11 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnActivate",
+      "type": "function",
+      "name": "OnActivate",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "OnActivate() - 7 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnTransferComplete",
+      "type": "function",
+      "name": "OnTransferComplete",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "OnTransferComplete(bIn, nLength) - 43 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnSuspend",
+      "type": "function",
+      "name": "OnSuspend",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "OnSuspend() - 13 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:SendEventsHandler",
+      "type": "function",
+      "name": "SendEventsHandler",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "SendEventsHandler(pData, nLength) - 43 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:GetQueueBytesFree",
+      "type": "function",
+      "name": "GetQueueBytesFree",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "GetQueueBytesFree() - 12 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:GetQueueBytesAvail",
+      "type": "function",
+      "name": "GetQueueBytesAvail",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "GetQueueBytesAvail() - 12 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:Enqueue",
+      "type": "function",
+      "name": "Enqueue",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "Enqueue(pBuffer, nCount) - 17 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:Dequeue",
+      "type": "function",
+      "name": "Dequeue",
+      "filePath": "lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "summary": "Dequeue(pBuffer, nCount) - 17 lines in usbmidigadgetendpoint.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/11-gpioclock/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/11-gpioclock/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/11-gpioclock/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/11-gpioclock/kernel.cpp",
+      "summary": "CKernel() - 10 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/11-gpioclock/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/11-gpioclock/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/11-gpioclock/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/11-gpioclock/kernel.cpp",
+      "summary": "Initialize() - 37 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/11-gpioclock/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/11-gpioclock/kernel.cpp",
+      "summary": "Run() - 74 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sample/11-gpioclock/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/11-gpioclock/kernel.h",
+      "summary": "kernel.h - 70 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/11-gpioclock/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/11-gpioclock/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/11-gpioclock/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/11-gpioclock/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/11-gpioclock/sampler.h",
+      "type": "file",
+      "name": "sampler.h",
+      "filePath": "sample/11-gpioclock/sampler.h",
+      "summary": "sampler.h - c source file in the Circle project (38 lines)",
+      "tags": [
+        "c",
+        "sample",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/12-pwmsound/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/12-pwmsound/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "audio",
+        "pwm"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/12-pwmsound/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/12-pwmsound/kernel.cpp",
+      "summary": "CKernel() - 8 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/12-pwmsound/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/12-pwmsound/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/12-pwmsound/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/12-pwmsound/kernel.cpp",
+      "summary": "Initialize() - 37 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/12-pwmsound/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/12-pwmsound/kernel.cpp",
+      "summary": "Run() - 15 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/12-pwmsound/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/12-pwmsound/kernel.h",
+      "summary": "kernel.h - 67 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "audio",
+        "pwm"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/12-pwmsound/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/12-pwmsound/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "audio",
+        "pwm"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/12-pwmsound/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/12-pwmsound/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/13-pwmoutput/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/13-pwmoutput/kernel.cpp",
+      "summary": "Implements CKernel, Initialize, Run",
+      "tags": [
+        "cpp",
+        "sample",
+        "pwm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/13-pwmoutput/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/13-pwmoutput/kernel.cpp",
+      "summary": "CKernel() - 28 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "pwm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/13-pwmoutput/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/13-pwmoutput/kernel.cpp",
+      "summary": "Initialize() - 37 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "pwm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/13-pwmoutput/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/13-pwmoutput/kernel.cpp",
+      "summary": "Run() - 32 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "pwm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/13-pwmoutput/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/13-pwmoutput/kernel.h",
+      "summary": "kernel.h - 70 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "pwm"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/13-pwmoutput/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/13-pwmoutput/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "pwm"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/13-pwmoutput/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/13-pwmoutput/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "pwm"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/29-miniorgan/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/29-miniorgan/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/29-miniorgan/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/29-miniorgan/kernel.cpp",
+      "summary": "CKernel() - 14 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/29-miniorgan/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/29-miniorgan/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/29-miniorgan/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/29-miniorgan/kernel.cpp",
+      "summary": "Initialize() - 44 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/29-miniorgan/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/29-miniorgan/kernel.cpp",
+      "summary": "Run() - 21 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/29-miniorgan/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/29-miniorgan/kernel.h",
+      "summary": "kernel.h - 69 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/29-miniorgan/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/29-miniorgan/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/29-miniorgan/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/29-miniorgan/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/44-ESPJVM/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/44-ESPJVM/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/44-ESPJVM/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/44-ESPJVM/kernel.cpp",
+      "summary": "CKernel() - 4 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/44-ESPJVM/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/44-ESPJVM/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/44-ESPJVM/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/44-ESPJVM/kernel.cpp",
+      "summary": "Initialize() - 4 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/44-ESPJVM/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/44-ESPJVM/kernel.cpp",
+      "summary": "Run() - 34 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/44-ESPJVM/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/44-ESPJVM/kernel.h",
+      "summary": "kernel.h - 55 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/44-ESPJVM/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/44-ESPJVM/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/44-ESPJVM/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/44-ESPJVM/main.cpp",
+      "summary": "main() - 20 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/usb-midi-send/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/usb-midi-send/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 2 more",
+      "tags": [
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/usb-midi-send/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/usb-midi-send/kernel.cpp",
+      "summary": "CKernel() - 13 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-midi-send/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/usb-midi-send/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-midi-send/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/usb-midi-send/kernel.cpp",
+      "summary": "Initialize() - 43 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/usb-midi-send/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/usb-midi-send/kernel.cpp",
+      "summary": "Run() - 68 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:test/usb-midi-send/kernel.cpp:DeviceRemovedHandler",
+      "type": "function",
+      "name": "DeviceRemovedHandler",
+      "filePath": "test/usb-midi-send/kernel.cpp",
+      "summary": "DeviceRemovedHandler(pDevice, pContext) - 7 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "file:addon/display/font6x8.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "file:addon/display/ssd1306device.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:SingleColumn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DoubleColumn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:CSSD1306Device",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:CSSD1306Device",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:~CSSD1306Device",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:~CSSD1306Device",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevClearCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevClearCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevSetCursorMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevSetCursorMode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevSetChar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevSetChar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevSetCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevSetCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevUpdateDisplay",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DevUpdateDisplay",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:WriteCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:WriteCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:WriteFrameBuffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:WriteFrameBuffer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:SwapFrameBuffers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:SwapFrameBuffers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DrawChar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:DrawChar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:Flip",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:Flip",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:Print",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:Print",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:Clear",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:Clear",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:SetBacklightState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306device.cpp",
+      "target": "function:addon/display/ssd1306device.cpp:SetBacklightState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/raspberrypi-firmware.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/raspberrypi-firmware.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/raspberrypi-firmware.cpp",
+      "target": "function:addon/linux/raspberrypi-firmware.cpp:rpi_firmware_property",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/linux/raspberrypi-firmware.cpp",
+      "target": "function:addon/linux/raspberrypi-firmware.cpp:rpi_firmware_property",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/raspberrypi-firmware.cpp",
+      "target": "class:addon/linux/raspberrypi-firmware.cpp:TPropertyTagGeneric",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/linux/raspberrypi-firmware.cpp",
+      "target": "class:addon/linux/raspberrypi-firmware.cpp:TPropertyTagGeneric",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/assert.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/assert.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/assert.cpp",
+      "target": "file:include/circle/interrupt.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/assert.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/assert.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/assert.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/assert.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/assert.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/cxa_guard.cpp",
+      "target": "file:include/circle/atomic.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/cxa_guard.cpp",
+      "target": "file:include/circle/multicore.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/cxa_guard.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "file:include/circle/atomic.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "file:include/circle/interrupt.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "file:include/circle/koptions.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "file:include/circle/rpi/bcmframebuffer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:CBcmFrameBuffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:CBcmFrameBuffer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:~CBcmFrameBuffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:~CBcmFrameBuffer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetPalette",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetPalette",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetPalette32",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetPalette32",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetPixel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetPixel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetArea",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetArea",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetWidth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetWidth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetHeight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetHeight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetVirtWidth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetVirtWidth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetVirtHeight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetVirtHeight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetPitch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetPitch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetDepth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetDepth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetBuffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetBuffer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetSize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetSize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:UpdatePalette",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:UpdatePalette",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetVirtualOffset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetVirtualOffset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:WaitForVerticalSync",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:WaitForVerticalSync",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetBacklightBrightness",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetBacklightBrightness",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetDisplay",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:SetDisplay",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetNumDisplays",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmframebuffer.cpp",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetNumDisplays",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "file:include/circle/atomic.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "file:include/circle/sched/semaphore.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:CSemaphore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:CSemaphore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:~CSemaphore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:~CSemaphore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:GetState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:GetState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:Down",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:Down",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:Up",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:Up",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:TryDown",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sched/semaphore.cpp",
+      "target": "function:lib/sched/semaphore.cpp:TryDown",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/sched/semaphore.cpp:Down",
+      "target": "function:addon/display/ssd1306device.cpp:Clear",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/sched/semaphore.cpp:TryDown",
+      "target": "function:addon/display/ssd1306device.cpp:Clear",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/synchronize.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/synchronize.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/synchronize.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/synchronize.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/synchronize.cpp",
+      "target": "function:lib/synchronize.cpp:CurrentExecutionLevel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize.cpp",
+      "target": "function:lib/synchronize.cpp:CurrentExecutionLevel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/synchronize.cpp",
+      "target": "function:lib/synchronize.cpp:SyncDataAndInstructionCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize.cpp",
+      "target": "function:lib/synchronize.cpp:SyncDataAndInstructionCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "file:include/circle/usb/gadget/usbmidigadget.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "file:include/circle/usb/gadget/usbmidigadgetendpoint.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:CUSBMIDIGadget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:CUSBMIDIGadget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:~CUSBMIDIGadget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:~CUSBMIDIGadget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:AddEndpoints",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:AddEndpoints",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:CreateDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:CreateDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:OnSuspend",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadget.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadget.cpp:OnSuspend",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "file:include/circle/atomic.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "file:include/circle/usb/gadget/usbmidigadget.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "file:include/circle/usb/gadget/usbmidigadgetendpoint.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "file:include/circle/usb/usbmidi.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:CUSBMIDIGadgetEndpoint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:CUSBMIDIGadgetEndpoint",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:~CUSBMIDIGadgetEndpoint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:~CUSBMIDIGadgetEndpoint",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:AttachInterface",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:AttachInterface",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnActivate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnActivate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnTransferComplete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnTransferComplete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnSuspend",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:OnSuspend",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:SendEventsHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:SendEventsHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:GetQueueBytesFree",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:GetQueueBytesFree",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:GetQueueBytesAvail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:GetQueueBytesAvail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:Enqueue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:Enqueue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:Dequeue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/gadget/usbmidigadgetendpoint.cpp",
+      "target": "function:lib/usb/gadget/usbmidigadgetendpoint.cpp:Dequeue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "file:sample/11-gpioclock/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "file:sample/11-gpioclock/sampler.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "function:sample/11-gpioclock/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "function:sample/11-gpioclock/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "function:sample/11-gpioclock/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "function:sample/11-gpioclock/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "function:sample/11-gpioclock/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "function:sample/11-gpioclock/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "function:sample/11-gpioclock/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/11-gpioclock/kernel.cpp",
+      "target": "function:sample/11-gpioclock/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/11-gpioclock/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/11-gpioclock/main.cpp",
+      "target": "file:sample/11-gpioclock/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/11-gpioclock/main.cpp",
+      "target": "function:sample/11-gpioclock/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/11-gpioclock/main.cpp",
+      "target": "function:sample/11-gpioclock/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "file:sample/12-pwmsound/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "function:sample/12-pwmsound/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "function:sample/12-pwmsound/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "function:sample/12-pwmsound/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "function:sample/12-pwmsound/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "function:sample/12-pwmsound/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "function:sample/12-pwmsound/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "function:sample/12-pwmsound/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/12-pwmsound/kernel.cpp",
+      "target": "function:sample/12-pwmsound/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/12-pwmsound/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/12-pwmsound/main.cpp",
+      "target": "file:sample/12-pwmsound/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/12-pwmsound/main.cpp",
+      "target": "function:sample/12-pwmsound/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/12-pwmsound/main.cpp",
+      "target": "function:sample/12-pwmsound/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "file:sample/13-pwmoutput/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "function:sample/13-pwmoutput/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "function:sample/13-pwmoutput/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "function:sample/13-pwmoutput/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "function:sample/13-pwmoutput/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "function:sample/13-pwmoutput/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/13-pwmoutput/kernel.cpp",
+      "target": "function:sample/13-pwmoutput/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/13-pwmoutput/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/13-pwmoutput/main.cpp",
+      "target": "file:sample/13-pwmoutput/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/13-pwmoutput/main.cpp",
+      "target": "function:sample/13-pwmoutput/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/13-pwmoutput/main.cpp",
+      "target": "function:sample/13-pwmoutput/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "file:include/circle/machineinfo.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "file:include/circle/usb/gadget/usbmidigadget.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "file:include/circle/usb/usbhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "file:sample/29-miniorgan/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "function:sample/29-miniorgan/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "function:sample/29-miniorgan/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "function:sample/29-miniorgan/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "function:sample/29-miniorgan/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "function:sample/29-miniorgan/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "function:sample/29-miniorgan/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "function:sample/29-miniorgan/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/kernel.cpp",
+      "target": "function:sample/29-miniorgan/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/29-miniorgan/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/main.cpp",
+      "target": "file:sample/29-miniorgan/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/main.cpp",
+      "target": "function:sample/29-miniorgan/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/main.cpp",
+      "target": "function:sample/29-miniorgan/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "file:sample/44-ESPJVM/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "function:sample/44-ESPJVM/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "function:sample/44-ESPJVM/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "function:sample/44-ESPJVM/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "function:sample/44-ESPJVM/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "function:sample/44-ESPJVM/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "function:sample/44-ESPJVM/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "function:sample/44-ESPJVM/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/44-ESPJVM/kernel.cpp",
+      "target": "function:sample/44-ESPJVM/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/44-ESPJVM/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/44-ESPJVM/main.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/44-ESPJVM/main.cpp",
+      "target": "file:sample/44-ESPJVM/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/44-ESPJVM/main.cpp",
+      "target": "function:sample/44-ESPJVM/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/44-ESPJVM/main.cpp",
+      "target": "function:sample/44-ESPJVM/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "file:include/circle/usb/gadget/usbmidigadget.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "file:include/circle/usb/usbhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "file:test/usb-midi-send/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:DeviceRemovedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-midi-send/kernel.cpp",
+      "target": "function:test/usb-midi-send/kernel.cpp:DeviceRemovedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:test/usb-midi-send/kernel.cpp:CKernel",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetWidth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:test/usb-midi-send/kernel.cpp:CKernel",
+      "target": "function:lib/rpi/bcmframebuffer.cpp:GetHeight",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

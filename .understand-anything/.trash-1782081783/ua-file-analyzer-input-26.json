@@ -1,0 +1,243 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/fatfs/diskio.cpp",
+      "language": "cpp",
+      "sizeLines": 294,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/fatfs/diskio.h",
+      "language": "c",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/fatfs/ff.c",
+      "language": "c",
+      "sizeLines": 7249,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/fatfs/ff.h",
+      "language": "c",
+      "sizeLines": 448,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/fatfs/ffsystem.cpp",
+      "language": "cpp",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/fatfs/ffunicode.c",
+      "language": "c",
+      "sizeLines": 10908,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/2dgraphics.h",
+      "language": "c",
+      "sizeLines": 299,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/device.h",
+      "language": "c",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/genericlock.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/screen.h",
+      "language": "c",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/2dgraphics.cpp",
+      "language": "cpp",
+      "sizeLines": 563,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/device.cpp",
+      "language": "cpp",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/screen.cpp",
+      "language": "cpp",
+      "sizeLines": 290,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/39-umsdplugging/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 252,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/39-umsdplugging/kernel.h",
+      "language": "c",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/39-umsdplugging/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/graphicshape.cpp",
+      "language": "cpp",
+      "sizeLines": 166,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/graphicshape.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/kernel.h",
+      "language": "c",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/mandelbrot.cpp",
+      "language": "cpp",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/mandelbrot.h",
+      "language": "c",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/multicoredemo.cpp",
+      "language": "cpp",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/43-multiwindow/multicoredemo.h",
+      "language": "c",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/fatfs/diskio.cpp": [
+      "addon/fatfs/diskio.h",
+      "addon/fatfs/ff.h",
+      "include/assert.h",
+      "include/circle/device.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/types.h",
+      "include/circle/util.h"
+    ],
+    "addon/fatfs/diskio.h": [],
+    "addon/fatfs/ff.c": [
+      "addon/fatfs/diskio.h",
+      "addon/fatfs/ff.h"
+    ],
+    "addon/fatfs/ff.h": [],
+    "addon/fatfs/ffsystem.cpp": [
+      "addon/fatfs/ff.h",
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/genericlock.h",
+      "include/circle/timer.h"
+    ],
+    "addon/fatfs/ffunicode.c": [
+      "addon/fatfs/ff.h"
+    ],
+    "include/circle/2dgraphics.h": [],
+    "include/circle/device.h": [],
+    "include/circle/genericlock.h": [],
+    "include/circle/screen.h": [],
+    "lib/2dgraphics.cpp": [
+      "include/assert.h",
+      "include/circle/2dgraphics.h",
+      "include/circle/screen.h",
+      "include/circle/util.h"
+    ],
+    "lib/device.cpp": [
+      "include/circle/device.h"
+    ],
+    "lib/screen.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/screen.h"
+    ],
+    "sample/39-umsdplugging/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/device.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/39-umsdplugging/kernel.h"
+    ],
+    "sample/39-umsdplugging/kernel.h": [],
+    "sample/39-umsdplugging/main.cpp": [
+      "include/circle/startup.h",
+      "sample/39-umsdplugging/kernel.h"
+    ],
+    "sample/43-multiwindow/graphicshape.cpp": [
+      "sample/43-multiwindow/graphicshape.h"
+    ],
+    "sample/43-multiwindow/graphicshape.h": [],
+    "sample/43-multiwindow/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/screen.h",
+      "sample/43-multiwindow/kernel.h"
+    ],
+    "sample/43-multiwindow/kernel.h": [],
+    "sample/43-multiwindow/main.cpp": [
+      "include/circle/startup.h",
+      "sample/43-multiwindow/kernel.h"
+    ],
+    "sample/43-multiwindow/mandelbrot.cpp": [
+      "include/circle/screen.h",
+      "sample/43-multiwindow/mandelbrot.h"
+    ],
+    "sample/43-multiwindow/mandelbrot.h": [],
+    "sample/43-multiwindow/multicoredemo.cpp": [
+      "include/assert.h",
+      "include/circle/2dgraphics.h",
+      "include/circle/device.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/memory.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "sample/43-multiwindow/graphicshape.h",
+      "sample/43-multiwindow/mandelbrot.h",
+      "sample/43-multiwindow/multicoredemo.h"
+    ],
+    "sample/43-multiwindow/multicoredemo.h": []
+  }
+}

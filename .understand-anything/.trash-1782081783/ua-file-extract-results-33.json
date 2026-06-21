@@ -1,0 +1,3152 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 15,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "include/circle/usb/xhcicommandmanager.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 74,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhcidevice.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 101,
+      "nonEmptyLines": 81,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhciendpoint.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 97,
+      "nonEmptyLines": 75,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhcieventmanager.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 44,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhciring.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 57,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhcirootport.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 74,
+      "nonEmptyLines": 58,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhcislotmanager.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 49,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhciusbdevice.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 58,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/xhcicommandmanager.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 266,
+      "nonEmptyLines": 215,
+      "functions": [
+        {
+          "name": "CXHCICommandManager",
+          "startLine": 28,
+          "endLine": 43,
+          "params": [
+            "pXHCIDevice"
+          ]
+        },
+        {
+          "name": "~CXHCICommandManager",
+          "startLine": 45,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "IsValid",
+          "startLine": 53,
+          "endLine": 56,
+          "params": []
+        },
+        {
+          "name": "EnableSlot",
+          "startLine": 58,
+          "endLine": 77,
+          "params": [
+            "pSlotID"
+          ]
+        },
+        {
+          "name": "DisableSlot",
+          "startLine": 79,
+          "endLine": 85,
+          "params": [
+            "uchSlotID"
+          ]
+        },
+        {
+          "name": "AddressDevice",
+          "startLine": 87,
+          "endLine": 100,
+          "params": [
+            "uchSlotID",
+            "pInputContext",
+            "bSetAddress"
+          ]
+        },
+        {
+          "name": "ConfigureEndpoint",
+          "startLine": 102,
+          "endLine": 115,
+          "params": [
+            "uchSlotID",
+            "pInputContext",
+            "bDeconfigure"
+          ]
+        },
+        {
+          "name": "EvaluateContext",
+          "startLine": 117,
+          "endLine": 125,
+          "params": [
+            "uchSlotID",
+            "pInputContext"
+          ]
+        },
+        {
+          "name": "ResetEndpoint",
+          "startLine": 127,
+          "endLine": 136,
+          "params": [
+            "uchSlotID",
+            "uchEndpointID"
+          ]
+        },
+        {
+          "name": "SetTRDequeuePointer",
+          "startLine": 138,
+          "endLine": 155,
+          "params": [
+            "uchSlotID",
+            "uchEndpointID",
+            "pTRB",
+            "bDCS"
+          ]
+        },
+        {
+          "name": "NoOp",
+          "startLine": 157,
+          "endLine": 160,
+          "params": []
+        },
+        {
+          "name": "DoCommand",
+          "startLine": 177,
+          "endLine": 236,
+          "params": [
+            "nControl",
+            "nParameter1",
+            "nParameter2",
+            "nStatus",
+            "pSlotID"
+          ]
+        },
+        {
+          "name": "CommandCompleted",
+          "startLine": 238,
+          "endLine": 266,
+          "params": [
+            "pCommandTRB",
+            "uchCompletionCode",
+            "uchSlotID"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CXHCICommandManager",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CXHCICommandManager",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "IsValid",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "EnableSlot",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "DisableSlot",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "AddressDevice",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "ConfigureEndpoint",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "EvaluateContext",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "ResetEndpoint",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "SetTRDequeuePointer",
+          "line": 138,
+          "isDefault": false
+        },
+        {
+          "name": "NoOp",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "DoCommand",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "CommandCompleted",
+          "line": 238,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CXHCICommandManager",
+          "callee": "GetMMIOSpace",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CXHCICommandManager",
+          "callee": "IsValid",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CXHCICommandManager",
+          "callee": "assert",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CXHCICommandManager",
+          "callee": "op_write64",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CXHCICommandManager",
+          "callee": "XHCI_TO_DMA",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CXHCICommandManager",
+          "callee": "GetFirstTRB",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CXHCICommandManager",
+          "callee": "GetCycleState",
+          "lineNumber": 42
+        },
+        {
+          "caller": "~CXHCICommandManager",
+          "callee": "assert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "IsValid",
+          "callee": "IsValid",
+          "lineNumber": 55
+        },
+        {
+          "caller": "EnableSlot",
+          "callee": "DoCommand",
+          "lineNumber": 61
+        },
+        {
+          "caller": "EnableSlot",
+          "callee": "XHCI_CMD_SUCCESS",
+          "lineNumber": 63
+        },
+        {
+          "caller": "EnableSlot",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 68
+        },
+        {
+          "caller": "EnableSlot",
+          "callee": "assert",
+          "lineNumber": 73
+        },
+        {
+          "caller": "DisableSlot",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "DisableSlot",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 81
+        },
+        {
+          "caller": "DisableSlot",
+          "callee": "DoCommand",
+          "lineNumber": 83
+        },
+        {
+          "caller": "AddressDevice",
+          "callee": "assert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "AddressDevice",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 90
+        },
+        {
+          "caller": "AddressDevice",
+          "callee": "assert",
+          "lineNumber": 98
+        },
+        {
+          "caller": "AddressDevice",
+          "callee": "DoCommand",
+          "lineNumber": 99
+        },
+        {
+          "caller": "AddressDevice",
+          "callee": "XHCI_TO_DMA_LO",
+          "lineNumber": 99
+        },
+        {
+          "caller": "AddressDevice",
+          "callee": "XHCI_TO_DMA_HI",
+          "lineNumber": 99
+        },
+        {
+          "caller": "ConfigureEndpoint",
+          "callee": "assert",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ConfigureEndpoint",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ConfigureEndpoint",
+          "callee": "assert",
+          "lineNumber": 113
+        },
+        {
+          "caller": "ConfigureEndpoint",
+          "callee": "DoCommand",
+          "lineNumber": 114
+        },
+        {
+          "caller": "ConfigureEndpoint",
+          "callee": "XHCI_TO_DMA_LO",
+          "lineNumber": 114
+        },
+        {
+          "caller": "ConfigureEndpoint",
+          "callee": "XHCI_TO_DMA_HI",
+          "lineNumber": 114
+        },
+        {
+          "caller": "EvaluateContext",
+          "callee": "assert",
+          "lineNumber": 119
+        },
+        {
+          "caller": "EvaluateContext",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 119
+        },
+        {
+          "caller": "EvaluateContext",
+          "callee": "assert",
+          "lineNumber": 123
+        },
+        {
+          "caller": "EvaluateContext",
+          "callee": "DoCommand",
+          "lineNumber": 124
+        },
+        {
+          "caller": "EvaluateContext",
+          "callee": "XHCI_TO_DMA_LO",
+          "lineNumber": 124
+        },
+        {
+          "caller": "EvaluateContext",
+          "callee": "XHCI_TO_DMA_HI",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ResetEndpoint",
+          "callee": "assert",
+          "lineNumber": 129
+        },
+        {
+          "caller": "ResetEndpoint",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 129
+        },
+        {
+          "caller": "ResetEndpoint",
+          "callee": "assert",
+          "lineNumber": 130
+        },
+        {
+          "caller": "ResetEndpoint",
+          "callee": "XHCI_IS_ENDPOINTID",
+          "lineNumber": 130
+        },
+        {
+          "caller": "ResetEndpoint",
+          "callee": "DoCommand",
+          "lineNumber": 135
+        },
+        {
+          "caller": "SetTRDequeuePointer",
+          "callee": "assert",
+          "lineNumber": 141
+        },
+        {
+          "caller": "SetTRDequeuePointer",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 141
+        },
+        {
+          "caller": "SetTRDequeuePointer",
+          "callee": "assert",
+          "lineNumber": 142
+        },
+        {
+          "caller": "SetTRDequeuePointer",
+          "callee": "XHCI_IS_ENDPOINTID",
+          "lineNumber": 142
+        },
+        {
+          "caller": "SetTRDequeuePointer",
+          "callee": "assert",
+          "lineNumber": 147
+        },
+        {
+          "caller": "SetTRDequeuePointer",
+          "callee": "XHCI_TO_DMA_LO",
+          "lineNumber": 148
+        },
+        {
+          "caller": "SetTRDequeuePointer",
+          "callee": "DoCommand",
+          "lineNumber": 154
+        },
+        {
+          "caller": "SetTRDequeuePointer",
+          "callee": "XHCI_TO_DMA_HI",
+          "lineNumber": 154
+        },
+        {
+          "caller": "NoOp",
+          "callee": "DoCommand",
+          "lineNumber": 159
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "Write",
+          "lineNumber": 168
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "CLogger::Get",
+          "lineNumber": 168
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 172
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "Write",
+          "lineNumber": 181
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "CLogger::Get",
+          "lineNumber": 181
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "assert",
+          "lineNumber": 187
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "GetEnqueueTRB",
+          "lineNumber": 189
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "assert",
+          "lineNumber": 199
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "GetCycleState",
+          "lineNumber": 200
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "IncrementEnqueue",
+          "lineNumber": 205
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 207
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "db_write32",
+          "lineNumber": 209
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "GetTicks",
+          "lineNumber": 211
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "CTimer::Get",
+          "lineNumber": 211
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "GetTicks",
+          "lineNumber": 214
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "CTimer::Get",
+          "lineNumber": 214
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "Write",
+          "lineNumber": 217
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "CLogger::Get",
+          "lineNumber": 217
+        },
+        {
+          "caller": "DoCommand",
+          "callee": "DataMemBarrier",
+          "lineNumber": 228
+        },
+        {
+          "caller": "CommandCompleted",
+          "callee": "assert",
+          "lineNumber": 241
+        },
+        {
+          "caller": "CommandCompleted",
+          "callee": "Write",
+          "lineNumber": 247
+        },
+        {
+          "caller": "CommandCompleted",
+          "callee": "CLogger::Get",
+          "lineNumber": 247
+        },
+        {
+          "caller": "CommandCompleted",
+          "callee": "DataMemBarrier",
+          "lineNumber": 263
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 13,
+        "functionCount": 13,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/xhciendpoint.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 668,
+      "nonEmptyLines": 549,
+      "functions": [
+        {
+          "name": "CXHCIEndpoint",
+          "startLine": 36,
+          "endLine": 59,
+          "params": [
+            "pDevice",
+            "pXHCIDevice"
+          ]
+        },
+        {
+          "name": "CXHCIEndpoint",
+          "startLine": 61,
+          "endLine": 152,
+          "params": [
+            "pDevice",
+            "pDesc",
+            "pXHCIDevice"
+          ]
+        },
+        {
+          "name": "~CXHCIEndpoint",
+          "startLine": 154,
+          "endLine": 169,
+          "params": []
+        },
+        {
+          "name": "IsValid",
+          "startLine": 171,
+          "endLine": 174,
+          "params": []
+        },
+        {
+          "name": "SetMaxPacketSize",
+          "startLine": 182,
+          "endLine": 204,
+          "params": [
+            "nMaxPacketSize"
+          ]
+        },
+        {
+          "name": "Transfer",
+          "startLine": 206,
+          "endLine": 249,
+          "params": [
+            "pURB",
+            "nTimeoutMs"
+          ]
+        },
+        {
+          "name": "TransferAsync",
+          "startLine": 251,
+          "endLine": 410,
+          "params": [
+            "pURB",
+            "nTimeoutMs"
+          ]
+        },
+        {
+          "name": "TransferEvent",
+          "startLine": 412,
+          "endLine": 463,
+          "params": [
+            "uchCompletionCode",
+            "nTransferLength"
+          ]
+        },
+        {
+          "name": "ResetFromHalted",
+          "startLine": 465,
+          "endLine": 483,
+          "params": []
+        },
+        {
+          "name": "CompletionRoutine",
+          "startLine": 513,
+          "endLine": 520,
+          "params": [
+            "pURB",
+            "pParam",
+            "pContext"
+          ]
+        },
+        {
+          "name": "EnqueueTRB",
+          "startLine": 522,
+          "endLine": 543,
+          "params": [
+            "nControl",
+            "nStatus",
+            "nParameter1",
+            "nParameter2"
+          ]
+        },
+        {
+          "name": "FreeInputContext",
+          "startLine": 633,
+          "endLine": 639,
+          "params": []
+        },
+        {
+          "name": "ConvertInterval",
+          "startLine": 641,
+          "endLine": 668,
+          "params": [
+            "uchInterval",
+            "Speed"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CXHCIEndpoint",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "CXHCIEndpoint",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "~CXHCIEndpoint",
+          "line": 154,
+          "isDefault": false
+        },
+        {
+          "name": "IsValid",
+          "line": 171,
+          "isDefault": false
+        },
+        {
+          "name": "SetMaxPacketSize",
+          "line": 182,
+          "isDefault": false
+        },
+        {
+          "name": "Transfer",
+          "line": 206,
+          "isDefault": false
+        },
+        {
+          "name": "TransferAsync",
+          "line": 251,
+          "isDefault": false
+        },
+        {
+          "name": "TransferEvent",
+          "line": 412,
+          "isDefault": false
+        },
+        {
+          "name": "ResetFromHalted",
+          "line": 465,
+          "isDefault": false
+        },
+        {
+          "name": "CompletionRoutine",
+          "line": 513,
+          "isDefault": false
+        },
+        {
+          "name": "EnqueueTRB",
+          "line": 522,
+          "isDefault": false
+        },
+        {
+          "name": "FreeInputContext",
+          "line": 633,
+          "isDefault": false
+        },
+        {
+          "name": "ConvertInterval",
+          "line": 641,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "GetMMIOSpace",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "IsValid",
+          "lineNumber": 51
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "RegisterEndpoint",
+          "lineNumber": 58
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "GetMMIOSpace",
+          "lineNumber": 65
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "IsValid",
+          "lineNumber": 77
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 85
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 86
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 93
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "ConvertInterval",
+          "lineNumber": 96
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "GetSpeed",
+          "lineNumber": 96
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "GetSpeed",
+          "lineNumber": 105
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "ConvertInterval",
+          "lineNumber": 115
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 119
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 125
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "XHCI_IS_ENDPOINTID",
+          "lineNumber": 125
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "GetInputContextConfigureEndpoint",
+          "lineNumber": 135
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 136
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 138
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "ConfigureEndpoint",
+          "lineNumber": 139
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "GetCommandManager",
+          "lineNumber": 139
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "GetSlotID",
+          "lineNumber": 140
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "FreeInputContext",
+          "lineNumber": 142
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "XHCI_CMD_SUCCESS",
+          "lineNumber": 144
+        },
+        {
+          "caller": "CXHCIEndpoint",
+          "callee": "RegisterEndpoint",
+          "lineNumber": 151
+        },
+        {
+          "caller": "~CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 156
+        },
+        {
+          "caller": "~CXHCIEndpoint",
+          "callee": "assert",
+          "lineNumber": 157
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "assert",
+          "lineNumber": 184
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "GetSpeed",
+          "lineNumber": 185
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "assert",
+          "lineNumber": 190
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "GetInputContextSetMaxPacketSize",
+          "lineNumber": 193
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "assert",
+          "lineNumber": 194
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "assert",
+          "lineNumber": 196
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "assert",
+          "lineNumber": 197
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "EvaluateContext",
+          "lineNumber": 198
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "GetCommandManager",
+          "lineNumber": 198
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "GetSlotID",
+          "lineNumber": 198
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "FreeInputContext",
+          "lineNumber": 201
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "XHCI_CMD_SUCCESS",
+          "lineNumber": 203
+        },
+        {
+          "caller": "Transfer",
+          "callee": "assert",
+          "lineNumber": 208
+        },
+        {
+          "caller": "Transfer",
+          "callee": "assert",
+          "lineNumber": 209
+        },
+        {
+          "caller": "Transfer",
+          "callee": "SetCompletionRoutine",
+          "lineNumber": 211
+        },
+        {
+          "caller": "Transfer",
+          "callee": "assert",
+          "lineNumber": 213
+        },
+        {
+          "caller": "Transfer",
+          "callee": "TransferAsync",
+          "lineNumber": 216
+        },
+        {
+          "caller": "Transfer",
+          "callee": "GetTicks",
+          "lineNumber": 221
+        },
+        {
+          "caller": "Transfer",
+          "callee": "CTimer::Get",
+          "lineNumber": 221
+        },
+        {
+          "caller": "Transfer",
+          "callee": "GetTicks",
+          "lineNumber": 224
+        },
+        {
+          "caller": "Transfer",
+          "callee": "CTimer::Get",
+          "lineNumber": 224
+        },
+        {
+          "caller": "Transfer",
+          "callee": "Write",
+          "lineNumber": 226
+        },
+        {
+          "caller": "Transfer",
+          "callee": "CLogger::Get",
+          "lineNumber": 226
+        },
+        {
+          "caller": "Transfer",
+          "callee": "GetNumber",
+          "lineNumber": 227
+        },
+        {
+          "caller": "Transfer",
+          "callee": "GetEndpoint",
+          "lineNumber": 227
+        },
+        {
+          "caller": "Transfer",
+          "callee": "DumpStatus",
+          "lineNumber": 229
+        },
+        {
+          "caller": "Transfer",
+          "callee": "Acquire",
+          "lineNumber": 232
+        },
+        {
+          "caller": "Transfer",
+          "callee": "Release",
+          "lineNumber": 235
+        },
+        {
+          "caller": "Transfer",
+          "callee": "Yield",
+          "lineNumber": 242
+        },
+        {
+          "caller": "Transfer",
+          "callee": "CScheduler::Get",
+          "lineNumber": 242
+        },
+        {
+          "caller": "Transfer",
+          "callee": "DataMemBarrier",
+          "lineNumber": 246
+        },
+        {
+          "caller": "Transfer",
+          "callee": "GetStatus",
+          "lineNumber": 248
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 253
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 254
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "GetBuffer",
+          "lineNumber": 261
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "GetBufLen",
+          "lineNumber": 262
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "Acquire",
+          "lineNumber": 264
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 271
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "Release",
+          "lineNumber": 274
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 280
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 281
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 282
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "CleanAndInvalidateDataCacheRange",
+          "lineNumber": 283
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "EnqueueTRB",
+          "lineNumber": 285
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "XHCI_TO_DMA_LO",
+          "lineNumber": 288
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "XHCI_TO_DMA_HI",
+          "lineNumber": 289
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "GetSetupData",
+          "lineNumber": 296
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 297
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 304
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "EnqueueTRB",
+          "lineNumber": 324
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 338
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 339
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 340
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "CleanAndInvalidateDataCacheRange",
+          "lineNumber": 341
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "EnqueueTRB",
+          "lineNumber": 343
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "XHCI_TO_DMA_LO",
+          "lineNumber": 346
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "XHCI_TO_DMA_HI",
+          "lineNumber": 347
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "EnqueueTRB",
+          "lineNumber": 354
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 362
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 364
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 365
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 366
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "CleanAndInvalidateDataCacheRange",
+          "lineNumber": 367
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "GetNumIsoPackets",
+          "lineNumber": 369
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "GetIsoPacketSize",
+          "lineNumber": 372
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "EnqueueTRB",
+          "lineNumber": 374
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "XHCI_TO_DMA_LO",
+          "lineNumber": 379
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "XHCI_TO_DMA_HI",
+          "lineNumber": 380
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 389
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 391
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "assert",
+          "lineNumber": 392
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "XHCI_IS_ENDPOINTID",
+          "lineNumber": 392
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "db_write32",
+          "lineNumber": 393
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "GetSlotID",
+          "lineNumber": 393
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "Acquire",
+          "lineNumber": 398
+        },
+        {
+          "caller": "TransferAsync",
+          "callee": "Release",
+          "lineNumber": 407
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "Write",
+          "lineNumber": 415
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "CLogger::Get",
+          "lineNumber": 415
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "DataMemBarrier",
+          "lineNumber": 421
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "XHCI_TRB_SUCCESS",
+          "lineNumber": 429
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "GetBuffer",
+          "lineNumber": 432
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "GetBufLen",
+          "lineNumber": 433
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "assert",
+          "lineNumber": 436
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "CleanAndInvalidateDataCacheRange",
+          "lineNumber": 437
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "assert",
+          "lineNumber": 440
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "SetResultLen",
+          "lineNumber": 441
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "SetStatus",
+          "lineNumber": 443
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "GetType",
+          "lineNumber": 451
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "GetEndpoint",
+          "lineNumber": 451
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "Write",
+          "lineNumber": 453
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "CLogger::Get",
+          "lineNumber": 453
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "Acquire",
+          "lineNumber": 457
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "Release",
+          "lineNumber": 460
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 462
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "assert",
+          "lineNumber": 467
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "assert",
+          "lineNumber": 468
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "assert",
+          "lineNumber": 469
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "XHCI_IS_ENDPOINTID",
+          "lineNumber": 469
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "ResetEndpoint",
+          "lineNumber": 471
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "GetCommandManager",
+          "lineNumber": 471
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "GetSlotID",
+          "lineNumber": 471
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "assert",
+          "lineNumber": 477
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "SetTRDequeuePointer",
+          "lineNumber": 478
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "GetCommandManager",
+          "lineNumber": 478
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "GetSlotID",
+          "lineNumber": 479
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "GetEnqueueTRB",
+          "lineNumber": 481
+        },
+        {
+          "caller": "ResetFromHalted",
+          "callee": "GetCycleState",
+          "lineNumber": 482
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "Write",
+          "lineNumber": 491
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "CLogger::Get",
+          "lineNumber": 491
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "Write",
+          "lineNumber": 498
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "CLogger::Get",
+          "lineNumber": 498
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "assert",
+          "lineNumber": 507
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 508
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 516
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 518
+        },
+        {
+          "caller": "EnqueueTRB",
+          "callee": "assert",
+          "lineNumber": 524
+        },
+        {
+          "caller": "EnqueueTRB",
+          "callee": "GetEnqueueTRB",
+          "lineNumber": 525
+        },
+        {
+          "caller": "EnqueueTRB",
+          "callee": "GetCycleState",
+          "lineNumber": 538
+        },
+        {
+          "caller": "EnqueueTRB",
+          "callee": "IncrementEnqueue",
+          "lineNumber": 540
+        },
+        {
+          "caller": "FreeInputContext",
+          "callee": "assert",
+          "lineNumber": 635
+        }
+      ],
+      "metrics": {
+        "importCount": 13,
+        "exportCount": 13,
+        "functionCount": 13,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/xhcieventmanager.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 151,
+      "nonEmptyLines": 129,
+      "functions": [
+        {
+          "name": "CXHCIEventManager",
+          "startLine": 27,
+          "endLine": 56,
+          "params": [
+            "pXHCIDevice"
+          ]
+        },
+        {
+          "name": "~CXHCIEventManager",
+          "startLine": 58,
+          "endLine": 75,
+          "params": []
+        },
+        {
+          "name": "IsValid",
+          "startLine": 77,
+          "endLine": 80,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CXHCIEventManager",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "~CXHCIEventManager",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "IsValid",
+          "line": 77,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "GetMMIOSpace",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "IsValid",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "AllocateSharedMem",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "XHCI_TO_DMA",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "GetFirstTRB",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "GetTRBCount",
+          "lineNumber": 46
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "assert",
+          "lineNumber": 49
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "rt_write32",
+          "lineNumber": 50
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "rt_write64",
+          "lineNumber": 51
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "XHCI_TO_DMA",
+          "lineNumber": 51
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "rt_write64",
+          "lineNumber": 52
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "XHCI_TO_DMA",
+          "lineNumber": 52
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "GetFirstTRB",
+          "lineNumber": 52
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "rt_write32",
+          "lineNumber": 53
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "rt_write32",
+          "lineNumber": 54
+        },
+        {
+          "caller": "CXHCIEventManager",
+          "callee": "rt_read32",
+          "lineNumber": 54
+        },
+        {
+          "caller": "~CXHCIEventManager",
+          "callee": "assert",
+          "lineNumber": 62
+        },
+        {
+          "caller": "~CXHCIEventManager",
+          "callee": "rt_write32",
+          "lineNumber": 63
+        },
+        {
+          "caller": "~CXHCIEventManager",
+          "callee": "rt_read32",
+          "lineNumber": 64
+        },
+        {
+          "caller": "~CXHCIEventManager",
+          "callee": "assert",
+          "lineNumber": 67
+        },
+        {
+          "caller": "~CXHCIEventManager",
+          "callee": "FreeSharedMem",
+          "lineNumber": 68
+        },
+        {
+          "caller": "IsValid",
+          "callee": "IsValid",
+          "lineNumber": 79
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 148
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/xhciring.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 181,
+      "nonEmptyLines": 146,
+      "functions": [
+        {
+          "name": "CXHCIRing",
+          "startLine": 28,
+          "endLine": 57,
+          "params": [
+            "Type",
+            "nTRBCount",
+            "pAllocator"
+          ]
+        },
+        {
+          "name": "~CXHCIRing",
+          "startLine": 59,
+          "endLine": 67,
+          "params": []
+        },
+        {
+          "name": "IsValid",
+          "startLine": 69,
+          "endLine": 72,
+          "params": []
+        },
+        {
+          "name": "GetTRBCount",
+          "startLine": 74,
+          "endLine": 79,
+          "params": []
+        },
+        {
+          "name": "IncrementEnqueue",
+          "startLine": 133,
+          "endLine": 155,
+          "params": []
+        },
+        {
+          "name": "GetCycleState",
+          "startLine": 157,
+          "endLine": 162,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CXHCIRing",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CXHCIRing",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "IsValid",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "GetTRBCount",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "IncrementEnqueue",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "GetCycleState",
+          "line": 157,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CXHCIRing",
+          "callee": "assert",
+          "lineNumber": 37
+        },
+        {
+          "caller": "CXHCIRing",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CXHCIRing",
+          "callee": "assert",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CXHCIRing",
+          "callee": "AllocateSharedMem",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CXHCIRing",
+          "callee": "XHCI_TO_DMA",
+          "lineNumber": 52
+        },
+        {
+          "caller": "~CXHCIRing",
+          "callee": "FreeSharedMem",
+          "lineNumber": 63
+        },
+        {
+          "caller": "GetTRBCount",
+          "callee": "assert",
+          "lineNumber": 76
+        },
+        {
+          "caller": "IncrementEnqueue",
+          "callee": "assert",
+          "lineNumber": 135
+        },
+        {
+          "caller": "IncrementEnqueue",
+          "callee": "assert",
+          "lineNumber": 136
+        },
+        {
+          "caller": "IncrementEnqueue",
+          "callee": "assert",
+          "lineNumber": 137
+        },
+        {
+          "caller": "IncrementEnqueue",
+          "callee": "assert",
+          "lineNumber": 139
+        },
+        {
+          "caller": "GetCycleState",
+          "callee": "assert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "Write",
+          "lineNumber": 168
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "CLogger::Get",
+          "lineNumber": 168
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "debug_hexdump",
+          "lineNumber": 176
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/xhcirootport.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 325,
+      "nonEmptyLines": 258,
+      "functions": [
+        {
+          "name": "CXHCIRootPort",
+          "startLine": 28,
+          "endLine": 35,
+          "params": [
+            "uchPortID",
+            "pXHCIDevice"
+          ]
+        },
+        {
+          "name": "~CXHCIRootPort",
+          "startLine": 37,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 46,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "Configure",
+          "startLine": 116,
+          "endLine": 148,
+          "params": []
+        },
+        {
+          "name": "GetPortID",
+          "startLine": 150,
+          "endLine": 155,
+          "params": []
+        },
+        {
+          "name": "GetPortSpeed",
+          "startLine": 157,
+          "endLine": 172,
+          "params": []
+        },
+        {
+          "name": "ReScanDevices",
+          "startLine": 174,
+          "endLine": 192,
+          "params": []
+        },
+        {
+          "name": "RemoveDevice",
+          "startLine": 194,
+          "endLine": 200,
+          "params": []
+        },
+        {
+          "name": "HandlePortStatusChange",
+          "startLine": 202,
+          "endLine": 218,
+          "params": []
+        },
+        {
+          "name": "StatusChanged",
+          "startLine": 220,
+          "endLine": 244,
+          "params": []
+        },
+        {
+          "name": "IsConnected",
+          "startLine": 262,
+          "endLine": 269,
+          "params": []
+        },
+        {
+          "name": "Reset",
+          "startLine": 271,
+          "endLine": 289,
+          "params": [
+            "nTimeoutUsecs"
+          ]
+        },
+        {
+          "name": "WaitForU0State",
+          "startLine": 291,
+          "endLine": 302,
+          "params": [
+            "nTimeoutUsecs"
+          ]
+        },
+        {
+          "name": "PowerOffOnOverCurrent",
+          "startLine": 304,
+          "endLine": 325,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CXHCIRootPort",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CXHCIRootPort",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "Configure",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "GetPortID",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "GetPortSpeed",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "ReScanDevices",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "RemoveDevice",
+          "line": 194,
+          "isDefault": false
+        },
+        {
+          "name": "HandlePortStatusChange",
+          "line": 202,
+          "isDefault": false
+        },
+        {
+          "name": "StatusChanged",
+          "line": 220,
+          "isDefault": false
+        },
+        {
+          "name": "IsConnected",
+          "line": 262,
+          "isDefault": false
+        },
+        {
+          "name": "Reset",
+          "line": 271,
+          "isDefault": false
+        },
+        {
+          "name": "WaitForU0State",
+          "line": 291,
+          "isDefault": false
+        },
+        {
+          "name": "PowerOffOnOverCurrent",
+          "line": 304,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CXHCIRootPort",
+          "callee": "GetMMIOSpace",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CXHCIRootPort",
+          "callee": "assert",
+          "lineNumber": 34
+        },
+        {
+          "caller": "CXHCIRootPort",
+          "callee": "XHCI_IS_PORTID",
+          "lineNumber": 34
+        },
+        {
+          "caller": "Initialize",
+          "callee": "IsConnected",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Initialize",
+          "callee": "XHCI_IS_USB2_PORT",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Reset",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Initialize",
+          "callee": "WaitForU0State",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "MsDelay",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::Get",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetPortSpeed",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PowerOffOnOverCurrent",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Configure",
+          "callee": "Configure",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Configure",
+          "callee": "Write",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Configure",
+          "callee": "CLogger::Get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Configure",
+          "callee": "PowerOffOnOverCurrent",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Configure",
+          "callee": "Write",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Configure",
+          "callee": "CLogger::Get",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Configure",
+          "callee": "Write",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Configure",
+          "callee": "CLogger::Get",
+          "lineNumber": 144
+        },
+        {
+          "caller": "GetPortID",
+          "callee": "assert",
+          "lineNumber": 152
+        },
+        {
+          "caller": "GetPortID",
+          "callee": "(u8)",
+          "lineNumber": 154
+        },
+        {
+          "caller": "GetPortSpeed",
+          "callee": "assert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "GetPortSpeed",
+          "callee": "assert",
+          "lineNumber": 160
+        },
+        {
+          "caller": "GetPortSpeed",
+          "callee": "pt_read32",
+          "lineNumber": 161
+        },
+        {
+          "caller": "GetPortSpeed",
+          "callee": "XHCI_IS_PSI",
+          "lineNumber": 166
+        },
+        {
+          "caller": "GetPortSpeed",
+          "callee": "XHCI_PSI_TO_USB_SPEED",
+          "lineNumber": 171
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "ReScanDevices",
+          "lineNumber": 178
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "Initialize",
+          "lineNumber": 181
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "Configure",
+          "lineNumber": 186
+        },
+        {
+          "caller": "HandlePortStatusChange",
+          "callee": "IsConnected",
+          "lineNumber": 204
+        },
+        {
+          "caller": "HandlePortStatusChange",
+          "callee": "ReScanDevices",
+          "lineNumber": 208
+        },
+        {
+          "caller": "HandlePortStatusChange",
+          "callee": "RemoveDevice",
+          "lineNumber": 215
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "assert",
+          "lineNumber": 222
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "assert",
+          "lineNumber": 223
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "Acquire",
+          "lineNumber": 225
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "pt_read32",
+          "lineNumber": 227
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "Write",
+          "lineNumber": 230
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "CLogger::Get",
+          "lineNumber": 230
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "pt_write32",
+          "lineNumber": 233
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "Release",
+          "lineNumber": 236
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "assert",
+          "lineNumber": 238
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "IsPlugAndPlay",
+          "lineNumber": 239
+        },
+        {
+          "caller": "StatusChanged",
+          "callee": "PortStatusChanged",
+          "lineNumber": 242
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "Write",
+          "lineNumber": 250
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "CLogger::Get",
+          "lineNumber": 250
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "pt_read32",
+          "lineNumber": 251
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "pt_read32",
+          "lineNumber": 252
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 256
+        },
+        {
+          "caller": "IsConnected",
+          "callee": "assert",
+          "lineNumber": 264
+        },
+        {
+          "caller": "IsConnected",
+          "callee": "assert",
+          "lineNumber": 265
+        },
+        {
+          "caller": "IsConnected",
+          "callee": "pt_read32",
+          "lineNumber": 266
+        },
+        {
+          "caller": "Reset",
+          "callee": "assert",
+          "lineNumber": 273
+        },
+        {
+          "caller": "Reset",
+          "callee": "assert",
+          "lineNumber": 274
+        },
+        {
+          "caller": "Reset",
+          "callee": "Acquire",
+          "lineNumber": 276
+        },
+        {
+          "caller": "Reset",
+          "callee": "pt_read32",
+          "lineNumber": 278
+        },
+        {
+          "caller": "Reset",
+          "callee": "pt_write32",
+          "lineNumber": 280
+        },
+        {
+          "caller": "Reset",
+          "callee": "Release",
+          "lineNumber": 283
+        },
+        {
+          "caller": "Reset",
+          "callee": "op_wait32",
+          "lineNumber": 285
+        },
+        {
+          "caller": "WaitForU0State",
+          "callee": "assert",
+          "lineNumber": 293
+        },
+        {
+          "caller": "WaitForU0State",
+          "callee": "assert",
+          "lineNumber": 294
+        },
+        {
+          "caller": "WaitForU0State",
+          "callee": "op_wait32",
+          "lineNumber": 296
+        },
+        {
+          "caller": "PowerOffOnOverCurrent",
+          "callee": "assert",
+          "lineNumber": 306
+        },
+        {
+          "caller": "PowerOffOnOverCurrent",
+          "callee": "assert",
+          "lineNumber": 307
+        },
+        {
+          "caller": "PowerOffOnOverCurrent",
+          "callee": "Acquire",
+          "lineNumber": 309
+        },
+        {
+          "caller": "PowerOffOnOverCurrent",
+          "callee": "pt_read32",
+          "lineNumber": 311
+        },
+        {
+          "caller": "PowerOffOnOverCurrent",
+          "callee": "Release",
+          "lineNumber": 314
+        },
+        {
+          "caller": "PowerOffOnOverCurrent",
+          "callee": "pt_write32",
+          "lineNumber": 320
+        },
+        {
+          "caller": "PowerOffOnOverCurrent",
+          "callee": "Release",
+          "lineNumber": 322
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 14,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/xhcislotmanager.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 121,
+      "nonEmptyLines": 101,
+      "functions": [
+        {
+          "name": "CXHCISlotManager",
+          "startLine": 25,
+          "endLine": 47,
+          "params": [
+            "pXHCIDevice"
+          ]
+        },
+        {
+          "name": "~CXHCISlotManager",
+          "startLine": 49,
+          "endLine": 65,
+          "params": []
+        },
+        {
+          "name": "IsValid",
+          "startLine": 67,
+          "endLine": 70,
+          "params": []
+        },
+        {
+          "name": "AssignDevice",
+          "startLine": 72,
+          "endLine": 85,
+          "params": [
+            "uchSlotID",
+            "pUSBDevice"
+          ]
+        },
+        {
+          "name": "FreeSlot",
+          "startLine": 87,
+          "endLine": 94,
+          "params": [
+            "uchSlotID"
+          ]
+        },
+        {
+          "name": "AssignScratchpadBufferArray",
+          "startLine": 96,
+          "endLine": 100,
+          "params": [
+            "pScratchpadBufferArray"
+          ]
+        },
+        {
+          "name": "TransferEvent",
+          "startLine": 102,
+          "endLine": 112,
+          "params": [
+            "uchCompletionCode",
+            "nTransferLength",
+            "uchSlotID",
+            "uchEndpointID"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CXHCISlotManager",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "~CXHCISlotManager",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "IsValid",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "AssignDevice",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "FreeSlot",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "AssignScratchpadBufferArray",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "TransferEvent",
+          "line": 102,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CXHCISlotManager",
+          "callee": "GetMMIOSpace",
+          "lineNumber": 27
+        },
+        {
+          "caller": "CXHCISlotManager",
+          "callee": "op_write32",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CXHCISlotManager",
+          "callee": "op_read32",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CXHCISlotManager",
+          "callee": "AllocateSharedMem",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CXHCISlotManager",
+          "callee": "op_write64",
+          "lineNumber": 46
+        },
+        {
+          "caller": "CXHCISlotManager",
+          "callee": "XHCI_TO_DMA",
+          "lineNumber": 46
+        },
+        {
+          "caller": "~CXHCISlotManager",
+          "callee": "FreeSharedMem",
+          "lineNumber": 58
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "assert",
+          "lineNumber": 74
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 74
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "assert",
+          "lineNumber": 76
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "assert",
+          "lineNumber": 77
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "GetDeviceContext",
+          "lineNumber": 80
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "assert",
+          "lineNumber": 82
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "assert",
+          "lineNumber": 83
+        },
+        {
+          "caller": "AssignDevice",
+          "callee": "XHCI_TO_DMA",
+          "lineNumber": 84
+        },
+        {
+          "caller": "FreeSlot",
+          "callee": "assert",
+          "lineNumber": 89
+        },
+        {
+          "caller": "FreeSlot",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 89
+        },
+        {
+          "caller": "FreeSlot",
+          "callee": "assert",
+          "lineNumber": 92
+        },
+        {
+          "caller": "AssignScratchpadBufferArray",
+          "callee": "assert",
+          "lineNumber": 98
+        },
+        {
+          "caller": "AssignScratchpadBufferArray",
+          "callee": "XHCI_TO_DMA",
+          "lineNumber": 99
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "assert",
+          "lineNumber": 105
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 105
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "TransferEvent",
+          "lineNumber": 111
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "debug_hexdump",
+          "lineNumber": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/xhciusbdevice.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 327,
+      "nonEmptyLines": 261,
+      "functions": [
+        {
+          "name": "CXHCIUSBDevice",
+          "startLine": 32,
+          "endLine": 48,
+          "params": [
+            "pXHCIDevice",
+            "Speed",
+            "pRootPort"
+          ]
+        },
+        {
+          "name": "CXHCIUSBDevice",
+          "startLine": 50,
+          "endLine": 67,
+          "params": [
+            "pXHCIDevice",
+            "Speed",
+            "pHub",
+            "nHubPortIndex"
+          ]
+        },
+        {
+          "name": "~CXHCIUSBDevice",
+          "startLine": 69,
+          "endLine": 102,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 104,
+          "endLine": 144,
+          "params": []
+        },
+        {
+          "name": "EnableHubFunction",
+          "startLine": 146,
+          "endLine": 165,
+          "params": []
+        },
+        {
+          "name": "GetSlotID",
+          "startLine": 167,
+          "endLine": 171,
+          "params": []
+        },
+        {
+          "name": "RegisterEndpoint",
+          "startLine": 179,
+          "endLine": 184,
+          "params": [
+            "uchEndpointID",
+            "pEndpoint"
+          ]
+        },
+        {
+          "name": "TransferEvent",
+          "startLine": 186,
+          "endLine": 191,
+          "params": [
+            "uchCompletionCode",
+            "nTransferLength",
+            "uchEndpointID"
+          ]
+        },
+        {
+          "name": "FreeInputContext",
+          "startLine": 321,
+          "endLine": 327,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CXHCIUSBDevice",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "CXHCIUSBDevice",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "~CXHCIUSBDevice",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "EnableHubFunction",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "GetSlotID",
+          "line": 167,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterEndpoint",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "TransferEvent",
+          "line": 186,
+          "isDefault": false
+        },
+        {
+          "name": "FreeInputContext",
+          "line": 321,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CXHCIUSBDevice",
+          "callee": "AllocateSharedMem",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CXHCIUSBDevice",
+          "callee": "AllocateSharedMem",
+          "lineNumber": 60
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "assert",
+          "lineNumber": 71
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "assert",
+          "lineNumber": 73
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "DisableSlot",
+          "lineNumber": 80
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "GetCommandManager",
+          "lineNumber": 80
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "XHCI_CMD_SUCCESS",
+          "lineNumber": 81
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "FreeSlot",
+          "lineNumber": 83
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "GetSlotManager",
+          "lineNumber": 83
+        },
+        {
+          "caller": "~CXHCIUSBDevice",
+          "callee": "FreeSharedMem",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableSlot",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetCommandManager",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Initialize",
+          "callee": "XHCI_CMD_SUCCESS",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Initialize",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Initialize",
+          "callee": "AssignDevice",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetSlotManager",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetInputContextAddressDevice",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Initialize",
+          "callee": "AddressDevice",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetCommandManager",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Initialize",
+          "callee": "FreeInputContext",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Initialize",
+          "callee": "XHCI_CMD_SUCCESS",
+          "lineNumber": 131
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Initialize",
+          "callee": "MsDelay",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::Get",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetAddress",
+          "lineNumber": 141
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CUSBDevice::Initialize",
+          "lineNumber": 143
+        },
+        {
+          "caller": "EnableHubFunction",
+          "callee": "GetInputContextEnableHubFunction",
+          "lineNumber": 148
+        },
+        {
+          "caller": "EnableHubFunction",
+          "callee": "assert",
+          "lineNumber": 149
+        },
+        {
+          "caller": "EnableHubFunction",
+          "callee": "EvaluateContext",
+          "lineNumber": 151
+        },
+        {
+          "caller": "EnableHubFunction",
+          "callee": "GetCommandManager",
+          "lineNumber": 151
+        },
+        {
+          "caller": "EnableHubFunction",
+          "callee": "FreeInputContext",
+          "lineNumber": 154
+        },
+        {
+          "caller": "EnableHubFunction",
+          "callee": "XHCI_CMD_SUCCESS",
+          "lineNumber": 156
+        },
+        {
+          "caller": "EnableHubFunction",
+          "callee": "Write",
+          "lineNumber": 158
+        },
+        {
+          "caller": "EnableHubFunction",
+          "callee": "CLogger::Get",
+          "lineNumber": 158
+        },
+        {
+          "caller": "GetSlotID",
+          "callee": "assert",
+          "lineNumber": 169
+        },
+        {
+          "caller": "GetSlotID",
+          "callee": "XHCI_IS_SLOTID",
+          "lineNumber": 169
+        },
+        {
+          "caller": "RegisterEndpoint",
+          "callee": "assert",
+          "lineNumber": 181
+        },
+        {
+          "caller": "RegisterEndpoint",
+          "callee": "XHCI_IS_ENDPOINTID",
+          "lineNumber": 181
+        },
+        {
+          "caller": "RegisterEndpoint",
+          "callee": "assert",
+          "lineNumber": 182
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "assert",
+          "lineNumber": 188
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "XHCI_IS_ENDPOINTID",
+          "lineNumber": 188
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "assert",
+          "lineNumber": 189
+        },
+        {
+          "caller": "TransferEvent",
+          "callee": "TransferEvent",
+          "lineNumber": 190
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "debug_hexdump",
+          "lineNumber": 197
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 204
+        },
+        {
+          "caller": "FreeInputContext",
+          "callee": "assert",
+          "lineNumber": 323
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 9,
+        "functionCount": 9,
+        "classCount": 0
+      }
+    }
+  ]
+}

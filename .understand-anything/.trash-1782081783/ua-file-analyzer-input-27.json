@@ -1,0 +1,229 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/SDCard/mmchost.cpp",
+      "language": "cpp",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/SDCard/sdhost.cpp",
+      "language": "cpp",
+      "sizeLines": 1583,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_dispmanx/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_dispmanx/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_dispmanx/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle2/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle2/kernel.h",
+      "language": "c",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle2/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/tvservice/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/tvservice/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/sample/tvservice/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/sound/sample/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/sound/sample/kernel.h",
+      "language": "c",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/sound/sample/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/vchiq/vchiqdevice.cpp",
+      "language": "cpp",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/bcm4343.cpp",
+      "language": "cpp",
+      "sizeLines": 367,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/alloc.h",
+      "language": "c",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/armv6mmu.h",
+      "language": "c",
+      "sizeLines": 161,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/armv7lpae.h",
+      "language": "c",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/SDCard/mmchost.cpp": [
+      "include/circle/sysconfig.h"
+    ],
+    "addon/SDCard/sdhost.cpp": [
+      "include/circle/sysconfig.h"
+    ],
+    "addon/vc4/interface/sample/hello_dispmanx/kernel.cpp": [
+      "addon/vc4/interface/sample/hello_dispmanx/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/hello_dispmanx/kernel.h": [],
+    "addon/vc4/interface/sample/hello_dispmanx/main.cpp": [
+      "addon/vc4/interface/sample/hello_dispmanx/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/hello_tiger/kernel.cpp": [
+      "addon/vc4/interface/sample/hello_tiger/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/hello_tiger/kernel.h": [],
+    "addon/vc4/interface/sample/hello_tiger/main.cpp": [
+      "addon/vc4/interface/sample/hello_tiger/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle/kernel.cpp": [
+      "addon/vc4/interface/sample/hello_triangle/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle/kernel.h": [],
+    "addon/vc4/interface/sample/hello_triangle/main.cpp": [
+      "addon/vc4/interface/sample/hello_triangle/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle2/kernel.cpp": [
+      "addon/vc4/interface/sample/hello_triangle2/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle2/kernel.h": [],
+    "addon/vc4/interface/sample/hello_triangle2/main.cpp": [
+      "addon/vc4/interface/sample/hello_triangle2/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/tvservice/kernel.cpp": [
+      "addon/vc4/interface/sample/tvservice/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/tvservice/kernel.h": [],
+    "addon/vc4/interface/sample/tvservice/main.cpp": [
+      "addon/vc4/interface/sample/tvservice/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/sound/sample/kernel.cpp": [
+      "addon/vc4/sound/sample/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/sound/sample/kernel.h": [],
+    "addon/vc4/sound/sample/main.cpp": [
+      "addon/vc4/sound/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/vchiq/vchiqdevice.cpp": [
+      "include/circle/sysconfig.h"
+    ],
+    "addon/wlan/bcm4343.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/sysconfig.h"
+    ],
+    "include/circle/alloc.h": [],
+    "include/circle/armv6mmu.h": [],
+    "include/circle/armv7lpae.h": []
+  }
+}

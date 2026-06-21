@@ -1,0 +1,246 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "sample/21-webserver/webserver.cpp",
+      "language": "cpp",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/21-webserver/webserver.h",
+      "language": "c",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/27-usbgamepad/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 187,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/27-usbgamepad/kernel.h",
+      "language": "c",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/27-usbgamepad/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/28-touchscreen/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/28-touchscreen/kernel.h",
+      "language": "c",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/28-touchscreen/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/37-showgamepad/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 374,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/37-showgamepad/kernel.h",
+      "language": "c",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/37-showgamepad/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/iperfserver/iperfserver.cpp",
+      "language": "cpp",
+      "sizeLines": 176,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/iperfserver/iperfserver.h",
+      "language": "c",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/iperfserver/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/iperfserver/kernel.h",
+      "language": "c",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/iperfserver/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/screen-ansi-colors/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/screen-ansi-colors/kernel.h",
+      "language": "c",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/screen-ansi-colors/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/synchronization/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/synchronization/kernel.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/synchronization/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/xpt2046-touchscreen/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/xpt2046-touchscreen/kernel.h",
+      "language": "c",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/xpt2046-touchscreen/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "sample/21-webserver/webserver.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/21-webserver/webserver.h"
+    ],
+    "sample/21-webserver/webserver.h": [],
+    "sample/27-usbgamepad/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "sample/27-usbgamepad/kernel.h"
+    ],
+    "sample/27-usbgamepad/kernel.h": [],
+    "sample/27-usbgamepad/main.cpp": [
+      "include/circle/startup.h",
+      "sample/27-usbgamepad/kernel.h"
+    ],
+    "sample/28-touchscreen/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "sample/28-touchscreen/kernel.h"
+    ],
+    "sample/28-touchscreen/kernel.h": [],
+    "sample/28-touchscreen/main.cpp": [
+      "include/circle/startup.h",
+      "sample/28-touchscreen/kernel.h"
+    ],
+    "sample/37-showgamepad/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/37-showgamepad/kernel.h"
+    ],
+    "sample/37-showgamepad/kernel.h": [],
+    "sample/37-showgamepad/main.cpp": [
+      "include/circle/startup.h",
+      "sample/37-showgamepad/kernel.h"
+    ],
+    "test/iperfserver/iperfserver.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "test/iperfserver/iperfserver.h"
+    ],
+    "test/iperfserver/iperfserver.h": [],
+    "test/iperfserver/kernel.cpp": [
+      "include/circle/string.h",
+      "test/iperfserver/iperfserver.h",
+      "test/iperfserver/kernel.h"
+    ],
+    "test/iperfserver/kernel.h": [],
+    "test/iperfserver/main.cpp": [
+      "include/circle/startup.h",
+      "test/iperfserver/kernel.h"
+    ],
+    "test/screen-ansi-colors/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "test/screen-ansi-colors/kernel.h"
+    ],
+    "test/screen-ansi-colors/kernel.h": [],
+    "test/screen-ansi-colors/main.cpp": [
+      "include/circle/startup.h",
+      "test/screen-ansi-colors/kernel.h"
+    ],
+    "test/synchronization/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "test/synchronization/kernel.h"
+    ],
+    "test/synchronization/kernel.h": [],
+    "test/synchronization/main.cpp": [
+      "include/circle/startup.h",
+      "test/synchronization/kernel.h"
+    ],
+    "test/xpt2046-touchscreen/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "test/xpt2046-touchscreen/kernel.h"
+    ],
+    "test/xpt2046-touchscreen/kernel.h": [],
+    "test/xpt2046-touchscreen/main.cpp": [
+      "include/circle/startup.h",
+      "test/xpt2046-touchscreen/kernel.h"
+    ]
+  }
+}

@@ -1,0 +1,1994 @@
+{
+  "batch": 16,
+  "nodes": [
+    {
+      "id": "file:sample/40-irqlatency/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/40-irqlatency/kernel.cpp",
+      "summary": "kernel.cpp - 149 lines of cpp source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/40-irqlatency/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/40-irqlatency/kernel.h",
+      "summary": "kernel.h - 84 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/40-irqlatency/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/40-irqlatency/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/40-irqlatency/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/40-irqlatency/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/41-screenanimations/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/41-screenanimations/kernel.cpp",
+      "summary": "Implements ~CKernel, Initialize, Run",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/41-screenanimations/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/41-screenanimations/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/41-screenanimations/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/41-screenanimations/kernel.cpp",
+      "summary": "Initialize() - 35 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/41-screenanimations/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/41-screenanimations/kernel.cpp",
+      "summary": "Run() - 21 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/41-screenanimations/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/41-screenanimations/kernel.h",
+      "summary": "kernel.h - 72 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/41-screenanimations/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/41-screenanimations/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/41-screenanimations/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/41-screenanimations/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/gpio-interrupt/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/gpio-interrupt/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 2 more",
+      "tags": [
+        "cpp",
+        "test",
+        "gpio",
+        "interrupt"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/gpio-interrupt/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/gpio-interrupt/kernel.cpp",
+      "summary": "CKernel() - 9 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/gpio-interrupt/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/gpio-interrupt/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/gpio-interrupt/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/gpio-interrupt/kernel.cpp",
+      "summary": "Initialize() - 42 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/gpio-interrupt/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/gpio-interrupt/kernel.cpp",
+      "summary": "Run() - 31 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/gpio-interrupt/kernel.cpp:InterruptHandler",
+      "type": "function",
+      "name": "InterruptHandler",
+      "filePath": "test/gpio-interrupt/kernel.cpp",
+      "summary": "InterruptHandler(pParam) - 4 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/gpio-interrupt/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/gpio-interrupt/kernel.h",
+      "summary": "kernel.h - 72 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "gpio",
+        "interrupt"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/gpio-interrupt/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/gpio-interrupt/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "gpio",
+        "interrupt"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/gpio-interrupt/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/gpio-interrupt/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/gpio-timing/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/gpio-timing/kernel.h",
+      "summary": "kernel.h - 68 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/gpio-timing/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/gpio-timing/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/gpio-timing/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/gpio-timing/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/gpio/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/gpio/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/gpio/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/gpio/kernel.cpp",
+      "summary": "CKernel() - 13 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/gpio/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/gpio/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/gpio/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/gpio/kernel.cpp",
+      "summary": "Initialize() - 37 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/gpio/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/gpio/kernel.cpp",
+      "summary": "Run() - 13 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/gpio/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/gpio/kernel.h",
+      "summary": "kernel.h - 67 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/gpio/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/gpio/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/gpio/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/gpio/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "gpio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/i2c-master-irq/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/i2c-master-irq/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 2 more",
+      "tags": [
+        "cpp",
+        "test",
+        "i2c"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/i2c-master-irq/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/i2c-master-irq/kernel.cpp",
+      "summary": "CKernel() - 8 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "i2c"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/i2c-master-irq/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/i2c-master-irq/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "i2c"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/i2c-master-irq/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/i2c-master-irq/kernel.cpp",
+      "summary": "Initialize() - 42 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "i2c"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/i2c-master-irq/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/i2c-master-irq/kernel.cpp",
+      "summary": "Run() - 40 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "i2c"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/i2c-master-irq/kernel.cpp:I2CCompletionRoutine",
+      "type": "function",
+      "name": "I2CCompletionRoutine",
+      "filePath": "test/i2c-master-irq/kernel.cpp",
+      "summary": "I2CCompletionRoutine(nStatus, pParam) - 9 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "i2c"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/i2c-master-irq/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/i2c-master-irq/kernel.h",
+      "summary": "kernel.h - 72 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "i2c"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/i2c-master-irq/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/i2c-master-irq/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "i2c"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/i2c-master-irq/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/i2c-master-irq/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "i2c"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/pcie-external/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/pcie-external/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/pcie-external/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/pcie-external/kernel.cpp",
+      "summary": "CKernel() - 8 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/pcie-external/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/pcie-external/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/pcie-external/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/pcie-external/kernel.cpp",
+      "summary": "Initialize() - 42 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/pcie-external/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/pcie-external/kernel.cpp",
+      "summary": "Run() - 18 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/pcie-external/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/pcie-external/kernel.h",
+      "summary": "kernel.h - 67 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/pcie-external/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/pcie-external/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/pcie-external/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/pcie-external/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/usb-midi-send/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/usb-midi-send/kernel.h",
+      "summary": "kernel.h - 74 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/usb-midi-send/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/usb-midi-send/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-midi-send/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/usb-midi-send/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/usb-msd-gadget/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/usb-msd-gadget/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/usb-msd-gadget/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/usb-msd-gadget/kernel.cpp",
+      "summary": "CKernel() - 9 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-msd-gadget/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/usb-msd-gadget/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-msd-gadget/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/usb-msd-gadget/kernel.cpp",
+      "summary": "Initialize() - 47 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/usb-msd-gadget/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/usb-msd-gadget/kernel.cpp",
+      "summary": "Run() - 18 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/usb-msd-gadget/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/usb-msd-gadget/kernel.h",
+      "summary": "kernel.h - 69 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/usb-msd-gadget/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/usb-msd-gadget/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-msd-gadget/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/usb-msd-gadget/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/usb-serial-cdc-gadget/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 2 more",
+      "tags": [
+        "cpp",
+        "test",
+        "usb",
+        "serial"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/usb-serial-cdc-gadget/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/usb-serial-cdc-gadget/kernel.cpp",
+      "summary": "CKernel() - 9 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-serial-cdc-gadget/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/usb-serial-cdc-gadget/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-serial-cdc-gadget/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/usb-serial-cdc-gadget/kernel.cpp",
+      "summary": "Initialize() - 42 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/usb-serial-cdc-gadget/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/usb-serial-cdc-gadget/kernel.cpp",
+      "summary": "Run() - 48 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/usb-serial-cdc-gadget/kernel.cpp:DeviceRemovedHandler",
+      "type": "function",
+      "name": "DeviceRemovedHandler",
+      "filePath": "test/usb-serial-cdc-gadget/kernel.cpp",
+      "summary": "DeviceRemovedHandler(pDevice, pContext) - 11 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/usb-serial-cdc-gadget/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/usb-serial-cdc-gadget/kernel.h",
+      "summary": "kernel.h - 73 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "usb",
+        "serial"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/usb-serial-cdc-gadget/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/usb-serial-cdc-gadget/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "usb",
+        "serial"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/usb-serial-cdc-gadget/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/usb-serial-cdc-gadget/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/watchdog/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/watchdog/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/watchdog/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/watchdog/kernel.cpp",
+      "summary": "CKernel() - 7 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/watchdog/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/watchdog/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/watchdog/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/watchdog/kernel.cpp",
+      "summary": "Initialize() - 37 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/watchdog/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/watchdog/kernel.cpp",
+      "summary": "Run() - 30 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/watchdog/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/watchdog/kernel.h",
+      "summary": "kernel.h - 67 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/watchdog/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/watchdog/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/watchdog/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/watchdog/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:sample/40-irqlatency/kernel.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/40-irqlatency/kernel.cpp",
+      "target": "file:sample/40-irqlatency/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/40-irqlatency/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/40-irqlatency/main.cpp",
+      "target": "file:sample/40-irqlatency/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/40-irqlatency/main.cpp",
+      "target": "function:sample/40-irqlatency/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/40-irqlatency/main.cpp",
+      "target": "function:sample/40-irqlatency/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/41-screenanimations/kernel.cpp",
+      "target": "file:sample/41-screenanimations/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/41-screenanimations/kernel.cpp",
+      "target": "function:sample/41-screenanimations/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/41-screenanimations/kernel.cpp",
+      "target": "function:sample/41-screenanimations/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/41-screenanimations/kernel.cpp",
+      "target": "function:sample/41-screenanimations/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/41-screenanimations/kernel.cpp",
+      "target": "function:sample/41-screenanimations/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/41-screenanimations/kernel.cpp",
+      "target": "function:sample/41-screenanimations/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/41-screenanimations/kernel.cpp",
+      "target": "function:sample/41-screenanimations/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/41-screenanimations/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/41-screenanimations/main.cpp",
+      "target": "file:sample/41-screenanimations/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/41-screenanimations/main.cpp",
+      "target": "function:sample/41-screenanimations/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/41-screenanimations/main.cpp",
+      "target": "function:sample/41-screenanimations/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "file:test/gpio-interrupt/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:InterruptHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio-interrupt/kernel.cpp",
+      "target": "function:test/gpio-interrupt/kernel.cpp:InterruptHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio-interrupt/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/gpio-interrupt/main.cpp",
+      "target": "file:test/gpio-interrupt/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/gpio-interrupt/main.cpp",
+      "target": "function:test/gpio-interrupt/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio-interrupt/main.cpp",
+      "target": "function:test/gpio-interrupt/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio-timing/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/gpio-timing/main.cpp",
+      "target": "file:test/gpio-timing/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/gpio-timing/main.cpp",
+      "target": "function:test/gpio-timing/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio-timing/main.cpp",
+      "target": "function:test/gpio-timing/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "file:test/gpio/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "function:test/gpio/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "function:test/gpio/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "function:test/gpio/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "function:test/gpio/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "function:test/gpio/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "function:test/gpio/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "function:test/gpio/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio/kernel.cpp",
+      "target": "function:test/gpio/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/gpio/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/gpio/main.cpp",
+      "target": "file:test/gpio/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/gpio/main.cpp",
+      "target": "function:test/gpio/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/gpio/main.cpp",
+      "target": "function:test/gpio/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "file:include/circle/machineinfo.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "file:test/i2c-master-irq/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:I2CCompletionRoutine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/i2c-master-irq/kernel.cpp",
+      "target": "function:test/i2c-master-irq/kernel.cpp:I2CCompletionRoutine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/i2c-master-irq/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/i2c-master-irq/main.cpp",
+      "target": "file:test/i2c-master-irq/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/i2c-master-irq/main.cpp",
+      "target": "function:test/i2c-master-irq/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/i2c-master-irq/main.cpp",
+      "target": "function:test/i2c-master-irq/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "file:include/circle/memorymap.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "file:test/pcie-external/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "function:test/pcie-external/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "function:test/pcie-external/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "function:test/pcie-external/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "function:test/pcie-external/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "function:test/pcie-external/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "function:test/pcie-external/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "function:test/pcie-external/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/pcie-external/kernel.cpp",
+      "target": "function:test/pcie-external/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/pcie-external/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/pcie-external/main.cpp",
+      "target": "file:test/pcie-external/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/pcie-external/main.cpp",
+      "target": "function:test/pcie-external/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/pcie-external/main.cpp",
+      "target": "function:test/pcie-external/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-midi-send/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-midi-send/main.cpp",
+      "target": "file:test/usb-midi-send/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-midi-send/main.cpp",
+      "target": "function:test/usb-midi-send/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-midi-send/main.cpp",
+      "target": "function:test/usb-midi-send/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "file:test/usb-msd-gadget/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "function:test/usb-msd-gadget/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "function:test/usb-msd-gadget/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "function:test/usb-msd-gadget/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "function:test/usb-msd-gadget/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "function:test/usb-msd-gadget/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "function:test/usb-msd-gadget/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "function:test/usb-msd-gadget/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-msd-gadget/kernel.cpp",
+      "target": "function:test/usb-msd-gadget/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-msd-gadget/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-msd-gadget/main.cpp",
+      "target": "file:test/usb-msd-gadget/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-msd-gadget/main.cpp",
+      "target": "function:test/usb-msd-gadget/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-msd-gadget/main.cpp",
+      "target": "function:test/usb-msd-gadget/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "file:test/usb-serial-cdc-gadget/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:DeviceRemovedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/kernel.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/kernel.cpp:DeviceRemovedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/main.cpp",
+      "target": "file:test/usb-serial-cdc-gadget/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/main.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/usb-serial-cdc-gadget/main.cpp",
+      "target": "function:test/usb-serial-cdc-gadget/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "file:test/watchdog/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "function:test/watchdog/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "function:test/watchdog/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "function:test/watchdog/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "function:test/watchdog/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "function:test/watchdog/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "function:test/watchdog/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "function:test/watchdog/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/watchdog/kernel.cpp",
+      "target": "function:test/watchdog/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/watchdog/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/watchdog/main.cpp",
+      "target": "file:test/watchdog/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/watchdog/main.cpp",
+      "target": "function:test/watchdog/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/watchdog/main.cpp",
+      "target": "function:test/watchdog/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:test/watchdog/main.cpp:main",
+      "target": "function:test/watchdog/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:test/watchdog/main.cpp:main",
+      "target": "function:test/watchdog/kernel.cpp:Run",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

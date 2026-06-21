@@ -1,0 +1,40 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/vc4/interface/vcos/vcos.h",
+      "language": "c",
+      "sizeLines": 226,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_init.h",
+      "language": "c",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_msgqueue.c",
+      "language": "c",
+      "sizeLines": 391,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_msgqueue.h",
+      "language": "c",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/vc4/interface/vcos/vcos.h": [],
+    "addon/vc4/interface/vcos/vcos_init.h": [
+      "addon/vc4/interface/vcos/vcos.h"
+    ],
+    "addon/vc4/interface/vcos/vcos_msgqueue.c": [
+      "addon/vc4/interface/vcos/vcos_msgqueue.h",
+      "addon/vc4/interface/vcos/vcos.h"
+    ],
+    "addon/vc4/interface/vcos/vcos_msgqueue.h": []
+  }
+}

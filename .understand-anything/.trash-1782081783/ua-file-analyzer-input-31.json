@@ -1,0 +1,237 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "lib/usb/usbendpoint.cpp",
+      "language": "cpp",
+      "sizeLines": 284,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbsubsystem.cpp",
+      "language": "cpp",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/virtualgpiopin.cpp",
+      "language": "cpp",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/17-fractal/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/17-fractal/kernel.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/17-fractal/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/26-cpustress/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/26-cpustress/kernel.h",
+      "language": "c",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/26-cpustress/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/38-bootloader/httpbootserver.cpp",
+      "language": "cpp",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/38-bootloader/httpbootserver.h",
+      "language": "c",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/38-bootloader/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/38-bootloader/kernel.h",
+      "language": "c",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/38-bootloader/main.cpp",
+      "language": "cpp",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/38-bootloader/tftpbootserver.cpp",
+      "language": "cpp",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/38-bootloader/tftpbootserver.h",
+      "language": "c",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/kernel.h",
+      "language": "c",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/storage/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 265,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/storage/kernel.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/storage/lonesha256.h",
+      "language": "c",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/storage/main.cpp",
+      "language": "cpp",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "lib/usb/usbendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/usbendpoint.h"
+    ],
+    "lib/usb/usbsubsystem.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/memory.h",
+      "include/circle/usb/usbsubsystem.h",
+      "include/circle/usb/xhciconfig.h"
+    ],
+    "lib/virtualgpiopin.cpp": [
+      "include/circle/memio.h",
+      "include/circle/memory.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/virtualgpiopin.h"
+    ],
+    "sample/17-fractal/kernel.cpp": [
+      "include/circle/memory.h",
+      "sample/17-fractal/kernel.h"
+    ],
+    "sample/17-fractal/kernel.h": [],
+    "sample/17-fractal/main.cpp": [
+      "include/circle/startup.h",
+      "sample/17-fractal/kernel.h"
+    ],
+    "sample/26-cpustress/kernel.cpp": [
+      "include/circle/memory.h",
+      "sample/26-cpustress/kernel.h",
+      "sample/26-cpustress/temptask.h"
+    ],
+    "sample/26-cpustress/kernel.h": [],
+    "sample/26-cpustress/main.cpp": [
+      "include/circle/startup.h",
+      "sample/26-cpustress/kernel.h"
+    ],
+    "sample/38-bootloader/httpbootserver.cpp": [
+      "include/assert.h",
+      "include/circle/chainboot.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "include/circle/version.h",
+      "sample/38-bootloader/httpbootserver.h"
+    ],
+    "sample/38-bootloader/httpbootserver.h": [],
+    "sample/38-bootloader/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/chainboot.h",
+      "include/circle/sysconfig.h",
+      "sample/38-bootloader/httpbootserver.h",
+      "sample/38-bootloader/kernel.h",
+      "sample/38-bootloader/tftpbootserver.h"
+    ],
+    "sample/38-bootloader/kernel.h": [],
+    "sample/38-bootloader/main.cpp": [
+      "include/circle/startup.h",
+      "sample/38-bootloader/kernel.h"
+    ],
+    "sample/38-bootloader/tftpbootserver.cpp": [
+      "include/assert.h",
+      "include/circle/chainboot.h",
+      "include/circle/logger.h",
+      "include/circle/util.h",
+      "sample/38-bootloader/tftpbootserver.h"
+    ],
+    "sample/38-bootloader/tftpbootserver.h": [],
+    "test/sound-controller/kernel.cpp": [
+      "include/circle/machineinfo.h",
+      "include/circle/sysconfig.h",
+      "test/sound-controller/kernel.h"
+    ],
+    "test/sound-controller/kernel.h": [],
+    "test/sound-controller/main.cpp": [
+      "include/circle/startup.h",
+      "test/sound-controller/kernel.h"
+    ],
+    "test/storage/kernel.cpp": [
+      "include/circle/alloc.h",
+      "test/storage/kernel.h",
+      "test/storage/lonesha256.h"
+    ],
+    "test/storage/kernel.h": [],
+    "test/storage/lonesha256.h": [],
+    "test/storage/main.cpp": [
+      "include/circle/startup.h",
+      "test/storage/kernel.h"
+    ]
+  }
+}

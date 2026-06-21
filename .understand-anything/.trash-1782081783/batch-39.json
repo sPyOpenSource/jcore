@@ -1,0 +1,84 @@
+{
+  "batchIndex": 39,
+  "nodes": [
+    {
+      "id": "addon/vc4/interface/vcos/vcos.h",
+      "type": "header:addon/vc4/interface/vcos/vcos.h",
+      "name": "vcos.h",
+      "filePath": "addon/vc4/interface/vcos/vcos.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 22
+    },
+    {
+      "id": "addon/vc4/interface/vcos/vcos_init.h",
+      "type": "header:addon/vc4/interface/vcos/vcos_init.h",
+      "name": "vcos_init.h",
+      "filePath": "addon/vc4/interface/vcos/vcos_init.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 11
+    },
+    {
+      "id": "addon/vc4/interface/vcos/vcos_msgqueue.c",
+      "type": "module:addon/vc4/interface/vcos/vcos_msgqueue.c",
+      "name": "vcos_msgqueue.c",
+      "filePath": "addon/vc4/interface/vcos/vcos_msgqueue.c",
+      "summary": "Contains 5 functions: vcos_msgq_simple_waiter_on_reply, vcos_msgq_simple_waiter_init, vcos_msgq_simple_waiter_deinit, vcos_msgq_create_internal, vcos_msgq_delete_internal",
+      "tags": [
+        "code",
+        "c",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 39
+    },
+    {
+      "id": "addon/vc4/interface/vcos/vcos_msgqueue.h",
+      "type": "header:addon/vc4/interface/vcos/vcos_msgqueue.h",
+      "name": "vcos_msgqueue.h",
+      "filePath": "addon/vc4/interface/vcos/vcos_msgqueue.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 28
+    }
+  ],
+  "edges": [
+    {
+      "source": "addon/vc4/interface/vcos/vcos_init.h",
+      "target": "addon/vc4/interface/vcos/vcos.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/interface/vcos/vcos_msgqueue.c",
+      "target": "addon/vc4/interface/vcos/vcos_msgqueue.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/interface/vcos/vcos_msgqueue.c",
+      "target": "addon/vc4/interface/vcos/vcos.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

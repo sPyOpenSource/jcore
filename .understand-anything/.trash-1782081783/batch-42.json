@@ -1,0 +1,87 @@
+{
+  "batchIndex": 42,
+  "nodes": [
+    {
+      "id": "addon/FlintJVM/CHANGELOG.md",
+      "type": "document:addon/FlintJVM/CHANGELOG.md",
+      "name": "CHANGELOG.md",
+      "filePath": "addon/FlintJVM/CHANGELOG.md",
+      "summary": "0 functions defined",
+      "tags": [
+        "docs",
+        "md",
+        "addon"
+      ],
+      "complexity": 14
+    },
+    {
+      "id": "addon/FlintJVM/LICENSE.txt",
+      "type": "document:addon/FlintJVM/LICENSE.txt",
+      "name": "LICENSE.txt",
+      "filePath": "addon/FlintJVM/LICENSE.txt",
+      "summary": "0 functions defined",
+      "tags": [
+        "docs",
+        "txt",
+        "addon"
+      ],
+      "complexity": 2
+    },
+    {
+      "id": "addon/FlintJVM/Makefile",
+      "type": "pipeline:addon/FlintJVM/Makefile",
+      "name": "Makefile",
+      "filePath": "addon/FlintJVM/Makefile",
+      "summary": "0 functions defined",
+      "tags": [
+        "infra",
+        "noext",
+        "addon"
+      ],
+      "complexity": 2
+    },
+    {
+      "id": "addon/FlintJVM/build.xml",
+      "type": "config:addon/FlintJVM/build.xml",
+      "name": "build.xml",
+      "filePath": "addon/FlintJVM/build.xml",
+      "summary": "0 functions defined",
+      "tags": [
+        "config",
+        "xml",
+        "addon"
+      ],
+      "complexity": 7
+    }
+  ],
+  "edges": [
+    {
+      "source": "addon/FlintJVM/Makefile",
+      "target": "addon/FlintJVM/CHANGELOG.md",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/FlintJVM/Makefile",
+      "target": "addon/FlintJVM/LICENSE.txt",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/FlintJVM/Makefile",
+      "target": "addon/FlintJVM/build.xml",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/FlintJVM/build.xml",
+      "target": "addon/FlintJVM/Makefile",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

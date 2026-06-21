@@ -1,0 +1,3953 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_dispmanx.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 147,
+      "nonEmptyLines": 131,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_dispservice_x_defs.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 280,
+      "nonEmptyLines": 254,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_tvservice.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 540,
+      "nonEmptyLines": 496,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 1331,
+      "nonEmptyLines": 1184,
+      "functions": [
+        {
+          "name": "lock_obtain",
+          "startLine": 93,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "lock_release",
+          "startLine": 108,
+          "endLine": 118,
+          "params": []
+        },
+        {
+          "name": "vc_vchi_dispmanx_init",
+          "startLine": 156,
+          "endLine": 228,
+          "params": [
+            "initialise_instance",
+            "connections",
+            "num_connections"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_stop",
+          "startLine": 241,
+          "endLine": 266,
+          "params": []
+        },
+        {
+          "name": "vc_dispmanx_rect_set",
+          "startLine": 283,
+          "endLine": 289,
+          "params": [
+            "rect",
+            "x_offset",
+            "y_offset",
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_query_image_formats",
+          "startLine": 305,
+          "endLine": 308,
+          "params": [
+            "supported_formats"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_resource_create",
+          "startLine": 323,
+          "endLine": 336,
+          "params": [
+            "type",
+            "width",
+            "height",
+            "native_image_handle"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_resource_get_image_handle",
+          "startLine": 348,
+          "endLine": 350,
+          "params": [
+            "res"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_resource_delete",
+          "startLine": 363,
+          "endLine": 370,
+          "params": [
+            "res"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_resource_write_data",
+          "startLine": 386,
+          "endLine": 410,
+          "params": [
+            "handle",
+            "src_type",
+            "src_pitch",
+            "src_address",
+            "rect"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_resource_read_data",
+          "startLine": 425,
+          "endLine": 459,
+          "params": [
+            "handle",
+            "p_rect",
+            "dst_address",
+            "dst_pitch"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_display_open",
+          "startLine": 520,
+          "endLine": 536,
+          "params": [
+            "device"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_display_open_mode",
+          "startLine": 550,
+          "endLine": 556,
+          "params": [
+            "device",
+            "mode"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_display_open_offscreen",
+          "startLine": 570,
+          "endLine": 576,
+          "params": [
+            "dest",
+            "orientation"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_display_reconfigure",
+          "startLine": 590,
+          "endLine": 595,
+          "params": [
+            "device",
+            "mode"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_display_set_destination",
+          "startLine": 609,
+          "endLine": 614,
+          "params": [
+            "display",
+            "dest"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_display_set_background",
+          "startLine": 631,
+          "endLine": 637,
+          "params": [
+            "update",
+            "display",
+            "red",
+            "green",
+            "blue"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_display_get_info",
+          "startLine": 651,
+          "endLine": 669,
+          "params": [
+            "display",
+            "pinfo"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_display_close",
+          "startLine": 682,
+          "endLine": 688,
+          "params": [
+            "display"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_update_start",
+          "startLine": 700,
+          "endLine": 707,
+          "params": [
+            "priority"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_update_submit",
+          "startLine": 723,
+          "endLine": 743,
+          "params": [
+            "update",
+            "cb_func",
+            "cb_arg"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_update_submit_sync",
+          "startLine": 756,
+          "endLine": 762,
+          "params": [
+            "update"
+          ]
+        },
+        {
+          "name": "DISPMANX_ELEMENT_HANDLE_T",
+          "startLine": 785,
+          "endLine": 828,
+          "params": [
+            "update",
+            "display",
+            "layer",
+            "dest_rect",
+            "src",
+            "src_rect",
+            "protection",
+            "alpha",
+            "clamp",
+            "transform"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_element_change_source",
+          "startLine": 843,
+          "endLine": 853,
+          "params": [
+            "update",
+            "element",
+            "src"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_element_change_layer",
+          "startLine": 868,
+          "endLine": 880,
+          "params": [
+            "update",
+            "element",
+            "layer"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_element_modified",
+          "startLine": 895,
+          "endLine": 912,
+          "params": [
+            "update",
+            "element",
+            "rect"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_element_remove",
+          "startLine": 926,
+          "endLine": 931,
+          "params": [
+            "update",
+            "element"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_element_change_attributes",
+          "startLine": 952,
+          "endLine": 993,
+          "params": [
+            "update",
+            "element",
+            "change_flags",
+            "layer",
+            "opacity",
+            "dest_rect",
+            "src_rect",
+            "mask",
+            "transform"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_snapshot",
+          "startLine": 1009,
+          "endLine": 1022,
+          "params": [
+            "display",
+            "snapshot_resource",
+            "transform"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_resource_set_palette",
+          "startLine": 1039,
+          "endLine": 1061,
+          "params": [
+            "handle",
+            "src_address",
+            "offset",
+            "size"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_vsync_callback",
+          "startLine": 1077,
+          "endLine": 1106,
+          "params": [
+            "display",
+            "cb_func",
+            "cb_arg"
+          ]
+        },
+        {
+          "name": "dispmanx_client_callback",
+          "startLine": 1123,
+          "endLine": 1138,
+          "params": [
+            "callback_param",
+            "reason",
+            "msg_handle"
+          ]
+        },
+        {
+          "name": "dispmanx_notify_callback",
+          "startLine": 1149,
+          "endLine": 1163,
+          "params": [
+            "callback_param",
+            "reason",
+            "msg_handle"
+          ]
+        },
+        {
+          "name": "dispmanx_wait_for_reply",
+          "startLine": 1175,
+          "endLine": 1188,
+          "params": [
+            "response",
+            "max_length"
+          ]
+        },
+        {
+          "name": "dispmanx_send_command",
+          "startLine": 1200,
+          "endLine": 1217,
+          "params": [
+            "command",
+            "buffer",
+            "length"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_send_command",
+          "startLine": 1219,
+          "endLine": 1223,
+          "params": [
+            "command",
+            "buffer",
+            "length"
+          ]
+        },
+        {
+          "name": "dispmanx_send_command_reply",
+          "startLine": 1236,
+          "endLine": 1252,
+          "params": [
+            "command",
+            "buffer",
+            "length",
+            "response",
+            "max_length"
+          ]
+        },
+        {
+          "name": "vc_dispmanx_send_command_reply",
+          "startLine": 1254,
+          "endLine": 1258,
+          "params": [
+            "command",
+            "buffer",
+            "length",
+            "response",
+            "max_length"
+          ]
+        },
+        {
+          "name": "dispmanx_get_handle",
+          "startLine": 1270,
+          "endLine": 1284,
+          "params": [
+            "command",
+            "buffer",
+            "length"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "vc_vchi_dispmanx_init",
+          "line": 156,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_stop",
+          "line": 241,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_rect_set",
+          "line": 283,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_query_image_formats",
+          "line": 305,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_resource_create",
+          "line": 323,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_resource_get_image_handle",
+          "line": 348,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_resource_delete",
+          "line": 363,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_resource_write_data",
+          "line": 386,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_resource_read_data",
+          "line": 425,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_display_open",
+          "line": 520,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_display_open_mode",
+          "line": 550,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_display_open_offscreen",
+          "line": 570,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_display_reconfigure",
+          "line": 590,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_display_set_destination",
+          "line": 609,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_display_set_background",
+          "line": 631,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_display_get_info",
+          "line": 651,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_display_close",
+          "line": 682,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_update_start",
+          "line": 700,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_update_submit",
+          "line": 723,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_update_submit_sync",
+          "line": 756,
+          "isDefault": false
+        },
+        {
+          "name": "DISPMANX_ELEMENT_HANDLE_T",
+          "line": 785,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_element_change_source",
+          "line": 843,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_element_change_layer",
+          "line": 868,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_element_modified",
+          "line": 895,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_element_remove",
+          "line": 926,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_element_change_attributes",
+          "line": 952,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_snapshot",
+          "line": 1009,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_resource_set_palette",
+          "line": 1039,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_vsync_callback",
+          "line": 1077,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_send_command",
+          "line": 1219,
+          "isDefault": false
+        },
+        {
+          "name": "vc_dispmanx_send_command_reply",
+          "line": 1254,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lock_obtain",
+          "callee": "vcos_assert",
+          "lineNumber": 96
+        },
+        {
+          "caller": "lock_obtain",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 97
+        },
+        {
+          "caller": "lock_obtain",
+          "callee": "vchi_service_use",
+          "lineNumber": 101
+        },
+        {
+          "caller": "lock_obtain",
+          "callee": "vcos_assert",
+          "lineNumber": 104
+        },
+        {
+          "caller": "lock_release",
+          "callee": "vcos_assert",
+          "lineNumber": 110
+        },
+        {
+          "caller": "lock_release",
+          "callee": "vchi_service_release",
+          "lineNumber": 114
+        },
+        {
+          "caller": "lock_release",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 117
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "memset",
+          "lineNumber": 165
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_mutex_create",
+          "lineNumber": 168
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_assert",
+          "lineNumber": 169
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_event_create",
+          "lineNumber": 171
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_assert",
+          "lineNumber": 172
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_event_create",
+          "lineNumber": 174
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_assert",
+          "lineNumber": 175
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "VCHI_VERSION",
+          "lineNumber": 184
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "VCHI_VERSION",
+          "lineNumber": 196
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vchi_service_open",
+          "lineNumber": 208
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_assert",
+          "lineNumber": 209
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vchi_service_open",
+          "lineNumber": 213
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_assert",
+          "lineNumber": 214
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_thread_attr_init",
+          "lineNumber": 217
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_thread_attr_setstacksize",
+          "lineNumber": 218
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_thread_attr_settimeslice",
+          "lineNumber": 219
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_thread_create",
+          "lineNumber": 221
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vcos_assert",
+          "lineNumber": 222
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vchi_service_release",
+          "lineNumber": 225
+        },
+        {
+          "caller": "vc_vchi_dispmanx_init",
+          "callee": "vchi_service_release",
+          "lineNumber": 226
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "lock_obtain",
+          "lineNumber": 250
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vchi_service_close",
+          "lineNumber": 253
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vcos_assert",
+          "lineNumber": 254
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vchi_service_close",
+          "lineNumber": 255
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vcos_assert",
+          "lineNumber": 256
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "lock_release",
+          "lineNumber": 258
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vcos_event_signal",
+          "lineNumber": 261
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vcos_thread_join",
+          "lineNumber": 262
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vcos_mutex_delete",
+          "lineNumber": 263
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vcos_event_delete",
+          "lineNumber": 264
+        },
+        {
+          "caller": "vc_dispmanx_stop",
+          "callee": "vcos_event_delete",
+          "lineNumber": 265
+        },
+        {
+          "caller": "vc_dispmanx_query_image_formats",
+          "callee": "dispmanx_get_handle",
+          "lineNumber": 306
+        },
+        {
+          "caller": "vc_dispmanx_resource_create",
+          "callee": "VC_HTOV32",
+          "lineNumber": 324
+        },
+        {
+          "caller": "vc_dispmanx_resource_create",
+          "callee": "VC_HTOV32",
+          "lineNumber": 324
+        },
+        {
+          "caller": "vc_dispmanx_resource_create",
+          "callee": "VC_HTOV32",
+          "lineNumber": 324
+        },
+        {
+          "caller": "vc_dispmanx_resource_create",
+          "callee": "dispmanx_get_handle",
+          "lineNumber": 328
+        },
+        {
+          "caller": "vc_dispmanx_resource_get_image_handle",
+          "callee": "dispmanx_get_handle",
+          "lineNumber": 349
+        },
+        {
+          "caller": "vc_dispmanx_resource_delete",
+          "callee": "VC_HTOV32",
+          "lineNumber": 365
+        },
+        {
+          "caller": "vc_dispmanx_resource_delete",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 367
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data",
+          "callee": "VC_HTOV32",
+          "lineNumber": 397
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data",
+          "callee": "VC_HTOV32",
+          "lineNumber": 397
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data",
+          "callee": "VC_HTOV32",
+          "lineNumber": 397
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data",
+          "callee": "VC_HTOV32",
+          "lineNumber": 397
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 398
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data",
+          "callee": "lock_obtain",
+          "lineNumber": 401
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data",
+          "callee": "vchi_bulk_queue_transmit",
+          "lineNumber": 402
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data",
+          "callee": "lock_release",
+          "lineNumber": 407
+        },
+        {
+          "caller": "vc_dispmanx_resource_read_data",
+          "callee": "VC_HTOV32",
+          "lineNumber": 446
+        },
+        {
+          "caller": "vc_dispmanx_resource_read_data",
+          "callee": "VC_HTOV32",
+          "lineNumber": 446
+        },
+        {
+          "caller": "vc_dispmanx_resource_read_data",
+          "callee": "VC_HTOV32",
+          "lineNumber": 446
+        },
+        {
+          "caller": "vc_dispmanx_resource_read_data",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 447
+        },
+        {
+          "caller": "vc_dispmanx_resource_read_data",
+          "callee": "lock_obtain",
+          "lineNumber": 450
+        },
+        {
+          "caller": "vc_dispmanx_resource_read_data",
+          "callee": "vchi_bulk_queue_receive",
+          "lineNumber": 451
+        },
+        {
+          "caller": "vc_dispmanx_resource_read_data",
+          "callee": "lock_release",
+          "lineNumber": 456
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data_handle",
+          "callee": "VC_HTOV32",
+          "lineNumber": 491
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data_handle",
+          "callee": "VC_HTOV32",
+          "lineNumber": 492
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data_handle",
+          "callee": "VC_HTOV32",
+          "lineNumber": 493
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data_handle",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 494
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data_handle",
+          "callee": "lock_obtain",
+          "lineNumber": 497
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data_handle",
+          "callee": "vchi_bulk_queue_transmit_reloc",
+          "lineNumber": 498
+        },
+        {
+          "caller": "vc_dispmanx_resource_write_data_handle",
+          "callee": "lock_release",
+          "lineNumber": 503
+        },
+        {
+          "caller": "vc_dispmanx_display_open",
+          "callee": "getenv",
+          "lineNumber": 523
+        },
+        {
+          "caller": "vc_dispmanx_display_open",
+          "callee": "atoi",
+          "lineNumber": 527
+        },
+        {
+          "caller": "vc_dispmanx_display_open",
+          "callee": "VC_HTOV32",
+          "lineNumber": 531
+        },
+        {
+          "caller": "vc_dispmanx_display_open",
+          "callee": "dispmanx_get_handle",
+          "lineNumber": 532
+        },
+        {
+          "caller": "vc_dispmanx_display_open_mode",
+          "callee": "VC_HTOV32",
+          "lineNumber": 551
+        },
+        {
+          "caller": "vc_dispmanx_display_open_mode",
+          "callee": "VC_HTOV32",
+          "lineNumber": 551
+        },
+        {
+          "caller": "vc_dispmanx_display_open_mode",
+          "callee": "dispmanx_get_handle",
+          "lineNumber": 552
+        },
+        {
+          "caller": "vc_dispmanx_display_open_offscreen",
+          "callee": "VC_HTOV32",
+          "lineNumber": 571
+        },
+        {
+          "caller": "vc_dispmanx_display_open_offscreen",
+          "callee": "VC_HTOV32",
+          "lineNumber": 571
+        },
+        {
+          "caller": "vc_dispmanx_display_open_offscreen",
+          "callee": "dispmanx_get_handle",
+          "lineNumber": 572
+        },
+        {
+          "caller": "vc_dispmanx_display_reconfigure",
+          "callee": "VC_HTOV32",
+          "lineNumber": 591
+        },
+        {
+          "caller": "vc_dispmanx_display_reconfigure",
+          "callee": "VC_HTOV32",
+          "lineNumber": 591
+        },
+        {
+          "caller": "vc_dispmanx_display_reconfigure",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 592
+        },
+        {
+          "caller": "vc_dispmanx_display_set_destination",
+          "callee": "VC_HTOV32",
+          "lineNumber": 610
+        },
+        {
+          "caller": "vc_dispmanx_display_set_destination",
+          "callee": "VC_HTOV32",
+          "lineNumber": 610
+        },
+        {
+          "caller": "vc_dispmanx_display_set_destination",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 611
+        },
+        {
+          "caller": "vc_dispmanx_display_set_background",
+          "callee": "VC_HTOV32",
+          "lineNumber": 633
+        },
+        {
+          "caller": "vc_dispmanx_display_set_background",
+          "callee": "VC_HTOV32",
+          "lineNumber": 633
+        },
+        {
+          "caller": "vc_dispmanx_display_set_background",
+          "callee": "VC_HTOV32",
+          "lineNumber": 633
+        },
+        {
+          "caller": "vc_dispmanx_display_set_background",
+          "callee": "VC_HTOV32",
+          "lineNumber": 633
+        },
+        {
+          "caller": "vc_dispmanx_display_set_background",
+          "callee": "VC_HTOV32",
+          "lineNumber": 633
+        },
+        {
+          "caller": "vc_dispmanx_display_set_background",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 634
+        },
+        {
+          "caller": "vc_dispmanx_display_get_info",
+          "callee": "VC_HTOV32",
+          "lineNumber": 657
+        },
+        {
+          "caller": "vc_dispmanx_display_get_info",
+          "callee": "dispmanx_send_command_reply",
+          "lineNumber": 658
+        },
+        {
+          "caller": "vc_dispmanx_display_get_info",
+          "callee": "VC_VTOH32",
+          "lineNumber": 662
+        },
+        {
+          "caller": "vc_dispmanx_display_get_info",
+          "callee": "VC_VTOH32",
+          "lineNumber": 663
+        },
+        {
+          "caller": "vc_dispmanx_display_get_info",
+          "callee": "VC_VTOH32",
+          "lineNumber": 664
+        },
+        {
+          "caller": "vc_dispmanx_display_get_info",
+          "callee": "VC_VTOH32",
+          "lineNumber": 665
+        },
+        {
+          "caller": "vc_dispmanx_display_close",
+          "callee": "VC_HTOV32",
+          "lineNumber": 684
+        },
+        {
+          "caller": "vc_dispmanx_display_close",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 685
+        },
+        {
+          "caller": "vc_dispmanx_update_start",
+          "callee": "VC_HTOV32",
+          "lineNumber": 702
+        },
+        {
+          "caller": "vc_dispmanx_update_start",
+          "callee": "dispmanx_get_handle",
+          "lineNumber": 703
+        },
+        {
+          "caller": "vc_dispmanx_update_submit",
+          "callee": "VC_HTOV32",
+          "lineNumber": 724
+        },
+        {
+          "caller": "vc_dispmanx_update_submit",
+          "callee": "VC_HTOV32",
+          "lineNumber": 724
+        },
+        {
+          "caller": "vc_dispmanx_update_submit",
+          "callee": "vcos_assert",
+          "lineNumber": 727
+        },
+        {
+          "caller": "vc_dispmanx_update_submit",
+          "callee": "vchi_service_use",
+          "lineNumber": 734
+        },
+        {
+          "caller": "vc_dispmanx_update_submit",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 735
+        },
+        {
+          "caller": "vc_dispmanx_update_submit_sync",
+          "callee": "VC_HTOV32",
+          "lineNumber": 758
+        },
+        {
+          "caller": "vc_dispmanx_update_submit_sync",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 759
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 797
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 798
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 799
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 800
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 801
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 802
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 803
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 804
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 805
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 806
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 807
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 808
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 809
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 810
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 811
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 812
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 813
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 814
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 815
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 816
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 817
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 818
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 819
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 820
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 821
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "VC_HTOV32",
+          "lineNumber": 822
+        },
+        {
+          "caller": "DISPMANX_ELEMENT_HANDLE_T",
+          "callee": "dispmanx_get_handle",
+          "lineNumber": 825
+        },
+        {
+          "caller": "vc_dispmanx_element_change_source",
+          "callee": "VC_HTOV32",
+          "lineNumber": 845
+        },
+        {
+          "caller": "vc_dispmanx_element_change_source",
+          "callee": "VC_HTOV32",
+          "lineNumber": 846
+        },
+        {
+          "caller": "vc_dispmanx_element_change_source",
+          "callee": "VC_HTOV32",
+          "lineNumber": 847
+        },
+        {
+          "caller": "vc_dispmanx_element_change_source",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 849
+        },
+        {
+          "caller": "vc_dispmanx_element_change_layer",
+          "callee": "VC_HTOV32",
+          "lineNumber": 872
+        },
+        {
+          "caller": "vc_dispmanx_element_change_layer",
+          "callee": "VC_HTOV32",
+          "lineNumber": 873
+        },
+        {
+          "caller": "vc_dispmanx_element_change_layer",
+          "callee": "VC_HTOV32",
+          "lineNumber": 874
+        },
+        {
+          "caller": "vc_dispmanx_element_change_layer",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 876
+        },
+        {
+          "caller": "vc_dispmanx_element_modified",
+          "callee": "VC_HTOV32",
+          "lineNumber": 897
+        },
+        {
+          "caller": "vc_dispmanx_element_modified",
+          "callee": "VC_HTOV32",
+          "lineNumber": 898
+        },
+        {
+          "caller": "vc_dispmanx_element_modified",
+          "callee": "VC_HTOV32",
+          "lineNumber": 903
+        },
+        {
+          "caller": "vc_dispmanx_element_modified",
+          "callee": "VC_HTOV32",
+          "lineNumber": 904
+        },
+        {
+          "caller": "vc_dispmanx_element_modified",
+          "callee": "VC_HTOV32",
+          "lineNumber": 905
+        },
+        {
+          "caller": "vc_dispmanx_element_modified",
+          "callee": "VC_HTOV32",
+          "lineNumber": 906
+        },
+        {
+          "caller": "vc_dispmanx_element_modified",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 909
+        },
+        {
+          "caller": "vc_dispmanx_element_remove",
+          "callee": "VC_HTOV32",
+          "lineNumber": 927
+        },
+        {
+          "caller": "vc_dispmanx_element_remove",
+          "callee": "VC_HTOV32",
+          "lineNumber": 927
+        },
+        {
+          "caller": "vc_dispmanx_element_remove",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 928
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 962
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 963
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 964
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 965
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 966
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 967
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 968
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 973
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 974
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 975
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 976
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 981
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 982
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 983
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "VC_HTOV32",
+          "lineNumber": 984
+        },
+        {
+          "caller": "vc_dispmanx_element_change_attributes",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 990
+        },
+        {
+          "caller": "vc_dispmanx_snapshot",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1014
+        },
+        {
+          "caller": "vc_dispmanx_snapshot",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1015
+        },
+        {
+          "caller": "vc_dispmanx_snapshot",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1016
+        },
+        {
+          "caller": "vc_dispmanx_snapshot",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 1018
+        },
+        {
+          "caller": "vc_dispmanx_resource_set_palette",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1048
+        },
+        {
+          "caller": "vc_dispmanx_resource_set_palette",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1048
+        },
+        {
+          "caller": "vc_dispmanx_resource_set_palette",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1048
+        },
+        {
+          "caller": "vc_dispmanx_resource_set_palette",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 1049
+        },
+        {
+          "caller": "vc_dispmanx_resource_set_palette",
+          "callee": "lock_obtain",
+          "lineNumber": 1052
+        },
+        {
+          "caller": "vc_dispmanx_resource_set_palette",
+          "callee": "vchi_bulk_queue_transmit",
+          "lineNumber": 1053
+        },
+        {
+          "caller": "vc_dispmanx_resource_set_palette",
+          "callee": "lock_release",
+          "lineNumber": 1058
+        },
+        {
+          "caller": "vc_dispmanx_vsync_callback",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1082
+        },
+        {
+          "caller": "vc_dispmanx_vsync_callback",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1082
+        },
+        {
+          "caller": "vc_dispmanx_vsync_callback",
+          "callee": "vchi_service_use",
+          "lineNumber": 1092
+        },
+        {
+          "caller": "vc_dispmanx_vsync_callback",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 1095
+        },
+        {
+          "caller": "vc_dispmanx_vsync_callback",
+          "callee": "vchi_service_release",
+          "lineNumber": 1100
+        },
+        {
+          "caller": "dispmanx_client_callback",
+          "callee": "vcos_event_signal",
+          "lineNumber": 1137
+        },
+        {
+          "caller": "dispmanx_notify_callback",
+          "callee": "vcos_event_signal",
+          "lineNumber": 1162
+        },
+        {
+          "caller": "dispmanx_wait_for_reply",
+          "callee": "vchi_msg_dequeue",
+          "lineNumber": 1183
+        },
+        {
+          "caller": "dispmanx_wait_for_reply",
+          "callee": "vcos_event_wait",
+          "lineNumber": 1184
+        },
+        {
+          "caller": "dispmanx_send_command",
+          "callee": "lock_obtain",
+          "lineNumber": 1204
+        },
+        {
+          "caller": "dispmanx_send_command",
+          "callee": "vchi_msg_queuev",
+          "lineNumber": 1205
+        },
+        {
+          "caller": "dispmanx_send_command",
+          "callee": "dispmanx_wait_for_reply",
+          "lineNumber": 1210
+        },
+        {
+          "caller": "dispmanx_send_command",
+          "callee": "lock_release",
+          "lineNumber": 1215
+        },
+        {
+          "caller": "dispmanx_send_command",
+          "callee": "VC_VTOH32",
+          "lineNumber": 1216
+        },
+        {
+          "caller": "vc_dispmanx_send_command",
+          "callee": "dispmanx_send_command",
+          "lineNumber": 1222
+        },
+        {
+          "caller": "dispmanx_send_command_reply",
+          "callee": "lock_obtain",
+          "lineNumber": 1242
+        },
+        {
+          "caller": "dispmanx_send_command_reply",
+          "callee": "vchi_msg_queuev",
+          "lineNumber": 1243
+        },
+        {
+          "caller": "dispmanx_send_command_reply",
+          "callee": "dispmanx_wait_for_reply",
+          "lineNumber": 1247
+        },
+        {
+          "caller": "dispmanx_send_command_reply",
+          "callee": "lock_release",
+          "lineNumber": 1249
+        },
+        {
+          "caller": "vc_dispmanx_send_command_reply",
+          "callee": "dispmanx_send_command_reply",
+          "lineNumber": 1257
+        },
+        {
+          "caller": "dispmanx_get_handle",
+          "callee": "lock_obtain",
+          "lineNumber": 1275
+        },
+        {
+          "caller": "dispmanx_get_handle",
+          "callee": "vchi_msg_queuev",
+          "lineNumber": 1276
+        },
+        {
+          "caller": "dispmanx_get_handle",
+          "callee": "dispmanx_wait_for_reply",
+          "lineNumber": 1280
+        },
+        {
+          "caller": "dispmanx_get_handle",
+          "callee": "lock_release",
+          "lineNumber": 1282
+        },
+        {
+          "caller": "dispmanx_get_handle",
+          "callee": "VC_VTOH32",
+          "lineNumber": 1283
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 31,
+        "functionCount": 39,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_vchi_gencmd.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 552,
+      "nonEmptyLines": 459,
+      "functions": [
+        {
+          "name": "lock_obtain",
+          "startLine": 85,
+          "endLine": 93,
+          "params": []
+        },
+        {
+          "name": "lock_release",
+          "startLine": 94,
+          "endLine": 96,
+          "params": []
+        },
+        {
+          "name": "use_gencmd_service",
+          "startLine": 98,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "release_gencmd_service",
+          "startLine": 107,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "vc_gencmd_init",
+          "startLine": 118,
+          "endLine": 121,
+          "params": []
+        },
+        {
+          "name": "vc_vchi_gencmd_init",
+          "startLine": 138,
+          "endLine": 177,
+          "params": [
+            "initialise_instance",
+            "connections",
+            "num_connections"
+          ]
+        },
+        {
+          "name": "gencmd_callback",
+          "startLine": 194,
+          "endLine": 205,
+          "params": [
+            "callback_param",
+            "reason",
+            "msg_handle"
+          ]
+        },
+        {
+          "name": "vc_gencmd_stop",
+          "startLine": 222,
+          "endLine": 246,
+          "params": []
+        },
+        {
+          "name": "vc_gencmd_send_list",
+          "startLine": 261,
+          "endLine": 292,
+          "params": [
+            "format",
+            "a"
+          ]
+        },
+        {
+          "name": "vc_gencmd_send",
+          "startLine": 294,
+          "endLine": 303,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "vc_gencmd_read_response",
+          "startLine": 318,
+          "endLine": 361,
+          "params": [
+            "response",
+            "maxlen"
+          ]
+        },
+        {
+          "name": "vc_gencmd",
+          "startLine": 376,
+          "endLine": 393,
+          "params": [
+            "response",
+            "maxlen",
+            "format"
+          ]
+        },
+        {
+          "name": "vc_gencmd_string_property",
+          "startLine": 413,
+          "endLine": 463,
+          "params": [
+            "text",
+            "property",
+            "value",
+            "length"
+          ]
+        },
+        {
+          "name": "vc_gencmd_number_property",
+          "startLine": 481,
+          "endLine": 503,
+          "params": [
+            "text",
+            "property",
+            "number"
+          ]
+        },
+        {
+          "name": "vc_gencmd_until",
+          "startLine": 524,
+          "endLine": 551,
+          "params": [
+            "cmd",
+            "property",
+            "value",
+            "error_string",
+            "timeout"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "use_gencmd_service",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "release_gencmd_service",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd_init",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "vc_vchi_gencmd_init",
+          "line": 138,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd_stop",
+          "line": 222,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd_send_list",
+          "line": 261,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd_send",
+          "line": 294,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd_read_response",
+          "line": 318,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd",
+          "line": 376,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd_string_property",
+          "line": 413,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd_number_property",
+          "line": 481,
+          "isDefault": false
+        },
+        {
+          "name": "vc_gencmd_until",
+          "line": 524,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lock_obtain",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 87
+        },
+        {
+          "caller": "lock_release",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 95
+        },
+        {
+          "caller": "use_gencmd_service",
+          "callee": "vchi_service_use",
+          "lineNumber": 102
+        },
+        {
+          "caller": "release_gencmd_service",
+          "callee": "vchi_service_release",
+          "lineNumber": 111
+        },
+        {
+          "caller": "vc_gencmd_init",
+          "callee": "assert",
+          "lineNumber": 119
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "memset",
+          "lineNumber": 148
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "vcos_mutex_create",
+          "lineNumber": 151
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "vcos_assert",
+          "lineNumber": 152
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "vcos_event_create",
+          "lineNumber": 153
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "vcos_assert",
+          "lineNumber": 154
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "VCHI_VERSION",
+          "lineNumber": 159
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "MAKE_FOURCC",
+          "lineNumber": 160
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "vchi_service_open",
+          "lineNumber": 171
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "assert",
+          "lineNumber": 172
+        },
+        {
+          "caller": "vc_vchi_gencmd_init",
+          "callee": "release_gencmd_service",
+          "lineNumber": 176
+        },
+        {
+          "caller": "gencmd_callback",
+          "callee": "vcos_event_signal",
+          "lineNumber": 204
+        },
+        {
+          "caller": "vc_gencmd_stop",
+          "callee": "lock_obtain",
+          "lineNumber": 230
+        },
+        {
+          "caller": "vc_gencmd_stop",
+          "callee": "use_gencmd_service",
+          "lineNumber": 232
+        },
+        {
+          "caller": "vc_gencmd_stop",
+          "callee": "vchi_service_close",
+          "lineNumber": 235
+        },
+        {
+          "caller": "vc_gencmd_stop",
+          "callee": "assert",
+          "lineNumber": 236
+        },
+        {
+          "caller": "vc_gencmd_stop",
+          "callee": "lock_release",
+          "lineNumber": 241
+        },
+        {
+          "caller": "vc_gencmd_stop",
+          "callee": "vcos_mutex_delete",
+          "lineNumber": 243
+        },
+        {
+          "caller": "vc_gencmd_stop",
+          "callee": "vcos_event_delete",
+          "lineNumber": 244
+        },
+        {
+          "caller": "vc_gencmd_send_list",
+          "callee": "lock_obtain",
+          "lineNumber": 266
+        },
+        {
+          "caller": "vc_gencmd_send_list",
+          "callee": "vsnprintf",
+          "lineNumber": 268
+        },
+        {
+          "caller": "vc_gencmd_send_list",
+          "callee": "use_gencmd_service",
+          "lineNumber": 273
+        },
+        {
+          "caller": "vc_gencmd_send_list",
+          "callee": "vchi_msg_queue",
+          "lineNumber": 275
+        },
+        {
+          "caller": "vc_gencmd_send_list",
+          "callee": "release_gencmd_service",
+          "lineNumber": 285
+        },
+        {
+          "caller": "vc_gencmd_send_list",
+          "callee": "lock_release",
+          "lineNumber": 288
+        },
+        {
+          "caller": "vc_gencmd_send",
+          "callee": "va_start",
+          "lineNumber": 299
+        },
+        {
+          "caller": "vc_gencmd_send",
+          "callee": "vc_gencmd_send_list",
+          "lineNumber": 300
+        },
+        {
+          "caller": "vc_gencmd_send",
+          "callee": "va_end",
+          "lineNumber": 301
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "lock_obtain",
+          "lineNumber": 324
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "use_gencmd_service",
+          "lineNumber": 327
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "vchi_msg_dequeue",
+          "lineNumber": 334
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "VC_VTOH32",
+          "lineNumber": 337
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "vcos_event_wait",
+          "lineNumber": 343
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "memcpy",
+          "lineNumber": 347
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "vcos_min",
+          "lineNumber": 347
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "release_gencmd_service",
+          "lineNumber": 350
+        },
+        {
+          "caller": "vc_gencmd_read_response",
+          "callee": "lock_release",
+          "lineNumber": 351
+        },
+        {
+          "caller": "vc_gencmd",
+          "callee": "use_gencmd_service",
+          "lineNumber": 380
+        },
+        {
+          "caller": "vc_gencmd",
+          "callee": "va_start",
+          "lineNumber": 382
+        },
+        {
+          "caller": "vc_gencmd",
+          "callee": "vc_gencmd_send_list",
+          "lineNumber": 383
+        },
+        {
+          "caller": "vc_gencmd",
+          "callee": "va_end",
+          "lineNumber": 384
+        },
+        {
+          "caller": "vc_gencmd",
+          "callee": "vc_gencmd_read_response",
+          "lineNumber": 387
+        },
+        {
+          "caller": "vc_gencmd",
+          "callee": "release_gencmd_service",
+          "lineNumber": 390
+        },
+        {
+          "caller": "vc_gencmd_string_property",
+          "callee": "strlen",
+          "lineNumber": 418
+        },
+        {
+          "caller": "vc_gencmd_string_property",
+          "callee": "vcos_isspace",
+          "lineNumber": 425
+        },
+        {
+          "caller": "vc_gencmd_string_property",
+          "callee": "strncmp",
+          "lineNumber": 428
+        },
+        {
+          "caller": "vc_gencmd_string_property",
+          "callee": "vcos_isspace",
+          "lineNumber": 435
+        },
+        {
+          "caller": "vc_gencmd_number_property",
+          "callee": "vc_gencmd_string_property",
+          "lineNumber": 485
+        },
+        {
+          "caller": "vc_gencmd_number_property",
+          "callee": "strncmp",
+          "lineNumber": 489
+        },
+        {
+          "caller": "vc_gencmd_number_property",
+          "callee": "strtoul",
+          "lineNumber": 490
+        },
+        {
+          "caller": "vc_gencmd_number_property",
+          "callee": "strtoul",
+          "lineNumber": 492
+        },
+        {
+          "caller": "vc_gencmd_until",
+          "callee": "use_gencmd_service",
+          "lineNumber": 534
+        },
+        {
+          "caller": "vc_gencmd_until",
+          "callee": "vc_gencmd",
+          "lineNumber": 536
+        },
+        {
+          "caller": "vc_gencmd_until",
+          "callee": "strstr",
+          "lineNumber": 537
+        },
+        {
+          "caller": "vc_gencmd_until",
+          "callee": "vc_gencmd_string_property",
+          "lineNumber": 541
+        },
+        {
+          "caller": "vc_gencmd_until",
+          "callee": "strncmp",
+          "lineNumber": 542
+        },
+        {
+          "caller": "vc_gencmd_until",
+          "callee": "vcos_sleep",
+          "lineNumber": 546
+        },
+        {
+          "caller": "vc_gencmd_until",
+          "callee": "release_gencmd_service",
+          "lineNumber": 548
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 12,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_vchi_tvservice.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 1648,
+      "nonEmptyLines": 1474,
+      "functions": [
+        {
+          "name": "tvservice_lock_obtain",
+          "startLine": 156,
+          "endLine": 168,
+          "params": []
+        },
+        {
+          "name": "tvservice_lock_release",
+          "startLine": 171,
+          "endLine": 176,
+          "params": []
+        },
+        {
+          "name": "vc_vchi_tv_init",
+          "startLine": 216,
+          "endLine": 325,
+          "params": [
+            "initialise_instance",
+            "connections",
+            "num_connections"
+          ]
+        },
+        {
+          "name": "vc_vchi_tv_stop",
+          "startLine": 338,
+          "endLine": 379,
+          "params": []
+        },
+        {
+          "name": "vc_tv_register_callback",
+          "startLine": 393,
+          "endLine": 414,
+          "params": [
+            "callback",
+            "callback_data"
+          ]
+        },
+        {
+          "name": "vc_tv_unregister_callback",
+          "startLine": 427,
+          "endLine": 448,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "vc_tv_unregister_callback_full",
+          "startLine": 462,
+          "endLine": 484,
+          "params": [
+            "callback",
+            "callback_data"
+          ]
+        },
+        {
+          "name": "tvservice_client_callback",
+          "startLine": 500,
+          "endLine": 512,
+          "params": [
+            "callback_param",
+            "reason",
+            "msg_handle"
+          ]
+        },
+        {
+          "name": "tvservice_notify_callback",
+          "startLine": 522,
+          "endLine": 534,
+          "params": [
+            "callback_param",
+            "reason",
+            "msg_handle"
+          ]
+        },
+        {
+          "name": "tvservice_wait_for_reply",
+          "startLine": 546,
+          "endLine": 563,
+          "params": [
+            "response",
+            "max_length"
+          ]
+        },
+        {
+          "name": "tvservice_wait_for_bulk_receive",
+          "startLine": 575,
+          "endLine": 589,
+          "params": [
+            "buffer",
+            "max_length"
+          ]
+        },
+        {
+          "name": "tvservice_send_command",
+          "startLine": 602,
+          "endLine": 637,
+          "params": [
+            "command",
+            "buffer",
+            "length",
+            "has_reply"
+          ]
+        },
+        {
+          "name": "tvservice_send_command_reply",
+          "startLine": 649,
+          "endLine": 673,
+          "params": [
+            "command",
+            "buffer",
+            "length",
+            "response",
+            "max_length"
+          ]
+        },
+        {
+          "name": "vc_tv_get_state",
+          "startLine": 895,
+          "endLine": 911,
+          "params": [
+            "tvstate"
+          ]
+        },
+        {
+          "name": "vc_tv_get_display_state",
+          "startLine": 925,
+          "endLine": 934,
+          "params": [
+            "tvstate"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_preferred_actual",
+          "startLine": 952,
+          "endLine": 961,
+          "params": [
+            "in_3d"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_preferred",
+          "startLine": 963,
+          "endLine": 966,
+          "params": []
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_preferred_3d",
+          "startLine": 968,
+          "endLine": 971,
+          "params": []
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_best_actual",
+          "startLine": 987,
+          "endLine": 1003,
+          "params": [
+            "width",
+            "height",
+            "frame_rate",
+            "scan_mode",
+            "match_flags",
+            "in_3d"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_best",
+          "startLine": 1005,
+          "endLine": 1009,
+          "params": [
+            "width",
+            "height",
+            "frame_rate",
+            "scan_mode",
+            "match_flags"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_best_3d",
+          "startLine": 1011,
+          "endLine": 1015,
+          "params": [
+            "width",
+            "height",
+            "frame_rate",
+            "scan_mode",
+            "match_flags"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_explicit_new",
+          "startLine": 1034,
+          "endLine": 1046,
+          "params": [
+            "mode",
+            "group",
+            "code"
+          ]
+        },
+        {
+          "name": "vc_tv_sdtv_power_on",
+          "startLine": 1061,
+          "endLine": 1071,
+          "params": [
+            "mode",
+            "options"
+          ]
+        },
+        {
+          "name": "vc_tv_power_off",
+          "startLine": 1085,
+          "endLine": 1088,
+          "params": []
+        },
+        {
+          "name": "vc_tv_hdmi_get_supported_modes_new",
+          "startLine": 1110,
+          "endLine": 1217,
+          "params": [
+            "group",
+            "supported_modes",
+            "max_supported_modes",
+            "preferred_group",
+            "preferred_mode"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_mode_supported",
+          "startLine": 1230,
+          "endLine": 1236,
+          "params": [
+            "group",
+            "mode"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_audio_supported",
+          "startLine": 1254,
+          "endLine": 1265,
+          "params": [
+            "audio_format",
+            "num_channels",
+            "fs",
+            "bitrate"
+          ]
+        },
+        {
+          "name": "vc_tv_enable_copyprotect",
+          "startLine": 1278,
+          "endLine": 1282,
+          "params": [
+            "cp_mode",
+            "timeout"
+          ]
+        },
+        {
+          "name": "vc_tv_disable_copyprotect",
+          "startLine": 1295,
+          "endLine": 1298,
+          "params": []
+        },
+        {
+          "name": "vc_tv_show_info",
+          "startLine": 1311,
+          "endLine": 1315,
+          "params": [
+            "show"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_get_av_latency",
+          "startLine": 1329,
+          "endLine": 1333,
+          "params": []
+        },
+        {
+          "name": "vc_tv_hdmi_set_hdcp_key",
+          "startLine": 1348,
+          "endLine": 1356,
+          "params": [
+            "key"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_set_hdcp_revoked_list",
+          "startLine": 1371,
+          "endLine": 1391,
+          "params": [
+            "list",
+            "num_keys"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_set_spd",
+          "startLine": 1404,
+          "endLine": 1415,
+          "params": [
+            "manufacturer",
+            "description",
+            "type"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_set_display_options",
+          "startLine": 1428,
+          "endLine": 1444,
+          "params": [
+            "aspect",
+            "left_bar_width",
+            "right_bar_width",
+            "top_bar_height",
+            "bottom_bar_height",
+            "overscan_flags"
+          ]
+        },
+        {
+          "name": "vc_tv_test_mode_start",
+          "startLine": 1457,
+          "endLine": 1462,
+          "params": [
+            "colour",
+            "test_mode"
+          ]
+        },
+        {
+          "name": "vc_tv_test_mode_stop",
+          "startLine": 1475,
+          "endLine": 1478,
+          "params": []
+        },
+        {
+          "name": "vc_tv_hdmi_ddc_read",
+          "startLine": 1492,
+          "endLine": 1509,
+          "params": [
+            "offset",
+            "length",
+            "buffer"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_set_attached",
+          "startLine": 1515,
+          "endLine": 1519,
+          "params": [
+            "attached"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_set_property",
+          "startLine": 1524,
+          "endLine": 1532,
+          "params": [
+            "property"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_get_property",
+          "startLine": 1537,
+          "endLine": 1551,
+          "params": [
+            "property"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_get_supported_modes",
+          "startLine": 1587,
+          "endLine": 1612,
+          "params": [
+            "group",
+            "supported_modes_deprecated",
+            "max_supported_modes",
+            "preferred_group",
+            "preferred_mode"
+          ]
+        },
+        {
+          "name": "vc_tv_get_device_id",
+          "startLine": 1619,
+          "endLine": 1634,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_explicit",
+          "startLine": 1637,
+          "endLine": 1647,
+          "params": [
+            "mode",
+            "group",
+            "code"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "vc_vchi_tv_init",
+          "line": 216,
+          "isDefault": false
+        },
+        {
+          "name": "vc_vchi_tv_stop",
+          "line": 338,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_register_callback",
+          "line": 393,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_unregister_callback",
+          "line": 427,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_unregister_callback_full",
+          "line": 462,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_get_state",
+          "line": 895,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_get_display_state",
+          "line": 925,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_preferred",
+          "line": 963,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_preferred_3d",
+          "line": 968,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_best",
+          "line": 1005,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_best_3d",
+          "line": 1011,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_explicit_new",
+          "line": 1034,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_sdtv_power_on",
+          "line": 1061,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_power_off",
+          "line": 1085,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_get_supported_modes_new",
+          "line": 1110,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_mode_supported",
+          "line": 1230,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_audio_supported",
+          "line": 1254,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_enable_copyprotect",
+          "line": 1278,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_disable_copyprotect",
+          "line": 1295,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_show_info",
+          "line": 1311,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_get_av_latency",
+          "line": 1329,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_set_hdcp_key",
+          "line": 1348,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_set_hdcp_revoked_list",
+          "line": 1371,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_set_spd",
+          "line": 1404,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_set_display_options",
+          "line": 1428,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_test_mode_start",
+          "line": 1457,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_test_mode_stop",
+          "line": 1475,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_ddc_read",
+          "line": 1492,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_set_attached",
+          "line": 1515,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_set_property",
+          "line": 1524,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_get_property",
+          "line": 1537,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_get_supported_modes",
+          "line": 1587,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_get_device_id",
+          "line": 1619,
+          "isDefault": false
+        },
+        {
+          "name": "vc_tv_hdmi_power_on_explicit",
+          "line": 1637,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "tvservice_lock_obtain",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 157
+        },
+        {
+          "caller": "tvservice_lock_obtain",
+          "callee": "vchi_service_use",
+          "lineNumber": 160
+        },
+        {
+          "caller": "tvservice_lock_obtain",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 164
+        },
+        {
+          "caller": "tvservice_lock_release",
+          "callee": "vchi_service_release",
+          "lineNumber": 173
+        },
+        {
+          "caller": "tvservice_lock_release",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 175
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_log_set_level",
+          "lineNumber": 232
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_log_register",
+          "lineNumber": 233
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_log_trace",
+          "lineNumber": 235
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "memset",
+          "lineNumber": 238
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_mutex_create",
+          "lineNumber": 241
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_assert",
+          "lineNumber": 242
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_event_create",
+          "lineNumber": 243
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_assert",
+          "lineNumber": 244
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_event_create",
+          "lineNumber": 245
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_assert",
+          "lineNumber": 246
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "memcpy",
+          "lineNumber": 251
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "VCHI_VERSION",
+          "lineNumber": 256
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "VCHI_VERSION",
+          "lineNumber": 268
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vchi_service_open",
+          "lineNumber": 281
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vchi_service_open",
+          "lineNumber": 286
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vchi_service_release",
+          "lineNumber": 289
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vchi_service_release",
+          "lineNumber": 290
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vchi_service_close",
+          "lineNumber": 294
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_log_error",
+          "lineNumber": 295
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_log_error",
+          "lineNumber": 298
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vchi_service_close",
+          "lineNumber": 306
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vchi_service_close",
+          "lineNumber": 307
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_thread_attr_init",
+          "lineNumber": 314
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_thread_attr_setstacksize",
+          "lineNumber": 315
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_thread_attr_settimeslice",
+          "lineNumber": 316
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_thread_create",
+          "lineNumber": 318
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_assert",
+          "lineNumber": 319
+        },
+        {
+          "caller": "vc_vchi_tv_init",
+          "callee": "vcos_log_trace",
+          "lineNumber": 322
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_log_trace",
+          "lineNumber": 345
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "tvservice_lock_obtain",
+          "lineNumber": 346
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vchi_service_release",
+          "lineNumber": 349
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vchi_service_use",
+          "lineNumber": 353
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vchi_service_use",
+          "lineNumber": 354
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vchi_service_close",
+          "lineNumber": 355
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_assert",
+          "lineNumber": 356
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vchi_service_close",
+          "lineNumber": 357
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_assert",
+          "lineNumber": 358
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "tvservice_lock_release",
+          "lineNumber": 364
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_event_signal",
+          "lineNumber": 366
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_thread_join",
+          "lineNumber": 367
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_free",
+          "lineNumber": 370
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_free",
+          "lineNumber": 373
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_mutex_delete",
+          "lineNumber": 375
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_event_delete",
+          "lineNumber": 376
+        },
+        {
+          "caller": "vc_vchi_tv_stop",
+          "callee": "vcos_event_delete",
+          "lineNumber": 377
+        },
+        {
+          "caller": "vc_tv_register_callback",
+          "callee": "vcos_assert_msg",
+          "lineNumber": 395
+        },
+        {
+          "caller": "vc_tv_register_callback",
+          "callee": "vcos_log_trace",
+          "lineNumber": 397
+        },
+        {
+          "caller": "vc_tv_register_callback",
+          "callee": "tvservice_lock_obtain",
+          "lineNumber": 398
+        },
+        {
+          "caller": "vc_tv_register_callback",
+          "callee": "vcos_assert",
+          "lineNumber": 411
+        },
+        {
+          "caller": "vc_tv_register_callback",
+          "callee": "tvservice_lock_release",
+          "lineNumber": 412
+        },
+        {
+          "caller": "vc_tv_unregister_callback",
+          "callee": "vcos_assert",
+          "lineNumber": 429
+        },
+        {
+          "caller": "vc_tv_unregister_callback",
+          "callee": "vcos_log_trace",
+          "lineNumber": 431
+        },
+        {
+          "caller": "vc_tv_unregister_callback",
+          "callee": "tvservice_lock_obtain",
+          "lineNumber": 432
+        },
+        {
+          "caller": "vc_tv_unregister_callback",
+          "callee": "vcos_assert",
+          "lineNumber": 445
+        },
+        {
+          "caller": "vc_tv_unregister_callback",
+          "callee": "tvservice_lock_release",
+          "lineNumber": 446
+        },
+        {
+          "caller": "vc_tv_unregister_callback_full",
+          "callee": "vcos_assert",
+          "lineNumber": 464
+        },
+        {
+          "caller": "vc_tv_unregister_callback_full",
+          "callee": "vcos_log_trace",
+          "lineNumber": 466
+        },
+        {
+          "caller": "vc_tv_unregister_callback_full",
+          "callee": "tvservice_lock_obtain",
+          "lineNumber": 467
+        },
+        {
+          "caller": "vc_tv_unregister_callback_full",
+          "callee": "vcos_assert",
+          "lineNumber": 481
+        },
+        {
+          "caller": "vc_tv_unregister_callback_full",
+          "callee": "tvservice_lock_release",
+          "lineNumber": 482
+        },
+        {
+          "caller": "tvservice_client_callback",
+          "callee": "vcos_log_trace",
+          "lineNumber": 505
+        },
+        {
+          "caller": "tvservice_client_callback",
+          "callee": "vcos_event_signal",
+          "lineNumber": 511
+        },
+        {
+          "caller": "tvservice_notify_callback",
+          "callee": "vcos_log_trace",
+          "lineNumber": 527
+        },
+        {
+          "caller": "tvservice_notify_callback",
+          "callee": "vcos_event_signal",
+          "lineNumber": 533
+        },
+        {
+          "caller": "tvservice_wait_for_reply",
+          "callee": "vcos_log_trace",
+          "lineNumber": 549
+        },
+        {
+          "caller": "tvservice_wait_for_reply",
+          "callee": "vchi_msg_dequeue",
+          "lineNumber": 555
+        },
+        {
+          "caller": "tvservice_wait_for_reply",
+          "callee": "vcos_event_wait",
+          "lineNumber": 556
+        },
+        {
+          "caller": "tvservice_wait_for_reply",
+          "callee": "vcos_log_trace",
+          "lineNumber": 558
+        },
+        {
+          "caller": "tvservice_wait_for_reply",
+          "callee": "vcos_log_warn",
+          "lineNumber": 560
+        },
+        {
+          "caller": "tvservice_wait_for_bulk_receive",
+          "callee": "vcos_log_trace",
+          "lineNumber": 578
+        },
+        {
+          "caller": "tvservice_wait_for_bulk_receive",
+          "callee": "vcos_verify",
+          "lineNumber": 579
+        },
+        {
+          "caller": "tvservice_wait_for_bulk_receive",
+          "callee": "vcos_log_error",
+          "lineNumber": 580
+        },
+        {
+          "caller": "tvservice_wait_for_bulk_receive",
+          "callee": "vchi_bulk_queue_receive",
+          "lineNumber": 584
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "vcos_verify",
+          "lineNumber": 609
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "vcos_log_trace",
+          "lineNumber": 610
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "vcos_log_error",
+          "lineNumber": 614
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "tvservice_lock_obtain",
+          "lineNumber": 618
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "vchi_msg_queuev",
+          "lineNumber": 620
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "tvservice_wait_for_reply",
+          "lineNumber": 625
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "VC_VTOH32",
+          "lineNumber": 626
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "vcos_log_error",
+          "lineNumber": 629
+        },
+        {
+          "caller": "tvservice_send_command",
+          "callee": "tvservice_lock_release",
+          "lineNumber": 634
+        },
+        {
+          "caller": "tvservice_send_command_reply",
+          "callee": "vcos_log_trace",
+          "lineNumber": 655
+        },
+        {
+          "caller": "tvservice_send_command_reply",
+          "callee": "tvservice_lock_obtain",
+          "lineNumber": 658
+        },
+        {
+          "caller": "tvservice_send_command_reply",
+          "callee": "vchi_msg_queuev",
+          "lineNumber": 660
+        },
+        {
+          "caller": "tvservice_send_command_reply",
+          "callee": "tvservice_wait_for_reply",
+          "lineNumber": 664
+        },
+        {
+          "caller": "tvservice_send_command_reply",
+          "callee": "vcos_log_error",
+          "lineNumber": 666
+        },
+        {
+          "caller": "tvservice_send_command_reply",
+          "callee": "tvservice_lock_release",
+          "lineNumber": 669
+        },
+        {
+          "caller": "vc_tv_get_state",
+          "callee": "vcos_log_trace",
+          "lineNumber": 898
+        },
+        {
+          "caller": "vc_tv_get_state",
+          "callee": "vcos_verify",
+          "lineNumber": 899
+        },
+        {
+          "caller": "vc_tv_get_state",
+          "callee": "tvservice_send_command_reply",
+          "lineNumber": 900
+        },
+        {
+          "caller": "vc_tv_get_state",
+          "callee": "VC_VTOH32",
+          "lineNumber": 903
+        },
+        {
+          "caller": "vc_tv_get_state",
+          "callee": "VC_VTOH32",
+          "lineNumber": 904
+        },
+        {
+          "caller": "vc_tv_get_state",
+          "callee": "VC_VTOH32",
+          "lineNumber": 905
+        },
+        {
+          "caller": "vc_tv_get_state",
+          "callee": "VC_VTOH16",
+          "lineNumber": 906
+        },
+        {
+          "caller": "vc_tv_get_state",
+          "callee": "VC_VTOH16",
+          "lineNumber": 907
+        },
+        {
+          "caller": "vc_tv_get_display_state",
+          "callee": "vcos_log_trace",
+          "lineNumber": 928
+        },
+        {
+          "caller": "vc_tv_get_display_state",
+          "callee": "vcos_verify",
+          "lineNumber": 929
+        },
+        {
+          "caller": "vc_tv_get_display_state",
+          "callee": "tvservice_send_command_reply",
+          "lineNumber": 930
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_preferred_actual",
+          "callee": "vcos_log_trace",
+          "lineNumber": 956
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_preferred_actual",
+          "callee": "VC_HTOV32",
+          "lineNumber": 957
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_preferred_actual",
+          "callee": "tvservice_send_command",
+          "lineNumber": 959
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_preferred",
+          "callee": "vcos_log_trace",
+          "lineNumber": 964
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_preferred",
+          "callee": "vc_tv_hdmi_power_on_preferred_actual",
+          "lineNumber": 965
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_preferred_3d",
+          "callee": "vcos_log_trace",
+          "lineNumber": 969
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_preferred_3d",
+          "callee": "vc_tv_hdmi_power_on_preferred_actual",
+          "lineNumber": 970
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_actual",
+          "callee": "vcos_log_trace",
+          "lineNumber": 993
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_actual",
+          "callee": "VC_HTOV32",
+          "lineNumber": 994
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_actual",
+          "callee": "VC_HTOV32",
+          "lineNumber": 995
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_actual",
+          "callee": "VC_HTOV32",
+          "lineNumber": 996
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_actual",
+          "callee": "VC_HTOV32",
+          "lineNumber": 997
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_actual",
+          "callee": "VC_HTOV32",
+          "lineNumber": 998
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_actual",
+          "callee": "VC_HTOV32",
+          "lineNumber": 999
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_actual",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1001
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1007
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best",
+          "callee": "vc_tv_hdmi_power_on_best_actual",
+          "lineNumber": 1008
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_3d",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1013
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_best_3d",
+          "callee": "vc_tv_hdmi_power_on_best_actual",
+          "lineNumber": 1014
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_explicit_new",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1038
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_explicit_new",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1044
+        },
+        {
+          "caller": "vc_tv_sdtv_power_on",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1065
+        },
+        {
+          "caller": "vc_tv_sdtv_power_on",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1066
+        },
+        {
+          "caller": "vc_tv_sdtv_power_on",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1067
+        },
+        {
+          "caller": "vc_tv_sdtv_power_on",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1067
+        },
+        {
+          "caller": "vc_tv_sdtv_power_on",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1069
+        },
+        {
+          "caller": "vc_tv_power_off",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1086
+        },
+        {
+          "caller": "vc_tv_power_off",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1087
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1121
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_error",
+          "lineNumber": 1131
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1134
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "memset",
+          "lineNumber": 1137
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vchi_service_use",
+          "lineNumber": 1139
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "tvservice_send_command_reply",
+          "lineNumber": 1140
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_free",
+          "lineNumber": 1148
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_assert",
+          "lineNumber": 1152
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "memset",
+          "lineNumber": 1153
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_calloc",
+          "lineNumber": 1156
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_verify",
+          "lineNumber": 1158
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "tvservice_send_command_reply",
+          "lineNumber": 1162
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_assert",
+          "lineNumber": 1168
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "tvservice_wait_for_bulk_receive",
+          "lineNumber": 1170
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_error",
+          "lineNumber": 1172
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "HDMI_RES_GROUP_NAME",
+          "lineNumber": 1172
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_error",
+          "lineNumber": 1174
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_error",
+          "lineNumber": 1178
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "HDMI_RES_GROUP_NAME",
+          "lineNumber": 1178
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_error",
+          "lineNumber": 1182
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "HDMI_RES_GROUP_NAME",
+          "lineNumber": 1182
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1186
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "HDMI_RES_GROUP_NAME",
+          "lineNumber": 1186
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_error",
+          "lineNumber": 1189
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "HDMI_RES_GROUP_NAME",
+          "lineNumber": 1189
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vchi_service_release",
+          "lineNumber": 1191
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1195
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "HDMI_RES_GROUP_NAME",
+          "lineNumber": 1195
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "_min",
+          "lineNumber": 1203
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes_new",
+          "callee": "memcpy",
+          "lineNumber": 1204
+        },
+        {
+          "caller": "vc_tv_hdmi_mode_supported",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1233
+        },
+        {
+          "caller": "vc_tv_hdmi_mode_supported",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1235
+        },
+        {
+          "caller": "vc_tv_hdmi_audio_supported",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1256
+        },
+        {
+          "caller": "vc_tv_hdmi_audio_supported",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1257
+        },
+        {
+          "caller": "vc_tv_hdmi_audio_supported",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1258
+        },
+        {
+          "caller": "vc_tv_hdmi_audio_supported",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1259
+        },
+        {
+          "caller": "vc_tv_hdmi_audio_supported",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1260
+        },
+        {
+          "caller": "vc_tv_hdmi_audio_supported",
+          "callee": "vcos_verify",
+          "lineNumber": 1261
+        },
+        {
+          "caller": "vc_tv_hdmi_audio_supported",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1264
+        },
+        {
+          "caller": "vc_tv_enable_copyprotect",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1279
+        },
+        {
+          "caller": "vc_tv_enable_copyprotect",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1279
+        },
+        {
+          "caller": "vc_tv_enable_copyprotect",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1280
+        },
+        {
+          "caller": "vc_tv_enable_copyprotect",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1281
+        },
+        {
+          "caller": "vc_tv_disable_copyprotect",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1296
+        },
+        {
+          "caller": "vc_tv_disable_copyprotect",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1297
+        },
+        {
+          "caller": "vc_tv_show_info",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1312
+        },
+        {
+          "caller": "vc_tv_show_info",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1313
+        },
+        {
+          "caller": "vc_tv_show_info",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1314
+        },
+        {
+          "caller": "vc_tv_hdmi_get_av_latency",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1331
+        },
+        {
+          "caller": "vc_tv_hdmi_get_av_latency",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1332
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_key",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1351
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_key",
+          "callee": "vcos_verify",
+          "lineNumber": 1352
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_key",
+          "callee": "memcpy",
+          "lineNumber": 1354
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_key",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1355
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_revoked_list",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1372
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_revoked_list",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1373
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_revoked_list",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1375
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_revoked_list",
+          "callee": "tvservice_lock_obtain",
+          "lineNumber": 1378
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_revoked_list",
+          "callee": "vchi_bulk_queue_transmit",
+          "lineNumber": 1380
+        },
+        {
+          "caller": "vc_tv_hdmi_set_hdcp_revoked_list",
+          "callee": "tvservice_lock_release",
+          "lineNumber": 1385
+        },
+        {
+          "caller": "vc_tv_hdmi_set_spd",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1406
+        },
+        {
+          "caller": "vc_tv_hdmi_set_spd",
+          "callee": "vcos_verify",
+          "lineNumber": 1408
+        },
+        {
+          "caller": "vc_tv_hdmi_set_spd",
+          "callee": "memcpy",
+          "lineNumber": 1411
+        },
+        {
+          "caller": "vc_tv_hdmi_set_spd",
+          "callee": "memcpy",
+          "lineNumber": 1412
+        },
+        {
+          "caller": "vc_tv_hdmi_set_spd",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1413
+        },
+        {
+          "caller": "vc_tv_hdmi_set_spd",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1414
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1433
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1435
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1436
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1437
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1438
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1439
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1440
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1441
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1442
+        },
+        {
+          "caller": "vc_tv_hdmi_set_display_options",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1443
+        },
+        {
+          "caller": "vc_tv_test_mode_start",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1458
+        },
+        {
+          "caller": "vc_tv_test_mode_start",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1458
+        },
+        {
+          "caller": "vc_tv_test_mode_start",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1460
+        },
+        {
+          "caller": "vc_tv_test_mode_start",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1461
+        },
+        {
+          "caller": "vc_tv_test_mode_stop",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1476
+        },
+        {
+          "caller": "vc_tv_test_mode_stop",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1477
+        },
+        {
+          "caller": "vc_tv_hdmi_ddc_read",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1494
+        },
+        {
+          "caller": "vc_tv_hdmi_ddc_read",
+          "callee": "VC_HTOV32",
+          "lineNumber": 1494
+        },
+        {
+          "caller": "vc_tv_hdmi_ddc_read",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1496
+        },
+        {
+          "caller": "vc_tv_hdmi_ddc_read",
+          "callee": "vchi_service_use",
+          "lineNumber": 1501
+        },
+        {
+          "caller": "vc_tv_hdmi_ddc_read",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1502
+        },
+        {
+          "caller": "vc_tv_hdmi_ddc_read",
+          "callee": "tvservice_wait_for_bulk_receive",
+          "lineNumber": 1505
+        },
+        {
+          "caller": "vc_tv_hdmi_ddc_read",
+          "callee": "vchi_service_release",
+          "lineNumber": 1507
+        },
+        {
+          "caller": "vc_tv_hdmi_set_attached",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1517
+        },
+        {
+          "caller": "vc_tv_hdmi_set_attached",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1518
+        },
+        {
+          "caller": "vc_tv_hdmi_set_property",
+          "callee": "vcos_verify",
+          "lineNumber": 1526
+        },
+        {
+          "caller": "vc_tv_hdmi_set_property",
+          "callee": "memcpy",
+          "lineNumber": 1527
+        },
+        {
+          "caller": "vc_tv_hdmi_set_property",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1528
+        },
+        {
+          "caller": "vc_tv_hdmi_set_property",
+          "callee": "tvservice_send_command",
+          "lineNumber": 1529
+        },
+        {
+          "caller": "vc_tv_hdmi_get_property",
+          "callee": "vcos_verify",
+          "lineNumber": 1539
+        },
+        {
+          "caller": "vc_tv_hdmi_get_property",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1543
+        },
+        {
+          "caller": "vc_tv_hdmi_get_property",
+          "callee": "tvservice_send_command_reply",
+          "lineNumber": 1544
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes",
+          "callee": "malloc",
+          "lineNumber": 1592
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes",
+          "callee": "vc_tv_hdmi_get_supported_modes_new",
+          "lineNumber": 1593
+        },
+        {
+          "caller": "vc_tv_hdmi_get_supported_modes",
+          "callee": "free",
+          "lineNumber": 1609
+        },
+        {
+          "caller": "vc_tv_get_device_id",
+          "callee": "memset",
+          "lineNumber": 1622
+        },
+        {
+          "caller": "vc_tv_get_device_id",
+          "callee": "vcos_verify",
+          "lineNumber": 1623
+        },
+        {
+          "caller": "vc_tv_get_device_id",
+          "callee": "tvservice_send_command_reply",
+          "lineNumber": 1624
+        },
+        {
+          "caller": "vc_tv_get_device_id",
+          "callee": "memcpy",
+          "lineNumber": 1626
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_explicit",
+          "callee": "vc_tv_hdmi_set_property",
+          "lineNumber": 1643
+        },
+        {
+          "caller": "vc_tv_hdmi_power_on_explicit",
+          "callee": "vc_tv_hdmi_power_on_explicit_new",
+          "lineNumber": 1646
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 34,
+        "functionCount": 44,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vchost.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 282,
+      "nonEmptyLines": 197,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vchost_platform_config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

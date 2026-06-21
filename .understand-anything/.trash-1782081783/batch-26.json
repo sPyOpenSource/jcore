@@ -1,0 +1,2556 @@
+{
+  "batch": 26,
+  "nodes": [
+    {
+      "id": "file:addon/fatfs/diskio.cpp",
+      "type": "file",
+      "name": "diskio.cpp",
+      "filePath": "addon/fatfs/diskio.cpp",
+      "summary": "Diskio implementation with 5 functions and hardware register access",
+      "tags": [
+        "diskio",
+        "fatfs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/fatfs/diskio.cpp:disk_removed",
+      "type": "function",
+      "name": "disk_removed",
+      "filePath": "addon/fatfs/diskio.cpp",
+      "summary": "disk_removed(pDevice, pContext) in diskio.cpp",
+      "tags": [
+        "diskio",
+        "fatfs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/diskio.cpp:disk_status",
+      "type": "function",
+      "name": "disk_status",
+      "filePath": "addon/fatfs/diskio.cpp",
+      "summary": "disk_status(pdrv) in diskio.cpp",
+      "tags": [
+        "diskio",
+        "fatfs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/diskio.cpp:disk_initialize",
+      "type": "function",
+      "name": "disk_initialize",
+      "filePath": "addon/fatfs/diskio.cpp",
+      "summary": "disk_initialize(pdrv) in diskio.cpp",
+      "tags": [
+        "diskio",
+        "fatfs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/diskio.cpp:disk_read",
+      "type": "function",
+      "name": "disk_read",
+      "filePath": "addon/fatfs/diskio.cpp",
+      "summary": "disk_read(pdrv, buff, sector, count) in diskio.cpp",
+      "tags": [
+        "diskio",
+        "fatfs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/fatfs/diskio.cpp:disk_ioctl",
+      "type": "function",
+      "name": "disk_ioctl",
+      "filePath": "addon/fatfs/diskio.cpp",
+      "summary": "disk_ioctl(pdrv, cmd, buff) in diskio.cpp",
+      "tags": [
+        "diskio",
+        "fatfs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/fatfs/diskio.h",
+      "type": "file",
+      "name": "diskio.h",
+      "filePath": "addon/fatfs/diskio.h",
+      "summary": "Diskio implementation with 0 functions and hardware register access",
+      "tags": [
+        "diskio",
+        "fatfs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/fatfs/ff.c",
+      "type": "file",
+      "name": "ff.c",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "Ff implementation with 9 functions and hardware register access",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:ld_16",
+      "type": "function",
+      "name": "ld_16",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "ld_16(ptr) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:ld_32",
+      "type": "function",
+      "name": "ld_32",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "ld_32(ptr) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:dbc_1st",
+      "type": "function",
+      "name": "dbc_1st",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "dbc_1st(c) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:dbc_2nd",
+      "type": "function",
+      "name": "dbc_2nd",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "dbc_2nd(c) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:move_window",
+      "type": "function",
+      "name": "move_window",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "move_window(fs, sect) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:clst2sect",
+      "type": "function",
+      "name": "clst2sect",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "clst2sect(fs, clst) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:get_fat",
+      "type": "function",
+      "name": "get_fat",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "get_fat(obj, clst) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:dir_sdi",
+      "type": "function",
+      "name": "dir_sdi",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "dir_sdi(dp, ofs) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/fatfs/ff.c:dir_next",
+      "type": "function",
+      "name": "dir_next",
+      "filePath": "addon/fatfs/ff.c",
+      "summary": "dir_next(dp, stretch) in ff.c",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/fatfs/ff.h",
+      "type": "file",
+      "name": "ff.h",
+      "filePath": "addon/fatfs/ff.h",
+      "summary": "Ff implementation with 0 functions and hardware register access",
+      "tags": [
+        "fatfs",
+        "ff"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:addon/fatfs/ffsystem.cpp",
+      "type": "file",
+      "name": "ffsystem.cpp",
+      "filePath": "addon/fatfs/ffsystem.cpp",
+      "summary": "Ffsystem implementation with 0 functions and hardware register access",
+      "tags": [
+        "fatfs",
+        "ffsystem"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/fatfs/ffunicode.c",
+      "type": "file",
+      "name": "ffunicode.c",
+      "filePath": "addon/fatfs/ffunicode.c",
+      "summary": "Ffunicode implementation with 0 functions and hardware register access",
+      "tags": [
+        "fatfs",
+        "ffunicode"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:include/circle/2dgraphics.h",
+      "type": "file",
+      "name": "2dgraphics.h",
+      "filePath": "include/circle/2dgraphics.h",
+      "summary": "2Dgraphics implementation with 0 functions and hardware register access",
+      "tags": [
+        "2dgraphics",
+        "circle"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/device.h",
+      "type": "file",
+      "name": "device.h",
+      "filePath": "include/circle/device.h",
+      "summary": "Device implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/genericlock.h",
+      "type": "file",
+      "name": "genericlock.h",
+      "filePath": "include/circle/genericlock.h",
+      "summary": "Genericlock implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "genericlock"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/screen.h",
+      "type": "file",
+      "name": "screen.h",
+      "filePath": "include/circle/screen.h",
+      "summary": "Screen implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "screen"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/2dgraphics.cpp",
+      "type": "file",
+      "name": "2dgraphics.cpp",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "2Dgraphics implementation with 25 functions and hardware register access",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:C2DImage",
+      "type": "function",
+      "name": "C2DImage",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "C2DImage(p2DGraphics) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:~C2DImage",
+      "type": "function",
+      "name": "~C2DImage",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "~C2DImage() in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:Set",
+      "type": "function",
+      "name": "Set",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "Set(nWidth, nHeight, pData) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:GetWidth",
+      "type": "function",
+      "name": "GetWidth",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "GetWidth() in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:GetHeight",
+      "type": "function",
+      "name": "GetHeight",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "GetHeight() in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:C2DGraphics",
+      "type": "function",
+      "name": "C2DGraphics",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "C2DGraphics(pDisplay) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:~C2DGraphics",
+      "type": "function",
+      "name": "~C2DGraphics",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "~C2DGraphics() in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "Initialize() in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:Resize",
+      "type": "function",
+      "name": "Resize",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "Resize(nWidth, nHeight) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:ClearScreen",
+      "type": "function",
+      "name": "ClearScreen",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "ClearScreen(Color) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawRect",
+      "type": "function",
+      "name": "DrawRect",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawRect(nX, nY, nWidth, nHeight, Color) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawRectOutline",
+      "type": "function",
+      "name": "DrawRectOutline",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawRectOutline(nX, nY, nWidth, nHeight, Color) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawLine",
+      "type": "function",
+      "name": "DrawLine",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawLine(nX1, nY1, nX2, nY2, Color) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawCircle",
+      "type": "function",
+      "name": "DrawCircle",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawCircle(nX, nY, nRadius, Color) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawCircleOutline",
+      "type": "function",
+      "name": "DrawCircleOutline",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawCircleOutline(nX, nY, nRadius, Color) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawImage",
+      "type": "function",
+      "name": "DrawImage",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawImage(nX, nY, nWidth, nHeight, PixelBuffer) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawImageTransparent",
+      "type": "function",
+      "name": "DrawImageTransparent",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawImageTransparent(nX, nY, nWidth, nHeight, PixelBuffer, TransparentColor) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawImageRect",
+      "type": "function",
+      "name": "DrawImageRect",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawImageRect(nX, nY, nWidth, nHeight, nSourceX, nSourceY, PixelBuffer) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawImageRectTransparent",
+      "type": "function",
+      "name": "DrawImageRectTransparent",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawImageRectTransparent(nX, nY, nWidth, nHeight, nSourceX, nSourceY, nSourceWidth, nSourceHeight, PixelBuffer, TransparentColor) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawPixel",
+      "type": "function",
+      "name": "DrawPixel",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawPixel(nX, nY, Color) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:DrawText",
+      "type": "function",
+      "name": "DrawText",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "DrawText(nX, nY, Color, pText, Align, rFont, FontFlags) in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/2dgraphics.cpp:UpdateDisplay",
+      "type": "function",
+      "name": "UpdateDisplay",
+      "filePath": "lib/2dgraphics.cpp",
+      "summary": "UpdateDisplay() in 2dgraphics.cpp",
+      "tags": [
+        "2dgraphics"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/device.cpp",
+      "type": "file",
+      "name": "device.cpp",
+      "filePath": "lib/device.cpp",
+      "summary": "Device implementation with 11 functions and hardware register access",
+      "tags": [
+        "device"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:lib/device.cpp:TRemovedHandlerEntry",
+      "type": "class",
+      "name": "TRemovedHandlerEntry",
+      "filePath": "lib/device.cpp",
+      "summary": "TRemovedHandlerEntry class in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/device.cpp:CDevice",
+      "type": "function",
+      "name": "CDevice",
+      "filePath": "lib/device.cpp",
+      "summary": "CDevice() in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:~CDevice",
+      "type": "function",
+      "name": "~CDevice",
+      "filePath": "lib/device.cpp",
+      "summary": "~CDevice() in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:Read",
+      "type": "function",
+      "name": "Read",
+      "filePath": "lib/device.cpp",
+      "summary": "Read(pBuffer, nCount) in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:Write",
+      "type": "function",
+      "name": "Write",
+      "filePath": "lib/device.cpp",
+      "summary": "Write(pBuffer, nCount) in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:Seek",
+      "type": "function",
+      "name": "Seek",
+      "filePath": "lib/device.cpp",
+      "summary": "Seek(ullOffset) in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:GetSize",
+      "type": "function",
+      "name": "GetSize",
+      "filePath": "lib/device.cpp",
+      "summary": "GetSize() in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:IOCtl",
+      "type": "function",
+      "name": "IOCtl",
+      "filePath": "lib/device.cpp",
+      "summary": "IOCtl(ulCmd, pData) in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:RemoveDevice",
+      "type": "function",
+      "name": "RemoveDevice",
+      "filePath": "lib/device.cpp",
+      "summary": "RemoveDevice() in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:RegisterRemovedHandler",
+      "type": "function",
+      "name": "RegisterRemovedHandler",
+      "filePath": "lib/device.cpp",
+      "summary": "RegisterRemovedHandler(pHandler, pContext) in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/device.cpp:UnregisterRemovedHandler",
+      "type": "function",
+      "name": "UnregisterRemovedHandler",
+      "filePath": "lib/device.cpp",
+      "summary": "UnregisterRemovedHandler(hRegistration) in device.cpp",
+      "tags": [
+        "device"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/screen.cpp",
+      "type": "file",
+      "name": "screen.cpp",
+      "filePath": "lib/screen.cpp",
+      "summary": "Screen implementation with 0 functions and hardware register access",
+      "tags": [
+        "screen"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/39-umsdplugging/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/39-umsdplugging/kernel.cpp",
+      "summary": "Kernel implementation with 5 functions and hardware register access",
+      "tags": [
+        "39-umsdplugging",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/39-umsdplugging/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/39-umsdplugging/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "39-umsdplugging",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/39-umsdplugging/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/39-umsdplugging/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "39-umsdplugging",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/39-umsdplugging/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/39-umsdplugging/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "39-umsdplugging",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/39-umsdplugging/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/39-umsdplugging/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "39-umsdplugging",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/39-umsdplugging/kernel.cpp:StorageRemovedHandler",
+      "type": "function",
+      "name": "StorageRemovedHandler",
+      "filePath": "sample/39-umsdplugging/kernel.cpp",
+      "summary": "StorageRemovedHandler(pDevice, pContext) in kernel.cpp",
+      "tags": [
+        "39-umsdplugging",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/39-umsdplugging/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/39-umsdplugging/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "39-umsdplugging",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/39-umsdplugging/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/39-umsdplugging/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "39-umsdplugging",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/39-umsdplugging/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/39-umsdplugging/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "39-umsdplugging",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/43-multiwindow/graphicshape.cpp",
+      "type": "file",
+      "name": "graphicshape.cpp",
+      "filePath": "sample/43-multiwindow/graphicshape.cpp",
+      "summary": "Graphicshape implementation with 4 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "graphicshape"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/43-multiwindow/graphicshape.cpp:randomNumber",
+      "type": "function",
+      "name": "randomNumber",
+      "filePath": "sample/43-multiwindow/graphicshape.cpp",
+      "summary": "randomNumber() in graphicshape.cpp",
+      "tags": [
+        "43-multiwindow",
+        "graphicshape"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/graphicshape.cpp:CGraphicShape",
+      "type": "function",
+      "name": "CGraphicShape",
+      "filePath": "sample/43-multiwindow/graphicshape.cpp",
+      "summary": "CGraphicShape(p2DGraphics) in graphicshape.cpp",
+      "tags": [
+        "43-multiwindow",
+        "graphicshape"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/graphicshape.cpp:~CGraphicShape",
+      "type": "function",
+      "name": "~CGraphicShape",
+      "filePath": "sample/43-multiwindow/graphicshape.cpp",
+      "summary": "~CGraphicShape() in graphicshape.cpp",
+      "tags": [
+        "43-multiwindow",
+        "graphicshape"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/graphicshape.cpp:Draw",
+      "type": "function",
+      "name": "Draw",
+      "filePath": "sample/43-multiwindow/graphicshape.cpp",
+      "summary": "Draw() in graphicshape.cpp",
+      "tags": [
+        "43-multiwindow",
+        "graphicshape"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/43-multiwindow/graphicshape.h",
+      "type": "file",
+      "name": "graphicshape.h",
+      "filePath": "sample/43-multiwindow/graphicshape.h",
+      "summary": "Graphicshape implementation with 0 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "graphicshape"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/43-multiwindow/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/43-multiwindow/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/43-multiwindow/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/43-multiwindow/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "43-multiwindow",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/43-multiwindow/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "43-multiwindow",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/43-multiwindow/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "43-multiwindow",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/43-multiwindow/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "43-multiwindow",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/43-multiwindow/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/43-multiwindow/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/43-multiwindow/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/43-multiwindow/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/43-multiwindow/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "43-multiwindow",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "type": "file",
+      "name": "mandelbrot.cpp",
+      "filePath": "sample/43-multiwindow/mandelbrot.cpp",
+      "summary": "Mandelbrot implementation with 4 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "mandelbrot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/mandelbrot.cpp:CMandelbrotCalculator",
+      "type": "function",
+      "name": "CMandelbrotCalculator",
+      "filePath": "sample/43-multiwindow/mandelbrot.cpp",
+      "summary": "CMandelbrotCalculator(pDisplay) in mandelbrot.cpp",
+      "tags": [
+        "43-multiwindow",
+        "mandelbrot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/mandelbrot.cpp:~CMandelbrotCalculator",
+      "type": "function",
+      "name": "~CMandelbrotCalculator",
+      "filePath": "sample/43-multiwindow/mandelbrot.cpp",
+      "summary": "~CMandelbrotCalculator() in mandelbrot.cpp",
+      "tags": [
+        "43-multiwindow",
+        "mandelbrot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/mandelbrot.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/43-multiwindow/mandelbrot.cpp",
+      "summary": "Run() in mandelbrot.cpp",
+      "tags": [
+        "43-multiwindow",
+        "mandelbrot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/mandelbrot.cpp:Calculate",
+      "type": "function",
+      "name": "Calculate",
+      "filePath": "sample/43-multiwindow/mandelbrot.cpp",
+      "summary": "Calculate(x1, x2, y1, y2, nMaxIteration, nPosY0, nHeight) in mandelbrot.cpp",
+      "tags": [
+        "43-multiwindow",
+        "mandelbrot"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/43-multiwindow/mandelbrot.h",
+      "type": "file",
+      "name": "mandelbrot.h",
+      "filePath": "sample/43-multiwindow/mandelbrot.h",
+      "summary": "Mandelbrot implementation with 0 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "mandelbrot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "type": "file",
+      "name": "multicoredemo.cpp",
+      "filePath": "sample/43-multiwindow/multicoredemo.cpp",
+      "summary": "Multicoredemo implementation with 6 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "multicoredemo"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/43-multiwindow/multicoredemo.cpp:CMultiCoreDemo",
+      "type": "function",
+      "name": "CMultiCoreDemo",
+      "filePath": "sample/43-multiwindow/multicoredemo.cpp",
+      "summary": "CMultiCoreDemo(ppWindow) in multicoredemo.cpp",
+      "tags": [
+        "43-multiwindow",
+        "multicoredemo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/multicoredemo.cpp:~CMultiCoreDemo",
+      "type": "function",
+      "name": "~CMultiCoreDemo",
+      "filePath": "sample/43-multiwindow/multicoredemo.cpp",
+      "summary": "~CMultiCoreDemo() in multicoredemo.cpp",
+      "tags": [
+        "43-multiwindow",
+        "multicoredemo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/multicoredemo.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/43-multiwindow/multicoredemo.cpp",
+      "summary": "Run(nCore) in multicoredemo.cpp",
+      "tags": [
+        "43-multiwindow",
+        "multicoredemo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/multicoredemo.cpp:Graphics2DDemo",
+      "type": "function",
+      "name": "Graphics2DDemo",
+      "filePath": "sample/43-multiwindow/multicoredemo.cpp",
+      "summary": "Graphics2DDemo() in multicoredemo.cpp",
+      "tags": [
+        "43-multiwindow",
+        "multicoredemo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/multicoredemo.cpp:MandelbrotDemo",
+      "type": "function",
+      "name": "MandelbrotDemo",
+      "filePath": "sample/43-multiwindow/multicoredemo.cpp",
+      "summary": "MandelbrotDemo() in multicoredemo.cpp",
+      "tags": [
+        "43-multiwindow",
+        "multicoredemo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/43-multiwindow/multicoredemo.cpp:TerminalDemo",
+      "type": "function",
+      "name": "TerminalDemo",
+      "filePath": "sample/43-multiwindow/multicoredemo.cpp",
+      "summary": "TerminalDemo() in multicoredemo.cpp",
+      "tags": [
+        "43-multiwindow",
+        "multicoredemo"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/43-multiwindow/multicoredemo.h",
+      "type": "file",
+      "name": "multicoredemo.h",
+      "filePath": "sample/43-multiwindow/multicoredemo.h",
+      "summary": "Multicoredemo implementation with 0 functions and hardware register access",
+      "tags": [
+        "43-multiwindow",
+        "multicoredemo"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_removed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_ioctl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "function:addon/fatfs/diskio.cpp:disk_ioctl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "file:addon/fatfs/diskio.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "file:addon/fatfs/ff.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "file:include/circle/device.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "file:include/circle/devicenameservice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "file:include/circle/types.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/diskio.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:ld_16",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:ld_32",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:dbc_1st",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:dbc_2nd",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:move_window",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:clst2sect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:get_fat",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:dir_sdi",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "function:addon/fatfs/ff.c:dir_next",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "file:addon/fatfs/diskio.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/ff.c",
+      "target": "file:addon/fatfs/ff.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:addon/fatfs/ff.c:get_fat",
+      "target": "function:addon/fatfs/ff.c:move_window",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/fatfs/ff.c:get_fat",
+      "target": "function:addon/fatfs/ff.c:ld_16",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/fatfs/ff.c:get_fat",
+      "target": "function:addon/fatfs/ff.c:ld_32",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/fatfs/ff.c:dir_sdi",
+      "target": "function:addon/fatfs/ff.c:get_fat",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/fatfs/ff.c:dir_sdi",
+      "target": "function:addon/fatfs/ff.c:clst2sect",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/fatfs/ff.c:dir_next",
+      "target": "function:addon/fatfs/ff.c:get_fat",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/fatfs/ff.c:dir_next",
+      "target": "function:addon/fatfs/ff.c:clst2sect",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/fatfs/ffsystem.cpp",
+      "target": "file:addon/fatfs/ff.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/ffsystem.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/ffsystem.cpp",
+      "target": "file:include/circle/alloc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/ffsystem.cpp",
+      "target": "file:include/circle/genericlock.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/ffsystem.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/fatfs/ffunicode.c",
+      "target": "file:addon/fatfs/ff.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:C2DImage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:C2DImage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:~C2DImage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:~C2DImage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:Set",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:Set",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:GetWidth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:GetWidth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:GetHeight",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:GetHeight",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:C2DGraphics",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:C2DGraphics",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:~C2DGraphics",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:~C2DGraphics",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:Resize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:Resize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:ClearScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:ClearScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawRect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawRect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawRectOutline",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawRectOutline",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawLine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawLine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawCircle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawCircle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawCircleOutline",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawCircleOutline",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawImage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawImage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawImageTransparent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawImageTransparent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawImageRect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawImageRect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawImageRectTransparent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawImageRectTransparent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawPixel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawPixel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:DrawText",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:UpdateDisplay",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "function:lib/2dgraphics.cpp:UpdateDisplay",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "file:include/circle/2dgraphics.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "file:include/circle/screen.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/2dgraphics.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/2dgraphics.cpp:Initialize",
+      "target": "function:lib/2dgraphics.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/2dgraphics.cpp:Initialize",
+      "target": "function:lib/2dgraphics.cpp:GetWidth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/2dgraphics.cpp:Initialize",
+      "target": "function:lib/2dgraphics.cpp:GetHeight",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/2dgraphics.cpp:Resize",
+      "target": "function:lib/2dgraphics.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/2dgraphics.cpp:ClearScreen",
+      "target": "function:lib/2dgraphics.cpp:DrawRect",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/2dgraphics.cpp:DrawRectOutline",
+      "target": "function:lib/2dgraphics.cpp:DrawLine",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/2dgraphics.cpp:DrawImage",
+      "target": "function:lib/2dgraphics.cpp:DrawImageRect",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/2dgraphics.cpp:DrawImageTransparent",
+      "target": "function:lib/2dgraphics.cpp:DrawImageRectTransparent",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "class:lib/device.cpp:TRemovedHandlerEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "class:lib/device.cpp:TRemovedHandlerEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:CDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:CDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:~CDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:~CDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:Read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:Read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:Write",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:Write",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:Seek",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:Seek",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:GetSize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:GetSize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:IOCtl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:IOCtl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:RemoveDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:RemoveDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:RegisterRemovedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:RegisterRemovedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:UnregisterRemovedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "function:lib/device.cpp:UnregisterRemovedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/device.cpp",
+      "target": "file:include/circle/device.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/screen.cpp",
+      "target": "file:include/circle/devicenameservice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/screen.cpp",
+      "target": "file:include/circle/screen.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:StorageRemovedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:StorageRemovedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "file:include/circle/device.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/39-umsdplugging/kernel.cpp",
+      "target": "file:sample/39-umsdplugging/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/39-umsdplugging/kernel.cpp:Initialize",
+      "target": "function:sample/39-umsdplugging/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/39-umsdplugging/main.cpp",
+      "target": "function:sample/39-umsdplugging/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/main.cpp",
+      "target": "function:sample/39-umsdplugging/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/39-umsdplugging/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/39-umsdplugging/main.cpp",
+      "target": "file:sample/39-umsdplugging/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/graphicshape.cpp",
+      "target": "function:sample/43-multiwindow/graphicshape.cpp:randomNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/graphicshape.cpp",
+      "target": "function:sample/43-multiwindow/graphicshape.cpp:CGraphicShape",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/graphicshape.cpp",
+      "target": "function:sample/43-multiwindow/graphicshape.cpp:CGraphicShape",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/graphicshape.cpp",
+      "target": "function:sample/43-multiwindow/graphicshape.cpp:~CGraphicShape",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/graphicshape.cpp",
+      "target": "function:sample/43-multiwindow/graphicshape.cpp:~CGraphicShape",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/graphicshape.cpp",
+      "target": "function:sample/43-multiwindow/graphicshape.cpp:Draw",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/graphicshape.cpp",
+      "target": "function:sample/43-multiwindow/graphicshape.cpp:Draw",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/graphicshape.cpp",
+      "target": "file:sample/43-multiwindow/graphicshape.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/43-multiwindow/graphicshape.cpp:CGraphicShape",
+      "target": "function:sample/43-multiwindow/graphicshape.cpp:randomNumber",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "function:sample/43-multiwindow/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "function:sample/43-multiwindow/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "function:sample/43-multiwindow/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "function:sample/43-multiwindow/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "function:sample/43-multiwindow/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "function:sample/43-multiwindow/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "function:sample/43-multiwindow/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "function:sample/43-multiwindow/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "file:include/circle/screen.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/kernel.cpp",
+      "target": "file:sample/43-multiwindow/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/43-multiwindow/kernel.cpp:Initialize",
+      "target": "function:sample/43-multiwindow/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/43-multiwindow/main.cpp",
+      "target": "function:sample/43-multiwindow/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/main.cpp",
+      "target": "function:sample/43-multiwindow/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/main.cpp",
+      "target": "file:sample/43-multiwindow/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:CMandelbrotCalculator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:CMandelbrotCalculator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:~CMandelbrotCalculator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:~CMandelbrotCalculator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:Calculate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:Calculate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "file:include/circle/screen.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/mandelbrot.cpp",
+      "target": "file:sample/43-multiwindow/mandelbrot.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/43-multiwindow/mandelbrot.cpp:Run",
+      "target": "function:sample/43-multiwindow/mandelbrot.cpp:Calculate",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:CMultiCoreDemo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:CMultiCoreDemo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:~CMultiCoreDemo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:~CMultiCoreDemo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:Graphics2DDemo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:Graphics2DDemo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:MandelbrotDemo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:MandelbrotDemo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:TerminalDemo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:TerminalDemo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:include/circle/2dgraphics.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:include/circle/device.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:include/circle/devicenameservice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:include/circle/memory.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:sample/43-multiwindow/graphicshape.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:sample/43-multiwindow/mandelbrot.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/43-multiwindow/multicoredemo.cpp",
+      "target": "file:sample/43-multiwindow/multicoredemo.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/43-multiwindow/multicoredemo.cpp:Run",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:Graphics2DDemo",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/43-multiwindow/multicoredemo.cpp:Run",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:MandelbrotDemo",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/43-multiwindow/multicoredemo.cpp:Run",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:TerminalDemo",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/43-multiwindow/multicoredemo.cpp:MandelbrotDemo",
+      "target": "function:sample/43-multiwindow/multicoredemo.cpp:Run",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

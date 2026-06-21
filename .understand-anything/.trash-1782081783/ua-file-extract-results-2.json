@@ -1,0 +1,2731 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 33,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/OneWire/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 69,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 8,
+          "endLine": 16,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 18,
+          "endLine": 20,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 22,
+          "endLine": 63,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 65,
+          "endLine": 84,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 65,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 9
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 9
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 11
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 15
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Run",
+          "callee": "DoMeasurement",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Run",
+          "callee": "GetCelsius",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Run",
+          "callee": "GetFahrenheit",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 79
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/OneWire/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/OneWire/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Properties/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 164,
+      "nonEmptyLines": 133,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 37,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 46,
+          "endLine": 48,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 50,
+          "endLine": 91,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 93,
+          "endLine": 164,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 93,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Run",
+          "callee": "f_mount",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Run",
+          "callee": "Mount",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Run",
+          "callee": "Load",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "GetErrorLine",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Run",
+          "callee": "Dump",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Run",
+          "callee": "SelectSection",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 134
+        },
+        {
+          "caller": "Run",
+          "callee": "GetString",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 137
+        },
+        {
+          "caller": "Run",
+          "callee": "GetNumber",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Run",
+          "callee": "SelectSection",
+          "lineNumber": 140
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 142
+        },
+        {
+          "caller": "Run",
+          "callee": "GetNumber",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Run",
+          "callee": "SelectSection",
+          "lineNumber": 145
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 147
+        },
+        {
+          "caller": "Run",
+          "callee": "GetNumber",
+          "lineNumber": 148
+        },
+        {
+          "caller": "Run",
+          "callee": "SelectSection",
+          "lineNumber": 151
+        },
+        {
+          "caller": "Run",
+          "callee": "SetString",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Run",
+          "callee": "SetNumber",
+          "lineNumber": 153
+        },
+        {
+          "caller": "Run",
+          "callee": "SelectSection",
+          "lineNumber": 155
+        },
+        {
+          "caller": "Run",
+          "callee": "SetNumber",
+          "lineNumber": 156
+        },
+        {
+          "caller": "Run",
+          "callee": "Save",
+          "lineNumber": 158
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 160
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Properties/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 69,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Properties/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Spectrum/sample/BruceLeeScr.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 579,
+      "nonEmptyLines": 579,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Spectrum/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 26,
+          "endLine": 31,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 33,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 37,
+          "endLine": 67,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 69,
+          "endLine": 84,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 69,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 30
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Run",
+          "callee": "Update",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Run",
+          "callee": "Off",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Run",
+          "callee": "usDelay",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Run",
+          "callee": "Update",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Run",
+          "callee": "On",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Run",
+          "callee": "usDelay",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Spectrum/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 55,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Spectrum/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/WS28XX/sample/simple/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 133,
+      "nonEmptyLines": 107,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 35,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 44,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 48,
+          "endLine": 89,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 91,
+          "endLine": 133,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 91,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Run",
+          "callee": "SetLED",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Run",
+          "callee": "Update",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Run",
+          "callee": "CLogger::Get",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Run",
+          "callee": "MsDelay",
+          "lineNumber": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/WS28XX/sample/simple/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/WS28XX/sample/simple/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/lvgl/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 177,
+      "nonEmptyLines": 148,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 25,
+          "endLine": 43,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 45,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 49,
+          "endLine": 130,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 159,
+          "endLine": 177,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 159,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 26
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 26
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetRotation",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetRotation",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 126
+        },
+        {
+          "caller": "event_handler",
+          "callee": "lv_event_get_code",
+          "lineNumber": 136
+        },
+        {
+          "caller": "event_handler",
+          "callee": "LV_LOG_USER",
+          "lineNumber": 140
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_button_create",
+          "lineNumber": 146
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_screen_active",
+          "lineNumber": 146
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_obj_add_event_cb",
+          "lineNumber": 147
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_obj_align",
+          "lineNumber": 148
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_obj_remove_flag",
+          "lineNumber": 149
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_label_create",
+          "lineNumber": 151
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_obj_set_style_text_font",
+          "lineNumber": 152
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_label_set_text",
+          "lineNumber": 153
+        },
+        {
+          "caller": "lv_example_button",
+          "callee": "lv_obj_center",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 161
+        },
+        {
+          "caller": "Run",
+          "callee": "lv_example_button",
+          "lineNumber": 164
+        },
+        {
+          "caller": "Run",
+          "callee": "lv_demo_widgets",
+          "lineNumber": 166
+        },
+        {
+          "caller": "Run",
+          "callee": "UpdatePlugAndPlay",
+          "lineNumber": 171
+        },
+        {
+          "caller": "Run",
+          "callee": "Update",
+          "lineNumber": 173
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/lvgl/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 88,
+      "nonEmptyLines": 78,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/lvgl/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/microbit/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 150,
+      "nonEmptyLines": 123,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 24,
+          "endLine": 31,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 33,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 37,
+          "endLine": 83,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 85,
+          "endLine": 150,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 85,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 25
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 25
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 27
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 30
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Run",
+          "callee": "Scroll",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Run",
+          "callee": "MsDelay",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Run",
+          "callee": "SetPixel",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Run",
+          "callee": "MsDelay",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Run",
+          "callee": "ClearDisplay",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Run",
+          "callee": "GetCurrentGesture",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 129
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLightLevel",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Run",
+          "callee": "MsDelay",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Run",
+          "callee": "IsPressed",
+          "lineNumber": 134
+        },
+        {
+          "caller": "Run",
+          "callee": "CalibrateCompass",
+          "lineNumber": 137
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Run",
+          "callee": "GetHeading",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Run",
+          "callee": "MsDelay",
+          "lineNumber": 146
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/microbit/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/microbit/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/pico/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 85,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 38,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 47,
+          "endLine": 49,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 51,
+          "endLine": 92,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 94,
+          "endLine": 104,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 94,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGNOTE",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Run",
+          "callee": "Load",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGPANIC",
+          "lineNumber": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/pico/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/pico/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/qemu/gpiodemo/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 26,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 31,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 35,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 40,
+          "endLine": 95,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 40,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 37
+        },
+        {
+          "caller": "Run",
+          "callee": "On",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Run",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "Off",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Run",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/qemu/gpiodemo/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/qemu/gpiodemo/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/qemu/hostlogdemo/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 94,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 24,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 31,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 35,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 57,
+          "endLine": 81,
+          "params": []
+        },
+        {
+          "name": "TimerHandler",
+          "startLine": 83,
+          "endLine": 94,
+          "params": [
+            "hTimer",
+            "pParam",
+            "pContext"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "TimerHandler",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Run",
+          "callee": "StartKernelTimer",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Run",
+          "callee": "GetTime",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Run",
+          "callee": "GetTime",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Run",
+          "callee": "GetTime",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 77
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "(*pInvalid)",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/qemu/hostlogdemo/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 56,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/qemu/hostlogdemo/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/rtc/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 170,
+      "nonEmptyLines": 140,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 41,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 57,
+          "endLine": 59,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 61,
+          "endLine": 119,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 121,
+          "endLine": 170,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 121,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 42
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 42
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 44
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetDevice",
+          "lineNumber": 50
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 50
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGNOTE",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "SetTimeZone",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Run",
+          "callee": "Get",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGPANIC",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Run",
+          "callee": "GetYear",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGNOTE",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Run",
+          "callee": "SetTime",
+          "lineNumber": 137
+        },
+        {
+          "caller": "Run",
+          "callee": "Get",
+          "lineNumber": 137
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGPANIC",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGNOTE",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Run",
+          "callee": "IsRunning",
+          "lineNumber": 146
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 148
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 155
+        },
+        {
+          "caller": "Run",
+          "callee": "Set",
+          "lineNumber": 157
+        },
+        {
+          "caller": "Run",
+          "callee": "GetUniversalTime",
+          "lineNumber": 157
+        },
+        {
+          "caller": "Run",
+          "callee": "GetYear",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Run",
+          "callee": "Set",
+          "lineNumber": 161
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGPANIC",
+          "lineNumber": 163
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGNOTE",
+          "lineNumber": 167
+        },
+        {
+          "caller": "Run",
+          "callee": "GetString",
+          "lineNumber": 167
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/rtc/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 75,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/rtc/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/sensor/sample/bmp180/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 116,
+      "nonEmptyLines": 97,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 32,
+          "endLine": 40,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 42,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 46,
+          "endLine": 92,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 94,
+          "endLine": 116,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 94,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Run",
+          "callee": "DoMeasurement",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Run",
+          "callee": "GetTemperature",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Run",
+          "callee": "GetPressure",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Run",
+          "callee": "MsDelay",
+          "lineNumber": 112
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/sensor/sample/bmp180/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

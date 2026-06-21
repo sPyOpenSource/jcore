@@ -1,0 +1,122 @@
+[
+  {
+    "order": 1,
+    "title": "Boot & Startup",
+    "description": "How Circle boots the Raspberry Pi from cold reset: the ARM startup assembly (startup.S) initializes the CPU, sets up stack pointers, clears BSS, and jumps to sysinit.cpp, which configures the MMU, caches, and memory map before calling the kernel's entry point. The linker script (circle.ld) defines the memory layout, and startup.h provides the C-level interface for boot-time configuration.",
+    "nodeIds": [
+      "file:include/circle/startup.h",
+      "file:lib/startup.S",
+      "file:lib/sysinit.cpp",
+      "file:include/circle/memorymap.h",
+      "file:circle.ld"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "Hardware Foundation",
+    "description": "Core hardware abstraction layer that wraps the Raspberry Pi's peripherals in C++ classes. The interrupt controller (interrupt.h/.cpp) manages IRQ and FIQ routing for all peripheral interrupts. The system timer (timer.h/.cpp) provides microsecond-resolution timing. The GPIO manager (gpiomanager.h) and pin control classes enable digital I/O, while synchronize.h provides memory barriers, cache maintenance, and execution-level control needed for bare-metal concurrency.",
+    "nodeIds": [
+      "file:include/circle/interrupt.h",
+      "file:include/circle/timer.h",
+      "file:include/circle/peripherals/gpiomanager.h",
+      "file:include/circle/synchronize.h",
+      "file:lib/interrupt.cpp"
+    ]
+  },
+  {
+    "order": 3,
+    "title": "Kernel Services",
+    "description": "Foundation services that every Circle application relies on. The logger (logger.h/.cpp) provides formatted, priority-filtered logging to UART, screen, or memory buffer. Kernel options (koptions.h/.cpp) parse config.txt parameters at boot. The heap allocator (heapallocator.h) manages dynamic memory with a coalescing allocator. The device name service (devicenameservice.h) registers and looks up hardware devices by name, enabling loose coupling between drivers and applications.",
+    "nodeIds": [
+      "file:include/circle/logger.h",
+      "file:include/circle/koptions.h",
+      "file:include/circle/heapallocator.h",
+      "file:include/circle/devicenameservice.h",
+      "file:lib/logger.cpp"
+    ]
+  },
+  {
+    "order": 4,
+    "title": "Scheduler & Tasks",
+    "description": "Circle's cooperative multitasking system. The scheduler (scheduler.h/.cpp) manages task creation, yielding, and idle-loop execution. Tasks (task.h) are lightweight execution contexts sharing a single stack. Semaphores (semaphore.h) and mutexes (mutex.h) provide synchronization primitives for coordinating access to shared resources between tasks without preemption.",
+    "nodeIds": [
+      "file:include/circle/sched/scheduler.h",
+      "file:include/circle/sched/task.h",
+      "file:include/circle/sched/semaphore.h",
+      "file:include/circle/sched/mutex.h",
+      "file:lib/sched/scheduler.cpp"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "USB Stack",
+    "description": "Complete USB host stack supporting DWC2 and xHCI controllers. The USB subsystem (usbhostcontroller.h) enumerates devices on the bus and matches them to drivers via the device factory (usbdevicefactory.h). Supported device classes include HID keyboards and mice (usbhiddevice.h), mass storage devices (usbmassdevice.h), gamepads, serial adapters, Ethernet controllers, audio devices, and MIDI. The DWC2 driver (dwhcidevice.h) handles the Raspberry Pi's integrated USB controller.",
+    "nodeIds": [
+      "file:include/circle/usb/usbhostcontroller.h",
+      "file:include/circle/usb/dwhcidevice.h",
+      "file:include/circle/usb/usbhiddevice.h",
+      "file:include/circle/usb/usbmassdevice.h",
+      "file:include/circle/usb/usbdevicefactory.h"
+    ]
+  },
+  {
+    "order": 6,
+    "title": "Networking",
+    "description": "Circle's TCP/IP networking stack with a clean layered architecture. The network subsystem (netsubsystem.h) initializes the link, network, and transport layers. TCP connections (tcpconnection.h) provide reliable stream transport over IP. The DHCP client (dhcpclient.h) auto-configures network addressing. The HTTP daemon (httpdaemon.h) implements a lightweight web server, and the socket API (netsocket.h) provides BSD-like socket abstractions for custom protocols.",
+    "nodeIds": [
+      "file:include/circle/net/netsubsystem.h",
+      "file:include/circle/net/tcpconnection.h",
+      "file:include/circle/net/dhcpclient.h",
+      "file:include/circle/net/httpdaemon.h",
+      "file:include/circle/net/netsocket.h"
+    ]
+  },
+  {
+    "order": 7,
+    "title": "File Systems",
+    "description": "FAT filesystem support for reading and writing files on SD cards and USB mass storage devices. The FAT driver (fatfs.h, fatfs.cpp) implements FAT12/16/32 with long filename support. The partition manager (partition.h) reads MBR and GPT partition tables to discover volumes. Directory operations (fatdir.h) support enumeration and navigation, while the cache layer (fatcache.h) buffers sector reads for performance.",
+    "nodeIds": [
+      "file:include/circle/fs/fat/fatfs.h",
+      "file:lib/fs/fat/fatfs.cpp",
+      "file:include/circle/fs/partition.h",
+      "file:include/circle/fs/fat/fatdir.h",
+      "file:include/circle/fs/fat/fatcache.h"
+    ]
+  },
+  {
+    "order": 8,
+    "title": "Display & Graphics",
+    "description": "Visual output subsystem built on the VideoCore GPU framebuffer. The screen class (screen.h) drives the HDMI display as a console with scrolling, color support, and ANSI escape sequences. Multiple monospaced fonts (font.h) are available in various sizes. The 2D graphics library (2dgraphics.h) provides primitives for lines, rectangles, circles, and bitmap rendering. The BCm framebuffer (bcmframebuffer.h) manages the low-level mailbox interface to the GPU's display controller.",
+    "nodeIds": [
+      "file:include/circle/screen.h",
+      "file:include/circle/font.h",
+      "file:include/circle/2dgraphics.h",
+      "file:include/circle/rpi/bcmframebuffer.h",
+      "file:lib/screen.cpp"
+    ]
+  },
+  {
+    "order": 9,
+    "title": "Sound System",
+    "description": "Audio output abstraction supporting multiple hardware paths. The base sound device (soundbasedevice.h) defines a common interface for stereo 16-bit PCM playback. The I2S sound device (i2ssoundbasedevice.h) drives external DACs via the I2S bus. The HDMI sound device (hdmisoundbasedevice.h) routes audio through the GPU into the HDMI stream. The PWM sound device (pwmsoundbasedevice.h) provides simple audio output using the hardware PWM blocks with minimal external components.",
+    "nodeIds": [
+      "file:include/circle/sound/soundbasedevice.h",
+      "file:include/circle/sound/i2ssoundbasedevice.h",
+      "file:include/circle/sound/hdmisoundbasedevice.h",
+      "file:include/circle/sound/pwmsoundbasedevice.h",
+      "file:lib/sound/soundbasedevice.cpp"
+    ]
+  },
+  {
+    "order": 10,
+    "title": "Sample Applications",
+    "description": "How to structure a Circle application. Every user application starts from the template (app/template/), which provides main.cpp (the C entry point that constructs CKernel, calls Initialize and Run, then loops), kernel.cpp (where users implement Initialize, Run, and cleanup logic), and kernel.h (the CKernel class declaration inheriting from CStdlibApp or CStdlibAppScreen). Over 40 sample applications demonstrate all subsystems in action, from GPIO blinking to web servers and USB gamepad input.",
+    "nodeIds": [
+      "file:app/template/main.cpp",
+      "file:app/template/kernel.cpp",
+      "file:app/template/kernel.h",
+      "file:sample/01-gpiosimple/kernel.cpp",
+      "file:sample/06-ethernet/kernel.cpp"
+    ]
+  }
+]

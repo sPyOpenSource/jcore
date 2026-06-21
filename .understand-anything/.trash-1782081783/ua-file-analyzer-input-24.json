@@ -1,0 +1,259 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/wlan/p9chan.cpp",
+      "language": "cpp",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9chan.h",
+      "language": "c",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9cmd.cpp",
+      "language": "cpp",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9cmd.h",
+      "language": "c",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9error.cpp",
+      "language": "cpp",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9error.h",
+      "language": "c",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9proc.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9util.cpp",
+      "language": "cpp",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9util.h",
+      "language": "c",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/echoserver.cpp",
+      "language": "cpp",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/echoserver.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/kernel.h",
+      "language": "c",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/string.h",
+      "language": "c",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/string.cpp",
+      "language": "cpp",
+      "sizeLines": 795,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/15-files/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/15-files/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/15-files/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/20-tcpsimple/echoserver.cpp",
+      "language": "cpp",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/20-tcpsimple/echoserver.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/20-tcpsimple/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/20-tcpsimple/kernel.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/20-tcpsimple/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/21-webserver/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/21-webserver/kernel.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/21-webserver/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/wlan/p9chan.cpp": [
+      "addon/wlan/p9chan.h",
+      "addon/wlan/p9error.h",
+      "include/assert.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/p9chan.h": [],
+    "addon/wlan/p9cmd.cpp": [
+      "addon/wlan/p9cmd.h",
+      "addon/wlan/p9error.h",
+      "include/assert.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/p9cmd.h": [],
+    "addon/wlan/p9error.cpp": [
+      "addon/wlan/p9error.h",
+      "addon/wlan/p9proc.h",
+      "addon/wlan/p9util.h",
+      "include/assert.h"
+    ],
+    "addon/wlan/p9error.h": [],
+    "addon/wlan/p9proc.h": [],
+    "addon/wlan/p9util.cpp": [
+      "addon/wlan/p9util.h",
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/stdarg.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/p9util.h": [],
+    "addon/wlan/sample/hello_ap/echoserver.cpp": [
+      "addon/wlan/sample/hello_ap/echoserver.h",
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/sample/hello_ap/echoserver.h": [],
+    "addon/wlan/sample/hello_ap/kernel.cpp": [
+      "addon/wlan/sample/hello_ap/echoserver.h",
+      "addon/wlan/sample/hello_ap/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/sample/hello_ap/kernel.h": [],
+    "addon/wlan/sample/hello_ap/main.cpp": [
+      "addon/wlan/sample/hello_ap/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "include/circle/string.h": [],
+    "lib/string.cpp": [
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "sample/15-files/kernel.cpp": [
+      "include/circle/string.h",
+      "sample/15-files/kernel.h"
+    ],
+    "sample/15-files/kernel.h": [],
+    "sample/15-files/main.cpp": [
+      "include/circle/startup.h",
+      "sample/15-files/kernel.h"
+    ],
+    "sample/20-tcpsimple/echoserver.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/string.h",
+      "sample/20-tcpsimple/echoserver.h"
+    ],
+    "sample/20-tcpsimple/echoserver.h": [],
+    "sample/20-tcpsimple/kernel.cpp": [
+      "include/circle/string.h",
+      "sample/20-tcpsimple/echoserver.h",
+      "sample/20-tcpsimple/kernel.h"
+    ],
+    "sample/20-tcpsimple/kernel.h": [],
+    "sample/20-tcpsimple/main.cpp": [
+      "include/circle/startup.h",
+      "sample/20-tcpsimple/kernel.h"
+    ],
+    "sample/21-webserver/kernel.cpp": [
+      "sample/21-webserver/kernel.h",
+      "sample/21-webserver/webserver.h"
+    ],
+    "sample/21-webserver/kernel.h": [],
+    "sample/21-webserver/main.cpp": [
+      "include/circle/startup.h",
+      "sample/21-webserver/kernel.h"
+    ]
+  }
+}

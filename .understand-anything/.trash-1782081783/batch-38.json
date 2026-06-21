@@ -1,0 +1,97 @@
+{
+  "batchIndex": 38,
+  "nodes": [
+    {
+      "id": "addon/display/st7789device.cpp",
+      "type": "module:addon/display/st7789device.cpp",
+      "name": "st7789device.cpp",
+      "filePath": "addon/display/st7789device.cpp",
+      "summary": "Contains 5 functions: CST7789Device, ~CST7789Device, Initialize, DevClearCursor, DevSetCursorMode",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 11
+    },
+    {
+      "id": "addon/display/st7789device.h",
+      "type": "header:addon/display/st7789device.h",
+      "name": "st7789device.h",
+      "filePath": "addon/display/st7789device.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 7
+    },
+    {
+      "id": "include/circle/chargenerator.h",
+      "type": "header:include/circle/chargenerator.h",
+      "name": "chargenerator.h",
+      "filePath": "include/circle/chargenerator.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 9
+    },
+    {
+      "id": "lib/chargenerator.cpp",
+      "type": "module:lib/chargenerator.cpp",
+      "name": "chargenerator.cpp",
+      "filePath": "lib/chargenerator.cpp",
+      "summary": "Contains 2 functions: CCharGenerator, GetPixelLine",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 7
+    }
+  ],
+  "edges": [
+    {
+      "source": "addon/display/st7789device.cpp",
+      "target": "addon/display/st7789device.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/display/st7789device.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/display/st7789device.cpp",
+      "target": "include/circle/chargenerator.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/display/st7789device.cpp",
+      "target": "include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/chargenerator.cpp",
+      "target": "include/circle/chargenerator.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

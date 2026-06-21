@@ -1,0 +1,252 @@
+{
+  "batchIndex": 35,
+  "nodes": [
+    {
+      "id": "include/circle/font.h",
+      "type": "header:include/circle/font.h",
+      "name": "font.h",
+      "filePath": "include/circle/font.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 4
+    },
+    {
+      "id": "lib/fonts/font12x22.cpp",
+      "type": "module:lib/fonts/font12x22.cpp",
+      "name": "font12x22.cpp",
+      "filePath": "lib/fonts/font12x22.cpp",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 220
+    },
+    {
+      "id": "lib/fonts/font6x7.cpp",
+      "type": "module:lib/fonts/font6x7.cpp",
+      "name": "font6x7.cpp",
+      "filePath": "lib/fonts/font6x7.cpp",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 80
+    },
+    {
+      "id": "lib/fonts/font8x10.cpp",
+      "type": "module:lib/fonts/font8x10.cpp",
+      "name": "font8x10.cpp",
+      "filePath": "lib/fonts/font8x10.cpp",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 26
+    },
+    {
+      "id": "lib/fonts/font8x12.cpp",
+      "type": "module:lib/fonts/font8x12.cpp",
+      "name": "font8x12.cpp",
+      "filePath": "lib/fonts/font8x12.cpp",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 26
+    },
+    {
+      "id": "lib/fonts/font8x14.cpp",
+      "type": "module:lib/fonts/font8x14.cpp",
+      "name": "font8x14.cpp",
+      "filePath": "lib/fonts/font8x14.cpp",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 26
+    },
+    {
+      "id": "lib/fonts/font8x16.cpp",
+      "type": "module:lib/fonts/font8x16.cpp",
+      "name": "font8x16.cpp",
+      "filePath": "lib/fonts/font8x16.cpp",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 26
+    },
+    {
+      "id": "lib/fonts/font8x8.cpp",
+      "type": "module:lib/fonts/font8x8.cpp",
+      "name": "font8x8.cpp",
+      "filePath": "lib/fonts/font8x8.cpp",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 26
+    },
+    {
+      "id": "sample/08-usbkeyboard/kernel.cpp",
+      "type": "module:sample/08-usbkeyboard/kernel.cpp",
+      "name": "kernel.cpp",
+      "filePath": "sample/08-usbkeyboard/kernel.cpp",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation",
+        "sample"
+      ],
+      "complexity": 23
+    },
+    {
+      "id": "sample/08-usbkeyboard/kernel.h",
+      "type": "header:sample/08-usbkeyboard/kernel.h",
+      "name": "kernel.h",
+      "filePath": "sample/08-usbkeyboard/kernel.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "sample"
+      ],
+      "complexity": 10
+    },
+    {
+      "id": "sample/08-usbkeyboard/main.cpp",
+      "type": "module:sample/08-usbkeyboard/main.cpp",
+      "name": "main.cpp",
+      "filePath": "sample/08-usbkeyboard/main.cpp",
+      "summary": "Contains 1 functions: main",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation",
+        "sample"
+      ],
+      "complexity": 4
+    }
+  ],
+  "edges": [
+    {
+      "source": "lib/fonts/font12x22.cpp",
+      "target": "include/circle/font.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/fonts/font6x7.cpp",
+      "target": "include/circle/font.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/fonts/font8x10.cpp",
+      "target": "include/circle/font.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/fonts/font8x12.cpp",
+      "target": "include/circle/font.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/fonts/font8x14.cpp",
+      "target": "include/circle/font.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/fonts/font8x16.cpp",
+      "target": "include/circle/font.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/fonts/font8x8.cpp",
+      "target": "include/circle/font.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/08-usbkeyboard/kernel.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/08-usbkeyboard/kernel.cpp",
+      "target": "include/circle/font.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/08-usbkeyboard/kernel.cpp",
+      "target": "include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/08-usbkeyboard/kernel.cpp",
+      "target": "include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/08-usbkeyboard/kernel.cpp",
+      "target": "sample/08-usbkeyboard/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/08-usbkeyboard/main.cpp",
+      "target": "include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/08-usbkeyboard/main.cpp",
+      "target": "sample/08-usbkeyboard/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

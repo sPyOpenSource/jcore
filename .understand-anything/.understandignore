@@ -1,0 +1,89 @@
+# .understandignore — patterns for files/dirs to exclude from analysis
+# Syntax: same as .gitignore (globs, # comments, ! negation, trailing / for dirs)
+# Lines below are suggestions — uncomment to activate.
+# Use ! prefix to force-include something excluded by defaults.
+#
+# Built-in defaults (always excluded unless negated):
+#   node_modules/, .git/, dist/, build/, obj/, *.lock, *.min.js, etc.
+#
+
+# --- From .gitignore (uncomment to exclude) ---
+
+# .DS_Store
+# .AppleDouble
+# .LSOverride
+# Icon
+# ._*
+# .Spotlight-V100
+# .Trashes
+# .AppleDB
+# .AppleDesktop
+# Network Trash Folder
+# Temporary Items
+# .apdisk
+# *~
+# .directory
+# Thumbs.db
+# ehthumbs.db
+# Desktop.ini
+# $RECYCLE.BIN/
+# *.cab
+# *.msi
+# *.msm
+# *.msp
+# *.lnk
+# *.elf
+# *.o
+# *.ko
+# *.lo
+# *.obj
+# *.slo
+# *.gch
+# *.pch
+# *.a
+# *.la
+# *.lai
+# *.lib
+# *.lo
+# *.dll
+# *.so
+# *.so.*
+# *.dylib
+# *.exe
+# *.out
+# *.app
+# *.i*86
+# *.x86_64
+# *.hex
+# *.d
+# *.img
+# *.lst
+# Config.mk
+# Config2.mk
+# doc/html/
+# test2/
+# tmp/
+# /circle.geany
+
+# --- Detected directories (uncomment to exclude) ---
+
+# test/
+
+# --- Test file patterns (uncomment to exclude) ---
+
+# JS / TS
+# *.test.*
+# *.spec.*
+# *.snap
+# C# / .NET
+# **/*Tests.cs
+# **/*Test.cs
+# **/*Fixture.cs
+# **/*.Tests.csproj
+# Java / Kotlin
+# **/src/test/**
+# **/*Test.java
+# **/*IT.java
+# **/*Spec.kt
+# Go
+# **/*_test.go

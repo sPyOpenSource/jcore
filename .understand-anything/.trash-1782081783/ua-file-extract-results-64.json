@@ -1,0 +1,3396 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/vc4/interface/khronos/vg/vg_int_config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 54,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/vg/vg_int_impl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 115,
+      "nonEmptyLines": 110,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/vg/vg_int_mat3x3.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 646,
+      "nonEmptyLines": 472,
+      "functions": [
+        {
+          "name": "vg_mat3x3_set_identity",
+          "startLine": 43,
+          "endLine": 48,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_set_clean",
+          "startLine": 65,
+          "endLine": 84,
+          "params": [
+            "a",
+            "matrix",
+            "force_affine"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_get",
+          "startLine": 96,
+          "endLine": 109,
+          "params": [
+            "a",
+            "matrix"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_identical",
+          "startLine": 121,
+          "endLine": 126,
+          "params": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_mul",
+          "startLine": 138,
+          "endLine": 149,
+          "params": [
+            "a",
+            "b",
+            "c"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_postmul_translate",
+          "startLine": 161,
+          "endLine": 166,
+          "params": [
+            "a",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_postmul_scale",
+          "startLine": 178,
+          "endLine": 188,
+          "params": [
+            "a",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_postmul_shear",
+          "startLine": 200,
+          "endLine": 212,
+          "params": [
+            "a",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_postmul_rotate",
+          "startLine": 224,
+          "endLine": 229,
+          "params": [
+            "a",
+            "angle"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_postmul_rotate_sc",
+          "startLine": 243,
+          "endLine": 255,
+          "params": [
+            "a",
+            "s",
+            "c"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_premul_translate",
+          "startLine": 267,
+          "endLine": 276,
+          "params": [
+            "a",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_premul_scale",
+          "startLine": 288,
+          "endLine": 297,
+          "params": [
+            "a",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_premul_shear",
+          "startLine": 309,
+          "endLine": 320,
+          "params": [
+            "a",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_premul_rotate",
+          "startLine": 332,
+          "endLine": 337,
+          "params": [
+            "a",
+            "angle"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_premul_rotate_sc",
+          "startLine": 351,
+          "endLine": 362,
+          "params": [
+            "a",
+            "s",
+            "c"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_is_affine",
+          "startLine": 374,
+          "endLine": 377,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_is_affine_or_nans",
+          "startLine": 389,
+          "endLine": 392,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_det",
+          "startLine": 404,
+          "endLine": 409,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_affine_det",
+          "startLine": 421,
+          "endLine": 425,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_is_invertible",
+          "startLine": 438,
+          "endLine": 441,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_affine_is_invertible",
+          "startLine": 454,
+          "endLine": 457,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_invert",
+          "startLine": 469,
+          "endLine": 491,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_affine_invert",
+          "startLine": 504,
+          "endLine": 528,
+          "params": [
+            "a"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_affine_transform",
+          "startLine": 540,
+          "endLine": 546,
+          "params": [
+            "a",
+            "x_io",
+            "y_io"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_affine_transform_t",
+          "startLine": 558,
+          "endLine": 564,
+          "params": [
+            "a",
+            "x_io",
+            "y_io"
+          ]
+        },
+        {
+          "name": "vg_mat3x3_rsq",
+          "startLine": 586,
+          "endLine": 646,
+          "params": [
+            "a",
+            "r",
+            "s0",
+            "s1"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "vg_mat3x3_set_identity",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_set_clean",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_get",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_identical",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_mul",
+          "line": 138,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_postmul_translate",
+          "line": 161,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_postmul_scale",
+          "line": 178,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_postmul_shear",
+          "line": 200,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_postmul_rotate",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_postmul_rotate_sc",
+          "line": 243,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_premul_translate",
+          "line": 267,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_premul_scale",
+          "line": 288,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_premul_shear",
+          "line": 309,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_premul_rotate",
+          "line": 332,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_premul_rotate_sc",
+          "line": 351,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_is_affine",
+          "line": 374,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_is_affine_or_nans",
+          "line": 389,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_det",
+          "line": 404,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_affine_det",
+          "line": 421,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_is_invertible",
+          "line": 438,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_affine_is_invertible",
+          "line": 454,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_invert",
+          "line": 469,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_affine_invert",
+          "line": 504,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_affine_transform",
+          "line": 540,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_affine_transform_t",
+          "line": 558,
+          "isDefault": false
+        },
+        {
+          "name": "vg_mat3x3_rsq",
+          "line": 586,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 67
+        },
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 68
+        },
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 69
+        },
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 71
+        },
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 72
+        },
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 73
+        },
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 80
+        },
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 81
+        },
+        {
+          "caller": "vg_mat3x3_set_clean",
+          "callee": "clean_float",
+          "lineNumber": 82
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 123
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 123
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 123
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 124
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 124
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 124
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 125
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 125
+        },
+        {
+          "caller": "vg_mat3x3_identical",
+          "callee": "floats_identical",
+          "lineNumber": 125
+        },
+        {
+          "caller": "vg_mat3x3_postmul_rotate",
+          "callee": "sin_cos_",
+          "lineNumber": 227
+        },
+        {
+          "caller": "vg_mat3x3_postmul_rotate",
+          "callee": "vg_mat3x3_postmul_rotate_sc",
+          "lineNumber": 228
+        },
+        {
+          "caller": "vg_mat3x3_premul_rotate",
+          "callee": "sin_cos_",
+          "lineNumber": 335
+        },
+        {
+          "caller": "vg_mat3x3_premul_rotate",
+          "callee": "vg_mat3x3_premul_rotate_sc",
+          "lineNumber": 336
+        },
+        {
+          "caller": "vg_mat3x3_is_affine_or_nans",
+          "callee": "nan_ne_",
+          "lineNumber": 391
+        },
+        {
+          "caller": "vg_mat3x3_is_affine_or_nans",
+          "callee": "nan_ne_",
+          "lineNumber": 391
+        },
+        {
+          "caller": "vg_mat3x3_is_affine_or_nans",
+          "callee": "nan_ne_",
+          "lineNumber": 391
+        },
+        {
+          "caller": "vg_mat3x3_affine_det",
+          "callee": "vcos_assert",
+          "lineNumber": 423
+        },
+        {
+          "caller": "vg_mat3x3_affine_det",
+          "callee": "vg_mat3x3_is_affine_or_nans",
+          "lineNumber": 423
+        },
+        {
+          "caller": "vg_mat3x3_is_invertible",
+          "callee": "absf_",
+          "lineNumber": 440
+        },
+        {
+          "caller": "vg_mat3x3_is_invertible",
+          "callee": "vg_mat3x3_det",
+          "lineNumber": 440
+        },
+        {
+          "caller": "vg_mat3x3_affine_is_invertible",
+          "callee": "absf_",
+          "lineNumber": 456
+        },
+        {
+          "caller": "vg_mat3x3_affine_is_invertible",
+          "callee": "vg_mat3x3_affine_det",
+          "lineNumber": 456
+        },
+        {
+          "caller": "vg_mat3x3_invert",
+          "callee": "vcos_assert",
+          "lineNumber": 474
+        },
+        {
+          "caller": "vg_mat3x3_invert",
+          "callee": "vg_mat3x3_is_invertible",
+          "lineNumber": 474
+        },
+        {
+          "caller": "vg_mat3x3_invert",
+          "callee": "recip_",
+          "lineNumber": 476
+        },
+        {
+          "caller": "vg_mat3x3_invert",
+          "callee": "vg_mat3x3_det",
+          "lineNumber": 476
+        },
+        {
+          "caller": "vg_mat3x3_affine_invert",
+          "callee": "vcos_assert",
+          "lineNumber": 509
+        },
+        {
+          "caller": "vg_mat3x3_affine_invert",
+          "callee": "vg_mat3x3_affine_is_invertible",
+          "lineNumber": 509
+        },
+        {
+          "caller": "vg_mat3x3_affine_invert",
+          "callee": "recip_",
+          "lineNumber": 511
+        },
+        {
+          "caller": "vg_mat3x3_affine_invert",
+          "callee": "vg_mat3x3_affine_det",
+          "lineNumber": 511
+        },
+        {
+          "caller": "vg_mat3x3_rsq",
+          "callee": "sqrt_",
+          "lineNumber": 625
+        },
+        {
+          "caller": "vg_mat3x3_rsq",
+          "callee": "sqrt_",
+          "lineNumber": 628
+        },
+        {
+          "caller": "vg_mat3x3_rsq",
+          "callee": "sqrt_",
+          "lineNumber": 631
+        },
+        {
+          "caller": "vg_mat3x3_rsq",
+          "callee": "_maxf",
+          "lineNumber": 633
+        },
+        {
+          "caller": "vg_mat3x3_rsq",
+          "callee": "absf_",
+          "lineNumber": 644
+        },
+        {
+          "caller": "vg_mat3x3_rsq",
+          "callee": "absf_",
+          "lineNumber": 644
+        },
+        {
+          "caller": "vg_mat3x3_rsq",
+          "callee": "atan2_",
+          "lineNumber": 644
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 26,
+        "functionCount": 26,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/vg/vg_int_mat3x3.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 156,
+      "nonEmptyLines": 120,
+      "callGraph": [
+        {
+          "caller": "vg_mat3x3_postmul",
+          "callee": "vg_mat3x3_mul",
+          "lineNumber": 55
+        },
+        {
+          "caller": "vg_mat3x3_premul",
+          "callee": "vg_mat3x3_mul",
+          "lineNumber": 78
+        },
+        {
+          "caller": "vg_mat3x3_try_invert",
+          "callee": "vg_mat3x3_is_invertible",
+          "lineNumber": 123
+        },
+        {
+          "caller": "vg_mat3x3_try_invert",
+          "callee": "vg_mat3x3_invert",
+          "lineNumber": 126
+        },
+        {
+          "caller": "vg_mat3x3_affine_try_invert",
+          "callee": "vg_mat3x3_affine_is_invertible",
+          "lineNumber": 143
+        },
+        {
+          "caller": "vg_mat3x3_affine_try_invert",
+          "callee": "vg_mat3x3_affine_invert",
+          "lineNumber": 146
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/vg/vg_int_util.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 280,
+      "nonEmptyLines": 247,
+      "callGraph": [
+        {
+          "caller": "get_path_datatype_size",
+          "callee": "UNREACHABLE",
+          "lineNumber": 150
+        },
+        {
+          "caller": "get_segment_coords_count",
+          "callee": "UNREACHABLE",
+          "lineNumber": 170
+        },
+        {
+          "caller": "get_coord",
+          "callee": "UNREACHABLE",
+          "lineNumber": 183
+        },
+        {
+          "caller": "put_coord",
+          "callee": "clampi",
+          "lineNumber": 193
+        },
+        {
+          "caller": "put_coord",
+          "callee": "float_to_int",
+          "lineNumber": 193
+        },
+        {
+          "caller": "put_coord",
+          "callee": "clampi",
+          "lineNumber": 194
+        },
+        {
+          "caller": "put_coord",
+          "callee": "float_to_int",
+          "lineNumber": 194
+        },
+        {
+          "caller": "put_coord",
+          "callee": "float_to_int",
+          "lineNumber": 195
+        },
+        {
+          "caller": "put_coord",
+          "callee": "UNREACHABLE",
+          "lineNumber": 197
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/vg/vg_int.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/LICENCE",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 23,
+      "metrics": {}
+    },
+    {
+      "path": "addon/vc4/interface/makeall",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 23,
+      "metrics": {}
+    },
+    {
+      "path": "addon/vc4/interface/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 29,
+      "metrics": {}
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_dispmanx/dispmanx.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 169,
+      "nonEmptyLines": 140,
+      "functions": [
+        {
+          "name": "FillRect",
+          "startLine": 66,
+          "endLine": 81,
+          "params": [
+            "type",
+            "image",
+            "pitch",
+            "aligned_height",
+            "x",
+            "y",
+            "w",
+            "h",
+            "val"
+          ]
+        },
+        {
+          "name": "_main",
+          "startLine": 83,
+          "endLine": 168,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_main",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_main",
+          "callee": "ALIGN_UP",
+          "lineNumber": 92
+        },
+        {
+          "caller": "_main",
+          "callee": "ALIGN_UP",
+          "lineNumber": 93
+        },
+        {
+          "caller": "_main",
+          "callee": "bcm_host_init",
+          "lineNumber": 100
+        },
+        {
+          "caller": "_main",
+          "callee": "printk",
+          "lineNumber": 102
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_display_open",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_display_get_info",
+          "lineNumber": 105
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 106
+        },
+        {
+          "caller": "_main",
+          "callee": "printk",
+          "lineNumber": 107
+        },
+        {
+          "caller": "_main",
+          "callee": "calloc",
+          "lineNumber": 109
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 110
+        },
+        {
+          "caller": "_main",
+          "callee": "FillRect",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_main",
+          "callee": "FillRect",
+          "lineNumber": 113
+        },
+        {
+          "caller": "_main",
+          "callee": "FillRect",
+          "lineNumber": 114
+        },
+        {
+          "caller": "_main",
+          "callee": "FillRect",
+          "lineNumber": 115
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_resource_create",
+          "lineNumber": 117
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 121
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_rect_set",
+          "lineNumber": 122
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_resource_write_data",
+          "lineNumber": 123
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 128
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_update_start",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 130
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_rect_set",
+          "lineNumber": 132
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_rect_set",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_element_add",
+          "lineNumber": 139
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_update_submit_sync",
+          "lineNumber": 150
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 151
+        },
+        {
+          "caller": "_main",
+          "callee": "printk",
+          "lineNumber": 153
+        },
+        {
+          "caller": "_main",
+          "callee": "msleep",
+          "lineNumber": 154
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_update_start",
+          "lineNumber": 156
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 157
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_element_remove",
+          "lineNumber": 158
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_update_submit_sync",
+          "lineNumber": 160
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 161
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_resource_delete",
+          "lineNumber": 162
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 163
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_display_close",
+          "lineNumber": 164
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 165
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_dispmanx/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 19,
+      "nonEmptyLines": 14,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/_main.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 537,
+      "nonEmptyLines": 466,
+      "functions": [
+        {
+          "name": "PS_destruct",
+          "startLine": 268,
+          "endLine": 280,
+          "params": [
+            "ps"
+          ]
+        },
+        {
+          "name": "PS_render",
+          "startLine": 282,
+          "endLine": 305,
+          "params": [
+            "ps"
+          ]
+        },
+        {
+          "name": "render",
+          "startLine": 311,
+          "endLine": 344,
+          "params": [
+            "w",
+            "h"
+          ]
+        },
+        {
+          "name": "init",
+          "startLine": 348,
+          "endLine": 380,
+          "params": [
+            "window"
+          ]
+        },
+        {
+          "name": "deinit",
+          "startLine": 384,
+          "endLine": 392,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PS_destruct",
+          "line": 268,
+          "isDefault": false
+        },
+        {
+          "name": "PS_render",
+          "line": 282,
+          "isDefault": false
+        },
+        {
+          "name": "render",
+          "line": 311,
+          "isDefault": false
+        },
+        {
+          "name": "init",
+          "line": 348,
+          "isDefault": false
+        },
+        {
+          "name": "deinit",
+          "line": 384,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PS_destruct",
+          "callee": "assert",
+          "lineNumber": 271
+        },
+        {
+          "caller": "PS_destruct",
+          "callee": "vgDestroyPaint",
+          "lineNumber": 274
+        },
+        {
+          "caller": "PS_destruct",
+          "callee": "vgDestroyPaint",
+          "lineNumber": 275
+        },
+        {
+          "caller": "PS_destruct",
+          "callee": "vgDestroyPath",
+          "lineNumber": 276
+        },
+        {
+          "caller": "PS_destruct",
+          "callee": "free",
+          "lineNumber": 278
+        },
+        {
+          "caller": "PS_destruct",
+          "callee": "free",
+          "lineNumber": 279
+        },
+        {
+          "caller": "PS_render",
+          "callee": "assert",
+          "lineNumber": 285
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgSeti",
+          "lineNumber": 286
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgSeti",
+          "lineNumber": 290
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgSetPaint",
+          "lineNumber": 291
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgSetf",
+          "lineNumber": 295
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgSeti",
+          "lineNumber": 296
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgSeti",
+          "lineNumber": 297
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgSetf",
+          "lineNumber": 298
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgSetPaint",
+          "lineNumber": 299
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgDrawPath",
+          "lineNumber": 302
+        },
+        {
+          "caller": "PS_render",
+          "callee": "assert",
+          "lineNumber": 304
+        },
+        {
+          "caller": "PS_render",
+          "callee": "vgGetError",
+          "lineNumber": 304
+        },
+        {
+          "caller": "render",
+          "callee": "eglSwapBuffers",
+          "lineNumber": 320
+        },
+        {
+          "caller": "render",
+          "callee": "vgSetfv",
+          "lineNumber": 322
+        },
+        {
+          "caller": "render",
+          "callee": "vgClear",
+          "lineNumber": 323
+        },
+        {
+          "caller": "render",
+          "callee": "vgLoadIdentity",
+          "lineNumber": 325
+        },
+        {
+          "caller": "render",
+          "callee": "vgTranslate",
+          "lineNumber": 327
+        },
+        {
+          "caller": "render",
+          "callee": "vgRotate",
+          "lineNumber": 328
+        },
+        {
+          "caller": "render",
+          "callee": "vgTranslate",
+          "lineNumber": 329
+        },
+        {
+          "caller": "render",
+          "callee": "vgScale",
+          "lineNumber": 331
+        },
+        {
+          "caller": "render",
+          "callee": "vgTranslate",
+          "lineNumber": 332
+        },
+        {
+          "caller": "render",
+          "callee": "PS_render",
+          "lineNumber": 334
+        },
+        {
+          "caller": "render",
+          "callee": "assert",
+          "lineNumber": 335
+        },
+        {
+          "caller": "render",
+          "callee": "vgGetError",
+          "lineNumber": 335
+        },
+        {
+          "caller": "render",
+          "callee": "eglSwapBuffers",
+          "lineNumber": 341
+        },
+        {
+          "caller": "render",
+          "callee": "assert",
+          "lineNumber": 342
+        },
+        {
+          "caller": "render",
+          "callee": "eglGetError",
+          "lineNumber": 342
+        },
+        {
+          "caller": "init",
+          "callee": "eglGetDisplay",
+          "lineNumber": 363
+        },
+        {
+          "caller": "init",
+          "callee": "eglInitialize",
+          "lineNumber": 364
+        },
+        {
+          "caller": "init",
+          "callee": "assert",
+          "lineNumber": 365
+        },
+        {
+          "caller": "init",
+          "callee": "eglGetError",
+          "lineNumber": 365
+        },
+        {
+          "caller": "init",
+          "callee": "eglBindAPI",
+          "lineNumber": 366
+        },
+        {
+          "caller": "init",
+          "callee": "eglChooseConfig",
+          "lineNumber": 368
+        },
+        {
+          "caller": "init",
+          "callee": "assert",
+          "lineNumber": 369
+        },
+        {
+          "caller": "init",
+          "callee": "eglGetError",
+          "lineNumber": 369
+        },
+        {
+          "caller": "init",
+          "callee": "assert",
+          "lineNumber": 370
+        },
+        {
+          "caller": "init",
+          "callee": "eglCreateWindowSurface",
+          "lineNumber": 372
+        },
+        {
+          "caller": "init",
+          "callee": "assert",
+          "lineNumber": 373
+        },
+        {
+          "caller": "init",
+          "callee": "eglGetError",
+          "lineNumber": 373
+        },
+        {
+          "caller": "init",
+          "callee": "eglCreateContext",
+          "lineNumber": 374
+        },
+        {
+          "caller": "init",
+          "callee": "assert",
+          "lineNumber": 375
+        },
+        {
+          "caller": "init",
+          "callee": "eglGetError",
+          "lineNumber": 375
+        },
+        {
+          "caller": "init",
+          "callee": "eglMakeCurrent",
+          "lineNumber": 376
+        },
+        {
+          "caller": "init",
+          "callee": "assert",
+          "lineNumber": 377
+        },
+        {
+          "caller": "init",
+          "callee": "eglGetError",
+          "lineNumber": 377
+        },
+        {
+          "caller": "init",
+          "callee": "PS_construct",
+          "lineNumber": 379
+        },
+        {
+          "caller": "deinit",
+          "callee": "PS_destruct",
+          "lineNumber": 386
+        },
+        {
+          "caller": "deinit",
+          "callee": "eglMakeCurrent",
+          "lineNumber": 387
+        },
+        {
+          "caller": "deinit",
+          "callee": "assert",
+          "lineNumber": 388
+        },
+        {
+          "caller": "deinit",
+          "callee": "eglGetError",
+          "lineNumber": 388
+        },
+        {
+          "caller": "deinit",
+          "callee": "eglTerminate",
+          "lineNumber": 389
+        },
+        {
+          "caller": "deinit",
+          "callee": "assert",
+          "lineNumber": 390
+        },
+        {
+          "caller": "deinit",
+          "callee": "eglGetError",
+          "lineNumber": 390
+        },
+        {
+          "caller": "deinit",
+          "callee": "eglReleaseThread",
+          "lineNumber": 391
+        },
+        {
+          "caller": "windowProc",
+          "callee": "PostQuitMessage",
+          "lineNumber": 406
+        },
+        {
+          "caller": "windowProc",
+          "callee": "InvalidateRect",
+          "lineNumber": 411
+        },
+        {
+          "caller": "windowProc",
+          "callee": "GetClientRect",
+          "lineNumber": 412
+        },
+        {
+          "caller": "windowProc",
+          "callee": "render",
+          "lineNumber": 413
+        },
+        {
+          "caller": "windowProc",
+          "callee": "DefWindowProc",
+          "lineNumber": 419
+        },
+        {
+          "caller": "_main",
+          "callee": "GetModuleHandle",
+          "lineNumber": 433
+        },
+        {
+          "caller": "_main",
+          "callee": "LoadIcon",
+          "lineNumber": 434
+        },
+        {
+          "caller": "_main",
+          "callee": "MAKEINTRESOURCE",
+          "lineNumber": 434
+        },
+        {
+          "caller": "_main",
+          "callee": "LoadCursor",
+          "lineNumber": 435
+        },
+        {
+          "caller": "_main",
+          "callee": "CreateSolidBrush",
+          "lineNumber": 436
+        },
+        {
+          "caller": "_main",
+          "callee": "RGB",
+          "lineNumber": 436
+        },
+        {
+          "caller": "_main",
+          "callee": "LoadIcon",
+          "lineNumber": 440
+        },
+        {
+          "caller": "_main",
+          "callee": "RegisterClass",
+          "lineNumber": 441
+        },
+        {
+          "caller": "_main",
+          "callee": "CreateWindow",
+          "lineNumber": 444
+        },
+        {
+          "caller": "_main",
+          "callee": "GetModuleHandle",
+          "lineNumber": 451
+        },
+        {
+          "caller": "_main",
+          "callee": "init",
+          "lineNumber": 456
+        },
+        {
+          "caller": "_main",
+          "callee": "ShowWindow",
+          "lineNumber": 460
+        },
+        {
+          "caller": "_main",
+          "callee": "GetMessage",
+          "lineNumber": 461
+        },
+        {
+          "caller": "_main",
+          "callee": "DispatchMessage",
+          "lineNumber": 463
+        },
+        {
+          "caller": "_main",
+          "callee": "deinit",
+          "lineNumber": 469
+        },
+        {
+          "caller": "_main",
+          "callee": "DestroyWindow",
+          "lineNumber": 471
+        },
+        {
+          "caller": "_main",
+          "callee": "bcm_host_init",
+          "lineNumber": 490
+        },
+        {
+          "caller": "_main",
+          "callee": "graphics_get_display_size",
+          "lineNumber": 501
+        },
+        {
+          "caller": "_main",
+          "callee": "assert",
+          "lineNumber": 502
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_display_open",
+          "lineNumber": 514
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_update_start",
+          "lineNumber": 515
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_element_add",
+          "lineNumber": 517
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_dispmanx_update_submit_sync",
+          "lineNumber": 524
+        },
+        {
+          "caller": "_main",
+          "callee": "init",
+          "lineNumber": 526
+        },
+        {
+          "caller": "_main",
+          "callee": "render",
+          "lineNumber": 529
+        },
+        {
+          "caller": "_main",
+          "callee": "deinit",
+          "lineNumber": 532
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/license.txt",
+      "language": "txt",
+      "fileCategory": "docs",
+      "totalLines": 53,
+      "nonEmptyLines": 42,
+      "metrics": {}
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 22,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/tiger.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 1952,
+      "nonEmptyLines": 1948,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/tiger.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/cube_texture_and_coords.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 100,
+      "nonEmptyLines": 84,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/Djenne_128_128.raw",
+      "language": "raw",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "metrics": {}
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/Gaudi_128_128.raw",
+      "language": "raw",
+      "fileCategory": "code",
+      "totalLines": 133,
+      "nonEmptyLines": 133,
+      "metrics": {}
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/Lucca_128_128.raw",
+      "language": "raw",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 11,
+      "metrics": {}
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 30,
+      "nonEmptyLines": 21,
+      "steps": [
+        {
+          "name": "triangle.o",
+          "startLine": 28,
+          "endLine": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/triangle.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 582,
+      "nonEmptyLines": 488,
+      "functions": [
+        {
+          "name": "init_ogl",
+          "startLine": 130,
+          "endLine": 210,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "init_model_proj",
+          "startLine": 223,
+          "endLine": 246,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "reset_model",
+          "startLine": 259,
+          "endLine": 270,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "update_model",
+          "startLine": 283,
+          "endLine": 299,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "inc_and_wrap_angle",
+          "startLine": 314,
+          "endLine": 324,
+          "params": [
+            "angle",
+            "angle_inc"
+          ]
+        },
+        {
+          "name": "inc_and_clip_distance",
+          "startLine": 339,
+          "endLine": 349,
+          "params": [
+            "distance",
+            "distance_inc"
+          ]
+        },
+        {
+          "name": "redraw_scene",
+          "startLine": 363,
+          "endLine": 400,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "init_textures",
+          "startLine": 414,
+          "endLine": 467,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "load_tex_images",
+          "startLine": 480,
+          "endLine": 518,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "exit_func",
+          "startLine": 522,
+          "endLine": 554,
+          "params": []
+        },
+        {
+          "name": "_main",
+          "startLine": 558,
+          "endLine": 581,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_main",
+          "line": 558,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "init_ogl",
+          "callee": "eglGetDisplay",
+          "lineNumber": 155
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 156
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglInitialize",
+          "lineNumber": 159
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 160
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglChooseConfig",
+          "lineNumber": 163
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 164
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglCreateContext",
+          "lineNumber": 167
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 168
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "graphics_get_display_size",
+          "lineNumber": 171
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 172
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "vc_dispmanx_display_open",
+          "lineNumber": 184
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "vc_dispmanx_update_start",
+          "lineNumber": 185
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "vc_dispmanx_element_add",
+          "lineNumber": 187
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "vc_dispmanx_update_submit_sync",
+          "lineNumber": 194
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglCreateWindowSurface",
+          "lineNumber": 196
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 197
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglMakeCurrent",
+          "lineNumber": 200
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 201
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "glClearColor",
+          "lineNumber": 204
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "glEnable",
+          "lineNumber": 207
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "glMatrixMode",
+          "lineNumber": 209
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "glHint",
+          "lineNumber": 230
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "glViewport",
+          "lineNumber": 232
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "glMatrixMode",
+          "lineNumber": 234
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "glLoadIdentity",
+          "lineNumber": 235
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "tan",
+          "lineNumber": 237
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "glFrustumf",
+          "lineNumber": 240
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "glEnableClientState",
+          "lineNumber": 242
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "glVertexPointer",
+          "lineNumber": 243
+        },
+        {
+          "caller": "init_model_proj",
+          "callee": "reset_model",
+          "lineNumber": 245
+        },
+        {
+          "caller": "reset_model",
+          "callee": "glMatrixMode",
+          "lineNumber": 262
+        },
+        {
+          "caller": "reset_model",
+          "callee": "glLoadIdentity",
+          "lineNumber": 263
+        },
+        {
+          "caller": "reset_model",
+          "callee": "glTranslatef",
+          "lineNumber": 264
+        },
+        {
+          "caller": "update_model",
+          "callee": "inc_and_wrap_angle",
+          "lineNumber": 286
+        },
+        {
+          "caller": "update_model",
+          "callee": "inc_and_wrap_angle",
+          "lineNumber": 287
+        },
+        {
+          "caller": "update_model",
+          "callee": "inc_and_wrap_angle",
+          "lineNumber": 288
+        },
+        {
+          "caller": "update_model",
+          "callee": "inc_and_clip_distance",
+          "lineNumber": 289
+        },
+        {
+          "caller": "update_model",
+          "callee": "glLoadIdentity",
+          "lineNumber": 291
+        },
+        {
+          "caller": "update_model",
+          "callee": "glTranslatef",
+          "lineNumber": 293
+        },
+        {
+          "caller": "update_model",
+          "callee": "glRotatef",
+          "lineNumber": 296
+        },
+        {
+          "caller": "update_model",
+          "callee": "glRotatef",
+          "lineNumber": 297
+        },
+        {
+          "caller": "update_model",
+          "callee": "glRotatef",
+          "lineNumber": 298
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glClear",
+          "lineNumber": 366
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glBindTexture",
+          "lineNumber": 370
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glRotatef",
+          "lineNumber": 373
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glDrawArrays",
+          "lineNumber": 376
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glBindTexture",
+          "lineNumber": 379
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glRotatef",
+          "lineNumber": 380
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glDrawArrays",
+          "lineNumber": 381
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glBindTexture",
+          "lineNumber": 383
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glRotatef",
+          "lineNumber": 384
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glDrawArrays",
+          "lineNumber": 385
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glBindTexture",
+          "lineNumber": 387
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glRotatef",
+          "lineNumber": 388
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glDrawArrays",
+          "lineNumber": 389
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glBindTexture",
+          "lineNumber": 391
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glRotatef",
+          "lineNumber": 392
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glDrawArrays",
+          "lineNumber": 393
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glBindTexture",
+          "lineNumber": 395
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glRotatef",
+          "lineNumber": 396
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "glDrawArrays",
+          "lineNumber": 397
+        },
+        {
+          "caller": "redraw_scene",
+          "callee": "eglSwapBuffers",
+          "lineNumber": 399
+        },
+        {
+          "caller": "init_textures",
+          "callee": "load_tex_images",
+          "lineNumber": 417
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glGenTextures",
+          "lineNumber": 418
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glBindTexture",
+          "lineNumber": 421
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexImage2D",
+          "lineNumber": 422
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 424
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 425
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glBindTexture",
+          "lineNumber": 428
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexImage2D",
+          "lineNumber": 429
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 431
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 432
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glBindTexture",
+          "lineNumber": 435
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexImage2D",
+          "lineNumber": 436
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 438
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 439
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glBindTexture",
+          "lineNumber": 442
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexImage2D",
+          "lineNumber": 443
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 445
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 446
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glBindTexture",
+          "lineNumber": 449
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexImage2D",
+          "lineNumber": 450
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 452
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 453
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glBindTexture",
+          "lineNumber": 456
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexImage2D",
+          "lineNumber": 457
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 459
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexParameterf",
+          "lineNumber": 460
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glTexCoordPointer",
+          "lineNumber": 463
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glEnableClientState",
+          "lineNumber": 464
+        },
+        {
+          "caller": "init_textures",
+          "callee": "glEnable",
+          "lineNumber": 466
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "malloc",
+          "lineNumber": 490
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "malloc",
+          "lineNumber": 491
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "malloc",
+          "lineNumber": 492
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fopen",
+          "lineNumber": 494
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fread",
+          "lineNumber": 497
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "assert",
+          "lineNumber": 498
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fclose",
+          "lineNumber": 499
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fopen",
+          "lineNumber": 502
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fread",
+          "lineNumber": 505
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "assert",
+          "lineNumber": 506
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fclose",
+          "lineNumber": 507
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fopen",
+          "lineNumber": 510
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fread",
+          "lineNumber": 513
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "assert",
+          "lineNumber": 514
+        },
+        {
+          "caller": "load_tex_images",
+          "callee": "fclose",
+          "lineNumber": 515
+        },
+        {
+          "caller": "exit_func",
+          "callee": "glClear",
+          "lineNumber": 528
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglSwapBuffers",
+          "lineNumber": 529
+        },
+        {
+          "caller": "exit_func",
+          "callee": "glDeleteTextures",
+          "lineNumber": 531
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglDestroySurface",
+          "lineNumber": 532
+        },
+        {
+          "caller": "exit_func",
+          "callee": "vc_dispmanx_update_start",
+          "lineNumber": 534
+        },
+        {
+          "caller": "exit_func",
+          "callee": "vc_dispmanx_element_remove",
+          "lineNumber": 535
+        },
+        {
+          "caller": "exit_func",
+          "callee": "assert",
+          "lineNumber": 536
+        },
+        {
+          "caller": "exit_func",
+          "callee": "vc_dispmanx_update_submit_sync",
+          "lineNumber": 537
+        },
+        {
+          "caller": "exit_func",
+          "callee": "vc_dispmanx_display_close",
+          "lineNumber": 538
+        },
+        {
+          "caller": "exit_func",
+          "callee": "assert",
+          "lineNumber": 539
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglMakeCurrent",
+          "lineNumber": 542
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglDestroyContext",
+          "lineNumber": 543
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglTerminate",
+          "lineNumber": 544
+        },
+        {
+          "caller": "exit_func",
+          "callee": "free",
+          "lineNumber": 548
+        },
+        {
+          "caller": "exit_func",
+          "callee": "free",
+          "lineNumber": 549
+        },
+        {
+          "caller": "exit_func",
+          "callee": "free",
+          "lineNumber": 550
+        },
+        {
+          "caller": "exit_func",
+          "callee": "printk",
+          "lineNumber": 553
+        },
+        {
+          "caller": "_main",
+          "callee": "bcm_host_init",
+          "lineNumber": 560
+        },
+        {
+          "caller": "_main",
+          "callee": "memset",
+          "lineNumber": 563
+        },
+        {
+          "caller": "_main",
+          "callee": "init_ogl",
+          "lineNumber": 566
+        },
+        {
+          "caller": "_main",
+          "callee": "init_model_proj",
+          "lineNumber": 569
+        },
+        {
+          "caller": "_main",
+          "callee": "init_textures",
+          "lineNumber": 572
+        },
+        {
+          "caller": "_main",
+          "callee": "update_model",
+          "lineNumber": 576
+        },
+        {
+          "caller": "_main",
+          "callee": "redraw_scene",
+          "lineNumber": 577
+        },
+        {
+          "caller": "_main",
+          "callee": "exit_func",
+          "lineNumber": 579
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 11,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle2/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 23,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle2/triangle2.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 596,
+      "nonEmptyLines": 501,
+      "functions": [
+        {
+          "name": "showlog",
+          "startLine": 82,
+          "endLine": 88,
+          "params": [
+            "shader"
+          ]
+        },
+        {
+          "name": "showprogramlog",
+          "startLine": 90,
+          "endLine": 96,
+          "params": [
+            "shader"
+          ]
+        },
+        {
+          "name": "init_ogl",
+          "startLine": 109,
+          "endLine": 205,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "init_shaders",
+          "startLine": 208,
+          "endLine": 396,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "draw_mandelbrot_to_texture",
+          "startLine": 399,
+          "endLine": 418,
+          "params": [
+            "state",
+            "cx",
+            "cy",
+            "scale"
+          ]
+        },
+        {
+          "name": "draw_triangles",
+          "startLine": 420,
+          "endLine": 452,
+          "params": [
+            "state",
+            "cx",
+            "cy",
+            "scale",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "exit_func",
+          "startLine": 543,
+          "endLine": 566,
+          "params": []
+        },
+        {
+          "name": "_main",
+          "startLine": 568,
+          "endLine": 595,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "_main",
+          "line": 568,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "showlog",
+          "callee": "glGetShaderInfoLog",
+          "lineNumber": 86
+        },
+        {
+          "caller": "showlog",
+          "callee": "printk",
+          "lineNumber": 87
+        },
+        {
+          "caller": "showprogramlog",
+          "callee": "glGetProgramInfoLog",
+          "lineNumber": 94
+        },
+        {
+          "caller": "showprogramlog",
+          "callee": "printk",
+          "lineNumber": 95
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglGetDisplay",
+          "lineNumber": 139
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 140
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 141
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglInitialize",
+          "lineNumber": 144
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 145
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 146
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglChooseConfig",
+          "lineNumber": 149
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 150
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 151
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglBindAPI",
+          "lineNumber": 154
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 155
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 156
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglCreateContext",
+          "lineNumber": 159
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 160
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 161
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "graphics_get_display_size",
+          "lineNumber": 164
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 165
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "vc_dispmanx_display_open",
+          "lineNumber": 177
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "vc_dispmanx_update_start",
+          "lineNumber": 178
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "vc_dispmanx_element_add",
+          "lineNumber": 180
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "vc_dispmanx_update_submit_sync",
+          "lineNumber": 187
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 189
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglCreateWindowSurface",
+          "lineNumber": 191
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 192
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 193
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "eglMakeCurrent",
+          "lineNumber": 196
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "assert",
+          "lineNumber": 197
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 198
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "glClearColor",
+          "lineNumber": 201
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "glClear",
+          "lineNumber": 202
+        },
+        {
+          "caller": "init_ogl",
+          "callee": "check",
+          "lineNumber": 204
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glCreateShader",
+          "lineNumber": 299
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glShaderSource",
+          "lineNumber": 300
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glCompileShader",
+          "lineNumber": 301
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 302
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "showlog",
+          "lineNumber": 305
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glCreateShader",
+          "lineNumber": 307
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glShaderSource",
+          "lineNumber": 308
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glCompileShader",
+          "lineNumber": 309
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 310
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "showlog",
+          "lineNumber": 313
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glCreateShader",
+          "lineNumber": 315
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glShaderSource",
+          "lineNumber": 316
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glCompileShader",
+          "lineNumber": 317
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 318
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "showlog",
+          "lineNumber": 321
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glCreateProgram",
+          "lineNumber": 324
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glAttachShader",
+          "lineNumber": 325
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glAttachShader",
+          "lineNumber": 326
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glLinkProgram",
+          "lineNumber": 327
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 328
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "showprogramlog",
+          "lineNumber": 331
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetAttribLocation",
+          "lineNumber": 333
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetUniformLocation",
+          "lineNumber": 334
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetUniformLocation",
+          "lineNumber": 335
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetUniformLocation",
+          "lineNumber": 336
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetUniformLocation",
+          "lineNumber": 337
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetUniformLocation",
+          "lineNumber": 338
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glCreateProgram",
+          "lineNumber": 341
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glAttachShader",
+          "lineNumber": 342
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glAttachShader",
+          "lineNumber": 343
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glLinkProgram",
+          "lineNumber": 344
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 345
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "showprogramlog",
+          "lineNumber": 348
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetAttribLocation",
+          "lineNumber": 350
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetUniformLocation",
+          "lineNumber": 351
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetUniformLocation",
+          "lineNumber": 352
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGetUniformLocation",
+          "lineNumber": 353
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 354
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glClearColor",
+          "lineNumber": 356
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGenBuffers",
+          "lineNumber": 358
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 360
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGenTextures",
+          "lineNumber": 363
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 364
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glBindTexture",
+          "lineNumber": 365
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 366
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glTexImage2D",
+          "lineNumber": 368
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 369
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glTexParameterf",
+          "lineNumber": 370
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glTexParameterf",
+          "lineNumber": 371
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 372
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glGenFramebuffers",
+          "lineNumber": 374
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 375
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glBindFramebuffer",
+          "lineNumber": 376
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 377
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glFramebufferTexture2D",
+          "lineNumber": 378
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 379
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glBindFramebuffer",
+          "lineNumber": 380
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 381
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glViewport",
+          "lineNumber": 383
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 384
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glBindBuffer",
+          "lineNumber": 387
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glBufferData",
+          "lineNumber": 388
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glVertexAttribPointer",
+          "lineNumber": 390
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glEnableVertexAttribArray",
+          "lineNumber": 391
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glVertexAttribPointer",
+          "lineNumber": 392
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "glEnableVertexAttribArray",
+          "lineNumber": 393
+        },
+        {
+          "caller": "init_shaders",
+          "callee": "check",
+          "lineNumber": 395
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "glBindFramebuffer",
+          "lineNumber": 402
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "check",
+          "lineNumber": 403
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "glBindBuffer",
+          "lineNumber": 404
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "glUseProgram",
+          "lineNumber": 406
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "check",
+          "lineNumber": 407
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "glUniform2f",
+          "lineNumber": 409
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "glUniform2f",
+          "lineNumber": 410
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "check",
+          "lineNumber": 411
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "glDrawArrays",
+          "lineNumber": 412
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "check",
+          "lineNumber": 413
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "glFlush",
+          "lineNumber": 415
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "glFinish",
+          "lineNumber": 416
+        },
+        {
+          "caller": "draw_mandelbrot_to_texture",
+          "callee": "check",
+          "lineNumber": 417
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glBindFramebuffer",
+          "lineNumber": 423
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glClear",
+          "lineNumber": 425
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "check",
+          "lineNumber": 426
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glBindBuffer",
+          "lineNumber": 428
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "check",
+          "lineNumber": 429
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glUseProgram",
+          "lineNumber": 430
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "check",
+          "lineNumber": 431
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glBindTexture",
+          "lineNumber": 432
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "check",
+          "lineNumber": 433
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glUniform4f",
+          "lineNumber": 434
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glUniform2f",
+          "lineNumber": 435
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glUniform2f",
+          "lineNumber": 436
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glUniform2f",
+          "lineNumber": 437
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glUniform1i",
+          "lineNumber": 438
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "check",
+          "lineNumber": 439
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glDrawArrays",
+          "lineNumber": 441
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "check",
+          "lineNumber": 442
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glBindBuffer",
+          "lineNumber": 444
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glFlush",
+          "lineNumber": 446
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "glFinish",
+          "lineNumber": 447
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "check",
+          "lineNumber": 448
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "eglSwapBuffers",
+          "lineNumber": 450
+        },
+        {
+          "caller": "draw_triangles",
+          "callee": "check",
+          "lineNumber": 451
+        },
+        {
+          "caller": "mouse_callback",
+          "callee": "spin_lock",
+          "lineNumber": 461
+        },
+        {
+          "caller": "mouse_callback",
+          "callee": "spin_unlock",
+          "lineNumber": 467
+        },
+        {
+          "caller": "get_mouse",
+          "callee": "spin_lock",
+          "lineNumber": 476
+        },
+        {
+          "caller": "get_mouse",
+          "callee": "spin_unlock",
+          "lineNumber": 484
+        },
+        {
+          "caller": "get_mouse",
+          "callee": "open",
+          "lineNumber": 508
+        },
+        {
+          "caller": "get_mouse",
+          "callee": "read",
+          "lineNumber": 513
+        },
+        {
+          "caller": "get_mouse",
+          "callee": "read",
+          "lineNumber": 518
+        },
+        {
+          "caller": "exit_func",
+          "callee": "glClear",
+          "lineNumber": 548
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglSwapBuffers",
+          "lineNumber": 549
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglDestroySurface",
+          "lineNumber": 551
+        },
+        {
+          "caller": "exit_func",
+          "callee": "vc_dispmanx_update_start",
+          "lineNumber": 553
+        },
+        {
+          "caller": "exit_func",
+          "callee": "vc_dispmanx_element_remove",
+          "lineNumber": 554
+        },
+        {
+          "caller": "exit_func",
+          "callee": "assert",
+          "lineNumber": 555
+        },
+        {
+          "caller": "exit_func",
+          "callee": "vc_dispmanx_update_submit_sync",
+          "lineNumber": 556
+        },
+        {
+          "caller": "exit_func",
+          "callee": "vc_dispmanx_display_close",
+          "lineNumber": 557
+        },
+        {
+          "caller": "exit_func",
+          "callee": "assert",
+          "lineNumber": 558
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglMakeCurrent",
+          "lineNumber": 561
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglDestroyContext",
+          "lineNumber": 562
+        },
+        {
+          "caller": "exit_func",
+          "callee": "eglTerminate",
+          "lineNumber": 563
+        },
+        {
+          "caller": "exit_func",
+          "callee": "printk",
+          "lineNumber": 565
+        },
+        {
+          "caller": "_main",
+          "callee": "bcm_host_init",
+          "lineNumber": 572
+        },
+        {
+          "caller": "_main",
+          "callee": "memset",
+          "lineNumber": 575
+        },
+        {
+          "caller": "_main",
+          "callee": "init_ogl",
+          "lineNumber": 578
+        },
+        {
+          "caller": "_main",
+          "callee": "init_shaders",
+          "lineNumber": 579
+        },
+        {
+          "caller": "_main",
+          "callee": "draw_mandelbrot_to_texture",
+          "lineNumber": 583
+        },
+        {
+          "caller": "_main",
+          "callee": "get_mouse",
+          "lineNumber": 587
+        },
+        {
+          "caller": "_main",
+          "callee": "draw_triangles",
+          "lineNumber": 589
+        },
+        {
+          "caller": "_main",
+          "callee": "exit_func",
+          "lineNumber": 592
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 14,
+      "metrics": {}
+    }
+  ]
+}

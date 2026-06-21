@@ -1,0 +1,255 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/OneWire/ds18x20.cpp",
+      "language": "cpp",
+      "sizeLines": 222,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/SDCard/sample/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/SDCard/sample/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/SDCard/sample/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/WS28XX/sample/multichan/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 132,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/WS28XX/sample/multichan/kernel.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/WS28XX/sample/multichan/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/dio/sample/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/dio/sample/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/dio/sample/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/st7789/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/st7789/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/st7789/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/fatfs/sample/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 192,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/fatfs/sample/kernel.h",
+      "language": "c",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/fatfs/sample/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/bug.cpp",
+      "language": "cpp",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/sample/mcp300x/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/sample/mcp300x/kernel.h",
+      "language": "c",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/sample/mcp300x/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/controlwindow.cpp",
+      "language": "cpp",
+      "sizeLines": 375,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/controlwindow.h",
+      "language": "c",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/kernel.h",
+      "language": "c",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/scopewindow.cpp",
+      "language": "cpp",
+      "sizeLines": 290,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/scopewindow.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/OneWire/ds18x20.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/SDCard/sample/kernel.cpp": [
+      "addon/SDCard/sample/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/SDCard/sample/kernel.h": [],
+    "addon/SDCard/sample/main.cpp": [
+      "addon/SDCard/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/WS28XX/sample/multichan/kernel.cpp": [
+      "addon/WS28XX/sample/multichan/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/WS28XX/sample/multichan/kernel.h": [],
+    "addon/WS28XX/sample/multichan/main.cpp": [
+      "addon/WS28XX/sample/multichan/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/dio/sample/kernel.cpp": [
+      "addon/dio/sample/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/dio/sample/kernel.h": [],
+    "addon/dio/sample/main.cpp": [
+      "addon/dio/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/st7789/kernel.cpp": [
+      "addon/display/sample/st7789/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/display/sample/st7789/kernel.h": [],
+    "addon/display/sample/st7789/main.cpp": [
+      "addon/display/sample/st7789/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/fatfs/sample/kernel.cpp": [
+      "addon/fatfs/sample/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/fatfs/sample/kernel.h": [],
+    "addon/fatfs/sample/main.cpp": [
+      "addon/fatfs/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/linux/bug.cpp": [
+      "include/circle/logger.h",
+      "include/circle/string.h"
+    ],
+    "addon/sensor/sample/mcp300x/kernel.cpp": [
+      "addon/sensor/sample/mcp300x/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/sensor/sample/mcp300x/kernel.h": [],
+    "addon/sensor/sample/mcp300x/main.cpp": [
+      "addon/sensor/sample/mcp300x/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/ugui/sample/controlwindow.cpp": [
+      "addon/ugui/sample/controlwindow.h",
+      "include/assert.h"
+    ],
+    "addon/ugui/sample/controlwindow.h": [],
+    "addon/ugui/sample/kernel.cpp": [
+      "addon/ugui/sample/controlwindow.h",
+      "addon/ugui/sample/kernel.h",
+      "addon/ugui/sample/scopewindow.h"
+    ],
+    "addon/ugui/sample/kernel.h": [],
+    "addon/ugui/sample/main.cpp": [
+      "addon/ugui/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/ugui/sample/scopewindow.cpp": [
+      "addon/ugui/sample/scopewindow.h",
+      "include/assert.h",
+      "include/circle/string.h"
+    ],
+    "addon/ugui/sample/scopewindow.h": []
+  }
+}

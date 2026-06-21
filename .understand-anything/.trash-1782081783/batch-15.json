@@ -1,0 +1,4750 @@
+{
+  "batch": 15,
+  "nodes": [
+    {
+      "id": "file:lib/net/transportlayer.cpp",
+      "type": "file",
+      "name": "transportlayer.cpp",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Implements CTransportLayer, ~CTransportLayer, Initialize and 15 more",
+      "tags": [
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:CTransportLayer",
+      "type": "function",
+      "name": "CTransportLayer",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "CTransportLayer(pNetConfig, pNetworkLayer) - 10 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:~CTransportLayer",
+      "type": "function",
+      "name": "~CTransportLayer",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "~CTransportLayer() - 5 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Initialize() - 4 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Process",
+      "type": "function",
+      "name": "Process",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Process() - 83 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Bind",
+      "type": "function",
+      "name": "Bind",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Bind(nOwnPort, nProtocol) - 46 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Connect",
+      "type": "function",
+      "name": "Connect",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Connect(rIPAddress, nPort, nOwnPort, nProtocol) - 70 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Listen",
+      "type": "function",
+      "name": "Listen",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Listen(nOwnPort, nProtocol) - 41 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Accept",
+      "type": "function",
+      "name": "Accept",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Accept(pForeignIP, pForeignPort, hConnection) - 13 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Disconnect",
+      "type": "function",
+      "name": "Disconnect",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Disconnect(hConnection) - 11 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Send",
+      "type": "function",
+      "name": "Send",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Send(pData, nLength, nFlags, hConnection) - 13 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:Receive",
+      "type": "function",
+      "name": "Receive",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "Receive(pBuffer, nFlags, hConnection) - 12 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:SendTo",
+      "type": "function",
+      "name": "SendTo",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "SendTo(pData, nLength, nFlags, rForeignIP...) - 15 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:ReceiveFrom",
+      "type": "function",
+      "name": "ReceiveFrom",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "ReceiveFrom(pBuffer, nFlags, pForeignIP, pForeignPort...) - 14 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:SetOptionBroadcast",
+      "type": "function",
+      "name": "SetOptionBroadcast",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "SetOptionBroadcast(bAllowed, hConnection) - 11 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:SetOptionAddMembership",
+      "type": "function",
+      "name": "SetOptionAddMembership",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "SetOptionAddMembership(rGroupAddress, hConnection) - 11 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:SetOptionDropMembership",
+      "type": "function",
+      "name": "SetOptionDropMembership",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "SetOptionDropMembership(rGroupAddress, hConnection) - 11 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:IsConnected",
+      "type": "function",
+      "name": "IsConnected",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "IsConnected(hConnection) - 11 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/transportlayer.cpp:ListConnections",
+      "type": "function",
+      "name": "ListConnections",
+      "filePath": "lib/net/transportlayer.cpp",
+      "summary": "ListConnections(pTarget) - 43 lines in transportlayer.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/net/udpconnection.cpp",
+      "type": "file",
+      "name": "udpconnection.cpp",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "Defines TUDPHeader, TUDPPrivateData | Implements CUDPConnection, CUDPConnection, ~CUDPConnection and 9 more",
+      "tags": [
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:CUDPConnection",
+      "type": "function",
+      "name": "CUDPConnection",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "CUDPConnection(pNetConfig, pNetworkLayer, rForeignIP, nForeignPort...) - 13 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:~CUDPConnection",
+      "type": "function",
+      "name": "~CUDPConnection",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "~CUDPConnection() - 5 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:Connect",
+      "type": "function",
+      "name": "Connect",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "Connect() - 6 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:Accept",
+      "type": "function",
+      "name": "Accept",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "Accept(pForeignIP, pForeignPort) - 4 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:Close",
+      "type": "function",
+      "name": "Close",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "Close() - 20 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:Send",
+      "type": "function",
+      "name": "Send",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "Send(pData, nLength, nFlags) - 57 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:Receive",
+      "type": "function",
+      "name": "Receive",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "Receive(pBuffer, nFlags) - 44 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:SendTo",
+      "type": "function",
+      "name": "SendTo",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "SendTo(pData, nLength, nFlags, rForeignIP...) - 59 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:ReceiveFrom",
+      "type": "function",
+      "name": "ReceiveFrom",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "ReceiveFrom(pBuffer, nFlags, pForeignIP, pForeignPort) - 51 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:SetOptionBroadcast",
+      "type": "function",
+      "name": "SetOptionBroadcast",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "SetOptionBroadcast(bAllowed) - 6 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/udpconnection.cpp:SetOptionAddMembership",
+      "type": "function",
+      "name": "SetOptionAddMembership",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "SetOptionAddMembership(rGroupAddress) - 19 lines in udpconnection.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:lib/net/udpconnection.cpp:TUDPHeader",
+      "type": "class",
+      "name": "TUDPHeader",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "TUDPHeader class with 4 properties in udpconnection.cpp",
+      "tags": [
+        "class",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:lib/net/udpconnection.cpp:TUDPPrivateData",
+      "type": "class",
+      "name": "TUDPPrivateData",
+      "filePath": "lib/net/udpconnection.cpp",
+      "summary": "TUDPPrivateData class with 2 properties in udpconnection.cpp",
+      "tags": [
+        "class",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/netdevice.cpp",
+      "type": "file",
+      "name": "netdevice.cpp",
+      "filePath": "lib/netdevice.cpp",
+      "summary": "Implements AddNetDevice",
+      "tags": [
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/netdevice.cpp:AddNetDevice",
+      "type": "function",
+      "name": "AddNetDevice",
+      "filePath": "lib/netdevice.cpp",
+      "summary": "AddNetDevice() - 7 lines in netdevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/ptrarray.cpp",
+      "type": "file",
+      "name": "ptrarray.cpp",
+      "filePath": "lib/ptrarray.cpp",
+      "summary": "Implements CPtrArray, ~CPtrArray, GetCount and 2 more",
+      "tags": [
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/ptrarray.cpp:CPtrArray",
+      "type": "function",
+      "name": "CPtrArray",
+      "filePath": "lib/ptrarray.cpp",
+      "summary": "CPtrArray(nInitialSize, nSizeIncrement) - 12 lines in ptrarray.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/ptrarray.cpp:~CPtrArray",
+      "type": "function",
+      "name": "~CPtrArray",
+      "filePath": "lib/ptrarray.cpp",
+      "summary": "~CPtrArray() - 8 lines in ptrarray.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/ptrarray.cpp:GetCount",
+      "type": "function",
+      "name": "GetCount",
+      "filePath": "lib/ptrarray.cpp",
+      "summary": "GetCount() - 4 lines in ptrarray.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/ptrarray.cpp:Append",
+      "type": "function",
+      "name": "Append",
+      "filePath": "lib/ptrarray.cpp",
+      "summary": "Append(pPtr) - 24 lines in ptrarray.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/ptrarray.cpp:RemoveLast",
+      "type": "function",
+      "name": "RemoveLast",
+      "filePath": "lib/ptrarray.cpp",
+      "summary": "RemoveLast() - 5 lines in ptrarray.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/sound/soundbasedevice.cpp",
+      "type": "file",
+      "name": "soundbasedevice.cpp",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "Implements CSoundBaseDevice, CSoundBaseDevice, ~CSoundBaseDevice and 37 more",
+      "tags": [
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:CSoundBaseDevice",
+      "type": "function",
+      "name": "CSoundBaseDevice",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "CSoundBaseDevice() - 21 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:~CSoundBaseDevice",
+      "type": "function",
+      "name": "~CSoundBaseDevice",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "~CSoundBaseDevice() - 10 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:Setup",
+      "type": "function",
+      "name": "Setup",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "Setup(HWFormat, nRange32, nSampleRate, nHWTXChannels...) - 86 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetHWTXChannels",
+      "type": "function",
+      "name": "GetHWTXChannels",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetHWTXChannels() - 4 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetHWRXChannels",
+      "type": "function",
+      "name": "GetHWRXChannels",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetHWRXChannels() - 4 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetRangeMin",
+      "type": "function",
+      "name": "GetRangeMin",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetRangeMin() - 4 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetRangeMax",
+      "type": "function",
+      "name": "GetRangeMax",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetRangeMax() - 4 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:AllocateQueue",
+      "type": "function",
+      "name": "AllocateQueue",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "AllocateQueue(nSizeMsecs) - 18 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:AllocateQueueFrames",
+      "type": "function",
+      "name": "AllocateQueueFrames",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "AllocateQueueFrames(nSizeFrames) - 18 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:SetWriteFormat",
+      "type": "function",
+      "name": "SetWriteFormat",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "SetWriteFormat(Format, nChannels) - 33 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:Write",
+      "type": "function",
+      "name": "Write",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "Write(pBuffer, nCount) - 116 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetQueueSizeFrames",
+      "type": "function",
+      "name": "GetQueueSizeFrames",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetQueueSizeFrames() - 5 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetQueueFramesAvail",
+      "type": "function",
+      "name": "GetQueueFramesAvail",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetQueueFramesAvail() - 12 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:RegisterNeedDataCallback",
+      "type": "function",
+      "name": "RegisterNeedDataCallback",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "RegisterNeedDataCallback(pCallback, pParam) - 8 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:AreChannelsSwapped",
+      "type": "function",
+      "name": "AreChannelsSwapped",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "AreChannelsSwapped() - 4 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:AllocateReadQueue",
+      "type": "function",
+      "name": "AllocateReadQueue",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "AllocateReadQueue(nSizeMsecs) - 18 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:AllocateReadQueueFrames",
+      "type": "function",
+      "name": "AllocateReadQueueFrames",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "AllocateReadQueueFrames(nSizeFrames) - 18 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:SetReadFormat",
+      "type": "function",
+      "name": "SetReadFormat",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "SetReadFormat(Format, nChannels, bLeftChannel) - 35 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:Read",
+      "type": "function",
+      "name": "Read",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "Read(pBuffer, nCount) - 113 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetReadQueueSizeFrames",
+      "type": "function",
+      "name": "GetReadQueueSizeFrames",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetReadQueueSizeFrames() - 5 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetReadQueueFramesAvail",
+      "type": "function",
+      "name": "GetReadQueueFramesAvail",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetReadQueueFramesAvail() - 12 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:RegisterHaveDataCallback",
+      "type": "function",
+      "name": "RegisterHaveDataCallback",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "RegisterHaveDataCallback(pCallback, pParam) - 8 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetChunk",
+      "type": "function",
+      "name": "GetChunk",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetChunk(pBuffer, nChunkSize) - 6 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:ConvertIEC958Sample",
+      "type": "function",
+      "name": "ConvertIEC958Sample",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "ConvertIEC958Sample(nSample, nFrame) - 27 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:ConvertSoundFormat",
+      "type": "function",
+      "name": "ConvertSoundFormat",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "ConvertSoundFormat(pTo, pFrom) - 75 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetChunkInternal",
+      "type": "function",
+      "name": "GetChunkInternal",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetChunkInternal(pBuffer, nChunkSize) - 83 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetQueueBytesFree",
+      "type": "function",
+      "name": "GetQueueBytesFree",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetQueueBytesFree() - 13 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetQueueBytesAvail",
+      "type": "function",
+      "name": "GetQueueBytesAvail",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetQueueBytesAvail() - 13 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:Enqueue",
+      "type": "function",
+      "name": "Enqueue",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "Enqueue(pBuffer, nCount) - 17 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:Dequeue",
+      "type": "function",
+      "name": "Dequeue",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "Dequeue(pBuffer, nCount) - 17 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:PutChunk",
+      "type": "function",
+      "name": "PutChunk",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "PutChunk(pBuffer, nChunkSize) - 6 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:PutChunkInternal",
+      "type": "function",
+      "name": "PutChunkInternal",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "PutChunkInternal(pBuffer, nChunkSize) - 33 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:ConvertReadSoundFormat",
+      "type": "function",
+      "name": "ConvertReadSoundFormat",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "ConvertReadSoundFormat(pTo, pFrom) - 51 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetReadQueueBytesFree",
+      "type": "function",
+      "name": "GetReadQueueBytesFree",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetReadQueueBytesFree() - 13 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:GetReadQueueBytesAvail",
+      "type": "function",
+      "name": "GetReadQueueBytesAvail",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "GetReadQueueBytesAvail() - 13 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:ReadEnqueue",
+      "type": "function",
+      "name": "ReadEnqueue",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "ReadEnqueue(pBuffer, nCount) - 17 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/soundbasedevice.cpp:ReadDequeue",
+      "type": "function",
+      "name": "ReadDequeue",
+      "filePath": "lib/sound/soundbasedevice.cpp",
+      "summary": "ReadDequeue(pBuffer, nCount) - 17 lines in soundbasedevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/util.cpp",
+      "type": "file",
+      "name": "util.cpp",
+      "filePath": "lib/util.cpp",
+      "summary": "Implements char2int, ether_crc",
+      "tags": [
+        "cpp",
+        "library",
+        "utility"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/util.cpp:char2int",
+      "type": "function",
+      "name": "char2int",
+      "filePath": "lib/util.cpp",
+      "summary": "char2int(chValue) - 11 lines in util.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/util.cpp:ether_crc",
+      "type": "function",
+      "name": "ether_crc",
+      "filePath": "lib/util.cpp",
+      "summary": "ether_crc(ulLength, pData) - 24 lines in util.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "library",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/31-webclient/htmlscanner.cpp",
+      "type": "file",
+      "name": "htmlscanner.cpp",
+      "filePath": "sample/31-webclient/htmlscanner.cpp",
+      "summary": "Implements CHtmlScanner, ~CHtmlScanner, GetFirstItem and 3 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/31-webclient/htmlscanner.cpp:CHtmlScanner",
+      "type": "function",
+      "name": "CHtmlScanner",
+      "filePath": "sample/31-webclient/htmlscanner.cpp",
+      "summary": "CHtmlScanner(pContent) - 8 lines in htmlscanner.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/31-webclient/htmlscanner.cpp:~CHtmlScanner",
+      "type": "function",
+      "name": "~CHtmlScanner",
+      "filePath": "sample/31-webclient/htmlscanner.cpp",
+      "summary": "~CHtmlScanner() - 4 lines in htmlscanner.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/31-webclient/htmlscanner.cpp:GetFirstItem",
+      "type": "function",
+      "name": "GetFirstItem",
+      "filePath": "sample/31-webclient/htmlscanner.cpp",
+      "summary": "GetFirstItem(rItem) - 6 lines in htmlscanner.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/31-webclient/htmlscanner.cpp:GetNextItem",
+      "type": "function",
+      "name": "GetNextItem",
+      "filePath": "sample/31-webclient/htmlscanner.cpp",
+      "summary": "GetNextItem(rItem) - 72 lines in htmlscanner.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:sample/31-webclient/htmlscanner.cpp:GetItem",
+      "type": "function",
+      "name": "GetItem",
+      "filePath": "sample/31-webclient/htmlscanner.cpp",
+      "summary": "GetItem(nItem, rItem) - 21 lines in htmlscanner.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/31-webclient/htmlscanner.cpp:GetChar",
+      "type": "function",
+      "name": "GetChar",
+      "filePath": "sample/31-webclient/htmlscanner.cpp",
+      "summary": "GetChar() - 35 lines in htmlscanner.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/31-webclient/htmlscanner.h",
+      "type": "file",
+      "name": "htmlscanner.h",
+      "filePath": "sample/31-webclient/htmlscanner.h",
+      "summary": "htmlscanner.h - 62 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/31-webclient/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/31-webclient/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 3 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/31-webclient/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/31-webclient/kernel.cpp",
+      "summary": "CKernel() - 11 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/31-webclient/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/31-webclient/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/31-webclient/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/31-webclient/kernel.cpp",
+      "summary": "Initialize() - 47 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/31-webclient/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/31-webclient/kernel.cpp",
+      "summary": "Run() - 29 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/31-webclient/kernel.cpp:GetDocument",
+      "type": "function",
+      "name": "GetDocument",
+      "filePath": "sample/31-webclient/kernel.cpp",
+      "summary": "GetDocument(pBuffer) - 34 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/31-webclient/kernel.cpp:ParseDocument",
+      "type": "function",
+      "name": "ParseDocument",
+      "filePath": "sample/31-webclient/kernel.cpp",
+      "summary": "ParseDocument(pDocument) - 116 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sample/31-webclient/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/31-webclient/kernel.h",
+      "summary": "kernel.h - 75 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/31-webclient/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/31-webclient/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/31-webclient/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/31-webclient/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/33-syslog/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/33-syslog/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/33-syslog/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/33-syslog/kernel.cpp",
+      "summary": "CKernel() - 11 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/33-syslog/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/33-syslog/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/33-syslog/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/33-syslog/kernel.cpp",
+      "summary": "Initialize() - 47 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/33-syslog/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/33-syslog/kernel.cpp",
+      "summary": "Run() - 28 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/33-syslog/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/33-syslog/kernel.h",
+      "summary": "kernel.h - 70 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/33-syslog/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/33-syslog/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/33-syslog/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/33-syslog/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/42-soundinput/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/42-soundinput/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/42-soundinput/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/42-soundinput/kernel.cpp",
+      "summary": "CKernel() - 15 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/42-soundinput/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/42-soundinput/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/42-soundinput/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/42-soundinput/kernel.cpp",
+      "summary": "Initialize() - 51 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:sample/42-soundinput/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/42-soundinput/kernel.cpp",
+      "summary": "Run() - 105 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sample/42-soundinput/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/42-soundinput/kernel.h",
+      "summary": "kernel.h - 95 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/42-soundinput/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/42-soundinput/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/42-soundinput/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/42-soundinput/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "audio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/mdns-publisher/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/mdns-publisher/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/mdns-publisher/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/mdns-publisher/kernel.cpp",
+      "summary": "CKernel() - 13 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/mdns-publisher/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/mdns-publisher/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/mdns-publisher/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/mdns-publisher/kernel.cpp",
+      "summary": "Initialize() - 47 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/mdns-publisher/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/mdns-publisher/kernel.cpp",
+      "summary": "Run() - 27 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/mdns-publisher/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/mdns-publisher/kernel.h",
+      "summary": "kernel.h - 70 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/mdns-publisher/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/mdns-publisher/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/mdns-publisher/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/mdns-publisher/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/mdns-receiver/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/mdns-receiver/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/mdns-receiver/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/mdns-receiver/kernel.cpp",
+      "summary": "CKernel() - 18 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/mdns-receiver/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/mdns-receiver/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/mdns-receiver/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/mdns-receiver/kernel.cpp",
+      "summary": "Initialize() - 76 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:test/mdns-receiver/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/mdns-receiver/kernel.cpp",
+      "summary": "Run() - 60 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:test/mdns-receiver/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/mdns-receiver/kernel.h",
+      "summary": "kernel.h - 84 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/mdns-receiver/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/mdns-receiver/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/mdns-receiver/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/mdns-receiver/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/ping-client/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/ping-client/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/ping-client/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/ping-client/kernel.cpp",
+      "summary": "CKernel() - 11 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/ping-client/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/ping-client/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/ping-client/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/ping-client/kernel.cpp",
+      "summary": "Initialize() - 47 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/ping-client/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/ping-client/kernel.cpp",
+      "summary": "Run() - 52 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:test/ping-client/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/ping-client/kernel.h",
+      "summary": "kernel.h - 70 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/ping-client/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/ping-client/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/ping-client/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/ping-client/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/ping-client/pingclient.cpp",
+      "type": "file",
+      "name": "pingclient.cpp",
+      "filePath": "test/ping-client/pingclient.cpp",
+      "summary": "Defines TICMPEchoPacket | Implements CPingClient, ~CPingClient, Send and 1 more",
+      "tags": [
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/ping-client/pingclient.cpp:CPingClient",
+      "type": "function",
+      "name": "CPingClient",
+      "filePath": "test/ping-client/pingclient.cpp",
+      "summary": "CPingClient(pNet) - 9 lines in pingclient.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/ping-client/pingclient.cpp:~CPingClient",
+      "type": "function",
+      "name": "~CPingClient",
+      "filePath": "test/ping-client/pingclient.cpp",
+      "summary": "~CPingClient() - 8 lines in pingclient.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/ping-client/pingclient.cpp:Send",
+      "type": "function",
+      "name": "Send",
+      "filePath": "test/ping-client/pingclient.cpp",
+      "summary": "Send(rServer, usIdentifier, usSequenceNumber, ulLength) - 24 lines in pingclient.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/ping-client/pingclient.cpp:Receive",
+      "type": "function",
+      "name": "Receive",
+      "filePath": "test/ping-client/pingclient.cpp",
+      "summary": "Receive(pSender, pIdentifier, pSequenceNumber, pLength) - 36 lines in pingclient.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:test/ping-client/pingclient.cpp:TICMPEchoPacket",
+      "type": "class",
+      "name": "TICMPEchoPacket",
+      "filePath": "test/ping-client/pingclient.cpp",
+      "summary": "TICMPEchoPacket class with 6 properties in pingclient.cpp",
+      "tags": [
+        "class",
+        "cpp",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/ping-client/pingclient.h",
+      "type": "file",
+      "name": "pingclient.h",
+      "filePath": "test/ping-client/pingclient.h",
+      "summary": "pingclient.h - 60 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "test",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 6 more",
+      "tags": [
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "CKernel() - 9 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "~CKernel() - 4 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "Initialize() - 42 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "Run() - 102 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:GetTouchPosition",
+      "type": "function",
+      "name": "GetTouchPosition",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "GetTouchPosition() - 11 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:TouchScreenEventHandler",
+      "type": "function",
+      "name": "TouchScreenEventHandler",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "TouchScreenEventHandler(Event, nID, nPosX, nPosY) - 13 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:Print",
+      "type": "function",
+      "name": "Print",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "Print(pFormat) - 13 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:DrawLine",
+      "type": "function",
+      "name": "DrawLine",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "DrawLine(nPosX1, nPosY1, nPosX2, nPosY2...) - 37 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/kernel.cpp:abs",
+      "type": "function",
+      "name": "abs",
+      "filePath": "tools/touchscreen-calibrator/kernel.cpp",
+      "summary": "abs(nValue) - 9 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tools/touchscreen-calibrator/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "tools/touchscreen-calibrator/kernel.h",
+      "summary": "kernel.h - 88 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tools/touchscreen-calibrator/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "tools/touchscreen-calibrator/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tools/touchscreen-calibrator/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "tools/touchscreen-calibrator/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "bare-metal",
+        "raspberry-pi"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "file:include/circle/macros.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "file:include/circle/net/in.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "file:include/circle/net/tcpconnection.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "file:include/circle/net/transportlayer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "file:include/circle/net/udpconnection.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:CTransportLayer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:CTransportLayer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:~CTransportLayer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:~CTransportLayer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Process",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Process",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Bind",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Bind",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Connect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Connect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Listen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Listen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Accept",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Accept",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Disconnect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Disconnect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Send",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Receive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:Receive",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:SendTo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:SendTo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:ReceiveFrom",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:ReceiveFrom",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:SetOptionBroadcast",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:SetOptionBroadcast",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:SetOptionAddMembership",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:SetOptionAddMembership",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:SetOptionDropMembership",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:SetOptionDropMembership",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:IsConnected",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:IsConnected",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:ListConnections",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/transportlayer.cpp",
+      "target": "function:lib/net/transportlayer.cpp:ListConnections",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "file:include/circle/macros.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "file:include/circle/net/in.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "file:include/circle/net/udpconnection.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:CUDPConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:CUDPConnection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:~CUDPConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:~CUDPConnection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Connect",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Connect",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Accept",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Accept",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Close",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Close",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Send",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Receive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:Receive",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:SendTo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:SendTo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:ReceiveFrom",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:ReceiveFrom",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:SetOptionBroadcast",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:SetOptionBroadcast",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:SetOptionAddMembership",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "function:lib/net/udpconnection.cpp:SetOptionAddMembership",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "class:lib/net/udpconnection.cpp:TUDPHeader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "class:lib/net/udpconnection.cpp:TUDPHeader",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "class:lib/net/udpconnection.cpp:TUDPPrivateData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/udpconnection.cpp",
+      "target": "class:lib/net/udpconnection.cpp:TUDPPrivateData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/netdevice.cpp",
+      "target": "file:include/circle/netdevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/netdevice.cpp",
+      "target": "function:lib/netdevice.cpp:AddNetDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/netdevice.cpp",
+      "target": "function:lib/netdevice.cpp:AddNetDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "file:include/circle/ptrarray.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:CPtrArray",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:CPtrArray",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:~CPtrArray",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:~CPtrArray",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:GetCount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:GetCount",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:Append",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:Append",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:RemoveLast",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrarray.cpp",
+      "target": "function:lib/ptrarray.cpp:RemoveLast",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "file:include/circle/macros.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "file:include/circle/sound/soundbasedevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:CSoundBaseDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:CSoundBaseDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:~CSoundBaseDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:~CSoundBaseDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Setup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetHWTXChannels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetHWTXChannels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetHWRXChannels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetHWRXChannels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetRangeMin",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetRangeMin",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetRangeMax",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetRangeMax",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AllocateQueue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AllocateQueue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AllocateQueueFrames",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AllocateQueueFrames",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:SetWriteFormat",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:SetWriteFormat",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Write",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Write",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetQueueSizeFrames",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetQueueSizeFrames",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetQueueFramesAvail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetQueueFramesAvail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:RegisterNeedDataCallback",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:RegisterNeedDataCallback",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AreChannelsSwapped",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AreChannelsSwapped",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AllocateReadQueue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AllocateReadQueue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AllocateReadQueueFrames",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:AllocateReadQueueFrames",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:SetReadFormat",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:SetReadFormat",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetReadQueueSizeFrames",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetReadQueueSizeFrames",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetReadQueueFramesAvail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetReadQueueFramesAvail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:RegisterHaveDataCallback",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:RegisterHaveDataCallback",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetChunk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetChunk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ConvertIEC958Sample",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ConvertIEC958Sample",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ConvertSoundFormat",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ConvertSoundFormat",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetChunkInternal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetChunkInternal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetQueueBytesFree",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetQueueBytesFree",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetQueueBytesAvail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetQueueBytesAvail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Enqueue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Enqueue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Dequeue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:Dequeue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:PutChunk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:PutChunk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:PutChunkInternal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:PutChunkInternal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ConvertReadSoundFormat",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ConvertReadSoundFormat",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetReadQueueBytesFree",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetReadQueueBytesFree",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetReadQueueBytesAvail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:GetReadQueueBytesAvail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ReadEnqueue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ReadEnqueue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ReadDequeue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/soundbasedevice.cpp",
+      "target": "function:lib/sound/soundbasedevice.cpp:ReadDequeue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/util.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/util.cpp",
+      "target": "function:lib/util.cpp:char2int",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/util.cpp",
+      "target": "function:lib/util.cpp:char2int",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/util.cpp",
+      "target": "function:lib/util.cpp:ether_crc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/util.cpp",
+      "target": "function:lib/util.cpp:ether_crc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "file:sample/31-webclient/htmlscanner.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:CHtmlScanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:CHtmlScanner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:~CHtmlScanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:~CHtmlScanner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetFirstItem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetFirstItem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetNextItem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetNextItem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetItem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetItem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetChar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/htmlscanner.cpp",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetChar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:include/circle/machineinfo.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:include/circle/net/dnsclient.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:include/circle/net/httpclient.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:include/circle/net/ipaddress.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:sample/31-webclient/htmlscanner.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "file:sample/31-webclient/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:GetDocument",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:GetDocument",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:ParseDocument",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/kernel.cpp",
+      "target": "function:sample/31-webclient/kernel.cpp:ParseDocument",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/31-webclient/kernel.cpp:GetDocument",
+      "target": "function:lib/sound/soundbasedevice.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/31-webclient/kernel.cpp:ParseDocument",
+      "target": "function:lib/sound/soundbasedevice.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/31-webclient/kernel.cpp:ParseDocument",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetFirstItem",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/31-webclient/kernel.cpp:ParseDocument",
+      "target": "function:sample/31-webclient/htmlscanner.cpp:GetNextItem",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/31-webclient/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/main.cpp",
+      "target": "file:sample/31-webclient/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/31-webclient/main.cpp",
+      "target": "function:sample/31-webclient/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/31-webclient/main.cpp",
+      "target": "function:sample/31-webclient/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "file:include/circle/net/ipaddress.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "file:include/circle/net/ntpdaemon.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "file:include/circle/net/syslogdaemon.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "file:sample/33-syslog/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "function:sample/33-syslog/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "function:sample/33-syslog/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "function:sample/33-syslog/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "function:sample/33-syslog/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "function:sample/33-syslog/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "function:sample/33-syslog/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "function:sample/33-syslog/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/33-syslog/kernel.cpp",
+      "target": "function:sample/33-syslog/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/33-syslog/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/33-syslog/main.cpp",
+      "target": "file:sample/33-syslog/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/33-syslog/main.cpp",
+      "target": "function:sample/33-syslog/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/33-syslog/main.cpp",
+      "target": "function:sample/33-syslog/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "file:sample/42-soundinput/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "function:sample/42-soundinput/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "function:sample/42-soundinput/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "function:sample/42-soundinput/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "function:sample/42-soundinput/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "function:sample/42-soundinput/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "function:sample/42-soundinput/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "function:sample/42-soundinput/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/42-soundinput/kernel.cpp",
+      "target": "function:sample/42-soundinput/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/42-soundinput/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/42-soundinput/main.cpp",
+      "target": "file:sample/42-soundinput/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/42-soundinput/main.cpp",
+      "target": "function:sample/42-soundinput/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/42-soundinput/main.cpp",
+      "target": "function:sample/42-soundinput/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "file:include/circle/net/mdnsdaemon.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "file:include/circle/net/mdnspublisher.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "file:test/mdns-publisher/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "function:test/mdns-publisher/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "function:test/mdns-publisher/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "function:test/mdns-publisher/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "function:test/mdns-publisher/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "function:test/mdns-publisher/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "function:test/mdns-publisher/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "function:test/mdns-publisher/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-publisher/kernel.cpp",
+      "target": "function:test/mdns-publisher/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-publisher/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-publisher/main.cpp",
+      "target": "file:test/mdns-publisher/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-publisher/main.cpp",
+      "target": "function:test/mdns-publisher/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-publisher/main.cpp",
+      "target": "function:test/mdns-publisher/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "file:include/circle/net/in.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "file:include/circle/net/socket.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "file:test/mdns-receiver/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "function:test/mdns-receiver/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "function:test/mdns-receiver/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "function:test/mdns-receiver/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "function:test/mdns-receiver/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "function:test/mdns-receiver/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "function:test/mdns-receiver/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "function:test/mdns-receiver/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-receiver/kernel.cpp",
+      "target": "function:test/mdns-receiver/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/mdns-receiver/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-receiver/main.cpp",
+      "target": "file:test/mdns-receiver/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/mdns-receiver/main.cpp",
+      "target": "function:test/mdns-receiver/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/mdns-receiver/main.cpp",
+      "target": "function:test/mdns-receiver/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "file:test/ping-client/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "file:test/ping-client/pingclient.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "function:test/ping-client/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "function:test/ping-client/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "function:test/ping-client/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "function:test/ping-client/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "function:test/ping-client/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "function:test/ping-client/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "function:test/ping-client/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/kernel.cpp",
+      "target": "function:test/ping-client/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/main.cpp",
+      "target": "file:test/ping-client/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/main.cpp",
+      "target": "function:test/ping-client/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/main.cpp",
+      "target": "function:test/ping-client/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "file:include/circle/macros.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "file:include/circle/net/checksumcalculator.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "file:include/circle/net/in.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "file:test/ping-client/pingclient.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "function:test/ping-client/pingclient.cpp:CPingClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "function:test/ping-client/pingclient.cpp:CPingClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "function:test/ping-client/pingclient.cpp:~CPingClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "function:test/ping-client/pingclient.cpp:~CPingClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "function:test/ping-client/pingclient.cpp:Send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "function:test/ping-client/pingclient.cpp:Send",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "function:test/ping-client/pingclient.cpp:Receive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "function:test/ping-client/pingclient.cpp:Receive",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "class:test/ping-client/pingclient.cpp:TICMPEchoPacket",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/ping-client/pingclient.cpp",
+      "target": "class:test/ping-client/pingclient.cpp:TICMPEchoPacket",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "file:include/circle/stdarg.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "file:tools/touchscreen-calibrator/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:GetTouchPosition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:GetTouchPosition",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:TouchScreenEventHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:TouchScreenEventHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:Print",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:Print",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:DrawLine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:DrawLine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:abs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/kernel.cpp",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:abs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:tools/touchscreen-calibrator/kernel.cpp:Run",
+      "target": "function:lib/sound/soundbasedevice.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:tools/touchscreen-calibrator/kernel.cpp:Run",
+      "target": "function:lib/sound/soundbasedevice.cpp:Setup",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:tools/touchscreen-calibrator/kernel.cpp:Print",
+      "target": "function:lib/sound/soundbasedevice.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/main.cpp",
+      "target": "file:tools/touchscreen-calibrator/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/main.cpp",
+      "target": "function:tools/touchscreen-calibrator/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:tools/touchscreen-calibrator/main.cpp",
+      "target": "function:tools/touchscreen-calibrator/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:tools/touchscreen-calibrator/main.cpp:main",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:tools/touchscreen-calibrator/main.cpp:main",
+      "target": "function:tools/touchscreen-calibrator/kernel.cpp:Run",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

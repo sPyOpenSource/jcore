@@ -1,0 +1,8185 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "lib/usb/dwhciframeschedper.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 231,
+      "nonEmptyLines": 200,
+      "functions": [
+        {
+          "name": "CDWHCIFrameSchedulerPeriodic",
+          "startLine": 44,
+          "endLine": 53,
+          "params": []
+        },
+        {
+          "name": "~CDWHCIFrameSchedulerPeriodic",
+          "startLine": 55,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "StartSplit",
+          "startLine": 62,
+          "endLine": 74,
+          "params": []
+        },
+        {
+          "name": "CompleteSplit",
+          "startLine": 76,
+          "endLine": 119,
+          "params": []
+        },
+        {
+          "name": "TransactionComplete",
+          "startLine": 121,
+          "endLine": 173,
+          "params": [
+            "nStatus"
+          ]
+        },
+        {
+          "name": "IsOddFrame",
+          "startLine": 225,
+          "endLine": 229,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWHCIFrameSchedulerPeriodic",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWHCIFrameSchedulerPeriodic",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "StartSplit",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "CompleteSplit",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "TransactionComplete",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "IsOddFrame",
+          "line": 225,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CDWHCIFrameSchedulerPeriodic",
+          "callee": "CTimer::Get",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CDWHCIFrameSchedulerPeriodic",
+          "callee": "assert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "assert",
+          "lineNumber": 84
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "assert",
+          "lineNumber": 102
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "assert",
+          "lineNumber": 114
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 126
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "usDelay",
+          "lineNumber": 143
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "usDelay",
+          "lineNumber": 156
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "Write",
+          "lineNumber": 164
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "CLogger::Get",
+          "lineNumber": 164
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 165
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 170
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 183
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "Read",
+          "lineNumber": 183
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 190
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "Read",
+          "lineNumber": 190
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 201
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "Read",
+          "lineNumber": 201
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "assert",
+          "lineNumber": 203
+        },
+        {
+          "caller": "IsOddFrame",
+          "callee": "Read",
+          "lineNumber": 228
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhciregister.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 131,
+      "nonEmptyLines": 113,
+      "functions": [
+        {
+          "name": "CDWHCIRegister",
+          "startLine": 25,
+          "endLine": 29,
+          "params": [
+            "nAddress"
+          ]
+        },
+        {
+          "name": "CDWHCIRegister",
+          "startLine": 31,
+          "endLine": 36,
+          "params": [
+            "nAddress",
+            "nValue"
+          ]
+        },
+        {
+          "name": "~CDWHCIRegister",
+          "startLine": 38,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "Read",
+          "startLine": 43,
+          "endLine": 49,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 51,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "Get",
+          "startLine": 57,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "Set",
+          "startLine": 63,
+          "endLine": 67,
+          "params": [
+            "nValue"
+          ]
+        },
+        {
+          "name": "IsSet",
+          "startLine": 69,
+          "endLine": 73,
+          "params": [
+            "nMask"
+          ]
+        },
+        {
+          "name": "And",
+          "startLine": 75,
+          "endLine": 79,
+          "params": [
+            "nMask"
+          ]
+        },
+        {
+          "name": "Or",
+          "startLine": 81,
+          "endLine": 85,
+          "params": [
+            "nMask"
+          ]
+        },
+        {
+          "name": "ClearBit",
+          "startLine": 87,
+          "endLine": 92,
+          "params": [
+            "nBit"
+          ]
+        },
+        {
+          "name": "SetBit",
+          "startLine": 94,
+          "endLine": 99,
+          "params": [
+            "nBit"
+          ]
+        },
+        {
+          "name": "ClearAll",
+          "startLine": 101,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "SetAll",
+          "startLine": 107,
+          "endLine": 111,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWHCIRegister",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "CDWHCIRegister",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWHCIRegister",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "Get",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "Set",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "IsSet",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "And",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "Or",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "ClearBit",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "SetBit",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "ClearAll",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "SetAll",
+          "line": 107,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Read",
+          "callee": "read32",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Write",
+          "callee": "write32",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Get",
+          "callee": "assert",
+          "lineNumber": 59
+        },
+        {
+          "caller": "IsSet",
+          "callee": "assert",
+          "lineNumber": 71
+        },
+        {
+          "caller": "And",
+          "callee": "assert",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Or",
+          "callee": "assert",
+          "lineNumber": 83
+        },
+        {
+          "caller": "ClearBit",
+          "callee": "assert",
+          "lineNumber": 89
+        },
+        {
+          "caller": "ClearBit",
+          "callee": "assert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "SetBit",
+          "callee": "assert",
+          "lineNumber": 96
+        },
+        {
+          "caller": "SetBit",
+          "callee": "assert",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Dump",
+          "callee": "Write",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Dump",
+          "callee": "CLogger::Get",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Dump",
+          "callee": "Write",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Dump",
+          "callee": "CLogger::Get",
+          "lineNumber": 125
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 14,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhcirootport.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 136,
+      "nonEmptyLines": 110,
+      "functions": [
+        {
+          "name": "CDWHCIRootPort",
+          "startLine": 27,
+          "endLine": 32,
+          "params": [
+            "pHost"
+          ]
+        },
+        {
+          "name": "~CDWHCIRootPort",
+          "startLine": 34,
+          "endLine": 40,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 42,
+          "endLine": 92,
+          "params": []
+        },
+        {
+          "name": "ReScanDevices",
+          "startLine": 94,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "RemoveDevice",
+          "startLine": 107,
+          "endLine": 116,
+          "params": []
+        },
+        {
+          "name": "HandlePortStatusChange",
+          "startLine": 118,
+          "endLine": 136,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWHCIRootPort",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWHCIRootPort",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "ReScanDevices",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "RemoveDevice",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "HandlePortStatusChange",
+          "line": 118,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CDWHCIRootPort",
+          "callee": "assert",
+          "lineNumber": 31
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetPortSpeed",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Configure",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Initialize",
+          "callee": "OvercurrentDetected",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Initialize",
+          "callee": "DisableRootPort",
+          "lineNumber": 83
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "Write",
+          "lineNumber": 98
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "CLogger::Get",
+          "lineNumber": 98
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "ReScanDevices",
+          "lineNumber": 104
+        },
+        {
+          "caller": "RemoveDevice",
+          "callee": "assert",
+          "lineNumber": 109
+        },
+        {
+          "caller": "RemoveDevice",
+          "callee": "DisableRootPort",
+          "lineNumber": 110
+        },
+        {
+          "caller": "HandlePortStatusChange",
+          "callee": "assert",
+          "lineNumber": 120
+        },
+        {
+          "caller": "HandlePortStatusChange",
+          "callee": "DeviceConnected",
+          "lineNumber": 122
+        },
+        {
+          "caller": "HandlePortStatusChange",
+          "callee": "ReScanDevices",
+          "lineNumber": 126
+        },
+        {
+          "caller": "HandlePortStatusChange",
+          "callee": "RemoveDevice",
+          "lineNumber": 133
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhcixactqueue.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 221,
+      "nonEmptyLines": 174,
+      "callGraph": [
+        {
+          "caller": "CDWHCITransactionQueue",
+          "callee": "INIT_PROTECTED_CLASS_ALLOCATOR",
+          "lineNumber": 63
+        },
+        {
+          "caller": "~CDWHCITransactionQueue",
+          "callee": "Flush",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "Flush",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "void)\n{\n\tm_SpinLock.Acquire ();\n\n\tTPtrListElement *pElement = m_List.GetFirst ();\n\twhile (pElement != 0)\n\t{\n\t\tTQueueEntry *pEntry = (TQueueEntry *) m_List.GetPtr (pElement);\n\t\tassert (pEntry != 0);\n\t\tassert (pEntry->nMagic == XACT_QUEUE_MAGIC);\n\n\t\tm_List.Remove (pElement);\n\n\t\tassert (pEntry->pStageData != 0);\n\t\tCUSBRequest *pURB = pEntry->pStageData->GetURB ();\n\t\tdelete pURB;\n\n\t\tdelete pEntry->pStageData;\n\n#ifndef NDEBUG\n\t\tpEntry->nMagic = 0;\n#endif\n\t\tdelete pEntry;\n\n\t\tpElement = m_List.GetFirst ();\n\t}\n\n\tm_SpinLock.Release ();\n}\n\nvoid CDWHCITransactionQueue::FlushDevice (CUSBDevice *pUSBDevice)",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "void)\n{\n\tm_SpinLock.Acquire ();\n\n\tTPtrListElement *pElement = m_List.GetFirst ();\n\twhile (pElement != 0)\n\t{\n\t\tTQueueEntry *pEntry = (TQueueEntry *) m_List.GetPtr (pElement);\n\t\tassert (pEntry != 0);\n\t\tassert (pEntry->nMagic == XACT_QUEUE_MAGIC);\n\n\t\tm_List.Remove (pElement);\n\n\t\tassert (pEntry->pStageData != 0);\n\t\tCUSBRequest *pURB = pEntry->pStageData->GetURB ();\n\t\tdelete pURB;\n\n\t\tdelete pEntry->pStageData;\n\n#ifndef NDEBUG\n\t\tpEntry->nMagic = 0;\n#endif\n\t\tdelete pEntry;\n\n\t\tpElement = m_List.GetFirst ();\n\t}\n\n\tm_SpinLock.Release ();\n}",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "Acquire",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "TPtrListElement *pElement = m_List.GetFirst ()",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetFirst",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetFirst",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "TQueueEntry *pEntry = (TQueueEntry *) m_List.GetPtr (pElement);\n\t\tassert (pEntry != 0);\n\t\tassert (pEntry->nMagic == XACT_QUEUE_MAGIC);\n\n\t\tm_List.Remove (pElement)",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "Remove",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "TQueueEntry *pEntry = (TQueueEntry *) m_List.GetPtr (pElement);\n\t\tassert (pEntry != 0)",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "TQueueEntry *pEntry = (TQueueEntry *) m_List.GetPtr (pElement)",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetPtr",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetURB",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetFirst",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetPtr",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetNext",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetDevice",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "Remove",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetURB",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 141
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 142
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 145
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "Acquire",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetFirst",
+          "lineNumber": 155
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetPtr",
+          "lineNumber": 158
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 160
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "FrameNumberGreater",
+          "lineNumber": 162
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetNext",
+          "lineNumber": 168
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "InsertBefore",
+          "lineNumber": 173
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "InsertAfter",
+          "lineNumber": 177
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "Release",
+          "lineNumber": 180
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhcixferstagedata.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 620,
+      "nonEmptyLines": 513,
+      "functions": [
+        {
+          "name": "CDWHCITransferStageData",
+          "startLine": 36,
+          "endLine": 175,
+          "params": [
+            "nChannel",
+            "pURB",
+            "bIn",
+            "bStatusStage",
+            "nTimeoutMs"
+          ]
+        },
+        {
+          "name": "~CDWHCITransferStageData",
+          "startLine": 177,
+          "endLine": 187,
+          "params": []
+        },
+        {
+          "name": "SetChannelNumber",
+          "startLine": 189,
+          "endLine": 192,
+          "params": [
+            "nChannel"
+          ]
+        },
+        {
+          "name": "TransactionComplete",
+          "startLine": 194,
+          "endLine": 297,
+          "params": [
+            "nStatus",
+            "nPacketsLeft",
+            "nBytesLeft"
+          ]
+        },
+        {
+          "name": "SetSplitComplete",
+          "startLine": 299,
+          "endLine": 304,
+          "params": [
+            "bComplete"
+          ]
+        },
+        {
+          "name": "SetState",
+          "startLine": 306,
+          "endLine": 309,
+          "params": [
+            "nState"
+          ]
+        },
+        {
+          "name": "GetState",
+          "startLine": 311,
+          "endLine": 314,
+          "params": []
+        },
+        {
+          "name": "SetSubState",
+          "startLine": 316,
+          "endLine": 319,
+          "params": [
+            "nSubState"
+          ]
+        },
+        {
+          "name": "GetSubState",
+          "startLine": 321,
+          "endLine": 324,
+          "params": []
+        },
+        {
+          "name": "GetChannelNumber",
+          "startLine": 326,
+          "endLine": 329,
+          "params": []
+        },
+        {
+          "name": "IsPeriodic",
+          "startLine": 331,
+          "endLine": 338,
+          "params": []
+        },
+        {
+          "name": "IsIsochronous",
+          "startLine": 340,
+          "endLine": 346,
+          "params": []
+        },
+        {
+          "name": "GetDeviceAddress",
+          "startLine": 348,
+          "endLine": 352,
+          "params": []
+        },
+        {
+          "name": "GetEndpointType",
+          "startLine": 354,
+          "endLine": 384,
+          "params": []
+        },
+        {
+          "name": "GetEndpointNumber",
+          "startLine": 386,
+          "endLine": 390,
+          "params": []
+        },
+        {
+          "name": "GetMaxPacketSize",
+          "startLine": 392,
+          "endLine": 395,
+          "params": []
+        },
+        {
+          "name": "GetSpeed",
+          "startLine": 397,
+          "endLine": 400,
+          "params": []
+        },
+        {
+          "name": "GetPID",
+          "startLine": 402,
+          "endLine": 428,
+          "params": []
+        },
+        {
+          "name": "IsDirectionIn",
+          "startLine": 430,
+          "endLine": 433,
+          "params": []
+        },
+        {
+          "name": "IsStatusStage",
+          "startLine": 435,
+          "endLine": 438,
+          "params": []
+        },
+        {
+          "name": "GetDMAAddress",
+          "startLine": 440,
+          "endLine": 445,
+          "params": []
+        },
+        {
+          "name": "GetBytesToTransfer",
+          "startLine": 447,
+          "endLine": 450,
+          "params": []
+        },
+        {
+          "name": "GetPacketsToTransfer",
+          "startLine": 452,
+          "endLine": 455,
+          "params": []
+        },
+        {
+          "name": "IsSplit",
+          "startLine": 457,
+          "endLine": 460,
+          "params": []
+        },
+        {
+          "name": "IsSplitComplete",
+          "startLine": 462,
+          "endLine": 467,
+          "params": []
+        },
+        {
+          "name": "GetHubAddress",
+          "startLine": 469,
+          "endLine": 475,
+          "params": []
+        },
+        {
+          "name": "GetHubPortAddress",
+          "startLine": 477,
+          "endLine": 483,
+          "params": []
+        },
+        {
+          "name": "GetSplitPosition",
+          "startLine": 485,
+          "endLine": 507,
+          "params": []
+        },
+        {
+          "name": "GetStatusMask",
+          "startLine": 509,
+          "endLine": 530,
+          "params": []
+        },
+        {
+          "name": "GetTransactionStatus",
+          "startLine": 532,
+          "endLine": 536,
+          "params": []
+        },
+        {
+          "name": "GetUSBError",
+          "startLine": 538,
+          "endLine": 571,
+          "params": []
+        },
+        {
+          "name": "IsStageComplete",
+          "startLine": 573,
+          "endLine": 576,
+          "params": []
+        },
+        {
+          "name": "GetResultLen",
+          "startLine": 578,
+          "endLine": 586,
+          "params": []
+        },
+        {
+          "name": "IsTimeout",
+          "startLine": 588,
+          "endLine": 596,
+          "params": []
+        },
+        {
+          "name": "IsRetryOK",
+          "startLine": 598,
+          "endLine": 601,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWHCITransferStageData",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWHCITransferStageData",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "SetChannelNumber",
+          "line": 189,
+          "isDefault": false
+        },
+        {
+          "name": "TransactionComplete",
+          "line": 194,
+          "isDefault": false
+        },
+        {
+          "name": "SetSplitComplete",
+          "line": 299,
+          "isDefault": false
+        },
+        {
+          "name": "SetState",
+          "line": 306,
+          "isDefault": false
+        },
+        {
+          "name": "GetState",
+          "line": 311,
+          "isDefault": false
+        },
+        {
+          "name": "SetSubState",
+          "line": 316,
+          "isDefault": false
+        },
+        {
+          "name": "GetSubState",
+          "line": 321,
+          "isDefault": false
+        },
+        {
+          "name": "GetChannelNumber",
+          "line": 326,
+          "isDefault": false
+        },
+        {
+          "name": "IsPeriodic",
+          "line": 331,
+          "isDefault": false
+        },
+        {
+          "name": "IsIsochronous",
+          "line": 340,
+          "isDefault": false
+        },
+        {
+          "name": "GetDeviceAddress",
+          "line": 348,
+          "isDefault": false
+        },
+        {
+          "name": "GetEndpointType",
+          "line": 354,
+          "isDefault": false
+        },
+        {
+          "name": "GetEndpointNumber",
+          "line": 386,
+          "isDefault": false
+        },
+        {
+          "name": "GetMaxPacketSize",
+          "line": 392,
+          "isDefault": false
+        },
+        {
+          "name": "GetSpeed",
+          "line": 397,
+          "isDefault": false
+        },
+        {
+          "name": "GetPID",
+          "line": 402,
+          "isDefault": false
+        },
+        {
+          "name": "IsDirectionIn",
+          "line": 430,
+          "isDefault": false
+        },
+        {
+          "name": "IsStatusStage",
+          "line": 435,
+          "isDefault": false
+        },
+        {
+          "name": "GetDMAAddress",
+          "line": 440,
+          "isDefault": false
+        },
+        {
+          "name": "GetBytesToTransfer",
+          "line": 447,
+          "isDefault": false
+        },
+        {
+          "name": "GetPacketsToTransfer",
+          "line": 452,
+          "isDefault": false
+        },
+        {
+          "name": "IsSplit",
+          "line": 457,
+          "isDefault": false
+        },
+        {
+          "name": "IsSplitComplete",
+          "line": 462,
+          "isDefault": false
+        },
+        {
+          "name": "GetHubAddress",
+          "line": 469,
+          "isDefault": false
+        },
+        {
+          "name": "GetHubPortAddress",
+          "line": 477,
+          "isDefault": false
+        },
+        {
+          "name": "GetSplitPosition",
+          "line": 485,
+          "isDefault": false
+        },
+        {
+          "name": "GetStatusMask",
+          "line": 509,
+          "isDefault": false
+        },
+        {
+          "name": "GetTransactionStatus",
+          "line": 532,
+          "isDefault": false
+        },
+        {
+          "name": "GetUSBError",
+          "line": 538,
+          "isDefault": false
+        },
+        {
+          "name": "IsStageComplete",
+          "line": 573,
+          "isDefault": false
+        },
+        {
+          "name": "GetResultLen",
+          "line": 578,
+          "isDefault": false
+        },
+        {
+          "name": "IsTimeout",
+          "line": 588,
+          "isDefault": false
+        },
+        {
+          "name": "IsRetryOK",
+          "line": 598,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 56
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetEndpoint",
+          "lineNumber": 58
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 59
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetDevice",
+          "lineNumber": 60
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 61
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetSpeed",
+          "lineNumber": 63
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetMaxPacketSize",
+          "lineNumber": 64
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "IsSplit",
+          "lineNumber": 66
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetNextPID",
+          "lineNumber": 70
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetSetupData",
+          "lineNumber": 72
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetBuffer",
+          "lineNumber": 77
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetBufLen",
+          "lineNumber": 78
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "IsIsochronous",
+          "lineNumber": 85
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetNumIsoPackets",
+          "lineNumber": 87
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 88
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "IsIsochronous",
+          "lineNumber": 116
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetIsoPacketSize",
+          "lineNumber": 118
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 137
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 138
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "IsIsochronous",
+          "lineNumber": 142
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "IsPeriodic",
+          "lineNumber": 146
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 155
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetHubAddress",
+          "lineNumber": 159
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "IsPeriodic",
+          "lineNumber": 162
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 163
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 169
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetType",
+          "lineNumber": 169
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "MSEC2HZ",
+          "lineNumber": 171
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "assert",
+          "lineNumber": 172
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "GetTicks",
+          "lineNumber": 173
+        },
+        {
+          "caller": "CDWHCITransferStageData",
+          "callee": "CTimer::Get",
+          "lineNumber": 173
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "Write",
+          "lineNumber": 199
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "CLogger::Get",
+          "lineNumber": 199
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "IsCompleteOnNAK",
+          "lineNumber": 213
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 215
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "GetType",
+          "lineNumber": 224
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "IsIsochronous",
+          "lineNumber": 242
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "SkipPID",
+          "lineNumber": 254
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "IsIsochronous",
+          "lineNumber": 271
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "GetNumIsoPackets",
+          "lineNumber": 277
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "GetIsoPacketSize",
+          "lineNumber": 279
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 294
+        },
+        {
+          "caller": "SetSplitComplete",
+          "callee": "assert",
+          "lineNumber": 301
+        },
+        {
+          "caller": "IsPeriodic",
+          "callee": "assert",
+          "lineNumber": 333
+        },
+        {
+          "caller": "IsPeriodic",
+          "callee": "GetType",
+          "lineNumber": 334
+        },
+        {
+          "caller": "IsIsochronous",
+          "callee": "assert",
+          "lineNumber": 342
+        },
+        {
+          "caller": "IsIsochronous",
+          "callee": "GetType",
+          "lineNumber": 343
+        },
+        {
+          "caller": "GetDeviceAddress",
+          "callee": "assert",
+          "lineNumber": 350
+        },
+        {
+          "caller": "GetDeviceAddress",
+          "callee": "GetAddress",
+          "lineNumber": 351
+        },
+        {
+          "caller": "GetEndpointType",
+          "callee": "assert",
+          "lineNumber": 356
+        },
+        {
+          "caller": "GetEndpointType",
+          "callee": "GetType",
+          "lineNumber": 360
+        },
+        {
+          "caller": "GetEndpointType",
+          "callee": "assert",
+          "lineNumber": 379
+        },
+        {
+          "caller": "GetEndpointNumber",
+          "callee": "assert",
+          "lineNumber": 388
+        },
+        {
+          "caller": "GetEndpointNumber",
+          "callee": "GetNumber",
+          "lineNumber": 389
+        },
+        {
+          "caller": "GetPID",
+          "callee": "assert",
+          "lineNumber": 404
+        },
+        {
+          "caller": "GetPID",
+          "callee": "GetNextPID",
+          "lineNumber": 408
+        },
+        {
+          "caller": "GetPID",
+          "callee": "assert",
+          "lineNumber": 423
+        },
+        {
+          "caller": "GetDMAAddress",
+          "callee": "assert",
+          "lineNumber": 442
+        },
+        {
+          "caller": "IsSplitComplete",
+          "callee": "assert",
+          "lineNumber": 464
+        },
+        {
+          "caller": "GetHubAddress",
+          "callee": "assert",
+          "lineNumber": 471
+        },
+        {
+          "caller": "GetHubAddress",
+          "callee": "assert",
+          "lineNumber": 473
+        },
+        {
+          "caller": "GetHubAddress",
+          "callee": "GetHubAddress",
+          "lineNumber": 474
+        },
+        {
+          "caller": "GetHubPortAddress",
+          "callee": "assert",
+          "lineNumber": 479
+        },
+        {
+          "caller": "GetHubPortAddress",
+          "callee": "assert",
+          "lineNumber": 481
+        },
+        {
+          "caller": "GetHubPortAddress",
+          "callee": "GetHubPortNumber",
+          "lineNumber": 482
+        },
+        {
+          "caller": "GetSplitPosition",
+          "callee": "IsIsochronous",
+          "lineNumber": 488
+        },
+        {
+          "caller": "GetStatusMask",
+          "callee": "IsPeriodic",
+          "lineNumber": 516
+        },
+        {
+          "caller": "GetStatusMask",
+          "callee": "IsCompleteOnNAK",
+          "lineNumber": 523
+        },
+        {
+          "caller": "GetTransactionStatus",
+          "callee": "assert",
+          "lineNumber": 534
+        },
+        {
+          "caller": "IsTimeout",
+          "callee": "GetTicks",
+          "lineNumber": 595
+        },
+        {
+          "caller": "IsTimeout",
+          "callee": "CTimer::Get",
+          "lineNumber": 595
+        }
+      ],
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 35,
+        "functionCount": 35,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/gadget/dwusbgadget.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 784,
+      "nonEmptyLines": 638,
+      "functions": [
+        {
+          "name": "CDWUSBGadget",
+          "startLine": 42,
+          "endLine": 52,
+          "params": [
+            "pInterruptSystem",
+            "DeviceSpeed"
+          ]
+        },
+        {
+          "name": "~CDWUSBGadget",
+          "startLine": 54,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 59,
+          "endLine": 133,
+          "params": [
+            "bScanDevices"
+          ]
+        },
+        {
+          "name": "UpdatePlugAndPlay",
+          "startLine": 135,
+          "endLine": 186,
+          "params": []
+        },
+        {
+          "name": "OnClassOrVendorRequest",
+          "startLine": 188,
+          "endLine": 193,
+          "params": [
+            "pSetupData",
+            "pData"
+          ]
+        },
+        {
+          "name": "PowerOn",
+          "startLine": 195,
+          "endLine": 209,
+          "params": []
+        },
+        {
+          "name": "InitCore",
+          "startLine": 211,
+          "endLine": 251,
+          "params": []
+        },
+        {
+          "name": "InitCoreDevice",
+          "startLine": 253,
+          "endLine": 397,
+          "params": []
+        },
+        {
+          "name": "Reset",
+          "startLine": 399,
+          "endLine": 425,
+          "params": []
+        },
+        {
+          "name": "EnableDeviceInterrupts",
+          "startLine": 427,
+          "endLine": 445,
+          "params": []
+        },
+        {
+          "name": "FlushTxFIFO",
+          "startLine": 447,
+          "endLine": 461,
+          "params": [
+            "nFIFO"
+          ]
+        },
+        {
+          "name": "FlushRxFIFO",
+          "startLine": 463,
+          "endLine": 475,
+          "params": []
+        },
+        {
+          "name": "WaitForBit",
+          "startLine": 477,
+          "endLine": 501,
+          "params": [
+            "pRegister",
+            "nMask",
+            "bWaitUntilSet",
+            "nMsTimeout"
+          ]
+        },
+        {
+          "name": "HandleUSBSuspend",
+          "startLine": 503,
+          "endLine": 521,
+          "params": []
+        },
+        {
+          "name": "HandleUSBReset",
+          "startLine": 523,
+          "endLine": 589,
+          "params": []
+        },
+        {
+          "name": "HandleEnumerationDone",
+          "startLine": 591,
+          "endLine": 620,
+          "params": []
+        },
+        {
+          "name": "HandleInEPInterrupt",
+          "startLine": 622,
+          "endLine": 644,
+          "params": []
+        },
+        {
+          "name": "HandleOutEPInterrupt",
+          "startLine": 646,
+          "endLine": 668,
+          "params": []
+        },
+        {
+          "name": "InterruptHandler",
+          "startLine": 670,
+          "endLine": 710,
+          "params": []
+        },
+        {
+          "name": "InterruptStub",
+          "startLine": 712,
+          "endLine": 718,
+          "params": [
+            "pParam"
+          ]
+        },
+        {
+          "name": "AssignEndpoint",
+          "startLine": 720,
+          "endLine": 731,
+          "params": [
+            "nEP",
+            "pEP"
+          ]
+        },
+        {
+          "name": "RemoveEndpoint",
+          "startLine": 733,
+          "endLine": 738,
+          "params": [
+            "nEP"
+          ]
+        },
+        {
+          "name": "SetDeviceAddress",
+          "startLine": 740,
+          "endLine": 751,
+          "params": [
+            "uchAddress"
+          ]
+        },
+        {
+          "name": "SetConfiguration",
+          "startLine": 753,
+          "endLine": 784,
+          "params": [
+            "uchConfiguration"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWUSBGadget",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWUSBGadget",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "UpdatePlugAndPlay",
+          "line": 135,
+          "isDefault": false
+        },
+        {
+          "name": "OnClassOrVendorRequest",
+          "line": 188,
+          "isDefault": false
+        },
+        {
+          "name": "PowerOn",
+          "line": 195,
+          "isDefault": false
+        },
+        {
+          "name": "InitCore",
+          "line": 211,
+          "isDefault": false
+        },
+        {
+          "name": "InitCoreDevice",
+          "line": 253,
+          "isDefault": false
+        },
+        {
+          "name": "Reset",
+          "line": 399,
+          "isDefault": false
+        },
+        {
+          "name": "EnableDeviceInterrupts",
+          "line": 427,
+          "isDefault": false
+        },
+        {
+          "name": "FlushTxFIFO",
+          "line": 447,
+          "isDefault": false
+        },
+        {
+          "name": "FlushRxFIFO",
+          "line": 463,
+          "isDefault": false
+        },
+        {
+          "name": "WaitForBit",
+          "line": 477,
+          "isDefault": false
+        },
+        {
+          "name": "HandleUSBSuspend",
+          "line": 503,
+          "isDefault": false
+        },
+        {
+          "name": "HandleUSBReset",
+          "line": 523,
+          "isDefault": false
+        },
+        {
+          "name": "HandleEnumerationDone",
+          "line": 591,
+          "isDefault": false
+        },
+        {
+          "name": "HandleInEPInterrupt",
+          "line": 622,
+          "isDefault": false
+        },
+        {
+          "name": "HandleOutEPInterrupt",
+          "line": 646,
+          "isDefault": false
+        },
+        {
+          "name": "InterruptHandler",
+          "line": 670,
+          "isDefault": false
+        },
+        {
+          "name": "InterruptStub",
+          "line": 712,
+          "isDefault": false
+        },
+        {
+          "name": "AssignEndpoint",
+          "line": 720,
+          "isDefault": false
+        },
+        {
+          "name": "RemoveEndpoint",
+          "line": 733,
+          "isDefault": false
+        },
+        {
+          "name": "SetDeviceAddress",
+          "line": 740,
+          "isDefault": false
+        },
+        {
+          "name": "SetConfiguration",
+          "line": 753,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CDWUSBGadget",
+          "callee": "assert",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "reinterpret_cast<const TUSBDeviceDescriptor *>",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDescriptor",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetMachineModel",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PeripheralEntry",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Read",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Get",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PowerOn",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Read",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Initialize",
+          "callee": "And",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ConnectIRQ",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Initialize",
+          "callee": "InitCore",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Initialize",
+          "callee": "AddEndpoints",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Read",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Or",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PeripheralExit",
+          "lineNumber": 130
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "OnSuspend",
+          "lineNumber": 145
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "Read",
+          "lineNumber": 151
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "And",
+          "lineNumber": 152
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "Write",
+          "lineNumber": 153
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "InitCore",
+          "lineNumber": 155
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "LOGPANIC",
+          "lineNumber": 157
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "reinterpret_cast<const TUSBDeviceDescriptor *>",
+          "lineNumber": 163
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "GetDescriptor",
+          "lineNumber": 164
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "assert",
+          "lineNumber": 165
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "AddEndpoints",
+          "lineNumber": 168
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "Read",
+          "lineNumber": 173
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "Or",
+          "lineNumber": 174
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "Write",
+          "lineNumber": 175
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "CreateDevice",
+          "lineNumber": 182
+        },
+        {
+          "caller": "OnClassOrVendorRequest",
+          "callee": "assert",
+          "lineNumber": 190
+        },
+        {
+          "caller": "PowerOn",
+          "callee": "GetTag",
+          "lineNumber": 201
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Reset",
+          "lineNumber": 213
+        },
+        {
+          "caller": "InitCore",
+          "callee": "LOGERR",
+          "lineNumber": 215
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 220
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 221
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 222
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Write",
+          "lineNumber": 223
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 226
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Or",
+          "lineNumber": 227
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Or",
+          "lineNumber": 228
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 229
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Write",
+          "lineNumber": 231
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 234
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 235
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 236
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Or",
+          "lineNumber": 239
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Write",
+          "lineNumber": 240
+        },
+        {
+          "caller": "InitCore",
+          "callee": "MsSleep",
+          "lineNumber": 243
+        },
+        {
+          "caller": "InitCore",
+          "callee": "CScheduler::Get",
+          "lineNumber": 243
+        },
+        {
+          "caller": "InitCore",
+          "callee": "MsDelay",
+          "lineNumber": 245
+        },
+        {
+          "caller": "InitCore",
+          "callee": "CTimer::Get",
+          "lineNumber": 245
+        },
+        {
+          "caller": "InitCore",
+          "callee": "InitCoreDevice",
+          "lineNumber": 248
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 257
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "MsSleep",
+          "lineNumber": 260
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "CScheduler::Get",
+          "lineNumber": 260
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "MsDelay",
+          "lineNumber": 262
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "CTimer::Get",
+          "lineNumber": 262
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Read",
+          "lineNumber": 267
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "And",
+          "lineNumber": 268
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 269
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 273
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "ASSERT_STATIC",
+          "lineNumber": 276
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 280
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 283
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 284
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 285
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_CORE_DEV_TX_FIFO",
+          "lineNumber": 289
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 290
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 291
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 292
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Read",
+          "lineNumber": 293
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 297
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 298
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 301
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "FlushTxFIFO",
+          "lineNumber": 303
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "FlushRxFIFO",
+          "lineNumber": 304
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 308
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_EACH_IN_EP_INT_MASK",
+          "lineNumber": 313
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 314
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_EACH_OUT_EP_INT_MASK",
+          "lineNumber": 319
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 320
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 324
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 326
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_IN_EP_CTRL",
+          "lineNumber": 331
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Read",
+          "lineNumber": 332
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 334
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 335
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 337
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_IN_EP_XFER_SIZ",
+          "lineNumber": 339
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 340
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_IN_EP_DMA_ADDR",
+          "lineNumber": 342
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 343
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_IN_EP_INT",
+          "lineNumber": 345
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 346
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_OUT_EP_CTRL",
+          "lineNumber": 352
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Read",
+          "lineNumber": 353
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Read",
+          "lineNumber": 356
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Set",
+          "lineNumber": 357
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 358
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "WaitForBit",
+          "lineNumber": 361
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Set",
+          "lineNumber": 362
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 363
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "ClearAll",
+          "lineNumber": 365
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 366
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 367
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 368
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "WaitForBit",
+          "lineNumber": 371
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Set",
+          "lineNumber": 372
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 373
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Read",
+          "lineNumber": 375
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Set",
+          "lineNumber": 376
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 377
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 379
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_OUT_EP_XFER_SIZ",
+          "lineNumber": 381
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 382
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_OUT_EP_DMA_ADDR",
+          "lineNumber": 384
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 385
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "DWHCI_DEV_OUT_EP_INT",
+          "lineNumber": 387
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 388
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "EnableDeviceInterrupts",
+          "lineNumber": 391
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Read",
+          "lineNumber": 394
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Or",
+          "lineNumber": 395
+        },
+        {
+          "caller": "InitCoreDevice",
+          "callee": "Write",
+          "lineNumber": 396
+        },
+        {
+          "caller": "Reset",
+          "callee": "WaitForBit",
+          "lineNumber": 404
+        },
+        {
+          "caller": "Reset",
+          "callee": "Or",
+          "lineNumber": 410
+        },
+        {
+          "caller": "Reset",
+          "callee": "Write",
+          "lineNumber": 411
+        },
+        {
+          "caller": "Reset",
+          "callee": "WaitForBit",
+          "lineNumber": 413
+        },
+        {
+          "caller": "Reset",
+          "callee": "MsSleep",
+          "lineNumber": 419
+        },
+        {
+          "caller": "Reset",
+          "callee": "CScheduler::Get",
+          "lineNumber": 419
+        },
+        {
+          "caller": "Reset",
+          "callee": "MsDelay",
+          "lineNumber": 421
+        },
+        {
+          "caller": "Reset",
+          "callee": "CTimer::Get",
+          "lineNumber": 421
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Write",
+          "lineNumber": 430
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Read",
+          "lineNumber": 431
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "SetAll",
+          "lineNumber": 434
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Write",
+          "lineNumber": 435
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Or",
+          "lineNumber": 438
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Or",
+          "lineNumber": 439
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Or",
+          "lineNumber": 440
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Or",
+          "lineNumber": 441
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Or",
+          "lineNumber": 442
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Or",
+          "lineNumber": 443
+        },
+        {
+          "caller": "EnableDeviceInterrupts",
+          "callee": "Write",
+          "lineNumber": 444
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "Or",
+          "lineNumber": 450
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "And",
+          "lineNumber": 451
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "Or",
+          "lineNumber": 452
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "Write",
+          "lineNumber": 453
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "WaitForBit",
+          "lineNumber": 455
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "usDelay",
+          "lineNumber": 460
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "CTimer::Get",
+          "lineNumber": 460
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "Or",
+          "lineNumber": 466
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "Write",
+          "lineNumber": 467
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "WaitForBit",
+          "lineNumber": 469
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "usDelay",
+          "lineNumber": 474
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "CTimer::Get",
+          "lineNumber": 474
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "assert",
+          "lineNumber": 482
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "assert",
+          "lineNumber": 483
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "assert",
+          "lineNumber": 484
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "Read",
+          "lineNumber": 486
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "MsDelay",
+          "lineNumber": 488
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "CTimer::Get",
+          "lineNumber": 488
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "LOGWARN",
+          "lineNumber": 492
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "Dump",
+          "lineNumber": 494
+        },
+        {
+          "caller": "HandleUSBSuspend",
+          "callee": "LOGDBG",
+          "lineNumber": 506
+        },
+        {
+          "caller": "HandleUSBSuspend",
+          "callee": "OnSuspend",
+          "lineNumber": 515
+        },
+        {
+          "caller": "HandleUSBSuspend",
+          "callee": "Write",
+          "lineNumber": 520
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "LOGDBG",
+          "lineNumber": 526
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "DWHCI_DEV_OUT_EP_CTRL",
+          "lineNumber": 532
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Or",
+          "lineNumber": 533
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Write",
+          "lineNumber": 534
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "FlushTxFIFO",
+          "lineNumber": 537
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Write",
+          "lineNumber": 541
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "CDWUSBGadgetEndpoint::HandleUSBReset",
+          "lineNumber": 544
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "DWHCI_DEV_IN_EP_CTRL",
+          "lineNumber": 546
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Read",
+          "lineNumber": 547
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "And",
+          "lineNumber": 548
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Write",
+          "lineNumber": 549
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Read",
+          "lineNumber": 553
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "And",
+          "lineNumber": 554
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Or",
+          "lineNumber": 555
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Write",
+          "lineNumber": 556
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Write",
+          "lineNumber": 564
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Write",
+          "lineNumber": 572
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "SetDeviceAddress",
+          "lineNumber": 574
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "OnUSBReset",
+          "lineNumber": 581
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "Write",
+          "lineNumber": 588
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "LOGDBG",
+          "lineNumber": 594
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "HandleUSBReset",
+          "lineNumber": 599
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "Read",
+          "lineNumber": 605
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "And",
+          "lineNumber": 606
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "Or",
+          "lineNumber": 607
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "Write",
+          "lineNumber": 608
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "assert",
+          "lineNumber": 610
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "OnActivate",
+          "lineNumber": 611
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "assert",
+          "lineNumber": 616
+        },
+        {
+          "caller": "HandleEnumerationDone",
+          "callee": "Write",
+          "lineNumber": 619
+        },
+        {
+          "caller": "HandleInEPInterrupt",
+          "callee": "LOGDBG",
+          "lineNumber": 625
+        },
+        {
+          "caller": "HandleInEPInterrupt",
+          "callee": "assert",
+          "lineNumber": 628
+        },
+        {
+          "caller": "HandleInEPInterrupt",
+          "callee": "Read",
+          "lineNumber": 633
+        },
+        {
+          "caller": "HandleInEPInterrupt",
+          "callee": "Read",
+          "lineNumber": 633
+        },
+        {
+          "caller": "HandleInEPInterrupt",
+          "callee": "assert",
+          "lineNumber": 639
+        },
+        {
+          "caller": "HandleInEPInterrupt",
+          "callee": "assert",
+          "lineNumber": 640
+        },
+        {
+          "caller": "HandleInEPInterrupt",
+          "callee": "HandleInInterrupt",
+          "lineNumber": 641
+        },
+        {
+          "caller": "HandleOutEPInterrupt",
+          "callee": "LOGDBG",
+          "lineNumber": 649
+        },
+        {
+          "caller": "HandleOutEPInterrupt",
+          "callee": "assert",
+          "lineNumber": 652
+        },
+        {
+          "caller": "HandleOutEPInterrupt",
+          "callee": "Read",
+          "lineNumber": 657
+        },
+        {
+          "caller": "HandleOutEPInterrupt",
+          "callee": "Read",
+          "lineNumber": 657
+        },
+        {
+          "caller": "HandleOutEPInterrupt",
+          "callee": "assert",
+          "lineNumber": 663
+        },
+        {
+          "caller": "HandleOutEPInterrupt",
+          "callee": "assert",
+          "lineNumber": 664
+        },
+        {
+          "caller": "HandleOutEPInterrupt",
+          "callee": "HandleOutInterrupt",
+          "lineNumber": 665
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "PeripheralEntry",
+          "lineNumber": 672
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Read",
+          "lineNumber": 676
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Read",
+          "lineNumber": 676
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "LOGDBG",
+          "lineNumber": 679
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "HandleUSBSuspend",
+          "lineNumber": 684
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "HandleUSBReset",
+          "lineNumber": 689
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "HandleEnumerationDone",
+          "lineNumber": 694
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "HandleOutEPInterrupt",
+          "lineNumber": 699
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "HandleInEPInterrupt",
+          "lineNumber": 704
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "assert",
+          "lineNumber": 707
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "PeripheralExit",
+          "lineNumber": 709
+        },
+        {
+          "caller": "InterruptStub",
+          "callee": "static_cast<CDWUSBGadget *>",
+          "lineNumber": 714
+        },
+        {
+          "caller": "InterruptStub",
+          "callee": "assert",
+          "lineNumber": 715
+        },
+        {
+          "caller": "InterruptStub",
+          "callee": "InterruptHandler",
+          "lineNumber": 717
+        },
+        {
+          "caller": "AssignEndpoint",
+          "callee": "assert",
+          "lineNumber": 722
+        },
+        {
+          "caller": "AssignEndpoint",
+          "callee": "LOGPANIC",
+          "lineNumber": 726
+        },
+        {
+          "caller": "AssignEndpoint",
+          "callee": "assert",
+          "lineNumber": 730
+        },
+        {
+          "caller": "RemoveEndpoint",
+          "callee": "assert",
+          "lineNumber": 735
+        },
+        {
+          "caller": "RemoveEndpoint",
+          "callee": "assert",
+          "lineNumber": 736
+        },
+        {
+          "caller": "SetDeviceAddress",
+          "callee": "LOGDBG",
+          "lineNumber": 743
+        },
+        {
+          "caller": "SetDeviceAddress",
+          "callee": "Read",
+          "lineNumber": 747
+        },
+        {
+          "caller": "SetDeviceAddress",
+          "callee": "And",
+          "lineNumber": 748
+        },
+        {
+          "caller": "SetDeviceAddress",
+          "callee": "Or",
+          "lineNumber": 749
+        },
+        {
+          "caller": "SetDeviceAddress",
+          "callee": "Write",
+          "lineNumber": 750
+        },
+        {
+          "caller": "SetConfiguration",
+          "callee": "assert",
+          "lineNumber": 765
+        },
+        {
+          "caller": "SetConfiguration",
+          "callee": "OnActivate",
+          "lineNumber": 773
+        },
+        {
+          "caller": "SetConfiguration",
+          "callee": "LOGNOTE",
+          "lineNumber": 779
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 24,
+        "functionCount": 24,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/gadget/dwusbgadgetendpoint.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 407,
+      "nonEmptyLines": 335,
+      "functions": [
+        {
+          "name": "CDWUSBGadgetEndpoint",
+          "startLine": 33,
+          "endLine": 44,
+          "params": [
+            "nMaxPacketSize",
+            "pGadget"
+          ]
+        },
+        {
+          "name": "CDWUSBGadgetEndpoint",
+          "startLine": 46,
+          "endLine": 60,
+          "params": [
+            "pDesc",
+            "pGadget"
+          ]
+        },
+        {
+          "name": "~CDWUSBGadgetEndpoint",
+          "startLine": 62,
+          "endLine": 66,
+          "params": []
+        },
+        {
+          "name": "OnUSBReset",
+          "startLine": 68,
+          "endLine": 179,
+          "params": []
+        },
+        {
+          "name": "BeginTransfer",
+          "startLine": 181,
+          "endLine": 256,
+          "params": [
+            "Mode",
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "FinishTransfer",
+          "startLine": 258,
+          "endLine": 285,
+          "params": []
+        },
+        {
+          "name": "InitTransfer",
+          "startLine": 287,
+          "endLine": 292,
+          "params": []
+        },
+        {
+          "name": "Stall",
+          "startLine": 294,
+          "endLine": 304,
+          "params": [
+            "bIn"
+          ]
+        },
+        {
+          "name": "OnControlMessage",
+          "startLine": 306,
+          "endLine": 309,
+          "params": []
+        },
+        {
+          "name": "HandleOutInterrupt",
+          "startLine": 311,
+          "endLine": 361,
+          "params": []
+        },
+        {
+          "name": "HandleInInterrupt",
+          "startLine": 363,
+          "endLine": 400,
+          "params": []
+        },
+        {
+          "name": "HandleUSBReset",
+          "startLine": 402,
+          "endLine": 407,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWUSBGadgetEndpoint",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "CDWUSBGadgetEndpoint",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWUSBGadgetEndpoint",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "OnUSBReset",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "BeginTransfer",
+          "line": 181,
+          "isDefault": false
+        },
+        {
+          "name": "FinishTransfer",
+          "line": 258,
+          "isDefault": false
+        },
+        {
+          "name": "InitTransfer",
+          "line": 287,
+          "isDefault": false
+        },
+        {
+          "name": "Stall",
+          "line": 294,
+          "isDefault": false
+        },
+        {
+          "name": "OnControlMessage",
+          "line": 306,
+          "isDefault": false
+        },
+        {
+          "name": "HandleOutInterrupt",
+          "line": 311,
+          "isDefault": false
+        },
+        {
+          "name": "HandleInInterrupt",
+          "line": 363,
+          "isDefault": false
+        },
+        {
+          "name": "HandleUSBReset",
+          "line": 402,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CDWUSBGadgetEndpoint",
+          "callee": "InitTransfer",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CDWUSBGadgetEndpoint",
+          "callee": "assert",
+          "lineNumber": 42
+        },
+        {
+          "caller": "CDWUSBGadgetEndpoint",
+          "callee": "AssignEndpoint",
+          "lineNumber": 43
+        },
+        {
+          "caller": "CDWUSBGadgetEndpoint",
+          "callee": "assert",
+          "lineNumber": 54
+        },
+        {
+          "caller": "CDWUSBGadgetEndpoint",
+          "callee": "InitTransfer",
+          "lineNumber": 56
+        },
+        {
+          "caller": "CDWUSBGadgetEndpoint",
+          "callee": "assert",
+          "lineNumber": 58
+        },
+        {
+          "caller": "CDWUSBGadgetEndpoint",
+          "callee": "AssignEndpoint",
+          "lineNumber": 59
+        },
+        {
+          "caller": "~CDWUSBGadgetEndpoint",
+          "callee": "assert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "~CDWUSBGadgetEndpoint",
+          "callee": "RemoveEndpoint",
+          "lineNumber": 65
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "InitTransfer",
+          "lineNumber": 70
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "assert",
+          "lineNumber": 83
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "DWHCI_DEV_IN_EP_CTRL",
+          "lineNumber": 87
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Read",
+          "lineNumber": 88
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "And",
+          "lineNumber": 89
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 90
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Write",
+          "lineNumber": 91
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "DWHCI_DEV_OUT_EP_CTRL",
+          "lineNumber": 93
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Read",
+          "lineNumber": 94
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "And",
+          "lineNumber": 95
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 96
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Write",
+          "lineNumber": 97
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "DWHCI_DEV_IN_EP_CTRL",
+          "lineNumber": 102
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "DWHCI_DEV_OUT_EP_CTRL",
+          "lineNumber": 103
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Read",
+          "lineNumber": 104
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "assert",
+          "lineNumber": 106
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Get",
+          "lineNumber": 106
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "And",
+          "lineNumber": 108
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 109
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "And",
+          "lineNumber": 112
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 113
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 114
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 116
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "And",
+          "lineNumber": 121
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 122
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "assert",
+          "lineNumber": 134
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "And",
+          "lineNumber": 138
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 139
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "LOGDBG",
+          "lineNumber": 142
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "debug_hexdump",
+          "lineNumber": 143
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Read",
+          "lineNumber": 148
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Get",
+          "lineNumber": 149
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "And",
+          "lineNumber": 152
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 153
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Write",
+          "lineNumber": 154
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Write",
+          "lineNumber": 157
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Read",
+          "lineNumber": 162
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 166
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "DWHCI_DEV_ALL_EPS_INT_MASK_IN_EP",
+          "lineNumber": 166
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 167
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "DWHCI_DEV_ALL_EPS_INT_MASK_OUT_EP",
+          "lineNumber": 167
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 171
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "DWHCI_DEV_ALL_EPS_INT_MASK_OUT_EP",
+          "lineNumber": 171
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Or",
+          "lineNumber": 175
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "DWHCI_DEV_ALL_EPS_INT_MASK_IN_EP",
+          "lineNumber": 175
+        },
+        {
+          "caller": "OnUSBReset",
+          "callee": "Write",
+          "lineNumber": 178
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 183
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 184
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 187
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 188
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 191
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 200
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 201
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "CleanAndInvalidateDataCacheRange",
+          "lineNumber": 203
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "DWHCI_DEV_IN_EP_XFER_SIZ",
+          "lineNumber": 212
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 213
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 214
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Write",
+          "lineNumber": 215
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "DWHCI_DEV_IN_EP_DMA_ADDR",
+          "lineNumber": 217
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "BUS_ADDRESS",
+          "lineNumber": 218
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Write",
+          "lineNumber": 219
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "DWHCI_DEV_IN_EP_CTRL",
+          "lineNumber": 221
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Read",
+          "lineNumber": 222
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "And",
+          "lineNumber": 223
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 224
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 225
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 226
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Write",
+          "lineNumber": 227
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "DWHCI_DEV_OUT_EP_XFER_SIZ",
+          "lineNumber": 231
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 235
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "assert",
+          "lineNumber": 236
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 238
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 242
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 243
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Write",
+          "lineNumber": 244
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "DWHCI_DEV_OUT_EP_DMA_ADDR",
+          "lineNumber": 246
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "BUS_ADDRESS",
+          "lineNumber": 247
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Write",
+          "lineNumber": 248
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Read",
+          "lineNumber": 251
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 252
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Or",
+          "lineNumber": 253
+        },
+        {
+          "caller": "BeginTransfer",
+          "callee": "Write",
+          "lineNumber": 254
+        },
+        {
+          "caller": "FinishTransfer",
+          "callee": "assert",
+          "lineNumber": 260
+        },
+        {
+          "caller": "FinishTransfer",
+          "callee": "DWHCI_DEV_IN_EP_XFER_SIZ",
+          "lineNumber": 262
+        },
+        {
+          "caller": "FinishTransfer",
+          "callee": "DWHCI_DEV_OUT_EP_XFER_SIZ",
+          "lineNumber": 263
+        },
+        {
+          "caller": "FinishTransfer",
+          "callee": "Read",
+          "lineNumber": 264
+        },
+        {
+          "caller": "FinishTransfer",
+          "callee": "assert",
+          "lineNumber": 270
+        },
+        {
+          "caller": "FinishTransfer",
+          "callee": "LOGDBG",
+          "lineNumber": 274
+        },
+        {
+          "caller": "FinishTransfer",
+          "callee": "debug_hexdump",
+          "lineNumber": 278
+        },
+        {
+          "caller": "FinishTransfer",
+          "callee": "InitTransfer",
+          "lineNumber": 282
+        },
+        {
+          "caller": "Stall",
+          "callee": "LOGWARN",
+          "lineNumber": 296
+        },
+        {
+          "caller": "Stall",
+          "callee": "DWHCI_DEV_IN_EP_CTRL",
+          "lineNumber": 298
+        },
+        {
+          "caller": "Stall",
+          "callee": "DWHCI_DEV_OUT_EP_CTRL",
+          "lineNumber": 299
+        },
+        {
+          "caller": "Stall",
+          "callee": "Read",
+          "lineNumber": 300
+        },
+        {
+          "caller": "Stall",
+          "callee": "Or",
+          "lineNumber": 301
+        },
+        {
+          "caller": "Stall",
+          "callee": "Or",
+          "lineNumber": 302
+        },
+        {
+          "caller": "Stall",
+          "callee": "Write",
+          "lineNumber": 303
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "assert",
+          "lineNumber": 308
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Read",
+          "lineNumber": 315
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Read",
+          "lineNumber": 316
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "And",
+          "lineNumber": 317
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Get",
+          "lineNumber": 317
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "LOGDBG",
+          "lineNumber": 320
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Get",
+          "lineNumber": 320
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Get",
+          "lineNumber": 323
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "assert",
+          "lineNumber": 325
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Set",
+          "lineNumber": 327
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Write",
+          "lineNumber": 328
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "FinishTransfer",
+          "lineNumber": 333
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "assert",
+          "lineNumber": 334
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "OnControlMessage",
+          "lineNumber": 336
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "And",
+          "lineNumber": 338
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Get",
+          "lineNumber": 341
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Set",
+          "lineNumber": 344
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Write",
+          "lineNumber": 345
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "FinishTransfer",
+          "lineNumber": 347
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "OnTransferComplete",
+          "lineNumber": 349
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Get",
+          "lineNumber": 352
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "LOGPANIC",
+          "lineNumber": 354
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "Get",
+          "lineNumber": 357
+        },
+        {
+          "caller": "HandleOutInterrupt",
+          "callee": "LOGPANIC",
+          "lineNumber": 359
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Read",
+          "lineNumber": 367
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Read",
+          "lineNumber": 368
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "And",
+          "lineNumber": 369
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Get",
+          "lineNumber": 369
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "LOGDBG",
+          "lineNumber": 372
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Get",
+          "lineNumber": 372
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Get",
+          "lineNumber": 375
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Set",
+          "lineNumber": 378
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Write",
+          "lineNumber": 379
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "FinishTransfer",
+          "lineNumber": 381
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "OnTransferComplete",
+          "lineNumber": 383
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Get",
+          "lineNumber": 386
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "LOGPANIC",
+          "lineNumber": 388
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Get",
+          "lineNumber": 391
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "LOGPANIC",
+          "lineNumber": 393
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "Get",
+          "lineNumber": 396
+        },
+        {
+          "caller": "HandleInInterrupt",
+          "callee": "LOGPANIC",
+          "lineNumber": 398
+        },
+        {
+          "caller": "HandleUSBReset",
+          "callee": "memset",
+          "lineNumber": 404
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 12,
+        "functionCount": 12,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/gadget/dwusbgadgetendpoint0.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 251,
+      "nonEmptyLines": 204,
+      "functions": [
+        {
+          "name": "CDWUSBGadgetEndpoint0",
+          "startLine": 26,
+          "endLine": 30,
+          "params": [
+            "nMaxPacketSize",
+            "pGadget"
+          ]
+        },
+        {
+          "name": "~CDWUSBGadgetEndpoint0",
+          "startLine": 32,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "OnActivate",
+          "startLine": 36,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "OnControlMessage",
+          "startLine": 43,
+          "endLine": 191,
+          "params": []
+        },
+        {
+          "name": "OnTransferComplete",
+          "startLine": 193,
+          "endLine": 251,
+          "params": [
+            "bIn",
+            "nLength"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWUSBGadgetEndpoint0",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWUSBGadgetEndpoint0",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "OnActivate",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "OnControlMessage",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "OnTransferComplete",
+          "line": 193,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "OnActivate",
+          "callee": "BeginTransfer",
+          "lineNumber": 40
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "assert",
+          "lineNumber": 45
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "reinterpret_cast<TSetupData *>",
+          "lineNumber": 47
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "memcpy",
+          "lineNumber": 50
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "GetDescriptor",
+          "lineNumber": 58
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "Stall",
+          "lineNumber": 63
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 65
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "assert",
+          "lineNumber": 70
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "memcpy",
+          "lineNumber": 71
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 85
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "Stall",
+          "lineNumber": 93
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 95
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 107
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "assert",
+          "lineNumber": 115
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "OnClassOrVendorRequest",
+          "lineNumber": 116
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 127
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "Stall",
+          "lineNumber": 134
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 135
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "SetDeviceAddress",
+          "lineNumber": 144
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 148
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "SetConfiguration",
+          "lineNumber": 152
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "Stall",
+          "lineNumber": 154
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 156
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 163
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "assert",
+          "lineNumber": 174
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 178
+        },
+        {
+          "caller": "OnControlMessage",
+          "callee": "BeginTransfer",
+          "lineNumber": 186
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "assert",
+          "lineNumber": 198
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "BeginTransfer",
+          "lineNumber": 204
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "BeginTransfer",
+          "lineNumber": 212
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "assert",
+          "lineNumber": 216
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "BeginTransfer",
+          "lineNumber": 222
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "BeginTransfer",
+          "lineNumber": 230
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "assert",
+          "lineNumber": 234
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "OnClassOrVendorRequest",
+          "lineNumber": 236
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "Stall",
+          "lineNumber": 238
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "BeginTransfer",
+          "lineNumber": 244
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "assert",
+          "lineNumber": 248
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/gadget/usbcdcgadget.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 264,
+      "nonEmptyLines": 232,
+      "functions": [
+        {
+          "name": "CUSBCDCGadget",
+          "startLine": 134,
+          "endLine": 139,
+          "params": [
+            "pInterruptSystem"
+          ]
+        },
+        {
+          "name": "~CUSBCDCGadget",
+          "startLine": 141,
+          "endLine": 144,
+          "params": []
+        },
+        {
+          "name": "AddEndpoints",
+          "startLine": 189,
+          "endLine": 210,
+          "params": []
+        },
+        {
+          "name": "CreateDevice",
+          "startLine": 212,
+          "endLine": 223,
+          "params": []
+        },
+        {
+          "name": "OnSuspend",
+          "startLine": 225,
+          "endLine": 240,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CUSBCDCGadget",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "~CUSBCDCGadget",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "AddEndpoints",
+          "line": 189,
+          "isDefault": false
+        },
+        {
+          "name": "CreateDevice",
+          "line": 212,
+          "isDefault": false
+        },
+        {
+          "name": "OnSuspend",
+          "line": 225,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CUSBCDCGadget",
+          "callee": "assert",
+          "lineNumber": 143
+        },
+        {
+          "caller": "AddEndpoints",
+          "callee": "assert",
+          "lineNumber": 199
+        },
+        {
+          "caller": "AddEndpoints",
+          "callee": "reinterpret_cast<const TUSBEndpointDescriptor *>",
+          "lineNumber": 201
+        },
+        {
+          "caller": "AddEndpoints",
+          "callee": "assert",
+          "lineNumber": 203
+        },
+        {
+          "caller": "AddEndpoints",
+          "callee": "assert",
+          "lineNumber": 205
+        },
+        {
+          "caller": "AddEndpoints",
+          "callee": "reinterpret_cast<const TUSBEndpointDescriptor *>",
+          "lineNumber": 207
+        },
+        {
+          "caller": "AddEndpoints",
+          "callee": "assert",
+          "lineNumber": 209
+        },
+        {
+          "caller": "CreateDevice",
+          "callee": "assert",
+          "lineNumber": 214
+        },
+        {
+          "caller": "CreateDevice",
+          "callee": "assert",
+          "lineNumber": 216
+        },
+        {
+          "caller": "CreateDevice",
+          "callee": "assert",
+          "lineNumber": 218
+        },
+        {
+          "caller": "CreateDevice",
+          "callee": "AttachInterface",
+          "lineNumber": 219
+        },
+        {
+          "caller": "CreateDevice",
+          "callee": "assert",
+          "lineNumber": 221
+        },
+        {
+          "caller": "CreateDevice",
+          "callee": "AttachInterface",
+          "lineNumber": 222
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/gadget/usbcdcgadgetendpoint.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 301,
+      "nonEmptyLines": 239,
+      "functions": [
+        {
+          "name": "CUSBCDCGadgetEndpoint",
+          "startLine": 27,
+          "endLine": 39,
+          "params": [
+            "pDesc",
+            "pGadget"
+          ]
+        },
+        {
+          "name": "~CUSBCDCGadgetEndpoint",
+          "startLine": 41,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "AttachInterface",
+          "startLine": 47,
+          "endLine": 63,
+          "params": [
+            "pInterface"
+          ]
+        },
+        {
+          "name": "OnActivate",
+          "startLine": 65,
+          "endLine": 71,
+          "params": []
+        },
+        {
+          "name": "OnTransferComplete",
+          "startLine": 73,
+          "endLine": 119,
+          "params": [
+            "bIn",
+            "nLength"
+          ]
+        },
+        {
+          "name": "OnSuspend",
+          "startLine": 121,
+          "endLine": 133,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 135,
+          "endLine": 189,
+          "params": [
+            "pData",
+            "nLength"
+          ]
+        },
+        {
+          "name": "Read",
+          "startLine": 191,
+          "endLine": 223,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "WriteHandler",
+          "startLine": 225,
+          "endLine": 231,
+          "params": [
+            "pBuffer",
+            "nCount",
+            "pParam"
+          ]
+        },
+        {
+          "name": "ReadHandler",
+          "startLine": 233,
+          "endLine": 239,
+          "params": [
+            "pBuffer",
+            "nCount",
+            "pParam"
+          ]
+        },
+        {
+          "name": "GetQueueBytesFree",
+          "startLine": 241,
+          "endLine": 252,
+          "params": []
+        },
+        {
+          "name": "GetQueueBytesAvail",
+          "startLine": 254,
+          "endLine": 265,
+          "params": []
+        },
+        {
+          "name": "Enqueue",
+          "startLine": 267,
+          "endLine": 283,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "Dequeue",
+          "startLine": 285,
+          "endLine": 301,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CUSBCDCGadgetEndpoint",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "~CUSBCDCGadgetEndpoint",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "AttachInterface",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "OnActivate",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "OnTransferComplete",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "OnSuspend",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 135,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 191,
+          "isDefault": false
+        },
+        {
+          "name": "WriteHandler",
+          "line": 225,
+          "isDefault": false
+        },
+        {
+          "name": "ReadHandler",
+          "line": 233,
+          "isDefault": false
+        },
+        {
+          "name": "GetQueueBytesFree",
+          "line": 241,
+          "isDefault": false
+        },
+        {
+          "name": "GetQueueBytesAvail",
+          "line": 254,
+          "isDefault": false
+        },
+        {
+          "name": "Enqueue",
+          "line": 267,
+          "isDefault": false
+        },
+        {
+          "name": "Dequeue",
+          "line": 285,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CUSBCDCGadgetEndpoint",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "AttachInterface",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "AttachInterface",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "AttachInterface",
+          "callee": "GetDirection",
+          "lineNumber": 55
+        },
+        {
+          "caller": "AttachInterface",
+          "callee": "RegisterWriteHandler",
+          "lineNumber": 57
+        },
+        {
+          "caller": "AttachInterface",
+          "callee": "RegisterReadHandler",
+          "lineNumber": 61
+        },
+        {
+          "caller": "OnActivate",
+          "callee": "GetDirection",
+          "lineNumber": 67
+        },
+        {
+          "caller": "OnActivate",
+          "callee": "BeginTransfer",
+          "lineNumber": 69
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "Acquire",
+          "lineNumber": 77
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "GetQueueBytesFree",
+          "lineNumber": 79
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "Enqueue",
+          "lineNumber": 87
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "Release",
+          "lineNumber": 89
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "BeginTransfer",
+          "lineNumber": 91
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "Acquire",
+          "lineNumber": 95
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "GetQueueBytesAvail",
+          "lineNumber": 99
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "Dequeue",
+          "lineNumber": 107
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "BeginTransfer",
+          "lineNumber": 109
+        },
+        {
+          "caller": "OnTransferComplete",
+          "callee": "Release",
+          "lineNumber": 117
+        },
+        {
+          "caller": "OnSuspend",
+          "callee": "GetDirection",
+          "lineNumber": 123
+        },
+        {
+          "caller": "OnSuspend",
+          "callee": "Acquire",
+          "lineNumber": 125
+        },
+        {
+          "caller": "OnSuspend",
+          "callee": "Release",
+          "lineNumber": 131
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 137
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Write",
+          "callee": "Acquire",
+          "lineNumber": 140
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 147
+        },
+        {
+          "caller": "Write",
+          "callee": "GetQueueBytesFree",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 155
+        },
+        {
+          "caller": "Write",
+          "callee": "Enqueue",
+          "lineNumber": 165
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 169
+        },
+        {
+          "caller": "Write",
+          "callee": "GetQueueBytesAvail",
+          "lineNumber": 176
+        },
+        {
+          "caller": "Write",
+          "callee": "Dequeue",
+          "lineNumber": 182
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 184
+        },
+        {
+          "caller": "Write",
+          "callee": "BeginTransfer",
+          "lineNumber": 186
+        },
+        {
+          "caller": "Read",
+          "callee": "Acquire",
+          "lineNumber": 193
+        },
+        {
+          "caller": "Read",
+          "callee": "Release",
+          "lineNumber": 200
+        },
+        {
+          "caller": "Read",
+          "callee": "GetQueueBytesAvail",
+          "lineNumber": 205
+        },
+        {
+          "caller": "Read",
+          "callee": "Release",
+          "lineNumber": 208
+        },
+        {
+          "caller": "Read",
+          "callee": "Dequeue",
+          "lineNumber": 218
+        },
+        {
+          "caller": "Read",
+          "callee": "Release",
+          "lineNumber": 220
+        },
+        {
+          "caller": "WriteHandler",
+          "callee": "static_cast<CUSBCDCGadgetEndpoint *>",
+          "lineNumber": 227
+        },
+        {
+          "caller": "WriteHandler",
+          "callee": "assert",
+          "lineNumber": 228
+        },
+        {
+          "caller": "WriteHandler",
+          "callee": "Write",
+          "lineNumber": 230
+        },
+        {
+          "caller": "ReadHandler",
+          "callee": "static_cast<CUSBCDCGadgetEndpoint *>",
+          "lineNumber": 235
+        },
+        {
+          "caller": "ReadHandler",
+          "callee": "assert",
+          "lineNumber": 236
+        },
+        {
+          "caller": "ReadHandler",
+          "callee": "Read",
+          "lineNumber": 238
+        },
+        {
+          "caller": "GetQueueBytesFree",
+          "callee": "assert",
+          "lineNumber": 243
+        },
+        {
+          "caller": "GetQueueBytesFree",
+          "callee": "assert",
+          "lineNumber": 244
+        },
+        {
+          "caller": "GetQueueBytesAvail",
+          "callee": "assert",
+          "lineNumber": 256
+        },
+        {
+          "caller": "GetQueueBytesAvail",
+          "callee": "assert",
+          "lineNumber": 257
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "static_cast<const u8 *>",
+          "lineNumber": 269
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 270
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 271
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 273
+        },
+        {
+          "caller": "Dequeue",
+          "callee": "static_cast<u8 *>",
+          "lineNumber": 287
+        },
+        {
+          "caller": "Dequeue",
+          "callee": "assert",
+          "lineNumber": 288
+        },
+        {
+          "caller": "Dequeue",
+          "callee": "assert",
+          "lineNumber": 289
+        },
+        {
+          "caller": "Dequeue",
+          "callee": "assert",
+          "lineNumber": 291
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 14,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/usbrequest.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 159,
+      "nonEmptyLines": 130,
+      "functions": [
+        {
+          "name": "CUSBRequest",
+          "startLine": 23,
+          "endLine": 39,
+          "params": [
+            "pEndpoint",
+            "pBuffer",
+            "nBufLen",
+            "pSetupData"
+          ]
+        },
+        {
+          "name": "~CUSBRequest",
+          "startLine": 41,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "SetStatus",
+          "startLine": 55,
+          "endLine": 58,
+          "params": [
+            "bStatus"
+          ]
+        },
+        {
+          "name": "SetResultLen",
+          "startLine": 60,
+          "endLine": 63,
+          "params": [
+            "nLength"
+          ]
+        },
+        {
+          "name": "SetUSBError",
+          "startLine": 65,
+          "endLine": 68,
+          "params": [
+            "Error"
+          ]
+        },
+        {
+          "name": "GetStatus",
+          "startLine": 70,
+          "endLine": 73,
+          "params": []
+        },
+        {
+          "name": "GetResultLength",
+          "startLine": 75,
+          "endLine": 80,
+          "params": []
+        },
+        {
+          "name": "GetUSBError",
+          "startLine": 82,
+          "endLine": 87,
+          "params": []
+        },
+        {
+          "name": "GetBufLen",
+          "startLine": 105,
+          "endLine": 108,
+          "params": []
+        },
+        {
+          "name": "AddIsoPacket",
+          "startLine": 110,
+          "endLine": 117,
+          "params": [
+            "usPacketSize"
+          ]
+        },
+        {
+          "name": "GetNumIsoPackets",
+          "startLine": 119,
+          "endLine": 124,
+          "params": []
+        },
+        {
+          "name": "GetIsoPacketSize",
+          "startLine": 126,
+          "endLine": 131,
+          "params": [
+            "nPacketIndex"
+          ]
+        },
+        {
+          "name": "SetCompletionRoutine",
+          "startLine": 133,
+          "endLine": 140,
+          "params": [
+            "pRoutine",
+            "pParam",
+            "pContext"
+          ]
+        },
+        {
+          "name": "CallCompletionRoutine",
+          "startLine": 142,
+          "endLine": 147,
+          "params": []
+        },
+        {
+          "name": "SetCompleteOnNAK",
+          "startLine": 149,
+          "endLine": 152,
+          "params": []
+        },
+        {
+          "name": "IsCompleteOnNAK",
+          "startLine": 154,
+          "endLine": 157,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CUSBRequest",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CUSBRequest",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "SetStatus",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "SetResultLen",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "SetUSBError",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "GetStatus",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "GetResultLength",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "GetUSBError",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "GetBufLen",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "AddIsoPacket",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "GetNumIsoPackets",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "GetIsoPacketSize",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "SetCompletionRoutine",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "CallCompletionRoutine",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "SetCompleteOnNAK",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "IsCompleteOnNAK",
+          "line": 154,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CUSBRequest",
+          "callee": "assert",
+          "lineNumber": 37
+        },
+        {
+          "caller": "CUSBRequest",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "GetResultLength",
+          "callee": "assert",
+          "lineNumber": 77
+        },
+        {
+          "caller": "GetUSBError",
+          "callee": "assert",
+          "lineNumber": 84
+        },
+        {
+          "caller": "AddIsoPacket",
+          "callee": "assert",
+          "lineNumber": 112
+        },
+        {
+          "caller": "AddIsoPacket",
+          "callee": "assert",
+          "lineNumber": 113
+        },
+        {
+          "caller": "AddIsoPacket",
+          "callee": "assert",
+          "lineNumber": 114
+        },
+        {
+          "caller": "GetNumIsoPackets",
+          "callee": "assert",
+          "lineNumber": 121
+        },
+        {
+          "caller": "GetIsoPacketSize",
+          "callee": "assert",
+          "lineNumber": 128
+        },
+        {
+          "caller": "SetCompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 139
+        },
+        {
+          "caller": "CallCompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 144
+        },
+        {
+          "caller": "CallCompletionRoutine",
+          "callee": "(*m_pCompletionRoutine)",
+          "lineNumber": 146
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 16,
+        "functionCount": 16,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/usbserial.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 153,
+      "nonEmptyLines": 126,
+      "functions": [
+        {
+          "name": "CUSBSerialDevice",
+          "startLine": 29,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "~CUSBSerialDevice",
+          "startLine": 40,
+          "endLine": 49,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 51,
+          "endLine": 77,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "Read",
+          "startLine": 79,
+          "endLine": 83,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "SetBaudRate",
+          "startLine": 85,
+          "endLine": 93,
+          "params": [
+            "nBaudRate"
+          ]
+        },
+        {
+          "name": "SetLineProperties",
+          "startLine": 95,
+          "endLine": 106,
+          "params": [
+            "nDataBits",
+            "nParity",
+            "nStopBits"
+          ]
+        },
+        {
+          "name": "GetOptions",
+          "startLine": 108,
+          "endLine": 111,
+          "params": []
+        },
+        {
+          "name": "SetOptions",
+          "startLine": 113,
+          "endLine": 116,
+          "params": [
+            "nOptions"
+          ]
+        },
+        {
+          "name": "RegisterWriteHandler",
+          "startLine": 118,
+          "endLine": 125,
+          "params": [
+            "pHandler",
+            "pParam"
+          ]
+        },
+        {
+          "name": "RegisterReadHandler",
+          "startLine": 127,
+          "endLine": 134,
+          "params": [
+            "pHandler",
+            "pParam"
+          ]
+        },
+        {
+          "name": "RegisterSetBaudRateHandler",
+          "startLine": 136,
+          "endLine": 143,
+          "params": [
+            "pHandler",
+            "pParam"
+          ]
+        },
+        {
+          "name": "RegisterSetLinePropertiesHandler",
+          "startLine": 145,
+          "endLine": 153,
+          "params": [
+            "pHandler",
+            "pParam"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CUSBSerialDevice",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "~CUSBSerialDevice",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "SetBaudRate",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "SetLineProperties",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "GetOptions",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "SetOptions",
+          "line": 113,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterWriteHandler",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterReadHandler",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterSetBaudRateHandler",
+          "line": 136,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterSetLinePropertiesHandler",
+          "line": 145,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CUSBSerialDevice",
+          "callee": "AllocateNumber",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CUSBSerialDevice",
+          "callee": "AddDevice",
+          "lineNumber": 37
+        },
+        {
+          "caller": "CUSBSerialDevice",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 37
+        },
+        {
+          "caller": "~CUSBSerialDevice",
+          "callee": "RemoveDevice",
+          "lineNumber": 42
+        },
+        {
+          "caller": "~CUSBSerialDevice",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 42
+        },
+        {
+          "caller": "~CUSBSerialDevice",
+          "callee": "FreeNumber",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Write",
+          "callee": "(*m_pWriteHandler)",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Write",
+          "callee": "reinterpret_cast<const char *>",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Write",
+          "callee": "(*m_pWriteHandler)",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Read",
+          "callee": "(*m_pReadHandler)",
+          "lineNumber": 82
+        },
+        {
+          "caller": "SetBaudRate",
+          "callee": "(*m_pSetBaudRateHandler)",
+          "lineNumber": 92
+        },
+        {
+          "caller": "SetLineProperties",
+          "callee": "(*m_pSetLinePropertiesHandler)",
+          "lineNumber": 104
+        },
+        {
+          "caller": "RegisterWriteHandler",
+          "callee": "assert",
+          "lineNumber": 122
+        },
+        {
+          "caller": "RegisterWriteHandler",
+          "callee": "assert",
+          "lineNumber": 124
+        },
+        {
+          "caller": "RegisterReadHandler",
+          "callee": "assert",
+          "lineNumber": 131
+        },
+        {
+          "caller": "RegisterReadHandler",
+          "callee": "assert",
+          "lineNumber": 133
+        },
+        {
+          "caller": "RegisterSetBaudRateHandler",
+          "callee": "assert",
+          "lineNumber": 140
+        },
+        {
+          "caller": "RegisterSetBaudRateHandler",
+          "callee": "assert",
+          "lineNumber": 142
+        },
+        {
+          "caller": "RegisterSetLinePropertiesHandler",
+          "callee": "assert",
+          "lineNumber": 150
+        },
+        {
+          "caller": "RegisterSetLinePropertiesHandler",
+          "callee": "assert",
+          "lineNumber": 152
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 12,
+        "functionCount": 12,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/usbserialhost.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 303,
+      "nonEmptyLines": 244,
+      "functions": [
+        {
+          "name": "CUSBSerialHostDevice",
+          "startLine": 30,
+          "endLine": 46,
+          "params": [
+            "pFunction",
+            "nReadHeaderBytes"
+          ]
+        },
+        {
+          "name": "~CUSBSerialHostDevice",
+          "startLine": 48,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "Configure",
+          "startLine": 64,
+          "endLine": 126,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 128,
+          "endLine": 157,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "Read",
+          "startLine": 159,
+          "endLine": 216,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "SetBaudRate",
+          "startLine": 218,
+          "endLine": 221,
+          "params": [
+            "nBaudRate"
+          ]
+        },
+        {
+          "name": "SetLineProperties",
+          "startLine": 223,
+          "endLine": 228,
+          "params": [
+            "nDataBits",
+            "nParity",
+            "nStopBits"
+          ]
+        },
+        {
+          "name": "CompletionRoutine",
+          "startLine": 230,
+          "endLine": 260,
+          "params": [
+            "pURB"
+          ]
+        },
+        {
+          "name": "CompletionStub",
+          "startLine": 262,
+          "endLine": 268,
+          "params": [
+            "pURB",
+            "pParam",
+            "pContext"
+          ]
+        },
+        {
+          "name": "WriteHandler",
+          "startLine": 270,
+          "endLine": 276,
+          "params": [
+            "pBuffer",
+            "nCount",
+            "pParam"
+          ]
+        },
+        {
+          "name": "ReadHandler",
+          "startLine": 278,
+          "endLine": 284,
+          "params": [
+            "pBuffer",
+            "nCount",
+            "pParam"
+          ]
+        },
+        {
+          "name": "SetBaudRateHandler",
+          "startLine": 286,
+          "endLine": 292,
+          "params": [
+            "nBaudRate",
+            "pParam"
+          ]
+        },
+        {
+          "name": "SetLinePropertiesHandler",
+          "startLine": 294,
+          "endLine": 303,
+          "params": [
+            "nDataBits",
+            "nParity",
+            "nStopBits",
+            "pParam"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CUSBSerialHostDevice",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "~CUSBSerialHostDevice",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "Configure",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 128,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "SetBaudRate",
+          "line": 218,
+          "isDefault": false
+        },
+        {
+          "name": "SetLineProperties",
+          "line": 223,
+          "isDefault": false
+        },
+        {
+          "name": "CompletionRoutine",
+          "line": 230,
+          "isDefault": false
+        },
+        {
+          "name": "CompletionStub",
+          "line": 262,
+          "isDefault": false
+        },
+        {
+          "name": "WriteHandler",
+          "line": 270,
+          "isDefault": false
+        },
+        {
+          "name": "ReadHandler",
+          "line": 278,
+          "isDefault": false
+        },
+        {
+          "name": "SetBaudRateHandler",
+          "line": 286,
+          "isDefault": false
+        },
+        {
+          "name": "SetLinePropertiesHandler",
+          "line": 294,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Configure",
+          "callee": "GetDescriptor",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Configure",
+          "callee": "ConfigurationError",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Configure",
+          "callee": "GetDevice",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Configure",
+          "callee": "ConfigurationError",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Configure",
+          "callee": "GetDevice",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Configure",
+          "callee": "ConfigurationError",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Configure",
+          "callee": "GetMaxPacketSize",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Configure",
+          "callee": "assert",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Configure",
+          "callee": "CUSBFunction::Configure",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Configure",
+          "callee": "LOGERR",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Configure",
+          "callee": "assert",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Configure",
+          "callee": "assert",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Configure",
+          "callee": "RegisterWriteHandler",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Configure",
+          "callee": "RegisterReadHandler",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Configure",
+          "callee": "RegisterSetBaudRateHandler",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Configure",
+          "callee": "RegisterSetLinePropertiesHandler",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 131
+        },
+        {
+          "caller": "Write",
+          "callee": "DataMemBarrier",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Write",
+          "callee": "GetHost",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Write",
+          "callee": "DMA_BUFFER",
+          "lineNumber": 146
+        },
+        {
+          "caller": "Write",
+          "callee": "memcpy",
+          "lineNumber": 147
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 149
+        },
+        {
+          "caller": "Write",
+          "callee": "Transfer",
+          "lineNumber": 150
+        },
+        {
+          "caller": "Write",
+          "callee": "LOGWARN",
+          "lineNumber": 153
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 161
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 162
+        },
+        {
+          "caller": "Read",
+          "callee": "DataMemBarrier",
+          "lineNumber": 164
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 171
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 172
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 173
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 174
+        },
+        {
+          "caller": "Read",
+          "callee": "GetHost",
+          "lineNumber": 178
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 179
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 181
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 183
+        },
+        {
+          "caller": "Read",
+          "callee": "SetCompleteOnNAK",
+          "lineNumber": 186
+        },
+        {
+          "caller": "Read",
+          "callee": "SetCompletionRoutine",
+          "lineNumber": 188
+        },
+        {
+          "caller": "Read",
+          "callee": "SubmitAsyncRequest",
+          "lineNumber": 191
+        },
+        {
+          "caller": "Read",
+          "callee": "LOGWARN",
+          "lineNumber": 193
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 211
+        },
+        {
+          "caller": "Read",
+          "callee": "memcpy",
+          "lineNumber": 212
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 232
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 233
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 234
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "GetStatus",
+          "lineNumber": 236
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "GetResultLength",
+          "lineNumber": 238
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "LOGWARN",
+          "lineNumber": 249
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 259
+        },
+        {
+          "caller": "CompletionStub",
+          "callee": "static_cast <CUSBSerialHostDevice *>",
+          "lineNumber": 264
+        },
+        {
+          "caller": "CompletionStub",
+          "callee": "assert",
+          "lineNumber": 265
+        },
+        {
+          "caller": "CompletionStub",
+          "callee": "CompletionRoutine",
+          "lineNumber": 267
+        },
+        {
+          "caller": "WriteHandler",
+          "callee": "static_cast <CUSBSerialHostDevice *>",
+          "lineNumber": 272
+        },
+        {
+          "caller": "WriteHandler",
+          "callee": "assert",
+          "lineNumber": 273
+        },
+        {
+          "caller": "WriteHandler",
+          "callee": "Write",
+          "lineNumber": 275
+        },
+        {
+          "caller": "ReadHandler",
+          "callee": "static_cast <CUSBSerialHostDevice *>",
+          "lineNumber": 280
+        },
+        {
+          "caller": "ReadHandler",
+          "callee": "assert",
+          "lineNumber": 281
+        },
+        {
+          "caller": "ReadHandler",
+          "callee": "Read",
+          "lineNumber": 283
+        },
+        {
+          "caller": "SetBaudRateHandler",
+          "callee": "static_cast <CUSBSerialHostDevice *>",
+          "lineNumber": 288
+        },
+        {
+          "caller": "SetBaudRateHandler",
+          "callee": "assert",
+          "lineNumber": 289
+        },
+        {
+          "caller": "SetBaudRateHandler",
+          "callee": "SetBaudRate",
+          "lineNumber": 291
+        },
+        {
+          "caller": "SetLinePropertiesHandler",
+          "callee": "static_cast <CUSBSerialHostDevice *>",
+          "lineNumber": 299
+        },
+        {
+          "caller": "SetLinePropertiesHandler",
+          "callee": "assert",
+          "lineNumber": 300
+        },
+        {
+          "caller": "SetLinePropertiesHandler",
+          "callee": "SetLineProperties",
+          "lineNumber": 302
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 13,
+        "functionCount": 13,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/xhcisharedmemallocator.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 119,
+      "functions": [
+        {
+          "name": "CXHCISharedMemAllocator",
+          "startLine": 26,
+          "endLine": 33,
+          "params": [
+            "nMemStart",
+            "nMemEnd"
+          ]
+        },
+        {
+          "name": "~CXHCISharedMemAllocator",
+          "startLine": 35,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "GetFreeSpace",
+          "startLine": 43,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "Free",
+          "startLine": 121,
+          "endLine": 142,
+          "params": [
+            "pBlock"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CXHCISharedMemAllocator",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CXHCISharedMemAllocator",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "GetFreeSpace",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "Free",
+          "line": 121,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CXHCISharedMemAllocator",
+          "callee": "assert",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CXHCISharedMemAllocator",
+          "callee": "assert",
+          "lineNumber": 32
+        },
+        {
+          "caller": "Free",
+          "callee": "assert",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Free",
+          "callee": "assert",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Free",
+          "callee": "Write",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Free",
+          "callee": "CLogger::Get",
+          "lineNumber": 138
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/windowdisplay.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 81,
+      "functions": [
+        {
+          "name": "CWindowDisplay",
+          "startLine": 23,
+          "endLine": 29,
+          "params": [
+            "pDisplay",
+            "rArea"
+          ]
+        },
+        {
+          "name": "~CWindowDisplay",
+          "startLine": 31,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "GetWidth",
+          "startLine": 36,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "GetHeight",
+          "startLine": 41,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "GetDepth",
+          "startLine": 46,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "SetPixel",
+          "startLine": 52,
+          "endLine": 60,
+          "params": [
+            "nPosX",
+            "nPosY",
+            "nColor"
+          ]
+        },
+        {
+          "name": "SetArea",
+          "startLine": 62,
+          "endLine": 77,
+          "params": [
+            "rArea",
+            "pPixels",
+            "pRoutine",
+            "pParam"
+          ]
+        },
+        {
+          "name": "GetOffsetX",
+          "startLine": 84,
+          "endLine": 87,
+          "params": []
+        },
+        {
+          "name": "GetOffsetY",
+          "startLine": 89,
+          "endLine": 92,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CWindowDisplay",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CWindowDisplay",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "GetWidth",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "GetHeight",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "GetDepth",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "SetPixel",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "SetArea",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "GetOffsetX",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "GetOffsetY",
+          "line": 89,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CWindowDisplay",
+          "callee": "GetColorModel",
+          "lineNumber": 24
+        },
+        {
+          "caller": "CWindowDisplay",
+          "callee": "assert",
+          "lineNumber": 28
+        },
+        {
+          "caller": "GetDepth",
+          "callee": "assert",
+          "lineNumber": 48
+        },
+        {
+          "caller": "GetDepth",
+          "callee": "GetDepth",
+          "lineNumber": 49
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "GetWidth",
+          "lineNumber": 54
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "GetHeight",
+          "lineNumber": 55
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "assert",
+          "lineNumber": 57
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "SetPixel",
+          "lineNumber": 58
+        },
+        {
+          "caller": "SetArea",
+          "callee": "assert",
+          "lineNumber": 71
+        },
+        {
+          "caller": "SetArea",
+          "callee": "GetWidth",
+          "lineNumber": 72
+        },
+        {
+          "caller": "SetArea",
+          "callee": "GetHeight",
+          "lineNumber": 73
+        },
+        {
+          "caller": "SetArea",
+          "callee": "SetArea",
+          "lineNumber": 75
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 9,
+        "functionCount": 9,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/09-softserial/softserial.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 280,
+      "nonEmptyLines": 219,
+      "functions": [
+        {
+          "name": "CSoftSerialDevice",
+          "startLine": 29,
+          "endLine": 42,
+          "params": [
+            "nGPIOPinTxD",
+            "nGPIOPinRxD",
+            "pGPIOManager"
+          ]
+        },
+        {
+          "name": "~CSoftSerialDevice",
+          "startLine": 44,
+          "endLine": 56,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 58,
+          "endLine": 67,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 69,
+          "endLine": 95,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "Read",
+          "startLine": 97,
+          "endLine": 119,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "InterruptHandler",
+          "startLine": 121,
+          "endLine": 192,
+          "params": []
+        },
+        {
+          "name": "InterruptStub",
+          "startLine": 194,
+          "endLine": 200,
+          "params": [
+            "pParam"
+          ]
+        },
+        {
+          "name": "TimerHandler",
+          "startLine": 202,
+          "endLine": 222,
+          "params": []
+        },
+        {
+          "name": "TimerStub",
+          "startLine": 224,
+          "endLine": 230,
+          "params": [
+            "hTimer",
+            "pParam",
+            "pContext"
+          ]
+        },
+        {
+          "name": "InBuf",
+          "startLine": 232,
+          "endLine": 244,
+          "params": [
+            "chChar"
+          ]
+        },
+        {
+          "name": "BufStat",
+          "startLine": 246,
+          "endLine": 260,
+          "params": []
+        },
+        {
+          "name": "OutBuf",
+          "startLine": 262,
+          "endLine": 280,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CSoftSerialDevice",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "~CSoftSerialDevice",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "InterruptHandler",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "InterruptStub",
+          "line": 194,
+          "isDefault": false
+        },
+        {
+          "name": "TimerHandler",
+          "line": 202,
+          "isDefault": false
+        },
+        {
+          "name": "TimerStub",
+          "line": 224,
+          "isDefault": false
+        },
+        {
+          "name": "InBuf",
+          "line": 232,
+          "isDefault": false
+        },
+        {
+          "name": "BufStat",
+          "line": 246,
+          "isDefault": false
+        },
+        {
+          "name": "OutBuf",
+          "line": 262,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CSoftSerialDevice",
+          "callee": "Write",
+          "lineNumber": 41
+        },
+        {
+          "caller": "~CSoftSerialDevice",
+          "callee": "CancelKernelTimer",
+          "lineNumber": 48
+        },
+        {
+          "caller": "~CSoftSerialDevice",
+          "callee": "CTimer::Get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "~CSoftSerialDevice",
+          "callee": "DisableInterrupt",
+          "lineNumber": 53
+        },
+        {
+          "caller": "~CSoftSerialDevice",
+          "callee": "DisconnectInterrupt",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ConnectInterrupt",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableInterrupt",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Write",
+          "callee": "usDelay",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Write",
+          "callee": "CTimer::Get",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Write",
+          "callee": "usDelay",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Write",
+          "callee": "CTimer::Get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Write",
+          "callee": "usDelay",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Write",
+          "callee": "CTimer::Get",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Read",
+          "callee": "BufStat",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Read",
+          "callee": "BufStat",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Read",
+          "callee": "OutBuf",
+          "lineNumber": 110
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "assert",
+          "lineNumber": 123
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "assert",
+          "lineNumber": 127
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "GetClockTicks",
+          "lineNumber": 129
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 129
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "DisableInterrupt",
+          "lineNumber": 131
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "EnableInterrupt",
+          "lineNumber": 132
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "assert",
+          "lineNumber": 139
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "StartKernelTimer",
+          "lineNumber": 140
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 140
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "assert",
+          "lineNumber": 141
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "GetClockTicks",
+          "lineNumber": 146
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 146
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "InBuf",
+          "lineNumber": 167
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "DisableInterrupt",
+          "lineNumber": 175
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "EnableInterrupt",
+          "lineNumber": 176
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "DisableInterrupt",
+          "lineNumber": 181
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "EnableInterrupt",
+          "lineNumber": 182
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "CancelKernelTimer",
+          "lineNumber": 189
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 189
+        },
+        {
+          "caller": "InterruptStub",
+          "callee": "assert",
+          "lineNumber": 197
+        },
+        {
+          "caller": "InterruptStub",
+          "callee": "InterruptHandler",
+          "lineNumber": 199
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 204
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 205
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "InBuf",
+          "lineNumber": 215
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "DisableInterrupt",
+          "lineNumber": 218
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "EnableInterrupt",
+          "lineNumber": 219
+        },
+        {
+          "caller": "TimerStub",
+          "callee": "assert",
+          "lineNumber": 227
+        },
+        {
+          "caller": "TimerStub",
+          "callee": "TimerHandler",
+          "lineNumber": 229
+        },
+        {
+          "caller": "InBuf",
+          "callee": "EnterCritical",
+          "lineNumber": 234
+        },
+        {
+          "caller": "InBuf",
+          "callee": "LeaveCritical",
+          "lineNumber": 243
+        },
+        {
+          "caller": "BufStat",
+          "callee": "EnterCritical",
+          "lineNumber": 248
+        },
+        {
+          "caller": "BufStat",
+          "callee": "LeaveCritical",
+          "lineNumber": 252
+        },
+        {
+          "caller": "BufStat",
+          "callee": "LeaveCritical",
+          "lineNumber": 257
+        },
+        {
+          "caller": "OutBuf",
+          "callee": "EnterCritical",
+          "lineNumber": 264
+        },
+        {
+          "caller": "OutBuf",
+          "callee": "LeaveCritical",
+          "lineNumber": 268
+        },
+        {
+          "caller": "OutBuf",
+          "callee": "LeaveCritical",
+          "lineNumber": 277
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 12,
+        "functionCount": 12,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/09-softserial/softserial.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 57,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/34-sounddevices/config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/34-sounddevices/oscillator.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 161,
+      "nonEmptyLines": 145,
+      "functions": [
+        {
+          "name": "COscillator",
+          "startLine": 75,
+          "endLine": 83,
+          "params": [
+            "pModulator"
+          ]
+        },
+        {
+          "name": "~COscillator",
+          "startLine": 85,
+          "endLine": 88,
+          "params": []
+        },
+        {
+          "name": "SetWaveform",
+          "startLine": 90,
+          "endLine": 94,
+          "params": [
+            "Waveform"
+          ]
+        },
+        {
+          "name": "SetFrequency",
+          "startLine": 96,
+          "endLine": 100,
+          "params": [
+            "fFrequency"
+          ]
+        },
+        {
+          "name": "SetModulationVolume",
+          "startLine": 102,
+          "endLine": 106,
+          "params": [
+            "fVolume"
+          ]
+        },
+        {
+          "name": "NextSample",
+          "startLine": 108,
+          "endLine": 156,
+          "params": []
+        },
+        {
+          "name": "GetOutputLevel",
+          "startLine": 158,
+          "endLine": 161,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "COscillator",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "~COscillator",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "SetWaveform",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "SetFrequency",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "SetModulationVolume",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "NextSample",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "GetOutputLevel",
+          "line": 158,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SetWaveform",
+          "callee": "assert",
+          "lineNumber": 92
+        },
+        {
+          "caller": "SetFrequency",
+          "callee": "assert",
+          "lineNumber": 98
+        },
+        {
+          "caller": "SetModulationVolume",
+          "callee": "assert",
+          "lineNumber": 104
+        },
+        {
+          "caller": "NextSample",
+          "callee": "GetOutputLevel",
+          "lineNumber": 113
+        },
+        {
+          "caller": "NextSample",
+          "callee": "assert",
+          "lineNumber": 153
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/34-sounddevices/oscillator.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 54,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/36-softpwm/softpwmoutput.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 94,
+      "nonEmptyLines": 81,
+      "functions": [
+        {
+          "name": "CSoftPWMOutput",
+          "startLine": 23,
+          "endLine": 29,
+          "params": [
+            "nGPIOPin",
+            "nRange"
+          ]
+        },
+        {
+          "name": "~CSoftPWMOutput",
+          "startLine": 31,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "Start",
+          "startLine": 36,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "Stop",
+          "startLine": 49,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 57,
+          "endLine": 63,
+          "params": [
+            "nValue"
+          ]
+        },
+        {
+          "name": "ClockTick",
+          "startLine": 65,
+          "endLine": 94,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CSoftPWMOutput",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CSoftPWMOutput",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "Start",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "Stop",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "ClockTick",
+          "line": 65,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CSoftPWMOutput",
+          "callee": "assert",
+          "lineNumber": 28
+        },
+        {
+          "caller": "~CSoftPWMOutput",
+          "callee": "assert",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Start",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Start",
+          "callee": "Write",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Stop",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Stop",
+          "callee": "Write",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 61
+        },
+        {
+          "caller": "ClockTick",
+          "callee": "Write",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/36-softpwm/softpwmoutput.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 50,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/42-soundinput/queue.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 112,
+      "nonEmptyLines": 94,
+      "functions": [
+        {
+          "name": "CQueue",
+          "startLine": 23,
+          "endLine": 33,
+          "params": [
+            "nSize"
+          ]
+        },
+        {
+          "name": "~CQueue",
+          "startLine": 35,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "IsEmpty",
+          "startLine": 43,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "GetFreeSpace",
+          "startLine": 48,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 62,
+          "endLine": 76,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "GetBytesAvailable",
+          "startLine": 78,
+          "endLine": 90,
+          "params": []
+        },
+        {
+          "name": "Read",
+          "startLine": 92,
+          "endLine": 106,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "Flush",
+          "startLine": 108,
+          "endLine": 112,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CQueue",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CQueue",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "IsEmpty",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "GetFreeSpace",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "GetBytesAvailable",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "Flush",
+          "line": 108,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CQueue",
+          "callee": "assert",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CQueue",
+          "callee": "assert",
+          "lineNumber": 32
+        },
+        {
+          "caller": "GetFreeSpace",
+          "callee": "assert",
+          "lineNumber": 50
+        },
+        {
+          "caller": "GetFreeSpace",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "GetFreeSpace",
+          "callee": "assert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Write",
+          "callee": "GetFreeSpace",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 69
+        },
+        {
+          "caller": "GetBytesAvailable",
+          "callee": "assert",
+          "lineNumber": 80
+        },
+        {
+          "caller": "GetBytesAvailable",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "GetBytesAvailable",
+          "callee": "assert",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Read",
+          "callee": "GetBytesAvailable",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 99
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/42-soundinput/queue.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/cflashy.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 848,
+      "nonEmptyLines": 710,
+      "functions": [
+        {
+          "name": "GetNextByte",
+          "startLine": 424,
+          "endLine": 462,
+          "params": [
+            "pFile",
+            "pulOffset"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 466,
+          "endLine": 848,
+          "params": [
+            "nArgC",
+            "ppArgV"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 466,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SerialOpen",
+          "callee": "Baud2Speed",
+          "lineNumber": 128
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 131
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "assert",
+          "lineNumber": 135
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "open",
+          "lineNumber": 137
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "open",
+          "lineNumber": 140
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 145
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "strerror",
+          "lineNumber": 145
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "fcntl",
+          "lineNumber": 151
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 153
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "strerror",
+          "lineNumber": 153
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "close",
+          "lineNumber": 154
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "fcntl",
+          "lineNumber": 160
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 161
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "strerror",
+          "lineNumber": 161
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "close",
+          "lineNumber": 162
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "tcgetattr",
+          "lineNumber": 168
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 170
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "strerror",
+          "lineNumber": 170
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "cfsetospeed",
+          "lineNumber": 174
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "cfsetispeed",
+          "lineNumber": 175
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "tcsetattr",
+          "lineNumber": 193
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 195
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "strerror",
+          "lineNumber": 195
+        },
+        {
+          "caller": "SerialClose",
+          "callee": "close",
+          "lineNumber": 204
+        },
+        {
+          "caller": "SerialWrite",
+          "callee": "write",
+          "lineNumber": 209
+        },
+        {
+          "caller": "SerialWrite",
+          "callee": "printf",
+          "lineNumber": 212
+        },
+        {
+          "caller": "SerialWrite",
+          "callee": "strerror",
+          "lineNumber": 212
+        },
+        {
+          "caller": "SerialRead",
+          "callee": "read",
+          "lineNumber": 220
+        },
+        {
+          "caller": "SerialRead",
+          "callee": "printf",
+          "lineNumber": 223
+        },
+        {
+          "caller": "SerialRead",
+          "callee": "strerror",
+          "lineNumber": 223
+        },
+        {
+          "caller": "SerialRead",
+          "callee": "write",
+          "lineNumber": 230
+        },
+        {
+          "caller": "SerialFlush",
+          "callee": "tcdrain",
+          "lineNumber": 238
+        },
+        {
+          "caller": "msDelay",
+          "callee": "nanosleep",
+          "lineNumber": 249
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "assert",
+          "lineNumber": 283
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "strncmp",
+          "lineNumber": 284
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "snprintf",
+          "lineNumber": 286
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "strncpy",
+          "lineNumber": 291
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "CreateFile",
+          "lineNumber": 295
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 300
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "GetLastErrorMessage",
+          "lineNumber": 300
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "GetCommState",
+          "lineNumber": 307
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 309
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "GetLastErrorMessage",
+          "lineNumber": 309
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "SetCommState",
+          "lineNumber": 318
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 320
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "GetLastErrorMessage",
+          "lineNumber": 320
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "SetCommTimeouts",
+          "lineNumber": 332
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "printf",
+          "lineNumber": 334
+        },
+        {
+          "caller": "SerialOpen",
+          "callee": "GetLastErrorMessage",
+          "lineNumber": 334
+        },
+        {
+          "caller": "SerialClose",
+          "callee": "CloseHandle",
+          "lineNumber": 343
+        },
+        {
+          "caller": "SerialWrite",
+          "callee": "WriteFile",
+          "lineNumber": 349
+        },
+        {
+          "caller": "SerialWrite",
+          "callee": "printf",
+          "lineNumber": 352
+        },
+        {
+          "caller": "SerialWrite",
+          "callee": "GetLastErrorMessage",
+          "lineNumber": 352
+        },
+        {
+          "caller": "SerialRead",
+          "callee": "ReadFile",
+          "lineNumber": 362
+        },
+        {
+          "caller": "SerialRead",
+          "callee": "printf",
+          "lineNumber": 364
+        },
+        {
+          "caller": "SerialRead",
+          "callee": "GetLastErrorMessage",
+          "lineNumber": 364
+        },
+        {
+          "caller": "SerialRead",
+          "callee": "write",
+          "lineNumber": 371
+        },
+        {
+          "caller": "SerialFlush",
+          "callee": "FlushFileBuffers",
+          "lineNumber": 379
+        },
+        {
+          "caller": "msDelay",
+          "callee": "Sleep",
+          "lineNumber": 386
+        },
+        {
+          "caller": "GetNextByte",
+          "callee": "assert",
+          "lineNumber": 426
+        },
+        {
+          "caller": "GetNextByte",
+          "callee": "assert",
+          "lineNumber": 427
+        },
+        {
+          "caller": "GetNextByte",
+          "callee": "fgetc",
+          "lineNumber": 433
+        },
+        {
+          "caller": "GetNextByte",
+          "callee": "isspace",
+          "lineNumber": 441
+        },
+        {
+          "caller": "GetNextByte",
+          "callee": "fgetc",
+          "lineNumber": 451
+        },
+        {
+          "caller": "main",
+          "callee": "assert",
+          "lineNumber": 468
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 474
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 485
+        },
+        {
+          "caller": "main",
+          "callee": "strchr",
+          "lineNumber": 498
+        },
+        {
+          "caller": "main",
+          "callee": "strtoul",
+          "lineNumber": 505
+        },
+        {
+          "caller": "main",
+          "callee": "strcasecmp",
+          "lineNumber": 508
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 514
+        },
+        {
+          "caller": "main",
+          "callee": "strcasecmp",
+          "lineNumber": 520
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 526
+        },
+        {
+          "caller": "main",
+          "callee": "strcasecmp",
+          "lineNumber": 532
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 538
+        },
+        {
+          "caller": "main",
+          "callee": "strcasecmp",
+          "lineNumber": 544
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 548
+        },
+        {
+          "caller": "main",
+          "callee": "strcasecmp",
+          "lineNumber": 557
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 563
+        },
+        {
+          "caller": "main",
+          "callee": "strcasecmp",
+          "lineNumber": 569
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 575
+        },
+        {
+          "caller": "main",
+          "callee": "strcasecmp",
+          "lineNumber": 581
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 587
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 595
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 601
+        },
+        {
+          "caller": "main",
+          "callee": "SerialOpen",
+          "lineNumber": 613
+        },
+        {
+          "caller": "main",
+          "callee": "IS_VALID",
+          "lineNumber": 614
+        },
+        {
+          "caller": "main",
+          "callee": "SerialWrite",
+          "lineNumber": 619
+        },
+        {
+          "caller": "main",
+          "callee": "strlen",
+          "lineNumber": 620
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 622
+        },
+        {
+          "caller": "main",
+          "callee": "SerialFlush",
+          "lineNumber": 626
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 628
+        },
+        {
+          "caller": "main",
+          "callee": "msDelay",
+          "lineNumber": 630
+        },
+        {
+          "caller": "main",
+          "callee": "SerialOpen",
+          "lineNumber": 635
+        },
+        {
+          "caller": "main",
+          "callee": "IS_VALID",
+          "lineNumber": 636
+        },
+        {
+          "caller": "main",
+          "callee": "memset",
+          "lineNumber": 654
+        },
+        {
+          "caller": "main",
+          "callee": "SerialWrite",
+          "lineNumber": 656
+        },
+        {
+          "caller": "main",
+          "callee": "SerialFlush",
+          "lineNumber": 661
+        },
+        {
+          "caller": "main",
+          "callee": "msDelay",
+          "lineNumber": 663
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 667
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 668
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 672
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 673
+        },
+        {
+          "caller": "main",
+          "callee": "SerialReadAndMatch",
+          "lineNumber": 677
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 681
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 682
+        },
+        {
+          "caller": "main",
+          "callee": "fopen",
+          "lineNumber": 689
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 692
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 693
+        },
+        {
+          "caller": "main",
+          "callee": "fstat",
+          "lineNumber": 698
+        },
+        {
+          "caller": "main",
+          "callee": "fileno",
+          "lineNumber": 698
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 700
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 701
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 702
+        },
+        {
+          "caller": "main",
+          "callee": "malloc",
+          "lineNumber": 723
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 726
+        },
+        {
+          "caller": "main",
+          "callee": "strerror",
+          "lineNumber": 726
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 727
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 728
+        },
+        {
+          "caller": "main",
+          "callee": "SerialReadAndMatch",
+          "lineNumber": 735
+        },
+        {
+          "caller": "main",
+          "callee": "strchr",
+          "lineNumber": 740
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 746
+        },
+        {
+          "caller": "main",
+          "callee": "free",
+          "lineNumber": 747
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 748
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 749
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 754
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 755
+        },
+        {
+          "caller": "main",
+          "callee": "GetNextByte",
+          "lineNumber": 760
+        },
+        {
+          "caller": "main",
+          "callee": "SerialWrite",
+          "lineNumber": 777
+        },
+        {
+          "caller": "main",
+          "callee": "free",
+          "lineNumber": 779
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 780
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 781
+        },
+        {
+          "caller": "main",
+          "callee": "SerialFlush",
+          "lineNumber": 785
+        },
+        {
+          "caller": "main",
+          "callee": "free",
+          "lineNumber": 788
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 790
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 792
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 793
+        },
+        {
+          "caller": "main",
+          "callee": "msDelay",
+          "lineNumber": 796
+        },
+        {
+          "caller": "main",
+          "callee": "msDelay",
+          "lineNumber": 799
+        },
+        {
+          "caller": "main",
+          "callee": "SerialReadAndMatch",
+          "lineNumber": 802
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 804
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 805
+        },
+        {
+          "caller": "main",
+          "callee": "assert",
+          "lineNumber": 815
+        },
+        {
+          "caller": "main",
+          "callee": "sprintf",
+          "lineNumber": 816
+        },
+        {
+          "caller": "main",
+          "callee": "SerialWrite",
+          "lineNumber": 818
+        },
+        {
+          "caller": "main",
+          "callee": "strlen",
+          "lineNumber": 818
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 820
+        },
+        {
+          "caller": "main",
+          "callee": "SerialWrite",
+          "lineNumber": 827
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 829
+        },
+        {
+          "caller": "main",
+          "callee": "msDelay",
+          "lineNumber": 833
+        },
+        {
+          "caller": "main",
+          "callee": "SerialReadAndMatch",
+          "lineNumber": 835
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 837
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 841
+        },
+        {
+          "caller": "main",
+          "callee": "SerialClose",
+          "lineNumber": 845
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "sample/08-usbkeyboard/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 31,
+      "nonEmptyLines": 22,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/08-usbkeyboard/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 32,
+      "metrics": {}
+    },
+    {
+      "path": "sample/09-softserial/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/09-softserial/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 10,
+      "metrics": {}
+    },
+    {
+      "path": "sample/10-usbmouse/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/10-usbmouse/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 12,
+      "metrics": {}
+    },
+    {
+      "path": "sample/11-gpioclock/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/11-gpioclock/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 6,
+      "metrics": {}
+    },
+    {
+      "path": "sample/11-gpioclock/sampler.S",
+      "language": "s",
+      "fileCategory": "code",
+      "totalLines": 164,
+      "nonEmptyLines": 130,
+      "metrics": {}
+    },
+    {
+      "path": "sample/12-pwmsound/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 22,
+      "nonEmptyLines": 14,
+      "steps": [
+        {
+          "name": "kernel.o",
+          "startLine": 16,
+          "endLine": 17
+        },
+        {
+          "name": "sound.h",
+          "startLine": 18,
+          "endLine": 21
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 2
+      }
+    },
+    {
+      "path": "sample/12-pwmsound/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 55,
+      "metrics": {}
+    },
+    {
+      "path": "sample/13-pwmoutput/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/13-pwmoutput/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 6,
+      "metrics": {}
+    },
+    {
+      "path": "sample/14-usbprinter/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/14-usbprinter/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "metrics": {}
+    },
+    {
+      "path": "sample/15-files/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/15-files/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 11,
+      "metrics": {}
+    },
+    {
+      "path": "sample/16-i2cping/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 11,
+      "nonEmptyLines": 9,
+      "steps": [
+        {
+          "name": "all",
+          "startLine": 5,
+          "endLine": 8
+        },
+        {
+          "name": "clean",
+          "startLine": 9,
+          "endLine": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 2
+      }
+    },
+    {
+      "path": "sample/16-i2cping/master/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/16-i2cping/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 31,
+      "metrics": {}
+    },
+    {
+      "path": "sample/16-i2cping/slave/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/17-fractal/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/17-fractal/mandelbrot.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 100,
+      "nonEmptyLines": 89,
+      "functions": [
+        {
+          "name": "m_pScreen",
+          "startLine": 29,
+          "endLine": 31,
+          "params": []
+        },
+        {
+          "name": "~CMandelbrotCalculator",
+          "startLine": 33,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 38,
+          "endLine": 64,
+          "params": [
+            "nCore"
+          ]
+        },
+        {
+          "name": "Calculate",
+          "startLine": 67,
+          "endLine": 100,
+          "params": [
+            "x1",
+            "x2",
+            "y1",
+            "y2",
+            "nMaxIteration",
+            "nPosY0",
+            "nHeight"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "m_pScreen",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "~CMandelbrotCalculator",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "Calculate",
+          "line": 67,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Run",
+          "callee": "GetHeight",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Run",
+          "callee": "GetHeight",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Calculate",
+          "callee": "GetWidth",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Calculate",
+          "callee": "GetWidth",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Calculate",
+          "callee": "(TScreenColor)",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Calculate",
+          "callee": "(TScreenColor)",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Calculate",
+          "callee": "SetPixel",
+          "lineNumber": 97
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/17-fractal/mandelbrot.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 44,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/17-fractal/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 6,
+      "metrics": {}
+    }
+  ]
+}

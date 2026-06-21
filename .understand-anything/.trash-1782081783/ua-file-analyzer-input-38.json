@@ -1,0 +1,42 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/display/st7789device.cpp",
+      "language": "cpp",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/st7789device.h",
+      "language": "c",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/chargenerator.h",
+      "language": "c",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/chargenerator.cpp",
+      "language": "cpp",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/display/st7789device.cpp": [
+      "addon/display/st7789device.h",
+      "include/assert.h",
+      "include/circle/chargenerator.h",
+      "include/circle/timer.h"
+    ],
+    "addon/display/st7789device.h": [],
+    "include/circle/chargenerator.h": [],
+    "lib/chargenerator.cpp": [
+      "include/circle/chargenerator.h"
+    ]
+  }
+}

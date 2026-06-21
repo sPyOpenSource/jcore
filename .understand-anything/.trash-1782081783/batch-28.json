@@ -1,0 +1,2483 @@
+{
+  "batch": 28,
+  "nodes": [
+    {
+      "id": "file:include/circle/chainboot.h",
+      "type": "file",
+      "name": "chainboot.h",
+      "filePath": "include/circle/chainboot.h",
+      "summary": "Chainboot implementation with 0 functions and hardware register access",
+      "tags": [
+        "chainboot",
+        "circle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/input/mousebehaviour.h",
+      "type": "file",
+      "name": "mousebehaviour.h",
+      "filePath": "include/circle/input/mousebehaviour.h",
+      "summary": "Mousebehaviour implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/input/rpitouchscreen.h",
+      "type": "file",
+      "name": "rpitouchscreen.h",
+      "filePath": "include/circle/input/rpitouchscreen.h",
+      "summary": "Rpitouchscreen implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "input",
+        "rpitouchscreen"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/memory.h",
+      "type": "file",
+      "name": "memory.h",
+      "filePath": "include/circle/memory.h",
+      "summary": "Memory implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "memory"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/pagetable.h",
+      "type": "file",
+      "name": "pagetable.h",
+      "filePath": "include/circle/pagetable.h",
+      "summary": "Pagetable implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "pagetable"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/rpi/bcmpropertytags.h",
+      "type": "file",
+      "name": "bcmpropertytags.h",
+      "filePath": "include/circle/rpi/bcmpropertytags.h",
+      "summary": "Raspberry Pi hardware driver for bcmpropertytags",
+      "tags": [
+        "bcmpropertytags",
+        "circle",
+        "rpi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/spinlock.h",
+      "type": "file",
+      "name": "spinlock.h",
+      "filePath": "include/circle/spinlock.h",
+      "summary": "Spinlock implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "spinlock"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/sysconfig.h",
+      "type": "file",
+      "name": "sysconfig.h",
+      "filePath": "include/circle/sysconfig.h",
+      "summary": "Sysconfig implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "sysconfig"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:include/circle/translationtable64.h",
+      "type": "file",
+      "name": "translationtable64.h",
+      "filePath": "include/circle/translationtable64.h",
+      "summary": "Translationtable64 implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "translationtable64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/usb/usbsubsystem.h",
+      "type": "file",
+      "name": "usbsubsystem.h",
+      "filePath": "include/circle/usb/usbsubsystem.h",
+      "summary": "USB device driver implementation for usbsubsystem",
+      "tags": [
+        "circle",
+        "usb",
+        "usbsubsystem"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/usb/xhciconfig.h",
+      "type": "file",
+      "name": "xhciconfig.h",
+      "filePath": "include/circle/usb/xhciconfig.h",
+      "summary": "USB device driver implementation for xhciconfig",
+      "tags": [
+        "circle",
+        "usb",
+        "xhciconfig"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/version.h",
+      "type": "file",
+      "name": "version.h",
+      "filePath": "include/circle/version.h",
+      "summary": "Version implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "version"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/virtualgpiopin.h",
+      "type": "file",
+      "name": "virtualgpiopin.h",
+      "filePath": "include/circle/virtualgpiopin.h",
+      "summary": "Virtualgpiopin implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "virtualgpiopin"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/alloc.cpp",
+      "type": "file",
+      "name": "alloc.cpp",
+      "filePath": "lib/alloc.cpp",
+      "summary": "Alloc implementation with 2 functions and hardware register access",
+      "tags": [
+        "alloc"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/alloc.cpp:free",
+      "type": "function",
+      "name": "free",
+      "filePath": "lib/alloc.cpp",
+      "summary": "free(pBlock) in alloc.cpp",
+      "tags": [
+        "alloc"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/alloc.cpp:pfree",
+      "type": "function",
+      "name": "pfree",
+      "filePath": "lib/alloc.cpp",
+      "summary": "pfree(pPage) in alloc.cpp",
+      "tags": [
+        "alloc"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/chainboot.cpp",
+      "type": "file",
+      "name": "chainboot.cpp",
+      "filePath": "lib/chainboot.cpp",
+      "summary": "Chainboot implementation with 4 functions and hardware register access",
+      "tags": [
+        "chainboot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/chainboot.cpp:ChainBootStub",
+      "type": "function",
+      "name": "ChainBootStub",
+      "filePath": "lib/chainboot.cpp",
+      "summary": "ChainBootStub(pKernelImage, nKernelSize) in chainboot.cpp",
+      "tags": [
+        "chainboot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/chainboot.cpp:EnableChainBoot",
+      "type": "function",
+      "name": "EnableChainBoot",
+      "filePath": "lib/chainboot.cpp",
+      "summary": "EnableChainBoot(pKernelImage, nKernelSize) in chainboot.cpp",
+      "tags": [
+        "chainboot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/chainboot.cpp:IsChainBootEnabled",
+      "type": "function",
+      "name": "IsChainBootEnabled",
+      "filePath": "lib/chainboot.cpp",
+      "summary": "IsChainBootEnabled() in chainboot.cpp",
+      "tags": [
+        "chainboot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/chainboot.cpp:DoChainBoot",
+      "type": "function",
+      "name": "DoChainBoot",
+      "filePath": "lib/chainboot.cpp",
+      "summary": "DoChainBoot() in chainboot.cpp",
+      "tags": [
+        "chainboot"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/input/mousebehaviour.cpp",
+      "type": "file",
+      "name": "mousebehaviour.cpp",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "Mousebehaviour implementation with 10 functions and hardware register access",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:CMouseBehaviour",
+      "type": "function",
+      "name": "CMouseBehaviour",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "CMouseBehaviour() in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:~CMouseBehaviour",
+      "type": "function",
+      "name": "~CMouseBehaviour",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "~CMouseBehaviour() in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:Setup",
+      "type": "function",
+      "name": "Setup",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "Setup(pDisplay, bCursor) in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:Release",
+      "type": "function",
+      "name": "Release",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "Release() in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:RegisterEventHandler",
+      "type": "function",
+      "name": "RegisterEventHandler",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "RegisterEventHandler(pEventHandler) in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:SetCursor",
+      "type": "function",
+      "name": "SetCursor",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "SetCursor(nPosX, nPosY) in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:ShowCursor",
+      "type": "function",
+      "name": "ShowCursor",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "ShowCursor(bShow) in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:UpdateCursor",
+      "type": "function",
+      "name": "UpdateCursor",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "UpdateCursor() in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:MouseStatusChanged",
+      "type": "function",
+      "name": "MouseStatusChanged",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "MouseStatusChanged(nButtons, nDisplacementX, nDisplacementY, nWheelMove) in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/mousebehaviour.cpp:SetCursorState",
+      "type": "function",
+      "name": "SetCursorState",
+      "filePath": "lib/input/mousebehaviour.cpp",
+      "summary": "SetCursorState(nPosX, nPosY, bVisible) in mousebehaviour.cpp",
+      "tags": [
+        "input",
+        "mousebehaviour"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/input/rpitouchscreen.cpp",
+      "type": "file",
+      "name": "rpitouchscreen.cpp",
+      "filePath": "lib/input/rpitouchscreen.cpp",
+      "summary": "Rpitouchscreen implementation with 6 functions and hardware register access",
+      "tags": [
+        "input",
+        "rpitouchscreen"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:lib/input/rpitouchscreen.cpp:TFT5406Buffer",
+      "type": "class",
+      "name": "TFT5406Buffer",
+      "filePath": "lib/input/rpitouchscreen.cpp",
+      "summary": "TFT5406Buffer class in rpitouchscreen.cpp",
+      "tags": [
+        "input",
+        "rpitouchscreen"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/rpitouchscreen.cpp:CRPiTouchScreen",
+      "type": "function",
+      "name": "CRPiTouchScreen",
+      "filePath": "lib/input/rpitouchscreen.cpp",
+      "summary": "CRPiTouchScreen() in rpitouchscreen.cpp",
+      "tags": [
+        "input",
+        "rpitouchscreen"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/rpitouchscreen.cpp:~CRPiTouchScreen",
+      "type": "function",
+      "name": "~CRPiTouchScreen",
+      "filePath": "lib/input/rpitouchscreen.cpp",
+      "summary": "~CRPiTouchScreen() in rpitouchscreen.cpp",
+      "tags": [
+        "input",
+        "rpitouchscreen"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/rpitouchscreen.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "lib/input/rpitouchscreen.cpp",
+      "summary": "Initialize() in rpitouchscreen.cpp",
+      "tags": [
+        "input",
+        "rpitouchscreen"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/rpitouchscreen.cpp:Update",
+      "type": "function",
+      "name": "Update",
+      "filePath": "lib/input/rpitouchscreen.cpp",
+      "summary": "Update() in rpitouchscreen.cpp",
+      "tags": [
+        "input",
+        "rpitouchscreen"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/rpitouchscreen.cpp:UpdateStub",
+      "type": "function",
+      "name": "UpdateStub",
+      "filePath": "lib/input/rpitouchscreen.cpp",
+      "summary": "UpdateStub(pParam) in rpitouchscreen.cpp",
+      "tags": [
+        "input",
+        "rpitouchscreen"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/logger.cpp",
+      "type": "file",
+      "name": "logger.cpp",
+      "filePath": "lib/logger.cpp",
+      "summary": "Logger implementation with 14 functions and hardware register access",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:lib/logger.cpp:TLogEvent",
+      "type": "class",
+      "name": "TLogEvent",
+      "filePath": "lib/logger.cpp",
+      "summary": "TLogEvent class in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/logger.cpp:CLogger",
+      "type": "function",
+      "name": "CLogger",
+      "filePath": "lib/logger.cpp",
+      "summary": "CLogger(nLogLevel, pTimer, bOverwriteOldest) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/logger.cpp:~CLogger",
+      "type": "function",
+      "name": "~CLogger",
+      "filePath": "lib/logger.cpp",
+      "summary": "~CLogger() in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/logger.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "lib/logger.cpp",
+      "summary": "Initialize(pTarget) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/logger.cpp:SetNewTarget",
+      "type": "function",
+      "name": "SetNewTarget",
+      "filePath": "lib/logger.cpp",
+      "summary": "SetNewTarget(pTarget) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/logger.cpp:Write",
+      "type": "function",
+      "name": "Write",
+      "filePath": "lib/logger.cpp",
+      "summary": "Write(pSource, Severity, pMessage) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/logger.cpp:WriteV",
+      "type": "function",
+      "name": "WriteV",
+      "filePath": "lib/logger.cpp",
+      "summary": "WriteV(pSource, Severity, pMessage, Args) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/logger.cpp:WriteNoAlloc",
+      "type": "function",
+      "name": "WriteNoAlloc",
+      "filePath": "lib/logger.cpp",
+      "summary": "WriteNoAlloc(pSource, Severity, pMessage) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/logger.cpp:Read",
+      "type": "function",
+      "name": "Read",
+      "filePath": "lib/logger.cpp",
+      "summary": "Read(pBuffer, nCount, bClear) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/logger.cpp:WriteEvent",
+      "type": "function",
+      "name": "WriteEvent",
+      "filePath": "lib/logger.cpp",
+      "summary": "WriteEvent(pSource, Severity, pMessage) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/logger.cpp:ReadEvent",
+      "type": "function",
+      "name": "ReadEvent",
+      "filePath": "lib/logger.cpp",
+      "summary": "ReadEvent(pSeverity, pSource, pMessage, pTime, pHundredthTime, pTimeZone) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/logger.cpp:RegisterEventNotificationHandler",
+      "type": "function",
+      "name": "RegisterEventNotificationHandler",
+      "filePath": "lib/logger.cpp",
+      "summary": "RegisterEventNotificationHandler(pHandler) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/logger.cpp:RegisterPanicHandler",
+      "type": "function",
+      "name": "RegisterPanicHandler",
+      "filePath": "lib/logger.cpp",
+      "summary": "RegisterPanicHandler(pHandler) in logger.cpp",
+      "tags": [
+        "logger"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/memory.cpp",
+      "type": "file",
+      "name": "memory.cpp",
+      "filePath": "lib/memory.cpp",
+      "summary": "Memory implementation with 5 functions and hardware register access",
+      "tags": [
+        "memory"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/memory.cpp:~CMemorySystem",
+      "type": "function",
+      "name": "~CMemorySystem",
+      "filePath": "lib/memory.cpp",
+      "summary": "~CMemorySystem() in memory.cpp",
+      "tags": [
+        "memory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory.cpp:Destructor",
+      "type": "function",
+      "name": "Destructor",
+      "filePath": "lib/memory.cpp",
+      "summary": "Destructor() in memory.cpp",
+      "tags": [
+        "memory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory.cpp:GetMemSize",
+      "type": "function",
+      "name": "GetMemSize",
+      "filePath": "lib/memory.cpp",
+      "summary": "GetMemSize() in memory.cpp",
+      "tags": [
+        "memory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory.cpp:EnableMMU",
+      "type": "function",
+      "name": "EnableMMU",
+      "filePath": "lib/memory.cpp",
+      "summary": "EnableMMU() in memory.cpp",
+      "tags": [
+        "memory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory.cpp:GetCoherentPage",
+      "type": "function",
+      "name": "GetCoherentPage",
+      "filePath": "lib/memory.cpp",
+      "summary": "GetCoherentPage(nSlot) in memory.cpp",
+      "tags": [
+        "memory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/memory64.cpp",
+      "type": "file",
+      "name": "memory64.cpp",
+      "filePath": "lib/memory64.cpp",
+      "summary": "Memory64 implementation with 6 functions and hardware register access",
+      "tags": [
+        "memory64"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/memory64.cpp:CMemorySystem",
+      "type": "function",
+      "name": "CMemorySystem",
+      "filePath": "lib/memory64.cpp",
+      "summary": "CMemorySystem(bEnableMMU) in memory64.cpp",
+      "tags": [
+        "memory64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory64.cpp:~CMemorySystem",
+      "type": "function",
+      "name": "~CMemorySystem",
+      "filePath": "lib/memory64.cpp",
+      "summary": "~CMemorySystem() in memory64.cpp",
+      "tags": [
+        "memory64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory64.cpp:Destructor",
+      "type": "function",
+      "name": "Destructor",
+      "filePath": "lib/memory64.cpp",
+      "summary": "Destructor() in memory64.cpp",
+      "tags": [
+        "memory64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory64.cpp:GetMemSize",
+      "type": "function",
+      "name": "GetMemSize",
+      "filePath": "lib/memory64.cpp",
+      "summary": "GetMemSize() in memory64.cpp",
+      "tags": [
+        "memory64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory64.cpp:EnableMMU",
+      "type": "function",
+      "name": "EnableMMU",
+      "filePath": "lib/memory64.cpp",
+      "summary": "EnableMMU() in memory64.cpp",
+      "tags": [
+        "memory64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/memory64.cpp:GetCoherentPage",
+      "type": "function",
+      "name": "GetCoherentPage",
+      "filePath": "lib/memory64.cpp",
+      "summary": "GetCoherentPage(nSlot) in memory64.cpp",
+      "tags": [
+        "memory64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/pagetable.cpp",
+      "type": "file",
+      "name": "pagetable.cpp",
+      "filePath": "lib/pagetable.cpp",
+      "summary": "Pagetable implementation with 0 functions and hardware register access",
+      "tags": [
+        "pagetable"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/rpi/bcmpropertytags.cpp",
+      "type": "file",
+      "name": "bcmpropertytags.cpp",
+      "filePath": "lib/rpi/bcmpropertytags.cpp",
+      "summary": "Raspberry Pi hardware driver for bcmpropertytags",
+      "tags": [
+        "bcmpropertytags",
+        "rpi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:lib/rpi/bcmpropertytags.cpp:TPropertyBuffer",
+      "type": "class",
+      "name": "TPropertyBuffer",
+      "filePath": "lib/rpi/bcmpropertytags.cpp",
+      "summary": "TPropertyBuffer class in bcmpropertytags.cpp",
+      "tags": [
+        "bcmpropertytags",
+        "rpi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/rpi/bcmpropertytags.cpp:CBcmPropertyTags",
+      "type": "function",
+      "name": "CBcmPropertyTags",
+      "filePath": "lib/rpi/bcmpropertytags.cpp",
+      "summary": "CBcmPropertyTags(bEarlyUse) in bcmpropertytags.cpp",
+      "tags": [
+        "bcmpropertytags",
+        "rpi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmpropertytags.cpp:~CBcmPropertyTags",
+      "type": "function",
+      "name": "~CBcmPropertyTags",
+      "filePath": "lib/rpi/bcmpropertytags.cpp",
+      "summary": "~CBcmPropertyTags() in bcmpropertytags.cpp",
+      "tags": [
+        "bcmpropertytags",
+        "rpi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/rpi/bcmpropertytags.cpp:GetTag",
+      "type": "function",
+      "name": "GetTag",
+      "filePath": "lib/rpi/bcmpropertytags.cpp",
+      "summary": "GetTag(nTagId, pTag, nTagSize, nRequestParmSize) in bcmpropertytags.cpp",
+      "tags": [
+        "bcmpropertytags",
+        "rpi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/rpi/bcmpropertytags.cpp:GetTags",
+      "type": "function",
+      "name": "GetTags",
+      "filePath": "lib/rpi/bcmpropertytags.cpp",
+      "summary": "GetTags(pTags, nTagsSize) in bcmpropertytags.cpp",
+      "tags": [
+        "bcmpropertytags",
+        "rpi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/spinlock.cpp",
+      "type": "file",
+      "name": "spinlock.cpp",
+      "filePath": "lib/spinlock.cpp",
+      "summary": "Spinlock implementation with 0 functions and hardware register access",
+      "tags": [
+        "spinlock"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/synchronize64.cpp",
+      "type": "file",
+      "name": "synchronize64.cpp",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "Synchronize64 implementation with 8 functions and hardware register access",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/synchronize64.cpp:CurrentExecutionLevel",
+      "type": "function",
+      "name": "CurrentExecutionLevel",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "CurrentExecutionLevel() in synchronize64.cpp",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/synchronize64.cpp:InvalidateDataCache",
+      "type": "function",
+      "name": "InvalidateDataCache",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "InvalidateDataCache() in synchronize64.cpp",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/synchronize64.cpp:InvalidateDataCacheL1Only",
+      "type": "function",
+      "name": "InvalidateDataCacheL1Only",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "InvalidateDataCacheL1Only() in synchronize64.cpp",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/synchronize64.cpp:CleanDataCache",
+      "type": "function",
+      "name": "CleanDataCache",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "CleanDataCache() in synchronize64.cpp",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/synchronize64.cpp:InvalidateDataCacheRange",
+      "type": "function",
+      "name": "InvalidateDataCacheRange",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "InvalidateDataCacheRange(nAddress, nLength) in synchronize64.cpp",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/synchronize64.cpp:CleanDataCacheRange",
+      "type": "function",
+      "name": "CleanDataCacheRange",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "CleanDataCacheRange(nAddress, nLength) in synchronize64.cpp",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/synchronize64.cpp:CleanAndInvalidateDataCacheRange",
+      "type": "function",
+      "name": "CleanAndInvalidateDataCacheRange",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "CleanAndInvalidateDataCacheRange(nAddress, nLength) in synchronize64.cpp",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/synchronize64.cpp:SyncDataAndInstructionCache",
+      "type": "function",
+      "name": "SyncDataAndInstructionCache",
+      "filePath": "lib/synchronize64.cpp",
+      "summary": "SyncDataAndInstructionCache() in synchronize64.cpp",
+      "tags": [
+        "synchronize64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/translationtable64.cpp",
+      "type": "file",
+      "name": "translationtable64.cpp",
+      "filePath": "lib/translationtable64.cpp",
+      "summary": "Translationtable64 implementation with 3 functions and hardware register access",
+      "tags": [
+        "translationtable64"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/translationtable64.cpp:CTranslationTable",
+      "type": "function",
+      "name": "CTranslationTable",
+      "filePath": "lib/translationtable64.cpp",
+      "summary": "CTranslationTable(nMemSize) in translationtable64.cpp",
+      "tags": [
+        "translationtable64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/translationtable64.cpp:~CTranslationTable",
+      "type": "function",
+      "name": "~CTranslationTable",
+      "filePath": "lib/translationtable64.cpp",
+      "summary": "~CTranslationTable() in translationtable64.cpp",
+      "tags": [
+        "translationtable64"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/translationtable64.cpp:GetBaseAddress",
+      "type": "function",
+      "name": "GetBaseAddress",
+      "filePath": "lib/translationtable64.cpp",
+      "summary": "GetBaseAddress() in translationtable64.cpp",
+      "tags": [
+        "translationtable64"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "function:lib/alloc.cpp:free",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "function:lib/alloc.cpp:free",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "function:lib/alloc.cpp:pfree",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "function:lib/alloc.cpp:pfree",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "file:include/circle/alloc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "file:include/circle/memory.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/alloc.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "function:lib/chainboot.cpp:ChainBootStub",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "function:lib/chainboot.cpp:EnableChainBoot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "function:lib/chainboot.cpp:EnableChainBoot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "function:lib/chainboot.cpp:IsChainBootEnabled",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "function:lib/chainboot.cpp:IsChainBootEnabled",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "function:lib/chainboot.cpp:DoChainBoot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "function:lib/chainboot.cpp:DoChainBoot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "file:include/circle/chainboot.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/chainboot.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:CMouseBehaviour",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:CMouseBehaviour",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:~CMouseBehaviour",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:~CMouseBehaviour",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:Setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:Setup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:Release",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:Release",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:RegisterEventHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:RegisterEventHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:ShowCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:ShowCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:UpdateCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:UpdateCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:MouseStatusChanged",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:MouseStatusChanged",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursorState",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursorState",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "file:include/circle/input/mousebehaviour.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "file:include/circle/rpi/bcm2835.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/mousebehaviour.cpp",
+      "target": "file:include/circle/rpi/bcmpropertytags.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/input/mousebehaviour.cpp:~CMouseBehaviour",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursorState",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mousebehaviour.cpp:Release",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursorState",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mousebehaviour.cpp:SetCursor",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursorState",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mousebehaviour.cpp:ShowCursor",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursorState",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mousebehaviour.cpp:UpdateCursor",
+      "target": "function:lib/input/mousebehaviour.cpp:SetCursorState",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "class:lib/input/rpitouchscreen.cpp:TFT5406Buffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "class:lib/input/rpitouchscreen.cpp:TFT5406Buffer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:CRPiTouchScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:CRPiTouchScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:~CRPiTouchScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:~CRPiTouchScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:Update",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:Update",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:UpdateStub",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "function:lib/input/rpitouchscreen.cpp:UpdateStub",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "file:include/circle/input/rpitouchscreen.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "file:include/circle/memory.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "file:include/circle/rpi/bcm2835.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "file:include/circle/rpi/bcmpropertytags.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/rpitouchscreen.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/input/rpitouchscreen.cpp:UpdateStub",
+      "target": "function:lib/input/rpitouchscreen.cpp:Update",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "class:lib/logger.cpp:TLogEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "class:lib/logger.cpp:TLogEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:CLogger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:CLogger",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:~CLogger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:~CLogger",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:SetNewTarget",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:SetNewTarget",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:Write",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:Write",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:WriteV",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:WriteV",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:WriteNoAlloc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:WriteNoAlloc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:Read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:Read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:WriteEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:WriteEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:ReadEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:ReadEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:RegisterEventNotificationHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:RegisterEventNotificationHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:RegisterPanicHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "function:lib/logger.cpp:RegisterPanicHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/machineinfo.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/multicore.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/logger.cpp",
+      "target": "file:include/circle/version.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/logger.cpp:Initialize",
+      "target": "function:lib/logger.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/logger.cpp:Write",
+      "target": "function:lib/logger.cpp:WriteV",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/logger.cpp:WriteV",
+      "target": "function:lib/logger.cpp:WriteEvent",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/logger.cpp:WriteV",
+      "target": "function:lib/logger.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/logger.cpp:WriteNoAlloc",
+      "target": "function:lib/logger.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/logger.cpp:Write",
+      "target": "function:lib/logger.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:~CMemorySystem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:~CMemorySystem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:Destructor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:Destructor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:GetMemSize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:GetMemSize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:EnableMMU",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:EnableMMU",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:GetCoherentPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "function:lib/memory.cpp:GetCoherentPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/circle/alloc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/circle/armv6mmu.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/circle/armv7lpae.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/circle/machineinfo.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/circle/memory.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/circle/spinlock.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/memory.cpp:~CMemorySystem",
+      "target": "function:lib/memory.cpp:Destructor",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:CMemorySystem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:CMemorySystem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:~CMemorySystem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:~CMemorySystem",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:Destructor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:Destructor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:GetMemSize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:GetMemSize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:EnableMMU",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:EnableMMU",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:GetCoherentPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "function:lib/memory64.cpp:GetCoherentPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "file:include/circle/alloc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "file:include/circle/machineinfo.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "file:include/circle/memory.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "file:include/circle/rpi/bcmpropertytags.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "file:include/circle/spinlock.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/memory64.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/memory64.cpp:CMemorySystem",
+      "target": "function:lib/memory64.cpp:EnableMMU",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/memory64.cpp:~CMemorySystem",
+      "target": "function:lib/memory64.cpp:Destructor",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/pagetable.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/pagetable.cpp",
+      "target": "file:include/circle/alloc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/pagetable.cpp",
+      "target": "file:include/circle/pagetable.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/pagetable.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/pagetable.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/pagetable.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "class:lib/rpi/bcmpropertytags.cpp:TPropertyBuffer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "class:lib/rpi/bcmpropertytags.cpp:TPropertyBuffer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:CBcmPropertyTags",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:CBcmPropertyTags",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:~CBcmPropertyTags",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:~CBcmPropertyTags",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:GetTag",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:GetTag",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:GetTags",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:GetTags",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "file:include/circle/macros.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "file:include/circle/memory.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "file:include/circle/rpi/bcm2835.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "file:include/circle/rpi/bcmpropertytags.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/rpi/bcmpropertytags.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/rpi/bcmpropertytags.cpp:GetTag",
+      "target": "function:lib/rpi/bcmpropertytags.cpp:GetTags",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/spinlock.cpp",
+      "target": "file:include/circle/spinlock.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:CurrentExecutionLevel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:CurrentExecutionLevel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:InvalidateDataCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:InvalidateDataCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:InvalidateDataCacheL1Only",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:InvalidateDataCacheL1Only",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:CleanDataCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:CleanDataCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:InvalidateDataCacheRange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:InvalidateDataCacheRange",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:CleanDataCacheRange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:CleanDataCacheRange",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:CleanAndInvalidateDataCacheRange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:CleanAndInvalidateDataCacheRange",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:SyncDataAndInstructionCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "function:lib/synchronize64.cpp:SyncDataAndInstructionCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/synchronize64.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/synchronize64.cpp:SyncDataAndInstructionCache",
+      "target": "function:lib/synchronize64.cpp:CleanDataCache",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "function:lib/translationtable64.cpp:CTranslationTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "function:lib/translationtable64.cpp:CTranslationTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "function:lib/translationtable64.cpp:~CTranslationTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "function:lib/translationtable64.cpp:~CTranslationTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "function:lib/translationtable64.cpp:GetBaseAddress",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "function:lib/translationtable64.cpp:GetBaseAddress",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "file:include/circle/alloc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "file:include/circle/translationtable64.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/translationtable64.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

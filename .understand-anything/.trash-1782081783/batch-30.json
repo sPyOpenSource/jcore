@@ -1,0 +1,2279 @@
+{
+  "batch": 30,
+  "nodes": [
+    {
+      "id": "file:sample/21-webserver/webserver.cpp",
+      "type": "file",
+      "name": "webserver.cpp",
+      "filePath": "sample/21-webserver/webserver.cpp",
+      "summary": "Webserver implementation with 3 functions and hardware register access",
+      "tags": [
+        "21-webserver",
+        "webserver"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/21-webserver/webserver.cpp:CWebServer",
+      "type": "function",
+      "name": "CWebServer",
+      "filePath": "sample/21-webserver/webserver.cpp",
+      "summary": "CWebServer(pNetSubSystem, pActLED, pSocket) in webserver.cpp",
+      "tags": [
+        "21-webserver",
+        "webserver"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/21-webserver/webserver.cpp:~CWebServer",
+      "type": "function",
+      "name": "~CWebServer",
+      "filePath": "sample/21-webserver/webserver.cpp",
+      "summary": "~CWebServer() in webserver.cpp",
+      "tags": [
+        "21-webserver",
+        "webserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/21-webserver/webserver.cpp:GetContent",
+      "type": "function",
+      "name": "GetContent",
+      "filePath": "sample/21-webserver/webserver.cpp",
+      "summary": "GetContent(pPath, pParams, pFormData, pBuffer, pLength, ppContentType) in webserver.cpp",
+      "tags": [
+        "21-webserver",
+        "webserver"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/21-webserver/webserver.h",
+      "type": "file",
+      "name": "webserver.h",
+      "filePath": "sample/21-webserver/webserver.h",
+      "summary": "Webserver implementation with 0 functions and hardware register access",
+      "tags": [
+        "21-webserver",
+        "webserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/27-usbgamepad/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/27-usbgamepad/kernel.cpp",
+      "summary": "Kernel implementation with 6 functions and hardware register access",
+      "tags": [
+        "27-usbgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/27-usbgamepad/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/27-usbgamepad/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "27-usbgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/27-usbgamepad/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/27-usbgamepad/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "27-usbgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/27-usbgamepad/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/27-usbgamepad/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "27-usbgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/27-usbgamepad/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/27-usbgamepad/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "27-usbgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/27-usbgamepad/kernel.cpp:GamePadStatusHandler",
+      "type": "function",
+      "name": "GamePadStatusHandler",
+      "filePath": "sample/27-usbgamepad/kernel.cpp",
+      "summary": "GamePadStatusHandler(nDeviceIndex, pState) in kernel.cpp",
+      "tags": [
+        "27-usbgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/27-usbgamepad/kernel.cpp:GamePadRemovedHandler",
+      "type": "function",
+      "name": "GamePadRemovedHandler",
+      "filePath": "sample/27-usbgamepad/kernel.cpp",
+      "summary": "GamePadRemovedHandler(pDevice, pContext) in kernel.cpp",
+      "tags": [
+        "27-usbgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/27-usbgamepad/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/27-usbgamepad/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "27-usbgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/27-usbgamepad/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/27-usbgamepad/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "27-usbgamepad",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/27-usbgamepad/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/27-usbgamepad/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "27-usbgamepad",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/28-touchscreen/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/28-touchscreen/kernel.cpp",
+      "summary": "Kernel implementation with 5 functions and hardware register access",
+      "tags": [
+        "28-touchscreen",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/28-touchscreen/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/28-touchscreen/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "28-touchscreen",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/28-touchscreen/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/28-touchscreen/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "28-touchscreen",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/28-touchscreen/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/28-touchscreen/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "28-touchscreen",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/28-touchscreen/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/28-touchscreen/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "28-touchscreen",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/28-touchscreen/kernel.cpp:TouchScreenEventHandler",
+      "type": "function",
+      "name": "TouchScreenEventHandler",
+      "filePath": "sample/28-touchscreen/kernel.cpp",
+      "summary": "TouchScreenEventHandler(Event, nID, nPosX, nPosY) in kernel.cpp",
+      "tags": [
+        "28-touchscreen",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample/28-touchscreen/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/28-touchscreen/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "28-touchscreen",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/28-touchscreen/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/28-touchscreen/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "28-touchscreen",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/28-touchscreen/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/28-touchscreen/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "28-touchscreen",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/37-showgamepad/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "Kernel implementation with 14 functions and hardware register access",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:ShowDigitalButton",
+      "type": "function",
+      "name": "ShowDigitalButton",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "ShowDigitalButton(nPosX, nPosY, Button, pName) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:ShowAxisButton",
+      "type": "function",
+      "name": "ShowAxisButton",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "ShowAxisButton(nPosX, nPosY, Button, Axis) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:ShowAxisControl",
+      "type": "function",
+      "name": "ShowAxisControl",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "ShowAxisControl(nPosX, nPosY, AxisX, AxisY, Button) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:ShowGyroscopeData",
+      "type": "function",
+      "name": "ShowGyroscopeData",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "ShowGyroscopeData(nPosX, nPosY, Data, pName) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:PrintAt",
+      "type": "function",
+      "name": "PrintAt",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "PrintAt(nPosX, nPosY, pString, bBold) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:MoveTo",
+      "type": "function",
+      "name": "MoveTo",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "MoveTo(nPosX, nPosY) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:LineTo",
+      "type": "function",
+      "name": "LineTo",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "LineTo(nPosX, nPosY, Color) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:DrawLine",
+      "type": "function",
+      "name": "DrawLine",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "DrawLine(nPosX1, nPosY1, nPosX2, nPosY2, Color) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:GamePadStatusHandler",
+      "type": "function",
+      "name": "GamePadStatusHandler",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "GamePadStatusHandler(nDeviceIndex, pState) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/37-showgamepad/kernel.cpp:GamePadRemovedHandler",
+      "type": "function",
+      "name": "GamePadRemovedHandler",
+      "filePath": "sample/37-showgamepad/kernel.cpp",
+      "summary": "GamePadRemovedHandler(pDevice, pContext) in kernel.cpp",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/37-showgamepad/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/37-showgamepad/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "37-showgamepad",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/37-showgamepad/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/37-showgamepad/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "37-showgamepad",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/37-showgamepad/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/37-showgamepad/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "37-showgamepad",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/iperfserver/iperfserver.cpp",
+      "type": "file",
+      "name": "iperfserver.cpp",
+      "filePath": "test/iperfserver/iperfserver.cpp",
+      "summary": "Iperfserver implementation with 5 functions and hardware register access",
+      "tags": [
+        "iperfserver"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/iperfserver/iperfserver.cpp:CIPerfServer",
+      "type": "function",
+      "name": "CIPerfServer",
+      "filePath": "test/iperfserver/iperfserver.cpp",
+      "summary": "CIPerfServer(pNetSubSystem, pSocket, pClientIP, usClientPort) in iperfserver.cpp",
+      "tags": [
+        "iperfserver"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/iperfserver/iperfserver.cpp:~CIPerfServer",
+      "type": "function",
+      "name": "~CIPerfServer",
+      "filePath": "test/iperfserver/iperfserver.cpp",
+      "summary": "~CIPerfServer() in iperfserver.cpp",
+      "tags": [
+        "iperfserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/iperfserver/iperfserver.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/iperfserver/iperfserver.cpp",
+      "summary": "Run() in iperfserver.cpp",
+      "tags": [
+        "iperfserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/iperfserver/iperfserver.cpp:Listener",
+      "type": "function",
+      "name": "Listener",
+      "filePath": "test/iperfserver/iperfserver.cpp",
+      "summary": "Listener() in iperfserver.cpp",
+      "tags": [
+        "iperfserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/iperfserver/iperfserver.cpp:Worker",
+      "type": "function",
+      "name": "Worker",
+      "filePath": "test/iperfserver/iperfserver.cpp",
+      "summary": "Worker() in iperfserver.cpp",
+      "tags": [
+        "iperfserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/iperfserver/iperfserver.h",
+      "type": "file",
+      "name": "iperfserver.h",
+      "filePath": "test/iperfserver/iperfserver.h",
+      "summary": "Iperfserver implementation with 0 functions and hardware register access",
+      "tags": [
+        "iperfserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/iperfserver/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/iperfserver/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "iperfserver",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/iperfserver/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/iperfserver/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "iperfserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/iperfserver/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/iperfserver/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "iperfserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/iperfserver/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/iperfserver/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "iperfserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/iperfserver/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/iperfserver/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "iperfserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/iperfserver/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/iperfserver/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "iperfserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/iperfserver/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/iperfserver/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "iperfserver",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/iperfserver/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/iperfserver/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "iperfserver",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/screen-ansi-colors/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/screen-ansi-colors/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "kernel",
+        "screen-ansi-colors"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/screen-ansi-colors/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/screen-ansi-colors/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "kernel",
+        "screen-ansi-colors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/screen-ansi-colors/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/screen-ansi-colors/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "kernel",
+        "screen-ansi-colors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/screen-ansi-colors/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/screen-ansi-colors/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "kernel",
+        "screen-ansi-colors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/screen-ansi-colors/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/screen-ansi-colors/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "kernel",
+        "screen-ansi-colors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/screen-ansi-colors/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/screen-ansi-colors/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "kernel",
+        "screen-ansi-colors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/screen-ansi-colors/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/screen-ansi-colors/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "main",
+        "screen-ansi-colors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/screen-ansi-colors/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/screen-ansi-colors/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "main",
+        "screen-ansi-colors"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/synchronization/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "Kernel implementation with 11 functions and hardware register access",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:test/synchronization/kernel.cpp:CWorkerTask",
+      "type": "class",
+      "name": "CWorkerTask",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "CWorkerTask class in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:test/synchronization/kernel.cpp:CCounterTask",
+      "type": "class",
+      "name": "CCounterTask",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "CCounterTask class in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/synchronization/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/synchronization/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/synchronization/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/synchronization/kernel.cpp:CWorkerTask",
+      "type": "function",
+      "name": "CWorkerTask",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "CWorkerTask(id, timeout, pEvent) in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/synchronization/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/synchronization/kernel.cpp:CCounterTask",
+      "type": "function",
+      "name": "CCounterTask",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "CCounterTask(id, timeout, piCounter, pMutex) in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:test/synchronization/kernel.cpp:TimerHandler",
+      "type": "function",
+      "name": "TimerHandler",
+      "filePath": "test/synchronization/kernel.cpp",
+      "summary": "TimerHandler(hTimer, pParam, pContext) in kernel.cpp",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/synchronization/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/synchronization/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "kernel",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/synchronization/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/synchronization/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "main",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/synchronization/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/synchronization/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "main",
+        "synchronization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/xpt2046-touchscreen/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "test/xpt2046-touchscreen/kernel.cpp",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "kernel",
+        "xpt2046-touchscreen"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test/xpt2046-touchscreen/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "test/xpt2046-touchscreen/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "kernel",
+        "xpt2046-touchscreen"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test/xpt2046-touchscreen/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "test/xpt2046-touchscreen/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "main",
+        "xpt2046-touchscreen"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:test/xpt2046-touchscreen/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "test/xpt2046-touchscreen/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "main",
+        "xpt2046-touchscreen"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "function:sample/21-webserver/webserver.cpp:CWebServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "function:sample/21-webserver/webserver.cpp:CWebServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "function:sample/21-webserver/webserver.cpp:~CWebServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "function:sample/21-webserver/webserver.cpp:~CWebServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "function:sample/21-webserver/webserver.cpp:GetContent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "function:sample/21-webserver/webserver.cpp:GetContent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/21-webserver/webserver.cpp",
+      "target": "file:sample/21-webserver/webserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:GamePadStatusHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:GamePadStatusHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:GamePadRemovedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:GamePadRemovedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/27-usbgamepad/kernel.cpp",
+      "target": "file:sample/27-usbgamepad/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/27-usbgamepad/kernel.cpp:Initialize",
+      "target": "function:sample/27-usbgamepad/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/27-usbgamepad/main.cpp",
+      "target": "function:sample/27-usbgamepad/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/main.cpp",
+      "target": "function:sample/27-usbgamepad/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/27-usbgamepad/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/27-usbgamepad/main.cpp",
+      "target": "file:sample/27-usbgamepad/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:TouchScreenEventHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "function:sample/28-touchscreen/kernel.cpp:TouchScreenEventHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/28-touchscreen/kernel.cpp",
+      "target": "file:sample/28-touchscreen/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/28-touchscreen/kernel.cpp:Initialize",
+      "target": "function:sample/28-touchscreen/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/28-touchscreen/main.cpp",
+      "target": "function:sample/28-touchscreen/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/main.cpp",
+      "target": "function:sample/28-touchscreen/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/28-touchscreen/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/28-touchscreen/main.cpp",
+      "target": "file:sample/28-touchscreen/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowDigitalButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowDigitalButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowAxisButton",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowAxisButton",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowAxisControl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowAxisControl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowGyroscopeData",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowGyroscopeData",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:PrintAt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:PrintAt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:MoveTo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:MoveTo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:LineTo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:LineTo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:DrawLine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:DrawLine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:GamePadStatusHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:GamePadStatusHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:GamePadRemovedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "function:sample/37-showgamepad/kernel.cpp:GamePadRemovedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/37-showgamepad/kernel.cpp",
+      "target": "file:sample/37-showgamepad/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:Initialize",
+      "target": "function:sample/37-showgamepad/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "target": "function:sample/37-showgamepad/kernel.cpp:GamePadStatusHandler",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "target": "function:sample/37-showgamepad/kernel.cpp:MoveTo",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "target": "function:sample/37-showgamepad/kernel.cpp:LineTo",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowAxisButton",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowDigitalButton",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowAxisControl",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:Run",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowGyroscopeData",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:ShowDigitalButton",
+      "target": "function:sample/37-showgamepad/kernel.cpp:PrintAt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:ShowAxisButton",
+      "target": "function:sample/37-showgamepad/kernel.cpp:PrintAt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:ShowAxisButton",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowDigitalButton",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:ShowAxisControl",
+      "target": "function:sample/37-showgamepad/kernel.cpp:PrintAt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:ShowAxisControl",
+      "target": "function:sample/37-showgamepad/kernel.cpp:ShowDigitalButton",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:ShowGyroscopeData",
+      "target": "function:sample/37-showgamepad/kernel.cpp:PrintAt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:LineTo",
+      "target": "function:sample/37-showgamepad/kernel.cpp:DrawLine",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/37-showgamepad/kernel.cpp:LineTo",
+      "target": "function:sample/37-showgamepad/kernel.cpp:MoveTo",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/37-showgamepad/main.cpp",
+      "target": "function:sample/37-showgamepad/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/main.cpp",
+      "target": "function:sample/37-showgamepad/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/37-showgamepad/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/37-showgamepad/main.cpp",
+      "target": "file:sample/37-showgamepad/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:CIPerfServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:CIPerfServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:~CIPerfServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:~CIPerfServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:Listener",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:Listener",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:Worker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "function:test/iperfserver/iperfserver.cpp:Worker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "file:include/circle/net/in.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/iperfserver.cpp",
+      "target": "file:test/iperfserver/iperfserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:test/iperfserver/iperfserver.cpp:Run",
+      "target": "function:test/iperfserver/iperfserver.cpp:Listener",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:test/iperfserver/iperfserver.cpp:Run",
+      "target": "function:test/iperfserver/iperfserver.cpp:Worker",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "function:test/iperfserver/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "function:test/iperfserver/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "function:test/iperfserver/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "function:test/iperfserver/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "function:test/iperfserver/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "function:test/iperfserver/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "function:test/iperfserver/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "function:test/iperfserver/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "file:test/iperfserver/iperfserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/kernel.cpp",
+      "target": "file:test/iperfserver/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:test/iperfserver/kernel.cpp:Initialize",
+      "target": "function:test/iperfserver/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/iperfserver/main.cpp",
+      "target": "function:test/iperfserver/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/main.cpp",
+      "target": "function:test/iperfserver/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/iperfserver/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/iperfserver/main.cpp",
+      "target": "file:test/iperfserver/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/screen-ansi-colors/kernel.cpp",
+      "target": "file:test/screen-ansi-colors/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:test/screen-ansi-colors/kernel.cpp:Initialize",
+      "target": "function:test/screen-ansi-colors/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/screen-ansi-colors/main.cpp",
+      "target": "function:test/screen-ansi-colors/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/main.cpp",
+      "target": "function:test/screen-ansi-colors/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/screen-ansi-colors/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/screen-ansi-colors/main.cpp",
+      "target": "file:test/screen-ansi-colors/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "class:test/synchronization/kernel.cpp:CWorkerTask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "class:test/synchronization/kernel.cpp:CWorkerTask",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "class:test/synchronization/kernel.cpp:CCounterTask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "class:test/synchronization/kernel.cpp:CCounterTask",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:CWorkerTask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:CWorkerTask",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:CCounterTask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:CCounterTask",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:TimerHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "function:test/synchronization/kernel.cpp:TimerHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/synchronization/kernel.cpp",
+      "target": "file:test/synchronization/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:test/synchronization/kernel.cpp:Initialize",
+      "target": "function:test/synchronization/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:test/synchronization/main.cpp",
+      "target": "function:test/synchronization/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/main.cpp",
+      "target": "function:test/synchronization/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/synchronization/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/synchronization/main.cpp",
+      "target": "file:test/synchronization/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/xpt2046-touchscreen/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/xpt2046-touchscreen/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/xpt2046-touchscreen/kernel.cpp",
+      "target": "file:test/xpt2046-touchscreen/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/xpt2046-touchscreen/main.cpp",
+      "target": "function:test/xpt2046-touchscreen/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/xpt2046-touchscreen/main.cpp",
+      "target": "function:test/xpt2046-touchscreen/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:test/xpt2046-touchscreen/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:test/xpt2046-touchscreen/main.cpp",
+      "target": "file:test/xpt2046-touchscreen/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

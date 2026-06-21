@@ -1,0 +1,277 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "sample/03-screentext/kernel.h",
+      "language": "c",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/03-screentext/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/05-usbsimple/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/05-usbsimple/kernel.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/05-usbsimple/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/06-ethernet/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/06-ethernet/kernel.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/06-ethernet/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/07-usbstorage/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/07-usbstorage/kernel.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/07-usbstorage/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/14-usbprinter/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/14-usbprinter/kernel.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/14-usbprinter/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/master/i2cechoclient.cpp",
+      "language": "cpp",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/master/i2cechoclient.h",
+      "language": "c",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/slave/i2cechoserver.cpp",
+      "language": "cpp",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/slave/i2cechoserver.h",
+      "language": "c",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/23-spisimple/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/23-spisimple/kernel.h",
+      "language": "c",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/23-spisimple/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/25-spidma/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/25-spidma/kernel.h",
+      "language": "c",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/25-spidma/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/26-cpustress/temptask.cpp",
+      "language": "cpp",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/26-cpustress/temptask.h",
+      "language": "c",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/29-miniorgan/miniorgan.cpp",
+      "language": "cpp",
+      "sizeLines": 489,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/29-miniorgan/miniorgan.h",
+      "language": "c",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "sample/03-screentext/kernel.h": [],
+    "sample/03-screentext/main.cpp": [
+      "include/circle/startup.h",
+      "sample/03-screentext/kernel.h"
+    ],
+    "sample/05-usbsimple/kernel.cpp": [
+      "include/circle/debug.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usb.h",
+      "sample/05-usbsimple/kernel.h"
+    ],
+    "sample/05-usbsimple/kernel.h": [],
+    "sample/05-usbsimple/main.cpp": [
+      "include/circle/startup.h",
+      "sample/05-usbsimple/kernel.h"
+    ],
+    "sample/06-ethernet/kernel.cpp": [
+      "include/circle/debug.h",
+      "include/circle/macaddress.h",
+      "include/circle/macros.h",
+      "include/circle/netdevice.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usb.h",
+      "sample/06-ethernet/kernel.h"
+    ],
+    "sample/06-ethernet/kernel.h": [],
+    "sample/06-ethernet/main.cpp": [
+      "include/circle/startup.h",
+      "sample/06-ethernet/kernel.h"
+    ],
+    "sample/07-usbstorage/kernel.cpp": [
+      "include/circle/macros.h",
+      "include/circle/usb/usbmassdevice.h",
+      "sample/07-usbstorage/kernel.h"
+    ],
+    "sample/07-usbstorage/kernel.h": [],
+    "sample/07-usbstorage/main.cpp": [
+      "include/circle/startup.h",
+      "sample/07-usbstorage/kernel.h"
+    ],
+    "sample/14-usbprinter/kernel.cpp": [
+      "include/circle/string.h",
+      "include/circle/usb/usbprinter.h",
+      "sample/14-usbprinter/kernel.h"
+    ],
+    "sample/14-usbprinter/kernel.h": [],
+    "sample/14-usbprinter/main.cpp": [
+      "include/circle/startup.h",
+      "sample/14-usbprinter/kernel.h"
+    ],
+    "sample/16-i2cping/master/i2cechoclient.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "sample/16-i2cping/master/i2cechoclient.h"
+    ],
+    "sample/16-i2cping/master/i2cechoclient.h": [],
+    "sample/16-i2cping/slave/i2cechoserver.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "sample/16-i2cping/slave/i2cechoserver.h"
+    ],
+    "sample/16-i2cping/slave/i2cechoserver.h": [],
+    "sample/23-spisimple/kernel.cpp": [
+      "include/circle/debug.h",
+      "sample/23-spisimple/kernel.h"
+    ],
+    "sample/23-spisimple/kernel.h": [],
+    "sample/23-spisimple/main.cpp": [
+      "include/circle/startup.h",
+      "sample/23-spisimple/kernel.h"
+    ],
+    "sample/25-spidma/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/synchronize.h",
+      "sample/25-spidma/kernel.h"
+    ],
+    "sample/25-spidma/kernel.h": [],
+    "sample/25-spidma/main.cpp": [
+      "include/circle/startup.h",
+      "sample/25-spidma/kernel.h"
+    ],
+    "sample/26-cpustress/temptask.cpp": [
+      "include/assert.h",
+      "include/circle/cputhrottle.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "sample/26-cpustress/temptask.h"
+    ],
+    "sample/26-cpustress/temptask.h": [],
+    "sample/29-miniorgan/miniorgan.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h",
+      "sample/29-miniorgan/miniorgan.h"
+    ],
+    "sample/29-miniorgan/miniorgan.h": []
+  }
+}

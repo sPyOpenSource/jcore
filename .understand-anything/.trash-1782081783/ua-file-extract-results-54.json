@@ -1,0 +1,4309 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_object.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_reflection.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_string.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_system.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_thread.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 42,
+      "callGraph": [
+        {
+          "caller": "NativeMethod",
+          "callee": "Hash",
+          "lineNumber": 29
+        },
+        {
+          "caller": "NativeMethod",
+          "callee": "Hash",
+          "lineNumber": 29
+        },
+        {
+          "caller": "NativeClass",
+          "callee": "Hash",
+          "lineNumber": 45
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libnative.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/FExec.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 1808,
+      "nonEmptyLines": 1778,
+      "functions": [
+        {
+          "name": "throwNew",
+          "startLine": 9,
+          "endLine": 11,
+          "params": [
+            "findClass",
+            "file_close_failed"
+          ]
+        },
+        {
+          "name": "throwNew",
+          "startLine": 13,
+          "endLine": 15,
+          "params": [
+            "excpCls"
+          ]
+        },
+        {
+          "name": "throwNew",
+          "startLine": 17,
+          "endLine": 19,
+          "params": [
+            "excpCls",
+            "could_not_find_the_field_ss",
+            "clsName",
+            "name"
+          ]
+        },
+        {
+          "name": "FExec",
+          "startLine": 39,
+          "endLine": 54,
+          "params": [
+            "onwer",
+            "stackSize"
+          ]
+        },
+        {
+          "name": "stackPushInt32",
+          "startLine": 56,
+          "endLine": 61,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "stackPushInt64",
+          "startLine": 63,
+          "endLine": 71,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "stackPushFloat",
+          "startLine": 73,
+          "endLine": 79,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "stackPushDouble",
+          "startLine": 81,
+          "endLine": 90,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "stackPushObject",
+          "startLine": 92,
+          "endLine": 100,
+          "params": [
+            "obj"
+          ]
+        },
+        {
+          "name": "stackPopInt32",
+          "startLine": 102,
+          "endLine": 106,
+          "params": []
+        },
+        {
+          "name": "stackPopInt64",
+          "startLine": 108,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "stackPopFloat",
+          "startLine": 116,
+          "endLine": 120,
+          "params": []
+        },
+        {
+          "name": "stackPopDouble",
+          "startLine": 122,
+          "endLine": 129,
+          "params": []
+        },
+        {
+          "name": "stackPopObject",
+          "startLine": 131,
+          "endLine": 136,
+          "params": []
+        },
+        {
+          "name": "getStackTrace",
+          "startLine": 138,
+          "endLine": 144,
+          "params": [
+            "stackTrace",
+            "traceSp"
+          ]
+        },
+        {
+          "name": "getStackTrace",
+          "startLine": 146,
+          "endLine": 161,
+          "params": [
+            "index",
+            "stackTrace",
+            "isEndStack"
+          ]
+        },
+        {
+          "name": "readLocal",
+          "startLine": 163,
+          "endLine": 172,
+          "params": [
+            "stackIndex",
+            "localIndex",
+            "value",
+            "isObject"
+          ]
+        },
+        {
+          "name": "readLocal",
+          "startLine": 174,
+          "endLine": 182,
+          "params": [
+            "stackIndex",
+            "localIndex",
+            "value"
+          ]
+        },
+        {
+          "name": "ensureStackSize",
+          "startLine": 184,
+          "endLine": 188,
+          "params": [
+            "index"
+          ]
+        },
+        {
+          "name": "hasTerminateRequest",
+          "startLine": 192,
+          "endLine": 194,
+          "params": []
+        },
+        {
+          "name": "exec",
+          "startLine": 196,
+          "endLine": 491,
+          "params": [
+            "initOpcodeLabels"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FExec",
+          "startLine": 8,
+          "endLine": 534,
+          "methods": [
+            "throwNew",
+            "throwNew",
+            "throwNew",
+            "FExec",
+            "stackPushInt32",
+            "stackPushInt64",
+            "stackPushFloat",
+            "stackPushDouble",
+            "stackPushObject",
+            "stackPopInt32",
+            "stackPopInt64",
+            "stackPopFloat",
+            "stackPopDouble",
+            "stackPopObject",
+            "getStackTrace",
+            "getStackTrace",
+            "readLocal",
+            "readLocal",
+            "ensureStackSize",
+            "hasTerminateRequest",
+            "exec"
+          ],
+          "properties": [
+            "stack",
+            "stackLength",
+            "opcodes",
+            "lr",
+            "sp",
+            "startSp",
+            "peakSp",
+            "onwerThread",
+            "excp",
+            "pc",
+            "method",
+            "FLOAT_NAN",
+            "DOUBLE_NAN",
+            "opcodeLabelsStop",
+            "opcodeLabelsExit",
+            "index",
+            "obj",
+            "if"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "throwNew",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "throwNew",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "throwNew",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "excp",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "FExec",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "stackPushInt32",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "stackPushInt64",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "stackPushFloat",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "stackPushDouble",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "stackPushObject",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "stackPopInt32",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "stackPopInt64",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "stackPopFloat",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "stackPopDouble",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "stackPopObject",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "getStackTrace",
+          "line": 138,
+          "isDefault": false
+        },
+        {
+          "name": "getStackTrace",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "readLocal",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "readLocal",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "FExec",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "throwNew",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 10
+        },
+        {
+          "caller": "throwNew",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 14
+        },
+        {
+          "caller": "throwNew",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 18
+        },
+        {
+          "caller": "FExec",
+          "callee": "new ArrayList<>",
+          "lineNumber": 42
+        },
+        {
+          "caller": "FExec",
+          "callee": "stack.add",
+          "lineNumber": 45
+        },
+        {
+          "caller": "stackPushInt32",
+          "callee": "ensureStackSize",
+          "lineNumber": 58
+        },
+        {
+          "caller": "stackPushInt32",
+          "callee": "stack.set",
+          "lineNumber": 59
+        },
+        {
+          "caller": "stackPushInt64",
+          "callee": "ensureStackSize",
+          "lineNumber": 65
+        },
+        {
+          "caller": "stackPushInt64",
+          "callee": "stack.set",
+          "lineNumber": 66
+        },
+        {
+          "caller": "stackPushInt64",
+          "callee": "ensureStackSize",
+          "lineNumber": 68
+        },
+        {
+          "caller": "stackPushInt64",
+          "callee": "stack.set",
+          "lineNumber": 69
+        },
+        {
+          "caller": "stackPushFloat",
+          "callee": "Float.floatToIntBits",
+          "lineNumber": 74
+        },
+        {
+          "caller": "stackPushFloat",
+          "callee": "ensureStackSize",
+          "lineNumber": 76
+        },
+        {
+          "caller": "stackPushFloat",
+          "callee": "stack.set",
+          "lineNumber": 77
+        },
+        {
+          "caller": "stackPushDouble",
+          "callee": "Double.doubleToLongBits",
+          "lineNumber": 82
+        },
+        {
+          "caller": "stackPushDouble",
+          "callee": "ensureStackSize",
+          "lineNumber": 84
+        },
+        {
+          "caller": "stackPushDouble",
+          "callee": "stack.set",
+          "lineNumber": 85
+        },
+        {
+          "caller": "stackPushDouble",
+          "callee": "ensureStackSize",
+          "lineNumber": 87
+        },
+        {
+          "caller": "stackPushDouble",
+          "callee": "stack.set",
+          "lineNumber": 88
+        },
+        {
+          "caller": "stackPushObject",
+          "callee": "ensureStackSize",
+          "lineNumber": 94
+        },
+        {
+          "caller": "stackPushObject",
+          "callee": "stack.set",
+          "lineNumber": 95
+        },
+        {
+          "caller": "stackPushObject",
+          "callee": "obj.hashCode",
+          "lineNumber": 95
+        },
+        {
+          "caller": "stackPushObject",
+          "callee": "obj.getProtected",
+          "lineNumber": 97
+        },
+        {
+          "caller": "stackPushObject",
+          "callee": "Flint.clearProtLv2",
+          "lineNumber": 98
+        },
+        {
+          "caller": "stackPopInt32",
+          "callee": "stack.get",
+          "lineNumber": 103
+        },
+        {
+          "caller": "stackPopInt64",
+          "callee": "stack.get",
+          "lineNumber": 109
+        },
+        {
+          "caller": "stackPopInt64",
+          "callee": "stack.get",
+          "lineNumber": 111
+        },
+        {
+          "caller": "stackPopFloat",
+          "callee": "stack.get",
+          "lineNumber": 117
+        },
+        {
+          "caller": "stackPopFloat",
+          "callee": "Float.intBitsToFloat",
+          "lineNumber": 119
+        },
+        {
+          "caller": "stackPopDouble",
+          "callee": "stack.get",
+          "lineNumber": 123
+        },
+        {
+          "caller": "stackPopDouble",
+          "callee": "stack.get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "stackPopDouble",
+          "callee": "Double.longBitsToDouble",
+          "lineNumber": 128
+        },
+        {
+          "caller": "stackPopObject",
+          "callee": "stack.get",
+          "lineNumber": 132
+        },
+        {
+          "caller": "stackPopObject",
+          "callee": "JObject.fromRef",
+          "lineNumber": 135
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "stack.get",
+          "lineNumber": 140
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "stack.get",
+          "lineNumber": 141
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "stackTrace.init",
+          "lineNumber": 142
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "stack.get",
+          "lineNumber": 142
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "stack.get",
+          "lineNumber": 143
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "stackTrace.init",
+          "lineNumber": 148
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "isEndStack.set",
+          "lineNumber": 149
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "getStackTrace",
+          "lineNumber": 154
+        },
+        {
+          "caller": "getStackTrace",
+          "callee": "isEndStack.set",
+          "lineNumber": 158
+        },
+        {
+          "caller": "readLocal",
+          "callee": "new VmStackFrame",
+          "lineNumber": 164
+        },
+        {
+          "caller": "readLocal",
+          "callee": "getStackTrace",
+          "lineNumber": 165
+        },
+        {
+          "caller": "readLocal",
+          "callee": "stack.get",
+          "lineNumber": 166
+        },
+        {
+          "caller": "readLocal",
+          "callee": "value.set",
+          "lineNumber": 167
+        },
+        {
+          "caller": "readLocal",
+          "callee": "isObject.set",
+          "lineNumber": 169
+        },
+        {
+          "caller": "readLocal",
+          "callee": "Flint.isObject",
+          "lineNumber": 169
+        },
+        {
+          "caller": "readLocal",
+          "callee": "new VmStackFrame",
+          "lineNumber": 175
+        },
+        {
+          "caller": "readLocal",
+          "callee": "getStackTrace",
+          "lineNumber": 176
+        },
+        {
+          "caller": "readLocal",
+          "callee": "stack.get",
+          "lineNumber": 177
+        },
+        {
+          "caller": "readLocal",
+          "callee": "stack.get",
+          "lineNumber": 178
+        },
+        {
+          "caller": "readLocal",
+          "callee": "value.set",
+          "lineNumber": 180
+        },
+        {
+          "caller": "ensureStackSize",
+          "callee": "stack.size",
+          "lineNumber": 185
+        },
+        {
+          "caller": "ensureStackSize",
+          "callee": "stack.add",
+          "lineNumber": 186
+        },
+        {
+          "caller": "hasTerminateRequest",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 193
+        },
+        {
+          "caller": "exec",
+          "callee": "Flint.getDebugger",
+          "lineNumber": 200
+        },
+        {
+          "caller": "exec",
+          "callee": "invokeStaticCtor",
+          "lineNumber": 206
+        },
+        {
+          "caller": "exec",
+          "callee": "dbg.checkStop",
+          "lineNumber": 214
+        },
+        {
+          "caller": "exec",
+          "callee": "hasTerminateRequest",
+          "lineNumber": 215
+        },
+        {
+          "caller": "exec",
+          "callee": "ARRAY_TO_INT16",
+          "lineNumber": 288
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstPoolTag",
+          "lineNumber": 294
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushInt32",
+          "lineNumber": 296
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstInteger",
+          "lineNumber": 296
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushFloat",
+          "lineNumber": 300
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstFloat",
+          "lineNumber": 300
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstString",
+          "lineNumber": 304
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushObject",
+          "lineNumber": 306
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstClass",
+          "lineNumber": 311
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushObject",
+          "lineNumber": 313
+        },
+        {
+          "caller": "exec",
+          "callee": "Flint.findClass",
+          "lineNumber": 326
+        },
+        {
+          "caller": "exec",
+          "callee": "throwNew",
+          "lineNumber": 327
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstPoolTag",
+          "lineNumber": 327
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getName",
+          "lineNumber": 327
+        },
+        {
+          "caller": "exec",
+          "callee": "ARRAY_TO_INT16",
+          "lineNumber": 333
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstPoolTag",
+          "lineNumber": 335
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushInt32",
+          "lineNumber": 337
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstInteger",
+          "lineNumber": 337
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushFloat",
+          "lineNumber": 341
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstFloat",
+          "lineNumber": 341
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstString",
+          "lineNumber": 345
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushObject",
+          "lineNumber": 347
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstClass",
+          "lineNumber": 352
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushObject",
+          "lineNumber": 354
+        },
+        {
+          "caller": "exec",
+          "callee": "Flint.findClass",
+          "lineNumber": 367
+        },
+        {
+          "caller": "exec",
+          "callee": "throwNew",
+          "lineNumber": 368
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstPoolTag",
+          "lineNumber": 368
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getName",
+          "lineNumber": 368
+        },
+        {
+          "caller": "exec",
+          "callee": "ARRAY_TO_INT16",
+          "lineNumber": 374
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstPoolTag",
+          "lineNumber": 376
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushInt64",
+          "lineNumber": 378
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstLong",
+          "lineNumber": 378
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushDouble",
+          "lineNumber": 382
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstDouble",
+          "lineNumber": 382
+        },
+        {
+          "caller": "exec",
+          "callee": "Flint.findClass",
+          "lineNumber": 386
+        },
+        {
+          "caller": "exec",
+          "callee": "throwNew",
+          "lineNumber": 387
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getConstPoolTag",
+          "lineNumber": 387
+        },
+        {
+          "caller": "exec",
+          "callee": "loader.getName",
+          "lineNumber": 387
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPopInt32",
+          "lineNumber": 464
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPopObject",
+          "lineNumber": 465
+        },
+        {
+          "caller": "exec",
+          "callee": "sizeof",
+          "lineNumber": 468
+        },
+        {
+          "caller": "exec",
+          "callee": "Flint.findClass",
+          "lineNumber": 469
+        },
+        {
+          "caller": "exec",
+          "callee": "throwNew",
+          "lineNumber": 470
+        },
+        {
+          "caller": "exec",
+          "callee": "sizeof",
+          "lineNumber": 470
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushInt32",
+          "lineNumber": 473
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPopInt32",
+          "lineNumber": 479
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPopObject",
+          "lineNumber": 480
+        },
+        {
+          "caller": "exec",
+          "callee": "sizeof",
+          "lineNumber": 483
+        },
+        {
+          "caller": "exec",
+          "callee": "Flint.findClass",
+          "lineNumber": 484
+        },
+        {
+          "caller": "exec",
+          "callee": "throwNew",
+          "lineNumber": 485
+        },
+        {
+          "caller": "exec",
+          "callee": "sizeof",
+          "lineNumber": 485
+        },
+        {
+          "caller": "exec",
+          "callee": "stackPushInt64",
+          "lineNumber": 488
+        },
+        {
+          "caller": "if",
+          "callee": "invokeStaticCtor",
+          "lineNumber": 1280
+        },
+        {
+          "caller": "if",
+          "callee": "invokeStaticCtor",
+          "lineNumber": 1338
+        },
+        {
+          "caller": "runTask",
+          "callee": "exec.exec",
+          "lineNumber": 1785
+        },
+        {
+          "caller": "runTask",
+          "callee": "System.out.print",
+          "lineNumber": 1790
+        },
+        {
+          "caller": "runTask",
+          "callee": "exec.excp.getTypeName",
+          "lineNumber": 1790
+        },
+        {
+          "caller": "runTask",
+          "callee": "System.out.print",
+          "lineNumber": 1791
+        },
+        {
+          "caller": "runTask",
+          "callee": "System.out.println",
+          "lineNumber": 1792
+        },
+        {
+          "caller": "runTask",
+          "callee": "exec.excp.getTypeName",
+          "lineNumber": 1795
+        },
+        {
+          "caller": "runTask",
+          "callee": "System.out.println",
+          "lineNumber": 1799
+        },
+        {
+          "caller": "runTask",
+          "callee": "Flint.terminateRequest",
+          "lineNumber": 1801
+        },
+        {
+          "caller": "runTask",
+          "callee": "exec.restoreContext",
+          "lineNumber": 1803
+        },
+        {
+          "caller": "runTask",
+          "callee": "Flint.freeExecution",
+          "lineNumber": 1805
+        },
+        {
+          "caller": "runTask",
+          "callee": "FlintAPI.Thread.terminate",
+          "lineNumber": 1806
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 20,
+        "functionCount": 21,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/Flint.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 215,
+      "nonEmptyLines": 187,
+      "functions": [
+        {
+          "name": "getDimensions",
+          "startLine": 27,
+          "endLine": 33,
+          "params": [
+            "typeName"
+          ]
+        },
+        {
+          "name": "isPrimitiveTypes",
+          "startLine": 35,
+          "endLine": 53,
+          "params": [
+            "typeName"
+          ]
+        },
+        {
+          "name": "compareArrayClassName",
+          "startLine": 55,
+          "endLine": 80,
+          "params": [
+            "clsName",
+            "dimensions",
+            "arrayClsName"
+          ]
+        },
+        {
+          "name": "updateHeapRegion",
+          "startLine": 82,
+          "endLine": 88,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "resetHeapRegion",
+          "startLine": 90,
+          "endLine": 93,
+          "params": []
+        },
+        {
+          "name": "isHeapPointer",
+          "startLine": 95,
+          "endLine": 98,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "malloc",
+          "startLine": 100,
+          "endLine": 121,
+          "params": [
+            "ctx",
+            "size"
+          ]
+        },
+        {
+          "name": "realloc",
+          "startLine": 123,
+          "endLine": 140,
+          "params": [
+            "ctx",
+            "p",
+            "size"
+          ]
+        },
+        {
+          "name": "free",
+          "startLine": 142,
+          "endLine": 145,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "lock",
+          "startLine": 147,
+          "endLine": 149,
+          "params": []
+        },
+        {
+          "name": "unlock",
+          "startLine": 151,
+          "endLine": 153,
+          "params": []
+        },
+        {
+          "name": "getDebugger",
+          "startLine": 155,
+          "endLine": 157,
+          "params": []
+        },
+        {
+          "name": "setDebugger",
+          "startLine": 159,
+          "endLine": 161,
+          "params": [
+            "dbgInstance"
+          ]
+        },
+        {
+          "name": "gc",
+          "startLine": 166,
+          "endLine": 168,
+          "params": []
+        },
+        {
+          "name": "findClass",
+          "startLine": 170,
+          "endLine": 173,
+          "params": [
+            "arg1",
+            "className"
+          ]
+        },
+        {
+          "name": "clearProtLv2",
+          "startLine": 175,
+          "endLine": 177,
+          "params": [
+            "obj"
+          ]
+        },
+        {
+          "name": "isObject",
+          "startLine": 179,
+          "endLine": 181,
+          "params": [
+            "val"
+          ]
+        },
+        {
+          "name": "checkStop",
+          "startLine": 187,
+          "endLine": 189,
+          "params": [
+            "aThis"
+          ]
+        },
+        {
+          "name": "getNestHost",
+          "startLine": 196,
+          "endLine": 198,
+          "params": [
+            "ctx"
+          ]
+        },
+        {
+          "name": "getNestMembersCount",
+          "startLine": 200,
+          "endLine": 202,
+          "params": []
+        },
+        {
+          "name": "getNestMember",
+          "startLine": 204,
+          "endLine": 206,
+          "params": [
+            "ctx",
+            "index"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Flint",
+          "startLine": 5,
+          "endLine": 182,
+          "methods": [
+            "getDimensions",
+            "isPrimitiveTypes",
+            "compareArrayClassName",
+            "updateHeapRegion",
+            "resetHeapRegion",
+            "isHeapPointer",
+            "malloc",
+            "realloc",
+            "free",
+            "lock",
+            "unlock",
+            "getDebugger",
+            "setDebugger",
+            "gc",
+            "findClass",
+            "clearProtLv2",
+            "isObject"
+          ],
+          "properties": [
+            "flintLock",
+            "dbg",
+            "cwd",
+            "classPaths",
+            "loaders",
+            "classes",
+            "utf8s",
+            "constStr",
+            "execs",
+            "objs",
+            "globalObjs",
+            "classOfClass",
+            "heapCount",
+            "objectCountToGc",
+            "heapStart",
+            "headEnd",
+            "outOfMemoryErrorTypeName",
+            "OBJECT_COUNT_TO_GC"
+          ]
+        },
+        {
+          "name": "FDbg",
+          "startLine": 185,
+          "endLine": 190,
+          "methods": [
+            "checkStop"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JClassDictNode",
+          "startLine": 191,
+          "endLine": 191,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "Utf8DictNode",
+          "startLine": 192,
+          "endLine": 192,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "JStringDictNode",
+          "startLine": 193,
+          "endLine": 193,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "ClassLoader",
+          "startLine": 195,
+          "endLine": 207,
+          "methods": [
+            "getNestHost",
+            "getNestMembersCount",
+            "getNestMember"
+          ],
+          "properties": []
+        },
+        {
+          "name": "FlintAPI",
+          "startLine": 209,
+          "endLine": 215,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "updateHeapRegion",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "resetHeapRegion",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "isHeapPointer",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "malloc",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "realloc",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "free",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "lock",
+          "line": 147,
+          "isDefault": false
+        },
+        {
+          "name": "unlock",
+          "line": 151,
+          "isDefault": false
+        },
+        {
+          "name": "getDebugger",
+          "line": 155,
+          "isDefault": false
+        },
+        {
+          "name": "setDebugger",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "findClass",
+          "line": 170,
+          "isDefault": false
+        },
+        {
+          "name": "Flint",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getDimensions",
+          "callee": "typeName.length",
+          "lineNumber": 29
+        },
+        {
+          "caller": "getDimensions",
+          "callee": "typeName.charAt",
+          "lineNumber": 29
+        },
+        {
+          "caller": "isPrimitiveTypes",
+          "callee": "typeName.length",
+          "lineNumber": 36
+        },
+        {
+          "caller": "isPrimitiveTypes",
+          "callee": "typeName.charAt",
+          "lineNumber": 37
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.charAt",
+          "lineNumber": 57
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.charAt",
+          "lineNumber": 58
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.substring",
+          "lineNumber": 61
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "isPrimitiveTypes",
+          "lineNumber": 62
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "clsName.charAt",
+          "lineNumber": 62
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.charAt",
+          "lineNumber": 64
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.charAt",
+          "lineNumber": 65
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.substring",
+          "lineNumber": 67
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "clsName.length",
+          "lineNumber": 70
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.length",
+          "lineNumber": 70
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "clsName.charAt",
+          "lineNumber": 71
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.charAt",
+          "lineNumber": 71
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "clsName.charAt",
+          "lineNumber": 72
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.charAt",
+          "lineNumber": 72
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "clsName.length",
+          "lineNumber": 76
+        },
+        {
+          "caller": "compareArrayClassName",
+          "callee": "arrayClsName.charAt",
+          "lineNumber": 77
+        },
+        {
+          "caller": "updateHeapRegion",
+          "callee": "System.identityHashCode",
+          "lineNumber": 83
+        },
+        {
+          "caller": "isHeapPointer",
+          "callee": "System.identityHashCode",
+          "lineNumber": 96
+        },
+        {
+          "caller": "malloc",
+          "callee": "gc",
+          "lineNumber": 102
+        },
+        {
+          "caller": "malloc",
+          "callee": "FlintAPI.System.malloc",
+          "lineNumber": 103
+        },
+        {
+          "caller": "malloc",
+          "callee": "gc",
+          "lineNumber": 105
+        },
+        {
+          "caller": "malloc",
+          "callee": "FlintAPI.System.malloc",
+          "lineNumber": 106
+        },
+        {
+          "caller": "malloc",
+          "callee": "Flint.findClass",
+          "lineNumber": 110
+        },
+        {
+          "caller": "malloc",
+          "callee": "ctx.throwNew",
+          "lineNumber": 112
+        },
+        {
+          "caller": "malloc",
+          "callee": "outOfMemoryErrorTypeName.hashCode",
+          "lineNumber": 114
+        },
+        {
+          "caller": "malloc",
+          "callee": "updateHeapRegion",
+          "lineNumber": 117
+        },
+        {
+          "caller": "realloc",
+          "callee": "FlintAPI.System.realloc",
+          "lineNumber": 124
+        },
+        {
+          "caller": "realloc",
+          "callee": "gc",
+          "lineNumber": 126
+        },
+        {
+          "caller": "realloc",
+          "callee": "FlintAPI.System.malloc",
+          "lineNumber": 127
+        },
+        {
+          "caller": "realloc",
+          "callee": "Flint.findClass",
+          "lineNumber": 131
+        },
+        {
+          "caller": "realloc",
+          "callee": "ctx.throwNew",
+          "lineNumber": 133
+        },
+        {
+          "caller": "realloc",
+          "callee": "outOfMemoryErrorTypeName.hashCode",
+          "lineNumber": 135
+        },
+        {
+          "caller": "realloc",
+          "callee": "updateHeapRegion",
+          "lineNumber": 138
+        },
+        {
+          "caller": "free",
+          "callee": "FlintAPI.System.free",
+          "lineNumber": 143
+        },
+        {
+          "caller": "lock",
+          "callee": "flintLock.lock",
+          "lineNumber": 148
+        },
+        {
+          "caller": "unlock",
+          "callee": "flintLock.unlock",
+          "lineNumber": 152
+        },
+        {
+          "caller": "clearProtLv2",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 176
+        },
+        {
+          "caller": "isObject",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 180
+        },
+        {
+          "caller": "checkStop",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 188
+        },
+        {
+          "caller": "getNestHost",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 197
+        },
+        {
+          "caller": "getNestMembersCount",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 201
+        },
+        {
+          "caller": "getNestMember",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 205
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 12,
+        "functionCount": 21,
+        "classCount": 7
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/FlintFileUtils.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 153,
+      "nonEmptyLines": 136,
+      "functions": [
+        {
+          "name": "append",
+          "startLine": 8,
+          "endLine": 19,
+          "params": [
+            "buff",
+            "index",
+            "str",
+            "len"
+          ]
+        },
+        {
+          "name": "append",
+          "startLine": 21,
+          "endLine": 23,
+          "params": [
+            "buff",
+            "index",
+            "str"
+          ]
+        },
+        {
+          "name": "getPathSeparatorChar",
+          "startLine": 25,
+          "endLine": 27,
+          "params": []
+        },
+        {
+          "name": "combinePath",
+          "startLine": 29,
+          "endLine": 41,
+          "params": [
+            "buff",
+            "folder",
+            "folderLen",
+            "clsName",
+            "clsLen"
+          ]
+        },
+        {
+          "name": "resolvePath",
+          "startLine": 43,
+          "endLine": 46,
+          "params": [
+            "fileName",
+            "length"
+          ]
+        },
+        {
+          "name": "getClassPaths",
+          "startLine": 48,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "fopen",
+          "startLine": 53,
+          "endLine": 76,
+          "params": [
+            "fileName",
+            "length"
+          ]
+        },
+        {
+          "name": "fread",
+          "startLine": 78,
+          "endLine": 87,
+          "params": [
+            "ctx",
+            "file",
+            "buff",
+            "size"
+          ]
+        },
+        {
+          "name": "freadUInt8",
+          "startLine": 89,
+          "endLine": 91,
+          "params": [
+            "ctx",
+            "file",
+            "value"
+          ]
+        },
+        {
+          "name": "freadUInt16",
+          "startLine": 93,
+          "endLine": 99,
+          "params": [
+            "ctx",
+            "file",
+            "value"
+          ]
+        },
+        {
+          "name": "freadUInt32",
+          "startLine": 101,
+          "endLine": 107,
+          "params": [
+            "ctx",
+            "file",
+            "value"
+          ]
+        },
+        {
+          "name": "freadUInt64",
+          "startLine": 109,
+          "endLine": 115,
+          "params": [
+            "ctx",
+            "file",
+            "value"
+          ]
+        },
+        {
+          "name": "fseek",
+          "startLine": 117,
+          "endLine": 127,
+          "params": [
+            "ctx",
+            "file",
+            "offset"
+          ]
+        },
+        {
+          "name": "foffset",
+          "startLine": 129,
+          "endLine": 139,
+          "params": [
+            "ctx",
+            "file",
+            "offset"
+          ]
+        },
+        {
+          "name": "fclose",
+          "startLine": 141,
+          "endLine": 152,
+          "params": [
+            "ctx",
+            "file"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FlintFileUtils",
+          "startLine": 5,
+          "endLine": 153,
+          "methods": [
+            "append",
+            "append",
+            "getPathSeparatorChar",
+            "combinePath",
+            "resolvePath",
+            "getClassPaths",
+            "fopen",
+            "fread",
+            "freadUInt8",
+            "freadUInt16",
+            "freadUInt32",
+            "freadUInt64",
+            "fseek",
+            "foffset",
+            "fclose"
+          ],
+          "properties": [
+            "FILE_NAME_BUFF_SIZE"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "fopen",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "fread",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "freadUInt8",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "freadUInt16",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "freadUInt32",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "freadUInt64",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "fseek",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "foffset",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "fclose",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "FlintFileUtils",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "append",
+          "callee": "str.length",
+          "lineNumber": 11
+        },
+        {
+          "caller": "append",
+          "callee": "str.charAt",
+          "lineNumber": 13
+        },
+        {
+          "caller": "append",
+          "callee": "append",
+          "lineNumber": 22
+        },
+        {
+          "caller": "combinePath",
+          "callee": "append",
+          "lineNumber": 31
+        },
+        {
+          "caller": "combinePath",
+          "callee": "getPathSeparatorChar",
+          "lineNumber": 33
+        },
+        {
+          "caller": "combinePath",
+          "callee": "append",
+          "lineNumber": 38
+        },
+        {
+          "caller": "combinePath",
+          "callee": "append",
+          "lineNumber": 40
+        },
+        {
+          "caller": "resolvePath",
+          "callee": "fileName.substring",
+          "lineNumber": 45
+        },
+        {
+          "caller": "resolvePath",
+          "callee": "Math.min",
+          "lineNumber": 45
+        },
+        {
+          "caller": "resolvePath",
+          "callee": "fileName.length",
+          "lineNumber": 45
+        },
+        {
+          "caller": "getClassPaths",
+          "callee": "System.getProperty",
+          "lineNumber": 50
+        },
+        {
+          "caller": "fopen",
+          "callee": "resolvePath",
+          "lineNumber": 54
+        },
+        {
+          "caller": "fopen",
+          "callee": "new File",
+          "lineNumber": 56
+        },
+        {
+          "caller": "fopen",
+          "callee": "file.exists",
+          "lineNumber": 57
+        },
+        {
+          "caller": "fopen",
+          "callee": "file.isFile",
+          "lineNumber": 57
+        },
+        {
+          "caller": "fopen",
+          "callee": "new FileInputStream",
+          "lineNumber": 58
+        },
+        {
+          "caller": "fopen",
+          "callee": "getClassPaths",
+          "lineNumber": 61
+        },
+        {
+          "caller": "fopen",
+          "callee": "jdks.split",
+          "lineNumber": 63
+        },
+        {
+          "caller": "fopen",
+          "callee": "combinePath",
+          "lineNumber": 66
+        },
+        {
+          "caller": "fopen",
+          "callee": "path.length",
+          "lineNumber": 66
+        },
+        {
+          "caller": "fopen",
+          "callee": "new String",
+          "lineNumber": 68
+        },
+        {
+          "caller": "fopen",
+          "callee": "new File",
+          "lineNumber": 69
+        },
+        {
+          "caller": "fopen",
+          "callee": "f.exists",
+          "lineNumber": 70
+        },
+        {
+          "caller": "fopen",
+          "callee": "f.isFile",
+          "lineNumber": 70
+        },
+        {
+          "caller": "fopen",
+          "callee": "new FileInputStream",
+          "lineNumber": 71
+        },
+        {
+          "caller": "fread",
+          "callee": "file.read",
+          "lineNumber": 79
+        },
+        {
+          "caller": "fread",
+          "callee": "ctx.throwNew",
+          "lineNumber": 82
+        },
+        {
+          "caller": "fread",
+          "callee": "Flint.findClass",
+          "lineNumber": 82
+        },
+        {
+          "caller": "freadUInt8",
+          "callee": "fread",
+          "lineNumber": 90
+        },
+        {
+          "caller": "freadUInt16",
+          "callee": "fread",
+          "lineNumber": 95
+        },
+        {
+          "caller": "freadUInt16",
+          "callee": "ByteBuffer.wrap(buff).order",
+          "lineNumber": 96
+        },
+        {
+          "caller": "freadUInt16",
+          "callee": "ByteBuffer.wrap",
+          "lineNumber": 96
+        },
+        {
+          "caller": "freadUInt16",
+          "callee": "bb.getShort",
+          "lineNumber": 97
+        },
+        {
+          "caller": "freadUInt32",
+          "callee": "fread",
+          "lineNumber": 103
+        },
+        {
+          "caller": "freadUInt32",
+          "callee": "ByteBuffer.wrap(buff).order",
+          "lineNumber": 104
+        },
+        {
+          "caller": "freadUInt32",
+          "callee": "ByteBuffer.wrap",
+          "lineNumber": 104
+        },
+        {
+          "caller": "freadUInt32",
+          "callee": "bb.getInt",
+          "lineNumber": 105
+        },
+        {
+          "caller": "freadUInt64",
+          "callee": "fread",
+          "lineNumber": 111
+        },
+        {
+          "caller": "freadUInt64",
+          "callee": "ByteBuffer.wrap(buff).order",
+          "lineNumber": 112
+        },
+        {
+          "caller": "freadUInt64",
+          "callee": "ByteBuffer.wrap",
+          "lineNumber": 112
+        },
+        {
+          "caller": "freadUInt64",
+          "callee": "bb.getLong",
+          "lineNumber": 113
+        },
+        {
+          "caller": "fseek",
+          "callee": "file.seek",
+          "lineNumber": 119
+        },
+        {
+          "caller": "fseek",
+          "callee": "ctx.throwNew",
+          "lineNumber": 123
+        },
+        {
+          "caller": "fseek",
+          "callee": "Flint.findClass",
+          "lineNumber": 123
+        },
+        {
+          "caller": "foffset",
+          "callee": "file.getFilePointer",
+          "lineNumber": 131
+        },
+        {
+          "caller": "foffset",
+          "callee": "fseek",
+          "lineNumber": 132
+        },
+        {
+          "caller": "foffset",
+          "callee": "ctx.throwNew",
+          "lineNumber": 135
+        },
+        {
+          "caller": "foffset",
+          "callee": "Flint.findClass",
+          "lineNumber": 135
+        },
+        {
+          "caller": "fclose",
+          "callee": "file.close",
+          "lineNumber": 144
+        },
+        {
+          "caller": "fclose",
+          "callee": "ctx.throwNew",
+          "lineNumber": 148
+        },
+        {
+          "caller": "fclose",
+          "callee": "Flint.findClass",
+          "lineNumber": 148
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 15,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/FlintUtf8.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 51,
+      "functions": [
+        {
+          "name": "utf8DecodeSizeOneChar",
+          "startLine": 10,
+          "endLine": 12,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "utf8EncodeSize",
+          "startLine": 14,
+          "endLine": 16,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "utf8DecodeOneChar",
+          "startLine": 18,
+          "endLine": 29,
+          "params": [
+            "c",
+            "offset"
+          ]
+        },
+        {
+          "name": "utf8EncodeOneChar",
+          "startLine": 31,
+          "endLine": 45,
+          "params": [
+            "c",
+            "buff"
+          ]
+        },
+        {
+          "name": "utf8StrLen",
+          "startLine": 47,
+          "endLine": 56,
+          "params": [
+            "utf8"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FlintUtf8",
+          "startLine": 2,
+          "endLine": 57,
+          "methods": [
+            "utf8DecodeSizeOneChar",
+            "utf8EncodeSize",
+            "utf8DecodeOneChar",
+            "utf8EncodeOneChar",
+            "utf8StrLen"
+          ],
+          "properties": [
+            "utf8ByteCount"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "utf8DecodeSizeOneChar",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "utf8EncodeSize",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "utf8DecodeOneChar",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "utf8EncodeOneChar",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "utf8StrLen",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "FlintUtf8",
+          "line": 2,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "utf8DecodeOneChar",
+          "callee": "utf8DecodeSizeOneChar",
+          "lineNumber": 20
+        },
+        {
+          "caller": "utf8StrLen",
+          "callee": "utf8DecodeSizeOneChar",
+          "lineNumber": 51
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/FlintUtils.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 61,
+      "functions": [
+        {
+          "name": "swap16",
+          "startLine": 38,
+          "endLine": 40,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "swap32",
+          "startLine": 42,
+          "endLine": 47,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "swap64",
+          "startLine": 49,
+          "endLine": 58,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "crc",
+          "startLine": 60,
+          "endLine": 65,
+          "params": [
+            "data",
+            "length"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "FlintUtils",
+          "startLine": 2,
+          "endLine": 66,
+          "methods": [
+            "swap16",
+            "swap32",
+            "swap64",
+            "crc"
+          ],
+          "properties": [
+            "crc16Table"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "swap16",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "swap32",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "swap64",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "crc",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "FlintUtils",
+          "line": 2,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/FMutex.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "FMutex",
+          "startLine": 8,
+          "endLine": 10,
+          "params": []
+        },
+        {
+          "name": "lock",
+          "startLine": 12,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "unlock",
+          "startLine": 41,
+          "endLine": 55,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "FMutex",
+          "startLine": 3,
+          "endLine": 56,
+          "methods": [
+            "FMutex",
+            "lock",
+            "unlock"
+          ],
+          "properties": [
+            "locked",
+            "lockNest",
+            "lockThread"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FMutex",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "lock",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "unlock",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "FMutex",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lock",
+          "callee": "Thread.currentThread",
+          "lineNumber": 13
+        },
+        {
+          "caller": "lock",
+          "callee": "locked.getAndSet",
+          "lineNumber": 15
+        },
+        {
+          "caller": "lock",
+          "callee": "Thread.sleep",
+          "lineNumber": 17
+        },
+        {
+          "caller": "lock",
+          "callee": "Thread.currentThread().interrupt",
+          "lineNumber": 19
+        },
+        {
+          "caller": "lock",
+          "callee": "Thread.currentThread",
+          "lineNumber": 19
+        },
+        {
+          "caller": "lock",
+          "callee": "locked.set",
+          "lineNumber": 25
+        },
+        {
+          "caller": "lock",
+          "callee": "locked.set",
+          "lineNumber": 29
+        },
+        {
+          "caller": "lock",
+          "callee": "locked.set",
+          "lineNumber": 32
+        },
+        {
+          "caller": "lock",
+          "callee": "Thread.sleep",
+          "lineNumber": 34
+        },
+        {
+          "caller": "lock",
+          "callee": "Thread.currentThread().interrupt",
+          "lineNumber": 36
+        },
+        {
+          "caller": "lock",
+          "callee": "Thread.currentThread",
+          "lineNumber": 36
+        },
+        {
+          "caller": "unlock",
+          "callee": "locked.getAndSet",
+          "lineNumber": 42
+        },
+        {
+          "caller": "unlock",
+          "callee": "Thread.sleep",
+          "lineNumber": 44
+        },
+        {
+          "caller": "unlock",
+          "callee": "Thread.currentThread().interrupt",
+          "lineNumber": 46
+        },
+        {
+          "caller": "unlock",
+          "callee": "Thread.currentThread",
+          "lineNumber": 46
+        },
+        {
+          "caller": "unlock",
+          "callee": "locked.set",
+          "lineNumber": 54
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/JArray.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 189,
+      "nonEmptyLines": 163,
+      "functions": [
+        {
+          "name": "getLength",
+          "startLine": 9,
+          "endLine": 11,
+          "params": []
+        },
+        {
+          "name": "getSizeInByte",
+          "startLine": 13,
+          "endLine": 15,
+          "params": []
+        },
+        {
+          "name": "componentSize",
+          "startLine": 17,
+          "endLine": 19,
+          "params": []
+        },
+        {
+          "name": "getCompTypeName",
+          "startLine": 21,
+          "endLine": 47,
+          "params": [
+            "length"
+          ]
+        },
+        {
+          "name": "getData",
+          "startLine": 49,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "clearArray",
+          "startLine": 53,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "clearData",
+          "startLine": 57,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "getTypeName",
+          "startLine": 63,
+          "endLine": 66,
+          "params": []
+        },
+        {
+          "name": "getLength",
+          "startLine": 70,
+          "endLine": 73,
+          "params": []
+        },
+        {
+          "name": "getData",
+          "startLine": 75,
+          "endLine": 80,
+          "params": []
+        },
+        {
+          "name": "getLength",
+          "startLine": 84,
+          "endLine": 87,
+          "params": []
+        },
+        {
+          "name": "getData",
+          "startLine": 89,
+          "endLine": 93,
+          "params": []
+        },
+        {
+          "name": "getData",
+          "startLine": 97,
+          "endLine": 101,
+          "params": []
+        },
+        {
+          "name": "getLength",
+          "startLine": 105,
+          "endLine": 108,
+          "params": []
+        },
+        {
+          "name": "getData",
+          "startLine": 110,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "getLength",
+          "startLine": 118,
+          "endLine": 121,
+          "params": []
+        },
+        {
+          "name": "getData",
+          "startLine": 123,
+          "endLine": 127,
+          "params": []
+        },
+        {
+          "name": "getLength",
+          "startLine": 131,
+          "endLine": 134,
+          "params": []
+        },
+        {
+          "name": "getData",
+          "startLine": 136,
+          "endLine": 140,
+          "params": []
+        },
+        {
+          "name": "getLength",
+          "startLine": 144,
+          "endLine": 147,
+          "params": []
+        },
+        {
+          "name": "getData",
+          "startLine": 149,
+          "endLine": 153,
+          "params": []
+        },
+        {
+          "name": "getLength",
+          "startLine": 157,
+          "endLine": 160,
+          "params": []
+        },
+        {
+          "name": "getData",
+          "startLine": 162,
+          "endLine": 173,
+          "params": []
+        },
+        {
+          "name": "componentSize",
+          "startLine": 178,
+          "endLine": 181,
+          "params": []
+        },
+        {
+          "name": "fromHandle",
+          "startLine": 185,
+          "endLine": 188,
+          "params": [
+            "handle"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "JArray",
+          "startLine": 4,
+          "endLine": 67,
+          "methods": [
+            "getLength",
+            "getSizeInByte",
+            "componentSize",
+            "getCompTypeName",
+            "getData",
+            "clearArray",
+            "clearData",
+            "getTypeName"
+          ],
+          "properties": [
+            "size",
+            "type",
+            "data"
+          ]
+        },
+        {
+          "name": "JInt8Array",
+          "startLine": 69,
+          "endLine": 81,
+          "methods": [
+            "getLength",
+            "getData"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JInt16Array",
+          "startLine": 83,
+          "endLine": 94,
+          "methods": [
+            "getLength",
+            "getData"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JUInt16Array",
+          "startLine": 96,
+          "endLine": 102,
+          "methods": [
+            "getData"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JInt32Array",
+          "startLine": 104,
+          "endLine": 115,
+          "methods": [
+            "getLength",
+            "getData"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JFloatArray",
+          "startLine": 117,
+          "endLine": 128,
+          "methods": [
+            "getLength",
+            "getData"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JInt64Array",
+          "startLine": 130,
+          "endLine": 141,
+          "methods": [
+            "getLength",
+            "getData"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JDoubleArray",
+          "startLine": 143,
+          "endLine": 154,
+          "methods": [
+            "getLength",
+            "getData"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JObjectArray",
+          "startLine": 156,
+          "endLine": 174,
+          "methods": [
+            "getLength",
+            "getData"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JType",
+          "startLine": 177,
+          "endLine": 182,
+          "methods": [
+            "componentSize"
+          ],
+          "properties": []
+        },
+        {
+          "name": "JObject",
+          "startLine": 184,
+          "endLine": 189,
+          "methods": [
+            "fromHandle"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "getLength",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "getSizeInByte",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "componentSize",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "getCompTypeName",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "clearArray",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "JArray",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "getLength",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "getLength",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "getLength",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "getLength",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "getLength",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 136,
+          "isDefault": false
+        },
+        {
+          "name": "getLength",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "getLength",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "getData",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "componentSize",
+          "line": 178,
+          "isDefault": false
+        },
+        {
+          "name": "fromHandle",
+          "line": 185,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getLength",
+          "callee": "type.componentSize",
+          "lineNumber": 10
+        },
+        {
+          "caller": "componentSize",
+          "callee": "type.componentSize",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "getTypeName",
+          "lineNumber": 22
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "name.length",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "name.charAt",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "name.length",
+          "lineNumber": 26
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "name.charAt",
+          "lineNumber": 26
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "name.length",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "name.charAt",
+          "lineNumber": 28
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "name.charAt",
+          "lineNumber": 31
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"boolean\".length",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"char\".length",
+          "lineNumber": 34
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"float\".length",
+          "lineNumber": 35
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"double\".length",
+          "lineNumber": 36
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"byte\".length",
+          "lineNumber": 37
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"short\".length",
+          "lineNumber": 38
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"int\".length",
+          "lineNumber": 39
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"long\".length",
+          "lineNumber": 40
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "\"void\".length",
+          "lineNumber": 41
+        },
+        {
+          "caller": "getCompTypeName",
+          "callee": "name.substring",
+          "lineNumber": 46
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asReadOnlyBuffer",
+          "lineNumber": 50
+        },
+        {
+          "caller": "clearArray",
+          "callee": "clearData",
+          "lineNumber": 54
+        },
+        {
+          "caller": "clearData",
+          "callee": "data.clear",
+          "lineNumber": 59
+        },
+        {
+          "caller": "getData",
+          "callee": "data.position",
+          "lineNumber": 77
+        },
+        {
+          "caller": "getData",
+          "callee": "data.get",
+          "lineNumber": 78
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asShortBuffer().get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asShortBuffer",
+          "lineNumber": 91
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asCharBuffer().get",
+          "lineNumber": 99
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asCharBuffer",
+          "lineNumber": 99
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asIntBuffer().get",
+          "lineNumber": 112
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asIntBuffer",
+          "lineNumber": 112
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asFloatBuffer().get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asFloatBuffer",
+          "lineNumber": 125
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asLongBuffer().get",
+          "lineNumber": 138
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asLongBuffer",
+          "lineNumber": 138
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asDoubleBuffer().get",
+          "lineNumber": 151
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asDoubleBuffer",
+          "lineNumber": 151
+        },
+        {
+          "caller": "getData",
+          "callee": "data.asIntBuffer",
+          "lineNumber": 167
+        },
+        {
+          "caller": "getData",
+          "callee": "intBuf.get",
+          "lineNumber": 169
+        },
+        {
+          "caller": "getData",
+          "callee": "JObject.fromHandle",
+          "lineNumber": 170
+        },
+        {
+          "caller": "fromHandle",
+          "callee": "new JObject",
+          "lineNumber": 187
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 24,
+        "functionCount": 25,
+        "classCount": 11
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/JClass.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 76,
+      "functions": [
+        {
+          "name": "JClass",
+          "startLine": 14,
+          "endLine": 18,
+          "params": [
+            "typeName",
+            "loader"
+          ]
+        },
+        {
+          "name": "getTypeName",
+          "startLine": 20,
+          "endLine": 22,
+          "params": []
+        },
+        {
+          "name": "getClassLoader",
+          "startLine": 24,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "isPrimitive",
+          "startLine": 28,
+          "endLine": 42,
+          "params": [
+            "typeName"
+          ]
+        },
+        {
+          "name": "isPrimitive",
+          "startLine": 44,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "isArray",
+          "startLine": 48,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "getNestHost",
+          "startLine": 53,
+          "endLine": 56,
+          "params": [
+            "ctx"
+          ]
+        },
+        {
+          "name": "getNestMembersCount",
+          "startLine": 58,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "getNestMember",
+          "startLine": 62,
+          "endLine": 64,
+          "params": [
+            "ctx",
+            "index"
+          ]
+        },
+        {
+          "name": "componentSize",
+          "startLine": 66,
+          "endLine": 83,
+          "params": []
+        },
+        {
+          "name": "size",
+          "startLine": 85,
+          "endLine": 90,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "JClass",
+          "startLine": 5,
+          "endLine": 91,
+          "methods": [
+            "JClass",
+            "getTypeName",
+            "getClassLoader",
+            "isPrimitive",
+            "isPrimitive",
+            "isArray",
+            "getNestHost",
+            "getNestMembersCount",
+            "getNestMember",
+            "componentSize",
+            "size"
+          ],
+          "properties": [
+            "data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "JClass",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "getTypeName",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "getClassLoader",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "isPrimitive",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "isPrimitive",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "isArray",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "getNestHost",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "getNestMembersCount",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "getNestMember",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "componentSize",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "size",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "JClass",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "JClass",
+          "callee": "new InternalData",
+          "lineNumber": 15
+        },
+        {
+          "caller": "isPrimitive",
+          "callee": "getClassLoader",
+          "lineNumber": 45
+        },
+        {
+          "caller": "isArray",
+          "callee": "getTypeName",
+          "lineNumber": 49
+        },
+        {
+          "caller": "isArray",
+          "callee": "typeName.isEmpty",
+          "lineNumber": 50
+        },
+        {
+          "caller": "isArray",
+          "callee": "typeName.charAt",
+          "lineNumber": 50
+        },
+        {
+          "caller": "getNestHost",
+          "callee": "isArray",
+          "lineNumber": 54
+        },
+        {
+          "caller": "getNestHost",
+          "callee": "isPrimitive",
+          "lineNumber": 54
+        },
+        {
+          "caller": "getNestHost",
+          "callee": "getClassLoader().getNestHost",
+          "lineNumber": 55
+        },
+        {
+          "caller": "getNestHost",
+          "callee": "getClassLoader",
+          "lineNumber": 55
+        },
+        {
+          "caller": "getNestMembersCount",
+          "callee": "getClassLoader().getNestMembersCount",
+          "lineNumber": 59
+        },
+        {
+          "caller": "getNestMembersCount",
+          "callee": "getClassLoader",
+          "lineNumber": 59
+        },
+        {
+          "caller": "getNestMember",
+          "callee": "getClassLoader().getNestMember",
+          "lineNumber": 63
+        },
+        {
+          "caller": "getNestMember",
+          "callee": "getClassLoader",
+          "lineNumber": 63
+        },
+        {
+          "caller": "componentSize",
+          "callee": "getTypeName",
+          "lineNumber": 67
+        },
+        {
+          "caller": "componentSize",
+          "callee": "typeName.length",
+          "lineNumber": 68
+        },
+        {
+          "caller": "componentSize",
+          "callee": "typeName.charAt",
+          "lineNumber": 68
+        },
+        {
+          "caller": "componentSize",
+          "callee": "typeName.charAt",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 12,
+        "functionCount": 11,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/JObject.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 76,
+      "functions": [
+        {
+          "name": "fromRef",
+          "startLine": 6,
+          "endLine": 8,
+          "params": [
+            "objRef"
+          ]
+        },
+        {
+          "name": "JObject",
+          "startLine": 17,
+          "endLine": 22,
+          "params": [
+            "size",
+            "type"
+          ]
+        },
+        {
+          "name": "getTypeName",
+          "startLine": 24,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "initFields",
+          "startLine": 30,
+          "endLine": 33,
+          "params": [
+            "ctx",
+            "loader"
+          ]
+        },
+        {
+          "name": "throwNoSuchFieldError",
+          "startLine": 35,
+          "endLine": 38,
+          "params": [
+            "ctx",
+            "clsName",
+            "name"
+          ]
+        },
+        {
+          "name": "getField",
+          "startLine": 40,
+          "endLine": 46,
+          "params": [
+            "ctx",
+            "field"
+          ]
+        },
+        {
+          "name": "getField",
+          "startLine": 48,
+          "endLine": 54,
+          "params": [
+            "ctx",
+            "name"
+          ]
+        },
+        {
+          "name": "getFieldByIndex",
+          "startLine": 56,
+          "endLine": 59,
+          "params": [
+            "index"
+          ]
+        },
+        {
+          "name": "clearData",
+          "startLine": 61,
+          "endLine": 63,
+          "params": []
+        },
+        {
+          "name": "isArray",
+          "startLine": 65,
+          "endLine": 67,
+          "params": []
+        },
+        {
+          "name": "clearProtected",
+          "startLine": 69,
+          "endLine": 71,
+          "params": []
+        },
+        {
+          "name": "setProtected",
+          "startLine": 73,
+          "endLine": 75,
+          "params": []
+        },
+        {
+          "name": "getProtected",
+          "startLine": 77,
+          "endLine": 79,
+          "params": []
+        },
+        {
+          "name": "finalize",
+          "startLine": 81,
+          "endLine": 91,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "JObject",
+          "startLine": 4,
+          "endLine": 92,
+          "methods": [
+            "fromRef",
+            "JObject",
+            "getTypeName",
+            "initFields",
+            "throwNoSuchFieldError",
+            "getField",
+            "getField",
+            "getFieldByIndex",
+            "clearData",
+            "isArray",
+            "clearProtected",
+            "setProtected",
+            "getProtected",
+            "finalize"
+          ],
+          "properties": [
+            "size",
+            "prot",
+            "type",
+            "monitorCount",
+            "ownId",
+            "data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "JObject",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "getTypeName",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "initFields",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "getField",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "getField",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "getFieldByIndex",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "clearData",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "isArray",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "clearProtected",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "setProtected",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "getProtected",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "JObject",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "fromRef",
+          "callee": "new UnsupportedOperationException",
+          "lineNumber": 7
+        },
+        {
+          "caller": "getTypeName",
+          "callee": "type.getTypeName",
+          "lineNumber": 27
+        },
+        {
+          "caller": "initFields",
+          "callee": "new FieldData",
+          "lineNumber": 31
+        },
+        {
+          "caller": "initFields",
+          "callee": "field.init",
+          "lineNumber": 32
+        },
+        {
+          "caller": "throwNoSuchFieldError",
+          "callee": "Flint.findClass",
+          "lineNumber": 36
+        },
+        {
+          "caller": "throwNoSuchFieldError",
+          "callee": "ctx.throwNew",
+          "lineNumber": 37
+        },
+        {
+          "caller": "getField",
+          "callee": "new FieldData",
+          "lineNumber": 41
+        },
+        {
+          "caller": "getField",
+          "callee": "fieldsData.getField",
+          "lineNumber": 42
+        },
+        {
+          "caller": "getField",
+          "callee": "throwNoSuchFieldError",
+          "lineNumber": 44
+        },
+        {
+          "caller": "getField",
+          "callee": "new FieldData",
+          "lineNumber": 49
+        },
+        {
+          "caller": "getField",
+          "callee": "fieldsData.getField",
+          "lineNumber": 50
+        },
+        {
+          "caller": "getField",
+          "callee": "throwNoSuchFieldError",
+          "lineNumber": 52
+        },
+        {
+          "caller": "getField",
+          "callee": "getTypeName",
+          "lineNumber": 52
+        },
+        {
+          "caller": "getFieldByIndex",
+          "callee": "new FieldData",
+          "lineNumber": 57
+        },
+        {
+          "caller": "getFieldByIndex",
+          "callee": "fieldsData.getFieldByIndex",
+          "lineNumber": 58
+        },
+        {
+          "caller": "clearData",
+          "callee": "Arrays.fill",
+          "lineNumber": 62
+        },
+        {
+          "caller": "isArray",
+          "callee": "type.isArray",
+          "lineNumber": 66
+        },
+        {
+          "caller": "finalize",
+          "callee": "type.isArray",
+          "lineNumber": 84
+        },
+        {
+          "caller": "finalize",
+          "callee": "new FieldData",
+          "lineNumber": 85
+        },
+        {
+          "caller": "finalize",
+          "callee": "fieldsData.destroy",
+          "lineNumber": 86
+        },
+        {
+          "caller": "finalize",
+          "callee": "super.finalize",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 12,
+        "functionCount": 14,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/src/JThrowable.java",
+      "language": "java",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "getDetailMessage",
+          "startLine": 4,
+          "endLine": 6,
+          "params": []
+        },
+        {
+          "name": "setDetailMessage",
+          "startLine": 8,
+          "endLine": 10,
+          "params": [
+            "strObj"
+          ]
+        },
+        {
+          "name": "getCause",
+          "startLine": 12,
+          "endLine": 14,
+          "params": []
+        },
+        {
+          "name": "setCause",
+          "startLine": 16,
+          "endLine": 18,
+          "params": [
+            "cause"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "JThrowable",
+          "startLine": 1,
+          "endLine": 19,
+          "methods": [
+            "getDetailMessage",
+            "setDetailMessage",
+            "getCause",
+            "setCause"
+          ],
+          "properties": [
+            "fields"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getDetailMessage",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "setDetailMessage",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "getCause",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "setCause",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "JThrowable",
+          "line": 1,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Template/Inc/flint_conf.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Template/Src/flint_system_api.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 27,
+      "functions": [
+        {
+          "name": "System::reset",
+          "startLine": 7,
+          "endLine": 9,
+          "params": []
+        },
+        {
+          "name": "System::free",
+          "startLine": 19,
+          "endLine": 21,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "System::consoleWrite",
+          "startLine": 23,
+          "endLine": 25,
+          "params": [
+            "utf8",
+            "length"
+          ]
+        },
+        {
+          "name": "System::getTimeNanos",
+          "startLine": 27,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "System::getTimeMillis",
+          "startLine": 31,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "System::findNativeMethod",
+          "startLine": 35,
+          "endLine": 37,
+          "params": [
+            "methodInfo"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "System::reset",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "System::free",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "System::consoleWrite",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "System::getTimeNanos",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "System::getTimeMillis",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "System::findNativeMethod",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Template/Src/flint_system_io_api.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 45,
+      "functions": [
+        {
+          "name": "IO::finfo",
+          "startLine": 8,
+          "endLine": 10,
+          "params": [
+            "fileName",
+            "fileInfo"
+          ]
+        },
+        {
+          "name": "IO::fopen",
+          "startLine": 12,
+          "endLine": 14,
+          "params": [
+            "fileName",
+            "mode"
+          ]
+        },
+        {
+          "name": "IO::fread",
+          "startLine": 16,
+          "endLine": 18,
+          "params": [
+            "handle",
+            "buff",
+            "btr",
+            "br"
+          ]
+        },
+        {
+          "name": "IO::fwrite",
+          "startLine": 20,
+          "endLine": 22,
+          "params": [
+            "handle",
+            "buff",
+            "btw",
+            "bw"
+          ]
+        },
+        {
+          "name": "IO::fsize",
+          "startLine": 24,
+          "endLine": 26,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "IO::ftell",
+          "startLine": 28,
+          "endLine": 30,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "IO::fseek",
+          "startLine": 32,
+          "endLine": 34,
+          "params": [
+            "handle",
+            "offset"
+          ]
+        },
+        {
+          "name": "IO::fclose",
+          "startLine": 36,
+          "endLine": 38,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "IO::fremove",
+          "startLine": 40,
+          "endLine": 42,
+          "params": [
+            "fileName"
+          ]
+        },
+        {
+          "name": "IO::frename",
+          "startLine": 44,
+          "endLine": 46,
+          "params": [
+            "oldName",
+            "newName"
+          ]
+        },
+        {
+          "name": "IO::opendir",
+          "startLine": 48,
+          "endLine": 50,
+          "params": [
+            "dirName"
+          ]
+        },
+        {
+          "name": "IO::readdir",
+          "startLine": 52,
+          "endLine": 54,
+          "params": [
+            "handle",
+            "fileInfo"
+          ]
+        },
+        {
+          "name": "IO::closedir",
+          "startLine": 56,
+          "endLine": 58,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "IO::mkdir",
+          "startLine": 60,
+          "endLine": 62,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "IO::finfo",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fopen",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fread",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fwrite",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fsize",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "IO::ftell",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fseek",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fclose",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fremove",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "IO::frename",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "IO::opendir",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "IO::readdir",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "IO::closedir",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "IO::mkdir",
+          "line": 60,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 14,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Template/Src/flint_system_thread_api.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 17,
+      "functions": [
+        {
+          "name": "Thread::create",
+          "startLine": 6,
+          "endLine": 8,
+          "params": [
+            "param",
+            "stackSize"
+          ]
+        },
+        {
+          "name": "Thread::getCurrentThread",
+          "startLine": 10,
+          "endLine": 12,
+          "params": []
+        },
+        {
+          "name": "Thread::terminate",
+          "startLine": 14,
+          "endLine": 16,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "Thread::sleep",
+          "startLine": 18,
+          "endLine": 20,
+          "params": [
+            "ms"
+          ]
+        },
+        {
+          "name": "Thread::yield",
+          "startLine": 22,
+          "endLine": 24,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Thread::create",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "Thread::getCurrentThread",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "Thread::terminate",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "Thread::sleep",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "Thread::yield",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/gpio/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libgpio.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/gpio/sample/rtkgpio/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/gpio/sample/rtkgpio/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 9,
+      "nonEmptyLines": 7,
+      "metrics": {}
+    },
+    {
+      "path": "addon/linux/atomic.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 99,
+      "nonEmptyLines": 75,
+      "callGraph": [
+        {
+          "caller": "atomic_read",
+          "callee": "__atomic_load_n",
+          "lineNumber": 27
+        },
+        {
+          "caller": "atomic_set",
+          "callee": "__atomic_store_n",
+          "lineNumber": 32
+        },
+        {
+          "caller": "atomic_xchg",
+          "callee": "__atomic_exchange_n",
+          "lineNumber": 41
+        },
+        {
+          "caller": "atomic_cmpxchg",
+          "callee": "__atomic_compare_exchange_n",
+          "lineNumber": 48
+        },
+        {
+          "caller": "atomic_add",
+          "callee": "__atomic_add_fetch",
+          "lineNumber": 56
+        },
+        {
+          "caller": "atomic_sub",
+          "callee": "__atomic_sub_fetch",
+          "lineNumber": 61
+        },
+        {
+          "caller": "atomic_inc",
+          "callee": "atomic_add",
+          "lineNumber": 66
+        },
+        {
+          "caller": "atomic_dec",
+          "callee": "atomic_sub",
+          "lineNumber": 71
+        },
+        {
+          "caller": "atomic_add_return",
+          "callee": "__atomic_add_fetch",
+          "lineNumber": 77
+        },
+        {
+          "caller": "atomic_sub_return",
+          "callee": "__atomic_sub_fetch",
+          "lineNumber": 82
+        },
+        {
+          "caller": "atomic_inc_return",
+          "callee": "atomic_add_return",
+          "lineNumber": 87
+        },
+        {
+          "caller": "atomic_dec_return",
+          "callee": "atomic_sub_return",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

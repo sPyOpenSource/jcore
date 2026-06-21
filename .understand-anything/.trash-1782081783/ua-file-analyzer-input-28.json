@@ -1,0 +1,265 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "include/circle/chainboot.h",
+      "language": "c",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/input/mousebehaviour.h",
+      "language": "c",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/input/rpitouchscreen.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/memory.h",
+      "language": "c",
+      "sizeLines": 192,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/pagetable.h",
+      "language": "c",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/rpi/bcmpropertytags.h",
+      "language": "c",
+      "sizeLines": 330,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/spinlock.h",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/sysconfig.h",
+      "language": "c",
+      "sizeLines": 504,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/translationtable64.h",
+      "language": "c",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/usbsubsystem.h",
+      "language": "c",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhciconfig.h",
+      "language": "c",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/version.h",
+      "language": "c",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/virtualgpiopin.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/alloc.cpp",
+      "language": "cpp",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/chainboot.cpp",
+      "language": "cpp",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/mousebehaviour.cpp",
+      "language": "cpp",
+      "sizeLines": 316,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/rpitouchscreen.cpp",
+      "language": "cpp",
+      "sizeLines": 186,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/logger.cpp",
+      "language": "cpp",
+      "sizeLines": 455,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/memory.cpp",
+      "language": "cpp",
+      "sizeLines": 276,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/memory64.cpp",
+      "language": "cpp",
+      "sizeLines": 210,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/pagetable.cpp",
+      "language": "cpp",
+      "sizeLines": 195,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/rpi/bcmpropertytags.cpp",
+      "language": "cpp",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/spinlock.cpp",
+      "language": "cpp",
+      "sizeLines": 137,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/synchronize64.cpp",
+      "language": "cpp",
+      "sizeLines": 380,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/translationtable64.cpp",
+      "language": "cpp",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "include/circle/chainboot.h": [],
+    "include/circle/input/mousebehaviour.h": [],
+    "include/circle/input/rpitouchscreen.h": [],
+    "include/circle/memory.h": [],
+    "include/circle/pagetable.h": [],
+    "include/circle/rpi/bcmpropertytags.h": [],
+    "include/circle/spinlock.h": [],
+    "include/circle/sysconfig.h": [],
+    "include/circle/translationtable64.h": [],
+    "include/circle/usb/usbsubsystem.h": [],
+    "include/circle/usb/xhciconfig.h": [],
+    "include/circle/version.h": [],
+    "include/circle/virtualgpiopin.h": [],
+    "lib/alloc.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/memory.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/chainboot.cpp": [
+      "include/assert.h",
+      "include/circle/chainboot.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/input/mousebehaviour.cpp": [
+      "include/assert.h",
+      "include/circle/input/mousebehaviour.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmpropertytags.h"
+    ],
+    "lib/input/rpitouchscreen.cpp": [
+      "include/assert.h",
+      "include/circle/input/rpitouchscreen.h",
+      "include/circle/logger.h",
+      "include/circle/memory.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/util.h"
+    ],
+    "lib/logger.cpp": [
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/multicore.h",
+      "include/circle/startup.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h",
+      "include/circle/version.h"
+    ],
+    "lib/memory.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/armv6mmu.h",
+      "include/circle/armv7lpae.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memory.h",
+      "include/circle/spinlock.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/memory64.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memory.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/spinlock.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/pagetable.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/pagetable.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/rpi/bcmpropertytags.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/memory.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "lib/spinlock.cpp": [
+      "include/circle/spinlock.h"
+    ],
+    "lib/synchronize64.cpp": [
+      "include/assert.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/translationtable64.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/translationtable64.h",
+      "include/circle/util.h"
+    ]
+  }
+}

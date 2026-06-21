@@ -1,0 +1,342 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": ".github/pull_request_template.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": ".gitmodules",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 6,
+      "metrics": {}
+    },
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 89,
+      "nonEmptyLines": 83,
+      "metrics": {}
+    },
+    {
+      "path": "addon/dio/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libdio.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/dio/sample/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 14,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/dio/sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 4,
+      "metrics": {}
+    },
+    {
+      "path": "addon/dio/spidio.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 110,
+      "nonEmptyLines": 89,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/ili9341display.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 109,
+      "callGraph": [
+        {
+          "caller": "Command",
+          "callee": "SendByte",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Data",
+          "callee": "SendByte",
+          "lineNumber": 103
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "steps": [
+        {
+          "name": "libdisplay.a",
+          "startLine": 10,
+          "endLine": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/display/sample/hd44780/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/hd44780/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 16,
+      "metrics": {}
+    },
+    {
+      "path": "addon/display/sample/hd44780i2c/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/hd44780i2c/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 12,
+      "metrics": {}
+    },
+    {
+      "path": "addon/display/sample/ssd1306/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/ssd1306/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 12,
+      "metrics": {}
+    },
+    {
+      "path": "addon/display/sample/st7789/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 14,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/st7789/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 24,
+      "metrics": {}
+    },
+    {
+      "path": "addon/display/sample/st7789char/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 17,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/st7789char/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 29,
+      "metrics": {}
+    },
+    {
+      "path": "addon/display/sampleconfig.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 77,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/ssd1306display.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 89,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/st7789display.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 162,
+      "nonEmptyLines": 139,
+      "callGraph": [
+        {
+          "caller": "Command",
+          "callee": "SendByte",
+          "lineNumber": 134
+        },
+        {
+          "caller": "Data",
+          "callee": "SendByte",
+          "lineNumber": 135
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/fatfs/ffconf.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 313,
+      "nonEmptyLines": 244,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/fatfs/LICENSE.txt",
+      "language": "txt",
+      "fileCategory": "docs",
+      "totalLines": 24,
+      "nonEmptyLines": 21,
+      "metrics": {}
+    },
+    {
+      "path": "addon/fatfs/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libfatfs.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "batchIndex": 34,
+  "nodes": [
+    {
+      "id": "addon/vc4/vchiq/vchiq.h",
+      "type": "header:addon/vc4/vchiq/vchiq.h",
+      "name": "vchiq.h",
+      "filePath": "addon/vc4/vchiq/vchiq.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 4
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_2835.h",
+      "type": "header:addon/vc4/vchiq/vchiq_2835.h",
+      "name": "vchiq_2835.h",
+      "filePath": "addon/vc4/vchiq/vchiq_2835.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 4
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_2835_arm.c",
+      "type": "module:addon/vc4/vchiq/vchiq_2835_arm.c",
+      "name": "vchiq_2835_arm.c",
+      "filePath": "addon/vc4/vchiq/vchiq_2835_arm.c",
+      "summary": "Contains 5 functions: vchiq_platform_init, vchiq_platform_init_state, remote_event_signal, vchiq_copy_from_user, vchiq_prepare_bulk_data",
+      "tags": [
+        "code",
+        "c",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 67
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_arm.c",
+      "type": "module:addon/vc4/vchiq/vchiq_arm.c",
+      "name": "vchiq_arm.c",
+      "filePath": "addon/vc4/vchiq/vchiq_arm.c",
+      "summary": "Contains 5 functions: vchiq_videocore_wanted, vchiq_keepalive_vchiq_callback, vchiq_keepalive_thread_func, vchiq_arm_init_state, set_suspend_state",
+      "tags": [
+        "code",
+        "c",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 294
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_arm.h",
+      "type": "header:addon/vc4/vchiq/vchiq_arm.h",
+      "name": "vchiq_arm.h",
+      "filePath": "addon/vc4/vchiq/vchiq_arm.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 23
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_connected.c",
+      "type": "module:addon/vc4/vchiq/vchiq_connected.c",
+      "name": "vchiq_connected.c",
+      "filePath": "addon/vc4/vchiq/vchiq_connected.c",
+      "summary": "Contains 3 functions: connected_init, vchiq_add_connected_callback, vchiq_call_connected_callbacks",
+      "tags": [
+        "code",
+        "c",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 12
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_connected.h",
+      "type": "header:addon/vc4/vchiq/vchiq_connected.h",
+      "name": "vchiq_connected.h",
+      "filePath": "addon/vc4/vchiq/vchiq_connected.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 5
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_core.c",
+      "type": "module:addon/vc4/vchiq/vchiq_core.c",
+      "name": "vchiq_core.c",
+      "filePath": "addon/vc4/vchiq/vchiq_core.c",
+      "summary": "Contains 5 functions: vchiq_set_service_state, lock_service, unlock_service, vchiq_get_client_id, vchiq_get_service_fourcc",
+      "tags": [
+        "code",
+        "c",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 395
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_core.h",
+      "type": "header:addon/vc4/vchiq/vchiq_core.h",
+      "name": "vchiq_core.h",
+      "filePath": "addon/vc4/vchiq/vchiq_core.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 72
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_kern_lib.c",
+      "type": "module:addon/vc4/vchiq/vchiq_kern_lib.c",
+      "name": "vchiq_kern_lib.c",
+      "filePath": "addon/vc4/vchiq/vchiq_kern_lib.c",
+      "summary": "Contains 5 functions: vchiq_initialise, vchiq_shutdown, vchiq_is_connected, vchiq_connect, vchiq_add_service",
+      "tags": [
+        "code",
+        "c",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 45
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_killable.h",
+      "type": "header:addon/vc4/vchiq/vchiq_killable.h",
+      "name": "vchiq_killable.h",
+      "filePath": "addon/vc4/vchiq/vchiq_killable.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 8
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_shim.c",
+      "type": "module:addon/vc4/vchiq/vchiq_shim.c",
+      "name": "vchiq_shim.c",
+      "filePath": "addon/vc4/vchiq/vchiq_shim.c",
+      "summary": "Contains 5 functions: vchi_msg_peek, vchi_msg_remove, vchi_msg_queue, vchi_bulk_queue_receive, vchi_bulk_queue_transmit",
+      "tags": [
+        "code",
+        "c",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 86
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_util.c",
+      "type": "module:addon/vc4/vchiq/vchiq_util.c",
+      "name": "vchiq_util.c",
+      "filePath": "addon/vc4/vchiq/vchiq_util.c",
+      "summary": "Contains 5 functions: is_pow2, vchiu_queue_init, vchiu_queue_delete, vchiu_queue_is_empty, vchiu_queue_is_full",
+      "tags": [
+        "code",
+        "c",
+        "implementation",
+        "addon"
+      ],
+      "complexity": 15
+    },
+    {
+      "id": "addon/vc4/vchiq/vchiq_util.h",
+      "type": "header:addon/vc4/vchiq/vchiq_util.h",
+      "name": "vchiq_util.h",
+      "filePath": "addon/vc4/vchiq/vchiq_util.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "addon"
+      ],
+      "complexity": 8
+    }
+  ],
+  "edges": [
+    {
+      "source": "addon/vc4/vchiq/vchiq_2835_arm.c",
+      "target": "addon/vc4/vchiq/vchiq_2835.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_2835_arm.c",
+      "target": "addon/vc4/vchiq/vchiq_arm.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_2835_arm.c",
+      "target": "addon/vc4/vchiq/vchiq_connected.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_2835_arm.c",
+      "target": "addon/vc4/vchiq/vchiq_killable.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_arm.c",
+      "target": "addon/vc4/vchiq/vchiq_arm.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_arm.c",
+      "target": "addon/vc4/vchiq/vchiq_core.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_arm.c",
+      "target": "addon/vc4/vchiq/vchiq_killable.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_connected.c",
+      "target": "addon/vc4/vchiq/vchiq_connected.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_connected.c",
+      "target": "addon/vc4/vchiq/vchiq_core.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_connected.c",
+      "target": "addon/vc4/vchiq/vchiq_killable.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_core.c",
+      "target": "addon/vc4/vchiq/vchiq_core.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_core.c",
+      "target": "addon/vc4/vchiq/vchiq_killable.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_kern_lib.c",
+      "target": "addon/vc4/vchiq/vchiq_arm.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_kern_lib.c",
+      "target": "addon/vc4/vchiq/vchiq_core.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_kern_lib.c",
+      "target": "addon/vc4/vchiq/vchiq_killable.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_shim.c",
+      "target": "addon/vc4/vchiq/vchiq_core.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_shim.c",
+      "target": "addon/vc4/vchiq/vchiq_util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_shim.c",
+      "target": "addon/vc4/vchiq/vchiq.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_util.c",
+      "target": "addon/vc4/vchiq/vchiq_killable.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/vc4/vchiq/vchiq_util.c",
+      "target": "addon/vc4/vchiq/vchiq_util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

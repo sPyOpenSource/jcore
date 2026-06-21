@@ -1,0 +1,60 @@
+{
+  "batchIndex": 45,
+  "nodes": [
+    {
+      "id": "addon/ugui/LICENSE.md",
+      "type": "document:addon/ugui/LICENSE.md",
+      "name": "LICENSE.md",
+      "filePath": "addon/ugui/LICENSE.md",
+      "summary": "0 functions defined",
+      "tags": [
+        "docs",
+        "md",
+        "addon"
+      ],
+      "complexity": 4
+    },
+    {
+      "id": "addon/ugui/Makefile",
+      "type": "pipeline:addon/ugui/Makefile",
+      "name": "Makefile",
+      "filePath": "addon/ugui/Makefile",
+      "summary": "0 functions defined",
+      "tags": [
+        "infra",
+        "noext",
+        "addon"
+      ],
+      "complexity": 1
+    },
+    {
+      "id": "addon/ugui/README.md",
+      "type": "document:addon/ugui/README.md",
+      "name": "README.md",
+      "filePath": "addon/ugui/README.md",
+      "summary": "0 functions defined",
+      "tags": [
+        "docs",
+        "md",
+        "addon"
+      ],
+      "complexity": 2
+    }
+  ],
+  "edges": [
+    {
+      "source": "addon/ugui/Makefile",
+      "target": "addon/ugui/LICENSE.md",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "addon/ugui/Makefile",
+      "target": "addon/ugui/README.md",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

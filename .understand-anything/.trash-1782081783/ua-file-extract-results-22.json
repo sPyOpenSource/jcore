@@ -1,0 +1,2327 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 27,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/linux/completion.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 60,
+      "functions": [
+        {
+          "name": "complete",
+          "startLine": 7,
+          "endLine": 14,
+          "params": [
+            "x"
+          ]
+        },
+        {
+          "name": "complete_all",
+          "startLine": 16,
+          "endLine": 23,
+          "params": [
+            "x"
+          ]
+        },
+        {
+          "name": "wait_for_completion",
+          "startLine": 25,
+          "endLine": 37,
+          "params": [
+            "x"
+          ]
+        },
+        {
+          "name": "try_wait_for_completion",
+          "startLine": 39,
+          "endLine": 53,
+          "params": [
+            "x"
+          ]
+        },
+        {
+          "name": "wait_for_completion_interruptible_timeout",
+          "startLine": 55,
+          "endLine": 77,
+          "params": [
+            "x",
+            "timeout"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "complete",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "complete_all",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "wait_for_completion",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "try_wait_for_completion",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "wait_for_completion_interruptible_timeout",
+          "line": 55,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "complete",
+          "callee": "BUG_ON",
+          "lineNumber": 10
+        },
+        {
+          "caller": "complete",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 10
+        },
+        {
+          "caller": "complete_all",
+          "callee": "BUG_ON",
+          "lineNumber": 19
+        },
+        {
+          "caller": "complete_all",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 19
+        },
+        {
+          "caller": "wait_for_completion",
+          "callee": "BUG_ON",
+          "lineNumber": 28
+        },
+        {
+          "caller": "wait_for_completion",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 28
+        },
+        {
+          "caller": "wait_for_completion",
+          "callee": "Yield",
+          "lineNumber": 33
+        },
+        {
+          "caller": "wait_for_completion",
+          "callee": "CScheduler::Get",
+          "lineNumber": 33
+        },
+        {
+          "caller": "try_wait_for_completion",
+          "callee": "BUG_ON",
+          "lineNumber": 42
+        },
+        {
+          "caller": "try_wait_for_completion",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 42
+        },
+        {
+          "caller": "wait_for_completion_interruptible_timeout",
+          "callee": "BUG_ON",
+          "lineNumber": 58
+        },
+        {
+          "caller": "wait_for_completion_interruptible_timeout",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 58
+        },
+        {
+          "caller": "wait_for_completion_interruptible_timeout",
+          "callee": "Yield",
+          "lineNumber": 71
+        },
+        {
+          "caller": "wait_for_completion_interruptible_timeout",
+          "callee": "CScheduler::Get",
+          "lineNumber": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/delay.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 11,
+      "functions": [
+        {
+          "name": "udelay",
+          "startLine": 5,
+          "endLine": 8,
+          "params": [
+            "usecs"
+          ]
+        },
+        {
+          "name": "msleep",
+          "startLine": 10,
+          "endLine": 13,
+          "params": [
+            "msecs"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "udelay",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "msleep",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "udelay",
+          "callee": "usDelay",
+          "lineNumber": 7
+        },
+        {
+          "caller": "udelay",
+          "callee": "CTimer::Get",
+          "lineNumber": 7
+        },
+        {
+          "caller": "msleep",
+          "callee": "MsSleep",
+          "lineNumber": 12
+        },
+        {
+          "caller": "msleep",
+          "callee": "CScheduler::Get",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/kthread.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "CKThread",
+          "startLine": 11,
+          "endLine": 16,
+          "params": [
+            "data",
+            "pName"
+          ]
+        },
+        {
+          "name": "Run",
+          "startLine": 18,
+          "endLine": 21,
+          "params": []
+        },
+        {
+          "name": "set_user_nice",
+          "startLine": 55,
+          "endLine": 57,
+          "params": [
+            "task",
+            "nice"
+          ]
+        },
+        {
+          "name": "wake_up_process",
+          "startLine": 60,
+          "endLine": 63,
+          "params": [
+            "task"
+          ]
+        },
+        {
+          "name": "flush_signals",
+          "startLine": 65,
+          "endLine": 67,
+          "params": [
+            "task"
+          ]
+        },
+        {
+          "name": "task_switch_handler",
+          "startLine": 69,
+          "endLine": 72,
+          "params": [
+            "ctask"
+          ]
+        },
+        {
+          "name": "task_termination_handler",
+          "startLine": 74,
+          "endLine": 82,
+          "params": [
+            "ctask"
+          ]
+        },
+        {
+          "name": "linuxemu_init_kthread",
+          "startLine": 84,
+          "endLine": 103,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "CKThread",
+          "startLine": 8,
+          "endLine": 26,
+          "methods": [
+            "CKThread",
+            "Run",
+            "(*m_threadfn)"
+          ],
+          "properties": [
+            "m_data"
+          ]
+        },
+        {
+          "name": "task_struct",
+          "startLine": 28,
+          "endLine": 28,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKThread",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "CKThread",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "task_struct",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "set_user_nice",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "wake_up_process",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "flush_signals",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "linuxemu_init_kthread",
+          "line": 84,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKThread",
+          "callee": "SetName",
+          "lineNumber": 15
+        },
+        {
+          "caller": "Run",
+          "callee": "(*m_threadfn)",
+          "lineNumber": 20
+        },
+        {
+          "caller": "task_switch_handler",
+          "callee": "GetUserData",
+          "lineNumber": 71
+        },
+        {
+          "caller": "task_termination_handler",
+          "callee": "GetUserData",
+          "lineNumber": 77
+        },
+        {
+          "caller": "linuxemu_init_kthread",
+          "callee": "GetCurrentTask",
+          "lineNumber": 94
+        },
+        {
+          "caller": "linuxemu_init_kthread",
+          "callee": "CScheduler::Get",
+          "lineNumber": 94
+        },
+        {
+          "caller": "linuxemu_init_kthread",
+          "callee": "SetUserData",
+          "lineNumber": 95
+        },
+        {
+          "caller": "linuxemu_init_kthread",
+          "callee": "RegisterTaskSwitchHandler",
+          "lineNumber": 99
+        },
+        {
+          "caller": "linuxemu_init_kthread",
+          "callee": "CScheduler::Get",
+          "lineNumber": 99
+        },
+        {
+          "caller": "linuxemu_init_kthread",
+          "callee": "RegisterTaskTerminationHandler",
+          "lineNumber": 100
+        },
+        {
+          "caller": "linuxemu_init_kthread",
+          "callee": "CScheduler::Get",
+          "lineNumber": 100
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "addon/linux/mutex.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "mutex_lock",
+          "startLine": 6,
+          "endLine": 18,
+          "params": [
+            "lock"
+          ]
+        },
+        {
+          "name": "mutex_unlock",
+          "startLine": 20,
+          "endLine": 27,
+          "params": [
+            "lock"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "mutex_lock",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "mutex_unlock",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mutex_lock",
+          "callee": "BUG_ON",
+          "lineNumber": 9
+        },
+        {
+          "caller": "mutex_lock",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 9
+        },
+        {
+          "caller": "mutex_lock",
+          "callee": "Yield",
+          "lineNumber": 14
+        },
+        {
+          "caller": "mutex_lock",
+          "callee": "CScheduler::Get",
+          "lineNumber": 14
+        },
+        {
+          "caller": "mutex_unlock",
+          "callee": "BUG_ON",
+          "lineNumber": 23
+        },
+        {
+          "caller": "mutex_unlock",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/pthread.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 262,
+      "nonEmptyLines": 199,
+      "functions": [
+        {
+          "name": "pthread_attr_init",
+          "startLine": 19,
+          "endLine": 22,
+          "params": [
+            "attr"
+          ]
+        },
+        {
+          "name": "pthread_attr_destroy",
+          "startLine": 24,
+          "endLine": 27,
+          "params": [
+            "attr"
+          ]
+        },
+        {
+          "name": "pthread_attr_setstacksize",
+          "startLine": 29,
+          "endLine": 32,
+          "params": [
+            "attr",
+            "stacksize"
+          ]
+        },
+        {
+          "name": "_start",
+          "startLine": 34,
+          "endLine": 41,
+          "params": [
+            "arg"
+          ]
+        },
+        {
+          "name": "pthread_create",
+          "startLine": 43,
+          "endLine": 66,
+          "params": [
+            "thread",
+            "attr",
+            "arg"
+          ]
+        },
+        {
+          "name": "pthread_self",
+          "startLine": 68,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "pthread_exit",
+          "startLine": 87,
+          "endLine": 102,
+          "params": [
+            "retval"
+          ]
+        },
+        {
+          "name": "pthread_join",
+          "startLine": 105,
+          "endLine": 127,
+          "params": [
+            "thread",
+            "retval"
+          ]
+        },
+        {
+          "name": "pthread_mutexattr_init",
+          "startLine": 129,
+          "endLine": 132,
+          "params": [
+            "attr"
+          ]
+        },
+        {
+          "name": "pthread_mutexattr_destroy",
+          "startLine": 134,
+          "endLine": 137,
+          "params": [
+            "attr"
+          ]
+        },
+        {
+          "name": "pthread_mutexattr_settype",
+          "startLine": 139,
+          "endLine": 142,
+          "params": [
+            "attr",
+            "type"
+          ]
+        },
+        {
+          "name": "pthread_mutex_init",
+          "startLine": 144,
+          "endLine": 149,
+          "params": [
+            "mutex",
+            "attr"
+          ]
+        },
+        {
+          "name": "pthread_mutex_destroy",
+          "startLine": 151,
+          "endLine": 156,
+          "params": [
+            "mutex"
+          ]
+        },
+        {
+          "name": "pthread_mutex_lock",
+          "startLine": 158,
+          "endLine": 163,
+          "params": [
+            "mutex"
+          ]
+        },
+        {
+          "name": "pthread_mutex_trylock",
+          "startLine": 165,
+          "endLine": 179,
+          "params": [
+            "mutex"
+          ]
+        },
+        {
+          "name": "pthread_mutex_unlock",
+          "startLine": 181,
+          "endLine": 186,
+          "params": [
+            "mutex"
+          ]
+        },
+        {
+          "name": "pthread_key_create",
+          "startLine": 188,
+          "endLine": 194,
+          "params": [
+            "key"
+          ]
+        },
+        {
+          "name": "pthread_key_delete",
+          "startLine": 197,
+          "endLine": 200,
+          "params": [
+            "key"
+          ]
+        },
+        {
+          "name": "pthread_setspecific",
+          "startLine": 202,
+          "endLine": 230,
+          "params": [
+            "key",
+            "value"
+          ]
+        },
+        {
+          "name": "pthread_once",
+          "startLine": 252,
+          "endLine": 262,
+          "params": [
+            "control"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "pthread_key_element",
+          "startLine": 12,
+          "endLine": 17,
+          "methods": [],
+          "properties": [
+            "head",
+            "key",
+            "value"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "pthread_key_element",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_attr_init",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_attr_destroy",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_attr_setstacksize",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_create",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_self",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_exit",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_join",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_mutexattr_init",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_mutexattr_destroy",
+          "line": 134,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_mutexattr_settype",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_mutex_init",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_mutex_destroy",
+          "line": 151,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_mutex_lock",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_mutex_trylock",
+          "line": 165,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_mutex_unlock",
+          "line": 181,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_key_create",
+          "line": 188,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_key_delete",
+          "line": 197,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_setspecific",
+          "line": 202,
+          "isDefault": false
+        },
+        {
+          "name": "pthread_once",
+          "line": 252,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_start",
+          "callee": "(*thread->start_func)",
+          "lineNumber": 38
+        },
+        {
+          "caller": "pthread_create",
+          "callee": "kmalloc",
+          "lineNumber": 46
+        },
+        {
+          "caller": "pthread_create",
+          "callee": "INIT_LIST_HEAD",
+          "lineNumber": 55
+        },
+        {
+          "caller": "pthread_create",
+          "callee": "kthread_create",
+          "lineNumber": 57
+        },
+        {
+          "caller": "pthread_create",
+          "callee": "BUG_ON",
+          "lineNumber": 58
+        },
+        {
+          "caller": "pthread_create",
+          "callee": "BUG_ON",
+          "lineNumber": 62
+        },
+        {
+          "caller": "pthread_self",
+          "callee": "BUG_ON",
+          "lineNumber": 70
+        },
+        {
+          "caller": "pthread_self",
+          "callee": "kmalloc",
+          "lineNumber": 74
+        },
+        {
+          "caller": "pthread_self",
+          "callee": "BUG_ON",
+          "lineNumber": 75
+        },
+        {
+          "caller": "pthread_self",
+          "callee": "INIT_LIST_HEAD",
+          "lineNumber": 78
+        },
+        {
+          "caller": "pthread_exit",
+          "callee": "pthread_self",
+          "lineNumber": 89
+        },
+        {
+          "caller": "pthread_exit",
+          "callee": "BUG_ON",
+          "lineNumber": 90
+        },
+        {
+          "caller": "pthread_exit",
+          "callee": "BUG_ON",
+          "lineNumber": 94
+        },
+        {
+          "caller": "pthread_exit",
+          "callee": "BUG_ON",
+          "lineNumber": 95
+        },
+        {
+          "caller": "pthread_exit",
+          "callee": "BUG_ON",
+          "lineNumber": 98
+        },
+        {
+          "caller": "pthread_exit",
+          "callee": "Terminate",
+          "lineNumber": 99
+        },
+        {
+          "caller": "pthread_exit",
+          "callee": "BUG",
+          "lineNumber": 101
+        },
+        {
+          "caller": "pthread_join",
+          "callee": "BUG_ON",
+          "lineNumber": 107
+        },
+        {
+          "caller": "pthread_join",
+          "callee": "BUG_ON",
+          "lineNumber": 108
+        },
+        {
+          "caller": "pthread_join",
+          "callee": "BUG_ON",
+          "lineNumber": 113
+        },
+        {
+          "caller": "pthread_join",
+          "callee": "WaitForTermination",
+          "lineNumber": 115
+        },
+        {
+          "caller": "pthread_join",
+          "callee": "kfree",
+          "lineNumber": 123
+        },
+        {
+          "caller": "pthread_join",
+          "callee": "kfree",
+          "lineNumber": 124
+        },
+        {
+          "caller": "pthread_mutex_init",
+          "callee": "mutex_init",
+          "lineNumber": 146
+        },
+        {
+          "caller": "pthread_mutex_destroy",
+          "callee": "BUG_ON",
+          "lineNumber": 153
+        },
+        {
+          "caller": "pthread_mutex_lock",
+          "callee": "mutex_lock",
+          "lineNumber": 160
+        },
+        {
+          "caller": "pthread_mutex_trylock",
+          "callee": "BUG_ON",
+          "lineNumber": 168
+        },
+        {
+          "caller": "pthread_mutex_trylock",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 168
+        },
+        {
+          "caller": "pthread_mutex_unlock",
+          "callee": "mutex_unlock",
+          "lineNumber": 183
+        },
+        {
+          "caller": "pthread_key_create",
+          "callee": "BUG_ON",
+          "lineNumber": 190
+        },
+        {
+          "caller": "pthread_setspecific",
+          "callee": "pthread_self",
+          "lineNumber": 204
+        },
+        {
+          "caller": "pthread_setspecific",
+          "callee": "BUG_ON",
+          "lineNumber": 205
+        },
+        {
+          "caller": "pthread_setspecific",
+          "callee": "list_for_each",
+          "lineNumber": 208
+        },
+        {
+          "caller": "pthread_setspecific",
+          "callee": "list_entry",
+          "lineNumber": 211
+        },
+        {
+          "caller": "pthread_setspecific",
+          "callee": "BUG_ON",
+          "lineNumber": 222
+        },
+        {
+          "caller": "pthread_setspecific",
+          "callee": "list_add_tail",
+          "lineNumber": 227
+        },
+        {
+          "caller": "pthread_once",
+          "callee": "(*func)",
+          "lineNumber": 258
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 20,
+        "functionCount": 20,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/linux/rwlock.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 41,
+      "functions": [
+        {
+          "name": "read_lock_bh",
+          "startLine": 8,
+          "endLine": 20,
+          "params": [
+            "lock"
+          ]
+        },
+        {
+          "name": "read_unlock_bh",
+          "startLine": 22,
+          "endLine": 29,
+          "params": [
+            "lock"
+          ]
+        },
+        {
+          "name": "write_lock_bh",
+          "startLine": 31,
+          "endLine": 43,
+          "params": [
+            "lock"
+          ]
+        },
+        {
+          "name": "write_unlock_bh",
+          "startLine": 45,
+          "endLine": 52,
+          "params": [
+            "lock"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "read_lock_bh",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "read_unlock_bh",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "write_lock_bh",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "write_unlock_bh",
+          "line": 45,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "read_lock_bh",
+          "callee": "BUG_ON",
+          "lineNumber": 11
+        },
+        {
+          "caller": "read_lock_bh",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 11
+        },
+        {
+          "caller": "read_lock_bh",
+          "callee": "Yield",
+          "lineNumber": 18
+        },
+        {
+          "caller": "read_lock_bh",
+          "callee": "CScheduler::Get",
+          "lineNumber": 18
+        },
+        {
+          "caller": "read_unlock_bh",
+          "callee": "BUG_ON",
+          "lineNumber": 25
+        },
+        {
+          "caller": "read_unlock_bh",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 25
+        },
+        {
+          "caller": "write_lock_bh",
+          "callee": "BUG_ON",
+          "lineNumber": 34
+        },
+        {
+          "caller": "write_lock_bh",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 34
+        },
+        {
+          "caller": "write_lock_bh",
+          "callee": "Yield",
+          "lineNumber": 41
+        },
+        {
+          "caller": "write_lock_bh",
+          "callee": "CScheduler::Get",
+          "lineNumber": 41
+        },
+        {
+          "caller": "write_unlock_bh",
+          "callee": "BUG_ON",
+          "lineNumber": 48
+        },
+        {
+          "caller": "write_unlock_bh",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/semaphore.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 34,
+      "functions": [
+        {
+          "name": "down",
+          "startLine": 6,
+          "endLine": 18,
+          "params": [
+            "sem"
+          ]
+        },
+        {
+          "name": "up",
+          "startLine": 20,
+          "endLine": 27,
+          "params": [
+            "sem"
+          ]
+        },
+        {
+          "name": "down_trylock",
+          "startLine": 29,
+          "endLine": 43,
+          "params": [
+            "sem"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "down",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "up",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "down_trylock",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "down",
+          "callee": "BUG_ON",
+          "lineNumber": 9
+        },
+        {
+          "caller": "down",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 9
+        },
+        {
+          "caller": "down",
+          "callee": "atomic_read",
+          "lineNumber": 12
+        },
+        {
+          "caller": "down",
+          "callee": "Yield",
+          "lineNumber": 14
+        },
+        {
+          "caller": "down",
+          "callee": "CScheduler::Get",
+          "lineNumber": 14
+        },
+        {
+          "caller": "down",
+          "callee": "atomic_dec",
+          "lineNumber": 17
+        },
+        {
+          "caller": "up",
+          "callee": "BUG_ON",
+          "lineNumber": 23
+        },
+        {
+          "caller": "up",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 23
+        },
+        {
+          "caller": "up",
+          "callee": "atomic_inc",
+          "lineNumber": 26
+        },
+        {
+          "caller": "down_trylock",
+          "callee": "BUG_ON",
+          "lineNumber": 32
+        },
+        {
+          "caller": "down_trylock",
+          "callee": "CMultiCoreSupport::ThisCore",
+          "lineNumber": 32
+        },
+        {
+          "caller": "down_trylock",
+          "callee": "atomic_read",
+          "lineNumber": 35
+        },
+        {
+          "caller": "down_trylock",
+          "callee": "atomic_dec",
+          "lineNumber": 40
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/spinlock.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 77,
+      "callGraph": [
+        {
+          "caller": "spin_lock",
+          "callee": "EnterCritical",
+          "lineNumber": 11
+        },
+        {
+          "caller": "spin_unlock",
+          "callee": "LeaveCritical",
+          "lineNumber": 76
+        },
+        {
+          "caller": "spin_lock",
+          "callee": "EnterCritical",
+          "lineNumber": 83
+        },
+        {
+          "caller": "spin_unlock",
+          "callee": "LeaveCritical",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 102,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 32,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 41,
+          "endLine": 43,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 45,
+          "endLine": 86,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 88,
+          "endLine": 118,
+          "params": []
+        },
+        {
+          "name": "TimerHandler",
+          "startLine": 120,
+          "endLine": 126,
+          "params": [
+            "hTimer",
+            "pParam",
+            "pContext"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "TimerHandler",
+          "line": 120,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Run",
+          "callee": "GetUptime",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Run",
+          "callee": "Clear",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Run",
+          "callee": "StartKernelTimer",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Run",
+          "callee": "Wait",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Run",
+          "callee": "SaveResults",
+          "lineNumber": 115
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 123
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "Set",
+          "lineNumber": 125
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 74,
+      "nonEmptyLines": 65,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/ledtask.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "CLEDTask",
+          "startLine": 23,
+          "endLine": 26,
+          "params": [
+            "pActLED"
+          ]
+        },
+        {
+          "name": "~CLEDTask",
+          "startLine": 28,
+          "endLine": 30,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 32,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CLEDTask",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CLEDTask",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Run",
+          "callee": "On",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Run",
+          "callee": "Off",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 45
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/ledtask.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 33,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/primetask.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 94,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "CPrimeTask",
+          "startLine": 33,
+          "endLine": 36,
+          "params": [
+            "pScreen"
+          ]
+        },
+        {
+          "name": "~CPrimeTask",
+          "startLine": 38,
+          "endLine": 40,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 42,
+          "endLine": 84,
+          "params": []
+        },
+        {
+          "name": "IsPrime",
+          "startLine": 86,
+          "endLine": 89,
+          "params": [
+            "nNumber"
+          ]
+        },
+        {
+          "name": "NotPrime",
+          "startLine": 91,
+          "endLine": 94,
+          "params": [
+            "nNumber"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPrimeTask",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "~CPrimeTask",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "IsPrime",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "NotPrime",
+          "line": 91,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Run",
+          "callee": "memset",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Run",
+          "callee": "IsPrime",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Run",
+          "callee": "NotPrime",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Run",
+          "callee": "IsPrime",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/primetask.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 41,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/screentask.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 45,
+      "functions": [
+        {
+          "name": "CScreenTask",
+          "startLine": 24,
+          "endLine": 28,
+          "params": [
+            "nTaskID",
+            "pScreen"
+          ]
+        },
+        {
+          "name": "~CScreenTask",
+          "startLine": 30,
+          "endLine": 32,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 34,
+          "endLine": 51,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CScreenTask",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "~CScreenTask",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Run",
+          "callee": "Append",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Run",
+          "callee": "Append",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 49
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/screentask.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 34,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9arch.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 97,
+      "nonEmptyLines": 79,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9proc.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 219,
+      "nonEmptyLines": 180,
+      "functions": [
+        {
+          "name": "qlock",
+          "startLine": 97,
+          "endLine": 106,
+          "params": [
+            "qlock"
+          ]
+        },
+        {
+          "name": "qunlock",
+          "startLine": 108,
+          "endLine": 114,
+          "params": [
+            "qlock"
+          ]
+        },
+        {
+          "name": "canqlock",
+          "startLine": 116,
+          "endLine": 128,
+          "params": [
+            "qlock"
+          ]
+        },
+        {
+          "name": "sleep",
+          "startLine": 130,
+          "endLine": 137,
+          "params": [
+            "rendez",
+            "handler",
+            "param"
+          ]
+        },
+        {
+          "name": "tsleep",
+          "startLine": 139,
+          "endLine": 152,
+          "params": [
+            "rendez",
+            "handler",
+            "param",
+            "msecs"
+          ]
+        },
+        {
+          "name": "wakeup",
+          "startLine": 154,
+          "endLine": 156,
+          "params": [
+            "rendez"
+          ]
+        },
+        {
+          "name": "return0",
+          "startLine": 158,
+          "endLine": 161,
+          "params": [
+            "param"
+          ]
+        },
+        {
+          "name": "CKProc",
+          "startLine": 166,
+          "endLine": 171,
+          "params": [
+            "param",
+            "name"
+          ]
+        },
+        {
+          "name": "Run",
+          "startLine": 173,
+          "endLine": 179,
+          "params": []
+        },
+        {
+          "name": "kproc",
+          "startLine": 188,
+          "endLine": 191,
+          "params": [
+            "name",
+            "parm"
+          ]
+        },
+        {
+          "name": "p9proc_init",
+          "startLine": 196,
+          "endLine": 204,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "CKProc",
+          "startLine": 163,
+          "endLine": 186,
+          "methods": [
+            "CKProc",
+            "Run",
+            "(*m_procfn)"
+          ],
+          "properties": [
+            "m_param",
+            "m_errstack"
+          ]
+        },
+        {
+          "name": "up_t",
+          "startLine": 193,
+          "endLine": 193,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "up_t",
+          "startLine": 194,
+          "endLine": 194,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "qlock",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "qunlock",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "canqlock",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "sleep",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "tsleep",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "wakeup",
+          "line": 154,
+          "isDefault": false
+        },
+        {
+          "name": "return0",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "CKProc",
+          "line": 166,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 173,
+          "isDefault": false
+        },
+        {
+          "name": "CKProc",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "kproc",
+          "line": 188,
+          "isDefault": false
+        },
+        {
+          "name": "up_t",
+          "line": 193,
+          "isDefault": false
+        },
+        {
+          "name": "up_t",
+          "line": 194,
+          "isDefault": false
+        },
+        {
+          "name": "p9proc_init",
+          "line": 196,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lock",
+          "callee": "EnterCritical",
+          "lineNumber": 15
+        },
+        {
+          "caller": "unlock",
+          "callee": "LeaveCritical",
+          "lineNumber": 80
+        },
+        {
+          "caller": "lock",
+          "callee": "EnterCritical",
+          "lineNumber": 87
+        },
+        {
+          "caller": "unlock",
+          "callee": "LeaveCritical",
+          "lineNumber": 92
+        },
+        {
+          "caller": "qlock",
+          "callee": "Yield",
+          "lineNumber": 101
+        },
+        {
+          "caller": "qlock",
+          "callee": "CScheduler::Get",
+          "lineNumber": 101
+        },
+        {
+          "caller": "qunlock",
+          "callee": "assert",
+          "lineNumber": 110
+        },
+        {
+          "caller": "qunlock",
+          "callee": "Yield",
+          "lineNumber": 113
+        },
+        {
+          "caller": "qunlock",
+          "callee": "CScheduler::Get",
+          "lineNumber": 113
+        },
+        {
+          "caller": "canqlock",
+          "callee": "Yield",
+          "lineNumber": 120
+        },
+        {
+          "caller": "canqlock",
+          "callee": "CScheduler::Get",
+          "lineNumber": 120
+        },
+        {
+          "caller": "sleep",
+          "callee": "Yield",
+          "lineNumber": 134
+        },
+        {
+          "caller": "sleep",
+          "callee": "CScheduler::Get",
+          "lineNumber": 134
+        },
+        {
+          "caller": "sleep",
+          "callee": "(*handler)",
+          "lineNumber": 136
+        },
+        {
+          "caller": "tsleep",
+          "callee": "Yield",
+          "lineNumber": 149
+        },
+        {
+          "caller": "tsleep",
+          "callee": "CScheduler::Get",
+          "lineNumber": 149
+        },
+        {
+          "caller": "tsleep",
+          "callee": "(*handler)",
+          "lineNumber": 151
+        },
+        {
+          "caller": "CKProc",
+          "callee": "SetName",
+          "lineNumber": 170
+        },
+        {
+          "caller": "Run",
+          "callee": "SetUserData",
+          "lineNumber": 176
+        },
+        {
+          "caller": "Run",
+          "callee": "(*m_procfn)",
+          "lineNumber": 178
+        },
+        {
+          "caller": "p9proc_init",
+          "callee": "GetCurrentTask",
+          "lineNumber": 201
+        },
+        {
+          "caller": "p9proc_init",
+          "callee": "CScheduler::Get",
+          "lineNumber": 201
+        },
+        {
+          "caller": "p9proc_init",
+          "callee": "assert",
+          "lineNumber": 202
+        },
+        {
+          "caller": "p9proc_init",
+          "callee": "SetUserData",
+          "lineNumber": 203
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 14,
+        "functionCount": 11,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "include/circle/multicore.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 74,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/net/dhcpclient.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 90,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/net/nettask.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 33,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/net/phytask.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 33,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/net/retranstimeoutcalc.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 49,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/net/tftpdaemon.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 81,
+      "nonEmptyLines": 67,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/sched/mutex.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 43,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/sched/scheduler.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 112,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

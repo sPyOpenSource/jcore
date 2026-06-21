@@ -1,0 +1,3535 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 612,
+      "nonEmptyLines": 485,
+      "functions": [
+        {
+          "name": "client_try_unload_server",
+          "startLine": 79,
+          "endLine": 111,
+          "params": [
+            "process"
+          ]
+        },
+        {
+          "name": "client_process_state_init",
+          "startLine": 142,
+          "endLine": 209,
+          "params": [
+            "process"
+          ]
+        },
+        {
+          "name": "client_process_state_term",
+          "startLine": 239,
+          "endLine": 269,
+          "params": [
+            "process"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "client_try_unload_server",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "client_process_state_init",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "client_process_state_term",
+          "line": 239,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "client_try_unload_server",
+          "callee": "khronos_server_lock_func_table",
+          "lineNumber": 95
+        },
+        {
+          "caller": "client_try_unload_server",
+          "callee": "client_library_get_connection",
+          "lineNumber": 95
+        },
+        {
+          "caller": "client_try_unload_server",
+          "callee": "khrn_misc_try_unload_impl",
+          "lineNumber": 98
+        },
+        {
+          "caller": "client_try_unload_server",
+          "callee": "khronos_server_disconnect",
+          "lineNumber": 99
+        },
+        {
+          "caller": "client_try_unload_server",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 101
+        },
+        {
+          "caller": "client_try_unload_server",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 107
+        },
+        {
+          "caller": "client_try_unload_server",
+          "callee": "RPC_INT_RES",
+          "lineNumber": 108
+        },
+        {
+          "caller": "client_try_unload_server",
+          "callee": "RPC_CALL0_RES",
+          "lineNumber": 108
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_init",
+          "lineNumber": 145
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_init",
+          "lineNumber": 148
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 150
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_init",
+          "lineNumber": 153
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 155
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 156
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_init",
+          "lineNumber": 161
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 163
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 164
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 165
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khrn_global_image_map_init",
+          "lineNumber": 170
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khronos_server_lock_func_table",
+          "lineNumber": 188
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khronos_server_connect",
+          "lineNumber": 189
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 190
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "RPC_CALL0",
+          "lineNumber": 191
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "egl_config_install_configs",
+          "lineNumber": 202
+        },
+        {
+          "caller": "client_process_state_init",
+          "callee": "egl_config_install_configs",
+          "lineNumber": 204
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "khrn_pointer_map_iterate",
+          "lineNumber": 242
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 243
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "khrn_pointer_map_iterate",
+          "lineNumber": 245
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 246
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 248
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "egl_sync_destroy_all",
+          "lineNumber": 251
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 252
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "khrn_global_image_map_term",
+          "lineNumber": 256
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "egl_perf_monitor_term",
+          "lineNumber": 260
+        },
+        {
+          "caller": "client_process_state_term",
+          "callee": "egl_driver_monitor_term",
+          "lineNumber": 264
+        },
+        {
+          "caller": "client_thread_state_term",
+          "callee": "platform_term_rpc",
+          "lineNumber": 304
+        },
+        {
+          "caller": "client_egl_get_window",
+          "callee": "khrn_pointer_map_lookup",
+          "lineNumber": 359
+        },
+        {
+          "caller": "convert_gltype",
+          "callee": "UNREACHABLE",
+          "lineNumber": 369
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "rpc_get_client_id",
+          "lineNumber": 375
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "convert_gltype",
+          "lineNumber": 376
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "vcos_log_trace",
+          "lineNumber": 391
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "vcos_log_trace",
+          "lineNumber": 396
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_CALL8_MAKECURRENT",
+          "lineNumber": 407
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_UINT",
+          "lineNumber": 410
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_UINT",
+          "lineNumber": 411
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_UINT",
+          "lineNumber": 412
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_UINT",
+          "lineNumber": 413
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_UINT",
+          "lineNumber": 414
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_UINT",
+          "lineNumber": 415
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_UINT",
+          "lineNumber": 416
+        },
+        {
+          "caller": "client_send_make_current",
+          "callee": "RPC_UINT",
+          "lineNumber": 417
+        },
+        {
+          "caller": "client_process_attach",
+          "callee": "platform_tls_create",
+          "lineNumber": 430
+        },
+        {
+          "caller": "client_process_attach",
+          "callee": "platform_tls_create",
+          "lineNumber": 436
+        },
+        {
+          "caller": "client_process_attach",
+          "callee": "platform_tls_create",
+          "lineNumber": 441
+        },
+        {
+          "caller": "client_process_attach",
+          "callee": "platform_mutex_create",
+          "lineNumber": 447
+        },
+        {
+          "caller": "client_process_attach",
+          "callee": "platform_tls_destroy",
+          "lineNumber": 450
+        },
+        {
+          "caller": "client_process_attach",
+          "callee": "RPC_INIT",
+          "lineNumber": 453
+        },
+        {
+          "caller": "client_process_attach",
+          "callee": "platform_mutex_destroy",
+          "lineNumber": 454
+        },
+        {
+          "caller": "client_process_attach",
+          "callee": "platform_tls_destroy",
+          "lineNumber": 455
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 463
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "client_thread_state_init",
+          "lineNumber": 468
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "platform_tls_set",
+          "lineNumber": 470
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "vcos_tls_get",
+          "lineNumber": 475
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 479
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "platform_mutex_create",
+          "lineNumber": 483
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "khrn_platform_free",
+          "lineNumber": 485
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "vcos_tls_set",
+          "lineNumber": 489
+        },
+        {
+          "caller": "client_thread_attach",
+          "callee": "client_send_make_current",
+          "lineNumber": 495
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 502
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "UNUSED",
+          "lineNumber": 503
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "platform_tls_remove",
+          "lineNumber": 505
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "client_thread_state_term",
+          "lineNumber": 506
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "khrn_platform_free",
+          "lineNumber": 508
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "platform_maybe_free_process",
+          "lineNumber": 509
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "CLIENT_GET_PROCESS_STATE",
+          "lineNumber": 513
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "khrn_platform_free",
+          "lineNumber": 514
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "platform_tls_remove",
+          "lineNumber": 515
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "vcos_tls_get",
+          "lineNumber": 519
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "vcos_assert",
+          "lineNumber": 520
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "platform_mutex_destroy",
+          "lineNumber": 522
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "khrn_platform_free",
+          "lineNumber": 524
+        },
+        {
+          "caller": "client_thread_detach",
+          "callee": "platform_tls_remove",
+          "lineNumber": 525
+        },
+        {
+          "caller": "client_process_detach",
+          "callee": "RPC_TERM",
+          "lineNumber": 532
+        },
+        {
+          "caller": "client_process_detach",
+          "callee": "platform_tls_destroy",
+          "lineNumber": 533
+        },
+        {
+          "caller": "client_process_detach",
+          "callee": "platform_mutex_destroy",
+          "lineNumber": 534
+        },
+        {
+          "caller": "client_process_detach",
+          "callee": "platform_tls_destroy",
+          "lineNumber": 537
+        },
+        {
+          "caller": "client_library_send_make_current",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 553
+        },
+        {
+          "caller": "client_library_send_make_current",
+          "callee": "rpc_get_client_id",
+          "lineNumber": 556
+        },
+        {
+          "caller": "client_library_send_make_current",
+          "callee": "convert_gltype",
+          "lineNumber": 557
+        },
+        {
+          "caller": "client_library_send_make_current",
+          "callee": "eglIntMakeCurrent_impl",
+          "lineNumber": 569
+        },
+        {
+          "caller": "callback_set_error",
+          "callee": "UNUSED",
+          "lineNumber": 588
+        },
+        {
+          "caller": "callback_set_error",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 589
+        },
+        {
+          "caller": "callback_set_error",
+          "callee": "vcos_assert",
+          "lineNumber": 591
+        },
+        {
+          "caller": "callback_set_error",
+          "callee": "vcos_assert",
+          "lineNumber": 592
+        },
+        {
+          "caller": "callback_set_error",
+          "callee": "IS_OPENGLES_11_OR_20",
+          "lineNumber": 597
+        },
+        {
+          "caller": "callback_set_error",
+          "callee": "vcos_log_error",
+          "lineNumber": 598
+        },
+        {
+          "caller": "callback_set_error",
+          "callee": "glxx_set_error",
+          "lineNumber": 599
+        },
+        {
+          "caller": "callback_set_error",
+          "callee": "GLXX_GET_CLIENT_STATE",
+          "lineNumber": 599
+        },
+        {
+          "caller": "client_set_error",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 607
+        },
+        {
+          "caller": "client_set_error",
+          "callee": "CLIENT_GET_PROCESS_STATE",
+          "lineNumber": 608
+        },
+        {
+          "caller": "client_set_error",
+          "callee": "khrn_pointer_map_iterate",
+          "lineNumber": 609
+        },
+        {
+          "caller": "client_set_error",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 610
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 485,
+      "nonEmptyLines": 366,
+      "callGraph": [
+        {
+          "caller": "CLIENT_LOCK",
+          "callee": "platform_client_lock",
+          "lineNumber": 387
+        },
+        {
+          "caller": "CLIENT_UNLOCK",
+          "callee": "platform_client_release",
+          "lineNumber": 411
+        },
+        {
+          "caller": "CLIENT_LOCK_AND_GET_STATES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 450
+        },
+        {
+          "caller": "CLIENT_LOCK_AND_GET_STATES",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 451
+        },
+        {
+          "caller": "CLIENT_LOCK_AND_GET_STATES",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 452
+        },
+        {
+          "caller": "CLIENT_LOCK_AND_GET_STATES",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 457
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_color.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 89,
+      "nonEmptyLines": 75,
+      "callGraph": [
+        {
+          "caller": "color_clamp_times_256",
+          "callee": "_minf",
+          "lineNumber": 41
+        },
+        {
+          "caller": "color_clamp_times_256",
+          "callee": "_maxf",
+          "lineNumber": 41
+        },
+        {
+          "caller": "color_floats_to_rgba",
+          "callee": "color_clamp_times_256",
+          "lineNumber": 48
+        },
+        {
+          "caller": "color_floats_to_rgba",
+          "callee": "color_clamp_times_256",
+          "lineNumber": 49
+        },
+        {
+          "caller": "color_floats_to_rgba",
+          "callee": "color_clamp_times_256",
+          "lineNumber": 50
+        },
+        {
+          "caller": "color_floats_to_rgba",
+          "callee": "color_clamp_times_256",
+          "lineNumber": 51
+        },
+        {
+          "caller": "color_floats_to_rgba_clean",
+          "callee": "color_floats_to_rgba",
+          "lineNumber": 56
+        },
+        {
+          "caller": "color_floats_to_rgba_clean",
+          "callee": "clean_float",
+          "lineNumber": 56
+        },
+        {
+          "caller": "color_floats_to_rgba_clean",
+          "callee": "clean_float",
+          "lineNumber": 56
+        },
+        {
+          "caller": "color_floats_to_rgba_clean",
+          "callee": "clean_float",
+          "lineNumber": 56
+        },
+        {
+          "caller": "color_floats_to_rgba_clean",
+          "callee": "clean_float",
+          "lineNumber": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_common.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 181,
+      "nonEmptyLines": 153,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_generic_map.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 341,
+      "nonEmptyLines": 306,
+      "functions": [
+        {
+          "name": "hash",
+          "startLine": 36,
+          "endLine": 39,
+          "params": [
+            "key",
+            "capacity"
+          ]
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_generic_map.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 205,
+      "nonEmptyLines": 143,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_hash.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 310,
+      "nonEmptyLines": 277,
+      "functions": [
+        {
+          "name": "khrn_hashword",
+          "startLine": 83,
+          "endLine": 114,
+          "params": [
+            "k",
+            "length",
+            "initval"
+          ]
+        },
+        {
+          "name": "khrn_hashlittle",
+          "startLine": 144,
+          "endLine": 310,
+          "params": [
+            "key",
+            "length",
+            "initval"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "khrn_hashword",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_hashlittle",
+          "line": 144,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "khrn_hashword",
+          "callee": "mix",
+          "lineNumber": 97
+        },
+        {
+          "caller": "khrn_hashword",
+          "callee": "final",
+          "lineNumber": 108
+        },
+        {
+          "caller": "khrn_hashlittle",
+          "callee": "mix",
+          "lineNumber": 162
+        },
+        {
+          "caller": "khrn_hashlittle",
+          "callee": "mix",
+          "lineNumber": 228
+        },
+        {
+          "caller": "khrn_hashlittle",
+          "callee": "mix",
+          "lineNumber": 283
+        },
+        {
+          "caller": "khrn_hashlittle",
+          "callee": "final",
+          "lineNumber": 308
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_hash.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 161,
+      "nonEmptyLines": 141,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_ids.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 440,
+      "nonEmptyLines": 416,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_image.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 299,
+      "nonEmptyLines": 266,
+      "functions": [
+        {
+          "name": "khrn_image_get_bpp",
+          "startLine": 37,
+          "endLine": 57,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_red_size",
+          "startLine": 64,
+          "endLine": 78,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_green_size",
+          "startLine": 85,
+          "endLine": 99,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_blue_size",
+          "startLine": 106,
+          "endLine": 120,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_alpha_size",
+          "startLine": 127,
+          "endLine": 143,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_z_size",
+          "startLine": 150,
+          "endLine": 163,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_stencil_size",
+          "startLine": 170,
+          "endLine": 180,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_log2_brcm2_width",
+          "startLine": 182,
+          "endLine": 202,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_log2_brcm2_height",
+          "startLine": 204,
+          "endLine": 224,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_log2_brcm1_width",
+          "startLine": 226,
+          "endLine": 229,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_get_log2_brcm1_height",
+          "startLine": 231,
+          "endLine": 234,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "khrn_image_pad_width",
+          "startLine": 240,
+          "endLine": 253,
+          "params": [
+            "format",
+            "width"
+          ]
+        },
+        {
+          "name": "khrn_image_pad_height",
+          "startLine": 255,
+          "endLine": 266,
+          "params": [
+            "format",
+            "height"
+          ]
+        },
+        {
+          "name": "khrn_image_get_stride",
+          "startLine": 268,
+          "endLine": 271,
+          "params": [
+            "format",
+            "width"
+          ]
+        },
+        {
+          "name": "khrn_image_get_size",
+          "startLine": 273,
+          "endLine": 289,
+          "params": [
+            "format",
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "khrn_image_wrap",
+          "startLine": 291,
+          "endLine": 299,
+          "params": [
+            "wrap",
+            "format",
+            "width",
+            "height",
+            "stride",
+            "storage"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "khrn_image_get_bpp",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_red_size",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_green_size",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_blue_size",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_alpha_size",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_z_size",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_stencil_size",
+          "line": 170,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_log2_brcm2_width",
+          "line": 182,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_log2_brcm2_height",
+          "line": 204,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_log2_brcm1_width",
+          "line": 226,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_log2_brcm1_height",
+          "line": 231,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_pad_width",
+          "line": 240,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_pad_height",
+          "line": 255,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_stride",
+          "line": 268,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_get_size",
+          "line": 273,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_image_wrap",
+          "line": 291,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "khrn_image_get_bpp",
+          "callee": "vcos_assert",
+          "lineNumber": 39
+        },
+        {
+          "caller": "khrn_image_get_bpp",
+          "callee": "UNREACHABLE",
+          "lineNumber": 51
+        },
+        {
+          "caller": "khrn_image_get_bpp",
+          "callee": "UNREACHABLE",
+          "lineNumber": 55
+        },
+        {
+          "caller": "khrn_image_get_red_size",
+          "callee": "khrn_image_is_color",
+          "lineNumber": 66
+        },
+        {
+          "caller": "khrn_image_get_red_size",
+          "callee": "UNREACHABLE",
+          "lineNumber": 73
+        },
+        {
+          "caller": "khrn_image_get_green_size",
+          "callee": "khrn_image_is_color",
+          "lineNumber": 87
+        },
+        {
+          "caller": "khrn_image_get_green_size",
+          "callee": "UNREACHABLE",
+          "lineNumber": 94
+        },
+        {
+          "caller": "khrn_image_get_blue_size",
+          "callee": "khrn_image_is_color",
+          "lineNumber": 108
+        },
+        {
+          "caller": "khrn_image_get_blue_size",
+          "callee": "UNREACHABLE",
+          "lineNumber": 115
+        },
+        {
+          "caller": "khrn_image_get_alpha_size",
+          "callee": "khrn_image_is_color",
+          "lineNumber": 129
+        },
+        {
+          "caller": "khrn_image_get_alpha_size",
+          "callee": "UNREACHABLE",
+          "lineNumber": 138
+        },
+        {
+          "caller": "khrn_image_get_z_size",
+          "callee": "khrn_image_is_depth",
+          "lineNumber": 152
+        },
+        {
+          "caller": "khrn_image_get_z_size",
+          "callee": "UNREACHABLE",
+          "lineNumber": 158
+        },
+        {
+          "caller": "khrn_image_get_stencil_size",
+          "callee": "khrn_image_is_depth",
+          "lineNumber": 172
+        },
+        {
+          "caller": "khrn_image_get_stencil_size",
+          "callee": "vcos_assert",
+          "lineNumber": 175
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_width",
+          "callee": "vcos_assert",
+          "lineNumber": 184
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_width",
+          "callee": "khrn_image_is_brcm1",
+          "lineNumber": 184
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_width",
+          "callee": "khrn_image_is_brcm2",
+          "lineNumber": 184
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_width",
+          "callee": "UNREACHABLE",
+          "lineNumber": 195
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_width",
+          "callee": "UNREACHABLE",
+          "lineNumber": 200
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_height",
+          "callee": "vcos_assert",
+          "lineNumber": 206
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_height",
+          "callee": "khrn_image_is_brcm1",
+          "lineNumber": 206
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_height",
+          "callee": "khrn_image_is_brcm2",
+          "lineNumber": 206
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_height",
+          "callee": "UNREACHABLE",
+          "lineNumber": 217
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm2_height",
+          "callee": "UNREACHABLE",
+          "lineNumber": 222
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm1_width",
+          "callee": "khrn_image_get_log2_brcm2_width",
+          "lineNumber": 228
+        },
+        {
+          "caller": "khrn_image_get_log2_brcm1_height",
+          "callee": "khrn_image_get_log2_brcm2_height",
+          "lineNumber": 233
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "vcos_assert",
+          "lineNumber": 242
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "vcos_assert",
+          "lineNumber": 246
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "khrn_image_get_bpp",
+          "lineNumber": 246
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "round_up",
+          "lineNumber": 248
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "khrn_image_get_log2_brcm1_width",
+          "lineNumber": 248
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "round_up",
+          "lineNumber": 249
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "khrn_image_get_log2_brcm2_width",
+          "lineNumber": 249
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "round_up",
+          "lineNumber": 250
+        },
+        {
+          "caller": "khrn_image_pad_width",
+          "callee": "UNREACHABLE",
+          "lineNumber": 251
+        },
+        {
+          "caller": "khrn_image_pad_height",
+          "callee": "vcos_assert",
+          "lineNumber": 257
+        },
+        {
+          "caller": "khrn_image_pad_height",
+          "callee": "round_up",
+          "lineNumber": 261
+        },
+        {
+          "caller": "khrn_image_pad_height",
+          "callee": "khrn_image_get_log2_brcm1_height",
+          "lineNumber": 261
+        },
+        {
+          "caller": "khrn_image_pad_height",
+          "callee": "round_up",
+          "lineNumber": 262
+        },
+        {
+          "caller": "khrn_image_pad_height",
+          "callee": "khrn_image_get_log2_brcm2_height",
+          "lineNumber": 262
+        },
+        {
+          "caller": "khrn_image_pad_height",
+          "callee": "round_up",
+          "lineNumber": 263
+        },
+        {
+          "caller": "khrn_image_pad_height",
+          "callee": "UNREACHABLE",
+          "lineNumber": 264
+        },
+        {
+          "caller": "khrn_image_get_stride",
+          "callee": "khrn_image_pad_width",
+          "lineNumber": 270
+        },
+        {
+          "caller": "khrn_image_get_stride",
+          "callee": "khrn_image_get_bpp",
+          "lineNumber": 270
+        },
+        {
+          "caller": "khrn_image_get_size",
+          "callee": "khrn_image_get_stride",
+          "lineNumber": 275
+        },
+        {
+          "caller": "khrn_image_get_size",
+          "callee": "khrn_image_pad_height",
+          "lineNumber": 275
+        },
+        {
+          "caller": "khrn_image_get_size",
+          "callee": "khrn_image_is_brcm1",
+          "lineNumber": 277
+        },
+        {
+          "caller": "khrn_image_get_size",
+          "callee": "khrn_image_is_brcm2",
+          "lineNumber": 277
+        },
+        {
+          "caller": "khrn_image_get_size",
+          "callee": "khrn_image_get_log2_brcm2_width",
+          "lineNumber": 278
+        },
+        {
+          "caller": "khrn_image_get_size",
+          "callee": "khrn_image_get_log2_brcm2_height",
+          "lineNumber": 279
+        },
+        {
+          "caller": "khrn_image_get_size",
+          "callee": "_max",
+          "lineNumber": 285
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 16,
+        "functionCount": 16,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_image.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 383,
+      "nonEmptyLines": 319,
+      "callGraph": [
+        {
+          "caller": "khrn_image_is_rso",
+          "callee": "vcos_assert",
+          "lineNumber": 270
+        },
+        {
+          "caller": "khrn_image_is_brcm1",
+          "callee": "vcos_assert",
+          "lineNumber": 276
+        },
+        {
+          "caller": "khrn_image_is_brcm2",
+          "callee": "vcos_assert",
+          "lineNumber": 282
+        },
+        {
+          "caller": "khrn_image_to_rso_format",
+          "callee": "vcos_assert",
+          "lineNumber": 288
+        },
+        {
+          "caller": "khrn_image_to_rso_format",
+          "callee": "(KHRN_IMAGE_FORMAT_T)",
+          "lineNumber": 289
+        },
+        {
+          "caller": "khrn_image_to_tf_format",
+          "callee": "vcos_assert",
+          "lineNumber": 294
+        },
+        {
+          "caller": "khrn_image_to_tf_format",
+          "callee": "(KHRN_IMAGE_FORMAT_T)",
+          "lineNumber": 295
+        },
+        {
+          "caller": "khrn_image_to_lt_format",
+          "callee": "vcos_assert",
+          "lineNumber": 300
+        },
+        {
+          "caller": "khrn_image_to_lt_format",
+          "callee": "(KHRN_IMAGE_FORMAT_T)",
+          "lineNumber": 301
+        },
+        {
+          "caller": "khrn_image_is_uncomp",
+          "callee": "vcos_assert",
+          "lineNumber": 306
+        },
+        {
+          "caller": "khrn_image_is_color",
+          "callee": "vcos_assert",
+          "lineNumber": 312
+        },
+        {
+          "caller": "khrn_image_is_gray",
+          "callee": "vcos_assert",
+          "lineNumber": 318
+        },
+        {
+          "caller": "khrn_image_is_paletted",
+          "callee": "vcos_assert",
+          "lineNumber": 324
+        },
+        {
+          "caller": "khrn_image_is_depth",
+          "callee": "vcos_assert",
+          "lineNumber": 330
+        },
+        {
+          "caller": "khrn_image_is_etc1",
+          "callee": "vcos_assert",
+          "lineNumber": 336
+        },
+        {
+          "caller": "khrn_image_is_yuv422",
+          "callee": "vcos_assert",
+          "lineNumber": 342
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_math.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 182,
+      "nonEmptyLines": 151,
+      "callGraph": [
+        {
+          "caller": "floor_",
+          "callee": "floorf",
+          "lineNumber": 43
+        },
+        {
+          "caller": "ceil_",
+          "callee": "ceilf",
+          "lineNumber": 48
+        },
+        {
+          "caller": "modf_",
+          "callee": "fmodf",
+          "lineNumber": 69
+        },
+        {
+          "caller": "sin_cos_",
+          "callee": "sinf",
+          "lineNumber": 74
+        },
+        {
+          "caller": "sin_cos_",
+          "callee": "cosf",
+          "lineNumber": 75
+        },
+        {
+          "caller": "sin_",
+          "callee": "sinf",
+          "lineNumber": 80
+        },
+        {
+          "caller": "cos_",
+          "callee": "cosf",
+          "lineNumber": 85
+        },
+        {
+          "caller": "atan2_",
+          "callee": "atan2f",
+          "lineNumber": 90
+        },
+        {
+          "caller": "exp_",
+          "callee": "expf",
+          "lineNumber": 97
+        },
+        {
+          "caller": "nan_recip_",
+          "callee": "_frecip",
+          "lineNumber": 107
+        },
+        {
+          "caller": "rsqrt_",
+          "callee": "vcos_verify",
+          "lineNumber": 114
+        },
+        {
+          "caller": "rsqrt_",
+          "callee": "_frsqrt",
+          "lineNumber": 116
+        },
+        {
+          "caller": "rsqrt_",
+          "callee": "vcos_verify",
+          "lineNumber": 128
+        },
+        {
+          "caller": "rsqrt_",
+          "callee": "sqrtf",
+          "lineNumber": 130
+        },
+        {
+          "caller": "recip_",
+          "callee": "vcos_verify",
+          "lineNumber": 137
+        },
+        {
+          "caller": "recip_",
+          "callee": "nan_recip_",
+          "lineNumber": 139
+        },
+        {
+          "caller": "is_nan_",
+          "callee": "float_to_bits",
+          "lineNumber": 144
+        },
+        {
+          "caller": "nan_lt_",
+          "callee": "is_nan_",
+          "lineNumber": 153
+        },
+        {
+          "caller": "nan_lt_",
+          "callee": "is_nan_",
+          "lineNumber": 153
+        },
+        {
+          "caller": "nan_gt_",
+          "callee": "is_nan_",
+          "lineNumber": 162
+        },
+        {
+          "caller": "nan_gt_",
+          "callee": "is_nan_",
+          "lineNumber": 162
+        },
+        {
+          "caller": "nan_ne_",
+          "callee": "is_nan_",
+          "lineNumber": 171
+        },
+        {
+          "caller": "nan_ne_",
+          "callee": "is_nan_",
+          "lineNumber": 171
+        },
+        {
+          "caller": "sqrt_",
+          "callee": "vcos_assert",
+          "lineNumber": 178
+        },
+        {
+          "caller": "sqrt_",
+          "callee": "nan_lt_",
+          "lineNumber": 178
+        },
+        {
+          "caller": "sqrt_",
+          "callee": "sqrtf",
+          "lineNumber": 179
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_misc_impl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_util_cr.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 141,
+      "nonEmptyLines": 98,
+      "functions": [
+        {
+          "name": "clean_boolean",
+          "startLine": 28,
+          "endLine": 31,
+          "params": [
+            "b"
+          ]
+        },
+        {
+          "name": "clean_float",
+          "startLine": 51,
+          "endLine": 63,
+          "params": [
+            "f"
+          ]
+        },
+        {
+          "name": "clampf",
+          "startLine": 86,
+          "endLine": 93,
+          "params": [
+            "x",
+            "l",
+            "u"
+          ]
+        },
+        {
+          "name": "fixed_to_float",
+          "startLine": 117,
+          "endLine": 120,
+          "params": [
+            "f"
+          ]
+        },
+        {
+          "name": "clampi",
+          "startLine": 136,
+          "endLine": 141,
+          "params": [
+            "x",
+            "l",
+            "u"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "clean_float",
+          "callee": "float_to_bits",
+          "lineNumber": 53
+        },
+        {
+          "caller": "clampf",
+          "callee": "vcos_assert",
+          "lineNumber": 88
+        },
+        {
+          "caller": "clampf",
+          "callee": "clean_float",
+          "lineNumber": 90
+        },
+        {
+          "caller": "clampf",
+          "callee": "_maxf",
+          "lineNumber": 92
+        },
+        {
+          "caller": "clampf",
+          "callee": "_minf",
+          "lineNumber": 92
+        },
+        {
+          "caller": "clampi",
+          "callee": "vcos_assert",
+          "lineNumber": 138
+        },
+        {
+          "caller": "clampi",
+          "callee": "_max",
+          "lineNumber": 140
+        },
+        {
+          "caller": "clampi",
+          "callee": "_min",
+          "lineNumber": 140
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_util.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 163,
+      "nonEmptyLines": 137,
+      "functions": [
+        {
+          "name": "khrn_clip_range",
+          "startLine": 35,
+          "endLine": 63,
+          "params": [
+            "min_x0_io",
+            "l0_io",
+            "min_x1",
+            "l1"
+          ]
+        },
+        {
+          "name": "khrn_clip_range2",
+          "startLine": 65,
+          "endLine": 119,
+          "params": [
+            "min_ax0_io",
+            "min_bx0_io",
+            "l0_io",
+            "min_ax1",
+            "al1",
+            "min_bx1",
+            "bl1"
+          ]
+        },
+        {
+          "name": "khrn_clip_rect",
+          "startLine": 121,
+          "endLine": 127,
+          "params": [
+            "x0",
+            "y0",
+            "w0",
+            "h0",
+            "x1",
+            "y1",
+            "w1",
+            "h1"
+          ]
+        },
+        {
+          "name": "khrn_clip_rect2",
+          "startLine": 129,
+          "endLine": 136,
+          "params": [
+            "ax0",
+            "ay0",
+            "bx0",
+            "by0",
+            "w0",
+            "h0",
+            "ax1",
+            "ay1",
+            "aw1",
+            "ah1",
+            "bx1",
+            "by1",
+            "bw1",
+            "bh1"
+          ]
+        },
+        {
+          "name": "khrn_get_type_size",
+          "startLine": 138,
+          "endLine": 155,
+          "params": [
+            "type"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "khrn_clip_range",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_clip_range2",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_clip_rect",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_clip_rect2",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_get_type_size",
+          "line": 138,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "khrn_clip_range",
+          "callee": "vcos_assert",
+          "lineNumber": 44
+        },
+        {
+          "caller": "khrn_clip_range",
+          "callee": "_adds",
+          "lineNumber": 49
+        },
+        {
+          "caller": "khrn_clip_range",
+          "callee": "_max",
+          "lineNumber": 59
+        },
+        {
+          "caller": "khrn_clip_range",
+          "callee": "_subs",
+          "lineNumber": 59
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "vcos_assert",
+          "lineNumber": 78
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_adds",
+          "lineNumber": 84
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_max",
+          "lineNumber": 84
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_max",
+          "lineNumber": 84
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_adds",
+          "lineNumber": 96
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_subs",
+          "lineNumber": 96
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_subs",
+          "lineNumber": 100
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_subs",
+          "lineNumber": 100
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_adds",
+          "lineNumber": 105
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_subs",
+          "lineNumber": 105
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_subs",
+          "lineNumber": 109
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_subs",
+          "lineNumber": 109
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_max",
+          "lineNumber": 113
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_subs",
+          "lineNumber": 113
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "vcos_assert",
+          "lineNumber": 114
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_max",
+          "lineNumber": 114
+        },
+        {
+          "caller": "khrn_clip_range2",
+          "callee": "_subs",
+          "lineNumber": 114
+        },
+        {
+          "caller": "khrn_clip_rect",
+          "callee": "khrn_clip_range",
+          "lineNumber": 125
+        },
+        {
+          "caller": "khrn_clip_rect",
+          "callee": "khrn_clip_range",
+          "lineNumber": 126
+        },
+        {
+          "caller": "khrn_clip_rect2",
+          "callee": "khrn_clip_range2",
+          "lineNumber": 134
+        },
+        {
+          "caller": "khrn_clip_rect2",
+          "callee": "khrn_clip_range2",
+          "lineNumber": 135
+        },
+        {
+          "caller": "khrn_get_type_size",
+          "callee": "UNREACHABLE",
+          "lineNumber": 152
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_int_util.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 511,
+      "nonEmptyLines": 426,
+      "callGraph": [
+        {
+          "caller": "_msb",
+          "callee": "__clz",
+          "lineNumber": 80
+        },
+        {
+          "caller": "_msb",
+          "callee": "__builtin_clz",
+          "lineNumber": 85
+        },
+        {
+          "caller": "_bitrev",
+          "callee": "__rbit",
+          "lineNumber": 112
+        },
+        {
+          "caller": "_adds",
+          "callee": "__qadd",
+          "lineNumber": 129
+        },
+        {
+          "caller": "_subs",
+          "callee": "__qsub",
+          "lineNumber": 134
+        },
+        {
+          "caller": "_ror",
+          "callee": "__ror",
+          "lineNumber": 139
+        },
+        {
+          "caller": "next_power_of_2",
+          "callee": "is_power_of_2",
+          "lineNumber": 197
+        },
+        {
+          "caller": "next_power_of_2",
+          "callee": "_msb",
+          "lineNumber": 197
+        },
+        {
+          "caller": "round_up",
+          "callee": "vcos_assert",
+          "lineNumber": 202
+        },
+        {
+          "caller": "round_up",
+          "callee": "is_power_of_2",
+          "lineNumber": 202
+        },
+        {
+          "caller": "find_max",
+          "callee": "_max",
+          "lineNumber": 231
+        },
+        {
+          "caller": "find_max",
+          "callee": "_max",
+          "lineNumber": 240
+        },
+        {
+          "caller": "find_max",
+          "callee": "UNREACHABLE",
+          "lineNumber": 245
+        },
+        {
+          "caller": "clean_floats",
+          "callee": "clean_float",
+          "lineNumber": 285
+        },
+        {
+          "caller": "r2ni_to_r2n_bias",
+          "callee": "vcos_assert",
+          "lineNumber": 295
+        },
+        {
+          "caller": "r2ni_to_r2n_bias",
+          "callee": "float_from_bits",
+          "lineNumber": 296
+        },
+        {
+          "caller": "float_to_int_shift",
+          "callee": "vcos_assert",
+          "lineNumber": 311
+        },
+        {
+          "caller": "float_to_int_shift",
+          "callee": "r2ni_to_r2n_bias",
+          "lineNumber": 312
+        },
+        {
+          "caller": "float_to_int_shift",
+          "callee": "float_from_bits",
+          "lineNumber": 313
+        },
+        {
+          "caller": "float_to_int_shift",
+          "callee": "float_from_bits",
+          "lineNumber": 314
+        },
+        {
+          "caller": "float_to_int_shift",
+          "callee": "_floattouint",
+          "lineNumber": 315
+        },
+        {
+          "caller": "float_to_int_shift",
+          "callee": "vcos_assert",
+          "lineNumber": 317
+        },
+        {
+          "caller": "float_to_int48_shift",
+          "callee": "vcos_assert",
+          "lineNumber": 337
+        },
+        {
+          "caller": "float_to_int48_shift",
+          "callee": "r2ni_to_r2n_bias",
+          "lineNumber": 338
+        },
+        {
+          "caller": "float_to_int48_shift",
+          "callee": "float_from_bits",
+          "lineNumber": 339
+        },
+        {
+          "caller": "float_to_int48_shift",
+          "callee": "float_from_bits",
+          "lineNumber": 340
+        },
+        {
+          "caller": "float_to_int48_shift",
+          "callee": "_floattouint",
+          "lineNumber": 341
+        },
+        {
+          "caller": "float_to_int48_shift",
+          "callee": "_floattouint",
+          "lineNumber": 341
+        },
+        {
+          "caller": "float_to_int",
+          "callee": "float_to_int_shift",
+          "lineNumber": 352
+        },
+        {
+          "caller": "float_to_int_floor",
+          "callee": "float_to_bits",
+          "lineNumber": 368
+        },
+        {
+          "caller": "float_to_int_floor",
+          "callee": "floorf",
+          "lineNumber": 373
+        },
+        {
+          "caller": "float_to_fixed",
+          "callee": "float_to_int_shift",
+          "lineNumber": 405
+        },
+        {
+          "caller": "floats_identical",
+          "callee": "float_to_bits",
+          "lineNumber": 414
+        },
+        {
+          "caller": "floats_identical",
+          "callee": "float_to_bits",
+          "lineNumber": 414
+        },
+        {
+          "caller": "is_zero",
+          "callee": "float_to_bits",
+          "lineNumber": 419
+        },
+        {
+          "caller": "is_le_zero",
+          "callee": "float_to_bits",
+          "lineNumber": 425
+        },
+        {
+          "caller": "khrn_rects_intersect",
+          "callee": "khrn_ranges_intersect",
+          "lineNumber": 493
+        },
+        {
+          "caller": "khrn_rects_intersect",
+          "callee": "khrn_ranges_intersect",
+          "lineNumber": 493
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_options.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 108,
+      "callGraph": [
+        {
+          "caller": "khrn_init_options",
+          "callee": "memset",
+          "lineNumber": 45
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "printk",
+          "lineNumber": 52
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "printk",
+          "lineNumber": 55
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "printk",
+          "lineNumber": 56
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "printk",
+          "lineNumber": 57
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "printk",
+          "lineNumber": 58
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "printk",
+          "lineNumber": 59
+        },
+        {
+          "caller": "read_bool_option",
+          "callee": "getenv",
+          "lineNumber": 70
+        },
+        {
+          "caller": "read_uint32_option",
+          "callee": "getenv",
+          "lineNumber": 83
+        },
+        {
+          "caller": "read_uint32_option",
+          "callee": "atoi",
+          "lineNumber": 89
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "memset",
+          "lineNumber": 97
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "read_bool_option",
+          "lineNumber": 101
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "read_bool_option",
+          "lineNumber": 102
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "read_bool_option",
+          "lineNumber": 103
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "read_bool_option",
+          "lineNumber": 104
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "read_bool_option",
+          "lineNumber": 105
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "read_bool_option",
+          "lineNumber": 106
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "read_uint32_option",
+          "lineNumber": 108
+        },
+        {
+          "caller": "khrn_init_options",
+          "callee": "read_uint32_option",
+          "lineNumber": 109
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "fprintf",
+          "lineNumber": 117
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "fprintf",
+          "lineNumber": 120
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "fprintf",
+          "lineNumber": 121
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "fprintf",
+          "lineNumber": 122
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "fprintf",
+          "lineNumber": 123
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "fprintf",
+          "lineNumber": 124
+        },
+        {
+          "caller": "khrn_error_assist",
+          "callee": "fflush",
+          "lineNumber": 126
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_options.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 46,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/v3d_ver.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_config_cr.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 776,
+      "nonEmptyLines": 660,
+      "functions": [
+        {
+          "name": "egl_config_check_attribs",
+          "startLine": 107,
+          "endLine": 255,
+          "params": [
+            "attrib_list",
+            "use_red",
+            "use_green",
+            "use_blue",
+            "use_alpha"
+          ]
+        },
+        {
+          "name": "less_than",
+          "startLine": 339,
+          "endLine": 385,
+          "params": [
+            "id0",
+            "id1",
+            "use_red",
+            "use_green",
+            "use_blue",
+            "use_alpha"
+          ]
+        },
+        {
+          "name": "egl_config_sort",
+          "startLine": 414,
+          "endLine": 425,
+          "params": [
+            "ids",
+            "use_red",
+            "use_green",
+            "use_blue",
+            "use_alpha"
+          ]
+        },
+        {
+          "name": "egl_config_get_attrib",
+          "startLine": 459,
+          "endLine": 594,
+          "params": [
+            "id",
+            "attrib",
+            "value"
+          ]
+        },
+        {
+          "name": "egl_config_filter",
+          "startLine": 633,
+          "endLine": 776,
+          "params": [
+            "id",
+            "attrib_list"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "egl_config_check_attribs",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_sort",
+          "line": 414,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_get_attrib",
+          "line": 459,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_filter",
+          "line": 633,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "egl_config_check_attribs",
+          "callee": "platform_get_pixmap_info",
+          "lineNumber": 172
+        },
+        {
+          "caller": "egl_config_check_attribs",
+          "callee": "khrn_platform_release_pixmap_info",
+          "lineNumber": 174
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_COLOR",
+          "lineNumber": 344
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_COLOR",
+          "lineNumber": 345
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_MULTI",
+          "lineNumber": 347
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_MULTI",
+          "lineNumber": 348
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_DEPTH",
+          "lineNumber": 350
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_DEPTH",
+          "lineNumber": 351
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_STENCIL",
+          "lineNumber": 353
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_STENCIL",
+          "lineNumber": 354
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_MASK",
+          "lineNumber": 356
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_MASK",
+          "lineNumber": 357
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_RED",
+          "lineNumber": 363
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_RED",
+          "lineNumber": 364
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_GREEN",
+          "lineNumber": 367
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_GREEN",
+          "lineNumber": 368
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_BLUE",
+          "lineNumber": 371
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_BLUE",
+          "lineNumber": 372
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_ALPHA",
+          "lineNumber": 375
+        },
+        {
+          "caller": "less_than",
+          "callee": "FEATURES_UNPACK_ALPHA",
+          "lineNumber": 376
+        },
+        {
+          "caller": "egl_config_sort",
+          "callee": "less_than",
+          "lineNumber": 420
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_COLOR",
+          "lineNumber": 465
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_RED",
+          "lineNumber": 468
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_GREEN",
+          "lineNumber": 471
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_BLUE",
+          "lineNumber": 474
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_ALPHA",
+          "lineNumber": 480
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_MASK",
+          "lineNumber": 483
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "bindable_rgb",
+          "lineNumber": 486
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "bindable_rgba",
+          "lineNumber": 489
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_from_id",
+          "lineNumber": 498
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_get_api_conformance",
+          "lineNumber": 501
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_DEPTH",
+          "lineNumber": 504
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "platform_get_color_format",
+          "lineNumber": 531
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_get_color_format",
+          "lineNumber": 531
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_get_api_support",
+          "lineNumber": 537
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_MULTI",
+          "lineNumber": 540
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_MULTI",
+          "lineNumber": 543
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "FEATURES_UNPACK_STENCIL",
+          "lineNumber": 546
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "(EGLint)",
+          "lineNumber": 549
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_is_lockable",
+          "lineNumber": 551
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_get_mapped_format",
+          "lineNumber": 554
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_get_color_format",
+          "lineNumber": 554
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_is_lockable",
+          "lineNumber": 569
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "egl_config_get_mapped_format",
+          "lineNumber": 572
+        },
+        {
+          "caller": "egl_config_get_attrib",
+          "callee": "UNREACHABLE",
+          "lineNumber": 581
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "egl_config_get_attrib",
+          "lineNumber": 643
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "UNREACHABLE",
+          "lineNumber": 645
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "platform_get_pixmap_info",
+          "lineNumber": 708
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "UNREACHABLE",
+          "lineNumber": 714
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "egl_config_match_pixmap_info",
+          "lineNumber": 717
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "platform_match_pixmap_api_support",
+          "lineNumber": 718
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "egl_config_get_api_support",
+          "lineNumber": 718
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "khrn_platform_release_pixmap_info",
+          "lineNumber": 720
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "khrn_platform_release_pixmap_info",
+          "lineNumber": 724
+        },
+        {
+          "caller": "egl_config_filter",
+          "callee": "UNREACHABLE",
+          "lineNumber": 770
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_config.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 410,
+      "nonEmptyLines": 299,
+      "functions": [
+        {
+          "name": "egl_config_install_configs",
+          "startLine": 94,
+          "endLine": 102,
+          "params": [
+            "type"
+          ]
+        },
+        {
+          "name": "egl_config_get_color_format",
+          "startLine": 125,
+          "endLine": 130,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "egl_config_get_depth_format",
+          "startLine": 144,
+          "endLine": 149,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "egl_config_get_mask_format",
+          "startLine": 163,
+          "endLine": 168,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "egl_config_get_multisample_format",
+          "startLine": 182,
+          "endLine": 187,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "egl_config_get_multisample",
+          "startLine": 201,
+          "endLine": 206,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "bindable_rgb",
+          "startLine": 221,
+          "endLine": 224,
+          "params": [
+            "features"
+          ]
+        },
+        {
+          "name": "bindable_rgba",
+          "startLine": 226,
+          "endLine": 229,
+          "params": [
+            "features"
+          ]
+        },
+        {
+          "name": "egl_config_bindable",
+          "startLine": 231,
+          "endLine": 245,
+          "params": [
+            "id",
+            "format"
+          ]
+        },
+        {
+          "name": "egl_config_match_pixmap_info",
+          "startLine": 265,
+          "endLine": 277,
+          "params": [
+            "id",
+            "image"
+          ]
+        },
+        {
+          "name": "egl_config_get_api_support",
+          "startLine": 291,
+          "endLine": 323,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "egl_config_get_api_conformance",
+          "startLine": 337,
+          "endLine": 341,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "egl_config_bpps_match",
+          "startLine": 343,
+          "endLine": 356,
+          "params": [
+            "id0",
+            "id1"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "egl_config_install_configs",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_get_color_format",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_get_depth_format",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_get_mask_format",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_get_multisample_format",
+          "line": 182,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_get_multisample",
+          "line": 201,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_bindable",
+          "line": 231,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_match_pixmap_info",
+          "line": 265,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_get_api_support",
+          "line": 291,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_get_api_conformance",
+          "line": 337,
+          "isDefault": false
+        },
+        {
+          "name": "egl_config_bpps_match",
+          "line": 343,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "egl_config_install_configs",
+          "callee": "ARR_COUNT",
+          "lineNumber": 97
+        },
+        {
+          "caller": "egl_config_install_configs",
+          "callee": "khrn_image_to_rso_format",
+          "lineNumber": 99
+        },
+        {
+          "caller": "egl_config_install_configs",
+          "callee": "khrn_image_to_tf_format",
+          "lineNumber": 100
+        },
+        {
+          "caller": "egl_config_get_color_format",
+          "callee": "vcos_assert",
+          "lineNumber": 127
+        },
+        {
+          "caller": "egl_config_get_depth_format",
+          "callee": "vcos_assert",
+          "lineNumber": 146
+        },
+        {
+          "caller": "egl_config_get_mask_format",
+          "callee": "vcos_assert",
+          "lineNumber": 165
+        },
+        {
+          "caller": "egl_config_get_multisample_format",
+          "callee": "vcos_assert",
+          "lineNumber": 184
+        },
+        {
+          "caller": "egl_config_get_multisample",
+          "callee": "vcos_assert",
+          "lineNumber": 203
+        },
+        {
+          "caller": "egl_config_get_multisample",
+          "callee": "FEATURES_UNPACK_MULTI",
+          "lineNumber": 205
+        },
+        {
+          "caller": "bindable_rgb",
+          "callee": "FEATURES_UNPACK_MULTI",
+          "lineNumber": 223
+        },
+        {
+          "caller": "bindable_rgb",
+          "callee": "FEATURES_UNPACK_ALPHA",
+          "lineNumber": 223
+        },
+        {
+          "caller": "bindable_rgba",
+          "callee": "FEATURES_UNPACK_MULTI",
+          "lineNumber": 228
+        },
+        {
+          "caller": "egl_config_bindable",
+          "callee": "vcos_assert",
+          "lineNumber": 233
+        },
+        {
+          "caller": "egl_config_bindable",
+          "callee": "bindable_rgb",
+          "lineNumber": 238
+        },
+        {
+          "caller": "egl_config_bindable",
+          "callee": "bindable_rgba",
+          "lineNumber": 240
+        },
+        {
+          "caller": "egl_config_bindable",
+          "callee": "UNREACHABLE",
+          "lineNumber": 242
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "vcos_assert",
+          "lineNumber": 270
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "khrn_image_get_red_size",
+          "lineNumber": 273
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "FEATURES_UNPACK_RED",
+          "lineNumber": 273
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "khrn_image_get_green_size",
+          "lineNumber": 274
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "FEATURES_UNPACK_GREEN",
+          "lineNumber": 274
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "khrn_image_get_blue_size",
+          "lineNumber": 275
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "FEATURES_UNPACK_BLUE",
+          "lineNumber": 275
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "khrn_image_get_alpha_size",
+          "lineNumber": 276
+        },
+        {
+          "caller": "egl_config_match_pixmap_info",
+          "callee": "FEATURES_UNPACK_ALPHA",
+          "lineNumber": 276
+        },
+        {
+          "caller": "egl_config_get_api_support",
+          "callee": "egl_config_is_lockable",
+          "lineNumber": 303
+        },
+        {
+          "caller": "egl_config_get_api_support",
+          "callee": "egl_config_get_color_format",
+          "lineNumber": 308
+        },
+        {
+          "caller": "egl_config_get_api_conformance",
+          "callee": "egl_config_get_api_support",
+          "lineNumber": 340
+        },
+        {
+          "caller": "egl_config_get_api_conformance",
+          "callee": "FEATURES_UNPACK_MULTI",
+          "lineNumber": 340
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_RED",
+          "lineNumber": 349
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_RED",
+          "lineNumber": 349
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_GREEN",
+          "lineNumber": 350
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_GREEN",
+          "lineNumber": 350
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_BLUE",
+          "lineNumber": 351
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_BLUE",
+          "lineNumber": 351
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_ALPHA",
+          "lineNumber": 352
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_ALPHA",
+          "lineNumber": 352
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_DEPTH",
+          "lineNumber": 353
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_DEPTH",
+          "lineNumber": 353
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_STENCIL",
+          "lineNumber": 354
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_STENCIL",
+          "lineNumber": 354
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_MASK",
+          "lineNumber": 355
+        },
+        {
+          "caller": "egl_config_bpps_match",
+          "callee": "FEATURES_UNPACK_MASK",
+          "lineNumber": 355
+        },
+        {
+          "caller": "egl_config_get_mapped_format",
+          "callee": "vcos_assert",
+          "lineNumber": 379
+        },
+        {
+          "caller": "egl_config_get_mapped_format",
+          "callee": "vcos_assert",
+          "lineNumber": 380
+        },
+        {
+          "caller": "egl_config_get_mapped_format",
+          "callee": "FEATURES_UNPACK_LOCKABLE",
+          "lineNumber": 380
+        },
+        {
+          "caller": "egl_config_get_mapped_format",
+          "callee": "egl_config_get_color_format",
+          "lineNumber": 383
+        },
+        {
+          "caller": "egl_config_get_mapped_format",
+          "callee": "vcos_assert",
+          "lineNumber": 384
+        },
+        {
+          "caller": "egl_config_get_mapped_format",
+          "callee": "khrn_image_is_rso",
+          "lineNumber": 384
+        },
+        {
+          "caller": "egl_config_is_lockable",
+          "callee": "vcos_assert",
+          "lineNumber": 402
+        },
+        {
+          "caller": "egl_config_is_lockable",
+          "callee": "FEATURES_UNPACK_LOCKABLE",
+          "lineNumber": 403
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 11,
+        "functionCount": 13,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 146,
+      "nonEmptyLines": 108,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_context.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 341,
+      "nonEmptyLines": 296,
+      "functions": [
+        {
+          "name": "egl_context_check_attribs",
+          "startLine": 44,
+          "endLine": 68,
+          "params": [
+            "attrib_list",
+            "max_version",
+            "version"
+          ]
+        },
+        {
+          "name": "egl_context_term",
+          "startLine": 185,
+          "endLine": 218,
+          "params": [
+            "context"
+          ]
+        },
+        {
+          "name": "egl_context_get_attrib",
+          "startLine": 220,
+          "endLine": 263,
+          "params": [
+            "context",
+            "attrib",
+            "value"
+          ]
+        },
+        {
+          "name": "egl_context_set_callbacks",
+          "startLine": 265,
+          "endLine": 296,
+          "params": [
+            "context"
+          ]
+        },
+        {
+          "name": "egl_context_maybe_free",
+          "startLine": 329,
+          "endLine": 341,
+          "params": [
+            "context"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "egl_context_check_attribs",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "egl_context_term",
+          "line": 185,
+          "isDefault": false
+        },
+        {
+          "name": "egl_context_get_attrib",
+          "line": 220,
+          "isDefault": false
+        },
+        {
+          "name": "egl_context_set_callbacks",
+          "line": 265,
+          "isDefault": false
+        },
+        {
+          "name": "egl_context_maybe_free",
+          "line": 329,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "egl_context_term",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 187
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "vcos_assert",
+          "lineNumber": 190
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "vcos_assert",
+          "lineNumber": 191
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "RPC_CALL1",
+          "lineNumber": 196
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "RPC_UINT",
+          "lineNumber": 199
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "RPC_FLUSH",
+          "lineNumber": 200
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "vg_client_state_free",
+          "lineNumber": 201
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "RPC_CALL1",
+          "lineNumber": 206
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "RPC_UINT",
+          "lineNumber": 209
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "RPC_FLUSH",
+          "lineNumber": 210
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "glxx_client_state_free",
+          "lineNumber": 211
+        },
+        {
+          "caller": "egl_context_term",
+          "callee": "UNREACHABLE",
+          "lineNumber": 214
+        },
+        {
+          "caller": "egl_context_get_attrib",
+          "callee": "UNREACHABLE",
+          "lineNumber": 236
+        },
+        {
+          "caller": "egl_context_get_attrib",
+          "callee": "UNREACHABLE",
+          "lineNumber": 250
+        },
+        {
+          "caller": "egl_context_set_callbacks",
+          "callee": "UNREACHABLE",
+          "lineNumber": 294
+        },
+        {
+          "caller": "egl_context_maybe_free",
+          "callee": "vcos_assert",
+          "lineNumber": 331
+        },
+        {
+          "caller": "egl_context_maybe_free",
+          "callee": "egl_context_term",
+          "lineNumber": 339
+        },
+        {
+          "caller": "egl_context_maybe_free",
+          "callee": "khrn_platform_free",
+          "lineNumber": 340
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_context.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 81,
+      "nonEmptyLines": 62,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_cr.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 579,
+      "nonEmptyLines": 477,
+      "functions": [
+        {
+          "name": "eglGetError",
+          "startLine": 110,
+          "endLine": 127,
+          "params": []
+        },
+        {
+          "name": "eglGetDisplay",
+          "startLine": 170,
+          "endLine": 177,
+          "params": [
+            "display_id"
+          ]
+        },
+        {
+          "name": "eglGetConfigs",
+          "startLine": 235,
+          "endLine": 265,
+          "params": [
+            "dpy",
+            "configs",
+            "config_size",
+            "num_config"
+          ]
+        },
+        {
+          "name": "choose_config",
+          "startLine": 401,
+          "endLine": 472,
+          "params": [
+            "dpy",
+            "attrib_list",
+            "configs",
+            "config_size",
+            "num_config",
+            "sane"
+          ]
+        },
+        {
+          "name": "eglChooseConfig",
+          "startLine": 474,
+          "endLine": 477,
+          "params": [
+            "dpy",
+            "attrib_list",
+            "configs",
+            "config_size",
+            "num_config"
+          ]
+        },
+        {
+          "name": "eglGetConfigAttrib",
+          "startLine": 552,
+          "endLine": 579,
+          "params": [
+            "dpy",
+            "config",
+            "attribute",
+            "value"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "eglGetError",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "eglGetDisplay",
+          "line": 170,
+          "isDefault": false
+        },
+        {
+          "name": "eglGetConfigs",
+          "line": 235,
+          "isDefault": false
+        },
+        {
+          "name": "eglChooseConfig",
+          "line": 474,
+          "isDefault": false
+        },
+        {
+          "name": "eglGetConfigAttrib",
+          "line": 552,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "eglGetError",
+          "callee": "CLIENT_GET_CHECK_THREAD_STATE",
+          "lineNumber": 112
+        },
+        {
+          "caller": "eglGetError",
+          "callee": "vcos_assert",
+          "lineNumber": 118
+        },
+        {
+          "caller": "eglGetDisplay",
+          "callee": "CLIENT_GET_CHECK_THREAD_STATE",
+          "lineNumber": 172
+        },
+        {
+          "caller": "eglGetDisplay",
+          "callee": "khrn_platform_set_display_id",
+          "lineNumber": 176
+        },
+        {
+          "caller": "eglGetConfigs",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 241
+        },
+        {
+          "caller": "eglGetConfigs",
+          "callee": "egl_config_from_id",
+          "lineNumber": 253
+        },
+        {
+          "caller": "eglGetConfigs",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 259
+        },
+        {
+          "caller": "choose_config",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 407
+        },
+        {
+          "caller": "choose_config",
+          "callee": "egl_config_check_attribs",
+          "lineNumber": 423
+        },
+        {
+          "caller": "choose_config",
+          "callee": "egl_config_sort",
+          "lineNumber": 438
+        },
+        {
+          "caller": "choose_config",
+          "callee": "egl_config_filter",
+          "lineNumber": 448
+        },
+        {
+          "caller": "choose_config",
+          "callee": "egl_config_from_id",
+          "lineNumber": 450
+        },
+        {
+          "caller": "choose_config",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 466
+        },
+        {
+          "caller": "eglChooseConfig",
+          "callee": "choose_config",
+          "lineNumber": 476
+        },
+        {
+          "caller": "eglSaneChooseConfigBRCM",
+          "callee": "choose_config",
+          "lineNumber": 482
+        },
+        {
+          "caller": "eglGetConfigAttrib",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 558
+        },
+        {
+          "caller": "eglGetConfigAttrib",
+          "callee": "egl_config_to_id",
+          "lineNumber": 563
+        },
+        {
+          "caller": "eglGetConfigAttrib",
+          "callee": "egl_config_to_id",
+          "lineNumber": 563
+        },
+        {
+          "caller": "eglGetConfigAttrib",
+          "callee": "egl_config_get_attrib",
+          "lineNumber": 566
+        },
+        {
+          "caller": "eglGetConfigAttrib",
+          "callee": "egl_config_to_id",
+          "lineNumber": 566
+        },
+        {
+          "caller": "eglGetConfigAttrib",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 573
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    }
+  ]
+}

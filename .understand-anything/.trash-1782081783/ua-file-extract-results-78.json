@@ -1,0 +1,834 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "sample/44-ESPJVM/Native/Inc/esp_socket.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/SystemAPI/Inc/.gitkeep",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {}
+    },
+    {
+      "path": "sample/44-ESPJVM/SystemAPI/Src/esp_system_api.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 25,
+      "functions": [
+        {
+          "name": "System::free",
+          "startLine": 18,
+          "endLine": 20,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "System::consoleWrite",
+          "startLine": 22,
+          "endLine": 24,
+          "params": [
+            "utf8",
+            "length"
+          ]
+        },
+        {
+          "name": "System::getTimeNanos",
+          "startLine": 26,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "System::getTimeMillis",
+          "startLine": 30,
+          "endLine": 32,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "System::free",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "System::consoleWrite",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "System::getTimeNanos",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "System::getTimeMillis",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "System::free",
+          "callee": "::free",
+          "lineNumber": 19
+        },
+        {
+          "caller": "System::consoleWrite",
+          "callee": "fprintf",
+          "lineNumber": 23
+        },
+        {
+          "caller": "System::getTimeNanos",
+          "callee": "esp_timer_get_time",
+          "lineNumber": 27
+        },
+        {
+          "caller": "System::getTimeMillis",
+          "callee": "esp_timer_get_time",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/SystemAPI/Src/esp_system_io_api.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 166,
+      "nonEmptyLines": 147,
+      "functions": [
+        {
+          "name": "convertFileResult",
+          "startLine": 10,
+          "endLine": 34,
+          "params": [
+            "ret"
+          ]
+        },
+        {
+          "name": "IO::finfo",
+          "startLine": 36,
+          "endLine": 67,
+          "params": [
+            "fileName",
+            "fileInfo"
+          ]
+        },
+        {
+          "name": "IO::fopen",
+          "startLine": 69,
+          "endLine": 74,
+          "params": [
+            "fileName",
+            "mode"
+          ]
+        },
+        {
+          "name": "IO::fread",
+          "startLine": 76,
+          "endLine": 81,
+          "params": [
+            "handle",
+            "buff",
+            "btr",
+            "br"
+          ]
+        },
+        {
+          "name": "IO::fwrite",
+          "startLine": 83,
+          "endLine": 88,
+          "params": [
+            "handle",
+            "buff",
+            "btw",
+            "bw"
+          ]
+        },
+        {
+          "name": "IO::fsize",
+          "startLine": 90,
+          "endLine": 92,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "IO::ftell",
+          "startLine": 94,
+          "endLine": 96,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "IO::fseek",
+          "startLine": 98,
+          "endLine": 100,
+          "params": [
+            "handle",
+            "offset"
+          ]
+        },
+        {
+          "name": "IO::fclose",
+          "startLine": 102,
+          "endLine": 109,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "IO::fremove",
+          "startLine": 111,
+          "endLine": 113,
+          "params": [
+            "fileName"
+          ]
+        },
+        {
+          "name": "IO::frename",
+          "startLine": 115,
+          "endLine": 117,
+          "params": [
+            "oldName",
+            "newName"
+          ]
+        },
+        {
+          "name": "IO::opendir",
+          "startLine": 119,
+          "endLine": 128,
+          "params": [
+            "dirName"
+          ]
+        },
+        {
+          "name": "IO::readdir",
+          "startLine": 130,
+          "endLine": 156,
+          "params": [
+            "handle",
+            "fileInfo"
+          ]
+        },
+        {
+          "name": "IO::closedir",
+          "startLine": 158,
+          "endLine": 162,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "IO::mkdir",
+          "startLine": 164,
+          "endLine": 166,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "IO::finfo",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fopen",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fread",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fwrite",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fsize",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "IO::ftell",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fseek",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fclose",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "IO::fremove",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "IO::frename",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "IO::opendir",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "IO::readdir",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "IO::closedir",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "IO::mkdir",
+          "line": 164,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "IO::finfo",
+          "callee": "f_stat",
+          "lineNumber": 40
+        },
+        {
+          "caller": "IO::finfo",
+          "callee": "UnixTime",
+          "lineNumber": 52
+        },
+        {
+          "caller": "IO::finfo",
+          "callee": "f_stat",
+          "lineNumber": 65
+        },
+        {
+          "caller": "IO::finfo",
+          "callee": "convertFileResult",
+          "lineNumber": 66
+        },
+        {
+          "caller": "IO::fopen",
+          "callee": "Flint::malloc",
+          "lineNumber": 70
+        },
+        {
+          "caller": "IO::fopen",
+          "callee": "f_open",
+          "lineNumber": 72
+        },
+        {
+          "caller": "IO::fopen",
+          "callee": "Flint::free",
+          "lineNumber": 72
+        },
+        {
+          "caller": "IO::fread",
+          "callee": "convertFileResult",
+          "lineNumber": 78
+        },
+        {
+          "caller": "IO::fread",
+          "callee": "f_read",
+          "lineNumber": 78
+        },
+        {
+          "caller": "IO::fwrite",
+          "callee": "convertFileResult",
+          "lineNumber": 85
+        },
+        {
+          "caller": "IO::fwrite",
+          "callee": "f_write",
+          "lineNumber": 85
+        },
+        {
+          "caller": "IO::fsize",
+          "callee": "f_size",
+          "lineNumber": 91
+        },
+        {
+          "caller": "IO::ftell",
+          "callee": "f_tell",
+          "lineNumber": 95
+        },
+        {
+          "caller": "IO::fseek",
+          "callee": "convertFileResult",
+          "lineNumber": 99
+        },
+        {
+          "caller": "IO::fseek",
+          "callee": "f_lseek",
+          "lineNumber": 99
+        },
+        {
+          "caller": "IO::fclose",
+          "callee": "convertFileResult",
+          "lineNumber": 104
+        },
+        {
+          "caller": "IO::fclose",
+          "callee": "f_close",
+          "lineNumber": 104
+        },
+        {
+          "caller": "IO::fclose",
+          "callee": "Flint::free",
+          "lineNumber": 105
+        },
+        {
+          "caller": "IO::fremove",
+          "callee": "convertFileResult",
+          "lineNumber": 112
+        },
+        {
+          "caller": "IO::fremove",
+          "callee": "f_unlink",
+          "lineNumber": 112
+        },
+        {
+          "caller": "IO::frename",
+          "callee": "convertFileResult",
+          "lineNumber": 116
+        },
+        {
+          "caller": "IO::frename",
+          "callee": "f_rename",
+          "lineNumber": 116
+        },
+        {
+          "caller": "IO::opendir",
+          "callee": "Flint::malloc",
+          "lineNumber": 120
+        },
+        {
+          "caller": "IO::opendir",
+          "callee": "f_opendir",
+          "lineNumber": 121
+        },
+        {
+          "caller": "IO::opendir",
+          "callee": "Flint::free",
+          "lineNumber": 125
+        },
+        {
+          "caller": "IO::readdir",
+          "callee": "f_readdir",
+          "lineNumber": 132
+        },
+        {
+          "caller": "IO::readdir",
+          "callee": "UnixTime",
+          "lineNumber": 144
+        },
+        {
+          "caller": "IO::readdir",
+          "callee": "convertFileResult",
+          "lineNumber": 155
+        },
+        {
+          "caller": "IO::closedir",
+          "callee": "f_closedir",
+          "lineNumber": 159
+        },
+        {
+          "caller": "IO::closedir",
+          "callee": "Flint::free",
+          "lineNumber": 160
+        },
+        {
+          "caller": "IO::closedir",
+          "callee": "convertFileResult",
+          "lineNumber": 161
+        },
+        {
+          "caller": "IO::mkdir",
+          "callee": "convertFileResult",
+          "lineNumber": 165
+        },
+        {
+          "caller": "IO::mkdir",
+          "callee": "f_mkdir",
+          "lineNumber": 165
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 14,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/SystemAPI/Src/esp_system_thread_api.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 23,
+      "functions": [
+        {
+          "name": "Thread::create",
+          "startLine": 9,
+          "endLine": 13,
+          "params": [
+            "param",
+            "stackSize"
+          ]
+        },
+        {
+          "name": "Thread::getCurrentThread",
+          "startLine": 15,
+          "endLine": 17,
+          "params": []
+        },
+        {
+          "name": "Thread::terminate",
+          "startLine": 19,
+          "endLine": 21,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "Thread::sleep",
+          "startLine": 23,
+          "endLine": 26,
+          "params": [
+            "ms"
+          ]
+        },
+        {
+          "name": "Thread::yield",
+          "startLine": 28,
+          "endLine": 30,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Thread::create",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "Thread::getCurrentThread",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "Thread::terminate",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "Thread::sleep",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "Thread::yield",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Thread::create",
+          "callee": "xTaskCreate",
+          "lineNumber": 11
+        },
+        {
+          "caller": "Thread::getCurrentThread",
+          "callee": "xTaskGetCurrentTaskHandle",
+          "lineNumber": 16
+        },
+        {
+          "caller": "Thread::terminate",
+          "callee": "vTaskDelete",
+          "lineNumber": 20
+        },
+        {
+          "caller": "Thread::sleep",
+          "callee": "pdMS_TO_TICKS",
+          "lineNumber": 24
+        },
+        {
+          "caller": "Thread::sleep",
+          "callee": "vTaskDelay",
+          "lineNumber": 25
+        },
+        {
+          "caller": "Thread::yield",
+          "callee": "taskYIELD",
+          "lineNumber": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/User/Inc/esp_board.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/User/Inc/esp_debugger.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/User/Inc/esp_usb_device.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/44-ESPJVM/User/Inc/flint_conf.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 42,
+      "nonEmptyLines": 34,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/makeall",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 8,
+      "metrics": {}
+    },
+    {
+      "path": "sample/makelatest",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 5,
+      "metrics": {}
+    },
+    {
+      "path": "sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 45,
+      "metrics": {}
+    },
+    {
+      "path": "sample/Rules.mk",
+      "language": "mk",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 27,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "test/gpio-interrupt/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "test/gpio-interrupt/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 5,
+      "metrics": {}
+    },
+    {
+      "path": "test/gpio-timing/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "test/gpio-timing/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 4,
+      "metrics": {}
+    },
+    {
+      "path": "test/gpio/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "test/gpio/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 4,
+      "nonEmptyLines": 3,
+      "metrics": {}
+    },
+    {
+      "path": "test/i2c-master-irq/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "test/i2c-master-irq/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 6,
+      "metrics": {}
+    },
+    {
+      "path": "test/iperfserver/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "test/iperfserver/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 21,
+      "metrics": {}
+    },
+    {
+      "path": "test/mdns-publisher/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 18,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "test/mdns-publisher/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 13,
+      "metrics": {}
+    }
+  ]
+}

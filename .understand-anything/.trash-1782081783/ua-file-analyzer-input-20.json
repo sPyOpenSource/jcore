@@ -1,0 +1,304 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "include/circle/usb/usbrequest.h",
+      "language": "c",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/usbserial.h",
+      "language": "c",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/usbserialhost.h",
+      "language": "c",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhcisharedmemallocator.h",
+      "language": "c",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/windowdisplay.h",
+      "language": "c",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/classallocator.cpp",
+      "language": "cpp",
+      "sizeLines": 196,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/fs/fat/fat.cpp",
+      "language": "cpp",
+      "sizeLines": 237,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/fs/partition.cpp",
+      "language": "cpp",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/fs/partitionmanager.cpp",
+      "language": "cpp",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/keyboardbehaviour.cpp",
+      "language": "cpp",
+      "sizeLines": 193,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/keymap.cpp",
+      "language": "cpp",
+      "sizeLines": 352,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/linediscipline.cpp",
+      "language": "cpp",
+      "sizeLines": 187,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/mouse.cpp",
+      "language": "cpp",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/netconnection.cpp",
+      "language": "cpp",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/retransmissionqueue.cpp",
+      "language": "cpp",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/numberpool.cpp",
+      "language": "cpp",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/pageallocator.cpp",
+      "language": "cpp",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/ptrlist.cpp",
+      "language": "cpp",
+      "sizeLines": 188,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/ptrlistfiq.cpp",
+      "language": "cpp",
+      "sizeLines": 195,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/purecall.cpp",
+      "language": "cpp",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/pcm512xsoundcontroller.cpp",
+      "language": "cpp",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/pwmsounddevice.cpp",
+      "language": "cpp",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/wm8960soundcontroller.cpp",
+      "language": "cpp",
+      "sizeLines": 329,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhcicompletionqueue.cpp",
+      "language": "cpp",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhcidevice.cpp",
+      "language": "cpp",
+      "sizeLines": 1764,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhciframeschediso.cpp",
+      "language": "cpp",
+      "sizeLines": 208,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhciframeschednper.cpp",
+      "language": "cpp",
+      "sizeLines": 188,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhciframeschednsplit.cpp",
+      "language": "cpp",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "include/circle/usb/usbrequest.h": [],
+    "include/circle/usb/usbserial.h": [],
+    "include/circle/usb/usbserialhost.h": [],
+    "include/circle/usb/xhcisharedmemallocator.h": [],
+    "include/circle/windowdisplay.h": [],
+    "lib/classallocator.cpp": [
+      "include/circle/alloc.h",
+      "include/circle/classallocator.h",
+      "include/circle/logger.h"
+    ],
+    "lib/fs/fat/fat.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fat/fat.h"
+    ],
+    "lib/fs/partition.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fsdef.h",
+      "include/circle/fs/partition.h"
+    ],
+    "lib/fs/partitionmanager.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/fs/fsdef.h",
+      "include/circle/fs/partitionmanager.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h"
+    ],
+    "lib/input/keyboardbehaviour.cpp": [
+      "include/assert.h",
+      "include/circle/input/keyboardbehaviour.h"
+    ],
+    "lib/input/keymap.cpp": [
+      "include/assert.h",
+      "include/circle/input/keyboardbehaviour.h",
+      "include/circle/input/keymap.h",
+      "include/circle/koptions.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/input/linediscipline.cpp": [
+      "include/assert.h",
+      "include/circle/input/linediscipline.h"
+    ],
+    "lib/input/mouse.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/input/mouse.h"
+    ],
+    "lib/net/netconnection.cpp": [
+      "include/assert.h",
+      "include/circle/net/netconnection.h"
+    ],
+    "lib/net/retransmissionqueue.cpp": [
+      "include/assert.h",
+      "include/circle/net/retransmissionqueue.h"
+    ],
+    "lib/numberpool.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/numberpool.h"
+    ],
+    "lib/pageallocator.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/pageallocator.h"
+    ],
+    "lib/ptrlist.cpp": [
+      "include/assert.h",
+      "include/circle/ptrlist.h"
+    ],
+    "lib/ptrlistfiq.cpp": [
+      "include/assert.h",
+      "include/circle/classallocator.h",
+      "include/circle/ptrlistfiq.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/purecall.cpp": [
+      "include/assert.h"
+    ],
+    "lib/sound/pcm512xsoundcontroller.cpp": [
+      "include/assert.h",
+      "include/circle/sound/pcm512xsoundcontroller.h"
+    ],
+    "lib/sound/pwmsounddevice.cpp": [
+      "include/assert.h",
+      "include/circle/sound/pwmsounddevice.h"
+    ],
+    "lib/sound/wm8960soundcontroller.cpp": [
+      "include/assert.h",
+      "include/circle/sound/wm8960soundcontroller.h"
+    ],
+    "lib/usb/dwhcicompletionqueue.cpp": [
+      "include/assert.h",
+      "include/circle/usb/dwhcicompletionqueue.h"
+    ],
+    "lib/usb/dwhcidevice.cpp": [
+      "include/assert.h",
+      "include/circle/atomic.h",
+      "include/circle/debug.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/dwhcidevice.h",
+      "include/circle/usb/dwhciframeschediso.h",
+      "include/circle/usb/dwhciframeschednper.h",
+      "include/circle/usb/dwhciframeschednsplit.h",
+      "include/circle/usb/dwhciframeschedper.h"
+    ],
+    "lib/usb/dwhciframeschediso.cpp": [
+      "include/assert.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhciframeschediso.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhciframeschednper.cpp": [
+      "include/assert.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhciframeschednper.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhciframeschednsplit.cpp": [
+      "include/assert.h",
+      "include/circle/usb/dwhciframeschednsplit.h",
+      "include/circle/usb/dwhciregister.h"
+    ]
+  }
+}

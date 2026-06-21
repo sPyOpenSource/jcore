@@ -1,0 +1,525 @@
+{
+  "batchIndex": 33,
+  "nodes": [
+    {
+      "id": "include/circle/usb/xhcicommandmanager.h",
+      "type": "header:include/circle/usb/xhcicommandmanager.h",
+      "name": "xhcicommandmanager.h",
+      "filePath": "include/circle/usb/xhcicommandmanager.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 7
+    },
+    {
+      "id": "include/circle/usb/xhcidevice.h",
+      "type": "header:include/circle/usb/xhcidevice.h",
+      "name": "xhcidevice.h",
+      "filePath": "include/circle/usb/xhcidevice.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 10
+    },
+    {
+      "id": "include/circle/usb/xhciendpoint.h",
+      "type": "header:include/circle/usb/xhciendpoint.h",
+      "name": "xhciendpoint.h",
+      "filePath": "include/circle/usb/xhciendpoint.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 9
+    },
+    {
+      "id": "include/circle/usb/xhcieventmanager.h",
+      "type": "header:include/circle/usb/xhcieventmanager.h",
+      "name": "xhcieventmanager.h",
+      "filePath": "include/circle/usb/xhcieventmanager.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 5
+    },
+    {
+      "id": "include/circle/usb/xhciring.h",
+      "type": "header:include/circle/usb/xhciring.h",
+      "name": "xhciring.h",
+      "filePath": "include/circle/usb/xhciring.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 7
+    },
+    {
+      "id": "include/circle/usb/xhcirootport.h",
+      "type": "header:include/circle/usb/xhcirootport.h",
+      "name": "xhcirootport.h",
+      "filePath": "include/circle/usb/xhcirootport.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 7
+    },
+    {
+      "id": "include/circle/usb/xhcislotmanager.h",
+      "type": "header:include/circle/usb/xhcislotmanager.h",
+      "name": "xhcislotmanager.h",
+      "filePath": "include/circle/usb/xhcislotmanager.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 6
+    },
+    {
+      "id": "include/circle/usb/xhciusbdevice.h",
+      "type": "header:include/circle/usb/xhciusbdevice.h",
+      "name": "xhciusbdevice.h",
+      "filePath": "include/circle/usb/xhciusbdevice.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "public-api"
+      ],
+      "complexity": 7
+    },
+    {
+      "id": "lib/usb/xhcicommandmanager.cpp",
+      "type": "module:lib/usb/xhcicommandmanager.cpp",
+      "name": "xhcicommandmanager.cpp",
+      "filePath": "lib/usb/xhcicommandmanager.cpp",
+      "summary": "Contains 5 functions: CXHCICommandManager, ~CXHCICommandManager, IsValid, EnableSlot, DisableSlot",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 26
+    },
+    {
+      "id": "lib/usb/xhciendpoint.cpp",
+      "type": "module:lib/usb/xhciendpoint.cpp",
+      "name": "xhciendpoint.cpp",
+      "filePath": "lib/usb/xhciendpoint.cpp",
+      "summary": "Contains 5 functions: CXHCIEndpoint, CXHCIEndpoint, ~CXHCIEndpoint, IsValid, SetMaxPacketSize",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 66
+    },
+    {
+      "id": "lib/usb/xhcieventmanager.cpp",
+      "type": "module:lib/usb/xhcieventmanager.cpp",
+      "name": "xhcieventmanager.cpp",
+      "filePath": "lib/usb/xhcieventmanager.cpp",
+      "summary": "Contains 3 functions: CXHCIEventManager, ~CXHCIEventManager, IsValid",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 15
+    },
+    {
+      "id": "lib/usb/xhciring.cpp",
+      "type": "module:lib/usb/xhciring.cpp",
+      "name": "xhciring.cpp",
+      "filePath": "lib/usb/xhciring.cpp",
+      "summary": "Contains 5 functions: CXHCIRing, ~CXHCIRing, IsValid, GetTRBCount, IncrementEnqueue",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 18
+    },
+    {
+      "id": "lib/usb/xhcirootport.cpp",
+      "type": "module:lib/usb/xhcirootport.cpp",
+      "name": "xhcirootport.cpp",
+      "filePath": "lib/usb/xhcirootport.cpp",
+      "summary": "Contains 5 functions: CXHCIRootPort, ~CXHCIRootPort, Initialize, Configure, GetPortID",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 32
+    },
+    {
+      "id": "lib/usb/xhcislotmanager.cpp",
+      "type": "module:lib/usb/xhcislotmanager.cpp",
+      "name": "xhcislotmanager.cpp",
+      "filePath": "lib/usb/xhcislotmanager.cpp",
+      "summary": "Contains 5 functions: CXHCISlotManager, ~CXHCISlotManager, IsValid, AssignDevice, FreeSlot",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 12
+    },
+    {
+      "id": "lib/usb/xhciusbdevice.cpp",
+      "type": "module:lib/usb/xhciusbdevice.cpp",
+      "name": "xhciusbdevice.cpp",
+      "filePath": "lib/usb/xhciusbdevice.cpp",
+      "summary": "Contains 5 functions: CXHCIUSBDevice, CXHCIUSBDevice, ~CXHCIUSBDevice, Initialize, EnableHubFunction",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation"
+      ],
+      "complexity": 32
+    }
+  ],
+  "edges": [
+    {
+      "source": "lib/usb/xhcicommandmanager.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcicommandmanager.cpp",
+      "target": "include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcicommandmanager.cpp",
+      "target": "include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcicommandmanager.cpp",
+      "target": "include/circle/usb/xhcicommandmanager.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcicommandmanager.cpp",
+      "target": "include/circle/usb/xhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/sched/scheduler.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/usb/usbrequest.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/usb/xhcicommandmanager.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/usb/xhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/usb/xhciendpoint.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/usb/xhciusbdevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciendpoint.cpp",
+      "target": "include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcieventmanager.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcieventmanager.cpp",
+      "target": "include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcieventmanager.cpp",
+      "target": "include/circle/usb/xhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcieventmanager.cpp",
+      "target": "include/circle/usb/xhcieventmanager.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciring.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciring.cpp",
+      "target": "include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciring.cpp",
+      "target": "include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciring.cpp",
+      "target": "include/circle/usb/xhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciring.cpp",
+      "target": "include/circle/usb/xhciring.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcirootport.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcirootport.cpp",
+      "target": "include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcirootport.cpp",
+      "target": "include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcirootport.cpp",
+      "target": "include/circle/usb/xhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcirootport.cpp",
+      "target": "include/circle/usb/xhcirootport.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcislotmanager.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcislotmanager.cpp",
+      "target": "include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcislotmanager.cpp",
+      "target": "include/circle/usb/xhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhcislotmanager.cpp",
+      "target": "include/circle/usb/xhcislotmanager.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/circle/usb/usbstandardhub.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/circle/usb/xhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/circle/usb/xhcirootport.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/circle/usb/xhciusbdevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "lib/usb/xhciusbdevice.cpp",
+      "target": "include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

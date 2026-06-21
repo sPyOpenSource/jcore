@@ -1,0 +1,4646 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 1820,
+    "filesWithImports": 577,
+    "totalEdges": 2239
+  },
+  "importMap": {
+    ".github/ISSUE_TEMPLATE/bug_report.md": [],
+    ".github/ISSUE_TEMPLATE/config.yml": [],
+    ".github/ISSUE_TEMPLATE/feature_request.md": [],
+    ".github/pull_request_template.md": [],
+    ".gitmodules": [],
+    ".understand-anything/.understandignore": [],
+    "addon/dio/Makefile": [],
+    "addon/dio/sample/kernel.cpp": [
+      "addon/dio/sample/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/dio/sample/kernel.h": [],
+    "addon/dio/sample/main.cpp": [
+      "addon/dio/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/dio/sample/Makefile": [],
+    "addon/dio/sample/README": [],
+    "addon/dio/spidio.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/dio/spidio.h": [],
+    "addon/display/chardevice.cpp": [
+      "addon/display/chardevice.h",
+      "include/assert.h",
+      "include/circle/timer.h"
+    ],
+    "addon/display/chardevice.h": [],
+    "addon/display/font6x8.h": [],
+    "addon/display/hd44780device.cpp": [
+      "addon/display/hd44780device.h",
+      "include/assert.h",
+      "include/circle/timer.h"
+    ],
+    "addon/display/hd44780device.h": [],
+    "addon/display/ili9341display.cpp": [
+      "include/assert.h",
+      "include/circle/stdarg.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/ili9341display.h": [],
+    "addon/display/Makefile": [],
+    "addon/display/sample/hd44780/kernel.cpp": [
+      "addon/display/sample/hd44780/kernel.h",
+      "include/circle/input/keyboardbuffer.h",
+      "include/circle/string.h",
+      "include/circle/time.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/sample/hd44780/kernel.h": [],
+    "addon/display/sample/hd44780/main.cpp": [
+      "addon/display/sample/hd44780/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/hd44780/Makefile": [],
+    "addon/display/sample/hd44780/README": [],
+    "addon/display/sample/hd44780i2c/kernel.cpp": [
+      "addon/display/sample/hd44780i2c/kernel.h",
+      "include/circle/input/keyboardbuffer.h",
+      "include/circle/machineinfo.h",
+      "include/circle/string.h",
+      "include/circle/time.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/sample/hd44780i2c/kernel.h": [],
+    "addon/display/sample/hd44780i2c/main.cpp": [
+      "addon/display/sample/hd44780i2c/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/hd44780i2c/Makefile": [],
+    "addon/display/sample/hd44780i2c/README": [],
+    "addon/display/sample/ssd1306/kernel.cpp": [
+      "addon/display/sample/ssd1306/kernel.h",
+      "include/circle/input/keyboardbuffer.h",
+      "include/circle/machineinfo.h",
+      "include/circle/string.h",
+      "include/circle/time.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/sample/ssd1306/kernel.h": [],
+    "addon/display/sample/ssd1306/main.cpp": [
+      "addon/display/sample/ssd1306/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/ssd1306/Makefile": [],
+    "addon/display/sample/ssd1306/README": [],
+    "addon/display/sample/st7789/kernel.cpp": [
+      "addon/display/sample/st7789/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/display/sample/st7789/kernel.h": [],
+    "addon/display/sample/st7789/main.cpp": [
+      "addon/display/sample/st7789/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/st7789/Makefile": [],
+    "addon/display/sample/st7789/README": [],
+    "addon/display/sample/st7789char/kernel.cpp": [
+      "addon/display/sample/st7789char/kernel.h",
+      "include/circle/input/keyboardbuffer.h",
+      "include/circle/machineinfo.h",
+      "include/circle/string.h",
+      "include/circle/time.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/sample/st7789char/kernel.h": [],
+    "addon/display/sample/st7789char/main.cpp": [
+      "addon/display/sample/st7789char/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/st7789char/Makefile": [],
+    "addon/display/sample/st7789char/README": [],
+    "addon/display/sampleconfig.h": [],
+    "addon/display/ssd1306device.cpp": [
+      "addon/display/font6x8.h",
+      "addon/display/ssd1306device.h",
+      "include/assert.h",
+      "include/circle/timer.h",
+      "include/circle/types.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/ssd1306device.h": [],
+    "addon/display/ssd1306display.cpp": [
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/ssd1306display.h": [],
+    "addon/display/st7789device.cpp": [
+      "addon/display/st7789device.h",
+      "include/assert.h",
+      "include/circle/chargenerator.h",
+      "include/circle/timer.h"
+    ],
+    "addon/display/st7789device.h": [],
+    "addon/display/st7789display.cpp": [
+      "include/assert.h",
+      "include/circle/timer.h"
+    ],
+    "addon/display/st7789display.h": [],
+    "addon/fatfs/diskio.cpp": [
+      "addon/fatfs/diskio.h",
+      "addon/fatfs/ff.h",
+      "include/assert.h",
+      "include/circle/device.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/types.h",
+      "include/circle/util.h"
+    ],
+    "addon/fatfs/diskio.h": [],
+    "addon/fatfs/ff.c": [
+      "addon/fatfs/diskio.h",
+      "addon/fatfs/ff.h"
+    ],
+    "addon/fatfs/ff.h": [],
+    "addon/fatfs/ffconf.h": [],
+    "addon/fatfs/ffsystem.cpp": [
+      "addon/fatfs/ff.h",
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/genericlock.h",
+      "include/circle/timer.h"
+    ],
+    "addon/fatfs/ffunicode.c": [
+      "addon/fatfs/ff.h"
+    ],
+    "addon/fatfs/LICENSE.txt": [],
+    "addon/fatfs/Makefile": [],
+    "addon/fatfs/sample/kernel.cpp": [
+      "addon/fatfs/sample/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/fatfs/sample/kernel.h": [],
+    "addon/fatfs/sample/main.cpp": [
+      "addon/fatfs/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/fatfs/sample/Makefile": [],
+    "addon/fatfs/sample/README": [],
+    "addon/FlintJVM/build.xml": [],
+    "addon/FlintJVM/CHANGELOG.md": [],
+    "addon/FlintJVM/flint_array_object.cpp": [],
+    "addon/FlintJVM/flint_class_loader.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_common.cpp": [],
+    "addon/FlintJVM/flint_const_pool.cpp": [],
+    "addon/FlintJVM/flint_debugger.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_execution.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_field_info.cpp": [],
+    "addon/FlintJVM/flint_fields_data.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_java_class_dict_node.cpp": [],
+    "addon/FlintJVM/flint_java_class.cpp": [],
+    "addon/FlintJVM/flint_java_object.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_java_string_dict_node.cpp": [],
+    "addon/FlintJVM/flint_java_string.cpp": [],
+    "addon/FlintJVM/flint_java_thread.cpp": [],
+    "addon/FlintJVM/flint_java_throwable.cpp": [],
+    "addon/FlintJVM/flint_method_info.cpp": [],
+    "addon/FlintJVM/flint_mutex.cpp": [],
+    "addon/FlintJVM/flint_utf8_dict_node.cpp": [],
+    "addon/FlintJVM/flint_utf8.cpp": [],
+    "addon/FlintJVM/flint.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/Inc/flint_array_object.h": [],
+    "addon/FlintJVM/Inc/flint_class_loader.h": [],
+    "addon/FlintJVM/Inc/flint_common.h": [],
+    "addon/FlintJVM/Inc/flint_const_pool.h": [],
+    "addon/FlintJVM/Inc/flint_debugger.h": [],
+    "addon/FlintJVM/Inc/flint_default_conf.h": [],
+    "addon/FlintJVM/Inc/flint_dictionary.h": [],
+    "addon/FlintJVM/Inc/flint_execution.h": [],
+    "addon/FlintJVM/Inc/flint_field_info.h": [],
+    "addon/FlintJVM/Inc/flint_fields_data.h": [],
+    "addon/FlintJVM/Inc/flint_instruction_label.h": [],
+    "addon/FlintJVM/Inc/flint_java_class_dict_node.h": [],
+    "addon/FlintJVM/Inc/flint_java_class.h": [],
+    "addon/FlintJVM/Inc/flint_java_object.h": [],
+    "addon/FlintJVM/Inc/flint_java_string_dict_node.h": [],
+    "addon/FlintJVM/Inc/flint_java_string.h": [],
+    "addon/FlintJVM/Inc/flint_java_thread.h": [],
+    "addon/FlintJVM/Inc/flint_java_throwable.h": [],
+    "addon/FlintJVM/Inc/flint_list.h": [],
+    "addon/FlintJVM/Inc/flint_method_info.h": [],
+    "addon/FlintJVM/Inc/flint_mutex.h": [],
+    "addon/FlintJVM/Inc/flint_opcodes.h": [],
+    "addon/FlintJVM/Inc/flint_std.h": [],
+    "addon/FlintJVM/Inc/flint_system_api.h": [],
+    "addon/FlintJVM/Inc/flint_utf8_dict_node.h": [],
+    "addon/FlintJVM/Inc/flint_utf8.h": [],
+    "addon/FlintJVM/Inc/flint.h": [],
+    "addon/FlintJVM/LICENSE.txt": [],
+    "addon/FlintJVM/Makefile": [],
+    "addon/FlintJVM/Native/flint_native_array.cpp": [],
+    "addon/FlintJVM/Native/flint_native_character.cpp": [],
+    "addon/FlintJVM/Native/flint_native_class.cpp": [],
+    "addon/FlintJVM/Native/flint_native_constructor.cpp": [],
+    "addon/FlintJVM/Native/flint_native_double.cpp": [],
+    "addon/FlintJVM/Native/flint_native_float.cpp": [],
+    "addon/FlintJVM/Native/flint_native_interface.cpp": [],
+    "addon/FlintJVM/Native/flint_native_io_file_descriptor.cpp": [],
+    "addon/FlintJVM/Native/flint_native_io_file_input_stream.cpp": [],
+    "addon/FlintJVM/Native/flint_native_io_file_output_stream.cpp": [],
+    "addon/FlintJVM/Native/flint_native_io_file.cpp": [],
+    "addon/FlintJVM/Native/flint_native_math.cpp": [],
+    "addon/FlintJVM/Native/flint_native_method.cpp": [],
+    "addon/FlintJVM/Native/flint_native_object.cpp": [],
+    "addon/FlintJVM/Native/flint_native_reflection.cpp": [],
+    "addon/FlintJVM/Native/flint_native_string.cpp": [],
+    "addon/FlintJVM/Native/flint_native_system.cpp": [],
+    "addon/FlintJVM/Native/flint_native_thread.cpp": [],
+    "addon/FlintJVM/Native/flint_native.cpp": [],
+    "addon/FlintJVM/Native/Inc/flint_native_array.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_character.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_class.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_constructor.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_double.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_float.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_interface.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_io_file_descriptor.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_io_file_input_stream.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_io_file_output_stream.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_io_file.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_math.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_method.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_object.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_reflection.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_string.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_system.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native_thread.h": [],
+    "addon/FlintJVM/Native/Inc/flint_native.h": [],
+    "addon/FlintJVM/Native/Makefile": [],
+    "addon/FlintJVM/nbproject/build-impl.xml": [],
+    "addon/FlintJVM/nbproject/genfiles.properties": [],
+    "addon/FlintJVM/nbproject/private/config.properties": [],
+    "addon/FlintJVM/nbproject/private/private.properties": [],
+    "addon/FlintJVM/nbproject/private/private.xml": [],
+    "addon/FlintJVM/nbproject/project.properties": [],
+    "addon/FlintJVM/nbproject/project.xml": [],
+    "addon/FlintJVM/src/FExec.java": [],
+    "addon/FlintJVM/src/Flint.java": [],
+    "addon/FlintJVM/src/FlintFileUtils.java": [],
+    "addon/FlintJVM/src/FlintUtf8.java": [],
+    "addon/FlintJVM/src/FlintUtils.java": [],
+    "addon/FlintJVM/src/FMutex.java": [],
+    "addon/FlintJVM/src/JArray.java": [],
+    "addon/FlintJVM/src/JClass.java": [],
+    "addon/FlintJVM/src/JObject.java": [],
+    "addon/FlintJVM/src/JThrowable.java": [],
+    "addon/FlintJVM/Template/Inc/flint_conf.h": [],
+    "addon/FlintJVM/Template/Src/flint_system_api.cpp": [],
+    "addon/FlintJVM/Template/Src/flint_system_io_api.cpp": [],
+    "addon/FlintJVM/Template/Src/flint_system_thread_api.cpp": [],
+    "addon/gpio/Makefile": [],
+    "addon/gpio/rtkgpio.cpp": [
+      "addon/gpio/rtkgpio.h",
+      "include/circle/logger.h"
+    ],
+    "addon/gpio/rtkgpio.h": [],
+    "addon/gpio/sample/rtkgpio/kernel.cpp": [
+      "addon/gpio/sample/rtkgpio/kernel.h",
+      "include/circle/string.h",
+      "include/circle/usb/usbserialch341.h"
+    ],
+    "addon/gpio/sample/rtkgpio/kernel.h": [],
+    "addon/gpio/sample/rtkgpio/main.cpp": [
+      "addon/gpio/sample/rtkgpio/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/gpio/sample/rtkgpio/Makefile": [],
+    "addon/gpio/sample/rtkgpio/README": [],
+    "addon/linux/atomic.h": [],
+    "addon/linux/barrier.h": [],
+    "addon/linux/bug.cpp": [
+      "include/circle/logger.h",
+      "include/circle/string.h"
+    ],
+    "addon/linux/bug.h": [],
+    "addon/linux/compiler.h": [],
+    "addon/linux/completion.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/linux/completion.h": [],
+    "addon/linux/COPYING": [],
+    "addon/linux/delay.cpp": [
+      "include/circle/sched/scheduler.h",
+      "include/circle/timer.h"
+    ],
+    "addon/linux/delay.h": [],
+    "addon/linux/device.cpp": [
+      "include/circle/logger.h"
+    ],
+    "addon/linux/device.h": [],
+    "addon/linux/dma-mapping.cpp": [],
+    "addon/linux/dma-mapping.h": [],
+    "addon/linux/err.h": [],
+    "addon/linux/errno.h": [],
+    "addon/linux/interrupt.cpp": [
+      "include/circle/interrupt.h"
+    ],
+    "addon/linux/interrupt.h": [],
+    "addon/linux/io.h": [],
+    "addon/linux/ioport.h": [],
+    "addon/linux/jiffies.h": [],
+    "addon/linux/kern_levels.h": [],
+    "addon/linux/kernel.h": [],
+    "addon/linux/kthread.cpp": [
+      "include/circle/sched/scheduler.h",
+      "include/circle/sched/task.h",
+      "include/circle/stdarg.h",
+      "include/circle/string.h"
+    ],
+    "addon/linux/kthread.h": [],
+    "addon/linux/linuxdevice.cpp": [
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/linux/linuxdevice.h": [],
+    "addon/linux/linuxemu.cpp": [],
+    "addon/linux/linuxemu.h": [],
+    "addon/linux/list.h": [],
+    "addon/linux/Makefile": [],
+    "addon/linux/module.h": [],
+    "addon/linux/mutex.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/linux/mutex.h": [],
+    "addon/linux/pagemap.h": [],
+    "addon/linux/platform_device.cpp": [],
+    "addon/linux/platform_device.h": [],
+    "addon/linux/printk.cpp": [
+      "include/circle/logger.h",
+      "include/circle/stdarg.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "addon/linux/printk.h": [],
+    "addon/linux/pthread.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/task.h",
+      "include/circle/sysconfig.h"
+    ],
+    "addon/linux/pthread.h": [],
+    "addon/linux/raspberrypi-firmware.cpp": [
+      "include/circle/types.h",
+      "include/circle/util.h"
+    ],
+    "addon/linux/raspberrypi-firmware.h": [],
+    "addon/linux/README": [],
+    "addon/linux/rwlock.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/linux/rwlock.h": [],
+    "addon/linux/sched.h": [],
+    "addon/linux/semaphore.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/linux/semaphore.h": [],
+    "addon/linux/slab.h": [],
+    "addon/linux/spinlock.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/synchronize.h"
+    ],
+    "addon/linux/spinlock.h": [],
+    "addon/linux/sprintf.cpp": [
+      "include/circle/stdarg.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "addon/linux/string.h": [
+      "include/circle/util.h"
+    ],
+    "addon/linux/timer.cpp": [
+      "include/circle/timer.h"
+    ],
+    "addon/linux/timer.h": [],
+    "addon/linux/types.h": [],
+    "addon/linux/uaccess.h": [],
+    "addon/lvgl/lv_conf.h": [],
+    "addon/lvgl/lvgl.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/new.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/lvgl/lvgl.h": [],
+    "addon/lvgl/Makefile": [],
+    "addon/lvgl/sample/kernel.cpp": [
+      "addon/lvgl/sample/kernel.h"
+    ],
+    "addon/lvgl/sample/kernel.h": [],
+    "addon/lvgl/sample/main.cpp": [
+      "addon/lvgl/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/lvgl/sample/Makefile": [],
+    "addon/lvgl/sample/README": [],
+    "addon/microbit/Makefile": [],
+    "addon/microbit/microbit-server.py": [],
+    "addon/microbit/microbitclient.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "addon/microbit/microbitclient.h": [],
+    "addon/microbit/sample/kernel.cpp": [
+      "addon/microbit/sample/kernel.h"
+    ],
+    "addon/microbit/sample/kernel.h": [],
+    "addon/microbit/sample/main.cpp": [
+      "addon/microbit/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/microbit/sample/Makefile": [],
+    "addon/microbit/sample/README": [],
+    "addon/OneWire/ds18x20.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/OneWire/ds18x20.h": [],
+    "addon/OneWire/Makefile": [],
+    "addon/OneWire/OneWire.cpp": [
+      "addon/OneWire/OneWire.h"
+    ],
+    "addon/OneWire/OneWire.h": [],
+    "addon/OneWire/sample/kernel.cpp": [
+      "addon/OneWire/sample/kernel.h"
+    ],
+    "addon/OneWire/sample/kernel.h": [],
+    "addon/OneWire/sample/main.cpp": [
+      "addon/OneWire/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/OneWire/sample/Makefile": [],
+    "addon/OneWire/sample/README": [],
+    "addon/pico/Makefile": [],
+    "addon/pico/sample/dummy_flash.uf2": [],
+    "addon/pico/sample/firmware.bin": [],
+    "addon/pico/sample/kernel.cpp": [
+      "addon/pico/sample/kernel.h"
+    ],
+    "addon/pico/sample/kernel.h": [],
+    "addon/pico/sample/main.cpp": [
+      "addon/pico/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/pico/sample/Makefile": [],
+    "addon/pico/sample/README": [],
+    "addon/pico/swdloader.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "addon/pico/swdloader.h": [],
+    "addon/profile/arm-mcount.S": [],
+    "addon/profile/glibc_compat.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/util.h"
+    ],
+    "addon/profile/glibc_compat.h": [],
+    "addon/profile/gmon_out.h": [],
+    "addon/profile/gmon.cpp": [],
+    "addon/profile/gmon.h": [],
+    "addon/profile/Makefile": [],
+    "addon/profile/mcount.cpp": [],
+    "addon/profile/profil.cpp": [],
+    "addon/profile/profiler.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h"
+    ],
+    "addon/profile/profiler.h": [],
+    "addon/profile/sample/kernel.cpp": [
+      "addon/profile/sample/kernel.h",
+      "addon/profile/sample/ledtask.h",
+      "addon/profile/sample/primetask.h",
+      "addon/profile/sample/screentask.h",
+      "include/assert.h",
+      "include/circle/string.h"
+    ],
+    "addon/profile/sample/kernel.h": [],
+    "addon/profile/sample/ledtask.cpp": [
+      "addon/profile/sample/ledtask.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/profile/sample/ledtask.h": [],
+    "addon/profile/sample/main.cpp": [
+      "addon/profile/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/profile/sample/Makefile": [],
+    "addon/profile/sample/primetask.cpp": [
+      "addon/profile/sample/primetask.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "addon/profile/sample/primetask.h": [],
+    "addon/profile/sample/README": [],
+    "addon/profile/sample/screentask.cpp": [
+      "addon/profile/sample/screentask.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h"
+    ],
+    "addon/profile/sample/screentask.h": [],
+    "addon/Properties/Makefile": [],
+    "addon/Properties/properties.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/ptrarray.h",
+      "include/circle/util.h"
+    ],
+    "addon/Properties/properties.h": [],
+    "addon/Properties/propertiesbasefile.cpp": [
+      "include/assert.h"
+    ],
+    "addon/Properties/propertiesbasefile.h": [],
+    "addon/Properties/propertiesfatfsfile.cpp": [
+      "include/assert.h"
+    ],
+    "addon/Properties/propertiesfatfsfile.h": [],
+    "addon/Properties/propertiesfile.cpp": [
+      "include/assert.h"
+    ],
+    "addon/Properties/propertiesfile.h": [],
+    "addon/Properties/sample/kernel.cpp": [
+      "addon/Properties/sample/kernel.h"
+    ],
+    "addon/Properties/sample/kernel.h": [],
+    "addon/Properties/sample/main.cpp": [
+      "addon/Properties/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/Properties/sample/Makefile": [],
+    "addon/Properties/sample/params.txt": [],
+    "addon/Properties/sample/README": [],
+    "addon/qemu/gpiodemo/kernel.cpp": [
+      "addon/qemu/gpiodemo/kernel.h",
+      "include/circle/timer.h"
+    ],
+    "addon/qemu/gpiodemo/kernel.h": [],
+    "addon/qemu/gpiodemo/main.cpp": [
+      "addon/qemu/gpiodemo/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/qemu/gpiodemo/Makefile": [],
+    "addon/qemu/gpiodemo/README": [],
+    "addon/qemu/hostlogdemo/kernel.cpp": [
+      "addon/qemu/hostlogdemo/kernel.h"
+    ],
+    "addon/qemu/hostlogdemo/kernel.h": [],
+    "addon/qemu/hostlogdemo/main.cpp": [
+      "addon/qemu/hostlogdemo/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/qemu/hostlogdemo/Makefile": [],
+    "addon/qemu/hostlogdemo/README": [],
+    "addon/qemu/Makefile": [],
+    "addon/qemu/qemuhostfile.cpp": [
+      "include/circle/util.h"
+    ],
+    "addon/qemu/qemuhostfile.h": [],
+    "addon/README": [],
+    "addon/rtc/firmwarertc.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h"
+    ],
+    "addon/rtc/firmwarertc.h": [],
+    "addon/rtc/Makefile": [],
+    "addon/rtc/mcp7941x.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/util.h"
+    ],
+    "addon/rtc/mcp7941x.h": [],
+    "addon/rtc/rtc.h": [],
+    "addon/rtc/sample/kernel.cpp": [
+      "addon/rtc/sample/kernel.h",
+      "include/circle/machineinfo.h",
+      "include/circle/net/ntpdaemon.h",
+      "include/circle/time.h"
+    ],
+    "addon/rtc/sample/kernel.h": [],
+    "addon/rtc/sample/main.cpp": [
+      "addon/rtc/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/rtc/sample/Makefile": [],
+    "addon/rtc/sample/README": [],
+    "addon/SDCard/emmc.cpp": [
+      "addon/SDCard/emmc.h",
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/stdarg.h",
+      "include/circle/util.h"
+    ],
+    "addon/SDCard/emmc.h": [],
+    "addon/SDCard/Makefile": [],
+    "addon/SDCard/mmc.h": [],
+    "addon/SDCard/mmcerror.h": [],
+    "addon/SDCard/mmchost.cpp": [
+      "include/circle/sysconfig.h"
+    ],
+    "addon/SDCard/mmchost.h": [],
+    "addon/SDCard/sample/kernel.cpp": [
+      "addon/SDCard/sample/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/SDCard/sample/kernel.h": [],
+    "addon/SDCard/sample/main.cpp": [
+      "addon/SDCard/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/SDCard/sample/Makefile": [],
+    "addon/SDCard/sample/README": [],
+    "addon/SDCard/sdhost.cpp": [
+      "include/circle/sysconfig.h"
+    ],
+    "addon/SDCard/sdhost.h": [],
+    "addon/sensor/bmp180.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/sensor/bmp180.h": [],
+    "addon/sensor/hcsr04.cpp": [
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "addon/sensor/hcsr04.h": [],
+    "addon/sensor/ky040.cpp": [
+      "addon/sensor/ky040.h",
+      "include/assert.h"
+    ],
+    "addon/sensor/ky040.h": [],
+    "addon/sensor/Makefile": [],
+    "addon/sensor/mcp300x.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h"
+    ],
+    "addon/sensor/mcp300x.h": [],
+    "addon/sensor/mpu6050.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h"
+    ],
+    "addon/sensor/mpu6050.h": [],
+    "addon/sensor/sample/bmp180/kernel.cpp": [
+      "addon/sensor/sample/bmp180/kernel.h",
+      "include/circle/machineinfo.h"
+    ],
+    "addon/sensor/sample/bmp180/kernel.h": [],
+    "addon/sensor/sample/bmp180/main.cpp": [
+      "addon/sensor/sample/bmp180/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/sensor/sample/bmp180/Makefile": [],
+    "addon/sensor/sample/bmp180/README": [],
+    "addon/sensor/sample/hcsr04/kernel.cpp": [
+      "addon/sensor/sample/hcsr04/kernel.h"
+    ],
+    "addon/sensor/sample/hcsr04/kernel.h": [],
+    "addon/sensor/sample/hcsr04/main.cpp": [
+      "addon/sensor/sample/hcsr04/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/sensor/sample/hcsr04/Makefile": [],
+    "addon/sensor/sample/hcsr04/README": [],
+    "addon/sensor/sample/ky040/kernel.cpp": [
+      "addon/sensor/sample/ky040/kernel.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/sensor/sample/ky040/kernel.h": [],
+    "addon/sensor/sample/ky040/main.cpp": [
+      "addon/sensor/sample/ky040/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/sensor/sample/ky040/Makefile": [],
+    "addon/sensor/sample/ky040/README": [],
+    "addon/sensor/sample/mcp300x/kernel.cpp": [
+      "addon/sensor/sample/mcp300x/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/sensor/sample/mcp300x/kernel.h": [],
+    "addon/sensor/sample/mcp300x/main.cpp": [
+      "addon/sensor/sample/mcp300x/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/sensor/sample/mcp300x/Makefile": [],
+    "addon/sensor/sample/mcp300x/README": [],
+    "addon/sensor/sample/mpu6050/kernel.cpp": [
+      "addon/sensor/sample/mpu6050/kernel.h",
+      "include/circle/machineinfo.h"
+    ],
+    "addon/sensor/sample/mpu6050/kernel.h": [],
+    "addon/sensor/sample/mpu6050/main.cpp": [
+      "addon/sensor/sample/mpu6050/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/sensor/sample/mpu6050/Makefile": [],
+    "addon/sensor/sample/mpu6050/README": [],
+    "addon/Spectrum/Makefile": [],
+    "addon/Spectrum/sample/BruceLeeScr.h": [],
+    "addon/Spectrum/sample/kernel.cpp": [
+      "addon/Spectrum/sample/BruceLeeScr.h",
+      "addon/Spectrum/sample/kernel.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/Spectrum/sample/kernel.h": [],
+    "addon/Spectrum/sample/main.cpp": [
+      "addon/Spectrum/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/Spectrum/sample/Makefile": [],
+    "addon/Spectrum/sample/README": [],
+    "addon/Spectrum/SpectrumScreen.cpp": [
+      "addon/Spectrum/SpectrumScreen.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/Spectrum/SpectrumScreen.h": [],
+    "addon/tftpfileserver/Makefile": [],
+    "addon/tftpfileserver/sample/kernel.cpp": [
+      "addon/tftpfileserver/sample/kernel.h"
+    ],
+    "addon/tftpfileserver/sample/kernel.h": [],
+    "addon/tftpfileserver/sample/main.cpp": [
+      "addon/tftpfileserver/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/tftpfileserver/sample/Makefile": [],
+    "addon/tftpfileserver/sample/README": [],
+    "addon/tftpfileserver/tftpfatfsfileserver.cpp": [
+      "include/assert.h"
+    ],
+    "addon/tftpfileserver/tftpfatfsfileserver.h": [],
+    "addon/tftpfileserver/tftpfileserver.cpp": [
+      "include/assert.h"
+    ],
+    "addon/tftpfileserver/tftpfileserver.h": [],
+    "addon/ugui/LICENSE.md": [],
+    "addon/ugui/Makefile": [],
+    "addon/ugui/README.md": [],
+    "addon/ugui/sample/controlwindow.cpp": [
+      "addon/ugui/sample/controlwindow.h",
+      "include/assert.h"
+    ],
+    "addon/ugui/sample/controlwindow.h": [],
+    "addon/ugui/sample/kernel.cpp": [
+      "addon/ugui/sample/controlwindow.h",
+      "addon/ugui/sample/kernel.h",
+      "addon/ugui/sample/scopewindow.h"
+    ],
+    "addon/ugui/sample/kernel.h": [],
+    "addon/ugui/sample/main.cpp": [
+      "addon/ugui/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/ugui/sample/Makefile": [],
+    "addon/ugui/sample/README": [],
+    "addon/ugui/sample/recorder.cpp": [
+      "addon/ugui/sample/recorder.h",
+      "addon/ugui/sample/sampler.h",
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/synchronize.h"
+    ],
+    "addon/ugui/sample/recorder.h": [],
+    "addon/ugui/sample/sampler.h": [],
+    "addon/ugui/sample/sampler.S": [],
+    "addon/ugui/sample/scopeconfig.cpp": [
+      "addon/ugui/sample/scopeconfig.h",
+      "include/assert.h"
+    ],
+    "addon/ugui/sample/scopeconfig.h": [],
+    "addon/ugui/sample/scopewindow.cpp": [
+      "addon/ugui/sample/scopewindow.h",
+      "include/assert.h",
+      "include/circle/string.h"
+    ],
+    "addon/ugui/sample/scopewindow.h": [],
+    "addon/ugui/sample/timeline.cpp": [
+      "addon/ugui/sample/timeline.h",
+      "include/assert.h"
+    ],
+    "addon/ugui/sample/timeline.h": [],
+    "addon/ugui/system.h": [],
+    "addon/ugui/ugui_config.h": [],
+    "addon/ugui/ugui.c": [
+      "addon/ugui/ugui.h"
+    ],
+    "addon/ugui/ugui.h": [],
+    "addon/ugui/uguicpp.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/timer.h"
+    ],
+    "addon/ugui/uguicpp.h": [],
+    "addon/vc4/interface/bcm_host/bcm_host.c": [],
+    "addon/vc4/interface/bcm_host/bcm_host.h": [],
+    "addon/vc4/interface/bcm_host/Makefile": [],
+    "addon/vc4/interface/khronos/common/khrn_client_cache.c": [
+      "include/assert.h"
+    ],
+    "addon/vc4/interface/khronos/common/khrn_client_cache.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_check_types.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_cr.c": [],
+    "addon/vc4/interface/khronos/common/khrn_client_global_image_map.c": [],
+    "addon/vc4/interface/khronos/common/khrn_client_global_image_map.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_mangle.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_platform_filler_vcos.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_platform_linux.c": [
+      "include/assert.h"
+    ],
+    "addon/vc4/interface/khronos/common/khrn_client_platform.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_pointermap.c": [],
+    "addon/vc4/interface/khronos/common/khrn_client_pointermap.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_rpc_linux.c": [],
+    "addon/vc4/interface/khronos/common/khrn_client_rpc.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_unmangle.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_vector.c": [],
+    "addon/vc4/interface/khronos/common/khrn_client_vector.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client.c": [],
+    "addon/vc4/interface/khronos/common/khrn_client.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_color.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_common.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_generic_map.c": [],
+    "addon/vc4/interface/khronos/common/khrn_int_generic_map.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_hash.c": [],
+    "addon/vc4/interface/khronos/common/khrn_int_hash.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_ids.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_image.c": [],
+    "addon/vc4/interface/khronos/common/khrn_int_image.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_math.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_misc_impl.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_util_cr.h": [],
+    "addon/vc4/interface/khronos/common/khrn_int_util.c": [],
+    "addon/vc4/interface/khronos/common/khrn_int_util.h": [],
+    "addon/vc4/interface/khronos/common/khrn_options.c": [],
+    "addon/vc4/interface/khronos/common/khrn_options.h": [],
+    "addon/vc4/interface/khronos/common/v3d_ver.h": [],
+    "addon/vc4/interface/khronos/egl/egl_client_config_cr.c": [],
+    "addon/vc4/interface/khronos/egl/egl_client_config.c": [],
+    "addon/vc4/interface/khronos/egl/egl_client_config.h": [],
+    "addon/vc4/interface/khronos/egl/egl_client_context.c": [],
+    "addon/vc4/interface/khronos/egl/egl_client_context.h": [],
+    "addon/vc4/interface/khronos/egl/egl_client_cr.c": [],
+    "addon/vc4/interface/khronos/egl/egl_client_get_proc.c": [],
+    "addon/vc4/interface/khronos/egl/egl_client_surface.c": [],
+    "addon/vc4/interface/khronos/egl/egl_client_surface.h": [],
+    "addon/vc4/interface/khronos/egl/egl_client.c": [],
+    "addon/vc4/interface/khronos/egl/egl_int_config.h": [],
+    "addon/vc4/interface/khronos/egl/egl_int_impl.h": [],
+    "addon/vc4/interface/khronos/egl/egl_int.h": [],
+    "addon/vc4/interface/khronos/ext/egl_brcm_driver_monitor_client.c": [],
+    "addon/vc4/interface/khronos/ext/egl_brcm_driver_monitor_client.h": [],
+    "addon/vc4/interface/khronos/ext/egl_brcm_flush_client.c": [],
+    "addon/vc4/interface/khronos/ext/egl_brcm_global_image_client.c": [],
+    "addon/vc4/interface/khronos/ext/egl_brcm_perf_monitor_client.c": [],
+    "addon/vc4/interface/khronos/ext/egl_brcm_perf_monitor_client.h": [],
+    "addon/vc4/interface/khronos/ext/egl_khr_lock_surface_client.c": [
+      "include/assert.h"
+    ],
+    "addon/vc4/interface/khronos/ext/egl_khr_sync_client.c": [],
+    "addon/vc4/interface/khronos/ext/egl_khr_sync_client.h": [],
+    "addon/vc4/interface/khronos/ext/ext_gl_debug_marker.c": [],
+    "addon/vc4/interface/khronos/ext/gl_oes_draw_texture_client.c": [],
+    "addon/vc4/interface/khronos/ext/gl_oes_egl_image_client.c": [],
+    "addon/vc4/interface/khronos/ext/gl_oes_framebuffer_object.c": [],
+    "addon/vc4/interface/khronos/ext/gl_oes_map_buffer.c": [],
+    "addon/vc4/interface/khronos/ext/gl_oes_matrix_palette_client.c": [],
+    "addon/vc4/interface/khronos/ext/gl_oes_query_matrix_client.c": [],
+    "addon/vc4/interface/khronos/glxx/gl11_int_config.h": [],
+    "addon/vc4/interface/khronos/glxx/gl11_int_impl.h": [],
+    "addon/vc4/interface/khronos/glxx/gl20_int_impl.h": [],
+    "addon/vc4/interface/khronos/glxx/glxx_client.c": [],
+    "addon/vc4/interface/khronos/glxx/glxx_client.h": [],
+    "addon/vc4/interface/khronos/glxx/glxx_int_attrib.h": [],
+    "addon/vc4/interface/khronos/glxx/glxx_int_config.h": [],
+    "addon/vc4/interface/khronos/glxx/glxx_int_impl.h": [],
+    "addon/vc4/interface/khronos/include/bcm_host.h": [],
+    "addon/vc4/interface/khronos/include/EGL/egl.h": [],
+    "addon/vc4/interface/khronos/include/EGL/eglext_brcm.h": [],
+    "addon/vc4/interface/khronos/include/EGL/eglext.h": [],
+    "addon/vc4/interface/khronos/include/EGL/eglplatform.h": [],
+    "addon/vc4/interface/khronos/include/GLES/gl.h": [],
+    "addon/vc4/interface/khronos/include/GLES/glext.h": [],
+    "addon/vc4/interface/khronos/include/GLES/glplatform.h": [],
+    "addon/vc4/interface/khronos/include/GLES2/gl2.h": [],
+    "addon/vc4/interface/khronos/include/GLES2/gl2ext.h": [],
+    "addon/vc4/interface/khronos/include/GLES2/gl2platform.h": [],
+    "addon/vc4/interface/khronos/include/KHR/khrplatform.h": [],
+    "addon/vc4/interface/khronos/include/VG/openvg.h": [],
+    "addon/vc4/interface/khronos/include/VG/vgext.h": [],
+    "addon/vc4/interface/khronos/include/VG/vgplatform.h": [],
+    "addon/vc4/interface/khronos/include/VG/vgu.h": [],
+    "addon/vc4/interface/khronos/Makefile": [],
+    "addon/vc4/interface/khronos/vg/vg_client.c": [],
+    "addon/vc4/interface/khronos/vg/vg_client.h": [],
+    "addon/vc4/interface/khronos/vg/vg_config_filler_4.h": [],
+    "addon/vc4/interface/khronos/vg/vg_int_config.h": [],
+    "addon/vc4/interface/khronos/vg/vg_int_impl.h": [],
+    "addon/vc4/interface/khronos/vg/vg_int_mat3x3.c": [],
+    "addon/vc4/interface/khronos/vg/vg_int_mat3x3.h": [],
+    "addon/vc4/interface/khronos/vg/vg_int_util.h": [],
+    "addon/vc4/interface/khronos/vg/vg_int.h": [],
+    "addon/vc4/interface/LICENCE": [],
+    "addon/vc4/interface/makeall": [],
+    "addon/vc4/interface/README": [],
+    "addon/vc4/interface/sample/hello_dispmanx/dispmanx.c": [],
+    "addon/vc4/interface/sample/hello_dispmanx/kernel.cpp": [
+      "addon/vc4/interface/sample/hello_dispmanx/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/hello_dispmanx/kernel.h": [],
+    "addon/vc4/interface/sample/hello_dispmanx/main.cpp": [
+      "addon/vc4/interface/sample/hello_dispmanx/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/hello_dispmanx/Makefile": [],
+    "addon/vc4/interface/sample/hello_tiger/_main.c": [
+      "addon/vc4/interface/sample/hello_tiger/tiger.h"
+    ],
+    "addon/vc4/interface/sample/hello_tiger/kernel.cpp": [
+      "addon/vc4/interface/sample/hello_tiger/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/hello_tiger/kernel.h": [],
+    "addon/vc4/interface/sample/hello_tiger/license.txt": [],
+    "addon/vc4/interface/sample/hello_tiger/main.cpp": [
+      "addon/vc4/interface/sample/hello_tiger/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/hello_tiger/Makefile": [],
+    "addon/vc4/interface/sample/hello_tiger/tiger.c": [],
+    "addon/vc4/interface/sample/hello_tiger/tiger.h": [],
+    "addon/vc4/interface/sample/hello_triangle/cube_texture_and_coords.h": [],
+    "addon/vc4/interface/sample/hello_triangle/Djenne_128_128.raw": [],
+    "addon/vc4/interface/sample/hello_triangle/Gaudi_128_128.raw": [],
+    "addon/vc4/interface/sample/hello_triangle/kernel.cpp": [
+      "addon/vc4/interface/sample/hello_triangle/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle/kernel.h": [],
+    "addon/vc4/interface/sample/hello_triangle/Lucca_128_128.raw": [],
+    "addon/vc4/interface/sample/hello_triangle/main.cpp": [
+      "addon/vc4/interface/sample/hello_triangle/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle/Makefile": [],
+    "addon/vc4/interface/sample/hello_triangle/triangle.c": [
+      "addon/vc4/interface/sample/hello_triangle/cube_texture_and_coords.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle2/kernel.cpp": [
+      "addon/vc4/interface/sample/hello_triangle2/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle2/kernel.h": [],
+    "addon/vc4/interface/sample/hello_triangle2/main.cpp": [
+      "addon/vc4/interface/sample/hello_triangle2/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/hello_triangle2/Makefile": [],
+    "addon/vc4/interface/sample/hello_triangle2/triangle2.c": [],
+    "addon/vc4/interface/sample/README": [],
+    "addon/vc4/interface/sample/tvservice/kernel.cpp": [
+      "addon/vc4/interface/sample/tvservice/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/interface/sample/tvservice/kernel.h": [],
+    "addon/vc4/interface/sample/tvservice/main.cpp": [
+      "addon/vc4/interface/sample/tvservice/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/interface/sample/tvservice/Makefile": [],
+    "addon/vc4/interface/sample/tvservice/README": [],
+    "addon/vc4/interface/sample/tvservice/tvservice.cpp": [],
+    "addon/vc4/interface/vcinclude/common.h": [],
+    "addon/vc4/interface/vcinclude/vc_display_types.h": [],
+    "addon/vc4/interface/vcinclude/vc_image_types.h": [],
+    "addon/vc4/interface/vcos/Makefile": [],
+    "addon/vc4/interface/vcos/vcos_abort.c": [],
+    "addon/vc4/interface/vcos/vcos_assert.h": [],
+    "addon/vc4/interface/vcos/vcos_atomic_flags.h": [],
+    "addon/vc4/interface/vcos/vcos_attr.h": [],
+    "addon/vc4/interface/vcos/vcos_backtrace.c": [],
+    "addon/vc4/interface/vcos/vcos_blockpool.h": [],
+    "addon/vc4/interface/vcos/vcos_common.h": [],
+    "addon/vc4/interface/vcos/vcos_ctype.h": [],
+    "addon/vc4/interface/vcos/vcos_deprecated.h": [],
+    "addon/vc4/interface/vcos/vcos_event_flags.h": [],
+    "addon/vc4/interface/vcos/vcos_event.h": [],
+    "addon/vc4/interface/vcos/vcos_generic_blockpool.c": [],
+    "addon/vc4/interface/vcos/vcos_generic_blockpool.h": [],
+    "addon/vc4/interface/vcos/vcos_generic_event_flags.c": [],
+    "addon/vc4/interface/vcos/vcos_generic_event_flags.h": [],
+    "addon/vc4/interface/vcos/vcos_generic_named_sem.c": [],
+    "addon/vc4/interface/vcos/vcos_generic_named_sem.h": [],
+    "addon/vc4/interface/vcos/vcos_generic_quickslow_mutex.h": [],
+    "addon/vc4/interface/vcos/vcos_generic_reentrant_mtx.c": [],
+    "addon/vc4/interface/vcos/vcos_generic_reentrant_mtx.h": [],
+    "addon/vc4/interface/vcos/vcos_generic_safe_string.c": [],
+    "addon/vc4/interface/vcos/vcos_init.c": [
+      "addon/vc4/interface/vcos/vcos_deprecated.h"
+    ],
+    "addon/vc4/interface/vcos/vcos_init.h": [
+      "addon/vc4/interface/vcos/vcos.h"
+    ],
+    "addon/vc4/interface/vcos/vcos_inttypes.h": [],
+    "addon/vc4/interface/vcos/vcos_logcat.c": [],
+    "addon/vc4/interface/vcos/vcos_logging_control.h": [],
+    "addon/vc4/interface/vcos/vcos_logging.h": [],
+    "addon/vc4/interface/vcos/vcos_mem_from_malloc.c": [],
+    "addon/vc4/interface/vcos/vcos_mem_from_malloc.h": [],
+    "addon/vc4/interface/vcos/vcos_mem.h": [],
+    "addon/vc4/interface/vcos/vcos_msgqueue.c": [
+      "addon/vc4/interface/vcos/vcos_msgqueue.h",
+      "addon/vc4/interface/vcos/vcos.h"
+    ],
+    "addon/vc4/interface/vcos/vcos_msgqueue.h": [],
+    "addon/vc4/interface/vcos/vcos_mutex.h": [],
+    "addon/vc4/interface/vcos/vcos_named_semaphore.h": [],
+    "addon/vc4/interface/vcos/vcos_once.h": [],
+    "addon/vc4/interface/vcos/vcos_platform_types.h": [],
+    "addon/vc4/interface/vcos/vcos_platform.h": [],
+    "addon/vc4/interface/vcos/vcos_pthreads.c": [],
+    "addon/vc4/interface/vcos/vcos_queue.h": [],
+    "addon/vc4/interface/vcos/vcos_quickslow_mutex.h": [],
+    "addon/vc4/interface/vcos/vcos_reentrant_mutex.h": [],
+    "addon/vc4/interface/vcos/vcos_semaphore.h": [],
+    "addon/vc4/interface/vcos/vcos_stdbool.h": [],
+    "addon/vc4/interface/vcos/vcos_stdint.h": [],
+    "addon/vc4/interface/vcos/vcos_string.h": [],
+    "addon/vc4/interface/vcos/vcos_thread_attr.h": [],
+    "addon/vc4/interface/vcos/vcos_thread.h": [],
+    "addon/vc4/interface/vcos/vcos_timer.h": [],
+    "addon/vc4/interface/vcos/vcos_tls.h": [],
+    "addon/vc4/interface/vcos/vcos_types.h": [],
+    "addon/vc4/interface/vcos/vcos.h": [],
+    "addon/vc4/interface/vmcs_host/Makefile": [],
+    "addon/vc4/interface/vmcs_host/vc_dispmanx_types.h": [],
+    "addon/vc4/interface/vmcs_host/vc_dispmanx.h": [],
+    "addon/vc4/interface/vmcs_host/vc_dispservice_x_defs.h": [],
+    "addon/vc4/interface/vmcs_host/vc_gencmd_defs.h": [],
+    "addon/vc4/interface/vmcs_host/vc_hdmi_property.h": [],
+    "addon/vc4/interface/vmcs_host/vc_hdmi.h": [],
+    "addon/vc4/interface/vmcs_host/vc_sdtv.h": [],
+    "addon/vc4/interface/vmcs_host/vc_tvservice_defs.h": [],
+    "addon/vc4/interface/vmcs_host/vc_tvservice.h": [],
+    "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx_common.h": [],
+    "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.c": [
+      "addon/vc4/interface/vmcs_host/vc_dispmanx.h",
+      "addon/vc4/interface/vmcs_host/vc_dispservice_x_defs.h",
+      "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.h",
+      "addon/vc4/interface/vmcs_host/vchost_platform_config.h",
+      "addon/vc4/interface/vmcs_host/vchost.h"
+    ],
+    "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.h": [],
+    "addon/vc4/interface/vmcs_host/vc_vchi_gencmd.c": [
+      "addon/vc4/interface/vmcs_host/vchost.h"
+    ],
+    "addon/vc4/interface/vmcs_host/vc_vchi_gencmd.h": [],
+    "addon/vc4/interface/vmcs_host/vc_vchi_tvservice.c": [
+      "addon/vc4/interface/vmcs_host/vc_tvservice.h",
+      "addon/vc4/interface/vmcs_host/vchost_platform_config.h",
+      "addon/vc4/interface/vmcs_host/vchost.h"
+    ],
+    "addon/vc4/interface/vmcs_host/vcgencmd.h": [],
+    "addon/vc4/interface/vmcs_host/vchost_config.h": [],
+    "addon/vc4/interface/vmcs_host/vchost_platform_config.h": [],
+    "addon/vc4/interface/vmcs_host/vchost.h": [],
+    "addon/vc4/makeall": [],
+    "addon/vc4/README": [],
+    "addon/vc4/sound/Makefile": [],
+    "addon/vc4/sound/sample/kernel.cpp": [
+      "addon/vc4/sound/sample/kernel.h",
+      "include/circle/memory.h"
+    ],
+    "addon/vc4/sound/sample/kernel.h": [],
+    "addon/vc4/sound/sample/main.cpp": [
+      "addon/vc4/sound/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/vc4/sound/sample/Makefile": [],
+    "addon/vc4/sound/sample/README": [],
+    "addon/vc4/sound/vc_vchi_audioserv_defs.h": [],
+    "addon/vc4/sound/vchiqsoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/vc4/sound/vchiqsoundbasedevice.h": [],
+    "addon/vc4/sound/vchiqsoundcontroller.cpp": [
+      "include/assert.h"
+    ],
+    "addon/vc4/sound/vchiqsoundcontroller.h": [],
+    "addon/vc4/sound/vchiqsounddevice.cpp": [
+      "include/assert.h"
+    ],
+    "addon/vc4/sound/vchiqsounddevice.h": [],
+    "addon/vc4/vchi/connections/connection.h": [],
+    "addon/vc4/vchi/message_drivers/message.h": [],
+    "addon/vc4/vchi/vchi_cfg_internal.h": [],
+    "addon/vc4/vchi/vchi_cfg.h": [],
+    "addon/vc4/vchi/vchi_common.h": [],
+    "addon/vc4/vchi/vchi_mh.h": [],
+    "addon/vc4/vchi/vchi.h": [],
+    "addon/vc4/vchiq/Makefile": [],
+    "addon/vc4/vchiq/vchiq_2835_arm.c": [
+      "addon/vc4/vchiq/vchiq_2835.h",
+      "addon/vc4/vchiq/vchiq_arm.h",
+      "addon/vc4/vchiq/vchiq_connected.h",
+      "addon/vc4/vchiq/vchiq_killable.h"
+    ],
+    "addon/vc4/vchiq/vchiq_2835.h": [],
+    "addon/vc4/vchiq/vchiq_arm.c": [
+      "addon/vc4/vchiq/vchiq_arm.h",
+      "addon/vc4/vchiq/vchiq_core.h",
+      "addon/vc4/vchiq/vchiq_killable.h"
+    ],
+    "addon/vc4/vchiq/vchiq_arm.h": [],
+    "addon/vc4/vchiq/vchiq_cfg.h": [],
+    "addon/vc4/vchiq/vchiq_connected.c": [
+      "addon/vc4/vchiq/vchiq_connected.h",
+      "addon/vc4/vchiq/vchiq_core.h",
+      "addon/vc4/vchiq/vchiq_killable.h"
+    ],
+    "addon/vc4/vchiq/vchiq_connected.h": [],
+    "addon/vc4/vchiq/vchiq_core.c": [
+      "addon/vc4/vchiq/vchiq_core.h",
+      "addon/vc4/vchiq/vchiq_killable.h"
+    ],
+    "addon/vc4/vchiq/vchiq_core.h": [],
+    "addon/vc4/vchiq/vchiq_if.h": [],
+    "addon/vc4/vchiq/vchiq_kern_lib.c": [
+      "addon/vc4/vchiq/vchiq_arm.h",
+      "addon/vc4/vchiq/vchiq_core.h",
+      "addon/vc4/vchiq/vchiq_killable.h"
+    ],
+    "addon/vc4/vchiq/vchiq_killable.h": [],
+    "addon/vc4/vchiq/vchiq_pagelist.h": [],
+    "addon/vc4/vchiq/vchiq_shim.c": [
+      "addon/vc4/vchiq/vchiq_core.h",
+      "addon/vc4/vchiq/vchiq_util.h",
+      "addon/vc4/vchiq/vchiq.h"
+    ],
+    "addon/vc4/vchiq/vchiq_util.c": [
+      "addon/vc4/vchiq/vchiq_killable.h",
+      "addon/vc4/vchiq/vchiq_util.h"
+    ],
+    "addon/vc4/vchiq/vchiq_util.h": [],
+    "addon/vc4/vchiq/vchiq.h": [],
+    "addon/vc4/vchiq/vchiqdevice.cpp": [
+      "include/circle/sysconfig.h"
+    ],
+    "addon/vc4/vchiq/vchiqdevice.h": [],
+    "addon/webconsole/logbuffer.cpp": [
+      "include/assert.h"
+    ],
+    "addon/webconsole/logbuffer.h": [],
+    "addon/webconsole/Makefile": [],
+    "addon/webconsole/sample/kernel.cpp": [
+      "addon/webconsole/sample/kernel.h"
+    ],
+    "addon/webconsole/sample/kernel.h": [],
+    "addon/webconsole/sample/main.cpp": [
+      "addon/webconsole/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/webconsole/sample/Makefile": [],
+    "addon/webconsole/sample/README": [],
+    "addon/webconsole/webconsole.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/util.h"
+    ],
+    "addon/webconsole/webconsole.h": [],
+    "addon/wlan/bcm4343.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/sysconfig.h"
+    ],
+    "addon/wlan/bcm4343.h": [],
+    "addon/wlan/emmc.c": [],
+    "addon/wlan/ether4330.c": [],
+    "addon/wlan/etherevent.h": [],
+    "addon/wlan/firmware/Makefile": [],
+    "addon/wlan/makeall": [],
+    "addon/wlan/Makefile": [],
+    "addon/wlan/p9arch.cpp": [
+      "addon/wlan/p9arch.h",
+      "include/assert.h",
+      "include/circle/dmachannel.h",
+      "include/circle/interrupt.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "addon/wlan/p9arch.h": [],
+    "addon/wlan/p9chan.cpp": [
+      "addon/wlan/p9chan.h",
+      "addon/wlan/p9error.h",
+      "include/assert.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/p9chan.h": [],
+    "addon/wlan/p9cmd.cpp": [
+      "addon/wlan/p9cmd.h",
+      "addon/wlan/p9error.h",
+      "include/assert.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/p9cmd.h": [],
+    "addon/wlan/p9compat.h": [],
+    "addon/wlan/p9error.cpp": [
+      "addon/wlan/p9error.h",
+      "addon/wlan/p9proc.h",
+      "addon/wlan/p9util.h",
+      "include/assert.h"
+    ],
+    "addon/wlan/p9error.h": [],
+    "addon/wlan/p9ether.cpp": [
+      "addon/wlan/p9ether.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/wlan/p9ether.h": [],
+    "addon/wlan/p9proc.cpp": [
+      "addon/wlan/p9arch.h",
+      "addon/wlan/p9proc.h",
+      "include/assert.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sched/task.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "addon/wlan/p9proc.h": [],
+    "addon/wlan/p9sd.h": [],
+    "addon/wlan/p9util.cpp": [
+      "addon/wlan/p9util.h",
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/stdarg.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/p9util.h": [],
+    "addon/wlan/Plan9License": [],
+    "addon/wlan/sample/hello_ap/client/kernel.cpp": [
+      "addon/wlan/sample/hello_ap/client/kernel.h",
+      "include/assert.h",
+      "include/circle/net/in.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/socket.h"
+    ],
+    "addon/wlan/sample/hello_ap/client/kernel.h": [],
+    "addon/wlan/sample/hello_ap/client/main.cpp": [
+      "addon/wlan/sample/hello_ap/client/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/wlan/sample/hello_ap/client/Makefile": [],
+    "addon/wlan/sample/hello_ap/echoserver.cpp": [
+      "addon/wlan/sample/hello_ap/echoserver.h",
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/sample/hello_ap/echoserver.h": [],
+    "addon/wlan/sample/hello_ap/kernel.cpp": [
+      "addon/wlan/sample/hello_ap/echoserver.h",
+      "addon/wlan/sample/hello_ap/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/sample/hello_ap/kernel.h": [],
+    "addon/wlan/sample/hello_ap/main.cpp": [
+      "addon/wlan/sample/hello_ap/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/wlan/sample/hello_ap/Makefile": [],
+    "addon/wlan/sample/hello_ap/README": [],
+    "addon/wlan/sample/hello_wlan/kernel.cpp": [
+      "addon/wlan/sample/hello_wlan/kernel.h",
+      "include/circle/net/ntpdaemon.h",
+      "include/circle/string.h"
+    ],
+    "addon/wlan/sample/hello_wlan/kernel.h": [],
+    "addon/wlan/sample/hello_wlan/main.cpp": [
+      "addon/wlan/sample/hello_wlan/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/wlan/sample/hello_wlan/Makefile": [],
+    "addon/wlan/sample/hello_wlan/README": [],
+    "addon/wlan/sample/hello_wlan/wpa_supplicant.conf": [],
+    "addon/WS28XX/Makefile": [],
+    "addon/WS28XX/sample/multichan/kernel.cpp": [
+      "addon/WS28XX/sample/multichan/kernel.h",
+      "include/circle/string.h"
+    ],
+    "addon/WS28XX/sample/multichan/kernel.h": [],
+    "addon/WS28XX/sample/multichan/main.cpp": [
+      "addon/WS28XX/sample/multichan/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/WS28XX/sample/multichan/Makefile": [],
+    "addon/WS28XX/sample/multichan/README": [],
+    "addon/WS28XX/sample/simple/kernel.cpp": [
+      "addon/WS28XX/sample/simple/kernel.h"
+    ],
+    "addon/WS28XX/sample/simple/kernel.h": [],
+    "addon/WS28XX/sample/simple/main.cpp": [
+      "addon/WS28XX/sample/simple/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/WS28XX/sample/simple/Makefile": [],
+    "addon/WS28XX/sample/simple/README": [],
+    "addon/WS28XX/ws2812oversmi.cpp": [
+      "addon/WS28XX/ws2812oversmi.h",
+      "include/circle/util.h"
+    ],
+    "addon/WS28XX/ws2812oversmi.h": [],
+    "addon/WS28XX/ws28xxstripe.cpp": [
+      "addon/WS28XX/ws28xxstripe.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/WS28XX/ws28xxstripe.h": [],
+    "app/lib/template/Makefile": [],
+    "app/lib/template/myclass.cpp": [],
+    "app/lib/template/myclass.h": [],
+    "app/makeall": [],
+    "app/Rules.mk": [],
+    "app/template/kernel.cpp": [
+      "app/template/kernel.h"
+    ],
+    "app/template/kernel.h": [],
+    "app/template/main.cpp": [
+      "app/template/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "app/template/Makefile": [],
+    "boot/armstub/armstub7.S": [],
+    "boot/armstub/armstub8.S": [],
+    "boot/armstub/Makefile": [],
+    "boot/config32.txt": [],
+    "boot/config64.txt": [],
+    "boot/Makefile": [],
+    "boot/README": [],
+    "CHANGELOG.md": [],
+    "circle.ld": [],
+    "configure": [],
+    "CONTRIBUTING.md": [],
+    "CREDITS": [],
+    "doc/bootloader.txt": [],
+    "doc/clang-support.txt": [],
+    "doc/classes.txt": [],
+    "doc/cmdline.txt": [],
+    "doc/debug-jtag.txt": [],
+    "doc/debug-swd.txt": [],
+    "doc/debug.txt": [],
+    "doc/dma-buffer-requirements.txt": [],
+    "doc/eclipse-support.txt": [],
+    "doc/issues.txt": [],
+    "doc/keyboard.txt": [],
+    "doc/memorymap.txt": [],
+    "doc/multicore.txt": [],
+    "doc/naming-conventions.txt": [],
+    "doc/new-operator.txt": [],
+    "doc/qemu.txt": [],
+    "doc/realtime.txt": [],
+    "doc/screen.txt": [],
+    "doc/stdlib-support.txt": [],
+    "doc/usb-plug-and-play.txt": [],
+    "doc/windows-build.txt": [],
+    "Doxyfile": [],
+    "include/assert.h": [],
+    "include/circle/2dgraphics.h": [],
+    "include/circle/actled.h": [],
+    "include/circle/alloc.h": [],
+    "include/circle/armv6mmu.h": [],
+    "include/circle/armv7lpae.h": [],
+    "include/circle/armv8mmu.h": [],
+    "include/circle/atomic.h": [],
+    "include/circle/chainboot.h": [],
+    "include/circle/chargenerator.h": [],
+    "include/circle/classallocator.h": [],
+    "include/circle/cputhrottle.h": [],
+    "include/circle/debug.h": [],
+    "include/circle/device.h": [],
+    "include/circle/devicenameservice.h": [],
+    "include/circle/devicetreeblob.h": [],
+    "include/circle/display.h": [],
+    "include/circle/dma4channel.h": [],
+    "include/circle/dmachannel-rp1.h": [],
+    "include/circle/dmachannel.h": [],
+    "include/circle/dmacommon.h": [],
+    "include/circle/exception.h": [],
+    "include/circle/exceptionhandler.h": [],
+    "include/circle/exceptionstub.h": [],
+    "include/circle/font.h": [],
+    "include/circle/fs/fat/fat.h": [],
+    "include/circle/fs/fat/fatcache.h": [],
+    "include/circle/fs/fat/fatdir.h": [],
+    "include/circle/fs/fat/fatfs.h": [],
+    "include/circle/fs/fat/fatfsdef.h": [],
+    "include/circle/fs/fat/fatinfo.h": [],
+    "include/circle/fs/fsdef.h": [],
+    "include/circle/fs/partition.h": [],
+    "include/circle/fs/partitionmanager.h": [],
+    "include/circle/genericlock.h": [],
+    "include/circle/heapallocator.h": [],
+    "include/circle/input/console.h": [],
+    "include/circle/input/keyboardbehaviour.h": [],
+    "include/circle/input/keyboardbuffer.h": [],
+    "include/circle/input/keymap.h": [],
+    "include/circle/input/linediscipline.h": [],
+    "include/circle/input/mouse.h": [],
+    "include/circle/input/mousebehaviour.h": [],
+    "include/circle/input/rpitouchscreen.h": [],
+    "include/circle/input/touchscreen.h": [],
+    "include/circle/input/xpt2046touchscreen.h": [],
+    "include/circle/interrupt.h": [],
+    "include/circle/koptions.h": [],
+    "include/circle/latencytester.h": [],
+    "include/circle/logger.h": [],
+    "include/circle/macaddress.h": [],
+    "include/circle/macb.h": [],
+    "include/circle/machineinfo.h": [],
+    "include/circle/macros.h": [],
+    "include/circle/memio.h": [],
+    "include/circle/memory.h": [],
+    "include/circle/memorymap.h": [],
+    "include/circle/memorymap64.h": [],
+    "include/circle/mphi.h": [],
+    "include/circle/multicore.h": [],
+    "include/circle/net/arphandler.h": [],
+    "include/circle/net/checksumcalculator.h": [],
+    "include/circle/net/dhcpclient.h": [],
+    "include/circle/net/dnsclient.h": [],
+    "include/circle/net/http.h": [],
+    "include/circle/net/httpclient.h": [],
+    "include/circle/net/httpdaemon.h": [],
+    "include/circle/net/icmphandler.h": [],
+    "include/circle/net/igmphandler.h": [],
+    "include/circle/net/in.h": [],
+    "include/circle/net/ipaddress.h": [],
+    "include/circle/net/linklayer.h": [],
+    "include/circle/net/mdnsdaemon.h": [],
+    "include/circle/net/mdnspublisher.h": [],
+    "include/circle/net/mqtt.h": [],
+    "include/circle/net/mqttclient.h": [],
+    "include/circle/net/mqttreceivepacket.h": [],
+    "include/circle/net/mqttsendpacket.h": [],
+    "include/circle/net/netconfig.h": [],
+    "include/circle/net/netconnection.h": [],
+    "include/circle/net/netdevlayer.h": [],
+    "include/circle/net/netqueue.h": [],
+    "include/circle/net/netsocket.h": [],
+    "include/circle/net/netsubsystem.h": [],
+    "include/circle/net/nettask.h": [],
+    "include/circle/net/networklayer.h": [],
+    "include/circle/net/ntpclient.h": [],
+    "include/circle/net/ntpdaemon.h": [],
+    "include/circle/net/phytask.h": [],
+    "include/circle/net/retransmissionqueue.h": [],
+    "include/circle/net/retranstimeoutcalc.h": [],
+    "include/circle/net/routecache.h": [],
+    "include/circle/net/socket.h": [],
+    "include/circle/net/syslogdaemon.h": [],
+    "include/circle/net/tcpconnection.h": [],
+    "include/circle/net/tcprejector.h": [],
+    "include/circle/net/tftpdaemon.h": [],
+    "include/circle/net/transportlayer.h": [],
+    "include/circle/net/udpconnection.h": [],
+    "include/circle/netdevice.h": [],
+    "include/circle/new.h": [],
+    "include/circle/nulldevice.h": [],
+    "include/circle/numberpool.h": [],
+    "include/circle/pageallocator.h": [],
+    "include/circle/pagetable.h": [],
+    "include/circle/pci_regs.h": [],
+    "include/circle/peripherals/gpioclock-rp1.h": [],
+    "include/circle/peripherals/gpioclock.h": [],
+    "include/circle/peripherals/gpiomanager.h": [],
+    "include/circle/peripherals/gpiopin.h": [],
+    "include/circle/peripherals/gpiopin2712.h": [],
+    "include/circle/peripherals/gpiopinfiq.h": [],
+    "include/circle/peripherals/i2cmaster-rp1.h": [],
+    "include/circle/peripherals/i2cmaster.h": [],
+    "include/circle/peripherals/i2cmasterirq.h": [],
+    "include/circle/peripherals/i2cslave.h": [],
+    "include/circle/peripherals/pwmoutput-rp1.h": [],
+    "include/circle/peripherals/pwmoutput.h": [],
+    "include/circle/peripherals/serial.h": [],
+    "include/circle/peripherals/spimaster-rp1.h": [],
+    "include/circle/peripherals/spimaster.h": [],
+    "include/circle/peripherals/spimasteraux.h": [],
+    "include/circle/peripherals/spimasterdma-rp1.h": [],
+    "include/circle/peripherals/spimasterdma.h": [],
+    "include/circle/ptrarray.h": [],
+    "include/circle/ptrlist.h": [],
+    "include/circle/ptrlistfiq.h": [],
+    "include/circle/qemu.h": [],
+    "include/circle/rp1int.h": [],
+    "include/circle/rpi/bcm2711.h": [],
+    "include/circle/rpi/bcm2711int.h": [],
+    "include/circle/rpi/bcm2712.h": [],
+    "include/circle/rpi/bcm2835.h": [],
+    "include/circle/rpi/bcm2835int.h": [],
+    "include/circle/rpi/bcm2836.h": [],
+    "include/circle/rpi/bcm54213.h": [],
+    "include/circle/rpi/bcmframebuffer.h": [],
+    "include/circle/rpi/bcmmailbox.h": [],
+    "include/circle/rpi/bcmpciehostbridge.h": [],
+    "include/circle/rpi/bcmpropertytags.h": [],
+    "include/circle/rpi/bcmrandom.h": [],
+    "include/circle/rpi/bcmwatchdog.h": [],
+    "include/circle/sched/mutex.h": [],
+    "include/circle/sched/scheduler.h": [],
+    "include/circle/sched/semaphore.h": [],
+    "include/circle/sched/synchronizationevent.h": [],
+    "include/circle/sched/task.h": [],
+    "include/circle/sched/taskswitch.h": [],
+    "include/circle/screen.h": [],
+    "include/circle/setjmp.h": [],
+    "include/circle/smimaster.h": [],
+    "include/circle/sound/dmasoundbuffers.h": [],
+    "include/circle/sound/hdmisoundbasedevice.h": [],
+    "include/circle/sound/i2ssoundbasedevice-rp1.h": [],
+    "include/circle/sound/i2ssoundbasedevice.h": [],
+    "include/circle/sound/pcm512xsoundcontroller.h": [],
+    "include/circle/sound/pwmsoundbasedevice-rp1.h": [],
+    "include/circle/sound/pwmsoundbasedevice.h": [],
+    "include/circle/sound/pwmsounddevice.h": [],
+    "include/circle/sound/soundbasedevice.h": [],
+    "include/circle/sound/soundcontroller.h": [],
+    "include/circle/sound/usbsoundbasedevice.h": [],
+    "include/circle/sound/usbsoundcontroller.h": [],
+    "include/circle/sound/wm8960soundcontroller.h": [],
+    "include/circle/southbridge.h": [],
+    "include/circle/spinlock.h": [],
+    "include/circle/startup.h": [],
+    "include/circle/stdarg.h": [],
+    "include/circle/string.h": [],
+    "include/circle/synchronize.h": [],
+    "include/circle/synchronize64.h": [],
+    "include/circle/sysconfig.h": [],
+    "include/circle/terminal.h": [],
+    "include/circle/time.h": [],
+    "include/circle/timer.h": [],
+    "include/circle/tracer.h": [],
+    "include/circle/translationtable64.h": [],
+    "include/circle/types.h": [],
+    "include/circle/usb/dwhci.h": [],
+    "include/circle/usb/dwhcicompletionqueue.h": [],
+    "include/circle/usb/dwhcidevice.h": [],
+    "include/circle/usb/dwhciframeschediso.h": [],
+    "include/circle/usb/dwhciframeschednper.h": [],
+    "include/circle/usb/dwhciframeschednsplit.h": [],
+    "include/circle/usb/dwhciframeschedper.h": [],
+    "include/circle/usb/dwhciframescheduler.h": [],
+    "include/circle/usb/dwhciregister.h": [],
+    "include/circle/usb/dwhcirootport.h": [],
+    "include/circle/usb/dwhcixactqueue.h": [],
+    "include/circle/usb/dwhcixferstagedata.h": [],
+    "include/circle/usb/gadget/dwusbgadget.h": [],
+    "include/circle/usb/gadget/dwusbgadgetendpoint.h": [],
+    "include/circle/usb/gadget/dwusbgadgetendpoint0.h": [],
+    "include/circle/usb/gadget/usbcdcgadget.h": [],
+    "include/circle/usb/gadget/usbcdcgadgetendpoint.h": [],
+    "include/circle/usb/gadget/usbmidigadget.h": [],
+    "include/circle/usb/gadget/usbmidigadgetendpoint.h": [],
+    "include/circle/usb/gadget/usbmsdgadget.h": [],
+    "include/circle/usb/gadget/usbmsdgadgetendpoint.h": [],
+    "include/circle/usb/lan7800.h": [],
+    "include/circle/usb/smsc951x.h": [],
+    "include/circle/usb/usb.h": [],
+    "include/circle/usb/usbaudio.h": [],
+    "include/circle/usb/usbaudiocontrol.h": [],
+    "include/circle/usb/usbaudiofunctopology.h": [],
+    "include/circle/usb/usbaudiostreaming.h": [],
+    "include/circle/usb/usbbluetooth.h": [],
+    "include/circle/usb/usbcdcethernet.h": [],
+    "include/circle/usb/usbconfigparser.h": [],
+    "include/circle/usb/usbcontroller.h": [],
+    "include/circle/usb/usbdevice.h": [],
+    "include/circle/usb/usbdevicefactory.h": [],
+    "include/circle/usb/usbendpoint.h": [],
+    "include/circle/usb/usbfloppydevice.h": [],
+    "include/circle/usb/usbfunction.h": [],
+    "include/circle/usb/usbgamepad.h": [],
+    "include/circle/usb/usbgamepadps3.h": [],
+    "include/circle/usb/usbgamepadps4.h": [],
+    "include/circle/usb/usbgamepadstandard.h": [],
+    "include/circle/usb/usbgamepadswitchpro.h": [],
+    "include/circle/usb/usbgamepadxbox360.h": [],
+    "include/circle/usb/usbgamepadxboxone.h": [],
+    "include/circle/usb/usbhcidevice.h": [],
+    "include/circle/usb/usbhcirootport.h": [],
+    "include/circle/usb/usbhid.h": [],
+    "include/circle/usb/usbhiddevice.h": [],
+    "include/circle/usb/usbhostcontroller.h": [],
+    "include/circle/usb/usbhub.h": [],
+    "include/circle/usb/usbkeyboard.h": [],
+    "include/circle/usb/usbmassdevice.h": [],
+    "include/circle/usb/usbmidi.h": [],
+    "include/circle/usb/usbmidihost.h": [],
+    "include/circle/usb/usbmouse.h": [],
+    "include/circle/usb/usbprinter.h": [],
+    "include/circle/usb/usbrequest.h": [],
+    "include/circle/usb/usbserial.h": [],
+    "include/circle/usb/usbserialcdc.h": [],
+    "include/circle/usb/usbserialch341.h": [],
+    "include/circle/usb/usbserialcp210x.h": [],
+    "include/circle/usb/usbserialft231x.h": [],
+    "include/circle/usb/usbserialhost.h": [],
+    "include/circle/usb/usbserialpl2303.h": [],
+    "include/circle/usb/usbstandardhub.h": [],
+    "include/circle/usb/usbstring.h": [],
+    "include/circle/usb/usbsubsystem.h": [],
+    "include/circle/usb/usbtouchscreen.h": [],
+    "include/circle/usb/xhci.h": [],
+    "include/circle/usb/xhcicommandmanager.h": [],
+    "include/circle/usb/xhciconfig.h": [],
+    "include/circle/usb/xhcidevice.h": [],
+    "include/circle/usb/xhciendpoint.h": [],
+    "include/circle/usb/xhcieventmanager.h": [],
+    "include/circle/usb/xhcimmiospace.h": [],
+    "include/circle/usb/xhciring.h": [],
+    "include/circle/usb/xhciroothub.h": [],
+    "include/circle/usb/xhcirootport.h": [],
+    "include/circle/usb/xhcisharedmemallocator.h": [],
+    "include/circle/usb/xhcislotmanager.h": [],
+    "include/circle/usb/xhciusbdevice.h": [],
+    "include/circle/usertimer.h": [],
+    "include/circle/util.h": [],
+    "include/circle/version.h": [],
+    "include/circle/virtualgpiopin.h": [],
+    "include/circle/windowdisplay.h": [],
+    "include/circle/writebuffer.h": [],
+    "lib/2dgraphics.cpp": [
+      "include/assert.h",
+      "include/circle/2dgraphics.h",
+      "include/circle/screen.h",
+      "include/circle/util.h"
+    ],
+    "lib/actled.cpp": [
+      "include/circle/actled.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2712.h",
+      "include/circle/timer.h"
+    ],
+    "lib/alloc.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/memory.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/assert.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/interrupt.h",
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/types.h"
+    ],
+    "lib/cache-v7.S": [],
+    "lib/chainboot.cpp": [
+      "include/assert.h",
+      "include/circle/chainboot.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/chargenerator.cpp": [
+      "include/circle/chargenerator.h"
+    ],
+    "lib/classallocator.cpp": [
+      "include/circle/alloc.h",
+      "include/circle/classallocator.h",
+      "include/circle/logger.h"
+    ],
+    "lib/cputhrottle.cpp": [
+      "include/assert.h",
+      "include/circle/cputhrottle.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/timer.h"
+    ],
+    "lib/cxa_guard.cpp": [
+      "include/circle/atomic.h",
+      "include/circle/multicore.h",
+      "include/circle/types.h"
+    ],
+    "lib/debug.cpp": [
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/peripherals/gpiopin.h",
+      "include/circle/string.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/delayloop.S": [],
+    "lib/device.cpp": [
+      "include/circle/device.h"
+    ],
+    "lib/devicenameservice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "lib/devicetreeblob.cpp": [
+      "include/assert.h",
+      "include/circle/devicetreeblob.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/util.h"
+    ],
+    "lib/display.cpp": [
+      "include/circle/display.h",
+      "include/circle/util.h"
+    ],
+    "lib/dma4channel.cpp": [
+      "include/assert.h",
+      "include/circle/dma4channel.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcm2711int.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/dmachannel-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/dmachannel-rp1.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/rp1int.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/dmachannel.cpp": [
+      "include/assert.h",
+      "include/circle/dmachannel.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/exceptionhandler.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/exceptionhandler.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/multicore.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/exceptionhandler64.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/exceptionhandler.h",
+      "include/circle/interrupt.h",
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/exceptionstub.S": [],
+    "lib/exceptionstub64.S": [],
+    "lib/fonts/font12x22.cpp": [
+      "include/circle/font.h"
+    ],
+    "lib/fonts/font6x7.cpp": [
+      "include/circle/font.h"
+    ],
+    "lib/fonts/font8x10.cpp": [
+      "include/circle/font.h"
+    ],
+    "lib/fonts/font8x12.cpp": [
+      "include/circle/font.h"
+    ],
+    "lib/fonts/font8x14.cpp": [
+      "include/circle/font.h"
+    ],
+    "lib/fonts/font8x16.cpp": [
+      "include/circle/font.h"
+    ],
+    "lib/fonts/font8x8.cpp": [
+      "include/circle/font.h"
+    ],
+    "lib/fonts/Makefile": [],
+    "lib/fs/fat/fat.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fat/fat.h"
+    ],
+    "lib/fs/fat/fatcache.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fat/fatcache.h",
+      "include/circle/logger.h",
+      "include/circle/new.h"
+    ],
+    "lib/fs/fat/fatdir.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fat/fatdir.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/fs/fat/fatfs.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fat/fatfs.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/fs/fat/fatinfo.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fat/fatfsdef.h",
+      "include/circle/fs/fat/fatinfo.h",
+      "include/circle/logger.h"
+    ],
+    "lib/fs/fat/Makefile": [],
+    "lib/fs/Makefile": [],
+    "lib/fs/partition.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fsdef.h",
+      "include/circle/fs/partition.h"
+    ],
+    "lib/fs/partitionmanager.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/fs/fsdef.h",
+      "include/circle/fs/partitionmanager.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h"
+    ],
+    "lib/heapallocator.cpp": [
+      "include/assert.h",
+      "include/circle/heapallocator.h",
+      "include/circle/logger.h",
+      "include/circle/util.h"
+    ],
+    "lib/input/console.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/input/console.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbkeyboard.h"
+    ],
+    "lib/input/keyboardbehaviour.cpp": [
+      "include/assert.h",
+      "include/circle/input/keyboardbehaviour.h"
+    ],
+    "lib/input/keyboardbuffer.cpp": [
+      "include/assert.h",
+      "include/circle/input/keyboardbuffer.h"
+    ],
+    "lib/input/keymap_de.h": [],
+    "lib/input/keymap_dv.h": [],
+    "lib/input/keymap_es.h": [],
+    "lib/input/keymap_fr.h": [],
+    "lib/input/keymap_it.h": [],
+    "lib/input/keymap_uk.h": [],
+    "lib/input/keymap_us.h": [],
+    "lib/input/keymap.cpp": [
+      "include/assert.h",
+      "include/circle/input/keyboardbehaviour.h",
+      "include/circle/input/keymap.h",
+      "include/circle/koptions.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/input/linediscipline.cpp": [
+      "include/assert.h",
+      "include/circle/input/linediscipline.h"
+    ],
+    "lib/input/Makefile": [],
+    "lib/input/mouse.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/input/mouse.h"
+    ],
+    "lib/input/mousebehaviour.cpp": [
+      "include/assert.h",
+      "include/circle/input/mousebehaviour.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmpropertytags.h"
+    ],
+    "lib/input/rpitouchscreen.cpp": [
+      "include/assert.h",
+      "include/circle/input/rpitouchscreen.h",
+      "include/circle/logger.h",
+      "include/circle/memory.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/util.h"
+    ],
+    "lib/input/touchscreen.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/input/touchscreen.h"
+    ],
+    "lib/input/xpt2046touchscreen.cpp": [
+      "include/assert.h",
+      "include/circle/input/xpt2046touchscreen.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/interrupt.cpp": [
+      "include/assert.h",
+      "include/circle/interrupt.h",
+      "include/circle/memio.h",
+      "include/circle/multicore.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2836.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/types.h"
+    ],
+    "lib/interruptgic.cpp": [
+      "include/assert.h",
+      "include/circle/interrupt.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/multicore.h",
+      "include/circle/rp1int.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/southbridge.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/types.h"
+    ],
+    "lib/koptions.cpp": [
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/latencytester.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/latencytester.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/libhelper.cpp": [
+      "include/assert.h",
+      "include/circle/exceptionhandler.h"
+    ],
+    "lib/libstub.S": [],
+    "lib/logger.cpp": [
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/multicore.h",
+      "include/circle/startup.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h",
+      "include/circle/version.h"
+    ],
+    "lib/macaddress.cpp": [
+      "include/assert.h",
+      "include/circle/macaddress.h",
+      "include/circle/util.h"
+    ],
+    "lib/macb.cpp": [
+      "include/assert.h",
+      "include/circle/devicetreeblob.h",
+      "include/circle/logger.h",
+      "include/circle/macb.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/memory.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/machineinfo.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpioclock.h",
+      "include/circle/rpi/bcm2712.h",
+      "include/circle/startup.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/Makefile": [],
+    "lib/memory.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/armv6mmu.h",
+      "include/circle/armv7lpae.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memory.h",
+      "include/circle/spinlock.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/memory64.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memory.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/spinlock.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/mphi.cpp": [
+      "include/assert.h",
+      "include/circle/atomic.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/mphi.h",
+      "include/circle/new.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/multicore.cpp": [
+      "include/circle/multicore.h"
+    ],
+    "lib/net/arphandler.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/arphandler.h",
+      "include/circle/net/linklayer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/checksumcalculator.cpp": [
+      "include/assert.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/dhcpclient.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macaddress.h",
+      "include/circle/macros.h",
+      "include/circle/net/dhcpclient.h",
+      "include/circle/net/in.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/dnsclient.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/in.h",
+      "include/circle/net/socket.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/httpclient.cpp": [
+      "include/assert.h",
+      "include/circle/net/httpclient.h",
+      "include/circle/net/in.h",
+      "include/circle/netdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/httpdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/httpdaemon.h",
+      "include/circle/net/in.h",
+      "include/circle/netdevice.h",
+      "include/circle/string.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/icmphandler.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/net/icmphandler.h",
+      "include/circle/net/in.h",
+      "include/circle/net/networklayer.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/igmphandler.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/net/igmphandler.h",
+      "include/circle/net/in.h",
+      "include/circle/net/networklayer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/ipaddress.cpp": [
+      "include/assert.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/linklayer.cpp": [
+      "include/assert.h",
+      "include/circle/net/linklayer.h",
+      "include/circle/net/networklayer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/Makefile": [],
+    "lib/net/mdnsdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/mdnsdaemon.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/mdnspublisher.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/net/mdnspublisher.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/mqttclient.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/in.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/mqttclient.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "lib/net/mqttreceivepacket.cpp": [
+      "include/circle/net/in.h",
+      "include/circle/net/mqttreceivepacket.h"
+    ],
+    "lib/net/mqttsendpacket.cpp": [
+      "include/assert.h",
+      "include/circle/net/in.h",
+      "include/circle/net/mqttsendpacket.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/netconfig.cpp": [
+      "include/circle/net/netconfig.h"
+    ],
+    "lib/net/netconnection.cpp": [
+      "include/assert.h",
+      "include/circle/net/netconnection.h"
+    ],
+    "lib/net/netdevlayer.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/netdevlayer.h",
+      "include/circle/net/phytask.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/net/netqueue.cpp": [
+      "include/assert.h",
+      "include/circle/net/netqueue.h",
+      "include/circle/netdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/netsocket.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/netsocket.h",
+      "include/circle/net/netsubsystem.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/netsubsystem.cpp": [
+      "include/assert.h",
+      "include/circle/net/dhcpclient.h",
+      "include/circle/net/netsubsystem.h",
+      "include/circle/net/nettask.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "lib/net/nettask.cpp": [
+      "include/assert.h",
+      "include/circle/net/nettask.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "lib/net/networklayer.cpp": [
+      "include/assert.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/net/in.h",
+      "include/circle/net/networklayer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/ntpclient.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/net/ntpclient.h",
+      "include/circle/net/socket.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/types.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/ntpdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/ntpclient.h",
+      "include/circle/net/ntpdaemon.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/timer.h"
+    ],
+    "lib/net/phytask.cpp": [
+      "include/assert.h",
+      "include/circle/net/phytask.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "lib/net/retransmissionqueue.cpp": [
+      "include/assert.h",
+      "include/circle/net/retransmissionqueue.h"
+    ],
+    "lib/net/retranstimeoutcalc.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/retranstimeoutcalc.h"
+    ],
+    "lib/net/routecache.cpp": [
+      "include/assert.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/routecache.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/socket.cpp": [
+      "include/assert.h",
+      "include/circle/net/in.h",
+      "include/circle/net/netsubsystem.h",
+      "include/circle/net/socket.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/syslogdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/net/in.h",
+      "include/circle/net/syslogdaemon.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/tcpconnection.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/tcpconnection.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/tcprejector.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/tcprejector.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/tftpdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/retranstimeoutcalc.h",
+      "include/circle/net/tftpdaemon.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/transportlayer.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/tcpconnection.h",
+      "include/circle/net/transportlayer.h",
+      "include/circle/net/udpconnection.h",
+      "include/circle/string.h"
+    ],
+    "lib/net/udpconnection.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/udpconnection.h",
+      "include/circle/util.h"
+    ],
+    "lib/netdevice.cpp": [
+      "include/circle/netdevice.h"
+    ],
+    "lib/new.cpp": [
+      "include/assert.h",
+      "include/circle/new.h"
+    ],
+    "lib/nulldevice.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/nulldevice.h"
+    ],
+    "lib/numberpool.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/numberpool.h"
+    ],
+    "lib/pageallocator.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/pageallocator.h"
+    ],
+    "lib/pagetable.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/pagetable.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/peripherals/gpioclock-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/gpioclock.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpioclock.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/gpiomanager.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpiomanager.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/gpiomanager2712.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/rp1int.h"
+    ],
+    "lib/peripherals/gpiopin.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpiomanager.h",
+      "include/circle/peripherals/gpiopin.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/gpiopin2712.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/southbridge.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/gpiopinfiq.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpiopinfiq.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/i2cmaster-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/i2cmaster.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/i2cmaster.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/i2cmasterirq.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/i2cmasterirq.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/i2cslave.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/i2cslave.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/Makefile": [],
+    "lib/peripherals/pwmoutput-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/pwmoutput.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/pwmoutput.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/serial.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/serial.h",
+      "include/circle/rp1int.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/spimaster-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/peripherals/spimaster.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/spimaster.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/spimasteraux.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/spimasteraux.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/spimasterdma-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/peripherals/spimasterdma.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/spimasterdma.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/ptrarray.cpp": [
+      "include/assert.h",
+      "include/circle/ptrarray.h",
+      "include/circle/util.h"
+    ],
+    "lib/ptrlist.cpp": [
+      "include/assert.h",
+      "include/circle/ptrlist.h"
+    ],
+    "lib/ptrlistfiq.cpp": [
+      "include/assert.h",
+      "include/circle/classallocator.h",
+      "include/circle/ptrlistfiq.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/purecall.cpp": [
+      "include/assert.h"
+    ],
+    "lib/qemu.cpp": [
+      "include/circle/qemu.h"
+    ],
+    "lib/rpi/bcm54213.cpp": [
+      "include/assert.h",
+      "include/circle/interrupt.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "lib/rpi/bcmframebuffer.cpp": [
+      "include/circle/atomic.h",
+      "include/circle/interrupt.h",
+      "include/circle/koptions.h",
+      "include/circle/rpi/bcmframebuffer.h",
+      "include/circle/util.h"
+    ],
+    "lib/rpi/bcmmailbox.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcmmailbox.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/rpi/bcmpciehostbridge.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/pci_regs.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcm2712.h",
+      "include/circle/rpi/bcmpciehostbridge.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/rpi/bcmpropertytags.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/memory.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "lib/rpi/bcmrandom.cpp": [
+      "include/circle/memio.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/rpi/bcmrandom200.cpp": [
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcmrandom.h"
+    ],
+    "lib/rpi/bcmwatchdog.cpp": [
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmwatchdog.h"
+    ],
+    "lib/rpi/Makefile": [],
+    "lib/sched/Makefile": [],
+    "lib/sched/mutex.cpp": [
+      "include/assert.h",
+      "include/circle/sched/mutex.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sched/task.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/sched/scheduler.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/sched/semaphore.cpp": [
+      "include/assert.h",
+      "include/circle/atomic.h",
+      "include/circle/sched/semaphore.h"
+    ],
+    "lib/sched/synchronizationevent.cpp": [
+      "include/assert.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sched/synchronizationevent.h",
+      "include/circle/sched/task.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/sched/task.cpp": [
+      "include/assert.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sched/task.h",
+      "include/circle/util.h"
+    ],
+    "lib/sched/taskswitch.S": [],
+    "lib/screen.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/screen.h"
+    ],
+    "lib/setjmp.S": [],
+    "lib/smimaster.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/smimaster.h",
+      "include/circle/timer.h"
+    ],
+    "lib/sound/dmasoundbuffers.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/sound/dmasoundbuffers.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/hdmisoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/sound/hdmisoundbasedevice.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/i2ssoundbasedevice-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/rp1int.h",
+      "include/circle/sound/i2ssoundbasedevice.h",
+      "include/circle/sound/pcm512xsoundcontroller.h",
+      "include/circle/sound/wm8960soundcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/i2ssoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/sound/i2ssoundbasedevice.h",
+      "include/circle/sound/pcm512xsoundcontroller.h",
+      "include/circle/sound/wm8960soundcontroller.h",
+      "include/circle/timer.h"
+    ],
+    "lib/sound/Makefile": [],
+    "lib/sound/pcm512xsoundcontroller.cpp": [
+      "include/assert.h",
+      "include/circle/sound/pcm512xsoundcontroller.h"
+    ],
+    "lib/sound/pwmsoundbasedevice-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/sound/pwmsoundbasedevice.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h"
+    ],
+    "lib/sound/pwmsoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/sound/pwmsoundbasedevice.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/pwmsounddevice.cpp": [
+      "include/assert.h",
+      "include/circle/sound/pwmsounddevice.h"
+    ],
+    "lib/sound/soundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/sound/soundbasedevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/usbsoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/atomic.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sound/usbsoundbasedevice.h",
+      "include/circle/string.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h"
+    ],
+    "lib/sound/usbsoundcontroller.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/sound/usbsoundbasedevice.h",
+      "include/circle/sound/usbsoundcontroller.h",
+      "include/circle/usb/usbaudio.h"
+    ],
+    "lib/sound/wm8960soundcontroller.cpp": [
+      "include/assert.h",
+      "include/circle/sound/wm8960soundcontroller.h"
+    ],
+    "lib/southbridge.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/southbridge.h"
+    ],
+    "lib/spinlock.cpp": [
+      "include/circle/spinlock.h"
+    ],
+    "lib/startup.S": [],
+    "lib/startup64.S": [],
+    "lib/string.cpp": [
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "lib/synchronize.cpp": [
+      "include/assert.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/types.h"
+    ],
+    "lib/synchronize64.cpp": [
+      "include/assert.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/sysinit.cpp": [
+      "include/circle/actled.h",
+      "include/circle/chainboot.h",
+      "include/circle/interrupt.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/memory.h",
+      "include/circle/memorymap.h",
+      "include/circle/qemu.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcm2712.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/southbridge.h",
+      "include/circle/startup.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h",
+      "include/circle/types.h",
+      "include/circle/util.h",
+      "include/circle/version.h"
+    ],
+    "lib/terminal.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/terminal.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/time.cpp": [
+      "include/assert.h",
+      "include/circle/time.h"
+    ],
+    "lib/timer.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2836.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/tracer.cpp": [
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "include/circle/tracer.h"
+    ],
+    "lib/translationtable64.cpp": [
+      "include/assert.h",
+      "include/circle/alloc.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/translationtable64.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/dwhcicompletionqueue.cpp": [
+      "include/assert.h",
+      "include/circle/usb/dwhcicompletionqueue.h"
+    ],
+    "lib/usb/dwhcidevice.cpp": [
+      "include/assert.h",
+      "include/circle/atomic.h",
+      "include/circle/debug.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/dwhcidevice.h",
+      "include/circle/usb/dwhciframeschediso.h",
+      "include/circle/usb/dwhciframeschednper.h",
+      "include/circle/usb/dwhciframeschednsplit.h",
+      "include/circle/usb/dwhciframeschedper.h"
+    ],
+    "lib/usb/dwhciframeschediso.cpp": [
+      "include/assert.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhciframeschediso.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhciframeschednper.cpp": [
+      "include/assert.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhciframeschednper.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhciframeschednsplit.cpp": [
+      "include/assert.h",
+      "include/circle/usb/dwhciframeschednsplit.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhciframeschedper.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhciframeschedper.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhciregister.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhcirootport.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/dwhcidevice.h",
+      "include/circle/usb/dwhcirootport.h"
+    ],
+    "lib/usb/dwhcixactqueue.cpp": [
+      "include/assert.h",
+      "include/circle/classallocator.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhcixactqueue.h",
+      "include/circle/usb/usbrequest.h"
+    ],
+    "lib/usb/dwhcixferstagedata.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhciframeschediso.h",
+      "include/circle/usb/dwhciframeschednper.h",
+      "include/circle/usb/dwhciframeschednsplit.h",
+      "include/circle/usb/dwhciframeschedper.h",
+      "include/circle/usb/dwhcixferstagedata.h",
+      "include/circle/usb/usbhostcontroller.h"
+    ],
+    "lib/usb/gadget/dwusbgadget.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h",
+      "include/circle/usb/gadget/dwusbgadget.h",
+      "include/circle/usb/gadget/dwusbgadgetendpoint0.h"
+    ],
+    "lib/usb/gadget/dwusbgadgetendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/dwhciregister.h",
+      "include/circle/usb/gadget/dwusbgadget.h",
+      "include/circle/usb/gadget/dwusbgadgetendpoint.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/gadget/dwusbgadgetendpoint0.cpp": [
+      "include/assert.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/gadget/dwusbgadget.h",
+      "include/circle/usb/gadget/dwusbgadgetendpoint0.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/gadget/Makefile": [],
+    "lib/usb/gadget/README": [],
+    "lib/usb/gadget/usbcdcgadget.cpp": [
+      "include/assert.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/gadget/usbcdcgadget.h",
+      "include/circle/usb/gadget/usbcdcgadgetendpoint.h"
+    ],
+    "lib/usb/gadget/usbcdcgadgetendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/usb/gadget/usbcdcgadget.h",
+      "include/circle/usb/gadget/usbcdcgadgetendpoint.h",
+      "include/circle/usb/usbserial.h"
+    ],
+    "lib/usb/gadget/usbmidigadget.cpp": [
+      "include/assert.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/gadget/usbmidigadget.h",
+      "include/circle/usb/gadget/usbmidigadgetendpoint.h"
+    ],
+    "lib/usb/gadget/usbmidigadgetendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/atomic.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/gadget/usbmidigadget.h",
+      "include/circle/usb/gadget/usbmidigadgetendpoint.h",
+      "include/circle/usb/usbmidi.h"
+    ],
+    "lib/usb/gadget/usbmsdgadget.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/gadget/usbmsdgadget.h",
+      "include/circle/usb/gadget/usbmsdgadgetendpoint.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/gadget/usbmsdgadgetendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/gadget/usbmsdgadget.h",
+      "include/circle/usb/gadget/usbmsdgadgetendpoint.h"
+    ],
+    "lib/usb/lan7800.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/lan7800.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/Makefile": [],
+    "lib/usb/README": [],
+    "lib/usb/smsc951x.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/usb/smsc951x.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbaudiocontrol.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbaudiocontrol.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbaudiofunctopology.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/string.h",
+      "include/circle/usb/usb.h",
+      "include/circle/usb/usbaudiofunctopology.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbaudiostreaming.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/usb/usbaudio.h",
+      "include/circle/usb/usbaudiofunctopology.h",
+      "include/circle/usb/usbaudiostreaming.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbbluetooth.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/usb/usbbluetooth.h",
+      "include/circle/usb/usbhostcontroller.h"
+    ],
+    "lib/usb/usbcdcethernet.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/usb/usb.h",
+      "include/circle/usb/usbcdcethernet.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbstring.h"
+    ],
+    "lib/usb/usbconfigparser.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbconfigparser.h"
+    ],
+    "lib/usb/usbdevice.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/usbdevice.h",
+      "include/circle/usb/usbdevicefactory.h",
+      "include/circle/usb/usbendpoint.h",
+      "include/circle/usb/usbhcirootport.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbstandardhub.h",
+      "include/circle/usb/usbstring.h",
+      "include/circle/usb/xhci.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbdevicefactory.cpp": [
+      "include/assert.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/lan7800.h",
+      "include/circle/usb/smsc951x.h",
+      "include/circle/usb/usbaudiocontrol.h",
+      "include/circle/usb/usbaudiostreaming.h",
+      "include/circle/usb/usbbluetooth.h",
+      "include/circle/usb/usbcdcethernet.h",
+      "include/circle/usb/usbdevicefactory.h",
+      "include/circle/usb/usbfloppydevice.h",
+      "include/circle/usb/usbgamepadps3.h",
+      "include/circle/usb/usbgamepadps4.h",
+      "include/circle/usb/usbgamepadstandard.h",
+      "include/circle/usb/usbgamepadswitchpro.h",
+      "include/circle/usb/usbgamepadxbox360.h",
+      "include/circle/usb/usbgamepadxboxone.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/usb/usbmassdevice.h",
+      "include/circle/usb/usbmidihost.h",
+      "include/circle/usb/usbmouse.h",
+      "include/circle/usb/usbprinter.h",
+      "include/circle/usb/usbserialcdc.h",
+      "include/circle/usb/usbserialch341.h",
+      "include/circle/usb/usbserialcp210x.h",
+      "include/circle/usb/usbserialft231x.h",
+      "include/circle/usb/usbserialpl2303.h",
+      "include/circle/usb/usbstandardhub.h",
+      "include/circle/usb/usbtouchscreen.h"
+    ],
+    "lib/usb/usbendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/usbendpoint.h"
+    ],
+    "lib/usb/usbfloppydevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/new.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbfloppydevice.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbfunction.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbdevice.h",
+      "include/circle/usb/usbendpoint.h",
+      "include/circle/usb/usbfunction.h",
+      "include/circle/usb/usbhostcontroller.h"
+    ],
+    "lib/usb/usbgamepad.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbgamepad.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadps3.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/usb/usbgamepadps3.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadps4.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/usb/usbgamepadps4.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadstandard.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbgamepadstandard.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h"
+    ],
+    "lib/usb/usbgamepadswitchpro.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbgamepadswitchpro.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadxbox360.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbgamepadxbox360.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadxboxone.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbgamepadxboxone.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbhiddevice.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhiddevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbhostcontroller.cpp": [
+      "include/assert.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbhcirootport.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbstandardhub.h"
+    ],
+    "lib/usb/usbkeyboard.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbmassdevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/new.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbmassdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbmidi.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbmidi.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbmidihost.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usb.h",
+      "include/circle/usb/usbaudio.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbmidihost.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbmouse.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbmouse.h"
+    ],
+    "lib/usb/usbprinter.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbprinter.h"
+    ],
+    "lib/usb/usbrequest.cpp": [
+      "include/assert.h",
+      "include/circle/usb/usbrequest.h"
+    ],
+    "lib/usb/usbserial.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/usb/usbserial.h"
+    ],
+    "lib/usb/usbserialcdc.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialcdc.h"
+    ],
+    "lib/usb/usbserialch341.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialch341.h"
+    ],
+    "lib/usb/usbserialcp210x.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialcp210x.h"
+    ],
+    "lib/usb/usbserialft231x.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialft231x.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbserialhost.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbrequest.h",
+      "include/circle/usb/usbserialhost.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbserialpl2303.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialpl2303.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbstandardhub.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbdevicefactory.h",
+      "include/circle/usb/usbstandardhub.h",
+      "include/circle/usb/xhciusbdevice.h"
+    ],
+    "lib/usb/usbstring.cpp": [
+      "include/assert.h",
+      "include/circle/usb/usbdevice.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbstring.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbsubsystem.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/memory.h",
+      "include/circle/usb/usbsubsystem.h",
+      "include/circle/usb/xhciconfig.h"
+    ],
+    "lib/usb/usbtouchscreen.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbtouchscreen.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/xhcicommandmanager.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/xhcicommandmanager.h",
+      "include/circle/usb/xhcidevice.h"
+    ],
+    "lib/usb/xhcidevice.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/memory.h",
+      "include/circle/rp1int.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/xhciendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbrequest.h",
+      "include/circle/usb/xhcicommandmanager.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhciendpoint.h",
+      "include/circle/usb/xhciusbdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/xhcieventmanager.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhcieventmanager.h"
+    ],
+    "lib/usb/xhcimmiospace.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/memio.h",
+      "include/circle/timer.h",
+      "include/circle/usb/xhci.h",
+      "include/circle/usb/xhcimmiospace.h"
+    ],
+    "lib/usb/xhciring.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhciring.h"
+    ],
+    "lib/usb/xhciroothub.cpp": [
+      "include/assert.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhciroothub.h"
+    ],
+    "lib/usb/xhcirootport.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhcirootport.h"
+    ],
+    "lib/usb/xhcisharedmemallocator.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/xhcisharedmemallocator.h"
+    ],
+    "lib/usb/xhcislotmanager.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhcislotmanager.h"
+    ],
+    "lib/usb/xhciusbdevice.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbstandardhub.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhcirootport.h",
+      "include/circle/usb/xhciusbdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usertimer.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/synchronize.h",
+      "include/circle/usertimer.h"
+    ],
+    "lib/util_fast.S": [],
+    "lib/util.cpp": [
+      "include/circle/util.h"
+    ],
+    "lib/virtualgpiopin.cpp": [
+      "include/circle/memio.h",
+      "include/circle/memory.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/virtualgpiopin.h"
+    ],
+    "lib/windowdisplay.cpp": [
+      "include/assert.h",
+      "include/circle/windowdisplay.h"
+    ],
+    "lib/writebuffer.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/new.h",
+      "include/circle/synchronize.h",
+      "include/circle/writebuffer.h"
+    ],
+    "makeall": [],
+    "makedoc": [],
+    "README.md": [],
+    "Rules.mk": [],
+    "sample/01-gpiosimple/kernel.cpp": [
+      "include/circle/timer.h",
+      "sample/01-gpiosimple/kernel.h"
+    ],
+    "sample/01-gpiosimple/kernel.h": [],
+    "sample/01-gpiosimple/main.cpp": [
+      "include/circle/startup.h",
+      "sample/01-gpiosimple/kernel.h"
+    ],
+    "sample/01-gpiosimple/Makefile": [],
+    "sample/01-gpiosimple/README": [],
+    "sample/02-screenpixel/kernel.cpp": [
+      "include/circle/timer.h",
+      "sample/02-screenpixel/kernel.h"
+    ],
+    "sample/02-screenpixel/kernel.h": [],
+    "sample/02-screenpixel/main.cpp": [
+      "include/circle/startup.h",
+      "sample/02-screenpixel/kernel.h"
+    ],
+    "sample/02-screenpixel/Makefile": [],
+    "sample/02-screenpixel/README": [],
+    "sample/03-screentext/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/string.h",
+      "sample/03-screentext/kernel.h"
+    ],
+    "sample/03-screentext/kernel.h": [],
+    "sample/03-screentext/main.cpp": [
+      "include/circle/startup.h",
+      "sample/03-screentext/kernel.h"
+    ],
+    "sample/03-screentext/Makefile": [],
+    "sample/03-screentext/README": [],
+    "sample/04-timer/kernel.cpp": [
+      "sample/04-timer/kernel.h"
+    ],
+    "sample/04-timer/kernel.h": [],
+    "sample/04-timer/main.cpp": [
+      "include/circle/startup.h",
+      "sample/04-timer/kernel.h"
+    ],
+    "sample/04-timer/Makefile": [],
+    "sample/04-timer/README": [],
+    "sample/05-usbsimple/kernel.cpp": [
+      "include/circle/debug.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usb.h",
+      "sample/05-usbsimple/kernel.h"
+    ],
+    "sample/05-usbsimple/kernel.h": [],
+    "sample/05-usbsimple/main.cpp": [
+      "include/circle/startup.h",
+      "sample/05-usbsimple/kernel.h"
+    ],
+    "sample/05-usbsimple/Makefile": [],
+    "sample/05-usbsimple/README": [],
+    "sample/06-ethernet/kernel.cpp": [
+      "include/circle/debug.h",
+      "include/circle/macaddress.h",
+      "include/circle/macros.h",
+      "include/circle/netdevice.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usb.h",
+      "sample/06-ethernet/kernel.h"
+    ],
+    "sample/06-ethernet/kernel.h": [],
+    "sample/06-ethernet/main.cpp": [
+      "include/circle/startup.h",
+      "sample/06-ethernet/kernel.h"
+    ],
+    "sample/06-ethernet/Makefile": [],
+    "sample/06-ethernet/README": [],
+    "sample/07-usbstorage/kernel.cpp": [
+      "include/circle/macros.h",
+      "include/circle/usb/usbmassdevice.h",
+      "sample/07-usbstorage/kernel.h"
+    ],
+    "sample/07-usbstorage/kernel.h": [],
+    "sample/07-usbstorage/main.cpp": [
+      "include/circle/startup.h",
+      "sample/07-usbstorage/kernel.h"
+    ],
+    "sample/07-usbstorage/Makefile": [],
+    "sample/07-usbstorage/README": [],
+    "sample/08-usbkeyboard/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/font.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/08-usbkeyboard/kernel.h"
+    ],
+    "sample/08-usbkeyboard/kernel.h": [],
+    "sample/08-usbkeyboard/main.cpp": [
+      "include/circle/startup.h",
+      "sample/08-usbkeyboard/kernel.h"
+    ],
+    "sample/08-usbkeyboard/Makefile": [],
+    "sample/08-usbkeyboard/README": [],
+    "sample/09-softserial/kernel.cpp": [
+      "sample/09-softserial/kernel.h"
+    ],
+    "sample/09-softserial/kernel.h": [],
+    "sample/09-softserial/main.cpp": [
+      "include/circle/startup.h",
+      "sample/09-softserial/kernel.h"
+    ],
+    "sample/09-softserial/Makefile": [],
+    "sample/09-softserial/README": [],
+    "sample/09-softserial/softserial.cpp": [
+      "include/assert.h",
+      "include/circle/synchronize.h",
+      "sample/09-softserial/softserial.h"
+    ],
+    "sample/09-softserial/softserial.h": [],
+    "sample/10-usbmouse/kernel.cpp": [
+      "include/assert.h",
+      "sample/10-usbmouse/kernel.h"
+    ],
+    "sample/10-usbmouse/kernel.h": [],
+    "sample/10-usbmouse/main.cpp": [
+      "include/circle/startup.h",
+      "sample/10-usbmouse/kernel.h"
+    ],
+    "sample/10-usbmouse/Makefile": [],
+    "sample/10-usbmouse/README": [],
+    "sample/11-gpioclock/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/synchronize.h",
+      "include/circle/types.h",
+      "sample/11-gpioclock/kernel.h",
+      "sample/11-gpioclock/sampler.h"
+    ],
+    "sample/11-gpioclock/kernel.h": [],
+    "sample/11-gpioclock/main.cpp": [
+      "include/circle/startup.h",
+      "sample/11-gpioclock/kernel.h"
+    ],
+    "sample/11-gpioclock/Makefile": [],
+    "sample/11-gpioclock/README": [],
+    "sample/11-gpioclock/sampler.h": [],
+    "sample/11-gpioclock/sampler.S": [],
+    "sample/12-pwmsound/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/types.h",
+      "sample/12-pwmsound/kernel.h"
+    ],
+    "sample/12-pwmsound/kernel.h": [],
+    "sample/12-pwmsound/main.cpp": [
+      "include/circle/startup.h",
+      "sample/12-pwmsound/kernel.h"
+    ],
+    "sample/12-pwmsound/Makefile": [],
+    "sample/12-pwmsound/README": [],
+    "sample/13-pwmoutput/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/types.h",
+      "sample/13-pwmoutput/kernel.h"
+    ],
+    "sample/13-pwmoutput/kernel.h": [],
+    "sample/13-pwmoutput/main.cpp": [
+      "include/circle/startup.h",
+      "sample/13-pwmoutput/kernel.h"
+    ],
+    "sample/13-pwmoutput/Makefile": [],
+    "sample/13-pwmoutput/README": [],
+    "sample/14-usbprinter/kernel.cpp": [
+      "include/circle/string.h",
+      "include/circle/usb/usbprinter.h",
+      "sample/14-usbprinter/kernel.h"
+    ],
+    "sample/14-usbprinter/kernel.h": [],
+    "sample/14-usbprinter/main.cpp": [
+      "include/circle/startup.h",
+      "sample/14-usbprinter/kernel.h"
+    ],
+    "sample/14-usbprinter/Makefile": [],
+    "sample/14-usbprinter/README": [],
+    "sample/15-files/kernel.cpp": [
+      "include/circle/string.h",
+      "sample/15-files/kernel.h"
+    ],
+    "sample/15-files/kernel.h": [],
+    "sample/15-files/main.cpp": [
+      "include/circle/startup.h",
+      "sample/15-files/kernel.h"
+    ],
+    "sample/15-files/Makefile": [],
+    "sample/15-files/README": [],
+    "sample/16-i2cping/i2cping.h": [],
+    "sample/16-i2cping/Makefile": [],
+    "sample/16-i2cping/master/i2cechoclient.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "sample/16-i2cping/master/i2cechoclient.h"
+    ],
+    "sample/16-i2cping/master/i2cechoclient.h": [],
+    "sample/16-i2cping/master/kernel.cpp": [
+      "sample/16-i2cping/i2cping.h",
+      "sample/16-i2cping/master/kernel.h"
+    ],
+    "sample/16-i2cping/master/kernel.h": [],
+    "sample/16-i2cping/master/main.cpp": [
+      "include/circle/startup.h",
+      "sample/16-i2cping/master/kernel.h"
+    ],
+    "sample/16-i2cping/master/Makefile": [],
+    "sample/16-i2cping/README": [],
+    "sample/16-i2cping/slave/i2cechoserver.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "sample/16-i2cping/slave/i2cechoserver.h"
+    ],
+    "sample/16-i2cping/slave/i2cechoserver.h": [],
+    "sample/16-i2cping/slave/kernel.cpp": [
+      "sample/16-i2cping/i2cping.h",
+      "sample/16-i2cping/slave/kernel.h"
+    ],
+    "sample/16-i2cping/slave/kernel.h": [],
+    "sample/16-i2cping/slave/main.cpp": [
+      "include/circle/startup.h",
+      "sample/16-i2cping/slave/kernel.h"
+    ],
+    "sample/16-i2cping/slave/Makefile": [],
+    "sample/17-fractal/kernel.cpp": [
+      "include/circle/memory.h",
+      "sample/17-fractal/kernel.h"
+    ],
+    "sample/17-fractal/kernel.h": [],
+    "sample/17-fractal/main.cpp": [
+      "include/circle/startup.h",
+      "sample/17-fractal/kernel.h"
+    ],
+    "sample/17-fractal/Makefile": [],
+    "sample/17-fractal/mandelbrot.cpp": [
+      "sample/17-fractal/mandelbrot.h"
+    ],
+    "sample/17-fractal/mandelbrot.h": [],
+    "sample/17-fractal/README": [],
+    "sample/18-ntptime/kernel.cpp": [
+      "include/circle/net/ntpdaemon.h",
+      "include/circle/string.h",
+      "sample/18-ntptime/kernel.h"
+    ],
+    "sample/18-ntptime/kernel.h": [],
+    "sample/18-ntptime/main.cpp": [
+      "include/circle/startup.h",
+      "sample/18-ntptime/kernel.h"
+    ],
+    "sample/18-ntptime/Makefile": [],
+    "sample/18-ntptime/README": [],
+    "sample/19-tasks/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "sample/19-tasks/kernel.h",
+      "sample/19-tasks/ledtask.h",
+      "sample/19-tasks/primetask.h",
+      "sample/19-tasks/screentask.h"
+    ],
+    "sample/19-tasks/kernel.h": [],
+    "sample/19-tasks/ledtask.cpp": [
+      "include/circle/sched/scheduler.h",
+      "sample/19-tasks/ledtask.h"
+    ],
+    "sample/19-tasks/ledtask.h": [],
+    "sample/19-tasks/main.cpp": [
+      "include/circle/startup.h",
+      "sample/19-tasks/kernel.h"
+    ],
+    "sample/19-tasks/Makefile": [],
+    "sample/19-tasks/primetask.cpp": [
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/19-tasks/primetask.h"
+    ],
+    "sample/19-tasks/primetask.h": [],
+    "sample/19-tasks/README": [],
+    "sample/19-tasks/screentask.cpp": [
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "sample/19-tasks/screentask.h"
+    ],
+    "sample/19-tasks/screentask.h": [],
+    "sample/20-tcpsimple/echoserver.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/string.h",
+      "sample/20-tcpsimple/echoserver.h"
+    ],
+    "sample/20-tcpsimple/echoserver.h": [],
+    "sample/20-tcpsimple/kernel.cpp": [
+      "include/circle/string.h",
+      "sample/20-tcpsimple/echoserver.h",
+      "sample/20-tcpsimple/kernel.h"
+    ],
+    "sample/20-tcpsimple/kernel.h": [],
+    "sample/20-tcpsimple/main.cpp": [
+      "include/circle/startup.h",
+      "sample/20-tcpsimple/kernel.h"
+    ],
+    "sample/20-tcpsimple/Makefile": [],
+    "sample/20-tcpsimple/README": [],
+    "sample/21-webserver/index.html": [],
+    "sample/21-webserver/kernel.cpp": [
+      "sample/21-webserver/kernel.h",
+      "sample/21-webserver/webserver.h"
+    ],
+    "sample/21-webserver/kernel.h": [],
+    "sample/21-webserver/main.cpp": [
+      "include/circle/startup.h",
+      "sample/21-webserver/kernel.h"
+    ],
+    "sample/21-webserver/Makefile": [],
+    "sample/21-webserver/README": [],
+    "sample/21-webserver/style.css": [],
+    "sample/21-webserver/webserver.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/21-webserver/webserver.h"
+    ],
+    "sample/21-webserver/webserver.h": [],
+    "sample/23-spisimple/kernel.cpp": [
+      "include/circle/debug.h",
+      "sample/23-spisimple/kernel.h"
+    ],
+    "sample/23-spisimple/kernel.h": [],
+    "sample/23-spisimple/main.cpp": [
+      "include/circle/startup.h",
+      "sample/23-spisimple/kernel.h"
+    ],
+    "sample/23-spisimple/Makefile": [],
+    "sample/23-spisimple/README": [],
+    "sample/24-hwrandom/kernel.cpp": [
+      "sample/24-hwrandom/kernel.h"
+    ],
+    "sample/24-hwrandom/kernel.h": [],
+    "sample/24-hwrandom/main.cpp": [
+      "include/circle/startup.h",
+      "sample/24-hwrandom/kernel.h"
+    ],
+    "sample/24-hwrandom/Makefile": [],
+    "sample/24-hwrandom/README": [],
+    "sample/25-spidma/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/synchronize.h",
+      "sample/25-spidma/kernel.h"
+    ],
+    "sample/25-spidma/kernel.h": [],
+    "sample/25-spidma/main.cpp": [
+      "include/circle/startup.h",
+      "sample/25-spidma/kernel.h"
+    ],
+    "sample/25-spidma/Makefile": [],
+    "sample/25-spidma/README": [],
+    "sample/26-cpustress/kernel.cpp": [
+      "include/circle/memory.h",
+      "sample/26-cpustress/kernel.h",
+      "sample/26-cpustress/temptask.h"
+    ],
+    "sample/26-cpustress/kernel.h": [],
+    "sample/26-cpustress/main.cpp": [
+      "include/circle/startup.h",
+      "sample/26-cpustress/kernel.h"
+    ],
+    "sample/26-cpustress/Makefile": [],
+    "sample/26-cpustress/mandelbrot.cpp": [
+      "include/circle/sched/scheduler.h",
+      "sample/26-cpustress/mandelbrot.h"
+    ],
+    "sample/26-cpustress/mandelbrot.h": [],
+    "sample/26-cpustress/README": [],
+    "sample/26-cpustress/temptask.cpp": [
+      "include/assert.h",
+      "include/circle/cputhrottle.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "sample/26-cpustress/temptask.h"
+    ],
+    "sample/26-cpustress/temptask.h": [],
+    "sample/27-usbgamepad/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "sample/27-usbgamepad/kernel.h"
+    ],
+    "sample/27-usbgamepad/kernel.h": [],
+    "sample/27-usbgamepad/main.cpp": [
+      "include/circle/startup.h",
+      "sample/27-usbgamepad/kernel.h"
+    ],
+    "sample/27-usbgamepad/Makefile": [],
+    "sample/27-usbgamepad/README": [],
+    "sample/28-touchscreen/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "sample/28-touchscreen/kernel.h"
+    ],
+    "sample/28-touchscreen/kernel.h": [],
+    "sample/28-touchscreen/main.cpp": [
+      "include/circle/startup.h",
+      "sample/28-touchscreen/kernel.h"
+    ],
+    "sample/28-touchscreen/Makefile": [],
+    "sample/28-touchscreen/README": [],
+    "sample/29-miniorgan/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/usb/gadget/usbmidigadget.h",
+      "include/circle/usb/usbhcidevice.h",
+      "sample/29-miniorgan/kernel.h"
+    ],
+    "sample/29-miniorgan/kernel.h": [],
+    "sample/29-miniorgan/main.cpp": [
+      "include/circle/startup.h",
+      "sample/29-miniorgan/kernel.h"
+    ],
+    "sample/29-miniorgan/Makefile": [],
+    "sample/29-miniorgan/miniorgan.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h",
+      "sample/29-miniorgan/miniorgan.h"
+    ],
+    "sample/29-miniorgan/miniorgan.h": [],
+    "sample/29-miniorgan/README": [],
+    "sample/30-gpiofiq/kernel.cpp": [
+      "sample/30-gpiofiq/kernel.h"
+    ],
+    "sample/30-gpiofiq/kernel.h": [],
+    "sample/30-gpiofiq/main.cpp": [
+      "include/circle/startup.h",
+      "sample/30-gpiofiq/kernel.h"
+    ],
+    "sample/30-gpiofiq/Makefile": [],
+    "sample/30-gpiofiq/README": [],
+    "sample/31-webclient/htmlscanner.cpp": [
+      "include/assert.h",
+      "include/circle/util.h",
+      "sample/31-webclient/htmlscanner.h"
+    ],
+    "sample/31-webclient/htmlscanner.h": [],
+    "sample/31-webclient/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/httpclient.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/31-webclient/htmlscanner.h",
+      "sample/31-webclient/kernel.h"
+    ],
+    "sample/31-webclient/kernel.h": [],
+    "sample/31-webclient/main.cpp": [
+      "include/circle/startup.h",
+      "sample/31-webclient/kernel.h"
+    ],
+    "sample/31-webclient/Makefile": [],
+    "sample/31-webclient/README": [],
+    "sample/32-i2cshell/i2cshell.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/stdarg.h",
+      "include/circle/timer.h",
+      "include/circle/util.h",
+      "sample/32-i2cshell/i2cshell.h"
+    ],
+    "sample/32-i2cshell/i2cshell.h": [],
+    "sample/32-i2cshell/kernel.cpp": [
+      "include/circle/machineinfo.h",
+      "sample/32-i2cshell/kernel.h"
+    ],
+    "sample/32-i2cshell/kernel.h": [],
+    "sample/32-i2cshell/main.cpp": [
+      "include/circle/startup.h",
+      "sample/32-i2cshell/kernel.h"
+    ],
+    "sample/32-i2cshell/Makefile": [],
+    "sample/32-i2cshell/README": [],
+    "sample/33-syslog/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/ntpdaemon.h",
+      "include/circle/net/syslogdaemon.h",
+      "sample/33-syslog/kernel.h"
+    ],
+    "sample/33-syslog/kernel.h": [],
+    "sample/33-syslog/main.cpp": [
+      "include/circle/startup.h",
+      "sample/33-syslog/kernel.h"
+    ],
+    "sample/33-syslog/Makefile": [],
+    "sample/33-syslog/README": [],
+    "sample/33-syslog/syslogserver.c": [],
+    "sample/34-sounddevices/config.h": [],
+    "sample/34-sounddevices/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/sound/hdmisoundbasedevice.h",
+      "include/circle/sound/i2ssoundbasedevice.h",
+      "include/circle/sound/pwmsoundbasedevice.h",
+      "include/circle/sound/usbsoundbasedevice.h",
+      "include/circle/util.h",
+      "sample/34-sounddevices/config.h",
+      "sample/34-sounddevices/kernel.h"
+    ],
+    "sample/34-sounddevices/kernel.h": [],
+    "sample/34-sounddevices/main.cpp": [
+      "include/circle/startup.h",
+      "sample/34-sounddevices/kernel.h"
+    ],
+    "sample/34-sounddevices/Makefile": [],
+    "sample/34-sounddevices/oscillator.cpp": [
+      "include/assert.h",
+      "sample/34-sounddevices/config.h",
+      "sample/34-sounddevices/oscillator.h"
+    ],
+    "sample/34-sounddevices/oscillator.h": [],
+    "sample/34-sounddevices/README": [],
+    "sample/34-sounddevices/synthmodule.h": [],
+    "sample/35-mqttclient/kernel.cpp": [
+      "include/circle/net/ntpdaemon.h",
+      "sample/35-mqttclient/kernel.h",
+      "sample/35-mqttclient/mqttsampleclient.h"
+    ],
+    "sample/35-mqttclient/kernel.h": [],
+    "sample/35-mqttclient/main.cpp": [
+      "include/circle/startup.h",
+      "sample/35-mqttclient/kernel.h"
+    ],
+    "sample/35-mqttclient/Makefile": [],
+    "sample/35-mqttclient/mqttsampleclient.cpp": [
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h",
+      "sample/35-mqttclient/mqttsampleclient.h"
+    ],
+    "sample/35-mqttclient/mqttsampleclient.h": [],
+    "sample/35-mqttclient/README": [],
+    "sample/36-softpwm/kernel.cpp": [
+      "include/assert.h",
+      "sample/36-softpwm/kernel.h"
+    ],
+    "sample/36-softpwm/kernel.h": [],
+    "sample/36-softpwm/main.cpp": [
+      "include/circle/startup.h",
+      "sample/36-softpwm/kernel.h"
+    ],
+    "sample/36-softpwm/Makefile": [],
+    "sample/36-softpwm/README": [],
+    "sample/36-softpwm/softpwmoutput.cpp": [
+      "include/assert.h",
+      "sample/36-softpwm/softpwmoutput.h"
+    ],
+    "sample/36-softpwm/softpwmoutput.h": [],
+    "sample/37-showgamepad/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/37-showgamepad/kernel.h"
+    ],
+    "sample/37-showgamepad/kernel.h": [],
+    "sample/37-showgamepad/main.cpp": [
+      "include/circle/startup.h",
+      "sample/37-showgamepad/kernel.h"
+    ],
+    "sample/37-showgamepad/Makefile": [],
+    "sample/37-showgamepad/README": [],
+    "sample/38-bootloader/httpbootserver.cpp": [
+      "include/assert.h",
+      "include/circle/chainboot.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "include/circle/version.h",
+      "sample/38-bootloader/httpbootserver.h"
+    ],
+    "sample/38-bootloader/httpbootserver.h": [],
+    "sample/38-bootloader/index.html": [],
+    "sample/38-bootloader/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/chainboot.h",
+      "include/circle/sysconfig.h",
+      "sample/38-bootloader/httpbootserver.h",
+      "sample/38-bootloader/kernel.h",
+      "sample/38-bootloader/tftpbootserver.h"
+    ],
+    "sample/38-bootloader/kernel.h": [],
+    "sample/38-bootloader/main.cpp": [
+      "include/circle/startup.h",
+      "sample/38-bootloader/kernel.h"
+    ],
+    "sample/38-bootloader/Makefile": [],
+    "sample/38-bootloader/README": [],
+    "sample/38-bootloader/style.css": [],
+    "sample/38-bootloader/tftpbootserver.cpp": [
+      "include/assert.h",
+      "include/circle/chainboot.h",
+      "include/circle/logger.h",
+      "include/circle/util.h",
+      "sample/38-bootloader/tftpbootserver.h"
+    ],
+    "sample/38-bootloader/tftpbootserver.h": [],
+    "sample/39-umsdplugging/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/device.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/39-umsdplugging/kernel.h"
+    ],
+    "sample/39-umsdplugging/kernel.h": [],
+    "sample/39-umsdplugging/main.cpp": [
+      "include/circle/startup.h",
+      "sample/39-umsdplugging/kernel.h"
+    ],
+    "sample/39-umsdplugging/Makefile": [],
+    "sample/39-umsdplugging/README": [],
+    "sample/40-irqlatency/kernel.cpp": [
+      "include/circle/synchronize.h",
+      "sample/40-irqlatency/kernel.h"
+    ],
+    "sample/40-irqlatency/kernel.h": [],
+    "sample/40-irqlatency/main.cpp": [
+      "include/circle/startup.h",
+      "sample/40-irqlatency/kernel.h"
+    ],
+    "sample/40-irqlatency/Makefile": [],
+    "sample/40-irqlatency/README": [],
+    "sample/41-screenanimations/graphicshape.cpp": [
+      "sample/41-screenanimations/graphicshape.h"
+    ],
+    "sample/41-screenanimations/graphicshape.h": [],
+    "sample/41-screenanimations/kernel.cpp": [
+      "sample/41-screenanimations/kernel.h"
+    ],
+    "sample/41-screenanimations/kernel.h": [],
+    "sample/41-screenanimations/main.cpp": [
+      "include/circle/startup.h",
+      "sample/41-screenanimations/kernel.h"
+    ],
+    "sample/41-screenanimations/Makefile": [],
+    "sample/41-screenanimations/README": [],
+    "sample/42-soundinput/config.h": [],
+    "sample/42-soundinput/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/util.h",
+      "sample/42-soundinput/kernel.h"
+    ],
+    "sample/42-soundinput/kernel.h": [],
+    "sample/42-soundinput/main.cpp": [
+      "include/circle/startup.h",
+      "sample/42-soundinput/kernel.h"
+    ],
+    "sample/42-soundinput/Makefile": [],
+    "sample/42-soundinput/queue.cpp": [
+      "include/assert.h",
+      "sample/42-soundinput/queue.h"
+    ],
+    "sample/42-soundinput/queue.h": [],
+    "sample/42-soundinput/README": [],
+    "sample/42-soundinput/soundrecorder.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "sample/42-soundinput/config.h",
+      "sample/42-soundinput/soundrecorder.h",
+      "sample/42-soundinput/wavefile.h"
+    ],
+    "sample/42-soundinput/soundrecorder.h": [],
+    "sample/42-soundinput/wavefile.h": [],
+    "sample/43-multiwindow/graphicshape.cpp": [
+      "sample/43-multiwindow/graphicshape.h"
+    ],
+    "sample/43-multiwindow/graphicshape.h": [],
+    "sample/43-multiwindow/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/screen.h",
+      "sample/43-multiwindow/kernel.h"
+    ],
+    "sample/43-multiwindow/kernel.h": [],
+    "sample/43-multiwindow/main.cpp": [
+      "include/circle/startup.h",
+      "sample/43-multiwindow/kernel.h"
+    ],
+    "sample/43-multiwindow/Makefile": [],
+    "sample/43-multiwindow/mandelbrot.cpp": [
+      "include/circle/screen.h",
+      "sample/43-multiwindow/mandelbrot.h"
+    ],
+    "sample/43-multiwindow/mandelbrot.h": [],
+    "sample/43-multiwindow/multicoredemo.cpp": [
+      "include/assert.h",
+      "include/circle/2dgraphics.h",
+      "include/circle/device.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/memory.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "sample/43-multiwindow/graphicshape.h",
+      "sample/43-multiwindow/mandelbrot.h",
+      "sample/43-multiwindow/multicoredemo.h"
+    ],
+    "sample/43-multiwindow/multicoredemo.h": [],
+    "sample/43-multiwindow/README": [],
+    "sample/44-ESPJVM/esp_board_esp32_c3_c6.cpp": [],
+    "sample/44-ESPJVM/esp_board_esp32_s2.cpp": [],
+    "sample/44-ESPJVM/esp_board_esp32_s3.cpp": [],
+    "sample/44-ESPJVM/esp_board_esp32.cpp": [],
+    "sample/44-ESPJVM/esp_uart_debugger.cpp": [],
+    "sample/44-ESPJVM/esp_usb_cdc_debugger.cpp": [],
+    "sample/44-ESPJVM/esp_usb_device.c": [],
+    "sample/44-ESPJVM/esp_usb_serial_jtag_debugger.cpp": [],
+    "sample/44-ESPJVM/kernel.cpp": [
+      "include/circle/timer.h",
+      "sample/44-ESPJVM/kernel.h"
+    ],
+    "sample/44-ESPJVM/kernel.h": [],
+    "sample/44-ESPJVM/main.cpp": [
+      "include/circle/startup.h",
+      "include/circle/types.h",
+      "sample/44-ESPJVM/kernel.h"
+    ],
+    "sample/44-ESPJVM/Makefile": [],
+    "sample/44-ESPJVM/Native/esp_native_adc.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_bitstream.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_common.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_dac.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_flint_datagram_socket_impl.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_flint_inet_address_impl.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_flint_socket_impl.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_flint_socket_input_stream.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_flint_socket_output_stream.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_i2c_master.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_i2s_master.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_onewire.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_pin.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_port.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_spi_master.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_touch_pad.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_uart.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native_wifi.cpp": [],
+    "sample/44-ESPJVM/Native/esp_native.cpp": [],
+    "sample/44-ESPJVM/Native/esp_socket.cpp": [],
+    "sample/44-ESPJVM/Native/Inc/esp_flint_java_inet_address.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_adc.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_bitstream.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_common.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_dac.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_flint_datagram_socket_impl.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_flint_inet_address_impl.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_flint_socket_impl.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_flint_socket_input_stream.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_flint_socket_output_stream.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_i2c_master.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_i2s_master.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_onewire.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_pin.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_port.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_spi_master.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_touch_pad.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_uart.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_native_wifi.h": [],
+    "sample/44-ESPJVM/Native/Inc/esp_socket.h": [],
+    "sample/44-ESPJVM/SystemAPI/Inc/.gitkeep": [],
+    "sample/44-ESPJVM/SystemAPI/Src/esp_system_api.cpp": [],
+    "sample/44-ESPJVM/SystemAPI/Src/esp_system_io_api.cpp": [],
+    "sample/44-ESPJVM/SystemAPI/Src/esp_system_thread_api.cpp": [],
+    "sample/44-ESPJVM/User/Inc/esp_board.h": [],
+    "sample/44-ESPJVM/User/Inc/esp_debugger.h": [],
+    "sample/44-ESPJVM/User/Inc/esp_usb_device.h": [],
+    "sample/44-ESPJVM/User/Inc/flint_conf.h": [],
+    "sample/makeall": [],
+    "sample/makelatest": [],
+    "sample/README": [],
+    "sample/Rules.mk": [],
+    "test/gpio-interrupt/kernel.cpp": [
+      "test/gpio-interrupt/kernel.h"
+    ],
+    "test/gpio-interrupt/kernel.h": [],
+    "test/gpio-interrupt/main.cpp": [
+      "include/circle/startup.h",
+      "test/gpio-interrupt/kernel.h"
+    ],
+    "test/gpio-interrupt/Makefile": [],
+    "test/gpio-interrupt/README": [],
+    "test/gpio-timing/kernel.cpp": [
+      "include/circle/cputhrottle.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "test/gpio-timing/kernel.h"
+    ],
+    "test/gpio-timing/kernel.h": [],
+    "test/gpio-timing/main.cpp": [
+      "include/circle/startup.h",
+      "test/gpio-timing/kernel.h"
+    ],
+    "test/gpio-timing/Makefile": [],
+    "test/gpio-timing/README": [],
+    "test/gpio/kernel.cpp": [
+      "test/gpio/kernel.h"
+    ],
+    "test/gpio/kernel.h": [],
+    "test/gpio/main.cpp": [
+      "include/circle/startup.h",
+      "test/gpio/kernel.h"
+    ],
+    "test/gpio/Makefile": [],
+    "test/gpio/README": [],
+    "test/i2c-master-irq/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "test/i2c-master-irq/kernel.h"
+    ],
+    "test/i2c-master-irq/kernel.h": [],
+    "test/i2c-master-irq/main.cpp": [
+      "include/circle/startup.h",
+      "test/i2c-master-irq/kernel.h"
+    ],
+    "test/i2c-master-irq/Makefile": [],
+    "test/i2c-master-irq/README": [],
+    "test/iperfserver/iperfserver.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "test/iperfserver/iperfserver.h"
+    ],
+    "test/iperfserver/iperfserver.h": [],
+    "test/iperfserver/kernel.cpp": [
+      "include/circle/string.h",
+      "test/iperfserver/iperfserver.h",
+      "test/iperfserver/kernel.h"
+    ],
+    "test/iperfserver/kernel.h": [],
+    "test/iperfserver/main.cpp": [
+      "include/circle/startup.h",
+      "test/iperfserver/kernel.h"
+    ],
+    "test/iperfserver/Makefile": [],
+    "test/iperfserver/README": [],
+    "test/mdns-publisher/kernel.cpp": [
+      "include/circle/net/mdnsdaemon.h",
+      "include/circle/net/mdnspublisher.h",
+      "include/circle/string.h",
+      "test/mdns-publisher/kernel.h"
+    ],
+    "test/mdns-publisher/kernel.h": [],
+    "test/mdns-publisher/main.cpp": [
+      "include/circle/startup.h",
+      "test/mdns-publisher/kernel.h"
+    ],
+    "test/mdns-publisher/Makefile": [],
+    "test/mdns-publisher/README": [],
+    "test/mdns-receiver/kernel.cpp": [
+      "include/circle/debug.h",
+      "include/circle/net/in.h",
+      "include/circle/net/socket.h",
+      "include/circle/string.h",
+      "test/mdns-receiver/kernel.h"
+    ],
+    "test/mdns-receiver/kernel.h": [],
+    "test/mdns-receiver/main.cpp": [
+      "include/circle/startup.h",
+      "test/mdns-receiver/kernel.h"
+    ],
+    "test/mdns-receiver/Makefile": [],
+    "test/mdns-receiver/README": [],
+    "test/pcie-external/kernel.cpp": [
+      "include/circle/memorymap.h",
+      "test/pcie-external/kernel.h"
+    ],
+    "test/pcie-external/kernel.h": [],
+    "test/pcie-external/main.cpp": [
+      "include/circle/startup.h",
+      "test/pcie-external/kernel.h"
+    ],
+    "test/pcie-external/Makefile": [],
+    "test/pcie-external/README": [],
+    "test/ping-client/kernel.cpp": [
+      "include/circle/string.h",
+      "test/ping-client/kernel.h",
+      "test/ping-client/pingclient.h"
+    ],
+    "test/ping-client/kernel.h": [],
+    "test/ping-client/main.cpp": [
+      "include/circle/startup.h",
+      "test/ping-client/kernel.h"
+    ],
+    "test/ping-client/Makefile": [],
+    "test/ping-client/pingclient.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/net/in.h",
+      "include/circle/util.h",
+      "test/ping-client/pingclient.h"
+    ],
+    "test/ping-client/pingclient.h": [],
+    "test/ping-client/README": [],
+    "test/Rules.mk": [],
+    "test/screen-ansi-colors/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "test/screen-ansi-colors/kernel.h"
+    ],
+    "test/screen-ansi-colors/kernel.h": [],
+    "test/screen-ansi-colors/main.cpp": [
+      "include/circle/startup.h",
+      "test/screen-ansi-colors/kernel.h"
+    ],
+    "test/screen-ansi-colors/Makefile": [],
+    "test/screen-ansi-colors/README": [],
+    "test/sound-controller/config.h": [],
+    "test/sound-controller/kernel.cpp": [
+      "include/circle/machineinfo.h",
+      "include/circle/sysconfig.h",
+      "test/sound-controller/kernel.h"
+    ],
+    "test/sound-controller/kernel.h": [],
+    "test/sound-controller/main.cpp": [
+      "include/circle/startup.h",
+      "test/sound-controller/kernel.h"
+    ],
+    "test/sound-controller/Makefile": [],
+    "test/sound-controller/oscillator.cpp": [
+      "include/assert.h",
+      "test/sound-controller/config.h",
+      "test/sound-controller/oscillator.h"
+    ],
+    "test/sound-controller/oscillator.h": [],
+    "test/sound-controller/README": [],
+    "test/sound-controller/soundshell.cpp": [
+      "include/assert.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sound/hdmisoundbasedevice.h",
+      "include/circle/sound/i2ssoundbasedevice.h",
+      "include/circle/sound/pwmsoundbasedevice.h",
+      "include/circle/sound/usbsoundbasedevice.h",
+      "include/circle/stdarg.h",
+      "include/circle/timer.h",
+      "include/circle/util.h",
+      "test/sound-controller/soundshell.h"
+    ],
+    "test/sound-controller/soundshell.h": [],
+    "test/sound-controller/synthmodule.h": [],
+    "test/sound-controller/vumeter.cpp": [
+      "test/sound-controller/config.h",
+      "test/sound-controller/vumeter.h"
+    ],
+    "test/sound-controller/vumeter.h": [],
+    "test/storage/kernel.cpp": [
+      "include/circle/alloc.h",
+      "test/storage/kernel.h",
+      "test/storage/lonesha256.h"
+    ],
+    "test/storage/kernel.h": [],
+    "test/storage/lonesha256.h": [],
+    "test/storage/main.cpp": [
+      "include/circle/startup.h",
+      "test/storage/kernel.h"
+    ],
+    "test/storage/Makefile": [],
+    "test/storage/README": [],
+    "test/synchronization/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "test/synchronization/kernel.h"
+    ],
+    "test/synchronization/kernel.h": [],
+    "test/synchronization/main.cpp": [
+      "include/circle/startup.h",
+      "test/synchronization/kernel.h"
+    ],
+    "test/synchronization/Makefile": [],
+    "test/synchronization/README": [],
+    "test/usb-midi-send/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/usb/gadget/usbmidigadget.h",
+      "include/circle/usb/usbhcidevice.h",
+      "test/usb-midi-send/kernel.h"
+    ],
+    "test/usb-midi-send/kernel.h": [],
+    "test/usb-midi-send/main.cpp": [
+      "include/circle/startup.h",
+      "test/usb-midi-send/kernel.h"
+    ],
+    "test/usb-midi-send/Makefile": [],
+    "test/usb-midi-send/README": [],
+    "test/usb-msd-gadget/kernel.cpp": [
+      "test/usb-msd-gadget/kernel.h"
+    ],
+    "test/usb-msd-gadget/kernel.h": [],
+    "test/usb-msd-gadget/main.cpp": [
+      "include/circle/startup.h",
+      "test/usb-msd-gadget/kernel.h"
+    ],
+    "test/usb-msd-gadget/Makefile": [],
+    "test/usb-msd-gadget/README": [],
+    "test/usb-serial-cdc-gadget/kernel.cpp": [
+      "include/assert.h",
+      "test/usb-serial-cdc-gadget/kernel.h"
+    ],
+    "test/usb-serial-cdc-gadget/kernel.h": [],
+    "test/usb-serial-cdc-gadget/main.cpp": [
+      "include/circle/startup.h",
+      "test/usb-serial-cdc-gadget/kernel.h"
+    ],
+    "test/usb-serial-cdc-gadget/Makefile": [],
+    "test/usb-serial-cdc-gadget/README": [],
+    "test/watchdog/kernel.cpp": [
+      "include/assert.h",
+      "test/watchdog/kernel.h"
+    ],
+    "test/watchdog/kernel.h": [],
+    "test/watchdog/main.cpp": [
+      "include/circle/startup.h",
+      "test/watchdog/kernel.h"
+    ],
+    "test/watchdog/Makefile": [],
+    "test/watchdog/README": [],
+    "test/xpt2046-touchscreen/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/string.h",
+      "test/xpt2046-touchscreen/kernel.h"
+    ],
+    "test/xpt2046-touchscreen/kernel.h": [],
+    "test/xpt2046-touchscreen/main.cpp": [
+      "include/circle/startup.h",
+      "test/xpt2046-touchscreen/kernel.h"
+    ],
+    "test/xpt2046-touchscreen/Makefile": [],
+    "test/xpt2046-touchscreen/README": [],
+    "tools/bootloader/BCM2711.h": [],
+    "tools/bootloader/BCM2712.h": [],
+    "tools/bootloader/BCM2835.h": [],
+    "tools/bootloader/BCM2836.h": [],
+    "tools/bootloader/bootloader07.c": [],
+    "tools/bootloader/loader": [],
+    "tools/bootloader/loader64": [],
+    "tools/bootloader/Makefile": [],
+    "tools/bootloader/periph.c": [],
+    "tools/bootloader/README": [],
+    "tools/bootloader/vectors.s": [],
+    "tools/bootloader/vectors64.s": [],
+    "tools/cflashy.c": [
+      "include/assert.h"
+    ],
+    "tools/cflashy.win": [],
+    "tools/converttool.c": [],
+    "tools/converttool.win": [],
+    "tools/flasher.py": [],
+    "tools/flashy/flashy.js": [],
+    "tools/flashy/package.json": [],
+    "tools/Makefile": [],
+    "tools/reboottool.py": [],
+    "tools/template/circle.geany": [],
+    "tools/template/kernel_2712.bin": [],
+    "tools/template/README": [],
+    "tools/template/rpi4.cfg.diff": [],
+    "tools/template/rpi5.cfg": [],
+    "tools/touchscreen-calibrator/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/stdarg.h",
+      "include/circle/string.h",
+      "tools/touchscreen-calibrator/kernel.h"
+    ],
+    "tools/touchscreen-calibrator/kernel.h": [],
+    "tools/touchscreen-calibrator/main.cpp": [
+      "include/circle/startup.h",
+      "tools/touchscreen-calibrator/kernel.h"
+    ],
+    "tools/touchscreen-calibrator/Makefile": [],
+    "tools/touchscreen-calibrator/README": []
+  }
+}

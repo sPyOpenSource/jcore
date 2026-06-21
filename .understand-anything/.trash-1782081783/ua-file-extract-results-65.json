@@ -1,0 +1,2336 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/vc4/interface/sample/tvservice/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 18,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/tvservice/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 4,
+      "metrics": {}
+    },
+    {
+      "path": "addon/vc4/interface/sample/tvservice/tvservice.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 1208,
+      "nonEmptyLines": 1097,
+      "functions": [
+        {
+          "name": "status_sprintf",
+          "startLine": 218,
+          "endLine": 233,
+          "params": [
+            "buf",
+            "buflen",
+            "offset",
+            "fmt"
+          ]
+        },
+        {
+          "name": "get_modes",
+          "startLine": 266,
+          "endLine": 334,
+          "params": [
+            "group",
+            "json_output"
+          ]
+        },
+        {
+          "name": "get_status",
+          "startLine": 452,
+          "endLine": 476,
+          "params": []
+        },
+        {
+          "name": "get_audiosup",
+          "startLine": 478,
+          "endLine": 511,
+          "params": []
+        },
+        {
+          "name": "show_info",
+          "startLine": 546,
+          "endLine": 549,
+          "params": [
+            "on"
+          ]
+        },
+        {
+          "name": "tvservice_callback",
+          "startLine": 562,
+          "endLine": 620,
+          "params": [
+            "callback_data",
+            "reason",
+            "param1",
+            "param2"
+          ]
+        },
+        {
+          "name": "start_monitor",
+          "startLine": 622,
+          "endLine": 640,
+          "params": []
+        },
+        {
+          "name": "power_on_preferred",
+          "startLine": 642,
+          "endLine": 655,
+          "params": []
+        },
+        {
+          "name": "power_on_explicit",
+          "startLine": 657,
+          "endLine": 673,
+          "params": [
+            "group",
+            "mode",
+            "drive"
+          ]
+        },
+        {
+          "name": "set_property",
+          "startLine": 675,
+          "endLine": 689,
+          "params": [
+            "prop",
+            "param1",
+            "param2"
+          ]
+        },
+        {
+          "name": "power_on_sdtv",
+          "startLine": 691,
+          "endLine": 711,
+          "params": [
+            "mode",
+            "aspect",
+            "sdtv_progressive"
+          ]
+        },
+        {
+          "name": "power_off",
+          "startLine": 713,
+          "endLine": 726,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 135
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 136
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 137
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 139
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 140
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 141
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 142
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 143
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 144
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 145
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 146
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 147
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 148
+        },
+        {
+          "caller": "show_usage",
+          "callee": "LOG_STD",
+          "lineNumber": 149
+        },
+        {
+          "caller": "status_sprintf",
+          "callee": "va_start",
+          "lineNumber": 222
+        },
+        {
+          "caller": "status_sprintf",
+          "callee": "vcos_safe_vsprintf",
+          "lineNumber": 223
+        },
+        {
+          "caller": "status_sprintf",
+          "callee": "va_end",
+          "lineNumber": 224
+        },
+        {
+          "caller": "get_modes",
+          "callee": "vcos_assert",
+          "lineNumber": 274
+        },
+        {
+          "caller": "get_modes",
+          "callee": "memset",
+          "lineNumber": 277
+        },
+        {
+          "caller": "get_modes",
+          "callee": "vc_tv_hdmi_get_supported_modes",
+          "lineNumber": 279
+        },
+        {
+          "caller": "get_modes",
+          "callee": "vcos_countof",
+          "lineNumber": 280
+        },
+        {
+          "caller": "get_modes",
+          "callee": "LOG_ERR",
+          "lineNumber": 285
+        },
+        {
+          "caller": "get_modes",
+          "callee": "LOG_STD",
+          "lineNumber": 291
+        },
+        {
+          "caller": "get_modes",
+          "callee": "LOG_STD",
+          "lineNumber": 295
+        },
+        {
+          "caller": "get_modes",
+          "callee": "HDMI_RES_GROUP_NAME",
+          "lineNumber": 296
+        },
+        {
+          "caller": "get_modes",
+          "callee": "vcos_safe_sprintf",
+          "lineNumber": 303
+        },
+        {
+          "caller": "get_modes",
+          "callee": "LOG_STD",
+          "lineNumber": 307
+        },
+        {
+          "caller": "get_modes",
+          "callee": "aspect_ratio_str",
+          "lineNumber": 310
+        },
+        {
+          "caller": "get_modes",
+          "callee": "threed_str",
+          "lineNumber": 312
+        },
+        {
+          "caller": "get_modes",
+          "callee": "LOG_STD",
+          "lineNumber": 318
+        },
+        {
+          "caller": "get_modes",
+          "callee": "aspect_ratio_str",
+          "lineNumber": 322
+        },
+        {
+          "caller": "get_modes",
+          "callee": "threed_str",
+          "lineNumber": 325
+        },
+        {
+          "caller": "get_modes",
+          "callee": "LOG_STD",
+          "lineNumber": 331
+        },
+        {
+          "caller": "get_status",
+          "callee": "vc_tv_get_display_state",
+          "lineNumber": 455
+        },
+        {
+          "caller": "get_status",
+          "callee": "vc_tv_hdmi_get_property",
+          "lineNumber": 460
+        },
+        {
+          "caller": "get_status",
+          "callee": "LOG_STD",
+          "lineNumber": 464
+        },
+        {
+          "caller": "get_status",
+          "callee": "status_mode",
+          "lineNumber": 465
+        },
+        {
+          "caller": "get_status",
+          "callee": "LOG_STD",
+          "lineNumber": 470
+        },
+        {
+          "caller": "get_status",
+          "callee": "status_mode",
+          "lineNumber": 470
+        },
+        {
+          "caller": "get_status",
+          "callee": "LOG_STD",
+          "lineNumber": 473
+        },
+        {
+          "caller": "get_audiosup",
+          "callee": "vc_tv_hdmi_audio_supported",
+          "lineNumber": 487
+        },
+        {
+          "caller": "get_audiosup",
+          "callee": "vc_tv_hdmi_audio_supported",
+          "lineNumber": 491
+        },
+        {
+          "caller": "get_audiosup",
+          "callee": "vc_tv_hdmi_audio_supported",
+          "lineNumber": 496
+        },
+        {
+          "caller": "get_audiosup",
+          "callee": "LOG_STD",
+          "lineNumber": 500
+        },
+        {
+          "caller": "get_audiosup",
+          "callee": "vc_tv_hdmi_audio_supported",
+          "lineNumber": 503
+        },
+        {
+          "caller": "get_audiosup",
+          "callee": "LOG_STD",
+          "lineNumber": 507
+        },
+        {
+          "caller": "dump_edid",
+          "callee": "vc_tv_hdmi_ddc_read",
+          "lineNumber": 520
+        },
+        {
+          "caller": "dump_edid",
+          "callee": "fopen",
+          "lineNumber": 523
+        },
+        {
+          "caller": "dump_edid",
+          "callee": "fwrite",
+          "lineNumber": 524
+        },
+        {
+          "caller": "dump_edid",
+          "callee": "vc_tv_hdmi_ddc_read",
+          "lineNumber": 527
+        },
+        {
+          "caller": "dump_edid",
+          "callee": "fwrite",
+          "lineNumber": 529
+        },
+        {
+          "caller": "dump_edid",
+          "callee": "fclose",
+          "lineNumber": 536
+        },
+        {
+          "caller": "dump_edid",
+          "callee": "LOG_STD",
+          "lineNumber": 538
+        },
+        {
+          "caller": "dump_edid",
+          "callee": "LOG_STD",
+          "lineNumber": 540
+        },
+        {
+          "caller": "show_info",
+          "callee": "vc_tv_show_info",
+          "lineNumber": 548
+        },
+        {
+          "caller": "control_c",
+          "callee": "LOG_STD",
+          "lineNumber": 556
+        },
+        {
+          "caller": "control_c",
+          "callee": "vcos_event_signal",
+          "lineNumber": 558
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 575
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 580
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 585
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 590
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 595
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 600
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 605
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 610
+        },
+        {
+          "caller": "tvservice_callback",
+          "callee": "LOG_INFO",
+          "lineNumber": 616
+        },
+        {
+          "caller": "start_monitor",
+          "callee": "vcos_event_create",
+          "lineNumber": 624
+        },
+        {
+          "caller": "start_monitor",
+          "callee": "LOG_ERR",
+          "lineNumber": 626
+        },
+        {
+          "caller": "start_monitor",
+          "callee": "signal",
+          "lineNumber": 633
+        },
+        {
+          "caller": "start_monitor",
+          "callee": "signal",
+          "lineNumber": 634
+        },
+        {
+          "caller": "start_monitor",
+          "callee": "vc_tv_register_callback",
+          "lineNumber": 637
+        },
+        {
+          "caller": "power_on_preferred",
+          "callee": "LOG_STD",
+          "lineNumber": 646
+        },
+        {
+          "caller": "power_on_preferred",
+          "callee": "vc_tv_hdmi_power_on_preferred",
+          "lineNumber": 648
+        },
+        {
+          "caller": "power_on_preferred",
+          "callee": "LOG_ERR",
+          "lineNumber": 651
+        },
+        {
+          "caller": "power_on_explicit",
+          "callee": "LOG_STD",
+          "lineNumber": 662
+        },
+        {
+          "caller": "power_on_explicit",
+          "callee": "vc_tv_hdmi_power_on_explicit",
+          "lineNumber": 665
+        },
+        {
+          "caller": "power_on_explicit",
+          "callee": "LOG_ERR",
+          "lineNumber": 668
+        },
+        {
+          "caller": "set_property",
+          "callee": "vc_tv_hdmi_set_property",
+          "lineNumber": 683
+        },
+        {
+          "caller": "set_property",
+          "callee": "LOG_ERR",
+          "lineNumber": 686
+        },
+        {
+          "caller": "power_on_sdtv",
+          "callee": "memset",
+          "lineNumber": 696
+        },
+        {
+          "caller": "power_on_sdtv",
+          "callee": "(SDTV_MODE_T)",
+          "lineNumber": 699
+        },
+        {
+          "caller": "power_on_sdtv",
+          "callee": "LOG_STD",
+          "lineNumber": 700
+        },
+        {
+          "caller": "power_on_sdtv",
+          "callee": "vc_tv_sdtv_power_on",
+          "lineNumber": 703
+        },
+        {
+          "caller": "power_on_sdtv",
+          "callee": "LOG_ERR",
+          "lineNumber": 706
+        },
+        {
+          "caller": "power_off",
+          "callee": "LOG_STD",
+          "lineNumber": 717
+        },
+        {
+          "caller": "power_off",
+          "callee": "vc_tv_power_off",
+          "lineNumber": 719
+        },
+        {
+          "caller": "power_off",
+          "callee": "LOG_ERR",
+          "lineNumber": 722
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_init",
+          "lineNumber": 783
+        },
+        {
+          "caller": "_main",
+          "callee": "create_optstring",
+          "lineNumber": 787
+        },
+        {
+          "caller": "_main",
+          "callee": "getopt_long_only",
+          "lineNumber": 790
+        },
+        {
+          "caller": "_main",
+          "callee": "sscanf",
+          "lineNumber": 810
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 813
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 818
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 822
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 826
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 827
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 832
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 837
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 842
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 849
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 854
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 858
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 864
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 871
+        },
+        {
+          "caller": "_main",
+          "callee": "sscanf",
+          "lineNumber": 886
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 889
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 894
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 898
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 902
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 906
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 912
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 916
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 920
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 924
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 929
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 943
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_strcasecmp",
+          "lineNumber": 947
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 953
+        },
+        {
+          "caller": "_main",
+          "callee": "atoi",
+          "lineNumber": 983
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 998
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 1016
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 1024
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 1030
+        },
+        {
+          "caller": "_main",
+          "callee": "vchi_initialise",
+          "lineNumber": 1036
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 1039
+        },
+        {
+          "caller": "_main",
+          "callee": "vchi_connect",
+          "lineNumber": 1043
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 1046
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_vchi_tv_init",
+          "lineNumber": 1053
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_STD",
+          "lineNumber": 1057
+        },
+        {
+          "caller": "_main",
+          "callee": "start_monitor",
+          "lineNumber": 1059
+        },
+        {
+          "caller": "_main",
+          "callee": "get_modes",
+          "lineNumber": 1067
+        },
+        {
+          "caller": "_main",
+          "callee": "set_property",
+          "lineNumber": 1075
+        },
+        {
+          "caller": "_main",
+          "callee": "power_on_preferred",
+          "lineNumber": 1079
+        },
+        {
+          "caller": "_main",
+          "callee": "set_property",
+          "lineNumber": 1087
+        },
+        {
+          "caller": "_main",
+          "callee": "set_property",
+          "lineNumber": 1091
+        },
+        {
+          "caller": "_main",
+          "callee": "set_property",
+          "lineNumber": 1095
+        },
+        {
+          "caller": "_main",
+          "callee": "set_property",
+          "lineNumber": 1099
+        },
+        {
+          "caller": "_main",
+          "callee": "set_property",
+          "lineNumber": 1103
+        },
+        {
+          "caller": "_main",
+          "callee": "set_property",
+          "lineNumber": 1107
+        },
+        {
+          "caller": "_main",
+          "callee": "power_on_explicit",
+          "lineNumber": 1111
+        },
+        {
+          "caller": "_main",
+          "callee": "power_on_sdtv",
+          "lineNumber": 1119
+        },
+        {
+          "caller": "_main",
+          "callee": "power_off",
+          "lineNumber": 1127
+        },
+        {
+          "caller": "_main",
+          "callee": "get_status",
+          "lineNumber": 1135
+        },
+        {
+          "caller": "_main",
+          "callee": "get_audiosup",
+          "lineNumber": 1143
+        },
+        {
+          "caller": "_main",
+          "callee": "dump_edid",
+          "lineNumber": 1152
+        },
+        {
+          "caller": "_main",
+          "callee": "show_info",
+          "lineNumber": 1161
+        },
+        {
+          "caller": "_main",
+          "callee": "memset",
+          "lineNumber": 1170
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_tv_get_device_id",
+          "lineNumber": 1171
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 1173
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_STD",
+          "lineNumber": 1175
+        },
+        {
+          "caller": "_main",
+          "callee": "LOG_ERR",
+          "lineNumber": 1178
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_event_wait",
+          "lineNumber": 1185
+        },
+        {
+          "caller": "_main",
+          "callee": "vcos_event_delete",
+          "lineNumber": 1187
+        },
+        {
+          "caller": "_main",
+          "callee": "vc_vchi_tv_stop",
+          "lineNumber": 1194
+        },
+        {
+          "caller": "_main",
+          "callee": "vchi_disconnect",
+          "lineNumber": 1197
+        },
+        {
+          "caller": "_main",
+          "callee": "exit",
+          "lineNumber": 1199
+        },
+        {
+          "caller": "_main",
+          "callee": "show_usage",
+          "lineNumber": 1203
+        },
+        {
+          "caller": "_main",
+          "callee": "exit",
+          "lineNumber": 1207
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 12,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcinclude/common.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 144,
+      "nonEmptyLines": 114,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcinclude/vc_display_types.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 116,
+      "nonEmptyLines": 102,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcinclude/vc_image_types.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 174,
+      "nonEmptyLines": 151,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 22,
+      "nonEmptyLines": 16,
+      "steps": [
+        {
+          "name": "libvcos.a",
+          "startLine": 11,
+          "endLine": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_abort.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "vcos_verify_bkpts_enabled",
+          "startLine": 44,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "vcos_verify_bkpts_enable",
+          "startLine": 49,
+          "endLine": 54,
+          "params": [
+            "enable"
+          ]
+        },
+        {
+          "name": "vcos_abort",
+          "startLine": 59,
+          "endLine": 90,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "vcos_verify_bkpts_enabled",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_verify_bkpts_enable",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_abort",
+          "line": 59,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "vcos_abort",
+          "callee": "VCOS_ALERT",
+          "lineNumber": 61
+        },
+        {
+          "caller": "vcos_abort",
+          "callee": "_bkpt",
+          "lineNumber": 64
+        },
+        {
+          "caller": "vcos_abort",
+          "callee": "vcos_backtrace_self",
+          "lineNumber": 68
+        },
+        {
+          "caller": "vcos_abort",
+          "callee": "vclib_cache_flush",
+          "lineNumber": 73
+        },
+        {
+          "caller": "vcos_abort",
+          "callee": "pattern",
+          "lineNumber": 79
+        },
+        {
+          "caller": "vcos_abort",
+          "callee": "halt",
+          "lineNumber": 86
+        },
+        {
+          "caller": "vcos_abort",
+          "callee": "abort",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_assert.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 324,
+      "nonEmptyLines": 272,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_atomic_flags.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 79,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_attr.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 153,
+      "nonEmptyLines": 140,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_backtrace.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 53,
+      "functions": [
+        {
+          "name": "vcos_backtrace_self",
+          "startLine": 41,
+          "endLine": 57,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "vcos_backtrace_self",
+          "line": 41,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "vcos_backtrace_self",
+          "callee": "backtrace",
+          "lineNumber": 45
+        },
+        {
+          "caller": "vcos_backtrace_self",
+          "callee": "backtrace_symbols",
+          "lineNumber": 46
+        },
+        {
+          "caller": "vcos_backtrace_self",
+          "callee": "printf",
+          "lineNumber": 52
+        },
+        {
+          "caller": "vcos_backtrace_self",
+          "callee": "free",
+          "lineNumber": 54
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_blockpool.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 171,
+      "nonEmptyLines": 150,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_common.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 96,
+      "nonEmptyLines": 80,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_ctype.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_deprecated.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 32,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_event_flags.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 100,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_event.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 117,
+      "nonEmptyLines": 99,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_generic_blockpool.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 570,
+      "nonEmptyLines": 472,
+      "functions": [
+        {
+          "name": "vcos_generic_blockpool_subpool_init",
+          "startLine": 80,
+          "endLine": 140,
+          "params": [
+            "pool",
+            "subpool",
+            "mem",
+            "pool_size",
+            "num_blocks",
+            "align",
+            "flags"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_init",
+          "startLine": 142,
+          "endLine": 202,
+          "params": [
+            "pool",
+            "num_blocks",
+            "block_size",
+            "start",
+            "pool_size",
+            "align",
+            "flags",
+            "name"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_create_on_heap",
+          "startLine": 204,
+          "endLine": 230,
+          "params": [
+            "pool",
+            "num_blocks",
+            "block_size",
+            "align",
+            "flags",
+            "name"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_extend",
+          "startLine": 232,
+          "endLine": 264,
+          "params": [
+            "pool",
+            "num_extensions",
+            "num_blocks"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_free",
+          "startLine": 349,
+          "endLine": 385,
+          "params": [
+            "block"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_available_count",
+          "startLine": 387,
+          "endLine": 407,
+          "params": [
+            "pool"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_used_count",
+          "startLine": 409,
+          "endLine": 426,
+          "params": [
+            "pool"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_delete",
+          "startLine": 428,
+          "endLine": 458,
+          "params": [
+            "pool"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_elem_to_handle",
+          "startLine": 460,
+          "endLine": 496,
+          "params": [
+            "block"
+          ]
+        },
+        {
+          "name": "vcos_generic_blockpool_is_valid_elem",
+          "startLine": 532,
+          "endLine": 570,
+          "params": [
+            "pool",
+            "block"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "vcos_generic_blockpool_init",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_blockpool_create_on_heap",
+          "line": 204,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_blockpool_extend",
+          "line": 232,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_blockpool_free",
+          "line": 349,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_blockpool_available_count",
+          "line": 387,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_blockpool_used_count",
+          "line": 409,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_blockpool_delete",
+          "line": 428,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_blockpool_elem_to_handle",
+          "line": 460,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_blockpool_is_valid_elem",
+          "line": 532,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "vcos_generic_blockpool_subpool_init",
+          "callee": "vcos_unused",
+          "lineNumber": 88
+        },
+        {
+          "caller": "vcos_generic_blockpool_subpool_init",
+          "callee": "vcos_log_trace",
+          "lineNumber": 90
+        },
+        {
+          "caller": "vcos_generic_blockpool_subpool_init",
+          "callee": "VCOS_BLOCKPOOL_ROUND_UP",
+          "lineNumber": 107
+        },
+        {
+          "caller": "vcos_generic_blockpool_subpool_init",
+          "callee": "vcos_assert",
+          "lineNumber": 110
+        },
+        {
+          "caller": "vcos_generic_blockpool_subpool_init",
+          "callee": "vcos_log_trace",
+          "lineNumber": 112
+        },
+        {
+          "caller": "vcos_generic_blockpool_subpool_init",
+          "callee": "memset",
+          "lineNumber": 125
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_unused",
+          "lineNumber": 149
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_unused",
+          "lineNumber": 150
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_log_trace",
+          "lineNumber": 152
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_demand",
+          "lineNumber": 156
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_demand",
+          "lineNumber": 157
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_assert",
+          "lineNumber": 158
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_assert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_log_error",
+          "lineNumber": 166
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "VCOS_BLOCKPOOL_SIZE",
+          "lineNumber": 170
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_log_error",
+          "lineNumber": 172
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "VCOS_BLOCKPOOL_SIZE",
+          "lineNumber": 176
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_mutex_create",
+          "lineNumber": 180
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "VCOS_BLOCKPOOL_ROUND_UP",
+          "lineNumber": 188
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "memset",
+          "lineNumber": 196
+        },
+        {
+          "caller": "vcos_generic_blockpool_init",
+          "callee": "vcos_generic_blockpool_subpool_init",
+          "lineNumber": 198
+        },
+        {
+          "caller": "vcos_generic_blockpool_create_on_heap",
+          "callee": "VCOS_BLOCKPOOL_SIZE",
+          "lineNumber": 209
+        },
+        {
+          "caller": "vcos_generic_blockpool_create_on_heap",
+          "callee": "vcos_malloc",
+          "lineNumber": 210
+        },
+        {
+          "caller": "vcos_generic_blockpool_create_on_heap",
+          "callee": "vcos_log_trace",
+          "lineNumber": 212
+        },
+        {
+          "caller": "vcos_generic_blockpool_create_on_heap",
+          "callee": "vcos_generic_blockpool_init",
+          "lineNumber": 218
+        },
+        {
+          "caller": "vcos_generic_blockpool_create_on_heap",
+          "callee": "vcos_free",
+          "lineNumber": 228
+        },
+        {
+          "caller": "vcos_generic_blockpool_extend",
+          "callee": "ASSERT_POOL",
+          "lineNumber": 236
+        },
+        {
+          "caller": "vcos_generic_blockpool_extend",
+          "callee": "vcos_log_trace",
+          "lineNumber": 238
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "VCOS_BLOCKPOOL_DEBUG_LOG",
+          "lineNumber": 351
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "ASSERT_SUBPOOL",
+          "lineNumber": 358
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "ASSERT_POOL",
+          "lineNumber": 360
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 362
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "vcos_assert",
+          "lineNumber": 363
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "memset",
+          "lineNumber": 371
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "VCOS_BLOCKPOOL_DEBUG_LOG",
+          "lineNumber": 376
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "vcos_free",
+          "lineNumber": 379
+        },
+        {
+          "caller": "vcos_generic_blockpool_free",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 383
+        },
+        {
+          "caller": "vcos_generic_blockpool_available_count",
+          "callee": "ASSERT_POOL",
+          "lineNumber": 392
+        },
+        {
+          "caller": "vcos_generic_blockpool_available_count",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 393
+        },
+        {
+          "caller": "vcos_generic_blockpool_available_count",
+          "callee": "ASSERT_SUBPOOL",
+          "lineNumber": 397
+        },
+        {
+          "caller": "vcos_generic_blockpool_available_count",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 405
+        },
+        {
+          "caller": "vcos_generic_blockpool_used_count",
+          "callee": "ASSERT_POOL",
+          "lineNumber": 414
+        },
+        {
+          "caller": "vcos_generic_blockpool_used_count",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 415
+        },
+        {
+          "caller": "vcos_generic_blockpool_used_count",
+          "callee": "ASSERT_SUBPOOL",
+          "lineNumber": 420
+        },
+        {
+          "caller": "vcos_generic_blockpool_used_count",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 424
+        },
+        {
+          "caller": "vcos_generic_blockpool_delete",
+          "callee": "vcos_log_trace",
+          "lineNumber": 430
+        },
+        {
+          "caller": "vcos_generic_blockpool_delete",
+          "callee": "ASSERT_POOL",
+          "lineNumber": 436
+        },
+        {
+          "caller": "vcos_generic_blockpool_delete",
+          "callee": "ASSERT_SUBPOOL",
+          "lineNumber": 440
+        },
+        {
+          "caller": "vcos_generic_blockpool_delete",
+          "callee": "memset",
+          "lineNumber": 444
+        },
+        {
+          "caller": "vcos_generic_blockpool_delete",
+          "callee": "VCOS_BLOCKPOOL_SIZE",
+          "lineNumber": 446
+        },
+        {
+          "caller": "vcos_generic_blockpool_delete",
+          "callee": "vcos_free",
+          "lineNumber": 450
+        },
+        {
+          "caller": "vcos_generic_blockpool_delete",
+          "callee": "vcos_mutex_delete",
+          "lineNumber": 455
+        },
+        {
+          "caller": "vcos_generic_blockpool_delete",
+          "callee": "memset",
+          "lineNumber": 456
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "vcos_assert",
+          "lineNumber": 469
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "ASSERT_SUBPOOL",
+          "lineNumber": 472
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "ASSERT_POOL",
+          "lineNumber": 475
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 476
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "vcos_assert",
+          "lineNumber": 482
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "vcos_assert",
+          "lineNumber": 487
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "vcos_assert",
+          "lineNumber": 488
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "VCOS_BLOCKPOOL_HANDLE_CREATE",
+          "lineNumber": 489
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "vcos_log_trace",
+          "lineNumber": 491
+        },
+        {
+          "caller": "vcos_generic_blockpool_elem_to_handle",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 494
+        },
+        {
+          "caller": "vcos_generic_blockpool_is_valid_elem",
+          "callee": "ASSERT_POOL",
+          "lineNumber": 539
+        },
+        {
+          "caller": "vcos_generic_blockpool_is_valid_elem",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 543
+        },
+        {
+          "caller": "vcos_generic_blockpool_is_valid_elem",
+          "callee": "ASSERT_SUBPOOL",
+          "lineNumber": 548
+        },
+        {
+          "caller": "vcos_generic_blockpool_is_valid_elem",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 568
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 9,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_generic_blockpool.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 294,
+      "nonEmptyLines": 249,
+      "callGraph": [
+        {
+          "caller": "vcos_blockpool_init",
+          "callee": "vcos_generic_blockpool_init",
+          "lineNumber": 214
+        },
+        {
+          "caller": "vcos_blockpool_create_on_heap",
+          "callee": "vcos_generic_blockpool_create_on_heap",
+          "lineNumber": 223
+        },
+        {
+          "caller": "vcos_blockpool_extend",
+          "callee": "vcos_generic_blockpool_extend",
+          "lineNumber": 231
+        },
+        {
+          "caller": "vcos_blockpool_free",
+          "callee": "vcos_generic_blockpool_free",
+          "lineNumber": 249
+        },
+        {
+          "caller": "vcos_blockpool_available_count",
+          "callee": "vcos_generic_blockpool_available_count",
+          "lineNumber": 255
+        },
+        {
+          "caller": "vcos_blockpool_used_count",
+          "callee": "vcos_generic_blockpool_used_count",
+          "lineNumber": 261
+        },
+        {
+          "caller": "vcos_blockpool_delete",
+          "callee": "vcos_generic_blockpool_delete",
+          "lineNumber": 267
+        },
+        {
+          "caller": "vcos_blockpool_elem_to_handle",
+          "callee": "vcos_generic_blockpool_elem_to_handle",
+          "lineNumber": 273
+        },
+        {
+          "caller": "vcos_blockpool_is_valid_elem",
+          "callee": "vcos_generic_blockpool_is_valid_elem",
+          "lineNumber": 285
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_generic_event_flags.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 322,
+      "nonEmptyLines": 271,
+      "functions": [
+        {
+          "name": "vcos_generic_event_flags_create",
+          "startLine": 58,
+          "endLine": 69,
+          "params": [
+            "flags",
+            "name"
+          ]
+        },
+        {
+          "name": "vcos_generic_event_flags_set",
+          "startLine": 71,
+          "endLine": 150,
+          "params": [
+            "flags",
+            "bitmask",
+            "op"
+          ]
+        },
+        {
+          "name": "vcos_generic_event_flags_delete",
+          "startLine": 152,
+          "endLine": 155,
+          "params": [
+            "flags"
+          ]
+        },
+        {
+          "name": "vcos_generic_event_flags_get",
+          "startLine": 157,
+          "endLine": 243,
+          "params": [
+            "flags",
+            "bitmask",
+            "op",
+            "suspend",
+            "retrieved_bits"
+          ]
+        },
+        {
+          "name": "event_flags_timer_expired",
+          "startLine": 249,
+          "endLine": 295,
+          "params": [
+            "cxt"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "vcos_generic_event_flags_create",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_event_flags_set",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_event_flags_delete",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_event_flags_get",
+          "line": 157,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "vcos_generic_event_flags_create",
+          "callee": "vcos_mutex_create",
+          "lineNumber": 61
+        },
+        {
+          "caller": "vcos_generic_event_flags_set",
+          "callee": "vcos_assert",
+          "lineNumber": 75
+        },
+        {
+          "caller": "vcos_generic_event_flags_set",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 76
+        },
+        {
+          "caller": "vcos_generic_event_flags_set",
+          "callee": "vcos_assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "vcos_generic_event_flags_set",
+          "callee": "vcos_assert",
+          "lineNumber": 130
+        },
+        {
+          "caller": "vcos_generic_event_flags_set",
+          "callee": "waiter_list_valid",
+          "lineNumber": 130
+        },
+        {
+          "caller": "vcos_generic_event_flags_set",
+          "callee": "_vcos_thread_sem_post",
+          "lineNumber": 135
+        },
+        {
+          "caller": "vcos_generic_event_flags_set",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 149
+        },
+        {
+          "caller": "vcos_generic_event_flags_delete",
+          "callee": "vcos_mutex_delete",
+          "lineNumber": 154
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "vcos_assert",
+          "lineNumber": 167
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 172
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "vcos_assert",
+          "lineNumber": 198
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "vcos_thread_current",
+          "lineNumber": 214
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "vcos_assert",
+          "lineNumber": 216
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "VCOS_QUEUE_APPEND_TAIL",
+          "lineNumber": 217
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "_vcos_task_timer_set",
+          "lineNumber": 220
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 222
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "_vcos_thread_sem_wait",
+          "lineNumber": 225
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "_vcos_task_timer_cancel",
+          "lineNumber": 235
+        },
+        {
+          "caller": "vcos_generic_event_flags_get",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 239
+        },
+        {
+          "caller": "event_flags_timer_expired",
+          "callee": "vcos_assert",
+          "lineNumber": 257
+        },
+        {
+          "caller": "event_flags_timer_expired",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 259
+        },
+        {
+          "caller": "event_flags_timer_expired",
+          "callee": "vcos_assert",
+          "lineNumber": 287
+        },
+        {
+          "caller": "event_flags_timer_expired",
+          "callee": "waiter_list_valid",
+          "lineNumber": 287
+        },
+        {
+          "caller": "event_flags_timer_expired",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 289
+        },
+        {
+          "caller": "event_flags_timer_expired",
+          "callee": "_vcos_thread_sem_post",
+          "lineNumber": 293
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_generic_event_flags.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 127,
+      "nonEmptyLines": 108,
+      "callGraph": [
+        {
+          "caller": "vcos_event_flags_create",
+          "callee": "vcos_generic_event_flags_create",
+          "lineNumber": 97
+        },
+        {
+          "caller": "vcos_event_flags_set",
+          "callee": "vcos_generic_event_flags_set",
+          "lineNumber": 104
+        },
+        {
+          "caller": "vcos_event_flags_delete",
+          "callee": "vcos_generic_event_flags_delete",
+          "lineNumber": 109
+        },
+        {
+          "caller": "vcos_event_flags_get",
+          "callee": "vcos_generic_event_flags_get",
+          "lineNumber": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_generic_named_sem.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 268,
+      "nonEmptyLines": 229,
+      "functions": [
+        {
+          "name": "_vcos_named_semaphore_init",
+          "startLine": 86,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "_vcos_named_semaphore_deinit",
+          "startLine": 116,
+          "endLine": 121,
+          "params": []
+        },
+        {
+          "name": "vcos_generic_named_semaphore_create",
+          "startLine": 123,
+          "endLine": 233,
+          "params": [
+            "sem",
+            "name",
+            "count"
+          ]
+        },
+        {
+          "name": "vcos_named_semaphore_delete",
+          "startLine": 235,
+          "endLine": 268,
+          "params": [
+            "sem"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "_vcos_named_semaphore_init",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "_vcos_named_semaphore_deinit",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_generic_named_semaphore_create",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_named_semaphore_delete",
+          "line": 235,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "_vcos_named_semaphore_init",
+          "callee": "vcos_blockpool_init",
+          "lineNumber": 90
+        },
+        {
+          "caller": "_vcos_named_semaphore_init",
+          "callee": "vcos_blockpool_extend",
+          "lineNumber": 98
+        },
+        {
+          "caller": "_vcos_named_semaphore_init",
+          "callee": "vcos_mutex_create",
+          "lineNumber": 103
+        },
+        {
+          "caller": "_vcos_named_semaphore_init",
+          "callee": "vcos_blockpool_delete",
+          "lineNumber": 111
+        },
+        {
+          "caller": "_vcos_named_semaphore_deinit",
+          "callee": "vcos_blockpool_delete",
+          "lineNumber": 118
+        },
+        {
+          "caller": "_vcos_named_semaphore_deinit",
+          "callee": "vcos_mutex_delete",
+          "lineNumber": 119
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_log_trace",
+          "lineNumber": 132
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_assert",
+          "lineNumber": 135
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 137
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_strlen",
+          "lineNumber": 138
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_assert",
+          "lineNumber": 141
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_strcmp",
+          "lineNumber": 148
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_log_trace",
+          "lineNumber": 159
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_blockpool_calloc",
+          "lineNumber": 167
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_semaphore_create",
+          "lineNumber": 170
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "memcpy",
+          "lineNumber": 176
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_log_trace",
+          "lineNumber": 213
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 224
+        },
+        {
+          "caller": "vcos_generic_named_semaphore_create",
+          "callee": "vcos_log_error",
+          "lineNumber": 227
+        },
+        {
+          "caller": "vcos_named_semaphore_delete",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 238
+        },
+        {
+          "caller": "vcos_named_semaphore_delete",
+          "callee": "vcos_assert",
+          "lineNumber": 241
+        },
+        {
+          "caller": "vcos_named_semaphore_delete",
+          "callee": "vcos_log_trace",
+          "lineNumber": 243
+        },
+        {
+          "caller": "vcos_named_semaphore_delete",
+          "callee": "vcos_semaphore_delete",
+          "lineNumber": 262
+        },
+        {
+          "caller": "vcos_named_semaphore_delete",
+          "callee": "vcos_blockpool_free",
+          "lineNumber": 265
+        },
+        {
+          "caller": "vcos_named_semaphore_delete",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 267
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_generic_named_sem.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 101,
+      "nonEmptyLines": 79,
+      "callGraph": [
+        {
+          "caller": "vcos_named_semaphore_create",
+          "callee": "vcos_generic_named_semaphore_create",
+          "lineNumber": 75
+        },
+        {
+          "caller": "vcos_named_semaphore_wait",
+          "callee": "vcos_semaphore_wait",
+          "lineNumber": 80
+        },
+        {
+          "caller": "vcos_named_semaphore_trywait",
+          "callee": "vcos_semaphore_trywait",
+          "lineNumber": 85
+        },
+        {
+          "caller": "vcos_named_semaphore_post",
+          "callee": "vcos_semaphore_post",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_generic_quickslow_mutex.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 76,
+      "callGraph": [
+        {
+          "caller": "vcos_quickslow_mutex_create",
+          "callee": "vcos_mutex_create",
+          "lineNumber": 54
+        },
+        {
+          "caller": "vcos_quickslow_mutex_delete",
+          "callee": "vcos_mutex_delete",
+          "lineNumber": 60
+        },
+        {
+          "caller": "vcos_quickslow_mutex_lock",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 66
+        },
+        {
+          "caller": "vcos_quickslow_mutex_unlock",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 72
+        },
+        {
+          "caller": "vcos_quickslow_mutex_lock_quick",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 78
+        },
+        {
+          "caller": "vcos_quickslow_mutex_unlock_quick",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 84
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

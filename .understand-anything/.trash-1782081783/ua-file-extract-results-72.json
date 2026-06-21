@@ -1,0 +1,351 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "lib/sound/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 45,
+      "nonEmptyLines": 37,
+      "steps": [
+        {
+          "name": "all",
+          "startLine": 23,
+          "endLine": 24
+        },
+        {
+          "name": "libsound.a",
+          "startLine": 40,
+          "endLine": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 2
+      }
+    },
+    {
+      "path": "lib/startup.S",
+      "language": "s",
+      "fileCategory": "code",
+      "totalLines": 112,
+      "nonEmptyLines": 99,
+      "metrics": {}
+    },
+    {
+      "path": "lib/startup64.S",
+      "language": "s",
+      "fileCategory": "code",
+      "totalLines": 135,
+      "nonEmptyLines": 107,
+      "metrics": {}
+    },
+    {
+      "path": "lib/usb/gadget/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 40,
+      "nonEmptyLines": 33,
+      "steps": [
+        {
+          "name": "all",
+          "startLine": 23,
+          "endLine": 24
+        },
+        {
+          "name": "libusbgadget.a",
+          "startLine": 35,
+          "endLine": 39
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 2
+      }
+    },
+    {
+      "path": "lib/usb/gadget/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 26,
+      "metrics": {}
+    },
+    {
+      "path": "lib/usb/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 61,
+      "nonEmptyLines": 52,
+      "steps": [
+        {
+          "name": "all",
+          "startLine": 23,
+          "endLine": 24
+        },
+        {
+          "name": "libusb.a",
+          "startLine": 56,
+          "endLine": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 2
+      }
+    },
+    {
+      "path": "lib/usb/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 152,
+      "nonEmptyLines": 111,
+      "metrics": {}
+    },
+    {
+      "path": "lib/util_fast.S",
+      "language": "s",
+      "fileCategory": "code",
+      "totalLines": 157,
+      "nonEmptyLines": 129,
+      "metrics": {}
+    },
+    {
+      "path": "makeall",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 75,
+      "nonEmptyLines": 57,
+      "metrics": {}
+    },
+    {
+      "path": "makedoc",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 34,
+      "metrics": {}
+    },
+    {
+      "path": "Rules.mk",
+      "language": "mk",
+      "fileCategory": "code",
+      "totalLines": 328,
+      "nonEmptyLines": 281,
+      "steps": [
+        {
+          "name": "DEPS",
+          "startLine": 198,
+          "endLine": 198
+        },
+        {
+          "name": "clean",
+          "startLine": 248,
+          "endLine": 251
+        },
+        {
+          "name": "install",
+          "startLine": 253,
+          "endLine": 255
+        },
+        {
+          "name": "tftpboot",
+          "startLine": 259,
+          "endLine": 260
+        },
+        {
+          "name": "flash",
+          "startLine": 293,
+          "endLine": 293
+        },
+        {
+          "name": "flash",
+          "startLine": 310,
+          "endLine": 318
+        },
+        {
+          "name": "monitor",
+          "startLine": 322,
+          "endLine": 324
+        },
+        {
+          "name": "cat",
+          "startLine": 326,
+          "endLine": 329
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 8
+      }
+    },
+    {
+      "path": "sample/01-gpiosimple/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/01-gpiosimple/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {}
+    },
+    {
+      "path": "sample/02-screenpixel/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/02-screenpixel/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 5,
+      "metrics": {}
+    },
+    {
+      "path": "sample/03-screentext/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/03-screentext/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 14,
+      "metrics": {}
+    },
+    {
+      "path": "sample/04-timer/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/04-timer/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "metrics": {}
+    },
+    {
+      "path": "sample/05-usbsimple/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/05-usbsimple/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 9,
+      "nonEmptyLines": 7,
+      "metrics": {}
+    },
+    {
+      "path": "sample/06-ethernet/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/06-ethernet/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 4,
+      "metrics": {}
+    },
+    {
+      "path": "sample/07-usbstorage/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/07-usbstorage/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 4,
+      "metrics": {}
+    }
+  ]
+}

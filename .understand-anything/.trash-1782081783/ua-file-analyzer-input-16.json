@@ -1,0 +1,281 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "sample/40-irqlatency/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/40-irqlatency/kernel.h",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/40-irqlatency/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/41-screenanimations/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/41-screenanimations/kernel.h",
+      "language": "c",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/41-screenanimations/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio-interrupt/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio-interrupt/kernel.h",
+      "language": "c",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio-interrupt/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio-timing/kernel.h",
+      "language": "c",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio-timing/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio/kernel.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/i2c-master-irq/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/i2c-master-irq/kernel.h",
+      "language": "c",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/i2c-master-irq/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/pcie-external/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/pcie-external/kernel.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/pcie-external/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usb-midi-send/kernel.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usb-midi-send/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usb-msd-gadget/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usb-msd-gadget/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usb-msd-gadget/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usb-serial-cdc-gadget/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usb-serial-cdc-gadget/kernel.h",
+      "language": "c",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/usb-serial-cdc-gadget/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/watchdog/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/watchdog/kernel.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/watchdog/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "sample/40-irqlatency/kernel.cpp": [
+      "include/circle/synchronize.h",
+      "sample/40-irqlatency/kernel.h"
+    ],
+    "sample/40-irqlatency/kernel.h": [],
+    "sample/40-irqlatency/main.cpp": [
+      "include/circle/startup.h",
+      "sample/40-irqlatency/kernel.h"
+    ],
+    "sample/41-screenanimations/kernel.cpp": [
+      "sample/41-screenanimations/kernel.h"
+    ],
+    "sample/41-screenanimations/kernel.h": [],
+    "sample/41-screenanimations/main.cpp": [
+      "include/circle/startup.h",
+      "sample/41-screenanimations/kernel.h"
+    ],
+    "test/gpio-interrupt/kernel.cpp": [
+      "test/gpio-interrupt/kernel.h"
+    ],
+    "test/gpio-interrupt/kernel.h": [],
+    "test/gpio-interrupt/main.cpp": [
+      "include/circle/startup.h",
+      "test/gpio-interrupt/kernel.h"
+    ],
+    "test/gpio-timing/kernel.h": [],
+    "test/gpio-timing/main.cpp": [
+      "include/circle/startup.h",
+      "test/gpio-timing/kernel.h"
+    ],
+    "test/gpio/kernel.cpp": [
+      "test/gpio/kernel.h"
+    ],
+    "test/gpio/kernel.h": [],
+    "test/gpio/main.cpp": [
+      "include/circle/startup.h",
+      "test/gpio/kernel.h"
+    ],
+    "test/i2c-master-irq/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "test/i2c-master-irq/kernel.h"
+    ],
+    "test/i2c-master-irq/kernel.h": [],
+    "test/i2c-master-irq/main.cpp": [
+      "include/circle/startup.h",
+      "test/i2c-master-irq/kernel.h"
+    ],
+    "test/pcie-external/kernel.cpp": [
+      "include/circle/memorymap.h",
+      "test/pcie-external/kernel.h"
+    ],
+    "test/pcie-external/kernel.h": [],
+    "test/pcie-external/main.cpp": [
+      "include/circle/startup.h",
+      "test/pcie-external/kernel.h"
+    ],
+    "test/usb-midi-send/kernel.h": [],
+    "test/usb-midi-send/main.cpp": [
+      "include/circle/startup.h",
+      "test/usb-midi-send/kernel.h"
+    ],
+    "test/usb-msd-gadget/kernel.cpp": [
+      "test/usb-msd-gadget/kernel.h"
+    ],
+    "test/usb-msd-gadget/kernel.h": [],
+    "test/usb-msd-gadget/main.cpp": [
+      "include/circle/startup.h",
+      "test/usb-msd-gadget/kernel.h"
+    ],
+    "test/usb-serial-cdc-gadget/kernel.cpp": [
+      "include/assert.h",
+      "test/usb-serial-cdc-gadget/kernel.h"
+    ],
+    "test/usb-serial-cdc-gadget/kernel.h": [],
+    "test/usb-serial-cdc-gadget/main.cpp": [
+      "include/circle/startup.h",
+      "test/usb-serial-cdc-gadget/kernel.h"
+    ],
+    "test/watchdog/kernel.cpp": [
+      "include/assert.h",
+      "test/watchdog/kernel.h"
+    ],
+    "test/watchdog/kernel.h": [],
+    "test/watchdog/main.cpp": [
+      "include/circle/startup.h",
+      "test/watchdog/kernel.h"
+    ]
+  }
+}

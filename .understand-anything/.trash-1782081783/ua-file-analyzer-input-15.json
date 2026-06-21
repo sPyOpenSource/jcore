@@ -1,0 +1,323 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "lib/net/transportlayer.cpp",
+      "language": "cpp",
+      "sizeLines": 483,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/udpconnection.cpp",
+      "language": "cpp",
+      "sizeLines": 513,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/netdevice.cpp",
+      "language": "cpp",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/ptrarray.cpp",
+      "language": "cpp",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/soundbasedevice.cpp",
+      "language": "cpp",
+      "sizeLines": 1067,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/util.cpp",
+      "language": "cpp",
+      "sizeLines": 752,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/31-webclient/htmlscanner.cpp",
+      "language": "cpp",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/31-webclient/htmlscanner.h",
+      "language": "c",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/31-webclient/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 291,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/31-webclient/kernel.h",
+      "language": "c",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/31-webclient/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/33-syslog/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/33-syslog/kernel.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/33-syslog/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/42-soundinput/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 232,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/42-soundinput/kernel.h",
+      "language": "c",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/42-soundinput/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/mdns-publisher/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/mdns-publisher/kernel.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/mdns-publisher/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/mdns-receiver/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 206,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/mdns-receiver/kernel.h",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/mdns-receiver/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/ping-client/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/ping-client/kernel.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/ping-client/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/ping-client/pingclient.cpp",
+      "language": "cpp",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/ping-client/pingclient.h",
+      "language": "c",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/touchscreen-calibrator/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 281,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/touchscreen-calibrator/kernel.h",
+      "language": "c",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/touchscreen-calibrator/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "lib/net/transportlayer.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/tcpconnection.h",
+      "include/circle/net/transportlayer.h",
+      "include/circle/net/udpconnection.h",
+      "include/circle/string.h"
+    ],
+    "lib/net/udpconnection.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/udpconnection.h",
+      "include/circle/util.h"
+    ],
+    "lib/netdevice.cpp": [
+      "include/circle/netdevice.h"
+    ],
+    "lib/ptrarray.cpp": [
+      "include/assert.h",
+      "include/circle/ptrarray.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/soundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/sound/soundbasedevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/util.cpp": [
+      "include/circle/util.h"
+    ],
+    "sample/31-webclient/htmlscanner.cpp": [
+      "include/assert.h",
+      "include/circle/util.h",
+      "sample/31-webclient/htmlscanner.h"
+    ],
+    "sample/31-webclient/htmlscanner.h": [],
+    "sample/31-webclient/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/httpclient.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/string.h",
+      "include/circle/util.h",
+      "sample/31-webclient/htmlscanner.h",
+      "sample/31-webclient/kernel.h"
+    ],
+    "sample/31-webclient/kernel.h": [],
+    "sample/31-webclient/main.cpp": [
+      "include/circle/startup.h",
+      "sample/31-webclient/kernel.h"
+    ],
+    "sample/33-syslog/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/ntpdaemon.h",
+      "include/circle/net/syslogdaemon.h",
+      "sample/33-syslog/kernel.h"
+    ],
+    "sample/33-syslog/kernel.h": [],
+    "sample/33-syslog/main.cpp": [
+      "include/circle/startup.h",
+      "sample/33-syslog/kernel.h"
+    ],
+    "sample/42-soundinput/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/util.h",
+      "sample/42-soundinput/kernel.h"
+    ],
+    "sample/42-soundinput/kernel.h": [],
+    "sample/42-soundinput/main.cpp": [
+      "include/circle/startup.h",
+      "sample/42-soundinput/kernel.h"
+    ],
+    "test/mdns-publisher/kernel.cpp": [
+      "include/circle/net/mdnsdaemon.h",
+      "include/circle/net/mdnspublisher.h",
+      "include/circle/string.h",
+      "test/mdns-publisher/kernel.h"
+    ],
+    "test/mdns-publisher/kernel.h": [],
+    "test/mdns-publisher/main.cpp": [
+      "include/circle/startup.h",
+      "test/mdns-publisher/kernel.h"
+    ],
+    "test/mdns-receiver/kernel.cpp": [
+      "include/circle/debug.h",
+      "include/circle/net/in.h",
+      "include/circle/net/socket.h",
+      "include/circle/string.h",
+      "test/mdns-receiver/kernel.h"
+    ],
+    "test/mdns-receiver/kernel.h": [],
+    "test/mdns-receiver/main.cpp": [
+      "include/circle/startup.h",
+      "test/mdns-receiver/kernel.h"
+    ],
+    "test/ping-client/kernel.cpp": [
+      "include/circle/string.h",
+      "test/ping-client/kernel.h",
+      "test/ping-client/pingclient.h"
+    ],
+    "test/ping-client/kernel.h": [],
+    "test/ping-client/main.cpp": [
+      "include/circle/startup.h",
+      "test/ping-client/kernel.h"
+    ],
+    "test/ping-client/pingclient.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/net/in.h",
+      "include/circle/util.h",
+      "test/ping-client/pingclient.h"
+    ],
+    "test/ping-client/pingclient.h": [],
+    "tools/touchscreen-calibrator/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/stdarg.h",
+      "include/circle/string.h",
+      "tools/touchscreen-calibrator/kernel.h"
+    ],
+    "tools/touchscreen-calibrator/kernel.h": [],
+    "tools/touchscreen-calibrator/main.cpp": [
+      "include/circle/startup.h",
+      "tools/touchscreen-calibrator/kernel.h"
+    ]
+  }
+}

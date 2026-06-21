@@ -1,0 +1,248 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/Properties/propertiesbasefile.cpp",
+      "language": "cpp",
+      "sizeLines": 296,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/Properties/propertiesfatfsfile.cpp",
+      "language": "cpp",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/Properties/propertiesfile.cpp",
+      "language": "cpp",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/chardevice.cpp",
+      "language": "cpp",
+      "sizeLines": 538,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/chardevice.h",
+      "language": "c",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/hd44780device.cpp",
+      "language": "cpp",
+      "sizeLines": 204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/hd44780device.h",
+      "language": "c",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/st7789display.cpp",
+      "language": "cpp",
+      "sizeLines": 550,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/ky040.cpp",
+      "language": "cpp",
+      "sizeLines": 315,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/ky040.h",
+      "language": "c",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/mcp300x.cpp",
+      "language": "cpp",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/tftpfileserver/tftpfatfsfileserver.cpp",
+      "language": "cpp",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/tftpfileserver/tftpfileserver.cpp",
+      "language": "cpp",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/scopeconfig.cpp",
+      "language": "cpp",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/scopeconfig.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/timeline.cpp",
+      "language": "cpp",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/timeline.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_cache.c",
+      "language": "c",
+      "sizeLines": 382,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_platform_linux.c",
+      "language": "c",
+      "sizeLines": 831,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_khr_lock_surface_client.c",
+      "language": "c",
+      "sizeLines": 190,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/sound/vchiqsoundcontroller.cpp",
+      "language": "cpp",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/sound/vchiqsounddevice.cpp",
+      "language": "cpp",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/webconsole/logbuffer.cpp",
+      "language": "cpp",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/assert.h",
+      "language": "c",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/classallocator.h",
+      "language": "c",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/fs/fat/fat.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/fs/fsdef.h",
+      "language": "c",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/fs/partition.h",
+      "language": "c",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/Properties/propertiesbasefile.cpp": [
+      "include/assert.h"
+    ],
+    "addon/Properties/propertiesfatfsfile.cpp": [
+      "include/assert.h"
+    ],
+    "addon/Properties/propertiesfile.cpp": [
+      "include/assert.h"
+    ],
+    "addon/display/chardevice.cpp": [
+      "addon/display/chardevice.h",
+      "include/assert.h",
+      "include/circle/timer.h"
+    ],
+    "addon/display/chardevice.h": [],
+    "addon/display/hd44780device.cpp": [
+      "addon/display/hd44780device.h",
+      "include/assert.h",
+      "include/circle/timer.h"
+    ],
+    "addon/display/hd44780device.h": [],
+    "addon/display/st7789display.cpp": [
+      "include/assert.h",
+      "include/circle/timer.h"
+    ],
+    "addon/sensor/ky040.cpp": [
+      "addon/sensor/ky040.h",
+      "include/assert.h"
+    ],
+    "addon/sensor/ky040.h": [],
+    "addon/sensor/mcp300x.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h"
+    ],
+    "addon/tftpfileserver/tftpfatfsfileserver.cpp": [
+      "include/assert.h"
+    ],
+    "addon/tftpfileserver/tftpfileserver.cpp": [
+      "include/assert.h"
+    ],
+    "addon/ugui/sample/scopeconfig.cpp": [
+      "addon/ugui/sample/scopeconfig.h",
+      "include/assert.h"
+    ],
+    "addon/ugui/sample/scopeconfig.h": [],
+    "addon/ugui/sample/timeline.cpp": [
+      "addon/ugui/sample/timeline.h",
+      "include/assert.h"
+    ],
+    "addon/ugui/sample/timeline.h": [],
+    "addon/vc4/interface/khronos/common/khrn_client_cache.c": [
+      "include/assert.h"
+    ],
+    "addon/vc4/interface/khronos/common/khrn_client_platform_linux.c": [
+      "include/assert.h"
+    ],
+    "addon/vc4/interface/khronos/ext/egl_khr_lock_surface_client.c": [
+      "include/assert.h"
+    ],
+    "addon/vc4/sound/vchiqsoundcontroller.cpp": [
+      "include/assert.h"
+    ],
+    "addon/vc4/sound/vchiqsounddevice.cpp": [
+      "include/assert.h"
+    ],
+    "addon/webconsole/logbuffer.cpp": [
+      "include/assert.h"
+    ],
+    "include/assert.h": [],
+    "include/circle/classallocator.h": [],
+    "include/circle/fs/fat/fat.h": [],
+    "include/circle/fs/fsdef.h": [],
+    "include/circle/fs/partition.h": []
+  }
+}

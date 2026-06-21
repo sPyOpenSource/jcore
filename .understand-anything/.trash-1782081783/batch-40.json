@@ -1,0 +1,60 @@
+{
+  "batchIndex": 40,
+  "nodes": [
+    {
+      "id": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "type": "document:.github/ISSUE_TEMPLATE/bug_report.md",
+      "name": "bug_report.md",
+      "filePath": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "summary": "0 functions defined",
+      "tags": [
+        "docs",
+        "md",
+        "docs"
+      ],
+      "complexity": 2
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/config.yml",
+      "type": "config:.github/ISSUE_TEMPLATE/config.yml",
+      "name": "config.yml",
+      "filePath": ".github/ISSUE_TEMPLATE/config.yml",
+      "summary": "0 functions defined",
+      "tags": [
+        "config",
+        "yml",
+        "config"
+      ],
+      "complexity": 0
+    },
+    {
+      "id": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "type": "document:.github/ISSUE_TEMPLATE/feature_request.md",
+      "name": "feature_request.md",
+      "filePath": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "summary": "0 functions defined",
+      "tags": [
+        "docs",
+        "md",
+        "docs"
+      ],
+      "complexity": 0
+    }
+  ],
+  "edges": [
+    {
+      "source": ".github/ISSUE_TEMPLATE/config.yml",
+      "target": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": ".github/ISSUE_TEMPLATE/config.yml",
+      "target": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

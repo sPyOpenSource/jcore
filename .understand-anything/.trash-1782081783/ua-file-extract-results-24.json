@@ -1,0 +1,2704 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 27,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/wlan/p9chan.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "cclose",
+          "startLine": 37,
+          "endLine": 46,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "readchan",
+          "startLine": 48,
+          "endLine": 73,
+          "params": [
+            "c",
+            "buf",
+            "len",
+            "offset"
+          ]
+        },
+        {
+          "name": "p9chan_init",
+          "startLine": 85,
+          "endLine": 90,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "device_t",
+          "startLine": 75,
+          "endLine": 75,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "device_t",
+          "startLine": 80,
+          "endLine": 80,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "cclose",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "device_t",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "device_t",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "p9chan_init",
+          "line": 85,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "cclose",
+          "callee": "assert",
+          "lineNumber": 39
+        },
+        {
+          "caller": "cclose",
+          "callee": "f_close",
+          "lineNumber": 41
+        },
+        {
+          "caller": "readchan",
+          "callee": "assert",
+          "lineNumber": 50
+        },
+        {
+          "caller": "readchan",
+          "callee": "f_lseek",
+          "lineNumber": 55
+        },
+        {
+          "caller": "readchan",
+          "callee": "assert",
+          "lineNumber": 56
+        },
+        {
+          "caller": "readchan",
+          "callee": "f_read",
+          "lineNumber": 62
+        },
+        {
+          "caller": "readchan",
+          "callee": "error",
+          "lineNumber": 65
+        },
+        {
+          "caller": "p9chan_init",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "p9chan_init",
+          "callee": "assert",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "addon/wlan/p9chan.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 30,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9cmd.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 62,
+      "functions": [
+        {
+          "name": "cmderror",
+          "startLine": 6,
+          "endLine": 25,
+          "params": [
+            "cb",
+            "err"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "cmderror",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "cmderror",
+          "callee": "Append",
+          "lineNumber": 15
+        },
+        {
+          "caller": "cmderror",
+          "callee": "Append",
+          "lineNumber": 18
+        },
+        {
+          "caller": "cmderror",
+          "callee": "print",
+          "lineNumber": 21
+        },
+        {
+          "caller": "cmderror",
+          "callee": "error",
+          "lineNumber": 24
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9cmd.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 27,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9error.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "error",
+          "startLine": 6,
+          "endLine": 18,
+          "params": [
+            "str"
+          ]
+        },
+        {
+          "name": "nexterror",
+          "startLine": 28,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "poperror",
+          "startLine": 38,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "okay",
+          "startLine": 47,
+          "endLine": 49,
+          "params": [
+            "status"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "error",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "nexterror",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "poperror",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "okay",
+          "line": 47,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "error",
+          "callee": "print",
+          "lineNumber": 8
+        },
+        {
+          "caller": "error",
+          "callee": "get_error_stack",
+          "lineNumber": 12
+        },
+        {
+          "caller": "error",
+          "callee": "assert",
+          "lineNumber": 13
+        },
+        {
+          "caller": "error",
+          "callee": "assert",
+          "lineNumber": 15
+        },
+        {
+          "caller": "error",
+          "callee": "longjmp",
+          "lineNumber": 17
+        },
+        {
+          "caller": "nexterror",
+          "callee": "get_error_stack",
+          "lineNumber": 30
+        },
+        {
+          "caller": "nexterror",
+          "callee": "assert",
+          "lineNumber": 31
+        },
+        {
+          "caller": "nexterror",
+          "callee": "assert",
+          "lineNumber": 33
+        },
+        {
+          "caller": "nexterror",
+          "callee": "longjmp",
+          "lineNumber": 35
+        },
+        {
+          "caller": "poperror",
+          "callee": "get_error_stack",
+          "lineNumber": 40
+        },
+        {
+          "caller": "poperror",
+          "callee": "assert",
+          "lineNumber": 41
+        },
+        {
+          "caller": "poperror",
+          "callee": "assert",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9error.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 27,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9proc.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 54,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9util.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 122,
+      "nonEmptyLines": 89,
+      "functions": [
+        {
+          "name": "print",
+          "startLine": 10,
+          "endLine": 39,
+          "params": [
+            "fmt"
+          ]
+        },
+        {
+          "name": "sprint",
+          "startLine": 41,
+          "endLine": 54,
+          "params": [
+            "str",
+            "fmt"
+          ]
+        },
+        {
+          "name": "snprint",
+          "startLine": 56,
+          "endLine": 70,
+          "params": [
+            "str",
+            "size",
+            "fmt"
+          ]
+        },
+        {
+          "name": "readstr",
+          "startLine": 91,
+          "endLine": 115,
+          "params": [
+            "offset",
+            "buf",
+            "len",
+            "p"
+          ]
+        },
+        {
+          "name": "hexdump",
+          "startLine": 117,
+          "endLine": 122,
+          "params": [
+            "p",
+            "len",
+            "from"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "print",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "sprint",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "snprint",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "readstr",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "hexdump",
+          "line": 117,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "print",
+          "callee": "va_start",
+          "lineNumber": 13
+        },
+        {
+          "caller": "print",
+          "callee": "FormatV",
+          "lineNumber": 16
+        },
+        {
+          "caller": "print",
+          "callee": "va_end",
+          "lineNumber": 18
+        },
+        {
+          "caller": "print",
+          "callee": "strncpy",
+          "lineNumber": 21
+        },
+        {
+          "caller": "print",
+          "callee": "strchr",
+          "lineNumber": 26
+        },
+        {
+          "caller": "print",
+          "callee": "Write",
+          "lineNumber": 30
+        },
+        {
+          "caller": "print",
+          "callee": "CLogger::Get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "print",
+          "callee": "Write",
+          "lineNumber": 35
+        },
+        {
+          "caller": "print",
+          "callee": "CLogger::Get",
+          "lineNumber": 35
+        },
+        {
+          "caller": "print",
+          "callee": "GetLength",
+          "lineNumber": 38
+        },
+        {
+          "caller": "sprint",
+          "callee": "va_start",
+          "lineNumber": 44
+        },
+        {
+          "caller": "sprint",
+          "callee": "FormatV",
+          "lineNumber": 47
+        },
+        {
+          "caller": "sprint",
+          "callee": "va_end",
+          "lineNumber": 49
+        },
+        {
+          "caller": "sprint",
+          "callee": "strcpy",
+          "lineNumber": 51
+        },
+        {
+          "caller": "sprint",
+          "callee": "GetLength",
+          "lineNumber": 53
+        },
+        {
+          "caller": "snprint",
+          "callee": "va_start",
+          "lineNumber": 59
+        },
+        {
+          "caller": "snprint",
+          "callee": "FormatV",
+          "lineNumber": 62
+        },
+        {
+          "caller": "snprint",
+          "callee": "va_end",
+          "lineNumber": 64
+        },
+        {
+          "caller": "snprint",
+          "callee": "strncpy",
+          "lineNumber": 66
+        },
+        {
+          "caller": "snprint",
+          "callee": "GetLength",
+          "lineNumber": 69
+        },
+        {
+          "caller": "snprint",
+          "callee": "GetLength",
+          "lineNumber": 69
+        },
+        {
+          "caller": "readstr",
+          "callee": "strlen",
+          "lineNumber": 95
+        },
+        {
+          "caller": "hexdump",
+          "callee": "debug_hexdump",
+          "lineNumber": 120
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/p9util.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 43,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/echoserver.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 146,
+      "nonEmptyLines": 118,
+      "functions": [
+        {
+          "name": "CEchoServer",
+          "startLine": 30,
+          "endLine": 40,
+          "params": [
+            "pNetSubSystem",
+            "pSocket",
+            "pClientIP"
+          ]
+        },
+        {
+          "name": "~CEchoServer",
+          "startLine": 42,
+          "endLine": 49,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 51,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "Listener",
+          "startLine": 63,
+          "endLine": 116,
+          "params": []
+        },
+        {
+          "name": "Worker",
+          "startLine": 118,
+          "endLine": 146,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CEchoServer",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "~CEchoServer",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "Listener",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "Worker",
+          "line": 118,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CEchoServer",
+          "callee": "Set",
+          "lineNumber": 38
+        },
+        {
+          "caller": "~CEchoServer",
+          "callee": "assert",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Run",
+          "callee": "Listener",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Run",
+          "callee": "Worker",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Listener",
+          "callee": "assert",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Listener",
+          "callee": "assert",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Listener",
+          "callee": "Bind",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Listener",
+          "callee": "Listen",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Listener",
+          "callee": "Accept",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Listener",
+          "callee": "Format",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Worker",
+          "callee": "assert",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Worker",
+          "callee": "Receive",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Worker",
+          "callee": "Send",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Worker",
+          "callee": "Write",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Worker",
+          "callee": "CLogger::Get",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Worker",
+          "callee": "Format",
+          "lineNumber": 141
+        },
+        {
+          "caller": "Worker",
+          "callee": "Write",
+          "lineNumber": 142
+        },
+        {
+          "caller": "Worker",
+          "callee": "CLogger::Get",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/echoserver.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 152,
+      "nonEmptyLines": 124,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 38,
+          "endLine": 48,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 50,
+          "endLine": 52,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 54,
+          "endLine": 133,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 135,
+          "endLine": 152,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 135,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Initialize",
+          "callee": "f_mount",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Control",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CreateOpenNet",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 129
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 137
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 140
+        },
+        {
+          "caller": "Run",
+          "callee": "GetIPAddress",
+          "lineNumber": 140
+        },
+        {
+          "caller": "Run",
+          "callee": "GetConfig",
+          "lineNumber": 140
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 141
+        },
+        {
+          "caller": "Run",
+          "callee": "Sleep",
+          "lineNumber": 148
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 69,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/string.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 75,
+      "nonEmptyLines": 62,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/string.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 795,
+      "nonEmptyLines": 656,
+      "functions": [
+        {
+          "name": "CString",
+          "startLine": 37,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "CString",
+          "startLine": 43,
+          "endLine": 50,
+          "params": [
+            "pString"
+          ]
+        },
+        {
+          "name": "CString",
+          "startLine": 52,
+          "endLine": 59,
+          "params": [
+            "rString"
+          ]
+        },
+        {
+          "name": "CString",
+          "startLine": 61,
+          "endLine": 68,
+          "params": [
+            "rrString"
+          ]
+        },
+        {
+          "name": "~CString",
+          "startLine": 70,
+          "endLine": 74,
+          "params": []
+        },
+        {
+          "name": "GetLength",
+          "startLine": 155,
+          "endLine": 163,
+          "params": []
+        },
+        {
+          "name": "Append",
+          "startLine": 164,
+          "endLine": 171,
+          "params": [
+            "chChar"
+          ]
+        },
+        {
+          "name": "Append",
+          "startLine": 172,
+          "endLine": 196,
+          "params": [
+            "pString"
+          ]
+        },
+        {
+          "name": "Compare",
+          "startLine": 198,
+          "endLine": 201,
+          "params": [
+            "pString"
+          ]
+        },
+        {
+          "name": "Find",
+          "startLine": 203,
+          "endLine": 218,
+          "params": [
+            "chChar"
+          ]
+        },
+        {
+          "name": "Replace",
+          "startLine": 220,
+          "endLine": 271,
+          "params": [
+            "pOld",
+            "pNew"
+          ]
+        },
+        {
+          "name": "Format",
+          "startLine": 273,
+          "endLine": 281,
+          "params": [
+            "pFormat"
+          ]
+        },
+        {
+          "name": "FormatV",
+          "startLine": 283,
+          "endLine": 603,
+          "params": [
+            "pFormat",
+            "Args"
+          ]
+        },
+        {
+          "name": "PutChar",
+          "startLine": 615,
+          "endLine": 623,
+          "params": [
+            "chChar",
+            "nCount"
+          ]
+        },
+        {
+          "name": "PutString",
+          "startLine": 625,
+          "endLine": 634,
+          "params": [
+            "pString"
+          ]
+        },
+        {
+          "name": "ReserveSpace",
+          "startLine": 636,
+          "endLine": 662,
+          "params": [
+            "nSpace"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CString",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "CString",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "CString",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "CString",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "~CString",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "GetLength",
+          "line": 155,
+          "isDefault": false
+        },
+        {
+          "name": "Append",
+          "line": 164,
+          "isDefault": false
+        },
+        {
+          "name": "Append",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "Compare",
+          "line": 198,
+          "isDefault": false
+        },
+        {
+          "name": "Find",
+          "line": 203,
+          "isDefault": false
+        },
+        {
+          "name": "Replace",
+          "line": 220,
+          "isDefault": false
+        },
+        {
+          "name": "Format",
+          "line": 273,
+          "isDefault": false
+        },
+        {
+          "name": "FormatV",
+          "line": 283,
+          "isDefault": false
+        },
+        {
+          "name": "PutChar",
+          "line": 615,
+          "isDefault": false
+        },
+        {
+          "name": "PutString",
+          "line": 625,
+          "isDefault": false
+        },
+        {
+          "name": "ReserveSpace",
+          "line": 636,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CString",
+          "callee": "strlen",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CString",
+          "callee": "strcpy",
+          "lineNumber": 49
+        },
+        {
+          "caller": "CString",
+          "callee": "strlen",
+          "lineNumber": 54
+        },
+        {
+          "caller": "CString",
+          "callee": "strcpy",
+          "lineNumber": 58
+        },
+        {
+          "caller": "GetLength",
+          "callee": "strlen",
+          "lineNumber": 162
+        },
+        {
+          "caller": "Append",
+          "callee": "Append",
+          "lineNumber": 170
+        },
+        {
+          "caller": "Append",
+          "callee": "strlen",
+          "lineNumber": 177
+        },
+        {
+          "caller": "Append",
+          "callee": "strlen",
+          "lineNumber": 179
+        },
+        {
+          "caller": "Append",
+          "callee": "strcpy",
+          "lineNumber": 185
+        },
+        {
+          "caller": "Append",
+          "callee": "strcat",
+          "lineNumber": 193
+        },
+        {
+          "caller": "Compare",
+          "callee": "strcmp",
+          "lineNumber": 200
+        },
+        {
+          "caller": "Replace",
+          "callee": "strchr",
+          "lineNumber": 238
+        },
+        {
+          "caller": "Replace",
+          "callee": "PutChar",
+          "lineNumber": 242
+        },
+        {
+          "caller": "Replace",
+          "callee": "PutString",
+          "lineNumber": 256
+        },
+        {
+          "caller": "Replace",
+          "callee": "PutChar",
+          "lineNumber": 262
+        },
+        {
+          "caller": "Replace",
+          "callee": "PutString",
+          "lineNumber": 266
+        },
+        {
+          "caller": "Format",
+          "callee": "va_start",
+          "lineNumber": 276
+        },
+        {
+          "caller": "Format",
+          "callee": "FormatV",
+          "lineNumber": 278
+        },
+        {
+          "caller": "Format",
+          "callee": "va_end",
+          "lineNumber": 280
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 297
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 393
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 396
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 399
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 406
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 408
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 417
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 424
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 428
+        },
+        {
+          "caller": "FormatV",
+          "callee": "int",
+          "lineNumber": 428
+        },
+        {
+          "caller": "FormatV",
+          "callee": "lltoa",
+          "lineNumber": 442
+        },
+        {
+          "caller": "FormatV",
+          "callee": "ntoa",
+          "lineNumber": 444
+        },
+        {
+          "caller": "FormatV",
+          "callee": "ntoa",
+          "lineNumber": 446
+        },
+        {
+          "caller": "FormatV",
+          "callee": "strlen",
+          "lineNumber": 448
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 453
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 455
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 458
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 467
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 471
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 478
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 482
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 485
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 490
+        },
+        {
+          "caller": "FormatV",
+          "callee": "ftoa",
+          "lineNumber": 491
+        },
+        {
+          "caller": "FormatV",
+          "callee": "strlen",
+          "lineNumber": 492
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 495
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 498
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 505
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 507
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 514
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 520
+        },
+        {
+          "caller": "FormatV",
+          "callee": "strlen",
+          "lineNumber": 521
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 524
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 527
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 534
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 536
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 549
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 558
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 565
+        },
+        {
+          "caller": "FormatV",
+          "callee": "va_arg",
+          "lineNumber": 569
+        },
+        {
+          "caller": "FormatV",
+          "callee": "lltoa",
+          "lineNumber": 573
+        },
+        {
+          "caller": "FormatV",
+          "callee": "ntoa",
+          "lineNumber": 575
+        },
+        {
+          "caller": "FormatV",
+          "callee": "ntoa",
+          "lineNumber": 577
+        },
+        {
+          "caller": "FormatV",
+          "callee": "strlen",
+          "lineNumber": 579
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 582
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 585
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 592
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutString",
+          "lineNumber": 594
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 599
+        },
+        {
+          "caller": "FormatV",
+          "callee": "PutChar",
+          "lineNumber": 600
+        },
+        {
+          "caller": "PutChar",
+          "callee": "ReserveSpace",
+          "lineNumber": 617
+        },
+        {
+          "caller": "PutString",
+          "callee": "strlen",
+          "lineNumber": 627
+        },
+        {
+          "caller": "PutString",
+          "callee": "ReserveSpace",
+          "lineNumber": 629
+        },
+        {
+          "caller": "PutString",
+          "callee": "strcpy",
+          "lineNumber": 631
+        },
+        {
+          "caller": "ReserveSpace",
+          "callee": "strcpy",
+          "lineNumber": 654
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 16,
+        "functionCount": 16,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/15-files/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 173,
+      "nonEmptyLines": 144,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 28,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 37,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 41,
+          "endLine": 82,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 84,
+          "endLine": 173,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 84,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 34
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Run",
+          "callee": "Mount",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Run",
+          "callee": "RootFindFirst",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Run",
+          "callee": "RootFindNext",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Run",
+          "callee": "FileCreate",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Run",
+          "callee": "FileWrite",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 137
+        },
+        {
+          "caller": "Run",
+          "callee": "FileClose",
+          "lineNumber": 142
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Run",
+          "callee": "FileOpen",
+          "lineNumber": 148
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 151
+        },
+        {
+          "caller": "Run",
+          "callee": "FileRead",
+          "lineNumber": 156
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 160
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 164
+        },
+        {
+          "caller": "Run",
+          "callee": "FileClose",
+          "lineNumber": 167
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 169
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/15-files/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/15-files/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/20-tcpsimple/echoserver.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 146,
+      "nonEmptyLines": 118,
+      "functions": [
+        {
+          "name": "CEchoServer",
+          "startLine": 30,
+          "endLine": 40,
+          "params": [
+            "pNetSubSystem",
+            "pSocket",
+            "pClientIP"
+          ]
+        },
+        {
+          "name": "~CEchoServer",
+          "startLine": 42,
+          "endLine": 49,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 51,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "Listener",
+          "startLine": 63,
+          "endLine": 116,
+          "params": []
+        },
+        {
+          "name": "Worker",
+          "startLine": 118,
+          "endLine": 146,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CEchoServer",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "~CEchoServer",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "Listener",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "Worker",
+          "line": 118,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CEchoServer",
+          "callee": "Set",
+          "lineNumber": 38
+        },
+        {
+          "caller": "~CEchoServer",
+          "callee": "assert",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Run",
+          "callee": "Listener",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Run",
+          "callee": "Worker",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Listener",
+          "callee": "assert",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Listener",
+          "callee": "assert",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Listener",
+          "callee": "Bind",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Listener",
+          "callee": "Listen",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Listener",
+          "callee": "Accept",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Listener",
+          "callee": "Format",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Listener",
+          "callee": "Write",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Listener",
+          "callee": "CLogger::Get",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Worker",
+          "callee": "assert",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Worker",
+          "callee": "Receive",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Worker",
+          "callee": "Send",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Worker",
+          "callee": "Write",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Worker",
+          "callee": "CLogger::Get",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Worker",
+          "callee": "Format",
+          "lineNumber": 141
+        },
+        {
+          "caller": "Worker",
+          "callee": "Write",
+          "lineNumber": 142
+        },
+        {
+          "caller": "Worker",
+          "callee": "CLogger::Get",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/20-tcpsimple/echoserver.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/20-tcpsimple/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 119,
+      "nonEmptyLines": 98,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 36,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 48,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 52,
+          "endLine": 98,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 100,
+          "endLine": 119,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 100,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 37
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 37
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Run",
+          "callee": "GetIPAddress",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Run",
+          "callee": "GetConfig",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 115
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/20-tcpsimple/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/20-tcpsimple/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/21-webserver/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 97,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 35,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 47,
+          "endLine": 49,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 51,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 99,
+          "endLine": 118,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 99,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Run",
+          "callee": "GetIPAddress",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Run",
+          "callee": "GetConfig",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/21-webserver/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/21-webserver/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

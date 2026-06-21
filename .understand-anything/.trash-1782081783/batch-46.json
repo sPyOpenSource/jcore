@@ -1,0 +1,60 @@
+{
+  "batchIndex": 46,
+  "nodes": [
+    {
+      "id": "boot/Makefile",
+      "type": "pipeline:boot/Makefile",
+      "name": "Makefile",
+      "filePath": "boot/Makefile",
+      "summary": "0 functions defined",
+      "tags": [
+        "infra",
+        "noext",
+        "infra"
+      ],
+      "complexity": 11
+    },
+    {
+      "id": "boot/config32.txt",
+      "type": "document:boot/config32.txt",
+      "name": "config32.txt",
+      "filePath": "boot/config32.txt",
+      "summary": "0 functions defined",
+      "tags": [
+        "docs",
+        "txt",
+        "docs"
+      ],
+      "complexity": 2
+    },
+    {
+      "id": "boot/config64.txt",
+      "type": "document:boot/config64.txt",
+      "name": "config64.txt",
+      "filePath": "boot/config64.txt",
+      "summary": "0 functions defined",
+      "tags": [
+        "docs",
+        "txt",
+        "docs"
+      ],
+      "complexity": 4
+    }
+  ],
+  "edges": [
+    {
+      "source": "boot/Makefile",
+      "target": "boot/config32.txt",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "boot/Makefile",
+      "target": "boot/config64.txt",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

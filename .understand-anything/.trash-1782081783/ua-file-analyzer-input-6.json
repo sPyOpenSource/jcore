@@ -1,0 +1,302 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/Properties/properties.cpp",
+      "language": "cpp",
+      "sizeLines": 473,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/SDCard/emmc.cpp",
+      "language": "cpp",
+      "sizeLines": 2566,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/SDCard/emmc.h",
+      "language": "c",
+      "sizeLines": 178,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/Spectrum/SpectrumScreen.cpp",
+      "language": "cpp",
+      "sizeLines": 157,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/Spectrum/SpectrumScreen.h",
+      "language": "c",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/WS28XX/ws2812oversmi.cpp",
+      "language": "cpp",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/WS28XX/ws2812oversmi.h",
+      "language": "c",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/WS28XX/ws28xxstripe.cpp",
+      "language": "cpp",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/WS28XX/ws28xxstripe.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/dio/spidio.cpp",
+      "language": "cpp",
+      "sizeLines": 321,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/ili9341display.cpp",
+      "language": "cpp",
+      "sizeLines": 439,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/ssd1306display.cpp",
+      "language": "cpp",
+      "sizeLines": 254,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/linuxdevice.cpp",
+      "language": "cpp",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/printk.cpp",
+      "language": "cpp",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/sprintf.cpp",
+      "language": "cpp",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/string.h",
+      "language": "c",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/qemu/qemuhostfile.cpp",
+      "language": "cpp",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/sample/ky040/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 190,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/sample/ky040/kernel.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/sample/ky040/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9ether.cpp",
+      "language": "cpp",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9ether.h",
+      "language": "c",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 191,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/client/kernel.h",
+      "language": "c",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/sample/hello_ap/client/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/devicetreeblob.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/display.h",
+      "language": "c",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/fs/fat/fatdir.h",
+      "language": "c",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/fs/fat/fatfs.h",
+      "language": "c",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/heapallocator.h",
+      "language": "c",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/input/xpt2046touchscreen.h",
+      "language": "c",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/macaddress.h",
+      "language": "c",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/Properties/properties.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/ptrarray.h",
+      "include/circle/util.h"
+    ],
+    "addon/SDCard/emmc.cpp": [
+      "addon/SDCard/emmc.h",
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/stdarg.h",
+      "include/circle/util.h"
+    ],
+    "addon/SDCard/emmc.h": [],
+    "addon/Spectrum/SpectrumScreen.cpp": [
+      "addon/Spectrum/SpectrumScreen.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/Spectrum/SpectrumScreen.h": [],
+    "addon/WS28XX/ws2812oversmi.cpp": [
+      "addon/WS28XX/ws2812oversmi.h",
+      "include/circle/util.h"
+    ],
+    "addon/WS28XX/ws2812oversmi.h": [],
+    "addon/WS28XX/ws28xxstripe.cpp": [
+      "addon/WS28XX/ws28xxstripe.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/WS28XX/ws28xxstripe.h": [],
+    "addon/dio/spidio.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/ili9341display.cpp": [
+      "include/assert.h",
+      "include/circle/stdarg.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/ssd1306display.cpp": [
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/linux/linuxdevice.cpp": [
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/linux/printk.cpp": [
+      "include/circle/logger.h",
+      "include/circle/stdarg.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "addon/linux/sprintf.cpp": [
+      "include/circle/stdarg.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "addon/linux/string.h": [
+      "include/circle/util.h"
+    ],
+    "addon/qemu/qemuhostfile.cpp": [
+      "include/circle/util.h"
+    ],
+    "addon/sensor/sample/ky040/kernel.cpp": [
+      "addon/sensor/sample/ky040/kernel.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/sensor/sample/ky040/kernel.h": [],
+    "addon/sensor/sample/ky040/main.cpp": [
+      "addon/sensor/sample/ky040/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/wlan/p9ether.cpp": [
+      "addon/wlan/p9ether.h",
+      "include/assert.h",
+      "include/circle/util.h"
+    ],
+    "addon/wlan/p9ether.h": [],
+    "addon/wlan/sample/hello_ap/client/kernel.cpp": [
+      "addon/wlan/sample/hello_ap/client/kernel.h",
+      "include/assert.h",
+      "include/circle/net/in.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/socket.h"
+    ],
+    "addon/wlan/sample/hello_ap/client/kernel.h": [],
+    "addon/wlan/sample/hello_ap/client/main.cpp": [
+      "addon/wlan/sample/hello_ap/client/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "include/circle/devicetreeblob.h": [],
+    "include/circle/display.h": [],
+    "include/circle/fs/fat/fatdir.h": [],
+    "include/circle/fs/fat/fatfs.h": [],
+    "include/circle/heapallocator.h": [],
+    "include/circle/input/xpt2046touchscreen.h": [],
+    "include/circle/macaddress.h": []
+  }
+}

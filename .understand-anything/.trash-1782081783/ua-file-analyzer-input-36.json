@@ -1,0 +1,82 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_dispmanx.h",
+      "language": "c",
+      "sizeLines": 147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_dispservice_x_defs.h",
+      "language": "c",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_tvservice.h",
+      "language": "c",
+      "sizeLines": 540,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.c",
+      "language": "c",
+      "sizeLines": 1331,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.h",
+      "language": "c",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_vchi_gencmd.c",
+      "language": "c",
+      "sizeLines": 552,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vc_vchi_tvservice.c",
+      "language": "c",
+      "sizeLines": 1648,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vchost.h",
+      "language": "c",
+      "sizeLines": 282,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/interface/vmcs_host/vchost_platform_config.h",
+      "language": "c",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/vc4/interface/vmcs_host/vc_dispmanx.h": [],
+    "addon/vc4/interface/vmcs_host/vc_dispservice_x_defs.h": [],
+    "addon/vc4/interface/vmcs_host/vc_tvservice.h": [],
+    "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.c": [
+      "addon/vc4/interface/vmcs_host/vc_dispmanx.h",
+      "addon/vc4/interface/vmcs_host/vc_dispservice_x_defs.h",
+      "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.h",
+      "addon/vc4/interface/vmcs_host/vchost_platform_config.h",
+      "addon/vc4/interface/vmcs_host/vchost.h"
+    ],
+    "addon/vc4/interface/vmcs_host/vc_vchi_dispmanx.h": [],
+    "addon/vc4/interface/vmcs_host/vc_vchi_gencmd.c": [
+      "addon/vc4/interface/vmcs_host/vchost.h"
+    ],
+    "addon/vc4/interface/vmcs_host/vc_vchi_tvservice.c": [
+      "addon/vc4/interface/vmcs_host/vc_tvservice.h",
+      "addon/vc4/interface/vmcs_host/vchost_platform_config.h",
+      "addon/vc4/interface/vmcs_host/vchost.h"
+    ],
+    "addon/vc4/interface/vmcs_host/vchost.h": [],
+    "addon/vc4/interface/vmcs_host/vchost_platform_config.h": []
+  }
+}

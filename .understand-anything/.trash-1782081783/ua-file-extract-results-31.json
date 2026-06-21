@@ -1,0 +1,2377 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 23,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "lib/usb/usbendpoint.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 284,
+      "nonEmptyLines": 237,
+      "functions": [
+        {
+          "name": "CUSBEndpoint",
+          "startLine": 25,
+          "endLine": 42,
+          "params": [
+            "pDevice"
+          ]
+        },
+        {
+          "name": "~CUSBEndpoint",
+          "startLine": 151,
+          "endLine": 159,
+          "params": []
+        },
+        {
+          "name": "GetNumber",
+          "startLine": 167,
+          "endLine": 170,
+          "params": []
+        },
+        {
+          "name": "GetType",
+          "startLine": 172,
+          "endLine": 175,
+          "params": []
+        },
+        {
+          "name": "IsDirectionIn",
+          "startLine": 177,
+          "endLine": 180,
+          "params": []
+        },
+        {
+          "name": "SetMaxPacketSize",
+          "startLine": 182,
+          "endLine": 192,
+          "params": [
+            "nMaxPacketSize"
+          ]
+        },
+        {
+          "name": "GetMaxPacketSize",
+          "startLine": 194,
+          "endLine": 197,
+          "params": []
+        },
+        {
+          "name": "ResetPID",
+          "startLine": 266,
+          "endLine": 274,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CUSBEndpoint",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "~CUSBEndpoint",
+          "line": 151,
+          "isDefault": false
+        },
+        {
+          "name": "GetNumber",
+          "line": 167,
+          "isDefault": false
+        },
+        {
+          "name": "GetType",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "IsDirectionIn",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "SetMaxPacketSize",
+          "line": 182,
+          "isDefault": false
+        },
+        {
+          "name": "GetMaxPacketSize",
+          "line": 194,
+          "isDefault": false
+        },
+        {
+          "name": "ResetPID",
+          "line": 266,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CUSBEndpoint",
+          "callee": "assert",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CUSBEndpoint",
+          "callee": "GetHost",
+          "lineNumber": 40
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "assert",
+          "lineNumber": 187
+        },
+        {
+          "caller": "SetMaxPacketSize",
+          "callee": "SetMaxPacketSize",
+          "lineNumber": 188
+        },
+        {
+          "caller": "GetInterval",
+          "callee": "assert",
+          "lineNumber": 203
+        },
+        {
+          "caller": "GetNextPID",
+          "callee": "assert",
+          "lineNumber": 213
+        },
+        {
+          "caller": "SkipPID",
+          "callee": "assert",
+          "lineNumber": 252
+        },
+        {
+          "caller": "SkipPID",
+          "callee": "assert",
+          "lineNumber": 258
+        },
+        {
+          "caller": "ResetPID",
+          "callee": "assert",
+          "lineNumber": 269
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/usbsubsystem.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 155,
+      "nonEmptyLines": 128,
+      "functions": [
+        {
+          "name": "CUSBSubSystem",
+          "startLine": 30,
+          "endLine": 47,
+          "params": [
+            "pInterruptSystem",
+            "pTimer",
+            "bPlugAndPlay"
+          ]
+        },
+        {
+          "name": "~CUSBSubSystem",
+          "startLine": 49,
+          "endLine": 58,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 60,
+          "endLine": 85,
+          "params": [
+            "bScanDevices"
+          ]
+        },
+        {
+          "name": "UpdatePlugAndPlay",
+          "startLine": 88,
+          "endLine": 102,
+          "params": []
+        },
+        {
+          "name": "GetDescriptor",
+          "startLine": 104,
+          "endLine": 119,
+          "params": [
+            "pEndpoint",
+            "ucType",
+            "ucIndex",
+            "pBuffer",
+            "nBufSize",
+            "ucRequestType",
+            "wIndex"
+          ]
+        },
+        {
+          "name": "IsPlugAndPlay",
+          "startLine": 121,
+          "endLine": 124,
+          "params": []
+        },
+        {
+          "name": "IsActive",
+          "startLine": 126,
+          "endLine": 129,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CUSBSubSystem",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "~CUSBSubSystem",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "UpdatePlugAndPlay",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "GetDescriptor",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "IsPlugAndPlay",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "IsActive",
+          "line": 126,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CUSBSubSystem",
+          "callee": "CMemorySystem::GetCoherentPage",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CUSBSubSystem",
+          "callee": "CMemorySystem::GetCoherentPage",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CUSBSubSystem",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CUSBSubSystem",
+          "callee": "assert",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "DumpStatus",
+          "lineNumber": 81
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "assert",
+          "lineNumber": 94
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "UpdatePlugAndPlay",
+          "lineNumber": 95
+        },
+        {
+          "caller": "GetDescriptor",
+          "callee": "assert",
+          "lineNumber": 110
+        },
+        {
+          "caller": "GetDescriptor",
+          "callee": "GetDevice",
+          "lineNumber": 111
+        },
+        {
+          "caller": "GetDescriptor",
+          "callee": "assert",
+          "lineNumber": 113
+        },
+        {
+          "caller": "GetDescriptor",
+          "callee": "GetHost",
+          "lineNumber": 114
+        },
+        {
+          "caller": "GetDescriptor",
+          "callee": "assert",
+          "lineNumber": 116
+        },
+        {
+          "caller": "GetDescriptor",
+          "callee": "GetDescriptor",
+          "lineNumber": 117
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 145
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 149
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "LOGDBG",
+          "lineNumber": 151
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "GetFreeSpace",
+          "lineNumber": 152
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/virtualgpiopin.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 149,
+      "nonEmptyLines": 125,
+      "functions": [
+        {
+          "name": "CVirtualGPIOPin",
+          "startLine": 35,
+          "endLine": 81,
+          "params": [
+            "nPin",
+            "bSafeMode"
+          ]
+        },
+        {
+          "name": "~CVirtualGPIOPin",
+          "startLine": 83,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 87,
+          "endLine": 144,
+          "params": [
+            "nValue"
+          ]
+        },
+        {
+          "name": "Invert",
+          "startLine": 146,
+          "endLine": 149,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CVirtualGPIOPin",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "~CVirtualGPIOPin",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "Invert",
+          "line": 146,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CVirtualGPIOPin",
+          "callee": "Acquire",
+          "lineNumber": 51
+        },
+        {
+          "caller": "CVirtualGPIOPin",
+          "callee": "CMemorySystem::GetCoherentPage",
+          "lineNumber": 55
+        },
+        {
+          "caller": "CVirtualGPIOPin",
+          "callee": "BUS_ADDRESS",
+          "lineNumber": 59
+        },
+        {
+          "caller": "CVirtualGPIOPin",
+          "callee": "GetTag",
+          "lineNumber": 60
+        },
+        {
+          "caller": "CVirtualGPIOPin",
+          "callee": "GetTag",
+          "lineNumber": 62
+        },
+        {
+          "caller": "CVirtualGPIOPin",
+          "callee": "write32",
+          "lineNumber": 75
+        },
+        {
+          "caller": "CVirtualGPIOPin",
+          "callee": "Release",
+          "lineNumber": 78
+        },
+        {
+          "caller": "CVirtualGPIOPin",
+          "callee": "Write",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Write",
+          "callee": "GetTag",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Write",
+          "callee": "Acquire",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Write",
+          "callee": "write32",
+          "lineNumber": 141
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Invert",
+          "callee": "Write",
+          "lineNumber": 148
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/17-fractal/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 88,
+      "nonEmptyLines": 73,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 25,
+          "endLine": 32,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 34,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 38,
+          "endLine": 79,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 81,
+          "endLine": 88,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 81,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 26
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 26
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 31
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Run",
+          "callee": "Run",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/17-fractal/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 67,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/17-fractal/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/26-cpustress/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 75,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 26,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 35,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 39,
+          "endLine": 80,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 82,
+          "endLine": 91,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 82,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 27
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 27
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 32
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Run",
+          "callee": "Run",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/26-cpustress/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 71,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/26-cpustress/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/38-bootloader/httpbootserver.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 162,
+      "nonEmptyLines": 141,
+      "functions": [
+        {
+          "name": "CHTTPBootServer",
+          "startLine": 47,
+          "endLine": 53,
+          "params": [
+            "pNetSubSystem",
+            "nPort",
+            "nMaxMultipartSize",
+            "pSocket"
+          ]
+        },
+        {
+          "name": "~CHTTPBootServer",
+          "startLine": 55,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "GetContent",
+          "startLine": 64,
+          "endLine": 162,
+          "params": [
+            "pPath",
+            "pParams",
+            "pFormData",
+            "pBuffer",
+            "pLength",
+            "ppContentType"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CHTTPBootServer",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "~CHTTPBootServer",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "GetContent",
+          "line": 64,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 71
+        },
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 72
+        },
+        {
+          "caller": "GetContent",
+          "callee": "strcmp",
+          "lineNumber": 78
+        },
+        {
+          "caller": "GetContent",
+          "callee": "strcmp",
+          "lineNumber": 79
+        },
+        {
+          "caller": "GetContent",
+          "callee": "GetMultipartFormPart",
+          "lineNumber": 86
+        },
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 88
+        },
+        {
+          "caller": "GetContent",
+          "callee": "strstr",
+          "lineNumber": 89
+        },
+        {
+          "caller": "GetContent",
+          "callee": "strstr",
+          "lineNumber": 90
+        },
+        {
+          "caller": "GetContent",
+          "callee": "strstr",
+          "lineNumber": 91
+        },
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 97
+        },
+        {
+          "caller": "GetContent",
+          "callee": "memcpy",
+          "lineNumber": 98
+        },
+        {
+          "caller": "GetContent",
+          "callee": "EnableChainBoot",
+          "lineNumber": 100
+        },
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 120
+        },
+        {
+          "caller": "GetContent",
+          "callee": "Format",
+          "lineNumber": 121
+        },
+        {
+          "caller": "GetContent",
+          "callee": "GetMachineName",
+          "lineNumber": 122
+        },
+        {
+          "caller": "GetContent",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 122
+        },
+        {
+          "caller": "GetContent",
+          "callee": "GetLength",
+          "lineNumber": 125
+        },
+        {
+          "caller": "GetContent",
+          "callee": "strcmp",
+          "lineNumber": 128
+        },
+        {
+          "caller": "GetContent",
+          "callee": "strcmp",
+          "lineNumber": 134
+        },
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 145
+        },
+        {
+          "caller": "GetContent",
+          "callee": "Write",
+          "lineNumber": 148
+        },
+        {
+          "caller": "GetContent",
+          "callee": "CLogger::Get",
+          "lineNumber": 148
+        },
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 154
+        },
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 155
+        },
+        {
+          "caller": "GetContent",
+          "callee": "assert",
+          "lineNumber": 156
+        },
+        {
+          "caller": "GetContent",
+          "callee": "memcpy",
+          "lineNumber": 157
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/38-bootloader/httpbootserver.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/38-bootloader/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 131,
+      "nonEmptyLines": 107,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 41,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 52,
+          "endLine": 54,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 56,
+          "endLine": 102,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 104,
+          "endLine": 131,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 104,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 42
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 42
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Run",
+          "callee": "GetIPAddress",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Run",
+          "callee": "GetConfig",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Run",
+          "callee": "IsChainBootEnabled",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Run",
+          "callee": "Sleep",
+          "lineNumber": 128
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/38-bootloader/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 68,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/38-bootloader/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 42,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 42,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 26
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/38-bootloader/tftpbootserver.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 102,
+      "functions": [
+        {
+          "name": "CTFTPBootServer",
+          "startLine": 28,
+          "endLine": 34,
+          "params": [
+            "pNetSubSystem",
+            "nMaxKernelSize"
+          ]
+        },
+        {
+          "name": "~CTFTPBootServer",
+          "startLine": 36,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "FileOpen",
+          "startLine": 44,
+          "endLine": 47,
+          "params": [
+            "pFileName"
+          ]
+        },
+        {
+          "name": "FileCreate",
+          "startLine": 49,
+          "endLine": 87,
+          "params": [
+            "pFileName"
+          ]
+        },
+        {
+          "name": "FileClose",
+          "startLine": 89,
+          "endLine": 103,
+          "params": []
+        },
+        {
+          "name": "FileRead",
+          "startLine": 105,
+          "endLine": 108,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "FileWrite",
+          "startLine": 110,
+          "endLine": 126,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CTFTPBootServer",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CTFTPBootServer",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "FileOpen",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "FileCreate",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "FileClose",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "FileRead",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "FileWrite",
+          "line": 110,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CTFTPBootServer",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "assert",
+          "lineNumber": 56
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "strncmp",
+          "lineNumber": 59
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "strlen",
+          "lineNumber": 65
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "assert",
+          "lineNumber": 66
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "strcmp",
+          "lineNumber": 67
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "Write",
+          "lineNumber": 72
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "CLogger::Get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "FileClose",
+          "callee": "assert",
+          "lineNumber": 91
+        },
+        {
+          "caller": "FileClose",
+          "callee": "Write",
+          "lineNumber": 93
+        },
+        {
+          "caller": "FileClose",
+          "callee": "CLogger::Get",
+          "lineNumber": 93
+        },
+        {
+          "caller": "FileClose",
+          "callee": "EnableChainBoot",
+          "lineNumber": 99
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 112
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 121
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "memcpy",
+          "lineNumber": 122
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/38-bootloader/tftpbootserver.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 41,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test/sound-controller/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 107,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 26,
+          "endLine": 48,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 50,
+          "endLine": 52,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 54,
+          "endLine": 112,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 114,
+          "endLine": 126,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 114,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 27
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 27
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 34
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetDevice",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGNOTE",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Run",
+          "callee": "IsAlternateDeviceUsed",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGNOTE",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Run",
+          "callee": "Run",
+          "lineNumber": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test/sound-controller/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 73,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test/sound-controller/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test/storage/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 265,
+      "nonEmptyLines": 217,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 22,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 41,
+          "endLine": 44,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 46,
+          "endLine": 92,
+          "params": []
+        },
+        {
+          "name": "ReadTest",
+          "startLine": 94,
+          "endLine": 122,
+          "params": []
+        },
+        {
+          "name": "HashTest",
+          "startLine": 124,
+          "endLine": 147,
+          "params": []
+        },
+        {
+          "name": "WriteTest",
+          "startLine": 149,
+          "endLine": 177,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 179,
+          "endLine": 256,
+          "params": []
+        },
+        {
+          "name": "StorageRemovedHandler",
+          "startLine": 258,
+          "endLine": 265,
+          "params": [
+            "pDevice",
+            "pContext"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "ReadTest",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "HashTest",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "WriteTest",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "StorageRemovedHandler",
+          "line": 258,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 23
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 23
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 25
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 88
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "f_open",
+          "lineNumber": 97
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "Write",
+          "lineNumber": 100
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "f_size",
+          "lineNumber": 104
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "Write",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "GetClockTicks",
+          "lineNumber": 106
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "CTimer::Get",
+          "lineNumber": 106
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "f_read",
+          "lineNumber": 109
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "Write",
+          "lineNumber": 112
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "f_close",
+          "lineNumber": 113
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "f_close",
+          "lineNumber": 117
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "GetClockTicks",
+          "lineNumber": 118
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "CTimer::Get",
+          "lineNumber": 118
+        },
+        {
+          "caller": "ReadTest",
+          "callee": "Write",
+          "lineNumber": 119
+        },
+        {
+          "caller": "HashTest",
+          "callee": "Write",
+          "lineNumber": 126
+        },
+        {
+          "caller": "HashTest",
+          "callee": "lonesha256",
+          "lineNumber": 128
+        },
+        {
+          "caller": "HashTest",
+          "callee": "Format",
+          "lineNumber": 134
+        },
+        {
+          "caller": "HashTest",
+          "callee": "Append",
+          "lineNumber": 135
+        },
+        {
+          "caller": "HashTest",
+          "callee": "Write",
+          "lineNumber": 138
+        },
+        {
+          "caller": "HashTest",
+          "callee": "static_cast<const char*>",
+          "lineNumber": 138
+        },
+        {
+          "caller": "HashTest",
+          "callee": "Compare",
+          "lineNumber": 140
+        },
+        {
+          "caller": "HashTest",
+          "callee": "Write",
+          "lineNumber": 142
+        },
+        {
+          "caller": "HashTest",
+          "callee": "Write",
+          "lineNumber": 144
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "f_open",
+          "lineNumber": 152
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "Write",
+          "lineNumber": 155
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "Write",
+          "lineNumber": 159
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "GetClockTicks",
+          "lineNumber": 161
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "CTimer::Get",
+          "lineNumber": 161
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "f_write",
+          "lineNumber": 164
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "Write",
+          "lineNumber": 167
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "f_close",
+          "lineNumber": 168
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "f_close",
+          "lineNumber": 172
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "GetClockTicks",
+          "lineNumber": 173
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "CTimer::Get",
+          "lineNumber": 173
+        },
+        {
+          "caller": "WriteTest",
+          "callee": "Write",
+          "lineNumber": 174
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 181
+        },
+        {
+          "caller": "Run",
+          "callee": "f_mount",
+          "lineNumber": 188
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 191
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 202
+        },
+        {
+          "caller": "Run",
+          "callee": "UpdatePlugAndPlay",
+          "lineNumber": 206
+        },
+        {
+          "caller": "Run",
+          "callee": "f_mount",
+          "lineNumber": 209
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 216
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 222
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 226
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 227
+        },
+        {
+          "caller": "Run",
+          "callee": "RegisterRemovedHandler",
+          "lineNumber": 228
+        },
+        {
+          "caller": "Run",
+          "callee": "ReadTest",
+          "lineNumber": 230
+        },
+        {
+          "caller": "Run",
+          "callee": "HashTest",
+          "lineNumber": 230
+        },
+        {
+          "caller": "Run",
+          "callee": "WriteTest",
+          "lineNumber": 230
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 233
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 236
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 240
+        },
+        {
+          "caller": "Run",
+          "callee": "UpdatePlugAndPlay",
+          "lineNumber": 244
+        },
+        {
+          "caller": "StorageRemovedHandler",
+          "callee": "assert",
+          "lineNumber": 261
+        },
+        {
+          "caller": "StorageRemovedHandler",
+          "callee": "assert",
+          "lineNumber": 263
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test/storage/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 54,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test/storage/lonesha256.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 144,
+      "nonEmptyLines": 131,
+      "callGraph": [
+        {
+          "caller": "lonesha256",
+          "callee": "SHA256_COMPRESS",
+          "lineNumber": 115
+        },
+        {
+          "caller": "lonesha256",
+          "callee": "memcpy",
+          "lineNumber": 121
+        },
+        {
+          "caller": "lonesha256",
+          "callee": "SHA256_COMPRESS",
+          "lineNumber": 128
+        },
+        {
+          "caller": "lonesha256",
+          "callee": "STORE64H",
+          "lineNumber": 134
+        },
+        {
+          "caller": "lonesha256",
+          "callee": "SHA256_COMPRESS",
+          "lineNumber": 135
+        },
+        {
+          "caller": "lonesha256",
+          "callee": "STORE32H",
+          "lineNumber": 138
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "test/storage/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 26,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 7,
+          "endLine": 31,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 12
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 14
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 18
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 23
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,1098 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/linux/pagemap.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 5,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/platform_device.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "platform_get_irq",
+          "startLine": 17,
+          "endLine": 26,
+          "params": [
+            "pdev",
+            "index"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "platform_get_irq",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "platform_get_irq",
+          "callee": "platform_get_resource",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/platform_device.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/printk.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 22,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/pthread.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 57,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/raspberrypi-firmware.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 123,
+      "nonEmptyLines": 110,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 15,
+      "metrics": {}
+    },
+    {
+      "path": "addon/linux/rwlock.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 25,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/sched.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 24,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/semaphore.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 24,
+      "callGraph": [
+        {
+          "caller": "sema_init",
+          "callee": "atomic_set",
+          "lineNumber": 20
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/slab.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 31,
+      "callGraph": [
+        {
+          "caller": "kfree",
+          "callee": "free",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/spinlock.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 32,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/timer.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 21,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/types.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 19,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/linux/uaccess.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 21,
+      "callGraph": [
+        {
+          "caller": "copy_from_user",
+          "callee": "memcpy",
+          "lineNumber": 13
+        },
+        {
+          "caller": "copy_to_user",
+          "callee": "memcpy",
+          "lineNumber": 20
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/lvgl/lv_conf.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 1137,
+      "nonEmptyLines": 872,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/lvgl/lvgl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 67,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/lvgl/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 28,
+      "nonEmptyLines": 19,
+      "steps": [
+        {
+          "name": "OBJS",
+          "startLine": 15,
+          "endLine": 16
+        },
+        {
+          "name": "EXTRACLEAN",
+          "startLine": 17,
+          "endLine": 18
+        },
+        {
+          "name": "liblvgl.a",
+          "startLine": 19,
+          "endLine": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 3
+      }
+    },
+    {
+      "path": "addon/lvgl/sample/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 32,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/lvgl/sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 28,
+      "metrics": {}
+    },
+    {
+      "path": "addon/microbit/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libmicrobit.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/microbit/microbit-server.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 209,
+      "nonEmptyLines": 191,
+      "functions": [
+        {
+          "name": "init",
+          "startLine": 22,
+          "endLine": 23,
+          "params": []
+        },
+        {
+          "name": "send_ok",
+          "startLine": 25,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "send_error",
+          "startLine": 28,
+          "endLine": 29,
+          "params": []
+        },
+        {
+          "name": "send_result",
+          "startLine": 31,
+          "endLine": 33,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "send_result_num",
+          "startLine": 35,
+          "endLine": 36,
+          "params": [
+            "num"
+          ]
+        },
+        {
+          "name": "send_result_bool",
+          "startLine": 38,
+          "endLine": 42,
+          "params": [
+            "b"
+          ]
+        },
+        {
+          "name": "mainloop",
+          "startLine": 44,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "execute",
+          "startLine": 62,
+          "endLine": 76,
+          "params": [
+            "cmd"
+          ]
+        },
+        {
+          "name": "execute_microbit",
+          "startLine": 78,
+          "endLine": 82,
+          "params": [
+            "fn",
+            "par"
+          ]
+        },
+        {
+          "name": "execute_display",
+          "startLine": 84,
+          "endLine": 106,
+          "params": [
+            "fn",
+            "par"
+          ]
+        },
+        {
+          "name": "execute_button",
+          "startLine": 108,
+          "endLine": 122,
+          "params": [
+            "fn",
+            "par"
+          ]
+        },
+        {
+          "name": "execute_pin",
+          "startLine": 124,
+          "endLine": 165,
+          "params": [
+            "fn",
+            "par"
+          ]
+        },
+        {
+          "name": "execute_accelerometer",
+          "startLine": 167,
+          "endLine": 181,
+          "params": [
+            "fn",
+            "par"
+          ]
+        },
+        {
+          "name": "execute_compass",
+          "startLine": 183,
+          "endLine": 203,
+          "params": [
+            "fn",
+            "par"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 205,
+          "endLine": 207,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "init",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "send_ok",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "send_error",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "send_result",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "send_result_num",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "send_result_bool",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "mainloop",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "execute",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "execute_microbit",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "execute_display",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "execute_button",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "execute_pin",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "execute_accelerometer",
+          "line": 167,
+          "isDefault": false
+        },
+        {
+          "name": "execute_compass",
+          "line": 183,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 205,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "init",
+          "callee": "uart.init",
+          "lineNumber": 23
+        },
+        {
+          "caller": "send_ok",
+          "callee": "uart.write",
+          "lineNumber": 26
+        },
+        {
+          "caller": "send_error",
+          "callee": "uart.write",
+          "lineNumber": 29
+        },
+        {
+          "caller": "send_result",
+          "callee": "uart.write",
+          "lineNumber": 32
+        },
+        {
+          "caller": "send_result",
+          "callee": "uart.write",
+          "lineNumber": 33
+        },
+        {
+          "caller": "send_result_num",
+          "callee": "send_result",
+          "lineNumber": 36
+        },
+        {
+          "caller": "send_result_num",
+          "callee": "str",
+          "lineNumber": 36
+        },
+        {
+          "caller": "send_result_bool",
+          "callee": "send_result",
+          "lineNumber": 40
+        },
+        {
+          "caller": "send_result_bool",
+          "callee": "send_result",
+          "lineNumber": 42
+        },
+        {
+          "caller": "mainloop",
+          "callee": "uart.any",
+          "lineNumber": 47
+        },
+        {
+          "caller": "mainloop",
+          "callee": "str",
+          "lineNumber": 48
+        },
+        {
+          "caller": "mainloop",
+          "callee": "uart.read",
+          "lineNumber": 48
+        },
+        {
+          "caller": "mainloop",
+          "callee": "range",
+          "lineNumber": 49
+        },
+        {
+          "caller": "mainloop",
+          "callee": "len",
+          "lineNumber": 49
+        },
+        {
+          "caller": "mainloop",
+          "callee": "cmd.append",
+          "lineNumber": 57
+        },
+        {
+          "caller": "mainloop",
+          "callee": "execute",
+          "lineNumber": 59
+        },
+        {
+          "caller": "mainloop",
+          "callee": "''.join",
+          "lineNumber": 59
+        },
+        {
+          "caller": "execute",
+          "callee": "cmd.split",
+          "lineNumber": 64
+        },
+        {
+          "caller": "execute",
+          "callee": "execute_microbit",
+          "lineNumber": 68
+        },
+        {
+          "caller": "execute",
+          "callee": "execute_display",
+          "lineNumber": 69
+        },
+        {
+          "caller": "execute",
+          "callee": "execute_button",
+          "lineNumber": 70
+        },
+        {
+          "caller": "execute",
+          "callee": "execute_pin",
+          "lineNumber": 71
+        },
+        {
+          "caller": "execute",
+          "callee": "execute_accelerometer",
+          "lineNumber": 72
+        },
+        {
+          "caller": "execute",
+          "callee": "execute_compass",
+          "lineNumber": 73
+        },
+        {
+          "caller": "execute",
+          "callee": "send_error",
+          "lineNumber": 76
+        },
+        {
+          "caller": "execute_microbit",
+          "callee": "send_result_num",
+          "lineNumber": 80
+        },
+        {
+          "caller": "execute_microbit",
+          "callee": "temperature",
+          "lineNumber": 80
+        },
+        {
+          "caller": "execute_display",
+          "callee": "display.set_pixel",
+          "lineNumber": 86
+        },
+        {
+          "caller": "execute_display",
+          "callee": "int",
+          "lineNumber": 86
+        },
+        {
+          "caller": "execute_display",
+          "callee": "int",
+          "lineNumber": 86
+        },
+        {
+          "caller": "execute_display",
+          "callee": "int",
+          "lineNumber": 86
+        },
+        {
+          "caller": "execute_display",
+          "callee": "send_ok",
+          "lineNumber": 87
+        },
+        {
+          "caller": "execute_display",
+          "callee": "display.clear",
+          "lineNumber": 89
+        },
+        {
+          "caller": "execute_display",
+          "callee": "send_ok",
+          "lineNumber": 90
+        },
+        {
+          "caller": "execute_display",
+          "callee": "display.show",
+          "lineNumber": 92
+        },
+        {
+          "caller": "execute_display",
+          "callee": "':'.join",
+          "lineNumber": 92
+        },
+        {
+          "caller": "execute_display",
+          "callee": "send_ok",
+          "lineNumber": 93
+        },
+        {
+          "caller": "execute_display",
+          "callee": "display.scroll",
+          "lineNumber": 95
+        },
+        {
+          "caller": "execute_display",
+          "callee": "':'.join",
+          "lineNumber": 95
+        },
+        {
+          "caller": "execute_display",
+          "callee": "send_ok",
+          "lineNumber": 96
+        },
+        {
+          "caller": "execute_display",
+          "callee": "display.on",
+          "lineNumber": 98
+        },
+        {
+          "caller": "execute_display",
+          "callee": "send_ok",
+          "lineNumber": 99
+        },
+        {
+          "caller": "execute_display",
+          "callee": "display.off",
+          "lineNumber": 101
+        },
+        {
+          "caller": "execute_display",
+          "callee": "send_ok",
+          "lineNumber": 102
+        },
+        {
+          "caller": "execute_display",
+          "callee": "send_result_num",
+          "lineNumber": 104
+        },
+        {
+          "caller": "execute_display",
+          "callee": "display.read_light_level",
+          "lineNumber": 104
+        },
+        {
+          "caller": "execute_button",
+          "callee": "send_result_bool",
+          "lineNumber": 116
+        },
+        {
+          "caller": "execute_button",
+          "callee": "bn.is_pressed",
+          "lineNumber": 116
+        },
+        {
+          "caller": "execute_button",
+          "callee": "send_result_bool",
+          "lineNumber": 118
+        },
+        {
+          "caller": "execute_button",
+          "callee": "bn.was_pressed",
+          "lineNumber": 118
+        },
+        {
+          "caller": "execute_button",
+          "callee": "send_result_num",
+          "lineNumber": 120
+        },
+        {
+          "caller": "execute_button",
+          "callee": "bn.get_presses",
+          "lineNumber": 120
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "int",
+          "lineNumber": 125
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "send_result_num",
+          "lineNumber": 147
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "pin.read_digital",
+          "lineNumber": 147
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "pin.write_digital",
+          "lineNumber": 149
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "int",
+          "lineNumber": 149
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "send_ok",
+          "lineNumber": 150
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "send_result_num",
+          "lineNumber": 152
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "pin.read_analog",
+          "lineNumber": 152
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "pin.write_analog",
+          "lineNumber": 154
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "int",
+          "lineNumber": 154
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "send_ok",
+          "lineNumber": 155
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "pin.set_analog_period",
+          "lineNumber": 157
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "int",
+          "lineNumber": 157
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "send_ok",
+          "lineNumber": 158
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "pin.set_analog_period_microseconds",
+          "lineNumber": 160
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "int",
+          "lineNumber": 160
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "send_ok",
+          "lineNumber": 161
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "send_result_bool",
+          "lineNumber": 163
+        },
+        {
+          "caller": "execute_pin",
+          "callee": "pin.is_touched",
+          "lineNumber": 163
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "send_result_num",
+          "lineNumber": 169
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "accelerometer.get_x",
+          "lineNumber": 169
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "send_result_num",
+          "lineNumber": 171
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "accelerometer.get_y",
+          "lineNumber": 171
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "send_result_num",
+          "lineNumber": 173
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "accelerometer.get_z",
+          "lineNumber": 173
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "send_result",
+          "lineNumber": 175
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "accelerometer.current_gesture",
+          "lineNumber": 175
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "send_result_bool",
+          "lineNumber": 177
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "accelerometer.is_gesture",
+          "lineNumber": 177
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "send_result_bool",
+          "lineNumber": 179
+        },
+        {
+          "caller": "execute_accelerometer",
+          "callee": "accelerometer.was_gesture",
+          "lineNumber": 179
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "compass.calibrate",
+          "lineNumber": 185
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "send_ok",
+          "lineNumber": 186
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "send_result_bool",
+          "lineNumber": 188
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "compass.is_calibrated",
+          "lineNumber": 188
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "compass.clear_calibration",
+          "lineNumber": 190
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "send_ok",
+          "lineNumber": 191
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "send_result_num",
+          "lineNumber": 193
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "compass.get_x",
+          "lineNumber": 193
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "send_result_num",
+          "lineNumber": 195
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "compass.get_y",
+          "lineNumber": 195
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "send_result_num",
+          "lineNumber": 197
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "compass.get_z",
+          "lineNumber": 197
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "send_result_num",
+          "lineNumber": 199
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "compass.heading",
+          "lineNumber": 199
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "send_result_num",
+          "lineNumber": 201
+        },
+        {
+          "caller": "execute_compass",
+          "callee": "compass.get_field_strength",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "init",
+          "lineNumber": 206
+        },
+        {
+          "caller": "main",
+          "callee": "mainloop",
+          "lineNumber": 207
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 15,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/microbit/microbitclient.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 100,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/microbit/sample/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 18,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/microbit/sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 26,
+      "metrics": {}
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "batchIndex": 37,
+  "nodes": [
+    {
+      "id": "test/sound-controller/config.h",
+      "type": "header:test/sound-controller/config.h",
+      "name": "config.h",
+      "filePath": "test/sound-controller/config.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "test"
+      ],
+      "complexity": 3
+    },
+    {
+      "id": "test/sound-controller/oscillator.cpp",
+      "type": "module:test/sound-controller/oscillator.cpp",
+      "name": "oscillator.cpp",
+      "filePath": "test/sound-controller/oscillator.cpp",
+      "summary": "Contains 5 functions: COscillator, ~COscillator, SetWaveform, SetFrequency, SetModulationVolume",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation",
+        "test"
+      ],
+      "complexity": 17
+    },
+    {
+      "id": "test/sound-controller/oscillator.h",
+      "type": "header:test/sound-controller/oscillator.h",
+      "name": "oscillator.h",
+      "filePath": "test/sound-controller/oscillator.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "test"
+      ],
+      "complexity": 7
+    },
+    {
+      "id": "test/sound-controller/vumeter.cpp",
+      "type": "module:test/sound-controller/vumeter.cpp",
+      "name": "vumeter.cpp",
+      "filePath": "test/sound-controller/vumeter.cpp",
+      "summary": "Contains 5 functions: CVUMeter, ~CVUMeter, PutInputLevel, Update, exp",
+      "tags": [
+        "code",
+        "cpp",
+        "implementation",
+        "test"
+      ],
+      "complexity": 14
+    },
+    {
+      "id": "test/sound-controller/vumeter.h",
+      "type": "header:test/sound-controller/vumeter.h",
+      "name": "vumeter.h",
+      "filePath": "test/sound-controller/vumeter.h",
+      "summary": "0 functions defined",
+      "tags": [
+        "code",
+        "h",
+        "header",
+        "test"
+      ],
+      "complexity": 5
+    }
+  ],
+  "edges": [
+    {
+      "source": "test/sound-controller/oscillator.cpp",
+      "target": "include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "test/sound-controller/oscillator.cpp",
+      "target": "test/sound-controller/config.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "test/sound-controller/oscillator.cpp",
+      "target": "test/sound-controller/oscillator.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "test/sound-controller/vumeter.cpp",
+      "target": "test/sound-controller/config.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "test/sound-controller/vumeter.cpp",
+      "target": "test/sound-controller/vumeter.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

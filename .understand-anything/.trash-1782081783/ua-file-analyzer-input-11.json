@@ -1,0 +1,504 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "lib/usb/usbaudiofunctopology.cpp",
+      "language": "cpp",
+      "sizeLines": 589,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbaudiostreaming.cpp",
+      "language": "cpp",
+      "sizeLines": 1119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbbluetooth.cpp",
+      "language": "cpp",
+      "sizeLines": 218,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbcdcethernet.cpp",
+      "language": "cpp",
+      "sizeLines": 253,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbconfigparser.cpp",
+      "language": "cpp",
+      "sizeLines": 229,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbdevice.cpp",
+      "language": "cpp",
+      "sizeLines": 754,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbdevicefactory.cpp",
+      "language": "cpp",
+      "sizeLines": 339,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbfunction.cpp",
+      "language": "cpp",
+      "sizeLines": 215,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbgamepad.cpp",
+      "language": "cpp",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbgamepadps3.cpp",
+      "language": "cpp",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbgamepadps4.cpp",
+      "language": "cpp",
+      "sizeLines": 483,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbgamepadstandard.cpp",
+      "language": "cpp",
+      "sizeLines": 356,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbgamepadswitchpro.cpp",
+      "language": "cpp",
+      "sizeLines": 310,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbgamepadxbox360.cpp",
+      "language": "cpp",
+      "sizeLines": 235,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbgamepadxboxone.cpp",
+      "language": "cpp",
+      "sizeLines": 247,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbhiddevice.cpp",
+      "language": "cpp",
+      "sizeLines": 250,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbhostcontroller.cpp",
+      "language": "cpp",
+      "sizeLines": 248,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbmidi.cpp",
+      "language": "cpp",
+      "sizeLines": 295,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbmidihost.cpp",
+      "language": "cpp",
+      "sizeLines": 266,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbmouse.cpp",
+      "language": "cpp",
+      "sizeLines": 382,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbprinter.cpp",
+      "language": "cpp",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbserialcdc.cpp",
+      "language": "cpp",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbserialch341.cpp",
+      "language": "cpp",
+      "sizeLines": 264,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbserialcp210x.cpp",
+      "language": "cpp",
+      "sizeLines": 293,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbserialft231x.cpp",
+      "language": "cpp",
+      "sizeLines": 252,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbserialpl2303.cpp",
+      "language": "cpp",
+      "sizeLines": 378,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbstandardhub.cpp",
+      "language": "cpp",
+      "sizeLines": 631,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbstring.cpp",
+      "language": "cpp",
+      "sizeLines": 221,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbtouchscreen.cpp",
+      "language": "cpp",
+      "sizeLines": 469,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhcimmiospace.cpp",
+      "language": "cpp",
+      "sizeLines": 184,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhciroothub.cpp",
+      "language": "cpp",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/03-screentext/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "lib/usb/usbaudiofunctopology.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/string.h",
+      "include/circle/usb/usb.h",
+      "include/circle/usb/usbaudiofunctopology.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbaudiostreaming.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/usb/usbaudio.h",
+      "include/circle/usb/usbaudiofunctopology.h",
+      "include/circle/usb/usbaudiostreaming.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbbluetooth.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/usb/usbbluetooth.h",
+      "include/circle/usb/usbhostcontroller.h"
+    ],
+    "lib/usb/usbcdcethernet.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/usb/usb.h",
+      "include/circle/usb/usbcdcethernet.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbstring.h"
+    ],
+    "lib/usb/usbconfigparser.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbconfigparser.h"
+    ],
+    "lib/usb/usbdevice.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/usbdevice.h",
+      "include/circle/usb/usbdevicefactory.h",
+      "include/circle/usb/usbendpoint.h",
+      "include/circle/usb/usbhcirootport.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbstandardhub.h",
+      "include/circle/usb/usbstring.h",
+      "include/circle/usb/xhci.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbdevicefactory.cpp": [
+      "include/assert.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/lan7800.h",
+      "include/circle/usb/smsc951x.h",
+      "include/circle/usb/usbaudiocontrol.h",
+      "include/circle/usb/usbaudiostreaming.h",
+      "include/circle/usb/usbbluetooth.h",
+      "include/circle/usb/usbcdcethernet.h",
+      "include/circle/usb/usbdevicefactory.h",
+      "include/circle/usb/usbfloppydevice.h",
+      "include/circle/usb/usbgamepadps3.h",
+      "include/circle/usb/usbgamepadps4.h",
+      "include/circle/usb/usbgamepadstandard.h",
+      "include/circle/usb/usbgamepadswitchpro.h",
+      "include/circle/usb/usbgamepadxbox360.h",
+      "include/circle/usb/usbgamepadxboxone.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/usb/usbmassdevice.h",
+      "include/circle/usb/usbmidihost.h",
+      "include/circle/usb/usbmouse.h",
+      "include/circle/usb/usbprinter.h",
+      "include/circle/usb/usbserialcdc.h",
+      "include/circle/usb/usbserialch341.h",
+      "include/circle/usb/usbserialcp210x.h",
+      "include/circle/usb/usbserialft231x.h",
+      "include/circle/usb/usbserialpl2303.h",
+      "include/circle/usb/usbstandardhub.h",
+      "include/circle/usb/usbtouchscreen.h"
+    ],
+    "lib/usb/usbfunction.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbdevice.h",
+      "include/circle/usb/usbendpoint.h",
+      "include/circle/usb/usbfunction.h",
+      "include/circle/usb/usbhostcontroller.h"
+    ],
+    "lib/usb/usbgamepad.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbgamepad.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadps3.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/usb/usbgamepadps3.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadps4.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/usb/usbgamepadps4.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadstandard.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbgamepadstandard.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h"
+    ],
+    "lib/usb/usbgamepadswitchpro.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbgamepadswitchpro.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadxbox360.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbgamepadxbox360.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbgamepadxboxone.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbgamepadxboxone.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbhiddevice.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhiddevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbhostcontroller.cpp": [
+      "include/assert.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbhcirootport.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbstandardhub.h"
+    ],
+    "lib/usb/usbmidi.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbmidi.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbmidihost.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usb.h",
+      "include/circle/usb/usbaudio.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbmidihost.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbmouse.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbmouse.h"
+    ],
+    "lib/usb/usbprinter.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbprinter.h"
+    ],
+    "lib/usb/usbserialcdc.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialcdc.h"
+    ],
+    "lib/usb/usbserialch341.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialch341.h"
+    ],
+    "lib/usb/usbserialcp210x.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialcp210x.h"
+    ],
+    "lib/usb/usbserialft231x.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialft231x.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbserialpl2303.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbserialpl2303.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbstandardhub.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbdevicefactory.h",
+      "include/circle/usb/usbstandardhub.h",
+      "include/circle/usb/xhciusbdevice.h"
+    ],
+    "lib/usb/usbstring.cpp": [
+      "include/assert.h",
+      "include/circle/usb/usbdevice.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbstring.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbtouchscreen.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhid.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbtouchscreen.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/xhcimmiospace.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/memio.h",
+      "include/circle/timer.h",
+      "include/circle/usb/xhci.h",
+      "include/circle/usb/xhcimmiospace.h"
+    ],
+    "lib/usb/xhciroothub.cpp": [
+      "include/assert.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhciroothub.h"
+    ],
+    "sample/03-screentext/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/string.h",
+      "sample/03-screentext/kernel.h"
+    ]
+  }
+}

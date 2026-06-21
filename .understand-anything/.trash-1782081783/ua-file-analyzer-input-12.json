@@ -1,0 +1,264 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/FlintJVM/flint.cpp",
+      "language": "cpp",
+      "sizeLines": 954,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/FlintJVM/flint_class_loader.cpp",
+      "language": "cpp",
+      "sizeLines": 826,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/FlintJVM/flint_debugger.cpp",
+      "language": "cpp",
+      "sizeLines": 993,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/FlintJVM/flint_execution.cpp",
+      "language": "cpp",
+      "sizeLines": 2198,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/FlintJVM/flint_fields_data.cpp",
+      "language": "cpp",
+      "sizeLines": 201,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/FlintJVM/flint_java_object.cpp",
+      "language": "cpp",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/interrupt.cpp",
+      "language": "cpp",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/timer.cpp",
+      "language": "cpp",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/pico/swdloader.cpp",
+      "language": "cpp",
+      "sizeLines": 530,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/bmp180.cpp",
+      "language": "cpp",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/hcsr04.cpp",
+      "language": "cpp",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9arch.cpp",
+      "language": "cpp",
+      "sizeLines": 231,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/actled.h",
+      "language": "c",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/dma4channel.h",
+      "language": "c",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/dmachannel-rp1.h",
+      "language": "c",
+      "sizeLines": 190,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/dmachannel.h",
+      "language": "c",
+      "sizeLines": 162,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/interrupt.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/latencytester.h",
+      "language": "c",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/macb.h",
+      "language": "c",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/machineinfo.h",
+      "language": "c",
+      "sizeLines": 199,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/macros.h",
+      "language": "c",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/memio.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/mphi.h",
+      "language": "c",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/net/netdevlayer.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/new.h",
+      "language": "c",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/pci_regs.h",
+      "language": "c",
+      "sizeLines": 1045,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/peripherals/gpioclock.h",
+      "language": "c",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/peripherals/gpiomanager.h",
+      "language": "c",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/peripherals/gpiopinfiq.h",
+      "language": "c",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/peripherals/i2cmaster.h",
+      "language": "c",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/peripherals/i2cmasterirq.h",
+      "language": "c",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/FlintJVM/flint.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_class_loader.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_debugger.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_execution.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_fields_data.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/FlintJVM/flint_java_object.cpp": [
+      "include/circle/new.h"
+    ],
+    "addon/linux/interrupt.cpp": [
+      "include/circle/interrupt.h"
+    ],
+    "addon/linux/timer.cpp": [
+      "include/circle/timer.h"
+    ],
+    "addon/pico/swdloader.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "addon/sensor/bmp180.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/sensor/hcsr04.cpp": [
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "addon/wlan/p9arch.cpp": [
+      "addon/wlan/p9arch.h",
+      "include/assert.h",
+      "include/circle/dmachannel.h",
+      "include/circle/interrupt.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "include/circle/actled.h": [],
+    "include/circle/dma4channel.h": [],
+    "include/circle/dmachannel-rp1.h": [],
+    "include/circle/dmachannel.h": [],
+    "include/circle/interrupt.h": [],
+    "include/circle/latencytester.h": [],
+    "include/circle/macb.h": [],
+    "include/circle/machineinfo.h": [],
+    "include/circle/macros.h": [],
+    "include/circle/memio.h": [],
+    "include/circle/mphi.h": [],
+    "include/circle/net/netdevlayer.h": [],
+    "include/circle/new.h": [],
+    "include/circle/pci_regs.h": [],
+    "include/circle/peripherals/gpioclock.h": [],
+    "include/circle/peripherals/gpiomanager.h": [],
+    "include/circle/peripherals/gpiopinfiq.h": [],
+    "include/circle/peripherals/i2cmaster.h": [],
+    "include/circle/peripherals/i2cmasterirq.h": []
+  }
+}

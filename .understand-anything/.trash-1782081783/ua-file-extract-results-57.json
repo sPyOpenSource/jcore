@@ -1,0 +1,1063 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/OneWire/ds18x20.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/OneWire/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libonewire.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/OneWire/OneWire.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 570,
+      "nonEmptyLines": 501,
+      "callGraph": [
+        {
+          "caller": "OneWire",
+          "callee": "reset_search",
+          "lineNumber": 133
+        },
+        {
+          "caller": "reset",
+          "callee": "noInterrupts",
+          "lineNumber": 153
+        },
+        {
+          "caller": "reset",
+          "callee": "DIRECT_MODE_INPUT",
+          "lineNumber": 154
+        },
+        {
+          "caller": "reset",
+          "callee": "interrupts",
+          "lineNumber": 155
+        },
+        {
+          "caller": "reset",
+          "callee": "delayMicroseconds",
+          "lineNumber": 159
+        },
+        {
+          "caller": "reset",
+          "callee": "DIRECT_READ",
+          "lineNumber": 160
+        },
+        {
+          "caller": "reset",
+          "callee": "noInterrupts",
+          "lineNumber": 162
+        },
+        {
+          "caller": "reset",
+          "callee": "DIRECT_WRITE_LOW",
+          "lineNumber": 163
+        },
+        {
+          "caller": "reset",
+          "callee": "DIRECT_MODE_OUTPUT",
+          "lineNumber": 164
+        },
+        {
+          "caller": "reset",
+          "callee": "interrupts",
+          "lineNumber": 165
+        },
+        {
+          "caller": "reset",
+          "callee": "delayMicroseconds",
+          "lineNumber": 166
+        },
+        {
+          "caller": "reset",
+          "callee": "noInterrupts",
+          "lineNumber": 167
+        },
+        {
+          "caller": "reset",
+          "callee": "DIRECT_MODE_INPUT",
+          "lineNumber": 168
+        },
+        {
+          "caller": "reset",
+          "callee": "delayMicroseconds",
+          "lineNumber": 169
+        },
+        {
+          "caller": "reset",
+          "callee": "DIRECT_READ",
+          "lineNumber": 170
+        },
+        {
+          "caller": "reset",
+          "callee": "interrupts",
+          "lineNumber": 171
+        },
+        {
+          "caller": "reset",
+          "callee": "delayMicroseconds",
+          "lineNumber": 172
+        },
+        {
+          "caller": "write_bit",
+          "callee": "noInterrupts",
+          "lineNumber": 188
+        },
+        {
+          "caller": "write_bit",
+          "callee": "DIRECT_WRITE_LOW",
+          "lineNumber": 189
+        },
+        {
+          "caller": "write_bit",
+          "callee": "DIRECT_MODE_OUTPUT",
+          "lineNumber": 190
+        },
+        {
+          "caller": "write_bit",
+          "callee": "delayMicroseconds",
+          "lineNumber": 191
+        },
+        {
+          "caller": "write_bit",
+          "callee": "DIRECT_WRITE_HIGH",
+          "lineNumber": 192
+        },
+        {
+          "caller": "write_bit",
+          "callee": "interrupts",
+          "lineNumber": 193
+        },
+        {
+          "caller": "write_bit",
+          "callee": "delayMicroseconds",
+          "lineNumber": 194
+        },
+        {
+          "caller": "write_bit",
+          "callee": "noInterrupts",
+          "lineNumber": 196
+        },
+        {
+          "caller": "write_bit",
+          "callee": "DIRECT_WRITE_LOW",
+          "lineNumber": 197
+        },
+        {
+          "caller": "write_bit",
+          "callee": "DIRECT_MODE_OUTPUT",
+          "lineNumber": 198
+        },
+        {
+          "caller": "write_bit",
+          "callee": "delayMicroseconds",
+          "lineNumber": 199
+        },
+        {
+          "caller": "write_bit",
+          "callee": "DIRECT_WRITE_HIGH",
+          "lineNumber": 200
+        },
+        {
+          "caller": "write_bit",
+          "callee": "interrupts",
+          "lineNumber": 201
+        },
+        {
+          "caller": "write_bit",
+          "callee": "delayMicroseconds",
+          "lineNumber": 202
+        },
+        {
+          "caller": "read_bit",
+          "callee": "noInterrupts",
+          "lineNumber": 218
+        },
+        {
+          "caller": "read_bit",
+          "callee": "DIRECT_MODE_OUTPUT",
+          "lineNumber": 219
+        },
+        {
+          "caller": "read_bit",
+          "callee": "DIRECT_WRITE_LOW",
+          "lineNumber": 220
+        },
+        {
+          "caller": "read_bit",
+          "callee": "delayMicroseconds",
+          "lineNumber": 221
+        },
+        {
+          "caller": "read_bit",
+          "callee": "DIRECT_MODE_INPUT",
+          "lineNumber": 222
+        },
+        {
+          "caller": "read_bit",
+          "callee": "delayMicroseconds",
+          "lineNumber": 223
+        },
+        {
+          "caller": "read_bit",
+          "callee": "DIRECT_READ",
+          "lineNumber": 224
+        },
+        {
+          "caller": "read_bit",
+          "callee": "interrupts",
+          "lineNumber": 225
+        },
+        {
+          "caller": "read_bit",
+          "callee": "delayMicroseconds",
+          "lineNumber": 226
+        },
+        {
+          "caller": "write",
+          "callee": "OneWire::write_bit",
+          "lineNumber": 241
+        },
+        {
+          "caller": "write",
+          "callee": "noInterrupts",
+          "lineNumber": 244
+        },
+        {
+          "caller": "write",
+          "callee": "DIRECT_MODE_INPUT",
+          "lineNumber": 245
+        },
+        {
+          "caller": "write",
+          "callee": "DIRECT_WRITE_LOW",
+          "lineNumber": 246
+        },
+        {
+          "caller": "write",
+          "callee": "interrupts",
+          "lineNumber": 247
+        },
+        {
+          "caller": "write_bytes",
+          "callee": "write",
+          "lineNumber": 253
+        },
+        {
+          "caller": "write_bytes",
+          "callee": "noInterrupts",
+          "lineNumber": 255
+        },
+        {
+          "caller": "write_bytes",
+          "callee": "DIRECT_MODE_INPUT",
+          "lineNumber": 256
+        },
+        {
+          "caller": "write_bytes",
+          "callee": "DIRECT_WRITE_LOW",
+          "lineNumber": 257
+        },
+        {
+          "caller": "write_bytes",
+          "callee": "interrupts",
+          "lineNumber": 258
+        },
+        {
+          "caller": "read",
+          "callee": "OneWire::read_bit",
+          "lineNumber": 270
+        },
+        {
+          "caller": "read_bytes",
+          "callee": "read",
+          "lineNumber": 277
+        },
+        {
+          "caller": "select",
+          "callee": "write",
+          "lineNumber": 287
+        },
+        {
+          "caller": "select",
+          "callee": "write",
+          "lineNumber": 289
+        },
+        {
+          "caller": "skip",
+          "callee": "write",
+          "lineNumber": 297
+        },
+        {
+          "caller": "depower",
+          "callee": "noInterrupts",
+          "lineNumber": 302
+        },
+        {
+          "caller": "depower",
+          "callee": "DIRECT_MODE_INPUT",
+          "lineNumber": 303
+        },
+        {
+          "caller": "depower",
+          "callee": "interrupts",
+          "lineNumber": 304
+        },
+        {
+          "caller": "search",
+          "callee": "reset",
+          "lineNumber": 374
+        },
+        {
+          "caller": "search",
+          "callee": "write",
+          "lineNumber": 384
+        },
+        {
+          "caller": "search",
+          "callee": "read_bit",
+          "lineNumber": 390
+        },
+        {
+          "caller": "search",
+          "callee": "read_bit",
+          "lineNumber": 391
+        },
+        {
+          "caller": "search",
+          "callee": "write_bit",
+          "lineNumber": 430
+        },
+        {
+          "caller": "crc8",
+          "callee": "pgm_read_byte",
+          "lineNumber": 513
+        },
+        {
+          "caller": "check_crc16",
+          "callee": "crc16",
+          "lineNumber": 542
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/OneWire/OneWire.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 265,
+      "nonEmptyLines": 225,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/OneWire/sample/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 14,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/OneWire/sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 11,
+      "metrics": {}
+    },
+    {
+      "path": "addon/pico/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libpico.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/pico/sample/dummy_flash.uf2",
+      "language": "uf2",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 89,
+      "metrics": {}
+    },
+    {
+      "path": "addon/pico/sample/firmware.bin",
+      "language": "bin",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 31,
+      "metrics": {}
+    },
+    {
+      "path": "addon/pico/sample/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 24,
+      "nonEmptyLines": 15,
+      "steps": [
+        {
+          "name": "kernel.o",
+          "startLine": 22,
+          "endLine": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/pico/sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 20,
+      "metrics": {}
+    },
+    {
+      "path": "addon/pico/swdloader.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 84,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/arm-mcount.S",
+      "language": "s",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 43,
+      "metrics": {}
+    },
+    {
+      "path": "addon/profile/glibc_compat.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 76,
+      "callGraph": [
+        {
+          "caller": "atomic_compare_and_exchange_bool_acq",
+          "callee": "__atomic_compare_exchange_n",
+          "lineNumber": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/gmon_out.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 67,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/gmon.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 474,
+      "nonEmptyLines": 414,
+      "functions": [
+        {
+          "name": "__moncontrol",
+          "startLine": 106,
+          "endLine": 127,
+          "params": [
+            "mode"
+          ]
+        },
+        {
+          "name": "__monstartup",
+          "startLine": 132,
+          "endLine": 202,
+          "params": [
+            "lowpc",
+            "highpc"
+          ]
+        },
+        {
+          "name": "write_hist",
+          "startLine": 206,
+          "endLine": 259,
+          "params": [
+            "fd",
+            "load_address"
+          ]
+        },
+        {
+          "name": "write_call_graph",
+          "startLine": 262,
+          "endLine": 321,
+          "params": [
+            "fd",
+            "load_address"
+          ]
+        },
+        {
+          "name": "write_bb_counts",
+          "startLine": 324,
+          "endLine": 367,
+          "params": [
+            "fd"
+          ]
+        },
+        {
+          "name": "write_gmon",
+          "startLine": 370,
+          "endLine": 442,
+          "params": []
+        },
+        {
+          "name": "__write_profiling",
+          "startLine": 445,
+          "endLine": 453,
+          "params": []
+        },
+        {
+          "name": "_mcleanup",
+          "startLine": 464,
+          "endLine": 474,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "__bb",
+          "startLine": 82,
+          "endLine": 82,
+          "methods": [],
+          "properties": []
+        },
+        {
+          "name": "gmonparam",
+          "startLine": 84,
+          "endLine": 84,
+          "methods": [],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "__bb",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "gmonparam",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "__moncontrol",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "__monstartup",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "__write_profiling",
+          "line": 445,
+          "isDefault": false
+        },
+        {
+          "name": "_mcleanup",
+          "line": 464,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "__moncontrol",
+          "callee": "__profil",
+          "lineNumber": 118
+        },
+        {
+          "caller": "__moncontrol",
+          "callee": "__profil",
+          "lineNumber": 124
+        },
+        {
+          "caller": "__monstartup",
+          "callee": "ROUNDDOWN",
+          "lineNumber": 143
+        },
+        {
+          "caller": "__monstartup",
+          "callee": "ROUNDUP",
+          "lineNumber": 144
+        },
+        {
+          "caller": "__monstartup",
+          "callee": "ROUNDUP",
+          "lineNumber": 146
+        },
+        {
+          "caller": "__monstartup",
+          "callee": "ffs",
+          "lineNumber": 154
+        },
+        {
+          "caller": "__monstartup",
+          "callee": "calloc",
+          "lineNumber": 164
+        },
+        {
+          "caller": "__monstartup",
+          "callee": "ERR",
+          "lineNumber": 167
+        },
+        {
+          "caller": "__monstartup",
+          "callee": "__moncontrol",
+          "lineNumber": 201
+        },
+        {
+          "caller": "write_hist",
+          "callee": "abort",
+          "lineNumber": 243
+        },
+        {
+          "caller": "write_hist",
+          "callee": "__profile_frequency",
+          "lineNumber": 250
+        },
+        {
+          "caller": "write_hist",
+          "callee": "strncpy",
+          "lineNumber": 254
+        },
+        {
+          "caller": "write_hist",
+          "callee": "__writev_nocancel_nostatus",
+          "lineNumber": 257
+        },
+        {
+          "caller": "write_call_graph",
+          "callee": "aligned",
+          "lineNumber": 268
+        },
+        {
+          "caller": "write_call_graph",
+          "callee": "memcpy",
+          "lineNumber": 310
+        },
+        {
+          "caller": "write_call_graph",
+          "callee": "__writev_nocancel_nostatus",
+          "lineNumber": 314
+        },
+        {
+          "caller": "write_call_graph",
+          "callee": "__writev_nocancel_nostatus",
+          "lineNumber": 320
+        },
+        {
+          "caller": "write_bb_counts",
+          "callee": "__writev_nocancel_nostatus",
+          "lineNumber": 352
+        },
+        {
+          "caller": "write_bb_counts",
+          "callee": "__writev_nocancel_nostatus",
+          "lineNumber": 357
+        },
+        {
+          "caller": "write_bb_counts",
+          "callee": "__writev_nocancel_nostatus",
+          "lineNumber": 365
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "getenv",
+          "lineNumber": 377
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "strlen",
+          "lineNumber": 380
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__snprintf",
+          "lineNumber": 382
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__getpid",
+          "lineNumber": 382
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__open_nocancel",
+          "lineNumber": 383
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__open_nocancel",
+          "lineNumber": 389
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__fxprintf",
+          "lineNumber": 396
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__strerror_r",
+          "lineNumber": 397
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "ERR",
+          "lineNumber": 399
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "abort",
+          "lineNumber": 418
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "memcpy",
+          "lineNumber": 421
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "memset",
+          "lineNumber": 423
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__write_nocancel",
+          "lineNumber": 424
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__dl_iterate_phdr",
+          "lineNumber": 429
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "write_hist",
+          "lineNumber": 433
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "write_call_graph",
+          "lineNumber": 436
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "write_bb_counts",
+          "lineNumber": 439
+        },
+        {
+          "caller": "write_gmon",
+          "callee": "__close_nocancel_nostatus",
+          "lineNumber": 441
+        },
+        {
+          "caller": "__write_profiling",
+          "callee": "write_gmon",
+          "lineNumber": 451
+        },
+        {
+          "caller": "_mcleanup",
+          "callee": "__moncontrol",
+          "lineNumber": 467
+        },
+        {
+          "caller": "_mcleanup",
+          "callee": "write_gmon",
+          "lineNumber": 470
+        },
+        {
+          "caller": "_mcleanup",
+          "callee": "free",
+          "lineNumber": 473
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 8,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "addon/profile/gmon.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 205,
+      "nonEmptyLines": 181,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libprofile.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/profile/mcount.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 193,
+      "nonEmptyLines": 180,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/profil.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 159,
+      "nonEmptyLines": 136,
+      "callGraph": [
+        {
+          "caller": "__profil_counter",
+          "callee": "profil_count",
+          "lineNumber": 71
+        },
+        {
+          "caller": "__profil",
+          "callee": "IS_IN",
+          "lineNumber": 88
+        },
+        {
+          "caller": "__profil",
+          "callee": "__setitimer",
+          "lineNumber": 101
+        },
+        {
+          "caller": "__profil",
+          "callee": "__sigaction",
+          "lineNumber": 104
+        },
+        {
+          "caller": "__profil",
+          "callee": "__setitimer",
+          "lineNumber": 111
+        },
+        {
+          "caller": "__profil",
+          "callee": "__sigaction",
+          "lineNumber": 112
+        },
+        {
+          "caller": "__profil",
+          "callee": "__sigfillset",
+          "lineNumber": 144
+        },
+        {
+          "caller": "__profil",
+          "callee": "__sigaction",
+          "lineNumber": 145
+        },
+        {
+          "caller": "__profil",
+          "callee": "__profile_frequency",
+          "lineNumber": 149
+        },
+        {
+          "caller": "__profil",
+          "callee": "__setitimer",
+          "lineNumber": 151
+        },
+        {
+          "caller": "__profil",
+          "callee": "RegisterPeriodicHandler",
+          "lineNumber": 153
+        },
+        {
+          "caller": "__profil",
+          "callee": "CTimer::Get",
+          "lineNumber": 153
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/profiler.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 50,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 21,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "addon/profile/sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 50,
+      "metrics": {}
+    },
+    {
+      "path": "addon/Properties/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "steps": [
+        {
+          "name": "libproperties.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/Properties/properties.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 76,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

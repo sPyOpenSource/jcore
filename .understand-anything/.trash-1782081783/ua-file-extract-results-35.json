@@ -1,0 +1,394 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 11,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "include/circle/font.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 41,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fonts/font12x22.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 2202,
+      "nonEmptyLines": 2105,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fonts/font6x7.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 807,
+      "nonEmptyLines": 708,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fonts/font8x10.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 267,
+      "nonEmptyLines": 262,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fonts/font8x12.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 267,
+      "nonEmptyLines": 262,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fonts/font8x14.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 267,
+      "nonEmptyLines": 262,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fonts/font8x16.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 267,
+      "nonEmptyLines": 262,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fonts/font8x8.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 267,
+      "nonEmptyLines": 262,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/08-usbkeyboard/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 232,
+      "nonEmptyLines": 194,
+      "callGraph": [
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetRotation",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetRotation",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 140
+        },
+        {
+          "caller": "Run",
+          "callee": "UpdatePlugAndPlay",
+          "lineNumber": 148
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 153
+        },
+        {
+          "caller": "Run",
+          "callee": "RegisterRemovedHandler",
+          "lineNumber": 156
+        },
+        {
+          "caller": "Run",
+          "callee": "RegisterShutdownHandler",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Run",
+          "callee": "RegisterKeyPressedHandler",
+          "lineNumber": 160
+        },
+        {
+          "caller": "Run",
+          "callee": "RegisterKeyStatusHandlerRaw",
+          "lineNumber": 162
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 164
+        },
+        {
+          "caller": "Run",
+          "callee": "UpdateLEDs",
+          "lineNumber": 172
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 176
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "assert",
+          "lineNumber": 185
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "Format",
+          "lineNumber": 190
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "Write",
+          "lineNumber": 192
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "strlen",
+          "lineNumber": 192
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "Write",
+          "lineNumber": 195
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "strlen",
+          "lineNumber": 195
+        },
+        {
+          "caller": "ShutdownHandler",
+          "callee": "assert",
+          "lineNumber": 201
+        },
+        {
+          "caller": "KeyStatusHandlerRaw",
+          "callee": "assert",
+          "lineNumber": 207
+        },
+        {
+          "caller": "KeyStatusHandlerRaw",
+          "callee": "Format",
+          "lineNumber": 210
+        },
+        {
+          "caller": "KeyStatusHandlerRaw",
+          "callee": "Format",
+          "lineNumber": 217
+        },
+        {
+          "caller": "KeyStatusHandlerRaw",
+          "callee": "Append",
+          "lineNumber": 219
+        },
+        {
+          "caller": "KeyStatusHandlerRaw",
+          "callee": "Write",
+          "lineNumber": 223
+        },
+        {
+          "caller": "KeyboardRemovedHandler",
+          "callee": "assert",
+          "lineNumber": 228
+        },
+        {
+          "caller": "KeyboardRemovedHandler",
+          "callee": "Write",
+          "lineNumber": 229
+        },
+        {
+          "caller": "KeyboardRemovedHandler",
+          "callee": "CLogger::Get",
+          "lineNumber": 229
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/08-usbkeyboard/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 87,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/08-usbkeyboard/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,3395 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/FlintJVM/Native/flint_native_io_file_descriptor.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 11,
+      "functions": [
+        {
+          "name": "NativeFileDescriptor_Sync",
+          "startLine": 6,
+          "endLine": 13,
+          "params": [
+            "env",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeFileDescriptor_Sync",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeFileDescriptor_Sync",
+          "callee": "getInt32",
+          "lineNumber": 7
+        },
+        {
+          "caller": "NativeFileDescriptor_Sync",
+          "callee": "getFieldByIndex",
+          "lineNumber": 7
+        },
+        {
+          "caller": "NativeFileDescriptor_Sync",
+          "callee": "throwNew",
+          "lineNumber": 9
+        },
+        {
+          "caller": "NativeFileDescriptor_Sync",
+          "callee": "findClass",
+          "lineNumber": 9
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_io_file_input_stream.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 158,
+      "nonEmptyLines": 147,
+      "functions": [
+        {
+          "name": "GetFd",
+          "startLine": 6,
+          "endLine": 12,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "CheckArrayIndexSize",
+          "startLine": 14,
+          "endLine": 34,
+          "params": [
+            "env",
+            "arr",
+            "index",
+            "count"
+          ]
+        },
+        {
+          "name": "NativeFileInputStream_Open",
+          "startLine": 36,
+          "endLine": 52,
+          "params": [
+            "env",
+            "obj",
+            "name"
+          ]
+        },
+        {
+          "name": "NativeFileInputStream_Read",
+          "startLine": 54,
+          "endLine": 74,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeFileInputStream_ReadBytes",
+          "startLine": 76,
+          "endLine": 112,
+          "params": [
+            "env",
+            "obj",
+            "b",
+            "off",
+            "len"
+          ]
+        },
+        {
+          "name": "NativeFileInputStream_Length",
+          "startLine": 114,
+          "endLine": 118,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeFileInputStream_Position",
+          "startLine": 120,
+          "endLine": 124,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeFileInputStream_Skip",
+          "startLine": 126,
+          "endLine": 134,
+          "params": [
+            "env",
+            "obj",
+            "n"
+          ]
+        },
+        {
+          "name": "NativeFileInputStream_Available",
+          "startLine": 136,
+          "endLine": 141,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeFileInputStream_Close",
+          "startLine": 143,
+          "endLine": 158,
+          "params": [
+            "env",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeFileInputStream_Open",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileInputStream_Read",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileInputStream_ReadBytes",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileInputStream_Length",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileInputStream_Position",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileInputStream_Skip",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileInputStream_Available",
+          "line": 136,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileInputStream_Close",
+          "line": 143,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GetFd",
+          "callee": "getObj",
+          "lineNumber": 7
+        },
+        {
+          "caller": "GetFd",
+          "callee": "getFieldByIndex",
+          "lineNumber": 7
+        },
+        {
+          "caller": "GetFd",
+          "callee": "getInt32",
+          "lineNumber": 8
+        },
+        {
+          "caller": "GetFd",
+          "callee": "getFieldByIndex",
+          "lineNumber": 8
+        },
+        {
+          "caller": "GetFd",
+          "callee": "throwNew",
+          "lineNumber": 10
+        },
+        {
+          "caller": "GetFd",
+          "callee": "findClass",
+          "lineNumber": 10
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "throwNew",
+          "lineNumber": 16
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "findClass",
+          "lineNumber": 16
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "findClass",
+          "lineNumber": 20
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getCompTypeName",
+          "lineNumber": 22
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "throwNew",
+          "lineNumber": 23
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getLength",
+          "lineNumber": 23
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getLength",
+          "lineNumber": 26
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "findClass",
+          "lineNumber": 27
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getCompTypeName",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "throwNew",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getLength",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "getObj",
+          "lineNumber": 38
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "getFieldByIndex",
+          "lineNumber": 38
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "getInt32",
+          "lineNumber": 39
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "getFieldByIndex",
+          "lineNumber": 39
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "ResolvePath",
+          "lineNumber": 40
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "getAscii",
+          "lineNumber": 40
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "getLength",
+          "lineNumber": 40
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "Flint::lock",
+          "lineNumber": 41
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "throwNew",
+          "lineNumber": 43
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "findClass",
+          "lineNumber": 43
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "FlintAPI::IO::fopen",
+          "lineNumber": 45
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "throwNew",
+          "lineNumber": 47
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "findClass",
+          "lineNumber": 47
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "setInt32",
+          "lineNumber": 49
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "getFieldByIndex",
+          "lineNumber": 49
+        },
+        {
+          "caller": "NativeFileInputStream_Open",
+          "callee": "Flint::unlock",
+          "lineNumber": 51
+        },
+        {
+          "caller": "NativeFileInputStream_Read",
+          "callee": "GetFd",
+          "lineNumber": 55
+        },
+        {
+          "caller": "NativeFileInputStream_Read",
+          "callee": "FlintAPI::IO::fread",
+          "lineNumber": 69
+        },
+        {
+          "caller": "NativeFileInputStream_Read",
+          "callee": "throwNew",
+          "lineNumber": 71
+        },
+        {
+          "caller": "NativeFileInputStream_Read",
+          "callee": "findClass",
+          "lineNumber": 71
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "throwNew",
+          "lineNumber": 78
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "findClass",
+          "lineNumber": 78
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "getLength",
+          "lineNumber": 81
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "findClass",
+          "lineNumber": 82
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "throwNew",
+          "lineNumber": 84
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "getLength",
+          "lineNumber": 84
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "throwNew",
+          "lineNumber": 86
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "getLength",
+          "lineNumber": 86
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "GetFd",
+          "lineNumber": 89
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "CheckArrayIndexSize",
+          "lineNumber": 90
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "throwNew",
+          "lineNumber": 92
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "findClass",
+          "lineNumber": 92
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "getData",
+          "lineNumber": 105
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "FlintAPI::IO::fread",
+          "lineNumber": 107
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "throwNew",
+          "lineNumber": 109
+        },
+        {
+          "caller": "NativeFileInputStream_ReadBytes",
+          "callee": "findClass",
+          "lineNumber": 109
+        },
+        {
+          "caller": "NativeFileInputStream_Length",
+          "callee": "GetFd",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeFileInputStream_Length",
+          "callee": "FlintAPI::IO::fsize",
+          "lineNumber": 117
+        },
+        {
+          "caller": "NativeFileInputStream_Position",
+          "callee": "GetFd",
+          "lineNumber": 121
+        },
+        {
+          "caller": "NativeFileInputStream_Position",
+          "callee": "FlintAPI::IO::ftell",
+          "lineNumber": 123
+        },
+        {
+          "caller": "NativeFileInputStream_Skip",
+          "callee": "GetFd",
+          "lineNumber": 127
+        },
+        {
+          "caller": "NativeFileInputStream_Skip",
+          "callee": "FlintAPI::IO::ftell",
+          "lineNumber": 130
+        },
+        {
+          "caller": "NativeFileInputStream_Skip",
+          "callee": "FlintAPI::IO::fseek",
+          "lineNumber": 131
+        },
+        {
+          "caller": "NativeFileInputStream_Skip",
+          "callee": "FlintAPI::IO::ftell",
+          "lineNumber": 133
+        },
+        {
+          "caller": "NativeFileInputStream_Available",
+          "callee": "GetFd",
+          "lineNumber": 137
+        },
+        {
+          "caller": "NativeFileInputStream_Available",
+          "callee": "FlintAPI::IO::fsize",
+          "lineNumber": 140
+        },
+        {
+          "caller": "NativeFileInputStream_Available",
+          "callee": "FlintAPI::IO::ftell",
+          "lineNumber": 140
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "getObj",
+          "lineNumber": 144
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "getFieldByIndex",
+          "lineNumber": 144
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "getInt32",
+          "lineNumber": 145
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "getFieldByIndex",
+          "lineNumber": 145
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "Flint::lock",
+          "lineNumber": 146
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "FlintAPI::IO::fclose",
+          "lineNumber": 149
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "setInt32",
+          "lineNumber": 150
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "getFieldByIndex",
+          "lineNumber": 150
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "throwNew",
+          "lineNumber": 152
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "findClass",
+          "lineNumber": 152
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "throwNew",
+          "lineNumber": 156
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "findClass",
+          "lineNumber": 156
+        },
+        {
+          "caller": "NativeFileInputStream_Close",
+          "callee": "Flint::unlock",
+          "lineNumber": 157
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_io_file_output_stream.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 129,
+      "nonEmptyLines": 119,
+      "functions": [
+        {
+          "name": "CheckArrayIndexSize",
+          "startLine": 6,
+          "endLine": 26,
+          "params": [
+            "env",
+            "arr",
+            "index",
+            "count"
+          ]
+        },
+        {
+          "name": "NativeFileOutputStream_Open",
+          "startLine": 28,
+          "endLine": 49,
+          "params": [
+            "env",
+            "obj",
+            "name",
+            "append"
+          ]
+        },
+        {
+          "name": "NativeFileOutputStream_Write",
+          "startLine": 51,
+          "endLine": 73,
+          "params": [
+            "env",
+            "obj",
+            "b"
+          ]
+        },
+        {
+          "name": "NativeFileOutputStream_WriteBytes",
+          "startLine": 75,
+          "endLine": 112,
+          "params": [
+            "env",
+            "obj",
+            "b",
+            "off",
+            "len"
+          ]
+        },
+        {
+          "name": "NativeFileOutputStream_Close",
+          "startLine": 114,
+          "endLine": 129,
+          "params": [
+            "env",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeFileOutputStream_Open",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileOutputStream_Write",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileOutputStream_WriteBytes",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFileOutputStream_Close",
+          "line": 114,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "throwNew",
+          "lineNumber": 8
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "findClass",
+          "lineNumber": 8
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "findClass",
+          "lineNumber": 12
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getCompTypeName",
+          "lineNumber": 14
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "throwNew",
+          "lineNumber": 15
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getLength",
+          "lineNumber": 15
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getLength",
+          "lineNumber": 18
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "findClass",
+          "lineNumber": 19
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getCompTypeName",
+          "lineNumber": 21
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "throwNew",
+          "lineNumber": 22
+        },
+        {
+          "caller": "CheckArrayIndexSize",
+          "callee": "getLength",
+          "lineNumber": 22
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "getObj",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "getFieldByIndex",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "getInt32",
+          "lineNumber": 31
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "getFieldByIndex",
+          "lineNumber": 31
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "ResolvePath",
+          "lineNumber": 32
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "getAscii",
+          "lineNumber": 32
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "getLength",
+          "lineNumber": 32
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "Flint::lock",
+          "lineNumber": 33
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "throwNew",
+          "lineNumber": 35
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "findClass",
+          "lineNumber": 35
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "FlintAPI::IO::fopen",
+          "lineNumber": 42
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "throwNew",
+          "lineNumber": 44
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "findClass",
+          "lineNumber": 44
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "setInt32",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "getFieldByIndex",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NativeFileOutputStream_Open",
+          "callee": "Flint::unlock",
+          "lineNumber": 48
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "getObj",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "getFieldByIndex",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "getInt32",
+          "lineNumber": 53
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "getFieldByIndex",
+          "lineNumber": 53
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "throwNew",
+          "lineNumber": 55
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "findClass",
+          "lineNumber": 55
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "Flint::consoleWrite",
+          "lineNumber": 61
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "FlintAPI::IO::fwrite",
+          "lineNumber": 69
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "throwNew",
+          "lineNumber": 71
+        },
+        {
+          "caller": "NativeFileOutputStream_Write",
+          "callee": "findClass",
+          "lineNumber": 71
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "throwNew",
+          "lineNumber": 77
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "findClass",
+          "lineNumber": 77
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getLength",
+          "lineNumber": 80
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "findClass",
+          "lineNumber": 81
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "throwNew",
+          "lineNumber": 83
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getLength",
+          "lineNumber": 83
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "throwNew",
+          "lineNumber": 85
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getLength",
+          "lineNumber": 85
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getObj",
+          "lineNumber": 88
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getFieldByIndex",
+          "lineNumber": 88
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getInt32",
+          "lineNumber": 89
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getFieldByIndex",
+          "lineNumber": 89
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "CheckArrayIndexSize",
+          "lineNumber": 90
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "throwNew",
+          "lineNumber": 92
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "findClass",
+          "lineNumber": 92
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getData",
+          "lineNumber": 99
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "Flint::consoleWrite",
+          "lineNumber": 100
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "getData",
+          "lineNumber": 106
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "FlintAPI::IO::fwrite",
+          "lineNumber": 108
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "throwNew",
+          "lineNumber": 110
+        },
+        {
+          "caller": "NativeFileOutputStream_WriteBytes",
+          "callee": "findClass",
+          "lineNumber": 110
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "getObj",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "getFieldByIndex",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "getInt32",
+          "lineNumber": 116
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "getFieldByIndex",
+          "lineNumber": 116
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "Flint::lock",
+          "lineNumber": 117
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "FlintAPI::IO::fclose",
+          "lineNumber": 120
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "setInt32",
+          "lineNumber": 121
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "getFieldByIndex",
+          "lineNumber": 121
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "throwNew",
+          "lineNumber": 123
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "findClass",
+          "lineNumber": 123
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "throwNew",
+          "lineNumber": 127
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "findClass",
+          "lineNumber": 127
+        },
+        {
+          "caller": "NativeFileOutputStream_Close",
+          "callee": "Flint::unlock",
+          "lineNumber": 128
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_io_file.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 231,
+      "nonEmptyLines": 208,
+      "functions": [
+        {
+          "name": "OpenDir",
+          "startLine": 19,
+          "endLine": 23,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_GetSeparatorChar0",
+          "startLine": 25,
+          "endLine": 28,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeIoFile_GetPathSeparatorChar0",
+          "startLine": 30,
+          "endLine": 33,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeIoFile_IsAbsolute",
+          "startLine": 35,
+          "endLine": 41,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_GetAbsolutePath",
+          "startLine": 43,
+          "endLine": 54,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_Exists",
+          "startLine": 56,
+          "endLine": 61,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_CanWrite",
+          "startLine": 63,
+          "endLine": 70,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_CanRead",
+          "startLine": 72,
+          "endLine": 79,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_IsFile",
+          "startLine": 81,
+          "endLine": 88,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_IsDirectory",
+          "startLine": 90,
+          "endLine": 92,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_IsHidden",
+          "startLine": 94,
+          "endLine": 101,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_LastModified",
+          "startLine": 103,
+          "endLine": 110,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_Length",
+          "startLine": 112,
+          "endLine": 119,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_Mkdir",
+          "startLine": 121,
+          "endLine": 125,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_RenameTo",
+          "startLine": 127,
+          "endLine": 137,
+          "params": [
+            "env",
+            "file",
+            "dest"
+          ]
+        },
+        {
+          "name": "NativeIoFile_Delete0",
+          "startLine": 139,
+          "endLine": 143,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_Rmdir0",
+          "startLine": 145,
+          "endLine": 147,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_List",
+          "startLine": 149,
+          "endLine": 193,
+          "params": [
+            "env",
+            "file"
+          ]
+        },
+        {
+          "name": "NativeIoFile_GetCanonicalPath",
+          "startLine": 195,
+          "endLine": 222,
+          "params": [
+            "env",
+            "file",
+            "path"
+          ]
+        },
+        {
+          "name": "NativeIoFile_CreateNewFile",
+          "startLine": 224,
+          "endLine": 231,
+          "params": [
+            "env",
+            "file"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeIoFile_GetSeparatorChar0",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_GetPathSeparatorChar0",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_IsAbsolute",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_GetAbsolutePath",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_Exists",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_CanWrite",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_CanRead",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_IsFile",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_IsDirectory",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_IsHidden",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_LastModified",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_Length",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_Mkdir",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_RenameTo",
+          "line": 127,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_Delete0",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_Rmdir0",
+          "line": 145,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_List",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_GetCanonicalPath",
+          "line": 195,
+          "isDefault": false
+        },
+        {
+          "name": "NativeIoFile_CreateNewFile",
+          "line": 224,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "OpenDir",
+          "callee": "ResolvePath",
+          "lineNumber": 21
+        },
+        {
+          "caller": "OpenDir",
+          "callee": "FlintAPI::IO::opendir",
+          "lineNumber": 22
+        },
+        {
+          "caller": "NativeIoFile_GetSeparatorChar0",
+          "callee": "GetPathSeparatorChar",
+          "lineNumber": 27
+        },
+        {
+          "caller": "NativeIoFile_IsAbsolute",
+          "callee": "getObj",
+          "lineNumber": 37
+        },
+        {
+          "caller": "NativeIoFile_IsAbsolute",
+          "callee": "getFieldByIndex",
+          "lineNumber": 37
+        },
+        {
+          "caller": "NativeIoFile_IsAbsolute",
+          "callee": "getAscii",
+          "lineNumber": 38
+        },
+        {
+          "caller": "NativeIoFile_IsAbsolute",
+          "callee": "getLength",
+          "lineNumber": 39
+        },
+        {
+          "caller": "NativeIoFile_IsAbsolute",
+          "callee": "IsAbsolutePath",
+          "lineNumber": 40
+        },
+        {
+          "caller": "NativeIoFile_GetAbsolutePath",
+          "callee": "getObj",
+          "lineNumber": 44
+        },
+        {
+          "caller": "NativeIoFile_GetAbsolutePath",
+          "callee": "getFieldByIndex",
+          "lineNumber": 44
+        },
+        {
+          "caller": "NativeIoFile_GetAbsolutePath",
+          "callee": "getAscii",
+          "lineNumber": 45
+        },
+        {
+          "caller": "NativeIoFile_GetAbsolutePath",
+          "callee": "getLength",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NativeIoFile_GetAbsolutePath",
+          "callee": "IsAbsolutePath",
+          "lineNumber": 47
+        },
+        {
+          "caller": "NativeIoFile_GetAbsolutePath",
+          "callee": "ResolvePath",
+          "lineNumber": 51
+        },
+        {
+          "caller": "NativeIoFile_GetAbsolutePath",
+          "callee": "Flint::newString",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NativeIoFile_Exists",
+          "callee": "ResolvePath",
+          "lineNumber": 59
+        },
+        {
+          "caller": "NativeIoFile_Exists",
+          "callee": "FlintAPI::IO::finfo",
+          "lineNumber": 60
+        },
+        {
+          "caller": "NativeIoFile_CanWrite",
+          "callee": "ResolvePath",
+          "lineNumber": 66
+        },
+        {
+          "caller": "NativeIoFile_CanWrite",
+          "callee": "FlintAPI::IO::finfo",
+          "lineNumber": 67
+        },
+        {
+          "caller": "NativeIoFile_CanRead",
+          "callee": "ResolvePath",
+          "lineNumber": 75
+        },
+        {
+          "caller": "NativeIoFile_CanRead",
+          "callee": "FlintAPI::IO::finfo",
+          "lineNumber": 76
+        },
+        {
+          "caller": "NativeIoFile_IsFile",
+          "callee": "ResolvePath",
+          "lineNumber": 84
+        },
+        {
+          "caller": "NativeIoFile_IsFile",
+          "callee": "FlintAPI::IO::finfo",
+          "lineNumber": 85
+        },
+        {
+          "caller": "NativeIoFile_IsDirectory",
+          "callee": "NativeIoFile_IsFile",
+          "lineNumber": 91
+        },
+        {
+          "caller": "NativeIoFile_IsHidden",
+          "callee": "ResolvePath",
+          "lineNumber": 97
+        },
+        {
+          "caller": "NativeIoFile_IsHidden",
+          "callee": "FlintAPI::IO::finfo",
+          "lineNumber": 98
+        },
+        {
+          "caller": "NativeIoFile_LastModified",
+          "callee": "ResolvePath",
+          "lineNumber": 106
+        },
+        {
+          "caller": "NativeIoFile_LastModified",
+          "callee": "FlintAPI::IO::finfo",
+          "lineNumber": 107
+        },
+        {
+          "caller": "NativeIoFile_Length",
+          "callee": "ResolvePath",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeIoFile_Length",
+          "callee": "FlintAPI::IO::finfo",
+          "lineNumber": 116
+        },
+        {
+          "caller": "NativeIoFile_Mkdir",
+          "callee": "ResolvePath",
+          "lineNumber": 123
+        },
+        {
+          "caller": "NativeIoFile_Mkdir",
+          "callee": "FlintAPI::IO::mkdir",
+          "lineNumber": 124
+        },
+        {
+          "caller": "NativeIoFile_RenameTo",
+          "callee": "throwNew",
+          "lineNumber": 129
+        },
+        {
+          "caller": "NativeIoFile_RenameTo",
+          "callee": "findClass",
+          "lineNumber": 129
+        },
+        {
+          "caller": "NativeIoFile_RenameTo",
+          "callee": "ResolvePath",
+          "lineNumber": 134
+        },
+        {
+          "caller": "NativeIoFile_RenameTo",
+          "callee": "ResolvePath",
+          "lineNumber": 135
+        },
+        {
+          "caller": "NativeIoFile_RenameTo",
+          "callee": "FlintAPI::IO::frename",
+          "lineNumber": 136
+        },
+        {
+          "caller": "NativeIoFile_Delete0",
+          "callee": "ResolvePath",
+          "lineNumber": 141
+        },
+        {
+          "caller": "NativeIoFile_Delete0",
+          "callee": "FlintAPI::IO::fremove",
+          "lineNumber": 142
+        },
+        {
+          "caller": "NativeIoFile_Rmdir0",
+          "callee": "NativeIoFile_Delete0",
+          "lineNumber": 146
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "OpenDir",
+          "lineNumber": 150
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "Flint::findClassOfArray",
+          "lineNumber": 153
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "Flint::newArray",
+          "lineNumber": 154
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "clearArray",
+          "lineNumber": 156
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "FlintAPI::IO::readdir",
+          "lineNumber": 160
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "throwNew",
+          "lineNumber": 161
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "findClass",
+          "lineNumber": 161
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "FlintAPI::IO::closedir",
+          "lineNumber": 165
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getLength",
+          "lineNumber": 166
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "Flint::newArray",
+          "lineNumber": 167
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "clearArray",
+          "lineNumber": 169
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "memcpy",
+          "lineNumber": 170
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getData",
+          "lineNumber": 170
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getData",
+          "lineNumber": 170
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getLength",
+          "lineNumber": 170
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "freeObject",
+          "lineNumber": 171
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getLength",
+          "lineNumber": 176
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "Flint::newArray",
+          "lineNumber": 177
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getLength",
+          "lineNumber": 177
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "clearArray",
+          "lineNumber": 179
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "memcpy",
+          "lineNumber": 180
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getData",
+          "lineNumber": 180
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getData",
+          "lineNumber": 180
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getLength",
+          "lineNumber": 180
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "freeObject",
+          "lineNumber": 181
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getData",
+          "lineNumber": 184
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "Flint::newString",
+          "lineNumber": 184
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getData",
+          "lineNumber": 185
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "freeObject",
+          "lineNumber": 189
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "getData",
+          "lineNumber": 189
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "freeObject",
+          "lineNumber": 190
+        },
+        {
+          "caller": "NativeIoFile_List",
+          "callee": "FlintAPI::IO::closedir",
+          "lineNumber": 191
+        },
+        {
+          "caller": "NativeIoFile_GetCanonicalPath",
+          "callee": "ResolvePath",
+          "lineNumber": 197
+        },
+        {
+          "caller": "NativeIoFile_GetCanonicalPath",
+          "callee": "GetPathSeparatorChar",
+          "lineNumber": 198
+        },
+        {
+          "caller": "NativeIoFile_GetCanonicalPath",
+          "callee": "Flint::newString",
+          "lineNumber": 221
+        },
+        {
+          "caller": "NativeIoFile_CreateNewFile",
+          "callee": "ResolvePath",
+          "lineNumber": 226
+        },
+        {
+          "caller": "NativeIoFile_CreateNewFile",
+          "callee": "FlintAPI::IO::fopen",
+          "lineNumber": 227
+        },
+        {
+          "caller": "NativeIoFile_CreateNewFile",
+          "callee": "FlintAPI::IO::fclose",
+          "lineNumber": 229
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 19,
+        "functionCount": 20,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_math.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 62,
+      "functions": [
+        {
+          "name": "NativeMath_Sin",
+          "startLine": 5,
+          "endLine": 8,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Cos",
+          "startLine": 10,
+          "endLine": 13,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Tan",
+          "startLine": 15,
+          "endLine": 18,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Asin",
+          "startLine": 20,
+          "endLine": 23,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Acos",
+          "startLine": 25,
+          "endLine": 28,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Atan",
+          "startLine": 30,
+          "endLine": 33,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Log",
+          "startLine": 35,
+          "endLine": 38,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Log10",
+          "startLine": 40,
+          "endLine": 43,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Sqrt",
+          "startLine": 45,
+          "endLine": 48,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Cbrt",
+          "startLine": 50,
+          "endLine": 53,
+          "params": [
+            "env",
+            "a"
+          ]
+        },
+        {
+          "name": "NativeMath_Atan2",
+          "startLine": 55,
+          "endLine": 58,
+          "params": [
+            "env",
+            "y",
+            "x"
+          ]
+        },
+        {
+          "name": "NativeMath_Pow",
+          "startLine": 60,
+          "endLine": 63,
+          "params": [
+            "env",
+            "a",
+            "b"
+          ]
+        },
+        {
+          "name": "NativeMath_Sinh",
+          "startLine": 65,
+          "endLine": 68,
+          "params": [
+            "env",
+            "x"
+          ]
+        },
+        {
+          "name": "NativeMath_Cosh",
+          "startLine": 70,
+          "endLine": 73,
+          "params": [
+            "env",
+            "x"
+          ]
+        },
+        {
+          "name": "NativeMath_Tanh",
+          "startLine": 75,
+          "endLine": 78,
+          "params": [
+            "env",
+            "x"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeMath_Sin",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Cos",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Tan",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Asin",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Acos",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Atan",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Log",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Log10",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Sqrt",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Cbrt",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Atan2",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Pow",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Sinh",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Cosh",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "NativeMath_Tanh",
+          "line": 75,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeMath_Sin",
+          "callee": "sin",
+          "lineNumber": 7
+        },
+        {
+          "caller": "NativeMath_Cos",
+          "callee": "cos",
+          "lineNumber": 12
+        },
+        {
+          "caller": "NativeMath_Tan",
+          "callee": "tan",
+          "lineNumber": 17
+        },
+        {
+          "caller": "NativeMath_Asin",
+          "callee": "asin",
+          "lineNumber": 22
+        },
+        {
+          "caller": "NativeMath_Acos",
+          "callee": "acos",
+          "lineNumber": 27
+        },
+        {
+          "caller": "NativeMath_Atan",
+          "callee": "atan",
+          "lineNumber": 32
+        },
+        {
+          "caller": "NativeMath_Log",
+          "callee": "log",
+          "lineNumber": 37
+        },
+        {
+          "caller": "NativeMath_Log10",
+          "callee": "log10",
+          "lineNumber": 42
+        },
+        {
+          "caller": "NativeMath_Sqrt",
+          "callee": "sqrt",
+          "lineNumber": 47
+        },
+        {
+          "caller": "NativeMath_Cbrt",
+          "callee": "cbrt",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NativeMath_Atan2",
+          "callee": "atan2",
+          "lineNumber": 57
+        },
+        {
+          "caller": "NativeMath_Pow",
+          "callee": "pow",
+          "lineNumber": 62
+        },
+        {
+          "caller": "NativeMath_Sinh",
+          "callee": "sinh",
+          "lineNumber": 67
+        },
+        {
+          "caller": "NativeMath_Cosh",
+          "callee": "cosh",
+          "lineNumber": 72
+        },
+        {
+          "caller": "NativeMath_Tanh",
+          "callee": "tanh",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 15,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_method.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 110,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "NativeMethod_Invoke0",
+          "startLine": 9,
+          "endLine": 110,
+          "params": [
+            "env",
+            "thisObj",
+            "obj",
+            "args"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeMethod_Invoke0",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getInt32",
+          "lineNumber": 10
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 10
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getObj",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getObj",
+          "lineNumber": 12
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 12
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getLength",
+          "lineNumber": 16
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "stackPushObject",
+          "lineNumber": 18
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getData",
+          "lineNumber": 22
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "isPrimitive",
+          "lineNumber": 23
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getTypeName",
+          "lineNumber": 24
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "strcmp",
+          "lineNumber": 25
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "strcmp",
+          "lineNumber": 25
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "stackPushInt64",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getInt64",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getData",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "stackPushInt32",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getInt32",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getData",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "stackPushObject",
+          "lineNumber": 35
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getData",
+          "lineNumber": 35
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "callMethod",
+          "lineNumber": 42
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "Flint::getClassOfClass",
+          "lineNumber": 44
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getClassLoader",
+          "lineNumber": 45
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "Flint::findMethod",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt32",
+          "lineNumber": 48
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 48
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "callMethod",
+          "lineNumber": 50
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "hasTerminateRequest",
+          "lineNumber": 52
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "hasException",
+          "lineNumber": 54
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "throwNew",
+          "lineNumber": 55
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 55
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getTypeName",
+          "lineNumber": 58
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "newObject",
+          "lineNumber": 60
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 60
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt32",
+          "lineNumber": 62
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 62
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "newObject",
+          "lineNumber": 66
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 66
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt32",
+          "lineNumber": 68
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 68
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "newObject",
+          "lineNumber": 72
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 72
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt32",
+          "lineNumber": 74
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 74
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "newObject",
+          "lineNumber": 78
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 78
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt32",
+          "lineNumber": 80
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 80
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "newObject",
+          "lineNumber": 84
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 84
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt32",
+          "lineNumber": 86
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 86
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "newObject",
+          "lineNumber": 90
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 90
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt32",
+          "lineNumber": 92
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 92
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "newObject",
+          "lineNumber": 96
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 96
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt64",
+          "lineNumber": 98
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 98
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "newObject",
+          "lineNumber": 102
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "findClass",
+          "lineNumber": 102
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "setInt64",
+          "lineNumber": 104
+        },
+        {
+          "caller": "NativeMethod_Invoke0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_object.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "NativeObject_GetClass",
+          "startLine": 7,
+          "endLine": 9,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeObject_HashCode",
+          "startLine": 11,
+          "endLine": 14,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeObject_Clone",
+          "startLine": 16,
+          "endLine": 28,
+          "params": [
+            "env",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeObject_GetClass",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "NativeObject_HashCode",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "NativeObject_Clone",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeObject_GetClass",
+          "callee": "Flint::getClassOfClass",
+          "lineNumber": 8
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "isArray",
+          "lineNumber": 17
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "getLength",
+          "lineNumber": 18
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "Flint::newArray",
+          "lineNumber": 19
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "memcpy",
+          "lineNumber": 21
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "getData",
+          "lineNumber": 21
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "getData",
+          "lineNumber": 21
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "getSizeInByte",
+          "lineNumber": 21
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "throwNew",
+          "lineNumber": 25
+        },
+        {
+          "caller": "NativeObject_Clone",
+          "callee": "findClass",
+          "lineNumber": 25
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_reflection.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "NativeReflection_GetCallerClass",
+          "startLine": 5,
+          "endLine": 7,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeReflection_GetClassAccessFlags",
+          "startLine": 9,
+          "endLine": 12,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeReflection_AreNestMates",
+          "startLine": 14,
+          "endLine": 19,
+          "params": [
+            "env",
+            "currentClass",
+            "memberClass"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeReflection_GetCallerClass",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "NativeReflection_GetClassAccessFlags",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "NativeReflection_AreNestMates",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeReflection_GetCallerClass",
+          "callee": "getCallerClass",
+          "lineNumber": 6
+        },
+        {
+          "caller": "NativeReflection_GetClassAccessFlags",
+          "callee": "getAccessFlag",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeReflection_GetClassAccessFlags",
+          "callee": "getClassLoader",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeReflection_AreNestMates",
+          "callee": "getNestHost",
+          "lineNumber": 15
+        },
+        {
+          "caller": "NativeReflection_AreNestMates",
+          "callee": "getNestHost",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_string.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 5,
+      "functions": [
+        {
+          "name": "NativeString_Intern",
+          "startLine": 5,
+          "endLine": 7,
+          "params": [
+            "env",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeString_Intern",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeString_Intern",
+          "callee": "Flint::getConstString",
+          "lineNumber": 6
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_system.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 93,
+      "nonEmptyLines": 86,
+      "functions": [
+        {
+          "name": "NativeSystem_setOut0",
+          "startLine": 8,
+          "endLine": 14,
+          "params": [
+            "env",
+            "out"
+          ]
+        },
+        {
+          "name": "NativeSystem_CurrentTimeMillis",
+          "startLine": 16,
+          "endLine": 19,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeSystem_NanoTime",
+          "startLine": 21,
+          "endLine": 24,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "checkParam",
+          "startLine": 26,
+          "endLine": 80,
+          "params": [
+            "env",
+            "src",
+            "srcPos",
+            "dest",
+            "destPos",
+            "length"
+          ]
+        },
+        {
+          "name": "NativeSystem_Arraycopy",
+          "startLine": 82,
+          "endLine": 88,
+          "params": [
+            "env",
+            "src",
+            "srcPos",
+            "dest",
+            "destPos",
+            "length"
+          ]
+        },
+        {
+          "name": "NativeSystem_IdentityHashCode",
+          "startLine": 90,
+          "endLine": 93,
+          "params": [
+            "env",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeSystem_setOut0",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSystem_CurrentTimeMillis",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSystem_NanoTime",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSystem_Arraycopy",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "NativeSystem_IdentityHashCode",
+          "line": 90,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeSystem_setOut0",
+          "callee": "findClass",
+          "lineNumber": 9
+        },
+        {
+          "caller": "NativeSystem_setOut0",
+          "callee": "getStaticField",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeSystem_setOut0",
+          "callee": "getClassLoader",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeSystem_setOut0",
+          "callee": "setObj",
+          "lineNumber": 13
+        },
+        {
+          "caller": "NativeSystem_CurrentTimeMillis",
+          "callee": "FlintAPI::System::getTimeMillis",
+          "lineNumber": 18
+        },
+        {
+          "caller": "NativeSystem_NanoTime",
+          "callee": "FlintAPI::System::getTimeNanos",
+          "lineNumber": 23
+        },
+        {
+          "caller": "checkParam",
+          "callee": "throwNew",
+          "lineNumber": 28
+        },
+        {
+          "caller": "checkParam",
+          "callee": "findClass",
+          "lineNumber": 28
+        },
+        {
+          "caller": "checkParam",
+          "callee": "isArray",
+          "lineNumber": 31
+        },
+        {
+          "caller": "checkParam",
+          "callee": "isArray",
+          "lineNumber": 31
+        },
+        {
+          "caller": "checkParam",
+          "callee": "findClass",
+          "lineNumber": 32
+        },
+        {
+          "caller": "checkParam",
+          "callee": "isArray",
+          "lineNumber": 33
+        },
+        {
+          "caller": "checkParam",
+          "callee": "throwNew",
+          "lineNumber": 34
+        },
+        {
+          "caller": "checkParam",
+          "callee": "isArray",
+          "lineNumber": 34
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getTypeName",
+          "lineNumber": 34
+        },
+        {
+          "caller": "checkParam",
+          "callee": "findClass",
+          "lineNumber": 38
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getCompTypeName",
+          "lineNumber": 41
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getCompTypeName",
+          "lineNumber": 42
+        },
+        {
+          "caller": "checkParam",
+          "callee": "throwNew",
+          "lineNumber": 43
+        },
+        {
+          "caller": "checkParam",
+          "callee": "findClass",
+          "lineNumber": 47
+        },
+        {
+          "caller": "checkParam",
+          "callee": "throwNew",
+          "lineNumber": 48
+        },
+        {
+          "caller": "checkParam",
+          "callee": "findClass",
+          "lineNumber": 52
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getCompTypeName",
+          "lineNumber": 54
+        },
+        {
+          "caller": "checkParam",
+          "callee": "throwNew",
+          "lineNumber": 55
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getLength",
+          "lineNumber": 55
+        },
+        {
+          "caller": "checkParam",
+          "callee": "findClass",
+          "lineNumber": 59
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getCompTypeName",
+          "lineNumber": 61
+        },
+        {
+          "caller": "checkParam",
+          "callee": "throwNew",
+          "lineNumber": 62
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getLength",
+          "lineNumber": 62
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getLength",
+          "lineNumber": 65
+        },
+        {
+          "caller": "checkParam",
+          "callee": "findClass",
+          "lineNumber": 66
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getCompTypeName",
+          "lineNumber": 68
+        },
+        {
+          "caller": "checkParam",
+          "callee": "throwNew",
+          "lineNumber": 69
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getLength",
+          "lineNumber": 69
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getLength",
+          "lineNumber": 72
+        },
+        {
+          "caller": "checkParam",
+          "callee": "findClass",
+          "lineNumber": 73
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getCompTypeName",
+          "lineNumber": 75
+        },
+        {
+          "caller": "checkParam",
+          "callee": "throwNew",
+          "lineNumber": 76
+        },
+        {
+          "caller": "checkParam",
+          "callee": "getLength",
+          "lineNumber": 76
+        },
+        {
+          "caller": "NativeSystem_Arraycopy",
+          "callee": "checkParam",
+          "lineNumber": 83
+        },
+        {
+          "caller": "NativeSystem_Arraycopy",
+          "callee": "getData",
+          "lineNumber": 84
+        },
+        {
+          "caller": "NativeSystem_Arraycopy",
+          "callee": "getData",
+          "lineNumber": 85
+        },
+        {
+          "caller": "NativeSystem_Arraycopy",
+          "callee": "componentSize",
+          "lineNumber": 86
+        },
+        {
+          "caller": "NativeSystem_Arraycopy",
+          "callee": "memcpy",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_thread.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 44,
+      "functions": [
+        {
+          "name": "NativeThread_Start0",
+          "startLine": 8,
+          "endLine": 26,
+          "params": [
+            "env",
+            "thread"
+          ]
+        },
+        {
+          "name": "NativeThread_Yield0",
+          "startLine": 28,
+          "endLine": 31,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeThread_Interrupt0",
+          "startLine": 33,
+          "endLine": 38,
+          "params": [
+            "env",
+            "thread"
+          ]
+        },
+        {
+          "name": "NativeThread_CurrentThread",
+          "startLine": 40,
+          "endLine": 43,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeThread_Sleep0",
+          "startLine": 45,
+          "endLine": 53,
+          "params": [
+            "env",
+            "millis"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeThread_Start0",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "NativeThread_Yield0",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "NativeThread_Interrupt0",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "NativeThread_CurrentThread",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "NativeThread_Sleep0",
+          "line": 45,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "getTask",
+          "lineNumber": 10
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "Flint::newExecution",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "getClassLoader",
+          "lineNumber": 15
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "getMethodInfo",
+          "lineNumber": 16
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "throwNew",
+          "lineNumber": 18
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "findClass",
+          "lineNumber": 18
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "getTypeName",
+          "lineNumber": 18
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "run",
+          "lineNumber": 22
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "Flint::freeExecution",
+          "lineNumber": 23
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "throwNew",
+          "lineNumber": 24
+        },
+        {
+          "caller": "NativeThread_Start0",
+          "callee": "findClass",
+          "lineNumber": 24
+        },
+        {
+          "caller": "NativeThread_Yield0",
+          "callee": "FlintAPI::Thread::yield",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeThread_Interrupt0",
+          "callee": "throwNew",
+          "lineNumber": 37
+        },
+        {
+          "caller": "NativeThread_Interrupt0",
+          "callee": "findClass",
+          "lineNumber": 37
+        },
+        {
+          "caller": "NativeThread_CurrentThread",
+          "callee": "getOnwerThread",
+          "lineNumber": 42
+        },
+        {
+          "caller": "NativeThread_Sleep0",
+          "callee": "FlintAPI::System::getTimeMillis",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NativeThread_Sleep0",
+          "callee": "FlintAPI::System::getTimeMillis",
+          "lineNumber": 47
+        },
+        {
+          "caller": "NativeThread_Sleep0",
+          "callee": "FlintAPI::Thread::sleep",
+          "lineNumber": 48
+        },
+        {
+          "caller": "NativeThread_Sleep0",
+          "callee": "hasTerminateRequest",
+          "lineNumber": 49
+        },
+        {
+          "caller": "NativeThread_Sleep0",
+          "callee": "FlintAPI::System::getTimeMillis",
+          "lineNumber": 51
+        },
+        {
+          "caller": "NativeThread_Sleep0",
+          "callee": "FlintAPI::Thread::sleep",
+          "lineNumber": 52
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 63,
+      "functions": [
+        {
+          "name": "findNativeMethod",
+          "startLine": 45,
+          "endLine": 66,
+          "params": [
+            "methodInfo"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "findNativeMethod",
+          "line": 45,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "findNativeMethod",
+          "callee": "getHashKey",
+          "lineNumber": 46
+        },
+        {
+          "caller": "findNativeMethod",
+          "callee": "LENGTH",
+          "lineNumber": 47
+        },
+        {
+          "caller": "findNativeMethod",
+          "callee": "strcmp",
+          "lineNumber": 51
+        },
+        {
+          "caller": "findNativeMethod",
+          "callee": "getName",
+          "lineNumber": 51
+        },
+        {
+          "caller": "findNativeMethod",
+          "callee": "strcmp",
+          "lineNumber": 56
+        },
+        {
+          "caller": "findNativeMethod",
+          "callee": "strcmp",
+          "lineNumber": 57
+        },
+        {
+          "caller": "findNativeMethod",
+          "callee": "FlintAPI::System::findNativeMethod",
+          "lineNumber": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_array.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 48,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_character.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_class.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 44,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_constructor.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_double.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_float.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_interface.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 108,
+      "nonEmptyLines": 88,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_io_file_descriptor.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_io_file_input_stream.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 22,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_io_file_output_stream.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 14,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_io_file.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 44,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_math.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/Inc/flint_native_method.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

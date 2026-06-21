@@ -1,0 +1,291 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [
+    "sample/25-soundcontroller/kernel.h",
+    "sample/26-mqtt/main.cpp",
+    "sample/26-mqtt/Makefile",
+    "sample/26-mqtt/kernel.cpp",
+    "sample/26-mqtt/kernel.h",
+    "sample/27-filesystem/main.cpp",
+    "sample/27-filesystem/Makefile",
+    "sample/27-filesystem/kernel.cpp",
+    "sample/27-filesystem/kernel.h",
+    "sample/28-buttondemo/main.cpp",
+    "sample/28-buttondemo/Makefile",
+    "sample/28-buttondemo/kernel.cpp",
+    "sample/28-buttondemo/kernel.h",
+    "sample/30-ethsniffer/main.cpp",
+    "sample/30-ethsniffer/Makefile",
+    "sample/30-ethsniffer/kernel.cpp",
+    "sample/30-ethsniffer/kernel.h",
+    "sample/31-serialtty/main.cpp",
+    "sample/31-serialtty/Makefile",
+    "sample/31-serialtty/kernel.cpp",
+    "sample/31-serialtty/kernel.h",
+    "sample/32-usbgamepad/main.cpp",
+    "sample/32-usbgamepad/Makefile",
+    "sample/32-usbgamepad/kernel.cpp",
+    "sample/32-usbgamepad/kernel.h",
+    "sample/33-i2csky/main.cpp",
+    "sample/33-i2csky/Makefile",
+    "sample/33-i2csky/kernel.cpp"
+  ],
+  "results": [
+    {
+      "path": "sample/29-miniorgan/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/29-miniorgan/Makefile",
+      "language": "makefile",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/29-miniorgan/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 114,
+      "nonEmptyLines": 93,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 30,
+          "endLine": 43,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 45,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 49,
+          "endLine": 92,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 94,
+          "endLine": 114,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 94,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetDevice",
+          "lineNumber": 34
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 34
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Run",
+          "callee": "Start",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Run",
+          "callee": "IsActive",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Run",
+          "callee": "UpdatePlugAndPlay",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Run",
+          "callee": "Process",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 110
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/29-miniorgan/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

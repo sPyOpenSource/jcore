@@ -1,0 +1,253 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/linux/completion.cpp",
+      "language": "cpp",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/delay.cpp",
+      "language": "cpp",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/kthread.cpp",
+      "language": "cpp",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/mutex.cpp",
+      "language": "cpp",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/pthread.cpp",
+      "language": "cpp",
+      "sizeLines": 262,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/rwlock.cpp",
+      "language": "cpp",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/semaphore.cpp",
+      "language": "cpp",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/spinlock.cpp",
+      "language": "cpp",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/kernel.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/ledtask.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/ledtask.h",
+      "language": "c",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/primetask.cpp",
+      "language": "cpp",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/primetask.h",
+      "language": "c",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/screentask.cpp",
+      "language": "cpp",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/sample/screentask.h",
+      "language": "c",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9arch.h",
+      "language": "c",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/wlan/p9proc.cpp",
+      "language": "cpp",
+      "sizeLines": 219,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/multicore.h",
+      "language": "c",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/net/dhcpclient.h",
+      "language": "c",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/net/nettask.h",
+      "language": "c",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/net/phytask.h",
+      "language": "c",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/net/retranstimeoutcalc.h",
+      "language": "c",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/net/tftpdaemon.h",
+      "language": "c",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/sched/mutex.h",
+      "language": "c",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/sched/scheduler.h",
+      "language": "c",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/linux/completion.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/linux/delay.cpp": [
+      "include/circle/sched/scheduler.h",
+      "include/circle/timer.h"
+    ],
+    "addon/linux/kthread.cpp": [
+      "include/circle/sched/scheduler.h",
+      "include/circle/sched/task.h",
+      "include/circle/stdarg.h",
+      "include/circle/string.h"
+    ],
+    "addon/linux/mutex.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/linux/pthread.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/task.h",
+      "include/circle/sysconfig.h"
+    ],
+    "addon/linux/rwlock.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/linux/semaphore.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/linux/spinlock.cpp": [
+      "include/circle/multicore.h",
+      "include/circle/synchronize.h"
+    ],
+    "addon/profile/sample/kernel.cpp": [
+      "addon/profile/sample/kernel.h",
+      "addon/profile/sample/ledtask.h",
+      "addon/profile/sample/primetask.h",
+      "addon/profile/sample/screentask.h",
+      "include/assert.h",
+      "include/circle/string.h"
+    ],
+    "addon/profile/sample/kernel.h": [],
+    "addon/profile/sample/ledtask.cpp": [
+      "addon/profile/sample/ledtask.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/profile/sample/ledtask.h": [],
+    "addon/profile/sample/main.cpp": [
+      "addon/profile/sample/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/profile/sample/primetask.cpp": [
+      "addon/profile/sample/primetask.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "addon/profile/sample/primetask.h": [],
+    "addon/profile/sample/screentask.cpp": [
+      "addon/profile/sample/screentask.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h"
+    ],
+    "addon/profile/sample/screentask.h": [],
+    "addon/wlan/p9arch.h": [],
+    "addon/wlan/p9proc.cpp": [
+      "addon/wlan/p9arch.h",
+      "addon/wlan/p9proc.h",
+      "include/assert.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sched/task.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "include/circle/multicore.h": [],
+    "include/circle/net/dhcpclient.h": [],
+    "include/circle/net/nettask.h": [],
+    "include/circle/net/phytask.h": [],
+    "include/circle/net/retranstimeoutcalc.h": [],
+    "include/circle/net/tftpdaemon.h": [],
+    "include/circle/sched/mutex.h": [],
+    "include/circle/sched/scheduler.h": []
+  }
+}

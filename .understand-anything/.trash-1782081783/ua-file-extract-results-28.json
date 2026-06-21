@@ -1,0 +1,2523 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "include/circle/chainboot.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 33,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/input/mousebehaviour.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 89,
+      "nonEmptyLines": 71,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/input/rpitouchscreen.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/memory.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 192,
+      "nonEmptyLines": 166,
+      "callGraph": [
+        {
+          "caller": "switch",
+          "callee": "Allocate",
+          "lineNumber": 82
+        },
+        {
+          "caller": "switch",
+          "callee": "Allocate",
+          "lineNumber": 83
+        },
+        {
+          "caller": "switch",
+          "callee": "Allocate",
+          "lineNumber": 84
+        },
+        {
+          "caller": "switch",
+          "callee": "Allocate",
+          "lineNumber": 86
+        },
+        {
+          "caller": "switch",
+          "callee": "Allocate",
+          "lineNumber": 93
+        },
+        {
+          "caller": "HeapFree",
+          "callee": "Free",
+          "lineNumber": 120
+        },
+        {
+          "caller": "HeapFree",
+          "callee": "Free",
+          "lineNumber": 124
+        },
+        {
+          "caller": "HeapFree",
+          "callee": "Free",
+          "lineNumber": 127
+        },
+        {
+          "caller": "GetHeapFreeSpace",
+          "callee": "GetFreeSpace",
+          "lineNumber": 136
+        },
+        {
+          "caller": "GetHeapFreeSpace",
+          "callee": "GetFreeSpace",
+          "lineNumber": 137
+        },
+        {
+          "caller": "GetHeapFreeSpace",
+          "callee": "GetFreeSpace",
+          "lineNumber": 138
+        },
+        {
+          "caller": "GetHeapFreeSpace",
+          "callee": "GetFreeSpace",
+          "lineNumber": 139
+        },
+        {
+          "caller": "GetHeapFreeSpace",
+          "callee": "GetFreeSpace",
+          "lineNumber": 146
+        },
+        {
+          "caller": "PageFree",
+          "callee": "Free",
+          "lineNumber": 153
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 158
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 160
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpStatus",
+          "lineNumber": 165
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/pagetable.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 51,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/rpi/bcmpropertytags.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 330,
+      "nonEmptyLines": 301,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/spinlock.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 69,
+      "callGraph": [
+        {
+          "caller": "Acquire",
+          "callee": "EnterCritical",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Release",
+          "callee": "LeaveCritical",
+          "lineNumber": 74
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/sysconfig.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 504,
+      "nonEmptyLines": 388,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/translationtable64.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 41,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/usbsubsystem.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 75,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhciconfig.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 93,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/version.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 34,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/virtualgpiopin.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 44,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/alloc.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 64,
+      "functions": [
+        {
+          "name": "free",
+          "startLine": 37,
+          "endLine": 40,
+          "params": [
+            "pBlock"
+          ]
+        },
+        {
+          "name": "pfree",
+          "startLine": 70,
+          "endLine": 73,
+          "params": [
+            "pPage"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "free",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "pfree",
+          "line": 70,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "free",
+          "callee": "CMemorySystem::HeapFree",
+          "lineNumber": 39
+        },
+        {
+          "caller": "pfree",
+          "callee": "CMemorySystem::PageFree",
+          "lineNumber": 72
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/chainboot.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 99,
+      "nonEmptyLines": 83,
+      "functions": [
+        {
+          "name": "ChainBootStub",
+          "startLine": 35,
+          "endLine": 59,
+          "params": [
+            "pKernelImage",
+            "nKernelSize"
+          ]
+        },
+        {
+          "name": "EnableChainBoot",
+          "startLine": 61,
+          "endLine": 81,
+          "params": [
+            "pKernelImage",
+            "nKernelSize"
+          ]
+        },
+        {
+          "name": "IsChainBootEnabled",
+          "startLine": 83,
+          "endLine": 86,
+          "params": []
+        },
+        {
+          "name": "DoChainBoot",
+          "startLine": 88,
+          "endLine": 99,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "EnableChainBoot",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "IsChainBootEnabled",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "DoChainBoot",
+          "line": 88,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ChainBootStub",
+          "callee": "InvalidateInstructionCache",
+          "lineNumber": 50
+        },
+        {
+          "caller": "ChainBootStub",
+          "callee": "FlushBranchTargetCache",
+          "lineNumber": 52
+        },
+        {
+          "caller": "ChainBootStub",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 54
+        },
+        {
+          "caller": "ChainBootStub",
+          "callee": "InstructionSyncBarrier",
+          "lineNumber": 55
+        },
+        {
+          "caller": "ChainBootStub",
+          "callee": "(*pKernelStart)",
+          "lineNumber": 58
+        },
+        {
+          "caller": "EnableChainBoot",
+          "callee": "assert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "EnableChainBoot",
+          "callee": "memcpy",
+          "lineNumber": 73
+        },
+        {
+          "caller": "EnableChainBoot",
+          "callee": "InvalidateInstructionCache",
+          "lineNumber": 75
+        },
+        {
+          "caller": "EnableChainBoot",
+          "callee": "FlushBranchTargetCache",
+          "lineNumber": 77
+        },
+        {
+          "caller": "EnableChainBoot",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 79
+        },
+        {
+          "caller": "EnableChainBoot",
+          "callee": "InstructionSyncBarrier",
+          "lineNumber": 80
+        },
+        {
+          "caller": "DoChainBoot",
+          "callee": "(*pStub)",
+          "lineNumber": 98
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 3,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/input/mousebehaviour.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 316,
+      "nonEmptyLines": 268,
+      "functions": [
+        {
+          "name": "CMouseBehaviour",
+          "startLine": 61,
+          "endLine": 75,
+          "params": []
+        },
+        {
+          "name": "~CMouseBehaviour",
+          "startLine": 77,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "Setup",
+          "startLine": 87,
+          "endLine": 144,
+          "params": [
+            "pDisplay",
+            "bCursor"
+          ]
+        },
+        {
+          "name": "Release",
+          "startLine": 146,
+          "endLine": 170,
+          "params": []
+        },
+        {
+          "name": "RegisterEventHandler",
+          "startLine": 172,
+          "endLine": 177,
+          "params": [
+            "pEventHandler"
+          ]
+        },
+        {
+          "name": "SetCursor",
+          "startLine": 179,
+          "endLine": 198,
+          "params": [
+            "nPosX",
+            "nPosY"
+          ]
+        },
+        {
+          "name": "ShowCursor",
+          "startLine": 200,
+          "endLine": 210,
+          "params": [
+            "bShow"
+          ]
+        },
+        {
+          "name": "UpdateCursor",
+          "startLine": 212,
+          "endLine": 221,
+          "params": []
+        },
+        {
+          "name": "MouseStatusChanged",
+          "startLine": 223,
+          "endLine": 288,
+          "params": [
+            "nButtons",
+            "nDisplacementX",
+            "nDisplacementY",
+            "nWheelMove"
+          ]
+        },
+        {
+          "name": "SetCursorState",
+          "startLine": 290,
+          "endLine": 316,
+          "params": [
+            "nPosX",
+            "nPosY",
+            "bVisible"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CMouseBehaviour",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "~CMouseBehaviour",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "Setup",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "Release",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterEventHandler",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "SetCursor",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "ShowCursor",
+          "line": 200,
+          "isDefault": false
+        },
+        {
+          "name": "UpdateCursor",
+          "line": 212,
+          "isDefault": false
+        },
+        {
+          "name": "MouseStatusChanged",
+          "line": 223,
+          "isDefault": false
+        },
+        {
+          "name": "SetCursorState",
+          "line": 290,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CMouseBehaviour",
+          "callee": "SetCursorState",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Setup",
+          "callee": "assert",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetParent",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Setup",
+          "callee": "assert",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetParent",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Setup",
+          "callee": "assert",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetWidth",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Setup",
+          "callee": "assert",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Setup",
+          "callee": "assert",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetHeight",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Setup",
+          "callee": "assert",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetWidth",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetOffsetX",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Setup",
+          "callee": "assert",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetHeight",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetOffsetY",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Setup",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Setup",
+          "callee": "BUS_ADDRESS",
+          "lineNumber": 129
+        },
+        {
+          "caller": "Setup",
+          "callee": "GetTag",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Release",
+          "callee": "SetCursorState",
+          "lineNumber": 156
+        },
+        {
+          "caller": "RegisterEventHandler",
+          "callee": "assert",
+          "lineNumber": 174
+        },
+        {
+          "caller": "RegisterEventHandler",
+          "callee": "assert",
+          "lineNumber": 176
+        },
+        {
+          "caller": "SetCursor",
+          "callee": "assert",
+          "lineNumber": 181
+        },
+        {
+          "caller": "SetCursor",
+          "callee": "assert",
+          "lineNumber": 182
+        },
+        {
+          "caller": "SetCursor",
+          "callee": "SetCursorState",
+          "lineNumber": 197
+        },
+        {
+          "caller": "ShowCursor",
+          "callee": "assert",
+          "lineNumber": 205
+        },
+        {
+          "caller": "ShowCursor",
+          "callee": "assert",
+          "lineNumber": 206
+        },
+        {
+          "caller": "ShowCursor",
+          "callee": "SetCursorState",
+          "lineNumber": 207
+        },
+        {
+          "caller": "UpdateCursor",
+          "callee": "SetCursorState",
+          "lineNumber": 219
+        },
+        {
+          "caller": "MouseStatusChanged",
+          "callee": "(*m_pEventHandler)",
+          "lineNumber": 256
+        },
+        {
+          "caller": "MouseStatusChanged",
+          "callee": "(*m_pEventHandler)",
+          "lineNumber": 270
+        },
+        {
+          "caller": "MouseStatusChanged",
+          "callee": "(*m_pEventHandler)",
+          "lineNumber": 275
+        },
+        {
+          "caller": "MouseStatusChanged",
+          "callee": "(*m_pEventHandler)",
+          "lineNumber": 283
+        },
+        {
+          "caller": "SetCursorState",
+          "callee": "GetTag",
+          "lineNumber": 304
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/input/rpitouchscreen.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 186,
+      "nonEmptyLines": 153,
+      "functions": [
+        {
+          "name": "CRPiTouchScreen",
+          "startLine": 47,
+          "endLine": 52,
+          "params": []
+        },
+        {
+          "name": "~CRPiTouchScreen",
+          "startLine": 54,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 62,
+          "endLine": 99,
+          "params": []
+        },
+        {
+          "name": "Update",
+          "startLine": 101,
+          "endLine": 178,
+          "params": []
+        },
+        {
+          "name": "UpdateStub",
+          "startLine": 180,
+          "endLine": 186,
+          "params": [
+            "pParam"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TFT5406Buffer",
+          "startLine": 24,
+          "endLine": 39,
+          "methods": [],
+          "properties": [
+            "DeviceMode",
+            "GestureID",
+            "NumPoints",
+            "Point"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TFT5406Buffer",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "CRPiTouchScreen",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "~CRPiTouchScreen",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "Update",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "UpdateStub",
+          "line": 180,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CMemorySystem::GetCoherentPage",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Initialize",
+          "callee": "BUS_ADDRESS",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetTag",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetTag",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Update",
+          "callee": "assert",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Update",
+          "callee": "reinterpret_cast<volatile u8 *>",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Update",
+          "callee": "reinterpret_cast<volatile u8 *>",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Update",
+          "callee": "assert",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Update",
+          "callee": "assert",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Update",
+          "callee": "assert",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Update",
+          "callee": "ReportHandler",
+          "lineNumber": 149
+        },
+        {
+          "caller": "Update",
+          "callee": "ReportHandler",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Update",
+          "callee": "ReportHandler",
+          "lineNumber": 171
+        },
+        {
+          "caller": "UpdateStub",
+          "callee": "static_cast<CRPiTouchScreen *>",
+          "lineNumber": 182
+        },
+        {
+          "caller": "UpdateStub",
+          "callee": "assert",
+          "lineNumber": 183
+        },
+        {
+          "caller": "UpdateStub",
+          "callee": "Update",
+          "lineNumber": 185
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "lib/logger.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 455,
+      "nonEmptyLines": 367,
+      "functions": [
+        {
+          "name": "CLogger",
+          "startLine": 43,
+          "endLine": 59,
+          "params": [
+            "nLogLevel",
+            "pTimer",
+            "bOverwriteOldest"
+          ]
+        },
+        {
+          "name": "~CLogger",
+          "startLine": 61,
+          "endLine": 80,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 82,
+          "endLine": 115,
+          "params": [
+            "pTarget"
+          ]
+        },
+        {
+          "name": "SetNewTarget",
+          "startLine": 117,
+          "endLine": 120,
+          "params": [
+            "pTarget"
+          ]
+        },
+        {
+          "name": "Write",
+          "startLine": 122,
+          "endLine": 130,
+          "params": [
+            "pSource",
+            "Severity",
+            "pMessage"
+          ]
+        },
+        {
+          "name": "WriteV",
+          "startLine": 132,
+          "endLine": 212,
+          "params": [
+            "pSource",
+            "Severity",
+            "pMessage",
+            "Args"
+          ]
+        },
+        {
+          "name": "WriteNoAlloc",
+          "startLine": 214,
+          "endLine": 257,
+          "params": [
+            "pSource",
+            "Severity",
+            "pMessage"
+          ]
+        },
+        {
+          "name": "Write",
+          "startLine": 269,
+          "endLine": 308,
+          "params": [
+            "pString"
+          ]
+        },
+        {
+          "name": "Read",
+          "startLine": 310,
+          "endLine": 347,
+          "params": [
+            "pBuffer",
+            "nCount",
+            "bClear"
+          ]
+        },
+        {
+          "name": "WriteEvent",
+          "startLine": 349,
+          "endLine": 412,
+          "params": [
+            "pSource",
+            "Severity",
+            "pMessage"
+          ]
+        },
+        {
+          "name": "ReadEvent",
+          "startLine": 414,
+          "endLine": 445,
+          "params": [
+            "pSeverity",
+            "pSource",
+            "pMessage",
+            "pTime",
+            "pHundredthTime",
+            "pTimeZone"
+          ]
+        },
+        {
+          "name": "RegisterEventNotificationHandler",
+          "startLine": 447,
+          "endLine": 450,
+          "params": [
+            "pHandler"
+          ]
+        },
+        {
+          "name": "RegisterPanicHandler",
+          "startLine": 452,
+          "endLine": 455,
+          "params": [
+            "pHandler"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TLogEvent",
+          "startLine": 31,
+          "endLine": 39,
+          "methods": [],
+          "properties": [
+            "Severity",
+            "Source",
+            "Message",
+            "Time",
+            "nHundredthTime",
+            "nTimeZone"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TLogEvent",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "CLogger",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "~CLogger",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "SetNewTarget",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "WriteV",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "WriteNoAlloc",
+          "line": 214,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 269,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 310,
+          "isDefault": false
+        },
+        {
+          "name": "WriteEvent",
+          "line": 349,
+          "isDefault": false
+        },
+        {
+          "name": "ReadEvent",
+          "line": 414,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterEventNotificationHandler",
+          "line": 447,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterPanicHandler",
+          "line": 452,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Initialize",
+          "callee": "GetRAMSize",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Format",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Format",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Format",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Format",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetMachineName",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetRevisionRaw",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Write",
+          "callee": "va_start",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Write",
+          "callee": "WriteV",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Write",
+          "callee": "va_end",
+          "lineNumber": 129
+        },
+        {
+          "caller": "WriteV",
+          "callee": "FormatV",
+          "lineNumber": 135
+        },
+        {
+          "caller": "WriteV",
+          "callee": "WriteEvent",
+          "lineNumber": 137
+        },
+        {
+          "caller": "WriteV",
+          "callee": "GetTimeString",
+          "lineNumber": 163
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Append",
+          "lineNumber": 166
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Append",
+          "lineNumber": 167
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Append",
+          "lineNumber": 173
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Append",
+          "lineNumber": 174
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Append",
+          "lineNumber": 176
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Append",
+          "lineNumber": 181
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Append",
+          "lineNumber": 186
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Append",
+          "lineNumber": 190
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Write",
+          "lineNumber": 192
+        },
+        {
+          "caller": "WriteV",
+          "callee": "(*m_pPanicHandler)",
+          "lineNumber": 198
+        },
+        {
+          "caller": "WriteV",
+          "callee": "set_qemu_exit_status",
+          "lineNumber": 202
+        },
+        {
+          "caller": "WriteV",
+          "callee": "halt",
+          "lineNumber": 204
+        },
+        {
+          "caller": "WriteV",
+          "callee": "CMultiCoreSupport::HaltAll",
+          "lineNumber": 206
+        },
+        {
+          "caller": "WriteV",
+          "callee": "Breakpoint",
+          "lineNumber": 209
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "strcpy",
+          "lineNumber": 228
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "strcat",
+          "lineNumber": 231
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "strcat",
+          "lineNumber": 232
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "strcat",
+          "lineNumber": 233
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "strcat",
+          "lineNumber": 237
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "strcat",
+          "lineNumber": 240
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "Write",
+          "lineNumber": 242
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "set_qemu_exit_status",
+          "lineNumber": 247
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "halt",
+          "lineNumber": 249
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "CMultiCoreSupport::HaltAll",
+          "lineNumber": 251
+        },
+        {
+          "caller": "WriteNoAlloc",
+          "callee": "Breakpoint",
+          "lineNumber": 254
+        },
+        {
+          "caller": "Write",
+          "callee": "strlen",
+          "lineNumber": 271
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 275
+        },
+        {
+          "caller": "Write",
+          "callee": "Acquire",
+          "lineNumber": 278
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 307
+        },
+        {
+          "caller": "Read",
+          "callee": "Acquire",
+          "lineNumber": 312
+        },
+        {
+          "caller": "Read",
+          "callee": "Release",
+          "lineNumber": 316
+        },
+        {
+          "caller": "Read",
+          "callee": "Release",
+          "lineNumber": 344
+        },
+        {
+          "caller": "WriteEvent",
+          "callee": "strncpy",
+          "lineNumber": 359
+        },
+        {
+          "caller": "WriteEvent",
+          "callee": "strncpy",
+          "lineNumber": 362
+        },
+        {
+          "caller": "WriteEvent",
+          "callee": "GetLocalTime",
+          "lineNumber": 367
+        },
+        {
+          "caller": "WriteEvent",
+          "callee": "GetTimeZone",
+          "lineNumber": 371
+        },
+        {
+          "caller": "WriteEvent",
+          "callee": "Acquire",
+          "lineNumber": 380
+        },
+        {
+          "caller": "WriteEvent",
+          "callee": "Release",
+          "lineNumber": 401
+        },
+        {
+          "caller": "WriteEvent",
+          "callee": "(*m_pEventNotificationHandler)",
+          "lineNumber": 410
+        },
+        {
+          "caller": "ReadEvent",
+          "callee": "Acquire",
+          "lineNumber": 417
+        },
+        {
+          "caller": "ReadEvent",
+          "callee": "Release",
+          "lineNumber": 421
+        },
+        {
+          "caller": "ReadEvent",
+          "callee": "Release",
+          "lineNumber": 433
+        },
+        {
+          "caller": "ReadEvent",
+          "callee": "strcpy",
+          "lineNumber": 436
+        },
+        {
+          "caller": "ReadEvent",
+          "callee": "strcpy",
+          "lineNumber": 437
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 14,
+        "functionCount": 13,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "lib/memory.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 276,
+      "nonEmptyLines": 234,
+      "functions": [
+        {
+          "name": "~CMemorySystem",
+          "startLine": 96,
+          "endLine": 99,
+          "params": []
+        },
+        {
+          "name": "Destructor",
+          "startLine": 101,
+          "endLine": 124,
+          "params": []
+        },
+        {
+          "name": "GetMemSize",
+          "startLine": 159,
+          "endLine": 163,
+          "params": []
+        },
+        {
+          "name": "EnableMMU",
+          "startLine": 171,
+          "endLine": 250,
+          "params": []
+        },
+        {
+          "name": "GetCoherentPage",
+          "startLine": 252,
+          "endLine": 276,
+          "params": [
+            "nSlot"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "~CMemorySystem",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "Destructor",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "GetMemSize",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "EnableMMU",
+          "line": 171,
+          "isDefault": false
+        },
+        {
+          "name": "GetCoherentPage",
+          "line": 252,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CMemorySystem",
+          "callee": "Destructor",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Destructor",
+          "callee": "CleanDataCache",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Destructor",
+          "callee": "InvalidateDataCache",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Destructor",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 122
+        },
+        {
+          "caller": "SetupHighMem",
+          "callee": "GetRAMSize",
+          "lineNumber": 130
+        },
+        {
+          "caller": "SetupHighMem",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 130
+        },
+        {
+          "caller": "SetupHighMem",
+          "callee": "Setup",
+          "lineNumber": 141
+        },
+        {
+          "caller": "InitializeSecondary",
+          "callee": "assert",
+          "lineNumber": 151
+        },
+        {
+          "caller": "InitializeSecondary",
+          "callee": "assert",
+          "lineNumber": 152
+        },
+        {
+          "caller": "InitializeSecondary",
+          "callee": "EnableMMU",
+          "lineNumber": 154
+        },
+        {
+          "caller": "GetMemSize",
+          "callee": "assert",
+          "lineNumber": 161
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "assert",
+          "lineNumber": 173
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "assert",
+          "lineNumber": 187
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "assert",
+          "lineNumber": 193
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "GetBaseAddress",
+          "lineNumber": 194
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "assert",
+          "lineNumber": 212
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "GetBaseAddress",
+          "lineNumber": 213
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "(u32)",
+          "lineNumber": 215
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "InvalidateDataCache",
+          "lineNumber": 222
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "InvalidateDataCacheL1Only",
+          "lineNumber": 224
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "InvalidateInstructionCache",
+          "lineNumber": 228
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "FlushBranchTargetCache",
+          "lineNumber": 229
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 231
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "FlushPrefetchBuffer",
+          "lineNumber": 232
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/memory64.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 210,
+      "nonEmptyLines": 176,
+      "functions": [
+        {
+          "name": "CMemorySystem",
+          "startLine": 31,
+          "endLine": 72,
+          "params": [
+            "bEnableMMU"
+          ]
+        },
+        {
+          "name": "~CMemorySystem",
+          "startLine": 74,
+          "endLine": 77,
+          "params": []
+        },
+        {
+          "name": "Destructor",
+          "startLine": 79,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "GetMemSize",
+          "startLine": 142,
+          "endLine": 146,
+          "params": []
+        },
+        {
+          "name": "EnableMMU",
+          "startLine": 154,
+          "endLine": 201,
+          "params": []
+        },
+        {
+          "name": "GetCoherentPage",
+          "startLine": 203,
+          "endLine": 210,
+          "params": [
+            "nSlot"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CMemorySystem",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "~CMemorySystem",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "Destructor",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "GetMemSize",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "EnableMMU",
+          "line": 154,
+          "isDefault": false
+        },
+        {
+          "name": "GetCoherentPage",
+          "line": 203,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CMemorySystem",
+          "callee": "GetTag",
+          "lineNumber": 49
+        },
+        {
+          "caller": "CMemorySystem",
+          "callee": "assert",
+          "lineNumber": 55
+        },
+        {
+          "caller": "CMemorySystem",
+          "callee": "Setup",
+          "lineNumber": 59
+        },
+        {
+          "caller": "CMemorySystem",
+          "callee": "Setup",
+          "lineNumber": 61
+        },
+        {
+          "caller": "CMemorySystem",
+          "callee": "assert",
+          "lineNumber": 66
+        },
+        {
+          "caller": "CMemorySystem",
+          "callee": "EnableMMU",
+          "lineNumber": 68
+        },
+        {
+          "caller": "CMemorySystem",
+          "callee": "InstructionSyncBarrier",
+          "lineNumber": 70
+        },
+        {
+          "caller": "~CMemorySystem",
+          "callee": "Destructor",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Destructor",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Destructor",
+          "callee": "InstructionSyncBarrier",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Destructor",
+          "callee": "CleanDataCache",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Destructor",
+          "callee": "InvalidateDataCache",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Destructor",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Destructor",
+          "callee": "InstructionSyncBarrier",
+          "lineNumber": 103
+        },
+        {
+          "caller": "SetupHighMem",
+          "callee": "GetRAMSize",
+          "lineNumber": 111
+        },
+        {
+          "caller": "SetupHighMem",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 111
+        },
+        {
+          "caller": "SetupHighMem",
+          "callee": "Setup",
+          "lineNumber": 122
+        },
+        {
+          "caller": "InitializeSecondary",
+          "callee": "assert",
+          "lineNumber": 132
+        },
+        {
+          "caller": "InitializeSecondary",
+          "callee": "assert",
+          "lineNumber": 133
+        },
+        {
+          "caller": "InitializeSecondary",
+          "callee": "EnableMMU",
+          "lineNumber": 135
+        },
+        {
+          "caller": "InitializeSecondary",
+          "callee": "InstructionSyncBarrier",
+          "lineNumber": 137
+        },
+        {
+          "caller": "GetMemSize",
+          "callee": "assert",
+          "lineNumber": 144
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "assert",
+          "lineNumber": 156
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "assert",
+          "lineNumber": 163
+        },
+        {
+          "caller": "EnableMMU",
+          "callee": "GetBaseAddress",
+          "lineNumber": 164
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/pagetable.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 195,
+      "nonEmptyLines": 164,
+      "callGraph": [
+        {
+          "caller": "CPageTable",
+          "callee": "assert",
+          "lineNumber": 54
+        },
+        {
+          "caller": "CPageTable",
+          "callee": "CleanDataCache",
+          "lineNumber": 83
+        },
+        {
+          "caller": "CPageTable",
+          "callee": "memset",
+          "lineNumber": 103
+        },
+        {
+          "caller": "CPageTable",
+          "callee": "CreateLevel2Table",
+          "lineNumber": 110
+        },
+        {
+          "caller": "CPageTable",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "CPageTable",
+          "callee": "ARMV7LPAEL1TABLEADDR",
+          "lineNumber": 118
+        },
+        {
+          "caller": "CPageTable",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/rpi/bcmpropertytags.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 108,
+      "nonEmptyLines": 90,
+      "functions": [
+        {
+          "name": "CBcmPropertyTags",
+          "startLine": 40,
+          "endLine": 43,
+          "params": [
+            "bEarlyUse"
+          ]
+        },
+        {
+          "name": "~CBcmPropertyTags",
+          "startLine": 45,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "GetTag",
+          "startLine": 49,
+          "endLine": 71,
+          "params": [
+            "nTagId",
+            "pTag",
+            "nTagSize",
+            "nRequestParmSize"
+          ]
+        },
+        {
+          "name": "GetTags",
+          "startLine": 73,
+          "endLine": 108,
+          "params": [
+            "pTags",
+            "nTagsSize"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TPropertyBuffer",
+          "startLine": 28,
+          "endLine": 37,
+          "methods": [],
+          "properties": [
+            "nBufferSize",
+            "nCode",
+            "Tags"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TPropertyBuffer",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "CBcmPropertyTags",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "~CBcmPropertyTags",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "GetTag",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "GetTags",
+          "line": 73,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GetTag",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "GetTag",
+          "callee": "assert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "GetTag",
+          "callee": "GetTags",
+          "lineNumber": 59
+        },
+        {
+          "caller": "GetTags",
+          "callee": "assert",
+          "lineNumber": 75
+        },
+        {
+          "caller": "GetTags",
+          "callee": "assert",
+          "lineNumber": 76
+        },
+        {
+          "caller": "GetTags",
+          "callee": "assert",
+          "lineNumber": 78
+        },
+        {
+          "caller": "GetTags",
+          "callee": "CMemorySystem::GetCoherentPage",
+          "lineNumber": 81
+        },
+        {
+          "caller": "GetTags",
+          "callee": "memcpy",
+          "lineNumber": 85
+        },
+        {
+          "caller": "GetTags",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 90
+        },
+        {
+          "caller": "GetTags",
+          "callee": "BUS_ADDRESS",
+          "lineNumber": 92
+        },
+        {
+          "caller": "GetTags",
+          "callee": "WriteRead",
+          "lineNumber": 93
+        },
+        {
+          "caller": "GetTags",
+          "callee": "DataMemBarrier",
+          "lineNumber": 98
+        },
+        {
+          "caller": "GetTags",
+          "callee": "memcpy",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 5,
+        "functionCount": 4,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "lib/spinlock.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 137,
+      "nonEmptyLines": 121,
+      "callGraph": [
+        {
+          "caller": "CSpinLock",
+          "callee": "assert",
+          "lineNumber": 35
+        },
+        {
+          "caller": "~CSpinLock",
+          "callee": "assert",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Acquire",
+          "callee": "EnterCritical",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Release",
+          "callee": "LeaveCritical",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Enable",
+          "callee": "assert",
+          "lineNumber": 133
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/synchronize64.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 380,
+      "nonEmptyLines": 299,
+      "functions": [
+        {
+          "name": "CurrentExecutionLevel",
+          "startLine": 26,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "InvalidateDataCache",
+          "startLine": 207,
+          "endLine": 251,
+          "params": []
+        },
+        {
+          "name": "InvalidateDataCacheL1Only",
+          "startLine": 253,
+          "endLine": 269,
+          "params": []
+        },
+        {
+          "name": "CleanDataCache",
+          "startLine": 271,
+          "endLine": 315,
+          "params": []
+        },
+        {
+          "name": "InvalidateDataCacheRange",
+          "startLine": 317,
+          "endLine": 333,
+          "params": [
+            "nAddress",
+            "nLength"
+          ]
+        },
+        {
+          "name": "CleanDataCacheRange",
+          "startLine": 335,
+          "endLine": 351,
+          "params": [
+            "nAddress",
+            "nLength"
+          ]
+        },
+        {
+          "name": "CleanAndInvalidateDataCacheRange",
+          "startLine": 353,
+          "endLine": 369,
+          "params": [
+            "nAddress",
+            "nLength"
+          ]
+        },
+        {
+          "name": "SyncDataAndInstructionCache",
+          "startLine": 371,
+          "endLine": 380,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CurrentExecutionLevel",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "InvalidateDataCache",
+          "line": 207,
+          "isDefault": false
+        },
+        {
+          "name": "InvalidateDataCacheL1Only",
+          "line": 253,
+          "isDefault": false
+        },
+        {
+          "name": "CleanDataCache",
+          "line": 271,
+          "isDefault": false
+        },
+        {
+          "name": "InvalidateDataCacheRange",
+          "line": 317,
+          "isDefault": false
+        },
+        {
+          "name": "CleanDataCacheRange",
+          "line": 335,
+          "isDefault": false
+        },
+        {
+          "name": "CleanAndInvalidateDataCacheRange",
+          "line": 353,
+          "isDefault": false
+        },
+        {
+          "name": "SyncDataAndInstructionCache",
+          "line": 371,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "EnterCritical",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "assert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "assert",
+          "lineNumber": 68
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "EnableFIQs",
+          "lineNumber": 73
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "DataMemBarrier",
+          "lineNumber": 76
+        },
+        {
+          "caller": "LeaveCritical",
+          "callee": "DataMemBarrier",
+          "lineNumber": 88
+        },
+        {
+          "caller": "LeaveCritical",
+          "callee": "DisableFIQs",
+          "lineNumber": 90
+        },
+        {
+          "caller": "LeaveCritical",
+          "callee": "assert",
+          "lineNumber": 92
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "assert",
+          "lineNumber": 105
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "assert",
+          "lineNumber": 115
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "EnableFIQs",
+          "lineNumber": 120
+        },
+        {
+          "caller": "EnterCritical",
+          "callee": "DataMemBarrier",
+          "lineNumber": 123
+        },
+        {
+          "caller": "LeaveCritical",
+          "callee": "DataMemBarrier",
+          "lineNumber": 128
+        },
+        {
+          "caller": "LeaveCritical",
+          "callee": "DisableFIQs",
+          "lineNumber": 130
+        },
+        {
+          "caller": "LeaveCritical",
+          "callee": "assert",
+          "lineNumber": 132
+        },
+        {
+          "caller": "InvalidateDataCache",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 250
+        },
+        {
+          "caller": "InvalidateDataCacheL1Only",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 268
+        },
+        {
+          "caller": "CleanDataCache",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 314
+        },
+        {
+          "caller": "InvalidateDataCacheRange",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 332
+        },
+        {
+          "caller": "CleanDataCacheRange",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 350
+        },
+        {
+          "caller": "CleanAndInvalidateDataCacheRange",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 368
+        },
+        {
+          "caller": "SyncDataAndInstructionCache",
+          "callee": "CleanDataCache",
+          "lineNumber": 373
+        },
+        {
+          "caller": "SyncDataAndInstructionCache",
+          "callee": "InvalidateInstructionCache",
+          "lineNumber": 376
+        },
+        {
+          "caller": "SyncDataAndInstructionCache",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 377
+        },
+        {
+          "caller": "SyncDataAndInstructionCache",
+          "callee": "InstructionSyncBarrier",
+          "lineNumber": 379
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/translationtable64.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 160,
+      "nonEmptyLines": 141,
+      "functions": [
+        {
+          "name": "CTranslationTable",
+          "startLine": 46,
+          "endLine": 94,
+          "params": [
+            "nMemSize"
+          ]
+        },
+        {
+          "name": "~CTranslationTable",
+          "startLine": 96,
+          "endLine": 100,
+          "params": []
+        },
+        {
+          "name": "GetBaseAddress",
+          "startLine": 102,
+          "endLine": 106,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CTranslationTable",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "~CTranslationTable",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "GetBaseAddress",
+          "line": 102,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CTranslationTable",
+          "callee": "palloc",
+          "lineNumber": 50
+        },
+        {
+          "caller": "CTranslationTable",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "CTranslationTable",
+          "callee": "memset",
+          "lineNumber": 53
+        },
+        {
+          "caller": "CTranslationTable",
+          "callee": "CreateLevel3Table",
+          "lineNumber": 77
+        },
+        {
+          "caller": "CTranslationTable",
+          "callee": "assert",
+          "lineNumber": 78
+        },
+        {
+          "caller": "CTranslationTable",
+          "callee": "ARMV8MMUL2TABLEADDR",
+          "lineNumber": 84
+        },
+        {
+          "caller": "CTranslationTable",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 93
+        },
+        {
+          "caller": "~CTranslationTable",
+          "callee": "pfree",
+          "lineNumber": 98
+        },
+        {
+          "caller": "GetBaseAddress",
+          "callee": "assert",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    }
+  ]
+}

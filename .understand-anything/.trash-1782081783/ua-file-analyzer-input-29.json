@@ -1,0 +1,289 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "lib/usb/dwhciframeschedper.cpp",
+      "language": "cpp",
+      "sizeLines": 231,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhciregister.cpp",
+      "language": "cpp",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhcirootport.cpp",
+      "language": "cpp",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhcixactqueue.cpp",
+      "language": "cpp",
+      "sizeLines": 221,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/dwhcixferstagedata.cpp",
+      "language": "cpp",
+      "sizeLines": 620,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/gadget/dwusbgadget.cpp",
+      "language": "cpp",
+      "sizeLines": 784,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/gadget/dwusbgadgetendpoint.cpp",
+      "language": "cpp",
+      "sizeLines": 407,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/gadget/dwusbgadgetendpoint0.cpp",
+      "language": "cpp",
+      "sizeLines": 251,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/gadget/usbcdcgadget.cpp",
+      "language": "cpp",
+      "sizeLines": 264,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/gadget/usbcdcgadgetendpoint.cpp",
+      "language": "cpp",
+      "sizeLines": 301,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbrequest.cpp",
+      "language": "cpp",
+      "sizeLines": 159,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbserial.cpp",
+      "language": "cpp",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbserialhost.cpp",
+      "language": "cpp",
+      "sizeLines": 303,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhcisharedmemallocator.cpp",
+      "language": "cpp",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/windowdisplay.cpp",
+      "language": "cpp",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/09-softserial/softserial.cpp",
+      "language": "cpp",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/09-softserial/softserial.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/34-sounddevices/config.h",
+      "language": "c",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/34-sounddevices/oscillator.cpp",
+      "language": "cpp",
+      "sizeLines": 161,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/34-sounddevices/oscillator.h",
+      "language": "c",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/36-softpwm/softpwmoutput.cpp",
+      "language": "cpp",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/36-softpwm/softpwmoutput.h",
+      "language": "c",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/42-soundinput/queue.cpp",
+      "language": "cpp",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/42-soundinput/queue.h",
+      "language": "c",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tools/cflashy.c",
+      "language": "c",
+      "sizeLines": 848,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "lib/usb/dwhciframeschedper.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhciframeschedper.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhciregister.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/usb/dwhciregister.h"
+    ],
+    "lib/usb/dwhcirootport.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/dwhcidevice.h",
+      "include/circle/usb/dwhcirootport.h"
+    ],
+    "lib/usb/dwhcixactqueue.cpp": [
+      "include/assert.h",
+      "include/circle/classallocator.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhcixactqueue.h",
+      "include/circle/usb/usbrequest.h"
+    ],
+    "lib/usb/dwhcixferstagedata.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/dwhciframeschediso.h",
+      "include/circle/usb/dwhciframeschednper.h",
+      "include/circle/usb/dwhciframeschednsplit.h",
+      "include/circle/usb/dwhciframeschedper.h",
+      "include/circle/usb/dwhcixferstagedata.h",
+      "include/circle/usb/usbhostcontroller.h"
+    ],
+    "lib/usb/gadget/dwusbgadget.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h",
+      "include/circle/usb/gadget/dwusbgadget.h",
+      "include/circle/usb/gadget/dwusbgadgetendpoint0.h"
+    ],
+    "lib/usb/gadget/dwusbgadgetendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/dwhciregister.h",
+      "include/circle/usb/gadget/dwusbgadget.h",
+      "include/circle/usb/gadget/dwusbgadgetendpoint.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/gadget/dwusbgadgetendpoint0.cpp": [
+      "include/assert.h",
+      "include/circle/usb/dwhci.h",
+      "include/circle/usb/gadget/dwusbgadget.h",
+      "include/circle/usb/gadget/dwusbgadgetendpoint0.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/gadget/usbcdcgadget.cpp": [
+      "include/assert.h",
+      "include/circle/sysconfig.h",
+      "include/circle/usb/gadget/usbcdcgadget.h",
+      "include/circle/usb/gadget/usbcdcgadgetendpoint.h"
+    ],
+    "lib/usb/gadget/usbcdcgadgetendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/usb/gadget/usbcdcgadget.h",
+      "include/circle/usb/gadget/usbcdcgadgetendpoint.h",
+      "include/circle/usb/usbserial.h"
+    ],
+    "lib/usb/usbrequest.cpp": [
+      "include/assert.h",
+      "include/circle/usb/usbrequest.h"
+    ],
+    "lib/usb/usbserial.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/usb/usbserial.h"
+    ],
+    "lib/usb/usbserialhost.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbrequest.h",
+      "include/circle/usb/usbserialhost.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/xhcisharedmemallocator.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/xhcisharedmemallocator.h"
+    ],
+    "lib/windowdisplay.cpp": [
+      "include/assert.h",
+      "include/circle/windowdisplay.h"
+    ],
+    "sample/09-softserial/softserial.cpp": [
+      "include/assert.h",
+      "include/circle/synchronize.h",
+      "sample/09-softserial/softserial.h"
+    ],
+    "sample/09-softserial/softserial.h": [],
+    "sample/34-sounddevices/config.h": [],
+    "sample/34-sounddevices/oscillator.cpp": [
+      "include/assert.h",
+      "sample/34-sounddevices/config.h",
+      "sample/34-sounddevices/oscillator.h"
+    ],
+    "sample/34-sounddevices/oscillator.h": [],
+    "sample/36-softpwm/softpwmoutput.cpp": [
+      "include/assert.h",
+      "sample/36-softpwm/softpwmoutput.h"
+    ],
+    "sample/36-softpwm/softpwmoutput.h": [],
+    "sample/42-soundinput/queue.cpp": [
+      "include/assert.h",
+      "sample/42-soundinput/queue.h"
+    ],
+    "sample/42-soundinput/queue.h": [],
+    "tools/cflashy.c": [
+      "include/assert.h"
+    ]
+  }
+}

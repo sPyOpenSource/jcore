@@ -1,0 +1,4037 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/SDCard/mmchost.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 200,
+      "nonEmptyLines": 161,
+      "callGraph": [
+        {
+          "caller": "CMMCHost",
+          "callee": "memset",
+          "lineNumber": 31
+        },
+        {
+          "caller": "SetClock",
+          "callee": "SetIOS",
+          "lineNumber": 42
+        },
+        {
+          "caller": "SetBusWidth",
+          "callee": "assert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "SetBusWidth",
+          "callee": "SetIOS",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Command",
+          "callee": "assert",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Command",
+          "callee": "memset",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Command",
+          "callee": "memset",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Command",
+          "callee": "assert",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Command",
+          "callee": "memset",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Command",
+          "callee": "PrepareRequest",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Command",
+          "callee": "RequestSync",
+          "lineNumber": 83
+        },
+        {
+          "caller": "RequestSync",
+          "callee": "assert",
+          "lineNumber": 107
+        },
+        {
+          "caller": "RequestSync",
+          "callee": "Request",
+          "lineNumber": 110
+        },
+        {
+          "caller": "RequestSync",
+          "callee": "DataMemBarrier",
+          "lineNumber": 114
+        },
+        {
+          "caller": "PrepareRequest",
+          "callee": "assert",
+          "lineNumber": 121
+        },
+        {
+          "caller": "mmc_request_done",
+          "callee": "assert",
+          "lineNumber": 161
+        },
+        {
+          "caller": "mmc_request_done",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 164
+        },
+        {
+          "caller": "sg_miter_start",
+          "callee": "assert",
+          "lineNumber": 170
+        },
+        {
+          "caller": "sg_miter_start",
+          "callee": "assert",
+          "lineNumber": 171
+        },
+        {
+          "caller": "sg_miter_start",
+          "callee": "assert",
+          "lineNumber": 172
+        },
+        {
+          "caller": "sg_miter_next",
+          "callee": "assert",
+          "lineNumber": 181
+        },
+        {
+          "caller": "sg_miter_next",
+          "callee": "assert",
+          "lineNumber": 183
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/SDCard/sdhost.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 1583,
+      "nonEmptyLines": 1294,
+      "callGraph": [
+        {
+          "caller": "CSDHOSTDevice",
+          "callee": "AssignPin",
+          "lineNumber": 186
+        },
+        {
+          "caller": "CSDHOSTDevice",
+          "callee": "SetMode",
+          "lineNumber": 187
+        },
+        {
+          "caller": "CSDHOSTDevice",
+          "callee": "AssignPin",
+          "lineNumber": 189
+        },
+        {
+          "caller": "CSDHOSTDevice",
+          "callee": "SetMode",
+          "lineNumber": 190
+        },
+        {
+          "caller": "CSDHOSTDevice",
+          "callee": "SetPullMode",
+          "lineNumber": 191
+        },
+        {
+          "caller": "~CSDHOSTDevice",
+          "callee": "PeripheralEntry",
+          "lineNumber": 197
+        },
+        {
+          "caller": "~CSDHOSTDevice",
+          "callee": "remove",
+          "lineNumber": 199
+        },
+        {
+          "caller": "~CSDHOSTDevice",
+          "callee": "PeripheralExit",
+          "lineNumber": 201
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PeripheralEntry",
+          "lineNumber": 209
+        },
+        {
+          "caller": "Initialize",
+          "callee": "probe",
+          "lineNumber": 211
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PeripheralExit",
+          "lineNumber": 213
+        },
+        {
+          "caller": "Reset",
+          "callee": "PeripheralEntry",
+          "lineNumber": 225
+        },
+        {
+          "caller": "Reset",
+          "callee": "reset",
+          "lineNumber": 227
+        },
+        {
+          "caller": "Reset",
+          "callee": "GetMMCHost",
+          "lineNumber": 227
+        },
+        {
+          "caller": "Reset",
+          "callee": "PeripheralExit",
+          "lineNumber": 229
+        },
+        {
+          "caller": "SetIOS",
+          "callee": "PeripheralEntry",
+          "lineNumber": 234
+        },
+        {
+          "caller": "SetIOS",
+          "callee": "assert",
+          "lineNumber": 236
+        },
+        {
+          "caller": "SetIOS",
+          "callee": "set_ios",
+          "lineNumber": 237
+        },
+        {
+          "caller": "SetIOS",
+          "callee": "GetMMCHost",
+          "lineNumber": 237
+        },
+        {
+          "caller": "SetIOS",
+          "callee": "PeripheralExit",
+          "lineNumber": 239
+        },
+        {
+          "caller": "Request",
+          "callee": "PeripheralEntry",
+          "lineNumber": 244
+        },
+        {
+          "caller": "Request",
+          "callee": "assert",
+          "lineNumber": 246
+        },
+        {
+          "caller": "Request",
+          "callee": "request",
+          "lineNumber": 247
+        },
+        {
+          "caller": "Request",
+          "callee": "GetMMCHost",
+          "lineNumber": 247
+        },
+        {
+          "caller": "Request",
+          "callee": "PeripheralExit",
+          "lineNumber": 249
+        },
+        {
+          "caller": "set_sdhost_clock",
+          "callee": "assert",
+          "lineNumber": 261
+        },
+        {
+          "caller": "set_sdhost_clock",
+          "callee": "memcpy",
+          "lineNumber": 262
+        },
+        {
+          "caller": "set_sdhost_clock",
+          "callee": "GetTag",
+          "lineNumber": 265
+        },
+        {
+          "caller": "set_sdhost_clock",
+          "callee": "memcpy",
+          "lineNumber": 267
+        },
+        {
+          "caller": "dumpcmd",
+          "callee": "pr_info",
+          "lineNumber": 275
+        },
+        {
+          "caller": "dumpcmd",
+          "callee": "mmc_hostname",
+          "lineNumber": 276
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "dumpcmd",
+          "lineNumber": 287
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "dumpcmd",
+          "lineNumber": 288
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 290
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 291
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "dumpcmd",
+          "lineNumber": 295
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 298
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 298
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 300
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 300
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 300
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 301
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 301
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 301
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 302
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 302
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 302
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 303
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 303
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 303
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 304
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 304
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 304
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 305
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 305
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 305
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 306
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 306
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 306
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 307
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 307
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 307
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 308
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 308
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 308
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 309
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 309
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 309
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 310
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 310
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 310
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 311
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 311
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 311
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 312
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 312
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 312
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 313
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 313
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "read",
+          "lineNumber": 313
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "pr_info",
+          "lineNumber": 315
+        },
+        {
+          "caller": "dumpregs",
+          "callee": "mmc_hostname",
+          "lineNumber": 315
+        },
+        {
+          "caller": "set_power",
+          "callee": "write",
+          "lineNumber": 320
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "pr_info",
+          "lineNumber": 326
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "mmc_hostname",
+          "lineNumber": 326
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "set_power",
+          "lineNumber": 328
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 330
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 331
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 332
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 333
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 334
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 335
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 336
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 337
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "read",
+          "lineNumber": 340
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 345
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "mdelay",
+          "lineNumber": 346
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "set_power",
+          "lineNumber": 347
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "mdelay",
+          "lineNumber": 348
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 351
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "write",
+          "lineNumber": 352
+        },
+        {
+          "caller": "reset_internal",
+          "callee": "mmiowb",
+          "lineNumber": 353
+        },
+        {
+          "caller": "reset",
+          "callee": "Acquire",
+          "lineNumber": 358
+        },
+        {
+          "caller": "reset",
+          "callee": "reset_internal",
+          "lineNumber": 360
+        },
+        {
+          "caller": "reset",
+          "callee": "Release",
+          "lineNumber": 362
+        },
+        {
+          "caller": "init",
+          "callee": "pr_debug",
+          "lineNumber": 367
+        },
+        {
+          "caller": "init",
+          "callee": "reset_internal",
+          "lineNumber": 372
+        },
+        {
+          "caller": "init",
+          "callee": "set_ios",
+          "lineNumber": 377
+        },
+        {
+          "caller": "wait_transfer_complete",
+          "callee": "read",
+          "lineNumber": 390
+        },
+        {
+          "caller": "wait_transfer_complete",
+          "callee": "write",
+          "lineNumber": 400
+        },
+        {
+          "caller": "wait_transfer_complete",
+          "callee": "pr_err",
+          "lineNumber": 406
+        },
+        {
+          "caller": "wait_transfer_complete",
+          "callee": "mmc_hostname",
+          "lineNumber": 407
+        },
+        {
+          "caller": "wait_transfer_complete",
+          "callee": "dumpregs",
+          "lineNumber": 409
+        },
+        {
+          "caller": "wait_transfer_complete",
+          "callee": "cpu_relax",
+          "lineNumber": 413
+        },
+        {
+          "caller": "wait_transfer_complete",
+          "callee": "read",
+          "lineNumber": 414
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "GetClockTicks",
+          "lineNumber": 422
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "sg_miter_next",
+          "lineNumber": 428
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "min",
+          "lineNumber": 433
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "read",
+          "lineNumber": 453
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "read",
+          "lineNumber": 461
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "pr_info",
+          "lineNumber": 462
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "mmc_hostname",
+          "lineNumber": 463
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "GetClockTicks",
+          "lineNumber": 469
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "pr_err",
+          "lineNumber": 470
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "mmc_hostname",
+          "lineNumber": 471
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "ndelay",
+          "lineNumber": 476
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "read",
+          "lineNumber": 486
+        },
+        {
+          "caller": "read_block_pio",
+          "callee": "sg_miter_stop",
+          "lineNumber": 495
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "GetClockTicks",
+          "lineNumber": 502
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "sg_miter_next",
+          "lineNumber": 508
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "min",
+          "lineNumber": 513
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "read",
+          "lineNumber": 533
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "read",
+          "lineNumber": 541
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "pr_info",
+          "lineNumber": 542
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "mmc_hostname",
+          "lineNumber": 543
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "GetClockTicks",
+          "lineNumber": 549
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "pr_err",
+          "lineNumber": 550
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "mmc_hostname",
+          "lineNumber": 551
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "ndelay",
+          "lineNumber": 556
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "write",
+          "lineNumber": 566
+        },
+        {
+          "caller": "write_block_pio",
+          "callee": "sg_miter_stop",
+          "lineNumber": 575
+        },
+        {
+          "caller": "transfer_pio",
+          "callee": "BUG_ON",
+          "lineNumber": 580
+        },
+        {
+          "caller": "transfer_pio",
+          "callee": "read_block_pio",
+          "lineNumber": 584
+        },
+        {
+          "caller": "transfer_pio",
+          "callee": "write_block_pio",
+          "lineNumber": 586
+        },
+        {
+          "caller": "transfer_pio",
+          "callee": "read",
+          "lineNumber": 588
+        },
+        {
+          "caller": "transfer_pio",
+          "callee": "pr_err",
+          "lineNumber": 592
+        },
+        {
+          "caller": "transfer_pio",
+          "callee": "mmc_hostname",
+          "lineNumber": 593
+        },
+        {
+          "caller": "transfer_pio",
+          "callee": "pr_err",
+          "lineNumber": 599
+        },
+        {
+          "caller": "transfer_pio",
+          "callee": "mmc_hostname",
+          "lineNumber": 600
+        },
+        {
+          "caller": "set_transfer_irqs",
+          "callee": "write",
+          "lineNumber": 613
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "WARN_ON",
+          "lineNumber": 620
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "BUG_ON",
+          "lineNumber": 627
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "BUG_ON",
+          "lineNumber": 628
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "BUG_ON",
+          "lineNumber": 629
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "sg_miter_start",
+          "lineNumber": 658
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "set_transfer_irqs",
+          "lineNumber": 661
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "write",
+          "lineNumber": 663
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "write",
+          "lineNumber": 664
+        },
+        {
+          "caller": "prepare_data",
+          "callee": "BUG_ON",
+          "lineNumber": 666
+        },
+        {
+          "caller": "send_command",
+          "callee": "pr_debug",
+          "lineNumber": 674
+        },
+        {
+          "caller": "send_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 676
+        },
+        {
+          "caller": "send_command",
+          "callee": "pr_debug",
+          "lineNumber": 682
+        },
+        {
+          "caller": "send_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 683
+        },
+        {
+          "caller": "send_command",
+          "callee": "read",
+          "lineNumber": 689
+        },
+        {
+          "caller": "send_command",
+          "callee": "pr_warn",
+          "lineNumber": 691
+        },
+        {
+          "caller": "send_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 692
+        },
+        {
+          "caller": "send_command",
+          "callee": "dumpregs",
+          "lineNumber": 694
+        },
+        {
+          "caller": "send_command",
+          "callee": "tasklet_schedule",
+          "lineNumber": 695
+        },
+        {
+          "caller": "send_command",
+          "callee": "udelay",
+          "lineNumber": 699
+        },
+        {
+          "caller": "send_command",
+          "callee": "pr_warn",
+          "lineNumber": 705
+        },
+        {
+          "caller": "send_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 706
+        },
+        {
+          "caller": "send_command",
+          "callee": "read",
+          "lineNumber": 720
+        },
+        {
+          "caller": "send_command",
+          "callee": "write",
+          "lineNumber": 722
+        },
+        {
+          "caller": "send_command",
+          "callee": "pr_err",
+          "lineNumber": 725
+        },
+        {
+          "caller": "send_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 726
+        },
+        {
+          "caller": "send_command",
+          "callee": "tasklet_schedule",
+          "lineNumber": 728
+        },
+        {
+          "caller": "send_command",
+          "callee": "prepare_data",
+          "lineNumber": 732
+        },
+        {
+          "caller": "send_command",
+          "callee": "write",
+          "lineNumber": 734
+        },
+        {
+          "caller": "send_command",
+          "callee": "GetClockTicks",
+          "lineNumber": 752
+        },
+        {
+          "caller": "send_command",
+          "callee": "udelay",
+          "lineNumber": 755
+        },
+        {
+          "caller": "send_command",
+          "callee": "write",
+          "lineNumber": 783
+        },
+        {
+          "caller": "finish_data",
+          "callee": "BUG_ON",
+          "lineNumber": 791
+        },
+        {
+          "caller": "finish_data",
+          "callee": "pr_debug",
+          "lineNumber": 793
+        },
+        {
+          "caller": "finish_data",
+          "callee": "write",
+          "lineNumber": 798
+        },
+        {
+          "caller": "finish_data",
+          "callee": "pr_debug",
+          "lineNumber": 810
+        },
+        {
+          "caller": "finish_data",
+          "callee": "read",
+          "lineNumber": 810
+        },
+        {
+          "caller": "finish_data",
+          "callee": "transfer_complete",
+          "lineNumber": 813
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "BUG_ON",
+          "lineNumber": 818
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "BUG_ON",
+          "lineNumber": 819
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "BUG_ON",
+          "lineNumber": 820
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "pr_debug",
+          "lineNumber": 825
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "send_command",
+          "lineNumber": 834
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "finish_command",
+          "lineNumber": 837
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "GetClockTicks",
+          "lineNumber": 840
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "wait_transfer_complete",
+          "lineNumber": 843
+        },
+        {
+          "caller": "transfer_complete",
+          "callee": "tasklet_schedule",
+          "lineNumber": 844
+        },
+        {
+          "caller": "finish_command",
+          "callee": "pr_debug",
+          "lineNumber": 854
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 854
+        },
+        {
+          "caller": "finish_command",
+          "callee": "BUG_ON",
+          "lineNumber": 856
+        },
+        {
+          "caller": "finish_command",
+          "callee": "GetClockTicks",
+          "lineNumber": 869
+        },
+        {
+          "caller": "finish_command",
+          "callee": "cpu_relax",
+          "lineNumber": 872
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 873
+        },
+        {
+          "caller": "finish_command",
+          "callee": "GetClockTicks",
+          "lineNumber": 876
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 884
+        },
+        {
+          "caller": "finish_command",
+          "callee": "cpu_relax",
+          "lineNumber": 887
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 888
+        },
+        {
+          "caller": "finish_command",
+          "callee": "GetClockTicks",
+          "lineNumber": 899
+        },
+        {
+          "caller": "finish_command",
+          "callee": "GetClockTicks",
+          "lineNumber": 900
+        },
+        {
+          "caller": "finish_command",
+          "callee": "Release",
+          "lineNumber": 901
+        },
+        {
+          "caller": "finish_command",
+          "callee": "udelay",
+          "lineNumber": 902
+        },
+        {
+          "caller": "finish_command",
+          "callee": "Acquire",
+          "lineNumber": 903
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 904
+        },
+        {
+          "caller": "finish_command",
+          "callee": "pr_err",
+          "lineNumber": 913
+        },
+        {
+          "caller": "finish_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 914
+        },
+        {
+          "caller": "finish_command",
+          "callee": "dumpregs",
+          "lineNumber": 915
+        },
+        {
+          "caller": "finish_command",
+          "callee": "tasklet_schedule",
+          "lineNumber": 918
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 921
+        },
+        {
+          "caller": "finish_command",
+          "callee": "write",
+          "lineNumber": 924
+        },
+        {
+          "caller": "finish_command",
+          "callee": "pr_info",
+          "lineNumber": 927
+        },
+        {
+          "caller": "finish_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 928
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 929
+        },
+        {
+          "caller": "finish_command",
+          "callee": "pr_info",
+          "lineNumber": 934
+        },
+        {
+          "caller": "finish_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 935
+        },
+        {
+          "caller": "finish_command",
+          "callee": "pr_warn",
+          "lineNumber": 941
+        },
+        {
+          "caller": "finish_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 942
+        },
+        {
+          "caller": "finish_command",
+          "callee": "pr_warn",
+          "lineNumber": 946
+        },
+        {
+          "caller": "finish_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 947
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 952
+        },
+        {
+          "caller": "finish_command",
+          "callee": "write",
+          "lineNumber": 956
+        },
+        {
+          "caller": "finish_command",
+          "callee": "tasklet_schedule",
+          "lineNumber": 957
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 966
+        },
+        {
+          "caller": "finish_command",
+          "callee": "pr_debug",
+          "lineNumber": 967
+        },
+        {
+          "caller": "finish_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 968
+        },
+        {
+          "caller": "finish_command",
+          "callee": "read",
+          "lineNumber": 974
+        },
+        {
+          "caller": "finish_command",
+          "callee": "pr_debug",
+          "lineNumber": 975
+        },
+        {
+          "caller": "finish_command",
+          "callee": "mmc_hostname",
+          "lineNumber": 976
+        },
+        {
+          "caller": "finish_command",
+          "callee": "send_command",
+          "lineNumber": 984
+        },
+        {
+          "caller": "finish_command",
+          "callee": "finish_command",
+          "lineNumber": 988
+        },
+        {
+          "caller": "finish_command",
+          "callee": "tasklet_schedule",
+          "lineNumber": 992
+        },
+        {
+          "caller": "finish_command",
+          "callee": "tasklet_schedule",
+          "lineNumber": 997
+        },
+        {
+          "caller": "finish_command",
+          "callee": "transfer_complete",
+          "lineNumber": 999
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "pr_err",
+          "lineNumber": 1006
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "mmc_hostname",
+          "lineNumber": 1008
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "dumpregs",
+          "lineNumber": 1009
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "pr_err",
+          "lineNumber": 1014
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "mmc_hostname",
+          "lineNumber": 1016
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "dumpregs",
+          "lineNumber": 1017
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "pr_err",
+          "lineNumber": 1024
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "dumpregs",
+          "lineNumber": 1042
+        },
+        {
+          "caller": "busy_irq",
+          "callee": "finish_command",
+          "lineNumber": 1046
+        },
+        {
+          "caller": "data_irq",
+          "callee": "dumpregs",
+          "lineNumber": 1069
+        },
+        {
+          "caller": "data_irq",
+          "callee": "finish_data",
+          "lineNumber": 1074
+        },
+        {
+          "caller": "data_irq",
+          "callee": "write",
+          "lineNumber": 1079
+        },
+        {
+          "caller": "data_irq",
+          "callee": "transfer_pio",
+          "lineNumber": 1080
+        },
+        {
+          "caller": "data_irq",
+          "callee": "transfer_pio",
+          "lineNumber": 1082
+        },
+        {
+          "caller": "data_irq",
+          "callee": "finish_data",
+          "lineNumber": 1085
+        },
+        {
+          "caller": "block_irq",
+          "callee": "pr_err",
+          "lineNumber": 1092
+        },
+        {
+          "caller": "block_irq",
+          "callee": "mmc_hostname",
+          "lineNumber": 1094
+        },
+        {
+          "caller": "block_irq",
+          "callee": "dumpregs",
+          "lineNumber": 1095
+        },
+        {
+          "caller": "block_irq",
+          "callee": "dumpregs",
+          "lineNumber": 1109
+        },
+        {
+          "caller": "block_irq",
+          "callee": "BUG_ON",
+          "lineNumber": 1113
+        },
+        {
+          "caller": "block_irq",
+          "callee": "finish_data",
+          "lineNumber": 1115
+        },
+        {
+          "caller": "block_irq",
+          "callee": "transfer_pio",
+          "lineNumber": 1117
+        },
+        {
+          "caller": "irq_handler",
+          "callee": "Acquire",
+          "lineNumber": 1123
+        },
+        {
+          "caller": "irq_handler",
+          "callee": "read",
+          "lineNumber": 1125
+        },
+        {
+          "caller": "irq_handler",
+          "callee": "write",
+          "lineNumber": 1127
+        },
+        {
+          "caller": "irq_handler",
+          "callee": "block_irq",
+          "lineNumber": 1131
+        },
+        {
+          "caller": "irq_handler",
+          "callee": "busy_irq",
+          "lineNumber": 1135
+        },
+        {
+          "caller": "irq_handler",
+          "callee": "data_irq",
+          "lineNumber": 1143
+        },
+        {
+          "caller": "irq_handler",
+          "callee": "mmiowb",
+          "lineNumber": 1146
+        },
+        {
+          "caller": "irq_handler",
+          "callee": "Release",
+          "lineNumber": 1148
+        },
+        {
+          "caller": "irq_stub",
+          "callee": "assert",
+          "lineNumber": 1154
+        },
+        {
+          "caller": "irq_stub",
+          "callee": "PeripheralEntry",
+          "lineNumber": 1156
+        },
+        {
+          "caller": "irq_stub",
+          "callee": "irq_handler",
+          "lineNumber": 1158
+        },
+        {
+          "caller": "irq_stub",
+          "callee": "PeripheralExit",
+          "lineNumber": 1160
+        },
+        {
+          "caller": "set_clock",
+          "callee": "pr_info",
+          "lineNumber": 1168
+        },
+        {
+          "caller": "set_clock",
+          "callee": "mmc_hostname",
+          "lineNumber": 1168
+        },
+        {
+          "caller": "set_clock",
+          "callee": "set_sdhost_clock",
+          "lineNumber": 1199
+        },
+        {
+          "caller": "set_clock",
+          "callee": "max",
+          "lineNumber": 1201
+        },
+        {
+          "caller": "set_clock",
+          "callee": "Acquire",
+          "lineNumber": 1203
+        },
+        {
+          "caller": "set_clock",
+          "callee": "Acquire",
+          "lineNumber": 1205
+        },
+        {
+          "caller": "set_clock",
+          "callee": "write",
+          "lineNumber": 1212
+        },
+        {
+          "caller": "set_clock",
+          "callee": "mmiowb",
+          "lineNumber": 1213
+        },
+        {
+          "caller": "set_clock",
+          "callee": "Release",
+          "lineNumber": 1214
+        },
+        {
+          "caller": "set_clock",
+          "callee": "write",
+          "lineNumber": 1231
+        },
+        {
+          "caller": "set_clock",
+          "callee": "pr_info",
+          "lineNumber": 1234
+        },
+        {
+          "caller": "set_clock",
+          "callee": "mmc_hostname",
+          "lineNumber": 1236
+        },
+        {
+          "caller": "set_clock",
+          "callee": "pr_info",
+          "lineNumber": 1253
+        },
+        {
+          "caller": "set_clock",
+          "callee": "mmc_hostname",
+          "lineNumber": 1254
+        },
+        {
+          "caller": "set_clock",
+          "callee": "pr_warn",
+          "lineNumber": 1260
+        },
+        {
+          "caller": "set_clock",
+          "callee": "mmc_hostname",
+          "lineNumber": 1261
+        },
+        {
+          "caller": "set_clock",
+          "callee": "write",
+          "lineNumber": 1271
+        },
+        {
+          "caller": "set_clock",
+          "callee": "mmiowb",
+          "lineNumber": 1277
+        },
+        {
+          "caller": "set_clock",
+          "callee": "Release",
+          "lineNumber": 1278
+        },
+        {
+          "caller": "request",
+          "callee": "BUG_ON",
+          "lineNumber": 1285
+        },
+        {
+          "caller": "request",
+          "callee": "pr_info",
+          "lineNumber": 1287
+        },
+        {
+          "caller": "request",
+          "callee": "mmc_hostname",
+          "lineNumber": 1288
+        },
+        {
+          "caller": "request",
+          "callee": "pr_info",
+          "lineNumber": 1294
+        },
+        {
+          "caller": "request",
+          "callee": "mmc_hostname",
+          "lineNumber": 1295
+        },
+        {
+          "caller": "request",
+          "callee": "is_power_of_2",
+          "lineNumber": 1309
+        },
+        {
+          "caller": "request",
+          "callee": "pr_err",
+          "lineNumber": 1310
+        },
+        {
+          "caller": "request",
+          "callee": "mmc_hostname",
+          "lineNumber": 1311
+        },
+        {
+          "caller": "request",
+          "callee": "mmc_request_done",
+          "lineNumber": 1313
+        },
+        {
+          "caller": "request",
+          "callee": "set_clock",
+          "lineNumber": 1318
+        },
+        {
+          "caller": "request",
+          "callee": "Acquire",
+          "lineNumber": 1320
+        },
+        {
+          "caller": "request",
+          "callee": "WARN_ON",
+          "lineNumber": 1322
+        },
+        {
+          "caller": "request",
+          "callee": "read",
+          "lineNumber": 1325
+        },
+        {
+          "caller": "request",
+          "callee": "pr_warn",
+          "lineNumber": 1331
+        },
+        {
+          "caller": "request",
+          "callee": "mmc_hostname",
+          "lineNumber": 1332
+        },
+        {
+          "caller": "request",
+          "callee": "read",
+          "lineNumber": 1333
+        },
+        {
+          "caller": "request",
+          "callee": "dumpregs",
+          "lineNumber": 1335
+        },
+        {
+          "caller": "request",
+          "callee": "tasklet_schedule",
+          "lineNumber": 1338
+        },
+        {
+          "caller": "request",
+          "callee": "mmiowb",
+          "lineNumber": 1339
+        },
+        {
+          "caller": "request",
+          "callee": "Release",
+          "lineNumber": 1340
+        },
+        {
+          "caller": "request",
+          "callee": "send_command",
+          "lineNumber": 1347
+        },
+        {
+          "caller": "request",
+          "callee": "finish_command",
+          "lineNumber": 1349
+        },
+        {
+          "caller": "request",
+          "callee": "send_command",
+          "lineNumber": 1351
+        },
+        {
+          "caller": "request",
+          "callee": "finish_command",
+          "lineNumber": 1355
+        },
+        {
+          "caller": "request",
+          "callee": "mmiowb",
+          "lineNumber": 1358
+        },
+        {
+          "caller": "request",
+          "callee": "Release",
+          "lineNumber": 1360
+        },
+        {
+          "caller": "set_ios",
+          "callee": "pr_info",
+          "lineNumber": 1366
+        },
+        {
+          "caller": "set_ios",
+          "callee": "mmc_hostname",
+          "lineNumber": 1368
+        },
+        {
+          "caller": "set_ios",
+          "callee": "Acquire",
+          "lineNumber": 1372
+        },
+        {
+          "caller": "set_ios",
+          "callee": "write",
+          "lineNumber": 1384
+        },
+        {
+          "caller": "set_ios",
+          "callee": "mmiowb",
+          "lineNumber": 1386
+        },
+        {
+          "caller": "set_ios",
+          "callee": "Release",
+          "lineNumber": 1388
+        },
+        {
+          "caller": "set_ios",
+          "callee": "set_clock",
+          "lineNumber": 1391
+        },
+        {
+          "caller": "tasklet_finish",
+          "callee": "pr_warn",
+          "lineNumber": 1418
+        },
+        {
+          "caller": "tasklet_finish",
+          "callee": "mmc_hostname",
+          "lineNumber": 1419
+        },
+        {
+          "caller": "tasklet_finish",
+          "callee": "mmiowb",
+          "lineNumber": 1430
+        },
+        {
+          "caller": "tasklet_finish",
+          "callee": "pr_info",
+          "lineNumber": 1443
+        },
+        {
+          "caller": "tasklet_finish",
+          "callee": "mmc_hostname",
+          "lineNumber": 1444
+        },
+        {
+          "caller": "tasklet_finish",
+          "callee": "mmc_request_done",
+          "lineNumber": 1447
+        },
+        {
+          "caller": "add_host",
+          "callee": "pr_debug",
+          "lineNumber": 1460
+        },
+        {
+          "caller": "add_host",
+          "callee": "init",
+          "lineNumber": 1485
+        },
+        {
+          "caller": "add_host",
+          "callee": "ConnectIRQ",
+          "lineNumber": 1487
+        },
+        {
+          "caller": "add_host",
+          "callee": "mmiowb",
+          "lineNumber": 1489
+        },
+        {
+          "caller": "add_host",
+          "callee": "pr_info",
+          "lineNumber": 1491
+        },
+        {
+          "caller": "add_host",
+          "callee": "mmc_hostname",
+          "lineNumber": 1491
+        },
+        {
+          "caller": "probe",
+          "callee": "memset",
+          "lineNumber": 1505
+        },
+        {
+          "caller": "probe",
+          "callee": "pr_debug",
+          "lineNumber": 1508
+        },
+        {
+          "caller": "probe",
+          "callee": "GetMMCHost",
+          "lineNumber": 1510
+        },
+        {
+          "caller": "probe",
+          "callee": "GetClockRate",
+          "lineNumber": 1530
+        },
+        {
+          "caller": "probe",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 1530
+        },
+        {
+          "caller": "probe",
+          "callee": "pr_debug",
+          "lineNumber": 1533
+        },
+        {
+          "caller": "probe",
+          "callee": "set_sdhost_clock",
+          "lineNumber": 1543
+        },
+        {
+          "caller": "probe",
+          "callee": "pr_err",
+          "lineNumber": 1545
+        },
+        {
+          "caller": "probe",
+          "callee": "pr_debug",
+          "lineNumber": 1551
+        },
+        {
+          "caller": "probe",
+          "callee": "add_host",
+          "lineNumber": 1553
+        },
+        {
+          "caller": "probe",
+          "callee": "pr_debug",
+          "lineNumber": 1557
+        },
+        {
+          "caller": "probe",
+          "callee": "pr_debug",
+          "lineNumber": 1562
+        },
+        {
+          "caller": "remove",
+          "callee": "pr_debug",
+          "lineNumber": 1569
+        },
+        {
+          "caller": "remove",
+          "callee": "set_power",
+          "lineNumber": 1571
+        },
+        {
+          "caller": "remove",
+          "callee": "DisconnectIRQ",
+          "lineNumber": 1573
+        },
+        {
+          "caller": "remove",
+          "callee": "pr_debug",
+          "lineNumber": 1578
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_dispmanx/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 27,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 36,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 40,
+          "endLine": 81,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 83,
+          "endLine": 95,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Run",
+          "callee": "_main",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_dispmanx/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_dispmanx/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 27,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 36,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 40,
+          "endLine": 81,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 83,
+          "endLine": 95,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Run",
+          "callee": "_main",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_tiger/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 27,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 36,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 40,
+          "endLine": 81,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 83,
+          "endLine": 95,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Run",
+          "callee": "_main",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle2/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 115,
+      "nonEmptyLines": 95,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 29,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 39,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 43,
+          "endLine": 89,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 91,
+          "endLine": 115,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 91,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 32
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 34
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 36
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Run",
+          "callee": "RegisterStatusHandler",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Run",
+          "callee": "Sleep",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Run",
+          "callee": "_main",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 111
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle2/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 64,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/hello_triangle2/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/tvservice/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 27,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 36,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 40,
+          "endLine": 81,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 83,
+          "endLine": 95,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Run",
+          "callee": "_main",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 91
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/tvservice/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 61,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/sample/tvservice/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/sound/sample/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 111,
+      "nonEmptyLines": 90,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 28,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 38,
+          "endLine": 40,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 42,
+          "endLine": 83,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 85,
+          "endLine": 111,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 85,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CKernel",
+          "callee": "CMemorySystem::Get",
+          "lineNumber": 32
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetSoundOption",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 35
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Run",
+          "callee": "Playback",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Run",
+          "callee": "PlaybackActive",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Run",
+          "callee": "Sleep",
+          "lineNumber": 107
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/sound/sample/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 71,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/sound/sample/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/vchiq/vchiqdevice.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 16,
+      "functions": [
+        {
+          "name": "CVCHIQDevice",
+          "startLine": 11,
+          "endLine": 19,
+          "params": [
+            "pMemory",
+            "pInterrupt"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CVCHIQDevice",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CVCHIQDevice",
+          "callee": "AddResource",
+          "lineNumber": 14
+        },
+        {
+          "caller": "CVCHIQDevice",
+          "callee": "AddResource",
+          "lineNumber": 15
+        },
+        {
+          "caller": "CVCHIQDevice",
+          "callee": "SetDMAMemory",
+          "lineNumber": 17
+        },
+        {
+          "caller": "CVCHIQDevice",
+          "callee": "GetCoherentPage",
+          "lineNumber": 17
+        },
+        {
+          "caller": "CVCHIQDevice",
+          "callee": "GetCoherentPage",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/wlan/bcm4343.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 367,
+      "nonEmptyLines": 280,
+      "functions": [
+        {
+          "name": "CBcm4343Device",
+          "startLine": 40,
+          "endLine": 47,
+          "params": [
+            "pFirmwarePath"
+          ]
+        },
+        {
+          "name": "~CBcm4343Device",
+          "startLine": 49,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 59,
+          "endLine": 110,
+          "params": []
+        },
+        {
+          "name": "SendFrame",
+          "startLine": 117,
+          "endLine": 143,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "ReceiveFrame",
+          "startLine": 145,
+          "endLine": 160,
+          "params": [
+            "pBuffer",
+            "pResultLength"
+          ]
+        },
+        {
+          "name": "IsLinkUp",
+          "startLine": 162,
+          "endLine": 175,
+          "params": []
+        },
+        {
+          "name": "SetMulticastFilter",
+          "startLine": 177,
+          "endLine": 205,
+          "params": [
+            "Groups"
+          ]
+        },
+        {
+          "name": "RegisterEventHandler",
+          "startLine": 207,
+          "endLine": 211,
+          "params": [
+            "pHandler",
+            "pContext"
+          ]
+        },
+        {
+          "name": "RegisterConnectedProvider",
+          "startLine": 213,
+          "endLine": 216,
+          "params": [
+            "pHandler"
+          ]
+        },
+        {
+          "name": "Control",
+          "startLine": 218,
+          "endLine": 241,
+          "params": [
+            "pFormat"
+          ]
+        },
+        {
+          "name": "ReceiveScanResult",
+          "startLine": 243,
+          "endLine": 258,
+          "params": [
+            "pBuffer",
+            "pResultLength"
+          ]
+        },
+        {
+          "name": "JoinOpenNet",
+          "startLine": 271,
+          "endLine": 283,
+          "params": [
+            "pSSID"
+          ]
+        },
+        {
+          "name": "CreateOpenNet",
+          "startLine": 286,
+          "endLine": 296,
+          "params": [
+            "pSSID",
+            "nChannel",
+            "bHidden"
+          ]
+        },
+        {
+          "name": "DestroyOpenNet",
+          "startLine": 298,
+          "endLine": 303,
+          "params": []
+        },
+        {
+          "name": "DumpStatus",
+          "startLine": 305,
+          "endLine": 314,
+          "params": []
+        },
+        {
+          "name": "FrameReceived",
+          "startLine": 316,
+          "endLine": 320,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "ScanResultReceived",
+          "startLine": 322,
+          "endLine": 326,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "OpenNetEventHandler",
+          "startLine": 328,
+          "endLine": 347,
+          "params": [
+            "Type",
+            "pParams",
+            "pContext"
+          ]
+        },
+        {
+          "name": "etheriq",
+          "startLine": 349,
+          "endLine": 355,
+          "params": [
+            "pEther",
+            "pBlock",
+            "nFlag"
+          ]
+        },
+        {
+          "name": "etherscanresult",
+          "startLine": 357,
+          "endLine": 361,
+          "params": [
+            "pEther",
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "addethercard",
+          "startLine": 363,
+          "endLine": 367,
+          "params": [
+            "pName",
+            "pEtherPnpHandler"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CBcm4343Device",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "~CBcm4343Device",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "SendFrame",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "ReceiveFrame",
+          "line": 145,
+          "isDefault": false
+        },
+        {
+          "name": "IsLinkUp",
+          "line": 162,
+          "isDefault": false
+        },
+        {
+          "name": "SetMulticastFilter",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterEventHandler",
+          "line": 207,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterConnectedProvider",
+          "line": 213,
+          "isDefault": false
+        },
+        {
+          "name": "Control",
+          "line": 218,
+          "isDefault": false
+        },
+        {
+          "name": "ReceiveScanResult",
+          "line": 243,
+          "isDefault": false
+        },
+        {
+          "name": "JoinOpenNet",
+          "line": 271,
+          "isDefault": false
+        },
+        {
+          "name": "CreateOpenNet",
+          "line": 286,
+          "isDefault": false
+        },
+        {
+          "name": "DestroyOpenNet",
+          "line": 298,
+          "isDefault": false
+        },
+        {
+          "name": "DumpStatus",
+          "line": 305,
+          "isDefault": false
+        },
+        {
+          "name": "FrameReceived",
+          "line": 316,
+          "isDefault": false
+        },
+        {
+          "name": "ScanResultReceived",
+          "line": 322,
+          "isDefault": false
+        },
+        {
+          "name": "OpenNetEventHandler",
+          "line": 328,
+          "isDefault": false
+        },
+        {
+          "name": "etheriq",
+          "line": 349,
+          "isDefault": false
+        },
+        {
+          "name": "etherscanresult",
+          "line": 357,
+          "isDefault": false
+        },
+        {
+          "name": "addethercard",
+          "line": 363,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CBcm4343Device",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "~CBcm4343Device",
+          "callee": "(*s_EtherDevice.shutdown)",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDTB",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CMachineInfo::Get",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "FindNode",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "FindProperty",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetPropertyValueLength",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Set",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetPropertyValue",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CopyTo",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Initialize",
+          "callee": "p9arch_init",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Initialize",
+          "callee": "p9chan_init",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "p9proc_init",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ether4330link",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Initialize",
+          "callee": "(*s_pEtherPnpHandler)",
+          "lineNumber": 88
+        },
+        {
+          "caller": "Initialize",
+          "callee": "memset",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Initialize",
+          "callee": "waserror",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Initialize",
+          "callee": "(*s_EtherDevice.attach)",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Set",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Initialize",
+          "callee": "AddNetDevice",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Initialize",
+          "callee": "poperror",
+          "lineNumber": 107
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "allocb",
+          "lineNumber": 121
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "assert",
+          "lineNumber": 122
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "assert",
+          "lineNumber": 124
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "assert",
+          "lineNumber": 125
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "memcpy",
+          "lineNumber": 126
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "assert",
+          "lineNumber": 129
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "qpass",
+          "lineNumber": 130
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "waserror",
+          "lineNumber": 132
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "assert",
+          "lineNumber": 137
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "(*s_EtherDevice.transmit)",
+          "lineNumber": 138
+        },
+        {
+          "caller": "SendFrame",
+          "callee": "poperror",
+          "lineNumber": 140
+        },
+        {
+          "caller": "ReceiveFrame",
+          "callee": "assert",
+          "lineNumber": 147
+        },
+        {
+          "caller": "ReceiveFrame",
+          "callee": "Dequeue",
+          "lineNumber": 148
+        },
+        {
+          "caller": "ReceiveFrame",
+          "callee": "assert",
+          "lineNumber": 154
+        },
+        {
+          "caller": "IsLinkUp",
+          "callee": "(*m_pIsConnected)",
+          "lineNumber": 171
+        },
+        {
+          "caller": "SetMulticastFilter",
+          "callee": "memcpy",
+          "lineNumber": 188
+        },
+        {
+          "caller": "SetMulticastFilter",
+          "callee": "memcpy",
+          "lineNumber": 191
+        },
+        {
+          "caller": "SetMulticastFilter",
+          "callee": "waserror",
+          "lineNumber": 194
+        },
+        {
+          "caller": "SetMulticastFilter",
+          "callee": "assert",
+          "lineNumber": 199
+        },
+        {
+          "caller": "SetMulticastFilter",
+          "callee": "(*s_EtherDevice.setmulticast)",
+          "lineNumber": 200
+        },
+        {
+          "caller": "SetMulticastFilter",
+          "callee": "poperror",
+          "lineNumber": 202
+        },
+        {
+          "caller": "RegisterEventHandler",
+          "callee": "assert",
+          "lineNumber": 209
+        },
+        {
+          "caller": "RegisterEventHandler",
+          "callee": "(*s_EtherDevice.setevhndlr)",
+          "lineNumber": 210
+        },
+        {
+          "caller": "Control",
+          "callee": "assert",
+          "lineNumber": 220
+        },
+        {
+          "caller": "Control",
+          "callee": "va_start",
+          "lineNumber": 223
+        },
+        {
+          "caller": "Control",
+          "callee": "FormatV",
+          "lineNumber": 226
+        },
+        {
+          "caller": "Control",
+          "callee": "va_end",
+          "lineNumber": 228
+        },
+        {
+          "caller": "Control",
+          "callee": "waserror",
+          "lineNumber": 230
+        },
+        {
+          "caller": "Control",
+          "callee": "assert",
+          "lineNumber": 235
+        },
+        {
+          "caller": "Control",
+          "callee": "(*s_EtherDevice.ctl)",
+          "lineNumber": 236
+        },
+        {
+          "caller": "Control",
+          "callee": "poperror",
+          "lineNumber": 238
+        },
+        {
+          "caller": "ReceiveScanResult",
+          "callee": "assert",
+          "lineNumber": 245
+        },
+        {
+          "caller": "ReceiveScanResult",
+          "callee": "Dequeue",
+          "lineNumber": 246
+        },
+        {
+          "caller": "ReceiveScanResult",
+          "callee": "assert",
+          "lineNumber": 252
+        },
+        {
+          "caller": "JoinOpenNet",
+          "callee": "RegisterEventHandler",
+          "lineNumber": 275
+        },
+        {
+          "caller": "JoinOpenNet",
+          "callee": "assert",
+          "lineNumber": 277
+        },
+        {
+          "caller": "JoinOpenNet",
+          "callee": "Control",
+          "lineNumber": 278
+        },
+        {
+          "caller": "CreateOpenNet",
+          "callee": "assert",
+          "lineNumber": 290
+        },
+        {
+          "caller": "CreateOpenNet",
+          "callee": "Control",
+          "lineNumber": 291
+        },
+        {
+          "caller": "DestroyOpenNet",
+          "callee": "Control",
+          "lineNumber": 302
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "assert",
+          "lineNumber": 309
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "(*s_EtherDevice.ifstat)",
+          "lineNumber": 310
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "print",
+          "lineNumber": 313
+        },
+        {
+          "caller": "FrameReceived",
+          "callee": "assert",
+          "lineNumber": 318
+        },
+        {
+          "caller": "FrameReceived",
+          "callee": "Enqueue",
+          "lineNumber": 319
+        },
+        {
+          "caller": "ScanResultReceived",
+          "callee": "assert",
+          "lineNumber": 324
+        },
+        {
+          "caller": "ScanResultReceived",
+          "callee": "Enqueue",
+          "lineNumber": 325
+        },
+        {
+          "caller": "OpenNetEventHandler",
+          "callee": "assert",
+          "lineNumber": 332
+        },
+        {
+          "caller": "etheriq",
+          "callee": "assert",
+          "lineNumber": 351
+        },
+        {
+          "caller": "etheriq",
+          "callee": "CBcm4343Device::FrameReceived",
+          "lineNumber": 352
+        },
+        {
+          "caller": "etheriq",
+          "callee": "BLEN",
+          "lineNumber": 352
+        },
+        {
+          "caller": "etheriq",
+          "callee": "freeb",
+          "lineNumber": 354
+        },
+        {
+          "caller": "etherscanresult",
+          "callee": "assert",
+          "lineNumber": 359
+        },
+        {
+          "caller": "etherscanresult",
+          "callee": "CBcm4343Device::ScanResultReceived",
+          "lineNumber": 360
+        },
+        {
+          "caller": "addethercard",
+          "callee": "assert",
+          "lineNumber": 365
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 21,
+        "functionCount": 21,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/alloc.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/armv6mmu.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 161,
+      "nonEmptyLines": 138,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/armv7lpae.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 94,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

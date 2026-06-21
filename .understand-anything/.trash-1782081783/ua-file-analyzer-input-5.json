@@ -1,0 +1,300 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/gpio/rtkgpio.cpp",
+      "language": "cpp",
+      "sizeLines": 259,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/gpio/rtkgpio.h",
+      "language": "c",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/gpio/sample/rtkgpio/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/gpio/sample/rtkgpio/kernel.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/gpio/sample/rtkgpio/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/linux/device.cpp",
+      "language": "cpp",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/lvgl/lvgl.cpp",
+      "language": "cpp",
+      "sizeLines": 436,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/microbit/microbitclient.cpp",
+      "language": "cpp",
+      "sizeLines": 546,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/glibc_compat.cpp",
+      "language": "cpp",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/profile/profiler.cpp",
+      "language": "cpp",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/rtc/firmwarertc.cpp",
+      "language": "cpp",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/rtc/mcp7941x.cpp",
+      "language": "cpp",
+      "sizeLines": 215,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/sensor/mpu6050.cpp",
+      "language": "cpp",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/recorder.cpp",
+      "language": "cpp",
+      "sizeLines": 280,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/recorder.h",
+      "language": "c",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/sample/sampler.h",
+      "language": "c",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/ugui/uguicpp.cpp",
+      "language": "cpp",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/vc4/sound/vchiqsoundbasedevice.cpp",
+      "language": "cpp",
+      "sizeLines": 484,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/webconsole/webconsole.cpp",
+      "language": "cpp",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/cputhrottle.h",
+      "language": "c",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/debug.h",
+      "language": "c",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/devicenameservice.h",
+      "language": "c",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/exceptionhandler.h",
+      "language": "c",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/fs/fat/fatcache.h",
+      "language": "c",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/fs/fat/fatfsdef.h",
+      "language": "c",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/fs/fat/fatinfo.h",
+      "language": "c",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/input/touchscreen.h",
+      "language": "c",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/koptions.h",
+      "language": "c",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/logger.h",
+      "language": "c",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/nulldevice.h",
+      "language": "c",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/peripherals/gpiopin.h",
+      "language": "c",
+      "sizeLines": 182,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/sound/usbsoundbasedevice.h",
+      "language": "c",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/gpio/rtkgpio.cpp": [
+      "addon/gpio/rtkgpio.h",
+      "include/circle/logger.h"
+    ],
+    "addon/gpio/rtkgpio.h": [],
+    "addon/gpio/sample/rtkgpio/kernel.cpp": [
+      "addon/gpio/sample/rtkgpio/kernel.h",
+      "include/circle/string.h",
+      "include/circle/usb/usbserialch341.h"
+    ],
+    "addon/gpio/sample/rtkgpio/kernel.h": [],
+    "addon/gpio/sample/rtkgpio/main.cpp": [
+      "addon/gpio/sample/rtkgpio/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/linux/device.cpp": [
+      "include/circle/logger.h"
+    ],
+    "addon/lvgl/lvgl.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/logger.h",
+      "include/circle/new.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "addon/microbit/microbitclient.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "addon/profile/glibc_compat.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/util.h"
+    ],
+    "addon/profile/profiler.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/sysconfig.h"
+    ],
+    "addon/rtc/firmwarertc.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h"
+    ],
+    "addon/rtc/mcp7941x.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/util.h"
+    ],
+    "addon/sensor/mpu6050.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h"
+    ],
+    "addon/ugui/sample/recorder.cpp": [
+      "addon/ugui/sample/recorder.h",
+      "addon/ugui/sample/sampler.h",
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/synchronize.h"
+    ],
+    "addon/ugui/sample/recorder.h": [],
+    "addon/ugui/sample/sampler.h": [],
+    "addon/ugui/uguicpp.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/koptions.h",
+      "include/circle/timer.h"
+    ],
+    "addon/vc4/sound/vchiqsoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "addon/webconsole/webconsole.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/util.h"
+    ],
+    "include/circle/cputhrottle.h": [],
+    "include/circle/debug.h": [],
+    "include/circle/devicenameservice.h": [],
+    "include/circle/exceptionhandler.h": [],
+    "include/circle/fs/fat/fatcache.h": [],
+    "include/circle/fs/fat/fatfsdef.h": [],
+    "include/circle/fs/fat/fatinfo.h": [],
+    "include/circle/input/touchscreen.h": [],
+    "include/circle/koptions.h": [],
+    "include/circle/logger.h": [],
+    "include/circle/nulldevice.h": [],
+    "include/circle/peripherals/gpiopin.h": [],
+    "include/circle/sound/usbsoundbasedevice.h": []
+  }
+}

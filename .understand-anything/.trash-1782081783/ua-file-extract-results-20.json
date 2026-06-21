@@ -1,0 +1,7911 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 28,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "include/circle/usb/usbrequest.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 70,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/usbserial.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 106,
+      "nonEmptyLines": 88,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/usbserialhost.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 65,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/xhcisharedmemallocator.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 62,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/windowdisplay.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 68,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/classallocator.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 196,
+      "nonEmptyLines": 161,
+      "functions": [
+        {
+          "name": "CClassAllocator",
+          "startLine": 39,
+          "endLine": 48,
+          "params": [
+            "nObjectSize",
+            "nReservedObjects",
+            "pClassName"
+          ]
+        },
+        {
+          "name": "CClassAllocator",
+          "startLine": 50,
+          "endLine": 62,
+          "params": [
+            "nObjectSize",
+            "nReservedObjects",
+            "nTargetLevel",
+            "pClassName"
+          ]
+        },
+        {
+          "name": "~CClassAllocator",
+          "startLine": 65,
+          "endLine": 75,
+          "params": []
+        },
+        {
+          "name": "Init",
+          "startLine": 77,
+          "endLine": 108,
+          "params": [
+            "nObjectSize",
+            "nReservedObjects"
+          ]
+        },
+        {
+          "name": "Extend",
+          "startLine": 110,
+          "endLine": 139,
+          "params": [
+            "nReservedObjects",
+            "nTargetLevel"
+          ]
+        },
+        {
+          "name": "Free",
+          "startLine": 175,
+          "endLine": 196,
+          "params": [
+            "pBlock"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TBlock",
+          "startLine": 27,
+          "endLine": 37,
+          "methods": [],
+          "properties": [
+            "nMagic",
+            "nPadding",
+            "pNext",
+            "Data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TBlock",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "CClassAllocator",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "CClassAllocator",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "~CClassAllocator",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "Init",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "Extend",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "Free",
+          "line": 175,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CClassAllocator",
+          "callee": "Init",
+          "lineNumber": 47
+        },
+        {
+          "caller": "CClassAllocator",
+          "callee": "Init",
+          "lineNumber": 61
+        },
+        {
+          "caller": "~CClassAllocator",
+          "callee": "free",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Init",
+          "callee": "assert",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Init",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Init",
+          "callee": "reinterpret_cast<unsigned char *>",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Init",
+          "callee": "malloc",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Init",
+          "callee": "assert",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Init",
+          "callee": "reinterpret_cast<uintptr>",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Init",
+          "callee": "reinterpret_cast<TBlock *>",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Extend",
+          "callee": "assert",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Extend",
+          "callee": "assert",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Extend",
+          "callee": "assert",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Extend",
+          "callee": "reinterpret_cast<unsigned char *>",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Extend",
+          "callee": "malloc",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Extend",
+          "callee": "assert",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Extend",
+          "callee": "reinterpret_cast<uintptr>",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Extend",
+          "callee": "Acquire",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Extend",
+          "callee": "reinterpret_cast<TBlock *>",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Extend",
+          "callee": "Release",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Free",
+          "callee": "assert",
+          "lineNumber": 177
+        },
+        {
+          "caller": "Free",
+          "callee": "reinterpret_cast<TBlock *>",
+          "lineNumber": 178
+        },
+        {
+          "caller": "Free",
+          "callee": "reinterpret_cast<unsigned char *>",
+          "lineNumber": 179
+        },
+        {
+          "caller": "Free",
+          "callee": "assert",
+          "lineNumber": 181
+        },
+        {
+          "caller": "Free",
+          "callee": "assert",
+          "lineNumber": 182
+        },
+        {
+          "caller": "Free",
+          "callee": "Acquire",
+          "lineNumber": 186
+        },
+        {
+          "caller": "Free",
+          "callee": "Release",
+          "lineNumber": 194
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 7,
+        "functionCount": 6,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "lib/fs/fat/fat.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 237,
+      "nonEmptyLines": 189,
+      "functions": [
+        {
+          "name": "CFAT",
+          "startLine": 23,
+          "endLine": 27,
+          "params": [
+            "pCache",
+            "pFATInfo"
+          ]
+        },
+        {
+          "name": "~CFAT",
+          "startLine": 29,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "GetClusterEntry",
+          "startLine": 35,
+          "endLine": 53,
+          "params": [
+            "nCluster"
+          ]
+        },
+        {
+          "name": "IsEOC",
+          "startLine": 55,
+          "endLine": 76,
+          "params": [
+            "nClusterEntry"
+          ]
+        },
+        {
+          "name": "SetClusterEntry",
+          "startLine": 78,
+          "endLine": 97,
+          "params": [
+            "nCluster",
+            "nEntry"
+          ]
+        },
+        {
+          "name": "AllocateCluster",
+          "startLine": 99,
+          "endLine": 146,
+          "params": []
+        },
+        {
+          "name": "FreeClusterChain",
+          "startLine": 148,
+          "endLine": 162,
+          "params": [
+            "nFirstCluster"
+          ]
+        },
+        {
+          "name": "GetEntry",
+          "startLine": 193,
+          "endLine": 214,
+          "params": [
+            "pBuffer",
+            "nSectorOffset"
+          ]
+        },
+        {
+          "name": "SetEntry",
+          "startLine": 216,
+          "endLine": 237,
+          "params": [
+            "pBuffer",
+            "nSectorOffset",
+            "nEntry"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CFAT",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CFAT",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "GetClusterEntry",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "IsEOC",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "SetClusterEntry",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "AllocateCluster",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "FreeClusterChain",
+          "line": 148,
+          "isDefault": false
+        },
+        {
+          "name": "GetEntry",
+          "line": 193,
+          "isDefault": false
+        },
+        {
+          "name": "SetEntry",
+          "line": 216,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GetClusterEntry",
+          "callee": "Acquire",
+          "lineNumber": 37
+        },
+        {
+          "caller": "GetClusterEntry",
+          "callee": "assert",
+          "lineNumber": 41
+        },
+        {
+          "caller": "GetClusterEntry",
+          "callee": "GetSector",
+          "lineNumber": 42
+        },
+        {
+          "caller": "GetClusterEntry",
+          "callee": "GetReadFAT",
+          "lineNumber": 42
+        },
+        {
+          "caller": "GetClusterEntry",
+          "callee": "assert",
+          "lineNumber": 43
+        },
+        {
+          "caller": "GetClusterEntry",
+          "callee": "GetEntry",
+          "lineNumber": 45
+        },
+        {
+          "caller": "GetClusterEntry",
+          "callee": "assert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "GetClusterEntry",
+          "callee": "FreeSector",
+          "lineNumber": 48
+        },
+        {
+          "caller": "GetClusterEntry",
+          "callee": "Release",
+          "lineNumber": 50
+        },
+        {
+          "caller": "IsEOC",
+          "callee": "assert",
+          "lineNumber": 57
+        },
+        {
+          "caller": "IsEOC",
+          "callee": "GetFATType",
+          "lineNumber": 58
+        },
+        {
+          "caller": "IsEOC",
+          "callee": "assert",
+          "lineNumber": 67
+        },
+        {
+          "caller": "IsEOC",
+          "callee": "GetFATType",
+          "lineNumber": 67
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "Acquire",
+          "lineNumber": 80
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "assert",
+          "lineNumber": 82
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "GetFirstWriteFAT",
+          "lineNumber": 83
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "GetLastWriteFAT",
+          "lineNumber": 83
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "GetSector",
+          "lineNumber": 86
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "SetEntry",
+          "lineNumber": 89
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "assert",
+          "lineNumber": 91
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "MarkDirty",
+          "lineNumber": 92
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "FreeSector",
+          "lineNumber": 93
+        },
+        {
+          "caller": "SetClusterEntry",
+          "callee": "Release",
+          "lineNumber": 96
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "Acquire",
+          "lineNumber": 101
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "assert",
+          "lineNumber": 103
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetNextFreeCluster",
+          "lineNumber": 104
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetClusterCount",
+          "lineNumber": 106
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "assert",
+          "lineNumber": 108
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetSector",
+          "lineNumber": 111
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetReadFAT",
+          "lineNumber": 111
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "assert",
+          "lineNumber": 112
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetEntry",
+          "lineNumber": 114
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "assert",
+          "lineNumber": 116
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "FreeSector",
+          "lineNumber": 117
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetFirstWriteFAT",
+          "lineNumber": 121
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetLastWriteFAT",
+          "lineNumber": 122
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetSector",
+          "lineNumber": 124
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "assert",
+          "lineNumber": 125
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "SetEntry",
+          "lineNumber": 127
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "GetFATType",
+          "lineNumber": 127
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "MarkDirty",
+          "lineNumber": 129
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "FreeSector",
+          "lineNumber": 130
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "ClusterAllocated",
+          "lineNumber": 133
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "Release",
+          "lineNumber": 135
+        },
+        {
+          "caller": "AllocateCluster",
+          "callee": "Release",
+          "lineNumber": 143
+        },
+        {
+          "caller": "FreeClusterChain",
+          "callee": "GetClusterEntry",
+          "lineNumber": 152
+        },
+        {
+          "caller": "FreeClusterChain",
+          "callee": "SetClusterEntry",
+          "lineNumber": 154
+        },
+        {
+          "caller": "FreeClusterChain",
+          "callee": "assert",
+          "lineNumber": 156
+        },
+        {
+          "caller": "FreeClusterChain",
+          "callee": "ClusterFreed",
+          "lineNumber": 157
+        },
+        {
+          "caller": "FreeClusterChain",
+          "callee": "IsEOC",
+          "lineNumber": 161
+        },
+        {
+          "caller": "GetEntry",
+          "callee": "assert",
+          "lineNumber": 195
+        },
+        {
+          "caller": "GetEntry",
+          "callee": "GetFATType",
+          "lineNumber": 198
+        },
+        {
+          "caller": "GetEntry",
+          "callee": "assert",
+          "lineNumber": 200
+        },
+        {
+          "caller": "GetEntry",
+          "callee": "assert",
+          "lineNumber": 206
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "assert",
+          "lineNumber": 218
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "GetFATType",
+          "lineNumber": 220
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "assert",
+          "lineNumber": 222
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "assert",
+          "lineNumber": 223
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "(u8)",
+          "lineNumber": 224
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "(u8)",
+          "lineNumber": 225
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "assert",
+          "lineNumber": 229
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "assert",
+          "lineNumber": 230
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "(u8)",
+          "lineNumber": 231
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "(u8)",
+          "lineNumber": 232
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "(u8)",
+          "lineNumber": 233
+        },
+        {
+          "caller": "SetEntry",
+          "callee": "(u8)",
+          "lineNumber": 235
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 9,
+        "functionCount": 9,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fs/partition.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 99,
+      "nonEmptyLines": 85,
+      "functions": [
+        {
+          "name": "CPartition",
+          "startLine": 24,
+          "endLine": 32,
+          "params": [
+            "pDevice",
+            "nFirstSector",
+            "nNumberOfSectors"
+          ]
+        },
+        {
+          "name": "~CPartition",
+          "startLine": 34,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "Read",
+          "startLine": 39,
+          "endLine": 55,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "Write",
+          "startLine": 57,
+          "endLine": 73,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "Seek",
+          "startLine": 75,
+          "endLine": 99,
+          "params": [
+            "ullOffset"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPartition",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "~CPartition",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "Seek",
+          "line": 75,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CPartition",
+          "callee": "assert",
+          "lineNumber": 31
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Read",
+          "callee": "Read",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Seek",
+          "callee": "assert",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Seek",
+          "callee": "Seek",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/fs/partitionmanager.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 119,
+      "functions": [
+        {
+          "name": "CPartitionManager",
+          "startLine": 58,
+          "endLine": 66,
+          "params": [
+            "pDevice",
+            "pDeviceName"
+          ]
+        },
+        {
+          "name": "~CPartitionManager",
+          "startLine": 68,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 87,
+          "endLine": 138,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "TCHSAddress",
+          "startLine": 27,
+          "endLine": 33,
+          "methods": [],
+          "properties": [
+            "Head",
+            "Sector",
+            "CylinderLow"
+          ]
+        },
+        {
+          "name": "TPartitionEntry",
+          "startLine": 36,
+          "endLine": 44,
+          "methods": [],
+          "properties": [
+            "Status",
+            "FirstSector",
+            "Type",
+            "LastSector",
+            "LBAFirstSector",
+            "NumberOfSectors"
+          ]
+        },
+        {
+          "name": "TMasterBootRecord",
+          "startLine": 47,
+          "endLine": 53,
+          "methods": [],
+          "properties": [
+            "BootCode",
+            "Partition",
+            "BootSignature"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TCHSAddress",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "TPartitionEntry",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "TMasterBootRecord",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "CPartitionManager",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "~CPartitionManager",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 87,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CPartitionManager",
+          "callee": "Format",
+          "lineNumber": 76
+        },
+        {
+          "caller": "~CPartitionManager",
+          "callee": "RemoveDevice",
+          "lineNumber": 77
+        },
+        {
+          "caller": "~CPartitionManager",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Seek",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Read",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Format",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Initialize",
+          "callee": "AddDevice",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 132
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 6,
+        "functionCount": 3,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "lib/input/keyboardbehaviour.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 193,
+      "nonEmptyLines": 167,
+      "functions": [
+        {
+          "name": "CKeyboardBehaviour",
+          "startLine": 28,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "~CKeyboardBehaviour",
+          "startLine": 38,
+          "endLine": 43,
+          "params": []
+        },
+        {
+          "name": "RegisterKeyPressedHandler",
+          "startLine": 45,
+          "endLine": 49,
+          "params": [
+            "pKeyPressedHandler"
+          ]
+        },
+        {
+          "name": "RegisterSelectConsoleHandler",
+          "startLine": 51,
+          "endLine": 55,
+          "params": [
+            "pSelectConsoleHandler"
+          ]
+        },
+        {
+          "name": "RegisterShutdownHandler",
+          "startLine": 57,
+          "endLine": 61,
+          "params": [
+            "pShutdownHandler"
+          ]
+        },
+        {
+          "name": "GetLEDStatus",
+          "startLine": 63,
+          "endLine": 66,
+          "params": []
+        },
+        {
+          "name": "GenerateKeyEvent",
+          "startLine": 68,
+          "endLine": 120,
+          "params": [
+            "ucKeyCode"
+          ]
+        },
+        {
+          "name": "KeyPressed",
+          "startLine": 122,
+          "endLine": 149,
+          "params": [
+            "ucKeyCode"
+          ]
+        },
+        {
+          "name": "KeyReleased",
+          "startLine": 151,
+          "endLine": 172,
+          "params": [
+            "ucKeyCode"
+          ]
+        },
+        {
+          "name": "TimerHandler",
+          "startLine": 174,
+          "endLine": 185,
+          "params": [
+            "hTimer"
+          ]
+        },
+        {
+          "name": "TimerStub",
+          "startLine": 187,
+          "endLine": 193,
+          "params": [
+            "hTimer",
+            "pParam",
+            "pContext"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKeyboardBehaviour",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CKeyboardBehaviour",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterKeyPressedHandler",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterSelectConsoleHandler",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterShutdownHandler",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "GetLEDStatus",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "GenerateKeyEvent",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "KeyPressed",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "KeyReleased",
+          "line": 151,
+          "isDefault": false
+        },
+        {
+          "name": "TimerHandler",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "TimerStub",
+          "line": 187,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "RegisterKeyPressedHandler",
+          "callee": "assert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "RegisterSelectConsoleHandler",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "RegisterShutdownHandler",
+          "callee": "assert",
+          "lineNumber": 59
+        },
+        {
+          "caller": "GetLEDStatus",
+          "callee": "GetLEDStatus",
+          "lineNumber": 65
+        },
+        {
+          "caller": "GenerateKeyEvent",
+          "callee": "Translate",
+          "lineNumber": 74
+        },
+        {
+          "caller": "GenerateKeyEvent",
+          "callee": "assert",
+          "lineNumber": 98
+        },
+        {
+          "caller": "GenerateKeyEvent",
+          "callee": "(*m_pSelectConsoleHandler)",
+          "lineNumber": 100
+        },
+        {
+          "caller": "GenerateKeyEvent",
+          "callee": "(*m_pShutdownHandler)",
+          "lineNumber": 107
+        },
+        {
+          "caller": "GenerateKeyEvent",
+          "callee": "GetString",
+          "lineNumber": 112
+        },
+        {
+          "caller": "GenerateKeyEvent",
+          "callee": "(*m_pKeyPressedHandler)",
+          "lineNumber": 116
+        },
+        {
+          "caller": "KeyPressed",
+          "callee": "assert",
+          "lineNumber": 127
+        },
+        {
+          "caller": "KeyPressed",
+          "callee": "GenerateKeyEvent",
+          "lineNumber": 136
+        },
+        {
+          "caller": "KeyPressed",
+          "callee": "CancelKernelTimer",
+          "lineNumber": 141
+        },
+        {
+          "caller": "KeyPressed",
+          "callee": "CTimer::Get",
+          "lineNumber": 141
+        },
+        {
+          "caller": "KeyPressed",
+          "callee": "StartKernelTimer",
+          "lineNumber": 144
+        },
+        {
+          "caller": "KeyPressed",
+          "callee": "CTimer::Get",
+          "lineNumber": 144
+        },
+        {
+          "caller": "KeyPressed",
+          "callee": "assert",
+          "lineNumber": 145
+        },
+        {
+          "caller": "KeyReleased",
+          "callee": "assert",
+          "lineNumber": 156
+        },
+        {
+          "caller": "KeyReleased",
+          "callee": "CancelKernelTimer",
+          "lineNumber": 165
+        },
+        {
+          "caller": "KeyReleased",
+          "callee": "CTimer::Get",
+          "lineNumber": 165
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 176
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "GenerateKeyEvent",
+          "lineNumber": 180
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "StartKernelTimer",
+          "lineNumber": 182
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 182
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 183
+        },
+        {
+          "caller": "TimerStub",
+          "callee": "assert",
+          "lineNumber": 190
+        },
+        {
+          "caller": "TimerStub",
+          "callee": "TimerHandler",
+          "lineNumber": 192
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 11,
+        "functionCount": 11,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/input/keymap.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 352,
+      "nonEmptyLines": 308,
+      "functions": [
+        {
+          "name": "CKeyMap",
+          "startLine": 132,
+          "endLine": 153,
+          "params": []
+        },
+        {
+          "name": "~CKeyMap",
+          "startLine": 155,
+          "endLine": 157,
+          "params": []
+        },
+        {
+          "name": "ClearTable",
+          "startLine": 159,
+          "endLine": 172,
+          "params": [
+            "nTable"
+          ]
+        },
+        {
+          "name": "SetEntry",
+          "startLine": 174,
+          "endLine": 187,
+          "params": [
+            "nTable",
+            "nPhyCode",
+            "nValue"
+          ]
+        },
+        {
+          "name": "Translate",
+          "startLine": 189,
+          "endLine": 269,
+          "params": [
+            "nPhyCode",
+            "nModifiers"
+          ]
+        },
+        {
+          "name": "GetLEDStatus",
+          "startLine": 318,
+          "endLine": 338,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKeyMap",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "~CKeyMap",
+          "line": 155,
+          "isDefault": false
+        },
+        {
+          "name": "ClearTable",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "SetEntry",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "Translate",
+          "line": 189,
+          "isDefault": false
+        },
+        {
+          "name": "GetLEDStatus",
+          "line": 318,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKeyMap",
+          "callee": "GetKeyMap",
+          "lineNumber": 137
+        },
+        {
+          "caller": "CKeyMap",
+          "callee": "CKernelOptions::Get",
+          "lineNumber": 137
+        },
+        {
+          "caller": "CKeyMap",
+          "callee": "assert",
+          "lineNumber": 138
+        },
+        {
+          "caller": "CKeyMap",
+          "callee": "LookupDefaultMap",
+          "lineNumber": 140
+        },
+        {
+          "caller": "CKeyMap",
+          "callee": "LookupDefaultMap",
+          "lineNumber": 143
+        },
+        {
+          "caller": "CKeyMap",
+          "callee": "assert",
+          "lineNumber": 144
+        },
+        {
+          "caller": "CKeyMap",
+          "callee": "assert",
+          "lineNumber": 151
+        },
+        {
+          "caller": "CKeyMap",
+          "callee": "memcpy",
+          "lineNumber": 152
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/input/linediscipline.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 187,
+      "nonEmptyLines": 159,
+      "functions": [
+        {
+          "name": "CLineDiscipline",
+          "startLine": 23,
+          "endLine": 30,
+          "params": [
+            "pInputDevice",
+            "pOutputDevice"
+          ]
+        },
+        {
+          "name": "~CLineDiscipline",
+          "startLine": 32,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "Read",
+          "startLine": 40,
+          "endLine": 145,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "SetOptionRawMode",
+          "startLine": 147,
+          "endLine": 152,
+          "params": [
+            "bEnable"
+          ]
+        },
+        {
+          "name": "SetOptionEcho",
+          "startLine": 154,
+          "endLine": 157,
+          "params": [
+            "bEnable"
+          ]
+        },
+        {
+          "name": "GetChar",
+          "startLine": 159,
+          "endLine": 172,
+          "params": []
+        },
+        {
+          "name": "PutChar",
+          "startLine": 174,
+          "endLine": 187,
+          "params": [
+            "nChar"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CLineDiscipline",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CLineDiscipline",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "SetOptionRawMode",
+          "line": 147,
+          "isDefault": false
+        },
+        {
+          "name": "SetOptionEcho",
+          "line": 154,
+          "isDefault": false
+        },
+        {
+          "name": "GetChar",
+          "line": 159,
+          "isDefault": false
+        },
+        {
+          "name": "PutChar",
+          "line": 174,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Read",
+          "callee": "GetChar",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Read",
+          "callee": "PutChar",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Read",
+          "callee": "PutChar",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Read",
+          "callee": "PutChar",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Read",
+          "callee": "PutChar",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Read",
+          "callee": "PutChar",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Read",
+          "callee": "GetChar",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Read",
+          "callee": "PutChar",
+          "lineNumber": 131
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 142
+        },
+        {
+          "caller": "GetChar",
+          "callee": "assert",
+          "lineNumber": 161
+        },
+        {
+          "caller": "GetChar",
+          "callee": "Read",
+          "lineNumber": 164
+        },
+        {
+          "caller": "GetChar",
+          "callee": "assert",
+          "lineNumber": 167
+        },
+        {
+          "caller": "PutChar",
+          "callee": "assert",
+          "lineNumber": 178
+        },
+        {
+          "caller": "PutChar",
+          "callee": "Write",
+          "lineNumber": 184
+        },
+        {
+          "caller": "PutChar",
+          "callee": "assert",
+          "lineNumber": 185
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/input/mouse.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 120,
+      "nonEmptyLines": 99,
+      "functions": [
+        {
+          "name": "CMouseDevice",
+          "startLine": 29,
+          "endLine": 37,
+          "params": [
+            "nButtons",
+            "bHasWheel"
+          ]
+        },
+        {
+          "name": "~CMouseDevice",
+          "startLine": 39,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "Setup",
+          "startLine": 49,
+          "endLine": 52,
+          "params": [
+            "pDisplay",
+            "bCursor"
+          ]
+        },
+        {
+          "name": "Release",
+          "startLine": 54,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "RegisterEventHandler",
+          "startLine": 59,
+          "endLine": 62,
+          "params": [
+            "pEventHandler"
+          ]
+        },
+        {
+          "name": "SetCursor",
+          "startLine": 64,
+          "endLine": 67,
+          "params": [
+            "nPosX",
+            "nPosY"
+          ]
+        },
+        {
+          "name": "ShowCursor",
+          "startLine": 69,
+          "endLine": 72,
+          "params": [
+            "bShow"
+          ]
+        },
+        {
+          "name": "UpdateCursor",
+          "startLine": 74,
+          "endLine": 80,
+          "params": []
+        },
+        {
+          "name": "RegisterStatusHandler",
+          "startLine": 82,
+          "endLine": 88,
+          "params": [
+            "pStatusHandler",
+            "pArg"
+          ]
+        },
+        {
+          "name": "proxy_handler",
+          "startLine": 90,
+          "endLine": 93,
+          "params": [
+            "nButtons",
+            "nDisplacementX",
+            "nDisplacementY",
+            "nWheelMove",
+            "pArg"
+          ]
+        },
+        {
+          "name": "RegisterStatusHandler",
+          "startLine": 96,
+          "endLine": 99,
+          "params": [
+            "pStatusHandler"
+          ]
+        },
+        {
+          "name": "ReportHandler",
+          "startLine": 102,
+          "endLine": 110,
+          "params": [
+            "nButtons",
+            "nDisplacementX",
+            "nDisplacementY",
+            "nWheelMove"
+          ]
+        },
+        {
+          "name": "GetButtonCount",
+          "startLine": 112,
+          "endLine": 115,
+          "params": []
+        },
+        {
+          "name": "HasWheel",
+          "startLine": 117,
+          "endLine": 120,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CMouseDevice",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "~CMouseDevice",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "Setup",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Release",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterEventHandler",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "SetCursor",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "ShowCursor",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "UpdateCursor",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterStatusHandler",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterStatusHandler",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "ReportHandler",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "GetButtonCount",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "HasWheel",
+          "line": 117,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CMouseDevice",
+          "callee": "AllocateNumber",
+          "lineNumber": 32
+        },
+        {
+          "caller": "CMouseDevice",
+          "callee": "AddDevice",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CMouseDevice",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 36
+        },
+        {
+          "caller": "~CMouseDevice",
+          "callee": "RemoveDevice",
+          "lineNumber": 44
+        },
+        {
+          "caller": "~CMouseDevice",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 44
+        },
+        {
+          "caller": "~CMouseDevice",
+          "callee": "FreeNumber",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Setup",
+          "callee": "Setup",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Release",
+          "callee": "Release",
+          "lineNumber": 56
+        },
+        {
+          "caller": "RegisterEventHandler",
+          "callee": "RegisterEventHandler",
+          "lineNumber": 61
+        },
+        {
+          "caller": "SetCursor",
+          "callee": "SetCursor",
+          "lineNumber": 66
+        },
+        {
+          "caller": "ShowCursor",
+          "callee": "ShowCursor",
+          "lineNumber": 71
+        },
+        {
+          "caller": "UpdateCursor",
+          "callee": "UpdateCursor",
+          "lineNumber": 78
+        },
+        {
+          "caller": "RegisterStatusHandler",
+          "callee": "assert",
+          "lineNumber": 84
+        },
+        {
+          "caller": "RegisterStatusHandler",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "proxy_handler",
+          "callee": "((TMouseStatusHandler*)pArg)",
+          "lineNumber": 92
+        },
+        {
+          "caller": "RegisterStatusHandler",
+          "callee": "RegisterStatusHandler",
+          "lineNumber": 98
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "MouseStatusChanged",
+          "lineNumber": 104
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "(*m_pStatusHandler)",
+          "lineNumber": 108
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 13,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/net/netconnection.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 83,
+      "functions": [
+        {
+          "name": "CNetConnection",
+          "startLine": 23,
+          "endLine": 39,
+          "params": [
+            "pNetConfig",
+            "pNetworkLayer",
+            "rForeignIP",
+            "nForeignPort",
+            "nOwnPort",
+            "nProtocol"
+          ]
+        },
+        {
+          "name": "CNetConnection",
+          "startLine": 41,
+          "endLine": 54,
+          "params": [
+            "pNetConfig",
+            "pNetworkLayer",
+            "nOwnPort",
+            "nProtocol"
+          ]
+        },
+        {
+          "name": "~CNetConnection",
+          "startLine": 56,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "GetForeignPort",
+          "startLine": 73,
+          "endLine": 76,
+          "params": []
+        },
+        {
+          "name": "GetOwnPort",
+          "startLine": 78,
+          "endLine": 82,
+          "params": []
+        },
+        {
+          "name": "GetProtocol",
+          "startLine": 84,
+          "endLine": 87,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CNetConnection",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "CNetConnection",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "~CNetConnection",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "GetForeignPort",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "GetOwnPort",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "GetProtocol",
+          "line": 84,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CNetConnection",
+          "callee": "GetIPAddress",
+          "lineNumber": 35
+        },
+        {
+          "caller": "CNetConnection",
+          "callee": "assert",
+          "lineNumber": 37
+        },
+        {
+          "caller": "CNetConnection",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CNetConnection",
+          "callee": "GetIPAddress",
+          "lineNumber": 50
+        },
+        {
+          "caller": "CNetConnection",
+          "callee": "assert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "CNetConnection",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "GetOwnPort",
+          "callee": "assert",
+          "lineNumber": 80
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/net/retransmissionqueue.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 129,
+      "nonEmptyLines": 108,
+      "functions": [
+        {
+          "name": "CRetransmissionQueue",
+          "startLine": 23,
+          "endLine": 34,
+          "params": [
+            "nSize"
+          ]
+        },
+        {
+          "name": "~CRetransmissionQueue",
+          "startLine": 36,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "IsEmpty",
+          "startLine": 44,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "GetFreeSpace",
+          "startLine": 49,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 63,
+          "endLine": 77,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "GetBytesAvailable",
+          "startLine": 79,
+          "endLine": 91,
+          "params": []
+        },
+        {
+          "name": "Read",
+          "startLine": 93,
+          "endLine": 107,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "Advance",
+          "startLine": 109,
+          "endLine": 117,
+          "params": [
+            "nBytes"
+          ]
+        },
+        {
+          "name": "Reset",
+          "startLine": 119,
+          "endLine": 122,
+          "params": []
+        },
+        {
+          "name": "Flush",
+          "startLine": 124,
+          "endLine": 129,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CRetransmissionQueue",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CRetransmissionQueue",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "IsEmpty",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "GetFreeSpace",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "GetBytesAvailable",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "Advance",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "Reset",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "Flush",
+          "line": 124,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CRetransmissionQueue",
+          "callee": "assert",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CRetransmissionQueue",
+          "callee": "assert",
+          "lineNumber": 33
+        },
+        {
+          "caller": "GetFreeSpace",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "GetFreeSpace",
+          "callee": "assert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "GetFreeSpace",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Write",
+          "callee": "GetFreeSpace",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 70
+        },
+        {
+          "caller": "GetBytesAvailable",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "GetBytesAvailable",
+          "callee": "assert",
+          "lineNumber": 82
+        },
+        {
+          "caller": "GetBytesAvailable",
+          "callee": "assert",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Read",
+          "callee": "GetBytesAvailable",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Advance",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Advance",
+          "callee": "assert",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Advance",
+          "callee": "assert",
+          "lineNumber": 113
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/numberpool.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 61,
+      "functions": [
+        {
+          "name": "CNumberPool",
+          "startLine": 24,
+          "endLine": 31,
+          "params": [
+            "nMin",
+            "nMax"
+          ]
+        },
+        {
+          "name": "~CNumberPool",
+          "startLine": 33,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "AllocateNumber",
+          "startLine": 37,
+          "endLine": 62,
+          "params": [
+            "bMustSucceed",
+            "pFrom"
+          ]
+        },
+        {
+          "name": "FreeNumber",
+          "startLine": 64,
+          "endLine": 70,
+          "params": [
+            "nNumber"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CNumberPool",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "~CNumberPool",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "AllocateNumber",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "FreeNumber",
+          "line": 64,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CNumberPool",
+          "callee": "assert",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CNumberPool",
+          "callee": "assert",
+          "lineNumber": 30
+        },
+        {
+          "caller": "AllocateNumber",
+          "callee": "assert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "AllocateNumber",
+          "callee": "Write",
+          "lineNumber": 53
+        },
+        {
+          "caller": "AllocateNumber",
+          "callee": "CLogger::Get",
+          "lineNumber": 53
+        },
+        {
+          "caller": "FreeNumber",
+          "callee": "assert",
+          "lineNumber": 66
+        },
+        {
+          "caller": "FreeNumber",
+          "callee": "assert",
+          "lineNumber": 67
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/pageallocator.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 121,
+      "nonEmptyLines": 97,
+      "functions": [
+        {
+          "name": "CPageAllocator",
+          "startLine": 26,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "~CPageAllocator",
+          "startLine": 37,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "Setup",
+          "startLine": 41,
+          "endLine": 45,
+          "params": [
+            "nBase",
+            "nSize"
+          ]
+        },
+        {
+          "name": "GetFreeSpace",
+          "startLine": 47,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "Free",
+          "startLine": 91,
+          "endLine": 112,
+          "params": [
+            "pPage"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPageAllocator",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CPageAllocator",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "Setup",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "GetFreeSpace",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "Free",
+          "line": 91,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Free",
+          "callee": "Acquire",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Free",
+          "callee": "Release",
+          "lineNumber": 111
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "Write",
+          "lineNumber": 118
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "CLogger::Get",
+          "lineNumber": 118
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/ptrlist.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 188,
+      "nonEmptyLines": 155,
+      "functions": [
+        {
+          "name": "CPtrList",
+          "startLine": 35,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "~CPtrList",
+          "startLine": 40,
+          "endLine": 43,
+          "params": []
+        },
+        {
+          "name": "InsertBefore",
+          "startLine": 66,
+          "endLine": 102,
+          "params": [
+            "pAfter",
+            "pPtr"
+          ]
+        },
+        {
+          "name": "InsertAfter",
+          "startLine": 104,
+          "endLine": 139,
+          "params": [
+            "pBefore",
+            "pPtr"
+          ]
+        },
+        {
+          "name": "Remove",
+          "startLine": 141,
+          "endLine": 173,
+          "params": [
+            "pElement"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TPtrListElement",
+          "startLine": 23,
+          "endLine": 33,
+          "methods": [],
+          "properties": [
+            "pPrev",
+            "pNext",
+            "pPtr"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TPtrListElement",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "CPtrList",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "~CPtrList",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "InsertBefore",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "InsertAfter",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "Remove",
+          "line": 141,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CPtrList",
+          "callee": "assert",
+          "lineNumber": 42
+        },
+        {
+          "caller": "InsertBefore",
+          "callee": "assert",
+          "lineNumber": 69
+        },
+        {
+          "caller": "InsertBefore",
+          "callee": "assert",
+          "lineNumber": 76
+        },
+        {
+          "caller": "InsertBefore",
+          "callee": "assert",
+          "lineNumber": 77
+        },
+        {
+          "caller": "InsertBefore",
+          "callee": "assert",
+          "lineNumber": 78
+        },
+        {
+          "caller": "InsertBefore",
+          "callee": "assert",
+          "lineNumber": 96
+        },
+        {
+          "caller": "InsertAfter",
+          "callee": "assert",
+          "lineNumber": 107
+        },
+        {
+          "caller": "InsertAfter",
+          "callee": "assert",
+          "lineNumber": 116
+        },
+        {
+          "caller": "InsertAfter",
+          "callee": "assert",
+          "lineNumber": 125
+        },
+        {
+          "caller": "InsertAfter",
+          "callee": "assert",
+          "lineNumber": 126
+        },
+        {
+          "caller": "InsertAfter",
+          "callee": "assert",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 158
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 164
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "lib/ptrlistfiq.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 195,
+      "nonEmptyLines": 160,
+      "functions": [
+        {
+          "name": "Remove",
+          "startLine": 25,
+          "endLine": 180,
+          "params": [
+            "pElement"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Remove",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CPtrListFIQ",
+          "callee": "INIT_PROTECTED_CLASS_ALLOCATOR",
+          "lineNumber": 44
+        },
+        {
+          "caller": "~CPtrListFIQ",
+          "callee": "assert",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Remove",
+          "callee": "GetFirst",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Remove",
+          "callee": "CPtrListFIQ::GetNext",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Remove",
+          "callee": "CPtrListFIQ::GetPtr",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Remove",
+          "callee": "CPtrListFIQ::InsertBefore",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 103
+        },
+        {
+          "caller": "if",
+          "callee": "assert",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 140
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 150
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 151
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 165
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 166
+        },
+        {
+          "caller": "Remove",
+          "callee": "assert",
+          "lineNumber": 171
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/purecall.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 24,
+      "callGraph": [
+        {
+          "caller": "__cxa_pure_virtual",
+          "callee": "assert",
+          "lineNumber": 24
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/sound/pcm512xsoundcontroller.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 223,
+      "nonEmptyLines": 186,
+      "functions": [
+        {
+          "name": "CPCM512xSoundController",
+          "startLine": 23,
+          "endLine": 28,
+          "params": [
+            "pI2CMaster",
+            "uchI2CAddress"
+          ]
+        },
+        {
+          "name": "Probe",
+          "startLine": 30,
+          "endLine": 52,
+          "params": []
+        },
+        {
+          "name": "GetControlInfo",
+          "startLine": 55,
+          "endLine": 75,
+          "params": [
+            "Control",
+            "Jack",
+            "Channel"
+          ]
+        },
+        {
+          "name": "SetControl",
+          "startLine": 77,
+          "endLine": 93,
+          "params": [
+            "Control",
+            "Jack",
+            "Channel",
+            "nValue"
+          ]
+        },
+        {
+          "name": "SetMute",
+          "startLine": 95,
+          "endLine": 127,
+          "params": [
+            "Jack",
+            "Channel",
+            "bEnable"
+          ]
+        },
+        {
+          "name": "SetVolume",
+          "startLine": 129,
+          "endLine": 176,
+          "params": [
+            "Jack",
+            "Channel",
+            "ndB"
+          ]
+        },
+        {
+          "name": "InitPCM512x",
+          "startLine": 186,
+          "endLine": 223,
+          "params": [
+            "uchI2CAddress"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPCM512xSoundController",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "Probe",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "GetControlInfo",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "SetControl",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "SetMute",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "SetVolume",
+          "line": 129,
+          "isDefault": false
+        },
+        {
+          "name": "InitPCM512x",
+          "line": 186,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Probe",
+          "callee": "InitPCM512x",
+          "lineNumber": 34
+        },
+        {
+          "caller": "Probe",
+          "callee": "InitPCM512x",
+          "lineNumber": 37
+        },
+        {
+          "caller": "Probe",
+          "callee": "InitPCM512x",
+          "lineNumber": 44
+        },
+        {
+          "caller": "GetControlInfo",
+          "callee": "IsOutputJack",
+          "lineNumber": 59
+        },
+        {
+          "caller": "SetControl",
+          "callee": "SetMute",
+          "lineNumber": 83
+        },
+        {
+          "caller": "SetControl",
+          "callee": "SetVolume",
+          "lineNumber": 86
+        },
+        {
+          "caller": "SetMute",
+          "callee": "assert",
+          "lineNumber": 97
+        },
+        {
+          "caller": "SetMute",
+          "callee": "assert",
+          "lineNumber": 98
+        },
+        {
+          "caller": "SetMute",
+          "callee": "IsOutputJack",
+          "lineNumber": 100
+        },
+        {
+          "caller": "SetMute",
+          "callee": "Write",
+          "lineNumber": 126
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "assert",
+          "lineNumber": 131
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "assert",
+          "lineNumber": 132
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "IsOutputJack",
+          "lineNumber": 134
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "(u8)",
+          "lineNumber": 153
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "Write",
+          "lineNumber": 159
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "Write",
+          "lineNumber": 169
+        },
+        {
+          "caller": "InitPCM512x",
+          "callee": "assert",
+          "lineNumber": 188
+        },
+        {
+          "caller": "InitPCM512x",
+          "callee": "assert",
+          "lineNumber": 189
+        },
+        {
+          "caller": "InitPCM512x",
+          "callee": "Write",
+          "lineNumber": 194
+        },
+        {
+          "caller": "InitPCM512x",
+          "callee": "Read",
+          "lineNumber": 195
+        },
+        {
+          "caller": "InitPCM512x",
+          "callee": "Write",
+          "lineNumber": 215
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/sound/pwmsounddevice.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 154,
+      "nonEmptyLines": 129,
+      "functions": [
+        {
+          "name": "CPWMSoundDevice",
+          "startLine": 28,
+          "endLine": 47,
+          "params": [
+            "pInterrupt"
+          ]
+        },
+        {
+          "name": "~CPWMSoundDevice",
+          "startLine": 49,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "Playback",
+          "startLine": 53,
+          "endLine": 67,
+          "params": [
+            "pSoundData",
+            "nSamples",
+            "nChannels",
+            "nBitsPerSample"
+          ]
+        },
+        {
+          "name": "PlaybackActive",
+          "startLine": 69,
+          "endLine": 72,
+          "params": []
+        },
+        {
+          "name": "CancelPlayback",
+          "startLine": 74,
+          "endLine": 77,
+          "params": []
+        },
+        {
+          "name": "GetChunk",
+          "startLine": 79,
+          "endLine": 154,
+          "params": [
+            "pBuffer",
+            "nChunkSize"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPWMSoundDevice",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CPWMSoundDevice",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Playback",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "PlaybackActive",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "CancelPlayback",
+          "line": 74,
+          "isDefault": false
+        },
+        {
+          "name": "GetChunk",
+          "line": 79,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CPWMSoundDevice",
+          "callee": "AreChannelsSwapped",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CPWMSoundDevice",
+          "callee": "assert",
+          "lineNumber": 34
+        },
+        {
+          "caller": "CPWMSoundDevice",
+          "callee": "GetRangeMin",
+          "lineNumber": 34
+        },
+        {
+          "caller": "CPWMSoundDevice",
+          "callee": "GetRangeMax",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CPWMSoundDevice",
+          "callee": "assert",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Playback",
+          "callee": "assert",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Playback",
+          "callee": "IsActive",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Playback",
+          "callee": "assert",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Playback",
+          "callee": "assert",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Playback",
+          "callee": "assert",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Playback",
+          "callee": "Start",
+          "lineNumber": 66
+        },
+        {
+          "caller": "PlaybackActive",
+          "callee": "IsActive",
+          "lineNumber": 71
+        },
+        {
+          "caller": "CancelPlayback",
+          "callee": "Cancel",
+          "lineNumber": 76
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 82
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 83
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 92
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 93
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 94
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/sound/wm8960soundcontroller.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 329,
+      "nonEmptyLines": 286,
+      "functions": [
+        {
+          "name": "CWM8960SoundController",
+          "startLine": 23,
+          "endLine": 34,
+          "params": [
+            "pI2CMaster",
+            "uchI2CAddress",
+            "nSampleRate",
+            "bOutSupported",
+            "bInSupported"
+          ]
+        },
+        {
+          "name": "Probe",
+          "startLine": 36,
+          "endLine": 114,
+          "params": []
+        },
+        {
+          "name": "EnableJack",
+          "startLine": 116,
+          "endLine": 135,
+          "params": [
+            "Jack"
+          ]
+        },
+        {
+          "name": "DisableJack",
+          "startLine": 138,
+          "endLine": 146,
+          "params": [
+            "Jack"
+          ]
+        },
+        {
+          "name": "GetControlInfo",
+          "startLine": 148,
+          "endLine": 185,
+          "params": [
+            "Control",
+            "Jack",
+            "Channel"
+          ]
+        },
+        {
+          "name": "SetControl",
+          "startLine": 187,
+          "endLine": 318,
+          "params": [
+            "Control",
+            "Jack",
+            "Channel",
+            "nValue"
+          ]
+        },
+        {
+          "name": "WriteReg",
+          "startLine": 320,
+          "endLine": 329,
+          "params": [
+            "nReg",
+            "nValue"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CWM8960SoundController",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "Probe",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "EnableJack",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "DisableJack",
+          "line": 138,
+          "isDefault": false
+        },
+        {
+          "name": "GetControlInfo",
+          "line": 148,
+          "isDefault": false
+        },
+        {
+          "name": "SetControl",
+          "line": 187,
+          "isDefault": false
+        },
+        {
+          "name": "WriteReg",
+          "line": 320,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CWM8960SoundController",
+          "callee": "assert",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 60
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 71
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Probe",
+          "callee": "WriteReg",
+          "lineNumber": 108
+        },
+        {
+          "caller": "EnableJack",
+          "callee": "WriteReg",
+          "lineNumber": 121
+        },
+        {
+          "caller": "DisableJack",
+          "callee": "WriteReg",
+          "lineNumber": 142
+        },
+        {
+          "caller": "GetControlInfo",
+          "callee": "IsInputJack",
+          "lineNumber": 155
+        },
+        {
+          "caller": "GetControlInfo",
+          "callee": "IsInputJack",
+          "lineNumber": 162
+        },
+        {
+          "caller": "GetControlInfo",
+          "callee": "IsInputJack",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SetControl",
+          "callee": "IsInputJack",
+          "lineNumber": 192
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 200
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 212
+        },
+        {
+          "caller": "SetControl",
+          "callee": "IsInputJack",
+          "lineNumber": 223
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 238
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 250
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 272
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 281
+        },
+        {
+          "caller": "SetControl",
+          "callee": "IsInputJack",
+          "lineNumber": 292
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 299
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 304
+        },
+        {
+          "caller": "SetControl",
+          "callee": "WriteReg",
+          "lineNumber": 308
+        },
+        {
+          "caller": "WriteReg",
+          "callee": "assert",
+          "lineNumber": 322
+        },
+        {
+          "caller": "WriteReg",
+          "callee": "assert",
+          "lineNumber": 323
+        },
+        {
+          "caller": "WriteReg",
+          "callee": "(u8)",
+          "lineNumber": 324
+        },
+        {
+          "caller": "WriteReg",
+          "callee": "assert",
+          "lineNumber": 326
+        },
+        {
+          "caller": "WriteReg",
+          "callee": "assert",
+          "lineNumber": 327
+        },
+        {
+          "caller": "WriteReg",
+          "callee": "Write",
+          "lineNumber": 328
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhcicompletionqueue.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 69,
+      "callGraph": [
+        {
+          "caller": "~CDWHCICompletionQueue",
+          "callee": "Dequeue",
+          "lineNumber": 34
+        },
+        {
+          "caller": "IsEmpty",
+          "callee": "GetFirst",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "assert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "Acquire",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetFirst",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "GetNext",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "InsertAfter",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Enqueue",
+          "callee": "Release",
+          "lineNumber": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhcidevice.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 1764,
+      "nonEmptyLines": 1418,
+      "functions": [
+        {
+          "name": "CDWHCIDevice",
+          "startLine": 68,
+          "endLine": 102,
+          "params": [
+            "pInterruptSystem",
+            "pTimer",
+            "bPlugAndPlay"
+          ]
+        },
+        {
+          "name": "~CDWHCIDevice",
+          "startLine": 104,
+          "endLine": 129,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 131,
+          "endLine": 203,
+          "params": [
+            "bScanDevices"
+          ]
+        },
+        {
+          "name": "ReScanDevices",
+          "startLine": 205,
+          "endLine": 231,
+          "params": []
+        },
+        {
+          "name": "SubmitBlockingRequest",
+          "startLine": 233,
+          "endLine": 300,
+          "params": [
+            "pURB",
+            "nTimeoutMs"
+          ]
+        },
+        {
+          "name": "SubmitAsyncRequest",
+          "startLine": 302,
+          "endLine": 323,
+          "params": [
+            "pURB",
+            "nTimeoutMs"
+          ]
+        },
+        {
+          "name": "CancelDeviceTransactions",
+          "startLine": 325,
+          "endLine": 330,
+          "params": [
+            "pUSBDevice"
+          ]
+        },
+        {
+          "name": "DeviceConnected",
+          "startLine": 332,
+          "endLine": 337,
+          "params": []
+        },
+        {
+          "name": "GetPortSpeed",
+          "startLine": 339,
+          "endLine": 364,
+          "params": []
+        },
+        {
+          "name": "OvercurrentDetected",
+          "startLine": 366,
+          "endLine": 376,
+          "params": []
+        },
+        {
+          "name": "DisableRootPort",
+          "startLine": 378,
+          "endLine": 397,
+          "params": [
+            "bPowerOff"
+          ]
+        },
+        {
+          "name": "InitCore",
+          "startLine": 399,
+          "endLine": 463,
+          "params": []
+        },
+        {
+          "name": "InitHost",
+          "startLine": 465,
+          "endLine": 520,
+          "params": []
+        },
+        {
+          "name": "EnableRootPort",
+          "startLine": 522,
+          "endLine": 567,
+          "params": []
+        },
+        {
+          "name": "PowerOn",
+          "startLine": 569,
+          "endLine": 583,
+          "params": []
+        },
+        {
+          "name": "Reset",
+          "startLine": 585,
+          "endLine": 607,
+          "params": []
+        },
+        {
+          "name": "EnableGlobalInterrupts",
+          "startLine": 609,
+          "endLine": 615,
+          "params": []
+        },
+        {
+          "name": "EnableCommonInterrupts",
+          "startLine": 617,
+          "endLine": 631,
+          "params": []
+        },
+        {
+          "name": "EnableHostInterrupts",
+          "startLine": 633,
+          "endLine": 652,
+          "params": []
+        },
+        {
+          "name": "EnableChannelInterrupt",
+          "startLine": 654,
+          "endLine": 665,
+          "params": [
+            "nChannel"
+          ]
+        },
+        {
+          "name": "DisableChannelInterrupt",
+          "startLine": 667,
+          "endLine": 678,
+          "params": [
+            "nChannel"
+          ]
+        },
+        {
+          "name": "FlushTxFIFO",
+          "startLine": 680,
+          "endLine": 694,
+          "params": [
+            "nFIFO"
+          ]
+        },
+        {
+          "name": "FlushRxFIFO",
+          "startLine": 696,
+          "endLine": 708,
+          "params": []
+        },
+        {
+          "name": "TransferStage",
+          "startLine": 710,
+          "endLine": 743,
+          "params": [
+            "pURB",
+            "bIn",
+            "bStatusStage",
+            "nTimeoutMs"
+          ]
+        },
+        {
+          "name": "CompletionRoutine",
+          "startLine": 745,
+          "endLine": 754,
+          "params": [
+            "pURB",
+            "pParam",
+            "pContext"
+          ]
+        },
+        {
+          "name": "TransferStageAsync",
+          "startLine": 756,
+          "endLine": 800,
+          "params": [
+            "pURB",
+            "bIn",
+            "bStatusStage",
+            "nTimeoutMs"
+          ]
+        },
+        {
+          "name": "StartTransaction",
+          "startLine": 866,
+          "endLine": 891,
+          "params": [
+            "pStageData"
+          ]
+        },
+        {
+          "name": "StartChannel",
+          "startLine": 893,
+          "endLine": 1013,
+          "params": [
+            "pStageData"
+          ]
+        },
+        {
+          "name": "ChannelInterruptHandler",
+          "startLine": 1015,
+          "endLine": 1372,
+          "params": [
+            "nChannel"
+          ]
+        },
+        {
+          "name": "InterruptHandler",
+          "startLine": 1425,
+          "endLine": 1512,
+          "params": []
+        },
+        {
+          "name": "InterruptStub",
+          "startLine": 1514,
+          "endLine": 1520,
+          "params": [
+            "pParam"
+          ]
+        },
+        {
+          "name": "AllocateChannel",
+          "startLine": 1616,
+          "endLine": 1638,
+          "params": []
+        },
+        {
+          "name": "FreeChannel",
+          "startLine": 1640,
+          "endLine": 1651,
+          "params": [
+            "nChannel"
+          ]
+        },
+        {
+          "name": "AllocateWaitBlock",
+          "startLine": 1653,
+          "endLine": 1675,
+          "params": []
+        },
+        {
+          "name": "FreeWaitBlock",
+          "startLine": 1677,
+          "endLine": 1688,
+          "params": [
+            "nWaitBlock"
+          ]
+        },
+        {
+          "name": "WaitForBit",
+          "startLine": 1690,
+          "endLine": 1715,
+          "params": [
+            "pRegister",
+            "nMask",
+            "bWaitUntilSet",
+            "nMsTimeout"
+          ]
+        },
+        {
+          "name": "LogTransactionFailed",
+          "startLine": 1717,
+          "endLine": 1724,
+          "params": [
+            "nStatus"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWHCIDevice",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWHCIDevice",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "ReScanDevices",
+          "line": 205,
+          "isDefault": false
+        },
+        {
+          "name": "SubmitBlockingRequest",
+          "line": 233,
+          "isDefault": false
+        },
+        {
+          "name": "SubmitAsyncRequest",
+          "line": 302,
+          "isDefault": false
+        },
+        {
+          "name": "CancelDeviceTransactions",
+          "line": 325,
+          "isDefault": false
+        },
+        {
+          "name": "DeviceConnected",
+          "line": 332,
+          "isDefault": false
+        },
+        {
+          "name": "GetPortSpeed",
+          "line": 339,
+          "isDefault": false
+        },
+        {
+          "name": "OvercurrentDetected",
+          "line": 366,
+          "isDefault": false
+        },
+        {
+          "name": "DisableRootPort",
+          "line": 378,
+          "isDefault": false
+        },
+        {
+          "name": "InitCore",
+          "line": 399,
+          "isDefault": false
+        },
+        {
+          "name": "InitHost",
+          "line": 465,
+          "isDefault": false
+        },
+        {
+          "name": "EnableRootPort",
+          "line": 522,
+          "isDefault": false
+        },
+        {
+          "name": "PowerOn",
+          "line": 569,
+          "isDefault": false
+        },
+        {
+          "name": "Reset",
+          "line": 585,
+          "isDefault": false
+        },
+        {
+          "name": "EnableGlobalInterrupts",
+          "line": 609,
+          "isDefault": false
+        },
+        {
+          "name": "EnableCommonInterrupts",
+          "line": 617,
+          "isDefault": false
+        },
+        {
+          "name": "EnableHostInterrupts",
+          "line": 633,
+          "isDefault": false
+        },
+        {
+          "name": "EnableChannelInterrupt",
+          "line": 654,
+          "isDefault": false
+        },
+        {
+          "name": "DisableChannelInterrupt",
+          "line": 667,
+          "isDefault": false
+        },
+        {
+          "name": "FlushTxFIFO",
+          "line": 680,
+          "isDefault": false
+        },
+        {
+          "name": "FlushRxFIFO",
+          "line": 696,
+          "isDefault": false
+        },
+        {
+          "name": "TransferStage",
+          "line": 710,
+          "isDefault": false
+        },
+        {
+          "name": "CompletionRoutine",
+          "line": 745,
+          "isDefault": false
+        },
+        {
+          "name": "TransferStageAsync",
+          "line": 756,
+          "isDefault": false
+        },
+        {
+          "name": "StartTransaction",
+          "line": 866,
+          "isDefault": false
+        },
+        {
+          "name": "StartChannel",
+          "line": 893,
+          "isDefault": false
+        },
+        {
+          "name": "ChannelInterruptHandler",
+          "line": 1015,
+          "isDefault": false
+        },
+        {
+          "name": "InterruptHandler",
+          "line": 1425,
+          "isDefault": false
+        },
+        {
+          "name": "InterruptStub",
+          "line": 1514,
+          "isDefault": false
+        },
+        {
+          "name": "AllocateChannel",
+          "line": 1616,
+          "isDefault": false
+        },
+        {
+          "name": "FreeChannel",
+          "line": 1640,
+          "isDefault": false
+        },
+        {
+          "name": "AllocateWaitBlock",
+          "line": 1653,
+          "isDefault": false
+        },
+        {
+          "name": "FreeWaitBlock",
+          "line": 1677,
+          "isDefault": false
+        },
+        {
+          "name": "WaitForBit",
+          "line": 1690,
+          "isDefault": false
+        },
+        {
+          "name": "LogTransactionFailed",
+          "line": 1717,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CDWHCIDevice",
+          "callee": "assert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "CDWHCIDevice",
+          "callee": "assert",
+          "lineNumber": 91
+        },
+        {
+          "caller": "~CDWHCIDevice",
+          "callee": "assert",
+          "lineNumber": 108
+        },
+        {
+          "caller": "~CDWHCIDevice",
+          "callee": "MsDelay",
+          "lineNumber": 109
+        },
+        {
+          "caller": "~CDWHCIDevice",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "~CDWHCIDevice",
+          "callee": "DisconnectIRQ",
+          "lineNumber": 113
+        },
+        {
+          "caller": "~CDWHCIDevice",
+          "callee": "DisconnectFIQ",
+          "lineNumber": 115
+        },
+        {
+          "caller": "~CDWHCIDevice",
+          "callee": "DisconnectHandler",
+          "lineNumber": 116
+        },
+        {
+          "caller": "~CDWHCIDevice",
+          "callee": "Reset",
+          "lineNumber": 119
+        },
+        {
+          "caller": "~CDWHCIDevice",
+          "callee": "GetTag",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Initialize",
+          "callee": "IsPlugAndPlay",
+          "lineNumber": 134
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGWARN",
+          "lineNumber": 136
+        },
+        {
+          "caller": "Initialize",
+          "callee": "INIT_PROTECTED_CLASS_ALLOCATOR",
+          "lineNumber": 141
+        },
+        {
+          "caller": "Initialize",
+          "callee": "INIT_PROTECTED_CLASS_ALLOCATOR",
+          "lineNumber": 142
+        },
+        {
+          "caller": "Initialize",
+          "callee": "INIT_PROTECTED_CLASS_ALLOCATOR",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Initialize",
+          "callee": "INIT_PROTECTED_CLASS_ALLOCATOR",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Initialize",
+          "callee": "INIT_PROTECTED_CLASS_ALLOCATOR",
+          "lineNumber": 145
+        },
+        {
+          "caller": "Initialize",
+          "callee": "INIT_PROTECTED_CLASS_ALLOCATOR",
+          "lineNumber": 146
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PeripheralEntry",
+          "lineNumber": 148
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 150
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 151
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Read",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 156
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Get",
+          "lineNumber": 156
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PowerOn",
+          "lineNumber": 160
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 162
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Read",
+          "lineNumber": 168
+        },
+        {
+          "caller": "Initialize",
+          "callee": "And",
+          "lineNumber": 169
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 170
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 172
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ConnectIRQ",
+          "lineNumber": 174
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ConnectHandler",
+          "lineNumber": 176
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ConnectFIQ",
+          "lineNumber": 177
+        },
+        {
+          "caller": "Initialize",
+          "callee": "InitCore",
+          "lineNumber": 180
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 182
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableGlobalInterrupts",
+          "lineNumber": 186
+        },
+        {
+          "caller": "Initialize",
+          "callee": "InitHost",
+          "lineNumber": 188
+        },
+        {
+          "caller": "Initialize",
+          "callee": "LOGERR",
+          "lineNumber": 190
+        },
+        {
+          "caller": "Initialize",
+          "callee": "PeripheralExit",
+          "lineNumber": 194
+        },
+        {
+          "caller": "Initialize",
+          "callee": "IsPlugAndPlay",
+          "lineNumber": 196
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ReScanDevices",
+          "lineNumber": 199
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "PeripheralEntry",
+          "lineNumber": 207
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "EnableRootPort",
+          "lineNumber": 211
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "Initialize",
+          "lineNumber": 215
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "LOGERR",
+          "lineNumber": 217
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "LOGWARN",
+          "lineNumber": 222
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "ReScanDevices",
+          "lineNumber": 227
+        },
+        {
+          "caller": "ReScanDevices",
+          "callee": "PeripheralExit",
+          "lineNumber": 230
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "PeripheralEntry",
+          "lineNumber": 240
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "assert",
+          "lineNumber": 242
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "SetStatus",
+          "lineNumber": 244
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetType",
+          "lineNumber": 246
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetEndpoint",
+          "lineNumber": 246
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "assert",
+          "lineNumber": 248
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetSetupData",
+          "lineNumber": 250
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "assert",
+          "lineNumber": 251
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "assert",
+          "lineNumber": 255
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetBufLen",
+          "lineNumber": 255
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 257
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 258
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 259
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetBufLen",
+          "lineNumber": 266
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 268
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 269
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 276
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 277
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 278
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "assert",
+          "lineNumber": 287
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetType",
+          "lineNumber": 287
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetEndpoint",
+          "lineNumber": 287
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetType",
+          "lineNumber": 288
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetEndpoint",
+          "lineNumber": 288
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "assert",
+          "lineNumber": 289
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetBufLen",
+          "lineNumber": 289
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "TransferStage",
+          "lineNumber": 291
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "IsDirectionIn",
+          "lineNumber": 291
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "GetEndpoint",
+          "lineNumber": 291
+        },
+        {
+          "caller": "SubmitBlockingRequest",
+          "callee": "PeripheralExit",
+          "lineNumber": 297
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "PeripheralEntry",
+          "lineNumber": 309
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "assert",
+          "lineNumber": 311
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "assert",
+          "lineNumber": 312
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "GetType",
+          "lineNumber": 312
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "GetEndpoint",
+          "lineNumber": 312
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "assert",
+          "lineNumber": 313
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "GetBufLen",
+          "lineNumber": 313
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "SetStatus",
+          "lineNumber": 315
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "TransferStageAsync",
+          "lineNumber": 317
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "IsDirectionIn",
+          "lineNumber": 317
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "GetEndpoint",
+          "lineNumber": 317
+        },
+        {
+          "caller": "SubmitAsyncRequest",
+          "callee": "PeripheralExit",
+          "lineNumber": 320
+        },
+        {
+          "caller": "CancelDeviceTransactions",
+          "callee": "FlushDevice",
+          "lineNumber": 328
+        },
+        {
+          "caller": "DeviceConnected",
+          "callee": "Read",
+          "lineNumber": 336
+        },
+        {
+          "caller": "GetPortSpeed",
+          "callee": "DWHCI_HOST_PORT_SPEED",
+          "lineNumber": 345
+        },
+        {
+          "caller": "GetPortSpeed",
+          "callee": "Read",
+          "lineNumber": 345
+        },
+        {
+          "caller": "OvercurrentDetected",
+          "callee": "Read",
+          "lineNumber": 370
+        },
+        {
+          "caller": "DisableRootPort",
+          "callee": "Read",
+          "lineNumber": 383
+        },
+        {
+          "caller": "DisableRootPort",
+          "callee": "And",
+          "lineNumber": 385
+        },
+        {
+          "caller": "DisableRootPort",
+          "callee": "And",
+          "lineNumber": 389
+        },
+        {
+          "caller": "DisableRootPort",
+          "callee": "Write",
+          "lineNumber": 392
+        },
+        {
+          "caller": "DisableRootPort",
+          "callee": "Flush",
+          "lineNumber": 395
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 402
+        },
+        {
+          "caller": "InitCore",
+          "callee": "GetUSBFullSpeed",
+          "lineNumber": 403
+        },
+        {
+          "caller": "InitCore",
+          "callee": "CKernelOptions::Get",
+          "lineNumber": 403
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Or",
+          "lineNumber": 405
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 407
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 408
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Write",
+          "lineNumber": 409
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Reset",
+          "lineNumber": 411
+        },
+        {
+          "caller": "InitCore",
+          "callee": "LOGERR",
+          "lineNumber": 413
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 417
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 418
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 419
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Write",
+          "lineNumber": 420
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 424
+        },
+        {
+          "caller": "InitCore",
+          "callee": "assert",
+          "lineNumber": 425
+        },
+        {
+          "caller": "InitCore",
+          "callee": "DWHCI_CORE_HW_CFG2_ARCHITECTURE",
+          "lineNumber": 425
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Get",
+          "lineNumber": 425
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 427
+        },
+        {
+          "caller": "InitCore",
+          "callee": "DWHCI_CORE_HW_CFG2_HS_PHY_TYPE",
+          "lineNumber": 428
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Get",
+          "lineNumber": 428
+        },
+        {
+          "caller": "InitCore",
+          "callee": "DWHCI_CORE_HW_CFG2_FS_PHY_TYPE",
+          "lineNumber": 429
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Get",
+          "lineNumber": 429
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Or",
+          "lineNumber": 431
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Or",
+          "lineNumber": 432
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 436
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 437
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Write",
+          "lineNumber": 439
+        },
+        {
+          "caller": "InitCore",
+          "callee": "assert",
+          "lineNumber": 441
+        },
+        {
+          "caller": "InitCore",
+          "callee": "DWHCI_CORE_HW_CFG2_NUM_HOST_CHANNELS",
+          "lineNumber": 442
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Get",
+          "lineNumber": 442
+        },
+        {
+          "caller": "InitCore",
+          "callee": "assert",
+          "lineNumber": 443
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 446
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Or",
+          "lineNumber": 447
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Or",
+          "lineNumber": 449
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 450
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Write",
+          "lineNumber": 452
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Read",
+          "lineNumber": 455
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 456
+        },
+        {
+          "caller": "InitCore",
+          "callee": "And",
+          "lineNumber": 457
+        },
+        {
+          "caller": "InitCore",
+          "callee": "Write",
+          "lineNumber": 458
+        },
+        {
+          "caller": "InitCore",
+          "callee": "EnableCommonInterrupts",
+          "lineNumber": 460
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Write",
+          "lineNumber": 469
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Read",
+          "lineNumber": 472
+        },
+        {
+          "caller": "InitHost",
+          "callee": "And",
+          "lineNumber": 473
+        },
+        {
+          "caller": "InitHost",
+          "callee": "DWHCI_CORE_HW_CFG2_HS_PHY_TYPE",
+          "lineNumber": 477
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Read",
+          "lineNumber": 477
+        },
+        {
+          "caller": "InitHost",
+          "callee": "DWHCI_CORE_HW_CFG2_FS_PHY_TYPE",
+          "lineNumber": 478
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Get",
+          "lineNumber": 478
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Read",
+          "lineNumber": 479
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Or",
+          "lineNumber": 481
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Or",
+          "lineNumber": 485
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Write",
+          "lineNumber": 488
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Write",
+          "lineNumber": 492
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Or",
+          "lineNumber": 495
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Or",
+          "lineNumber": 496
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Write",
+          "lineNumber": 497
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Or",
+          "lineNumber": 500
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Or",
+          "lineNumber": 501
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Write",
+          "lineNumber": 502
+        },
+        {
+          "caller": "InitHost",
+          "callee": "FlushTxFIFO",
+          "lineNumber": 505
+        },
+        {
+          "caller": "InitHost",
+          "callee": "FlushRxFIFO",
+          "lineNumber": 506
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Read",
+          "lineNumber": 509
+        },
+        {
+          "caller": "InitHost",
+          "callee": "And",
+          "lineNumber": 510
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Get",
+          "lineNumber": 511
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Or",
+          "lineNumber": 513
+        },
+        {
+          "caller": "InitHost",
+          "callee": "Write",
+          "lineNumber": 514
+        },
+        {
+          "caller": "InitHost",
+          "callee": "EnableHostInterrupts",
+          "lineNumber": 517
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "CKernelOptions::Get",
+          "lineNumber": 525
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "GetUSBPowerDelay",
+          "lineNumber": 528
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "WaitForBit",
+          "lineNumber": 536
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "MsDelay",
+          "lineNumber": 541
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "Read",
+          "lineNumber": 543
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "And",
+          "lineNumber": 544
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "Or",
+          "lineNumber": 545
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "Write",
+          "lineNumber": 546
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "MsDelay",
+          "lineNumber": 548
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "Read",
+          "lineNumber": 550
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "And",
+          "lineNumber": 551
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "And",
+          "lineNumber": 552
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "Write",
+          "lineNumber": 553
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "MsDelay",
+          "lineNumber": 556
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "GetUSBFullSpeed",
+          "lineNumber": 558
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "CKernelOptions::Get",
+          "lineNumber": 558
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "Set",
+          "lineNumber": 562
+        },
+        {
+          "caller": "EnableRootPort",
+          "callee": "Write",
+          "lineNumber": 563
+        },
+        {
+          "caller": "PowerOn",
+          "callee": "GetTag",
+          "lineNumber": 575
+        },
+        {
+          "caller": "Reset",
+          "callee": "WaitForBit",
+          "lineNumber": 590
+        },
+        {
+          "caller": "Reset",
+          "callee": "Or",
+          "lineNumber": 596
+        },
+        {
+          "caller": "Reset",
+          "callee": "Write",
+          "lineNumber": 597
+        },
+        {
+          "caller": "Reset",
+          "callee": "WaitForBit",
+          "lineNumber": 599
+        },
+        {
+          "caller": "Reset",
+          "callee": "MsDelay",
+          "lineNumber": 604
+        },
+        {
+          "caller": "EnableGlobalInterrupts",
+          "callee": "Read",
+          "lineNumber": 612
+        },
+        {
+          "caller": "EnableGlobalInterrupts",
+          "callee": "Or",
+          "lineNumber": 613
+        },
+        {
+          "caller": "EnableGlobalInterrupts",
+          "callee": "Write",
+          "lineNumber": 614
+        },
+        {
+          "caller": "EnableCommonInterrupts",
+          "callee": "SetAll",
+          "lineNumber": 620
+        },
+        {
+          "caller": "EnableCommonInterrupts",
+          "callee": "Write",
+          "lineNumber": 621
+        },
+        {
+          "caller": "EnableCommonInterrupts",
+          "callee": "Write",
+          "lineNumber": 629
+        },
+        {
+          "caller": "EnableHostInterrupts",
+          "callee": "Write",
+          "lineNumber": 636
+        },
+        {
+          "caller": "EnableHostInterrupts",
+          "callee": "EnableCommonInterrupts",
+          "lineNumber": 638
+        },
+        {
+          "caller": "EnableHostInterrupts",
+          "callee": "Read",
+          "lineNumber": 640
+        },
+        {
+          "caller": "EnableHostInterrupts",
+          "callee": "Or",
+          "lineNumber": 641
+        },
+        {
+          "caller": "EnableHostInterrupts",
+          "callee": "IsPlugAndPlay",
+          "lineNumber": 646
+        },
+        {
+          "caller": "EnableHostInterrupts",
+          "callee": "Or",
+          "lineNumber": 648
+        },
+        {
+          "caller": "EnableHostInterrupts",
+          "callee": "Write",
+          "lineNumber": 651
+        },
+        {
+          "caller": "EnableChannelInterrupt",
+          "callee": "Acquire",
+          "lineNumber": 658
+        },
+        {
+          "caller": "EnableChannelInterrupt",
+          "callee": "Read",
+          "lineNumber": 660
+        },
+        {
+          "caller": "EnableChannelInterrupt",
+          "callee": "Or",
+          "lineNumber": 661
+        },
+        {
+          "caller": "EnableChannelInterrupt",
+          "callee": "Write",
+          "lineNumber": 662
+        },
+        {
+          "caller": "EnableChannelInterrupt",
+          "callee": "Release",
+          "lineNumber": 664
+        },
+        {
+          "caller": "DisableChannelInterrupt",
+          "callee": "Acquire",
+          "lineNumber": 671
+        },
+        {
+          "caller": "DisableChannelInterrupt",
+          "callee": "Read",
+          "lineNumber": 673
+        },
+        {
+          "caller": "DisableChannelInterrupt",
+          "callee": "And",
+          "lineNumber": 674
+        },
+        {
+          "caller": "DisableChannelInterrupt",
+          "callee": "Write",
+          "lineNumber": 675
+        },
+        {
+          "caller": "DisableChannelInterrupt",
+          "callee": "Release",
+          "lineNumber": 677
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "Or",
+          "lineNumber": 683
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "And",
+          "lineNumber": 684
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "Or",
+          "lineNumber": 685
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "Write",
+          "lineNumber": 686
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "WaitForBit",
+          "lineNumber": 688
+        },
+        {
+          "caller": "FlushTxFIFO",
+          "callee": "usDelay",
+          "lineNumber": 693
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "Or",
+          "lineNumber": 699
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "Write",
+          "lineNumber": 700
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "WaitForBit",
+          "lineNumber": 702
+        },
+        {
+          "caller": "FlushRxFIFO",
+          "callee": "usDelay",
+          "lineNumber": 707
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "AllocateWaitBlock",
+          "lineNumber": 713
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "assert",
+          "lineNumber": 719
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "SetCompletionRoutine",
+          "lineNumber": 720
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "assert",
+          "lineNumber": 722
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "TransferStageAsync",
+          "lineNumber": 725
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "FreeWaitBlock",
+          "lineNumber": 728
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "Yield",
+          "lineNumber": 736
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "CScheduler::Get",
+          "lineNumber": 736
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "FreeWaitBlock",
+          "lineNumber": 740
+        },
+        {
+          "caller": "TransferStage",
+          "callee": "GetStatus",
+          "lineNumber": 742
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 748
+        },
+        {
+          "caller": "CompletionRoutine",
+          "callee": "assert",
+          "lineNumber": 751
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "assert",
+          "lineNumber": 759
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "AllocateChannel",
+          "lineNumber": 762
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "assert",
+          "lineNumber": 773
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "assert",
+          "lineNumber": 776
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "EnableChannelInterrupt",
+          "lineNumber": 779
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "IsSplit",
+          "lineNumber": 782
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "SetState",
+          "lineNumber": 784
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "SetState",
+          "lineNumber": 788
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "SetSplitComplete",
+          "lineNumber": 789
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "StartSplit",
+          "lineNumber": 790
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 790
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "StartTransaction",
+          "lineNumber": 794
+        },
+        {
+          "caller": "TransferStageAsync",
+          "callee": "QueueTransaction",
+          "lineNumber": 796
+        },
+        {
+          "caller": "QueueTransaction",
+          "callee": "assert",
+          "lineNumber": 808
+        },
+        {
+          "caller": "QueueTransaction",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 809
+        },
+        {
+          "caller": "QueueTransaction",
+          "callee": "GetFrameNumber",
+          "lineNumber": 812
+        },
+        {
+          "caller": "QueueTransaction",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 817
+        },
+        {
+          "caller": "QueueTransaction",
+          "callee": "Read",
+          "lineNumber": 817
+        },
+        {
+          "caller": "QueueTransaction",
+          "callee": "Enqueue",
+          "lineNumber": 822
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "assert",
+          "lineNumber": 827
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "GetURB",
+          "lineNumber": 828
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "assert",
+          "lineNumber": 829
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "GetInterval",
+          "lineNumber": 831
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "GetEndpoint",
+          "lineNumber": 831
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "DWHCI_HOST_PORT_SPEED",
+          "lineNumber": 833
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "Read",
+          "lineNumber": 833
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "assert",
+          "lineNumber": 837
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "IsSplit",
+          "lineNumber": 841
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 843
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "assert",
+          "lineNumber": 844
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "PeriodicDelay",
+          "lineNumber": 845
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "GetFrameNumber",
+          "lineNumber": 846
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "SetState",
+          "lineNumber": 848
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "SetSplitComplete",
+          "lineNumber": 849
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "StartSplit",
+          "lineNumber": 850
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 855
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "Read",
+          "lineNumber": 855
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "SetState",
+          "lineNumber": 858
+        },
+        {
+          "caller": "QueueDelayedTransaction",
+          "callee": "Enqueue",
+          "lineNumber": 861
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "assert",
+          "lineNumber": 868
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "GetChannelNumber",
+          "lineNumber": 869
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "assert",
+          "lineNumber": 870
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "Read",
+          "lineNumber": 874
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "IsSet",
+          "lineNumber": 875
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "SetSubState",
+          "lineNumber": 877
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "And",
+          "lineNumber": 879
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "Or",
+          "lineNumber": 880
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "Write",
+          "lineNumber": 881
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "Set",
+          "lineNumber": 884
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "Write",
+          "lineNumber": 885
+        },
+        {
+          "caller": "StartTransaction",
+          "callee": "StartChannel",
+          "lineNumber": 889
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "assert",
+          "lineNumber": 895
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetChannelNumber",
+          "lineNumber": 896
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "assert",
+          "lineNumber": 897
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "SetSubState",
+          "lineNumber": 899
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "SetAll",
+          "lineNumber": 903
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Write",
+          "lineNumber": 904
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "DWHCI_HOST_CHAN_XFER_SIZ",
+          "lineNumber": 907
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 908
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetBytesToTransfer",
+          "lineNumber": 908
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 909
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetPacketsToTransfer",
+          "lineNumber": 909
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 911
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetPID",
+          "lineNumber": 911
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Write",
+          "lineNumber": 912
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "DWHCI_HOST_CHAN_DMA_ADDR",
+          "lineNumber": 915
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "BUS_ADDRESS",
+          "lineNumber": 916
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetDMAAddress",
+          "lineNumber": 916
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Write",
+          "lineNumber": 917
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "CleanAndInvalidateDataCacheRange",
+          "lineNumber": 919
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetDMAAddress",
+          "lineNumber": 919
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetBytesToTransfer",
+          "lineNumber": 919
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "DWHCI_HOST_CHAN_SPLIT_CTRL",
+          "lineNumber": 922
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "IsSplit",
+          "lineNumber": 923
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 925
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetHubPortAddress",
+          "lineNumber": 925
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 926
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetHubAddress",
+          "lineNumber": 926
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 928
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetSplitPosition",
+          "lineNumber": 928
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "IsSplitComplete",
+          "lineNumber": 930
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 932
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 934
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Write",
+          "lineNumber": 936
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Read",
+          "lineNumber": 940
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 941
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 942
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetMaxPacketSize",
+          "lineNumber": 942
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 944
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 945
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "IsDirectionIn",
+          "lineNumber": 947
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 949
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 953
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetSpeed",
+          "lineNumber": 956
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 958
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 962
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 965
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 966
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetDeviceAddress",
+          "lineNumber": 966
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 968
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 969
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetEndpointType",
+          "lineNumber": 969
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 971
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 972
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetEndpointNumber",
+          "lineNumber": 972
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 975
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "WaitForFrame",
+          "lineNumber": 979
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "IsOddFrame",
+          "lineNumber": 982
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 984
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 988
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 994
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Read",
+          "lineNumber": 994
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 997
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 1001
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Set",
+          "lineNumber": 1007
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "GetStatusMask",
+          "lineNumber": 1007
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Write",
+          "lineNumber": 1008
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Or",
+          "lineNumber": 1010
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "And",
+          "lineNumber": 1011
+        },
+        {
+          "caller": "StartChannel",
+          "callee": "Write",
+          "lineNumber": 1012
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 1023
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetURB",
+          "lineNumber": 1024
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 1025
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DisableChannelInterrupt",
+          "lineNumber": 1029
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1031
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetUSBError",
+          "lineNumber": 1032
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1037
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 1040
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Enqueue",
+          "lineNumber": 1042
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetSubState",
+          "lineNumber": 1048
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartChannel",
+          "lineNumber": 1051
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CleanAndInvalidateDataCacheRange",
+          "lineNumber": 1055
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetDMAAddress",
+          "lineNumber": 1055
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetBytesToTransfer",
+          "lineNumber": 1055
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1058
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1063
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartTransaction",
+          "lineNumber": 1066
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1069
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "QueueTransaction",
+          "lineNumber": 1071
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 1076
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsPeriodic",
+          "lineNumber": 1076
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DWHCI_HOST_CHAN_XFER_SIZ_PID",
+          "lineNumber": 1077
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1077
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "TransactionComplete",
+          "lineNumber": 1080
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1080
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DWHCI_HOST_CHAN_XFER_SIZ_PACKETS",
+          "lineNumber": 1081
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1081
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1082
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 1086
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetState",
+          "lineNumber": 1095
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetTransactionStatus",
+          "lineNumber": 1098
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetType",
+          "lineNumber": 1100
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetEndpoint",
+          "lineNumber": 1100
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsRetryOK",
+          "lineNumber": 1101
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartTransaction",
+          "lineNumber": 1104
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1107
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "QueueTransaction",
+          "lineNumber": 1109
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "LogTransactionFailed",
+          "lineNumber": 1116
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1118
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetUSBError",
+          "lineNumber": 1119
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetUSBError",
+          "lineNumber": 1119
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsIsochronous",
+          "lineNumber": 1122
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsStageComplete",
+          "lineNumber": 1123
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DisableChannelInterrupt",
+          "lineNumber": 1125
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1128
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "QueueTransaction",
+          "lineNumber": 1130
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsPeriodic",
+          "lineNumber": 1136
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsTimeout",
+          "lineNumber": 1138
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1140
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetUSBError",
+          "lineNumber": 1141
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1147
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "QueueDelayedTransaction",
+          "lineNumber": 1149
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetState",
+          "lineNumber": 1151
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetInterval",
+          "lineNumber": 1153
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetEndpoint",
+          "lineNumber": 1153
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartKernelTimer",
+          "lineNumber": 1155
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "MSEC2HZ",
+          "lineNumber": 1155
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "if",
+          "lineNumber": 1164
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsStatusStage",
+          "lineNumber": 1164
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetResultLen",
+          "lineNumber": 1166
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetResultLen",
+          "lineNumber": 1166
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1169
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DisableChannelInterrupt",
+          "lineNumber": 1172
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1176
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsSet",
+          "lineNumber": 1177
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "And",
+          "lineNumber": 1179
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Or",
+          "lineNumber": 1180
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Write",
+          "lineNumber": 1181
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1188
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 1191
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Enqueue",
+          "lineNumber": 1193
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetTransactionStatus",
+          "lineNumber": 1198
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "LogTransactionFailed",
+          "lineNumber": 1203
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1205
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetUSBError",
+          "lineNumber": 1206
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetUSBError",
+          "lineNumber": 1206
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DisableChannelInterrupt",
+          "lineNumber": 1208
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1213
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 1216
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Enqueue",
+          "lineNumber": 1218
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "TransactionComplete",
+          "lineNumber": 1223
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 1223
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsIsochronous",
+          "lineNumber": 1225
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsDirectionIn",
+          "lineNumber": 1226
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetState",
+          "lineNumber": 1231
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetSplitComplete",
+          "lineNumber": 1232
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CompleteSplit",
+          "lineNumber": 1234
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 1234
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartTransaction",
+          "lineNumber": 1240
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1243
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "QueueTransaction",
+          "lineNumber": 1245
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetTransactionStatus",
+          "lineNumber": 1250
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "LogTransactionFailed",
+          "lineNumber": 1253
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1255
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetUSBError",
+          "lineNumber": 1256
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetUSBError",
+          "lineNumber": 1256
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DisableChannelInterrupt",
+          "lineNumber": 1258
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1263
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 1266
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Enqueue",
+          "lineNumber": 1268
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "TransactionComplete",
+          "lineNumber": 1273
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 1273
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CompleteSplit",
+          "lineNumber": 1275
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 1275
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartTransaction",
+          "lineNumber": 1278
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1281
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "QueueTransaction",
+          "lineNumber": 1283
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsStageComplete",
+          "lineNumber": 1290
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsPeriodic",
+          "lineNumber": 1292
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsIsochronous",
+          "lineNumber": 1293
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsDirectionIn",
+          "lineNumber": 1294
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetState",
+          "lineNumber": 1296
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetSplitComplete",
+          "lineNumber": 1297
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartSplit",
+          "lineNumber": 1298
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 1298
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartTransaction",
+          "lineNumber": 1301
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1304
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "QueueTransaction",
+          "lineNumber": 1306
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsTimeout",
+          "lineNumber": 1311
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DisableChannelInterrupt",
+          "lineNumber": 1313
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1315
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetUSBError",
+          "lineNumber": 1316
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1321
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 1324
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Enqueue",
+          "lineNumber": 1326
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1333
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "QueueDelayedTransaction",
+          "lineNumber": 1335
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetState",
+          "lineNumber": 1337
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetInterval",
+          "lineNumber": 1339
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetEndpoint",
+          "lineNumber": 1339
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "StartKernelTimer",
+          "lineNumber": 1341
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "MSEC2HZ",
+          "lineNumber": 1341
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "DisableChannelInterrupt",
+          "lineNumber": 1349
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "IsStatusStage",
+          "lineNumber": 1351
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetResultLen",
+          "lineNumber": 1353
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "GetResultLen",
+          "lineNumber": 1353
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1355
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1360
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 1363
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "Enqueue",
+          "lineNumber": 1365
+        },
+        {
+          "caller": "ChannelInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 1370
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 1385
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1385
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "Dequeue",
+          "lineNumber": 1388
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "IsPeriodic",
+          "lineNumber": 1391
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "DWHCI_HOST_PORT_SPEED",
+          "lineNumber": 1395
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1395
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "DWHCI_HOST_FRM_NUM_REMAINING",
+          "lineNumber": 1400
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1400
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "QueueTransaction",
+          "lineNumber": 1402
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "AllocateChannel",
+          "lineNumber": 1409
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 1410
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "SetChannelNumber",
+          "lineNumber": 1412
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 1414
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "EnableChannelInterrupt",
+          "lineNumber": 1417
+        },
+        {
+          "caller": "SOFInterruptHandler",
+          "callee": "StartTransaction",
+          "lineNumber": 1419
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "PeripheralEntry",
+          "lineNumber": 1427
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1430
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1433
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "SOFInterruptHandler",
+          "lineNumber": 1439
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1443
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1446
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Write",
+          "lineNumber": 1447
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1452
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "DWHCI_HOST_CHAN_INT_MASK",
+          "lineNumber": 1454
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Write",
+          "lineNumber": 1455
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "ChannelInterruptHandler",
+          "lineNumber": 1457
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "IsPlugAndPlay",
+          "lineNumber": 1464
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1466
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Read",
+          "lineNumber": 1469
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1473
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "PortStatusChanged",
+          "lineNumber": 1476
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "AtomicSet",
+          "lineNumber": 1478
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "And",
+          "lineNumber": 1482
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Or",
+          "lineNumber": 1483
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Write",
+          "lineNumber": 1486
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Get",
+          "lineNumber": 1489
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "PortStatusChanged",
+          "lineNumber": 1494
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "AtomicSet",
+          "lineNumber": 1496
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "Write",
+          "lineNumber": 1501
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "PeripheralExit",
+          "lineNumber": 1503
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "IsEmpty",
+          "lineNumber": 1506
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "AtomicGet",
+          "lineNumber": 1507
+        },
+        {
+          "caller": "InterruptHandler",
+          "callee": "TriggerIRQ",
+          "lineNumber": 1509
+        },
+        {
+          "caller": "InterruptStub",
+          "callee": "assert",
+          "lineNumber": 1517
+        },
+        {
+          "caller": "InterruptStub",
+          "callee": "InterruptHandler",
+          "lineNumber": 1519
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "PeripheralEntry",
+          "lineNumber": 1526
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 1528
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "GetChannelNumber",
+          "lineNumber": 1532
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 1533
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "GetURB",
+          "lineNumber": 1534
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 1535
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "DisableChannelInterrupt",
+          "lineNumber": 1537
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "SetStatus",
+          "lineNumber": 1539
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "SetUSBError",
+          "lineNumber": 1540
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "FreeChannel",
+          "lineNumber": 1545
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "PeripheralExit",
+          "lineNumber": 1547
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 1549
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 1554
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "GetState",
+          "lineNumber": 1554
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "IsSplit",
+          "lineNumber": 1556
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "SetState",
+          "lineNumber": 1558
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "SetSplitComplete",
+          "lineNumber": 1560
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "StartSplit",
+          "lineNumber": 1561
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "GetFrameScheduler",
+          "lineNumber": 1561
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "SetState",
+          "lineNumber": 1565
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "StartTransaction",
+          "lineNumber": 1568
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "PeripheralExit",
+          "lineNumber": 1570
+        },
+        {
+          "caller": "TimerStub",
+          "callee": "assert",
+          "lineNumber": 1576
+        },
+        {
+          "caller": "TimerStub",
+          "callee": "assert",
+          "lineNumber": 1579
+        },
+        {
+          "caller": "TimerStub",
+          "callee": "TimerHandler",
+          "lineNumber": 1581
+        },
+        {
+          "caller": "InterruptHandler2",
+          "callee": "Dequeue",
+          "lineNumber": 1595
+        },
+        {
+          "caller": "InterruptHandler2",
+          "callee": "CallCompletionRoutine",
+          "lineNumber": 1597
+        },
+        {
+          "caller": "InterruptHandler2",
+          "callee": "AtomicExchange",
+          "lineNumber": 1600
+        },
+        {
+          "caller": "InterruptHandler2",
+          "callee": "PortStatusChanged",
+          "lineNumber": 1602
+        },
+        {
+          "caller": "InterruptStub2",
+          "callee": "static_cast <CDWHCIDevice *>",
+          "lineNumber": 1608
+        },
+        {
+          "caller": "InterruptStub2",
+          "callee": "assert",
+          "lineNumber": 1609
+        },
+        {
+          "caller": "InterruptStub2",
+          "callee": "InterruptHandler2",
+          "lineNumber": 1611
+        },
+        {
+          "caller": "AllocateChannel",
+          "callee": "Acquire",
+          "lineNumber": 1618
+        },
+        {
+          "caller": "AllocateChannel",
+          "callee": "Release",
+          "lineNumber": 1627
+        },
+        {
+          "caller": "AllocateChannel",
+          "callee": "Release",
+          "lineNumber": 1635
+        },
+        {
+          "caller": "FreeChannel",
+          "callee": "assert",
+          "lineNumber": 1642
+        },
+        {
+          "caller": "FreeChannel",
+          "callee": "Acquire",
+          "lineNumber": 1645
+        },
+        {
+          "caller": "FreeChannel",
+          "callee": "assert",
+          "lineNumber": 1647
+        },
+        {
+          "caller": "FreeChannel",
+          "callee": "Release",
+          "lineNumber": 1650
+        },
+        {
+          "caller": "AllocateWaitBlock",
+          "callee": "Acquire",
+          "lineNumber": 1655
+        },
+        {
+          "caller": "AllocateWaitBlock",
+          "callee": "Release",
+          "lineNumber": 1664
+        },
+        {
+          "caller": "AllocateWaitBlock",
+          "callee": "Release",
+          "lineNumber": 1672
+        },
+        {
+          "caller": "FreeWaitBlock",
+          "callee": "assert",
+          "lineNumber": 1679
+        },
+        {
+          "caller": "FreeWaitBlock",
+          "callee": "Acquire",
+          "lineNumber": 1682
+        },
+        {
+          "caller": "FreeWaitBlock",
+          "callee": "assert",
+          "lineNumber": 1684
+        },
+        {
+          "caller": "FreeWaitBlock",
+          "callee": "Release",
+          "lineNumber": 1687
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "assert",
+          "lineNumber": 1695
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "assert",
+          "lineNumber": 1696
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "assert",
+          "lineNumber": 1697
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "Read",
+          "lineNumber": 1699
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "assert",
+          "lineNumber": 1701
+        },
+        {
+          "caller": "WaitForBit",
+          "callee": "MsDelay",
+          "lineNumber": 1702
+        },
+        {
+          "caller": "LogTransactionFailed",
+          "callee": "CurrentExecutionLevel",
+          "lineNumber": 1719
+        },
+        {
+          "caller": "LogTransactionFailed",
+          "callee": "LOGWARN",
+          "lineNumber": 1722
+        },
+        {
+          "caller": "DumpRegister",
+          "callee": "DataMemBarrier",
+          "lineNumber": 1732
+        },
+        {
+          "caller": "DumpRegister",
+          "callee": "LOGDBG",
+          "lineNumber": 1734
+        },
+        {
+          "caller": "DumpRegister",
+          "callee": "Read",
+          "lineNumber": 1734
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1739
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1740
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1741
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1742
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1743
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1744
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1745
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1746
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1747
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1748
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1750
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1751
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1752
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1753
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1754
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1756
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DWHCI_HOST_CHAN_CHARACTER",
+          "lineNumber": 1756
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1757
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DWHCI_HOST_CHAN_SPLIT_CTRL",
+          "lineNumber": 1757
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1758
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DWHCI_HOST_CHAN_INT",
+          "lineNumber": 1758
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1759
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DWHCI_HOST_CHAN_INT_MASK",
+          "lineNumber": 1759
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1760
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DWHCI_HOST_CHAN_XFER_SIZ",
+          "lineNumber": 1760
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DumpRegister",
+          "lineNumber": 1761
+        },
+        {
+          "caller": "DumpStatus",
+          "callee": "DWHCI_HOST_CHAN_DMA_ADDR",
+          "lineNumber": 1761
+        }
+      ],
+      "metrics": {
+        "importCount": 13,
+        "exportCount": 37,
+        "functionCount": 37,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhciframeschediso.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 208,
+      "nonEmptyLines": 178,
+      "functions": [
+        {
+          "name": "CDWHCIFrameSchedulerIsochronous",
+          "startLine": 40,
+          "endLine": 50,
+          "params": [
+            "bIn"
+          ]
+        },
+        {
+          "name": "~CDWHCIFrameSchedulerIsochronous",
+          "startLine": 52,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "StartSplit",
+          "startLine": 57,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "CompleteSplit",
+          "startLine": 87,
+          "endLine": 120,
+          "params": []
+        },
+        {
+          "name": "TransactionComplete",
+          "startLine": 122,
+          "endLine": 159,
+          "params": [
+            "nStatus"
+          ]
+        },
+        {
+          "name": "IsOddFrame",
+          "startLine": 202,
+          "endLine": 206,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWHCIFrameSchedulerIsochronous",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWHCIFrameSchedulerIsochronous",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "StartSplit",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "CompleteSplit",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "TransactionComplete",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "IsOddFrame",
+          "line": 202,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CDWHCIFrameSchedulerIsochronous",
+          "callee": "assert",
+          "lineNumber": 48
+        },
+        {
+          "caller": "StartSplit",
+          "callee": "assert",
+          "lineNumber": 77
+        },
+        {
+          "caller": "StartSplit",
+          "callee": "assert",
+          "lineNumber": 78
+        },
+        {
+          "caller": "StartSplit",
+          "callee": "assert",
+          "lineNumber": 79
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "assert",
+          "lineNumber": 97
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "assert",
+          "lineNumber": 110
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "assert",
+          "lineNumber": 115
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 128
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 133
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 151
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 156
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "assert",
+          "lineNumber": 165
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 173
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "Read",
+          "lineNumber": 173
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "assert",
+          "lineNumber": 175
+        },
+        {
+          "caller": "PeriodicDelay",
+          "callee": "assert",
+          "lineNumber": 193
+        },
+        {
+          "caller": "IsOddFrame",
+          "callee": "Read",
+          "lineNumber": 205
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhciframeschednper.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 188,
+      "nonEmptyLines": 164,
+      "functions": [
+        {
+          "name": "CDWHCIFrameSchedulerNonPeriodic",
+          "startLine": 40,
+          "endLine": 48,
+          "params": []
+        },
+        {
+          "name": "~CDWHCIFrameSchedulerNonPeriodic",
+          "startLine": 50,
+          "endLine": 53,
+          "params": []
+        },
+        {
+          "name": "StartSplit",
+          "startLine": 55,
+          "endLine": 64,
+          "params": []
+        },
+        {
+          "name": "CompleteSplit",
+          "startLine": 66,
+          "endLine": 101,
+          "params": []
+        },
+        {
+          "name": "TransactionComplete",
+          "startLine": 103,
+          "endLine": 152,
+          "params": [
+            "nStatus"
+          ]
+        },
+        {
+          "name": "IsOddFrame",
+          "startLine": 183,
+          "endLine": 186,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWHCIFrameSchedulerNonPeriodic",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWHCIFrameSchedulerNonPeriodic",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "StartSplit",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "CompleteSplit",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "TransactionComplete",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "IsOddFrame",
+          "line": 183,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CDWHCIFrameSchedulerNonPeriodic",
+          "callee": "CTimer::Get",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CDWHCIFrameSchedulerNonPeriodic",
+          "callee": "assert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "usDelay",
+          "lineNumber": 84
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "assert",
+          "lineNumber": 96
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 108
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "usDelay",
+          "lineNumber": 135
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "Write",
+          "lineNumber": 143
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "CLogger::Get",
+          "lineNumber": 143
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 144
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 149
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 165
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "Read",
+          "lineNumber": 165
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "GetUSBBoost",
+          "lineNumber": 167
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "CKernelOptions::Get",
+          "lineNumber": 167
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "assert",
+          "lineNumber": 172
+        },
+        {
+          "caller": "PeriodicDelay",
+          "callee": "assert",
+          "lineNumber": 178
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/dwhciframeschednsplit.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 93,
+      "nonEmptyLines": 76,
+      "functions": [
+        {
+          "name": "CDWHCIFrameSchedulerNoSplit",
+          "startLine": 26,
+          "endLine": 30,
+          "params": [
+            "bIsPeriodic"
+          ]
+        },
+        {
+          "name": "~CDWHCIFrameSchedulerNoSplit",
+          "startLine": 32,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "StartSplit",
+          "startLine": 36,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "CompleteSplit",
+          "startLine": 41,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "TransactionComplete",
+          "startLine": 47,
+          "endLine": 50,
+          "params": [
+            "nStatus"
+          ]
+        },
+        {
+          "name": "IsOddFrame",
+          "startLine": 87,
+          "endLine": 91,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CDWHCIFrameSchedulerNoSplit",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CDWHCIFrameSchedulerNoSplit",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "StartSplit",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "CompleteSplit",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "TransactionComplete",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "IsOddFrame",
+          "line": 87,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "StartSplit",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CompleteSplit",
+          "callee": "assert",
+          "lineNumber": 43
+        },
+        {
+          "caller": "TransactionComplete",
+          "callee": "assert",
+          "lineNumber": 49
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 57
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "Read",
+          "lineNumber": 57
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 61
+        },
+        {
+          "caller": "WaitForFrame",
+          "callee": "Read",
+          "lineNumber": 61
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "DWHCI_HOST_FRM_NUM_NUMBER",
+          "lineNumber": 73
+        },
+        {
+          "caller": "GetFrameNumber",
+          "callee": "Read",
+          "lineNumber": 73
+        },
+        {
+          "caller": "PeriodicDelay",
+          "callee": "assert",
+          "lineNumber": 80
+        },
+        {
+          "caller": "IsOddFrame",
+          "callee": "Read",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    }
+  ]
+}

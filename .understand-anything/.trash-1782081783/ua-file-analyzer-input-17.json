@@ -1,0 +1,463 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "lib/qemu.cpp",
+      "language": "cpp",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/rpi/bcm54213.cpp",
+      "language": "cpp",
+      "sizeLines": 1933,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/rpi/bcmmailbox.cpp",
+      "language": "cpp",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/rpi/bcmpciehostbridge.cpp",
+      "language": "cpp",
+      "sizeLines": 1310,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/rpi/bcmrandom.cpp",
+      "language": "cpp",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/rpi/bcmrandom200.cpp",
+      "language": "cpp",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/rpi/bcmwatchdog.cpp",
+      "language": "cpp",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/smimaster.cpp",
+      "language": "cpp",
+      "sizeLines": 317,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/dmasoundbuffers.cpp",
+      "language": "cpp",
+      "sizeLines": 400,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/hdmisoundbasedevice.cpp",
+      "language": "cpp",
+      "sizeLines": 794,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/i2ssoundbasedevice-rp1.cpp",
+      "language": "cpp",
+      "sizeLines": 650,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/i2ssoundbasedevice.cpp",
+      "language": "cpp",
+      "sizeLines": 462,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/pwmsoundbasedevice-rp1.cpp",
+      "language": "cpp",
+      "sizeLines": 336,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sound/pwmsoundbasedevice.cpp",
+      "language": "cpp",
+      "sizeLines": 464,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/southbridge.cpp",
+      "language": "cpp",
+      "sizeLines": 285,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/sysinit.cpp",
+      "language": "cpp",
+      "sizeLines": 376,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/terminal.cpp",
+      "language": "cpp",
+      "sizeLines": 1066,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/timer.cpp",
+      "language": "cpp",
+      "sizeLines": 704,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/smsc951x.cpp",
+      "language": "cpp",
+      "sizeLines": 503,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbfloppydevice.cpp",
+      "language": "cpp",
+      "sizeLines": 668,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbmassdevice.cpp",
+      "language": "cpp",
+      "sizeLines": 734,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhcidevice.cpp",
+      "language": "cpp",
+      "sizeLines": 475,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usertimer.cpp",
+      "language": "cpp",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/writebuffer.cpp",
+      "language": "cpp",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/32-i2cshell/i2cshell.cpp",
+      "language": "cpp",
+      "sizeLines": 714,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/32-i2cshell/i2cshell.h",
+      "language": "c",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/34-sounddevices/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 253,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/gpio-timing/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 166,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/soundshell.cpp",
+      "language": "cpp",
+      "sizeLines": 1406,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/soundshell.h",
+      "language": "c",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "lib/qemu.cpp": [
+      "include/circle/qemu.h"
+    ],
+    "lib/rpi/bcm54213.cpp": [
+      "include/assert.h",
+      "include/circle/interrupt.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "lib/rpi/bcmmailbox.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcmmailbox.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/rpi/bcmpciehostbridge.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/pci_regs.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcm2712.h",
+      "include/circle/rpi/bcmpciehostbridge.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/rpi/bcmrandom.cpp": [
+      "include/circle/memio.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/rpi/bcmrandom200.cpp": [
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcmrandom.h"
+    ],
+    "lib/rpi/bcmwatchdog.cpp": [
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcmwatchdog.h"
+    ],
+    "lib/smimaster.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/smimaster.h",
+      "include/circle/timer.h"
+    ],
+    "lib/sound/dmasoundbuffers.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/sound/dmasoundbuffers.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/hdmisoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/sound/hdmisoundbasedevice.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/i2ssoundbasedevice-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/rp1int.h",
+      "include/circle/sound/i2ssoundbasedevice.h",
+      "include/circle/sound/pcm512xsoundcontroller.h",
+      "include/circle/sound/wm8960soundcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/sound/i2ssoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/sound/i2ssoundbasedevice.h",
+      "include/circle/sound/pcm512xsoundcontroller.h",
+      "include/circle/sound/wm8960soundcontroller.h",
+      "include/circle/timer.h"
+    ],
+    "lib/sound/pwmsoundbasedevice-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/sound/pwmsoundbasedevice.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h"
+    ],
+    "lib/sound/pwmsoundbasedevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/sound/pwmsoundbasedevice.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/southbridge.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/southbridge.h"
+    ],
+    "lib/sysinit.cpp": [
+      "include/circle/actled.h",
+      "include/circle/chainboot.h",
+      "include/circle/interrupt.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/memory.h",
+      "include/circle/memorymap.h",
+      "include/circle/qemu.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcm2712.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/southbridge.h",
+      "include/circle/startup.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h",
+      "include/circle/types.h",
+      "include/circle/util.h",
+      "include/circle/version.h"
+    ],
+    "lib/terminal.cpp": [
+      "include/circle/devicenameservice.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/terminal.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/timer.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2836.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/usb/smsc951x.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/usb/smsc951x.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbfloppydevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/new.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbfloppydevice.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/usbmassdevice.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/new.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbmassdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/xhcidevice.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/memory.h",
+      "include/circle/rp1int.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usertimer.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/synchronize.h",
+      "include/circle/usertimer.h"
+    ],
+    "lib/writebuffer.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/new.h",
+      "include/circle/synchronize.h",
+      "include/circle/writebuffer.h"
+    ],
+    "sample/32-i2cshell/i2cshell.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/stdarg.h",
+      "include/circle/timer.h",
+      "include/circle/util.h",
+      "sample/32-i2cshell/i2cshell.h"
+    ],
+    "sample/32-i2cshell/i2cshell.h": [],
+    "sample/34-sounddevices/kernel.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/sound/hdmisoundbasedevice.h",
+      "include/circle/sound/i2ssoundbasedevice.h",
+      "include/circle/sound/pwmsoundbasedevice.h",
+      "include/circle/sound/usbsoundbasedevice.h",
+      "include/circle/util.h",
+      "sample/34-sounddevices/config.h",
+      "sample/34-sounddevices/kernel.h"
+    ],
+    "test/gpio-timing/kernel.cpp": [
+      "include/circle/cputhrottle.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "test/gpio-timing/kernel.h"
+    ],
+    "test/sound-controller/soundshell.cpp": [
+      "include/assert.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sound/hdmisoundbasedevice.h",
+      "include/circle/sound/i2ssoundbasedevice.h",
+      "include/circle/sound/pwmsoundbasedevice.h",
+      "include/circle/sound/usbsoundbasedevice.h",
+      "include/circle/stdarg.h",
+      "include/circle/timer.h",
+      "include/circle/util.h",
+      "test/sound-controller/soundshell.h"
+    ],
+    "test/sound-controller/soundshell.h": []
+  }
+}

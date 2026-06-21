@@ -1,0 +1,461 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "lib/actled.cpp",
+      "language": "cpp",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/dma4channel.cpp",
+      "language": "cpp",
+      "sizeLines": 572,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/dmachannel-rp1.cpp",
+      "language": "cpp",
+      "sizeLines": 835,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/dmachannel.cpp",
+      "language": "cpp",
+      "sizeLines": 566,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/interrupt.cpp",
+      "language": "cpp",
+      "sizeLines": 364,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/interruptgic.cpp",
+      "language": "cpp",
+      "sizeLines": 527,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/latencytester.cpp",
+      "language": "cpp",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/macb.cpp",
+      "language": "cpp",
+      "sizeLines": 1717,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/machineinfo.cpp",
+      "language": "cpp",
+      "sizeLines": 802,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/mphi.cpp",
+      "language": "cpp",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/netdevlayer.cpp",
+      "language": "cpp",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/new.cpp",
+      "language": "cpp",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/gpioclock-rp1.cpp",
+      "language": "cpp",
+      "sizeLines": 575,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/gpioclock.cpp",
+      "language": "cpp",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/gpiomanager.cpp",
+      "language": "cpp",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/gpiomanager2712.cpp",
+      "language": "cpp",
+      "sizeLines": 156,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/gpiopin.cpp",
+      "language": "cpp",
+      "sizeLines": 476,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/gpiopin2712.cpp",
+      "language": "cpp",
+      "sizeLines": 699,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/gpiopinfiq.cpp",
+      "language": "cpp",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/i2cmaster-rp1.cpp",
+      "language": "cpp",
+      "sizeLines": 776,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/i2cmaster.cpp",
+      "language": "cpp",
+      "sizeLines": 446,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/i2cmasterirq.cpp",
+      "language": "cpp",
+      "sizeLines": 380,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/i2cslave.cpp",
+      "language": "cpp",
+      "sizeLines": 246,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/pwmoutput-rp1.cpp",
+      "language": "cpp",
+      "sizeLines": 179,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/pwmoutput.cpp",
+      "language": "cpp",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/serial.cpp",
+      "language": "cpp",
+      "sizeLines": 1043,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/spimaster-rp1.cpp",
+      "language": "cpp",
+      "sizeLines": 336,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/spimaster.cpp",
+      "language": "cpp",
+      "sizeLines": 320,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/spimasteraux.cpp",
+      "language": "cpp",
+      "sizeLines": 260,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/spimasterdma-rp1.cpp",
+      "language": "cpp",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/peripherals/spimasterdma.cpp",
+      "language": "cpp",
+      "sizeLines": 253,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "lib/actled.cpp": [
+      "include/circle/actled.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2712.h",
+      "include/circle/timer.h"
+    ],
+    "lib/dma4channel.cpp": [
+      "include/assert.h",
+      "include/circle/dma4channel.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/rpi/bcm2711int.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/dmachannel-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/dmachannel-rp1.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/rp1int.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/dmachannel.cpp": [
+      "include/assert.h",
+      "include/circle/dmachannel.h",
+      "include/circle/memio.h",
+      "include/circle/new.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/interrupt.cpp": [
+      "include/assert.h",
+      "include/circle/interrupt.h",
+      "include/circle/memio.h",
+      "include/circle/multicore.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2836.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/types.h"
+    ],
+    "lib/interruptgic.cpp": [
+      "include/assert.h",
+      "include/circle/interrupt.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/multicore.h",
+      "include/circle/rp1int.h",
+      "include/circle/rpi/bcm2711.h",
+      "include/circle/southbridge.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/types.h"
+    ],
+    "lib/latencytester.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/latencytester.h",
+      "include/circle/logger.h",
+      "include/circle/memio.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/macb.cpp": [
+      "include/assert.h",
+      "include/circle/devicetreeblob.h",
+      "include/circle/logger.h",
+      "include/circle/macb.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/memory.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/machineinfo.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpioclock.h",
+      "include/circle/rpi/bcm2712.h",
+      "include/circle/startup.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/mphi.cpp": [
+      "include/assert.h",
+      "include/circle/atomic.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/mphi.h",
+      "include/circle/new.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/net/netdevlayer.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/netdevlayer.h",
+      "include/circle/net/phytask.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/new.cpp": [
+      "include/assert.h",
+      "include/circle/new.h"
+    ],
+    "lib/peripherals/gpioclock-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/gpioclock.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpioclock.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/gpiomanager.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpiomanager.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/rpi/bcm2835int.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/gpiomanager2712.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/rp1int.h"
+    ],
+    "lib/peripherals/gpiopin.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpiomanager.h",
+      "include/circle/peripherals/gpiopin.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/gpiopin2712.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/machineinfo.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/southbridge.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/gpiopinfiq.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/gpiopinfiq.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/i2cmaster-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/i2cmaster.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/i2cmaster.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/i2cmasterirq.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/i2cmasterirq.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/i2cslave.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/i2cslave.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/pwmoutput-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/pwmoutput.cpp": [
+      "include/assert.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/pwmoutput.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/serial.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/serial.h",
+      "include/circle/rp1int.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/spimaster-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/peripherals/spimaster.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/spimaster.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h"
+    ],
+    "lib/peripherals/spimasteraux.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/spimasteraux.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ],
+    "lib/peripherals/spimasterdma-rp1.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/memio.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/sysconfig.h"
+    ],
+    "lib/peripherals/spimasterdma.cpp": [
+      "include/assert.h",
+      "include/circle/machineinfo.h",
+      "include/circle/memio.h",
+      "include/circle/peripherals/spimasterdma.h",
+      "include/circle/rpi/bcm2835.h",
+      "include/circle/synchronize.h"
+    ]
+  }
+}

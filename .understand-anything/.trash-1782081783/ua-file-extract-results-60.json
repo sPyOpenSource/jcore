@@ -1,0 +1,7119 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/ugui/sample/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 128,
+      "nonEmptyLines": 97,
+      "metrics": {}
+    },
+    {
+      "path": "addon/ugui/sample/sampler.S",
+      "language": "s",
+      "fileCategory": "code",
+      "totalLines": 154,
+      "nonEmptyLines": 120,
+      "metrics": {}
+    },
+    {
+      "path": "addon/ugui/system.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/ugui/ugui_config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 49,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/ugui/ugui.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 8237,
+      "nonEmptyLines": 7712,
+      "functions": [
+        {
+          "name": "UG_Init",
+          "startLine": 4557,
+          "endLine": 4599,
+          "params": [
+            "g",
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "UG_SelectGUI",
+          "startLine": 4601,
+          "endLine": 4605,
+          "params": [
+            "g"
+          ]
+        },
+        {
+          "name": "UG_FontSelect",
+          "startLine": 4607,
+          "endLine": 4610,
+          "params": [
+            "font"
+          ]
+        },
+        {
+          "name": "UG_FillScreen",
+          "startLine": 4612,
+          "endLine": 4615,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "UG_FillFrame",
+          "startLine": 4617,
+          "endLine": 4647,
+          "params": [
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_FillRoundFrame",
+          "startLine": 4649,
+          "endLine": 4697,
+          "params": [
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "r",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_DrawMesh",
+          "startLine": 4699,
+          "endLine": 4723,
+          "params": [
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_DrawFrame",
+          "startLine": 4725,
+          "endLine": 4731,
+          "params": [
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_DrawRoundFrame",
+          "startLine": 4733,
+          "endLine": 4760,
+          "params": [
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "r",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_DrawPixel",
+          "startLine": 4762,
+          "endLine": 4765,
+          "params": [
+            "x0",
+            "y0",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_DrawCircle",
+          "startLine": 4767,
+          "endLine": 4802,
+          "params": [
+            "x0",
+            "y0",
+            "r",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_FillCircle",
+          "startLine": 4804,
+          "endLine": 4840,
+          "params": [
+            "x0",
+            "y0",
+            "r",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_DrawArc",
+          "startLine": 4842,
+          "endLine": 4884,
+          "params": [
+            "x0",
+            "y0",
+            "r",
+            "s",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_DrawLine",
+          "startLine": 4886,
+          "endLine": 4937,
+          "params": [
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_PutString",
+          "startLine": 4939,
+          "endLine": 4969,
+          "params": [
+            "x",
+            "y",
+            "str"
+          ]
+        },
+        {
+          "name": "UG_PutChar",
+          "startLine": 4971,
+          "endLine": 4974,
+          "params": [
+            "chr",
+            "x",
+            "y",
+            "fc",
+            "bc"
+          ]
+        },
+        {
+          "name": "UG_ConsolePutString",
+          "startLine": 4976,
+          "endLine": 5009,
+          "params": [
+            "str"
+          ]
+        },
+        {
+          "name": "UG_ConsoleSetArea",
+          "startLine": 5011,
+          "endLine": 5017,
+          "params": [
+            "xs",
+            "ys",
+            "xe",
+            "ye"
+          ]
+        },
+        {
+          "name": "UG_ConsoleSetForecolor",
+          "startLine": 5019,
+          "endLine": 5022,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "UG_ConsoleSetBackcolor",
+          "startLine": 5024,
+          "endLine": 5027,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "UG_SetForecolor",
+          "startLine": 5029,
+          "endLine": 5032,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "UG_SetBackcolor",
+          "startLine": 5034,
+          "endLine": 5037,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "UG_GetXDim",
+          "startLine": 5039,
+          "endLine": 5042,
+          "params": []
+        },
+        {
+          "name": "UG_GetYDim",
+          "startLine": 5044,
+          "endLine": 5047,
+          "params": []
+        },
+        {
+          "name": "UG_FontSetHSpace",
+          "startLine": 5049,
+          "endLine": 5052,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "UG_FontSetVSpace",
+          "startLine": 5054,
+          "endLine": 5057,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "_UG_PutChar",
+          "startLine": 5256,
+          "endLine": 5386,
+          "params": [
+            "chr",
+            "x",
+            "y",
+            "fc",
+            "bc",
+            "font"
+          ]
+        },
+        {
+          "name": "_UG_PutText",
+          "startLine": 5388,
+          "endLine": 5462,
+          "params": [
+            "txt"
+          ]
+        },
+        {
+          "name": "_UG_DeleteObject",
+          "startLine": 5501,
+          "endLine": 5522,
+          "params": [
+            "wnd",
+            "type",
+            "id"
+          ]
+        },
+        {
+          "name": "_UG_ProcessTouchData",
+          "startLine": 5524,
+          "endLine": 5594,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "_UG_UpdateObjects",
+          "startLine": 5596,
+          "endLine": 5625,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "_UG_HandleEvents",
+          "startLine": 5627,
+          "endLine": 5661,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "_UG_DrawObjectFrame",
+          "startLine": 5663,
+          "endLine": 5680,
+          "params": [
+            "xs",
+            "ys",
+            "xe",
+            "ye",
+            "p"
+          ]
+        },
+        {
+          "name": "UG_DriverRegister",
+          "startLine": 5713,
+          "endLine": 5719,
+          "params": [
+            "type",
+            "driver"
+          ]
+        },
+        {
+          "name": "UG_DriverEnable",
+          "startLine": 5721,
+          "endLine": 5728,
+          "params": [
+            "type"
+          ]
+        },
+        {
+          "name": "UG_DriverDisable",
+          "startLine": 5730,
+          "endLine": 5737,
+          "params": [
+            "type"
+          ]
+        },
+        {
+          "name": "UG_Update",
+          "startLine": 5742,
+          "endLine": 5792,
+          "params": []
+        },
+        {
+          "name": "UG_WaitForUpdate",
+          "startLine": 5794,
+          "endLine": 5803,
+          "params": []
+        },
+        {
+          "name": "UG_DrawBMP",
+          "startLine": 5805,
+          "endLine": 5844,
+          "params": [
+            "xp",
+            "yp",
+            "bmp"
+          ]
+        },
+        {
+          "name": "UG_TouchUpdate",
+          "startLine": 5846,
+          "endLine": 5851,
+          "params": [
+            "xp",
+            "yp",
+            "state"
+          ]
+        },
+        {
+          "name": "UG_WindowCreate",
+          "startLine": 5856,
+          "endLine": 5904,
+          "params": [
+            "wnd",
+            "objlst",
+            "objcnt"
+          ]
+        },
+        {
+          "name": "UG_WindowDelete",
+          "startLine": 5906,
+          "endLine": 5925,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowShow",
+          "startLine": 5927,
+          "endLine": 5938,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowHide",
+          "startLine": 5940,
+          "endLine": 5969,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowResize",
+          "startLine": 5971,
+          "endLine": 6010,
+          "params": [
+            "wnd",
+            "xs",
+            "ys",
+            "xe",
+            "ye"
+          ]
+        },
+        {
+          "name": "UG_WindowAlert",
+          "startLine": 6012,
+          "endLine": 6019,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowSetForeColor",
+          "startLine": 6021,
+          "endLine": 6030,
+          "params": [
+            "wnd",
+            "fc"
+          ]
+        },
+        {
+          "name": "UG_WindowSetBackColor",
+          "startLine": 6032,
+          "endLine": 6041,
+          "params": [
+            "wnd",
+            "bc"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleTextColor",
+          "startLine": 6043,
+          "endLine": 6052,
+          "params": [
+            "wnd",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleColor",
+          "startLine": 6054,
+          "endLine": 6063,
+          "params": [
+            "wnd",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleInactiveTextColor",
+          "startLine": 6065,
+          "endLine": 6074,
+          "params": [
+            "wnd",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleInactiveColor",
+          "startLine": 6076,
+          "endLine": 6085,
+          "params": [
+            "wnd",
+            "c"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleText",
+          "startLine": 6087,
+          "endLine": 6096,
+          "params": [
+            "wnd",
+            "str"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleTextFont",
+          "startLine": 6098,
+          "endLine": 6112,
+          "params": [
+            "wnd",
+            "font"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleTextHSpace",
+          "startLine": 6114,
+          "endLine": 6123,
+          "params": [
+            "wnd",
+            "hs"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleTextVSpace",
+          "startLine": 6125,
+          "endLine": 6134,
+          "params": [
+            "wnd",
+            "vs"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleTextAlignment",
+          "startLine": 6136,
+          "endLine": 6145,
+          "params": [
+            "wnd",
+            "align"
+          ]
+        },
+        {
+          "name": "UG_WindowSetTitleHeight",
+          "startLine": 6147,
+          "endLine": 6157,
+          "params": [
+            "wnd",
+            "height"
+          ]
+        },
+        {
+          "name": "UG_WindowSetXStart",
+          "startLine": 6159,
+          "endLine": 6168,
+          "params": [
+            "wnd",
+            "xs"
+          ]
+        },
+        {
+          "name": "UG_WindowSetYStart",
+          "startLine": 6170,
+          "endLine": 6179,
+          "params": [
+            "wnd",
+            "ys"
+          ]
+        },
+        {
+          "name": "UG_WindowSetXEnd",
+          "startLine": 6181,
+          "endLine": 6190,
+          "params": [
+            "wnd",
+            "xe"
+          ]
+        },
+        {
+          "name": "UG_WindowSetYEnd",
+          "startLine": 6192,
+          "endLine": 6201,
+          "params": [
+            "wnd",
+            "ye"
+          ]
+        },
+        {
+          "name": "UG_WindowSetStyle",
+          "startLine": 6203,
+          "endLine": 6229,
+          "params": [
+            "wnd",
+            "style"
+          ]
+        },
+        {
+          "name": "UG_WindowGetForeColor",
+          "startLine": 6231,
+          "endLine": 6239,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetBackColor",
+          "startLine": 6241,
+          "endLine": 6249,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetTitleTextColor",
+          "startLine": 6251,
+          "endLine": 6259,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetTitleColor",
+          "startLine": 6261,
+          "endLine": 6269,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetTitleInactiveTextColor",
+          "startLine": 6271,
+          "endLine": 6279,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetTitleInactiveColor",
+          "startLine": 6281,
+          "endLine": 6289,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetTitleTextHSpace",
+          "startLine": 6311,
+          "endLine": 6319,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetTitleTextVSpace",
+          "startLine": 6321,
+          "endLine": 6329,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetTitleTextAlignment",
+          "startLine": 6331,
+          "endLine": 6339,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetTitleHeight",
+          "startLine": 6341,
+          "endLine": 6349,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetXStart",
+          "startLine": 6351,
+          "endLine": 6359,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetYStart",
+          "startLine": 6361,
+          "endLine": 6369,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetXEnd",
+          "startLine": 6371,
+          "endLine": 6379,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetYEnd",
+          "startLine": 6381,
+          "endLine": 6389,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetStyle",
+          "startLine": 6391,
+          "endLine": 6399,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetArea",
+          "startLine": 6401,
+          "endLine": 6423,
+          "params": [
+            "wnd",
+            "a"
+          ]
+        },
+        {
+          "name": "UG_WindowGetInnerWidth",
+          "startLine": 6425,
+          "endLine": 6438,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetOuterWidth",
+          "startLine": 6440,
+          "endLine": 6450,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetInnerHeight",
+          "startLine": 6452,
+          "endLine": 6468,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_WindowGetOuterHeight",
+          "startLine": 6470,
+          "endLine": 6480,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "_UG_WindowDrawTitle",
+          "startLine": 6482,
+          "endLine": 6535,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "_UG_WindowUpdate",
+          "startLine": 6537,
+          "endLine": 6587,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "_UG_WindowClear",
+          "startLine": 6589,
+          "endLine": 6611,
+          "params": [
+            "wnd"
+          ]
+        },
+        {
+          "name": "UG_ButtonCreate",
+          "startLine": 6616,
+          "endLine": 6656,
+          "params": [
+            "wnd",
+            "btn",
+            "id",
+            "xs",
+            "ys",
+            "xe",
+            "ye"
+          ]
+        },
+        {
+          "name": "UG_ButtonDelete",
+          "startLine": 6658,
+          "endLine": 6661,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonShow",
+          "startLine": 6663,
+          "endLine": 6674,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonHide",
+          "startLine": 6676,
+          "endLine": 6693,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetForeColor",
+          "startLine": 6695,
+          "endLine": 6708,
+          "params": [
+            "wnd",
+            "id",
+            "fc"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetBackColor",
+          "startLine": 6710,
+          "endLine": 6723,
+          "params": [
+            "wnd",
+            "id",
+            "bc"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetAlternateForeColor",
+          "startLine": 6725,
+          "endLine": 6738,
+          "params": [
+            "wnd",
+            "id",
+            "afc"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetAlternateBackColor",
+          "startLine": 6740,
+          "endLine": 6753,
+          "params": [
+            "wnd",
+            "id",
+            "abc"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetText",
+          "startLine": 6755,
+          "endLine": 6768,
+          "params": [
+            "wnd",
+            "id",
+            "str"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetFont",
+          "startLine": 6770,
+          "endLine": 6783,
+          "params": [
+            "wnd",
+            "id",
+            "font"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetStyle",
+          "startLine": 6785,
+          "endLine": 6831,
+          "params": [
+            "wnd",
+            "id",
+            "style"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetHSpace",
+          "startLine": 6833,
+          "endLine": 6846,
+          "params": [
+            "wnd",
+            "id",
+            "hs"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetVSpace",
+          "startLine": 6848,
+          "endLine": 6861,
+          "params": [
+            "wnd",
+            "id",
+            "vs"
+          ]
+        },
+        {
+          "name": "UG_ButtonSetAlignment",
+          "startLine": 6863,
+          "endLine": 6876,
+          "params": [
+            "wnd",
+            "id",
+            "align"
+          ]
+        },
+        {
+          "name": "UG_ButtonGetForeColor",
+          "startLine": 6878,
+          "endLine": 6891,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonGetBackColor",
+          "startLine": 6893,
+          "endLine": 6906,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonGetAlternateForeColor",
+          "startLine": 6908,
+          "endLine": 6921,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonGetAlternateBackColor",
+          "startLine": 6923,
+          "endLine": 6936,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonGetStyle",
+          "startLine": 6968,
+          "endLine": 6981,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonGetHSpace",
+          "startLine": 6983,
+          "endLine": 6996,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonGetVSpace",
+          "startLine": 6998,
+          "endLine": 7011,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ButtonGetAlignment",
+          "startLine": 7013,
+          "endLine": 7026,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "_UG_ButtonUpdate",
+          "startLine": 7029,
+          "endLine": 7149,
+          "params": [
+            "wnd",
+            "obj"
+          ]
+        },
+        {
+          "name": "UG_CheckboxCreate",
+          "startLine": 7154,
+          "endLine": 7195,
+          "params": [
+            "wnd",
+            "chb",
+            "id",
+            "xs",
+            "ys",
+            "xe",
+            "ye"
+          ]
+        },
+        {
+          "name": "UG_CheckboxDelete",
+          "startLine": 7197,
+          "endLine": 7200,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxShow",
+          "startLine": 7202,
+          "endLine": 7213,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxHide",
+          "startLine": 7215,
+          "endLine": 7232,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetCheched",
+          "startLine": 7234,
+          "endLine": 7247,
+          "params": [
+            "wnd",
+            "id",
+            "ch"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetForeColor",
+          "startLine": 7250,
+          "endLine": 7263,
+          "params": [
+            "wnd",
+            "id",
+            "fc"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetBackColor",
+          "startLine": 7265,
+          "endLine": 7278,
+          "params": [
+            "wnd",
+            "id",
+            "bc"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetAlternateForeColor",
+          "startLine": 7280,
+          "endLine": 7293,
+          "params": [
+            "wnd",
+            "id",
+            "afc"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetAlternateBackColor",
+          "startLine": 7295,
+          "endLine": 7308,
+          "params": [
+            "wnd",
+            "id",
+            "abc"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetText",
+          "startLine": 7310,
+          "endLine": 7323,
+          "params": [
+            "wnd",
+            "id",
+            "str"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetFont",
+          "startLine": 7325,
+          "endLine": 7338,
+          "params": [
+            "wnd",
+            "id",
+            "font"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetStyle",
+          "startLine": 7340,
+          "endLine": 7386,
+          "params": [
+            "wnd",
+            "id",
+            "style"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetHSpace",
+          "startLine": 7388,
+          "endLine": 7401,
+          "params": [
+            "wnd",
+            "id",
+            "hs"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetVSpace",
+          "startLine": 7403,
+          "endLine": 7416,
+          "params": [
+            "wnd",
+            "id",
+            "vs"
+          ]
+        },
+        {
+          "name": "UG_CheckboxSetAlignment",
+          "startLine": 7418,
+          "endLine": 7431,
+          "params": [
+            "wnd",
+            "id",
+            "align"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetChecked",
+          "startLine": 7433,
+          "endLine": 7446,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetForeColor",
+          "startLine": 7448,
+          "endLine": 7461,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetBackColor",
+          "startLine": 7463,
+          "endLine": 7476,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetAlternateForeColor",
+          "startLine": 7478,
+          "endLine": 7491,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetAlternateBackColor",
+          "startLine": 7493,
+          "endLine": 7506,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetStyle",
+          "startLine": 7538,
+          "endLine": 7551,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetHSpace",
+          "startLine": 7553,
+          "endLine": 7566,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetVSpace",
+          "startLine": 7568,
+          "endLine": 7581,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_CheckboxGetAlignment",
+          "startLine": 7583,
+          "endLine": 7596,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "_UG_CheckboxUpdate",
+          "startLine": 7599,
+          "endLine": 7749,
+          "params": [
+            "wnd",
+            "obj"
+          ]
+        },
+        {
+          "name": "UG_TextboxCreate",
+          "startLine": 7755,
+          "endLine": 7794,
+          "params": [
+            "wnd",
+            "txb",
+            "id",
+            "xs",
+            "ys",
+            "xe",
+            "ye"
+          ]
+        },
+        {
+          "name": "UG_TextboxDelete",
+          "startLine": 7796,
+          "endLine": 7799,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_TextboxShow",
+          "startLine": 7801,
+          "endLine": 7812,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_TextboxHide",
+          "startLine": 7814,
+          "endLine": 7825,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_TextboxSetForeColor",
+          "startLine": 7827,
+          "endLine": 7840,
+          "params": [
+            "wnd",
+            "id",
+            "fc"
+          ]
+        },
+        {
+          "name": "UG_TextboxSetBackColor",
+          "startLine": 7842,
+          "endLine": 7855,
+          "params": [
+            "wnd",
+            "id",
+            "bc"
+          ]
+        },
+        {
+          "name": "UG_TextboxSetText",
+          "startLine": 7857,
+          "endLine": 7870,
+          "params": [
+            "wnd",
+            "id",
+            "str"
+          ]
+        },
+        {
+          "name": "UG_TextboxSetFont",
+          "startLine": 7872,
+          "endLine": 7885,
+          "params": [
+            "wnd",
+            "id",
+            "font"
+          ]
+        },
+        {
+          "name": "UG_TextboxSetHSpace",
+          "startLine": 7887,
+          "endLine": 7900,
+          "params": [
+            "wnd",
+            "id",
+            "hs"
+          ]
+        },
+        {
+          "name": "UG_TextboxSetVSpace",
+          "startLine": 7902,
+          "endLine": 7915,
+          "params": [
+            "wnd",
+            "id",
+            "vs"
+          ]
+        },
+        {
+          "name": "UG_TextboxSetAlignment",
+          "startLine": 7917,
+          "endLine": 7930,
+          "params": [
+            "wnd",
+            "id",
+            "align"
+          ]
+        },
+        {
+          "name": "UG_TextboxGetForeColor",
+          "startLine": 7932,
+          "endLine": 7945,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_TextboxGetBackColor",
+          "startLine": 7947,
+          "endLine": 7960,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_TextboxGetHSpace",
+          "startLine": 7992,
+          "endLine": 8005,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_TextboxGetVSpace",
+          "startLine": 8007,
+          "endLine": 8020,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_TextboxGetAlignment",
+          "startLine": 8022,
+          "endLine": 8035,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "_UG_TextboxUpdate",
+          "startLine": 8037,
+          "endLine": 8101,
+          "params": [
+            "wnd",
+            "obj"
+          ]
+        },
+        {
+          "name": "UG_ImageCreate",
+          "startLine": 8106,
+          "endLine": 8138,
+          "params": [
+            "wnd",
+            "img",
+            "id",
+            "xs",
+            "ys",
+            "xe",
+            "ye"
+          ]
+        },
+        {
+          "name": "UG_ImageDelete",
+          "startLine": 8140,
+          "endLine": 8143,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ImageShow",
+          "startLine": 8145,
+          "endLine": 8156,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ImageHide",
+          "startLine": 8158,
+          "endLine": 8169,
+          "params": [
+            "wnd",
+            "id"
+          ]
+        },
+        {
+          "name": "UG_ImageSetBMP",
+          "startLine": 8171,
+          "endLine": 8185,
+          "params": [
+            "wnd",
+            "id",
+            "bmp"
+          ]
+        },
+        {
+          "name": "_UG_ImageUpdate",
+          "startLine": 8187,
+          "endLine": 8235,
+          "params": [
+            "wnd",
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "UG_Init",
+          "line": 4557,
+          "isDefault": false
+        },
+        {
+          "name": "UG_SelectGUI",
+          "line": 4601,
+          "isDefault": false
+        },
+        {
+          "name": "UG_FontSelect",
+          "line": 4607,
+          "isDefault": false
+        },
+        {
+          "name": "UG_FillScreen",
+          "line": 4612,
+          "isDefault": false
+        },
+        {
+          "name": "UG_FillFrame",
+          "line": 4617,
+          "isDefault": false
+        },
+        {
+          "name": "UG_FillRoundFrame",
+          "line": 4649,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DrawMesh",
+          "line": 4699,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DrawFrame",
+          "line": 4725,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DrawRoundFrame",
+          "line": 4733,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DrawPixel",
+          "line": 4762,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DrawCircle",
+          "line": 4767,
+          "isDefault": false
+        },
+        {
+          "name": "UG_FillCircle",
+          "line": 4804,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DrawArc",
+          "line": 4842,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DrawLine",
+          "line": 4886,
+          "isDefault": false
+        },
+        {
+          "name": "UG_PutString",
+          "line": 4939,
+          "isDefault": false
+        },
+        {
+          "name": "UG_PutChar",
+          "line": 4971,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ConsolePutString",
+          "line": 4976,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ConsoleSetArea",
+          "line": 5011,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ConsoleSetForecolor",
+          "line": 5019,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ConsoleSetBackcolor",
+          "line": 5024,
+          "isDefault": false
+        },
+        {
+          "name": "UG_SetForecolor",
+          "line": 5029,
+          "isDefault": false
+        },
+        {
+          "name": "UG_SetBackcolor",
+          "line": 5034,
+          "isDefault": false
+        },
+        {
+          "name": "UG_GetXDim",
+          "line": 5039,
+          "isDefault": false
+        },
+        {
+          "name": "UG_GetYDim",
+          "line": 5044,
+          "isDefault": false
+        },
+        {
+          "name": "UG_FontSetHSpace",
+          "line": 5049,
+          "isDefault": false
+        },
+        {
+          "name": "UG_FontSetVSpace",
+          "line": 5054,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_PutChar",
+          "line": 5256,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_PutText",
+          "line": 5388,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_DeleteObject",
+          "line": 5501,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_ProcessTouchData",
+          "line": 5524,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_UpdateObjects",
+          "line": 5596,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_HandleEvents",
+          "line": 5627,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_DrawObjectFrame",
+          "line": 5663,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DriverRegister",
+          "line": 5713,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DriverEnable",
+          "line": 5721,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DriverDisable",
+          "line": 5730,
+          "isDefault": false
+        },
+        {
+          "name": "UG_Update",
+          "line": 5742,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WaitForUpdate",
+          "line": 5794,
+          "isDefault": false
+        },
+        {
+          "name": "UG_DrawBMP",
+          "line": 5805,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TouchUpdate",
+          "line": 5846,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowCreate",
+          "line": 5856,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowDelete",
+          "line": 5906,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowShow",
+          "line": 5927,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowHide",
+          "line": 5940,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowResize",
+          "line": 5971,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowAlert",
+          "line": 6012,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetForeColor",
+          "line": 6021,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetBackColor",
+          "line": 6032,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleTextColor",
+          "line": 6043,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleColor",
+          "line": 6054,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleInactiveTextColor",
+          "line": 6065,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleInactiveColor",
+          "line": 6076,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleText",
+          "line": 6087,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleTextFont",
+          "line": 6098,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleTextHSpace",
+          "line": 6114,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleTextVSpace",
+          "line": 6125,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleTextAlignment",
+          "line": 6136,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetTitleHeight",
+          "line": 6147,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetXStart",
+          "line": 6159,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetYStart",
+          "line": 6170,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetXEnd",
+          "line": 6181,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetYEnd",
+          "line": 6192,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowSetStyle",
+          "line": 6203,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetForeColor",
+          "line": 6231,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetBackColor",
+          "line": 6241,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetTitleTextColor",
+          "line": 6251,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetTitleColor",
+          "line": 6261,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetTitleInactiveTextColor",
+          "line": 6271,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetTitleInactiveColor",
+          "line": 6281,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetTitleTextHSpace",
+          "line": 6311,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetTitleTextVSpace",
+          "line": 6321,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetTitleTextAlignment",
+          "line": 6331,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetTitleHeight",
+          "line": 6341,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetXStart",
+          "line": 6351,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetYStart",
+          "line": 6361,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetXEnd",
+          "line": 6371,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetYEnd",
+          "line": 6381,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetStyle",
+          "line": 6391,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetArea",
+          "line": 6401,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetInnerWidth",
+          "line": 6425,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetOuterWidth",
+          "line": 6440,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetInnerHeight",
+          "line": 6452,
+          "isDefault": false
+        },
+        {
+          "name": "UG_WindowGetOuterHeight",
+          "line": 6470,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_WindowDrawTitle",
+          "line": 6482,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_WindowUpdate",
+          "line": 6537,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_WindowClear",
+          "line": 6589,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonCreate",
+          "line": 6616,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonDelete",
+          "line": 6658,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonShow",
+          "line": 6663,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonHide",
+          "line": 6676,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetForeColor",
+          "line": 6695,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetBackColor",
+          "line": 6710,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetAlternateForeColor",
+          "line": 6725,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetAlternateBackColor",
+          "line": 6740,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetText",
+          "line": 6755,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetFont",
+          "line": 6770,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetStyle",
+          "line": 6785,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetHSpace",
+          "line": 6833,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetVSpace",
+          "line": 6848,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonSetAlignment",
+          "line": 6863,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonGetForeColor",
+          "line": 6878,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonGetBackColor",
+          "line": 6893,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonGetAlternateForeColor",
+          "line": 6908,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonGetAlternateBackColor",
+          "line": 6923,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonGetStyle",
+          "line": 6968,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonGetHSpace",
+          "line": 6983,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonGetVSpace",
+          "line": 6998,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ButtonGetAlignment",
+          "line": 7013,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_ButtonUpdate",
+          "line": 7029,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxCreate",
+          "line": 7154,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxDelete",
+          "line": 7197,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxShow",
+          "line": 7202,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxHide",
+          "line": 7215,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetCheched",
+          "line": 7234,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetForeColor",
+          "line": 7250,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetBackColor",
+          "line": 7265,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetAlternateForeColor",
+          "line": 7280,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetAlternateBackColor",
+          "line": 7295,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetText",
+          "line": 7310,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetFont",
+          "line": 7325,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetStyle",
+          "line": 7340,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetHSpace",
+          "line": 7388,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetVSpace",
+          "line": 7403,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxSetAlignment",
+          "line": 7418,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetChecked",
+          "line": 7433,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetForeColor",
+          "line": 7448,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetBackColor",
+          "line": 7463,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetAlternateForeColor",
+          "line": 7478,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetAlternateBackColor",
+          "line": 7493,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetStyle",
+          "line": 7538,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetHSpace",
+          "line": 7553,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetVSpace",
+          "line": 7568,
+          "isDefault": false
+        },
+        {
+          "name": "UG_CheckboxGetAlignment",
+          "line": 7583,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_CheckboxUpdate",
+          "line": 7599,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxCreate",
+          "line": 7755,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxDelete",
+          "line": 7796,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxShow",
+          "line": 7801,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxHide",
+          "line": 7814,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxSetForeColor",
+          "line": 7827,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxSetBackColor",
+          "line": 7842,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxSetText",
+          "line": 7857,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxSetFont",
+          "line": 7872,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxSetHSpace",
+          "line": 7887,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxSetVSpace",
+          "line": 7902,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxSetAlignment",
+          "line": 7917,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxGetForeColor",
+          "line": 7932,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxGetBackColor",
+          "line": 7947,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxGetHSpace",
+          "line": 7992,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxGetVSpace",
+          "line": 8007,
+          "isDefault": false
+        },
+        {
+          "name": "UG_TextboxGetAlignment",
+          "line": 8022,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_TextboxUpdate",
+          "line": 8037,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ImageCreate",
+          "line": 8106,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ImageDelete",
+          "line": 8140,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ImageShow",
+          "line": 8145,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ImageHide",
+          "line": 8158,
+          "isDefault": false
+        },
+        {
+          "name": "UG_ImageSetBMP",
+          "line": 8171,
+          "isDefault": false
+        },
+        {
+          "name": "_UG_ImageUpdate",
+          "line": 8187,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "UG_FillScreen",
+          "callee": "UG_FillFrame",
+          "lineNumber": 4614
+        },
+        {
+          "caller": "UG_FillFrame",
+          "callee": "((UG_RESULT(*)(UG_S16 x1, UG_S16 y1, UG_S16 x2, UG_S16 y2, UG_COLOR c))gui->driver[DRIVER_FILL_FRAME].driver)",
+          "lineNumber": 4637
+        },
+        {
+          "caller": "UG_FillFrame",
+          "callee": "pset",
+          "lineNumber": 4644
+        },
+        {
+          "caller": "UG_FillRoundFrame",
+          "callee": "UG_FillFrame",
+          "lineNumber": 4672
+        },
+        {
+          "caller": "UG_FillRoundFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4678
+        },
+        {
+          "caller": "UG_FillRoundFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4679
+        },
+        {
+          "caller": "UG_FillRoundFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4683
+        },
+        {
+          "caller": "UG_FillRoundFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4684
+        },
+        {
+          "caller": "UG_DrawMesh",
+          "callee": "pset",
+          "lineNumber": 4720
+        },
+        {
+          "caller": "UG_DrawFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4727
+        },
+        {
+          "caller": "UG_DrawFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4728
+        },
+        {
+          "caller": "UG_DrawFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4729
+        },
+        {
+          "caller": "UG_DrawFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4730
+        },
+        {
+          "caller": "UG_DrawRoundFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4752
+        },
+        {
+          "caller": "UG_DrawRoundFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4753
+        },
+        {
+          "caller": "UG_DrawRoundFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4754
+        },
+        {
+          "caller": "UG_DrawRoundFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4755
+        },
+        {
+          "caller": "UG_DrawRoundFrame",
+          "callee": "UG_DrawArc",
+          "lineNumber": 4756
+        },
+        {
+          "caller": "UG_DrawRoundFrame",
+          "callee": "UG_DrawArc",
+          "lineNumber": 4757
+        },
+        {
+          "caller": "UG_DrawRoundFrame",
+          "callee": "UG_DrawArc",
+          "lineNumber": 4758
+        },
+        {
+          "caller": "UG_DrawRoundFrame",
+          "callee": "UG_DrawArc",
+          "lineNumber": 4759
+        },
+        {
+          "caller": "UG_DrawPixel",
+          "callee": "pset",
+          "lineNumber": 4764
+        },
+        {
+          "caller": "UG_DrawCircle",
+          "callee": "pset",
+          "lineNumber": 4783
+        },
+        {
+          "caller": "UG_DrawCircle",
+          "callee": "pset",
+          "lineNumber": 4784
+        },
+        {
+          "caller": "UG_DrawCircle",
+          "callee": "pset",
+          "lineNumber": 4785
+        },
+        {
+          "caller": "UG_DrawCircle",
+          "callee": "pset",
+          "lineNumber": 4786
+        },
+        {
+          "caller": "UG_DrawCircle",
+          "callee": "pset",
+          "lineNumber": 4787
+        },
+        {
+          "caller": "UG_DrawCircle",
+          "callee": "pset",
+          "lineNumber": 4788
+        },
+        {
+          "caller": "UG_DrawCircle",
+          "callee": "pset",
+          "lineNumber": 4789
+        },
+        {
+          "caller": "UG_DrawCircle",
+          "callee": "pset",
+          "lineNumber": 4790
+        },
+        {
+          "caller": "UG_FillCircle",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4820
+        },
+        {
+          "caller": "UG_FillCircle",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4821
+        },
+        {
+          "caller": "UG_FillCircle",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4825
+        },
+        {
+          "caller": "UG_FillCircle",
+          "callee": "UG_DrawLine",
+          "lineNumber": 4826
+        },
+        {
+          "caller": "UG_FillCircle",
+          "callee": "UG_DrawCircle",
+          "lineNumber": 4839
+        },
+        {
+          "caller": "UG_DrawArc",
+          "callee": "pset",
+          "lineNumber": 4859
+        },
+        {
+          "caller": "UG_DrawArc",
+          "callee": "pset",
+          "lineNumber": 4860
+        },
+        {
+          "caller": "UG_DrawArc",
+          "callee": "pset",
+          "lineNumber": 4863
+        },
+        {
+          "caller": "UG_DrawArc",
+          "callee": "pset",
+          "lineNumber": 4864
+        },
+        {
+          "caller": "UG_DrawArc",
+          "callee": "pset",
+          "lineNumber": 4867
+        },
+        {
+          "caller": "UG_DrawArc",
+          "callee": "pset",
+          "lineNumber": 4868
+        },
+        {
+          "caller": "UG_DrawArc",
+          "callee": "pset",
+          "lineNumber": 4871
+        },
+        {
+          "caller": "UG_DrawArc",
+          "callee": "pset",
+          "lineNumber": 4872
+        },
+        {
+          "caller": "UG_DrawLine",
+          "callee": "((UG_RESULT(*)(UG_S16 x1, UG_S16 y1, UG_S16 x2, UG_S16 y2, UG_COLOR c))gui->driver[DRIVER_DRAW_LINE].driver)",
+          "lineNumber": 4893
+        },
+        {
+          "caller": "UG_DrawLine",
+          "callee": "pset",
+          "lineNumber": 4907
+        },
+        {
+          "caller": "UG_DrawLine",
+          "callee": "pset",
+          "lineNumber": 4920
+        },
+        {
+          "caller": "UG_DrawLine",
+          "callee": "pset",
+          "lineNumber": 4934
+        },
+        {
+          "caller": "UG_PutString",
+          "callee": "UG_PutChar",
+          "lineNumber": 4965
+        },
+        {
+          "caller": "UG_PutChar",
+          "callee": "_UG_PutChar",
+          "lineNumber": 4973
+        },
+        {
+          "caller": "UG_ConsolePutString",
+          "callee": "UG_FillFrame",
+          "lineNumber": 5003
+        },
+        {
+          "caller": "UG_ConsolePutString",
+          "callee": "UG_PutChar",
+          "lineNumber": 5006
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "void(*push_pixel)",
+          "lineNumber": 5262
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "void",
+          "lineNumber": 5262
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "((void*(*)(UG_S16, UG_S16, UG_S16, UG_S16))gui->driver[DRIVER_FILL_AREA].driver)",
+          "lineNumber": 5291
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "push_pixel",
+          "lineNumber": 5306
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "push_pixel",
+          "lineNumber": 5310
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "push_pixel",
+          "lineNumber": 5329
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "pset",
+          "lineNumber": 5352
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "pset",
+          "lineNumber": 5356
+        },
+        {
+          "caller": "_UG_PutChar",
+          "callee": "pset",
+          "lineNumber": 5378
+        },
+        {
+          "caller": "_UG_PutText",
+          "callee": "_UG_PutChar",
+          "lineNumber": 5456
+        },
+        {
+          "caller": "_UG_DeleteObject",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 5505
+        },
+        {
+          "caller": "_UG_UpdateObjects",
+          "callee": "update",
+          "lineNumber": 5614
+        },
+        {
+          "caller": "_UG_UpdateObjects",
+          "callee": "update",
+          "lineNumber": 5620
+        },
+        {
+          "caller": "_UG_HandleEvents",
+          "callee": "cb",
+          "lineNumber": 5655
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5666
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5667
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5668
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5669
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5671
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5672
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5673
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5674
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5676
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5677
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5678
+        },
+        {
+          "caller": "_UG_DrawObjectFrame",
+          "callee": "UG_DrawLine",
+          "lineNumber": 5679
+        },
+        {
+          "caller": "_UG_SendObjectPrerenderEvent",
+          "callee": "cb",
+          "lineNumber": 5692
+        },
+        {
+          "caller": "_UG_SendObjectPostrenderEvent",
+          "callee": "cb",
+          "lineNumber": 5706
+        },
+        {
+          "caller": "UG_Update",
+          "callee": "_UG_WindowDrawTitle",
+          "lineNumber": 5764
+        },
+        {
+          "caller": "UG_Update",
+          "callee": "_UG_WindowUpdate",
+          "lineNumber": 5781
+        },
+        {
+          "caller": "UG_Update",
+          "callee": "_UG_ProcessTouchData",
+          "lineNumber": 5787
+        },
+        {
+          "caller": "UG_Update",
+          "callee": "_UG_UpdateObjects",
+          "lineNumber": 5788
+        },
+        {
+          "caller": "UG_Update",
+          "callee": "_UG_HandleEvents",
+          "lineNumber": 5789
+        },
+        {
+          "caller": "UG_DrawBMP",
+          "callee": "UG_DrawPixel",
+          "lineNumber": 5840
+        },
+        {
+          "caller": "UG_WindowCreate",
+          "callee": "UG_GetXDim",
+          "lineNumber": 5885
+        },
+        {
+          "caller": "UG_WindowCreate",
+          "callee": "UG_GetYDim",
+          "lineNumber": 5886
+        },
+        {
+          "caller": "UG_WindowHide",
+          "callee": "_UG_WindowClear",
+          "lineNumber": 5951
+        },
+        {
+          "caller": "UG_WindowHide",
+          "callee": "_UG_WindowClear",
+          "lineNumber": 5964
+        },
+        {
+          "caller": "UG_WindowResize",
+          "callee": "UG_GetXDim",
+          "lineNumber": 5976
+        },
+        {
+          "caller": "UG_WindowResize",
+          "callee": "UG_GetYDim",
+          "lineNumber": 5977
+        },
+        {
+          "caller": "UG_WindowResize",
+          "callee": "UG_FillFrame",
+          "lineNumber": 5997
+        },
+        {
+          "caller": "UG_WindowResize",
+          "callee": "UG_FillFrame",
+          "lineNumber": 5999
+        },
+        {
+          "caller": "UG_WindowResize",
+          "callee": "UG_FillFrame",
+          "lineNumber": 6000
+        },
+        {
+          "caller": "UG_WindowResize",
+          "callee": "UG_FillFrame",
+          "lineNumber": 6002
+        },
+        {
+          "caller": "UG_WindowAlert",
+          "callee": "UG_WindowGetTitleTextColor",
+          "lineNumber": 6015
+        },
+        {
+          "caller": "UG_WindowAlert",
+          "callee": "UG_WindowSetTitleTextColor",
+          "lineNumber": 6016
+        },
+        {
+          "caller": "UG_WindowAlert",
+          "callee": "UG_WindowGetTitleColor",
+          "lineNumber": 6016
+        },
+        {
+          "caller": "UG_WindowAlert",
+          "callee": "UG_WindowSetTitleColor",
+          "lineNumber": 6017
+        },
+        {
+          "caller": "UG_WindowSetXStart",
+          "callee": "UG_WindowResize",
+          "lineNumber": 6164
+        },
+        {
+          "caller": "UG_WindowSetYStart",
+          "callee": "UG_WindowResize",
+          "lineNumber": 6175
+        },
+        {
+          "caller": "UG_WindowSetXEnd",
+          "callee": "UG_WindowResize",
+          "lineNumber": 6186
+        },
+        {
+          "caller": "UG_WindowSetYEnd",
+          "callee": "UG_WindowResize",
+          "lineNumber": 6197
+        },
+        {
+          "caller": "_UG_WindowDrawTitle",
+          "callee": "UG_FillFrame",
+          "lineNumber": 6516
+        },
+        {
+          "caller": "_UG_WindowDrawTitle",
+          "callee": "_UG_PutText",
+          "lineNumber": 6528
+        },
+        {
+          "caller": "_UG_WindowDrawTitle",
+          "callee": "UG_DrawLine",
+          "lineNumber": 6531
+        },
+        {
+          "caller": "_UG_WindowUpdate",
+          "callee": "_UG_DrawObjectFrame",
+          "lineNumber": 6555
+        },
+        {
+          "caller": "_UG_WindowUpdate",
+          "callee": "_UG_WindowDrawTitle",
+          "lineNumber": 6564
+        },
+        {
+          "caller": "_UG_WindowUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 6573
+        },
+        {
+          "caller": "_UG_WindowUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 6585
+        },
+        {
+          "caller": "_UG_WindowClear",
+          "callee": "UG_FillFrame",
+          "lineNumber": 6596
+        },
+        {
+          "caller": "UG_ButtonCreate",
+          "callee": "_UG_GetFreeObject",
+          "lineNumber": 6620
+        },
+        {
+          "caller": "UG_ButtonDelete",
+          "callee": "_UG_DeleteObject",
+          "lineNumber": 6660
+        },
+        {
+          "caller": "UG_ButtonShow",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6667
+        },
+        {
+          "caller": "UG_ButtonHide",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6681
+        },
+        {
+          "caller": "UG_ButtonSetForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6700
+        },
+        {
+          "caller": "UG_ButtonSetBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6715
+        },
+        {
+          "caller": "UG_ButtonSetAlternateForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6730
+        },
+        {
+          "caller": "UG_ButtonSetAlternateBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6745
+        },
+        {
+          "caller": "UG_ButtonSetText",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6760
+        },
+        {
+          "caller": "UG_ButtonSetFont",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6775
+        },
+        {
+          "caller": "UG_ButtonSetStyle",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6790
+        },
+        {
+          "caller": "UG_ButtonSetHSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6838
+        },
+        {
+          "caller": "UG_ButtonSetVSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6853
+        },
+        {
+          "caller": "UG_ButtonSetAlignment",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6868
+        },
+        {
+          "caller": "UG_ButtonGetForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6884
+        },
+        {
+          "caller": "UG_ButtonGetBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6899
+        },
+        {
+          "caller": "UG_ButtonGetAlternateForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6914
+        },
+        {
+          "caller": "UG_ButtonGetAlternateBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6929
+        },
+        {
+          "caller": "UG_ButtonGetStyle",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6974
+        },
+        {
+          "caller": "UG_ButtonGetHSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 6989
+        },
+        {
+          "caller": "UG_ButtonGetVSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7004
+        },
+        {
+          "caller": "UG_ButtonGetAlignment",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7019
+        },
+        {
+          "caller": "_UG_ButtonUpdate",
+          "callee": "UG_WindowGetArea",
+          "lineNumber": 7077
+        },
+        {
+          "caller": "_UG_ButtonUpdate",
+          "callee": "_UG_SendObjectPrerenderEvent",
+          "lineNumber": 7085
+        },
+        {
+          "caller": "_UG_ButtonUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 7111
+        },
+        {
+          "caller": "_UG_ButtonUpdate",
+          "callee": "_UG_PutText",
+          "lineNumber": 7123
+        },
+        {
+          "caller": "_UG_ButtonUpdate",
+          "callee": "_UG_SendObjectPostrenderEvent",
+          "lineNumber": 7126
+        },
+        {
+          "caller": "_UG_ButtonUpdate",
+          "callee": "_UG_DrawObjectFrame",
+          "lineNumber": 7134
+        },
+        {
+          "caller": "_UG_ButtonUpdate",
+          "callee": "UG_DrawFrame",
+          "lineNumber": 7138
+        },
+        {
+          "caller": "_UG_ButtonUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 7145
+        },
+        {
+          "caller": "UG_CheckboxCreate",
+          "callee": "_UG_GetFreeObject",
+          "lineNumber": 7158
+        },
+        {
+          "caller": "UG_CheckboxDelete",
+          "callee": "_UG_DeleteObject",
+          "lineNumber": 7199
+        },
+        {
+          "caller": "UG_CheckboxShow",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7206
+        },
+        {
+          "caller": "UG_CheckboxHide",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7220
+        },
+        {
+          "caller": "UG_CheckboxSetCheched",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7239
+        },
+        {
+          "caller": "UG_CheckboxSetForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7255
+        },
+        {
+          "caller": "UG_CheckboxSetBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7270
+        },
+        {
+          "caller": "UG_CheckboxSetAlternateForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7285
+        },
+        {
+          "caller": "UG_CheckboxSetAlternateBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7300
+        },
+        {
+          "caller": "UG_CheckboxSetText",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7315
+        },
+        {
+          "caller": "UG_CheckboxSetFont",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7330
+        },
+        {
+          "caller": "UG_CheckboxSetStyle",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7345
+        },
+        {
+          "caller": "UG_CheckboxSetHSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7393
+        },
+        {
+          "caller": "UG_CheckboxSetVSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7408
+        },
+        {
+          "caller": "UG_CheckboxSetAlignment",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7423
+        },
+        {
+          "caller": "UG_CheckboxGetChecked",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7439
+        },
+        {
+          "caller": "UG_CheckboxGetForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7454
+        },
+        {
+          "caller": "UG_CheckboxGetBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7469
+        },
+        {
+          "caller": "UG_CheckboxGetAlternateForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7484
+        },
+        {
+          "caller": "UG_CheckboxGetAlternateBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7499
+        },
+        {
+          "caller": "UG_CheckboxGetStyle",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7544
+        },
+        {
+          "caller": "UG_CheckboxGetHSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7559
+        },
+        {
+          "caller": "UG_CheckboxGetVSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7574
+        },
+        {
+          "caller": "UG_CheckboxGetAlignment",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7589
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_WindowGetArea",
+          "lineNumber": 7645
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "_UG_SendObjectPrerenderEvent",
+          "lineNumber": 7663
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 7685
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "_UG_PutText",
+          "lineNumber": 7701
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "_UG_SendObjectPostrenderEvent",
+          "lineNumber": 7704
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7711
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7712
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7713
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7715
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7716
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7717
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7721
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7722
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7723
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7725
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7726
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawLine",
+          "lineNumber": 7727
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "_UG_DrawObjectFrame",
+          "lineNumber": 7734
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_DrawFrame",
+          "lineNumber": 7738
+        },
+        {
+          "caller": "_UG_CheckboxUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 7745
+        },
+        {
+          "caller": "UG_TextboxCreate",
+          "callee": "_UG_GetFreeObject",
+          "lineNumber": 7759
+        },
+        {
+          "caller": "UG_TextboxDelete",
+          "callee": "_UG_DeleteObject",
+          "lineNumber": 7798
+        },
+        {
+          "caller": "UG_TextboxShow",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7805
+        },
+        {
+          "caller": "UG_TextboxHide",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7818
+        },
+        {
+          "caller": "UG_TextboxSetForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7832
+        },
+        {
+          "caller": "UG_TextboxSetBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7847
+        },
+        {
+          "caller": "UG_TextboxSetText",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7862
+        },
+        {
+          "caller": "UG_TextboxSetFont",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7877
+        },
+        {
+          "caller": "UG_TextboxSetHSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7892
+        },
+        {
+          "caller": "UG_TextboxSetVSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7907
+        },
+        {
+          "caller": "UG_TextboxSetAlignment",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7922
+        },
+        {
+          "caller": "UG_TextboxGetForeColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7938
+        },
+        {
+          "caller": "UG_TextboxGetBackColor",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7953
+        },
+        {
+          "caller": "UG_TextboxGetHSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 7998
+        },
+        {
+          "caller": "UG_TextboxGetVSpace",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 8013
+        },
+        {
+          "caller": "UG_TextboxGetAlignment",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 8028
+        },
+        {
+          "caller": "_UG_TextboxUpdate",
+          "callee": "UG_WindowGetArea",
+          "lineNumber": 8062
+        },
+        {
+          "caller": "_UG_TextboxUpdate",
+          "callee": "_UG_SendObjectPrerenderEvent",
+          "lineNumber": 8070
+        },
+        {
+          "caller": "_UG_TextboxUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 8076
+        },
+        {
+          "caller": "_UG_TextboxUpdate",
+          "callee": "_UG_PutText",
+          "lineNumber": 8088
+        },
+        {
+          "caller": "_UG_TextboxUpdate",
+          "callee": "_UG_SendObjectPostrenderEvent",
+          "lineNumber": 8091
+        },
+        {
+          "caller": "_UG_TextboxUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 8097
+        },
+        {
+          "caller": "UG_ImageCreate",
+          "callee": "_UG_GetFreeObject",
+          "lineNumber": 8110
+        },
+        {
+          "caller": "UG_ImageDelete",
+          "callee": "_UG_DeleteObject",
+          "lineNumber": 8142
+        },
+        {
+          "caller": "UG_ImageShow",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 8149
+        },
+        {
+          "caller": "UG_ImageHide",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 8162
+        },
+        {
+          "caller": "UG_ImageSetBMP",
+          "callee": "_UG_SearchObject",
+          "lineNumber": 8176
+        },
+        {
+          "caller": "_UG_ImageUpdate",
+          "callee": "UG_WindowGetArea",
+          "lineNumber": 8211
+        },
+        {
+          "caller": "_UG_ImageUpdate",
+          "callee": "UG_DrawBMP",
+          "lineNumber": 8223
+        },
+        {
+          "caller": "_UG_ImageUpdate",
+          "callee": "UG_FillFrame",
+          "lineNumber": 8231
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 157,
+        "functionCount": 157,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/ugui/ugui.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 1052,
+      "nonEmptyLines": 990,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/ugui/uguicpp.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 80,
+      "nonEmptyLines": 64,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/bcm_host/bcm_host.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 180,
+      "nonEmptyLines": 152,
+      "functions": [
+        {
+          "name": "graphics_get_display_size",
+          "startLine": 49,
+          "endLine": 80,
+          "params": [
+            "display_number",
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "host_app_message_handler",
+          "startLine": 82,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "vc_host_get_vchi_state",
+          "startLine": 87,
+          "endLine": 91,
+          "params": [
+            "initialise_instance",
+            "connection"
+          ]
+        },
+        {
+          "name": "bcm_host_init",
+          "startLine": 93,
+          "endLine": 133,
+          "params": []
+        },
+        {
+          "name": "bcm_host_deinit",
+          "startLine": 135,
+          "endLine": 137,
+          "params": []
+        },
+        {
+          "name": "wfc_stream_await_buffer",
+          "startLine": 140,
+          "endLine": 143,
+          "params": [
+            "stream"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "graphics_get_display_size",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "host_app_message_handler",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "vc_host_get_vchi_state",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "bcm_host_init",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "bcm_host_deinit",
+          "line": 135,
+          "isDefault": false
+        },
+        {
+          "name": "wfc_stream_await_buffer",
+          "line": 140,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "graphics_get_display_size",
+          "callee": "vc_dispmanx_display_open",
+          "lineNumber": 58
+        },
+        {
+          "caller": "graphics_get_display_size",
+          "callee": "vc_dispmanx_display_get_info",
+          "lineNumber": 61
+        },
+        {
+          "caller": "graphics_get_display_size",
+          "callee": "vc_dispmanx_display_close",
+          "lineNumber": 75
+        },
+        {
+          "caller": "host_app_message_handler",
+          "callee": "printk",
+          "lineNumber": 84
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vcos_init",
+          "lineNumber": 103
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vchiq_initialise",
+          "lineNumber": 105
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "printk",
+          "lineNumber": 107
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "halt",
+          "lineNumber": 108
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vcos_log",
+          "lineNumber": 111
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vchi_initialise",
+          "lineNumber": 112
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vcos_assert",
+          "lineNumber": 113
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vchi_create_connection",
+          "lineNumber": 116
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "single_get_func_table",
+          "lineNumber": 116
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vchi_mphi_message_driver_func_table",
+          "lineNumber": 117
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vcos_log",
+          "lineNumber": 119
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vchi_connect",
+          "lineNumber": 120
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vc_vchi_gencmd_init",
+          "lineNumber": 122
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vc_vchi_dispmanx_init",
+          "lineNumber": 123
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vc_gencmd",
+          "lineNumber": 130
+        },
+        {
+          "caller": "bcm_host_init",
+          "callee": "vcos_assert",
+          "lineNumber": 131
+        },
+        {
+          "caller": "wfc_stream_await_buffer",
+          "callee": "vcos_assert",
+          "lineNumber": 142
+        },
+        {
+          "caller": "get_dt_ranges",
+          "callee": "fopen",
+          "lineNumber": 150
+        },
+        {
+          "caller": "get_dt_ranges",
+          "callee": "fseek",
+          "lineNumber": 154
+        },
+        {
+          "caller": "get_dt_ranges",
+          "callee": "fread",
+          "lineNumber": 155
+        },
+        {
+          "caller": "get_dt_ranges",
+          "callee": "fclose",
+          "lineNumber": 157
+        },
+        {
+          "caller": "bcm_host_get_peripheral_address",
+          "callee": "get_dt_ranges",
+          "lineNumber": 164
+        },
+        {
+          "caller": "bcm_host_get_peripheral_size",
+          "callee": "get_dt_ranges",
+          "lineNumber": 170
+        },
+        {
+          "caller": "bcm_host_get_sdram_address",
+          "callee": "get_dt_ranges",
+          "lineNumber": 176
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/bcm_host/bcm_host.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 52,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/bcm_host/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 20,
+      "nonEmptyLines": 14,
+      "steps": [
+        {
+          "name": "libbcm_host.a",
+          "startLine": 9,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_cache.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 71,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_check_types.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 75,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_cr.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 140,
+      "nonEmptyLines": 100,
+      "functions": [
+        {
+          "name": "callback_destroy_context",
+          "startLine": 28,
+          "endLine": 43,
+          "params": [
+            "map",
+            "key",
+            "value",
+            "data"
+          ]
+        },
+        {
+          "name": "callback_destroy_surface",
+          "startLine": 76,
+          "endLine": 89,
+          "params": [
+            "map",
+            "key",
+            "value",
+            "data"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "callback_destroy_context",
+          "callee": "UNUSED",
+          "lineNumber": 32
+        },
+        {
+          "caller": "callback_destroy_context",
+          "callee": "UNUSED",
+          "lineNumber": 33
+        },
+        {
+          "caller": "callback_destroy_context",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 34
+        },
+        {
+          "caller": "callback_destroy_context",
+          "callee": "vcos_assert",
+          "lineNumber": 36
+        },
+        {
+          "caller": "callback_destroy_context",
+          "callee": "vcos_assert",
+          "lineNumber": 37
+        },
+        {
+          "caller": "callback_destroy_context",
+          "callee": "vcos_assert",
+          "lineNumber": 39
+        },
+        {
+          "caller": "callback_destroy_context",
+          "callee": "egl_context_maybe_free",
+          "lineNumber": 42
+        },
+        {
+          "caller": "callback_destroy_surface",
+          "callee": "UNUSED",
+          "lineNumber": 80
+        },
+        {
+          "caller": "callback_destroy_surface",
+          "callee": "UNUSED",
+          "lineNumber": 81
+        },
+        {
+          "caller": "callback_destroy_surface",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 82
+        },
+        {
+          "caller": "callback_destroy_surface",
+          "callee": "vcos_assert",
+          "lineNumber": 84
+        },
+        {
+          "caller": "callback_destroy_surface",
+          "callee": "vcos_assert",
+          "lineNumber": 85
+        },
+        {
+          "caller": "callback_destroy_surface",
+          "callee": "egl_surface_maybe_free",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_global_image_map.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 46,
+      "callGraph": [
+        {
+          "caller": "acquire_value",
+          "callee": "platform_acquire_global_image",
+          "lineNumber": 37
+        },
+        {
+          "caller": "release_value",
+          "callee": "platform_release_global_image",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_global_image_map.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_mangle.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 467,
+      "nonEmptyLines": 448,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_platform_filler_vcos.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 122,
+      "nonEmptyLines": 94,
+      "callGraph": [
+        {
+          "caller": "platform_mutex_create",
+          "callee": "vcos_reentrant_mutex_create",
+          "lineNumber": 47
+        },
+        {
+          "caller": "platform_mutex_destroy",
+          "callee": "vcos_reentrant_mutex_delete",
+          "lineNumber": 52
+        },
+        {
+          "caller": "platform_mutex_acquire",
+          "callee": "vcos_reentrant_mutex_lock",
+          "lineNumber": 57
+        },
+        {
+          "caller": "platform_mutex_release",
+          "callee": "vcos_reentrant_mutex_unlock",
+          "lineNumber": 62
+        },
+        {
+          "caller": "khronos_platform_semaphore_destroy",
+          "callee": "vcos_named_semaphore_delete",
+          "lineNumber": 78
+        },
+        {
+          "caller": "khronos_platform_semaphore_acquire",
+          "callee": "vcos_named_semaphore_wait",
+          "lineNumber": 83
+        },
+        {
+          "caller": "khronos_platform_semaphore_try_acquire",
+          "callee": "vcos_named_semaphore_trywait",
+          "lineNumber": 88
+        },
+        {
+          "caller": "khronos_platform_semaphore_release",
+          "callee": "vcos_named_semaphore_post",
+          "lineNumber": 93
+        },
+        {
+          "caller": "platform_tls_create",
+          "callee": "vcos_tls_create",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_platform.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 338,
+      "nonEmptyLines": 258,
+      "callGraph": [
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 143
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 144
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 145
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 146
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 147
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 148
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 149
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 150
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 151
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 152
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 153
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 154
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 155
+        },
+        {
+          "caller": "platform_canonical_win",
+          "callee": "PACK_NATIVE_WINDOW",
+          "lineNumber": 156
+        },
+        {
+          "caller": "platform_get_handle",
+          "callee": "platform_canonical_win",
+          "lineNumber": 166
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "platform_canonical_win",
+          "lineNumber": 174
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "UNPACK_NATIVE_WINDOW_W",
+          "lineNumber": 175
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "UNPACK_NATIVE_WINDOW_H",
+          "lineNumber": 176
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_pointermap.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 32,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_pointermap.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_rpc_linux.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 537,
+      "nonEmptyLines": 447,
+      "functions": [
+        {
+          "name": "khrn_callback",
+          "startLine": 69,
+          "endLine": 88,
+          "params": [
+            "reason",
+            "header",
+            "handle",
+            "bulk_userdata"
+          ]
+        },
+        {
+          "name": "khhn_callback",
+          "startLine": 90,
+          "endLine": 109,
+          "params": [
+            "reason",
+            "header",
+            "handle",
+            "bulk_userdata"
+          ]
+        },
+        {
+          "name": "khan_callback",
+          "startLine": 111,
+          "endLine": 176,
+          "params": [
+            "reason",
+            "header",
+            "handle",
+            "bulk_userdata"
+          ]
+        },
+        {
+          "name": "vc_vchi_khronos_init",
+          "startLine": 178,
+          "endLine": 238,
+          "params": []
+        },
+        {
+          "name": "khclient_rpc_init",
+          "startLine": 240,
+          "endLine": 244,
+          "params": []
+        },
+        {
+          "name": "rpc_term",
+          "startLine": 246,
+          "endLine": 250,
+          "params": []
+        },
+        {
+          "name": "get_handle",
+          "startLine": 252,
+          "endLine": 256,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "check_workspace",
+          "startLine": 263,
+          "endLine": 271,
+          "params": [
+            "size"
+          ]
+        },
+        {
+          "name": "merge_flush",
+          "startLine": 273,
+          "endLine": 307,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "rpc_flush",
+          "startLine": 309,
+          "endLine": 312,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "rpc_high_priority_begin",
+          "startLine": 314,
+          "endLine": 319,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "rpc_high_priority_end",
+          "startLine": 321,
+          "endLine": 326,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "rpc_send_ctrl_longest",
+          "startLine": 328,
+          "endLine": 335,
+          "params": [
+            "thread",
+            "len_min"
+          ]
+        },
+        {
+          "name": "rpc_send_ctrl_begin",
+          "startLine": 337,
+          "endLine": 347,
+          "params": [
+            "thread",
+            "len"
+          ]
+        },
+        {
+          "name": "rpc_send_ctrl_write",
+          "startLine": 349,
+          "endLine": 356,
+          "params": [
+            "thread",
+            "in",
+            "len"
+          ]
+        },
+        {
+          "name": "rpc_send_ctrl_end",
+          "startLine": 358,
+          "endLine": 363,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "send_bulk",
+          "startLine": 365,
+          "endLine": 384,
+          "params": [
+            "thread",
+            "in",
+            "len"
+          ]
+        },
+        {
+          "name": "recv_bulk",
+          "startLine": 386,
+          "endLine": 401,
+          "params": [
+            "thread",
+            "out",
+            "len"
+          ]
+        },
+        {
+          "name": "rpc_send_bulk",
+          "startLine": 403,
+          "endLine": 412,
+          "params": [
+            "thread",
+            "in",
+            "len"
+          ]
+        },
+        {
+          "name": "rpc_send_bulk_gather",
+          "startLine": 414,
+          "endLine": 434,
+          "params": [
+            "thread",
+            "in",
+            "len",
+            "stride",
+            "n"
+          ]
+        },
+        {
+          "name": "rpc_recv",
+          "startLine": 436,
+          "endLine": 488,
+          "params": [
+            "thread",
+            "out",
+            "len_io",
+            "flags"
+          ]
+        },
+        {
+          "name": "rpc_begin",
+          "startLine": 490,
+          "endLine": 494,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "rpc_end",
+          "startLine": 496,
+          "endLine": 500,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "rpc_use",
+          "startLine": 502,
+          "endLine": 505,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "rpc_release",
+          "startLine": 507,
+          "endLine": 510,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "rpc_call8_makecurrent",
+          "startLine": 512,
+          "endLine": 532,
+          "params": [
+            "thread",
+            "id",
+            "p0",
+            "p1",
+            "p2",
+            "p3",
+            "p4",
+            "p5",
+            "p6",
+            "p7"
+          ]
+        },
+        {
+          "name": "rpc_get_client_id",
+          "startLine": 534,
+          "endLine": 537,
+          "params": [
+            "thread"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "khrn_callback",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "khhn_callback",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "khan_callback",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "vc_vchi_khronos_init",
+          "line": 178,
+          "isDefault": false
+        },
+        {
+          "name": "khclient_rpc_init",
+          "line": 240,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_term",
+          "line": 246,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_flush",
+          "line": 309,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_high_priority_begin",
+          "line": 314,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_high_priority_end",
+          "line": 321,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_send_ctrl_longest",
+          "line": 328,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_send_ctrl_begin",
+          "line": 337,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_send_ctrl_write",
+          "line": 349,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_send_ctrl_end",
+          "line": 358,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_send_bulk",
+          "line": 403,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_send_bulk_gather",
+          "line": 414,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_recv",
+          "line": 436,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_begin",
+          "line": 490,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_end",
+          "line": 496,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_use",
+          "line": 502,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_release",
+          "line": 507,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_call8_makecurrent",
+          "line": 512,
+          "isDefault": false
+        },
+        {
+          "name": "rpc_get_client_id",
+          "line": 534,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "khrn_callback",
+          "callee": "vchiu_queue_push",
+          "lineNumber": 74
+        },
+        {
+          "caller": "khrn_callback",
+          "callee": "vcos_event_signal",
+          "lineNumber": 78
+        },
+        {
+          "caller": "khrn_callback",
+          "callee": "UNREACHABLE",
+          "lineNumber": 84
+        },
+        {
+          "caller": "khhn_callback",
+          "callee": "vchiu_queue_push",
+          "lineNumber": 95
+        },
+        {
+          "caller": "khhn_callback",
+          "callee": "vcos_event_signal",
+          "lineNumber": 99
+        },
+        {
+          "caller": "khhn_callback",
+          "callee": "UNREACHABLE",
+          "lineNumber": 105
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "vcos_assert",
+          "lineNumber": 120
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "vchiq_get_client_id",
+          "lineNumber": 125
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "printk",
+          "lineNumber": 128
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "khronos_platform_semaphore_create",
+          "lineNumber": 140
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "khronos_platform_semaphore_acquire",
+          "lineNumber": 144
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "khronos_platform_semaphore_release",
+          "lineNumber": 147
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "vcos_assert_msg",
+          "lineNumber": 150
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "khronos_platform_semaphore_destroy",
+          "lineNumber": 153
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "vchiq_release_message",
+          "lineNumber": 156
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "UNREACHABLE",
+          "lineNumber": 161
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "vcos_assert_msg",
+          "lineNumber": 164
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "vcos_assert_msg",
+          "lineNumber": 167
+        },
+        {
+          "caller": "khan_callback",
+          "callee": "UNREACHABLE",
+          "lineNumber": 172
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vcos_event_create",
+          "lineNumber": 180
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 181
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vcos_assert",
+          "lineNumber": 182
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vchiq_initialise",
+          "lineNumber": 184
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vcos_log_error",
+          "lineNumber": 186
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "exit",
+          "lineNumber": 188
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vcos_log_trace",
+          "lineNumber": 191
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vchiq_connect",
+          "lineNumber": 193
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vcos_log_error",
+          "lineNumber": 195
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "exit",
+          "lineNumber": 197
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vchiq_open_service",
+          "lineNumber": 209
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vchiq_open_service",
+          "lineNumber": 213
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vchiq_open_service",
+          "lineNumber": 217
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vcos_log_error",
+          "lineNumber": 223
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "exit",
+          "lineNumber": 225
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vchiu_queue_init",
+          "lineNumber": 227
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vchiu_queue_init",
+          "lineNumber": 228
+        },
+        {
+          "caller": "vc_vchi_khronos_init",
+          "callee": "vcos_log_trace",
+          "lineNumber": 230
+        },
+        {
+          "caller": "khclient_rpc_init",
+          "callee": "platform_mutex_create",
+          "lineNumber": 243
+        },
+        {
+          "caller": "rpc_term",
+          "callee": "khrn_platform_free",
+          "lineNumber": 248
+        },
+        {
+          "caller": "rpc_term",
+          "callee": "platform_mutex_destroy",
+          "lineNumber": 249
+        },
+        {
+          "caller": "check_workspace",
+          "callee": "vcos_assert",
+          "lineNumber": 266
+        },
+        {
+          "caller": "check_workspace",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 268
+        },
+        {
+          "caller": "check_workspace",
+          "callee": "vcos_assert",
+          "lineNumber": 269
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "vcos_log_trace",
+          "lineNumber": 275
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "vcos_assert",
+          "lineNumber": 277
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "rpc_begin",
+          "lineNumber": 288
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "vchiq_queue_message",
+          "lineNumber": 293
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "get_handle",
+          "lineNumber": 293
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 294
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "vcos_assert",
+          "lineNumber": 295
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "client_send_make_current",
+          "lineNumber": 299
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "vcos_assert",
+          "lineNumber": 301
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "rpc_end",
+          "lineNumber": 303
+        },
+        {
+          "caller": "merge_flush",
+          "callee": "vcos_log_trace",
+          "lineNumber": 305
+        },
+        {
+          "caller": "rpc_flush",
+          "callee": "merge_flush",
+          "lineNumber": 311
+        },
+        {
+          "caller": "rpc_high_priority_begin",
+          "callee": "vcos_assert",
+          "lineNumber": 316
+        },
+        {
+          "caller": "rpc_high_priority_begin",
+          "callee": "merge_flush",
+          "lineNumber": 317
+        },
+        {
+          "caller": "rpc_high_priority_end",
+          "callee": "vcos_assert",
+          "lineNumber": 323
+        },
+        {
+          "caller": "rpc_high_priority_end",
+          "callee": "merge_flush",
+          "lineNumber": 324
+        },
+        {
+          "caller": "rpc_send_ctrl_begin",
+          "callee": "vcos_assert",
+          "lineNumber": 341
+        },
+        {
+          "caller": "rpc_send_ctrl_begin",
+          "callee": "rpc_pad_ctrl",
+          "lineNumber": 341
+        },
+        {
+          "caller": "rpc_send_ctrl_begin",
+          "callee": "merge_flush",
+          "lineNumber": 343
+        },
+        {
+          "caller": "rpc_send_ctrl_write",
+          "callee": "memcpy",
+          "lineNumber": 353
+        },
+        {
+          "caller": "rpc_send_ctrl_write",
+          "callee": "rpc_pad_ctrl",
+          "lineNumber": 354
+        },
+        {
+          "caller": "rpc_send_ctrl_write",
+          "callee": "vcos_assert",
+          "lineNumber": 355
+        },
+        {
+          "caller": "rpc_send_ctrl_end",
+          "callee": "vcos_assert",
+          "lineNumber": 362
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "vchiq_queue_message",
+          "lineNumber": 373
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "get_handle",
+          "lineNumber": 373
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 374
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "vcos_assert",
+          "lineNumber": 375
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "vchiq_queue_bulk_transmit",
+          "lineNumber": 377
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "get_handle",
+          "lineNumber": 377
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "rpc_pad_bulk",
+          "lineNumber": 377
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 378
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "vcos_assert",
+          "lineNumber": 379
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "vcos_event_wait",
+          "lineNumber": 380
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 381
+        },
+        {
+          "caller": "send_bulk",
+          "callee": "vcos_assert",
+          "lineNumber": 382
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "vchiu_queue_pop",
+          "lineNumber": 389
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "get_queue",
+          "lineNumber": 389
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "vcos_assert",
+          "lineNumber": 390
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "memcpy",
+          "lineNumber": 391
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "vchiq_release_message",
+          "lineNumber": 392
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "get_handle",
+          "lineNumber": 392
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "vchiq_queue_bulk_receive",
+          "lineNumber": 394
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "get_handle",
+          "lineNumber": 394
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "rpc_pad_bulk",
+          "lineNumber": 394
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 395
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "vcos_assert",
+          "lineNumber": 396
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "vcos_event_wait",
+          "lineNumber": 397
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 398
+        },
+        {
+          "caller": "recv_bulk",
+          "callee": "vcos_assert",
+          "lineNumber": 399
+        },
+        {
+          "caller": "rpc_send_bulk",
+          "callee": "merge_flush",
+          "lineNumber": 408
+        },
+        {
+          "caller": "rpc_send_bulk",
+          "callee": "send_bulk",
+          "lineNumber": 410
+        },
+        {
+          "caller": "rpc_send_bulk_gather",
+          "callee": "merge_flush",
+          "lineNumber": 420
+        },
+        {
+          "caller": "rpc_send_bulk_gather",
+          "callee": "send_bulk",
+          "lineNumber": 424
+        },
+        {
+          "caller": "rpc_send_bulk_gather",
+          "callee": "check_workspace",
+          "lineNumber": 426
+        },
+        {
+          "caller": "rpc_send_bulk_gather",
+          "callee": "rpc_gather",
+          "lineNumber": 427
+        },
+        {
+          "caller": "rpc_send_bulk_gather",
+          "callee": "send_bulk",
+          "lineNumber": 428
+        },
+        {
+          "caller": "rpc_send_bulk_gather",
+          "callee": "UNREACHABLE",
+          "lineNumber": 432
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "vcos_assert",
+          "lineNumber": 445
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "vcos_assert",
+          "lineNumber": 446
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "merge_flush",
+          "lineNumber": 449
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "vchiu_queue_pop",
+          "lineNumber": 452
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "get_queue",
+          "lineNumber": 452
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "vcos_assert",
+          "lineNumber": 454
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "memcpy",
+          "lineNumber": 464
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "vcos_assert",
+          "lineNumber": 467
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "vchiq_release_message",
+          "lineNumber": 468
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "get_handle",
+          "lineNumber": 468
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "recv_bulk",
+          "lineNumber": 475
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "check_workspace",
+          "lineNumber": 477
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "recv_bulk",
+          "lineNumber": 478
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "rpc_scatter",
+          "lineNumber": 479
+        },
+        {
+          "caller": "rpc_recv",
+          "callee": "recv_bulk",
+          "lineNumber": 482
+        },
+        {
+          "caller": "rpc_begin",
+          "callee": "UNUSED",
+          "lineNumber": 492
+        },
+        {
+          "caller": "rpc_begin",
+          "callee": "platform_mutex_acquire",
+          "lineNumber": 493
+        },
+        {
+          "caller": "rpc_end",
+          "callee": "UNUSED",
+          "lineNumber": 498
+        },
+        {
+          "caller": "rpc_end",
+          "callee": "platform_mutex_release",
+          "lineNumber": 499
+        },
+        {
+          "caller": "rpc_use",
+          "callee": "UNUSED",
+          "lineNumber": 504
+        },
+        {
+          "caller": "rpc_release",
+          "callee": "UNUSED",
+          "lineNumber": 509
+        },
+        {
+          "caller": "rpc_call8_makecurrent",
+          "callee": "memcpy",
+          "lineNumber": 516
+        },
+        {
+          "caller": "rpc_call8_makecurrent",
+          "callee": "rpc_begin",
+          "lineNumber": 518
+        },
+        {
+          "caller": "rpc_call8_makecurrent",
+          "callee": "vcos_log_trace",
+          "lineNumber": 519
+        },
+        {
+          "caller": "rpc_call8_makecurrent",
+          "callee": "RPC_CALL8",
+          "lineNumber": 523
+        },
+        {
+          "caller": "rpc_call8_makecurrent",
+          "callee": "vcos_assert",
+          "lineNumber": 524
+        },
+        {
+          "caller": "rpc_call8_makecurrent",
+          "callee": "rpc_end",
+          "lineNumber": 526
+        },
+        {
+          "caller": "rpc_call8_makecurrent",
+          "callee": "RPC_CALL8",
+          "lineNumber": 530
+        },
+        {
+          "caller": "rpc_get_client_id",
+          "callee": "vchiq_get_client_id",
+          "lineNumber": 536
+        },
+        {
+          "caller": "rpc_get_client_id",
+          "callee": "get_handle",
+          "lineNumber": 536
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 22,
+        "functionCount": 27,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_rpc.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 838,
+      "nonEmptyLines": 699,
+      "callGraph": [
+        {
+          "caller": "RPC_FLOAT_RES",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 85
+        },
+        {
+          "caller": "RPC_ENUM_RES",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 86
+        },
+        {
+          "caller": "RPC_INT_RES",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 87
+        },
+        {
+          "caller": "RPC_UINT_RES",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 88
+        },
+        {
+          "caller": "RPC_BOOLEAN_RES",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 89
+        },
+        {
+          "caller": "RPC_HANDLE_RES",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 91
+        },
+        {
+          "caller": "rpc_gather",
+          "callee": "memcpy",
+          "lineNumber": 403
+        },
+        {
+          "caller": "rpc_scatter",
+          "callee": "memcpy",
+          "lineNumber": 415
+        },
+        {
+          "caller": "rpc_call0",
+          "callee": "RPC_CALL",
+          "lineNumber": 549
+        },
+        {
+          "caller": "rpc_call1",
+          "callee": "RPC_CALL",
+          "lineNumber": 550
+        },
+        {
+          "caller": "rpc_call2",
+          "callee": "RPC_CALL",
+          "lineNumber": 551
+        },
+        {
+          "caller": "rpc_call3",
+          "callee": "RPC_CALL",
+          "lineNumber": 552
+        },
+        {
+          "caller": "rpc_call4",
+          "callee": "RPC_CALL",
+          "lineNumber": 553
+        },
+        {
+          "caller": "rpc_call5",
+          "callee": "RPC_CALL",
+          "lineNumber": 554
+        },
+        {
+          "caller": "rpc_call6",
+          "callee": "RPC_CALL",
+          "lineNumber": 555
+        },
+        {
+          "caller": "rpc_call7",
+          "callee": "RPC_CALL",
+          "lineNumber": 556
+        },
+        {
+          "caller": "rpc_call8",
+          "callee": "RPC_CALL",
+          "lineNumber": 557
+        },
+        {
+          "caller": "rpc_call9",
+          "callee": "RPC_CALL",
+          "lineNumber": 558
+        },
+        {
+          "caller": "rpc_call10",
+          "callee": "RPC_CALL",
+          "lineNumber": 559
+        },
+        {
+          "caller": "rpc_call16",
+          "callee": "RPC_CALL",
+          "lineNumber": 562
+        },
+        {
+          "caller": "rpc_call18",
+          "callee": "RPC_CALL",
+          "lineNumber": 565
+        },
+        {
+          "caller": "rpc_call0_res",
+          "callee": "rpc_begin",
+          "lineNumber": 614
+        },
+        {
+          "caller": "rpc_call0_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 614
+        },
+        {
+          "caller": "rpc_call0_res",
+          "callee": "rpc_recv",
+          "lineNumber": 614
+        },
+        {
+          "caller": "rpc_call0_res",
+          "callee": "rpc_end",
+          "lineNumber": 614
+        },
+        {
+          "caller": "rpc_call1_res",
+          "callee": "rpc_begin",
+          "lineNumber": 615
+        },
+        {
+          "caller": "rpc_call1_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 615
+        },
+        {
+          "caller": "rpc_call1_res",
+          "callee": "rpc_recv",
+          "lineNumber": 615
+        },
+        {
+          "caller": "rpc_call1_res",
+          "callee": "rpc_end",
+          "lineNumber": 615
+        },
+        {
+          "caller": "rpc_call2_res",
+          "callee": "rpc_begin",
+          "lineNumber": 616
+        },
+        {
+          "caller": "rpc_call2_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 616
+        },
+        {
+          "caller": "rpc_call2_res",
+          "callee": "rpc_recv",
+          "lineNumber": 616
+        },
+        {
+          "caller": "rpc_call2_res",
+          "callee": "rpc_end",
+          "lineNumber": 616
+        },
+        {
+          "caller": "rpc_call3_res",
+          "callee": "rpc_begin",
+          "lineNumber": 617
+        },
+        {
+          "caller": "rpc_call3_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 617
+        },
+        {
+          "caller": "rpc_call3_res",
+          "callee": "rpc_recv",
+          "lineNumber": 617
+        },
+        {
+          "caller": "rpc_call3_res",
+          "callee": "rpc_end",
+          "lineNumber": 617
+        },
+        {
+          "caller": "rpc_call4_res",
+          "callee": "rpc_begin",
+          "lineNumber": 618
+        },
+        {
+          "caller": "rpc_call4_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 618
+        },
+        {
+          "caller": "rpc_call4_res",
+          "callee": "rpc_recv",
+          "lineNumber": 618
+        },
+        {
+          "caller": "rpc_call4_res",
+          "callee": "rpc_end",
+          "lineNumber": 618
+        },
+        {
+          "caller": "rpc_call5_res",
+          "callee": "rpc_begin",
+          "lineNumber": 619
+        },
+        {
+          "caller": "rpc_call5_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 619
+        },
+        {
+          "caller": "rpc_call5_res",
+          "callee": "rpc_recv",
+          "lineNumber": 619
+        },
+        {
+          "caller": "rpc_call5_res",
+          "callee": "rpc_end",
+          "lineNumber": 619
+        },
+        {
+          "caller": "rpc_call6_res",
+          "callee": "rpc_begin",
+          "lineNumber": 620
+        },
+        {
+          "caller": "rpc_call6_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 620
+        },
+        {
+          "caller": "rpc_call6_res",
+          "callee": "rpc_recv",
+          "lineNumber": 620
+        },
+        {
+          "caller": "rpc_call6_res",
+          "callee": "rpc_end",
+          "lineNumber": 620
+        },
+        {
+          "caller": "rpc_call7_res",
+          "callee": "rpc_begin",
+          "lineNumber": 621
+        },
+        {
+          "caller": "rpc_call7_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 621
+        },
+        {
+          "caller": "rpc_call7_res",
+          "callee": "rpc_recv",
+          "lineNumber": 621
+        },
+        {
+          "caller": "rpc_call7_res",
+          "callee": "rpc_end",
+          "lineNumber": 621
+        },
+        {
+          "caller": "rpc_call8_res",
+          "callee": "rpc_begin",
+          "lineNumber": 622
+        },
+        {
+          "caller": "rpc_call8_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 622
+        },
+        {
+          "caller": "rpc_call8_res",
+          "callee": "rpc_recv",
+          "lineNumber": 622
+        },
+        {
+          "caller": "rpc_call8_res",
+          "callee": "rpc_end",
+          "lineNumber": 622
+        },
+        {
+          "caller": "rpc_call9_res",
+          "callee": "rpc_begin",
+          "lineNumber": 623
+        },
+        {
+          "caller": "rpc_call9_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 623
+        },
+        {
+          "caller": "rpc_call9_res",
+          "callee": "rpc_recv",
+          "lineNumber": 623
+        },
+        {
+          "caller": "rpc_call9_res",
+          "callee": "rpc_end",
+          "lineNumber": 623
+        },
+        {
+          "caller": "rpc_call10_res",
+          "callee": "rpc_begin",
+          "lineNumber": 624
+        },
+        {
+          "caller": "rpc_call10_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 624
+        },
+        {
+          "caller": "rpc_call10_res",
+          "callee": "rpc_recv",
+          "lineNumber": 624
+        },
+        {
+          "caller": "rpc_call10_res",
+          "callee": "rpc_end",
+          "lineNumber": 624
+        },
+        {
+          "caller": "rpc_call11_res",
+          "callee": "rpc_begin",
+          "lineNumber": 625
+        },
+        {
+          "caller": "rpc_call11_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 625
+        },
+        {
+          "caller": "rpc_call11_res",
+          "callee": "rpc_recv",
+          "lineNumber": 625
+        },
+        {
+          "caller": "rpc_call11_res",
+          "callee": "rpc_end",
+          "lineNumber": 625
+        },
+        {
+          "caller": "rpc_call12_res",
+          "callee": "rpc_begin",
+          "lineNumber": 626
+        },
+        {
+          "caller": "rpc_call12_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 626
+        },
+        {
+          "caller": "rpc_call12_res",
+          "callee": "rpc_recv",
+          "lineNumber": 626
+        },
+        {
+          "caller": "rpc_call12_res",
+          "callee": "rpc_end",
+          "lineNumber": 626
+        },
+        {
+          "caller": "rpc_call1_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 648
+        },
+        {
+          "caller": "rpc_call2_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 649
+        },
+        {
+          "caller": "rpc_call3_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 650
+        },
+        {
+          "caller": "rpc_call4_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 651
+        },
+        {
+          "caller": "rpc_call5_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 652
+        },
+        {
+          "caller": "rpc_call6_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 653
+        },
+        {
+          "caller": "rpc_call7_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 654
+        },
+        {
+          "caller": "rpc_call8_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 655
+        },
+        {
+          "caller": "rpc_call9_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 656
+        },
+        {
+          "caller": "rpc_call10_in_ctrl",
+          "callee": "RPC_CALL_IN_CTRL",
+          "lineNumber": 657
+        },
+        {
+          "caller": "rpc_call1_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 673
+        },
+        {
+          "caller": "rpc_call1_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 673
+        },
+        {
+          "caller": "rpc_call1_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 673
+        },
+        {
+          "caller": "rpc_call1_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 673
+        },
+        {
+          "caller": "rpc_call1_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 673
+        },
+        {
+          "caller": "rpc_call2_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 674
+        },
+        {
+          "caller": "rpc_call2_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 674
+        },
+        {
+          "caller": "rpc_call2_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 674
+        },
+        {
+          "caller": "rpc_call2_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 674
+        },
+        {
+          "caller": "rpc_call2_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 674
+        },
+        {
+          "caller": "rpc_call3_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 675
+        },
+        {
+          "caller": "rpc_call3_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 675
+        },
+        {
+          "caller": "rpc_call3_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 675
+        },
+        {
+          "caller": "rpc_call3_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 675
+        },
+        {
+          "caller": "rpc_call3_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 675
+        },
+        {
+          "caller": "rpc_call4_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 676
+        },
+        {
+          "caller": "rpc_call4_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 676
+        },
+        {
+          "caller": "rpc_call4_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 676
+        },
+        {
+          "caller": "rpc_call4_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 676
+        },
+        {
+          "caller": "rpc_call4_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 676
+        },
+        {
+          "caller": "rpc_call5_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 677
+        },
+        {
+          "caller": "rpc_call5_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 677
+        },
+        {
+          "caller": "rpc_call5_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 677
+        },
+        {
+          "caller": "rpc_call5_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 677
+        },
+        {
+          "caller": "rpc_call5_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 677
+        },
+        {
+          "caller": "rpc_call6_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 678
+        },
+        {
+          "caller": "rpc_call6_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 678
+        },
+        {
+          "caller": "rpc_call6_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 678
+        },
+        {
+          "caller": "rpc_call6_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 678
+        },
+        {
+          "caller": "rpc_call6_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 678
+        },
+        {
+          "caller": "rpc_call7_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 679
+        },
+        {
+          "caller": "rpc_call7_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 679
+        },
+        {
+          "caller": "rpc_call7_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 679
+        },
+        {
+          "caller": "rpc_call7_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 679
+        },
+        {
+          "caller": "rpc_call7_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 679
+        },
+        {
+          "caller": "rpc_call8_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 680
+        },
+        {
+          "caller": "rpc_call8_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 680
+        },
+        {
+          "caller": "rpc_call8_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 680
+        },
+        {
+          "caller": "rpc_call8_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 680
+        },
+        {
+          "caller": "rpc_call8_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 680
+        },
+        {
+          "caller": "rpc_call9_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 681
+        },
+        {
+          "caller": "rpc_call9_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 681
+        },
+        {
+          "caller": "rpc_call9_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 681
+        },
+        {
+          "caller": "rpc_call9_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 681
+        },
+        {
+          "caller": "rpc_call9_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 681
+        },
+        {
+          "caller": "rpc_call10_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 682
+        },
+        {
+          "caller": "rpc_call10_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 682
+        },
+        {
+          "caller": "rpc_call10_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 682
+        },
+        {
+          "caller": "rpc_call10_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 682
+        },
+        {
+          "caller": "rpc_call10_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 682
+        },
+        {
+          "caller": "rpc_call11_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 683
+        },
+        {
+          "caller": "rpc_call11_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 683
+        },
+        {
+          "caller": "rpc_call11_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 683
+        },
+        {
+          "caller": "rpc_call11_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 683
+        },
+        {
+          "caller": "rpc_call11_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 683
+        },
+        {
+          "caller": "rpc_call12_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 684
+        },
+        {
+          "caller": "rpc_call12_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 684
+        },
+        {
+          "caller": "rpc_call12_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 684
+        },
+        {
+          "caller": "rpc_call12_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 684
+        },
+        {
+          "caller": "rpc_call12_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 684
+        },
+        {
+          "caller": "rpc_call13_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 685
+        },
+        {
+          "caller": "rpc_call13_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 685
+        },
+        {
+          "caller": "rpc_call13_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 685
+        },
+        {
+          "caller": "rpc_call13_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 685
+        },
+        {
+          "caller": "rpc_call13_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 685
+        },
+        {
+          "caller": "rpc_call14_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 686
+        },
+        {
+          "caller": "rpc_call14_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 686
+        },
+        {
+          "caller": "rpc_call14_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 686
+        },
+        {
+          "caller": "rpc_call14_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 686
+        },
+        {
+          "caller": "rpc_call14_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 686
+        },
+        {
+          "caller": "rpc_call15_out_ctrl",
+          "callee": "rpc_begin",
+          "lineNumber": 687
+        },
+        {
+          "caller": "rpc_call15_out_ctrl",
+          "callee": "RPC_CALL",
+          "lineNumber": 687
+        },
+        {
+          "caller": "rpc_call15_out_ctrl",
+          "callee": "rpc_recv",
+          "lineNumber": 687
+        },
+        {
+          "caller": "rpc_call15_out_ctrl",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 687
+        },
+        {
+          "caller": "rpc_call15_out_ctrl",
+          "callee": "rpc_end",
+          "lineNumber": 687
+        },
+        {
+          "caller": "rpc_call1_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 707
+        },
+        {
+          "caller": "rpc_call1_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 707
+        },
+        {
+          "caller": "rpc_call1_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 707
+        },
+        {
+          "caller": "rpc_call1_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 707
+        },
+        {
+          "caller": "rpc_call1_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 707
+        },
+        {
+          "caller": "rpc_call2_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 708
+        },
+        {
+          "caller": "rpc_call2_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 708
+        },
+        {
+          "caller": "rpc_call2_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 708
+        },
+        {
+          "caller": "rpc_call2_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 708
+        },
+        {
+          "caller": "rpc_call2_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 708
+        },
+        {
+          "caller": "rpc_call3_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 709
+        },
+        {
+          "caller": "rpc_call3_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 709
+        },
+        {
+          "caller": "rpc_call3_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 709
+        },
+        {
+          "caller": "rpc_call3_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 709
+        },
+        {
+          "caller": "rpc_call3_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 709
+        },
+        {
+          "caller": "rpc_call4_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 710
+        },
+        {
+          "caller": "rpc_call4_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 710
+        },
+        {
+          "caller": "rpc_call4_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 710
+        },
+        {
+          "caller": "rpc_call4_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 710
+        },
+        {
+          "caller": "rpc_call4_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 710
+        },
+        {
+          "caller": "rpc_call5_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 711
+        },
+        {
+          "caller": "rpc_call5_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 711
+        },
+        {
+          "caller": "rpc_call5_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 711
+        },
+        {
+          "caller": "rpc_call5_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 711
+        },
+        {
+          "caller": "rpc_call5_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 711
+        },
+        {
+          "caller": "rpc_call6_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 712
+        },
+        {
+          "caller": "rpc_call6_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 712
+        },
+        {
+          "caller": "rpc_call6_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 712
+        },
+        {
+          "caller": "rpc_call6_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 712
+        },
+        {
+          "caller": "rpc_call6_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 712
+        },
+        {
+          "caller": "rpc_call7_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 713
+        },
+        {
+          "caller": "rpc_call7_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 713
+        },
+        {
+          "caller": "rpc_call7_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 713
+        },
+        {
+          "caller": "rpc_call7_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 713
+        },
+        {
+          "caller": "rpc_call7_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 713
+        },
+        {
+          "caller": "rpc_call8_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 714
+        },
+        {
+          "caller": "rpc_call8_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 714
+        },
+        {
+          "caller": "rpc_call8_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 714
+        },
+        {
+          "caller": "rpc_call8_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 714
+        },
+        {
+          "caller": "rpc_call8_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 714
+        },
+        {
+          "caller": "rpc_call9_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 715
+        },
+        {
+          "caller": "rpc_call9_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 715
+        },
+        {
+          "caller": "rpc_call9_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 715
+        },
+        {
+          "caller": "rpc_call9_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 715
+        },
+        {
+          "caller": "rpc_call9_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 715
+        },
+        {
+          "caller": "rpc_call10_out_ctrl_res",
+          "callee": "rpc_begin",
+          "lineNumber": 716
+        },
+        {
+          "caller": "rpc_call10_out_ctrl_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 716
+        },
+        {
+          "caller": "rpc_call10_out_ctrl_res",
+          "callee": "rpc_recv",
+          "lineNumber": 716
+        },
+        {
+          "caller": "rpc_call10_out_ctrl_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 716
+        },
+        {
+          "caller": "rpc_call10_out_ctrl_res",
+          "callee": "rpc_end",
+          "lineNumber": 716
+        },
+        {
+          "caller": "rpc_call1_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 738
+        },
+        {
+          "caller": "rpc_call1_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 738
+        },
+        {
+          "caller": "rpc_call1_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 738
+        },
+        {
+          "caller": "rpc_call2_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 739
+        },
+        {
+          "caller": "rpc_call2_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 739
+        },
+        {
+          "caller": "rpc_call2_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 739
+        },
+        {
+          "caller": "rpc_call3_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 740
+        },
+        {
+          "caller": "rpc_call3_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 740
+        },
+        {
+          "caller": "rpc_call3_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 740
+        },
+        {
+          "caller": "rpc_call4_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 741
+        },
+        {
+          "caller": "rpc_call4_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 741
+        },
+        {
+          "caller": "rpc_call4_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 741
+        },
+        {
+          "caller": "rpc_call5_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 742
+        },
+        {
+          "caller": "rpc_call5_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 742
+        },
+        {
+          "caller": "rpc_call5_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 742
+        },
+        {
+          "caller": "rpc_call6_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 743
+        },
+        {
+          "caller": "rpc_call6_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 743
+        },
+        {
+          "caller": "rpc_call6_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 743
+        },
+        {
+          "caller": "rpc_call7_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 744
+        },
+        {
+          "caller": "rpc_call7_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 744
+        },
+        {
+          "caller": "rpc_call7_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 744
+        },
+        {
+          "caller": "rpc_call8_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 745
+        },
+        {
+          "caller": "rpc_call8_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 745
+        },
+        {
+          "caller": "rpc_call8_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 745
+        },
+        {
+          "caller": "rpc_call9_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 746
+        },
+        {
+          "caller": "rpc_call9_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 746
+        },
+        {
+          "caller": "rpc_call9_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 746
+        },
+        {
+          "caller": "rpc_call10_in_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 747
+        },
+        {
+          "caller": "rpc_call10_in_bulk",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 747
+        },
+        {
+          "caller": "rpc_call10_in_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 747
+        },
+        {
+          "caller": "rpc_call1_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 762
+        },
+        {
+          "caller": "rpc_call1_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 762
+        },
+        {
+          "caller": "rpc_call1_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 762
+        },
+        {
+          "caller": "rpc_call1_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 762
+        },
+        {
+          "caller": "rpc_call1_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 762
+        },
+        {
+          "caller": "rpc_call2_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 763
+        },
+        {
+          "caller": "rpc_call2_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 763
+        },
+        {
+          "caller": "rpc_call2_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 763
+        },
+        {
+          "caller": "rpc_call2_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 763
+        },
+        {
+          "caller": "rpc_call2_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 763
+        },
+        {
+          "caller": "rpc_call3_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 764
+        },
+        {
+          "caller": "rpc_call3_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 764
+        },
+        {
+          "caller": "rpc_call3_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 764
+        },
+        {
+          "caller": "rpc_call3_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 764
+        },
+        {
+          "caller": "rpc_call3_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 764
+        },
+        {
+          "caller": "rpc_call4_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 765
+        },
+        {
+          "caller": "rpc_call4_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 765
+        },
+        {
+          "caller": "rpc_call4_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 765
+        },
+        {
+          "caller": "rpc_call4_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 765
+        },
+        {
+          "caller": "rpc_call4_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 765
+        },
+        {
+          "caller": "rpc_call5_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 766
+        },
+        {
+          "caller": "rpc_call5_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 766
+        },
+        {
+          "caller": "rpc_call5_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 766
+        },
+        {
+          "caller": "rpc_call5_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 766
+        },
+        {
+          "caller": "rpc_call5_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 766
+        },
+        {
+          "caller": "rpc_call6_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 767
+        },
+        {
+          "caller": "rpc_call6_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 767
+        },
+        {
+          "caller": "rpc_call6_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 767
+        },
+        {
+          "caller": "rpc_call6_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 767
+        },
+        {
+          "caller": "rpc_call6_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 767
+        },
+        {
+          "caller": "rpc_call7_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 768
+        },
+        {
+          "caller": "rpc_call7_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 768
+        },
+        {
+          "caller": "rpc_call7_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 768
+        },
+        {
+          "caller": "rpc_call7_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 768
+        },
+        {
+          "caller": "rpc_call7_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 768
+        },
+        {
+          "caller": "rpc_call8_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 769
+        },
+        {
+          "caller": "rpc_call8_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 769
+        },
+        {
+          "caller": "rpc_call8_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 769
+        },
+        {
+          "caller": "rpc_call8_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 769
+        },
+        {
+          "caller": "rpc_call8_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 769
+        },
+        {
+          "caller": "rpc_call9_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 770
+        },
+        {
+          "caller": "rpc_call9_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 770
+        },
+        {
+          "caller": "rpc_call9_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 770
+        },
+        {
+          "caller": "rpc_call9_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 770
+        },
+        {
+          "caller": "rpc_call9_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 770
+        },
+        {
+          "caller": "rpc_call10_out_bulk",
+          "callee": "rpc_begin",
+          "lineNumber": 771
+        },
+        {
+          "caller": "rpc_call10_out_bulk",
+          "callee": "RPC_CALL",
+          "lineNumber": 771
+        },
+        {
+          "caller": "rpc_call10_out_bulk",
+          "callee": "rpc_recv",
+          "lineNumber": 771
+        },
+        {
+          "caller": "rpc_call10_out_bulk",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 771
+        },
+        {
+          "caller": "rpc_call10_out_bulk",
+          "callee": "rpc_end",
+          "lineNumber": 771
+        },
+        {
+          "caller": "rpc_call1_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 786
+        },
+        {
+          "caller": "rpc_call1_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 786
+        },
+        {
+          "caller": "rpc_call1_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 786
+        },
+        {
+          "caller": "rpc_call1_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 786
+        },
+        {
+          "caller": "rpc_call2_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 787
+        },
+        {
+          "caller": "rpc_call2_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 787
+        },
+        {
+          "caller": "rpc_call2_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 787
+        },
+        {
+          "caller": "rpc_call2_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 787
+        },
+        {
+          "caller": "rpc_call3_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 788
+        },
+        {
+          "caller": "rpc_call3_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 788
+        },
+        {
+          "caller": "rpc_call3_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 788
+        },
+        {
+          "caller": "rpc_call3_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 788
+        },
+        {
+          "caller": "rpc_call4_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 789
+        },
+        {
+          "caller": "rpc_call4_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 789
+        },
+        {
+          "caller": "rpc_call4_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 789
+        },
+        {
+          "caller": "rpc_call4_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 789
+        },
+        {
+          "caller": "rpc_call5_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 790
+        },
+        {
+          "caller": "rpc_call5_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 790
+        },
+        {
+          "caller": "rpc_call5_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 790
+        },
+        {
+          "caller": "rpc_call5_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 790
+        },
+        {
+          "caller": "rpc_call6_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 791
+        },
+        {
+          "caller": "rpc_call6_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 791
+        },
+        {
+          "caller": "rpc_call6_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 791
+        },
+        {
+          "caller": "rpc_call6_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 791
+        },
+        {
+          "caller": "rpc_call7_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 792
+        },
+        {
+          "caller": "rpc_call7_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 792
+        },
+        {
+          "caller": "rpc_call7_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 792
+        },
+        {
+          "caller": "rpc_call7_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 792
+        },
+        {
+          "caller": "rpc_call8_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 793
+        },
+        {
+          "caller": "rpc_call8_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 793
+        },
+        {
+          "caller": "rpc_call8_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 793
+        },
+        {
+          "caller": "rpc_call8_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 793
+        },
+        {
+          "caller": "rpc_call9_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 794
+        },
+        {
+          "caller": "rpc_call9_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 794
+        },
+        {
+          "caller": "rpc_call9_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 794
+        },
+        {
+          "caller": "rpc_call9_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 794
+        },
+        {
+          "caller": "rpc_call10_in_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 795
+        },
+        {
+          "caller": "rpc_call10_in_bulk_res",
+          "callee": "RPC_CALL_IN_BULK",
+          "lineNumber": 795
+        },
+        {
+          "caller": "rpc_call10_in_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 795
+        },
+        {
+          "caller": "rpc_call10_in_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 795
+        },
+        {
+          "caller": "rpc_call1_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 810
+        },
+        {
+          "caller": "rpc_call1_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 810
+        },
+        {
+          "caller": "rpc_call1_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 810
+        },
+        {
+          "caller": "rpc_call1_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 810
+        },
+        {
+          "caller": "rpc_call1_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 810
+        },
+        {
+          "caller": "rpc_call2_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 811
+        },
+        {
+          "caller": "rpc_call2_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 811
+        },
+        {
+          "caller": "rpc_call2_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 811
+        },
+        {
+          "caller": "rpc_call2_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 811
+        },
+        {
+          "caller": "rpc_call2_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 811
+        },
+        {
+          "caller": "rpc_call3_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 812
+        },
+        {
+          "caller": "rpc_call3_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 812
+        },
+        {
+          "caller": "rpc_call3_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 812
+        },
+        {
+          "caller": "rpc_call3_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 812
+        },
+        {
+          "caller": "rpc_call3_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 812
+        },
+        {
+          "caller": "rpc_call4_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 813
+        },
+        {
+          "caller": "rpc_call4_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 813
+        },
+        {
+          "caller": "rpc_call4_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 813
+        },
+        {
+          "caller": "rpc_call4_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 813
+        },
+        {
+          "caller": "rpc_call4_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 813
+        },
+        {
+          "caller": "rpc_call5_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 814
+        },
+        {
+          "caller": "rpc_call5_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 814
+        },
+        {
+          "caller": "rpc_call5_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 814
+        },
+        {
+          "caller": "rpc_call5_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 814
+        },
+        {
+          "caller": "rpc_call5_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 814
+        },
+        {
+          "caller": "rpc_call6_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 815
+        },
+        {
+          "caller": "rpc_call6_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 815
+        },
+        {
+          "caller": "rpc_call6_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 815
+        },
+        {
+          "caller": "rpc_call6_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 815
+        },
+        {
+          "caller": "rpc_call6_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 815
+        },
+        {
+          "caller": "rpc_call7_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 816
+        },
+        {
+          "caller": "rpc_call7_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 816
+        },
+        {
+          "caller": "rpc_call7_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 816
+        },
+        {
+          "caller": "rpc_call7_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 816
+        },
+        {
+          "caller": "rpc_call7_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 816
+        },
+        {
+          "caller": "rpc_call8_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 817
+        },
+        {
+          "caller": "rpc_call8_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 817
+        },
+        {
+          "caller": "rpc_call8_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 817
+        },
+        {
+          "caller": "rpc_call8_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 817
+        },
+        {
+          "caller": "rpc_call8_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 817
+        },
+        {
+          "caller": "rpc_call9_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 818
+        },
+        {
+          "caller": "rpc_call9_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 818
+        },
+        {
+          "caller": "rpc_call9_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 818
+        },
+        {
+          "caller": "rpc_call9_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 818
+        },
+        {
+          "caller": "rpc_call9_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 818
+        },
+        {
+          "caller": "rpc_call10_out_bulk_res",
+          "callee": "rpc_begin",
+          "lineNumber": 819
+        },
+        {
+          "caller": "rpc_call10_out_bulk_res",
+          "callee": "RPC_CALL",
+          "lineNumber": 819
+        },
+        {
+          "caller": "rpc_call10_out_bulk_res",
+          "callee": "rpc_recv",
+          "lineNumber": 819
+        },
+        {
+          "caller": "rpc_call10_out_bulk_res",
+          "callee": "(RPC_RECV_FLAG_T)",
+          "lineNumber": 819
+        },
+        {
+          "caller": "rpc_call10_out_bulk_res",
+          "callee": "rpc_end",
+          "lineNumber": 819
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_unmangle.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 467,
+      "nonEmptyLines": 447,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_vector.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 73,
+      "functions": [
+        {
+          "name": "khrn_vector_init",
+          "startLine": 36,
+          "endLine": 41,
+          "params": [
+            "vector",
+            "capacity"
+          ]
+        },
+        {
+          "name": "khrn_vector_term",
+          "startLine": 43,
+          "endLine": 48,
+          "params": [
+            "vector"
+          ]
+        },
+        {
+          "name": "khrn_vector_extend",
+          "startLine": 50,
+          "endLine": 72,
+          "params": [
+            "vector",
+            "size"
+          ]
+        },
+        {
+          "name": "khrn_vector_clear",
+          "startLine": 74,
+          "endLine": 82,
+          "params": [
+            "vector"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "khrn_vector_init",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_vector_term",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_vector_extend",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_vector_clear",
+          "line": 74,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "khrn_vector_init",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 38
+        },
+        {
+          "caller": "khrn_vector_term",
+          "callee": "khrn_platform_free",
+          "lineNumber": 46
+        },
+        {
+          "caller": "khrn_vector_extend",
+          "callee": "_max",
+          "lineNumber": 54
+        },
+        {
+          "caller": "khrn_vector_extend",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 55
+        },
+        {
+          "caller": "khrn_vector_extend",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 58
+        },
+        {
+          "caller": "khrn_vector_extend",
+          "callee": "memcpy",
+          "lineNumber": 64
+        },
+        {
+          "caller": "khrn_vector_extend",
+          "callee": "khrn_platform_free",
+          "lineNumber": 65
+        },
+        {
+          "caller": "khrn_vector_clear",
+          "callee": "khrn_platform_free",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_vector.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

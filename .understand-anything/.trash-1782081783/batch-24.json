@@ -1,0 +1,2230 @@
+{
+  "batch": 24,
+  "nodes": [
+    {
+      "id": "file:addon/wlan/p9chan.cpp",
+      "type": "file",
+      "name": "p9chan.cpp",
+      "filePath": "addon/wlan/p9chan.cpp",
+      "summary": "P9Chan implementation with 5 functions and hardware register access",
+      "tags": [
+        "p9chan",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:addon/wlan/p9chan.cpp:device_t",
+      "type": "class",
+      "name": "device_t",
+      "filePath": "addon/wlan/p9chan.cpp",
+      "summary": "device_t class in p9chan.cpp",
+      "tags": [
+        "p9chan",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9chan.cpp:cclose",
+      "type": "function",
+      "name": "cclose",
+      "filePath": "addon/wlan/p9chan.cpp",
+      "summary": "cclose(c) in p9chan.cpp",
+      "tags": [
+        "p9chan",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9chan.cpp:readchan",
+      "type": "function",
+      "name": "readchan",
+      "filePath": "addon/wlan/p9chan.cpp",
+      "summary": "readchan(c, buf, len, offset) in p9chan.cpp",
+      "tags": [
+        "p9chan",
+        "wlan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/p9chan.cpp:p9chan_init",
+      "type": "function",
+      "name": "p9chan_init",
+      "filePath": "addon/wlan/p9chan.cpp",
+      "summary": "p9chan_init(path) in p9chan.cpp",
+      "tags": [
+        "p9chan",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/p9chan.h",
+      "type": "file",
+      "name": "p9chan.h",
+      "filePath": "addon/wlan/p9chan.h",
+      "summary": "P9Chan implementation with 0 functions and hardware register access",
+      "tags": [
+        "p9chan",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/p9cmd.cpp",
+      "type": "file",
+      "name": "p9cmd.cpp",
+      "filePath": "addon/wlan/p9cmd.cpp",
+      "summary": "P9Cmd implementation with 1 functions and hardware register access",
+      "tags": [
+        "p9cmd",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9cmd.cpp:cmderror",
+      "type": "function",
+      "name": "cmderror",
+      "filePath": "addon/wlan/p9cmd.cpp",
+      "summary": "cmderror(cb, err) in p9cmd.cpp",
+      "tags": [
+        "p9cmd",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/p9cmd.h",
+      "type": "file",
+      "name": "p9cmd.h",
+      "filePath": "addon/wlan/p9cmd.h",
+      "summary": "P9Cmd implementation with 0 functions and hardware register access",
+      "tags": [
+        "p9cmd",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/p9error.cpp",
+      "type": "file",
+      "name": "p9error.cpp",
+      "filePath": "addon/wlan/p9error.cpp",
+      "summary": "P9Error implementation with 4 functions and hardware register access",
+      "tags": [
+        "p9error",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9error.cpp:error",
+      "type": "function",
+      "name": "error",
+      "filePath": "addon/wlan/p9error.cpp",
+      "summary": "error(str) in p9error.cpp",
+      "tags": [
+        "p9error",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9error.cpp:nexterror",
+      "type": "function",
+      "name": "nexterror",
+      "filePath": "addon/wlan/p9error.cpp",
+      "summary": "nexterror() in p9error.cpp",
+      "tags": [
+        "p9error",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9error.cpp:poperror",
+      "type": "function",
+      "name": "poperror",
+      "filePath": "addon/wlan/p9error.cpp",
+      "summary": "poperror() in p9error.cpp",
+      "tags": [
+        "p9error",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9error.cpp:okay",
+      "type": "function",
+      "name": "okay",
+      "filePath": "addon/wlan/p9error.cpp",
+      "summary": "okay(status) in p9error.cpp",
+      "tags": [
+        "p9error",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/p9error.h",
+      "type": "file",
+      "name": "p9error.h",
+      "filePath": "addon/wlan/p9error.h",
+      "summary": "P9Error implementation with 0 functions and hardware register access",
+      "tags": [
+        "p9error",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/p9proc.h",
+      "type": "file",
+      "name": "p9proc.h",
+      "filePath": "addon/wlan/p9proc.h",
+      "summary": "P9Proc implementation with 0 functions and hardware register access",
+      "tags": [
+        "p9proc",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/p9util.cpp",
+      "type": "file",
+      "name": "p9util.cpp",
+      "filePath": "addon/wlan/p9util.cpp",
+      "summary": "P9Util implementation with 5 functions and hardware register access",
+      "tags": [
+        "p9util",
+        "wlan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/p9util.cpp:print",
+      "type": "function",
+      "name": "print",
+      "filePath": "addon/wlan/p9util.cpp",
+      "summary": "print(fmt) in p9util.cpp",
+      "tags": [
+        "p9util",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9util.cpp:sprint",
+      "type": "function",
+      "name": "sprint",
+      "filePath": "addon/wlan/p9util.cpp",
+      "summary": "sprint(str, fmt) in p9util.cpp",
+      "tags": [
+        "p9util",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9util.cpp:snprint",
+      "type": "function",
+      "name": "snprint",
+      "filePath": "addon/wlan/p9util.cpp",
+      "summary": "snprint(str, size, fmt) in p9util.cpp",
+      "tags": [
+        "p9util",
+        "wlan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/p9util.cpp:readstr",
+      "type": "function",
+      "name": "readstr",
+      "filePath": "addon/wlan/p9util.cpp",
+      "summary": "readstr(offset, buf, len, p) in p9util.cpp",
+      "tags": [
+        "p9util",
+        "wlan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/p9util.cpp:hexdump",
+      "type": "function",
+      "name": "hexdump",
+      "filePath": "addon/wlan/p9util.cpp",
+      "summary": "hexdump(p, len, from) in p9util.cpp",
+      "tags": [
+        "p9util",
+        "wlan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/wlan/p9util.h",
+      "type": "file",
+      "name": "p9util.h",
+      "filePath": "addon/wlan/p9util.h",
+      "summary": "P9Util implementation with 0 functions and hardware register access",
+      "tags": [
+        "p9util",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "type": "file",
+      "name": "echoserver.cpp",
+      "filePath": "addon/wlan/sample/hello_ap/echoserver.cpp",
+      "summary": "Sample application demonstrating echoserver functionality",
+      "tags": [
+        "echoserver",
+        "hello_ap",
+        "wlan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/echoserver.cpp:CEchoServer",
+      "type": "function",
+      "name": "CEchoServer",
+      "filePath": "addon/wlan/sample/hello_ap/echoserver.cpp",
+      "summary": "CEchoServer(pNetSubSystem, pSocket, pClientIP) in echoserver.cpp",
+      "tags": [
+        "echoserver",
+        "hello_ap",
+        "wlan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/echoserver.cpp:~CEchoServer",
+      "type": "function",
+      "name": "~CEchoServer",
+      "filePath": "addon/wlan/sample/hello_ap/echoserver.cpp",
+      "summary": "~CEchoServer() in echoserver.cpp",
+      "tags": [
+        "echoserver",
+        "hello_ap",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "addon/wlan/sample/hello_ap/echoserver.cpp",
+      "summary": "Run() in echoserver.cpp",
+      "tags": [
+        "echoserver",
+        "hello_ap",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Listener",
+      "type": "function",
+      "name": "Listener",
+      "filePath": "addon/wlan/sample/hello_ap/echoserver.cpp",
+      "summary": "Listener() in echoserver.cpp",
+      "tags": [
+        "echoserver",
+        "hello_ap",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Worker",
+      "type": "function",
+      "name": "Worker",
+      "filePath": "addon/wlan/sample/hello_ap/echoserver.cpp",
+      "summary": "Worker() in echoserver.cpp",
+      "tags": [
+        "echoserver",
+        "hello_ap",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/sample/hello_ap/echoserver.h",
+      "type": "file",
+      "name": "echoserver.h",
+      "filePath": "addon/wlan/sample/hello_ap/echoserver.h",
+      "summary": "Sample application demonstrating echoserver functionality",
+      "tags": [
+        "echoserver",
+        "hello_ap",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "addon/wlan/sample/hello_ap/kernel.cpp",
+      "summary": "Sample application demonstrating kernel functionality",
+      "tags": [
+        "hello_ap",
+        "kernel",
+        "wlan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "addon/wlan/sample/hello_ap/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "hello_ap",
+        "kernel",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "addon/wlan/sample/hello_ap/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "hello_ap",
+        "kernel",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/wlan/sample/hello_ap/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "hello_ap",
+        "kernel",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "addon/wlan/sample/hello_ap/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "hello_ap",
+        "kernel",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/sample/hello_ap/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "addon/wlan/sample/hello_ap/kernel.h",
+      "summary": "Sample application demonstrating kernel functionality",
+      "tags": [
+        "hello_ap",
+        "kernel",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/sample/hello_ap/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "addon/wlan/sample/hello_ap/main.cpp",
+      "summary": "Sample application demonstrating main functionality",
+      "tags": [
+        "hello_ap",
+        "main",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "addon/wlan/sample/hello_ap/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "hello_ap",
+        "main",
+        "wlan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/string.h",
+      "type": "file",
+      "name": "string.h",
+      "filePath": "include/circle/string.h",
+      "summary": "String implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/string.cpp",
+      "type": "file",
+      "name": "string.cpp",
+      "filePath": "lib/string.cpp",
+      "summary": "String implementation with 16 functions and hardware register access",
+      "tags": [
+        "string"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/string.cpp:CString",
+      "type": "function",
+      "name": "CString",
+      "filePath": "lib/string.cpp",
+      "summary": "CString() in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:~CString",
+      "type": "function",
+      "name": "~CString",
+      "filePath": "lib/string.cpp",
+      "summary": "~CString() in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:GetLength",
+      "type": "function",
+      "name": "GetLength",
+      "filePath": "lib/string.cpp",
+      "summary": "GetLength() in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:Append",
+      "type": "function",
+      "name": "Append",
+      "filePath": "lib/string.cpp",
+      "summary": "Append(chChar) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:Compare",
+      "type": "function",
+      "name": "Compare",
+      "filePath": "lib/string.cpp",
+      "summary": "Compare(pString) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:Find",
+      "type": "function",
+      "name": "Find",
+      "filePath": "lib/string.cpp",
+      "summary": "Find(chChar) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:Replace",
+      "type": "function",
+      "name": "Replace",
+      "filePath": "lib/string.cpp",
+      "summary": "Replace(pOld, pNew) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:Format",
+      "type": "function",
+      "name": "Format",
+      "filePath": "lib/string.cpp",
+      "summary": "Format(pFormat) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:FormatV",
+      "type": "function",
+      "name": "FormatV",
+      "filePath": "lib/string.cpp",
+      "summary": "FormatV(pFormat, Args) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:PutChar",
+      "type": "function",
+      "name": "PutChar",
+      "filePath": "lib/string.cpp",
+      "summary": "PutChar(chChar, nCount) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:PutString",
+      "type": "function",
+      "name": "PutString",
+      "filePath": "lib/string.cpp",
+      "summary": "PutString(pString) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/string.cpp:ReserveSpace",
+      "type": "function",
+      "name": "ReserveSpace",
+      "filePath": "lib/string.cpp",
+      "summary": "ReserveSpace(nSpace) in string.cpp",
+      "tags": [
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/15-files/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/15-files/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "15-files",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/15-files/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/15-files/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "15-files",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/15-files/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/15-files/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "15-files",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/15-files/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/15-files/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "15-files",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/15-files/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/15-files/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "15-files",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/15-files/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/15-files/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "15-files",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/15-files/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/15-files/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "15-files",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/15-files/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/15-files/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "15-files",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/20-tcpsimple/echoserver.cpp",
+      "type": "file",
+      "name": "echoserver.cpp",
+      "filePath": "sample/20-tcpsimple/echoserver.cpp",
+      "summary": "Echoserver implementation with 5 functions and hardware register access",
+      "tags": [
+        "20-tcpsimple",
+        "echoserver"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/echoserver.cpp:CEchoServer",
+      "type": "function",
+      "name": "CEchoServer",
+      "filePath": "sample/20-tcpsimple/echoserver.cpp",
+      "summary": "CEchoServer(pNetSubSystem, pSocket, pClientIP) in echoserver.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "echoserver"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/echoserver.cpp:~CEchoServer",
+      "type": "function",
+      "name": "~CEchoServer",
+      "filePath": "sample/20-tcpsimple/echoserver.cpp",
+      "summary": "~CEchoServer() in echoserver.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "echoserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/echoserver.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/20-tcpsimple/echoserver.cpp",
+      "summary": "Run() in echoserver.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "echoserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/echoserver.cpp:Listener",
+      "type": "function",
+      "name": "Listener",
+      "filePath": "sample/20-tcpsimple/echoserver.cpp",
+      "summary": "Listener() in echoserver.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "echoserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/echoserver.cpp:Worker",
+      "type": "function",
+      "name": "Worker",
+      "filePath": "sample/20-tcpsimple/echoserver.cpp",
+      "summary": "Worker() in echoserver.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "echoserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/20-tcpsimple/echoserver.h",
+      "type": "file",
+      "name": "echoserver.h",
+      "filePath": "sample/20-tcpsimple/echoserver.h",
+      "summary": "Echoserver implementation with 0 functions and hardware register access",
+      "tags": [
+        "20-tcpsimple",
+        "echoserver"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/20-tcpsimple/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/20-tcpsimple/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "20-tcpsimple",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/20-tcpsimple/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/20-tcpsimple/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/20-tcpsimple/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/20-tcpsimple/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/20-tcpsimple/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/20-tcpsimple/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "20-tcpsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/20-tcpsimple/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/20-tcpsimple/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "20-tcpsimple",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/20-tcpsimple/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/20-tcpsimple/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "20-tcpsimple",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/21-webserver/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/21-webserver/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "21-webserver",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/21-webserver/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/21-webserver/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "21-webserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/21-webserver/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/21-webserver/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "21-webserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/21-webserver/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/21-webserver/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "21-webserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/21-webserver/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/21-webserver/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "21-webserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/21-webserver/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/21-webserver/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "21-webserver",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/21-webserver/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/21-webserver/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "21-webserver",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/21-webserver/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/21-webserver/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "21-webserver",
+        "main"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "class:addon/wlan/p9chan.cpp:device_t",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "class:addon/wlan/p9chan.cpp:device_t",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "function:addon/wlan/p9chan.cpp:cclose",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "function:addon/wlan/p9chan.cpp:cclose",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "function:addon/wlan/p9chan.cpp:readchan",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "function:addon/wlan/p9chan.cpp:p9chan_init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "function:addon/wlan/p9chan.cpp:p9chan_init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "file:addon/wlan/p9chan.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "file:addon/wlan/p9error.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9chan.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9cmd.cpp",
+      "target": "function:addon/wlan/p9cmd.cpp:cmderror",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9cmd.cpp",
+      "target": "function:addon/wlan/p9cmd.cpp:cmderror",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9cmd.cpp",
+      "target": "file:addon/wlan/p9cmd.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9cmd.cpp",
+      "target": "file:addon/wlan/p9error.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9cmd.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9cmd.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "function:addon/wlan/p9error.cpp:error",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "function:addon/wlan/p9error.cpp:error",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "function:addon/wlan/p9error.cpp:nexterror",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "function:addon/wlan/p9error.cpp:nexterror",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "function:addon/wlan/p9error.cpp:poperror",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "function:addon/wlan/p9error.cpp:poperror",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "function:addon/wlan/p9error.cpp:okay",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "function:addon/wlan/p9error.cpp:okay",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "file:addon/wlan/p9error.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "file:addon/wlan/p9proc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "file:addon/wlan/p9util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9error.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:print",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:print",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:sprint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:sprint",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:snprint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:snprint",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:readstr",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:readstr",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:hexdump",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "function:addon/wlan/p9util.cpp:hexdump",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "file:addon/wlan/p9util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "file:include/circle/stdarg.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9util.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:CEchoServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:CEchoServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:~CEchoServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:~CEchoServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Listener",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Listener",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Worker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Worker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "file:addon/wlan/sample/hello_ap/echoserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "file:include/circle/net/in.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/echoserver.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Run",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Listener",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Run",
+      "target": "function:addon/wlan/sample/hello_ap/echoserver.cpp:Worker",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "file:addon/wlan/sample/hello_ap/echoserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "file:addon/wlan/sample/hello_ap/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:addon/wlan/sample/hello_ap/kernel.cpp:Initialize",
+      "target": "function:addon/wlan/sample/hello_ap/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/main.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/main.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/main.cpp",
+      "target": "file:addon/wlan/sample/hello_ap/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:CString",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:CString",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:~CString",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:~CString",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:GetLength",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:GetLength",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Append",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Append",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Compare",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Compare",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Find",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Find",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Replace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Replace",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Format",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:Format",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:FormatV",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:FormatV",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:PutChar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:PutChar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:PutString",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:PutString",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:ReserveSpace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "function:lib/string.cpp:ReserveSpace",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/string.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/string.cpp:Append",
+      "target": "function:lib/string.cpp:Append",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/string.cpp:Replace",
+      "target": "function:lib/string.cpp:PutChar",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/string.cpp:Replace",
+      "target": "function:lib/string.cpp:PutString",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/string.cpp:Format",
+      "target": "function:lib/string.cpp:FormatV",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/string.cpp:FormatV",
+      "target": "function:lib/string.cpp:PutChar",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/string.cpp:FormatV",
+      "target": "function:lib/string.cpp:PutString",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/string.cpp:PutChar",
+      "target": "function:lib/string.cpp:ReserveSpace",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/string.cpp:PutString",
+      "target": "function:lib/string.cpp:ReserveSpace",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "function:sample/15-files/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "function:sample/15-files/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "function:sample/15-files/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "function:sample/15-files/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "function:sample/15-files/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "function:sample/15-files/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "function:sample/15-files/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "function:sample/15-files/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/15-files/kernel.cpp",
+      "target": "file:sample/15-files/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/15-files/kernel.cpp:Initialize",
+      "target": "function:sample/15-files/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/15-files/main.cpp",
+      "target": "function:sample/15-files/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/main.cpp",
+      "target": "function:sample/15-files/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/15-files/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/15-files/main.cpp",
+      "target": "file:sample/15-files/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:CEchoServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:CEchoServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:~CEchoServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:~CEchoServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:Listener",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:Listener",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:Worker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:Worker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "file:include/circle/net/in.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/20-tcpsimple/echoserver.cpp",
+      "target": "file:sample/20-tcpsimple/echoserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/20-tcpsimple/echoserver.cpp:Run",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:Listener",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/20-tcpsimple/echoserver.cpp:Run",
+      "target": "function:sample/20-tcpsimple/echoserver.cpp:Worker",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "file:sample/20-tcpsimple/echoserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/20-tcpsimple/kernel.cpp",
+      "target": "file:sample/20-tcpsimple/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/20-tcpsimple/kernel.cpp:Initialize",
+      "target": "function:sample/20-tcpsimple/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/20-tcpsimple/main.cpp",
+      "target": "function:sample/20-tcpsimple/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/main.cpp",
+      "target": "function:sample/20-tcpsimple/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/20-tcpsimple/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/20-tcpsimple/main.cpp",
+      "target": "file:sample/20-tcpsimple/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "function:sample/21-webserver/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "function:sample/21-webserver/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "function:sample/21-webserver/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "function:sample/21-webserver/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "function:sample/21-webserver/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "function:sample/21-webserver/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "function:sample/21-webserver/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "function:sample/21-webserver/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "file:sample/21-webserver/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/21-webserver/kernel.cpp",
+      "target": "file:sample/21-webserver/webserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/21-webserver/kernel.cpp:Initialize",
+      "target": "function:sample/21-webserver/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/21-webserver/main.cpp",
+      "target": "function:sample/21-webserver/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/main.cpp",
+      "target": "function:sample/21-webserver/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/21-webserver/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/21-webserver/main.cpp",
+      "target": "file:sample/21-webserver/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

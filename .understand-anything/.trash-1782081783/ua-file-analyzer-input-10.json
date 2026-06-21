@@ -1,0 +1,439 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "lib/devicetreeblob.cpp",
+      "language": "cpp",
+      "sizeLines": 361,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/display.cpp",
+      "language": "cpp",
+      "sizeLines": 156,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/fs/fat/fatdir.cpp",
+      "language": "cpp",
+      "sizeLines": 553,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/fs/fat/fatfs.cpp",
+      "language": "cpp",
+      "sizeLines": 479,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/heapallocator.cpp",
+      "language": "cpp",
+      "sizeLines": 229,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/xpt2046touchscreen.cpp",
+      "language": "cpp",
+      "sizeLines": 240,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/macaddress.cpp",
+      "language": "cpp",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/arphandler.cpp",
+      "language": "cpp",
+      "sizeLines": 438,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/checksumcalculator.cpp",
+      "language": "cpp",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/dhcpclient.cpp",
+      "language": "cpp",
+      "sizeLines": 887,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/dnsclient.cpp",
+      "language": "cpp",
+      "sizeLines": 317,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/httpclient.cpp",
+      "language": "cpp",
+      "sizeLines": 326,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/httpdaemon.cpp",
+      "language": "cpp",
+      "sizeLines": 701,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/icmphandler.cpp",
+      "language": "cpp",
+      "sizeLines": 254,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/igmphandler.cpp",
+      "language": "cpp",
+      "sizeLines": 351,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/ipaddress.cpp",
+      "language": "cpp",
+      "sizeLines": 199,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/linklayer.cpp",
+      "language": "cpp",
+      "sizeLines": 352,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/mdnsdaemon.cpp",
+      "language": "cpp",
+      "sizeLines": 542,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/mdnspublisher.cpp",
+      "language": "cpp",
+      "sizeLines": 432,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/mqttclient.cpp",
+      "language": "cpp",
+      "sizeLines": 921,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/mqttreceivepacket.cpp",
+      "language": "cpp",
+      "sizeLines": 261,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/mqttsendpacket.cpp",
+      "language": "cpp",
+      "sizeLines": 246,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/netqueue.cpp",
+      "language": "cpp",
+      "sizeLines": 150,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/netsocket.cpp",
+      "language": "cpp",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/networklayer.cpp",
+      "language": "cpp",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/ntpclient.cpp",
+      "language": "cpp",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/ntpdaemon.cpp",
+      "language": "cpp",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/routecache.cpp",
+      "language": "cpp",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/socket.cpp",
+      "language": "cpp",
+      "sizeLines": 392,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/syslogdaemon.cpp",
+      "language": "cpp",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/tcpconnection.cpp",
+      "language": "cpp",
+      "sizeLines": 1638,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/net/tcprejector.cpp",
+      "language": "cpp",
+      "sizeLines": 201,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "lib/devicetreeblob.cpp": [
+      "include/assert.h",
+      "include/circle/devicetreeblob.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/util.h"
+    ],
+    "lib/display.cpp": [
+      "include/circle/display.h",
+      "include/circle/util.h"
+    ],
+    "lib/fs/fat/fatdir.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fat/fatdir.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/fs/fat/fatfs.cpp": [
+      "include/assert.h",
+      "include/circle/fs/fat/fatfs.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/heapallocator.cpp": [
+      "include/assert.h",
+      "include/circle/heapallocator.h",
+      "include/circle/logger.h",
+      "include/circle/util.h"
+    ],
+    "lib/input/xpt2046touchscreen.cpp": [
+      "include/assert.h",
+      "include/circle/input/xpt2046touchscreen.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/macaddress.cpp": [
+      "include/assert.h",
+      "include/circle/macaddress.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/arphandler.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/arphandler.h",
+      "include/circle/net/linklayer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/checksumcalculator.cpp": [
+      "include/assert.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/dhcpclient.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macaddress.h",
+      "include/circle/macros.h",
+      "include/circle/net/dhcpclient.h",
+      "include/circle/net/in.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/dnsclient.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/in.h",
+      "include/circle/net/socket.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/httpclient.cpp": [
+      "include/assert.h",
+      "include/circle/net/httpclient.h",
+      "include/circle/net/in.h",
+      "include/circle/netdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/httpdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/httpdaemon.h",
+      "include/circle/net/in.h",
+      "include/circle/netdevice.h",
+      "include/circle/string.h",
+      "include/circle/sysconfig.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/icmphandler.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/net/icmphandler.h",
+      "include/circle/net/in.h",
+      "include/circle/net/networklayer.h",
+      "include/circle/string.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/igmphandler.cpp": [
+      "include/assert.h",
+      "include/circle/macros.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/net/igmphandler.h",
+      "include/circle/net/in.h",
+      "include/circle/net/networklayer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/ipaddress.cpp": [
+      "include/assert.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/linklayer.cpp": [
+      "include/assert.h",
+      "include/circle/net/linklayer.h",
+      "include/circle/net/networklayer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/mdnsdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/mdnsdaemon.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/mdnspublisher.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/net/mdnspublisher.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/mqttclient.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/in.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/mqttclient.h",
+      "include/circle/rpi/bcmpropertytags.h",
+      "include/circle/sched/scheduler.h"
+    ],
+    "lib/net/mqttreceivepacket.cpp": [
+      "include/circle/net/in.h",
+      "include/circle/net/mqttreceivepacket.h"
+    ],
+    "lib/net/mqttsendpacket.cpp": [
+      "include/assert.h",
+      "include/circle/net/in.h",
+      "include/circle/net/mqttsendpacket.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/netqueue.cpp": [
+      "include/assert.h",
+      "include/circle/net/netqueue.h",
+      "include/circle/netdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/netsocket.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/netsocket.h",
+      "include/circle/net/netsubsystem.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/networklayer.cpp": [
+      "include/assert.h",
+      "include/circle/net/checksumcalculator.h",
+      "include/circle/net/in.h",
+      "include/circle/net/networklayer.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/ntpclient.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/in.h",
+      "include/circle/net/ntpclient.h",
+      "include/circle/net/socket.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/types.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/ntpdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/net/dnsclient.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/ntpclient.h",
+      "include/circle/net/ntpdaemon.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/timer.h"
+    ],
+    "lib/net/routecache.cpp": [
+      "include/assert.h",
+      "include/circle/net/ipaddress.h",
+      "include/circle/net/routecache.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/socket.cpp": [
+      "include/assert.h",
+      "include/circle/net/in.h",
+      "include/circle/net/netsubsystem.h",
+      "include/circle/net/socket.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/syslogdaemon.cpp": [
+      "include/assert.h",
+      "include/circle/net/in.h",
+      "include/circle/net/syslogdaemon.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/string.h",
+      "include/circle/synchronize.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/tcpconnection.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/tcpconnection.h",
+      "include/circle/util.h"
+    ],
+    "lib/net/tcprejector.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/net/in.h",
+      "include/circle/net/tcprejector.h",
+      "include/circle/util.h"
+    ]
+  }
+}

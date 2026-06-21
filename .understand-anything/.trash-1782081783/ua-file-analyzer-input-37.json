@@ -1,0 +1,49 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "test/sound-controller/config.h",
+      "language": "c",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/oscillator.cpp",
+      "language": "cpp",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/oscillator.h",
+      "language": "c",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/vumeter.cpp",
+      "language": "cpp",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "test/sound-controller/vumeter.h",
+      "language": "c",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "test/sound-controller/config.h": [],
+    "test/sound-controller/oscillator.cpp": [
+      "include/assert.h",
+      "test/sound-controller/config.h",
+      "test/sound-controller/oscillator.h"
+    ],
+    "test/sound-controller/oscillator.h": [],
+    "test/sound-controller/vumeter.cpp": [
+      "test/sound-controller/config.h",
+      "test/sound-controller/vumeter.h"
+    ],
+    "test/sound-controller/vumeter.h": []
+  }
+}

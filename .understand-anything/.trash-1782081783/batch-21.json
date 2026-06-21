@@ -1,0 +1,2270 @@
+{
+  "batch": 21,
+  "nodes": [
+    {
+      "id": "file:sample/03-screentext/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/03-screentext/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "03-screentext",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/03-screentext/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/03-screentext/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "03-screentext",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/03-screentext/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/03-screentext/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "03-screentext",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/05-usbsimple/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/05-usbsimple/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "05-usbsimple",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/05-usbsimple/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/05-usbsimple/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "05-usbsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/05-usbsimple/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/05-usbsimple/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "05-usbsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/05-usbsimple/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/05-usbsimple/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "05-usbsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/05-usbsimple/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/05-usbsimple/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "05-usbsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/05-usbsimple/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/05-usbsimple/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "05-usbsimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/05-usbsimple/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/05-usbsimple/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "05-usbsimple",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/05-usbsimple/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/05-usbsimple/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "05-usbsimple",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/06-ethernet/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/06-ethernet/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "06-ethernet",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/06-ethernet/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/06-ethernet/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "06-ethernet",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/06-ethernet/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/06-ethernet/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "06-ethernet",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/06-ethernet/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/06-ethernet/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "06-ethernet",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/06-ethernet/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/06-ethernet/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "06-ethernet",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/06-ethernet/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/06-ethernet/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "06-ethernet",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/06-ethernet/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/06-ethernet/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "06-ethernet",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/06-ethernet/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/06-ethernet/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "06-ethernet",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/07-usbstorage/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/07-usbstorage/kernel.cpp",
+      "summary": "Kernel implementation with 7 functions and hardware register access",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:sample/07-usbstorage/kernel.cpp:TCHSAddress",
+      "type": "class",
+      "name": "TCHSAddress",
+      "filePath": "sample/07-usbstorage/kernel.cpp",
+      "summary": "TCHSAddress class in kernel.cpp",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:sample/07-usbstorage/kernel.cpp:TPartitionEntry",
+      "type": "class",
+      "name": "TPartitionEntry",
+      "filePath": "sample/07-usbstorage/kernel.cpp",
+      "summary": "TPartitionEntry class in kernel.cpp",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:sample/07-usbstorage/kernel.cpp:TMasterBootRecord",
+      "type": "class",
+      "name": "TMasterBootRecord",
+      "filePath": "sample/07-usbstorage/kernel.cpp",
+      "summary": "TMasterBootRecord class in kernel.cpp",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/07-usbstorage/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/07-usbstorage/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/07-usbstorage/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/07-usbstorage/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/07-usbstorage/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/07-usbstorage/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/07-usbstorage/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/07-usbstorage/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/07-usbstorage/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/07-usbstorage/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "07-usbstorage",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/07-usbstorage/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/07-usbstorage/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "07-usbstorage",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/07-usbstorage/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/07-usbstorage/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "07-usbstorage",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/14-usbprinter/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/14-usbprinter/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "14-usbprinter",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/14-usbprinter/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/14-usbprinter/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "14-usbprinter",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/14-usbprinter/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/14-usbprinter/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "14-usbprinter",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/14-usbprinter/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/14-usbprinter/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "14-usbprinter",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/14-usbprinter/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/14-usbprinter/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "14-usbprinter",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/14-usbprinter/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/14-usbprinter/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "14-usbprinter",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/14-usbprinter/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/14-usbprinter/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "14-usbprinter",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/14-usbprinter/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/14-usbprinter/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "14-usbprinter",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "type": "file",
+      "name": "i2cechoclient.cpp",
+      "filePath": "sample/16-i2cping/master/i2cechoclient.cpp",
+      "summary": "I2Cechoclient implementation with 5 functions and hardware register access",
+      "tags": [
+        "16-i2cping",
+        "i2cechoclient",
+        "master"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/16-i2cping/master/i2cechoclient.cpp:CI2CEchoClient",
+      "type": "function",
+      "name": "CI2CEchoClient",
+      "filePath": "sample/16-i2cping/master/i2cechoclient.cpp",
+      "summary": "CI2CEchoClient(ucSlaveAddress, pMaster) in i2cechoclient.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoclient",
+        "master"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/16-i2cping/master/i2cechoclient.cpp:~CI2CEchoClient",
+      "type": "function",
+      "name": "~CI2CEchoClient",
+      "filePath": "sample/16-i2cping/master/i2cechoclient.cpp",
+      "summary": "~CI2CEchoClient() in i2cechoclient.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoclient",
+        "master"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/16-i2cping/master/i2cechoclient.cpp:DoPing",
+      "type": "function",
+      "name": "DoPing",
+      "filePath": "sample/16-i2cping/master/i2cechoclient.cpp",
+      "summary": "DoPing(ucID, usDataLength) in i2cechoclient.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoclient",
+        "master"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/16-i2cping/master/i2cechoclient.cpp:SendRequest",
+      "type": "function",
+      "name": "SendRequest",
+      "filePath": "sample/16-i2cping/master/i2cechoclient.cpp",
+      "summary": "SendRequest(ucID, usDataLength) in i2cechoclient.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoclient",
+        "master"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/16-i2cping/master/i2cechoclient.cpp:ReceiveResponse",
+      "type": "function",
+      "name": "ReceiveResponse",
+      "filePath": "sample/16-i2cping/master/i2cechoclient.cpp",
+      "summary": "ReceiveResponse() in i2cechoclient.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoclient",
+        "master"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/16-i2cping/master/i2cechoclient.h",
+      "type": "file",
+      "name": "i2cechoclient.h",
+      "filePath": "sample/16-i2cping/master/i2cechoclient.h",
+      "summary": "I2Cechoclient implementation with 0 functions and hardware register access",
+      "tags": [
+        "16-i2cping",
+        "i2cechoclient",
+        "master"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "type": "file",
+      "name": "i2cechoserver.cpp",
+      "filePath": "sample/16-i2cping/slave/i2cechoserver.cpp",
+      "summary": "I2Cechoserver implementation with 5 functions and hardware register access",
+      "tags": [
+        "16-i2cping",
+        "i2cechoserver",
+        "slave"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/16-i2cping/slave/i2cechoserver.cpp:CI2CEchoServer",
+      "type": "function",
+      "name": "CI2CEchoServer",
+      "filePath": "sample/16-i2cping/slave/i2cechoserver.cpp",
+      "summary": "CI2CEchoServer(ucSlaveAddress) in i2cechoserver.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoserver",
+        "slave"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/16-i2cping/slave/i2cechoserver.cpp:~CI2CEchoServer",
+      "type": "function",
+      "name": "~CI2CEchoServer",
+      "filePath": "sample/16-i2cping/slave/i2cechoserver.cpp",
+      "summary": "~CI2CEchoServer() in i2cechoserver.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoserver",
+        "slave"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/16-i2cping/slave/i2cechoserver.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/16-i2cping/slave/i2cechoserver.cpp",
+      "summary": "Run() in i2cechoserver.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoserver",
+        "slave"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/16-i2cping/slave/i2cechoserver.cpp:ReceiveRequest",
+      "type": "function",
+      "name": "ReceiveRequest",
+      "filePath": "sample/16-i2cping/slave/i2cechoserver.cpp",
+      "summary": "ReceiveRequest() in i2cechoserver.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoserver",
+        "slave"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/16-i2cping/slave/i2cechoserver.cpp:SendResponse",
+      "type": "function",
+      "name": "SendResponse",
+      "filePath": "sample/16-i2cping/slave/i2cechoserver.cpp",
+      "summary": "SendResponse() in i2cechoserver.cpp",
+      "tags": [
+        "16-i2cping",
+        "i2cechoserver",
+        "slave"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/16-i2cping/slave/i2cechoserver.h",
+      "type": "file",
+      "name": "i2cechoserver.h",
+      "filePath": "sample/16-i2cping/slave/i2cechoserver.h",
+      "summary": "I2Cechoserver implementation with 0 functions and hardware register access",
+      "tags": [
+        "16-i2cping",
+        "i2cechoserver",
+        "slave"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/23-spisimple/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/23-spisimple/kernel.cpp",
+      "summary": "Kernel implementation with 4 functions and hardware register access",
+      "tags": [
+        "23-spisimple",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/23-spisimple/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/23-spisimple/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "23-spisimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/23-spisimple/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/23-spisimple/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "23-spisimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/23-spisimple/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/23-spisimple/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "23-spisimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/23-spisimple/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/23-spisimple/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "23-spisimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/23-spisimple/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/23-spisimple/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "23-spisimple",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/23-spisimple/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/23-spisimple/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "23-spisimple",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/23-spisimple/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/23-spisimple/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "23-spisimple",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/25-spidma/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "sample/25-spidma/kernel.cpp",
+      "summary": "Kernel implementation with 5 functions and hardware register access",
+      "tags": [
+        "25-spidma",
+        "kernel"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/25-spidma/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "sample/25-spidma/kernel.cpp",
+      "summary": "CKernel() in kernel.cpp",
+      "tags": [
+        "25-spidma",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/25-spidma/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "sample/25-spidma/kernel.cpp",
+      "summary": "~CKernel() in kernel.cpp",
+      "tags": [
+        "25-spidma",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/25-spidma/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/25-spidma/kernel.cpp",
+      "summary": "Initialize() in kernel.cpp",
+      "tags": [
+        "25-spidma",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/25-spidma/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/25-spidma/kernel.cpp",
+      "summary": "Run() in kernel.cpp",
+      "tags": [
+        "25-spidma",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/25-spidma/kernel.cpp:SPICompletionRoutine",
+      "type": "function",
+      "name": "SPICompletionRoutine",
+      "filePath": "sample/25-spidma/kernel.cpp",
+      "summary": "SPICompletionRoutine(bStatus, pParam) in kernel.cpp",
+      "tags": [
+        "25-spidma",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/25-spidma/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "sample/25-spidma/kernel.h",
+      "summary": "Kernel implementation with 0 functions and hardware register access",
+      "tags": [
+        "25-spidma",
+        "kernel"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/25-spidma/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "sample/25-spidma/main.cpp",
+      "summary": "Main implementation with 1 functions and hardware register access",
+      "tags": [
+        "25-spidma",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/25-spidma/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "sample/25-spidma/main.cpp",
+      "summary": "main() in main.cpp",
+      "tags": [
+        "25-spidma",
+        "main"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/26-cpustress/temptask.cpp",
+      "type": "file",
+      "name": "temptask.cpp",
+      "filePath": "sample/26-cpustress/temptask.cpp",
+      "summary": "Temptask implementation with 3 functions and hardware register access",
+      "tags": [
+        "26-cpustress",
+        "temptask"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/26-cpustress/temptask.cpp:CTemperatureTask",
+      "type": "function",
+      "name": "CTemperatureTask",
+      "filePath": "sample/26-cpustress/temptask.cpp",
+      "summary": "CTemperatureTask(pScreen) in temptask.cpp",
+      "tags": [
+        "26-cpustress",
+        "temptask"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/26-cpustress/temptask.cpp:~CTemperatureTask",
+      "type": "function",
+      "name": "~CTemperatureTask",
+      "filePath": "sample/26-cpustress/temptask.cpp",
+      "summary": "~CTemperatureTask() in temptask.cpp",
+      "tags": [
+        "26-cpustress",
+        "temptask"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/26-cpustress/temptask.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "sample/26-cpustress/temptask.cpp",
+      "summary": "Run() in temptask.cpp",
+      "tags": [
+        "26-cpustress",
+        "temptask"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/26-cpustress/temptask.h",
+      "type": "file",
+      "name": "temptask.h",
+      "filePath": "sample/26-cpustress/temptask.h",
+      "summary": "Temptask implementation with 0 functions and hardware register access",
+      "tags": [
+        "26-cpustress",
+        "temptask"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/29-miniorgan/miniorgan.cpp",
+      "type": "file",
+      "name": "miniorgan.cpp",
+      "filePath": "sample/29-miniorgan/miniorgan.cpp",
+      "summary": "Miniorgan implementation with 7 functions and hardware register access",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:sample/29-miniorgan/miniorgan.cpp:CMiniOrgan",
+      "type": "function",
+      "name": "CMiniOrgan",
+      "filePath": "sample/29-miniorgan/miniorgan.cpp",
+      "summary": "CMiniOrgan(pInterrupt, pI2CMaster) in miniorgan.cpp",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/29-miniorgan/miniorgan.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "sample/29-miniorgan/miniorgan.cpp",
+      "summary": "Initialize() in miniorgan.cpp",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/29-miniorgan/miniorgan.cpp:Process",
+      "type": "function",
+      "name": "Process",
+      "filePath": "sample/29-miniorgan/miniorgan.cpp",
+      "summary": "Process(bPlugAndPlayUpdated) in miniorgan.cpp",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/29-miniorgan/miniorgan.cpp:GetChunk",
+      "type": "function",
+      "name": "GetChunk",
+      "filePath": "sample/29-miniorgan/miniorgan.cpp",
+      "summary": "GetChunk(pBuffer, nChunkSize) in miniorgan.cpp",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/29-miniorgan/miniorgan.cpp:MIDIPacketHandler",
+      "type": "function",
+      "name": "MIDIPacketHandler",
+      "filePath": "sample/29-miniorgan/miniorgan.cpp",
+      "summary": "MIDIPacketHandler(nCable, pPacket, nLength) in miniorgan.cpp",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:sample/29-miniorgan/miniorgan.cpp:KeyStatusHandlerRaw",
+      "type": "function",
+      "name": "KeyStatusHandlerRaw",
+      "filePath": "sample/29-miniorgan/miniorgan.cpp",
+      "summary": "KeyStatusHandlerRaw(ucModifiers, RawKeys) in miniorgan.cpp",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:sample/29-miniorgan/miniorgan.cpp:USBDeviceRemovedHandler",
+      "type": "function",
+      "name": "USBDeviceRemovedHandler",
+      "filePath": "sample/29-miniorgan/miniorgan.cpp",
+      "summary": "USBDeviceRemovedHandler(pDevice, pContext) in miniorgan.cpp",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sample/29-miniorgan/miniorgan.h",
+      "type": "file",
+      "name": "miniorgan.h",
+      "filePath": "sample/29-miniorgan/miniorgan.h",
+      "summary": "Miniorgan implementation with 0 functions and hardware register access",
+      "tags": [
+        "29-miniorgan",
+        "miniorgan"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:sample/03-screentext/main.cpp",
+      "target": "function:sample/03-screentext/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/03-screentext/main.cpp",
+      "target": "function:sample/03-screentext/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/03-screentext/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/03-screentext/main.cpp",
+      "target": "file:sample/03-screentext/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "function:sample/05-usbsimple/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "function:sample/05-usbsimple/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "function:sample/05-usbsimple/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "function:sample/05-usbsimple/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "function:sample/05-usbsimple/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "function:sample/05-usbsimple/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "function:sample/05-usbsimple/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "function:sample/05-usbsimple/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "file:include/circle/usb/usb.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/05-usbsimple/kernel.cpp",
+      "target": "file:sample/05-usbsimple/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/05-usbsimple/kernel.cpp:Initialize",
+      "target": "function:sample/05-usbsimple/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/05-usbsimple/main.cpp",
+      "target": "function:sample/05-usbsimple/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/main.cpp",
+      "target": "function:sample/05-usbsimple/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/05-usbsimple/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/05-usbsimple/main.cpp",
+      "target": "file:sample/05-usbsimple/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "function:sample/06-ethernet/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "function:sample/06-ethernet/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "function:sample/06-ethernet/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "function:sample/06-ethernet/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "function:sample/06-ethernet/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "function:sample/06-ethernet/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "function:sample/06-ethernet/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "function:sample/06-ethernet/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "file:include/circle/macaddress.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "file:include/circle/macros.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "file:include/circle/netdevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "file:include/circle/usb/usb.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/kernel.cpp",
+      "target": "file:sample/06-ethernet/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/06-ethernet/kernel.cpp:Initialize",
+      "target": "function:sample/06-ethernet/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/06-ethernet/main.cpp",
+      "target": "function:sample/06-ethernet/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/main.cpp",
+      "target": "function:sample/06-ethernet/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/06-ethernet/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/06-ethernet/main.cpp",
+      "target": "file:sample/06-ethernet/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "class:sample/07-usbstorage/kernel.cpp:TCHSAddress",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "class:sample/07-usbstorage/kernel.cpp:TCHSAddress",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "class:sample/07-usbstorage/kernel.cpp:TPartitionEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "class:sample/07-usbstorage/kernel.cpp:TPartitionEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "class:sample/07-usbstorage/kernel.cpp:TMasterBootRecord",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "class:sample/07-usbstorage/kernel.cpp:TMasterBootRecord",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "function:sample/07-usbstorage/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "function:sample/07-usbstorage/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "function:sample/07-usbstorage/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "function:sample/07-usbstorage/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "function:sample/07-usbstorage/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "function:sample/07-usbstorage/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "function:sample/07-usbstorage/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "function:sample/07-usbstorage/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "file:include/circle/macros.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "file:include/circle/usb/usbmassdevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/07-usbstorage/kernel.cpp",
+      "target": "file:sample/07-usbstorage/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/07-usbstorage/kernel.cpp:Initialize",
+      "target": "function:sample/07-usbstorage/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/07-usbstorage/main.cpp",
+      "target": "function:sample/07-usbstorage/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/main.cpp",
+      "target": "function:sample/07-usbstorage/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/07-usbstorage/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/07-usbstorage/main.cpp",
+      "target": "file:sample/07-usbstorage/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "function:sample/14-usbprinter/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "function:sample/14-usbprinter/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "function:sample/14-usbprinter/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "function:sample/14-usbprinter/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "function:sample/14-usbprinter/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "function:sample/14-usbprinter/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "function:sample/14-usbprinter/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "function:sample/14-usbprinter/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "file:include/circle/usb/usbprinter.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/14-usbprinter/kernel.cpp",
+      "target": "file:sample/14-usbprinter/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/14-usbprinter/kernel.cpp:Initialize",
+      "target": "function:sample/14-usbprinter/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/14-usbprinter/main.cpp",
+      "target": "function:sample/14-usbprinter/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/main.cpp",
+      "target": "function:sample/14-usbprinter/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/14-usbprinter/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/14-usbprinter/main.cpp",
+      "target": "file:sample/14-usbprinter/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:CI2CEchoClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:CI2CEchoClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:~CI2CEchoClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:~CI2CEchoClient",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:DoPing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:DoPing",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:SendRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:SendRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:ReceiveResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:ReceiveResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/16-i2cping/master/i2cechoclient.cpp",
+      "target": "file:sample/16-i2cping/master/i2cechoclient.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/16-i2cping/master/i2cechoclient.cpp:DoPing",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:SendRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/16-i2cping/master/i2cechoclient.cpp:DoPing",
+      "target": "function:sample/16-i2cping/master/i2cechoclient.cpp:ReceiveResponse",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:CI2CEchoServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:CI2CEchoServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:~CI2CEchoServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:~CI2CEchoServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:ReceiveRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:ReceiveRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:SendResponse",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:SendResponse",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/16-i2cping/slave/i2cechoserver.cpp",
+      "target": "file:sample/16-i2cping/slave/i2cechoserver.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/16-i2cping/slave/i2cechoserver.cpp:Run",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:ReceiveRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/16-i2cping/slave/i2cechoserver.cpp:Run",
+      "target": "function:sample/16-i2cping/slave/i2cechoserver.cpp:SendResponse",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "function:sample/23-spisimple/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "function:sample/23-spisimple/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "function:sample/23-spisimple/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "function:sample/23-spisimple/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "function:sample/23-spisimple/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "function:sample/23-spisimple/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "function:sample/23-spisimple/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "function:sample/23-spisimple/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/23-spisimple/kernel.cpp",
+      "target": "file:sample/23-spisimple/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/23-spisimple/kernel.cpp:Initialize",
+      "target": "function:sample/23-spisimple/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/23-spisimple/main.cpp",
+      "target": "function:sample/23-spisimple/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/main.cpp",
+      "target": "function:sample/23-spisimple/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/23-spisimple/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/23-spisimple/main.cpp",
+      "target": "file:sample/23-spisimple/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:SPICompletionRoutine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "function:sample/25-spidma/kernel.cpp:SPICompletionRoutine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/25-spidma/kernel.cpp",
+      "target": "file:sample/25-spidma/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/25-spidma/kernel.cpp:Initialize",
+      "target": "function:sample/25-spidma/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:sample/25-spidma/main.cpp",
+      "target": "function:sample/25-spidma/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/main.cpp",
+      "target": "function:sample/25-spidma/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/25-spidma/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/25-spidma/main.cpp",
+      "target": "file:sample/25-spidma/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "function:sample/26-cpustress/temptask.cpp:CTemperatureTask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "function:sample/26-cpustress/temptask.cpp:CTemperatureTask",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "function:sample/26-cpustress/temptask.cpp:~CTemperatureTask",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "function:sample/26-cpustress/temptask.cpp:~CTemperatureTask",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "function:sample/26-cpustress/temptask.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "function:sample/26-cpustress/temptask.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "file:include/circle/cputhrottle.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "file:include/circle/sched/scheduler.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/26-cpustress/temptask.cpp",
+      "target": "file:sample/26-cpustress/temptask.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:CMiniOrgan",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:CMiniOrgan",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:Process",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:Process",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:GetChunk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:GetChunk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:MIDIPacketHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:MIDIPacketHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:KeyStatusHandlerRaw",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:KeyStatusHandlerRaw",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:USBDeviceRemovedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:USBDeviceRemovedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "file:include/circle/devicenameservice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:sample/29-miniorgan/miniorgan.cpp",
+      "target": "file:sample/29-miniorgan/miniorgan.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:sample/29-miniorgan/miniorgan.cpp:Initialize",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:sample/29-miniorgan/miniorgan.cpp:Process",
+      "target": "function:sample/29-miniorgan/miniorgan.cpp:MIDIPacketHandler",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

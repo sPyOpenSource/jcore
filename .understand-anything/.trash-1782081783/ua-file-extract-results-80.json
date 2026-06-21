@@ -1,0 +1,1987 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "test/xpt2046-touchscreen/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 9,
+      "nonEmptyLines": 7,
+      "metrics": {}
+    },
+    {
+      "path": "tools/bootloader/BCM2711.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/bootloader/BCM2712.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/bootloader/BCM2835.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/bootloader/BCM2836.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/bootloader/bootloader07.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 342,
+      "nonEmptyLines": 301,
+      "functions": [
+        {
+          "name": "nibble_from_hex",
+          "startLine": 30,
+          "endLine": 37,
+          "params": [
+            "ascii"
+          ]
+        },
+        {
+          "name": "uart_send_hex_nibble",
+          "startLine": 39,
+          "endLine": 43,
+          "params": [
+            "rc"
+          ]
+        },
+        {
+          "name": "uart_send_hex_byte",
+          "startLine": 45,
+          "endLine": 49,
+          "params": [
+            "val"
+          ]
+        },
+        {
+          "name": "uart_send_str",
+          "startLine": 51,
+          "endLine": 57,
+          "params": [
+            "psz"
+          ]
+        },
+        {
+          "name": "delay_micros",
+          "startLine": 59,
+          "endLine": 65,
+          "params": [
+            "period"
+          ]
+        },
+        {
+          "name": "notmain",
+          "startLine": 92,
+          "endLine": 327,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "nibble_from_hex",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "uart_send_hex_nibble",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "uart_send_hex_byte",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "uart_send_str",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "delay_micros",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "notmain",
+          "line": 92,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "uart_send_hex_nibble",
+          "callee": "uart_send",
+          "lineNumber": 42
+        },
+        {
+          "caller": "uart_send_hex_byte",
+          "callee": "uart_send_hex_nibble",
+          "lineNumber": 47
+        },
+        {
+          "caller": "uart_send_hex_byte",
+          "callee": "uart_send_hex_nibble",
+          "lineNumber": 48
+        },
+        {
+          "caller": "uart_send_str",
+          "callee": "uart_send",
+          "lineNumber": 55
+        },
+        {
+          "caller": "delay_micros",
+          "callee": "timer_tick",
+          "lineNumber": 61
+        },
+        {
+          "caller": "delay_micros",
+          "callee": "timer_tick",
+          "lineNumber": 62
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_init",
+          "lineNumber": 104
+        },
+        {
+          "caller": "notmain",
+          "callee": "timer_init",
+          "lineNumber": 105
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send_str",
+          "lineNumber": 117
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_recv",
+          "lineNumber": 121
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send_str",
+          "lineNumber": 161
+        },
+        {
+          "caller": "notmain",
+          "callee": "nibble_from_hex",
+          "lineNumber": 168
+        },
+        {
+          "caller": "notmain",
+          "callee": "nibble_from_hex",
+          "lineNumber": 169
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_recv",
+          "lineNumber": 169
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send_str",
+          "lineNumber": 174
+        },
+        {
+          "caller": "notmain",
+          "callee": "nibble_from_hex",
+          "lineNumber": 193
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_recv",
+          "lineNumber": 193
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send",
+          "lineNumber": 204
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send",
+          "lineNumber": 205
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send",
+          "lineNumber": 206
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send",
+          "lineNumber": 207
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send",
+          "lineNumber": 208
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send",
+          "lineNumber": 209
+        },
+        {
+          "caller": "notmain",
+          "callee": "delay_micros",
+          "lineNumber": 213
+        },
+        {
+          "caller": "notmain",
+          "callee": "BRANCHTO",
+          "lineNumber": 217
+        },
+        {
+          "caller": "notmain",
+          "callee": "BRANCHTO",
+          "lineNumber": 219
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send_str",
+          "lineNumber": 236
+        },
+        {
+          "caller": "notmain",
+          "callee": "PUT8",
+          "lineNumber": 275
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send_str",
+          "lineNumber": 304
+        },
+        {
+          "caller": "notmain",
+          "callee": "uart_send_str",
+          "lineNumber": 310
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/bootloader/loader",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 9,
+      "metrics": {}
+    },
+    {
+      "path": "tools/bootloader/loader64",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 9,
+      "metrics": {}
+    },
+    {
+      "path": "tools/bootloader/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 81,
+      "nonEmptyLines": 60,
+      "steps": [
+        {
+          "name": "all",
+          "startLine": 15,
+          "endLine": 16
+        },
+        {
+          "name": "clean",
+          "startLine": 17,
+          "endLine": 22
+        },
+        {
+          "name": "vectors.o",
+          "startLine": 23,
+          "endLine": 25
+        },
+        {
+          "name": "vectors64.o",
+          "startLine": 26,
+          "endLine": 28
+        },
+        {
+          "name": "bootloader07.o",
+          "startLine": 29,
+          "endLine": 31
+        },
+        {
+          "name": "bootloader07_64.o",
+          "startLine": 32,
+          "endLine": 34
+        },
+        {
+          "name": "periph.o",
+          "startLine": 35,
+          "endLine": 37
+        },
+        {
+          "name": "periph7.o",
+          "startLine": 38,
+          "endLine": 40
+        },
+        {
+          "name": "periph7_rpi4.o",
+          "startLine": 41,
+          "endLine": 43
+        },
+        {
+          "name": "periph64.o",
+          "startLine": 44,
+          "endLine": 46
+        },
+        {
+          "name": "periph64_rpi4.o",
+          "startLine": 47,
+          "endLine": 49
+        },
+        {
+          "name": "periph64_2712.o",
+          "startLine": 50,
+          "endLine": 52
+        },
+        {
+          "name": "kernel.img",
+          "startLine": 53,
+          "endLine": 57
+        },
+        {
+          "name": "kernel7.img",
+          "startLine": 58,
+          "endLine": 62
+        },
+        {
+          "name": "kernel7l.img",
+          "startLine": 63,
+          "endLine": 67
+        },
+        {
+          "name": "kernel8.img",
+          "startLine": 68,
+          "endLine": 72
+        },
+        {
+          "name": "kernel8-rpi4.img",
+          "startLine": 73,
+          "endLine": 77
+        },
+        {
+          "name": "kernel_2712.img",
+          "startLine": 78,
+          "endLine": 82
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 18
+      }
+    },
+    {
+      "path": "tools/bootloader/periph.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 339,
+      "nonEmptyLines": 294,
+      "functions": [
+        {
+          "name": "uart_lcr",
+          "startLine": 87,
+          "endLine": 90,
+          "params": []
+        },
+        {
+          "name": "uart_recv",
+          "startLine": 92,
+          "endLine": 99,
+          "params": []
+        },
+        {
+          "name": "uart_check",
+          "startLine": 101,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "uart_send",
+          "startLine": 107,
+          "endLine": 114,
+          "params": [
+            "c"
+          ]
+        },
+        {
+          "name": "uart_flush",
+          "startLine": 116,
+          "endLine": 122,
+          "params": []
+        },
+        {
+          "name": "hexstrings",
+          "startLine": 124,
+          "endLine": 140,
+          "params": [
+            "d"
+          ]
+        },
+        {
+          "name": "hexstring",
+          "startLine": 142,
+          "endLine": 147,
+          "params": [
+            "d"
+          ]
+        },
+        {
+          "name": "uart_init",
+          "startLine": 149,
+          "endLine": 192,
+          "params": []
+        },
+        {
+          "name": "timer_init",
+          "startLine": 194,
+          "endLine": 199,
+          "params": []
+        },
+        {
+          "name": "timer_tick",
+          "startLine": 201,
+          "endLine": 215,
+          "params": []
+        },
+        {
+          "name": "mbox_writeread",
+          "startLine": 217,
+          "endLine": 245,
+          "params": [
+            "nData"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "uart_lcr",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "uart_recv",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "uart_check",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "uart_send",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "uart_flush",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "hexstrings",
+          "line": 124,
+          "isDefault": false
+        },
+        {
+          "name": "hexstring",
+          "line": 142,
+          "isDefault": false
+        },
+        {
+          "name": "uart_init",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "timer_init",
+          "line": 194,
+          "isDefault": false
+        },
+        {
+          "name": "timer_tick",
+          "line": 201,
+          "isDefault": false
+        },
+        {
+          "name": "mbox_writeread",
+          "line": 217,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "uart_lcr",
+          "callee": "GET32",
+          "lineNumber": 89
+        },
+        {
+          "caller": "uart_recv",
+          "callee": "GET32",
+          "lineNumber": 96
+        },
+        {
+          "caller": "uart_recv",
+          "callee": "GET32",
+          "lineNumber": 98
+        },
+        {
+          "caller": "uart_check",
+          "callee": "GET32",
+          "lineNumber": 103
+        },
+        {
+          "caller": "uart_send",
+          "callee": "GET32",
+          "lineNumber": 111
+        },
+        {
+          "caller": "uart_send",
+          "callee": "PUT32",
+          "lineNumber": 113
+        },
+        {
+          "caller": "uart_flush",
+          "callee": "GET32",
+          "lineNumber": 120
+        },
+        {
+          "caller": "hexstrings",
+          "callee": "uart_send",
+          "lineNumber": 136
+        },
+        {
+          "caller": "hexstrings",
+          "callee": "uart_send",
+          "lineNumber": 139
+        },
+        {
+          "caller": "hexstring",
+          "callee": "hexstrings",
+          "lineNumber": 144
+        },
+        {
+          "caller": "hexstring",
+          "callee": "uart_send",
+          "lineNumber": 145
+        },
+        {
+          "caller": "hexstring",
+          "callee": "uart_send",
+          "lineNumber": 146
+        },
+        {
+          "caller": "uart_init",
+          "callee": "GET32",
+          "lineNumber": 154
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 159
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 161
+        },
+        {
+          "caller": "uart_init",
+          "callee": "dummy",
+          "lineNumber": 162
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 163
+        },
+        {
+          "caller": "uart_init",
+          "callee": "dummy",
+          "lineNumber": 164
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 165
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 166
+        },
+        {
+          "caller": "uart_init",
+          "callee": "dummy",
+          "lineNumber": 167
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 168
+        },
+        {
+          "caller": "uart_init",
+          "callee": "dummy",
+          "lineNumber": 169
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 170
+        },
+        {
+          "caller": "uart_init",
+          "callee": "GET32",
+          "lineNumber": 172
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 176
+        },
+        {
+          "caller": "uart_init",
+          "callee": "get_clock",
+          "lineNumber": 180
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 186
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 187
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 188
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 189
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 190
+        },
+        {
+          "caller": "uart_init",
+          "callee": "PUT32",
+          "lineNumber": 191
+        },
+        {
+          "caller": "timer_init",
+          "callee": "PUT32",
+          "lineNumber": 197
+        },
+        {
+          "caller": "timer_tick",
+          "callee": "GET32",
+          "lineNumber": 204
+        },
+        {
+          "caller": "mbox_writeread",
+          "callee": "GET32",
+          "lineNumber": 225
+        },
+        {
+          "caller": "mbox_writeread",
+          "callee": "PUT32",
+          "lineNumber": 230
+        },
+        {
+          "caller": "mbox_writeread",
+          "callee": "GET32",
+          "lineNumber": 235
+        },
+        {
+          "caller": "mbox_writeread",
+          "callee": "GET32",
+          "lineNumber": 240
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 11,
+        "functionCount": 11,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/bootloader/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 39,
+      "metrics": {}
+    },
+    {
+      "path": "tools/bootloader/vectors.s",
+      "language": "s",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 49,
+      "metrics": {}
+    },
+    {
+      "path": "tools/bootloader/vectors64.s",
+      "language": "s",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 46,
+      "metrics": {}
+    },
+    {
+      "path": "tools/cflashy.win",
+      "language": "win",
+      "fileCategory": "code",
+      "totalLines": 1099,
+      "nonEmptyLines": 1094,
+      "metrics": {}
+    },
+    {
+      "path": "tools/converttool.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 72,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 9,
+          "endLine": 92,
+          "params": [
+            "nArgC",
+            "ppArgV"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "strcmp",
+          "lineNumber": 20
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "fopen",
+          "lineNumber": 38
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 41
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 48
+        },
+        {
+          "caller": "main",
+          "callee": "fgetc",
+          "lineNumber": 50
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 55
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 59
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 63
+        },
+        {
+          "caller": "main",
+          "callee": "putchar",
+          "lineNumber": 70
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 75
+        },
+        {
+          "caller": "main",
+          "callee": "fgetc",
+          "lineNumber": 81
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 83
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 86
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/converttool.win",
+      "language": "win",
+      "fileCategory": "code",
+      "totalLines": 977,
+      "nonEmptyLines": 975,
+      "metrics": {}
+    },
+    {
+      "path": "tools/flasher.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 73,
+      "nonEmptyLines": 67,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/flashy/flashy.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 723,
+      "nonEmptyLines": 614,
+      "functions": [
+        {
+          "name": "openSerialPortAsync",
+          "startLine": 41,
+          "endLine": 117,
+          "params": [
+            "baudRate"
+          ]
+        },
+        {
+          "name": "discardOldLines",
+          "startLine": 119,
+          "endLine": 126,
+          "params": [
+            "str"
+          ]
+        },
+        {
+          "name": "drainSerialPortAsync",
+          "startLine": 128,
+          "endLine": 139,
+          "params": []
+        },
+        {
+          "name": "closeSerialPortAsync",
+          "startLine": 142,
+          "endLine": 165,
+          "params": []
+        },
+        {
+          "name": "writeSerialPortAsync",
+          "startLine": 168,
+          "endLine": 180,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "bootloaderErrorWatcher",
+          "startLine": 182,
+          "endLine": 192,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "watchForBootloaderErrors",
+          "startLine": 194,
+          "endLine": 210,
+          "params": [
+            "enable"
+          ]
+        },
+        {
+          "name": "binary_encoder",
+          "startLine": 216,
+          "endLine": 306,
+          "params": []
+        },
+        {
+          "name": "sendRebootMagic",
+          "startLine": 309,
+          "endLine": 326,
+          "params": []
+        },
+        {
+          "name": "flashDevice",
+          "startLine": 329,
+          "endLine": 465,
+          "params": []
+        },
+        {
+          "name": "sendGoCommand",
+          "startLine": 469,
+          "endLine": 519,
+          "params": []
+        },
+        {
+          "name": "startMonitor",
+          "startLine": 522,
+          "endLine": 543,
+          "params": []
+        },
+        {
+          "name": "delay",
+          "startLine": 546,
+          "endLine": 551,
+          "params": [
+            "period"
+          ]
+        },
+        {
+          "name": "showHelp",
+          "startLine": 554,
+          "endLine": 574,
+          "params": []
+        },
+        {
+          "name": "fail",
+          "startLine": 577,
+          "endLine": 582,
+          "params": [
+            "msg"
+          ]
+        },
+        {
+          "name": "parseCommandLine",
+          "startLine": 585,
+          "endLine": 692,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "closeSerialPortAsync",
+          "lineNumber": 51
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "require",
+          "lineNumber": 59
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "console.log",
+          "lineNumber": 63
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "console.log",
+          "lineNumber": 64
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "console.log",
+          "lineNumber": 65
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "process.exit",
+          "lineNumber": 66
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "os.platform",
+          "lineNumber": 71
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "serialPortName.startsWith",
+          "lineNumber": 71
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "process.argv.slice",
+          "lineNumber": 82
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "args.push",
+          "lineNumber": 83
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "child_process.spawnSync",
+          "lineNumber": 86
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "process.exit",
+          "lineNumber": 96
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "serialPortName.substr",
+          "lineNumber": 100
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "stdout.write",
+          "lineNumber": 101
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "stdout.write",
+          "lineNumber": 109
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "fail",
+          "lineNumber": 113
+        },
+        {
+          "caller": "openSerialPortAsync",
+          "callee": "stdout.write",
+          "lineNumber": 116
+        },
+        {
+          "caller": "discardOldLines",
+          "callee": "str.lastIndexOf",
+          "lineNumber": 121
+        },
+        {
+          "caller": "discardOldLines",
+          "callee": "str.substr",
+          "lineNumber": 123
+        },
+        {
+          "caller": "drainSerialPortAsync",
+          "callee": "port.drain",
+          "lineNumber": 132
+        },
+        {
+          "caller": "drainSerialPortAsync",
+          "callee": "reject",
+          "lineNumber": 134
+        },
+        {
+          "caller": "drainSerialPortAsync",
+          "callee": "resolve",
+          "lineNumber": 136
+        },
+        {
+          "caller": "closeSerialPortAsync",
+          "callee": "stdout.write",
+          "lineNumber": 146
+        },
+        {
+          "caller": "closeSerialPortAsync",
+          "callee": "drainSerialPortAsync",
+          "lineNumber": 149
+        },
+        {
+          "caller": "closeSerialPortAsync",
+          "callee": "port.close",
+          "lineNumber": 153
+        },
+        {
+          "caller": "closeSerialPortAsync",
+          "callee": "reject",
+          "lineNumber": 155
+        },
+        {
+          "caller": "closeSerialPortAsync",
+          "callee": "resolve",
+          "lineNumber": 158
+        },
+        {
+          "caller": "closeSerialPortAsync",
+          "callee": "stdout.write",
+          "lineNumber": 163
+        },
+        {
+          "caller": "writeSerialPortAsync",
+          "callee": "port.write",
+          "lineNumber": 172
+        },
+        {
+          "caller": "writeSerialPortAsync",
+          "callee": "reject",
+          "lineNumber": 175
+        },
+        {
+          "caller": "writeSerialPortAsync",
+          "callee": "resolve",
+          "lineNumber": 177
+        },
+        {
+          "caller": "bootloaderErrorWatcher",
+          "callee": "data.toString",
+          "lineNumber": 184
+        },
+        {
+          "caller": "bootloaderErrorWatcher",
+          "callee": "(/#ERR:(.*)\\r/gm).exec",
+          "lineNumber": 186
+        },
+        {
+          "caller": "bootloaderErrorWatcher",
+          "callee": "console.error",
+          "lineNumber": 189
+        },
+        {
+          "caller": "bootloaderErrorWatcher",
+          "callee": "process.exit",
+          "lineNumber": 190
+        },
+        {
+          "caller": "watchForBootloaderErrors",
+          "callee": "port.on",
+          "lineNumber": 204
+        },
+        {
+          "caller": "watchForBootloaderErrors",
+          "callee": "port.removeListener",
+          "lineNumber": 208
+        },
+        {
+          "caller": "binary_encoder",
+          "callee": "Buffer.alloc",
+          "lineNumber": 219
+        },
+        {
+          "caller": "flush",
+          "callee": "writeSerialPortAsync",
+          "lineNumber": 229
+        },
+        {
+          "caller": "flush",
+          "callee": "buffer.subarray",
+          "lineNumber": 229
+        },
+        {
+          "caller": "write",
+          "callee": "flush",
+          "lineNumber": 245
+        },
+        {
+          "caller": "write",
+          "callee": "fail",
+          "lineNumber": 259
+        },
+        {
+          "caller": "write",
+          "callee": "fail",
+          "lineNumber": 274
+        },
+        {
+          "caller": "sendRebootMagic",
+          "callee": "openSerialPortAsync",
+          "lineNumber": 312
+        },
+        {
+          "caller": "sendRebootMagic",
+          "callee": "stdout.write",
+          "lineNumber": 315
+        },
+        {
+          "caller": "sendRebootMagic",
+          "callee": "writeSerialPortAsync",
+          "lineNumber": 316
+        },
+        {
+          "caller": "sendRebootMagic",
+          "callee": "stdout.write",
+          "lineNumber": 317
+        },
+        {
+          "caller": "sendRebootMagic",
+          "callee": "stdout.write",
+          "lineNumber": 322
+        },
+        {
+          "caller": "sendRebootMagic",
+          "callee": "delay",
+          "lineNumber": 323
+        },
+        {
+          "caller": "sendRebootMagic",
+          "callee": "stdout.write",
+          "lineNumber": 324
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "openSerialPortAsync",
+          "lineNumber": 332
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "Buffer.alloc",
+          "lineNumber": 341
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "'R'.charCodeAt",
+          "lineNumber": 342
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 349
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "port.on",
+          "lineNumber": 354
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "data.toString",
+          "lineNumber": 356
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "buf.includes",
+          "lineNumber": 357
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 359
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "buf.includes",
+          "lineNumber": 366
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 368
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "resolveDeviceReady",
+          "lineNumber": 374
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "discardOldLines",
+          "lineNumber": 376
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "writeSerialPortAsync",
+          "lineNumber": 381
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 384
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 385
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "port.removeAllListeners",
+          "lineNumber": 391
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "watchForBootloaderErrors",
+          "lineNumber": 394
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "writeSerialPortAsync",
+          "lineNumber": 399
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "fail",
+          "lineNumber": 405
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "binary_encoder",
+          "lineNumber": 409
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "new Date().getTime",
+          "lineNumber": 412
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 413
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "fs.openSync",
+          "lineNumber": 414
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "Buffer.alloc",
+          "lineNumber": 415
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "fs.readSync",
+          "lineNumber": 419
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "binenc.write",
+          "lineNumber": 428
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "writeSerialPortAsync",
+          "lineNumber": 434
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "buf.subarray",
+          "lineNumber": 434
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 436
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "fs.closeSync",
+          "lineNumber": 438
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "binenc.flush",
+          "lineNumber": 443
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "drainSerialPortAsync",
+          "lineNumber": 452
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "delay",
+          "lineNumber": 455
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "port.removeAllListeners",
+          "lineNumber": 456
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 460
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "new Date().getTime",
+          "lineNumber": 463
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "stdout.write",
+          "lineNumber": 464
+        },
+        {
+          "caller": "flashDevice",
+          "callee": "(elapsedTime / 1000).toFixed",
+          "lineNumber": 464
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "openSerialPortAsync",
+          "lineNumber": 472
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "stdout.write",
+          "lineNumber": 475
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "writeSerialPortAsync",
+          "lineNumber": 480
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "(goDelay*1000).toString(16).toUpperCase",
+          "lineNumber": 480
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "(goDelay*1000).toString",
+          "lineNumber": 480
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "port.on",
+          "lineNumber": 489
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "data.toString",
+          "lineNumber": 491
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "buf.includes",
+          "lineNumber": 492
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "stdout.write",
+          "lineNumber": 494
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "resolveAck",
+          "lineNumber": 495
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "discardOldLines",
+          "lineNumber": 497
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "watchForBootloaderErrors",
+          "lineNumber": 503
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "writeSerialPortAsync",
+          "lineNumber": 506
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "port.removeAllListeners",
+          "lineNumber": 512
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "writeSerialPortAsync",
+          "lineNumber": 516
+        },
+        {
+          "caller": "sendGoCommand",
+          "callee": "stdout.write",
+          "lineNumber": 517
+        },
+        {
+          "caller": "startMonitor",
+          "callee": "openSerialPortAsync",
+          "lineNumber": 525
+        },
+        {
+          "caller": "startMonitor",
+          "callee": "watchForBootloaderErrors",
+          "lineNumber": 528
+        },
+        {
+          "caller": "startMonitor",
+          "callee": "stdout.write",
+          "lineNumber": 530
+        },
+        {
+          "caller": "startMonitor",
+          "callee": "port.removeAllListeners",
+          "lineNumber": 534
+        },
+        {
+          "caller": "startMonitor",
+          "callee": "port.on",
+          "lineNumber": 535
+        },
+        {
+          "caller": "startMonitor",
+          "callee": "data.toString",
+          "lineNumber": 537
+        },
+        {
+          "caller": "startMonitor",
+          "callee": "stdout.write",
+          "lineNumber": 538
+        },
+        {
+          "caller": "delay",
+          "callee": "setTimeout",
+          "lineNumber": 549
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 556
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 557
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 558
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 559
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 560
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 561
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 562
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 563
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 564
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 565
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 566
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 567
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 568
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 569
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 570
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 571
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 572
+        },
+        {
+          "caller": "showHelp",
+          "callee": "console.log",
+          "lineNumber": 573
+        },
+        {
+          "caller": "fail",
+          "callee": "console.error",
+          "lineNumber": 579
+        },
+        {
+          "caller": "fail",
+          "callee": "console.error",
+          "lineNumber": 580
+        },
+        {
+          "caller": "fail",
+          "callee": "process.exit",
+          "lineNumber": 581
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "arg.startsWith",
+          "lineNumber": 590
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "arg.substr(2).split",
+          "lineNumber": 592
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "arg.substr",
+          "lineNumber": 592
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "sw.toLowerCase",
+          "lineNumber": 595
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "Number",
+          "lineNumber": 598
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "showHelp",
+          "lineNumber": 606
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "process.exit",
+          "lineNumber": 607
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "Number",
+          "lineNumber": 618
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "Number",
+          "lineNumber": 626
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "Number",
+          "lineNumber": 634
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "fail",
+          "lineNumber": 654
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "arg.toLowerCase().endsWith",
+          "lineNumber": 671
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "arg.toLowerCase",
+          "lineNumber": 671
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "console.error",
+          "lineNumber": 673
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "fail",
+          "lineNumber": 678
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "fail",
+          "lineNumber": 685
+        },
+        {
+          "caller": "parseCommandLine",
+          "callee": "fail",
+          "lineNumber": 690
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 16,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/flashy/package.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 15,
+      "nonEmptyLines": 15,
+      "sections": [
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "description",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "main",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "dependencies",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "devDependencies",
+          "level": 1,
+          "line": 9
+        },
+        {
+          "heading": "scripts",
+          "level": 1,
+          "line": 10
+        },
+        {
+          "heading": "author",
+          "level": 1,
+          "line": 13
+        },
+        {
+          "heading": "license",
+          "level": 1,
+          "line": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    },
+    {
+      "path": "tools/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 45,
+      "nonEmptyLines": 32,
+      "steps": [
+        {
+          "name": "all",
+          "startLine": 7,
+          "endLine": 8
+        },
+        {
+          "name": "cflashy",
+          "startLine": 9,
+          "endLine": 12
+        },
+        {
+          "name": "converttool",
+          "startLine": 13,
+          "endLine": 16
+        },
+        {
+          "name": "clean",
+          "startLine": 17,
+          "endLine": 20
+        },
+        {
+          "name": "cflashy.win",
+          "startLine": 21,
+          "endLine": 24
+        },
+        {
+          "name": "converttool.win",
+          "startLine": 25,
+          "endLine": 28
+        },
+        {
+          "name": "all",
+          "startLine": 31,
+          "endLine": 32
+        },
+        {
+          "name": "cflashy.exe",
+          "startLine": 33,
+          "endLine": 36
+        },
+        {
+          "name": "converttool.exe",
+          "startLine": 37,
+          "endLine": 40
+        },
+        {
+          "name": "clean",
+          "startLine": 41,
+          "endLine": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 10
+      }
+    },
+    {
+      "path": "tools/reboottool.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 37,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/template/circle.geany",
+      "language": "geany",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 45,
+      "metrics": {}
+    },
+    {
+      "path": "tools/template/kernel_2712.bin",
+      "language": "bin",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "tools/template/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 17,
+      "metrics": {}
+    },
+    {
+      "path": "tools/template/rpi4.cfg.diff",
+      "language": "diff",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 14,
+      "metrics": {}
+    }
+  ]
+}

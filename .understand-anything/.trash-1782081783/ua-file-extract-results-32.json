@@ -1,0 +1,2698 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 20,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/display/sample/hd44780/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 169,
+      "nonEmptyLines": 137,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 43,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 53,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 57,
+          "endLine": 103,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 105,
+          "endLine": 138,
+          "params": []
+        },
+        {
+          "name": "TimeDemo",
+          "startLine": 140,
+          "endLine": 164,
+          "params": []
+        },
+        {
+          "name": "LCDWrite",
+          "startLine": 166,
+          "endLine": 169,
+          "params": [
+            "pString"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 105,
+          "isDefault": false
+        },
+        {
+          "name": "TimeDemo",
+          "line": 140,
+          "isDefault": false
+        },
+        {
+          "name": "LCDWrite",
+          "line": 166,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 44
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 44
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 46
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Run",
+          "callee": "TimeDemo",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 131
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 134
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 142
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 143
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 145
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 148
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 153
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "Set",
+          "lineNumber": 156
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "Format",
+          "lineNumber": 159
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetHours",
+          "lineNumber": 160
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetMinutes",
+          "lineNumber": 160
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetSeconds",
+          "lineNumber": 160
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 162
+        },
+        {
+          "caller": "LCDWrite",
+          "callee": "Write",
+          "lineNumber": 168
+        },
+        {
+          "caller": "LCDWrite",
+          "callee": "strlen",
+          "lineNumber": 168
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/hd44780/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 74,
+      "nonEmptyLines": 64,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/hd44780/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/hd44780i2c/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 170,
+      "nonEmptyLines": 137,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 38,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 49,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 53,
+          "endLine": 104,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 106,
+          "endLine": 139,
+          "params": []
+        },
+        {
+          "name": "TimeDemo",
+          "startLine": 141,
+          "endLine": 165,
+          "params": []
+        },
+        {
+          "name": "LCDWrite",
+          "startLine": 167,
+          "endLine": 170,
+          "params": [
+            "pString"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "TimeDemo",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "LCDWrite",
+          "line": 167,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Run",
+          "callee": "TimeDemo",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 129
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 135
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 143
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 144
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 146
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 149
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 154
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "Set",
+          "lineNumber": 157
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "Format",
+          "lineNumber": 160
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetHours",
+          "lineNumber": 161
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetMinutes",
+          "lineNumber": 161
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetSeconds",
+          "lineNumber": 161
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 163
+        },
+        {
+          "caller": "LCDWrite",
+          "callee": "Write",
+          "lineNumber": 169
+        },
+        {
+          "caller": "LCDWrite",
+          "callee": "strlen",
+          "lineNumber": 169
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/hd44780i2c/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 66,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/hd44780i2c/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/ssd1306/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 185,
+      "nonEmptyLines": 148,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 42,
+          "endLine": 51,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 53,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 57,
+          "endLine": 108,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 110,
+          "endLine": 154,
+          "params": []
+        },
+        {
+          "name": "TimeDemo",
+          "startLine": 156,
+          "endLine": 180,
+          "params": []
+        },
+        {
+          "name": "LCDWrite",
+          "startLine": 182,
+          "endLine": 185,
+          "params": [
+            "pString"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "TimeDemo",
+          "line": 156,
+          "isDefault": false
+        },
+        {
+          "name": "LCDWrite",
+          "line": 182,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 43
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 43
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Run",
+          "callee": "GetTime",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Run",
+          "callee": "GetTime",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 129
+        },
+        {
+          "caller": "Run",
+          "callee": "TimeDemo",
+          "lineNumber": 131
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 147
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 150
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 158
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 159
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 161
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 164
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 169
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "Set",
+          "lineNumber": 172
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "Format",
+          "lineNumber": 175
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetHours",
+          "lineNumber": 176
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetMinutes",
+          "lineNumber": 176
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetSeconds",
+          "lineNumber": 176
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 178
+        },
+        {
+          "caller": "LCDWrite",
+          "callee": "Write",
+          "lineNumber": 184
+        },
+        {
+          "caller": "LCDWrite",
+          "callee": "strlen",
+          "lineNumber": 184
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/ssd1306/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 66,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/ssd1306/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/st7789char/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 207,
+      "nonEmptyLines": 169,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 51,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 64,
+          "endLine": 66,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 68,
+          "endLine": 129,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 131,
+          "endLine": 175,
+          "params": []
+        },
+        {
+          "name": "TimeDemo",
+          "startLine": 177,
+          "endLine": 202,
+          "params": []
+        },
+        {
+          "name": "LCDWrite",
+          "startLine": 204,
+          "endLine": 207,
+          "params": [
+            "pString"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "TimeDemo",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "LCDWrite",
+          "line": 204,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 52
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 52
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 54
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetRotation",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 136
+        },
+        {
+          "caller": "Run",
+          "callee": "GetTime",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Run",
+          "callee": "GetTime",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Run",
+          "callee": "GetDevice",
+          "lineNumber": 147
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 150
+        },
+        {
+          "caller": "Run",
+          "callee": "TimeDemo",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Run",
+          "callee": "LCDWrite",
+          "lineNumber": 160
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 165
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 168
+        },
+        {
+          "caller": "Run",
+          "callee": "Rotor",
+          "lineNumber": 171
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 179
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 180
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 181
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 183
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 186
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetTime",
+          "lineNumber": 191
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "Set",
+          "lineNumber": 194
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "Format",
+          "lineNumber": 197
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetHours",
+          "lineNumber": 198
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetMinutes",
+          "lineNumber": 198
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "GetSeconds",
+          "lineNumber": 198
+        },
+        {
+          "caller": "TimeDemo",
+          "callee": "LCDWrite",
+          "lineNumber": 200
+        },
+        {
+          "caller": "LCDWrite",
+          "callee": "Write",
+          "lineNumber": 206
+        },
+        {
+          "caller": "LCDWrite",
+          "callee": "strlen",
+          "lineNumber": 206
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/st7789char/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 68,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/sample/st7789char/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/input/console.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 72,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/input/keyboardbuffer.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 48,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/time.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 78,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/usb/usbkeyboard.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 68,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/input/console.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 235,
+      "nonEmptyLines": 195,
+      "functions": [
+        {
+          "name": "CConsole",
+          "startLine": 26,
+          "endLine": 36,
+          "params": [
+            "pAlternateDevice",
+            "bPlugAndPlay"
+          ]
+        },
+        {
+          "name": "CConsole",
+          "startLine": 38,
+          "endLine": 50,
+          "params": [
+            "pInputDevice",
+            "pOutputDevice"
+          ]
+        },
+        {
+          "name": "~CConsole",
+          "startLine": 52,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 64,
+          "endLine": 123,
+          "params": []
+        },
+        {
+          "name": "UpdatePlugAndPlay",
+          "startLine": 125,
+          "endLine": 167,
+          "params": []
+        },
+        {
+          "name": "IsAlternateDeviceUsed",
+          "startLine": 169,
+          "endLine": 172,
+          "params": []
+        },
+        {
+          "name": "Read",
+          "startLine": 174,
+          "endLine": 182,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "Write",
+          "startLine": 184,
+          "endLine": 194,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "GetOptions",
+          "startLine": 196,
+          "endLine": 199,
+          "params": []
+        },
+        {
+          "name": "SetOptions",
+          "startLine": 201,
+          "endLine": 212,
+          "params": [
+            "nOptions"
+          ]
+        },
+        {
+          "name": "KeyboardRemovedHandler",
+          "startLine": 214,
+          "endLine": 235,
+          "params": [
+            "pDevice",
+            "pContext"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CConsole",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "CConsole",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "~CConsole",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "UpdatePlugAndPlay",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "IsAlternateDeviceUsed",
+          "line": 169,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "GetOptions",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "SetOptions",
+          "line": 201,
+          "isDefault": false
+        },
+        {
+          "name": "KeyboardRemovedHandler",
+          "line": 214,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CConsole",
+          "callee": "assert",
+          "lineNumber": 48
+        },
+        {
+          "caller": "CConsole",
+          "callee": "assert",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "UpdatePlugAndPlay",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "AddDevice",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 86
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetOptions",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Initialize",
+          "callee": "AddDevice",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 120
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "assert",
+          "lineNumber": 127
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "GetDevice",
+          "lineNumber": 135
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 135
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "RegisterRemovedHandler",
+          "lineNumber": 138
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "assert",
+          "lineNumber": 140
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "assert",
+          "lineNumber": 142
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "assert",
+          "lineNumber": 146
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "SetOptions",
+          "lineNumber": 148
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "assert",
+          "lineNumber": 157
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "assert",
+          "lineNumber": 160
+        },
+        {
+          "caller": "UpdatePlugAndPlay",
+          "callee": "SetOptions",
+          "lineNumber": 162
+        },
+        {
+          "caller": "Read",
+          "callee": "Read",
+          "lineNumber": 181
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 188
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 189
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 192
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 193
+        },
+        {
+          "caller": "SetOptions",
+          "callee": "SetOptionRawMode",
+          "lineNumber": 210
+        },
+        {
+          "caller": "SetOptions",
+          "callee": "SetOptionEcho",
+          "lineNumber": 211
+        },
+        {
+          "caller": "KeyboardRemovedHandler",
+          "callee": "assert",
+          "lineNumber": 217
+        },
+        {
+          "caller": "KeyboardRemovedHandler",
+          "callee": "assert",
+          "lineNumber": 218
+        },
+        {
+          "caller": "KeyboardRemovedHandler",
+          "callee": "assert",
+          "lineNumber": 231
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 11,
+        "functionCount": 11,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/input/keyboardbuffer.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 115,
+      "nonEmptyLines": 91,
+      "functions": [
+        {
+          "name": "CKeyboardBuffer",
+          "startLine": 25,
+          "endLine": 35,
+          "params": [
+            "pKeyboard"
+          ]
+        },
+        {
+          "name": "~CKeyboardBuffer",
+          "startLine": 37,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "Read",
+          "startLine": 44,
+          "endLine": 68,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "InBuf",
+          "startLine": 70,
+          "endLine": 78,
+          "params": [
+            "chChar"
+          ]
+        },
+        {
+          "name": "BufStat",
+          "startLine": 80,
+          "endLine": 83,
+          "params": []
+        },
+        {
+          "name": "OutBuf",
+          "startLine": 85,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "KeyPressedHandler",
+          "startLine": 99,
+          "endLine": 109,
+          "params": [
+            "pString"
+          ]
+        },
+        {
+          "name": "KeyPressedStub",
+          "startLine": 111,
+          "endLine": 115,
+          "params": [
+            "pString"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKeyboardBuffer",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "~CKeyboardBuffer",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "Read",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "InBuf",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "BufStat",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "OutBuf",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "KeyPressedHandler",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "KeyPressedStub",
+          "line": 111,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKeyboardBuffer",
+          "callee": "assert",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKeyboardBuffer",
+          "callee": "assert",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CKeyboardBuffer",
+          "callee": "RegisterKeyPressedHandler",
+          "lineNumber": 34
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Read",
+          "callee": "Acquire",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Read",
+          "callee": "BufStat",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Read",
+          "callee": "OutBuf",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Read",
+          "callee": "Release",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Read",
+          "callee": "assert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Read",
+          "callee": "UpdateLEDs",
+          "lineNumber": 65
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "Acquire",
+          "lineNumber": 101
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "InBuf",
+          "lineNumber": 105
+        },
+        {
+          "caller": "KeyPressedHandler",
+          "callee": "Release",
+          "lineNumber": 108
+        },
+        {
+          "caller": "KeyPressedStub",
+          "callee": "assert",
+          "lineNumber": 113
+        },
+        {
+          "caller": "KeyPressedStub",
+          "callee": "KeyPressedHandler",
+          "lineNumber": 114
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/time.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 239,
+      "nonEmptyLines": 196,
+      "functions": [
+        {
+          "name": "CTime",
+          "startLine": 30,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "CTime",
+          "startLine": 41,
+          "endLine": 50,
+          "params": [
+            "rSource"
+          ]
+        },
+        {
+          "name": "~CTime",
+          "startLine": 52,
+          "endLine": 54,
+          "params": []
+        },
+        {
+          "name": "Set",
+          "startLine": 56,
+          "endLine": 97,
+          "params": [
+            "Time"
+          ]
+        },
+        {
+          "name": "SetTime",
+          "startLine": 99,
+          "endLine": 113,
+          "params": [
+            "nHours",
+            "nMinutes",
+            "nSeconds"
+          ]
+        },
+        {
+          "name": "SetDate",
+          "startLine": 115,
+          "endLine": 144,
+          "params": [
+            "nMonthDay",
+            "nMonth",
+            "nYear"
+          ]
+        },
+        {
+          "name": "Get",
+          "startLine": 146,
+          "endLine": 169,
+          "params": []
+        },
+        {
+          "name": "GetSeconds",
+          "startLine": 171,
+          "endLine": 174,
+          "params": []
+        },
+        {
+          "name": "GetMinutes",
+          "startLine": 176,
+          "endLine": 179,
+          "params": []
+        },
+        {
+          "name": "GetHours",
+          "startLine": 181,
+          "endLine": 184,
+          "params": []
+        },
+        {
+          "name": "GetMonthDay",
+          "startLine": 186,
+          "endLine": 189,
+          "params": []
+        },
+        {
+          "name": "GetMonth",
+          "startLine": 191,
+          "endLine": 194,
+          "params": []
+        },
+        {
+          "name": "GetYear",
+          "startLine": 196,
+          "endLine": 199,
+          "params": []
+        },
+        {
+          "name": "GetWeekDay",
+          "startLine": 201,
+          "endLine": 204,
+          "params": []
+        },
+        {
+          "name": "IsLeapYear",
+          "startLine": 219,
+          "endLine": 227,
+          "params": [
+            "nYear"
+          ]
+        },
+        {
+          "name": "GetDaysOfMonth",
+          "startLine": 229,
+          "endLine": 239,
+          "params": [
+            "nMonth",
+            "nYear"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CTime",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "CTime",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "~CTime",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "Set",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "SetTime",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "SetDate",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "Get",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "GetSeconds",
+          "line": 171,
+          "isDefault": false
+        },
+        {
+          "name": "GetMinutes",
+          "line": 176,
+          "isDefault": false
+        },
+        {
+          "name": "GetHours",
+          "line": 181,
+          "isDefault": false
+        },
+        {
+          "name": "GetMonthDay",
+          "line": 186,
+          "isDefault": false
+        },
+        {
+          "name": "GetMonth",
+          "line": 191,
+          "isDefault": false
+        },
+        {
+          "name": "GetYear",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "GetWeekDay",
+          "line": 201,
+          "isDefault": false
+        },
+        {
+          "name": "IsLeapYear",
+          "line": 219,
+          "isDefault": false
+        },
+        {
+          "name": "GetDaysOfMonth",
+          "line": 229,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Set",
+          "callee": "IsLeapYear",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Set",
+          "callee": "GetDaysOfMonth",
+          "lineNumber": 85
+        },
+        {
+          "caller": "SetDate",
+          "callee": "GetDaysOfMonth",
+          "lineNumber": 119
+        },
+        {
+          "caller": "SetDate",
+          "callee": "GetDaysOfMonth",
+          "lineNumber": 133
+        },
+        {
+          "caller": "SetDate",
+          "callee": "IsLeapYear",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Get",
+          "callee": "IsLeapYear",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Get",
+          "callee": "GetDaysOfMonth",
+          "lineNumber": 157
+        },
+        {
+          "caller": "GetDaysOfMonth",
+          "callee": "IsLeapYear",
+          "lineNumber": 232
+        },
+        {
+          "caller": "GetDaysOfMonth",
+          "callee": "assert",
+          "lineNumber": 237
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 16,
+        "functionCount": 16,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/usb/usbkeyboard.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 263,
+      "nonEmptyLines": 222,
+      "functions": [
+        {
+          "name": "CUSBKeyboardDevice",
+          "startLine": 34,
+          "endLine": 44,
+          "params": [
+            "pFunction"
+          ]
+        },
+        {
+          "name": "~CUSBKeyboardDevice",
+          "startLine": 46,
+          "endLine": 56,
+          "params": []
+        },
+        {
+          "name": "Configure",
+          "startLine": 58,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "RegisterKeyPressedHandler",
+          "startLine": 87,
+          "endLine": 90,
+          "params": [
+            "pKeyPressedHandler"
+          ]
+        },
+        {
+          "name": "RegisterSelectConsoleHandler",
+          "startLine": 92,
+          "endLine": 95,
+          "params": [
+            "pSelectConsoleHandler"
+          ]
+        },
+        {
+          "name": "RegisterShutdownHandler",
+          "startLine": 97,
+          "endLine": 100,
+          "params": [
+            "pShutdownHandler"
+          ]
+        },
+        {
+          "name": "UpdateLEDs",
+          "startLine": 102,
+          "endLine": 117,
+          "params": []
+        },
+        {
+          "name": "GetLEDStatus",
+          "startLine": 119,
+          "endLine": 141,
+          "params": []
+        },
+        {
+          "name": "RegisterKeyStatusHandlerRaw",
+          "startLine": 143,
+          "endLine": 150,
+          "params": [
+            "pKeyStatusHandlerRaw",
+            "bMixedMode",
+            "pArg"
+          ]
+        },
+        {
+          "name": "proxy_handler",
+          "startLine": 152,
+          "endLine": 155,
+          "params": [
+            "ucModifiers",
+            "RawKeys",
+            "arg"
+          ]
+        },
+        {
+          "name": "RegisterKeyStatusHandlerRaw",
+          "startLine": 157,
+          "endLine": 161,
+          "params": [
+            "pKeyStatusHandlerRaw",
+            "bMixedMode"
+          ]
+        },
+        {
+          "name": "UnregisterKeyStatusHandlerRaw",
+          "startLine": 163,
+          "endLine": 167,
+          "params": []
+        },
+        {
+          "name": "SetLEDs",
+          "startLine": 169,
+          "endLine": 182,
+          "params": [
+            "ucStatus"
+          ]
+        },
+        {
+          "name": "ReportHandler",
+          "startLine": 184,
+          "endLine": 250,
+          "params": [
+            "pReport",
+            "nReportSize"
+          ]
+        },
+        {
+          "name": "FindByte",
+          "startLine": 252,
+          "endLine": 263,
+          "params": [
+            "pBuffer",
+            "ucByte",
+            "nLength"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CUSBKeyboardDevice",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "~CUSBKeyboardDevice",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "Configure",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterKeyPressedHandler",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterSelectConsoleHandler",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterShutdownHandler",
+          "line": 97,
+          "isDefault": false
+        },
+        {
+          "name": "UpdateLEDs",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "GetLEDStatus",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterKeyStatusHandlerRaw",
+          "line": 143,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterKeyStatusHandlerRaw",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "UnregisterKeyStatusHandlerRaw",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "SetLEDs",
+          "line": 169,
+          "isDefault": false
+        },
+        {
+          "name": "ReportHandler",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "FindByte",
+          "line": 252,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CUSBKeyboardDevice",
+          "callee": "memset",
+          "lineNumber": 43
+        },
+        {
+          "caller": "~CUSBKeyboardDevice",
+          "callee": "RemoveDevice",
+          "lineNumber": 52
+        },
+        {
+          "caller": "~CUSBKeyboardDevice",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 52
+        },
+        {
+          "caller": "~CUSBKeyboardDevice",
+          "callee": "FreeNumber",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Configure",
+          "callee": "GetDeviceDescriptor",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Configure",
+          "callee": "GetDevice",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Configure",
+          "callee": "assert",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Configure",
+          "callee": "CUSBHIDDevice::ConfigureHID",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Configure",
+          "callee": "Write",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Configure",
+          "callee": "CLogger::Get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Configure",
+          "callee": "SetLEDs",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Configure",
+          "callee": "AllocateNumber",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Configure",
+          "callee": "AddDevice",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Configure",
+          "callee": "CDeviceNameService::Get",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Configure",
+          "callee": "StartRequest",
+          "lineNumber": 84
+        },
+        {
+          "caller": "RegisterKeyPressedHandler",
+          "callee": "RegisterKeyPressedHandler",
+          "lineNumber": 89
+        },
+        {
+          "caller": "RegisterSelectConsoleHandler",
+          "callee": "RegisterSelectConsoleHandler",
+          "lineNumber": 94
+        },
+        {
+          "caller": "RegisterShutdownHandler",
+          "callee": "RegisterShutdownHandler",
+          "lineNumber": 99
+        },
+        {
+          "caller": "UpdateLEDs",
+          "callee": "GetLEDStatus",
+          "lineNumber": 107
+        },
+        {
+          "caller": "UpdateLEDs",
+          "callee": "SetLEDs",
+          "lineNumber": 111
+        },
+        {
+          "caller": "UpdateLEDs",
+          "callee": "Write",
+          "lineNumber": 113
+        },
+        {
+          "caller": "UpdateLEDs",
+          "callee": "CLogger::Get",
+          "lineNumber": 113
+        },
+        {
+          "caller": "GetLEDStatus",
+          "callee": "GetLEDStatus",
+          "lineNumber": 121
+        },
+        {
+          "caller": "RegisterKeyStatusHandlerRaw",
+          "callee": "assert",
+          "lineNumber": 146
+        },
+        {
+          "caller": "proxy_handler",
+          "callee": "((TKeyStatusHandlerRaw*)arg)",
+          "lineNumber": 154
+        },
+        {
+          "caller": "RegisterKeyStatusHandlerRaw",
+          "callee": "RegisterKeyStatusHandlerRaw",
+          "lineNumber": 160
+        },
+        {
+          "caller": "SetLEDs",
+          "callee": "DMA_BUFFER",
+          "lineNumber": 171
+        },
+        {
+          "caller": "SetLEDs",
+          "callee": "ControlMessage",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SetLEDs",
+          "callee": "GetHost",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SetLEDs",
+          "callee": "GetEndpoint0",
+          "lineNumber": 173
+        },
+        {
+          "caller": "SetLEDs",
+          "callee": "GetInterfaceNumber",
+          "lineNumber": 176
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "(*m_pKeyStatusHandlerRaw)",
+          "lineNumber": 202
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "KeyPressed",
+          "lineNumber": 218
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "KeyReleased",
+          "lineNumber": 223
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "FindByte",
+          "lineNumber": 232
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "KeyReleased",
+          "lineNumber": 234
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "FindByte",
+          "lineNumber": 243
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "KeyPressed",
+          "lineNumber": 245
+        },
+        {
+          "caller": "ReportHandler",
+          "callee": "memcpy",
+          "lineNumber": 249
+        }
+      ],
+      "metrics": {
+        "importCount": 8,
+        "exportCount": 14,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    }
+  ]
+}

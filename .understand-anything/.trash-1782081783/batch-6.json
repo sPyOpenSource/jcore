@@ -1,0 +1,4117 @@
+{
+  "batch": 6,
+  "nodes": [
+    {
+      "id": "file:addon/Properties/properties.cpp",
+      "type": "file",
+      "name": "properties.cpp",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "Defines TSection, TPropertyPair | Implements CProperties, ~CProperties, SelectSection and 11 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:CProperties",
+      "type": "function",
+      "name": "CProperties",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "CProperties() - 7 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:~CProperties",
+      "type": "function",
+      "name": "~CProperties",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "~CProperties() - 4 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:SelectSection",
+      "type": "function",
+      "name": "SelectSection",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "SelectSection(pSectionName) - 6 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:IsSet",
+      "type": "function",
+      "name": "IsSet",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "IsSet(pPropertyName) - 4 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:GetNumber",
+      "type": "function",
+      "name": "GetNumber",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "GetNumber(pPropertyName, nDefault) - 23 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:GetSignedNumber",
+      "type": "function",
+      "name": "GetSignedNumber",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "GetSignedNumber(pPropertyName, nDefault) - 33 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:SetString",
+      "type": "function",
+      "name": "SetString",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "SetString(pPropertyName, pValue) - 22 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:SetNumber",
+      "type": "function",
+      "name": "SetNumber",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "SetNumber(pPropertyName, nValue, nBase) - 9 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:SetSignedNumber",
+      "type": "function",
+      "name": "SetSignedNumber",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "SetSignedNumber(pPropertyName, nValue) - 8 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:SetIPAddress",
+      "type": "function",
+      "name": "SetIPAddress",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "SetIPAddress(pPropertyName, pAddress) - 10 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:RemoveAll",
+      "type": "function",
+      "name": "RemoveAll",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "RemoveAll() - 32 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:AddProperty",
+      "type": "function",
+      "name": "AddProperty",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "AddProperty(pPropertyName, pValue) - 46 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:GetFirst",
+      "type": "function",
+      "name": "GetFirst",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "GetFirst() - 19 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Properties/properties.cpp:GetNext",
+      "type": "function",
+      "name": "GetNext",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "GetNext() - 32 lines in properties.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:addon/Properties/properties.cpp:TSection",
+      "type": "class",
+      "name": "TSection",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "TSection class with 2 properties in properties.cpp",
+      "tags": [
+        "class",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:addon/Properties/properties.cpp:TPropertyPair",
+      "type": "class",
+      "name": "TPropertyPair",
+      "filePath": "addon/Properties/properties.cpp",
+      "summary": "TPropertyPair class with 2 properties in properties.cpp",
+      "tags": [
+        "class",
+        "cpp",
+        "addon",
+        "property"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/SDCard/emmc.cpp",
+      "type": "file",
+      "name": "emmc.cpp",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "Implements CEMMCDevice, ~CEMMCDevice, Initialize and 13 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:CEMMCDevice",
+      "type": "function",
+      "name": "CEMMCDevice",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "CEMMCDevice(pInterruptSystem, pTimer, pActLED) - 41 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:~CEMMCDevice",
+      "type": "function",
+      "name": "~CEMMCDevice",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "~CEMMCDevice() - 15 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "Initialize() - 48 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:Read",
+      "type": "function",
+      "name": "Read",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "Read(pBuffer, nCount) - 36 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:Write",
+      "type": "function",
+      "name": "Write",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "Write(pBuffer, nCount) - 36 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:Seek",
+      "type": "function",
+      "name": "Seek",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "Seek(ullOffset) - 6 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:GetSize",
+      "type": "function",
+      "name": "GetSize",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "GetSize() - 4 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:IssueCommand",
+      "type": "function",
+      "name": "IssueCommand",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "IssueCommand(command, argument, timeout) - 105 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:CardReset",
+      "type": "function",
+      "name": "CardReset",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "CardReset() - 811 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:CardInit",
+      "type": "function",
+      "name": "CardInit",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "CardInit() - 55 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:EnsureDataMode",
+      "type": "function",
+      "name": "EnsureDataMode",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "EnsureDataMode() - 96 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:DoDataCommand",
+      "type": "function",
+      "name": "DoDataCommand",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "DoDataCommand(is_write, buf, buf_size, block_no) - 83 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:DoRead",
+      "type": "function",
+      "name": "DoRead",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "DoRead(buf, buf_size, block_no) - 23 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:DoWrite",
+      "type": "function",
+      "name": "DoWrite",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "DoWrite(buf, buf_size, block_no) - 23 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:usDelay",
+      "type": "function",
+      "name": "usDelay",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "usDelay(usec) - 5 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/SDCard/emmc.cpp:LogWrite",
+      "type": "function",
+      "name": "LogWrite",
+      "filePath": "addon/SDCard/emmc.cpp",
+      "summary": "LogWrite(Severity, pMessage) - 11 lines in emmc.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/SDCard/emmc.h",
+      "type": "file",
+      "name": "emmc.h",
+      "filePath": "addon/SDCard/emmc.h",
+      "summary": "emmc.h - 178 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "type": "file",
+      "name": "SpectrumScreen.cpp",
+      "filePath": "addon/Spectrum/SpectrumScreen.cpp",
+      "summary": "Implements CSpectrumScreen, ~CSpectrumScreen, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/Spectrum/SpectrumScreen.cpp:CSpectrumScreen",
+      "type": "function",
+      "name": "CSpectrumScreen",
+      "filePath": "addon/Spectrum/SpectrumScreen.cpp",
+      "summary": "CSpectrumScreen() - 6 lines in SpectrumScreen.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Spectrum/SpectrumScreen.cpp:~CSpectrumScreen",
+      "type": "function",
+      "name": "~CSpectrumScreen",
+      "filePath": "addon/Spectrum/SpectrumScreen.cpp",
+      "summary": "~CSpectrumScreen() - 8 lines in SpectrumScreen.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/Spectrum/SpectrumScreen.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/Spectrum/SpectrumScreen.cpp",
+      "summary": "Initialize(pVideoMem) - 62 lines in SpectrumScreen.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/Spectrum/SpectrumScreen.cpp:Update",
+      "type": "function",
+      "name": "Update",
+      "filePath": "addon/Spectrum/SpectrumScreen.cpp",
+      "summary": "Update(flash) - 56 lines in SpectrumScreen.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:addon/Spectrum/SpectrumScreen.h",
+      "type": "file",
+      "name": "SpectrumScreen.h",
+      "filePath": "addon/Spectrum/SpectrumScreen.h",
+      "summary": "SpectrumScreen.h - c source file in the Circle project (42 lines)",
+      "tags": [
+        "c",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "type": "file",
+      "name": "ws2812oversmi.cpp",
+      "filePath": "addon/WS28XX/ws2812oversmi.cpp",
+      "summary": "Implements CWS2812OverSMI, ~CWS2812OverSMI, GetLEDCount and 2 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws2812oversmi.cpp:CWS2812OverSMI",
+      "type": "function",
+      "name": "CWS2812OverSMI",
+      "filePath": "addon/WS28XX/ws2812oversmi.cpp",
+      "summary": "CWS2812OverSMI(nSDLinesMask, nNumberOfLEDsPerStrip) - 20 lines in ws2812oversmi.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws2812oversmi.cpp:~CWS2812OverSMI",
+      "type": "function",
+      "name": "~CWS2812OverSMI",
+      "filePath": "addon/WS28XX/ws2812oversmi.cpp",
+      "summary": "~CWS2812OverSMI() - 3 lines in ws2812oversmi.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws2812oversmi.cpp:GetLEDCount",
+      "type": "function",
+      "name": "GetLEDCount",
+      "filePath": "addon/WS28XX/ws2812oversmi.cpp",
+      "summary": "GetLEDCount() - 3 lines in ws2812oversmi.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws2812oversmi.cpp:Update",
+      "type": "function",
+      "name": "Update",
+      "filePath": "addon/WS28XX/ws2812oversmi.cpp",
+      "summary": "Update() - 5 lines in ws2812oversmi.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws2812oversmi.cpp:SetLED",
+      "type": "function",
+      "name": "SetLED",
+      "filePath": "addon/WS28XX/ws2812oversmi.cpp",
+      "summary": "SetLED(nSDLine, nLEDIndexInStrip, nRed, nGreen...) - 27 lines in ws2812oversmi.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/WS28XX/ws2812oversmi.h",
+      "type": "file",
+      "name": "ws2812oversmi.h",
+      "filePath": "addon/WS28XX/ws2812oversmi.h",
+      "summary": "ws2812oversmi.h - 90 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "type": "file",
+      "name": "ws28xxstripe.cpp",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "Implements CWS28XXStripe, ~CWS28XXStripe, Initialize and 5 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/WS28XX/ws28xxstripe.cpp:CWS28XXStripe",
+      "type": "function",
+      "name": "CWS28XXStripe",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "CWS28XXStripe(Type, nLEDCount, nClockSpeed, nSPIDevice) - 28 lines in ws28xxstripe.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/WS28XX/ws28xxstripe.cpp:~CWS28XXStripe",
+      "type": "function",
+      "name": "~CWS28XXStripe",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "~CWS28XXStripe() - 8 lines in ws28xxstripe.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws28xxstripe.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "Initialize() - 4 lines in ws28xxstripe.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws28xxstripe.cpp:GetLEDCount",
+      "type": "function",
+      "name": "GetLEDCount",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "GetLEDCount() - 4 lines in ws28xxstripe.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws28xxstripe.cpp:SetLED",
+      "type": "function",
+      "name": "SetLED",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "SetLED(nLEDIndex, nRed, nGreen, nBlue) - 22 lines in ws28xxstripe.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/WS28XX/ws28xxstripe.cpp:Update",
+      "type": "function",
+      "name": "Update",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "Update() - 5 lines in ws28xxstripe.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws28xxstripe.cpp:Blackout",
+      "type": "function",
+      "name": "Blackout",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "Blackout() - 5 lines in ws28xxstripe.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/WS28XX/ws28xxstripe.cpp:SetColorWS2812",
+      "type": "function",
+      "name": "SetColorWS2812",
+      "filePath": "addon/WS28XX/ws28xxstripe.cpp",
+      "summary": "SetColorWS2812(nOffset, nValue) - 21 lines in ws28xxstripe.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/WS28XX/ws28xxstripe.h",
+      "type": "file",
+      "name": "ws28xxstripe.h",
+      "filePath": "addon/WS28XX/ws28xxstripe.h",
+      "summary": "ws28xxstripe.h - 67 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/dio/spidio.cpp",
+      "type": "file",
+      "name": "spidio.cpp",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "Implements CSPIDIODevice, ~CSPIDIODevice, Initialize and 12 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:CSPIDIODevice",
+      "type": "function",
+      "name": "CSPIDIODevice",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "CSPIDIODevice(pSPIMaster, nChipSelect, ucAddress) - 7 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:~CSPIDIODevice",
+      "type": "function",
+      "name": "~CSPIDIODevice",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "~CSPIDIODevice() - 4 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "Initialize() - 24 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:GetVersion",
+      "type": "function",
+      "name": "GetVersion",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "GetVersion() - 4 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:SetModes",
+      "type": "function",
+      "name": "SetModes",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "SetModes(ucModeMask) - 17 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:SetAllOutputs",
+      "type": "function",
+      "name": "SetAllOutputs",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "SetAllOutputs(ucMask) - 10 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:SetOutput",
+      "type": "function",
+      "name": "SetOutput",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "SetOutput(nFunction, nLevel) - 12 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:GetAllInputs",
+      "type": "function",
+      "name": "GetAllInputs",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "GetAllInputs(pMask) - 18 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:GetInput",
+      "type": "function",
+      "name": "GetInput",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "GetInput(nFunction, pLevel) - 19 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:SetAnalogChannels",
+      "type": "function",
+      "name": "SetAnalogChannels",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "SetAnalogChannels(nChannels) - 23 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:CoupleAnalogChannel",
+      "type": "function",
+      "name": "CoupleAnalogChannel",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "CoupleAnalogChannel(nChannel, nAnalogMode, bReference_1_1V) - 29 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:SetAnalogSamples",
+      "type": "function",
+      "name": "SetAnalogSamples",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "SetAnalogSamples(nSamples, nBitShift) - 35 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:GetAnalogValueRaw",
+      "type": "function",
+      "name": "GetAnalogValueRaw",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "GetAnalogValueRaw(nChannel, pValue) - 19 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:GetAnalogValue",
+      "type": "function",
+      "name": "GetAnalogValue",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "GetAnalogValue(nChannel, pValue) - 19 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/dio/spidio.cpp:ConvertVersion",
+      "type": "function",
+      "name": "ConvertVersion",
+      "filePath": "addon/dio/spidio.cpp",
+      "summary": "ConvertVersion(pString) - 34 lines in spidio.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "spi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/display/ili9341display.cpp",
+      "type": "file",
+      "name": "ili9341display.cpp",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "Implements CILI9341Display, ~CILI9341Display, SetRotation and 7 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:CILI9341Display",
+      "type": "function",
+      "name": "CILI9341Display",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "CILI9341Display(pSPIMaster, nDCPin, nResetPin, nBackLightPin...) - 34 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:~CILI9341Display",
+      "type": "function",
+      "name": "~CILI9341Display",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "~CILI9341Display() - 4 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:SetRotation",
+      "type": "function",
+      "name": "SetRotation",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "SetRotation(nDegrees) - 6 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "Initialize() - 114 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:On",
+      "type": "function",
+      "name": "On",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "On() - 4 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:Off",
+      "type": "function",
+      "name": "Off",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "Off() - 4 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:Clear",
+      "type": "function",
+      "name": "Clear",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "Clear(nColor) - 18 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:SetPixel",
+      "type": "function",
+      "name": "SetPixel",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "SetPixel(nPosX, nPosY, nColor) - 11 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:SetArea",
+      "type": "function",
+      "name": "SetArea",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "SetArea(rArea, pPixels, pRoutine, pParam) - 44 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/display/ili9341display.cpp:SetWindow",
+      "type": "function",
+      "name": "SetWindow",
+      "filePath": "addon/display/ili9341display.cpp",
+      "summary": "SetWindow(x0, y0, x1, y1) - 19 lines in ili9341display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/display/ssd1306display.cpp",
+      "type": "file",
+      "name": "ssd1306display.cpp",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "Implements CSSD1306Display, ~CSSD1306Display, Initialize and 7 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:CSSD1306Display",
+      "type": "function",
+      "name": "CSSD1306Display",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "CSSD1306Display(pI2CMaster, nWidth, nHeight, uchI2CAddress...) - 12 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:~CSSD1306Display",
+      "type": "function",
+      "name": "~CSSD1306Display",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "~CSSD1306Display() - 4 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "Initialize() - 46 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:On",
+      "type": "function",
+      "name": "On",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "On() - 4 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:Off",
+      "type": "function",
+      "name": "Off",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "Off() - 4 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:Clear",
+      "type": "function",
+      "name": "Clear",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "Clear(nColor) - 8 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:SetPixel",
+      "type": "function",
+      "name": "SetPixel",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "SetPixel(nPosX, nPosY, nColor) - 24 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:SetArea",
+      "type": "function",
+      "name": "SetArea",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "SetArea(rArea, pPixels, pRoutine, pParam) - 55 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:WriteCommand",
+      "type": "function",
+      "name": "WriteCommand",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "WriteCommand(uchCommand) - 12 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/display/ssd1306display.cpp:WriteMemory",
+      "type": "function",
+      "name": "WriteMemory",
+      "filePath": "addon/display/ssd1306display.cpp",
+      "summary": "WriteMemory(nColumnStart, nColumnEnd, nPageStart, nPageEnd...) - 25 lines in ssd1306display.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/linux/linuxdevice.cpp",
+      "type": "file",
+      "name": "linuxdevice.cpp",
+      "filePath": "addon/linux/linuxdevice.cpp",
+      "summary": "Implements CLinuxDevice, ~CLinuxDevice, Initialize and 2 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/linux/linuxdevice.cpp:CLinuxDevice",
+      "type": "function",
+      "name": "CLinuxDevice",
+      "filePath": "addon/linux/linuxdevice.cpp",
+      "summary": "CLinuxDevice(pMemory, pInterrupt, pProbeFunc) - 12 lines in linuxdevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/linux/linuxdevice.cpp:~CLinuxDevice",
+      "type": "function",
+      "name": "~CLinuxDevice",
+      "filePath": "addon/linux/linuxdevice.cpp",
+      "summary": "~CLinuxDevice() - 4 lines in linuxdevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/linux/linuxdevice.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/linux/linuxdevice.cpp",
+      "summary": "Initialize() - 10 lines in linuxdevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/linux/linuxdevice.cpp:AddResource",
+      "type": "function",
+      "name": "AddResource",
+      "filePath": "addon/linux/linuxdevice.cpp",
+      "summary": "AddResource(nStart, nEnd, nFlags) - 12 lines in linuxdevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/linux/linuxdevice.cpp:SetDMAMemory",
+      "type": "function",
+      "name": "SetDMAMemory",
+      "filePath": "addon/linux/linuxdevice.cpp",
+      "summary": "SetDMAMemory(nStart, nEnd) - 8 lines in linuxdevice.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/linux/printk.cpp",
+      "type": "file",
+      "name": "printk.cpp",
+      "filePath": "addon/linux/printk.cpp",
+      "summary": "Implements printk",
+      "tags": [
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/linux/printk.cpp:printk",
+      "type": "function",
+      "name": "printk",
+      "filePath": "addon/linux/printk.cpp",
+      "summary": "printk(fmt) - 30 lines in printk.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/linux/sprintf.cpp",
+      "type": "file",
+      "name": "sprintf.cpp",
+      "filePath": "addon/linux/sprintf.cpp",
+      "summary": "sprintf.cpp - 62 lines of cpp source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/linux/string.h",
+      "type": "file",
+      "name": "string.h",
+      "filePath": "addon/linux/string.h",
+      "summary": "string.h - c source file in the Circle project (1 lines)",
+      "tags": [
+        "c",
+        "addon",
+        "string"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/qemu/qemuhostfile.cpp",
+      "type": "file",
+      "name": "qemuhostfile.cpp",
+      "filePath": "addon/qemu/qemuhostfile.cpp",
+      "summary": "Implements CQEMUHostFile, ~CQEMUHostFile, IsOpen and 2 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/qemu/qemuhostfile.cpp:CQEMUHostFile",
+      "type": "function",
+      "name": "CQEMUHostFile",
+      "filePath": "addon/qemu/qemuhostfile.cpp",
+      "summary": "CQEMUHostFile(pFileName, bWrite) - 6 lines in qemuhostfile.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/qemu/qemuhostfile.cpp:~CQEMUHostFile",
+      "type": "function",
+      "name": "~CQEMUHostFile",
+      "filePath": "addon/qemu/qemuhostfile.cpp",
+      "summary": "~CQEMUHostFile() - 9 lines in qemuhostfile.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/qemu/qemuhostfile.cpp:IsOpen",
+      "type": "function",
+      "name": "IsOpen",
+      "filePath": "addon/qemu/qemuhostfile.cpp",
+      "summary": "IsOpen() - 4 lines in qemuhostfile.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/qemu/qemuhostfile.cpp:Read",
+      "type": "function",
+      "name": "Read",
+      "filePath": "addon/qemu/qemuhostfile.cpp",
+      "summary": "Read(pBuffer, nCount) - 14 lines in qemuhostfile.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/qemu/qemuhostfile.cpp:Write",
+      "type": "function",
+      "name": "Write",
+      "filePath": "addon/qemu/qemuhostfile.cpp",
+      "summary": "Write(pBuffer, nCount) - 12 lines in qemuhostfile.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "addon/sensor/sample/ky040/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 2 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/sensor/sample/ky040/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "addon/sensor/sample/ky040/kernel.cpp",
+      "summary": "CKernel() - 14 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/sensor/sample/ky040/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "addon/sensor/sample/ky040/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/sensor/sample/ky040/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/sensor/sample/ky040/kernel.cpp",
+      "summary": "Initialize() - 49 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/sensor/sample/ky040/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "addon/sensor/sample/ky040/kernel.cpp",
+      "summary": "Run() - 19 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/sensor/sample/ky040/kernel.cpp:EventHandler",
+      "type": "function",
+      "name": "EventHandler",
+      "filePath": "addon/sensor/sample/ky040/kernel.cpp",
+      "summary": "EventHandler(Event, pParam) - 70 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:addon/sensor/sample/ky040/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "addon/sensor/sample/ky040/kernel.h",
+      "summary": "kernel.h - 74 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/sensor/sample/ky040/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "addon/sensor/sample/ky040/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/sensor/sample/ky040/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "addon/sensor/sample/ky040/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "bare-metal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/wlan/p9ether.cpp",
+      "type": "file",
+      "name": "p9ether.cpp",
+      "filePath": "addon/wlan/p9ether.cpp",
+      "summary": "Implements freeb, qlen, qpass and 3 more",
+      "tags": [
+        "cpp",
+        "addon",
+        "network"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/p9ether.cpp:freeb",
+      "type": "function",
+      "name": "freeb",
+      "filePath": "addon/wlan/p9ether.cpp",
+      "summary": "freeb(b) - 5 lines in p9ether.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9ether.cpp:qlen",
+      "type": "function",
+      "name": "qlen",
+      "filePath": "addon/wlan/p9ether.cpp",
+      "summary": "qlen(q) - 4 lines in p9ether.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9ether.cpp:qpass",
+      "type": "function",
+      "name": "qpass",
+      "filePath": "addon/wlan/p9ether.cpp",
+      "summary": "qpass(q, b) - 21 lines in p9ether.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "network"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/p9ether.cpp:nhgets",
+      "type": "function",
+      "name": "nhgets",
+      "filePath": "addon/wlan/p9ether.cpp",
+      "summary": "nhgets(p) - 4 lines in p9ether.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9ether.cpp:nhgetl",
+      "type": "function",
+      "name": "nhgetl",
+      "filePath": "addon/wlan/p9ether.cpp",
+      "summary": "nhgetl(p) - 4 lines in p9ether.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/p9ether.cpp:parseether",
+      "type": "function",
+      "name": "parseether",
+      "filePath": "addon/wlan/p9ether.cpp",
+      "summary": "parseether(addr, str) - 34 lines in p9ether.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "addon",
+        "network"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:addon/wlan/p9ether.h",
+      "type": "file",
+      "name": "p9ether.h",
+      "filePath": "addon/wlan/p9ether.h",
+      "summary": "p9ether.h - 79 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "addon",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "summary": "Implements CKernel, ~CKernel, Initialize and 1 more",
+      "tags": [
+        "cpp",
+        "sample",
+        "network"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:CKernel",
+      "type": "function",
+      "name": "CKernel",
+      "filePath": "addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "summary": "CKernel() - 11 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:~CKernel",
+      "type": "function",
+      "name": "~CKernel",
+      "filePath": "addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "summary": "~CKernel() - 3 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "summary": "Initialize() - 80 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "network"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Run",
+      "type": "function",
+      "name": "Run",
+      "filePath": "addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "summary": "Run() - 56 lines in kernel.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "network"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:addon/wlan/sample/hello_ap/client/kernel.h",
+      "type": "file",
+      "name": "kernel.h",
+      "filePath": "addon/wlan/sample/hello_ap/client/kernel.h",
+      "summary": "kernel.h - 76 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "sample",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:addon/wlan/sample/hello_ap/client/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "addon/wlan/sample/hello_ap/client/main.cpp",
+      "summary": "Implements main",
+      "tags": [
+        "cpp",
+        "sample",
+        "network"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:addon/wlan/sample/hello_ap/client/main.cpp:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "addon/wlan/sample/hello_ap/client/main.cpp",
+      "summary": "main() - 25 lines in main.cpp",
+      "tags": [
+        "function",
+        "cpp",
+        "cpp",
+        "sample",
+        "network"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/devicetreeblob.h",
+      "type": "file",
+      "name": "devicetreeblob.h",
+      "filePath": "include/circle/devicetreeblob.h",
+      "summary": "devicetreeblob.h - 70 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/display.h",
+      "type": "file",
+      "name": "display.h",
+      "filePath": "include/circle/display.h",
+      "summary": "display.h - 131 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "display"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/fs/fat/fatdir.h",
+      "type": "file",
+      "name": "fatdir.h",
+      "filePath": "include/circle/fs/fat/fatdir.h",
+      "summary": "fatdir.h - 59 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "filesystem"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/fs/fat/fatfs.h",
+      "type": "file",
+      "name": "fatfs.h",
+      "filePath": "include/circle/fs/fat/fatfs.h",
+      "summary": "fatfs.h - 167 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "filesystem"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/heapallocator.h",
+      "type": "file",
+      "name": "heapallocator.h",
+      "filePath": "include/circle/heapallocator.h",
+      "summary": "heapallocator.h - 112 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "memory"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/input/xpt2046touchscreen.h",
+      "type": "file",
+      "name": "xpt2046touchscreen.h",
+      "filePath": "include/circle/input/xpt2046touchscreen.h",
+      "summary": "xpt2046touchscreen.h - 81 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/macaddress.h",
+      "type": "file",
+      "name": "macaddress.h",
+      "filePath": "include/circle/macaddress.h",
+      "summary": "macaddress.h - 56 lines of c source code for the Circle bare-metal Raspberry Pi environment",
+      "tags": [
+        "c",
+        "header",
+        "bare-metal"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "file:include/circle/ptrarray.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:CProperties",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:CProperties",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:~CProperties",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:~CProperties",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SelectSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SelectSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:IsSet",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:IsSet",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:GetNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:GetNumber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:GetSignedNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:GetSignedNumber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SetString",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SetString",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SetNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SetNumber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SetSignedNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SetSignedNumber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SetIPAddress",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:SetIPAddress",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:RemoveAll",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:RemoveAll",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:AddProperty",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:AddProperty",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:GetFirst",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:GetFirst",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:GetNext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "function:addon/Properties/properties.cpp:GetNext",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "class:addon/Properties/properties.cpp:TSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "class:addon/Properties/properties.cpp:TSection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "class:addon/Properties/properties.cpp:TPropertyPair",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Properties/properties.cpp",
+      "target": "class:addon/Properties/properties.cpp:TPropertyPair",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "file:addon/SDCard/emmc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "file:include/circle/devicenameservice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "file:include/circle/stdarg.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:CEMMCDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:CEMMCDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:~CEMMCDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:~CEMMCDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:Read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:Read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:Write",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:Write",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:Seek",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:Seek",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:GetSize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:GetSize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:IssueCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:IssueCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:CardReset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:CardReset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:CardInit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:CardInit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:EnsureDataMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:EnsureDataMode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:DoDataCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:DoDataCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:DoRead",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:DoRead",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:DoWrite",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:DoWrite",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:usDelay",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:usDelay",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:LogWrite",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/SDCard/emmc.cpp",
+      "target": "function:addon/SDCard/emmc.cpp:LogWrite",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "file:addon/Spectrum/SpectrumScreen.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "function:addon/Spectrum/SpectrumScreen.cpp:CSpectrumScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "function:addon/Spectrum/SpectrumScreen.cpp:CSpectrumScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "function:addon/Spectrum/SpectrumScreen.cpp:~CSpectrumScreen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "function:addon/Spectrum/SpectrumScreen.cpp:~CSpectrumScreen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "function:addon/Spectrum/SpectrumScreen.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "function:addon/Spectrum/SpectrumScreen.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "function:addon/Spectrum/SpectrumScreen.cpp:Update",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/Spectrum/SpectrumScreen.cpp",
+      "target": "function:addon/Spectrum/SpectrumScreen.cpp:Update",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "file:addon/WS28XX/ws2812oversmi.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:CWS2812OverSMI",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:CWS2812OverSMI",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:~CWS2812OverSMI",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:~CWS2812OverSMI",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:GetLEDCount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:GetLEDCount",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:Update",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:Update",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:SetLED",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws2812oversmi.cpp",
+      "target": "function:addon/WS28XX/ws2812oversmi.cpp:SetLED",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "file:addon/WS28XX/ws28xxstripe.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:CWS28XXStripe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:CWS28XXStripe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:~CWS28XXStripe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:~CWS28XXStripe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:GetLEDCount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:GetLEDCount",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:SetLED",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:SetLED",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:Update",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:Update",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:Blackout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:Blackout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:SetColorWS2812",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/WS28XX/ws28xxstripe.cpp",
+      "target": "function:addon/WS28XX/ws28xxstripe.cpp:SetColorWS2812",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:CSPIDIODevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:CSPIDIODevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:~CSPIDIODevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:~CSPIDIODevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetVersion",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetVersion",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetModes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetModes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetAllOutputs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetAllOutputs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetOutput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetOutput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetAllInputs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetAllInputs",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetInput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetAnalogChannels",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetAnalogChannels",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:CoupleAnalogChannel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:CoupleAnalogChannel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetAnalogSamples",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:SetAnalogSamples",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetAnalogValueRaw",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetAnalogValueRaw",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetAnalogValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:GetAnalogValue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:ConvertVersion",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/dio/spidio.cpp",
+      "target": "function:addon/dio/spidio.cpp:ConvertVersion",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/dio/spidio.cpp:SetModes",
+      "target": "function:addon/SDCard/emmc.cpp:usDelay",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/dio/spidio.cpp:SetAnalogChannels",
+      "target": "function:addon/SDCard/emmc.cpp:usDelay",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/dio/spidio.cpp:CoupleAnalogChannel",
+      "target": "function:addon/SDCard/emmc.cpp:usDelay",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/dio/spidio.cpp:SetAnalogSamples",
+      "target": "function:addon/SDCard/emmc.cpp:usDelay",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "file:include/circle/stdarg.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "file:include/circle/timer.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:CILI9341Display",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:CILI9341Display",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:~CILI9341Display",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:~CILI9341Display",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:SetRotation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:SetRotation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:On",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:On",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:Off",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:Off",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:Clear",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:Clear",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:SetPixel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:SetPixel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:SetArea",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:SetArea",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:SetWindow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ili9341display.cpp",
+      "target": "function:addon/display/ili9341display.cpp:SetWindow",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:CSSD1306Display",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:CSSD1306Display",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:~CSSD1306Display",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:~CSSD1306Display",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:On",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:On",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:Off",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:Off",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:Clear",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:Clear",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:SetPixel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:SetPixel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:SetArea",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:SetArea",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:WriteCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:WriteCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:WriteMemory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/display/ssd1306display.cpp",
+      "target": "function:addon/display/ssd1306display.cpp:WriteMemory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:CLinuxDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:CLinuxDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:~CLinuxDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:~CLinuxDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:AddResource",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:AddResource",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:SetDMAMemory",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/linux/linuxdevice.cpp",
+      "target": "function:addon/linux/linuxdevice.cpp:SetDMAMemory",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/printk.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/printk.cpp",
+      "target": "file:include/circle/stdarg.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/printk.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/printk.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/printk.cpp",
+      "target": "function:addon/linux/printk.cpp:printk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/linux/printk.cpp",
+      "target": "function:addon/linux/printk.cpp:printk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/linux/sprintf.cpp",
+      "target": "file:include/circle/stdarg.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/sprintf.cpp",
+      "target": "file:include/circle/string.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/sprintf.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/linux/string.h",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:CQEMUHostFile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:CQEMUHostFile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:~CQEMUHostFile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:~CQEMUHostFile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:IsOpen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:IsOpen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:Read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:Read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:Write",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/qemu/qemuhostfile.cpp",
+      "target": "function:addon/qemu/qemuhostfile.cpp:Write",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "file:addon/sensor/sample/ky040/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:EventHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/kernel.cpp",
+      "target": "function:addon/sensor/sample/ky040/kernel.cpp:EventHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/sensor/sample/ky040/kernel.cpp:EventHandler",
+      "target": "function:addon/display/ssd1306display.cpp:On",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/sensor/sample/ky040/kernel.cpp:EventHandler",
+      "target": "function:addon/display/ssd1306display.cpp:Off",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/sensor/sample/ky040/kernel.cpp:EventHandler",
+      "target": "function:addon/qemu/qemuhostfile.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/main.cpp",
+      "target": "file:addon/sensor/sample/ky040/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/main.cpp",
+      "target": "function:addon/sensor/sample/ky040/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/sensor/sample/ky040/main.cpp",
+      "target": "function:addon/sensor/sample/ky040/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "file:addon/wlan/p9ether.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:freeb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:freeb",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:qlen",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:qlen",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:qpass",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:qpass",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:nhgets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:nhgets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:nhgetl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:nhgetl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:parseether",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/p9ether.cpp",
+      "target": "function:addon/wlan/p9ether.cpp:parseether",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "file:addon/wlan/sample/hello_ap/client/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "file:include/circle/net/in.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "file:include/circle/net/ipaddress.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "file:include/circle/net/socket.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:~CKernel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:~CKernel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/kernel.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Initialize",
+      "target": "function:addon/qemu/qemuhostfile.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Run",
+      "target": "function:addon/qemu/qemuhostfile.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/main.cpp",
+      "target": "file:addon/wlan/sample/hello_ap/client/kernel.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/main.cpp",
+      "target": "file:include/circle/startup.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/main.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/main.cpp:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:addon/wlan/sample/hello_ap/client/main.cpp",
+      "target": "function:addon/wlan/sample/hello_ap/client/main.cpp:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/wlan/sample/hello_ap/client/main.cpp:main",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:addon/wlan/sample/hello_ap/client/main.cpp:main",
+      "target": "function:addon/wlan/sample/hello_ap/client/kernel.cpp:Run",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

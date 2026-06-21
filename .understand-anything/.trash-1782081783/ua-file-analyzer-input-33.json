@@ -1,0 +1,164 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "include/circle/usb/xhcicommandmanager.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhcidevice.h",
+      "language": "c",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhciendpoint.h",
+      "language": "c",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhcieventmanager.h",
+      "language": "c",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhciring.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhcirootport.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhcislotmanager.h",
+      "language": "c",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/xhciusbdevice.h",
+      "language": "c",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhcicommandmanager.cpp",
+      "language": "cpp",
+      "sizeLines": 266,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhciendpoint.cpp",
+      "language": "cpp",
+      "sizeLines": 668,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhcieventmanager.cpp",
+      "language": "cpp",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhciring.cpp",
+      "language": "cpp",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhcirootport.cpp",
+      "language": "cpp",
+      "sizeLines": 325,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhcislotmanager.cpp",
+      "language": "cpp",
+      "sizeLines": 121,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/xhciusbdevice.cpp",
+      "language": "cpp",
+      "sizeLines": 327,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "include/circle/usb/xhcicommandmanager.h": [],
+    "include/circle/usb/xhcidevice.h": [],
+    "include/circle/usb/xhciendpoint.h": [],
+    "include/circle/usb/xhcieventmanager.h": [],
+    "include/circle/usb/xhciring.h": [],
+    "include/circle/usb/xhcirootport.h": [],
+    "include/circle/usb/xhcislotmanager.h": [],
+    "include/circle/usb/xhciusbdevice.h": [],
+    "lib/usb/xhcicommandmanager.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/xhcicommandmanager.h",
+      "include/circle/usb/xhcidevice.h"
+    ],
+    "lib/usb/xhciendpoint.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/sched/scheduler.h",
+      "include/circle/synchronize.h",
+      "include/circle/sysconfig.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbrequest.h",
+      "include/circle/usb/xhcicommandmanager.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhciendpoint.h",
+      "include/circle/usb/xhciusbdevice.h",
+      "include/circle/util.h"
+    ],
+    "lib/usb/xhcieventmanager.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhcieventmanager.h"
+    ],
+    "lib/usb/xhciring.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/logger.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhciring.h"
+    ],
+    "lib/usb/xhcirootport.cpp": [
+      "include/assert.h",
+      "include/circle/logger.h",
+      "include/circle/timer.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhcirootport.h"
+    ],
+    "lib/usb/xhcislotmanager.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhcislotmanager.h"
+    ],
+    "lib/usb/xhciusbdevice.cpp": [
+      "include/assert.h",
+      "include/circle/debug.h",
+      "include/circle/synchronize.h",
+      "include/circle/timer.h",
+      "include/circle/usb/usbstandardhub.h",
+      "include/circle/usb/xhcidevice.h",
+      "include/circle/usb/xhcirootport.h",
+      "include/circle/usb/xhciusbdevice.h",
+      "include/circle/util.h"
+    ]
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "addon/display/sample/hd44780/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 169,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/hd44780/kernel.h",
+      "language": "c",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/hd44780/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/hd44780i2c/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 170,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/hd44780i2c/kernel.h",
+      "language": "c",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/hd44780i2c/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/ssd1306/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 185,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/ssd1306/kernel.h",
+      "language": "c",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/ssd1306/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/st7789char/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 207,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/st7789char/kernel.h",
+      "language": "c",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "addon/display/sample/st7789char/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/input/console.h",
+      "language": "c",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/input/keyboardbuffer.h",
+      "language": "c",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/time.h",
+      "language": "c",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "include/circle/usb/usbkeyboard.h",
+      "language": "c",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/console.cpp",
+      "language": "cpp",
+      "sizeLines": 235,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/input/keyboardbuffer.cpp",
+      "language": "cpp",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/time.cpp",
+      "language": "cpp",
+      "sizeLines": 239,
+      "fileCategory": "code"
+    },
+    {
+      "path": "lib/usb/usbkeyboard.cpp",
+      "language": "cpp",
+      "sizeLines": 263,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "addon/display/sample/hd44780/kernel.cpp": [
+      "addon/display/sample/hd44780/kernel.h",
+      "include/circle/input/keyboardbuffer.h",
+      "include/circle/string.h",
+      "include/circle/time.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/sample/hd44780/kernel.h": [],
+    "addon/display/sample/hd44780/main.cpp": [
+      "addon/display/sample/hd44780/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/hd44780i2c/kernel.cpp": [
+      "addon/display/sample/hd44780i2c/kernel.h",
+      "include/circle/input/keyboardbuffer.h",
+      "include/circle/machineinfo.h",
+      "include/circle/string.h",
+      "include/circle/time.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/sample/hd44780i2c/kernel.h": [],
+    "addon/display/sample/hd44780i2c/main.cpp": [
+      "addon/display/sample/hd44780i2c/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/ssd1306/kernel.cpp": [
+      "addon/display/sample/ssd1306/kernel.h",
+      "include/circle/input/keyboardbuffer.h",
+      "include/circle/machineinfo.h",
+      "include/circle/string.h",
+      "include/circle/time.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/sample/ssd1306/kernel.h": [],
+    "addon/display/sample/ssd1306/main.cpp": [
+      "addon/display/sample/ssd1306/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "addon/display/sample/st7789char/kernel.cpp": [
+      "addon/display/sample/st7789char/kernel.h",
+      "include/circle/input/keyboardbuffer.h",
+      "include/circle/machineinfo.h",
+      "include/circle/string.h",
+      "include/circle/time.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ],
+    "addon/display/sample/st7789char/kernel.h": [],
+    "addon/display/sample/st7789char/main.cpp": [
+      "addon/display/sample/st7789char/kernel.h",
+      "include/circle/startup.h"
+    ],
+    "include/circle/input/console.h": [],
+    "include/circle/input/keyboardbuffer.h": [],
+    "include/circle/time.h": [],
+    "include/circle/usb/usbkeyboard.h": [],
+    "lib/input/console.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/input/console.h",
+      "include/circle/logger.h",
+      "include/circle/usb/usbkeyboard.h"
+    ],
+    "lib/input/keyboardbuffer.cpp": [
+      "include/assert.h",
+      "include/circle/input/keyboardbuffer.h"
+    ],
+    "lib/time.cpp": [
+      "include/assert.h",
+      "include/circle/time.h"
+    ],
+    "lib/usb/usbkeyboard.cpp": [
+      "include/assert.h",
+      "include/circle/devicenameservice.h",
+      "include/circle/logger.h",
+      "include/circle/macros.h",
+      "include/circle/synchronize.h",
+      "include/circle/usb/usbhostcontroller.h",
+      "include/circle/usb/usbkeyboard.h",
+      "include/circle/util.h"
+    ]
+  }
+}

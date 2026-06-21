@@ -1,0 +1,5735 @@
+{
+  "batch": 20,
+  "nodes": [
+    {
+      "id": "file:include/circle/usb/usbrequest.h",
+      "type": "file",
+      "name": "usbrequest.h",
+      "filePath": "include/circle/usb/usbrequest.h",
+      "summary": "USB device driver implementation for usbrequest",
+      "tags": [
+        "circle",
+        "usb",
+        "usbrequest"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/usb/usbserial.h",
+      "type": "file",
+      "name": "usbserial.h",
+      "filePath": "include/circle/usb/usbserial.h",
+      "summary": "USB device driver implementation for usbserial",
+      "tags": [
+        "circle",
+        "usb",
+        "usbserial"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:include/circle/usb/usbserialhost.h",
+      "type": "file",
+      "name": "usbserialhost.h",
+      "filePath": "include/circle/usb/usbserialhost.h",
+      "summary": "USB device driver implementation for usbserialhost",
+      "tags": [
+        "circle",
+        "usb",
+        "usbserialhost"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/usb/xhcisharedmemallocator.h",
+      "type": "file",
+      "name": "xhcisharedmemallocator.h",
+      "filePath": "include/circle/usb/xhcisharedmemallocator.h",
+      "summary": "USB device driver implementation for xhcisharedmemallocator",
+      "tags": [
+        "circle",
+        "usb",
+        "xhcisharedmemallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:include/circle/windowdisplay.h",
+      "type": "file",
+      "name": "windowdisplay.h",
+      "filePath": "include/circle/windowdisplay.h",
+      "summary": "Windowdisplay implementation with 0 functions and hardware register access",
+      "tags": [
+        "circle",
+        "windowdisplay"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/classallocator.cpp",
+      "type": "file",
+      "name": "classallocator.cpp",
+      "filePath": "lib/classallocator.cpp",
+      "summary": "Classallocator implementation with 7 functions and hardware register access",
+      "tags": [
+        "classallocator"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:lib/classallocator.cpp:TBlock",
+      "type": "class",
+      "name": "TBlock",
+      "filePath": "lib/classallocator.cpp",
+      "summary": "TBlock class in classallocator.cpp",
+      "tags": [
+        "classallocator"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/classallocator.cpp:CClassAllocator",
+      "type": "function",
+      "name": "CClassAllocator",
+      "filePath": "lib/classallocator.cpp",
+      "summary": "CClassAllocator(nObjectSize, nReservedObjects, pClassName) in classallocator.cpp",
+      "tags": [
+        "classallocator"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/classallocator.cpp:~CClassAllocator",
+      "type": "function",
+      "name": "~CClassAllocator",
+      "filePath": "lib/classallocator.cpp",
+      "summary": "~CClassAllocator() in classallocator.cpp",
+      "tags": [
+        "classallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/classallocator.cpp:Init",
+      "type": "function",
+      "name": "Init",
+      "filePath": "lib/classallocator.cpp",
+      "summary": "Init(nObjectSize, nReservedObjects) in classallocator.cpp",
+      "tags": [
+        "classallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/classallocator.cpp:Extend",
+      "type": "function",
+      "name": "Extend",
+      "filePath": "lib/classallocator.cpp",
+      "summary": "Extend(nReservedObjects, nTargetLevel) in classallocator.cpp",
+      "tags": [
+        "classallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/classallocator.cpp:Free",
+      "type": "function",
+      "name": "Free",
+      "filePath": "lib/classallocator.cpp",
+      "summary": "Free(pBlock) in classallocator.cpp",
+      "tags": [
+        "classallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/fs/fat/fat.cpp",
+      "type": "file",
+      "name": "fat.cpp",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "Fat implementation with 9 functions and hardware register access",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:CFAT",
+      "type": "function",
+      "name": "CFAT",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "CFAT(pCache, pFATInfo) in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:~CFAT",
+      "type": "function",
+      "name": "~CFAT",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "~CFAT() in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:GetClusterEntry",
+      "type": "function",
+      "name": "GetClusterEntry",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "GetClusterEntry(nCluster) in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:IsEOC",
+      "type": "function",
+      "name": "IsEOC",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "IsEOC(nClusterEntry) in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:SetClusterEntry",
+      "type": "function",
+      "name": "SetClusterEntry",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "SetClusterEntry(nCluster, nEntry) in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:AllocateCluster",
+      "type": "function",
+      "name": "AllocateCluster",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "AllocateCluster() in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:FreeClusterChain",
+      "type": "function",
+      "name": "FreeClusterChain",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "FreeClusterChain(nFirstCluster) in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:GetEntry",
+      "type": "function",
+      "name": "GetEntry",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "GetEntry(pBuffer, nSectorOffset) in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/fat/fat.cpp:SetEntry",
+      "type": "function",
+      "name": "SetEntry",
+      "filePath": "lib/fs/fat/fat.cpp",
+      "summary": "SetEntry(pBuffer, nSectorOffset, nEntry) in fat.cpp",
+      "tags": [
+        "fat",
+        "fs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/fs/partition.cpp",
+      "type": "file",
+      "name": "partition.cpp",
+      "filePath": "lib/fs/partition.cpp",
+      "summary": "Partition implementation with 5 functions and hardware register access",
+      "tags": [
+        "fs",
+        "partition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/partition.cpp:CPartition",
+      "type": "function",
+      "name": "CPartition",
+      "filePath": "lib/fs/partition.cpp",
+      "summary": "CPartition(pDevice, nFirstSector, nNumberOfSectors) in partition.cpp",
+      "tags": [
+        "fs",
+        "partition"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/fs/partition.cpp:~CPartition",
+      "type": "function",
+      "name": "~CPartition",
+      "filePath": "lib/fs/partition.cpp",
+      "summary": "~CPartition() in partition.cpp",
+      "tags": [
+        "fs",
+        "partition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/partition.cpp:Read",
+      "type": "function",
+      "name": "Read",
+      "filePath": "lib/fs/partition.cpp",
+      "summary": "Read(pBuffer, nCount) in partition.cpp",
+      "tags": [
+        "fs",
+        "partition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/partition.cpp:Write",
+      "type": "function",
+      "name": "Write",
+      "filePath": "lib/fs/partition.cpp",
+      "summary": "Write(pBuffer, nCount) in partition.cpp",
+      "tags": [
+        "fs",
+        "partition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/partition.cpp:Seek",
+      "type": "function",
+      "name": "Seek",
+      "filePath": "lib/fs/partition.cpp",
+      "summary": "Seek(ullOffset) in partition.cpp",
+      "tags": [
+        "fs",
+        "partition"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/fs/partitionmanager.cpp",
+      "type": "file",
+      "name": "partitionmanager.cpp",
+      "filePath": "lib/fs/partitionmanager.cpp",
+      "summary": "Partitionmanager implementation with 6 functions and hardware register access",
+      "tags": [
+        "fs",
+        "partitionmanager"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:lib/fs/partitionmanager.cpp:TCHSAddress",
+      "type": "class",
+      "name": "TCHSAddress",
+      "filePath": "lib/fs/partitionmanager.cpp",
+      "summary": "TCHSAddress class in partitionmanager.cpp",
+      "tags": [
+        "fs",
+        "partitionmanager"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:lib/fs/partitionmanager.cpp:TPartitionEntry",
+      "type": "class",
+      "name": "TPartitionEntry",
+      "filePath": "lib/fs/partitionmanager.cpp",
+      "summary": "TPartitionEntry class in partitionmanager.cpp",
+      "tags": [
+        "fs",
+        "partitionmanager"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:lib/fs/partitionmanager.cpp:TMasterBootRecord",
+      "type": "class",
+      "name": "TMasterBootRecord",
+      "filePath": "lib/fs/partitionmanager.cpp",
+      "summary": "TMasterBootRecord class in partitionmanager.cpp",
+      "tags": [
+        "fs",
+        "partitionmanager"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/fs/partitionmanager.cpp:CPartitionManager",
+      "type": "function",
+      "name": "CPartitionManager",
+      "filePath": "lib/fs/partitionmanager.cpp",
+      "summary": "CPartitionManager(pDevice, pDeviceName) in partitionmanager.cpp",
+      "tags": [
+        "fs",
+        "partitionmanager"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/partitionmanager.cpp:~CPartitionManager",
+      "type": "function",
+      "name": "~CPartitionManager",
+      "filePath": "lib/fs/partitionmanager.cpp",
+      "summary": "~CPartitionManager() in partitionmanager.cpp",
+      "tags": [
+        "fs",
+        "partitionmanager"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/fs/partitionmanager.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "lib/fs/partitionmanager.cpp",
+      "summary": "Initialize() in partitionmanager.cpp",
+      "tags": [
+        "fs",
+        "partitionmanager"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/input/keyboardbehaviour.cpp",
+      "type": "file",
+      "name": "keyboardbehaviour.cpp",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "Keyboardbehaviour implementation with 11 functions and hardware register access",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:CKeyboardBehaviour",
+      "type": "function",
+      "name": "CKeyboardBehaviour",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "CKeyboardBehaviour() in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:~CKeyboardBehaviour",
+      "type": "function",
+      "name": "~CKeyboardBehaviour",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "~CKeyboardBehaviour() in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:RegisterKeyPressedHandler",
+      "type": "function",
+      "name": "RegisterKeyPressedHandler",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "RegisterKeyPressedHandler(pKeyPressedHandler) in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:RegisterSelectConsoleHandler",
+      "type": "function",
+      "name": "RegisterSelectConsoleHandler",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "RegisterSelectConsoleHandler(pSelectConsoleHandler) in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:RegisterShutdownHandler",
+      "type": "function",
+      "name": "RegisterShutdownHandler",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "RegisterShutdownHandler(pShutdownHandler) in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:GetLEDStatus",
+      "type": "function",
+      "name": "GetLEDStatus",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "GetLEDStatus() in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:GenerateKeyEvent",
+      "type": "function",
+      "name": "GenerateKeyEvent",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "GenerateKeyEvent(ucKeyCode) in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:KeyPressed",
+      "type": "function",
+      "name": "KeyPressed",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "KeyPressed(ucKeyCode) in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:KeyReleased",
+      "type": "function",
+      "name": "KeyReleased",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "KeyReleased(ucKeyCode) in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:TimerHandler",
+      "type": "function",
+      "name": "TimerHandler",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "TimerHandler(hTimer) in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keyboardbehaviour.cpp:TimerStub",
+      "type": "function",
+      "name": "TimerStub",
+      "filePath": "lib/input/keyboardbehaviour.cpp",
+      "summary": "TimerStub(hTimer, pParam, pContext) in keyboardbehaviour.cpp",
+      "tags": [
+        "input",
+        "keyboardbehaviour"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lib/input/keymap.cpp",
+      "type": "file",
+      "name": "keymap.cpp",
+      "filePath": "lib/input/keymap.cpp",
+      "summary": "Keymap implementation with 6 functions and hardware register access",
+      "tags": [
+        "input",
+        "keymap"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/keymap.cpp:CKeyMap",
+      "type": "function",
+      "name": "CKeyMap",
+      "filePath": "lib/input/keymap.cpp",
+      "summary": "CKeyMap() in keymap.cpp",
+      "tags": [
+        "input",
+        "keymap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keymap.cpp:~CKeyMap",
+      "type": "function",
+      "name": "~CKeyMap",
+      "filePath": "lib/input/keymap.cpp",
+      "summary": "~CKeyMap() in keymap.cpp",
+      "tags": [
+        "input",
+        "keymap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keymap.cpp:ClearTable",
+      "type": "function",
+      "name": "ClearTable",
+      "filePath": "lib/input/keymap.cpp",
+      "summary": "ClearTable(nTable) in keymap.cpp",
+      "tags": [
+        "input",
+        "keymap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keymap.cpp:SetEntry",
+      "type": "function",
+      "name": "SetEntry",
+      "filePath": "lib/input/keymap.cpp",
+      "summary": "SetEntry(nTable, nPhyCode, nValue) in keymap.cpp",
+      "tags": [
+        "input",
+        "keymap"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/keymap.cpp:Translate",
+      "type": "function",
+      "name": "Translate",
+      "filePath": "lib/input/keymap.cpp",
+      "summary": "Translate(nPhyCode, nModifiers) in keymap.cpp",
+      "tags": [
+        "input",
+        "keymap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/keymap.cpp:GetLEDStatus",
+      "type": "function",
+      "name": "GetLEDStatus",
+      "filePath": "lib/input/keymap.cpp",
+      "summary": "GetLEDStatus() in keymap.cpp",
+      "tags": [
+        "input",
+        "keymap"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/input/linediscipline.cpp",
+      "type": "file",
+      "name": "linediscipline.cpp",
+      "filePath": "lib/input/linediscipline.cpp",
+      "summary": "Linediscipline implementation with 7 functions and hardware register access",
+      "tags": [
+        "input",
+        "linediscipline"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/linediscipline.cpp:CLineDiscipline",
+      "type": "function",
+      "name": "CLineDiscipline",
+      "filePath": "lib/input/linediscipline.cpp",
+      "summary": "CLineDiscipline(pInputDevice, pOutputDevice) in linediscipline.cpp",
+      "tags": [
+        "input",
+        "linediscipline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/linediscipline.cpp:~CLineDiscipline",
+      "type": "function",
+      "name": "~CLineDiscipline",
+      "filePath": "lib/input/linediscipline.cpp",
+      "summary": "~CLineDiscipline() in linediscipline.cpp",
+      "tags": [
+        "input",
+        "linediscipline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/linediscipline.cpp:Read",
+      "type": "function",
+      "name": "Read",
+      "filePath": "lib/input/linediscipline.cpp",
+      "summary": "Read(pBuffer, nCount) in linediscipline.cpp",
+      "tags": [
+        "input",
+        "linediscipline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/linediscipline.cpp:SetOptionRawMode",
+      "type": "function",
+      "name": "SetOptionRawMode",
+      "filePath": "lib/input/linediscipline.cpp",
+      "summary": "SetOptionRawMode(bEnable) in linediscipline.cpp",
+      "tags": [
+        "input",
+        "linediscipline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/linediscipline.cpp:SetOptionEcho",
+      "type": "function",
+      "name": "SetOptionEcho",
+      "filePath": "lib/input/linediscipline.cpp",
+      "summary": "SetOptionEcho(bEnable) in linediscipline.cpp",
+      "tags": [
+        "input",
+        "linediscipline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/linediscipline.cpp:GetChar",
+      "type": "function",
+      "name": "GetChar",
+      "filePath": "lib/input/linediscipline.cpp",
+      "summary": "GetChar() in linediscipline.cpp",
+      "tags": [
+        "input",
+        "linediscipline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/linediscipline.cpp:PutChar",
+      "type": "function",
+      "name": "PutChar",
+      "filePath": "lib/input/linediscipline.cpp",
+      "summary": "PutChar(nChar) in linediscipline.cpp",
+      "tags": [
+        "input",
+        "linediscipline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/input/mouse.cpp",
+      "type": "file",
+      "name": "mouse.cpp",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "Mouse implementation with 14 functions and hardware register access",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:CMouseDevice",
+      "type": "function",
+      "name": "CMouseDevice",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "CMouseDevice(nButtons, bHasWheel) in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:~CMouseDevice",
+      "type": "function",
+      "name": "~CMouseDevice",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "~CMouseDevice() in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:Setup",
+      "type": "function",
+      "name": "Setup",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "Setup(pDisplay, bCursor) in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:Release",
+      "type": "function",
+      "name": "Release",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "Release() in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:RegisterEventHandler",
+      "type": "function",
+      "name": "RegisterEventHandler",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "RegisterEventHandler(pEventHandler) in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:SetCursor",
+      "type": "function",
+      "name": "SetCursor",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "SetCursor(nPosX, nPosY) in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:ShowCursor",
+      "type": "function",
+      "name": "ShowCursor",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "ShowCursor(bShow) in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:UpdateCursor",
+      "type": "function",
+      "name": "UpdateCursor",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "UpdateCursor() in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:RegisterStatusHandler",
+      "type": "function",
+      "name": "RegisterStatusHandler",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "RegisterStatusHandler(pStatusHandler, pArg) in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:proxy_handler",
+      "type": "function",
+      "name": "proxy_handler",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "proxy_handler(nButtons, nDisplacementX, nDisplacementY, nWheelMove, pArg) in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:ReportHandler",
+      "type": "function",
+      "name": "ReportHandler",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "ReportHandler(nButtons, nDisplacementX, nDisplacementY, nWheelMove) in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:GetButtonCount",
+      "type": "function",
+      "name": "GetButtonCount",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "GetButtonCount() in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/input/mouse.cpp:HasWheel",
+      "type": "function",
+      "name": "HasWheel",
+      "filePath": "lib/input/mouse.cpp",
+      "summary": "HasWheel() in mouse.cpp",
+      "tags": [
+        "input",
+        "mouse"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/net/netconnection.cpp",
+      "type": "file",
+      "name": "netconnection.cpp",
+      "filePath": "lib/net/netconnection.cpp",
+      "summary": "Netconnection implementation with 6 functions and hardware register access",
+      "tags": [
+        "net",
+        "netconnection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/netconnection.cpp:CNetConnection",
+      "type": "function",
+      "name": "CNetConnection",
+      "filePath": "lib/net/netconnection.cpp",
+      "summary": "CNetConnection(pNetConfig, pNetworkLayer, rForeignIP, nForeignPort, nOwnPort, nProtocol) in netconnection.cpp",
+      "tags": [
+        "net",
+        "netconnection"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/net/netconnection.cpp:~CNetConnection",
+      "type": "function",
+      "name": "~CNetConnection",
+      "filePath": "lib/net/netconnection.cpp",
+      "summary": "~CNetConnection() in netconnection.cpp",
+      "tags": [
+        "net",
+        "netconnection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/netconnection.cpp:GetForeignPort",
+      "type": "function",
+      "name": "GetForeignPort",
+      "filePath": "lib/net/netconnection.cpp",
+      "summary": "GetForeignPort() in netconnection.cpp",
+      "tags": [
+        "net",
+        "netconnection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/netconnection.cpp:GetOwnPort",
+      "type": "function",
+      "name": "GetOwnPort",
+      "filePath": "lib/net/netconnection.cpp",
+      "summary": "GetOwnPort() in netconnection.cpp",
+      "tags": [
+        "net",
+        "netconnection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/netconnection.cpp:GetProtocol",
+      "type": "function",
+      "name": "GetProtocol",
+      "filePath": "lib/net/netconnection.cpp",
+      "summary": "GetProtocol() in netconnection.cpp",
+      "tags": [
+        "net",
+        "netconnection"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/net/retransmissionqueue.cpp",
+      "type": "file",
+      "name": "retransmissionqueue.cpp",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "Retransmissionqueue implementation with 10 functions and hardware register access",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:CRetransmissionQueue",
+      "type": "function",
+      "name": "CRetransmissionQueue",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "CRetransmissionQueue(nSize) in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:~CRetransmissionQueue",
+      "type": "function",
+      "name": "~CRetransmissionQueue",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "~CRetransmissionQueue() in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:IsEmpty",
+      "type": "function",
+      "name": "IsEmpty",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "IsEmpty() in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:GetFreeSpace",
+      "type": "function",
+      "name": "GetFreeSpace",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "GetFreeSpace() in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:Write",
+      "type": "function",
+      "name": "Write",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "Write(pBuffer, nLength) in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:GetBytesAvailable",
+      "type": "function",
+      "name": "GetBytesAvailable",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "GetBytesAvailable() in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:Read",
+      "type": "function",
+      "name": "Read",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "Read(pBuffer, nLength) in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:Advance",
+      "type": "function",
+      "name": "Advance",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "Advance(nBytes) in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:Reset",
+      "type": "function",
+      "name": "Reset",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "Reset() in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/net/retransmissionqueue.cpp:Flush",
+      "type": "function",
+      "name": "Flush",
+      "filePath": "lib/net/retransmissionqueue.cpp",
+      "summary": "Flush() in retransmissionqueue.cpp",
+      "tags": [
+        "net",
+        "retransmissionqueue"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/numberpool.cpp",
+      "type": "file",
+      "name": "numberpool.cpp",
+      "filePath": "lib/numberpool.cpp",
+      "summary": "Numberpool implementation with 4 functions and hardware register access",
+      "tags": [
+        "numberpool"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/numberpool.cpp:CNumberPool",
+      "type": "function",
+      "name": "CNumberPool",
+      "filePath": "lib/numberpool.cpp",
+      "summary": "CNumberPool(nMin, nMax) in numberpool.cpp",
+      "tags": [
+        "numberpool"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/numberpool.cpp:~CNumberPool",
+      "type": "function",
+      "name": "~CNumberPool",
+      "filePath": "lib/numberpool.cpp",
+      "summary": "~CNumberPool() in numberpool.cpp",
+      "tags": [
+        "numberpool"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/numberpool.cpp:AllocateNumber",
+      "type": "function",
+      "name": "AllocateNumber",
+      "filePath": "lib/numberpool.cpp",
+      "summary": "AllocateNumber(bMustSucceed, pFrom) in numberpool.cpp",
+      "tags": [
+        "numberpool"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/numberpool.cpp:FreeNumber",
+      "type": "function",
+      "name": "FreeNumber",
+      "filePath": "lib/numberpool.cpp",
+      "summary": "FreeNumber(nNumber) in numberpool.cpp",
+      "tags": [
+        "numberpool"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/pageallocator.cpp",
+      "type": "file",
+      "name": "pageallocator.cpp",
+      "filePath": "lib/pageallocator.cpp",
+      "summary": "Pageallocator implementation with 5 functions and hardware register access",
+      "tags": [
+        "pageallocator"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/pageallocator.cpp:CPageAllocator",
+      "type": "function",
+      "name": "CPageAllocator",
+      "filePath": "lib/pageallocator.cpp",
+      "summary": "CPageAllocator() in pageallocator.cpp",
+      "tags": [
+        "pageallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/pageallocator.cpp:~CPageAllocator",
+      "type": "function",
+      "name": "~CPageAllocator",
+      "filePath": "lib/pageallocator.cpp",
+      "summary": "~CPageAllocator() in pageallocator.cpp",
+      "tags": [
+        "pageallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/pageallocator.cpp:Setup",
+      "type": "function",
+      "name": "Setup",
+      "filePath": "lib/pageallocator.cpp",
+      "summary": "Setup(nBase, nSize) in pageallocator.cpp",
+      "tags": [
+        "pageallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/pageallocator.cpp:GetFreeSpace",
+      "type": "function",
+      "name": "GetFreeSpace",
+      "filePath": "lib/pageallocator.cpp",
+      "summary": "GetFreeSpace() in pageallocator.cpp",
+      "tags": [
+        "pageallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/pageallocator.cpp:Free",
+      "type": "function",
+      "name": "Free",
+      "filePath": "lib/pageallocator.cpp",
+      "summary": "Free(pPage) in pageallocator.cpp",
+      "tags": [
+        "pageallocator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/ptrlist.cpp",
+      "type": "file",
+      "name": "ptrlist.cpp",
+      "filePath": "lib/ptrlist.cpp",
+      "summary": "Ptrlist implementation with 6 functions and hardware register access",
+      "tags": [
+        "ptrlist"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:lib/ptrlist.cpp:TPtrListElement",
+      "type": "class",
+      "name": "TPtrListElement",
+      "filePath": "lib/ptrlist.cpp",
+      "summary": "TPtrListElement class in ptrlist.cpp",
+      "tags": [
+        "ptrlist"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/ptrlist.cpp:CPtrList",
+      "type": "function",
+      "name": "CPtrList",
+      "filePath": "lib/ptrlist.cpp",
+      "summary": "CPtrList() in ptrlist.cpp",
+      "tags": [
+        "ptrlist"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/ptrlist.cpp:~CPtrList",
+      "type": "function",
+      "name": "~CPtrList",
+      "filePath": "lib/ptrlist.cpp",
+      "summary": "~CPtrList() in ptrlist.cpp",
+      "tags": [
+        "ptrlist"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/ptrlist.cpp:InsertBefore",
+      "type": "function",
+      "name": "InsertBefore",
+      "filePath": "lib/ptrlist.cpp",
+      "summary": "InsertBefore(pAfter, pPtr) in ptrlist.cpp",
+      "tags": [
+        "ptrlist"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/ptrlist.cpp:InsertAfter",
+      "type": "function",
+      "name": "InsertAfter",
+      "filePath": "lib/ptrlist.cpp",
+      "summary": "InsertAfter(pBefore, pPtr) in ptrlist.cpp",
+      "tags": [
+        "ptrlist"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/ptrlist.cpp:Remove",
+      "type": "function",
+      "name": "Remove",
+      "filePath": "lib/ptrlist.cpp",
+      "summary": "Remove(pElement) in ptrlist.cpp",
+      "tags": [
+        "ptrlist"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/ptrlistfiq.cpp",
+      "type": "file",
+      "name": "ptrlistfiq.cpp",
+      "filePath": "lib/ptrlistfiq.cpp",
+      "summary": "Ptrlistfiq implementation with 1 functions and hardware register access",
+      "tags": [
+        "ptrlistfiq"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/ptrlistfiq.cpp:Remove",
+      "type": "function",
+      "name": "Remove",
+      "filePath": "lib/ptrlistfiq.cpp",
+      "summary": "Remove(pElement) in ptrlistfiq.cpp",
+      "tags": [
+        "ptrlistfiq"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/purecall.cpp",
+      "type": "file",
+      "name": "purecall.cpp",
+      "filePath": "lib/purecall.cpp",
+      "summary": "Purecall implementation with 0 functions and hardware register access",
+      "tags": [
+        "purecall"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "type": "file",
+      "name": "pcm512xsoundcontroller.cpp",
+      "filePath": "lib/sound/pcm512xsoundcontroller.cpp",
+      "summary": "Audio sound device driver implementation for pcm512xsoundcontroller",
+      "tags": [
+        "pcm512xsoundcontroller",
+        "sound"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/pcm512xsoundcontroller.cpp:CPCM512xSoundController",
+      "type": "function",
+      "name": "CPCM512xSoundController",
+      "filePath": "lib/sound/pcm512xsoundcontroller.cpp",
+      "summary": "CPCM512xSoundController(pI2CMaster, uchI2CAddress) in pcm512xsoundcontroller.cpp",
+      "tags": [
+        "pcm512xsoundcontroller",
+        "sound"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/pcm512xsoundcontroller.cpp:Probe",
+      "type": "function",
+      "name": "Probe",
+      "filePath": "lib/sound/pcm512xsoundcontroller.cpp",
+      "summary": "Probe() in pcm512xsoundcontroller.cpp",
+      "tags": [
+        "pcm512xsoundcontroller",
+        "sound"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/pcm512xsoundcontroller.cpp:GetControlInfo",
+      "type": "function",
+      "name": "GetControlInfo",
+      "filePath": "lib/sound/pcm512xsoundcontroller.cpp",
+      "summary": "GetControlInfo(Control, Jack, Channel) in pcm512xsoundcontroller.cpp",
+      "tags": [
+        "pcm512xsoundcontroller",
+        "sound"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/pcm512xsoundcontroller.cpp:SetControl",
+      "type": "function",
+      "name": "SetControl",
+      "filePath": "lib/sound/pcm512xsoundcontroller.cpp",
+      "summary": "SetControl(Control, Jack, Channel, nValue) in pcm512xsoundcontroller.cpp",
+      "tags": [
+        "pcm512xsoundcontroller",
+        "sound"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/pcm512xsoundcontroller.cpp:SetMute",
+      "type": "function",
+      "name": "SetMute",
+      "filePath": "lib/sound/pcm512xsoundcontroller.cpp",
+      "summary": "SetMute(Jack, Channel, bEnable) in pcm512xsoundcontroller.cpp",
+      "tags": [
+        "pcm512xsoundcontroller",
+        "sound"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/pcm512xsoundcontroller.cpp:SetVolume",
+      "type": "function",
+      "name": "SetVolume",
+      "filePath": "lib/sound/pcm512xsoundcontroller.cpp",
+      "summary": "SetVolume(Jack, Channel, ndB) in pcm512xsoundcontroller.cpp",
+      "tags": [
+        "pcm512xsoundcontroller",
+        "sound"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/pcm512xsoundcontroller.cpp:InitPCM512x",
+      "type": "function",
+      "name": "InitPCM512x",
+      "filePath": "lib/sound/pcm512xsoundcontroller.cpp",
+      "summary": "InitPCM512x(uchI2CAddress) in pcm512xsoundcontroller.cpp",
+      "tags": [
+        "pcm512xsoundcontroller",
+        "sound"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/sound/pwmsounddevice.cpp",
+      "type": "file",
+      "name": "pwmsounddevice.cpp",
+      "filePath": "lib/sound/pwmsounddevice.cpp",
+      "summary": "Audio sound device driver implementation for pwmsounddevice",
+      "tags": [
+        "pwmsounddevice",
+        "sound"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/pwmsounddevice.cpp:CPWMSoundDevice",
+      "type": "function",
+      "name": "CPWMSoundDevice",
+      "filePath": "lib/sound/pwmsounddevice.cpp",
+      "summary": "CPWMSoundDevice(pInterrupt) in pwmsounddevice.cpp",
+      "tags": [
+        "pwmsounddevice",
+        "sound"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/pwmsounddevice.cpp:~CPWMSoundDevice",
+      "type": "function",
+      "name": "~CPWMSoundDevice",
+      "filePath": "lib/sound/pwmsounddevice.cpp",
+      "summary": "~CPWMSoundDevice() in pwmsounddevice.cpp",
+      "tags": [
+        "pwmsounddevice",
+        "sound"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/pwmsounddevice.cpp:Playback",
+      "type": "function",
+      "name": "Playback",
+      "filePath": "lib/sound/pwmsounddevice.cpp",
+      "summary": "Playback(pSoundData, nSamples, nChannels, nBitsPerSample) in pwmsounddevice.cpp",
+      "tags": [
+        "pwmsounddevice",
+        "sound"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/pwmsounddevice.cpp:PlaybackActive",
+      "type": "function",
+      "name": "PlaybackActive",
+      "filePath": "lib/sound/pwmsounddevice.cpp",
+      "summary": "PlaybackActive() in pwmsounddevice.cpp",
+      "tags": [
+        "pwmsounddevice",
+        "sound"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/pwmsounddevice.cpp:CancelPlayback",
+      "type": "function",
+      "name": "CancelPlayback",
+      "filePath": "lib/sound/pwmsounddevice.cpp",
+      "summary": "CancelPlayback() in pwmsounddevice.cpp",
+      "tags": [
+        "pwmsounddevice",
+        "sound"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/pwmsounddevice.cpp:GetChunk",
+      "type": "function",
+      "name": "GetChunk",
+      "filePath": "lib/sound/pwmsounddevice.cpp",
+      "summary": "GetChunk(pBuffer, nChunkSize) in pwmsounddevice.cpp",
+      "tags": [
+        "pwmsounddevice",
+        "sound"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/sound/wm8960soundcontroller.cpp",
+      "type": "file",
+      "name": "wm8960soundcontroller.cpp",
+      "filePath": "lib/sound/wm8960soundcontroller.cpp",
+      "summary": "Audio sound device driver implementation for wm8960soundcontroller",
+      "tags": [
+        "sound",
+        "wm8960soundcontroller"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/wm8960soundcontroller.cpp:CWM8960SoundController",
+      "type": "function",
+      "name": "CWM8960SoundController",
+      "filePath": "lib/sound/wm8960soundcontroller.cpp",
+      "summary": "CWM8960SoundController(pI2CMaster, uchI2CAddress, nSampleRate, bOutSupported, bInSupported) in wm8960soundcontroller.cpp",
+      "tags": [
+        "sound",
+        "wm8960soundcontroller"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/wm8960soundcontroller.cpp:Probe",
+      "type": "function",
+      "name": "Probe",
+      "filePath": "lib/sound/wm8960soundcontroller.cpp",
+      "summary": "Probe() in wm8960soundcontroller.cpp",
+      "tags": [
+        "sound",
+        "wm8960soundcontroller"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/wm8960soundcontroller.cpp:EnableJack",
+      "type": "function",
+      "name": "EnableJack",
+      "filePath": "lib/sound/wm8960soundcontroller.cpp",
+      "summary": "EnableJack(Jack) in wm8960soundcontroller.cpp",
+      "tags": [
+        "sound",
+        "wm8960soundcontroller"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/wm8960soundcontroller.cpp:DisableJack",
+      "type": "function",
+      "name": "DisableJack",
+      "filePath": "lib/sound/wm8960soundcontroller.cpp",
+      "summary": "DisableJack(Jack) in wm8960soundcontroller.cpp",
+      "tags": [
+        "sound",
+        "wm8960soundcontroller"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/sound/wm8960soundcontroller.cpp:GetControlInfo",
+      "type": "function",
+      "name": "GetControlInfo",
+      "filePath": "lib/sound/wm8960soundcontroller.cpp",
+      "summary": "GetControlInfo(Control, Jack, Channel) in wm8960soundcontroller.cpp",
+      "tags": [
+        "sound",
+        "wm8960soundcontroller"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/wm8960soundcontroller.cpp:SetControl",
+      "type": "function",
+      "name": "SetControl",
+      "filePath": "lib/sound/wm8960soundcontroller.cpp",
+      "summary": "SetControl(Control, Jack, Channel, nValue) in wm8960soundcontroller.cpp",
+      "tags": [
+        "sound",
+        "wm8960soundcontroller"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/sound/wm8960soundcontroller.cpp:WriteReg",
+      "type": "function",
+      "name": "WriteReg",
+      "filePath": "lib/sound/wm8960soundcontroller.cpp",
+      "summary": "WriteReg(nReg, nValue) in wm8960soundcontroller.cpp",
+      "tags": [
+        "sound",
+        "wm8960soundcontroller"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/usb/dwhcicompletionqueue.cpp",
+      "type": "file",
+      "name": "dwhcicompletionqueue.cpp",
+      "filePath": "lib/usb/dwhcicompletionqueue.cpp",
+      "summary": "USB device driver implementation for dwhcicompletionqueue",
+      "tags": [
+        "dwhcicompletionqueue",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/usb/dwhcidevice.cpp",
+      "type": "file",
+      "name": "dwhcidevice.cpp",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "USB device driver implementation for dwhcidevice",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:CDWHCIDevice",
+      "type": "function",
+      "name": "CDWHCIDevice",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "CDWHCIDevice(pInterruptSystem, pTimer, bPlugAndPlay) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:~CDWHCIDevice",
+      "type": "function",
+      "name": "~CDWHCIDevice",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "~CDWHCIDevice() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "type": "function",
+      "name": "Initialize",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "Initialize(bScanDevices) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:ReScanDevices",
+      "type": "function",
+      "name": "ReScanDevices",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "ReScanDevices() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:SubmitBlockingRequest",
+      "type": "function",
+      "name": "SubmitBlockingRequest",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "SubmitBlockingRequest(pURB, nTimeoutMs) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:SubmitAsyncRequest",
+      "type": "function",
+      "name": "SubmitAsyncRequest",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "SubmitAsyncRequest(pURB, nTimeoutMs) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:CancelDeviceTransactions",
+      "type": "function",
+      "name": "CancelDeviceTransactions",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "CancelDeviceTransactions(pUSBDevice) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:DeviceConnected",
+      "type": "function",
+      "name": "DeviceConnected",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "DeviceConnected() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:GetPortSpeed",
+      "type": "function",
+      "name": "GetPortSpeed",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "GetPortSpeed() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:OvercurrentDetected",
+      "type": "function",
+      "name": "OvercurrentDetected",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "OvercurrentDetected() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:DisableRootPort",
+      "type": "function",
+      "name": "DisableRootPort",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "DisableRootPort(bPowerOff) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:InitCore",
+      "type": "function",
+      "name": "InitCore",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "InitCore() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:InitHost",
+      "type": "function",
+      "name": "InitHost",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "InitHost() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:EnableRootPort",
+      "type": "function",
+      "name": "EnableRootPort",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "EnableRootPort() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:PowerOn",
+      "type": "function",
+      "name": "PowerOn",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "PowerOn() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:Reset",
+      "type": "function",
+      "name": "Reset",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "Reset() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:EnableGlobalInterrupts",
+      "type": "function",
+      "name": "EnableGlobalInterrupts",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "EnableGlobalInterrupts() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:EnableCommonInterrupts",
+      "type": "function",
+      "name": "EnableCommonInterrupts",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "EnableCommonInterrupts() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:EnableHostInterrupts",
+      "type": "function",
+      "name": "EnableHostInterrupts",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "EnableHostInterrupts() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:EnableChannelInterrupt",
+      "type": "function",
+      "name": "EnableChannelInterrupt",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "EnableChannelInterrupt(nChannel) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:DisableChannelInterrupt",
+      "type": "function",
+      "name": "DisableChannelInterrupt",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "DisableChannelInterrupt(nChannel) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:FlushTxFIFO",
+      "type": "function",
+      "name": "FlushTxFIFO",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "FlushTxFIFO(nFIFO) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:FlushRxFIFO",
+      "type": "function",
+      "name": "FlushRxFIFO",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "FlushRxFIFO() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:TransferStage",
+      "type": "function",
+      "name": "TransferStage",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "TransferStage(pURB, bIn, bStatusStage, nTimeoutMs) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:CompletionRoutine",
+      "type": "function",
+      "name": "CompletionRoutine",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "CompletionRoutine(pURB, pParam, pContext) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:TransferStageAsync",
+      "type": "function",
+      "name": "TransferStageAsync",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "TransferStageAsync(pURB, bIn, bStatusStage, nTimeoutMs) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:StartTransaction",
+      "type": "function",
+      "name": "StartTransaction",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "StartTransaction(pStageData) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:StartChannel",
+      "type": "function",
+      "name": "StartChannel",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "StartChannel(pStageData) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "type": "function",
+      "name": "ChannelInterruptHandler",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "ChannelInterruptHandler(nChannel) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:InterruptHandler",
+      "type": "function",
+      "name": "InterruptHandler",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "InterruptHandler() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:InterruptStub",
+      "type": "function",
+      "name": "InterruptStub",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "InterruptStub(pParam) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:AllocateChannel",
+      "type": "function",
+      "name": "AllocateChannel",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "AllocateChannel() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:FreeChannel",
+      "type": "function",
+      "name": "FreeChannel",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "FreeChannel(nChannel) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:AllocateWaitBlock",
+      "type": "function",
+      "name": "AllocateWaitBlock",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "AllocateWaitBlock() in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:FreeWaitBlock",
+      "type": "function",
+      "name": "FreeWaitBlock",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "FreeWaitBlock(nWaitBlock) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:WaitForBit",
+      "type": "function",
+      "name": "WaitForBit",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "WaitForBit(pRegister, nMask, bWaitUntilSet, nMsTimeout) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/dwhcidevice.cpp:LogTransactionFailed",
+      "type": "function",
+      "name": "LogTransactionFailed",
+      "filePath": "lib/usb/dwhcidevice.cpp",
+      "summary": "LogTransactionFailed(nStatus) in dwhcidevice.cpp",
+      "tags": [
+        "dwhcidevice",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/usb/dwhciframeschediso.cpp",
+      "type": "file",
+      "name": "dwhciframeschediso.cpp",
+      "filePath": "lib/usb/dwhciframeschediso.cpp",
+      "summary": "USB device driver implementation for dwhciframeschediso",
+      "tags": [
+        "dwhciframeschediso",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschediso.cpp:CDWHCIFrameSchedulerIsochronous",
+      "type": "function",
+      "name": "CDWHCIFrameSchedulerIsochronous",
+      "filePath": "lib/usb/dwhciframeschediso.cpp",
+      "summary": "CDWHCIFrameSchedulerIsochronous(bIn) in dwhciframeschediso.cpp",
+      "tags": [
+        "dwhciframeschediso",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschediso.cpp:~CDWHCIFrameSchedulerIsochronous",
+      "type": "function",
+      "name": "~CDWHCIFrameSchedulerIsochronous",
+      "filePath": "lib/usb/dwhciframeschediso.cpp",
+      "summary": "~CDWHCIFrameSchedulerIsochronous() in dwhciframeschediso.cpp",
+      "tags": [
+        "dwhciframeschediso",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschediso.cpp:StartSplit",
+      "type": "function",
+      "name": "StartSplit",
+      "filePath": "lib/usb/dwhciframeschediso.cpp",
+      "summary": "StartSplit() in dwhciframeschediso.cpp",
+      "tags": [
+        "dwhciframeschediso",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschediso.cpp:CompleteSplit",
+      "type": "function",
+      "name": "CompleteSplit",
+      "filePath": "lib/usb/dwhciframeschediso.cpp",
+      "summary": "CompleteSplit() in dwhciframeschediso.cpp",
+      "tags": [
+        "dwhciframeschediso",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschediso.cpp:TransactionComplete",
+      "type": "function",
+      "name": "TransactionComplete",
+      "filePath": "lib/usb/dwhciframeschediso.cpp",
+      "summary": "TransactionComplete(nStatus) in dwhciframeschediso.cpp",
+      "tags": [
+        "dwhciframeschediso",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschediso.cpp:IsOddFrame",
+      "type": "function",
+      "name": "IsOddFrame",
+      "filePath": "lib/usb/dwhciframeschediso.cpp",
+      "summary": "IsOddFrame() in dwhciframeschediso.cpp",
+      "tags": [
+        "dwhciframeschediso",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/usb/dwhciframeschednper.cpp",
+      "type": "file",
+      "name": "dwhciframeschednper.cpp",
+      "filePath": "lib/usb/dwhciframeschednper.cpp",
+      "summary": "USB device driver implementation for dwhciframeschednper",
+      "tags": [
+        "dwhciframeschednper",
+        "usb"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednper.cpp:CDWHCIFrameSchedulerNonPeriodic",
+      "type": "function",
+      "name": "CDWHCIFrameSchedulerNonPeriodic",
+      "filePath": "lib/usb/dwhciframeschednper.cpp",
+      "summary": "CDWHCIFrameSchedulerNonPeriodic() in dwhciframeschednper.cpp",
+      "tags": [
+        "dwhciframeschednper",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednper.cpp:~CDWHCIFrameSchedulerNonPeriodic",
+      "type": "function",
+      "name": "~CDWHCIFrameSchedulerNonPeriodic",
+      "filePath": "lib/usb/dwhciframeschednper.cpp",
+      "summary": "~CDWHCIFrameSchedulerNonPeriodic() in dwhciframeschednper.cpp",
+      "tags": [
+        "dwhciframeschednper",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednper.cpp:StartSplit",
+      "type": "function",
+      "name": "StartSplit",
+      "filePath": "lib/usb/dwhciframeschednper.cpp",
+      "summary": "StartSplit() in dwhciframeschednper.cpp",
+      "tags": [
+        "dwhciframeschednper",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednper.cpp:CompleteSplit",
+      "type": "function",
+      "name": "CompleteSplit",
+      "filePath": "lib/usb/dwhciframeschednper.cpp",
+      "summary": "CompleteSplit() in dwhciframeschednper.cpp",
+      "tags": [
+        "dwhciframeschednper",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednper.cpp:TransactionComplete",
+      "type": "function",
+      "name": "TransactionComplete",
+      "filePath": "lib/usb/dwhciframeschednper.cpp",
+      "summary": "TransactionComplete(nStatus) in dwhciframeschednper.cpp",
+      "tags": [
+        "dwhciframeschednper",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednper.cpp:IsOddFrame",
+      "type": "function",
+      "name": "IsOddFrame",
+      "filePath": "lib/usb/dwhciframeschednper.cpp",
+      "summary": "IsOddFrame() in dwhciframeschednper.cpp",
+      "tags": [
+        "dwhciframeschednper",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "type": "file",
+      "name": "dwhciframeschednsplit.cpp",
+      "filePath": "lib/usb/dwhciframeschednsplit.cpp",
+      "summary": "USB device driver implementation for dwhciframeschednsplit",
+      "tags": [
+        "dwhciframeschednsplit",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednsplit.cpp:CDWHCIFrameSchedulerNoSplit",
+      "type": "function",
+      "name": "CDWHCIFrameSchedulerNoSplit",
+      "filePath": "lib/usb/dwhciframeschednsplit.cpp",
+      "summary": "CDWHCIFrameSchedulerNoSplit(bIsPeriodic) in dwhciframeschednsplit.cpp",
+      "tags": [
+        "dwhciframeschednsplit",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednsplit.cpp:~CDWHCIFrameSchedulerNoSplit",
+      "type": "function",
+      "name": "~CDWHCIFrameSchedulerNoSplit",
+      "filePath": "lib/usb/dwhciframeschednsplit.cpp",
+      "summary": "~CDWHCIFrameSchedulerNoSplit() in dwhciframeschednsplit.cpp",
+      "tags": [
+        "dwhciframeschednsplit",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednsplit.cpp:StartSplit",
+      "type": "function",
+      "name": "StartSplit",
+      "filePath": "lib/usb/dwhciframeschednsplit.cpp",
+      "summary": "StartSplit() in dwhciframeschednsplit.cpp",
+      "tags": [
+        "dwhciframeschednsplit",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednsplit.cpp:CompleteSplit",
+      "type": "function",
+      "name": "CompleteSplit",
+      "filePath": "lib/usb/dwhciframeschednsplit.cpp",
+      "summary": "CompleteSplit() in dwhciframeschednsplit.cpp",
+      "tags": [
+        "dwhciframeschednsplit",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednsplit.cpp:TransactionComplete",
+      "type": "function",
+      "name": "TransactionComplete",
+      "filePath": "lib/usb/dwhciframeschednsplit.cpp",
+      "summary": "TransactionComplete(nStatus) in dwhciframeschednsplit.cpp",
+      "tags": [
+        "dwhciframeschednsplit",
+        "usb"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:lib/usb/dwhciframeschednsplit.cpp:IsOddFrame",
+      "type": "function",
+      "name": "IsOddFrame",
+      "filePath": "lib/usb/dwhciframeschednsplit.cpp",
+      "summary": "IsOddFrame() in dwhciframeschednsplit.cpp",
+      "tags": [
+        "dwhciframeschednsplit",
+        "usb"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "class:lib/classallocator.cpp:TBlock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "class:lib/classallocator.cpp:TBlock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:CClassAllocator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:CClassAllocator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:~CClassAllocator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:~CClassAllocator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:Init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:Init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:Extend",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:Extend",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:Free",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "function:lib/classallocator.cpp:Free",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "file:include/circle/alloc.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "file:include/circle/classallocator.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/classallocator.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/classallocator.cpp:CClassAllocator",
+      "target": "function:lib/classallocator.cpp:Init",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:CFAT",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:CFAT",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:~CFAT",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:~CFAT",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:GetClusterEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:GetClusterEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:IsEOC",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:IsEOC",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:SetClusterEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:SetClusterEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:AllocateCluster",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:AllocateCluster",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:FreeClusterChain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:FreeClusterChain",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:GetEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:GetEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:SetEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "function:lib/fs/fat/fat.cpp:SetEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/fs/fat/fat.cpp",
+      "target": "file:include/circle/fs/fat/fat.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/fs/fat/fat.cpp:GetClusterEntry",
+      "target": "function:lib/fs/fat/fat.cpp:GetEntry",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/fs/fat/fat.cpp:SetClusterEntry",
+      "target": "function:lib/fs/fat/fat.cpp:SetEntry",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/fs/fat/fat.cpp:AllocateCluster",
+      "target": "function:lib/fs/fat/fat.cpp:GetEntry",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/fs/fat/fat.cpp:AllocateCluster",
+      "target": "function:lib/fs/fat/fat.cpp:SetEntry",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/fs/fat/fat.cpp:FreeClusterChain",
+      "target": "function:lib/fs/fat/fat.cpp:GetClusterEntry",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/fs/fat/fat.cpp:FreeClusterChain",
+      "target": "function:lib/fs/fat/fat.cpp:SetClusterEntry",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/fs/fat/fat.cpp:FreeClusterChain",
+      "target": "function:lib/fs/fat/fat.cpp:IsEOC",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:CPartition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:CPartition",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:~CPartition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:~CPartition",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:Read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:Read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:Write",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:Write",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:Seek",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "function:lib/fs/partition.cpp:Seek",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "file:include/circle/fs/fsdef.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/fs/partition.cpp",
+      "target": "file:include/circle/fs/partition.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/fs/partition.cpp:Read",
+      "target": "function:lib/fs/partition.cpp:Read",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/fs/partition.cpp:Write",
+      "target": "function:lib/fs/partition.cpp:Write",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/fs/partition.cpp:Seek",
+      "target": "function:lib/fs/partition.cpp:Seek",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "class:lib/fs/partitionmanager.cpp:TCHSAddress",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "class:lib/fs/partitionmanager.cpp:TCHSAddress",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "class:lib/fs/partitionmanager.cpp:TPartitionEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "class:lib/fs/partitionmanager.cpp:TPartitionEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "class:lib/fs/partitionmanager.cpp:TMasterBootRecord",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "class:lib/fs/partitionmanager.cpp:TMasterBootRecord",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "function:lib/fs/partitionmanager.cpp:CPartitionManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "function:lib/fs/partitionmanager.cpp:CPartitionManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "function:lib/fs/partitionmanager.cpp:~CPartitionManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "function:lib/fs/partitionmanager.cpp:~CPartitionManager",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "function:lib/fs/partitionmanager.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "function:lib/fs/partitionmanager.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "file:include/circle/devicenameservice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "file:include/circle/fs/fsdef.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "file:include/circle/fs/partitionmanager.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/fs/partitionmanager.cpp",
+      "target": "file:include/circle/macros.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:CKeyboardBehaviour",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:CKeyboardBehaviour",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:~CKeyboardBehaviour",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:~CKeyboardBehaviour",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:RegisterKeyPressedHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:RegisterKeyPressedHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:RegisterSelectConsoleHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:RegisterSelectConsoleHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:RegisterShutdownHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:RegisterShutdownHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:GetLEDStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:GetLEDStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:GenerateKeyEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:GenerateKeyEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:KeyPressed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:KeyPressed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:KeyReleased",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:KeyReleased",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:TimerHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:TimerHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:TimerStub",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "function:lib/input/keyboardbehaviour.cpp:TimerStub",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/keyboardbehaviour.cpp",
+      "target": "file:include/circle/input/keyboardbehaviour.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/input/keyboardbehaviour.cpp:GetLEDStatus",
+      "target": "function:lib/input/keyboardbehaviour.cpp:GetLEDStatus",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/keyboardbehaviour.cpp:KeyPressed",
+      "target": "function:lib/input/keyboardbehaviour.cpp:GenerateKeyEvent",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/keyboardbehaviour.cpp:TimerHandler",
+      "target": "function:lib/input/keyboardbehaviour.cpp:GenerateKeyEvent",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/keyboardbehaviour.cpp:TimerStub",
+      "target": "function:lib/input/keyboardbehaviour.cpp:TimerHandler",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:CKeyMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:CKeyMap",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:~CKeyMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:~CKeyMap",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:ClearTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:ClearTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:SetEntry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:SetEntry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:Translate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:Translate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:GetLEDStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "function:lib/input/keymap.cpp:GetLEDStatus",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "file:include/circle/input/keyboardbehaviour.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "file:include/circle/input/keymap.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "file:include/circle/koptions.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/keymap.cpp",
+      "target": "file:include/circle/util.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:CLineDiscipline",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:CLineDiscipline",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:~CLineDiscipline",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:~CLineDiscipline",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:Read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:Read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:SetOptionRawMode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:SetOptionRawMode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:SetOptionEcho",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:SetOptionEcho",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:GetChar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:GetChar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:PutChar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "function:lib/input/linediscipline.cpp:PutChar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/linediscipline.cpp",
+      "target": "file:include/circle/input/linediscipline.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/input/linediscipline.cpp:Read",
+      "target": "function:lib/input/linediscipline.cpp:GetChar",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/linediscipline.cpp:Read",
+      "target": "function:lib/input/linediscipline.cpp:PutChar",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/linediscipline.cpp:GetChar",
+      "target": "function:lib/input/linediscipline.cpp:Read",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:CMouseDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:CMouseDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:~CMouseDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:~CMouseDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:Setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:Setup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:Release",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:Release",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:RegisterEventHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:RegisterEventHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:SetCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:SetCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:ShowCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:ShowCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:UpdateCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:UpdateCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:RegisterStatusHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:RegisterStatusHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:proxy_handler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:ReportHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:ReportHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:GetButtonCount",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:GetButtonCount",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:HasWheel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "function:lib/input/mouse.cpp:HasWheel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "file:include/circle/devicenameservice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/input/mouse.cpp",
+      "target": "file:include/circle/input/mouse.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/input/mouse.cpp:Setup",
+      "target": "function:lib/input/mouse.cpp:Setup",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mouse.cpp:Release",
+      "target": "function:lib/input/mouse.cpp:Release",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mouse.cpp:RegisterEventHandler",
+      "target": "function:lib/input/mouse.cpp:RegisterEventHandler",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mouse.cpp:SetCursor",
+      "target": "function:lib/input/mouse.cpp:SetCursor",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mouse.cpp:ShowCursor",
+      "target": "function:lib/input/mouse.cpp:ShowCursor",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mouse.cpp:UpdateCursor",
+      "target": "function:lib/input/mouse.cpp:UpdateCursor",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/input/mouse.cpp:RegisterStatusHandler",
+      "target": "function:lib/input/mouse.cpp:RegisterStatusHandler",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:CNetConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:CNetConnection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:~CNetConnection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:~CNetConnection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:GetForeignPort",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:GetForeignPort",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:GetOwnPort",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:GetOwnPort",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:GetProtocol",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "function:lib/net/netconnection.cpp:GetProtocol",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/netconnection.cpp",
+      "target": "file:include/circle/net/netconnection.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:CRetransmissionQueue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:CRetransmissionQueue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:~CRetransmissionQueue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:~CRetransmissionQueue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:IsEmpty",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:IsEmpty",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:GetFreeSpace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:GetFreeSpace",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Write",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Write",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:GetBytesAvailable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:GetBytesAvailable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Read",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Read",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Advance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Advance",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Reset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Reset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Flush",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "function:lib/net/retransmissionqueue.cpp:Flush",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/net/retransmissionqueue.cpp",
+      "target": "file:include/circle/net/retransmissionqueue.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/net/retransmissionqueue.cpp:Write",
+      "target": "function:lib/net/retransmissionqueue.cpp:GetFreeSpace",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/net/retransmissionqueue.cpp:Read",
+      "target": "function:lib/net/retransmissionqueue.cpp:GetBytesAvailable",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "function:lib/numberpool.cpp:CNumberPool",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "function:lib/numberpool.cpp:CNumberPool",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "function:lib/numberpool.cpp:~CNumberPool",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "function:lib/numberpool.cpp:~CNumberPool",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "function:lib/numberpool.cpp:AllocateNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "function:lib/numberpool.cpp:AllocateNumber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "function:lib/numberpool.cpp:FreeNumber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "function:lib/numberpool.cpp:FreeNumber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/numberpool.cpp",
+      "target": "file:include/circle/numberpool.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:CPageAllocator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:CPageAllocator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:~CPageAllocator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:~CPageAllocator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:Setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:Setup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:GetFreeSpace",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:GetFreeSpace",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:Free",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "function:lib/pageallocator.cpp:Free",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/pageallocator.cpp",
+      "target": "file:include/circle/pageallocator.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "class:lib/ptrlist.cpp:TPtrListElement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "class:lib/ptrlist.cpp:TPtrListElement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:CPtrList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:CPtrList",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:~CPtrList",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:~CPtrList",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:InsertBefore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:InsertBefore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:InsertAfter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:InsertAfter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:Remove",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "function:lib/ptrlist.cpp:Remove",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrlist.cpp",
+      "target": "file:include/circle/ptrlist.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrlistfiq.cpp",
+      "target": "function:lib/ptrlistfiq.cpp:Remove",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlistfiq.cpp",
+      "target": "function:lib/ptrlistfiq.cpp:Remove",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/ptrlistfiq.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrlistfiq.cpp",
+      "target": "file:include/circle/classallocator.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrlistfiq.cpp",
+      "target": "file:include/circle/ptrlistfiq.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/ptrlistfiq.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/purecall.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:CPCM512xSoundController",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:CPCM512xSoundController",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:Probe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:Probe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:GetControlInfo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:GetControlInfo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:SetControl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:SetControl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:SetMute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:SetMute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:SetVolume",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:SetVolume",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:InitPCM512x",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:InitPCM512x",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/pcm512xsoundcontroller.cpp",
+      "target": "file:include/circle/sound/pcm512xsoundcontroller.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/sound/pcm512xsoundcontroller.cpp:Probe",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:InitPCM512x",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/sound/pcm512xsoundcontroller.cpp:SetControl",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:SetMute",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/sound/pcm512xsoundcontroller.cpp:SetControl",
+      "target": "function:lib/sound/pcm512xsoundcontroller.cpp:SetVolume",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:CPWMSoundDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:CPWMSoundDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:~CPWMSoundDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:~CPWMSoundDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:Playback",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:Playback",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:PlaybackActive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:PlaybackActive",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:CancelPlayback",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:CancelPlayback",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:GetChunk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "function:lib/sound/pwmsounddevice.cpp:GetChunk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/pwmsounddevice.cpp",
+      "target": "file:include/circle/sound/pwmsounddevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:CWM8960SoundController",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:CWM8960SoundController",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:Probe",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:Probe",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:EnableJack",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:EnableJack",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:DisableJack",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:DisableJack",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:GetControlInfo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:GetControlInfo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:SetControl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:SetControl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:WriteReg",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:WriteReg",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/sound/wm8960soundcontroller.cpp",
+      "target": "file:include/circle/sound/wm8960soundcontroller.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/sound/wm8960soundcontroller.cpp:Probe",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:WriteReg",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/sound/wm8960soundcontroller.cpp:EnableJack",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:WriteReg",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/sound/wm8960soundcontroller.cpp:DisableJack",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:WriteReg",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/sound/wm8960soundcontroller.cpp:SetControl",
+      "target": "function:lib/sound/wm8960soundcontroller.cpp:WriteReg",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/dwhcicompletionqueue.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcicompletionqueue.cpp",
+      "target": "file:include/circle/usb/dwhcicompletionqueue.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:CDWHCIDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:CDWHCIDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:~CDWHCIDevice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:~CDWHCIDevice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:ReScanDevices",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:ReScanDevices",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:SubmitBlockingRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:SubmitBlockingRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:SubmitAsyncRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:SubmitAsyncRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:CancelDeviceTransactions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:CancelDeviceTransactions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:DeviceConnected",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:DeviceConnected",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:GetPortSpeed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:GetPortSpeed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:OvercurrentDetected",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:OvercurrentDetected",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:DisableRootPort",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:DisableRootPort",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:InitCore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:InitCore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:InitHost",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:InitHost",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableRootPort",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableRootPort",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:PowerOn",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:PowerOn",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:Reset",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:Reset",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableGlobalInterrupts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableGlobalInterrupts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableCommonInterrupts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableCommonInterrupts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableHostInterrupts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableHostInterrupts",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableChannelInterrupt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableChannelInterrupt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:DisableChannelInterrupt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:DisableChannelInterrupt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:FlushTxFIFO",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:FlushTxFIFO",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:FlushRxFIFO",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:FlushRxFIFO",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:TransferStage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:TransferStage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:CompletionRoutine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:CompletionRoutine",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:TransferStageAsync",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:TransferStageAsync",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:StartTransaction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:StartTransaction",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:StartChannel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:StartChannel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:InterruptHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:InterruptHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:InterruptStub",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:InterruptStub",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:AllocateChannel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:AllocateChannel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:FreeChannel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:FreeChannel",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:AllocateWaitBlock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:AllocateWaitBlock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:FreeWaitBlock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:FreeWaitBlock",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:WaitForBit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:WaitForBit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:LogTransactionFailed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "function:lib/usb/dwhcidevice.cpp:LogTransactionFailed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/atomic.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/debug.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/koptions.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/sched/scheduler.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/synchronize.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/sysconfig.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/usb/dwhcidevice.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/usb/dwhciframeschediso.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/usb/dwhciframeschednper.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/usb/dwhciframeschednsplit.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhcidevice.cpp",
+      "target": "file:include/circle/usb/dwhciframeschedper.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:~CDWHCIDevice",
+      "target": "function:lib/usb/dwhcidevice.cpp:Reset",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "target": "function:lib/usb/dwhcidevice.cpp:PowerOn",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "target": "function:lib/usb/dwhcidevice.cpp:InitCore",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableGlobalInterrupts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "target": "function:lib/usb/dwhcidevice.cpp:InitHost",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "target": "function:lib/usb/dwhcidevice.cpp:ReScanDevices",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:ReScanDevices",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableRootPort",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:ReScanDevices",
+      "target": "function:lib/usb/dwhcidevice.cpp:Initialize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:ReScanDevices",
+      "target": "function:lib/usb/dwhcidevice.cpp:ReScanDevices",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:SubmitBlockingRequest",
+      "target": "function:lib/usb/dwhcidevice.cpp:TransferStage",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:SubmitAsyncRequest",
+      "target": "function:lib/usb/dwhcidevice.cpp:TransferStageAsync",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:InitCore",
+      "target": "function:lib/usb/dwhcidevice.cpp:Reset",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:InitCore",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableCommonInterrupts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:InitHost",
+      "target": "function:lib/usb/dwhcidevice.cpp:FlushTxFIFO",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:InitHost",
+      "target": "function:lib/usb/dwhcidevice.cpp:FlushRxFIFO",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:InitHost",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableHostInterrupts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:EnableRootPort",
+      "target": "function:lib/usb/dwhcidevice.cpp:WaitForBit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:Reset",
+      "target": "function:lib/usb/dwhcidevice.cpp:WaitForBit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:EnableHostInterrupts",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableCommonInterrupts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:FlushTxFIFO",
+      "target": "function:lib/usb/dwhcidevice.cpp:WaitForBit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:FlushRxFIFO",
+      "target": "function:lib/usb/dwhcidevice.cpp:WaitForBit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:TransferStage",
+      "target": "function:lib/usb/dwhcidevice.cpp:AllocateWaitBlock",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:TransferStage",
+      "target": "function:lib/usb/dwhcidevice.cpp:TransferStageAsync",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:TransferStage",
+      "target": "function:lib/usb/dwhcidevice.cpp:FreeWaitBlock",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:TransferStageAsync",
+      "target": "function:lib/usb/dwhcidevice.cpp:AllocateChannel",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:TransferStageAsync",
+      "target": "function:lib/usb/dwhcidevice.cpp:EnableChannelInterrupt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:TransferStageAsync",
+      "target": "function:lib/usb/dwhcidevice.cpp:StartTransaction",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:StartTransaction",
+      "target": "function:lib/usb/dwhcidevice.cpp:StartChannel",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "target": "function:lib/usb/dwhcidevice.cpp:DisableChannelInterrupt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "target": "function:lib/usb/dwhcidevice.cpp:FreeChannel",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "target": "function:lib/usb/dwhcidevice.cpp:StartChannel",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "target": "function:lib/usb/dwhcidevice.cpp:StartTransaction",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "target": "function:lib/usb/dwhcidevice.cpp:LogTransactionFailed",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:InterruptHandler",
+      "target": "function:lib/usb/dwhcidevice.cpp:ChannelInterruptHandler",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:lib/usb/dwhcidevice.cpp:InterruptStub",
+      "target": "function:lib/usb/dwhcidevice.cpp:InterruptHandler",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:CDWHCIFrameSchedulerIsochronous",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:CDWHCIFrameSchedulerIsochronous",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:~CDWHCIFrameSchedulerIsochronous",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:~CDWHCIFrameSchedulerIsochronous",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:StartSplit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:StartSplit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:CompleteSplit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:CompleteSplit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:TransactionComplete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:TransactionComplete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:IsOddFrame",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "function:lib/usb/dwhciframeschediso.cpp:IsOddFrame",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "file:include/circle/usb/dwhci.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "file:include/circle/usb/dwhciframeschediso.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschediso.cpp",
+      "target": "file:include/circle/usb/dwhciregister.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:CDWHCIFrameSchedulerNonPeriodic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:CDWHCIFrameSchedulerNonPeriodic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:~CDWHCIFrameSchedulerNonPeriodic",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:~CDWHCIFrameSchedulerNonPeriodic",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:StartSplit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:StartSplit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:CompleteSplit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:CompleteSplit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:TransactionComplete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:TransactionComplete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:IsOddFrame",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "function:lib/usb/dwhciframeschednper.cpp:IsOddFrame",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "file:include/circle/koptions.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "file:include/circle/logger.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "file:include/circle/usb/dwhci.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "file:include/circle/usb/dwhciframeschednper.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednper.cpp",
+      "target": "file:include/circle/usb/dwhciregister.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:CDWHCIFrameSchedulerNoSplit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:CDWHCIFrameSchedulerNoSplit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:~CDWHCIFrameSchedulerNoSplit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:~CDWHCIFrameSchedulerNoSplit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:StartSplit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:StartSplit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:CompleteSplit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:CompleteSplit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:TransactionComplete",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:TransactionComplete",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:IsOddFrame",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "function:lib/usb/dwhciframeschednsplit.cpp:IsOddFrame",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "file:include/assert.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "file:include/circle/usb/dwhciframeschednsplit.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:lib/usb/dwhciframeschednsplit.cpp",
+      "target": "file:include/circle/usb/dwhciregister.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

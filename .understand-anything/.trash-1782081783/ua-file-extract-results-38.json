@@ -1,0 +1,307 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/display/st7789device.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 102,
+      "functions": [
+        {
+          "name": "CST7789Device",
+          "startLine": 25,
+          "endLine": 37,
+          "params": [
+            "pSPIMaster",
+            "pST7789Display",
+            "nColumns",
+            "nRows",
+            "rFont",
+            "bDoubleWidth",
+            "bDoubleHeight",
+            "bBlockCursor"
+          ]
+        },
+        {
+          "name": "~CST7789Device",
+          "startLine": 39,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 43,
+          "endLine": 80,
+          "params": []
+        },
+        {
+          "name": "DevClearCursor",
+          "startLine": 82,
+          "endLine": 86,
+          "params": []
+        },
+        {
+          "name": "DevSetCursorMode",
+          "startLine": 88,
+          "endLine": 90,
+          "params": [
+            "bVisible"
+          ]
+        },
+        {
+          "name": "DevSetChar",
+          "startLine": 92,
+          "endLine": 110,
+          "params": [
+            "nPosX",
+            "nPosY",
+            "chChar"
+          ]
+        },
+        {
+          "name": "DevSetCursor",
+          "startLine": 112,
+          "endLine": 114,
+          "params": [
+            "nCursorX",
+            "nCursorY"
+          ]
+        },
+        {
+          "name": "DevUpdateDisplay",
+          "startLine": 116,
+          "endLine": 118,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CST7789Device",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "~CST7789Device",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "DevClearCursor",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "DevSetCursorMode",
+          "line": 88,
+          "isDefault": false
+        },
+        {
+          "name": "DevSetChar",
+          "line": 92,
+          "isDefault": false
+        },
+        {
+          "name": "DevSetCursor",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "DevUpdateDisplay",
+          "line": 116,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Initialize",
+          "callee": "GetRotation",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetWidth",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetHeight",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetHeight",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetWidth",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetCharWidth",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetCharHeight",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Clear",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Initialize",
+          "callee": "On",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CCharDevice::Initialize",
+          "lineNumber": 79
+        },
+        {
+          "caller": "DevClearCursor",
+          "callee": "Clear",
+          "lineNumber": 85
+        },
+        {
+          "caller": "DevSetChar",
+          "callee": "DrawText",
+          "lineNumber": 108
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/st7789device.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 71,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/chargenerator.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 97,
+      "nonEmptyLines": 84,
+      "callGraph": [
+        {
+          "caller": "MakeFlags",
+          "callee": "(TFontFlags)",
+          "lineNumber": 47
+        },
+        {
+          "caller": "GetPixel",
+          "callee": "GetPixel",
+          "lineNumber": 82
+        },
+        {
+          "caller": "GetPixel",
+          "callee": "GetPixelLine",
+          "lineNumber": 82
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/chargenerator.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 74,
+      "nonEmptyLines": 66,
+      "functions": [
+        {
+          "name": "CCharGenerator",
+          "startLine": 22,
+          "endLine": 32,
+          "params": [
+            "rFont",
+            "Flags"
+          ]
+        },
+        {
+          "name": "GetPixelLine",
+          "startLine": 34,
+          "endLine": 74,
+          "params": [
+            "chAscii",
+            "nPosY"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CCharGenerator",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "GetPixelLine",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "GetPixelLine",
+          "callee": "static_cast<const u8 *>",
+          "lineNumber": 52
+        },
+        {
+          "caller": "GetPixelLine",
+          "callee": "static_cast<const u16 *>",
+          "lineNumber": 57
+        },
+        {
+          "caller": "GetPixelLine",
+          "callee": "static_cast<const u8 *>",
+          "lineNumber": 62
+        },
+        {
+          "caller": "GetPixelLine",
+          "callee": "reinterpret_cast<const u32 *>",
+          "lineNumber": 64
+        },
+        {
+          "caller": "GetPixelLine",
+          "callee": "static_cast<const u32 *>",
+          "lineNumber": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

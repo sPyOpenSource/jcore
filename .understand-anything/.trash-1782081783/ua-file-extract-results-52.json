@@ -1,0 +1,4698 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/FlintJVM/Inc/flint_fields_data.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_instruction_label.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 84,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_java_class_dict_node.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 20,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_java_class.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_java_object.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 39,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_java_string_dict_node.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 19,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_java_string.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_java_thread.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_java_throwable.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_list.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 66,
+      "callGraph": [
+        {
+          "caller": "add",
+          "callee": "remove",
+          "lineNumber": 32
+        },
+        {
+          "caller": "forEach",
+          "callee": "func",
+          "lineNumber": 64
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_method_info.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 75,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_mutex.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_opcodes.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 240,
+      "nonEmptyLines": 211,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_std.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 5,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_system_api.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 75,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_utf8_dict_node.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 20,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint_utf8.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Inc/flint.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 128,
+      "nonEmptyLines": 112,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_array.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 614,
+      "nonEmptyLines": 586,
+      "functions": [
+        {
+          "name": "CheckIsArray",
+          "startLine": 9,
+          "endLine": 20,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "CheckIsClassType",
+          "startLine": 22,
+          "endLine": 33,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "CheckIndex",
+          "startLine": 35,
+          "endLine": 44,
+          "params": [
+            "env",
+            "array",
+            "index"
+          ]
+        },
+        {
+          "name": "CheckDimensions",
+          "startLine": 46,
+          "endLine": 75,
+          "params": [
+            "env",
+            "dimensions"
+          ]
+        },
+        {
+          "name": "IsArrayOfPrimative",
+          "startLine": 77,
+          "endLine": 92,
+          "params": [
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeArray_GetLength",
+          "startLine": 94,
+          "endLine": 98,
+          "params": [
+            "env",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeArray_Get",
+          "startLine": 100,
+          "endLine": 159,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "NativeArray_GetBoolean",
+          "startLine": 161,
+          "endLine": 169,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "NativeArray_GetByte",
+          "startLine": 171,
+          "endLine": 179,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "NativeArray_GetChar",
+          "startLine": 181,
+          "endLine": 189,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "NativeArray_GetShort",
+          "startLine": 191,
+          "endLine": 205,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "NativeArray_GetInt",
+          "startLine": 207,
+          "endLine": 224,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "NativeArray_GetLong",
+          "startLine": 226,
+          "endLine": 245,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "NativeArray_GetFloat",
+          "startLine": 247,
+          "endLine": 268,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "NativeArray_GetDouble",
+          "startLine": 270,
+          "endLine": 293,
+          "params": [
+            "env",
+            "obj",
+            "index"
+          ]
+        },
+        {
+          "name": "parseWrapperClass",
+          "startLine": 295,
+          "endLine": 318,
+          "params": [
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeArray_Set",
+          "startLine": 320,
+          "endLine": 414,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_SetBoolean",
+          "startLine": 416,
+          "endLine": 424,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_SetByte",
+          "startLine": 426,
+          "endLine": 453,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_SetChar",
+          "startLine": 455,
+          "endLine": 479,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_SetShort",
+          "startLine": 481,
+          "endLine": 505,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_SetInt",
+          "startLine": 507,
+          "endLine": 528,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_SetLong",
+          "startLine": 530,
+          "endLine": 548,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_SetFloat",
+          "startLine": 550,
+          "endLine": 565,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_SetDouble",
+          "startLine": 567,
+          "endLine": 575,
+          "params": [
+            "env",
+            "obj",
+            "index",
+            "v"
+          ]
+        },
+        {
+          "name": "NativeArray_NewArray",
+          "startLine": 577,
+          "endLine": 600,
+          "params": [
+            "env",
+            "componentType",
+            "length"
+          ]
+        },
+        {
+          "name": "NativeArray_MultiNewArray",
+          "startLine": 602,
+          "endLine": 614,
+          "params": [
+            "env",
+            "componentType",
+            "dimensions"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeArray_GetLength",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_Get",
+          "line": 100,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_GetBoolean",
+          "line": 161,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_GetByte",
+          "line": 171,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_GetChar",
+          "line": 181,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_GetShort",
+          "line": 191,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_GetInt",
+          "line": 207,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_GetLong",
+          "line": 226,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_GetFloat",
+          "line": 247,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_GetDouble",
+          "line": 270,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_Set",
+          "line": 320,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_SetBoolean",
+          "line": 416,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_SetByte",
+          "line": 426,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_SetChar",
+          "line": 455,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_SetShort",
+          "line": 481,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_SetInt",
+          "line": 507,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_SetLong",
+          "line": 530,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_SetFloat",
+          "line": 550,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_SetDouble",
+          "line": 567,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_NewArray",
+          "line": 577,
+          "isDefault": false
+        },
+        {
+          "name": "NativeArray_MultiNewArray",
+          "line": 602,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CheckIsArray",
+          "callee": "throwNew",
+          "lineNumber": 11
+        },
+        {
+          "caller": "CheckIsArray",
+          "callee": "findClass",
+          "lineNumber": 11
+        },
+        {
+          "caller": "CheckIsArray",
+          "callee": "isArray",
+          "lineNumber": 14
+        },
+        {
+          "caller": "CheckIsArray",
+          "callee": "findClass",
+          "lineNumber": 15
+        },
+        {
+          "caller": "CheckIsArray",
+          "callee": "throwNew",
+          "lineNumber": 16
+        },
+        {
+          "caller": "CheckIsArray",
+          "callee": "getTypeName",
+          "lineNumber": 16
+        },
+        {
+          "caller": "CheckIsClassType",
+          "callee": "throwNew",
+          "lineNumber": 24
+        },
+        {
+          "caller": "CheckIsClassType",
+          "callee": "findClass",
+          "lineNumber": 24
+        },
+        {
+          "caller": "CheckIsClassType",
+          "callee": "findClass",
+          "lineNumber": 28
+        },
+        {
+          "caller": "CheckIsClassType",
+          "callee": "throwNew",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CheckIsClassType",
+          "callee": "getTypeName",
+          "lineNumber": 29
+        },
+        {
+          "caller": "CheckIndex",
+          "callee": "getLength",
+          "lineNumber": 36
+        },
+        {
+          "caller": "CheckIndex",
+          "callee": "findClass",
+          "lineNumber": 37
+        },
+        {
+          "caller": "CheckIndex",
+          "callee": "getCompTypeName",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CheckIndex",
+          "callee": "throwNew",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CheckIndex",
+          "callee": "getLength",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "throwNew",
+          "lineNumber": 48
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "findClass",
+          "lineNumber": 48
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "isArray",
+          "lineNumber": 51
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "getTypeName",
+          "lineNumber": 51
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "findClass",
+          "lineNumber": 52
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "throwNew",
+          "lineNumber": 53
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "getTypeName",
+          "lineNumber": 53
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "getLength",
+          "lineNumber": 56
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "findClass",
+          "lineNumber": 58
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "throwNew",
+          "lineNumber": 59
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "findClass",
+          "lineNumber": 63
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "throwNew",
+          "lineNumber": 64
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "getData",
+          "lineNumber": 67
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "throwNew",
+          "lineNumber": 70
+        },
+        {
+          "caller": "CheckDimensions",
+          "callee": "findClass",
+          "lineNumber": 70
+        },
+        {
+          "caller": "IsArrayOfPrimative",
+          "callee": "getTypeName",
+          "lineNumber": 78
+        },
+        {
+          "caller": "NativeArray_GetLength",
+          "callee": "CheckIsArray",
+          "lineNumber": 96
+        },
+        {
+          "caller": "NativeArray_GetLength",
+          "callee": "getLength",
+          "lineNumber": 97
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "CheckIsArray",
+          "lineNumber": 101
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "CheckIndex",
+          "lineNumber": 102
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 103
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "newObject",
+          "lineNumber": 107
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "findClass",
+          "lineNumber": 107
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "setInt32",
+          "lineNumber": 109
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getFieldByIndex",
+          "lineNumber": 109
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 109
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "newObject",
+          "lineNumber": 113
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "findClass",
+          "lineNumber": 113
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "setInt32",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getFieldByIndex",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 115
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "newObject",
+          "lineNumber": 119
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "findClass",
+          "lineNumber": 119
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "setInt32",
+          "lineNumber": 121
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getFieldByIndex",
+          "lineNumber": 121
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 121
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "newObject",
+          "lineNumber": 125
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "findClass",
+          "lineNumber": 125
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "setInt32",
+          "lineNumber": 127
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getFieldByIndex",
+          "lineNumber": 127
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 127
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "newObject",
+          "lineNumber": 131
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "findClass",
+          "lineNumber": 131
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "setInt32",
+          "lineNumber": 133
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getFieldByIndex",
+          "lineNumber": 133
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 133
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "newObject",
+          "lineNumber": 137
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "findClass",
+          "lineNumber": 137
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 139
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "setInt32",
+          "lineNumber": 140
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getFieldByIndex",
+          "lineNumber": 140
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "newObject",
+          "lineNumber": 144
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "findClass",
+          "lineNumber": 144
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 146
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "setInt64",
+          "lineNumber": 147
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getFieldByIndex",
+          "lineNumber": 147
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "newObject",
+          "lineNumber": 151
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "findClass",
+          "lineNumber": 151
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "setInt64",
+          "lineNumber": 153
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getFieldByIndex",
+          "lineNumber": 153
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 153
+        },
+        {
+          "caller": "NativeArray_Get",
+          "callee": "getData",
+          "lineNumber": 158
+        },
+        {
+          "caller": "NativeArray_GetBoolean",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 162
+        },
+        {
+          "caller": "NativeArray_GetBoolean",
+          "callee": "findClass",
+          "lineNumber": 163
+        },
+        {
+          "caller": "NativeArray_GetBoolean",
+          "callee": "throwNew",
+          "lineNumber": 164
+        },
+        {
+          "caller": "NativeArray_GetBoolean",
+          "callee": "getTypeName",
+          "lineNumber": 164
+        },
+        {
+          "caller": "NativeArray_GetBoolean",
+          "callee": "CheckIndex",
+          "lineNumber": 167
+        },
+        {
+          "caller": "NativeArray_GetBoolean",
+          "callee": "getData",
+          "lineNumber": 168
+        },
+        {
+          "caller": "NativeArray_GetByte",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 172
+        },
+        {
+          "caller": "NativeArray_GetByte",
+          "callee": "findClass",
+          "lineNumber": 173
+        },
+        {
+          "caller": "NativeArray_GetByte",
+          "callee": "throwNew",
+          "lineNumber": 174
+        },
+        {
+          "caller": "NativeArray_GetByte",
+          "callee": "getTypeName",
+          "lineNumber": 174
+        },
+        {
+          "caller": "NativeArray_GetByte",
+          "callee": "CheckIndex",
+          "lineNumber": 177
+        },
+        {
+          "caller": "NativeArray_GetByte",
+          "callee": "getData",
+          "lineNumber": 178
+        },
+        {
+          "caller": "NativeArray_GetChar",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 182
+        },
+        {
+          "caller": "NativeArray_GetChar",
+          "callee": "findClass",
+          "lineNumber": 183
+        },
+        {
+          "caller": "NativeArray_GetChar",
+          "callee": "throwNew",
+          "lineNumber": 184
+        },
+        {
+          "caller": "NativeArray_GetChar",
+          "callee": "getTypeName",
+          "lineNumber": 184
+        },
+        {
+          "caller": "NativeArray_GetChar",
+          "callee": "CheckIndex",
+          "lineNumber": 187
+        },
+        {
+          "caller": "NativeArray_GetChar",
+          "callee": "getData",
+          "lineNumber": 188
+        },
+        {
+          "caller": "NativeArray_GetShort",
+          "callee": "CheckIsArray",
+          "lineNumber": 192
+        },
+        {
+          "caller": "NativeArray_GetShort",
+          "callee": "CheckIndex",
+          "lineNumber": 193
+        },
+        {
+          "caller": "NativeArray_GetShort",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 194
+        },
+        {
+          "caller": "NativeArray_GetShort",
+          "callee": "getData",
+          "lineNumber": 196
+        },
+        {
+          "caller": "NativeArray_GetShort",
+          "callee": "getData",
+          "lineNumber": 198
+        },
+        {
+          "caller": "NativeArray_GetShort",
+          "callee": "findClass",
+          "lineNumber": 200
+        },
+        {
+          "caller": "NativeArray_GetShort",
+          "callee": "throwNew",
+          "lineNumber": 201
+        },
+        {
+          "caller": "NativeArray_GetShort",
+          "callee": "getTypeName",
+          "lineNumber": 201
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "CheckIsArray",
+          "lineNumber": 208
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "CheckIndex",
+          "lineNumber": 209
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 210
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "getData",
+          "lineNumber": 212
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "getData",
+          "lineNumber": 215
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "getData",
+          "lineNumber": 217
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "findClass",
+          "lineNumber": 219
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "throwNew",
+          "lineNumber": 220
+        },
+        {
+          "caller": "NativeArray_GetInt",
+          "callee": "getTypeName",
+          "lineNumber": 220
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "CheckIsArray",
+          "lineNumber": 227
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "CheckIndex",
+          "lineNumber": 228
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 229
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "getData",
+          "lineNumber": 231
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "getData",
+          "lineNumber": 234
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "getData",
+          "lineNumber": 236
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "getData",
+          "lineNumber": 238
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "findClass",
+          "lineNumber": 240
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "throwNew",
+          "lineNumber": 241
+        },
+        {
+          "caller": "NativeArray_GetLong",
+          "callee": "getTypeName",
+          "lineNumber": 241
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "CheckIsArray",
+          "lineNumber": 248
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "CheckIndex",
+          "lineNumber": 249
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 250
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "getData",
+          "lineNumber": 252
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "getData",
+          "lineNumber": 255
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "getData",
+          "lineNumber": 257
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "getData",
+          "lineNumber": 259
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "getData",
+          "lineNumber": 261
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "findClass",
+          "lineNumber": 263
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "throwNew",
+          "lineNumber": 264
+        },
+        {
+          "caller": "NativeArray_GetFloat",
+          "callee": "getTypeName",
+          "lineNumber": 264
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "CheckIsArray",
+          "lineNumber": 271
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "CheckIndex",
+          "lineNumber": 272
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 273
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "getData",
+          "lineNumber": 275
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "getData",
+          "lineNumber": 278
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "getData",
+          "lineNumber": 280
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "getData",
+          "lineNumber": 282
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "getData",
+          "lineNumber": 284
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "getData",
+          "lineNumber": 286
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "findClass",
+          "lineNumber": 288
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "throwNew",
+          "lineNumber": 289
+        },
+        {
+          "caller": "NativeArray_GetDouble",
+          "callee": "getTypeName",
+          "lineNumber": 289
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "getTypeName",
+          "lineNumber": 296
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 297
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 299
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "strcmp",
+          "lineNumber": 300
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 301
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "strcmp",
+          "lineNumber": 302
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 303
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "strcmp",
+          "lineNumber": 304
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 305
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "strcmp",
+          "lineNumber": 306
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 307
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "strcmp",
+          "lineNumber": 308
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 309
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "strcmp",
+          "lineNumber": 310
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 311
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "strcmp",
+          "lineNumber": 312
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "Hash",
+          "lineNumber": 313
+        },
+        {
+          "caller": "parseWrapperClass",
+          "callee": "strcmp",
+          "lineNumber": 314
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "CheckIsArray",
+          "lineNumber": 321
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "CheckIndex",
+          "lineNumber": 322
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 323
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 325
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 325
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "parseWrapperClass",
+          "lineNumber": 326
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 329
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 329
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 329
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 330
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 330
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 334
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 334
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 334
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 335
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 335
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 339
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 339
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 339
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 340
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 340
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 345
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 345
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 345
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 349
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 349
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 353
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 353
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 353
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 357
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 357
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 361
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 361
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 361
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 365
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 365
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 366
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt64",
+          "lineNumber": 370
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 370
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 371
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 375
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 375
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 379
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 379
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 379
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 383
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 383
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 384
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 388
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt64",
+          "lineNumber": 388
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 388
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt64",
+          "lineNumber": 392
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 392
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 393
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 397
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 397
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 401
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt32",
+          "lineNumber": 401
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 401
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 405
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getInt64",
+          "lineNumber": 405
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getFieldByIndex",
+          "lineNumber": 405
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "throwNew",
+          "lineNumber": 409
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "findClass",
+          "lineNumber": 409
+        },
+        {
+          "caller": "NativeArray_Set",
+          "callee": "getData",
+          "lineNumber": 413
+        },
+        {
+          "caller": "NativeArray_SetBoolean",
+          "callee": "CheckIsArray",
+          "lineNumber": 417
+        },
+        {
+          "caller": "NativeArray_SetBoolean",
+          "callee": "CheckIndex",
+          "lineNumber": 418
+        },
+        {
+          "caller": "NativeArray_SetBoolean",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 419
+        },
+        {
+          "caller": "NativeArray_SetBoolean",
+          "callee": "findClass",
+          "lineNumber": 420
+        },
+        {
+          "caller": "NativeArray_SetBoolean",
+          "callee": "throwNew",
+          "lineNumber": 421
+        },
+        {
+          "caller": "NativeArray_SetBoolean",
+          "callee": "getTypeName",
+          "lineNumber": 421
+        },
+        {
+          "caller": "NativeArray_SetBoolean",
+          "callee": "getData",
+          "lineNumber": 423
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "CheckIsArray",
+          "lineNumber": 427
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "CheckIndex",
+          "lineNumber": 428
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 429
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "getData",
+          "lineNumber": 431
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "getData",
+          "lineNumber": 434
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "getData",
+          "lineNumber": 437
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "getData",
+          "lineNumber": 440
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "getData",
+          "lineNumber": 443
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "getData",
+          "lineNumber": 446
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "findClass",
+          "lineNumber": 449
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "throwNew",
+          "lineNumber": 450
+        },
+        {
+          "caller": "NativeArray_SetByte",
+          "callee": "getTypeName",
+          "lineNumber": 450
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "CheckIsArray",
+          "lineNumber": 456
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "CheckIndex",
+          "lineNumber": 457
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 458
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "getData",
+          "lineNumber": 460
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "getData",
+          "lineNumber": 463
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "getData",
+          "lineNumber": 466
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "getData",
+          "lineNumber": 469
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "getData",
+          "lineNumber": 472
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "findClass",
+          "lineNumber": 475
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "throwNew",
+          "lineNumber": 476
+        },
+        {
+          "caller": "NativeArray_SetChar",
+          "callee": "getTypeName",
+          "lineNumber": 476
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "CheckIsArray",
+          "lineNumber": 482
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "CheckIndex",
+          "lineNumber": 483
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 484
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "getData",
+          "lineNumber": 486
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "getData",
+          "lineNumber": 489
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "getData",
+          "lineNumber": 492
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "getData",
+          "lineNumber": 495
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "getData",
+          "lineNumber": 498
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "findClass",
+          "lineNumber": 501
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "throwNew",
+          "lineNumber": 502
+        },
+        {
+          "caller": "NativeArray_SetShort",
+          "callee": "getTypeName",
+          "lineNumber": 502
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "CheckIsArray",
+          "lineNumber": 508
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "CheckIndex",
+          "lineNumber": 509
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 510
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "getData",
+          "lineNumber": 512
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "getData",
+          "lineNumber": 515
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "getData",
+          "lineNumber": 518
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "getData",
+          "lineNumber": 521
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "findClass",
+          "lineNumber": 524
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "throwNew",
+          "lineNumber": 525
+        },
+        {
+          "caller": "NativeArray_SetInt",
+          "callee": "getTypeName",
+          "lineNumber": 525
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "CheckIsArray",
+          "lineNumber": 531
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "CheckIndex",
+          "lineNumber": 532
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 533
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "getData",
+          "lineNumber": 535
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "getData",
+          "lineNumber": 538
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "getData",
+          "lineNumber": 541
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "findClass",
+          "lineNumber": 544
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "throwNew",
+          "lineNumber": 545
+        },
+        {
+          "caller": "NativeArray_SetLong",
+          "callee": "getTypeName",
+          "lineNumber": 545
+        },
+        {
+          "caller": "NativeArray_SetFloat",
+          "callee": "CheckIsArray",
+          "lineNumber": 551
+        },
+        {
+          "caller": "NativeArray_SetFloat",
+          "callee": "CheckIndex",
+          "lineNumber": 552
+        },
+        {
+          "caller": "NativeArray_SetFloat",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 553
+        },
+        {
+          "caller": "NativeArray_SetFloat",
+          "callee": "getData",
+          "lineNumber": 555
+        },
+        {
+          "caller": "NativeArray_SetFloat",
+          "callee": "getData",
+          "lineNumber": 558
+        },
+        {
+          "caller": "NativeArray_SetFloat",
+          "callee": "findClass",
+          "lineNumber": 561
+        },
+        {
+          "caller": "NativeArray_SetFloat",
+          "callee": "throwNew",
+          "lineNumber": 562
+        },
+        {
+          "caller": "NativeArray_SetFloat",
+          "callee": "getTypeName",
+          "lineNumber": 562
+        },
+        {
+          "caller": "NativeArray_SetDouble",
+          "callee": "CheckIsArray",
+          "lineNumber": 568
+        },
+        {
+          "caller": "NativeArray_SetDouble",
+          "callee": "CheckIndex",
+          "lineNumber": 569
+        },
+        {
+          "caller": "NativeArray_SetDouble",
+          "callee": "IsArrayOfPrimative",
+          "lineNumber": 570
+        },
+        {
+          "caller": "NativeArray_SetDouble",
+          "callee": "findClass",
+          "lineNumber": 571
+        },
+        {
+          "caller": "NativeArray_SetDouble",
+          "callee": "throwNew",
+          "lineNumber": 572
+        },
+        {
+          "caller": "NativeArray_SetDouble",
+          "callee": "getTypeName",
+          "lineNumber": 572
+        },
+        {
+          "caller": "NativeArray_SetDouble",
+          "callee": "getData",
+          "lineNumber": 574
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "CheckIsClassType",
+          "lineNumber": 578
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "findClass",
+          "lineNumber": 580
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "throwNew",
+          "lineNumber": 581
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "isPrimitive",
+          "lineNumber": 584
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "JClass::isPrimitive",
+          "lineNumber": 585
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "getTypeName",
+          "lineNumber": 585
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "newBoolArray",
+          "lineNumber": 586
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "newCharArray",
+          "lineNumber": 587
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "newFloatArray",
+          "lineNumber": 588
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "newDoubleArray",
+          "lineNumber": 589
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "newByteArray",
+          "lineNumber": 590
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "newShortArray",
+          "lineNumber": 591
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "newIntArray",
+          "lineNumber": 592
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "newLongArray",
+          "lineNumber": 593
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "Flint::findClassOfArray",
+          "lineNumber": 597
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "getTypeName",
+          "lineNumber": 597
+        },
+        {
+          "caller": "NativeArray_NewArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 598
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "CheckIsClassType",
+          "lineNumber": 603
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "CheckDimensions",
+          "lineNumber": 604
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "isPrimitive",
+          "lineNumber": 605
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "JClass::isPrimitive",
+          "lineNumber": 607
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "getTypeName",
+          "lineNumber": 607
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "Flint::findClassOfArray",
+          "lineNumber": 609
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "getLength",
+          "lineNumber": 609
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "Flint::newMultiArray",
+          "lineNumber": 610
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "getData",
+          "lineNumber": 610
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "getLength",
+          "lineNumber": 610
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "Flint::findClassOfArray",
+          "lineNumber": 612
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "getTypeName",
+          "lineNumber": 612
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "getLength",
+          "lineNumber": 612
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "Flint::newMultiArray",
+          "lineNumber": 613
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "getData",
+          "lineNumber": 613
+        },
+        {
+          "caller": "NativeArray_MultiNewArray",
+          "callee": "getLength",
+          "lineNumber": 613
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 21,
+        "functionCount": 27,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_character.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 123,
+      "nonEmptyLines": 117,
+      "functions": [
+        {
+          "name": "FindIndex",
+          "startLine": 100,
+          "endLine": 113,
+          "params": [
+            "letterList",
+            "c"
+          ]
+        },
+        {
+          "name": "NativeCharacter_ToLowerCase",
+          "startLine": 115,
+          "endLine": 118,
+          "params": [
+            "env",
+            "c"
+          ]
+        },
+        {
+          "name": "NativeCharacter_ToUpperCase",
+          "startLine": 120,
+          "endLine": 123,
+          "params": [
+            "env",
+            "c"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeCharacter_ToLowerCase",
+          "line": 115,
+          "isDefault": false
+        },
+        {
+          "name": "NativeCharacter_ToUpperCase",
+          "line": 120,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "FindIndex",
+          "callee": "LENGTH",
+          "lineNumber": 101
+        },
+        {
+          "caller": "NativeCharacter_ToLowerCase",
+          "callee": "FindIndex",
+          "lineNumber": 116
+        },
+        {
+          "caller": "NativeCharacter_ToUpperCase",
+          "callee": "FindIndex",
+          "lineNumber": 121
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_class.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 382,
+      "nonEmptyLines": 332,
+      "functions": [
+        {
+          "name": "NativeClass_GetPrimitiveClass",
+          "startLine": 8,
+          "endLine": 15,
+          "params": [
+            "env",
+            "name"
+          ]
+        },
+        {
+          "name": "NativeClass_ForName",
+          "startLine": 17,
+          "endLine": 42,
+          "params": [
+            "env",
+            "name"
+          ]
+        },
+        {
+          "name": "NativeClass_IsInstance",
+          "startLine": 44,
+          "endLine": 47,
+          "params": [
+            "env",
+            "cls",
+            "obj"
+          ]
+        },
+        {
+          "name": "NativeClass_IsAssignableFrom",
+          "startLine": 49,
+          "endLine": 55,
+          "params": [
+            "env",
+            "thisCls",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_IsInterface",
+          "startLine": 57,
+          "endLine": 61,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_IsArray",
+          "startLine": 63,
+          "endLine": 66,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_IsPrimitive",
+          "startLine": 68,
+          "endLine": 71,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_InitClassName",
+          "startLine": 73,
+          "endLine": 85,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_GetSuperclass",
+          "startLine": 87,
+          "endLine": 90,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "getEmptyClassArray",
+          "startLine": 92,
+          "endLine": 97,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "NativeClass_GetInterfaces0",
+          "startLine": 99,
+          "endLine": 115,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "findClassOrPrimitive",
+          "startLine": 117,
+          "endLine": 138,
+          "params": [
+            "env",
+            "desc",
+            "length"
+          ]
+        },
+        {
+          "name": "NativeClass_GetComponentType",
+          "startLine": 140,
+          "endLine": 147,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_GetModifiers",
+          "startLine": 149,
+          "endLine": 158,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_GetNestHost0",
+          "startLine": 160,
+          "endLine": 162,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_GetNestMembers0",
+          "startLine": 164,
+          "endLine": 184,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_IsHidden",
+          "startLine": 186,
+          "endLine": 189,
+          "params": [
+            "env"
+          ]
+        },
+        {
+          "name": "getReturnType",
+          "startLine": 191,
+          "endLine": 195,
+          "params": [
+            "env",
+            "mtDesc"
+          ]
+        },
+        {
+          "name": "getParameterTypes",
+          "startLine": 197,
+          "endLine": 209,
+          "params": [
+            "env",
+            "mtDesc"
+          ]
+        },
+        {
+          "name": "getExceptionTypes",
+          "startLine": 211,
+          "endLine": 227,
+          "params": [
+            "env",
+            "mt"
+          ]
+        },
+        {
+          "name": "supportFreeObjArray",
+          "startLine": 229,
+          "endLine": 234,
+          "params": [
+            "env",
+            "array",
+            "count"
+          ]
+        },
+        {
+          "name": "NativeClass_GetDeclaredFields0",
+          "startLine": 236,
+          "endLine": 270,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_GetDeclaredMethods0",
+          "startLine": 272,
+          "endLine": 326,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_GetDeclaredConstructors0",
+          "startLine": 328,
+          "endLine": 373,
+          "params": [
+            "env",
+            "cls"
+          ]
+        },
+        {
+          "name": "NativeClass_GetDeclaringClass0",
+          "startLine": 375,
+          "endLine": 382,
+          "params": [
+            "env",
+            "cls"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeClass_GetPrimitiveClass",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_ForName",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_IsInstance",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_IsAssignableFrom",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_IsInterface",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_IsArray",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_IsPrimitive",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_InitClassName",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetSuperclass",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetInterfaces0",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetComponentType",
+          "line": 140,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetModifiers",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetNestHost0",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetNestMembers0",
+          "line": 164,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_IsHidden",
+          "line": 186,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetDeclaredFields0",
+          "line": 236,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetDeclaredMethods0",
+          "line": 272,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetDeclaredConstructors0",
+          "line": 328,
+          "isDefault": false
+        },
+        {
+          "name": "NativeClass_GetDeclaringClass0",
+          "line": 375,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeClass_GetPrimitiveClass",
+          "callee": "getCoder",
+          "lineNumber": 9
+        },
+        {
+          "caller": "NativeClass_GetPrimitiveClass",
+          "callee": "findClass",
+          "lineNumber": 10
+        },
+        {
+          "caller": "NativeClass_GetPrimitiveClass",
+          "callee": "throwNew",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeClass_GetPrimitiveClass",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 14
+        },
+        {
+          "caller": "NativeClass_GetPrimitiveClass",
+          "callee": "getAscii",
+          "lineNumber": 14
+        },
+        {
+          "caller": "NativeClass_GetPrimitiveClass",
+          "callee": "getLength",
+          "lineNumber": 14
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "throwNew",
+          "lineNumber": 19
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "findClass",
+          "lineNumber": 19
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "getLength",
+          "lineNumber": 22
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "findClass",
+          "lineNumber": 24
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "throwNew",
+          "lineNumber": 25
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "getAscii",
+          "lineNumber": 29
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "findClass",
+          "lineNumber": 33
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "throwNew",
+          "lineNumber": 34
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "getLength",
+          "lineNumber": 34
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "getAscii",
+          "lineNumber": 34
+        },
+        {
+          "caller": "NativeClass_ForName",
+          "callee": "findClass",
+          "lineNumber": 41
+        },
+        {
+          "caller": "NativeClass_IsInstance",
+          "callee": "isInstanceof",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NativeClass_IsAssignableFrom",
+          "callee": "throwNew",
+          "lineNumber": 51
+        },
+        {
+          "caller": "NativeClass_IsAssignableFrom",
+          "callee": "findClass",
+          "lineNumber": 51
+        },
+        {
+          "caller": "NativeClass_IsAssignableFrom",
+          "callee": "isAssignableFrom",
+          "lineNumber": 54
+        },
+        {
+          "caller": "NativeClass_IsInterface",
+          "callee": "isArray",
+          "lineNumber": 59
+        },
+        {
+          "caller": "NativeClass_IsInterface",
+          "callee": "isPrimitive",
+          "lineNumber": 59
+        },
+        {
+          "caller": "NativeClass_IsInterface",
+          "callee": "getAccessFlag",
+          "lineNumber": 60
+        },
+        {
+          "caller": "NativeClass_IsInterface",
+          "callee": "getClassLoader",
+          "lineNumber": 60
+        },
+        {
+          "caller": "NativeClass_IsArray",
+          "callee": "isArray",
+          "lineNumber": 65
+        },
+        {
+          "caller": "NativeClass_IsPrimitive",
+          "callee": "isPrimitive",
+          "lineNumber": 70
+        },
+        {
+          "caller": "NativeClass_InitClassName",
+          "callee": "getTypeName",
+          "lineNumber": 76
+        },
+        {
+          "caller": "NativeClass_InitClassName",
+          "callee": "Flint::getConstString",
+          "lineNumber": 82
+        },
+        {
+          "caller": "NativeClass_InitClassName",
+          "callee": "setObj",
+          "lineNumber": 83
+        },
+        {
+          "caller": "NativeClass_InitClassName",
+          "callee": "getField",
+          "lineNumber": 83
+        },
+        {
+          "caller": "NativeClass_GetSuperclass",
+          "callee": "isArray",
+          "lineNumber": 88
+        },
+        {
+          "caller": "NativeClass_GetSuperclass",
+          "callee": "isPrimitive",
+          "lineNumber": 88
+        },
+        {
+          "caller": "NativeClass_GetSuperclass",
+          "callee": "getSuperClass",
+          "lineNumber": 89
+        },
+        {
+          "caller": "NativeClass_GetSuperclass",
+          "callee": "getClassLoader",
+          "lineNumber": 89
+        },
+        {
+          "caller": "getEmptyClassArray",
+          "callee": "Flint::getClassOfClass",
+          "lineNumber": 93
+        },
+        {
+          "caller": "getEmptyClassArray",
+          "callee": "getStaticField",
+          "lineNumber": 94
+        },
+        {
+          "caller": "getEmptyClassArray",
+          "callee": "getClassLoader",
+          "lineNumber": 94
+        },
+        {
+          "caller": "getEmptyClassArray",
+          "callee": "getObj",
+          "lineNumber": 96
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "isArray",
+          "lineNumber": 100
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "isPrimitive",
+          "lineNumber": 100
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "getEmptyClassArray",
+          "lineNumber": 100
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "getClassLoader",
+          "lineNumber": 102
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "getInterfacesCount",
+          "lineNumber": 103
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "getEmptyClassArray",
+          "lineNumber": 104
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "newObjectArray",
+          "lineNumber": 106
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "Flint::getClassOfClass",
+          "lineNumber": 106
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "findClass",
+          "lineNumber": 110
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "getInterface",
+          "lineNumber": 110
+        },
+        {
+          "caller": "NativeClass_GetInterfaces0",
+          "callee": "freeObject",
+          "lineNumber": 111
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 119
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 120
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 121
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 122
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 123
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 124
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 125
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 126
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "Flint::getPrimitiveClass",
+          "lineNumber": 127
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "throwNew",
+          "lineNumber": 129
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "findClass",
+          "lineNumber": 129
+        },
+        {
+          "caller": "findClassOrPrimitive",
+          "callee": "findClass",
+          "lineNumber": 137
+        },
+        {
+          "caller": "NativeClass_GetComponentType",
+          "callee": "isArray",
+          "lineNumber": 141
+        },
+        {
+          "caller": "NativeClass_GetComponentType",
+          "callee": "getTypeName",
+          "lineNumber": 142
+        },
+        {
+          "caller": "NativeClass_GetComponentType",
+          "callee": "GetArgNameLength",
+          "lineNumber": 143
+        },
+        {
+          "caller": "NativeClass_GetComponentType",
+          "callee": "findClassOrPrimitive",
+          "lineNumber": 144
+        },
+        {
+          "caller": "NativeClass_GetModifiers",
+          "callee": "isArray",
+          "lineNumber": 151
+        },
+        {
+          "caller": "NativeClass_GetModifiers",
+          "callee": "isPrimitive",
+          "lineNumber": 151
+        },
+        {
+          "caller": "NativeClass_GetModifiers",
+          "callee": "getAccessFlag",
+          "lineNumber": 154
+        },
+        {
+          "caller": "NativeClass_GetModifiers",
+          "callee": "getClassLoader",
+          "lineNumber": 154
+        },
+        {
+          "caller": "NativeClass_GetNestHost0",
+          "callee": "getNestHost",
+          "lineNumber": 161
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "isArray",
+          "lineNumber": 166
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "isPrimitive",
+          "lineNumber": 166
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "newObjectArray",
+          "lineNumber": 167
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "findClass",
+          "lineNumber": 167
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "getData",
+          "lineNumber": 169
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "getNestHost",
+          "lineNumber": 172
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "getNestMembersCount",
+          "lineNumber": 174
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "newObjectArray",
+          "lineNumber": 175
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "findClass",
+          "lineNumber": 175
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "getData",
+          "lineNumber": 177
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "getNestMember",
+          "lineNumber": 179
+        },
+        {
+          "caller": "NativeClass_GetNestMembers0",
+          "callee": "getData",
+          "lineNumber": 181
+        },
+        {
+          "caller": "getReturnType",
+          "callee": "findClassOrPrimitive",
+          "lineNumber": 194
+        },
+        {
+          "caller": "getReturnType",
+          "callee": "GetArgNameLength",
+          "lineNumber": 194
+        },
+        {
+          "caller": "getParameterTypes",
+          "callee": "GetArgCount",
+          "lineNumber": 198
+        },
+        {
+          "caller": "getParameterTypes",
+          "callee": "getEmptyClassArray",
+          "lineNumber": 199
+        },
+        {
+          "caller": "getParameterTypes",
+          "callee": "newObjectArray",
+          "lineNumber": 200
+        },
+        {
+          "caller": "getParameterTypes",
+          "callee": "Flint::getClassOfClass",
+          "lineNumber": 200
+        },
+        {
+          "caller": "getParameterTypes",
+          "callee": "GetNextArgName",
+          "lineNumber": 202
+        },
+        {
+          "caller": "getParameterTypes",
+          "callee": "GetArgNameLength",
+          "lineNumber": 204
+        },
+        {
+          "caller": "getParameterTypes",
+          "callee": "getData",
+          "lineNumber": 205
+        },
+        {
+          "caller": "getParameterTypes",
+          "callee": "findClassOrPrimitive",
+          "lineNumber": 205
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "getEmptyClassArray",
+          "lineNumber": 213
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "getExceptionLength",
+          "lineNumber": 214
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "getEmptyClassArray",
+          "lineNumber": 216
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "newObjectArray",
+          "lineNumber": 217
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "Flint::getClassOfClass",
+          "lineNumber": 217
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "getData",
+          "lineNumber": 220
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "getConstClass",
+          "lineNumber": 222
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "getException",
+          "lineNumber": 222
+        },
+        {
+          "caller": "getExceptionTypes",
+          "callee": "freeObject",
+          "lineNumber": 223
+        },
+        {
+          "caller": "supportFreeObjArray",
+          "callee": "getData",
+          "lineNumber": 230
+        },
+        {
+          "caller": "supportFreeObjArray",
+          "callee": "freeObject",
+          "lineNumber": 232
+        },
+        {
+          "caller": "supportFreeObjArray",
+          "callee": "freeObject",
+          "lineNumber": 233
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "findClass",
+          "lineNumber": 237
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "isArray",
+          "lineNumber": 238
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "isPrimitive",
+          "lineNumber": 238
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "newObjectArray",
+          "lineNumber": 238
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "getConstructorId",
+          "lineNumber": 239
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "getClassLoader",
+          "lineNumber": 242
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "getFieldsCount",
+          "lineNumber": 243
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "newObjectArray",
+          "lineNumber": 244
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "getFieldInfo",
+          "lineNumber": 249
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "Flint::getConstString",
+          "lineNumber": 252
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "findClassOrPrimitive",
+          "lineNumber": 256
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "findClass",
+          "lineNumber": 256
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "newObject",
+          "lineNumber": 259
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "setInt32",
+          "lineNumber": 261
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "getField",
+          "lineNumber": 261
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "getData",
+          "lineNumber": 263
+        },
+        {
+          "caller": "NativeClass_GetDeclaredFields0",
+          "callee": "supportFreeObjArray",
+          "lineNumber": 267
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "findClass",
+          "lineNumber": 273
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "isPrimitive",
+          "lineNumber": 274
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "newObjectArray",
+          "lineNumber": 274
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getConstructorId",
+          "lineNumber": 275
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getClassLoader",
+          "lineNumber": 278
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getMethodsCount",
+          "lineNumber": 279
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getMethodInfo",
+          "lineNumber": 282
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "newObjectArray",
+          "lineNumber": 286
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getMethodInfo",
+          "lineNumber": 289
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "Flint::getConstString",
+          "lineNumber": 295
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getReturnType",
+          "lineNumber": 299
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getParameterTypes",
+          "lineNumber": 303
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getExceptionTypes",
+          "lineNumber": 307
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "newObject",
+          "lineNumber": 311
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "clearProtected",
+          "lineNumber": 313
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "clearProtected",
+          "lineNumber": 314
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "setInt32",
+          "lineNumber": 317
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getField",
+          "lineNumber": 317
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "getData",
+          "lineNumber": 319
+        },
+        {
+          "caller": "NativeClass_GetDeclaredMethods0",
+          "callee": "supportFreeObjArray",
+          "lineNumber": 323
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "findClass",
+          "lineNumber": 329
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "isArray",
+          "lineNumber": 330
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "isPrimitive",
+          "lineNumber": 330
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "newObjectArray",
+          "lineNumber": 330
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getConstructorId",
+          "lineNumber": 331
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getClassLoader",
+          "lineNumber": 334
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getMethodsCount",
+          "lineNumber": 335
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getMethodInfo",
+          "lineNumber": 338
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "newObjectArray",
+          "lineNumber": 342
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getMethodInfo",
+          "lineNumber": 345
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getParameterTypes",
+          "lineNumber": 351
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getExceptionTypes",
+          "lineNumber": 355
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "newObject",
+          "lineNumber": 358
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "clearProtected",
+          "lineNumber": 360
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "clearProtected",
+          "lineNumber": 361
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "setInt32",
+          "lineNumber": 364
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getField",
+          "lineNumber": 364
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "getData",
+          "lineNumber": 366
+        },
+        {
+          "caller": "NativeClass_GetDeclaredConstructors0",
+          "callee": "supportFreeObjArray",
+          "lineNumber": 370
+        },
+        {
+          "caller": "NativeClass_GetDeclaringClass0",
+          "callee": "isArray",
+          "lineNumber": 376
+        },
+        {
+          "caller": "NativeClass_GetDeclaringClass0",
+          "callee": "isPrimitive",
+          "lineNumber": 376
+        },
+        {
+          "caller": "NativeClass_GetDeclaringClass0",
+          "callee": "getTypeName",
+          "lineNumber": 377
+        },
+        {
+          "caller": "NativeClass_GetDeclaringClass0",
+          "callee": "strlen",
+          "lineNumber": 378
+        },
+        {
+          "caller": "NativeClass_GetDeclaringClass0",
+          "callee": "findClass",
+          "lineNumber": 380
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 19,
+        "functionCount": 25,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_constructor.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 45,
+      "functions": [
+        {
+          "name": "NativeConstructor_NewInstance0",
+          "startLine": 9,
+          "endLine": 52,
+          "params": [
+            "env",
+            "obj",
+            "initargs"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeConstructor_NewInstance0",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getInt32",
+          "lineNumber": 10
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 10
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getObj",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 11
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getObj",
+          "lineNumber": 12
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 12
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "newObject",
+          "lineNumber": 15
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "stackPushObject",
+          "lineNumber": 17
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getLength",
+          "lineNumber": 20
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getData",
+          "lineNumber": 22
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "isPrimitive",
+          "lineNumber": 23
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getTypeName",
+          "lineNumber": 24
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "strcmp",
+          "lineNumber": 25
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "strcmp",
+          "lineNumber": 25
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "stackPushInt64",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getInt64",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getData",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "stackPushInt32",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getInt32",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getFieldByIndex",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getData",
+          "lineNumber": 30
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "stackPushObject",
+          "lineNumber": 35
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "getData",
+          "lineNumber": 35
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "callMethod",
+          "lineNumber": 40
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "hasTerminateRequest",
+          "lineNumber": 42
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "Flint::freeObject",
+          "lineNumber": 43
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "hasException",
+          "lineNumber": 46
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "throwNew",
+          "lineNumber": 47
+        },
+        {
+          "caller": "NativeConstructor_NewInstance0",
+          "callee": "findClass",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_double.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 9,
+      "functions": [
+        {
+          "name": "NativeDouble_DoubleToRawLongBits",
+          "startLine": 4,
+          "endLine": 7,
+          "params": [
+            "env",
+            "value"
+          ]
+        },
+        {
+          "name": "NativeDouble_LongBitsToDouble",
+          "startLine": 9,
+          "endLine": 12,
+          "params": [
+            "env",
+            "bits"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeDouble_DoubleToRawLongBits",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "NativeDouble_LongBitsToDouble",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_float.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 9,
+      "functions": [
+        {
+          "name": "NativeFloat_FloatToRawIntBits",
+          "startLine": 4,
+          "endLine": 7,
+          "params": [
+            "env",
+            "value"
+          ]
+        },
+        {
+          "name": "NativeFloat_IntBitsToFloat",
+          "startLine": 9,
+          "endLine": 12,
+          "params": [
+            "env",
+            "bits"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NativeFloat_FloatToRawIntBits",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "NativeFloat_IntBitsToFloat",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/FlintJVM/Native/flint_native_interface.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 229,
+      "nonEmptyLines": 189,
+      "functions": [
+        {
+          "name": "operator=",
+          "startLine": 15,
+          "endLine": 18,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "operator=",
+          "startLine": 27,
+          "endLine": 30,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "FNIEnv",
+          "startLine": 32,
+          "endLine": 34,
+          "params": [
+            "exec"
+          ]
+        },
+        {
+          "name": "print",
+          "startLine": 36,
+          "endLine": 38,
+          "params": [
+            "txt"
+          ]
+        },
+        {
+          "name": "print",
+          "startLine": 40,
+          "endLine": 42,
+          "params": [
+            "str"
+          ]
+        },
+        {
+          "name": "findClass",
+          "startLine": 44,
+          "endLine": 46,
+          "params": [
+            "name",
+            "length"
+          ]
+        },
+        {
+          "name": "isInstanceof",
+          "startLine": 48,
+          "endLine": 50,
+          "params": [
+            "obj",
+            "type"
+          ]
+        },
+        {
+          "name": "isAssignableFrom",
+          "startLine": 52,
+          "endLine": 54,
+          "params": [
+            "fromType",
+            "toType"
+          ]
+        },
+        {
+          "name": "newObject",
+          "startLine": 56,
+          "endLine": 58,
+          "params": [
+            "type"
+          ]
+        },
+        {
+          "name": "newObject",
+          "startLine": 60,
+          "endLine": 75,
+          "params": [
+            "type",
+            "ctor"
+          ]
+        },
+        {
+          "name": "newString",
+          "startLine": 77,
+          "endLine": 81,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "newBoolArray",
+          "startLine": 83,
+          "endLine": 87,
+          "params": [
+            "count"
+          ]
+        },
+        {
+          "name": "newByteArray",
+          "startLine": 89,
+          "endLine": 93,
+          "params": [
+            "count"
+          ]
+        },
+        {
+          "name": "newCharArray",
+          "startLine": 95,
+          "endLine": 99,
+          "params": [
+            "count"
+          ]
+        },
+        {
+          "name": "newShortArray",
+          "startLine": 101,
+          "endLine": 105,
+          "params": [
+            "count"
+          ]
+        },
+        {
+          "name": "newIntArray",
+          "startLine": 107,
+          "endLine": 111,
+          "params": [
+            "count"
+          ]
+        },
+        {
+          "name": "newLongArray",
+          "startLine": 113,
+          "endLine": 117,
+          "params": [
+            "count"
+          ]
+        },
+        {
+          "name": "newFloatArray",
+          "startLine": 119,
+          "endLine": 123,
+          "params": [
+            "count"
+          ]
+        },
+        {
+          "name": "newDoubleArray",
+          "startLine": 125,
+          "endLine": 129,
+          "params": [
+            "count"
+          ]
+        },
+        {
+          "name": "newObjectArray",
+          "startLine": 131,
+          "endLine": 137,
+          "params": [
+            "type",
+            "count"
+          ]
+        },
+        {
+          "name": "getMethodId",
+          "startLine": 139,
+          "endLine": 142,
+          "params": [
+            "cls",
+            "name",
+            "sig"
+          ]
+        },
+        {
+          "name": "getConstructorId",
+          "startLine": 144,
+          "endLine": 147,
+          "params": [
+            "cls",
+            "sig"
+          ]
+        },
+        {
+          "name": "vCallMethod",
+          "startLine": 149,
+          "endLine": 155,
+          "params": [
+            "mtid",
+            "args"
+          ]
+        },
+        {
+          "name": "callVoidMethod",
+          "startLine": 157,
+          "endLine": 161,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callBoolMethod",
+          "startLine": 163,
+          "endLine": 167,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callByteMethod",
+          "startLine": 169,
+          "endLine": 173,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callCharMethod",
+          "startLine": 175,
+          "endLine": 179,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callShortMethod",
+          "startLine": 181,
+          "endLine": 185,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callIntMethod",
+          "startLine": 187,
+          "endLine": 191,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callLongMethod",
+          "startLine": 193,
+          "endLine": 197,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callFloatMethod",
+          "startLine": 199,
+          "endLine": 204,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callDoubleMethod",
+          "startLine": 206,
+          "endLine": 211,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "callObjectMethod",
+          "startLine": 213,
+          "endLine": 217,
+          "params": [
+            "mtid"
+          ]
+        },
+        {
+          "name": "throwNew",
+          "startLine": 219,
+          "endLine": 223,
+          "params": [
+            "cls",
+            "msg"
+          ]
+        },
+        {
+          "name": "freeObject",
+          "startLine": 225,
+          "endLine": 229,
+          "params": [
+            "obj"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "operator=",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "operator=",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "FNIEnv",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "print",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "print",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "findClass",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "isInstanceof",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "isAssignableFrom",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "newObject",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "newObject",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "newString",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "newBoolArray",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "newByteArray",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "newCharArray",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "newShortArray",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "newIntArray",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "newLongArray",
+          "line": 113,
+          "isDefault": false
+        },
+        {
+          "name": "newFloatArray",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "newDoubleArray",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "newObjectArray",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "getMethodId",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "getConstructorId",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "vCallMethod",
+          "line": 149,
+          "isDefault": false
+        },
+        {
+          "name": "callVoidMethod",
+          "line": 157,
+          "isDefault": false
+        },
+        {
+          "name": "callBoolMethod",
+          "line": 163,
+          "isDefault": false
+        },
+        {
+          "name": "callByteMethod",
+          "line": 169,
+          "isDefault": false
+        },
+        {
+          "name": "callCharMethod",
+          "line": 175,
+          "isDefault": false
+        },
+        {
+          "name": "callShortMethod",
+          "line": 181,
+          "isDefault": false
+        },
+        {
+          "name": "callIntMethod",
+          "line": 187,
+          "isDefault": false
+        },
+        {
+          "name": "callLongMethod",
+          "line": 193,
+          "isDefault": false
+        },
+        {
+          "name": "callFloatMethod",
+          "line": 199,
+          "isDefault": false
+        },
+        {
+          "name": "callDoubleMethod",
+          "line": 206,
+          "isDefault": false
+        },
+        {
+          "name": "callObjectMethod",
+          "line": 213,
+          "isDefault": false
+        },
+        {
+          "name": "throwNew",
+          "line": 219,
+          "isDefault": false
+        },
+        {
+          "name": "freeObject",
+          "line": 225,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "print",
+          "callee": "Flint::print",
+          "lineNumber": 37
+        },
+        {
+          "caller": "print",
+          "callee": "Flint::print",
+          "lineNumber": 41
+        },
+        {
+          "caller": "findClass",
+          "callee": "Flint::findClass",
+          "lineNumber": 45
+        },
+        {
+          "caller": "isInstanceof",
+          "callee": "Flint::isInstanceof",
+          "lineNumber": 49
+        },
+        {
+          "caller": "isAssignableFrom",
+          "callee": "Flint::isAssignableFrom",
+          "lineNumber": 53
+        },
+        {
+          "caller": "newObject",
+          "callee": "Flint::newObject",
+          "lineNumber": 57
+        },
+        {
+          "caller": "newObject",
+          "callee": "newObject",
+          "lineNumber": 62
+        },
+        {
+          "caller": "newObject",
+          "callee": "va_start",
+          "lineNumber": 65
+        },
+        {
+          "caller": "newObject",
+          "callee": "GetArgSlotCount",
+          "lineNumber": 66
+        },
+        {
+          "caller": "newObject",
+          "callee": "stackPushObject",
+          "lineNumber": 67
+        },
+        {
+          "caller": "newObject",
+          "callee": "stackPushArgs",
+          "lineNumber": 68
+        },
+        {
+          "caller": "newObject",
+          "callee": "callMethod",
+          "lineNumber": 69
+        },
+        {
+          "caller": "newObject",
+          "callee": "hasException",
+          "lineNumber": 70
+        },
+        {
+          "caller": "newObject",
+          "callee": "hasTerminateRequest",
+          "lineNumber": 70
+        },
+        {
+          "caller": "newObject",
+          "callee": "Flint::freeObject",
+          "lineNumber": 71
+        },
+        {
+          "caller": "newString",
+          "callee": "va_start",
+          "lineNumber": 79
+        },
+        {
+          "caller": "newString",
+          "callee": "Flint::newAscii",
+          "lineNumber": 80
+        },
+        {
+          "caller": "newBoolArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 84
+        },
+        {
+          "caller": "newBoolArray",
+          "callee": "Flint::findClass",
+          "lineNumber": 84
+        },
+        {
+          "caller": "newBoolArray",
+          "callee": "clearData",
+          "lineNumber": 85
+        },
+        {
+          "caller": "newByteArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 90
+        },
+        {
+          "caller": "newByteArray",
+          "callee": "Flint::findClass",
+          "lineNumber": 90
+        },
+        {
+          "caller": "newByteArray",
+          "callee": "clearData",
+          "lineNumber": 91
+        },
+        {
+          "caller": "newCharArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 96
+        },
+        {
+          "caller": "newCharArray",
+          "callee": "Flint::findClass",
+          "lineNumber": 96
+        },
+        {
+          "caller": "newCharArray",
+          "callee": "clearData",
+          "lineNumber": 97
+        },
+        {
+          "caller": "newShortArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 102
+        },
+        {
+          "caller": "newShortArray",
+          "callee": "Flint::findClass",
+          "lineNumber": 102
+        },
+        {
+          "caller": "newShortArray",
+          "callee": "clearData",
+          "lineNumber": 103
+        },
+        {
+          "caller": "newIntArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 108
+        },
+        {
+          "caller": "newIntArray",
+          "callee": "Flint::findClass",
+          "lineNumber": 108
+        },
+        {
+          "caller": "newIntArray",
+          "callee": "clearData",
+          "lineNumber": 109
+        },
+        {
+          "caller": "newLongArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 114
+        },
+        {
+          "caller": "newLongArray",
+          "callee": "Flint::findClass",
+          "lineNumber": 114
+        },
+        {
+          "caller": "newLongArray",
+          "callee": "clearData",
+          "lineNumber": 115
+        },
+        {
+          "caller": "newFloatArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 120
+        },
+        {
+          "caller": "newFloatArray",
+          "callee": "Flint::findClass",
+          "lineNumber": 120
+        },
+        {
+          "caller": "newFloatArray",
+          "callee": "clearData",
+          "lineNumber": 121
+        },
+        {
+          "caller": "newDoubleArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 126
+        },
+        {
+          "caller": "newDoubleArray",
+          "callee": "Flint::findClass",
+          "lineNumber": 126
+        },
+        {
+          "caller": "newDoubleArray",
+          "callee": "clearData",
+          "lineNumber": 127
+        },
+        {
+          "caller": "newObjectArray",
+          "callee": "Flint::findClassOfArray",
+          "lineNumber": 133
+        },
+        {
+          "caller": "newObjectArray",
+          "callee": "getTypeName",
+          "lineNumber": 133
+        },
+        {
+          "caller": "newObjectArray",
+          "callee": "Flint::newArray",
+          "lineNumber": 134
+        },
+        {
+          "caller": "newObjectArray",
+          "callee": "clearData",
+          "lineNumber": 135
+        },
+        {
+          "caller": "getMethodId",
+          "callee": "Flint::findMethod",
+          "lineNumber": 141
+        },
+        {
+          "caller": "getConstructorId",
+          "callee": "Flint::findMethod",
+          "lineNumber": 146
+        },
+        {
+          "caller": "vCallMethod",
+          "callee": "GetArgSlotCount",
+          "lineNumber": 151
+        },
+        {
+          "caller": "vCallMethod",
+          "callee": "stackPushArgs",
+          "lineNumber": 153
+        },
+        {
+          "caller": "vCallMethod",
+          "callee": "callMethod",
+          "lineNumber": 154
+        },
+        {
+          "caller": "callVoidMethod",
+          "callee": "va_start",
+          "lineNumber": 159
+        },
+        {
+          "caller": "callVoidMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 160
+        },
+        {
+          "caller": "callBoolMethod",
+          "callee": "va_start",
+          "lineNumber": 165
+        },
+        {
+          "caller": "callBoolMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 166
+        },
+        {
+          "caller": "callByteMethod",
+          "callee": "va_start",
+          "lineNumber": 171
+        },
+        {
+          "caller": "callByteMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 172
+        },
+        {
+          "caller": "callCharMethod",
+          "callee": "va_start",
+          "lineNumber": 177
+        },
+        {
+          "caller": "callCharMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 178
+        },
+        {
+          "caller": "callShortMethod",
+          "callee": "va_start",
+          "lineNumber": 183
+        },
+        {
+          "caller": "callShortMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 184
+        },
+        {
+          "caller": "callIntMethod",
+          "callee": "va_start",
+          "lineNumber": 189
+        },
+        {
+          "caller": "callIntMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 190
+        },
+        {
+          "caller": "callLongMethod",
+          "callee": "va_start",
+          "lineNumber": 195
+        },
+        {
+          "caller": "callLongMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 196
+        },
+        {
+          "caller": "callFloatMethod",
+          "callee": "va_start",
+          "lineNumber": 201
+        },
+        {
+          "caller": "callFloatMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 202
+        },
+        {
+          "caller": "callDoubleMethod",
+          "callee": "va_start",
+          "lineNumber": 208
+        },
+        {
+          "caller": "callDoubleMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 209
+        },
+        {
+          "caller": "callObjectMethod",
+          "callee": "va_start",
+          "lineNumber": 215
+        },
+        {
+          "caller": "callObjectMethod",
+          "callee": "vCallMethod",
+          "lineNumber": 216
+        },
+        {
+          "caller": "throwNew",
+          "callee": "va_start",
+          "lineNumber": 221
+        },
+        {
+          "caller": "throwNew",
+          "callee": "vThrowNew",
+          "lineNumber": 222
+        },
+        {
+          "caller": "freeObject",
+          "callee": "Flint::freeObject",
+          "lineNumber": 228
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 35,
+        "functionCount": 35,
+        "classCount": 0
+      }
+    }
+  ]
+}

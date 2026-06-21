@@ -1,0 +1,6201 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 28,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/Properties/propertiesbasefile.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 296,
+      "nonEmptyLines": 256,
+      "functions": [
+        {
+          "name": "CPropertiesBaseFile",
+          "startLine": 35,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "~CPropertiesBaseFile",
+          "startLine": 43,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "GetErrorLine",
+          "startLine": 47,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "ResetErrorLine",
+          "startLine": 52,
+          "endLine": 55,
+          "params": []
+        },
+        {
+          "name": "Parse",
+          "startLine": 57,
+          "endLine": 283,
+          "params": [
+            "chChar"
+          ]
+        },
+        {
+          "name": "IsValidNameChar",
+          "startLine": 285,
+          "endLine": 296,
+          "params": [
+            "chChar"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPropertiesBaseFile",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "~CPropertiesBaseFile",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "GetErrorLine",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "ResetErrorLine",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "Parse",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "IsValidNameChar",
+          "line": 285,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Parse",
+          "callee": "SelectSection",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Parse",
+          "callee": "IsValidNameChar",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Parse",
+          "callee": "IsValidNameChar",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Parse",
+          "callee": "IsValidNameChar",
+          "lineNumber": 173
+        },
+        {
+          "caller": "Parse",
+          "callee": "AddProperty",
+          "lineNumber": 190
+        },
+        {
+          "caller": "Parse",
+          "callee": "AddProperty",
+          "lineNumber": 210
+        },
+        {
+          "caller": "Parse",
+          "callee": "assert",
+          "lineNumber": 222
+        },
+        {
+          "caller": "Parse",
+          "callee": "AddProperty",
+          "lineNumber": 245
+        },
+        {
+          "caller": "Parse",
+          "callee": "assert",
+          "lineNumber": 269
+        },
+        {
+          "caller": "Parse",
+          "callee": "assert",
+          "lineNumber": 278
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Properties/propertiesfatfsfile.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 131,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "CPropertiesFatFsFile",
+          "startLine": 25,
+          "endLine": 28,
+          "params": [
+            "pFileName",
+            "pFileSystem"
+          ]
+        },
+        {
+          "name": "~CPropertiesFatFsFile",
+          "startLine": 30,
+          "endLine": 32,
+          "params": []
+        },
+        {
+          "name": "Load",
+          "startLine": 34,
+          "endLine": 81,
+          "params": []
+        },
+        {
+          "name": "Save",
+          "startLine": 83,
+          "endLine": 131,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPropertiesFatFsFile",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "~CPropertiesFatFsFile",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "Load",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "Save",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Load",
+          "callee": "RemoveAll",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Load",
+          "callee": "ResetErrorLine",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Load",
+          "callee": "assert",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Load",
+          "callee": "GetLength",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Load",
+          "callee": "f_open",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Load",
+          "callee": "f_read",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Load",
+          "callee": "Parse",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Load",
+          "callee": "f_close",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Load",
+          "callee": "f_close",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Load",
+          "callee": "Parse",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Load",
+          "callee": "SelectSection",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Save",
+          "callee": "assert",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Save",
+          "callee": "f_open",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Save",
+          "callee": "GetFirst",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Save",
+          "callee": "Compare",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Save",
+          "callee": "GetSectionName",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Save",
+          "callee": "Format",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Save",
+          "callee": "GetSectionName",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Save",
+          "callee": "f_write",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 106
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Save",
+          "callee": "f_close",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Save",
+          "callee": "GetSectionName",
+          "lineNumber": 114
+        },
+        {
+          "caller": "Save",
+          "callee": "Format",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Save",
+          "callee": "GetName",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Save",
+          "callee": "GetValue",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Save",
+          "callee": "f_write",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Save",
+          "callee": "f_close",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Save",
+          "callee": "GetNext",
+          "lineNumber": 127
+        },
+        {
+          "caller": "Save",
+          "callee": "f_close",
+          "lineNumber": 130
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/Properties/propertiesfile.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 124,
+      "nonEmptyLines": 100,
+      "functions": [
+        {
+          "name": "CPropertiesFile",
+          "startLine": 23,
+          "endLine": 27,
+          "params": [
+            "pFileName",
+            "pFileSystem"
+          ]
+        },
+        {
+          "name": "~CPropertiesFile",
+          "startLine": 29,
+          "endLine": 32,
+          "params": []
+        },
+        {
+          "name": "Load",
+          "startLine": 34,
+          "endLine": 77,
+          "params": []
+        },
+        {
+          "name": "Save",
+          "startLine": 79,
+          "endLine": 124,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPropertiesFile",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CPropertiesFile",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "Load",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "Save",
+          "line": 79,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Load",
+          "callee": "RemoveAll",
+          "lineNumber": 36
+        },
+        {
+          "caller": "Load",
+          "callee": "ResetErrorLine",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Load",
+          "callee": "assert",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Load",
+          "callee": "assert",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Load",
+          "callee": "GetLength",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Load",
+          "callee": "FileOpen",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Load",
+          "callee": "FileRead",
+          "lineNumber": 50
+        },
+        {
+          "caller": "Load",
+          "callee": "FileClose",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Load",
+          "callee": "Parse",
+          "lineNumber": 61
+        },
+        {
+          "caller": "Load",
+          "callee": "FileClose",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Load",
+          "callee": "FileClose",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Load",
+          "callee": "Parse",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Load",
+          "callee": "SelectSection",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Save",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Save",
+          "callee": "assert",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Save",
+          "callee": "FileCreate",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Save",
+          "callee": "GetFirst",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Save",
+          "callee": "Compare",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Save",
+          "callee": "GetSectionName",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Save",
+          "callee": "Format",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Save",
+          "callee": "GetSectionName",
+          "lineNumber": 97
+        },
+        {
+          "caller": "Save",
+          "callee": "FileWrite",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Save",
+          "callee": "FileClose",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Save",
+          "callee": "GetSectionName",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Save",
+          "callee": "Format",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Save",
+          "callee": "GetName",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Save",
+          "callee": "GetValue",
+          "lineNumber": 110
+        },
+        {
+          "caller": "Save",
+          "callee": "FileWrite",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Save",
+          "callee": "GetLength",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Save",
+          "callee": "FileClose",
+          "lineNumber": 115
+        },
+        {
+          "caller": "Save",
+          "callee": "GetNext",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Save",
+          "callee": "FileClose",
+          "lineNumber": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/chardevice.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 538,
+      "nonEmptyLines": 459,
+      "functions": [
+        {
+          "name": "CCharDevice",
+          "startLine": 37,
+          "endLine": 45,
+          "params": [
+            "nColumns",
+            "nRows"
+          ]
+        },
+        {
+          "name": "~CCharDevice",
+          "startLine": 47,
+          "endLine": 49,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 51,
+          "endLine": 59,
+          "params": []
+        },
+        {
+          "name": "GetColumns",
+          "startLine": 61,
+          "endLine": 64,
+          "params": []
+        },
+        {
+          "name": "GetRows",
+          "startLine": 66,
+          "endLine": 69,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 71,
+          "endLine": 94,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "Write",
+          "startLine": 96,
+          "endLine": 338,
+          "params": [
+            "chChar"
+          ]
+        },
+        {
+          "name": "CarriageReturn",
+          "startLine": 340,
+          "endLine": 343,
+          "params": []
+        },
+        {
+          "name": "ClearDisplayEnd",
+          "startLine": 345,
+          "endLine": 370,
+          "params": []
+        },
+        {
+          "name": "ClearLineEnd",
+          "startLine": 372,
+          "endLine": 378,
+          "params": []
+        },
+        {
+          "name": "CursorDown",
+          "startLine": 380,
+          "endLine": 395,
+          "params": []
+        },
+        {
+          "name": "CursorHome",
+          "startLine": 397,
+          "endLine": 401,
+          "params": []
+        },
+        {
+          "name": "CursorLeft",
+          "startLine": 403,
+          "endLine": 417,
+          "params": []
+        },
+        {
+          "name": "CursorMove",
+          "startLine": 419,
+          "endLine": 427,
+          "params": [
+            "nRow",
+            "nColumn"
+          ]
+        },
+        {
+          "name": "CursorRight",
+          "startLine": 429,
+          "endLine": 435,
+          "params": []
+        },
+        {
+          "name": "CursorUp",
+          "startLine": 437,
+          "endLine": 443,
+          "params": []
+        },
+        {
+          "name": "DisplayChar",
+          "startLine": 445,
+          "endLine": 460,
+          "params": [
+            "chChar"
+          ]
+        },
+        {
+          "name": "EraseChars",
+          "startLine": 462,
+          "endLine": 479,
+          "params": [
+            "nCount"
+          ]
+        },
+        {
+          "name": "NewLine",
+          "startLine": 481,
+          "endLine": 485,
+          "params": []
+        },
+        {
+          "name": "SetAutoPageMode",
+          "startLine": 487,
+          "endLine": 490,
+          "params": [
+            "bEnable"
+          ]
+        },
+        {
+          "name": "SetCursorMode",
+          "startLine": 492,
+          "endLine": 498,
+          "params": [
+            "bVisible"
+          ]
+        },
+        {
+          "name": "Tabulator",
+          "startLine": 500,
+          "endLine": 507,
+          "params": []
+        },
+        {
+          "name": "Scroll",
+          "startLine": 509,
+          "endLine": 523,
+          "params": []
+        },
+        {
+          "name": "SetChar",
+          "startLine": 525,
+          "endLine": 529,
+          "params": [
+            "nPosX",
+            "nPosY",
+            "chChar"
+          ]
+        },
+        {
+          "name": "SetCursor",
+          "startLine": 531,
+          "endLine": 537,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CCharDevice",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "~CCharDevice",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "GetColumns",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "GetRows",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "CarriageReturn",
+          "line": 340,
+          "isDefault": false
+        },
+        {
+          "name": "ClearDisplayEnd",
+          "line": 345,
+          "isDefault": false
+        },
+        {
+          "name": "ClearLineEnd",
+          "line": 372,
+          "isDefault": false
+        },
+        {
+          "name": "CursorDown",
+          "line": 380,
+          "isDefault": false
+        },
+        {
+          "name": "CursorHome",
+          "line": 397,
+          "isDefault": false
+        },
+        {
+          "name": "CursorLeft",
+          "line": 403,
+          "isDefault": false
+        },
+        {
+          "name": "CursorMove",
+          "line": 419,
+          "isDefault": false
+        },
+        {
+          "name": "CursorRight",
+          "line": 429,
+          "isDefault": false
+        },
+        {
+          "name": "CursorUp",
+          "line": 437,
+          "isDefault": false
+        },
+        {
+          "name": "DisplayChar",
+          "line": 445,
+          "isDefault": false
+        },
+        {
+          "name": "EraseChars",
+          "line": 462,
+          "isDefault": false
+        },
+        {
+          "name": "NewLine",
+          "line": 481,
+          "isDefault": false
+        },
+        {
+          "name": "SetAutoPageMode",
+          "line": 487,
+          "isDefault": false
+        },
+        {
+          "name": "SetCursorMode",
+          "line": 492,
+          "isDefault": false
+        },
+        {
+          "name": "Tabulator",
+          "line": 500,
+          "isDefault": false
+        },
+        {
+          "name": "Scroll",
+          "line": 509,
+          "isDefault": false
+        },
+        {
+          "name": "SetChar",
+          "line": 525,
+          "isDefault": false
+        },
+        {
+          "name": "SetCursor",
+          "line": 531,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CCharDevice",
+          "callee": "assert",
+          "lineNumber": 43
+        },
+        {
+          "caller": "CCharDevice",
+          "callee": "assert",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetCursorMode",
+          "lineNumber": 53
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetAutoPageMode",
+          "lineNumber": 54
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CursorHome",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ClearDisplayEnd",
+          "lineNumber": 56
+        },
+        {
+          "caller": "Write",
+          "callee": "assert",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Write",
+          "callee": "Acquire",
+          "lineNumber": 78
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Write",
+          "callee": "SetCursor",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Write",
+          "callee": "DevUpdateDisplay",
+          "lineNumber": 89
+        },
+        {
+          "caller": "Write",
+          "callee": "Release",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Write",
+          "callee": "CursorLeft",
+          "lineNumber": 104
+        },
+        {
+          "caller": "Write",
+          "callee": "Tabulator",
+          "lineNumber": 108
+        },
+        {
+          "caller": "Write",
+          "callee": "NewLine",
+          "lineNumber": 112
+        },
+        {
+          "caller": "Write",
+          "callee": "CarriageReturn",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Write",
+          "callee": "DisplayChar",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Write",
+          "callee": "CursorUp",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Write",
+          "callee": "CursorDown",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Write",
+          "callee": "CursorRight",
+          "lineNumber": 164
+        },
+        {
+          "caller": "Write",
+          "callee": "CursorLeft",
+          "lineNumber": 169
+        },
+        {
+          "caller": "Write",
+          "callee": "CursorHome",
+          "lineNumber": 174
+        },
+        {
+          "caller": "Write",
+          "callee": "ClearDisplayEnd",
+          "lineNumber": 179
+        },
+        {
+          "caller": "Write",
+          "callee": "ClearLineEnd",
+          "lineNumber": 184
+        },
+        {
+          "caller": "Write",
+          "callee": "EraseChars",
+          "lineNumber": 210
+        },
+        {
+          "caller": "Write",
+          "callee": "CursorMove",
+          "lineNumber": 261
+        },
+        {
+          "caller": "Write",
+          "callee": "SetCursorMode",
+          "lineNumber": 291
+        },
+        {
+          "caller": "Write",
+          "callee": "SetAutoPageMode",
+          "lineNumber": 319
+        },
+        {
+          "caller": "Write",
+          "callee": "SetAutoPageMode",
+          "lineNumber": 324
+        },
+        {
+          "caller": "ClearDisplayEnd",
+          "callee": "DevClearCursor",
+          "lineNumber": 349
+        },
+        {
+          "caller": "ClearDisplayEnd",
+          "callee": "ClearLineEnd",
+          "lineNumber": 360
+        },
+        {
+          "caller": "ClearDisplayEnd",
+          "callee": "SetChar",
+          "lineNumber": 366
+        },
+        {
+          "caller": "ClearLineEnd",
+          "callee": "SetChar",
+          "lineNumber": 376
+        },
+        {
+          "caller": "CursorDown",
+          "callee": "Scroll",
+          "lineNumber": 386
+        },
+        {
+          "caller": "CursorRight",
+          "callee": "NewLine",
+          "lineNumber": 433
+        },
+        {
+          "caller": "DisplayChar",
+          "callee": "SetChar",
+          "lineNumber": 456
+        },
+        {
+          "caller": "DisplayChar",
+          "callee": "CursorRight",
+          "lineNumber": 458
+        },
+        {
+          "caller": "EraseChars",
+          "callee": "SetChar",
+          "lineNumber": 477
+        },
+        {
+          "caller": "NewLine",
+          "callee": "CarriageReturn",
+          "lineNumber": 483
+        },
+        {
+          "caller": "NewLine",
+          "callee": "CursorDown",
+          "lineNumber": 484
+        },
+        {
+          "caller": "SetCursorMode",
+          "callee": "DevSetCursorMode",
+          "lineNumber": 496
+        },
+        {
+          "caller": "Tabulator",
+          "callee": "NewLine",
+          "lineNumber": 505
+        },
+        {
+          "caller": "Scroll",
+          "callee": "SetChar",
+          "lineNumber": 515
+        },
+        {
+          "caller": "Scroll",
+          "callee": "SetChar",
+          "lineNumber": 521
+        },
+        {
+          "caller": "SetChar",
+          "callee": "DevSetChar",
+          "lineNumber": 527
+        },
+        {
+          "caller": "SetCursor",
+          "callee": "DevSetCursor",
+          "lineNumber": 535
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 25,
+        "functionCount": 25,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/chardevice.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 125,
+      "nonEmptyLines": 109,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/hd44780device.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 204,
+      "nonEmptyLines": 172,
+      "functions": [
+        {
+          "name": "CHD44780Device",
+          "startLine": 24,
+          "endLine": 51,
+          "params": [
+            "nColumns",
+            "nRows",
+            "nD4Pin",
+            "nD5Pin",
+            "nD6Pin",
+            "nD7Pin",
+            "nENPin",
+            "nRSPin",
+            "nRWPin",
+            "bBlockCursor"
+          ]
+        },
+        {
+          "name": "CHD44780Device",
+          "startLine": 53,
+          "endLine": 61,
+          "params": [
+            "pI2CMaster",
+            "nAddress",
+            "nColumns",
+            "nRows",
+            "bBlockCursor"
+          ]
+        },
+        {
+          "name": "~CHD44780Device",
+          "startLine": 63,
+          "endLine": 71,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 73,
+          "endLine": 82,
+          "params": []
+        },
+        {
+          "name": "DevClearCursor",
+          "startLine": 84,
+          "endLine": 88,
+          "params": []
+        },
+        {
+          "name": "DevSetCursorMode",
+          "startLine": 90,
+          "endLine": 93,
+          "params": [
+            "bVisible"
+          ]
+        },
+        {
+          "name": "DevSetChar",
+          "startLine": 95,
+          "endLine": 100,
+          "params": [
+            "nPosX",
+            "nPosY",
+            "chChar"
+          ]
+        },
+        {
+          "name": "DevSetCursor",
+          "startLine": 102,
+          "endLine": 105,
+          "params": [
+            "nCursorX",
+            "nCursorY"
+          ]
+        },
+        {
+          "name": "DevUpdateDisplay",
+          "startLine": 107,
+          "endLine": 108,
+          "params": []
+        },
+        {
+          "name": "DefineCharFont",
+          "startLine": 110,
+          "endLine": 128,
+          "params": [
+            "chChar",
+            "FontData"
+          ]
+        },
+        {
+          "name": "WriteByte",
+          "startLine": 130,
+          "endLine": 134,
+          "params": [
+            "nData",
+            "mode"
+          ]
+        },
+        {
+          "name": "WriteHalfByte",
+          "startLine": 140,
+          "endLine": 176,
+          "params": [
+            "nData",
+            "mode"
+          ]
+        },
+        {
+          "name": "GetDDRAMAddress",
+          "startLine": 178,
+          "endLine": 204,
+          "params": [
+            "nPosX",
+            "nPosY"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CHD44780Device",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "CHD44780Device",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "~CHD44780Device",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "DevClearCursor",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "DevSetCursorMode",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "DevSetChar",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "DevSetCursor",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "DevUpdateDisplay",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "DefineCharFont",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "WriteByte",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "WriteHalfByte",
+          "line": 140,
+          "isDefault": false
+        },
+        {
+          "name": "GetDDRAMAddress",
+          "line": 178,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CHD44780Device",
+          "callee": "Write",
+          "lineNumber": 40
+        },
+        {
+          "caller": "CHD44780Device",
+          "callee": "Write",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CHD44780Device",
+          "callee": "Write",
+          "lineNumber": 48
+        },
+        {
+          "caller": "~CHD44780Device",
+          "callee": "WriteByte",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Initialize",
+          "callee": "WriteHalfByte",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Initialize",
+          "callee": "WriteByte",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetRows",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "WriteByte",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CCharDevice::Initialize",
+          "lineNumber": 81
+        },
+        {
+          "caller": "DevClearCursor",
+          "callee": "WriteByte",
+          "lineNumber": 86
+        },
+        {
+          "caller": "DevClearCursor",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 87
+        },
+        {
+          "caller": "DevSetCursorMode",
+          "callee": "WriteByte",
+          "lineNumber": 92
+        },
+        {
+          "caller": "DevSetChar",
+          "callee": "WriteByte",
+          "lineNumber": 97
+        },
+        {
+          "caller": "DevSetChar",
+          "callee": "GetDDRAMAddress",
+          "lineNumber": 97
+        },
+        {
+          "caller": "DevSetChar",
+          "callee": "WriteByte",
+          "lineNumber": 99
+        },
+        {
+          "caller": "DevSetCursor",
+          "callee": "WriteByte",
+          "lineNumber": 104
+        },
+        {
+          "caller": "DevSetCursor",
+          "callee": "GetDDRAMAddress",
+          "lineNumber": 104
+        },
+        {
+          "caller": "DefineCharFont",
+          "callee": "WriteByte",
+          "lineNumber": 124
+        },
+        {
+          "caller": "DefineCharFont",
+          "callee": "WriteByte",
+          "lineNumber": 126
+        },
+        {
+          "caller": "WriteByte",
+          "callee": "WriteHalfByte",
+          "lineNumber": 132
+        },
+        {
+          "caller": "WriteByte",
+          "callee": "WriteHalfByte",
+          "lineNumber": 133
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 150
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "CTimer::SimpleusDelay",
+          "lineNumber": 151
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 154
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "CTimer::SimpleusDelay",
+          "lineNumber": 156
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 161
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 163
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 164
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 165
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 166
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 168
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "CTimer::SimpleusDelay",
+          "lineNumber": 169
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 170
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "CTimer::SimpleusDelay",
+          "lineNumber": 171
+        },
+        {
+          "caller": "WriteHalfByte",
+          "callee": "Write",
+          "lineNumber": 173
+        },
+        {
+          "caller": "GetDDRAMAddress",
+          "callee": "GetColumns",
+          "lineNumber": 191
+        },
+        {
+          "caller": "GetDDRAMAddress",
+          "callee": "GetColumns",
+          "lineNumber": 195
+        },
+        {
+          "caller": "GetDDRAMAddress",
+          "callee": "assert",
+          "lineNumber": 199
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 13,
+        "functionCount": 13,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/hd44780device.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 84,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/display/st7789display.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 550,
+      "nonEmptyLines": 457,
+      "functions": [
+        {
+          "name": "CST7789Display",
+          "startLine": 87,
+          "endLine": 123,
+          "params": [
+            "pSPIMaster",
+            "nDCPin",
+            "nResetPin",
+            "nBackLightPin",
+            "nWidth",
+            "nHeight",
+            "CPOL",
+            "CPHA",
+            "nClockSpeed",
+            "nChipSelect",
+            "bSwapColorBytes"
+          ]
+        },
+        {
+          "name": "~CST7789Display",
+          "startLine": 125,
+          "endLine": 128,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 130,
+          "endLine": 237,
+          "params": []
+        },
+        {
+          "name": "SetRotation",
+          "startLine": 239,
+          "endLine": 245,
+          "params": [
+            "nRot"
+          ]
+        },
+        {
+          "name": "On",
+          "startLine": 247,
+          "endLine": 251,
+          "params": []
+        },
+        {
+          "name": "Off",
+          "startLine": 253,
+          "endLine": 256,
+          "params": []
+        },
+        {
+          "name": "Clear",
+          "startLine": 258,
+          "endLine": 275,
+          "params": [
+            "Color"
+          ]
+        },
+        {
+          "name": "RotX",
+          "startLine": 277,
+          "endLine": 301,
+          "params": [
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "RotY",
+          "startLine": 303,
+          "endLine": 323,
+          "params": [
+            "x",
+            "y"
+          ]
+        },
+        {
+          "name": "SetPixel",
+          "startLine": 325,
+          "endLine": 332,
+          "params": [
+            "nPosX",
+            "nPosY",
+            "Color"
+          ]
+        },
+        {
+          "name": "DrawText",
+          "startLine": 334,
+          "endLine": 406,
+          "params": [
+            "nPosX",
+            "nPosY",
+            "pString",
+            "Color",
+            "BgColor",
+            "bDoubleWidth",
+            "bDoubleHeight",
+            "rFont"
+          ]
+        },
+        {
+          "name": "SetPixel",
+          "startLine": 408,
+          "endLine": 411,
+          "params": [
+            "nPosX",
+            "nPosY",
+            "nColor"
+          ]
+        },
+        {
+          "name": "SetArea",
+          "startLine": 413,
+          "endLine": 494,
+          "params": [
+            "rArea",
+            "pPixels",
+            "pRoutine",
+            "pParam"
+          ]
+        },
+        {
+          "name": "SetWindow",
+          "startLine": 496,
+          "endLine": 516,
+          "params": [
+            "x0",
+            "y0",
+            "x1",
+            "y1"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CST7789Display",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "~CST7789Display",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "SetRotation",
+          "line": 239,
+          "isDefault": false
+        },
+        {
+          "name": "On",
+          "line": 247,
+          "isDefault": false
+        },
+        {
+          "name": "Off",
+          "line": 253,
+          "isDefault": false
+        },
+        {
+          "name": "Clear",
+          "line": 258,
+          "isDefault": false
+        },
+        {
+          "name": "RotX",
+          "line": 277,
+          "isDefault": false
+        },
+        {
+          "name": "RotY",
+          "line": 303,
+          "isDefault": false
+        },
+        {
+          "name": "SetPixel",
+          "line": 325,
+          "isDefault": false
+        },
+        {
+          "name": "DrawText",
+          "line": 334,
+          "isDefault": false
+        },
+        {
+          "name": "SetPixel",
+          "line": 408,
+          "isDefault": false
+        },
+        {
+          "name": "SetArea",
+          "line": 413,
+          "isDefault": false
+        },
+        {
+          "name": "SetWindow",
+          "line": 496,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CST7789Display",
+          "callee": "assert",
+          "lineNumber": 105
+        },
+        {
+          "caller": "CST7789Display",
+          "callee": "AssignPin",
+          "lineNumber": 109
+        },
+        {
+          "caller": "CST7789Display",
+          "callee": "SetMode",
+          "lineNumber": 110
+        },
+        {
+          "caller": "CST7789Display",
+          "callee": "AssignPin",
+          "lineNumber": 115
+        },
+        {
+          "caller": "CST7789Display",
+          "callee": "SetMode",
+          "lineNumber": 116
+        },
+        {
+          "caller": "CST7789Display",
+          "callee": "assert",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 132
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 136
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 137
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 145
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 146
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 147
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 148
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 151
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 155
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 157
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 158
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 159
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 160
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 161
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 162
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 164
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 165
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 167
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 168
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 169
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 171
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 172
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 174
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 175
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 177
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 178
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 180
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 181
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 183
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 184
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 186
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 187
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 189
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 190
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 191
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 193
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 194
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 196
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 197
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 198
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 199
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 200
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 201
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 202
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 203
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 204
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 205
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 206
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 207
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 208
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 209
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 210
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 212
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 213
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 214
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 215
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 216
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 217
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 218
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 219
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 220
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 221
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 222
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 223
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 224
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 225
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Data",
+          "lineNumber": 226
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 228
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Command",
+          "lineNumber": 230
+        },
+        {
+          "caller": "Initialize",
+          "callee": "On",
+          "lineNumber": 232
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Clear",
+          "lineNumber": 234
+        },
+        {
+          "caller": "On",
+          "callee": "Command",
+          "lineNumber": 249
+        },
+        {
+          "caller": "On",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 250
+        },
+        {
+          "caller": "Off",
+          "callee": "Command",
+          "lineNumber": 255
+        },
+        {
+          "caller": "Clear",
+          "callee": "assert",
+          "lineNumber": 260
+        },
+        {
+          "caller": "Clear",
+          "callee": "assert",
+          "lineNumber": 261
+        },
+        {
+          "caller": "Clear",
+          "callee": "SetWindow",
+          "lineNumber": 263
+        },
+        {
+          "caller": "Clear",
+          "callee": "SendData",
+          "lineNumber": 273
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "RotX",
+          "lineNumber": 327
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "RotY",
+          "lineNumber": 328
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "SetWindow",
+          "lineNumber": 329
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "SendData",
+          "lineNumber": 331
+        },
+        {
+          "caller": "DrawText",
+          "callee": "assert",
+          "lineNumber": 338
+        },
+        {
+          "caller": "DrawText",
+          "callee": "GetCharWidth",
+          "lineNumber": 341
+        },
+        {
+          "caller": "DrawText",
+          "callee": "GetCharHeight",
+          "lineNumber": 342
+        },
+        {
+          "caller": "DrawText",
+          "callee": "GetPixelLine",
+          "lineNumber": 351
+        },
+        {
+          "caller": "DrawText",
+          "callee": "GetPixel",
+          "lineNumber": 355
+        },
+        {
+          "caller": "DrawText",
+          "callee": "SetWindow",
+          "lineNumber": 389
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotX",
+          "lineNumber": 389
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotY",
+          "lineNumber": 389
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotX",
+          "lineNumber": 389
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotY",
+          "lineNumber": 389
+        },
+        {
+          "caller": "DrawText",
+          "callee": "SetWindow",
+          "lineNumber": 392
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotX",
+          "lineNumber": 392
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotY",
+          "lineNumber": 392
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotX",
+          "lineNumber": 392
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotY",
+          "lineNumber": 392
+        },
+        {
+          "caller": "DrawText",
+          "callee": "SetWindow",
+          "lineNumber": 395
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotX",
+          "lineNumber": 395
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotY",
+          "lineNumber": 395
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotX",
+          "lineNumber": 395
+        },
+        {
+          "caller": "DrawText",
+          "callee": "RotY",
+          "lineNumber": 395
+        },
+        {
+          "caller": "DrawText",
+          "callee": "SetWindow",
+          "lineNumber": 398
+        },
+        {
+          "caller": "DrawText",
+          "callee": "SendData",
+          "lineNumber": 402
+        },
+        {
+          "caller": "SetPixel",
+          "callee": "SetPixel",
+          "lineNumber": 410
+        },
+        {
+          "caller": "SetArea",
+          "callee": "SetWindow",
+          "lineNumber": 421
+        },
+        {
+          "caller": "SetArea",
+          "callee": "SetWindow",
+          "lineNumber": 431
+        },
+        {
+          "caller": "SetArea",
+          "callee": "SetWindow",
+          "lineNumber": 443
+        },
+        {
+          "caller": "SetArea",
+          "callee": "SetWindow",
+          "lineNumber": 455
+        },
+        {
+          "caller": "SetArea",
+          "callee": "assert",
+          "lineNumber": 467
+        },
+        {
+          "caller": "SetArea",
+          "callee": "SendData",
+          "lineNumber": 483
+        },
+        {
+          "caller": "SetArea",
+          "callee": "(*pRoutine)",
+          "lineNumber": 492
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "assert",
+          "lineNumber": 498
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "assert",
+          "lineNumber": 499
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "assert",
+          "lineNumber": 500
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "assert",
+          "lineNumber": 501
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Command",
+          "lineNumber": 503
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Data",
+          "lineNumber": 504
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Data",
+          "lineNumber": 505
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Data",
+          "lineNumber": 506
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Data",
+          "lineNumber": 507
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Command",
+          "lineNumber": 509
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Data",
+          "lineNumber": 510
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Data",
+          "lineNumber": 511
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Data",
+          "lineNumber": 512
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Data",
+          "lineNumber": 513
+        },
+        {
+          "caller": "SetWindow",
+          "callee": "Command",
+          "lineNumber": 515
+        },
+        {
+          "caller": "SendData",
+          "callee": "assert",
+          "lineNumber": 536
+        },
+        {
+          "caller": "SendData",
+          "callee": "assert",
+          "lineNumber": 537
+        },
+        {
+          "caller": "SendData",
+          "callee": "assert",
+          "lineNumber": 538
+        },
+        {
+          "caller": "SendData",
+          "callee": "Write",
+          "lineNumber": 540
+        },
+        {
+          "caller": "SendData",
+          "callee": "SetClock",
+          "lineNumber": 542
+        },
+        {
+          "caller": "SendData",
+          "callee": "SetMode",
+          "lineNumber": 543
+        },
+        {
+          "caller": "SendData",
+          "callee": "Write",
+          "lineNumber": 548
+        },
+        {
+          "caller": "SendData",
+          "callee": "assert",
+          "lineNumber": 549
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 14,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/sensor/ky040.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 315,
+      "nonEmptyLines": 254,
+      "functions": [
+        {
+          "name": "CKY040",
+          "startLine": 90,
+          "endLine": 105,
+          "params": [
+            "nCLKPin",
+            "nDTPin",
+            "nSWPin",
+            "pGPIOManager"
+          ]
+        },
+        {
+          "name": "~CKY040",
+          "startLine": 107,
+          "endLine": 135,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 137,
+          "endLine": 159,
+          "params": []
+        },
+        {
+          "name": "RegisterEventHandler",
+          "startLine": 161,
+          "endLine": 167,
+          "params": [
+            "pHandler",
+            "pParam"
+          ]
+        },
+        {
+          "name": "GetHoldSeconds",
+          "startLine": 169,
+          "endLine": 172,
+          "params": []
+        },
+        {
+          "name": "Update",
+          "startLine": 174,
+          "endLine": 215,
+          "params": []
+        },
+        {
+          "name": "HandleSwitchEvent",
+          "startLine": 218,
+          "endLine": 242,
+          "params": [
+            "SwitchEvent"
+          ]
+        },
+        {
+          "name": "EncoderInterruptHandler",
+          "startLine": 244,
+          "endLine": 263,
+          "params": [
+            "pParam"
+          ]
+        },
+        {
+          "name": "SwitchInterruptHandler",
+          "startLine": 265,
+          "endLine": 278,
+          "params": [
+            "pParam"
+          ]
+        },
+        {
+          "name": "SwitchDebounceHandler",
+          "startLine": 280,
+          "endLine": 304,
+          "params": [
+            "hTimer",
+            "pParam",
+            "pContext"
+          ]
+        },
+        {
+          "name": "SwitchTickHandler",
+          "startLine": 306,
+          "endLine": 315,
+          "params": [
+            "hTimer",
+            "pParam",
+            "pContext"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKY040",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "~CKY040",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 137,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterEventHandler",
+          "line": 161,
+          "isDefault": false
+        },
+        {
+          "name": "GetHoldSeconds",
+          "line": 169,
+          "isDefault": false
+        },
+        {
+          "name": "Update",
+          "line": 174,
+          "isDefault": false
+        },
+        {
+          "name": "HandleSwitchEvent",
+          "line": 218,
+          "isDefault": false
+        },
+        {
+          "name": "EncoderInterruptHandler",
+          "line": 244,
+          "isDefault": false
+        },
+        {
+          "name": "SwitchInterruptHandler",
+          "line": 265,
+          "isDefault": false
+        },
+        {
+          "name": "SwitchDebounceHandler",
+          "line": 280,
+          "isDefault": false
+        },
+        {
+          "name": "SwitchTickHandler",
+          "line": 306,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CKY040",
+          "callee": "DisableInterrupt2",
+          "lineNumber": 113
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "DisableInterrupt",
+          "lineNumber": 114
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "DisconnectInterrupt",
+          "lineNumber": 115
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "DisableInterrupt2",
+          "lineNumber": 117
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "DisableInterrupt",
+          "lineNumber": 118
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "DisconnectInterrupt",
+          "lineNumber": 119
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "DisableInterrupt2",
+          "lineNumber": 121
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "DisableInterrupt",
+          "lineNumber": 122
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "DisconnectInterrupt",
+          "lineNumber": 123
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "CancelKernelTimer",
+          "lineNumber": 128
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "CTimer::Get",
+          "lineNumber": 128
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "CancelKernelTimer",
+          "lineNumber": 133
+        },
+        {
+          "caller": "~CKY040",
+          "callee": "CTimer::Get",
+          "lineNumber": 133
+        },
+        {
+          "caller": "Initialize",
+          "callee": "assert",
+          "lineNumber": 141
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ConnectInterrupt",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ConnectInterrupt",
+          "lineNumber": 145
+        },
+        {
+          "caller": "Initialize",
+          "callee": "ConnectInterrupt",
+          "lineNumber": 146
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableInterrupt",
+          "lineNumber": 148
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableInterrupt2",
+          "lineNumber": 149
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableInterrupt",
+          "lineNumber": 151
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableInterrupt2",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableInterrupt",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Initialize",
+          "callee": "EnableInterrupt2",
+          "lineNumber": 155
+        },
+        {
+          "caller": "RegisterEventHandler",
+          "callee": "assert",
+          "lineNumber": 163
+        },
+        {
+          "caller": "RegisterEventHandler",
+          "callee": "assert",
+          "lineNumber": 165
+        },
+        {
+          "caller": "Update",
+          "callee": "assert",
+          "lineNumber": 176
+        },
+        {
+          "caller": "Update",
+          "callee": "EncoderInterruptHandler",
+          "lineNumber": 178
+        },
+        {
+          "caller": "Update",
+          "callee": "CTimer::GetClockTicks",
+          "lineNumber": 181
+        },
+        {
+          "caller": "Update",
+          "callee": "Read",
+          "lineNumber": 182
+        },
+        {
+          "caller": "Update",
+          "callee": "CTimer::GetClockTicks",
+          "lineNumber": 189
+        },
+        {
+          "caller": "Update",
+          "callee": "(*m_pEventHandler)",
+          "lineNumber": 201
+        },
+        {
+          "caller": "Update",
+          "callee": "HandleSwitchEvent",
+          "lineNumber": 205
+        },
+        {
+          "caller": "Update",
+          "callee": "HandleSwitchEvent",
+          "lineNumber": 212
+        },
+        {
+          "caller": "HandleSwitchEvent",
+          "callee": "assert",
+          "lineNumber": 220
+        },
+        {
+          "caller": "HandleSwitchEvent",
+          "callee": "(*m_pEventHandler)",
+          "lineNumber": 240
+        },
+        {
+          "caller": "EncoderInterruptHandler",
+          "callee": "static_cast<CKY040 *>",
+          "lineNumber": 246
+        },
+        {
+          "caller": "EncoderInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 247
+        },
+        {
+          "caller": "EncoderInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 249
+        },
+        {
+          "caller": "EncoderInterruptHandler",
+          "callee": "Read",
+          "lineNumber": 250
+        },
+        {
+          "caller": "EncoderInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 251
+        },
+        {
+          "caller": "EncoderInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 252
+        },
+        {
+          "caller": "EncoderInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 254
+        },
+        {
+          "caller": "EncoderInterruptHandler",
+          "callee": "(*pThis->m_pEventHandler)",
+          "lineNumber": 261
+        },
+        {
+          "caller": "SwitchInterruptHandler",
+          "callee": "static_cast<CKY040 *>",
+          "lineNumber": 267
+        },
+        {
+          "caller": "SwitchInterruptHandler",
+          "callee": "assert",
+          "lineNumber": 268
+        },
+        {
+          "caller": "SwitchInterruptHandler",
+          "callee": "CancelKernelTimer",
+          "lineNumber": 272
+        },
+        {
+          "caller": "SwitchInterruptHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 272
+        },
+        {
+          "caller": "SwitchInterruptHandler",
+          "callee": "StartKernelTimer",
+          "lineNumber": 276
+        },
+        {
+          "caller": "SwitchInterruptHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 276
+        },
+        {
+          "caller": "SwitchInterruptHandler",
+          "callee": "MSEC2HZ",
+          "lineNumber": 276
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "static_cast<CKY040 *>",
+          "lineNumber": 282
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "assert",
+          "lineNumber": 283
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "CancelKernelTimer",
+          "lineNumber": 289
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 289
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "StartKernelTimer",
+          "lineNumber": 292
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 292
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "MSEC2HZ",
+          "lineNumber": 292
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "Read",
+          "lineNumber": 295
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "(*pThis->m_pEventHandler)",
+          "lineNumber": 299
+        },
+        {
+          "caller": "SwitchDebounceHandler",
+          "callee": "HandleSwitchEvent",
+          "lineNumber": 303
+        },
+        {
+          "caller": "SwitchTickHandler",
+          "callee": "static_cast<CKY040 *>",
+          "lineNumber": 308
+        },
+        {
+          "caller": "SwitchTickHandler",
+          "callee": "assert",
+          "lineNumber": 309
+        },
+        {
+          "caller": "SwitchTickHandler",
+          "callee": "StartKernelTimer",
+          "lineNumber": 311
+        },
+        {
+          "caller": "SwitchTickHandler",
+          "callee": "CTimer::Get",
+          "lineNumber": 311
+        },
+        {
+          "caller": "SwitchTickHandler",
+          "callee": "MSEC2HZ",
+          "lineNumber": 311
+        },
+        {
+          "caller": "SwitchTickHandler",
+          "callee": "HandleSwitchEvent",
+          "lineNumber": 314
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 11,
+        "functionCount": 11,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/sensor/ky040.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 153,
+      "nonEmptyLines": 125,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/sensor/mcp300x.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 148,
+      "nonEmptyLines": 129,
+      "functions": [
+        {
+          "name": "CMCP300X",
+          "startLine": 38,
+          "endLine": 69,
+          "params": [
+            "pSPIMaster",
+            "fVREF",
+            "nChipSelect",
+            "nClockSpeed"
+          ]
+        },
+        {
+          "name": "DoSingleEndedConversion",
+          "startLine": 71,
+          "endLine": 81,
+          "params": [
+            "nChannel"
+          ]
+        },
+        {
+          "name": "DoDifferentialConversion",
+          "startLine": 83,
+          "endLine": 96,
+          "params": [
+            "nChannelPlus",
+            "nChannelMinus"
+          ]
+        },
+        {
+          "name": "DoSingleEndedConversionRaw",
+          "startLine": 98,
+          "endLine": 102,
+          "params": [
+            "nChannel"
+          ]
+        },
+        {
+          "name": "DoDifferentialConversionRaw",
+          "startLine": 104,
+          "endLine": 111,
+          "params": [
+            "nChannelPlus",
+            "nChannelMinus"
+          ]
+        },
+        {
+          "name": "DoConversion",
+          "startLine": 113,
+          "endLine": 148,
+          "params": [
+            "nControl"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CMCP300X",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "DoSingleEndedConversion",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "DoDifferentialConversion",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "DoSingleEndedConversionRaw",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "DoDifferentialConversionRaw",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "DoConversion",
+          "line": 113,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CMCP300X",
+          "callee": "m_pSPIMasterAUX",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CMCP300X",
+          "callee": "m_nClockSpeed",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CMCP300X",
+          "callee": "m_pSPIMaster",
+          "lineNumber": 53
+        },
+        {
+          "caller": "CMCP300X",
+          "callee": "m_nClockSpeed",
+          "lineNumber": 57
+        },
+        {
+          "caller": "DoSingleEndedConversion",
+          "callee": "assert",
+          "lineNumber": 73
+        },
+        {
+          "caller": "DoSingleEndedConversion",
+          "callee": "DoConversion",
+          "lineNumber": 74
+        },
+        {
+          "caller": "DoDifferentialConversion",
+          "callee": "assert",
+          "lineNumber": 85
+        },
+        {
+          "caller": "DoDifferentialConversion",
+          "callee": "assert",
+          "lineNumber": 86
+        },
+        {
+          "caller": "DoDifferentialConversion",
+          "callee": "assert",
+          "lineNumber": 88
+        },
+        {
+          "caller": "DoDifferentialConversion",
+          "callee": "DoConversion",
+          "lineNumber": 89
+        },
+        {
+          "caller": "DoSingleEndedConversionRaw",
+          "callee": "assert",
+          "lineNumber": 100
+        },
+        {
+          "caller": "DoSingleEndedConversionRaw",
+          "callee": "DoConversion",
+          "lineNumber": 101
+        },
+        {
+          "caller": "DoDifferentialConversionRaw",
+          "callee": "assert",
+          "lineNumber": 106
+        },
+        {
+          "caller": "DoDifferentialConversionRaw",
+          "callee": "assert",
+          "lineNumber": 107
+        },
+        {
+          "caller": "DoDifferentialConversionRaw",
+          "callee": "assert",
+          "lineNumber": 109
+        },
+        {
+          "caller": "DoDifferentialConversionRaw",
+          "callee": "DoConversion",
+          "lineNumber": 110
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "ALIGN",
+          "lineNumber": 115
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "(u8)",
+          "lineNumber": 115
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "ALIGN",
+          "lineNumber": 116
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "SetClock",
+          "lineNumber": 120
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "SetMode",
+          "lineNumber": 121
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "WriteRead",
+          "lineNumber": 123
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "assert",
+          "lineNumber": 131
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "SetClock",
+          "lineNumber": 132
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "WriteRead",
+          "lineNumber": 134
+        },
+        {
+          "caller": "DoConversion",
+          "callee": "assert",
+          "lineNumber": 139
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/tftpfileserver/tftpfatfsfileserver.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 131,
+      "nonEmptyLines": 108,
+      "functions": [
+        {
+          "name": "CTFTPFatFsFileServer",
+          "startLine": 23,
+          "endLine": 32,
+          "params": [
+            "pNetSubSystem",
+            "pFileSystem",
+            "pPath"
+          ]
+        },
+        {
+          "name": "~CTFTPFatFsFileServer",
+          "startLine": 34,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "FileOpen",
+          "startLine": 44,
+          "endLine": 62,
+          "params": [
+            "pFileName"
+          ]
+        },
+        {
+          "name": "FileCreate",
+          "startLine": 64,
+          "endLine": 82,
+          "params": [
+            "pFileName"
+          ]
+        },
+        {
+          "name": "FileClose",
+          "startLine": 84,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "FileRead",
+          "startLine": 99,
+          "endLine": 114,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "FileWrite",
+          "startLine": 116,
+          "endLine": 131,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CTFTPFatFsFileServer",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CTFTPFatFsFileServer",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "FileOpen",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "FileCreate",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "FileClose",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "FileRead",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "FileWrite",
+          "line": 116,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CTFTPFatFsFileServer",
+          "callee": "assert",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CTFTPFatFsFileServer",
+          "callee": "GetLength",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CTFTPFatFsFileServer",
+          "callee": "assert",
+          "lineNumber": 31
+        },
+        {
+          "caller": "CTFTPFatFsFileServer",
+          "callee": "GetLength",
+          "lineNumber": 31
+        },
+        {
+          "caller": "~CTFTPFatFsFileServer",
+          "callee": "FileClose",
+          "lineNumber": 38
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "assert",
+          "lineNumber": 46
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "assert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "assert",
+          "lineNumber": 48
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "Append",
+          "lineNumber": 51
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "f_open",
+          "lineNumber": 53
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "assert",
+          "lineNumber": 66
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "assert",
+          "lineNumber": 67
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "assert",
+          "lineNumber": 68
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "Append",
+          "lineNumber": 71
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "f_open",
+          "lineNumber": 73
+        },
+        {
+          "caller": "FileClose",
+          "callee": "assert",
+          "lineNumber": 86
+        },
+        {
+          "caller": "FileClose",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "FileClose",
+          "callee": "f_close",
+          "lineNumber": 89
+        },
+        {
+          "caller": "FileRead",
+          "callee": "assert",
+          "lineNumber": 101
+        },
+        {
+          "caller": "FileRead",
+          "callee": "assert",
+          "lineNumber": 102
+        },
+        {
+          "caller": "FileRead",
+          "callee": "assert",
+          "lineNumber": 103
+        },
+        {
+          "caller": "FileRead",
+          "callee": "assert",
+          "lineNumber": 104
+        },
+        {
+          "caller": "FileRead",
+          "callee": "f_read",
+          "lineNumber": 107
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 118
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 119
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 120
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 121
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "f_write",
+          "lineNumber": 124
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/tftpfileserver/tftpfileserver.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 75,
+      "functions": [
+        {
+          "name": "CTFTPFileServer",
+          "startLine": 23,
+          "endLine": 28,
+          "params": [
+            "pNetSubSystem",
+            "pFileSystem"
+          ]
+        },
+        {
+          "name": "~CTFTPFileServer",
+          "startLine": 30,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "FileOpen",
+          "startLine": 40,
+          "endLine": 48,
+          "params": [
+            "pFileName"
+          ]
+        },
+        {
+          "name": "FileCreate",
+          "startLine": 50,
+          "endLine": 58,
+          "params": [
+            "pFileName"
+          ]
+        },
+        {
+          "name": "FileClose",
+          "startLine": 60,
+          "endLine": 69,
+          "params": []
+        },
+        {
+          "name": "FileRead",
+          "startLine": 71,
+          "endLine": 78,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        },
+        {
+          "name": "FileWrite",
+          "startLine": 80,
+          "endLine": 87,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CTFTPFileServer",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CTFTPFileServer",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "FileOpen",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "FileCreate",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "FileClose",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "FileRead",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "FileWrite",
+          "line": 80,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CTFTPFileServer",
+          "callee": "FileClose",
+          "lineNumber": 34
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "assert",
+          "lineNumber": 42
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "assert",
+          "lineNumber": 43
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "assert",
+          "lineNumber": 44
+        },
+        {
+          "caller": "FileOpen",
+          "callee": "FileOpen",
+          "lineNumber": 45
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "assert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "assert",
+          "lineNumber": 53
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "assert",
+          "lineNumber": 54
+        },
+        {
+          "caller": "FileCreate",
+          "callee": "FileCreate",
+          "lineNumber": 55
+        },
+        {
+          "caller": "FileClose",
+          "callee": "assert",
+          "lineNumber": 62
+        },
+        {
+          "caller": "FileClose",
+          "callee": "assert",
+          "lineNumber": 63
+        },
+        {
+          "caller": "FileClose",
+          "callee": "FileClose",
+          "lineNumber": 64
+        },
+        {
+          "caller": "FileRead",
+          "callee": "assert",
+          "lineNumber": 73
+        },
+        {
+          "caller": "FileRead",
+          "callee": "assert",
+          "lineNumber": 74
+        },
+        {
+          "caller": "FileRead",
+          "callee": "assert",
+          "lineNumber": 75
+        },
+        {
+          "caller": "FileRead",
+          "callee": "assert",
+          "lineNumber": 76
+        },
+        {
+          "caller": "FileRead",
+          "callee": "FileRead",
+          "lineNumber": 77
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 82
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 83
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 84
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "assert",
+          "lineNumber": 85
+        },
+        {
+          "caller": "FileWrite",
+          "callee": "FileWrite",
+          "lineNumber": 86
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/ugui/sample/scopeconfig.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 97,
+      "functions": [
+        {
+          "name": "CScopeConfig",
+          "startLine": 32,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "~CScopeConfig",
+          "startLine": 37,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "AddParamSet",
+          "startLine": 41,
+          "endLine": 71,
+          "params": [
+            "nWantedRateKHz",
+            "nActualRateKHz",
+            "nDelayCount"
+          ]
+        },
+        {
+          "name": "GetParamSetCount",
+          "startLine": 73,
+          "endLine": 76,
+          "params": []
+        },
+        {
+          "name": "SelectParamSet",
+          "startLine": 78,
+          "endLine": 82,
+          "params": [
+            "nIndex"
+          ]
+        },
+        {
+          "name": "GetWantedRate",
+          "startLine": 84,
+          "endLine": 87,
+          "params": []
+        },
+        {
+          "name": "GetActualRate",
+          "startLine": 89,
+          "endLine": 92,
+          "params": []
+        },
+        {
+          "name": "GetDelayCount",
+          "startLine": 94,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "GetMemoryDepth",
+          "startLine": 99,
+          "endLine": 102,
+          "params": []
+        },
+        {
+          "name": "GetChartScale",
+          "startLine": 104,
+          "endLine": 107,
+          "params": []
+        },
+        {
+          "name": "GetActualRate",
+          "startLine": 109,
+          "endLine": 113,
+          "params": [
+            "nIndex"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TParamSet",
+          "startLine": 23,
+          "endLine": 30,
+          "methods": [],
+          "properties": [
+            "nWantedRateKHz",
+            "nActualRateKHz",
+            "nDelayCount",
+            "nMemoryDepth",
+            "nChartScale"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TParamSet",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "CScopeConfig",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "~CScopeConfig",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "AddParamSet",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "GetParamSetCount",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "SelectParamSet",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "GetWantedRate",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "GetActualRate",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "GetDelayCount",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "GetMemoryDepth",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "GetChartScale",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "GetActualRate",
+          "line": 109,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "AddParamSet",
+          "callee": "assert",
+          "lineNumber": 62
+        },
+        {
+          "caller": "AddParamSet",
+          "callee": "Append",
+          "lineNumber": 70
+        },
+        {
+          "caller": "GetParamSetCount",
+          "callee": "GetCount",
+          "lineNumber": 75
+        },
+        {
+          "caller": "SelectParamSet",
+          "callee": "assert",
+          "lineNumber": 80
+        },
+        {
+          "caller": "SelectParamSet",
+          "callee": "GetCount",
+          "lineNumber": 80
+        },
+        {
+          "caller": "GetActualRate",
+          "callee": "assert",
+          "lineNumber": 111
+        },
+        {
+          "caller": "GetActualRate",
+          "callee": "GetCount",
+          "lineNumber": 111
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 12,
+        "functionCount": 11,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "addon/ugui/sample/scopeconfig.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 51,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/ugui/sample/timeline.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 174,
+      "nonEmptyLines": 145,
+      "functions": [
+        {
+          "name": "CTimeLine",
+          "startLine": 26,
+          "endLine": 41,
+          "params": [
+            "nMemoryDepth",
+            "fRuntime",
+            "nWindowSizePixel"
+          ]
+        },
+        {
+          "name": "~CTimeLine",
+          "startLine": 43,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "SetZoom",
+          "startLine": 47,
+          "endLine": 91,
+          "params": [
+            "nZoom"
+          ]
+        },
+        {
+          "name": "SetOffset",
+          "startLine": 93,
+          "endLine": 102,
+          "params": [
+            "fOffset"
+          ]
+        },
+        {
+          "name": "AddOffset",
+          "startLine": 104,
+          "endLine": 118,
+          "params": [
+            "nPixel"
+          ]
+        },
+        {
+          "name": "GetScaleDivision",
+          "startLine": 120,
+          "endLine": 123,
+          "params": []
+        },
+        {
+          "name": "GetRuntime",
+          "startLine": 125,
+          "endLine": 128,
+          "params": []
+        },
+        {
+          "name": "GetZoomFactor",
+          "startLine": 130,
+          "endLine": 133,
+          "params": []
+        },
+        {
+          "name": "GetSampleRate",
+          "startLine": 135,
+          "endLine": 138,
+          "params": []
+        },
+        {
+          "name": "GetWindowLeft",
+          "startLine": 140,
+          "endLine": 143,
+          "params": []
+        },
+        {
+          "name": "GetWindowRight",
+          "startLine": 145,
+          "endLine": 148,
+          "params": []
+        },
+        {
+          "name": "GetPixelDuration",
+          "startLine": 150,
+          "endLine": 153,
+          "params": []
+        },
+        {
+          "name": "GetMeasure",
+          "startLine": 155,
+          "endLine": 163,
+          "params": [
+            "fTime"
+          ]
+        },
+        {
+          "name": "GetPixel",
+          "startLine": 165,
+          "endLine": 174,
+          "params": [
+            "fTime"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CTimeLine",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "~CTimeLine",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "SetZoom",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "SetOffset",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "AddOffset",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "GetScaleDivision",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "GetRuntime",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "GetZoomFactor",
+          "line": 130,
+          "isDefault": false
+        },
+        {
+          "name": "GetSampleRate",
+          "line": 135,
+          "isDefault": false
+        },
+        {
+          "name": "GetWindowLeft",
+          "line": 140,
+          "isDefault": false
+        },
+        {
+          "name": "GetWindowRight",
+          "line": 145,
+          "isDefault": false
+        },
+        {
+          "name": "GetPixelDuration",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "GetMeasure",
+          "line": 155,
+          "isDefault": false
+        },
+        {
+          "name": "GetPixel",
+          "line": 165,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CTimeLine",
+          "callee": "assert",
+          "lineNumber": 32
+        },
+        {
+          "caller": "CTimeLine",
+          "callee": "assert",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CTimeLine",
+          "callee": "assert",
+          "lineNumber": 34
+        },
+        {
+          "caller": "CTimeLine",
+          "callee": "SetZoom",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CTimeLine",
+          "callee": "SetOffset",
+          "lineNumber": 40
+        },
+        {
+          "caller": "SetZoom",
+          "callee": "assert",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 14,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/ugui/sample/timeline.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 59,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_cache.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 382,
+      "nonEmptyLines": 294,
+      "functions": [
+        {
+          "name": "link_insert",
+          "startLine": 47,
+          "endLine": 56,
+          "params": [
+            "link",
+            "prev",
+            "next"
+          ]
+        },
+        {
+          "name": "link_remove",
+          "startLine": 58,
+          "endLine": 62,
+          "params": [
+            "link"
+          ]
+        },
+        {
+          "name": "tree_init",
+          "startLine": 64,
+          "endLine": 72,
+          "params": [
+            "tree",
+            "depth"
+          ]
+        },
+        {
+          "name": "heap_avail",
+          "startLine": 74,
+          "endLine": 77,
+          "params": [
+            "cache",
+            "size"
+          ]
+        },
+        {
+          "name": "heap_alloc",
+          "startLine": 79,
+          "endLine": 99,
+          "params": [
+            "cache",
+            "size"
+          ]
+        },
+        {
+          "name": "heap_free",
+          "startLine": 101,
+          "endLine": 122,
+          "params": [
+            "cache",
+            "block"
+          ]
+        },
+        {
+          "name": "hash",
+          "startLine": 124,
+          "endLine": 137,
+          "params": [
+            "data",
+            "len",
+            "sig"
+          ]
+        },
+        {
+          "name": "khrn_cache_init",
+          "startLine": 139,
+          "endLine": 153,
+          "params": [
+            "cache"
+          ]
+        },
+        {
+          "name": "khrn_cache_term",
+          "startLine": 155,
+          "endLine": 161,
+          "params": [
+            "cache"
+          ]
+        },
+        {
+          "name": "send_create",
+          "startLine": 163,
+          "endLine": 169,
+          "params": [
+            "thread",
+            "base"
+          ]
+        },
+        {
+          "name": "send_delete",
+          "startLine": 171,
+          "endLine": 177,
+          "params": [
+            "thread",
+            "base"
+          ]
+        },
+        {
+          "name": "send_grow",
+          "startLine": 179,
+          "endLine": 184,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "send_data",
+          "startLine": 186,
+          "endLine": 204,
+          "params": [
+            "thread",
+            "base",
+            "data",
+            "len"
+          ]
+        },
+        {
+          "name": "discard",
+          "startLine": 206,
+          "endLine": 215,
+          "params": [
+            "thread",
+            "cache",
+            "entry"
+          ]
+        },
+        {
+          "name": "callback",
+          "startLine": 222,
+          "endLine": 232,
+          "params": [
+            "map",
+            "key",
+            "value",
+            "user"
+          ]
+        },
+        {
+          "name": "grow",
+          "startLine": 234,
+          "endLine": 312,
+          "params": [
+            "thread",
+            "cache"
+          ]
+        },
+        {
+          "name": "khrn_cache_lookup",
+          "startLine": 317,
+          "endLine": 377,
+          "params": [
+            "thread",
+            "cache",
+            "data",
+            "len",
+            "sig"
+          ]
+        },
+        {
+          "name": "khrn_cache_get_entries",
+          "startLine": 379,
+          "endLine": 382,
+          "params": [
+            "cache"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "khrn_cache_init",
+          "line": 139,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_cache_term",
+          "line": 155,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_cache_lookup",
+          "line": 317,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_cache_get_entries",
+          "line": 379,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "link_insert",
+          "callee": "vcos_assert",
+          "lineNumber": 49
+        },
+        {
+          "caller": "link_insert",
+          "callee": "vcos_assert",
+          "lineNumber": 50
+        },
+        {
+          "caller": "heap_alloc",
+          "callee": "assert",
+          "lineNumber": 84
+        },
+        {
+          "caller": "heap_alloc",
+          "callee": "heap_avail",
+          "lineNumber": 84
+        },
+        {
+          "caller": "heap_alloc",
+          "callee": "_max",
+          "lineNumber": 96
+        },
+        {
+          "caller": "hash",
+          "callee": "khrn_hashword",
+          "lineNumber": 132
+        },
+        {
+          "caller": "hash",
+          "callee": "khrn_hashlittle",
+          "lineNumber": 134
+        },
+        {
+          "caller": "khrn_cache_init",
+          "callee": "khrn_pointer_map_init",
+          "lineNumber": 152
+        },
+        {
+          "caller": "khrn_cache_term",
+          "callee": "khrn_platform_free",
+          "lineNumber": 157
+        },
+        {
+          "caller": "khrn_cache_term",
+          "callee": "khrn_platform_free",
+          "lineNumber": 158
+        },
+        {
+          "caller": "khrn_cache_term",
+          "callee": "khrn_pointer_map_term",
+          "lineNumber": 160
+        },
+        {
+          "caller": "send_create",
+          "callee": "RPC_CALL1",
+          "lineNumber": 165
+        },
+        {
+          "caller": "send_create",
+          "callee": "RPC_UINT",
+          "lineNumber": 168
+        },
+        {
+          "caller": "send_delete",
+          "callee": "RPC_CALL1",
+          "lineNumber": 173
+        },
+        {
+          "caller": "send_delete",
+          "callee": "RPC_UINT",
+          "lineNumber": 176
+        },
+        {
+          "caller": "send_grow",
+          "callee": "RPC_BOOLEAN_RES",
+          "lineNumber": 181
+        },
+        {
+          "caller": "send_grow",
+          "callee": "RPC_CALL0_RES",
+          "lineNumber": 181
+        },
+        {
+          "caller": "send_data",
+          "callee": "_min",
+          "lineNumber": 191
+        },
+        {
+          "caller": "send_data",
+          "callee": "RPC_CALL3_IN_CTRL",
+          "lineNumber": 193
+        },
+        {
+          "caller": "send_data",
+          "callee": "RPC_UINT",
+          "lineNumber": 196
+        },
+        {
+          "caller": "send_data",
+          "callee": "RPC_SIZEI",
+          "lineNumber": 197
+        },
+        {
+          "caller": "discard",
+          "callee": "heap_free",
+          "lineNumber": 208
+        },
+        {
+          "caller": "discard",
+          "callee": "khrn_pointer_map_delete",
+          "lineNumber": 210
+        },
+        {
+          "caller": "discard",
+          "callee": "link_remove",
+          "lineNumber": 212
+        },
+        {
+          "caller": "discard",
+          "callee": "send_delete",
+          "lineNumber": 214
+        },
+        {
+          "caller": "callback",
+          "callee": "relocate",
+          "lineNumber": 226
+        },
+        {
+          "caller": "callback",
+          "callee": "relocate",
+          "lineNumber": 227
+        },
+        {
+          "caller": "callback",
+          "callee": "verify",
+          "lineNumber": 231
+        },
+        {
+          "caller": "callback",
+          "callee": "khrn_pointer_map_insert",
+          "lineNumber": 231
+        },
+        {
+          "caller": "callback",
+          "callee": "relocate",
+          "lineNumber": 231
+        },
+        {
+          "caller": "grow",
+          "callee": "send_grow",
+          "lineNumber": 245
+        },
+        {
+          "caller": "grow",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 251
+        },
+        {
+          "caller": "grow",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 252
+        },
+        {
+          "caller": "grow",
+          "callee": "khrn_platform_free",
+          "lineNumber": 255
+        },
+        {
+          "caller": "grow",
+          "callee": "khrn_platform_free",
+          "lineNumber": 256
+        },
+        {
+          "caller": "grow",
+          "callee": "tree_init",
+          "lineNumber": 264
+        },
+        {
+          "caller": "grow",
+          "callee": "_msb",
+          "lineNumber": 268
+        },
+        {
+          "caller": "grow",
+          "callee": "khrn_pointer_map_iterate",
+          "lineNumber": 281
+        },
+        {
+          "caller": "grow",
+          "callee": "relocate",
+          "lineNumber": 285
+        },
+        {
+          "caller": "grow",
+          "callee": "relocate",
+          "lineNumber": 289
+        },
+        {
+          "caller": "grow",
+          "callee": "platform_memcpy",
+          "lineNumber": 297
+        },
+        {
+          "caller": "grow",
+          "callee": "khrn_platform_free",
+          "lineNumber": 303
+        },
+        {
+          "caller": "grow",
+          "callee": "khrn_platform_free",
+          "lineNumber": 304
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "hash",
+          "lineNumber": 319
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "khrn_pointer_map_lookup",
+          "lineNumber": 321
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "grow",
+          "lineNumber": 330
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "memcmp",
+          "lineNumber": 334
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "link_remove",
+          "lineNumber": 339
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "link_insert",
+          "lineNumber": 340
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "_max",
+          "lineNumber": 342
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "_msb",
+          "lineNumber": 342
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "discard",
+          "lineNumber": 348
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "heap_avail",
+          "lineNumber": 350
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "grow",
+          "lineNumber": 350
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "heap_avail",
+          "lineNumber": 352
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "discard",
+          "lineNumber": 353
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "heap_avail",
+          "lineNumber": 355
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "heap_alloc",
+          "lineNumber": 358
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "platform_memcpy",
+          "lineNumber": 363
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "khrn_pointer_map_insert",
+          "lineNumber": 365
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "heap_free",
+          "lineNumber": 366
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "link_insert",
+          "lineNumber": 370
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "send_create",
+          "lineNumber": 372
+        },
+        {
+          "caller": "khrn_cache_lookup",
+          "callee": "send_data",
+          "lineNumber": 373
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 18,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/common/khrn_client_platform_linux.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 831,
+      "nonEmptyLines": 690,
+      "functions": [
+        {
+          "name": "khronos_platform_semaphore_create",
+          "startLine": 73,
+          "endLine": 78,
+          "params": [
+            "sem",
+            "name",
+            "count"
+          ]
+        },
+        {
+          "name": "khronos_platform_get_process_id",
+          "startLine": 80,
+          "endLine": 85,
+          "params": []
+        },
+        {
+          "name": "platform_hint_thread_finished",
+          "startLine": 128,
+          "endLine": 138,
+          "params": []
+        },
+        {
+          "name": "platform_get_pixmap_server_handle",
+          "startLine": 303,
+          "endLine": 307,
+          "params": [
+            "pixmap",
+            "handle"
+          ]
+        },
+        {
+          "name": "platform_match_pixmap_api_support",
+          "startLine": 309,
+          "endLine": 316,
+          "params": [
+            "pixmap",
+            "api_support"
+          ]
+        },
+        {
+          "name": "platform_client_lock",
+          "startLine": 353,
+          "endLine": 356,
+          "params": []
+        },
+        {
+          "name": "platform_client_release",
+          "startLine": 358,
+          "endLine": 361,
+          "params": []
+        },
+        {
+          "name": "platform_init_rpc",
+          "startLine": 363,
+          "endLine": 366,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "platform_term_rpc",
+          "startLine": 368,
+          "endLine": 371,
+          "params": [
+            "state"
+          ]
+        },
+        {
+          "name": "platform_maybe_free_process",
+          "startLine": 373,
+          "endLine": 376,
+          "params": []
+        },
+        {
+          "name": "platform_destroy_winhandle",
+          "startLine": 378,
+          "endLine": 381,
+          "params": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "name": "platform_surface_update",
+          "startLine": 383,
+          "endLine": 390,
+          "params": [
+            "handle"
+          ]
+        },
+        {
+          "name": "egl_gce_win_change_image",
+          "startLine": 392,
+          "endLine": 395,
+          "params": []
+        },
+        {
+          "name": "platform_retrieve_pixmap_completed",
+          "startLine": 397,
+          "endLine": 400,
+          "params": [
+            "pixmap"
+          ]
+        },
+        {
+          "name": "platform_send_pixmap_completed",
+          "startLine": 402,
+          "endLine": 405,
+          "params": [
+            "pixmap"
+          ]
+        },
+        {
+          "name": "platform_memcmp",
+          "startLine": 407,
+          "endLine": 410,
+          "params": [
+            "aLeft",
+            "aRight",
+            "aLen"
+          ]
+        },
+        {
+          "name": "platform_memcpy",
+          "startLine": 412,
+          "endLine": 415,
+          "params": [
+            "aTrg",
+            "aSrc",
+            "aLength"
+          ]
+        },
+        {
+          "name": "set_egl_image_color_data",
+          "startLine": 627,
+          "endLine": 662,
+          "params": [
+            "egl_image",
+            "image"
+          ]
+        },
+        {
+          "name": "send_bound_pixmap",
+          "startLine": 664,
+          "endLine": 676,
+          "params": [
+            "i"
+          ]
+        },
+        {
+          "name": "send_bound_pixmaps",
+          "startLine": 678,
+          "endLine": 688,
+          "params": []
+        },
+        {
+          "name": "khrn_platform_bind_pixmap_to_egl_image",
+          "startLine": 690,
+          "endLine": 710,
+          "params": [
+            "pixmap",
+            "egl_image",
+            "send"
+          ]
+        },
+        {
+          "name": "khrn_platform_unbind_pixmap_from_egl_image",
+          "startLine": 712,
+          "endLine": 722,
+          "params": [
+            "egl_image"
+          ]
+        },
+        {
+          "name": "platform_get_color_format",
+          "startLine": 830,
+          "endLine": 830,
+          "params": [
+            "format"
+          ]
+        },
+        {
+          "name": "platform_dequeue",
+          "startLine": 831,
+          "endLine": 831,
+          "params": [
+            "dpy",
+            "window"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "khronos_platform_semaphore_create",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "khronos_platform_get_process_id",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "platform_hint_thread_finished",
+          "line": 128,
+          "isDefault": false
+        },
+        {
+          "name": "platform_get_pixmap_server_handle",
+          "line": 303,
+          "isDefault": false
+        },
+        {
+          "name": "platform_match_pixmap_api_support",
+          "line": 309,
+          "isDefault": false
+        },
+        {
+          "name": "platform_client_lock",
+          "line": 353,
+          "isDefault": false
+        },
+        {
+          "name": "platform_client_release",
+          "line": 358,
+          "isDefault": false
+        },
+        {
+          "name": "platform_init_rpc",
+          "line": 363,
+          "isDefault": false
+        },
+        {
+          "name": "platform_term_rpc",
+          "line": 368,
+          "isDefault": false
+        },
+        {
+          "name": "platform_maybe_free_process",
+          "line": 373,
+          "isDefault": false
+        },
+        {
+          "name": "platform_destroy_winhandle",
+          "line": 378,
+          "isDefault": false
+        },
+        {
+          "name": "platform_surface_update",
+          "line": 383,
+          "isDefault": false
+        },
+        {
+          "name": "egl_gce_win_change_image",
+          "line": 392,
+          "isDefault": false
+        },
+        {
+          "name": "platform_retrieve_pixmap_completed",
+          "line": 397,
+          "isDefault": false
+        },
+        {
+          "name": "platform_send_pixmap_completed",
+          "line": 402,
+          "isDefault": false
+        },
+        {
+          "name": "platform_memcmp",
+          "line": 407,
+          "isDefault": false
+        },
+        {
+          "name": "platform_memcpy",
+          "line": 412,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_platform_bind_pixmap_to_egl_image",
+          "line": 690,
+          "isDefault": false
+        },
+        {
+          "name": "khrn_platform_unbind_pixmap_from_egl_image",
+          "line": 712,
+          "isDefault": false
+        },
+        {
+          "name": "platform_get_color_format",
+          "line": 830,
+          "isDefault": false
+        },
+        {
+          "name": "platform_dequeue",
+          "line": 831,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "application_error_handler",
+          "callee": "vcos_log_trace",
+          "lineNumber": 64
+        },
+        {
+          "caller": "khronos_platform_semaphore_create",
+          "callee": "vcos_snprintf",
+          "lineNumber": 76
+        },
+        {
+          "caller": "khronos_platform_semaphore_create",
+          "callee": "vcos_named_semaphore_create",
+          "lineNumber": 77
+        },
+        {
+          "caller": "khronos_platform_get_process_id",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 82
+        },
+        {
+          "caller": "khronos_platform_get_process_id",
+          "callee": "rpc_get_client_id",
+          "lineNumber": 84
+        },
+        {
+          "caller": "khrn_platform_free",
+          "callee": "vcos_free",
+          "lineNumber": 162
+        },
+        {
+          "caller": "ximage_to_image_format",
+          "callee": "vcos_log_warn",
+          "lineNumber": 186
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "vcos_log_trace",
+          "lineNumber": 201
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "XGetGeometry",
+          "lineNumber": 203
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "vcos_log_trace",
+          "lineNumber": 206
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "XGetImage",
+          "lineNumber": 209
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "vcos_log_trace",
+          "lineNumber": 213
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "ximage_to_image_format",
+          "lineNumber": 218
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "XDestroyImage",
+          "lineNumber": 221
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 237
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "vcos_log_trace",
+          "lineNumber": 238
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "XSetErrorHandler",
+          "lineNumber": 242
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "XGetGeometry",
+          "lineNumber": 244
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "vcos_log_trace",
+          "lineNumber": 245
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "XGetPixel",
+          "lineNumber": 249
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "vcos_log_trace",
+          "lineNumber": 250
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 252
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "XSetErrorHandler",
+          "lineNumber": 255
+        },
+        {
+          "caller": "khrn_platform_release_pixmap_info",
+          "callee": "XDestroyImage",
+          "lineNumber": 266
+        },
+        {
+          "caller": "convert_format",
+          "callee": "(KHRN_IMAGE_FORMAT_T)",
+          "lineNumber": 273
+        },
+        {
+          "caller": "convert_format",
+          "callee": "vcos_assert",
+          "lineNumber": 279
+        },
+        {
+          "caller": "platform_get_pixmap_info",
+          "callee": "convert_format",
+          "lineNumber": 286
+        },
+        {
+          "caller": "platform_get_global_image_info",
+          "callee": "verify",
+          "lineNumber": 338
+        },
+        {
+          "caller": "platform_get_global_image_info",
+          "callee": "eglQueryGlobalImageBRCM",
+          "lineNumber": 338
+        },
+        {
+          "caller": "platform_client_lock",
+          "callee": "platform_mutex_acquire",
+          "lineNumber": 355
+        },
+        {
+          "caller": "platform_client_release",
+          "callee": "platform_mutex_release",
+          "lineNumber": 360
+        },
+        {
+          "caller": "platform_init_rpc",
+          "callee": "assert",
+          "lineNumber": 365
+        },
+        {
+          "caller": "platform_term_rpc",
+          "callee": "assert",
+          "lineNumber": 370
+        },
+        {
+          "caller": "platform_maybe_free_process",
+          "callee": "assert",
+          "lineNumber": 375
+        },
+        {
+          "caller": "platform_destroy_winhandle",
+          "callee": "assert",
+          "lineNumber": 380
+        },
+        {
+          "caller": "platform_surface_update",
+          "callee": "send_bound_pixmaps",
+          "lineNumber": 389
+        },
+        {
+          "caller": "egl_gce_win_change_image",
+          "callee": "assert",
+          "lineNumber": 394
+        },
+        {
+          "caller": "platform_retrieve_pixmap_completed",
+          "callee": "assert",
+          "lineNumber": 399
+        },
+        {
+          "caller": "platform_send_pixmap_completed",
+          "callee": "assert",
+          "lineNumber": 404
+        },
+        {
+          "caller": "platform_memcmp",
+          "callee": "memcmp",
+          "lineNumber": 409
+        },
+        {
+          "caller": "platform_memcpy",
+          "callee": "memcpy",
+          "lineNumber": 414
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "XGetWindowAttributes",
+          "lineNumber": 430
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "vcos_log_trace",
+          "lineNumber": 438
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "XCreateGC",
+          "lineNumber": 440
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "XSetForeground",
+          "lineNumber": 441
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "vcos_log_trace",
+          "lineNumber": 443
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "XFillRectangle",
+          "lineNumber": 445
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "vcos_log_trace",
+          "lineNumber": 447
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "XFreeGC",
+          "lineNumber": 449
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "vcos_log_trace",
+          "lineNumber": 451
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "dump_hierarchy",
+          "lineNumber": 453
+        },
+        {
+          "caller": "dump_hierarchy",
+          "callee": "XGetWindowAttributes",
+          "lineNumber": 485
+        },
+        {
+          "caller": "dump_hierarchy",
+          "callee": "XQueryTree",
+          "lineNumber": 486
+        },
+        {
+          "caller": "dump_hierarchy",
+          "callee": "vcos_log_trace",
+          "lineNumber": 490
+        },
+        {
+          "caller": "dump_hierarchy",
+          "callee": "vcos_log_trace",
+          "lineNumber": 492
+        },
+        {
+          "caller": "dump_hierarchy",
+          "callee": "dump_hierarchy",
+          "lineNumber": 501
+        },
+        {
+          "caller": "dump_hierarchy",
+          "callee": "XFree",
+          "lineNumber": 503
+        },
+        {
+          "caller": "dump_ancestors",
+          "callee": "vcos_log_trace",
+          "lineNumber": 515
+        },
+        {
+          "caller": "dump_ancestors",
+          "callee": "XQueryTree",
+          "lineNumber": 519
+        },
+        {
+          "caller": "dump_ancestors",
+          "callee": "XFree",
+          "lineNumber": 531
+        },
+        {
+          "caller": "dump_ancestors",
+          "callee": "vcos_log_trace",
+          "lineNumber": 533
+        },
+        {
+          "caller": "dump_ancestors",
+          "callee": "vcos_log_trace",
+          "lineNumber": 539
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_trace",
+          "lineNumber": 554
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "XGetWindowAttributes",
+          "lineNumber": 556
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_trace",
+          "lineNumber": 558
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "XTranslateCoordinates",
+          "lineNumber": 562
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_trace",
+          "lineNumber": 564
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "XQueryTree",
+          "lineNumber": 566
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "XFree",
+          "lineNumber": 567
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "XQueryTree",
+          "lineNumber": 568
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_trace",
+          "lineNumber": 570
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_trace",
+          "lineNumber": 574
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "dump_hierarchy",
+          "lineNumber": 575
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "XFree",
+          "lineNumber": 584
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_trace",
+          "lineNumber": 587
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_error",
+          "lineNumber": 591
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "dump_ancestors",
+          "lineNumber": 594
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_trace",
+          "lineNumber": 599
+        },
+        {
+          "caller": "khrn_platform_get_window_position",
+          "callee": "vcos_log_trace",
+          "lineNumber": 605
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "khrn_image_is_brcm1",
+          "lineNumber": 634
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "assert",
+          "lineNumber": 637
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "_min",
+          "lineNumber": 640
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 643
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "RPC_CALL8_IN_BULK",
+          "lineNumber": 646
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "RPC_EGLID",
+          "lineNumber": 649
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "RPC_UINT",
+          "lineNumber": 650
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "RPC_UINT",
+          "lineNumber": 651
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "RPC_INT",
+          "lineNumber": 652
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "RPC_UINT",
+          "lineNumber": 653
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "RPC_INT",
+          "lineNumber": 654
+        },
+        {
+          "caller": "set_egl_image_color_data",
+          "callee": "RPC_UINT",
+          "lineNumber": 655
+        },
+        {
+          "caller": "send_bound_pixmap",
+          "callee": "vcos_log_trace",
+          "lineNumber": 668
+        },
+        {
+          "caller": "send_bound_pixmap",
+          "callee": "vcos_assert",
+          "lineNumber": 670
+        },
+        {
+          "caller": "send_bound_pixmap",
+          "callee": "vcos_assert",
+          "lineNumber": 671
+        },
+        {
+          "caller": "send_bound_pixmap",
+          "callee": "platform_get_pixmap_info",
+          "lineNumber": 673
+        },
+        {
+          "caller": "send_bound_pixmap",
+          "callee": "set_egl_image_color_data",
+          "lineNumber": 674
+        },
+        {
+          "caller": "send_bound_pixmap",
+          "callee": "khrn_platform_release_pixmap_info",
+          "lineNumber": 675
+        },
+        {
+          "caller": "send_bound_pixmaps",
+          "callee": "send_bound_pixmap",
+          "lineNumber": 685
+        },
+        {
+          "caller": "khrn_platform_bind_pixmap_to_egl_image",
+          "callee": "vcos_log_trace",
+          "lineNumber": 698
+        },
+        {
+          "caller": "khrn_platform_bind_pixmap_to_egl_image",
+          "callee": "send_bound_pixmap",
+          "lineNumber": 705
+        },
+        {
+          "caller": "khrn_platform_bind_pixmap_to_egl_image",
+          "callee": "vcos_assert",
+          "lineNumber": 709
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "check_default",
+          "lineNumber": 810
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "vcos_assert",
+          "lineNumber": 811
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "vcos_assert",
+          "lineNumber": 812
+        },
+        {
+          "caller": "platform_get_dimensions",
+          "callee": "vcos_assert",
+          "lineNumber": 813
+        },
+        {
+          "caller": "platform_get_handle",
+          "callee": "check_default",
+          "lineNumber": 821
+        },
+        {
+          "caller": "platform_get_handle",
+          "callee": "vcos_assert",
+          "lineNumber": 822
+        },
+        {
+          "caller": "platform_get_handle",
+          "callee": "vcos_assert",
+          "lineNumber": 823
+        },
+        {
+          "caller": "platform_get_handle",
+          "callee": "vcos_assert",
+          "lineNumber": 824
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 21,
+        "functionCount": 24,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_khr_lock_surface_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 190,
+      "nonEmptyLines": 161,
+      "functions": [
+        {
+          "name": "lock_surface_check_attribs",
+          "startLine": 43,
+          "endLine": 69,
+          "params": [
+            "attrib_list",
+            "preserve_pixels",
+            "lock_usage_hint"
+          ]
+        },
+        {
+          "name": "eglLockSurfaceKHR",
+          "startLine": 71,
+          "endLine": 121,
+          "params": [
+            "dpy",
+            "surf",
+            "attrib_list"
+          ]
+        },
+        {
+          "name": "eglUnlockSurfaceKHR",
+          "startLine": 123,
+          "endLine": 189,
+          "params": [
+            "dpy",
+            "surf"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "eglLockSurfaceKHR",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "eglUnlockSurfaceKHR",
+          "line": 123,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "eglLockSurfaceKHR",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 73
+        },
+        {
+          "caller": "eglLockSurfaceKHR",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 76
+        },
+        {
+          "caller": "eglLockSurfaceKHR",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 79
+        },
+        {
+          "caller": "eglLockSurfaceKHR",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 84
+        },
+        {
+          "caller": "eglLockSurfaceKHR",
+          "callee": "assert",
+          "lineNumber": 90
+        },
+        {
+          "caller": "eglLockSurfaceKHR",
+          "callee": "lock_surface_check_attribs",
+          "lineNumber": 92
+        },
+        {
+          "caller": "eglLockSurfaceKHR",
+          "callee": "egl_config_is_lockable",
+          "lineNumber": 95
+        },
+        {
+          "caller": "eglLockSurfaceKHR",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 119
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 125
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 128
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 131
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "client_egl_get_locked_surface",
+          "lineNumber": 136
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "assert",
+          "lineNumber": 144
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "egl_config_get_mapped_format",
+          "lineNumber": 146
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "khrn_image_get_stride",
+          "lineNumber": 147
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "_min",
+          "lineNumber": 155
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "RPC_CALL7_IN_BULK",
+          "lineNumber": 160
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "khrn_platform_free",
+          "lineNumber": 176
+        },
+        {
+          "caller": "eglUnlockSurfaceKHR",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 187
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/sound/vchiqsoundcontroller.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 96,
+      "functions": [
+        {
+          "name": "CVCHIQSoundController",
+          "startLine": 24,
+          "endLine": 30,
+          "params": [
+            "pSoundDevice",
+            "Destination"
+          ]
+        },
+        {
+          "name": "EnableJack",
+          "startLine": 32,
+          "endLine": 56,
+          "params": [
+            "Jack"
+          ]
+        },
+        {
+          "name": "GetControlInfo",
+          "startLine": 58,
+          "endLine": 81,
+          "params": [
+            "Control",
+            "Jack",
+            "Channel"
+          ]
+        },
+        {
+          "name": "SetControl",
+          "startLine": 83,
+          "endLine": 97,
+          "params": [
+            "Control",
+            "Jack",
+            "Channel",
+            "nValue"
+          ]
+        },
+        {
+          "name": "SetVolume",
+          "startLine": 99,
+          "endLine": 113,
+          "params": [
+            "Jack",
+            "Channel",
+            "ndB"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CVCHIQSoundController",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "EnableJack",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "GetControlInfo",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "SetControl",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "SetVolume",
+          "line": 99,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "EnableJack",
+          "callee": "assert",
+          "lineNumber": 52
+        },
+        {
+          "caller": "EnableJack",
+          "callee": "SetControl",
+          "lineNumber": 53
+        },
+        {
+          "caller": "GetControlInfo",
+          "callee": "IsOutputJack",
+          "lineNumber": 62
+        },
+        {
+          "caller": "SetControl",
+          "callee": "SetVolume",
+          "lineNumber": 89
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "IsOutputJack",
+          "lineNumber": 101
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "assert",
+          "lineNumber": 109
+        },
+        {
+          "caller": "SetVolume",
+          "callee": "SetControl",
+          "lineNumber": 110
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/sound/vchiqsounddevice.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 131,
+      "nonEmptyLines": 108,
+      "functions": [
+        {
+          "name": "CVCHIQSoundDevice",
+          "startLine": 30,
+          "endLine": 34,
+          "params": [
+            "pVCHIQDevice",
+            "Destination"
+          ]
+        },
+        {
+          "name": "~CVCHIQSoundDevice",
+          "startLine": 36,
+          "endLine": 38,
+          "params": []
+        },
+        {
+          "name": "Playback",
+          "startLine": 40,
+          "endLine": 57,
+          "params": [
+            "pSoundData",
+            "nSamples",
+            "nChannels",
+            "nBitsPerSample"
+          ]
+        },
+        {
+          "name": "PlaybackActive",
+          "startLine": 59,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "CancelPlayback",
+          "startLine": 64,
+          "endLine": 67,
+          "params": []
+        },
+        {
+          "name": "SetControl",
+          "startLine": 69,
+          "endLine": 72,
+          "params": [
+            "nVolume",
+            "Destination"
+          ]
+        },
+        {
+          "name": "GetChunk",
+          "startLine": 74,
+          "endLine": 131,
+          "params": [
+            "pBuffer",
+            "nChunkSize"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CVCHIQSoundDevice",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "~CVCHIQSoundDevice",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "Playback",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "PlaybackActive",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "CancelPlayback",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "SetControl",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "GetChunk",
+          "line": 74,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Playback",
+          "callee": "assert",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Playback",
+          "callee": "IsActive",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Playback",
+          "callee": "assert",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Playback",
+          "callee": "assert",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Playback",
+          "callee": "assert",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Playback",
+          "callee": "Start",
+          "lineNumber": 56
+        },
+        {
+          "caller": "PlaybackActive",
+          "callee": "IsActive",
+          "lineNumber": 61
+        },
+        {
+          "caller": "CancelPlayback",
+          "callee": "Cancel",
+          "lineNumber": 66
+        },
+        {
+          "caller": "SetControl",
+          "callee": "CVCHIQSoundBaseDevice::SetControl",
+          "lineNumber": 71
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 76
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 77
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 78
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 88
+        },
+        {
+          "caller": "GetChunk",
+          "callee": "assert",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/webconsole/logbuffer.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "CLogBuffer",
+          "startLine": 23,
+          "endLine": 31,
+          "params": [
+            "nSize"
+          ]
+        },
+        {
+          "name": "~CLogBuffer",
+          "startLine": 33,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "Put",
+          "startLine": 39,
+          "endLine": 79,
+          "params": [
+            "pBuffer",
+            "nLength"
+          ]
+        },
+        {
+          "name": "Get",
+          "startLine": 81,
+          "endLine": 102,
+          "params": [
+            "pBuffer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CLogBuffer",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CLogBuffer",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "Put",
+          "line": 39,
+          "isDefault": false
+        },
+        {
+          "name": "Get",
+          "line": 81,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CLogBuffer",
+          "callee": "assert",
+          "lineNumber": 30
+        },
+        {
+          "caller": "Put",
+          "callee": "assert",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Put",
+          "callee": "assert",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Get",
+          "callee": "assert",
+          "lineNumber": 83
+        },
+        {
+          "caller": "Get",
+          "callee": "assert",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/assert.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/classallocator.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 125,
+      "nonEmptyLines": 109,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/fs/fat/fat.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/fs/fsdef.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 41,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/fs/partition.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 39,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

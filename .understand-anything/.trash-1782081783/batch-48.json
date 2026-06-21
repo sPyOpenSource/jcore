@@ -1,0 +1,88 @@
+{
+  "batchIndex": 48,
+  "nodes": [
+    {
+      "id": "sample/21-webserver/Makefile",
+      "type": "pipeline:sample/21-webserver/Makefile",
+      "name": "Makefile",
+      "filePath": "sample/21-webserver/Makefile",
+      "summary": "0 functions defined",
+      "tags": [
+        "infra",
+        "noext",
+        "sample"
+      ],
+      "complexity": 4
+    },
+    {
+      "id": "sample/21-webserver/index.html",
+      "type": "file:sample/21-webserver/index.html",
+      "name": "index.html",
+      "filePath": "sample/21-webserver/index.html",
+      "summary": "0 functions defined",
+      "tags": [
+        "markup",
+        "html",
+        "sample"
+      ],
+      "complexity": 3
+    },
+    {
+      "id": "sample/21-webserver/style.css",
+      "type": "file:sample/21-webserver/style.css",
+      "name": "style.css",
+      "filePath": "sample/21-webserver/style.css",
+      "summary": "0 functions defined",
+      "tags": [
+        "markup",
+        "css",
+        "sample"
+      ],
+      "complexity": 4
+    }
+  ],
+  "edges": [
+    {
+      "source": "sample/21-webserver/Makefile",
+      "target": "sample/21-webserver/index.html",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/21-webserver/Makefile",
+      "target": "sample/21-webserver/style.css",
+      "type": "deploys",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "sample/21-webserver/index.html",
+      "target": "sample/21-webserver/Makefile",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "sample/21-webserver/index.html",
+      "target": "sample/21-webserver/style.css",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "sample/21-webserver/style.css",
+      "target": "sample/21-webserver/Makefile",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "sample/21-webserver/style.css",
+      "target": "sample/21-webserver/index.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

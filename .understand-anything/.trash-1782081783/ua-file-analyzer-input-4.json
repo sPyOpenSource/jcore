@@ -1,0 +1,304 @@
+{
+  "projectRoot": "/Users/xuyi/Source/OS/circle",
+  "batchFiles": [
+    {
+      "path": "sample/09-softserial/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/10-usbmouse/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 288,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/10-usbmouse/kernel.h",
+      "language": "c",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/10-usbmouse/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/i2cping.h",
+      "language": "c",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/master/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/master/kernel.h",
+      "language": "c",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/master/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/slave/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/slave/kernel.h",
+      "language": "c",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/16-i2cping/slave/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/18-ntptime/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/18-ntptime/kernel.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/18-ntptime/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/24-hwrandom/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/24-hwrandom/kernel.h",
+      "language": "c",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/24-hwrandom/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/30-gpiofiq/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/30-gpiofiq/kernel.h",
+      "language": "c",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/30-gpiofiq/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/32-i2cshell/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/32-i2cshell/kernel.h",
+      "language": "c",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/32-i2cshell/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/34-sounddevices/kernel.h",
+      "language": "c",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/34-sounddevices/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/35-mqttclient/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/35-mqttclient/kernel.h",
+      "language": "c",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/35-mqttclient/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/35-mqttclient/mqttsampleclient.cpp",
+      "language": "cpp",
+      "sizeLines": 133,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/35-mqttclient/mqttsampleclient.h",
+      "language": "c",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/36-softpwm/kernel.cpp",
+      "language": "cpp",
+      "sizeLines": 133,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/36-softpwm/kernel.h",
+      "language": "c",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sample/36-softpwm/main.cpp",
+      "language": "cpp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "sample/09-softserial/main.cpp": [
+      "include/circle/startup.h",
+      "sample/09-softserial/kernel.h"
+    ],
+    "sample/10-usbmouse/kernel.cpp": [
+      "include/assert.h",
+      "sample/10-usbmouse/kernel.h"
+    ],
+    "sample/10-usbmouse/kernel.h": [],
+    "sample/10-usbmouse/main.cpp": [
+      "include/circle/startup.h",
+      "sample/10-usbmouse/kernel.h"
+    ],
+    "sample/16-i2cping/i2cping.h": [],
+    "sample/16-i2cping/master/kernel.cpp": [
+      "sample/16-i2cping/i2cping.h",
+      "sample/16-i2cping/master/kernel.h"
+    ],
+    "sample/16-i2cping/master/kernel.h": [],
+    "sample/16-i2cping/master/main.cpp": [
+      "include/circle/startup.h",
+      "sample/16-i2cping/master/kernel.h"
+    ],
+    "sample/16-i2cping/slave/kernel.cpp": [
+      "sample/16-i2cping/i2cping.h",
+      "sample/16-i2cping/slave/kernel.h"
+    ],
+    "sample/16-i2cping/slave/kernel.h": [],
+    "sample/16-i2cping/slave/main.cpp": [
+      "include/circle/startup.h",
+      "sample/16-i2cping/slave/kernel.h"
+    ],
+    "sample/18-ntptime/kernel.cpp": [
+      "include/circle/net/ntpdaemon.h",
+      "include/circle/string.h",
+      "sample/18-ntptime/kernel.h"
+    ],
+    "sample/18-ntptime/kernel.h": [],
+    "sample/18-ntptime/main.cpp": [
+      "include/circle/startup.h",
+      "sample/18-ntptime/kernel.h"
+    ],
+    "sample/24-hwrandom/kernel.cpp": [
+      "sample/24-hwrandom/kernel.h"
+    ],
+    "sample/24-hwrandom/kernel.h": [],
+    "sample/24-hwrandom/main.cpp": [
+      "include/circle/startup.h",
+      "sample/24-hwrandom/kernel.h"
+    ],
+    "sample/30-gpiofiq/kernel.cpp": [
+      "sample/30-gpiofiq/kernel.h"
+    ],
+    "sample/30-gpiofiq/kernel.h": [],
+    "sample/30-gpiofiq/main.cpp": [
+      "include/circle/startup.h",
+      "sample/30-gpiofiq/kernel.h"
+    ],
+    "sample/32-i2cshell/kernel.cpp": [
+      "include/circle/machineinfo.h",
+      "sample/32-i2cshell/kernel.h"
+    ],
+    "sample/32-i2cshell/kernel.h": [],
+    "sample/32-i2cshell/main.cpp": [
+      "include/circle/startup.h",
+      "sample/32-i2cshell/kernel.h"
+    ],
+    "sample/34-sounddevices/kernel.h": [],
+    "sample/34-sounddevices/main.cpp": [
+      "include/circle/startup.h",
+      "sample/34-sounddevices/kernel.h"
+    ],
+    "sample/35-mqttclient/kernel.cpp": [
+      "include/circle/net/ntpdaemon.h",
+      "sample/35-mqttclient/kernel.h",
+      "sample/35-mqttclient/mqttsampleclient.h"
+    ],
+    "sample/35-mqttclient/kernel.h": [],
+    "sample/35-mqttclient/main.cpp": [
+      "include/circle/startup.h",
+      "sample/35-mqttclient/kernel.h"
+    ],
+    "sample/35-mqttclient/mqttsampleclient.cpp": [
+      "include/circle/logger.h",
+      "include/circle/string.h",
+      "include/circle/timer.h",
+      "include/circle/util.h",
+      "sample/35-mqttclient/mqttsampleclient.h"
+    ],
+    "sample/35-mqttclient/mqttsampleclient.h": [],
+    "sample/36-softpwm/kernel.cpp": [
+      "include/assert.h",
+      "sample/36-softpwm/kernel.h"
+    ],
+    "sample/36-softpwm/kernel.h": [],
+    "sample/36-softpwm/main.cpp": [
+      "include/circle/startup.h",
+      "sample/36-softpwm/kernel.h"
+    ]
+  }
+}

@@ -1,0 +1,4146 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 27,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "include/circle/sched/synchronizationevent.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 55,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "include/circle/sched/task.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 121,
+      "nonEmptyLines": 103,
+      "callGraph": [
+        {
+          "caller": "Resume",
+          "callee": "Start",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/multicore.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 333,
+      "nonEmptyLines": 266,
+      "callGraph": [
+        {
+          "caller": "CMultiCoreSupport",
+          "callee": "assert",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Initialize",
+          "callee": "read32",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "write32",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "write32",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CSpinLock::Enable",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CleanDataCache",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Initialize",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Initialize",
+          "callee": "read32",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 103
+        },
+        {
+          "caller": "Initialize",
+          "callee": "write32",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CleanDataCache",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Initialize",
+          "callee": "DataMemBarrier",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Initialize",
+          "callee": "read32",
+          "lineNumber": 131
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CSpinLock::Enable",
+          "lineNumber": 144
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CleanDataCache",
+          "lineNumber": 146
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 177
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 177
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 192
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 192
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 198
+        },
+        {
+          "caller": "Initialize",
+          "callee": "DataMemBarrier",
+          "lineNumber": 200
+        },
+        {
+          "caller": "IPIHandler",
+          "callee": "assert",
+          "lineNumber": 212
+        },
+        {
+          "caller": "IPIHandler",
+          "callee": "assert",
+          "lineNumber": 213
+        },
+        {
+          "caller": "IPIHandler",
+          "callee": "Write",
+          "lineNumber": 217
+        },
+        {
+          "caller": "IPIHandler",
+          "callee": "CLogger::Get",
+          "lineNumber": 217
+        },
+        {
+          "caller": "IPIHandler",
+          "callee": "halt",
+          "lineNumber": 219
+        },
+        {
+          "caller": "SendIPI",
+          "callee": "assert",
+          "lineNumber": 225
+        },
+        {
+          "caller": "SendIPI",
+          "callee": "assert",
+          "lineNumber": 226
+        },
+        {
+          "caller": "SendIPI",
+          "callee": "write32",
+          "lineNumber": 229
+        },
+        {
+          "caller": "SendIPI",
+          "callee": "CInterruptSystem::SendIPI",
+          "lineNumber": 231
+        },
+        {
+          "caller": "HaltAll",
+          "callee": "ThisCore",
+          "lineNumber": 239
+        },
+        {
+          "caller": "HaltAll",
+          "callee": "SendIPI",
+          "lineNumber": 241
+        },
+        {
+          "caller": "HaltAll",
+          "callee": "halt",
+          "lineNumber": 245
+        },
+        {
+          "caller": "LocalInterruptHandler",
+          "callee": "ThisCore",
+          "lineNumber": 257
+        },
+        {
+          "caller": "LocalInterruptHandler",
+          "callee": "read32",
+          "lineNumber": 258
+        },
+        {
+          "caller": "LocalInterruptHandler",
+          "callee": "read32",
+          "lineNumber": 264
+        },
+        {
+          "caller": "LocalInterruptHandler",
+          "callee": "write32",
+          "lineNumber": 276
+        },
+        {
+          "caller": "LocalInterruptHandler",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 277
+        },
+        {
+          "caller": "LocalInterruptHandler",
+          "callee": "IPIHandler",
+          "lineNumber": 279
+        },
+        {
+          "caller": "LocalInterruptHandler",
+          "callee": "IPIHandler",
+          "lineNumber": 290
+        },
+        {
+          "caller": "LocalInterruptHandler",
+          "callee": "ThisCore",
+          "lineNumber": 290
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "InitializeSecondary",
+          "lineNumber": 298
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "ThisCore",
+          "lineNumber": 300
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "write32",
+          "lineNumber": 302
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 306
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "CTimer::SimpleMsDelay",
+          "lineNumber": 308
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 311
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "write32",
+          "lineNumber": 315
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "CInterruptSystem::InitializeSecondary",
+          "lineNumber": 317
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "EnableIRQs",
+          "lineNumber": 319
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "Write",
+          "lineNumber": 321
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "CLogger::Get",
+          "lineNumber": 321
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "Run",
+          "lineNumber": 323
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "Write",
+          "lineNumber": 325
+        },
+        {
+          "caller": "EntrySecondary",
+          "callee": "CLogger::Get",
+          "lineNumber": 325
+        },
+        {
+          "caller": "main_secondary",
+          "callee": "CMultiCoreSupport::EntrySecondary",
+          "lineNumber": 330
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/net/netsubsystem.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 185,
+      "nonEmptyLines": 151,
+      "functions": [
+        {
+          "name": "CNetSubSystem",
+          "startLine": 28,
+          "endLine": 58,
+          "params": [
+            "pIPAddress",
+            "pNetMask",
+            "pDefaultGateway",
+            "pDNSServer",
+            "pHostname",
+            "DeviceType"
+          ]
+        },
+        {
+          "name": "~CNetSubSystem",
+          "startLine": 60,
+          "endLine": 63,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 65,
+          "endLine": 105,
+          "params": [
+            "bWaitForActivate"
+          ]
+        },
+        {
+          "name": "Process",
+          "startLine": 107,
+          "endLine": 129,
+          "params": []
+        },
+        {
+          "name": "IsRunning",
+          "startLine": 156,
+          "endLine": 174,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CNetSubSystem",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "~CNetSubSystem",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "Process",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "IsRunning",
+          "line": 156,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CNetSubSystem",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "CNetSubSystem",
+          "callee": "SetDHCP",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CNetSubSystem",
+          "callee": "SetIPAddress",
+          "lineNumber": 45
+        },
+        {
+          "caller": "CNetSubSystem",
+          "callee": "SetNetMask",
+          "lineNumber": 46
+        },
+        {
+          "caller": "CNetSubSystem",
+          "callee": "SetDefaultGateway",
+          "lineNumber": 50
+        },
+        {
+          "caller": "CNetSubSystem",
+          "callee": "SetDNSServer",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Initialize",
+          "callee": "IsNull",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetIPAddress",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Initialize",
+          "callee": "SetDHCP",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Initialize",
+          "callee": "AttachLayer",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Initialize",
+          "callee": "IsRunning",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Yield",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CScheduler::Get",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Process",
+          "callee": "IsRunning",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Process",
+          "callee": "assert",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Process",
+          "callee": "Process",
+          "lineNumber": 122
+        },
+        {
+          "caller": "Process",
+          "callee": "Process",
+          "lineNumber": 124
+        },
+        {
+          "caller": "Process",
+          "callee": "Process",
+          "lineNumber": 126
+        },
+        {
+          "caller": "Process",
+          "callee": "Process",
+          "lineNumber": 128
+        },
+        {
+          "caller": "IsRunning",
+          "callee": "IsRunning",
+          "lineNumber": 158
+        },
+        {
+          "caller": "IsRunning",
+          "callee": "IsBound",
+          "lineNumber": 173
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/net/nettask.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 40,
+      "functions": [
+        {
+          "name": "CNetTask",
+          "startLine": 24,
+          "endLine": 28,
+          "params": [
+            "pNetSubSystem"
+          ]
+        },
+        {
+          "name": "~CNetTask",
+          "startLine": 30,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 35,
+          "endLine": 44,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CNetTask",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "~CNetTask",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CNetTask",
+          "callee": "SetName",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Run",
+          "callee": "Process",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/net/phytask.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "CPHYTask",
+          "startLine": 24,
+          "endLine": 28,
+          "params": [
+            "pDevice"
+          ]
+        },
+        {
+          "name": "~CPHYTask",
+          "startLine": 30,
+          "endLine": 33,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 35,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPHYTask",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "~CPHYTask",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CPHYTask",
+          "callee": "SetName",
+          "lineNumber": 27
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Run",
+          "callee": "UpdatePHY",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 45
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/net/retranstimeoutcalc.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 197,
+      "nonEmptyLines": 161,
+      "functions": [
+        {
+          "name": "CRetransmissionTimeoutCalculator",
+          "startLine": 43,
+          "endLine": 52,
+          "params": []
+        },
+        {
+          "name": "~CRetransmissionTimeoutCalculator",
+          "startLine": 54,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "GetRTO",
+          "startLine": 59,
+          "endLine": 62,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 64,
+          "endLine": 79,
+          "params": [
+            "nISN"
+          ]
+        },
+        {
+          "name": "SegmentSent",
+          "startLine": 81,
+          "endLine": 100,
+          "params": [
+            "nSequenceNumber",
+            "nLength"
+          ]
+        },
+        {
+          "name": "SegmentAcknowledged",
+          "startLine": 102,
+          "endLine": 124,
+          "params": [
+            "nAcknowledgmentNumber"
+          ]
+        },
+        {
+          "name": "RetransmissionTimerExpired",
+          "startLine": 126,
+          "endLine": 152,
+          "params": []
+        },
+        {
+          "name": "Calculate",
+          "startLine": 154,
+          "endLine": 197,
+          "params": [
+            "nRTT"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CRetransmissionTimeoutCalculator",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "~CRetransmissionTimeoutCalculator",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "GetRTO",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "SegmentSent",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "SegmentAcknowledged",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "RetransmissionTimerExpired",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "Calculate",
+          "line": 154,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CRetransmissionTimeoutCalculator",
+          "callee": "CTimer::Get",
+          "lineNumber": 44
+        },
+        {
+          "caller": "CRetransmissionTimeoutCalculator",
+          "callee": "assert",
+          "lineNumber": 51
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Acquire",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Write",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "CLogger::Get",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Release",
+          "lineNumber": 78
+        },
+        {
+          "caller": "SegmentSent",
+          "callee": "Acquire",
+          "lineNumber": 83
+        },
+        {
+          "caller": "SegmentSent",
+          "callee": "Write",
+          "lineNumber": 86
+        },
+        {
+          "caller": "SegmentSent",
+          "callee": "CLogger::Get",
+          "lineNumber": 86
+        },
+        {
+          "caller": "SegmentSent",
+          "callee": "assert",
+          "lineNumber": 95
+        },
+        {
+          "caller": "SegmentSent",
+          "callee": "GetTicks",
+          "lineNumber": 96
+        },
+        {
+          "caller": "SegmentSent",
+          "callee": "Release",
+          "lineNumber": 99
+        },
+        {
+          "caller": "SegmentAcknowledged",
+          "callee": "Acquire",
+          "lineNumber": 104
+        },
+        {
+          "caller": "SegmentAcknowledged",
+          "callee": "Write",
+          "lineNumber": 107
+        },
+        {
+          "caller": "SegmentAcknowledged",
+          "callee": "CLogger::Get",
+          "lineNumber": 107
+        },
+        {
+          "caller": "SegmentAcknowledged",
+          "callee": "assert",
+          "lineNumber": 116
+        },
+        {
+          "caller": "SegmentAcknowledged",
+          "callee": "Calculate",
+          "lineNumber": 117
+        },
+        {
+          "caller": "SegmentAcknowledged",
+          "callee": "GetTicks",
+          "lineNumber": 117
+        },
+        {
+          "caller": "SegmentAcknowledged",
+          "callee": "Release",
+          "lineNumber": 123
+        },
+        {
+          "caller": "RetransmissionTimerExpired",
+          "callee": "Acquire",
+          "lineNumber": 128
+        },
+        {
+          "caller": "RetransmissionTimerExpired",
+          "callee": "Write",
+          "lineNumber": 131
+        },
+        {
+          "caller": "RetransmissionTimerExpired",
+          "callee": "CLogger::Get",
+          "lineNumber": 131
+        },
+        {
+          "caller": "RetransmissionTimerExpired",
+          "callee": "Write",
+          "lineNumber": 141
+        },
+        {
+          "caller": "RetransmissionTimerExpired",
+          "callee": "CLogger::Get",
+          "lineNumber": 141
+        },
+        {
+          "caller": "RetransmissionTimerExpired",
+          "callee": "Release",
+          "lineNumber": 151
+        },
+        {
+          "caller": "Calculate",
+          "callee": "Write",
+          "lineNumber": 194
+        },
+        {
+          "caller": "Calculate",
+          "callee": "CLogger::Get",
+          "lineNumber": 194
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/net/tftpdaemon.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 510,
+      "nonEmptyLines": 400,
+      "functions": [
+        {
+          "name": "CTFTPDaemon",
+          "startLine": 95,
+          "endLine": 101,
+          "params": [
+            "pNetSubSystem"
+          ]
+        },
+        {
+          "name": "~CTFTPDaemon",
+          "startLine": 103,
+          "endLine": 112,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 114,
+          "endLine": 241,
+          "params": []
+        },
+        {
+          "name": "DoRead",
+          "startLine": 243,
+          "endLine": 360,
+          "params": [
+            "pFileName"
+          ]
+        },
+        {
+          "name": "DoWrite",
+          "startLine": 362,
+          "endLine": 490,
+          "params": [
+            "pFileName"
+          ]
+        },
+        {
+          "name": "SendError",
+          "startLine": 492,
+          "endLine": 510,
+          "params": [
+            "usErrorCode",
+            "pErrorMessage",
+            "pSendTo",
+            "usPort"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "TTFTPReqPacket",
+          "startLine": 35,
+          "endLine": 46,
+          "methods": [],
+          "properties": [
+            "OpCode",
+            "FileNameMode"
+          ]
+        },
+        {
+          "name": "TTFTPDataPacket",
+          "startLine": 49,
+          "endLine": 57,
+          "methods": [],
+          "properties": [
+            "OpCode",
+            "BlockNumber",
+            "Data"
+          ]
+        },
+        {
+          "name": "TTFTPAckPacket",
+          "startLine": 60,
+          "endLine": 66,
+          "methods": [],
+          "properties": [
+            "OpCode",
+            "BlockNumber"
+          ]
+        },
+        {
+          "name": "TTFTPErrorPacket",
+          "startLine": 69,
+          "endLine": 86,
+          "methods": [],
+          "properties": [
+            "OpCode",
+            "ErrorCode",
+            "ErrMsg"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TTFTPReqPacket",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "TTFTPDataPacket",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "TTFTPAckPacket",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "TTFTPErrorPacket",
+          "line": 69,
+          "isDefault": false
+        },
+        {
+          "name": "CTFTPDaemon",
+          "line": 95,
+          "isDefault": false
+        },
+        {
+          "name": "~CTFTPDaemon",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "DoRead",
+          "line": 243,
+          "isDefault": false
+        },
+        {
+          "name": "DoWrite",
+          "line": 362,
+          "isDefault": false
+        },
+        {
+          "name": "SendError",
+          "line": 492,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CTFTPDaemon",
+          "callee": "SetName",
+          "lineNumber": 100
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 117
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 119
+        },
+        {
+          "caller": "Run",
+          "callee": "Bind",
+          "lineNumber": 121
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "CLogger::Get",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Run",
+          "callee": "UpdateStatus",
+          "lineNumber": 130
+        },
+        {
+          "caller": "Run",
+          "callee": "memset",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Run",
+          "callee": "ReceiveFrom",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Run",
+          "callee": "CLogger::Get",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Run",
+          "callee": "be2le16",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Run",
+          "callee": "SendError",
+          "lineNumber": 158
+        },
+        {
+          "caller": "Run",
+          "callee": "strlen",
+          "lineNumber": 164
+        },
+        {
+          "caller": "Run",
+          "callee": "SendError",
+          "lineNumber": 167
+        },
+        {
+          "caller": "Run",
+          "callee": "strcpy",
+          "lineNumber": 172
+        },
+        {
+          "caller": "Run",
+          "callee": "strcmp",
+          "lineNumber": 175
+        },
+        {
+          "caller": "Run",
+          "callee": "strcmp",
+          "lineNumber": 176
+        },
+        {
+          "caller": "Run",
+          "callee": "strcmp",
+          "lineNumber": 177
+        },
+        {
+          "caller": "Run",
+          "callee": "SendError",
+          "lineNumber": 179
+        },
+        {
+          "caller": "Run",
+          "callee": "IsAccessAllowed",
+          "lineNumber": 185
+        },
+        {
+          "caller": "Run",
+          "callee": "SendError",
+          "lineNumber": 187
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 194
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 195
+        },
+        {
+          "caller": "Run",
+          "callee": "CLogger::Get",
+          "lineNumber": 195
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 199
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 201
+        },
+        {
+          "caller": "Run",
+          "callee": "Connect",
+          "lineNumber": 203
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 205
+        },
+        {
+          "caller": "Run",
+          "callee": "CLogger::Get",
+          "lineNumber": 205
+        },
+        {
+          "caller": "Run",
+          "callee": "DoRead",
+          "lineNumber": 219
+        },
+        {
+          "caller": "Run",
+          "callee": "DoWrite",
+          "lineNumber": 223
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 227
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 236
+        },
+        {
+          "caller": "Run",
+          "callee": "CLogger::Get",
+          "lineNumber": 236
+        },
+        {
+          "caller": "DoRead",
+          "callee": "assert",
+          "lineNumber": 245
+        },
+        {
+          "caller": "DoRead",
+          "callee": "assert",
+          "lineNumber": 247
+        },
+        {
+          "caller": "DoRead",
+          "callee": "FileOpen",
+          "lineNumber": 248
+        },
+        {
+          "caller": "DoRead",
+          "callee": "SendError",
+          "lineNumber": 250
+        },
+        {
+          "caller": "DoRead",
+          "callee": "Initialize",
+          "lineNumber": 256
+        },
+        {
+          "caller": "DoRead",
+          "callee": "UpdateStatus",
+          "lineNumber": 261
+        },
+        {
+          "caller": "DoRead",
+          "callee": "BE",
+          "lineNumber": 264
+        },
+        {
+          "caller": "DoRead",
+          "callee": "le2be16",
+          "lineNumber": 265
+        },
+        {
+          "caller": "DoRead",
+          "callee": "FileRead",
+          "lineNumber": 267
+        },
+        {
+          "caller": "DoRead",
+          "callee": "Write",
+          "lineNumber": 270
+        },
+        {
+          "caller": "DoRead",
+          "callee": "CLogger::Get",
+          "lineNumber": 270
+        },
+        {
+          "caller": "DoRead",
+          "callee": "SendError",
+          "lineNumber": 272
+        },
+        {
+          "caller": "DoRead",
+          "callee": "FileClose",
+          "lineNumber": 274
+        },
+        {
+          "caller": "DoRead",
+          "callee": "UpdateStatus",
+          "lineNumber": 276
+        },
+        {
+          "caller": "DoRead",
+          "callee": "START_TIMER",
+          "lineNumber": 286
+        },
+        {
+          "caller": "DoRead",
+          "callee": "TIMER_EXPIRED",
+          "lineNumber": 287
+        },
+        {
+          "caller": "DoRead",
+          "callee": "Send",
+          "lineNumber": 289
+        },
+        {
+          "caller": "DoRead",
+          "callee": "Write",
+          "lineNumber": 291
+        },
+        {
+          "caller": "DoRead",
+          "callee": "CLogger::Get",
+          "lineNumber": 291
+        },
+        {
+          "caller": "DoRead",
+          "callee": "FileClose",
+          "lineNumber": 293
+        },
+        {
+          "caller": "DoRead",
+          "callee": "UpdateStatus",
+          "lineNumber": 295
+        },
+        {
+          "caller": "DoRead",
+          "callee": "SegmentSent",
+          "lineNumber": 300
+        },
+        {
+          "caller": "DoRead",
+          "callee": "(u32)",
+          "lineNumber": 300
+        },
+        {
+          "caller": "DoRead",
+          "callee": "START_TIMER",
+          "lineNumber": 303
+        },
+        {
+          "caller": "DoRead",
+          "callee": "TIMER_EXPIRED",
+          "lineNumber": 304
+        },
+        {
+          "caller": "DoRead",
+          "callee": "GetRTO",
+          "lineNumber": 304
+        },
+        {
+          "caller": "DoRead",
+          "callee": "Yield",
+          "lineNumber": 306
+        },
+        {
+          "caller": "DoRead",
+          "callee": "CScheduler::Get",
+          "lineNumber": 306
+        },
+        {
+          "caller": "DoRead",
+          "callee": "Receive",
+          "lineNumber": 309
+        },
+        {
+          "caller": "DoRead",
+          "callee": "Write",
+          "lineNumber": 313
+        },
+        {
+          "caller": "DoRead",
+          "callee": "CLogger::Get",
+          "lineNumber": 313
+        },
+        {
+          "caller": "DoRead",
+          "callee": "FileClose",
+          "lineNumber": 316
+        },
+        {
+          "caller": "DoRead",
+          "callee": "UpdateStatus",
+          "lineNumber": 318
+        },
+        {
+          "caller": "DoRead",
+          "callee": "BE",
+          "lineNumber": 324
+        },
+        {
+          "caller": "DoRead",
+          "callee": "le2be16",
+          "lineNumber": 325
+        },
+        {
+          "caller": "DoRead",
+          "callee": "TIMER_EXPIRED",
+          "lineNumber": 331
+        },
+        {
+          "caller": "DoRead",
+          "callee": "GetRTO",
+          "lineNumber": 331
+        },
+        {
+          "caller": "DoRead",
+          "callee": "SegmentAcknowledged",
+          "lineNumber": 333
+        },
+        {
+          "caller": "DoRead",
+          "callee": "(u32)",
+          "lineNumber": 333
+        },
+        {
+          "caller": "DoRead",
+          "callee": "RetransmissionTimerExpired",
+          "lineNumber": 339
+        },
+        {
+          "caller": "DoRead",
+          "callee": "TIMER_EXPIRED",
+          "lineNumber": 343
+        },
+        {
+          "caller": "DoRead",
+          "callee": "Write",
+          "lineNumber": 345
+        },
+        {
+          "caller": "DoRead",
+          "callee": "CLogger::Get",
+          "lineNumber": 345
+        },
+        {
+          "caller": "DoRead",
+          "callee": "FileClose",
+          "lineNumber": 347
+        },
+        {
+          "caller": "DoRead",
+          "callee": "UpdateStatus",
+          "lineNumber": 349
+        },
+        {
+          "caller": "DoRead",
+          "callee": "FileClose",
+          "lineNumber": 355
+        },
+        {
+          "caller": "DoRead",
+          "callee": "UpdateStatus",
+          "lineNumber": 357
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "assert",
+          "lineNumber": 364
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "assert",
+          "lineNumber": 366
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "FileCreate",
+          "lineNumber": 367
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "BE",
+          "lineNumber": 370
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Send",
+          "lineNumber": 372
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Write",
+          "lineNumber": 374
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "CLogger::Get",
+          "lineNumber": 374
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "FileClose",
+          "lineNumber": 376
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "SendError",
+          "lineNumber": 383
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "UpdateStatus",
+          "lineNumber": 395
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "START_TIMER",
+          "lineNumber": 403
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "TIMER_EXPIRED",
+          "lineNumber": 408
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Write",
+          "lineNumber": 410
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "CLogger::Get",
+          "lineNumber": 410
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "FileClose",
+          "lineNumber": 413
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "UpdateStatus",
+          "lineNumber": 415
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Yield",
+          "lineNumber": 420
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "CScheduler::Get",
+          "lineNumber": 420
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Receive",
+          "lineNumber": 422
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Write",
+          "lineNumber": 427
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "CLogger::Get",
+          "lineNumber": 427
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "FileClose",
+          "lineNumber": 430
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "UpdateStatus",
+          "lineNumber": 432
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "BE",
+          "lineNumber": 443
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "be2le16",
+          "lineNumber": 445
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "BE",
+          "lineNumber": 448
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Send",
+          "lineNumber": 450
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Write",
+          "lineNumber": 453
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "CLogger::Get",
+          "lineNumber": 453
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "FileClose",
+          "lineNumber": 456
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "UpdateStatus",
+          "lineNumber": 458
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "le2be16",
+          "lineNumber": 464
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "FileWrite",
+          "lineNumber": 468
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "Write",
+          "lineNumber": 470
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "CLogger::Get",
+          "lineNumber": 470
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "SendError",
+          "lineNumber": 472
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "FileClose",
+          "lineNumber": 474
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "UpdateStatus",
+          "lineNumber": 476
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "FileClose",
+          "lineNumber": 485
+        },
+        {
+          "caller": "DoWrite",
+          "callee": "UpdateStatus",
+          "lineNumber": 487
+        },
+        {
+          "caller": "SendError",
+          "callee": "BE",
+          "lineNumber": 495
+        },
+        {
+          "caller": "SendError",
+          "callee": "le2be16",
+          "lineNumber": 496
+        },
+        {
+          "caller": "SendError",
+          "callee": "strcpy",
+          "lineNumber": 497
+        },
+        {
+          "caller": "SendError",
+          "callee": "assert",
+          "lineNumber": 501
+        },
+        {
+          "caller": "SendError",
+          "callee": "assert",
+          "lineNumber": 502
+        },
+        {
+          "caller": "SendError",
+          "callee": "SendTo",
+          "lineNumber": 503
+        },
+        {
+          "caller": "SendError",
+          "callee": "assert",
+          "lineNumber": 507
+        },
+        {
+          "caller": "SendError",
+          "callee": "Send",
+          "lineNumber": 508
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 10,
+        "functionCount": 6,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "lib/sched/mutex.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "CMutex",
+          "startLine": 30,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "~CMutex",
+          "startLine": 36,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "Acquire",
+          "startLine": 41,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "Release",
+          "startLine": 62,
+          "endLine": 72,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CMutex",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "~CMutex",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "Acquire",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "Release",
+          "line": 62,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CMutex",
+          "callee": "assert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Acquire",
+          "callee": "GetCurrentTask",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Acquire",
+          "callee": "CScheduler::Get",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Acquire",
+          "callee": "Wait",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Release",
+          "callee": "assert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Release",
+          "callee": "GetCurrentTask",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Release",
+          "callee": "CScheduler::Get",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Release",
+          "callee": "Pulse",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Release",
+          "callee": "Yield",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Release",
+          "callee": "CScheduler::Get",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/sched/scheduler.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 474,
+      "nonEmptyLines": 390,
+      "functions": [
+        {
+          "name": "CScheduler",
+          "startLine": 31,
+          "endLine": 45,
+          "params": []
+        },
+        {
+          "name": "~CScheduler",
+          "startLine": 47,
+          "endLine": 53,
+          "params": []
+        },
+        {
+          "name": "Yield",
+          "startLine": 55,
+          "endLine": 82,
+          "params": []
+        },
+        {
+          "name": "Sleep",
+          "startLine": 84,
+          "endLine": 96,
+          "params": [
+            "nSeconds"
+          ]
+        },
+        {
+          "name": "MsSleep",
+          "startLine": 98,
+          "endLine": 104,
+          "params": [
+            "nMilliSeconds"
+          ]
+        },
+        {
+          "name": "usSleep",
+          "startLine": 106,
+          "endLine": 121,
+          "params": [
+            "nMicroSeconds"
+          ]
+        },
+        {
+          "name": "IsValidTask",
+          "startLine": 146,
+          "endLine": 156,
+          "params": [
+            "pTask"
+          ]
+        },
+        {
+          "name": "RegisterTaskSwitchHandler",
+          "startLine": 158,
+          "endLine": 163,
+          "params": [
+            "pHandler"
+          ]
+        },
+        {
+          "name": "RegisterTaskTerminationHandler",
+          "startLine": 165,
+          "endLine": 170,
+          "params": [
+            "pHandler"
+          ]
+        },
+        {
+          "name": "SuspendNewTasks",
+          "startLine": 172,
+          "endLine": 175,
+          "params": []
+        },
+        {
+          "name": "ResumeNewTasks",
+          "startLine": 177,
+          "endLine": 194,
+          "params": []
+        },
+        {
+          "name": "EnumerateTasks",
+          "startLine": 196,
+          "endLine": 226,
+          "params": [
+            "pParam"
+          ]
+        },
+        {
+          "name": "ListTasks",
+          "startLine": 228,
+          "endLine": 260,
+          "params": [
+            "pTarget"
+          ]
+        },
+        {
+          "name": "AddTask",
+          "startLine": 262,
+          "endLine": 288,
+          "params": [
+            "pTask"
+          ]
+        },
+        {
+          "name": "RemoveTask",
+          "startLine": 290,
+          "endLine": 308,
+          "params": [
+            "pTask"
+          ]
+        },
+        {
+          "name": "BlockTask",
+          "startLine": 310,
+          "endLine": 365,
+          "params": [
+            "ppWaitListHead",
+            "nMicroSeconds"
+          ]
+        },
+        {
+          "name": "WakeTasks",
+          "startLine": 367,
+          "endLine": 399,
+          "params": [
+            "ppWaitListHead"
+          ]
+        },
+        {
+          "name": "GetNextTask",
+          "startLine": 401,
+          "endLine": 468,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CScheduler",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "~CScheduler",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "Yield",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "Sleep",
+          "line": 84,
+          "isDefault": false
+        },
+        {
+          "name": "MsSleep",
+          "line": 98,
+          "isDefault": false
+        },
+        {
+          "name": "usSleep",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "IsValidTask",
+          "line": 146,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterTaskSwitchHandler",
+          "line": 158,
+          "isDefault": false
+        },
+        {
+          "name": "RegisterTaskTerminationHandler",
+          "line": 165,
+          "isDefault": false
+        },
+        {
+          "name": "SuspendNewTasks",
+          "line": 172,
+          "isDefault": false
+        },
+        {
+          "name": "ResumeNewTasks",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "EnumerateTasks",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "ListTasks",
+          "line": 228,
+          "isDefault": false
+        },
+        {
+          "name": "AddTask",
+          "line": 262,
+          "isDefault": false
+        },
+        {
+          "name": "RemoveTask",
+          "line": 290,
+          "isDefault": false
+        },
+        {
+          "name": "BlockTask",
+          "line": 310,
+          "isDefault": false
+        },
+        {
+          "name": "WakeTasks",
+          "line": 367,
+          "isDefault": false
+        },
+        {
+          "name": "GetNextTask",
+          "line": 401,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CScheduler",
+          "callee": "assert",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CScheduler",
+          "callee": "assert",
+          "lineNumber": 43
+        },
+        {
+          "caller": "CScheduler",
+          "callee": "SetName",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Yield",
+          "callee": "GetNextTask",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Yield",
+          "callee": "assert",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Yield",
+          "callee": "assert",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Yield",
+          "callee": "assert",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Yield",
+          "callee": "GetRegs",
+          "lineNumber": 70
+        },
+        {
+          "caller": "Yield",
+          "callee": "GetRegs",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Yield",
+          "callee": "(*m_pTaskSwitchHandler)",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Yield",
+          "callee": "assert",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Yield",
+          "callee": "assert",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Yield",
+          "callee": "TaskSwitch",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Sleep",
+          "callee": "usSleep",
+          "lineNumber": 90
+        },
+        {
+          "caller": "Sleep",
+          "callee": "usSleep",
+          "lineNumber": 95
+        },
+        {
+          "caller": "MsSleep",
+          "callee": "usSleep",
+          "lineNumber": 102
+        },
+        {
+          "caller": "usSleep",
+          "callee": "GetClockTicks",
+          "lineNumber": 112
+        },
+        {
+          "caller": "usSleep",
+          "callee": "CTimer::Get",
+          "lineNumber": 112
+        },
+        {
+          "caller": "usSleep",
+          "callee": "assert",
+          "lineNumber": 114
+        },
+        {
+          "caller": "usSleep",
+          "callee": "assert",
+          "lineNumber": 115
+        },
+        {
+          "caller": "usSleep",
+          "callee": "GetState",
+          "lineNumber": 115
+        },
+        {
+          "caller": "usSleep",
+          "callee": "SetWakeTicks",
+          "lineNumber": 116
+        },
+        {
+          "caller": "usSleep",
+          "callee": "SetState",
+          "lineNumber": 117
+        },
+        {
+          "caller": "usSleep",
+          "callee": "Yield",
+          "lineNumber": 119
+        },
+        {
+          "caller": "RegisterTaskSwitchHandler",
+          "callee": "assert",
+          "lineNumber": 160
+        },
+        {
+          "caller": "RegisterTaskSwitchHandler",
+          "callee": "assert",
+          "lineNumber": 162
+        },
+        {
+          "caller": "RegisterTaskTerminationHandler",
+          "callee": "assert",
+          "lineNumber": 167
+        },
+        {
+          "caller": "RegisterTaskTerminationHandler",
+          "callee": "assert",
+          "lineNumber": 169
+        },
+        {
+          "caller": "ResumeNewTasks",
+          "callee": "assert",
+          "lineNumber": 179
+        },
+        {
+          "caller": "ResumeNewTasks",
+          "callee": "GetState",
+          "lineNumber": 187
+        },
+        {
+          "caller": "ResumeNewTasks",
+          "callee": "Start",
+          "lineNumber": 189
+        },
+        {
+          "caller": "EnumerateTasks",
+          "callee": "IsSuspended",
+          "lineNumber": 214
+        },
+        {
+          "caller": "EnumerateTasks",
+          "callee": "(*pCallback)",
+          "lineNumber": 219
+        },
+        {
+          "caller": "EnumerateTasks",
+          "callee": "GetName",
+          "lineNumber": 219
+        },
+        {
+          "caller": "EnumerateTasks",
+          "callee": "GetState",
+          "lineNumber": 219
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "assert",
+          "lineNumber": 230
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "Write",
+          "lineNumber": 233
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "GetState",
+          "lineNumber": 243
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "assert",
+          "lineNumber": 244
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "Format",
+          "lineNumber": 251
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "IsSuspended",
+          "lineNumber": 254
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "GetName",
+          "lineNumber": 256
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "Write",
+          "lineNumber": 258
+        },
+        {
+          "caller": "ListTasks",
+          "callee": "GetLength",
+          "lineNumber": 258
+        },
+        {
+          "caller": "AddTask",
+          "callee": "assert",
+          "lineNumber": 264
+        },
+        {
+          "caller": "AddTask",
+          "callee": "SetState",
+          "lineNumber": 268
+        },
+        {
+          "caller": "AddTask",
+          "callee": "Write",
+          "lineNumber": 284
+        },
+        {
+          "caller": "AddTask",
+          "callee": "CLogger::Get",
+          "lineNumber": 284
+        },
+        {
+          "caller": "RemoveTask",
+          "callee": "assert",
+          "lineNumber": 307
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "assert",
+          "lineNumber": 312
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "assert",
+          "lineNumber": 313
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "assert",
+          "lineNumber": 314
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "assert",
+          "lineNumber": 315
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "GetState",
+          "lineNumber": 315
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "Acquire",
+          "lineNumber": 317
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "SetState",
+          "lineNumber": 325
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "GetClockTicks",
+          "lineNumber": 330
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "CTimer::Get",
+          "lineNumber": 330
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "SetWakeTicks",
+          "lineNumber": 332
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "SetState",
+          "lineNumber": 333
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "Release",
+          "lineNumber": 336
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "Yield",
+          "lineNumber": 338
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "Acquire",
+          "lineNumber": 340
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "Release",
+          "lineNumber": 361
+        },
+        {
+          "caller": "BlockTask",
+          "callee": "GetWakeTicks",
+          "lineNumber": 364
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "assert",
+          "lineNumber": 369
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "Acquire",
+          "lineNumber": 371
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "GetState",
+          "lineNumber": 380
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "GetState",
+          "lineNumber": 381
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "Write",
+          "lineNumber": 383
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "CLogger::Get",
+          "lineNumber": 383
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "assert",
+          "lineNumber": 386
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "assert",
+          "lineNumber": 387
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "GetState",
+          "lineNumber": 387
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "GetState",
+          "lineNumber": 388
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "SetState",
+          "lineNumber": 391
+        },
+        {
+          "caller": "WakeTasks",
+          "callee": "Release",
+          "lineNumber": 398
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "GetClockTicks",
+          "lineNumber": 405
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "CTimer::Get",
+          "lineNumber": 405
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "IsSuspended",
+          "lineNumber": 420
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "GetState",
+          "lineNumber": 425
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "GetWakeTicks",
+          "lineNumber": 435
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "SetState",
+          "lineNumber": 439
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "SetWakeTicks",
+          "lineNumber": 440
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "GetWakeTicks",
+          "lineNumber": 445
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "SetState",
+          "lineNumber": 449
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "(*m_pTaskTerminationHandler)",
+          "lineNumber": 455
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "RemoveTask",
+          "lineNumber": 457
+        },
+        {
+          "caller": "GetNextTask",
+          "callee": "assert",
+          "lineNumber": 462
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 18,
+        "functionCount": 18,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/sched/synchronizationevent.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 84,
+      "functions": [
+        {
+          "name": "CSynchronizationEvent",
+          "startLine": 27,
+          "endLine": 31,
+          "params": [
+            "bState"
+          ]
+        },
+        {
+          "name": "~CSynchronizationEvent",
+          "startLine": 33,
+          "endLine": 36,
+          "params": []
+        },
+        {
+          "name": "GetState",
+          "startLine": 38,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "Clear",
+          "startLine": 43,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "Set",
+          "startLine": 52,
+          "endLine": 64,
+          "params": []
+        },
+        {
+          "name": "Pulse",
+          "startLine": 67,
+          "endLine": 77,
+          "params": []
+        },
+        {
+          "name": "Wait",
+          "startLine": 80,
+          "endLine": 86,
+          "params": []
+        },
+        {
+          "name": "WaitWithTimeout",
+          "startLine": 88,
+          "endLine": 98,
+          "params": [
+            "nMicroSeconds"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CSynchronizationEvent",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "~CSynchronizationEvent",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "GetState",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "Clear",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "Set",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "Pulse",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "Wait",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "WaitWithTimeout",
+          "line": 88,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "~CSynchronizationEvent",
+          "callee": "assert",
+          "lineNumber": 35
+        },
+        {
+          "caller": "Clear",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 48
+        },
+        {
+          "caller": "Set",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Set",
+          "callee": "WakeTasks",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Set",
+          "callee": "CScheduler::Get",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Pulse",
+          "callee": "DataSyncBarrier",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Pulse",
+          "callee": "WakeTasks",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Pulse",
+          "callee": "CScheduler::Get",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Wait",
+          "callee": "BlockTask",
+          "lineNumber": 84
+        },
+        {
+          "caller": "Wait",
+          "callee": "CScheduler::Get",
+          "lineNumber": 84
+        },
+        {
+          "caller": "WaitWithTimeout",
+          "callee": "BlockTask",
+          "lineNumber": 96
+        },
+        {
+          "caller": "WaitWithTimeout",
+          "callee": "CScheduler::Get",
+          "lineNumber": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "lib/sched/task.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 183,
+      "nonEmptyLines": 148,
+      "functions": [
+        {
+          "name": "CTask",
+          "startLine": 25,
+          "endLine": 54,
+          "params": [
+            "nStackSize",
+            "bCreateSuspended"
+          ]
+        },
+        {
+          "name": "~CTask",
+          "startLine": 56,
+          "endLine": 63,
+          "params": []
+        },
+        {
+          "name": "Start",
+          "startLine": 65,
+          "endLine": 76,
+          "params": []
+        },
+        {
+          "name": "Suspend",
+          "startLine": 78,
+          "endLine": 83,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 85,
+          "endLine": 88,
+          "params": []
+        },
+        {
+          "name": "Terminate",
+          "startLine": 90,
+          "endLine": 97,
+          "params": []
+        },
+        {
+          "name": "WaitForTermination",
+          "startLine": 99,
+          "endLine": 110,
+          "params": []
+        },
+        {
+          "name": "SetName",
+          "startLine": 112,
+          "endLine": 115,
+          "params": [
+            "pName"
+          ]
+        },
+        {
+          "name": "SetUserData",
+          "startLine": 122,
+          "endLine": 125,
+          "params": [
+            "pData",
+            "nSlot"
+          ]
+        },
+        {
+          "name": "TaskEntry",
+          "startLine": 171,
+          "endLine": 183,
+          "params": [
+            "pParam"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CTask",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "~CTask",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "Start",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "Suspend",
+          "line": 78,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "Terminate",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "WaitForTermination",
+          "line": 99,
+          "isDefault": false
+        },
+        {
+          "name": "SetName",
+          "line": 112,
+          "isDefault": false
+        },
+        {
+          "name": "SetUserData",
+          "line": 122,
+          "isDefault": false
+        },
+        {
+          "name": "TaskEntry",
+          "line": 171,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CTask",
+          "callee": "assert",
+          "lineNumber": 39
+        },
+        {
+          "caller": "CTask",
+          "callee": "assert",
+          "lineNumber": 41
+        },
+        {
+          "caller": "CTask",
+          "callee": "assert",
+          "lineNumber": 43
+        },
+        {
+          "caller": "CTask",
+          "callee": "assert",
+          "lineNumber": 46
+        },
+        {
+          "caller": "CTask",
+          "callee": "InitializeRegs",
+          "lineNumber": 48
+        },
+        {
+          "caller": "CTask",
+          "callee": "Format",
+          "lineNumber": 51
+        },
+        {
+          "caller": "CTask",
+          "callee": "AddTask",
+          "lineNumber": 53
+        },
+        {
+          "caller": "CTask",
+          "callee": "CScheduler::Get",
+          "lineNumber": 53
+        },
+        {
+          "caller": "~CTask",
+          "callee": "assert",
+          "lineNumber": 58
+        },
+        {
+          "caller": "Start",
+          "callee": "assert",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Suspend",
+          "callee": "assert",
+          "lineNumber": 80
+        },
+        {
+          "caller": "Suspend",
+          "callee": "assert",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Run",
+          "callee": "assert",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Terminate",
+          "callee": "Set",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Terminate",
+          "callee": "Yield",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Terminate",
+          "callee": "CScheduler::Get",
+          "lineNumber": 94
+        },
+        {
+          "caller": "Terminate",
+          "callee": "assert",
+          "lineNumber": 96
+        },
+        {
+          "caller": "WaitForTermination",
+          "callee": "IsValidTask",
+          "lineNumber": 104
+        },
+        {
+          "caller": "WaitForTermination",
+          "callee": "CScheduler::Get",
+          "lineNumber": 104
+        },
+        {
+          "caller": "WaitForTermination",
+          "callee": "Wait",
+          "lineNumber": 109
+        },
+        {
+          "caller": "InitializeRegs",
+          "callee": "memset",
+          "lineNumber": 136
+        },
+        {
+          "caller": "InitializeRegs",
+          "callee": "assert",
+          "lineNumber": 140
+        },
+        {
+          "caller": "InitializeRegs",
+          "callee": "memset",
+          "lineNumber": 155
+        },
+        {
+          "caller": "InitializeRegs",
+          "callee": "assert",
+          "lineNumber": 159
+        },
+        {
+          "caller": "TaskEntry",
+          "callee": "assert",
+          "lineNumber": 174
+        },
+        {
+          "caller": "TaskEntry",
+          "callee": "Run",
+          "lineNumber": 176
+        },
+        {
+          "caller": "TaskEntry",
+          "callee": "Set",
+          "lineNumber": 179
+        },
+        {
+          "caller": "TaskEntry",
+          "callee": "Yield",
+          "lineNumber": 180
+        },
+        {
+          "caller": "TaskEntry",
+          "callee": "CScheduler::Get",
+          "lineNumber": 180
+        },
+        {
+          "caller": "TaskEntry",
+          "callee": "assert",
+          "lineNumber": 182
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/kernel.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 93,
+      "functions": [
+        {
+          "name": "CKernel",
+          "startLine": 29,
+          "endLine": 35,
+          "params": []
+        },
+        {
+          "name": "~CKernel",
+          "startLine": 37,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "Initialize",
+          "startLine": 41,
+          "endLine": 77,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 79,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "TimerHandler",
+          "startLine": 107,
+          "endLine": 113,
+          "params": [
+            "hTimer",
+            "pParam",
+            "pContext"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CKernel",
+          "line": 29,
+          "isDefault": false
+        },
+        {
+          "name": "~CKernel",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "Initialize",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "TimerHandler",
+          "line": 107,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CKernel",
+          "callee": "GetWidth",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetHeight",
+          "lineNumber": 30
+        },
+        {
+          "caller": "CKernel",
+          "callee": "GetLogLevel",
+          "lineNumber": 32
+        },
+        {
+          "caller": "CKernel",
+          "callee": "Blink",
+          "lineNumber": 34
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetDevice",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Initialize",
+          "callee": "GetLogDevice",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 63
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 68
+        },
+        {
+          "caller": "Initialize",
+          "callee": "Initialize",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 81
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 96
+        },
+        {
+          "caller": "Run",
+          "callee": "Clear",
+          "lineNumber": 98
+        },
+        {
+          "caller": "Run",
+          "callee": "StartKernelTimer",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Run",
+          "callee": "Wait",
+          "lineNumber": 101
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "assert",
+          "lineNumber": 110
+        },
+        {
+          "caller": "TimerHandler",
+          "callee": "Set",
+          "lineNumber": 112
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/kernel.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/ledtask.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "CLEDTask",
+          "startLine": 23,
+          "endLine": 26,
+          "params": [
+            "pActLED"
+          ]
+        },
+        {
+          "name": "~CLEDTask",
+          "startLine": 28,
+          "endLine": 30,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 32,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CLEDTask",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "~CLEDTask",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Run",
+          "callee": "On",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Run",
+          "callee": "Off",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 42
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 45
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/ledtask.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 33,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 47,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "Initialize",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 30
+        },
+        {
+          "caller": "main",
+          "callee": "Run",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "reboot",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "halt",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/primetask.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 94,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "CPrimeTask",
+          "startLine": 33,
+          "endLine": 36,
+          "params": [
+            "pScreen"
+          ]
+        },
+        {
+          "name": "~CPrimeTask",
+          "startLine": 38,
+          "endLine": 40,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 42,
+          "endLine": 84,
+          "params": []
+        },
+        {
+          "name": "IsPrime",
+          "startLine": 86,
+          "endLine": 89,
+          "params": [
+            "nNumber"
+          ]
+        },
+        {
+          "name": "NotPrime",
+          "startLine": 91,
+          "endLine": 94,
+          "params": [
+            "nNumber"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CPrimeTask",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "~CPrimeTask",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "IsPrime",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "NotPrime",
+          "line": 91,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Run",
+          "callee": "memset",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Run",
+          "callee": "IsPrime",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Run",
+          "callee": "NotPrime",
+          "lineNumber": 55
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "Yield",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 65
+        },
+        {
+          "caller": "Run",
+          "callee": "IsPrime",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/primetask.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 41,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/screentask.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 45,
+      "functions": [
+        {
+          "name": "CScreenTask",
+          "startLine": 24,
+          "endLine": 28,
+          "params": [
+            "nTaskID",
+            "pScreen"
+          ]
+        },
+        {
+          "name": "~CScreenTask",
+          "startLine": 30,
+          "endLine": 32,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 34,
+          "endLine": 51,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CScreenTask",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "~CScreenTask",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Run",
+          "callee": "Append",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Run",
+          "callee": "Append",
+          "lineNumber": 45
+        },
+        {
+          "caller": "Run",
+          "callee": "Write",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Run",
+          "callee": "GetLength",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 49
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/19-tasks/screentask.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 34,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/26-cpustress/mandelbrot.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 131,
+      "nonEmptyLines": 117,
+      "functions": [
+        {
+          "name": "m_pScreen",
+          "startLine": 32,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "~CMandelbrotCalculator",
+          "startLine": 36,
+          "endLine": 39,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 41,
+          "endLine": 76,
+          "params": [
+            "nCore"
+          ]
+        },
+        {
+          "name": "Calculate",
+          "startLine": 79,
+          "endLine": 131,
+          "params": [
+            "x1",
+            "x2",
+            "y1",
+            "y2",
+            "nMaxIteration",
+            "nPosX0",
+            "nWidth",
+            "nPosY0",
+            "nHeight"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "m_pScreen",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "~CMandelbrotCalculator",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "Calculate",
+          "line": 79,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Run",
+          "callee": "GetWidth",
+          "lineNumber": 46
+        },
+        {
+          "caller": "Run",
+          "callee": "GetHeight",
+          "lineNumber": 47
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 52
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 67
+        },
+        {
+          "caller": "Run",
+          "callee": "Calculate",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Run",
+          "callee": "GetWidth",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Run",
+          "callee": "GetHeight",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Calculate",
+          "callee": "SetPixel",
+          "lineNumber": 87
+        },
+        {
+          "caller": "Calculate",
+          "callee": "(TScreenColor)",
+          "lineNumber": 111
+        },
+        {
+          "caller": "Calculate",
+          "callee": "(TScreenColor)",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Calculate",
+          "callee": "SetPixel",
+          "lineNumber": 118
+        },
+        {
+          "caller": "Calculate",
+          "callee": "ThisCore",
+          "lineNumber": 123
+        },
+        {
+          "caller": "Calculate",
+          "callee": "Yield",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Calculate",
+          "callee": "CScheduler::Get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "Calculate",
+          "callee": "Yield",
+          "lineNumber": 128
+        },
+        {
+          "caller": "Calculate",
+          "callee": "CScheduler::Get",
+          "lineNumber": 128
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/26-cpustress/mandelbrot.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 44,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/42-soundinput/config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/42-soundinput/soundrecorder.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 200,
+      "nonEmptyLines": 160,
+      "functions": [
+        {
+          "name": "CSoundRecorder",
+          "startLine": 38,
+          "endLine": 45,
+          "params": [
+            "pFileSystem"
+          ]
+        },
+        {
+          "name": "~CSoundRecorder",
+          "startLine": 47,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "Run",
+          "startLine": 52,
+          "endLine": 174,
+          "params": []
+        },
+        {
+          "name": "Write",
+          "startLine": 176,
+          "endLine": 200,
+          "params": [
+            "pBuffer",
+            "nCount"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CSoundRecorder",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "~CSoundRecorder",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "Run",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "Write",
+          "line": 176,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CSoundRecorder",
+          "callee": "SetName",
+          "lineNumber": 44
+        },
+        {
+          "caller": "~CSoundRecorder",
+          "callee": "assert",
+          "lineNumber": 49
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 57
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 62
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 66
+        },
+        {
+          "caller": "Run",
+          "callee": "Format",
+          "lineNumber": 72
+        },
+        {
+          "caller": "Run",
+          "callee": "f_open",
+          "lineNumber": 74
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGDBG",
+          "lineNumber": 77
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGERR",
+          "lineNumber": 85
+        },
+        {
+          "caller": "Run",
+          "callee": "f_lseek",
+          "lineNumber": 93
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGERR",
+          "lineNumber": 95
+        },
+        {
+          "caller": "Run",
+          "callee": "Flush",
+          "lineNumber": 101
+        },
+        {
+          "caller": "Run",
+          "callee": "Clear",
+          "lineNumber": 102
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 105
+        },
+        {
+          "caller": "Run",
+          "callee": "Wait",
+          "lineNumber": 107
+        },
+        {
+          "caller": "Run",
+          "callee": "GetBytesAvailable",
+          "lineNumber": 109
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 113
+        },
+        {
+          "caller": "Run",
+          "callee": "f_write",
+          "lineNumber": 116
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGERR",
+          "lineNumber": 120
+        },
+        {
+          "caller": "Run",
+          "callee": "Clear",
+          "lineNumber": 129
+        },
+        {
+          "caller": "Run",
+          "callee": "WAVE_FILE_HEADER",
+          "lineNumber": 134
+        },
+        {
+          "caller": "Run",
+          "callee": "f_rewind",
+          "lineNumber": 138
+        },
+        {
+          "caller": "Run",
+          "callee": "f_write",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGERR",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Run",
+          "callee": "f_close",
+          "lineNumber": 150
+        },
+        {
+          "caller": "Run",
+          "callee": "LOGDBG",
+          "lineNumber": 152
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 154
+        },
+        {
+          "caller": "Run",
+          "callee": "Read",
+          "lineNumber": 156
+        },
+        {
+          "caller": "Run",
+          "callee": "MsSleep",
+          "lineNumber": 158
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 158
+        },
+        {
+          "caller": "Run",
+          "callee": "f_close",
+          "lineNumber": 167
+        },
+        {
+          "caller": "Run",
+          "callee": "Sleep",
+          "lineNumber": 172
+        },
+        {
+          "caller": "Run",
+          "callee": "CScheduler::Get",
+          "lineNumber": 172
+        },
+        {
+          "caller": "Write",
+          "callee": "GetFreeSpace",
+          "lineNumber": 183
+        },
+        {
+          "caller": "Write",
+          "callee": "Write",
+          "lineNumber": 191
+        },
+        {
+          "caller": "Write",
+          "callee": "GetBytesAvailable",
+          "lineNumber": 193
+        },
+        {
+          "caller": "Write",
+          "callee": "Set",
+          "lineNumber": 195
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/42-soundinput/soundrecorder.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/42-soundinput/wavefile.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 49,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

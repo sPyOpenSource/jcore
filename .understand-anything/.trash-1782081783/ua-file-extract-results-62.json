@@ -1,0 +1,4398 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_get_proc.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 262,
+      "nonEmptyLines": 238,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_surface.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 918,
+      "nonEmptyLines": 776,
+      "functions": [
+        {
+          "name": "egl_surface_pool_free",
+          "startLine": 108,
+          "endLine": 128,
+          "params": [
+            "surface"
+          ]
+        },
+        {
+          "name": "egl_surface_check_attribs",
+          "startLine": 150,
+          "endLine": 236,
+          "params": [
+            "type",
+            "attrib_list",
+            "linear",
+            "premult",
+            "single",
+            "width",
+            "height",
+            "largest_pbuffer",
+            "texture_format",
+            "texture_target",
+            "mipmap_texture"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "egl_surface_check_attribs",
+          "line": 150,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "egl_surface_pool_free",
+          "callee": "khronos_platform_semaphore_destroy",
+          "lineNumber": 115
+        },
+        {
+          "caller": "egl_surface_pool_free",
+          "callee": "khrn_platform_free",
+          "lineNumber": 126
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "vcos_log_trace",
+          "lineNumber": 637
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 639
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "vcos_log_trace",
+          "lineNumber": 642
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "platform_destroy_winhandle",
+          "lineNumber": 643
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "vcos_log_trace",
+          "lineNumber": 649
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "RPC_INT_RES",
+          "lineNumber": 652
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "RPC_CALL1_RES",
+          "lineNumber": 652
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "RPC_UINT",
+          "lineNumber": 655
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "vcos_log_trace",
+          "lineNumber": 660
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "wfc_stream_destroy",
+          "lineNumber": 661
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "vcos_log_trace",
+          "lineNumber": 665
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "egl_surface_pool_free",
+          "lineNumber": 666
+        },
+        {
+          "caller": "egl_surface_free",
+          "callee": "vcos_log_trace",
+          "lineNumber": 668
+        },
+        {
+          "caller": "egl_surface_get_render_buffer",
+          "callee": "UNREACHABLE",
+          "lineNumber": 684
+        },
+        {
+          "caller": "egl_surface_get_attrib",
+          "callee": "egl_surface_get_render_buffer",
+          "lineNumber": 735
+        },
+        {
+          "caller": "egl_surface_set_attrib",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 765
+        },
+        {
+          "caller": "egl_surface_set_attrib",
+          "callee": "RPC_CALL2",
+          "lineNumber": 769
+        },
+        {
+          "caller": "egl_surface_set_attrib",
+          "callee": "RPC_UINT",
+          "lineNumber": 772
+        },
+        {
+          "caller": "egl_surface_set_attrib",
+          "callee": "RPC_INT",
+          "lineNumber": 773
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "vcos_assert",
+          "lineNumber": 808
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "egl_config_get_mapped_format",
+          "lineNumber": 821
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "khrn_image_get_size",
+          "lineNumber": 822
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "khrn_platform_malloc",
+          "lineNumber": 823
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "egl_config_is_lockable",
+          "lineNumber": 833
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "egl_config_get_mapped_format",
+          "lineNumber": 839
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "vcos_assert",
+          "lineNumber": 840
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "khrn_image_get_stride",
+          "lineNumber": 848
+        },
+        {
+          "caller": "egl_surface_get_mapped_buffer_attrib",
+          "callee": "UNREACHABLE",
+          "lineNumber": 869
+        },
+        {
+          "caller": "egl_surface_maybe_free",
+          "callee": "vcos_assert",
+          "lineNumber": 909
+        },
+        {
+          "caller": "egl_surface_maybe_free",
+          "callee": "egl_surface_free",
+          "lineNumber": 917
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client_surface.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 346,
+      "nonEmptyLines": 266,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 2511,
+      "nonEmptyLines": 2006,
+      "functions": [
+        {
+          "name": "eglInitialize",
+          "startLine": 217,
+          "endLine": 257,
+          "params": [
+            "dpy",
+            "major",
+            "minor"
+          ]
+        },
+        {
+          "name": "eglTerminate",
+          "startLine": 309,
+          "endLine": 343,
+          "params": [
+            "dpy"
+          ]
+        },
+        {
+          "name": "eglCreateWindowSurface",
+          "startLine": 578,
+          "endLine": 673,
+          "params": [
+            "dpy",
+            "config",
+            "win",
+            "attrib_list"
+          ]
+        },
+        {
+          "name": "eglCreatePbufferSurface",
+          "startLine": 817,
+          "endLine": 915,
+          "params": [
+            "dpy",
+            "config",
+            "attrib_list"
+          ]
+        },
+        {
+          "name": "callback_check_duplicate_pixmap",
+          "startLine": 924,
+          "endLine": 945,
+          "params": [
+            "map",
+            "key",
+            "value",
+            "data"
+          ]
+        },
+        {
+          "name": "eglCreatePixmapSurface",
+          "startLine": 947,
+          "endLine": 1060,
+          "params": [
+            "dpy",
+            "config",
+            "pixmap",
+            "attrib_list"
+          ]
+        },
+        {
+          "name": "eglDestroySurface",
+          "startLine": 1068,
+          "endLine": 1100,
+          "params": [
+            "dpy",
+            "surf"
+          ]
+        },
+        {
+          "name": "eglQuerySurface",
+          "startLine": 1102,
+          "endLine": 1153,
+          "params": [
+            "dpy",
+            "surf",
+            "attribute",
+            "value"
+          ]
+        },
+        {
+          "name": "eglBindAPI",
+          "startLine": 1155,
+          "endLine": 1170,
+          "params": [
+            "api"
+          ]
+        },
+        {
+          "name": "eglQueryAPI",
+          "startLine": 1172,
+          "endLine": 1177,
+          "params": []
+        },
+        {
+          "name": "eglWaitClient",
+          "startLine": 1179,
+          "endLine": 1200,
+          "params": []
+        },
+        {
+          "name": "eglReleaseThread",
+          "startLine": 1203,
+          "endLine": 1251,
+          "params": []
+        },
+        {
+          "name": "eglCreatePbufferFromClientBuffer",
+          "startLine": 1253,
+          "endLine": 1348,
+          "params": [
+            "dpy",
+            "buftype",
+            "buffer",
+            "config",
+            "attrib_list"
+          ]
+        },
+        {
+          "name": "eglSurfaceAttrib",
+          "startLine": 1350,
+          "endLine": 1374,
+          "params": [
+            "dpy",
+            "surf",
+            "attribute",
+            "value"
+          ]
+        },
+        {
+          "name": "eglBindTexImage",
+          "startLine": 1376,
+          "endLine": 1426,
+          "params": [
+            "dpy",
+            "surf",
+            "buffer"
+          ]
+        },
+        {
+          "name": "eglReleaseTexImage",
+          "startLine": 1428,
+          "endLine": 1471,
+          "params": [
+            "dpy",
+            "surf",
+            "buffer"
+          ]
+        },
+        {
+          "name": "eglSwapInterval",
+          "startLine": 1473,
+          "endLine": 1536,
+          "params": [
+            "dpy",
+            "interval"
+          ]
+        },
+        {
+          "name": "eglCreateContext",
+          "startLine": 1538,
+          "endLine": 1629,
+          "params": [
+            "dpy",
+            "config",
+            "share_ctx",
+            "attrib_list"
+          ]
+        },
+        {
+          "name": "eglDestroyContext",
+          "startLine": 1631,
+          "endLine": 1659,
+          "params": [
+            "dpy",
+            "ctx"
+          ]
+        },
+        {
+          "name": "egl_current_release",
+          "startLine": 1661,
+          "endLine": 1697,
+          "params": [
+            "process",
+            "current"
+          ]
+        },
+        {
+          "name": "set_color_data",
+          "startLine": 1699,
+          "endLine": 1735,
+          "params": [
+            "surface_id",
+            "image"
+          ]
+        },
+        {
+          "name": "send_pixmap",
+          "startLine": 1737,
+          "endLine": 1755,
+          "params": [
+            "surface"
+          ]
+        },
+        {
+          "name": "egl_gl_render_callback",
+          "startLine": 1757,
+          "endLine": 1766,
+          "params": []
+        },
+        {
+          "name": "egl_vg_render_callback",
+          "startLine": 1768,
+          "endLine": 1777,
+          "params": []
+        },
+        {
+          "name": "get_color_data",
+          "startLine": 1779,
+          "endLine": 1811,
+          "params": [
+            "surface_id",
+            "image"
+          ]
+        },
+        {
+          "name": "retrieve_pixmap",
+          "startLine": 1813,
+          "endLine": 1834,
+          "params": [
+            "surface",
+            "wait"
+          ]
+        },
+        {
+          "name": "egl_gl_flush_callback",
+          "startLine": 1836,
+          "endLine": 1845,
+          "params": [
+            "wait"
+          ]
+        },
+        {
+          "name": "egl_vg_flush_callback",
+          "startLine": 1847,
+          "endLine": 1856,
+          "params": [
+            "wait"
+          ]
+        },
+        {
+          "name": "context_and_surface_are_compatible",
+          "startLine": 1858,
+          "endLine": 1883,
+          "params": [
+            "context",
+            "surface"
+          ]
+        },
+        {
+          "name": "egl_current_set",
+          "startLine": 1885,
+          "endLine": 1938,
+          "params": [
+            "process",
+            "thread",
+            "current",
+            "context",
+            "draw",
+            "read"
+          ]
+        },
+        {
+          "name": "flush_current_api",
+          "startLine": 1940,
+          "endLine": 1953,
+          "params": [
+            "thread"
+          ]
+        },
+        {
+          "name": "eglMakeCurrent",
+          "startLine": 1955,
+          "endLine": 2050,
+          "params": [
+            "dpy",
+            "dr",
+            "rd",
+            "ctx"
+          ]
+        },
+        {
+          "name": "eglGetCurrentContext",
+          "startLine": 2052,
+          "endLine": 2078,
+          "params": []
+        },
+        {
+          "name": "eglGetCurrentSurface",
+          "startLine": 2080,
+          "endLine": 2120,
+          "params": [
+            "readdraw"
+          ]
+        },
+        {
+          "name": "eglGetCurrentDisplay",
+          "startLine": 2122,
+          "endLine": 2148,
+          "params": []
+        },
+        {
+          "name": "eglQueryContext",
+          "startLine": 2150,
+          "endLine": 2181,
+          "params": [
+            "dpy",
+            "ctx",
+            "attribute",
+            "value"
+          ]
+        },
+        {
+          "name": "eglWaitGL",
+          "startLine": 2183,
+          "endLine": 2203,
+          "params": []
+        },
+        {
+          "name": "eglWaitNative",
+          "startLine": 2205,
+          "endLine": 2224,
+          "params": [
+            "engine"
+          ]
+        },
+        {
+          "name": "eglSwapBuffers",
+          "startLine": 2226,
+          "endLine": 2363,
+          "params": [
+            "dpy",
+            "surf"
+          ]
+        },
+        {
+          "name": "eglCopyBuffers",
+          "startLine": 2365,
+          "endLine": 2414,
+          "params": [
+            "dpy",
+            "surf",
+            "target"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "eglInitialize",
+          "line": 217,
+          "isDefault": false
+        },
+        {
+          "name": "eglTerminate",
+          "line": 309,
+          "isDefault": false
+        },
+        {
+          "name": "eglCreateWindowSurface",
+          "line": 578,
+          "isDefault": false
+        },
+        {
+          "name": "eglCreatePbufferSurface",
+          "line": 817,
+          "isDefault": false
+        },
+        {
+          "name": "eglCreatePixmapSurface",
+          "line": 947,
+          "isDefault": false
+        },
+        {
+          "name": "eglDestroySurface",
+          "line": 1068,
+          "isDefault": false
+        },
+        {
+          "name": "eglQuerySurface",
+          "line": 1102,
+          "isDefault": false
+        },
+        {
+          "name": "eglBindAPI",
+          "line": 1155,
+          "isDefault": false
+        },
+        {
+          "name": "eglQueryAPI",
+          "line": 1172,
+          "isDefault": false
+        },
+        {
+          "name": "eglWaitClient",
+          "line": 1179,
+          "isDefault": false
+        },
+        {
+          "name": "eglReleaseThread",
+          "line": 1203,
+          "isDefault": false
+        },
+        {
+          "name": "eglCreatePbufferFromClientBuffer",
+          "line": 1253,
+          "isDefault": false
+        },
+        {
+          "name": "eglSurfaceAttrib",
+          "line": 1350,
+          "isDefault": false
+        },
+        {
+          "name": "eglBindTexImage",
+          "line": 1376,
+          "isDefault": false
+        },
+        {
+          "name": "eglReleaseTexImage",
+          "line": 1428,
+          "isDefault": false
+        },
+        {
+          "name": "eglSwapInterval",
+          "line": 1473,
+          "isDefault": false
+        },
+        {
+          "name": "eglCreateContext",
+          "line": 1538,
+          "isDefault": false
+        },
+        {
+          "name": "eglDestroyContext",
+          "line": 1631,
+          "isDefault": false
+        },
+        {
+          "name": "egl_gl_render_callback",
+          "line": 1757,
+          "isDefault": false
+        },
+        {
+          "name": "egl_vg_render_callback",
+          "line": 1768,
+          "isDefault": false
+        },
+        {
+          "name": "egl_gl_flush_callback",
+          "line": 1836,
+          "isDefault": false
+        },
+        {
+          "name": "egl_vg_flush_callback",
+          "line": 1847,
+          "isDefault": false
+        },
+        {
+          "name": "eglMakeCurrent",
+          "line": 1955,
+          "isDefault": false
+        },
+        {
+          "name": "eglGetCurrentContext",
+          "line": 2052,
+          "isDefault": false
+        },
+        {
+          "name": "eglGetCurrentSurface",
+          "line": 2080,
+          "isDefault": false
+        },
+        {
+          "name": "eglGetCurrentDisplay",
+          "line": 2122,
+          "isDefault": false
+        },
+        {
+          "name": "eglQueryContext",
+          "line": 2150,
+          "isDefault": false
+        },
+        {
+          "name": "eglWaitGL",
+          "line": 2183,
+          "isDefault": false
+        },
+        {
+          "name": "eglWaitNative",
+          "line": 2205,
+          "isDefault": false
+        },
+        {
+          "name": "eglSwapBuffers",
+          "line": 2226,
+          "isDefault": false
+        },
+        {
+          "name": "eglCopyBuffers",
+          "line": 2365,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "eglInitialize",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 219
+        },
+        {
+          "caller": "eglInitialize",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 222
+        },
+        {
+          "caller": "eglInitialize",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 225
+        },
+        {
+          "caller": "eglInitialize",
+          "callee": "client_process_state_init",
+          "lineNumber": 228
+        },
+        {
+          "caller": "eglInitialize",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 249
+        },
+        {
+          "caller": "eglInitialize",
+          "callee": "vcos_log_set_level",
+          "lineNumber": 251
+        },
+        {
+          "caller": "eglInitialize",
+          "callee": "vcos_log_register",
+          "lineNumber": 252
+        },
+        {
+          "caller": "eglInitialize",
+          "callee": "vcos_log_info",
+          "lineNumber": 253
+        },
+        {
+          "caller": "eglInitialize",
+          "callee": "khrn_init_options",
+          "lineNumber": 254
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 311
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "vcos_log_trace",
+          "lineNumber": 313
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 320
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 323
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "client_process_state_term",
+          "lineNumber": 326
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "client_try_unload_server",
+          "lineNumber": 331
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 336
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "vcos_log_trace",
+          "lineNumber": 338
+        },
+        {
+          "caller": "eglTerminate",
+          "callee": "vcos_log_unregister",
+          "lineNumber": 339
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "vcos_log_trace",
+          "lineNumber": 584
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 586
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "platform_get_handle",
+          "lineNumber": 588
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "egl_surface_check_attribs",
+          "lineNumber": 602
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "platform_get_dimensions",
+          "lineNumber": 612
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "egl_surface_create",
+          "lineNumber": 628
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "khrn_pointer_map_insert",
+          "lineNumber": 650
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "egl_surface_free",
+          "lineNumber": 656
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 665
+        },
+        {
+          "caller": "eglCreateWindowSurface",
+          "callee": "vcos_log_trace",
+          "lineNumber": 670
+        },
+        {
+          "caller": "eglCreatePbufferSurface",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 824
+        },
+        {
+          "caller": "eglCreatePbufferSurface",
+          "callee": "egl_surface_check_attribs",
+          "lineNumber": 839
+        },
+        {
+          "caller": "eglCreatePbufferSurface",
+          "callee": "egl_config_bindable",
+          "lineNumber": 845
+        },
+        {
+          "caller": "eglCreatePbufferSurface",
+          "callee": "egl_surface_create",
+          "lineNumber": 877
+        },
+        {
+          "caller": "eglCreatePbufferSurface",
+          "callee": "khrn_pointer_map_insert",
+          "lineNumber": 895
+        },
+        {
+          "caller": "eglCreatePbufferSurface",
+          "callee": "egl_surface_free",
+          "lineNumber": 901
+        },
+        {
+          "caller": "eglCreatePbufferSurface",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 909
+        },
+        {
+          "caller": "callback_check_duplicate_pixmap",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 929
+        },
+        {
+          "caller": "callback_check_duplicate_pixmap",
+          "callee": "UNUSED_NDEBUG",
+          "lineNumber": 930
+        },
+        {
+          "caller": "callback_check_duplicate_pixmap",
+          "callee": "vcos_assert",
+          "lineNumber": 932
+        },
+        {
+          "caller": "callback_check_duplicate_pixmap",
+          "callee": "vcos_assert",
+          "lineNumber": 933
+        },
+        {
+          "caller": "callback_check_duplicate_pixmap",
+          "callee": "vcos_assert",
+          "lineNumber": 934
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "vcos_log_trace",
+          "lineNumber": 955
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 957
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "egl_surface_check_attribs",
+          "lineNumber": 966
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "platform_get_pixmap_info",
+          "lineNumber": 973
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "platform_get_pixmap_server_handle",
+          "lineNumber": 978
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "egl_config_match_pixmap_info",
+          "lineNumber": 990
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "platform_match_pixmap_api_support",
+          "lineNumber": 991
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "egl_config_get_api_support",
+          "lineNumber": 991
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "platform_get_pixmap_server_handle",
+          "lineNumber": 1010
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "khrn_pointer_map_iterate",
+          "lineNumber": 1013
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "egl_surface_create",
+          "lineNumber": 1019
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "khrn_pointer_map_insert",
+          "lineNumber": 1037
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "egl_surface_free",
+          "lineNumber": 1043
+        },
+        {
+          "caller": "eglCreatePixmapSurface",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1054
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1074
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1076
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1082
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 1083
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "khrn_pointer_map_delete",
+          "lineNumber": 1087
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1088
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "egl_surface_maybe_free",
+          "lineNumber": 1089
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1094
+        },
+        {
+          "caller": "eglDestroySurface",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1098
+        },
+        {
+          "caller": "eglQuerySurface",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1109
+        },
+        {
+          "caller": "eglQuerySurface",
+          "callee": "client_egl_get_locked_surface",
+          "lineNumber": 1115
+        },
+        {
+          "caller": "eglQuerySurface",
+          "callee": "egl_surface_get_mapped_buffer_attrib",
+          "lineNumber": 1129
+        },
+        {
+          "caller": "eglQuerySurface",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1131
+        },
+        {
+          "caller": "eglQuerySurface",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1137
+        },
+        {
+          "caller": "eglQuerySurface",
+          "callee": "egl_surface_get_attrib",
+          "lineNumber": 1142
+        },
+        {
+          "caller": "eglQuerySurface",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1148
+        },
+        {
+          "caller": "eglBindAPI",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1157
+        },
+        {
+          "caller": "eglQueryAPI",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1174
+        },
+        {
+          "caller": "eglWaitClient",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1181
+        },
+        {
+          "caller": "eglWaitClient",
+          "callee": "RPC_INT_RES",
+          "lineNumber": 1187
+        },
+        {
+          "caller": "eglWaitClient",
+          "callee": "RPC_CALL2_RES",
+          "lineNumber": 1187
+        },
+        {
+          "caller": "eglWaitClient",
+          "callee": "RPC_UINT",
+          "lineNumber": 1190
+        },
+        {
+          "caller": "eglWaitClient",
+          "callee": "RPC_UINT",
+          "lineNumber": 1191
+        },
+        {
+          "caller": "eglWaitClient",
+          "callee": "egl_gl_flush_callback",
+          "lineNumber": 1194
+        },
+        {
+          "caller": "eglWaitClient",
+          "callee": "egl_vg_flush_callback",
+          "lineNumber": 1196
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1205
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1209
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 1211
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "CLIENT_GET_PROCESS_STATE",
+          "lineNumber": 1214
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "egl_current_release",
+          "lineNumber": 1217
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "egl_current_release",
+          "lineNumber": 1218
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "khronos_server_lock_func_table",
+          "lineNumber": 1222
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "client_library_get_connection",
+          "lineNumber": 1222
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "khrn_misc_rpc_flush_impl",
+          "lineNumber": 1224
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "khronos_server_unlock_func_table",
+          "lineNumber": 1226
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "RPC_FLUSH",
+          "lineNumber": 1228
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "client_try_unload_server",
+          "lineNumber": 1233
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1241
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "platform_hint_thread_finished",
+          "lineNumber": 1244
+        },
+        {
+          "caller": "eglReleaseThread",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1246
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1261
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "egl_surface_check_attribs",
+          "lineNumber": 1278
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "egl_config_bindable",
+          "lineNumber": 1283
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "egl_surface_from_vg_image",
+          "lineNumber": 1308
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "khrn_pointer_map_insert",
+          "lineNumber": 1319
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "egl_surface_free",
+          "lineNumber": 1325
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "UNUSED",
+          "lineNumber": 1334
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "UNUSED",
+          "lineNumber": 1335
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "UNUSED",
+          "lineNumber": 1336
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "UNUSED",
+          "lineNumber": 1337
+        },
+        {
+          "caller": "eglCreatePbufferFromClientBuffer",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1342
+        },
+        {
+          "caller": "eglSurfaceAttrib",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1357
+        },
+        {
+          "caller": "eglSurfaceAttrib",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 1363
+        },
+        {
+          "caller": "eglSurfaceAttrib",
+          "callee": "egl_surface_set_attrib",
+          "lineNumber": 1366
+        },
+        {
+          "caller": "eglSurfaceAttrib",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1369
+        },
+        {
+          "caller": "eglBindTexImage",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1382
+        },
+        {
+          "caller": "eglBindTexImage",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 1389
+        },
+        {
+          "caller": "eglBindTexImage",
+          "callee": "RPC_BOOLEAN_RES",
+          "lineNumber": 1395
+        },
+        {
+          "caller": "eglBindTexImage",
+          "callee": "RPC_CALL1_RES",
+          "lineNumber": 1395
+        },
+        {
+          "caller": "eglBindTexImage",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1421
+        },
+        {
+          "caller": "eglReleaseTexImage",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1434
+        },
+        {
+          "caller": "eglReleaseTexImage",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 1440
+        },
+        {
+          "caller": "eglReleaseTexImage",
+          "callee": "RPC_CALL1",
+          "lineNumber": 1447
+        },
+        {
+          "caller": "eglReleaseTexImage",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1466
+        },
+        {
+          "caller": "eglSwapInterval",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1479
+        },
+        {
+          "caller": "eglSwapInterval",
+          "callee": "RPC_CALL2",
+          "lineNumber": 1506
+        },
+        {
+          "caller": "eglSwapInterval",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1530
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1544
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1546
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "(EGLint)",
+          "lineNumber": 1552
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "egl_context_check_attribs",
+          "lineNumber": 1555
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "egl_config_get_api_support",
+          "lineNumber": 1558
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "client_egl_get_context",
+          "lineNumber": 1567
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "egl_context_create",
+          "lineNumber": 1596
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "khrn_pointer_map_insert",
+          "lineNumber": 1602
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "egl_context_term",
+          "lineNumber": 1608
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "khrn_platform_free",
+          "lineNumber": 1609
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1621
+        },
+        {
+          "caller": "eglCreateContext",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1626
+        },
+        {
+          "caller": "eglDestroyContext",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1637
+        },
+        {
+          "caller": "eglDestroyContext",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 1639
+        },
+        {
+          "caller": "eglDestroyContext",
+          "callee": "client_egl_get_context",
+          "lineNumber": 1645
+        },
+        {
+          "caller": "eglDestroyContext",
+          "callee": "khrn_pointer_map_delete",
+          "lineNumber": 1649
+        },
+        {
+          "caller": "eglDestroyContext",
+          "callee": "egl_context_maybe_free",
+          "lineNumber": 1650
+        },
+        {
+          "caller": "eglDestroyContext",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1653
+        },
+        {
+          "caller": "egl_current_release",
+          "callee": "vcos_assert",
+          "lineNumber": 1665
+        },
+        {
+          "caller": "egl_current_release",
+          "callee": "egl_context_set_callbacks",
+          "lineNumber": 1668
+        },
+        {
+          "caller": "egl_current_release",
+          "callee": "egl_context_maybe_free",
+          "lineNumber": 1672
+        },
+        {
+          "caller": "egl_current_release",
+          "callee": "vcos_assert",
+          "lineNumber": 1674
+        },
+        {
+          "caller": "egl_current_release",
+          "callee": "vcos_assert",
+          "lineNumber": 1680
+        },
+        {
+          "caller": "egl_current_release",
+          "callee": "egl_surface_maybe_free",
+          "lineNumber": 1685
+        },
+        {
+          "caller": "egl_current_release",
+          "callee": "vcos_assert",
+          "lineNumber": 1690
+        },
+        {
+          "caller": "egl_current_release",
+          "callee": "egl_surface_maybe_free",
+          "lineNumber": 1695
+        },
+        {
+          "caller": "set_color_data",
+          "callee": "khrn_image_is_brcm1",
+          "lineNumber": 1706
+        },
+        {
+          "caller": "set_color_data",
+          "callee": "vcos_assert",
+          "lineNumber": 1709
+        },
+        {
+          "caller": "set_color_data",
+          "callee": "_min",
+          "lineNumber": 1712
+        },
+        {
+          "caller": "set_color_data",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1717
+        },
+        {
+          "caller": "set_color_data",
+          "callee": "RPC_CALL7_IN_BULK",
+          "lineNumber": 1720
+        },
+        {
+          "caller": "send_pixmap",
+          "callee": "platform_get_pixmap_info",
+          "lineNumber": 1742
+        },
+        {
+          "caller": "send_pixmap",
+          "callee": "vcos_verify",
+          "lineNumber": 1743
+        },
+        {
+          "caller": "send_pixmap",
+          "callee": "set_color_data",
+          "lineNumber": 1747
+        },
+        {
+          "caller": "send_pixmap",
+          "callee": "platform_send_pixmap_completed",
+          "lineNumber": 1749
+        },
+        {
+          "caller": "send_pixmap",
+          "callee": "khrn_platform_release_pixmap_info",
+          "lineNumber": 1753
+        },
+        {
+          "caller": "egl_gl_render_callback",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1759
+        },
+        {
+          "caller": "egl_gl_render_callback",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 1761
+        },
+        {
+          "caller": "egl_gl_render_callback",
+          "callee": "send_pixmap",
+          "lineNumber": 1763
+        },
+        {
+          "caller": "egl_gl_render_callback",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1765
+        },
+        {
+          "caller": "egl_vg_render_callback",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1770
+        },
+        {
+          "caller": "egl_vg_render_callback",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 1772
+        },
+        {
+          "caller": "egl_vg_render_callback",
+          "callee": "send_pixmap",
+          "lineNumber": 1774
+        },
+        {
+          "caller": "egl_vg_render_callback",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1776
+        },
+        {
+          "caller": "get_color_data",
+          "callee": "khrn_image_is_brcm1",
+          "lineNumber": 1786
+        },
+        {
+          "caller": "get_color_data",
+          "callee": "vcos_assert",
+          "lineNumber": 1789
+        },
+        {
+          "caller": "get_color_data",
+          "callee": "_min",
+          "lineNumber": 1792
+        },
+        {
+          "caller": "get_color_data",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1794
+        },
+        {
+          "caller": "get_color_data",
+          "callee": "RPC_CALL7_OUT_BULK",
+          "lineNumber": 1797
+        },
+        {
+          "caller": "retrieve_pixmap",
+          "callee": "UNUSED",
+          "lineNumber": 1815
+        },
+        {
+          "caller": "retrieve_pixmap",
+          "callee": "platform_get_pixmap_info",
+          "lineNumber": 1821
+        },
+        {
+          "caller": "retrieve_pixmap",
+          "callee": "vcos_verify",
+          "lineNumber": 1822
+        },
+        {
+          "caller": "retrieve_pixmap",
+          "callee": "get_color_data",
+          "lineNumber": 1826
+        },
+        {
+          "caller": "retrieve_pixmap",
+          "callee": "platform_retrieve_pixmap_completed",
+          "lineNumber": 1829
+        },
+        {
+          "caller": "retrieve_pixmap",
+          "callee": "khrn_platform_release_pixmap_info",
+          "lineNumber": 1832
+        },
+        {
+          "caller": "egl_gl_flush_callback",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1838
+        },
+        {
+          "caller": "egl_gl_flush_callback",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 1840
+        },
+        {
+          "caller": "egl_gl_flush_callback",
+          "callee": "retrieve_pixmap",
+          "lineNumber": 1842
+        },
+        {
+          "caller": "egl_gl_flush_callback",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1844
+        },
+        {
+          "caller": "egl_vg_flush_callback",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1849
+        },
+        {
+          "caller": "egl_vg_flush_callback",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 1851
+        },
+        {
+          "caller": "egl_vg_flush_callback",
+          "callee": "retrieve_pixmap",
+          "lineNumber": 1853
+        },
+        {
+          "caller": "egl_vg_flush_callback",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 1855
+        },
+        {
+          "caller": "context_and_surface_are_compatible",
+          "callee": "UNREACHABLE",
+          "lineNumber": 1877
+        },
+        {
+          "caller": "context_and_surface_are_compatible",
+          "callee": "egl_config_bpps_match",
+          "lineNumber": 1881
+        },
+        {
+          "caller": "context_and_surface_are_compatible",
+          "callee": "egl_config_get_api_support",
+          "lineNumber": 1882
+        },
+        {
+          "caller": "egl_current_set",
+          "callee": "UNUSED",
+          "lineNumber": 1889
+        },
+        {
+          "caller": "egl_current_set",
+          "callee": "context_and_surface_are_compatible",
+          "lineNumber": 1900
+        },
+        {
+          "caller": "egl_current_set",
+          "callee": "context_and_surface_are_compatible",
+          "lineNumber": 1903
+        },
+        {
+          "caller": "egl_current_set",
+          "callee": "egl_current_release",
+          "lineNumber": 1907
+        },
+        {
+          "caller": "egl_current_set",
+          "callee": "egl_surface_get_render_buffer",
+          "lineNumber": 1913
+        },
+        {
+          "caller": "egl_current_set",
+          "callee": "egl_context_set_callbacks",
+          "lineNumber": 1932
+        },
+        {
+          "caller": "egl_current_set",
+          "callee": "egl_context_set_callbacks",
+          "lineNumber": 1934
+        },
+        {
+          "caller": "flush_current_api",
+          "callee": "RPC_CALL2",
+          "lineNumber": 1942
+        },
+        {
+          "caller": "flush_current_api",
+          "callee": "RPC_UINT",
+          "lineNumber": 1945
+        },
+        {
+          "caller": "flush_current_api",
+          "callee": "RPC_UINT",
+          "lineNumber": 1946
+        },
+        {
+          "caller": "flush_current_api",
+          "callee": "RPC_FLUSH",
+          "lineNumber": 1947
+        },
+        {
+          "caller": "flush_current_api",
+          "callee": "egl_gl_flush_callback",
+          "lineNumber": 1950
+        },
+        {
+          "caller": "flush_current_api",
+          "callee": "egl_vg_flush_callback",
+          "lineNumber": 1952
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 1957
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 1961
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "vcos_log_trace",
+          "lineNumber": 1963
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 1971
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "flush_current_api",
+          "lineNumber": 1975
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "egl_current_release",
+          "lineNumber": 1977
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "client_send_make_current",
+          "lineNumber": 1980
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "client_try_unload_server",
+          "lineNumber": 1982
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 1997
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "client_egl_get_context",
+          "lineNumber": 2006
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 2016
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 2017
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "egl_current_set",
+          "lineNumber": 2032
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "client_send_make_current",
+          "lineNumber": 2035
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2045
+        },
+        {
+          "caller": "eglMakeCurrent",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2047
+        },
+        {
+          "caller": "eglGetCurrentContext",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 2054
+        },
+        {
+          "caller": "eglGetCurrentContext",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 2057
+        },
+        {
+          "caller": "eglGetCurrentContext",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2075
+        },
+        {
+          "caller": "eglGetCurrentSurface",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 2082
+        },
+        {
+          "caller": "eglGetCurrentSurface",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 2085
+        },
+        {
+          "caller": "eglGetCurrentSurface",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2117
+        },
+        {
+          "caller": "eglGetCurrentDisplay",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 2124
+        },
+        {
+          "caller": "eglGetCurrentDisplay",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 2127
+        },
+        {
+          "caller": "eglGetCurrentDisplay",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2145
+        },
+        {
+          "caller": "eglQueryContext",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 2156
+        },
+        {
+          "caller": "eglQueryContext",
+          "callee": "client_egl_get_context",
+          "lineNumber": 2166
+        },
+        {
+          "caller": "eglQueryContext",
+          "callee": "egl_context_get_attrib",
+          "lineNumber": 2169
+        },
+        {
+          "caller": "eglQueryContext",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2175
+        },
+        {
+          "caller": "eglWaitGL",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 2185
+        },
+        {
+          "caller": "eglWaitGL",
+          "callee": "RPC_INT_RES",
+          "lineNumber": 2191
+        },
+        {
+          "caller": "eglWaitGL",
+          "callee": "RPC_CALL2_RES",
+          "lineNumber": 2191
+        },
+        {
+          "caller": "eglWaitGL",
+          "callee": "RPC_UINT",
+          "lineNumber": 2194
+        },
+        {
+          "caller": "eglWaitGL",
+          "callee": "RPC_UINT",
+          "lineNumber": 2195
+        },
+        {
+          "caller": "eglWaitGL",
+          "callee": "egl_gl_flush_callback",
+          "lineNumber": 2197
+        },
+        {
+          "caller": "eglWaitNative",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 2207
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "UNREACHABLE",
+          "lineNumber": 2230
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2237
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 2239
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 2245
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2247
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "platform_get_dimensions",
+          "lineNumber": 2279
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "platform_get_handle",
+          "lineNumber": 2283
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2289
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "platform_surface_update",
+          "lineNumber": 2302
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2304
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "RPC_CALL6",
+          "lineNumber": 2306
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "RPC_UINT",
+          "lineNumber": 2309
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "RPC_UINT",
+          "lineNumber": 2310
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "RPC_UINT",
+          "lineNumber": 2311
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "RPC_UINT",
+          "lineNumber": 2312
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "RPC_UINT",
+          "lineNumber": 2313
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "RPC_UINT",
+          "lineNumber": 2314
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "khrn_platform_get_window_position",
+          "lineNumber": 2314
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "RPC_FLUSH",
+          "lineNumber": 2316
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2319
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "platform_dequeue",
+          "lineNumber": 2320
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 2321
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "wfc_stream_await_buffer",
+          "lineNumber": 2325
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2331
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "khronos_platform_semaphore_acquire",
+          "lineNumber": 2332
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 2343
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "vgFlush",
+          "lineNumber": 2345
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2354
+        },
+        {
+          "caller": "eglSwapBuffers",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2359
+        },
+        {
+          "caller": "eglCopyBuffers",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 2371
+        },
+        {
+          "caller": "eglCopyBuffers",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 2377
+        },
+        {
+          "caller": "eglCopyBuffers",
+          "callee": "platform_get_pixmap_info",
+          "lineNumber": 2387
+        },
+        {
+          "caller": "eglCopyBuffers",
+          "callee": "flush_current_api",
+          "lineNumber": 2399
+        },
+        {
+          "caller": "eglCopyBuffers",
+          "callee": "get_color_data",
+          "lineNumber": 2401
+        },
+        {
+          "caller": "eglCopyBuffers",
+          "callee": "khrn_platform_release_pixmap_info",
+          "lineNumber": 2403
+        },
+        {
+          "caller": "eglCopyBuffers",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2408
+        },
+        {
+          "caller": "eglDestroyByPidBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 2420
+        },
+        {
+          "caller": "eglDestroyByPidBRCM",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 2423
+        },
+        {
+          "caller": "eglDestroyByPidBRCM",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 2426
+        },
+        {
+          "caller": "eglDestroyByPidBRCM",
+          "callee": "RPC_CALL2",
+          "lineNumber": 2431
+        },
+        {
+          "caller": "eglDestroyByPidBRCM",
+          "callee": "RPC_UINT",
+          "lineNumber": 2434
+        },
+        {
+          "caller": "eglDestroyByPidBRCM",
+          "callee": "RPC_UINT",
+          "lineNumber": 2435
+        },
+        {
+          "caller": "eglDestroyByPidBRCM",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2441
+        },
+        {
+          "caller": "eglDirectRenderingPointer",
+          "callee": "CLIENT_LOCK_AND_GET_STATES",
+          "lineNumber": 2452
+        },
+        {
+          "caller": "eglDirectRenderingPointer",
+          "callee": "client_egl_get_surface",
+          "lineNumber": 2458
+        },
+        {
+          "caller": "eglDirectRenderingPointer",
+          "callee": "RPC_CALL6",
+          "lineNumber": 2465
+        },
+        {
+          "caller": "eglDirectRenderingPointer",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2478
+        },
+        {
+          "caller": "eglProcStateValid",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 2488
+        },
+        {
+          "caller": "eglProcStateValid",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 2490
+        },
+        {
+          "caller": "eglProcStateValid",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2492
+        },
+        {
+          "caller": "eglProcStateValid",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 2495
+        },
+        {
+          "caller": "eglProcStateValid",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 2505
+        },
+        {
+          "caller": "eglProcStateValid",
+          "callee": "vcos_log_trace",
+          "lineNumber": 2507
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 31,
+        "functionCount": 40,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_int_config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_int_impl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 181,
+      "nonEmptyLines": 152,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/egl/egl_int.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 45,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_brcm_driver_monitor_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 148,
+      "nonEmptyLines": 115,
+      "callGraph": [
+        {
+          "caller": "eglInitDriverMonitorBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 46
+        },
+        {
+          "caller": "eglInitDriverMonitorBRCM",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 49
+        },
+        {
+          "caller": "eglInitDriverMonitorBRCM",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 52
+        },
+        {
+          "caller": "eglInitDriverMonitorBRCM",
+          "callee": "RPC_BOOLEAN_RES",
+          "lineNumber": 57
+        },
+        {
+          "caller": "eglInitDriverMonitorBRCM",
+          "callee": "RPC_CALL2_RES",
+          "lineNumber": 57
+        },
+        {
+          "caller": "eglInitDriverMonitorBRCM",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 77
+        },
+        {
+          "caller": "egl_driver_monitor_term",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 84
+        },
+        {
+          "caller": "egl_driver_monitor_term",
+          "callee": "RPC_CALL0",
+          "lineNumber": 88
+        },
+        {
+          "caller": "eglGetDriverMonitorXMLBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 98
+        },
+        {
+          "caller": "eglGetDriverMonitorXMLBRCM",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 100
+        },
+        {
+          "caller": "eglGetDriverMonitorXMLBRCM",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 103
+        },
+        {
+          "caller": "eglGetDriverMonitorXMLBRCM",
+          "callee": "RPC_CALL2_OUT_BULK",
+          "lineNumber": 109
+        },
+        {
+          "caller": "eglGetDriverMonitorXMLBRCM",
+          "callee": "strlen",
+          "lineNumber": 114
+        },
+        {
+          "caller": "eglGetDriverMonitorXMLBRCM",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 119
+        },
+        {
+          "caller": "eglTermDriverMonitorBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 124
+        },
+        {
+          "caller": "eglTermDriverMonitorBRCM",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 127
+        },
+        {
+          "caller": "eglTermDriverMonitorBRCM",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 130
+        },
+        {
+          "caller": "eglTermDriverMonitorBRCM",
+          "callee": "egl_driver_monitor_term",
+          "lineNumber": 134
+        },
+        {
+          "caller": "eglTermDriverMonitorBRCM",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 143
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_brcm_driver_monitor_client.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 26,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_brcm_flush_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 42,
+      "callGraph": [
+        {
+          "caller": "eglFlushBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 46
+        },
+        {
+          "caller": "eglFlushBRCM",
+          "callee": "RPC_FLUSH",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_brcm_global_image_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 221,
+      "nonEmptyLines": 181,
+      "callGraph": [
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 66
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "get_bytes_per_pixel",
+          "lineNumber": 72
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_CALL4_OUT_CTRL",
+          "lineNumber": 85
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 88
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 89
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 90
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_CALL7",
+          "lineNumber": 103
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "vcos_assert",
+          "lineNumber": 108
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "_min",
+          "lineNumber": 111
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 115
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 116
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 117
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 118
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 119
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 120
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 122
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "rpc_begin",
+          "lineNumber": 124
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "rpc_send_ctrl_begin",
+          "lineNumber": 125
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "rpc_send_ctrl_write",
+          "lineNumber": 126
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "rpc_send_ctrl_end",
+          "lineNumber": 127
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "rpc_send_bulk_gather",
+          "lineNumber": 128
+        },
+        {
+          "caller": "eglCreateGlobalImageBRCM",
+          "callee": "rpc_end",
+          "lineNumber": 130
+        },
+        {
+          "caller": "eglCreateCopyGlobalImageBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 149
+        },
+        {
+          "caller": "eglCreateCopyGlobalImageBRCM",
+          "callee": "RPC_CALL3_OUT_CTRL",
+          "lineNumber": 155
+        },
+        {
+          "caller": "eglCreateCopyGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 158
+        },
+        {
+          "caller": "eglCreateCopyGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 159
+        },
+        {
+          "caller": "eglDestroyGlobalImageBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 179
+        },
+        {
+          "caller": "eglDestroyGlobalImageBRCM",
+          "callee": "RPC_BOOLEAN_RES",
+          "lineNumber": 185
+        },
+        {
+          "caller": "eglDestroyGlobalImageBRCM",
+          "callee": "RPC_CALL2_RES",
+          "lineNumber": 185
+        },
+        {
+          "caller": "eglDestroyGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 188
+        },
+        {
+          "caller": "eglDestroyGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 189
+        },
+        {
+          "caller": "eglQueryGlobalImageBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 206
+        },
+        {
+          "caller": "eglQueryGlobalImageBRCM",
+          "callee": "RPC_BOOLEAN_RES",
+          "lineNumber": 208
+        },
+        {
+          "caller": "eglQueryGlobalImageBRCM",
+          "callee": "RPC_CALL3_OUT_CTRL_RES",
+          "lineNumber": 208
+        },
+        {
+          "caller": "eglQueryGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 211
+        },
+        {
+          "caller": "eglQueryGlobalImageBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 212
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_brcm_perf_monitor_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 149,
+      "nonEmptyLines": 114,
+      "callGraph": [
+        {
+          "caller": "eglInitPerfMonitorBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 46
+        },
+        {
+          "caller": "eglInitPerfMonitorBRCM",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 49
+        },
+        {
+          "caller": "eglInitPerfMonitorBRCM",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 52
+        },
+        {
+          "caller": "eglInitPerfMonitorBRCM",
+          "callee": "RPC_BOOLEAN_RES",
+          "lineNumber": 56
+        },
+        {
+          "caller": "eglInitPerfMonitorBRCM",
+          "callee": "RPC_CALL0_RES",
+          "lineNumber": 56
+        },
+        {
+          "caller": "eglInitPerfMonitorBRCM",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 70
+        },
+        {
+          "caller": "egl_perf_monitor_term",
+          "callee": "RPC_CALL0",
+          "lineNumber": 78
+        },
+        {
+          "caller": "eglTermPerfMonitorBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 87
+        },
+        {
+          "caller": "eglTermPerfMonitorBRCM",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 90
+        },
+        {
+          "caller": "eglTermPerfMonitorBRCM",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 93
+        },
+        {
+          "caller": "eglTermPerfMonitorBRCM",
+          "callee": "egl_perf_monitor_term",
+          "lineNumber": 96
+        },
+        {
+          "caller": "eglTermPerfMonitorBRCM",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 104
+        },
+        {
+          "caller": "eglPerfStatsResetBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 115
+        },
+        {
+          "caller": "eglPerfStatsResetBRCM",
+          "callee": "RPC_CALL0",
+          "lineNumber": 116
+        },
+        {
+          "caller": "eglPerfStatsGetBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 121
+        },
+        {
+          "caller": "eglPerfStatsGetBRCM",
+          "callee": "RPC_CALL3_OUT_BULK",
+          "lineNumber": 124
+        },
+        {
+          "caller": "eglPerfStatsGetBRCM",
+          "callee": "RPC_INT",
+          "lineNumber": 127
+        },
+        {
+          "caller": "eglPerfStatsGetBRCM",
+          "callee": "RPC_BOOLEAN",
+          "lineNumber": 128
+        },
+        {
+          "caller": "eglProcessMemUsageGetBRCM",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 138
+        },
+        {
+          "caller": "eglProcessMemUsageGetBRCM",
+          "callee": "RPC_CALL4_OUT_BULK",
+          "lineNumber": 140
+        },
+        {
+          "caller": "eglProcessMemUsageGetBRCM",
+          "callee": "RPC_UINT",
+          "lineNumber": 143
+        },
+        {
+          "caller": "eglProcessMemUsageGetBRCM",
+          "callee": "RPC_UINT",
+          "lineNumber": 144
+        },
+        {
+          "caller": "eglProcessMemUsageGetBRCM",
+          "callee": "RPC_UINT",
+          "lineNumber": 145
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_brcm_perf_monitor_client.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 29,
+      "nonEmptyLines": 26,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_khr_sync_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 405,
+      "nonEmptyLines": 320,
+      "functions": [
+        {
+          "name": "egl_sync_term",
+          "startLine": 126,
+          "endLine": 139,
+          "params": [
+            "sync_master"
+          ]
+        },
+        {
+          "name": "egl_sync_destroy_iterator",
+          "startLine": 143,
+          "endLine": 156,
+          "params": [
+            "sync_map",
+            "sync",
+            "sync_handle",
+            "data"
+          ]
+        },
+        {
+          "name": "egl_sync_check_attribs",
+          "startLine": 160,
+          "endLine": 192,
+          "params": [
+            "attrib_list",
+            "type",
+            "condition",
+            "threshold",
+            "status"
+          ]
+        },
+        {
+          "name": "egl_sync_get_attrib",
+          "startLine": 196,
+          "endLine": 211,
+          "params": [
+            "sync",
+            "attrib",
+            "value"
+          ]
+        },
+        {
+          "name": "eglCreateSyncKHR",
+          "startLine": 215,
+          "endLine": 252,
+          "params": [
+            "dpy",
+            "type",
+            "attrib_list"
+          ]
+        },
+        {
+          "name": "eglDestroySyncKHR",
+          "startLine": 257,
+          "endLine": 289,
+          "params": [
+            "dpy",
+            "sync"
+          ]
+        },
+        {
+          "name": "eglClientWaitSyncKHR",
+          "startLine": 293,
+          "endLine": 329,
+          "params": [
+            "dpy",
+            "sync",
+            "flags",
+            "timeout"
+          ]
+        },
+        {
+          "name": "eglSignalSyncKHR",
+          "startLine": 333,
+          "endLine": 357,
+          "params": [
+            "dpy",
+            "sync",
+            "mode"
+          ]
+        },
+        {
+          "name": "eglGetSyncAttribKHR",
+          "startLine": 361,
+          "endLine": 396,
+          "params": [
+            "dpy",
+            "sync",
+            "attribute",
+            "value"
+          ]
+        },
+        {
+          "name": "egl_sync_destroy_all",
+          "startLine": 400,
+          "endLine": 403,
+          "params": [
+            "sync_map"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "eglCreateSyncKHR",
+          "line": 215,
+          "isDefault": false
+        },
+        {
+          "name": "eglDestroySyncKHR",
+          "line": 257,
+          "isDefault": false
+        },
+        {
+          "name": "eglClientWaitSyncKHR",
+          "line": 293,
+          "isDefault": false
+        },
+        {
+          "name": "eglSignalSyncKHR",
+          "line": 333,
+          "isDefault": false
+        },
+        {
+          "name": "eglGetSyncAttribKHR",
+          "line": 361,
+          "isDefault": false
+        },
+        {
+          "name": "egl_sync_destroy_all",
+          "line": 400,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "egl_sync_term",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 128
+        },
+        {
+          "caller": "egl_sync_term",
+          "callee": "RPC_CALL1",
+          "lineNumber": 133
+        },
+        {
+          "caller": "egl_sync_term",
+          "callee": "RPC_UINT",
+          "lineNumber": 136
+        },
+        {
+          "caller": "egl_sync_term",
+          "callee": "khronos_platform_semaphore_destroy",
+          "lineNumber": 138
+        },
+        {
+          "caller": "egl_sync_destroy_iterator",
+          "callee": "UNUSED",
+          "lineNumber": 148
+        },
+        {
+          "caller": "egl_sync_destroy_iterator",
+          "callee": "UNUSED",
+          "lineNumber": 149
+        },
+        {
+          "caller": "egl_sync_destroy_iterator",
+          "callee": "UNUSED",
+          "lineNumber": 150
+        },
+        {
+          "caller": "egl_sync_destroy_iterator",
+          "callee": "vcos_assert",
+          "lineNumber": 152
+        },
+        {
+          "caller": "egl_sync_destroy_iterator",
+          "callee": "egl_sync_term",
+          "lineNumber": 154
+        },
+        {
+          "caller": "egl_sync_destroy_iterator",
+          "callee": "khrn_platform_free",
+          "lineNumber": 155
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 217
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 220
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 223
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "egl_sync_check_attribs",
+          "lineNumber": 231
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "egl_sync_create",
+          "lineNumber": 232
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "khrn_pointer_map_insert",
+          "lineNumber": 235
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "egl_sync_term",
+          "lineNumber": 240
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "khrn_platform_free",
+          "lineNumber": 241
+        },
+        {
+          "caller": "eglCreateSyncKHR",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 249
+        },
+        {
+          "caller": "eglDestroySyncKHR",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 259
+        },
+        {
+          "caller": "eglDestroySyncKHR",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 262
+        },
+        {
+          "caller": "eglDestroySyncKHR",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 265
+        },
+        {
+          "caller": "eglDestroySyncKHR",
+          "callee": "khrn_pointer_map_lookup",
+          "lineNumber": 268
+        },
+        {
+          "caller": "eglDestroySyncKHR",
+          "callee": "khrn_pointer_map_delete",
+          "lineNumber": 273
+        },
+        {
+          "caller": "eglDestroySyncKHR",
+          "callee": "egl_sync_term",
+          "lineNumber": 275
+        },
+        {
+          "caller": "eglDestroySyncKHR",
+          "callee": "khrn_platform_free",
+          "lineNumber": 276
+        },
+        {
+          "caller": "eglDestroySyncKHR",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 286
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 295
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "UNUSED",
+          "lineNumber": 297
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 299
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 302
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "khrn_pointer_map_lookup",
+          "lineNumber": 305
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "khronos_platform_semaphore_create",
+          "lineNumber": 309
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "RPC_FLUSH",
+          "lineNumber": 311
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 313
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "khronos_platform_semaphore_acquire",
+          "lineNumber": 315
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "khronos_platform_semaphore_release",
+          "lineNumber": 316
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "khronos_platform_semaphore_destroy",
+          "lineNumber": 317
+        },
+        {
+          "caller": "eglClientWaitSyncKHR",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 326
+        },
+        {
+          "caller": "eglSignalSyncKHR",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 335
+        },
+        {
+          "caller": "eglSignalSyncKHR",
+          "callee": "UNUSED",
+          "lineNumber": 337
+        },
+        {
+          "caller": "eglSignalSyncKHR",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 339
+        },
+        {
+          "caller": "eglSignalSyncKHR",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 342
+        },
+        {
+          "caller": "eglSignalSyncKHR",
+          "callee": "khrn_pointer_map_lookup",
+          "lineNumber": 345
+        },
+        {
+          "caller": "eglSignalSyncKHR",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 354
+        },
+        {
+          "caller": "eglGetSyncAttribKHR",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 363
+        },
+        {
+          "caller": "eglGetSyncAttribKHR",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 366
+        },
+        {
+          "caller": "eglGetSyncAttribKHR",
+          "callee": "client_egl_get_process_state",
+          "lineNumber": 369
+        },
+        {
+          "caller": "eglGetSyncAttribKHR",
+          "callee": "khrn_pointer_map_lookup",
+          "lineNumber": 375
+        },
+        {
+          "caller": "eglGetSyncAttribKHR",
+          "callee": "egl_sync_get_attrib",
+          "lineNumber": 378
+        },
+        {
+          "caller": "eglGetSyncAttribKHR",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 393
+        },
+        {
+          "caller": "egl_sync_destroy_all",
+          "callee": "khrn_pointer_map_iterate",
+          "lineNumber": 402
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/egl_khr_sync_client.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/ext_gl_debug_marker.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 71,
+      "nonEmptyLines": 60,
+      "functions": [
+        {
+          "name": "glInsertEventMarkerEXT",
+          "startLine": 45,
+          "endLine": 53,
+          "params": [
+            "length",
+            "marker"
+          ]
+        },
+        {
+          "name": "glPushGroupMarkerEXT",
+          "startLine": 55,
+          "endLine": 63,
+          "params": [
+            "length",
+            "marker"
+          ]
+        },
+        {
+          "name": "glPopGroupMarkerEXT",
+          "startLine": 65,
+          "endLine": 71,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "glInsertEventMarkerEXT",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "glPushGroupMarkerEXT",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "glPopGroupMarkerEXT",
+          "line": 65,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "glInsertEventMarkerEXT",
+          "callee": "UNUSED",
+          "lineNumber": 51
+        },
+        {
+          "caller": "glInsertEventMarkerEXT",
+          "callee": "UNUSED",
+          "lineNumber": 52
+        },
+        {
+          "caller": "glPushGroupMarkerEXT",
+          "callee": "UNUSED",
+          "lineNumber": 61
+        },
+        {
+          "caller": "glPushGroupMarkerEXT",
+          "callee": "UNUSED",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/gl_oes_draw_texture_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 95,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "glDrawTexsOES",
+          "startLine": 47,
+          "endLine": 50,
+          "params": [
+            "x",
+            "y",
+            "z",
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "glDrawTexiOES",
+          "startLine": 52,
+          "endLine": 55,
+          "params": [
+            "x",
+            "y",
+            "z",
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "glDrawTexxOES",
+          "startLine": 57,
+          "endLine": 60,
+          "params": [
+            "x",
+            "y",
+            "z",
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "glDrawTexsvOES",
+          "startLine": 62,
+          "endLine": 65,
+          "params": [
+            "coords"
+          ]
+        },
+        {
+          "name": "glDrawTexivOES",
+          "startLine": 67,
+          "endLine": 70,
+          "params": [
+            "coords"
+          ]
+        },
+        {
+          "name": "glDrawTexxvOES",
+          "startLine": 72,
+          "endLine": 75,
+          "params": [
+            "coords"
+          ]
+        },
+        {
+          "name": "glDrawTexfOES",
+          "startLine": 77,
+          "endLine": 90,
+          "params": [
+            "x",
+            "y",
+            "z",
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "glDrawTexfvOES",
+          "startLine": 92,
+          "endLine": 95,
+          "params": [
+            "coords"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "glDrawTexsOES",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "glDrawTexiOES",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "glDrawTexxOES",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "glDrawTexsvOES",
+          "line": 62,
+          "isDefault": false
+        },
+        {
+          "name": "glDrawTexivOES",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "glDrawTexxvOES",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "glDrawTexfOES",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "glDrawTexfvOES",
+          "line": 92,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "glDrawTexsOES",
+          "callee": "glDrawTexfOES",
+          "lineNumber": 49
+        },
+        {
+          "caller": "glDrawTexiOES",
+          "callee": "glDrawTexfOES",
+          "lineNumber": 54
+        },
+        {
+          "caller": "glDrawTexxOES",
+          "callee": "glDrawTexfOES",
+          "lineNumber": 59
+        },
+        {
+          "caller": "glDrawTexxOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 59
+        },
+        {
+          "caller": "glDrawTexxOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 59
+        },
+        {
+          "caller": "glDrawTexxOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 59
+        },
+        {
+          "caller": "glDrawTexxOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 59
+        },
+        {
+          "caller": "glDrawTexxOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 59
+        },
+        {
+          "caller": "glDrawTexsvOES",
+          "callee": "glDrawTexfOES",
+          "lineNumber": 64
+        },
+        {
+          "caller": "glDrawTexivOES",
+          "callee": "glDrawTexfOES",
+          "lineNumber": 69
+        },
+        {
+          "caller": "glDrawTexxvOES",
+          "callee": "glDrawTexfOES",
+          "lineNumber": 74
+        },
+        {
+          "caller": "glDrawTexxvOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 74
+        },
+        {
+          "caller": "glDrawTexxvOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 74
+        },
+        {
+          "caller": "glDrawTexxvOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 74
+        },
+        {
+          "caller": "glDrawTexxvOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 74
+        },
+        {
+          "caller": "glDrawTexxvOES",
+          "callee": "fixed_to_float",
+          "lineNumber": 74
+        },
+        {
+          "caller": "glDrawTexfOES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 79
+        },
+        {
+          "caller": "glDrawTexfOES",
+          "callee": "IS_OPENGLES_11",
+          "lineNumber": 80
+        },
+        {
+          "caller": "glDrawTexfOES",
+          "callee": "RPC_CALL5",
+          "lineNumber": 81
+        },
+        {
+          "caller": "glDrawTexfOES",
+          "callee": "RPC_FLOAT",
+          "lineNumber": 84
+        },
+        {
+          "caller": "glDrawTexfOES",
+          "callee": "RPC_FLOAT",
+          "lineNumber": 85
+        },
+        {
+          "caller": "glDrawTexfOES",
+          "callee": "RPC_FLOAT",
+          "lineNumber": 86
+        },
+        {
+          "caller": "glDrawTexfOES",
+          "callee": "RPC_FLOAT",
+          "lineNumber": 87
+        },
+        {
+          "caller": "glDrawTexfOES",
+          "callee": "RPC_FLOAT",
+          "lineNumber": 88
+        },
+        {
+          "caller": "glDrawTexfvOES",
+          "callee": "glDrawTexfOES",
+          "lineNumber": 94
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/gl_oes_egl_image_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 152,
+      "nonEmptyLines": 132,
+      "functions": [
+        {
+          "name": "set_error",
+          "startLine": 48,
+          "endLine": 52,
+          "params": [
+            "state",
+            "error"
+          ]
+        },
+        {
+          "name": "check_global_image_egl_image",
+          "startLine": 54,
+          "endLine": 83,
+          "params": [
+            "global_image_id",
+            "image",
+            "thread",
+            "render"
+          ]
+        },
+        {
+          "name": "glEGLImageTargetTexture2DOES",
+          "startLine": 85,
+          "endLine": 115,
+          "params": [
+            "target",
+            "image"
+          ]
+        },
+        {
+          "name": "glEGLImageTargetRenderbufferStorageOES",
+          "startLine": 117,
+          "endLine": 152,
+          "params": [
+            "target",
+            "image"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "glEGLImageTargetTexture2DOES",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "glEGLImageTargetRenderbufferStorageOES",
+          "line": 117,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "check_global_image_egl_image",
+          "callee": "CLIENT_GET_PROCESS_STATE",
+          "lineNumber": 58
+        },
+        {
+          "caller": "check_global_image_egl_image",
+          "callee": "CLIENT_LOCK",
+          "lineNumber": 62
+        },
+        {
+          "caller": "check_global_image_egl_image",
+          "callee": "khrn_global_image_map_lookup",
+          "lineNumber": 63
+        },
+        {
+          "caller": "check_global_image_egl_image",
+          "callee": "CLIENT_UNLOCK",
+          "lineNumber": 64
+        },
+        {
+          "caller": "check_global_image_egl_image",
+          "callee": "(GLuint)",
+          "lineNumber": 69
+        },
+        {
+          "caller": "check_global_image_egl_image",
+          "callee": "platform_get_global_image_info",
+          "lineNumber": 71
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 87
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "IS_OPENGLES_11_OR_20",
+          "lineNumber": 89
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "check_global_image_egl_image",
+          "lineNumber": 93
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "RPC_CALL3",
+          "lineNumber": 94
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "RPC_ENUM",
+          "lineNumber": 97
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "RPC_UINT",
+          "lineNumber": 98
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "RPC_UINT",
+          "lineNumber": 99
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "set_error",
+          "lineNumber": 101
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "GLXX_GET_CLIENT_STATE",
+          "lineNumber": 101
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "RPC_CALL2",
+          "lineNumber": 105
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "RPC_ENUM",
+          "lineNumber": 108
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "RPC_EGLID",
+          "lineNumber": 109
+        },
+        {
+          "caller": "glEGLImageTargetTexture2DOES",
+          "callee": "RPC_FLUSH",
+          "lineNumber": 110
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 119
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "IS_OPENGLES_11",
+          "lineNumber": 121
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "GLXX_GET_CLIENT_STATE",
+          "lineNumber": 123
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "IS_OPENGLES_20",
+          "lineNumber": 127
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "check_global_image_egl_image",
+          "lineNumber": 131
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "RPC_CALL3",
+          "lineNumber": 132
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "RPC_ENUM",
+          "lineNumber": 135
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "RPC_UINT",
+          "lineNumber": 136
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "RPC_UINT",
+          "lineNumber": 137
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "set_error",
+          "lineNumber": 139
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "GLXX_GET_CLIENT_STATE",
+          "lineNumber": 139
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "RPC_CALL2",
+          "lineNumber": 143
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "RPC_ENUM",
+          "lineNumber": 146
+        },
+        {
+          "caller": "glEGLImageTargetRenderbufferStorageOES",
+          "callee": "RPC_EGLID",
+          "lineNumber": 147
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/gl_oes_framebuffer_object.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 134,
+      "nonEmptyLines": 110,
+      "functions": [
+        {
+          "name": "glIsRenderbufferOES",
+          "startLine": 61,
+          "endLine": 64,
+          "params": [
+            "renderbuffer"
+          ]
+        },
+        {
+          "name": "glBindRenderbufferOES",
+          "startLine": 66,
+          "endLine": 69,
+          "params": [
+            "target",
+            "renderbuffer"
+          ]
+        },
+        {
+          "name": "glDeleteRenderbuffersOES",
+          "startLine": 71,
+          "endLine": 74,
+          "params": [
+            "n",
+            "renderbuffers"
+          ]
+        },
+        {
+          "name": "glGenRenderbuffersOES",
+          "startLine": 76,
+          "endLine": 79,
+          "params": [
+            "n",
+            "renderbuffers"
+          ]
+        },
+        {
+          "name": "glRenderbufferStorageOES",
+          "startLine": 81,
+          "endLine": 84,
+          "params": [
+            "target",
+            "internalformat",
+            "width",
+            "height"
+          ]
+        },
+        {
+          "name": "glGetRenderbufferParameterivOES",
+          "startLine": 86,
+          "endLine": 89,
+          "params": [
+            "target",
+            "pname",
+            "params"
+          ]
+        },
+        {
+          "name": "glIsFramebufferOES",
+          "startLine": 91,
+          "endLine": 94,
+          "params": [
+            "framebuffer"
+          ]
+        },
+        {
+          "name": "glBindFramebufferOES",
+          "startLine": 96,
+          "endLine": 99,
+          "params": [
+            "target",
+            "framebuffer"
+          ]
+        },
+        {
+          "name": "glDeleteFramebuffersOES",
+          "startLine": 101,
+          "endLine": 104,
+          "params": [
+            "n",
+            "framebuffers"
+          ]
+        },
+        {
+          "name": "glGenFramebuffersOES",
+          "startLine": 106,
+          "endLine": 109,
+          "params": [
+            "n",
+            "framebuffers"
+          ]
+        },
+        {
+          "name": "glCheckFramebufferStatusOES",
+          "startLine": 111,
+          "endLine": 114,
+          "params": [
+            "target"
+          ]
+        },
+        {
+          "name": "glFramebufferRenderbufferOES",
+          "startLine": 116,
+          "endLine": 119,
+          "params": [
+            "target",
+            "attachment",
+            "renderbuffertarget",
+            "renderbuffer"
+          ]
+        },
+        {
+          "name": "glFramebufferTexture2DOES",
+          "startLine": 121,
+          "endLine": 124,
+          "params": [
+            "target",
+            "attachment",
+            "textarget",
+            "texture",
+            "level"
+          ]
+        },
+        {
+          "name": "glGetFramebufferAttachmentParameterivOES",
+          "startLine": 126,
+          "endLine": 129,
+          "params": [
+            "target",
+            "attachment",
+            "pname",
+            "params"
+          ]
+        },
+        {
+          "name": "glGenerateMipmapOES",
+          "startLine": 131,
+          "endLine": 134,
+          "params": [
+            "target"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "glIsRenderbufferOES",
+          "line": 61,
+          "isDefault": false
+        },
+        {
+          "name": "glBindRenderbufferOES",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "glDeleteRenderbuffersOES",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "glGenRenderbuffersOES",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "glRenderbufferStorageOES",
+          "line": 81,
+          "isDefault": false
+        },
+        {
+          "name": "glGetRenderbufferParameterivOES",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "glIsFramebufferOES",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "glBindFramebufferOES",
+          "line": 96,
+          "isDefault": false
+        },
+        {
+          "name": "glDeleteFramebuffersOES",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "glGenFramebuffersOES",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "glCheckFramebufferStatusOES",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "glFramebufferRenderbufferOES",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "glFramebufferTexture2DOES",
+          "line": 121,
+          "isDefault": false
+        },
+        {
+          "name": "glGetFramebufferAttachmentParameterivOES",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "glGenerateMipmapOES",
+          "line": 131,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "glIsRenderbufferOES",
+          "callee": "glxx_client_IsRenderbuffer",
+          "lineNumber": 63
+        },
+        {
+          "caller": "glBindRenderbufferOES",
+          "callee": "glxx_client_BindRenderbuffer",
+          "lineNumber": 68
+        },
+        {
+          "caller": "glDeleteRenderbuffersOES",
+          "callee": "glxx_client_DeleteRenderbuffers",
+          "lineNumber": 73
+        },
+        {
+          "caller": "glGenRenderbuffersOES",
+          "callee": "glxx_client_GenRenderbuffers",
+          "lineNumber": 78
+        },
+        {
+          "caller": "glRenderbufferStorageOES",
+          "callee": "glxx_client_RenderbufferStorage",
+          "lineNumber": 83
+        },
+        {
+          "caller": "glGetRenderbufferParameterivOES",
+          "callee": "glxx_client_GetRenderbufferParameteriv",
+          "lineNumber": 88
+        },
+        {
+          "caller": "glIsFramebufferOES",
+          "callee": "glxx_client_IsFramebuffer",
+          "lineNumber": 93
+        },
+        {
+          "caller": "glBindFramebufferOES",
+          "callee": "glxx_client_BindFramebuffer",
+          "lineNumber": 98
+        },
+        {
+          "caller": "glDeleteFramebuffersOES",
+          "callee": "glxx_client_DeleteFramebuffers",
+          "lineNumber": 103
+        },
+        {
+          "caller": "glGenFramebuffersOES",
+          "callee": "glxx_client_GenFramebuffers",
+          "lineNumber": 108
+        },
+        {
+          "caller": "glCheckFramebufferStatusOES",
+          "callee": "glxx_client_CheckFramebufferStatus",
+          "lineNumber": 113
+        },
+        {
+          "caller": "glFramebufferRenderbufferOES",
+          "callee": "glxx_client_FramebufferRenderbuffer",
+          "lineNumber": 118
+        },
+        {
+          "caller": "glFramebufferTexture2DOES",
+          "callee": "glxx_client_FramebufferTexture2D",
+          "lineNumber": 123
+        },
+        {
+          "caller": "glGetFramebufferAttachmentParameterivOES",
+          "callee": "glxx_client_GetFramebufferAttachmentParameteriv",
+          "lineNumber": 128
+        },
+        {
+          "caller": "glGenerateMipmapOES",
+          "callee": "glxx_client_GenerateMipmap",
+          "lineNumber": 133
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 15,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/gl_oes_map_buffer.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 195,
+      "nonEmptyLines": 164,
+      "functions": [
+        {
+          "name": "glUnmapBufferOES",
+          "startLine": 110,
+          "endLine": 155,
+          "params": [
+            "target"
+          ]
+        },
+        {
+          "name": "glGetBufferPointervOES",
+          "startLine": 157,
+          "endLine": 195,
+          "params": [
+            "target",
+            "pname",
+            "params"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "glUnmapBufferOES",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "glGetBufferPointervOES",
+          "line": 157,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "glUnmapBufferOES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 112
+        },
+        {
+          "caller": "glUnmapBufferOES",
+          "callee": "IS_OPENGLES_11_OR_20",
+          "lineNumber": 115
+        },
+        {
+          "caller": "glUnmapBufferOES",
+          "callee": "GLXX_GET_CLIENT_STATE",
+          "lineNumber": 117
+        },
+        {
+          "caller": "glUnmapBufferOES",
+          "callee": "glxx_set_error",
+          "lineNumber": 121
+        },
+        {
+          "caller": "glUnmapBufferOES",
+          "callee": "glxx_buffer_info_get",
+          "lineNumber": 126
+        },
+        {
+          "caller": "glUnmapBufferOES",
+          "callee": "glxx_buffer_info_set",
+          "lineNumber": 137
+        },
+        {
+          "caller": "glUnmapBufferOES",
+          "callee": "glBufferSubData",
+          "lineNumber": 139
+        },
+        {
+          "caller": "glUnmapBufferOES",
+          "callee": "khrn_platform_free",
+          "lineNumber": 140
+        },
+        {
+          "caller": "glGetBufferPointervOES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 159
+        },
+        {
+          "caller": "glGetBufferPointervOES",
+          "callee": "IS_OPENGLES_11_OR_20",
+          "lineNumber": 163
+        },
+        {
+          "caller": "glGetBufferPointervOES",
+          "callee": "GLXX_GET_CLIENT_STATE",
+          "lineNumber": 164
+        },
+        {
+          "caller": "glGetBufferPointervOES",
+          "callee": "glxx_set_error",
+          "lineNumber": 167
+        },
+        {
+          "caller": "glGetBufferPointervOES",
+          "callee": "glxx_set_error",
+          "lineNumber": 171
+        },
+        {
+          "caller": "glGetBufferPointervOES",
+          "callee": "glxx_buffer_info_get",
+          "lineNumber": 176
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/gl_oes_matrix_palette_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 132,
+      "nonEmptyLines": 112,
+      "callGraph": [
+        {
+          "caller": "set_client_state_error",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 50
+        },
+        {
+          "caller": "set_client_state_error",
+          "callee": "GLXX_GET_CLIENT_STATE",
+          "lineNumber": 51
+        },
+        {
+          "caller": "set_client_state_error",
+          "callee": "set_error",
+          "lineNumber": 52
+        },
+        {
+          "caller": "glCurrentPaletteMatrixOES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 56
+        },
+        {
+          "caller": "glCurrentPaletteMatrixOES",
+          "callee": "IS_OPENGLES_11",
+          "lineNumber": 57
+        },
+        {
+          "caller": "glCurrentPaletteMatrixOES",
+          "callee": "set_client_state_error",
+          "lineNumber": 58
+        },
+        {
+          "caller": "glCurrentPaletteMatrixOES",
+          "callee": "RPC_CALL1",
+          "lineNumber": 60
+        },
+        {
+          "caller": "glCurrentPaletteMatrixOES",
+          "callee": "RPC_UINT",
+          "lineNumber": 63
+        },
+        {
+          "caller": "glLoadPaletteFromModelViewMatrixOES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 69
+        },
+        {
+          "caller": "glLoadPaletteFromModelViewMatrixOES",
+          "callee": "IS_OPENGLES_11",
+          "lineNumber": 70
+        },
+        {
+          "caller": "glLoadPaletteFromModelViewMatrixOES",
+          "callee": "RPC_CALL0",
+          "lineNumber": 71
+        },
+        {
+          "caller": "is_aligned",
+          "callee": "UNREACHABLE",
+          "lineNumber": 100
+        },
+        {
+          "caller": "glMatrixIndexPointerOES",
+          "callee": "is_matrix_index_type",
+          "lineNumber": 107
+        },
+        {
+          "caller": "glMatrixIndexPointerOES",
+          "callee": "is_matrix_palette_size",
+          "lineNumber": 108
+        },
+        {
+          "caller": "glMatrixIndexPointerOES",
+          "callee": "is_aligned",
+          "lineNumber": 108
+        },
+        {
+          "caller": "glMatrixIndexPointerOES",
+          "callee": "is_aligned",
+          "lineNumber": 108
+        },
+        {
+          "caller": "glMatrixIndexPointerOES",
+          "callee": "glintAttribPointer",
+          "lineNumber": 109
+        },
+        {
+          "caller": "glMatrixIndexPointerOES",
+          "callee": "glxx_set_error_api",
+          "lineNumber": 111
+        },
+        {
+          "caller": "glMatrixIndexPointerOES",
+          "callee": "glxx_set_error_api",
+          "lineNumber": 113
+        },
+        {
+          "caller": "glWeightPointerOES",
+          "callee": "is_matrix_weight_type",
+          "lineNumber": 123
+        },
+        {
+          "caller": "glWeightPointerOES",
+          "callee": "is_matrix_palette_size",
+          "lineNumber": 124
+        },
+        {
+          "caller": "glWeightPointerOES",
+          "callee": "is_aligned",
+          "lineNumber": 124
+        },
+        {
+          "caller": "glWeightPointerOES",
+          "callee": "is_aligned",
+          "lineNumber": 124
+        },
+        {
+          "caller": "glWeightPointerOES",
+          "callee": "glintAttribPointer",
+          "lineNumber": 125
+        },
+        {
+          "caller": "glWeightPointerOES",
+          "callee": "glxx_set_error_api",
+          "lineNumber": 127
+        },
+        {
+          "caller": "glWeightPointerOES",
+          "callee": "glxx_set_error_api",
+          "lineNumber": 129
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/ext/gl_oes_query_matrix_client.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 49,
+      "functions": [
+        {
+          "name": "glQueryMatrixxOES",
+          "startLine": 43,
+          "endLine": 60,
+          "params": [
+            "mantissa",
+            "exponent"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "glQueryMatrixxOES",
+          "line": 43,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "glQueryMatrixxOES",
+          "callee": "CLIENT_GET_THREAD_STATE",
+          "lineNumber": 45
+        },
+        {
+          "caller": "glQueryMatrixxOES",
+          "callee": "IS_OPENGLES_11",
+          "lineNumber": 46
+        },
+        {
+          "caller": "glQueryMatrixxOES",
+          "callee": "RPC_CALL1_OUT_CTRL",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/glxx/gl11_int_config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/glxx/gl11_int_impl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 129,
+      "nonEmptyLines": 121,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/khronos/glxx/gl20_int_impl.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 108,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

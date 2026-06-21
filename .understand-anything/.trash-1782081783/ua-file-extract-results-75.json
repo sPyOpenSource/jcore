@@ -1,0 +1,541 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "sample/32-i2cshell/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/32-i2cshell/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 89,
+      "nonEmptyLines": 72,
+      "metrics": {}
+    },
+    {
+      "path": "sample/33-syslog/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 23,
+      "nonEmptyLines": 16,
+      "steps": [
+        {
+          "name": "syslogserver",
+          "startLine": 20,
+          "endLine": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 1
+      }
+    },
+    {
+      "path": "sample/33-syslog/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 22,
+      "metrics": {}
+    },
+    {
+      "path": "sample/33-syslog/syslogserver.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 94,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 19,
+          "endLine": 94,
+          "params": [
+            "argc",
+            "argv"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 31
+        },
+        {
+          "caller": "main",
+          "callee": "memset",
+          "lineNumber": 36
+        },
+        {
+          "caller": "main",
+          "callee": "getaddrinfo",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 48
+        },
+        {
+          "caller": "main",
+          "callee": "gai_strerror",
+          "lineNumber": 48
+        },
+        {
+          "caller": "main",
+          "callee": "socket",
+          "lineNumber": 55
+        },
+        {
+          "caller": "main",
+          "callee": "bind",
+          "lineNumber": 61
+        },
+        {
+          "caller": "main",
+          "callee": "close",
+          "lineNumber": 66
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 71
+        },
+        {
+          "caller": "main",
+          "callee": "freeaddrinfo",
+          "lineNumber": 76
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 78
+        },
+        {
+          "caller": "main",
+          "callee": "recvfrom",
+          "lineNumber": 83
+        },
+        {
+          "caller": "main",
+          "callee": "puts",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/34-sounddevices/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 28,
+      "nonEmptyLines": 20,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/34-sounddevices/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 39,
+      "metrics": {}
+    },
+    {
+      "path": "sample/34-sounddevices/synthmodule.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 30,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/35-mqttclient/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 18,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/35-mqttclient/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 46,
+      "metrics": {}
+    },
+    {
+      "path": "sample/36-softpwm/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 13,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/36-softpwm/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 16,
+      "metrics": {}
+    },
+    {
+      "path": "sample/37-showgamepad/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/37-showgamepad/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 20,
+      "metrics": {}
+    },
+    {
+      "path": "sample/38-bootloader/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 35,
+      "metrics": {}
+    },
+    {
+      "path": "sample/39-umsdplugging/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 26,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/39-umsdplugging/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 22,
+      "metrics": {}
+    },
+    {
+      "path": "sample/40-irqlatency/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 16,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/40-irqlatency/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 30,
+      "metrics": {}
+    },
+    {
+      "path": "sample/41-screenanimations/graphicshape.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 166,
+      "nonEmptyLines": 134,
+      "functions": [
+        {
+          "name": "randomNumber",
+          "startLine": 60,
+          "endLine": 64,
+          "params": []
+        },
+        {
+          "name": "CGraphicShape",
+          "startLine": 66,
+          "endLine": 101,
+          "params": [
+            "p2DGraphics"
+          ]
+        },
+        {
+          "name": "~CGraphicShape",
+          "startLine": 103,
+          "endLine": 105,
+          "params": []
+        },
+        {
+          "name": "Draw",
+          "startLine": 107,
+          "endLine": 166,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "CGraphicShape",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "~CGraphicShape",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "Draw",
+          "line": 107,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CGraphicShape",
+          "callee": "GetWidth",
+          "lineNumber": 68
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "GetHeight",
+          "lineNumber": 69
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 72
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 74
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 78
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 88
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "COLOR2D",
+          "lineNumber": 91
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 91
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 91
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 91
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 93
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "randomNumber",
+          "lineNumber": 95
+        },
+        {
+          "caller": "CGraphicShape",
+          "callee": "Set",
+          "lineNumber": 99
+        },
+        {
+          "caller": "Draw",
+          "callee": "DrawRect",
+          "lineNumber": 135
+        },
+        {
+          "caller": "Draw",
+          "callee": "DrawRectOutline",
+          "lineNumber": 139
+        },
+        {
+          "caller": "Draw",
+          "callee": "DrawLine",
+          "lineNumber": 143
+        },
+        {
+          "caller": "Draw",
+          "callee": "DrawCircle",
+          "lineNumber": 147
+        },
+        {
+          "caller": "Draw",
+          "callee": "DrawCircleOutline",
+          "lineNumber": 151
+        },
+        {
+          "caller": "Draw",
+          "callee": "DrawImageTransparent",
+          "lineNumber": 155
+        },
+        {
+          "caller": "Draw",
+          "callee": "GetWidth",
+          "lineNumber": 156
+        },
+        {
+          "caller": "Draw",
+          "callee": "GetHeight",
+          "lineNumber": 156
+        },
+        {
+          "caller": "Draw",
+          "callee": "GetPixels",
+          "lineNumber": 157
+        },
+        {
+          "caller": "Draw",
+          "callee": "DrawText",
+          "lineNumber": 161
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/41-screenanimations/graphicshape.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 57,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "sample/41-screenanimations/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 28,
+      "nonEmptyLines": 19,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/41-screenanimations/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 13,
+      "metrics": {}
+    },
+    {
+      "path": "sample/42-soundinput/Makefile",
+      "language": "makefile",
+      "fileCategory": "infra",
+      "totalLines": 29,
+      "nonEmptyLines": 20,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "stepCount": 0
+      }
+    },
+    {
+      "path": "sample/42-soundinput/README",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 48,
+      "metrics": {}
+    }
+  ]
+}

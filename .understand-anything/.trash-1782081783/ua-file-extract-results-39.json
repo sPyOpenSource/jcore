@@ -1,0 +1,541 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "addon/vc4/interface/vcos/vcos.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 226,
+      "nonEmptyLines": 190,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_init.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 110,
+      "nonEmptyLines": 92,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_msgqueue.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 391,
+      "nonEmptyLines": 328,
+      "functions": [
+        {
+          "name": "vcos_msgq_simple_waiter_on_reply",
+          "startLine": 61,
+          "endLine": 68,
+          "params": [
+            "waiter",
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msgq_simple_waiter_init",
+          "startLine": 70,
+          "endLine": 76,
+          "params": [
+            "waiter"
+          ]
+        },
+        {
+          "name": "vcos_msgq_simple_waiter_deinit",
+          "startLine": 78,
+          "endLine": 81,
+          "params": [
+            "waiter"
+          ]
+        },
+        {
+          "name": "vcos_msgq_create_internal",
+          "startLine": 87,
+          "endLine": 108,
+          "params": [
+            "q",
+            "name"
+          ]
+        },
+        {
+          "name": "vcos_msgq_delete_internal",
+          "startLine": 110,
+          "endLine": 114,
+          "params": [
+            "q"
+          ]
+        },
+        {
+          "name": "vcos_msgq_create",
+          "startLine": 116,
+          "endLine": 123,
+          "params": [
+            "q",
+            "name"
+          ]
+        },
+        {
+          "name": "vcos_msgq_delete",
+          "startLine": 125,
+          "endLine": 128,
+          "params": [
+            "q"
+          ]
+        },
+        {
+          "name": "msgq_append",
+          "startLine": 131,
+          "endLine": 144,
+          "params": [
+            "q",
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msgq_queue_waiter_on_reply",
+          "startLine": 150,
+          "endLine": 156,
+          "params": [
+            "waiter",
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msgq_init",
+          "startLine": 160,
+          "endLine": 163,
+          "params": []
+        },
+        {
+          "name": "vcos_msgq_deinit",
+          "startLine": 165,
+          "endLine": 167,
+          "params": []
+        },
+        {
+          "name": "vcos_msg_send_helper",
+          "startLine": 169,
+          "endLine": 186,
+          "params": [
+            "waiter",
+            "dest",
+            "code",
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msg_send",
+          "startLine": 233,
+          "endLine": 237,
+          "params": [
+            "dest",
+            "code",
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msg_sendwait",
+          "startLine": 241,
+          "endLine": 261,
+          "params": [
+            "dest",
+            "code",
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msg_reply",
+          "startLine": 265,
+          "endLine": 280,
+          "params": [
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msg_set_source",
+          "startLine": 282,
+          "endLine": 288,
+          "params": [
+            "msg",
+            "queue"
+          ]
+        },
+        {
+          "name": "vcos_msgq_pool_create",
+          "startLine": 294,
+          "endLine": 321,
+          "params": [
+            "pool",
+            "count",
+            "payload_size",
+            "name"
+          ]
+        },
+        {
+          "name": "vcos_msgq_pool_delete",
+          "startLine": 323,
+          "endLine": 327,
+          "params": [
+            "pool"
+          ]
+        },
+        {
+          "name": "vcos_msgq_pool_on_reply",
+          "startLine": 332,
+          "endLine": 338,
+          "params": [
+            "waiter",
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msgq_pool_free",
+          "startLine": 358,
+          "endLine": 371,
+          "params": [
+            "msg"
+          ]
+        },
+        {
+          "name": "vcos_msg_init",
+          "startLine": 385,
+          "endLine": 391,
+          "params": [
+            "msg"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "vcos_msgq_create",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msgq_delete",
+          "line": 125,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msgq_init",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msgq_deinit",
+          "line": 165,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msg_send",
+          "line": 233,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msg_sendwait",
+          "line": 241,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msg_reply",
+          "line": 265,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msg_set_source",
+          "line": 282,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msgq_pool_create",
+          "line": 294,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msgq_pool_delete",
+          "line": 323,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msgq_pool_free",
+          "line": 358,
+          "isDefault": false
+        },
+        {
+          "name": "vcos_msg_init",
+          "line": 385,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "vcos_msgq_simple_waiter_on_reply",
+          "callee": "vcos_semaphore_post",
+          "lineNumber": 67
+        },
+        {
+          "caller": "vcos_msgq_simple_waiter_init",
+          "callee": "vcos_semaphore_create",
+          "lineNumber": 73
+        },
+        {
+          "caller": "vcos_msgq_simple_waiter_deinit",
+          "callee": "vcos_semaphore_delete",
+          "lineNumber": 80
+        },
+        {
+          "caller": "vcos_msgq_create_internal",
+          "callee": "memset",
+          "lineNumber": 91
+        },
+        {
+          "caller": "vcos_msgq_create_internal",
+          "callee": "vcos_semaphore_create",
+          "lineNumber": 94
+        },
+        {
+          "caller": "vcos_msgq_create_internal",
+          "callee": "vcos_mutex_create",
+          "lineNumber": 98
+        },
+        {
+          "caller": "vcos_msgq_create_internal",
+          "callee": "vcos_semaphore_delete",
+          "lineNumber": 105
+        },
+        {
+          "caller": "vcos_msgq_delete_internal",
+          "callee": "vcos_semaphore_delete",
+          "lineNumber": 112
+        },
+        {
+          "caller": "vcos_msgq_delete_internal",
+          "callee": "vcos_mutex_delete",
+          "lineNumber": 113
+        },
+        {
+          "caller": "vcos_msgq_create",
+          "callee": "vcos_msgq_create_internal",
+          "lineNumber": 120
+        },
+        {
+          "caller": "vcos_msgq_delete",
+          "callee": "vcos_msgq_delete_internal",
+          "lineNumber": 127
+        },
+        {
+          "caller": "msgq_append",
+          "callee": "vcos_mutex_lock",
+          "lineNumber": 133
+        },
+        {
+          "caller": "msgq_append",
+          "callee": "vcos_mutex_unlock",
+          "lineNumber": 143
+        },
+        {
+          "caller": "vcos_msgq_queue_waiter_on_reply",
+          "callee": "msgq_append",
+          "lineNumber": 154
+        },
+        {
+          "caller": "vcos_msgq_queue_waiter_on_reply",
+          "callee": "vcos_semaphore_post",
+          "lineNumber": 155
+        },
+        {
+          "caller": "vcos_msg_send_helper",
+          "callee": "vcos_assert",
+          "lineNumber": 175
+        },
+        {
+          "caller": "vcos_msg_send_helper",
+          "callee": "vcos_assert",
+          "lineNumber": 176
+        },
+        {
+          "caller": "vcos_msg_send_helper",
+          "callee": "vcos_thread_current",
+          "lineNumber": 182
+        },
+        {
+          "caller": "vcos_msg_send_helper",
+          "callee": "msgq_append",
+          "lineNumber": 184
+        },
+        {
+          "caller": "vcos_msg_send_helper",
+          "callee": "vcos_semaphore_post",
+          "lineNumber": 185
+        },
+        {
+          "caller": "vcos_msg_send",
+          "callee": "vcos_assert",
+          "lineNumber": 235
+        },
+        {
+          "caller": "vcos_msg_send",
+          "callee": "vcos_msg_send_helper",
+          "lineNumber": 236
+        },
+        {
+          "caller": "vcos_msg_sendwait",
+          "callee": "vcos_assert",
+          "lineNumber": 246
+        },
+        {
+          "caller": "vcos_msg_sendwait",
+          "callee": "vcos_assert",
+          "lineNumber": 251
+        },
+        {
+          "caller": "vcos_msg_sendwait",
+          "callee": "vcos_msgq_simple_waiter_init",
+          "lineNumber": 253
+        },
+        {
+          "caller": "vcos_msg_sendwait",
+          "callee": "vcos_msg_send_helper",
+          "lineNumber": 256
+        },
+        {
+          "caller": "vcos_msg_sendwait",
+          "callee": "vcos_semaphore_wait",
+          "lineNumber": 257
+        },
+        {
+          "caller": "vcos_msg_sendwait",
+          "callee": "vcos_msgq_simple_waiter_deinit",
+          "lineNumber": 258
+        },
+        {
+          "caller": "vcos_msg_reply",
+          "callee": "vcos_assert",
+          "lineNumber": 267
+        },
+        {
+          "caller": "vcos_msg_reply",
+          "callee": "on_reply",
+          "lineNumber": 271
+        },
+        {
+          "caller": "vcos_msg_reply",
+          "callee": "VCOS_ALERT",
+          "lineNumber": 275
+        },
+        {
+          "caller": "vcos_msg_reply",
+          "callee": "vcos_assert",
+          "lineNumber": 278
+        },
+        {
+          "caller": "vcos_msg_set_source",
+          "callee": "vcos_assert",
+          "lineNumber": 284
+        },
+        {
+          "caller": "vcos_msg_set_source",
+          "callee": "vcos_assert",
+          "lineNumber": 285
+        },
+        {
+          "caller": "vcos_msg_set_source",
+          "callee": "vcos_assert",
+          "lineNumber": 286
+        },
+        {
+          "caller": "vcos_msgq_pool_create",
+          "callee": "vcos_blockpool_create_on_heap",
+          "lineNumber": 301
+        },
+        {
+          "caller": "vcos_msgq_pool_create",
+          "callee": "vcos_semaphore_create",
+          "lineNumber": 309
+        },
+        {
+          "caller": "vcos_msgq_pool_create",
+          "callee": "vcos_blockpool_delete",
+          "lineNumber": 318
+        },
+        {
+          "caller": "vcos_msgq_pool_delete",
+          "callee": "vcos_blockpool_delete",
+          "lineNumber": 325
+        },
+        {
+          "caller": "vcos_msgq_pool_delete",
+          "callee": "vcos_semaphore_delete",
+          "lineNumber": 326
+        },
+        {
+          "caller": "vcos_msgq_pool_on_reply",
+          "callee": "vcos_unused",
+          "lineNumber": 335
+        },
+        {
+          "caller": "vcos_msgq_pool_on_reply",
+          "callee": "vcos_assert",
+          "lineNumber": 336
+        },
+        {
+          "caller": "vcos_msgq_pool_on_reply",
+          "callee": "vcos_msgq_pool_free",
+          "lineNumber": 337
+        },
+        {
+          "caller": "vcos_msgq_pool_free",
+          "callee": "vcos_assert",
+          "lineNumber": 363
+        },
+        {
+          "caller": "vcos_msgq_pool_free",
+          "callee": "vcos_assert",
+          "lineNumber": 366
+        },
+        {
+          "caller": "vcos_msgq_pool_free",
+          "callee": "vcos_blockpool_free",
+          "lineNumber": 368
+        },
+        {
+          "caller": "vcos_msgq_pool_free",
+          "callee": "vcos_semaphore_post",
+          "lineNumber": 369
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 12,
+        "functionCount": 21,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "addon/vc4/interface/vcos/vcos_msgqueue.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 280,
+      "nonEmptyLines": 239,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}
