@@ -13,7 +13,7 @@ jint callnative_static(jint * params, code_t f, jint params_size);
 void callnative_handler(u4_t * ebp, u4_t * sp, char *addr);
 
 void activate_thread_desc(jint number);
-jint get_thread_desc();
+jint get_thread_desc(void);
 
 /*
 void switchAndUnlock(ContextDesc *context, spinlock_t *lock);
@@ -22,13 +22,14 @@ void switchTo(ContextDesc *context);
 
 void yield(ThreadDesc ** current);
 jint destroy_switch_to(ThreadDesc ** current, ThreadDesc * to);
-void softint();
+void softint(void);
 
 /* compare and swap */
 #if 1
 static inline u4_t cas(u4_t * var, u4_t old, u4_t new)
 {
-	int result;
+	(void)var; (void)old; (void)new;
+	int result = 0;
 	/*asm volatile ("   lock;"
 		      "   cmpxchg %%edx, (%%ecx);"
 		      "   jne 2f;"

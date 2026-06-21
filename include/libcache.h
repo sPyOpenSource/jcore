@@ -18,7 +18,7 @@ typedef struct libcache_entry_s {
 	struct libcache_entry_s *next;
 } libcache_entry;
 
-void libcache_init();
+void libcache_init(void);
 
 char *libcache_lookup_jll(const char *name, jint * size);
 

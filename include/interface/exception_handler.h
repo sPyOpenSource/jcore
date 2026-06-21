@@ -39,7 +39,7 @@ ObjectDesc *createExceptionInDomain(DomainDesc * domain,
 
 void throw_exception(ObjectDesc * exception, u4_t * sp);
 void throw_ArithmeticException(jint dummy);
-void throw_StackOverflowError();
+void throw_StackOverflowError(void);
 void throw_ArrayIndexOutOfBounds(jint dummy);
 void throw_NullPointerException(jint dummy);
 

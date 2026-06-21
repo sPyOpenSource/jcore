@@ -37,7 +37,7 @@ inline void check_runq(void);
 
 
 static inline void domainrunq_append(DomainDesc * domain);
-static inline DomainDesc *domainrunq_remove();
+static inline DomainDesc *domainrunq_remove(void);
 
 static inline int threadrunq_append(DomainDesc * domain, ThreadDesc * thread);
 static inline ThreadDesc *threadrunq_remove(DomainDesc * domain);

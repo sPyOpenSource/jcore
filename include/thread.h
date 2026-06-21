@@ -208,7 +208,7 @@ typedef void (*thread_start_t) (void *);
 
 
 // Prototypes
-void threads_init();
+void threads_init(void);
 ThreadDesc *createThread(DomainDesc * domain, thread_start_t thread_start,
 			                   void *param, int state, int schedParam);
 ThreadDesc *createThreadUsingThreadEntry(DomainDesc * domain,
@@ -217,18 +217,18 @@ ThreadDesc *createInitialDomainThread(DomainDesc * domain, int state, int schedP
 ThreadDesc *createThreadInMem(DomainDesc * domain, thread_start_t thread_start, void *param, ObjectDesc * entry, u4_t stackSize, int state, int schedParam);
 void receive_dep(void *arg);
 void receiveDomainDEP(void *arg);
-void threadyield();
-void threadunblock();
-void locked_threadunblock();
-void threadblock();
-void locked_threadblock();
+void threadyield(void);
+void threadunblock(void);
+void locked_threadunblock(void);
+void threadblock(void);
+void locked_threadblock(void);
 void threadreceive(Proxy * domainZeroProxy, Proxy * depProxy);
 void threadswitchto(Proxy * domainZeroProxy, ThreadDesc * nextthread);
 void print_eip_info(char *addr);
 #ifdef SMP
 void smp_idle_threads_init();
 #endif
-void thread_exit();
+void thread_exit(void);
 void terminateThread(ThreadDesc * t);
 
 ThreadDesc *findThreadDesc(ThreadDescForeignProxy *proxy);
@@ -239,19 +239,19 @@ u4_t start_thread_using_code1(ObjectDesc * obj, ThreadDesc * thread,
 
 #ifndef DEBUG
 //extern ThreadDesc *__current[MAX_NR_CPUS];
-static inline ThreadDesc *curthr()
+static inline ThreadDesc *curthr(void)
 {
-	return 0;//__current[get_processor_id()];
+	return 0;
 }
-static inline ThreadDesc **curthrP()
+static inline ThreadDesc **curthrP(void)
 {
-	return 0;//&__current[get_processor_id()];
+	return 0;
 }
 static inline void set_current(ThreadDesc * t)
 {
-	//__current[get_processor_id()] = t;
+	(void)t;
 }
-static inline DomainDesc *curdom()
+static inline DomainDesc *curdom(void)
 {
 	return curthr()->domain;
 }
@@ -283,6 +283,7 @@ static inline ThreadDesc *cur_idle_thread(void)
 #ifndef DEBUG
 static inline void check_not_in_runq(ThreadDesc * thread)
 {
+	(void)thread;
 }
 #endif
 
@@ -301,6 +302,8 @@ jint internal_switch_to(ThreadDesc ** current, ThreadDesc * to);
 #endif
 
 
+struct irqcontext;
+struct sigcontext;
 #ifdef KERNEL
 void save(struct irqcontext *sc);
 #else

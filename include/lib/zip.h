@@ -11,8 +11,5 @@ typedef struct {
 
 /* Prototypes */
 void zip_init(char *zipstart, jint ziplen);
-static jint makeword(char *b, int offset);
-static jint makelong(char *b, int offset);
-static char *makestring(char *buf, char *b, int offset, int len);
 
 #endif

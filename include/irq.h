@@ -31,16 +31,16 @@ extern struct irqInfos iInfos[NUM_IRQs];	// in zero.c
 
 /*Prototypes */
 
-int irq_enable();
+int irq_enable(void);
 
 /* loads the Interrupt Description Table */
 /*   the first call of this function builds the table 
      following calls will only load the pointer in the IDT-Reg.*/
-void irq_init_vectors();
+void irq_init_vectors(void);
 
 
 /* sets the mask bit for irq in the corresponding (A)PIC */
-void irq_disable();
+void irq_disable(void);
 
 #endif				/* no ASSEMBLER */
 

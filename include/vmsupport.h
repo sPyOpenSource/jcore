@@ -12,7 +12,7 @@ typedef struct {
 extern jint numberVMOperations;
 extern vm_fkt_table_t vmsupport[];
 
-void vm_unsupported();
+void vm_unsupported(void);
 
 ClassDesc *get_element_class(ClassDesc * c);
 jboolean is_interface(ClassDesc * c);

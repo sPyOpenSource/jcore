@@ -7,8 +7,8 @@ typedef struct MemoryProxy_s **MemoryProxyHandle;
 
 
 //FIXME
-static void dzmemory_decRefcount(struct MemoryProxy_s *m);
-static void dzmemory_alive(struct MemoryProxy_s *dzm);
+static void __attribute__((unused)) dzmemory_decRefcount(struct MemoryProxy_s *m);
+static void __attribute__((unused)) dzmemory_alive(struct MemoryProxy_s *dzm);
 void dzmemory_redirect_invalid_dz(MemoryProxyHandle mem);
 
 
@@ -32,6 +32,6 @@ struct MemoryProxy_s *gc_impl_shallowCopyMemory(u4_t * dst,
 						struct MemoryProxy_s
 						*srcObj);
 
-u4_t memory_sizeof_proxy();
+u4_t memory_sizeof_proxy(void);
 
 #endif

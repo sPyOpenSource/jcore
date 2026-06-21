@@ -17,7 +17,7 @@ struct heapsample_s {
 };
 #endif
 
-void initPrimitiveClasses();
+void initPrimitiveClasses(void);
 void stringToChar(ObjectDesc * str, char *buf, jint buflen);
 LibDesc *load(DomainDesc * domain, char *filename);
 void linkdomain(DomainDesc * domain, LibDesc * lib,

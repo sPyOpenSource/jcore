@@ -29,7 +29,7 @@ typedef struct filedesc_s {
 } FileDesc;
 
 
-void memfs_init();
+void memfs_init(void);
 
 /*
  * only use this fkt together with memfs !!

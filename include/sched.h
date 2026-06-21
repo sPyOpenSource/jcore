@@ -12,7 +12,7 @@
 
 /* running thread's timeslice is over
 */
-void Sched_preempted();
+void Sched_preempted(void);
 
 /* notify scheduler about thread creation */
 void Sched_created(ThreadDesc * thread, int param);
@@ -28,7 +28,7 @@ void Sched_destroyed(ThreadDesc * thread);
 void Sched_destroyed_current(DomainDesc * currentDomain);
 
 /* yield cpu */
-void Sched_yield();
+void Sched_yield(void);
 
 /* unblock thread */
 void Sched_unblock(ThreadDesc * thread);
@@ -105,7 +105,7 @@ typedef struct sched_local_functions_s {
 	void (*activated) (struct DomainDesc_s * domain);
 
 	/* please switch to thread */
-	void (*switchTo) (struct DomainDesc_s * domain, struct ThreadDesc *thread);
+	void (*switchTo) (struct DomainDesc_s * domain, struct ThreadDesc_s *thread);
 
 
 	u4_t(*isRunnable) (struct DomainDesc_s * domain);

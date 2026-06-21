@@ -53,6 +53,7 @@ typedef struct InstanceCounts_s InstanceCounts_t;
 # endif
 
 struct DomainDesc_s;
+struct ObjectDesc_s;
 
 typedef struct {
 	u4_t dummy[30];
@@ -256,10 +257,10 @@ typedef void (*domain_f) (DomainDesc *);
 typedef void (*domain1_f) (DomainDesc *, void *);
 
 
-void init_domainsys();
+void init_domainsys(void);
 DomainDesc *createDomain(char *domainName, jint gcinfo0, jint gcinfo1, jint gcinfo2, char *gcinfo3, jint gcinfo4,
 			 u4_t code_bytes, int gcImpl, ArrayDesc* schedinfo);
-jint getNumberOfDomains();
+jint getNumberOfDomains(void);
 void domain_panic(DomainDesc * domain, char *msg, ...);
 
 #ifdef MONITOR

@@ -148,19 +148,14 @@ static inline CPUDesc *obj2cpuDesc(ObjectDesc * obj)
 
 static inline ObjectDesc *domainDesc2Obj(DomainDesc * domain)
 {
-#if 0
-	ASSERTDOMAIN(domain);
-	return (ObjectDesc *) (((u4_t *) domain) - 1);
-#endif
+	(void)domain;
 	sys_panic("Domain portals are no longer direct portals.");
 	return NULL;
 }
 
 static inline DomainDesc *obj2domainDesc(ObjectDesc * obj)
 {
-#if 0
-	return (DomainDesc *) (((u4_t *) obj) + 1);
-#endif
+	(void)obj;
 	sys_panic("Domain portals are no longer direct portals.");
 	return NULL;
 }
@@ -207,10 +202,10 @@ jboolean debug_init(int argc, char *argv[]);
 
 DEPTypeDesc *findDEPByType(char *name);
 void init_zero_from_lib(DomainDesc * domain, SharedLibDesc * zeroLib);
-ObjectDesc *getDomainZeroInstance();
-Proxy *getDomainZeroProxy();
+ObjectDesc *getDomainZeroInstance(void);
+Proxy *getDomainZeroProxy(void);
 
-ClassDesc *createObjectClassDesc();
+ClassDesc *createObjectClassDesc(void);
 Class *createObjectClass(ClassDesc * java_lang_Object);
 ClassDesc *createArrayObjectClassDesc(DomainDesc * domain);
 Class *createArrayObjectClass(DomainDesc * domain,
@@ -246,8 +241,8 @@ void switchCPUState(ThreadDesc * oldctx, ThreadDesc * newctx);	/*??? */
 
 void installInitialNaming(DomainDesc * srcDomain, DomainDesc * dstDomain,
 			  Proxy * naming);
-Proxy *getDomainZeroNaming();
-Proxy *getInitialNaming();
+Proxy *getDomainZeroNaming(void);
+Proxy *getInitialNaming(void);
 
 /* in zero_DomainManager */
 DomainProxy *domainManager_createDomain(ObjectDesc * self,

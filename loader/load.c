@@ -45,6 +45,7 @@ static char *codefilepos;
 
 void install_handler(int sig, void (*handler) (int))
 {
+	(void)sig; (void)handler;
 	/*struct sigaction act;
 
 	memset(&act, 0, sizeof(act));
@@ -277,7 +278,7 @@ Class *createPrimitiveClass(char *name)
 	return c;
 }
 
-void initPrimitiveClasses()
+void initPrimitiveClasses(void)
 {
 	class_I = createPrimitiveClass("I");
 	class_J = createPrimitiveClass("J");

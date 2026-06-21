@@ -25,7 +25,7 @@ SymbolDesc **malloc_symboltable(DomainDesc * domain, u4_t len);
 SymbolDesc *malloc_symbol(DomainDesc * domain, u4_t size);
 ByteCodeDesc *malloc_bytecodetable(DomainDesc * domain, u4_t len);
 SourceLineDesc *malloc_sourcelinetable(DomainDesc * domain, u4_t len);
-struct nameValue_s *malloc_domainzero_namevalue();
+struct nameValue_s *malloc_domainzero_namevalue(void);
 SharedLibDesc **malloc_sharedlibdesctable(DomainDesc * domain, u4_t number);
 SharedLibDesc *malloc_sharedlibdesc(DomainDesc * domain, u4_t namelen);
 

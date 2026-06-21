@@ -111,6 +111,7 @@ static inline u4_t gc_freeWords(DomainDesc * domain)
 #ifdef ENABLE_GC
 	return GC_FUNC_NAME(freeWords) (domain);
 #else
+	(void)domain;
 	sys_panic("no gc defined");
 	return -1;
 #endif
@@ -121,6 +122,7 @@ static inline u4_t gc_totalWords(DomainDesc * domain)
 #ifdef ENABLE_GC
 	return GC_FUNC_NAME(totalWords) (domain);
 #else
+	(void)domain;
 	sys_panic("no gc defined");
 	return -1;
 #endif
@@ -319,8 +321,9 @@ static inline ObjectHandle gc_allocDataInDomain(DomainDesc * domain,
 #ifdef ENABLE_GC
 	return GC_FUNC_NAME(allocDataInDomain) (domain, objsize, flags);
 #else
+	(void)domain; (void)objsize; (void)flags;
 	sys_panic("no gc defined");
-	return -1;
+	return (ObjectHandle)-1UL;
 #endif
 }
 

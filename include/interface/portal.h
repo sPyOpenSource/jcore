@@ -30,12 +30,12 @@
 
 
 #if(PORTAL_DEBUG_LEVEL == DEBUG_NO)
-#define portal_dprintf(args...)
+#define portal_dprintf(...)
 #else
 #ifdef SMP
-#define portal_dprintf(args...)   do{printf("CPU%d: ",get_processor_id()); printf(args);}while (0);
+#define portal_dprintf(...)   do{printf("CPU%d: ",get_processor_id()); printf(__VA_ARGS__);}while (0);
 #else
-#define portal_dprintf(args...)   printf(args)
+#define portal_dprintf(...)   printf(__VA_ARGS__)
 #endif
 #endif
 
@@ -216,7 +216,7 @@ struct DomainDesc_s;
 
 /* Prototypes */
 
-void portals_init();
+void portals_init(void);
 #ifdef NEW_PORTALCALL
 u4_t createService(struct DomainDesc_s * domain, ObjectDesc * depObj, ClassDesc * interface, ServiceThreadPool *pool);
 #else

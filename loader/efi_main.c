@@ -43,24 +43,21 @@ EFI_STATUS efi_main(EFI_HANDLE image, EFI_SYSTEM_TABLE *system)
 {
     InitEFI(image, system);
 
-    EFI_PHYSICAL_ADDRESS ExternalFileBuffer0 = 0;
-    EFI_PHYSICAL_ADDRESS ExternalFileBuffer1 = 0;
-    EFI_PHYSICAL_ADDRESS ExternalFileBuffer2 = 0;
     EFI_PHYSICAL_ADDRESS ExternalFileBuffer3 = 0x100000;
+    (void)ExternalFileBuffer3;
 
     EFI_FILE_PROTOCOL* zero = openFile(u"zero.jll");
     EFI_FILE_PROTOCOL* jdk  = openFile(u"jdk.jll");
     EFI_FILE_PROTOCOL* init = openFile(u"init.jll");
     EFI_FILE_PROTOCOL* kernel = openFile(u"raw_out.bin");
+    (void)zero; (void)jdk; (void)init;
 
     //EFI_FILE_INFO *FileInfo;
     EFI_ALLOCATE_POOL AllocatePool = SystemTable->BootServices->AllocatePool;
     EFI_STATUS Status;// = zero->GetInfo(zero, &gEfiFileInfoGuid, &FileInfoSize, NULL);
 
-    UINT64 FileSize0 = getFileSize(zero);
-    UINT64 FileSize1 = getFileSize(jdk);
-    UINT64 FileSize2 = getFileSize(init);
     UINT64 FileSize3 = getFileSize(kernel);
+    (void)FileSize3;
 
     //Status = AllocatePool(EfiLoaderCode, FileSize0, (void**)&ExternalFileBuffer0);
     //Status = AllocatePool(EfiLoaderCode, FileSize1, (void**)&ExternalFileBuffer1);

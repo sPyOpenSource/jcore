@@ -1,9 +1,9 @@
 
 ATOMICFN(ObjectHandle, registerObject,
-	 (DomainDesc * domain, ObjectDesc * o));
+	 (DomainDesc * domain, ObjectDesc * o))
 ATOMICFN(ObjectDesc *, unregisterObject,
-	 (DomainDesc * domain, ObjectHandle o));
-ATOMICFN(ClassDesc *, handle2ClassDesc, (ObjectDesc ** handle));
+	 (DomainDesc * domain, ObjectHandle o))
+ATOMICFN(ClassDesc *, handle2ClassDesc, (ObjectDesc ** handle))
 //ATOMICFN(void,   vm_checkcast,           (ObjectDesc *obj, ClassDesc *c));
 
 #ifdef ATOMIC_MEMORY
@@ -23,4 +23,4 @@ ATOMICFN0(void, memorySetValid, (MemoryProxyHandle handle, jint v));
 #endif
 
 ATOMICFN0(ObjectDesc *, allocObjectInDomain,
-	  (DomainDesc * domain, ClassDesc * c));
+	  (DomainDesc * domain, ClassDesc * c))

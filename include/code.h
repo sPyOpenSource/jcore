@@ -167,7 +167,7 @@ struct ArrayClassDesc_s;
     jint numberFields;\
     struct FieldDesc_s *fields; \
     u4_t inheritServiceThread; \
-    CLASSSTATISTICS;\
+    CLASSSTATISTICS\
     CLASSDEBUGINFO
 
 
@@ -178,9 +178,9 @@ struct ArrayClassDesc_s;
 #endif
 
 #ifdef USE_QMAGIC
-#define CLASSDESC u4_t magic; CLASSDESC1 ; jint sfield_offset;
+#define CLASSDESC u4_t magic; CLASSDESC1 jint sfield_offset
 #else
-#define CLASSDESC CLASSDESC1 ; jint sfield_offset;
+#define CLASSDESC CLASSDESC1 jint sfield_offset
 #endif
 
 typedef struct ClassDesc_s {

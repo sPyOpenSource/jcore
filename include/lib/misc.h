@@ -19,10 +19,9 @@ int dprintf(const char *fmt, ...);
 #else
 #define dprintf printf
 #endif
-static inline unsigned getEFlags()
+static inline unsigned getEFlags(void)
 {
-	unsigned eflags;
-	//asm volatile ("pushfl ; popl %0":"=r" (eflags));
+	unsigned eflags = 0;
 	return eflags;
 }
 
@@ -40,16 +39,13 @@ static inline void setEFlags(unsigned eflags)
 
 static inline int test_and_set_bit(int nr, volatile long *lock)
 {
-	int oldbit;
-	/*asm volatile ("lock;"
-		      "tsl %2,%1;" "bbl %0,%0;":"=r" (oldbit), "=m"(*lock)
-		      :"Ir"(nr));*/
+	(void)nr; (void)lock;
+	int oldbit = 0;
 	return oldbit;
 }
 static inline void atomic_inc(volatile int *v)
 {
-	/*asm volatile ("lock;" "incl %0;":"=m" (*v)
-		      :"m"(*v));*/
+	(void)v;
 }
 
 #define get_cr4() \
@@ -73,14 +69,14 @@ static inline void atomic_inc(volatile int *v)
 
 static inline unsigned int inb(unsigned short int port)
 {
-	unsigned char ret;
-	//asm volatile ("inb %1,%0": "=a" (ret): "d"(port));
+	(void)port;
+	unsigned char ret = 0;
 	return ret;
 }
 
 static inline void outb(unsigned short int port, unsigned char val)
 {
-	//asm volatile ("outb %0,%1"::"a" (val), "d"(port));
+	(void)port; (void)val;
 }
 
 #define get_esp() \
@@ -135,7 +131,7 @@ char *strcat(char *dest, const char *src);
 void sprintnum(char *s, u4_t u, int base);
 
 
-void setTimer();
+void setTimer(void);
 
 #define CPU_MHZ 500
 #define CYCL2NANOS(c)  ((u4_t)((((c)*(u8_t)1000))/(u8_t)CPU_MHZ))

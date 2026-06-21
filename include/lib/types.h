@@ -27,8 +27,8 @@ typedef u4_t size_t;
 #define JNI_FALSE 0
 #define JNI_TRUE 1
 
-typedef void (*code_t) ();
-typedef int (*int_code_t) ();
+typedef void (*code_t)(void);
+typedef int (*int_code_t)(void);
 typedef jlong(*longop_t) (jlong a, jlong b);
 
 #endif				/* TYPES_H */

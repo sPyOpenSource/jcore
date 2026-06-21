@@ -30,7 +30,7 @@ ThreadDescForeignProxy *allocThreadDescForeignProxyInDomain(DomainDesc * domain,
 MappedMemoryProxy *allocMappedMemoryProxyInDomain(DomainDesc * domain, char *mem, ClassDesc *cl);
 #endif /* ENABLE_MAPPING */
 
-CPUDesc *specialAllocCPUDesc();
-DomainDesc *specialAllocDomainDesc();
+CPUDesc *specialAllocCPUDesc(void);
+DomainDesc *specialAllocDomainDesc(void);
 
 #endif				/* GC_ALLOC_H */

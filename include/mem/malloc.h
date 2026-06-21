@@ -67,7 +67,7 @@ TempMemory *jxmalloc_tmp(u4_t size);
 void jxfree_tmp(TempMemory * m);
 
 /* print statistics */
-void jxmalloc_stat();
+void jxmalloc_stat(void);
 
 struct DomainDesc_s;
 u4_t *malloc_threadstack(struct DomainDesc_s *domain, u4_t size,
