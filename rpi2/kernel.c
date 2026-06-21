@@ -163,7 +163,7 @@ extern "C" /* Use C linkage for kernel_main. */
 void kernel_main(uint64_t dtb_ptr32, uint64_t x1, uint64_t x2, uint64_t x3)
 #else
 // arguments for AArch32
-void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags)
+void main(uint32_t r0, uint32_t r1, uint32_t atags)
 #endif
 {
 	// initialize UART for Raspi2

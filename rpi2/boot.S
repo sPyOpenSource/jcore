@@ -43,7 +43,7 @@ _start:
 	blo 1b
 
 	// Call kernel_main
-	ldr r3, =kernel_main
+	ldr r3, =main
 	blx r3
 
 	// halt

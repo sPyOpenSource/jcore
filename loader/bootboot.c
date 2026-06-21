@@ -49,6 +49,224 @@
 // get BOOTBOOT specific stuff
 #include "bootboot.h"
 
+/*** GNU-EFI compatibility layer for AARCH64 EFI framework ***/
+
+// Forward declarations needed for compatibility types
+extern EFI_BOOT_SERVICES  *BS;
+extern EFI_SYSTEM_TABLE   *ST;
+
+// Missing type definitions (must be before any usage in this section)
+typedef EFI_FILE_PROTOCOL                *EFI_FILE_HANDLE;
+typedef struct EFI_SIMPLE_TEXT_INPUT_PROTOCOL SIMPLE_INPUT_INTERFACE;
+
+// GUID definitions used by compatibility functions
+struct EFI_GUID EFI_FILE_INFO_GUID = {0x09576e92, 0x6d3f, 0x11d2, {0x8e, 0x39, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b}};
+struct EFI_GUID EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID = {0x964e5b22, 0x6459, 0x11d2, {0x8e, 0x39, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b}};
+struct EFI_GUID AcpiTableGuid = {0x8868e871, 0xe4f1, 0x11d3, {0xbc, 0x22, 0x00, 0x80, 0xc7, 0x3c, 0x88, 0x81}};
+struct EFI_GUID SMBIOSTableGuid = {0xeb9d2d31, 0x2d88, 0x11d3, {0x9a, 0x16, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d}};
+struct EFI_GUID MpsTableGuid = {0xeb9d2d2f, 0x2d88, 0x11d3, {0x9a, 0x16, 0x00, 0x90, 0x27, 0x3f, 0xc1, 0x4d}};
+
+// Missing type definitions from GNU-EFI
+typedef long long INT64;
+#define VOID void
+#define IN
+#define OUT
+
+// NextMemoryDescriptor macro
+#define NextMemoryDescriptor(MemDesc, Size) ((EFI_MEMORY_DESCRIPTOR *)((UINT8 *)(MemDesc) + (Size)))
+
+// uefi_call_wrapper is a no-op on AARCH64 (no x86_64 calling convention thunk needed)
+#define uefi_call_wrapper(func, num_args, ...) func(__VA_ARGS__)
+
+// Memory operations (replacing GNU-EFI functions)
+static inline void ZeroMem(void *ptr, UINTN size) {
+    unsigned char *p = (unsigned char *)ptr;
+    while (size--) *p++ = 0;
+}
+
+static inline void CopyMem(void *dst, const void *src, UINTN size) {
+    unsigned char *d = (unsigned char *)dst;
+    const unsigned char *s = (const unsigned char *)src;
+    while (size--) *d++ = *s++;
+}
+
+static inline int CompareMem(const void *ptr1, const void *ptr2, UINTN len) {
+    const unsigned char *p1 = (const unsigned char *)ptr1;
+    const unsigned char *p2 = (const unsigned char *)ptr2;
+    while (len--) {
+        if (*p1 != *p2) return 1;
+        p1++; p2++;
+    }
+    return 0;
+}
+
+// strlena (ASCII string length for unsigned char*, used in fs.h)
+static inline int strlena(const unsigned char *s) {
+    int len = 0;
+    while (s[len]) len++;
+    return len;
+}
+
+// CHAR16 string length for GNU-EFI compat
+static inline UINTN StrLen(const CHAR16 *s) {
+    UINTN len = 0;
+    while (s[len]) len++;
+    return len;
+}
+
+// FreePool wrapper
+static inline EFI_STATUS FreePool(void *ptr) {
+    return BS->FreePool(ptr);
+}
+
+// EFI_FILE_INFO helper (GNU-EFI LibFileInfo replacement)
+static EFI_FILE_INFO *LibFileInfo(EFI_FILE_HANDLE FHand) {
+    EFI_STATUS Status;
+    EFI_FILE_INFO *Buffer = NULL;
+    UINTN BufferSize = sizeof(EFI_FILE_INFO) + 200;
+
+    Status = FHand->GetInfo(FHand, &EFI_FILE_INFO_GUID, &BufferSize, Buffer);
+    if (Status == EFI_BUFFER_TOO_SMALL) {
+        BS->AllocatePool(2, BufferSize, (void**)&Buffer);
+        if (!Buffer) return NULL;
+        Status = FHand->GetInfo(FHand, &EFI_FILE_INFO_GUID, &BufferSize, Buffer);
+        if ((INTN)Status < 0) return NULL;
+    } else if ((INTN)Status < 0) {
+        return NULL;
+    }
+    return Buffer;
+}
+
+// Decimal to BCD (Binary Coded Decimal) conversion
+static inline UINT8 DecimaltoBCD(UINT8 decimal) {
+    return ((decimal / 10) << 4) | (decimal % 10);
+}
+
+// Number printing helpers
+void printUInt64Digits(uint64_t num, uint64_t base) {
+    CHAR16 uint64Str[22] = {'\0'};
+    const CHAR16 *digits = L"0123456789ABCDEF";
+    uint64_t i = 0;
+    do {
+        uint64Str[i++] = digits[num % base];
+        num /= base;
+    } while (num > 0);
+    uint64Str[i--] = '\0';
+    for (uint64_t j = 0; j < i; j++, i--) {
+        CHAR16 temp = uint64Str[i];
+        uint64Str[i] = uint64Str[j];
+        uint64Str[j] = temp;
+    }
+    ST->ConOut->OutputString(ST->ConOut, uint64Str);
+}
+
+void printIntDigits(int32_t num) {
+    CHAR16 int32Str[12] = {'\0'};
+    const CHAR16 *digits = L"0123456789";
+    uint64_t i = 0;
+    int negative = (num < 0);
+    if (negative) num = -num;
+    do {
+        int32Str[i++] = digits[num % 10];
+        num /= 10;
+    } while (num > 0);
+    if (negative) int32Str[i++] = '-';
+    int32Str[i--] = '\0';
+    for (uint64_t j = 0; j < i; j++, i--) {
+        CHAR16 temp = int32Str[i];
+        int32Str[i] = int32Str[j];
+        int32Str[j] = temp;
+    }
+    ST->ConOut->OutputString(ST->ConOut, int32Str);
+}
+
+// Custom Print implementation (replaces GNU-EFI Print, uses wprintf-compatible format)
+#define Print wprintf
+
+// wprintf implementation (independent of efi_main.c)
+void wprintf(CHAR16 *txt, ...) {
+    CHAR16 charStr[2] = {'\0'};
+    va_list args;
+    va_start(args, txt);
+    for (uint64_t i = 0; txt[i] != '\0'; i++) {
+        if (txt[i] == '%') {
+            i++;
+            switch (txt[i]) {
+            case 'c': {
+                charStr[0] = (CHAR16)va_arg(args, int);
+                ST->ConOut->OutputString(ST->ConOut, charStr);
+                break;
+            }
+            case 's': {
+                CHAR16 *varString = va_arg(args, CHAR16 *);
+                ST->ConOut->OutputString(ST->ConOut, varString);
+                break;
+            }
+            case 'd': {
+                int32_t number = va_arg(args, int32_t);
+                printIntDigits(number);
+                break;
+            }
+            case 'x': {
+                uint64_t hex = va_arg(args, uint64_t);
+                printUInt64Digits(hex, 16);
+                break;
+            }
+            default:
+                charStr[0] = txt[i];
+                ST->ConOut->OutputString(ST->ConOut, charStr);
+                break;
+            }
+        } else {
+            charStr[0] = txt[i];
+            ST->ConOut->OutputString(ST->ConOut, charStr);
+        }
+    }
+    va_end(args);
+}
+
+// GNU-EFI InitializeLib replacement
+static void InitializeLib(EFI_HANDLE image, EFI_SYSTEM_TABLE *systab) {
+    (void)image;
+    ST = systab;
+    BS = systab->BootServices;
+}
+
+// Simplified GetShellArgcArgv replacement
+static INTN GetShellArgcArgv(EFI_HANDLE image, CHAR16 ***argv) {
+    (void)image;
+    static CHAR16 *empty_argv[] = { NULL };
+    *argv = empty_argv;
+    return 0;
+}
+
+// GNU-EFI LibGetSystemConfigurationTable replacement
+static EFI_STATUS LibGetSystemConfigurationTable(EFI_GUID *Guid, void **Table) {
+    UINTN i;
+    for (i = 0; i < ST->NumberOfTableEntries; i++) {
+        if (!CompareMem(Guid, &ST->ConfigurationTable[i].VendorGuid, sizeof(EFI_GUID))) {
+            *Table = ST->ConfigurationTable[i].VendorTable;
+            return 0;
+        }
+    }
+    return EFI_NOT_FOUND;
+}
+
+// GNU-EFI LibOpenRoot replacement
+static EFI_FILE_HANDLE LibOpenRoot(EFI_HANDLE DeviceHandle) {
+    EFI_SIMPLE_FILE_SYSTEM_PROTOCOL *Volume;
+    EFI_FILE_HANDLE RootDir;
+    EFI_STATUS Status;
+
+    Status = BS->HandleProtocol(DeviceHandle, &EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_GUID, (void**)&Volume);
+    if ((INTN)Status < 0) return NULL;
+
+    Status = Volume->OpenVolume(Volume, &RootDir);
+    if ((INTN)Status < 0) return NULL;
+
+    return RootDir;
+}
+
 /*** ELF64 defines and structs ***/
 #define ELFMAG      "\177ELF"
 #define SELFMAG     4
@@ -58,6 +276,8 @@
 #define ELFDATA2LSB 1       /* 2's complement, little endian */
 #define PT_LOAD     1       /* Loadable program segment */
 #define EM_X86_64   62      /* AMD x86-64 architecture */
+
+struct EFI_GUID EFI_GRAPHICS_OUTPUT_PROTOCOL_GUID    = {0x9042a9de, 0x23dc, 0x4a38, {0x96, 0xfb, 0x7a, 0xde, 0xd0, 0x80, 0x51, 0x6a}};
 
 typedef struct
 {
@@ -158,6 +378,74 @@ typedef struct {
 struct EFI_SIMPLE_FILE_SYSTEM_PROTOCOL;
 struct EFI_FILE_PROTOCOL;
 
+// GPT partition table structures (from GNU-EFI efigpt.h)
+#define EFI_PTAB_HEADER_ID          "EFI PART"
+#define EFI_PART_USED_BY_OS         0x0000000000000001ULL
+
+typedef struct {
+    UINT64                          Signature;
+    UINT32                          Revision;
+    UINT32                          HeaderSize;
+    UINT32                          HeaderCRC32;
+    UINT32                          Reserved;
+    UINT64                          MyLBA;
+    UINT64                          AlternateLBA;
+    UINT64                          FirstUsableLBA;
+    UINT64                          LastUsableLBA;
+    EFI_GUID                        DiskGUID;
+    UINT64                          PartitionEntryLBA;
+    UINT32                          NumberOfPartitionEntries;
+    UINT32                          SizeOfPartitionEntry;
+    UINT32                          PartitionEntryArrayCRC32;
+} EFI_PARTITION_TABLE_HEADER;
+
+typedef struct {
+    EFI_GUID                        PartitionTypeGUID;
+    EFI_GUID                        UniquePartitionGUID;
+    UINT64                          StartingLBA;
+    UINT64                          EndingLBA;
+    UINT64                          Attributes;
+    CHAR16                          PartitionName[36];
+} EFI_PARTITION_ENTRY;
+
+// Loaded image protocol (from GNU-EFI efiprot.h)
+typedef EFI_LOADED_IMAGE_PROTOCOL EFI_LOADED_IMAGE;
+#define LOADED_IMAGE_PROTOCOL \
+    { 0x5b1b31a1, 0x9562, 0x11d2, {0x8e, 0x3f, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b} }
+
+// Block I/O protocol (from GNU-EFI efiprot.h)
+struct _EFI_BLOCK_IO;
+
+typedef EFI_STATUS (*EFI_BLOCK_RESET)(struct _EFI_BLOCK_IO *This, BOOLEAN ExtendedVerification);
+typedef EFI_STATUS (*EFI_BLOCK_READ)(struct _EFI_BLOCK_IO *This, UINT32 MediaId, UINT64 LBA, UINTN BufferSize, void *Buffer);
+typedef EFI_STATUS (*EFI_BLOCK_WRITE)(struct _EFI_BLOCK_IO *This, UINT32 MediaId, UINT64 LBA, UINTN BufferSize, void *Buffer);
+typedef EFI_STATUS (*EFI_BLOCK_FLUSH)(struct _EFI_BLOCK_IO *This);
+
+typedef struct {
+    UINT32                          MediaId;
+    BOOLEAN                         RemovableMedia;
+    BOOLEAN                         MediaPresent;
+    BOOLEAN                         LogicalPartition;
+    BOOLEAN                         ReadOnly;
+    BOOLEAN                         WriteCaching;
+    UINT32                          BlockSize;
+    UINT32                          IoAlign;
+    UINT64                          LastBlock;
+    UINT64                          Pad;
+} EFI_BLOCK_IO_MEDIA;
+
+typedef struct _EFI_BLOCK_IO {
+    UINT64                          Revision;
+    EFI_BLOCK_IO_MEDIA             *Media;
+    EFI_BLOCK_RESET                 Reset;
+    EFI_BLOCK_READ                  ReadBlocks;
+    EFI_BLOCK_WRITE                 WriteBlocks;
+    EFI_BLOCK_FLUSH                 FlushBlocks;
+} EFI_BLOCK_IO;
+
+#define BLOCK_IO_PROTOCOL \
+    { 0x964e5b21, 0x6459, 0x11d2, {0x8e, 0x39, 0x00, 0xa0, 0xc9, 0x69, 0x72, 0x3b} }
+
 #if USE_MP_SERVICES
 #ifndef EFI_MP_SERVICES_PROTOCOL_GUID
 #define EFI_MP_SERVICES_PROTOCOL_GUID \
@@ -222,7 +510,7 @@ struct _EFI_MP_SERVICES_PROTOCOL {
 };
 #endif
 #else
-extern void ap_trampoline();
+extern void ap_trampoline(void);
 UINT16 lapic_ids[1024];
 UINT64 lapic_addr=0;
 #endif
@@ -234,7 +522,22 @@ EFI_STATUS
   OUT struct EFI_FILE_PROTOCOL                 **Root
   );*/
 
+/*** Missing types and constants for AARCH64 EFI framework ***/
+// These are provided by GNU-EFI headers but missing from this framework
+typedef EFI_FILE_PROTOCOL                *EFI_FILE_HANDLE;
+typedef struct EFI_SIMPLE_TEXT_INPUT_PROTOCOL SIMPLE_INPUT_INTERFACE;
+
+#define CHAR_NULL           0x0000
+#define CHAR_BACKSPACE      0x0008
+#define CHAR_TAB            0x0009
+#define CHAR_LINEFEED       0x000A
+#define CHAR_CARRIAGE_RETURN 0x000D
+#define SCAN_ESC            0x0017
+#define SCAN_DELETE         0x0008
+
 /* Intel EFI headers has simple file protocol, but not GNU EFI */
+// Already defined in <lib/efi.h> for this framework
+#define EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION 1
 #ifndef EFI_SIMPLE_FILE_SYSTEM_PROTOCOL_REVISION
 typedef struct _EFI_SIMPLE_FILE_SYSTEM_PROTOCOL {
   UINT64                                      Revision;
@@ -297,10 +600,12 @@ typedef enum {
     TwoStopBits         // 2 stop bits
 } EFI_STOP_BITS_TYPE;
 
+struct _EFI_SERIAL_IO_PROTOCOL;
+
 typedef
 EFI_STATUS
 (*EFI_SERIAL_DUMMY)(
-  IN  EFI_SERIAL_IO_PROTOCOL  *This
+  struct _EFI_SERIAL_IO_PROTOCOL  *This
   );
 
 typedef
@@ -958,7 +1263,7 @@ a2u (char *str)
 EFI_STATUS
 report(EFI_STATUS Status,CHAR16 *Msg)
 {
-    Print(L"BOOTBOOT-PANIC: %s (EFI %r)\n",Msg,Status);
+    wprintf(L"BOOTBOOT-PANIC: %s (Status=%x)\n", Msg, Status);
     return Status;
 }
 
@@ -1041,7 +1346,7 @@ ParseEnvironment(unsigned char *cfg, int len, INTN argc, CHAR16 **argv)
         *ptr = 0;
         ptr=cfg-1;
     }
-    DBG(L" * Environment @%lx %d bytes\n",cfg,len);
+    DBG(L" * Environment @%x %d bytes\n",cfg,len);
     while(ptr<cfg+len) {
         ptr++;
         // failsafe
@@ -1097,7 +1402,7 @@ ParseEnvironment(unsigned char *cfg, int len, INTN argc, CHAR16 **argv)
  * Get a linear frame buffer
  */
 EFI_STATUS
-GetLFB()
+GetLFB(void)
 {
     EFI_STATUS status;
     EFI_GRAPHICS_OUTPUT_PROTOCOL *gop = NULL;
@@ -1110,7 +1415,7 @@ GetLFB()
 
     //GOP
     status = uefi_call_wrapper(BS->LocateProtocol, 3, &gopGuid, NULL, (void**)&gop);
-    if(EFI_ERROR(status) && gop)
+    if(EFI_ERROR == status && gop)
         return status;
 
     // minimum resolution
@@ -1121,14 +1426,14 @@ GetLFB()
     status = uefi_call_wrapper(gop->QueryMode, 4, gop, gop->Mode==NULL?0:gop->Mode->Mode, &SizeOfInfo, &info);
     if (status == EFI_NOT_STARTED)
         status = uefi_call_wrapper(gop->SetMode, 2, gop, 0);
-    if(EFI_ERROR(status))
+    if(EFI_ERROR == status)
         return status;
     nativeMode = gop->Mode->Mode;
     imax=gop->Mode->MaxMode;
     for (i = 0; i < imax; i++) {
         status = uefi_call_wrapper(gop->QueryMode, 4, gop, i, &SizeOfInfo, &info);
         // failsafe
-        if (EFI_ERROR(status))
+        if (EFI_ERROR == status)
             continue;
 #if GOP_DEBUG
         valid=0;
@@ -1168,7 +1473,7 @@ GetLFB()
     // if we have found a new, better mode
     if(selectedMode != 9999 && selectedMode != nativeMode) {
         status = uefi_call_wrapper(gop->SetMode, 2, gop, selectedMode);
-        if(!EFI_ERROR(status))
+        if(EFI_ERROR != status)
             nativeMode = selectedMode;
     }
     // get framebuffer properties
@@ -1184,7 +1489,7 @@ GetLFB()
             (gop->Mode->Info->PixelFormat==PixelBitMask && gop->Mode->Info->PixelInformation.RedMask==0)? FB_ABGR : (
                 gop->Mode->Info->PixelInformation.BlueMask==0xFF00? FB_RGBA : FB_BGRA
         ));
-    DBG(L" * Screen %d x %d, scanline %d, fb @%lx %d bytes, type %d %s\n",
+    DBG(L" * Screen %d x %d, scanline %d, fb @%x %d bytes, type %d %s\n",
         bootboot->fb_width, bootboot->fb_height, bootboot->fb_scanline,
         bootboot->fb_ptr, bootboot->fb_size, gop->Mode->Info->PixelFormat,
             bootboot->fb_type==FB_ARGB?L"ARGB":(bootboot->fb_type==FB_ABGR?L"ABGR":(
@@ -1211,7 +1516,7 @@ LoadFile(CHAR16 *FileName, UINT8 **FileData, UINTN *FileDataLength)
 
     status = uefi_call_wrapper(RootDir->Open, 5, RootDir, &FileHandle, FileName,
         EFI_FILE_MODE_READ, EFI_FILE_READ_ONLY | EFI_FILE_HIDDEN | EFI_FILE_SYSTEM);
-    if (EFI_ERROR(status)) {
+    if (EFI_ERROR == status) {
         return status;
 //        Print(L"%s not found\n",FileName);
 //        return report(status,L"Open error");
@@ -1229,13 +1534,13 @@ LoadFile(CHAR16 *FileName, UINT8 **FileData, UINTN *FileDataLength)
 
     BufferSize = (UINTN)((ReadSize+PAGESIZE-1)/PAGESIZE);
     status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, BufferSize, (EFI_PHYSICAL_ADDRESS*)&Buffer);
-    if (EFI_ERROR(status) || Buffer == NULL) {
+    if (EFI_ERROR == status || Buffer == NULL) {
         uefi_call_wrapper(FileHandle->Close, 1, FileHandle);
         return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
     }
     status = uefi_call_wrapper(FileHandle->Read, 3, FileHandle, &ReadSize, Buffer);
     uefi_call_wrapper(FileHandle->Close, 1, FileHandle);
-    if (EFI_ERROR(status)) {
+    if (EFI_ERROR == status) {
         uefi_call_wrapper(BS->FreePages, 2, (EFI_PHYSICAL_ADDRESS)(Buffer), BufferSize);
         Print(L"%s not found\n",FileName);
         return report(status,L"Read error");
@@ -1250,7 +1555,7 @@ LoadFile(CHAR16 *FileName, UINT8 **FileData, UINTN *FileDataLength)
  * Locate and load the kernel in initrd
  */
 EFI_STATUS
-LoadCore()
+LoadCore(void)
 {
     EFI_STATUS status;
     int i=0,bss=0;
@@ -1291,7 +1596,7 @@ LoadCore()
             ehdr->e_ident[EI_CLASS]==ELFCLASS64&&ehdr->e_ident[EI_DATA]==ELFDATA2LSB&&
             ehdr->e_machine==EM_X86_64&&ehdr->e_phnum>0){
             // Parse ELF64
-            DBG(L" * Parsing ELF64 @%lx\n",core.ptr);
+            DBG(L" * Parsing ELF64 @%x\n",core.ptr);
             Elf64_Phdr *phdr=(Elf64_Phdr *)((UINT8 *)ehdr+ehdr->e_phoff);
             for(i=0;i<ehdr->e_phnum;i++){
                 if(phdr->p_type==PT_LOAD && (phdr->p_vaddr >> 30) == 0x3FFFFFFFF) {
@@ -1333,7 +1638,7 @@ LoadCore()
             pehdr->machine == IMAGE_FILE_MACHINE_AMD64 && pehdr->file_type == PE_OPT_MAGIC_PE32PLUS &&
             (pehdr->code_base & 0xC0000000)) {
                 // Parse PE32+
-                DBG(L" * Parsing PE32+ @%lx\n",core.ptr);
+                DBG(L" * Parsing PE32+ @%x\n",core.ptr);
                 core.size = (pehdr->entry_point-pehdr->code_base) + pehdr->text_size + pehdr->data_size;
                 ptr = core.ptr;
                 bss = pehdr->bss_size;
@@ -1365,18 +1670,18 @@ LoadCore()
         core.ptr = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (core.size + bss + PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&core.ptr);
-        if (EFI_ERROR(status) || core.ptr == NULL)
+        if (EFI_ERROR == status || core.ptr == NULL)
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         CopyMem((void*)core.ptr,ptr,core.size);
         if(bss>0)
             ZeroMem((UINT8*)core.ptr + core.size, bss);
         core.size += bss;
-        DBG(L" * fb          @%lx\n", fb_addr);
-        DBG(L" * bootboot    @%lx\n", bb_addr);
-        DBG(L" * environment @%lx\n", env_addr);
-        DBG(L" * Entry point @%lx, text @%lx %d bytes\n",entrypoint, core.ptr, core.size);
+        DBG(L" * fb          @%x\n", fb_addr);
+        DBG(L" * bootboot    @%x\n", bb_addr);
+        DBG(L" * environment @%x\n", env_addr);
+        DBG(L" * Entry point @%x, text @%x %d bytes\n",entrypoint, core.ptr, core.size);
         if(initstack != 1024) {
-            DBG(L" * Stack size  %ld bytes per core\n", initstack);
+            DBG(L" * Stack size  %d bytes per core\n", initstack);
         }
         core.size = ((core.size+PAGESIZE-1)/PAGESIZE)*PAGESIZE;
         return EFI_SUCCESS;
@@ -1507,7 +1812,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
     // get memory for bootboot structure
     bootboot = NULL;
     status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&bootboot);
-    if (EFI_ERROR(status) || bootboot == NULL)
+    if (EFI_ERROR == status || bootboot == NULL)
         return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
     ZeroMem((void*)bootboot,PAGESIZE);
     CopyMem(bootboot->magic,BOOTBOOT_MAGIC,4);
@@ -1569,7 +1874,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
         }
     }
     //if not found, scan memory
-    if(scanmemory && (EFI_ERROR(status) || initrd.ptr==NULL)){
+    if(scanmemory && (EFI_ERROR == status || initrd.ptr==NULL)){
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
             &memory_map_size, memory_map, NULL, &desc_size, NULL);
         if (status!=EFI_BUFFER_TOO_SMALL || memory_map_size==0) {
@@ -1580,7 +1885,7 @@ efi_main (EFI_HANDLE image, EFI_SYSTEM_TABLE *systab)
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (memory_map_size+PAGESIZE-1)/PAGESIZE,
             (EFI_PHYSICAL_ADDRESS*)&memory_map);
-        if (EFI_ERROR(status) || memory_map == NULL) {
+        if (EFI_ERROR == status || memory_map == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
@@ -1610,17 +1915,17 @@ foundinrom:
         uefi_call_wrapper(BS->FreePages, 2, (EFI_PHYSICAL_ADDRESS)memory_map, (memory_map_size+PAGESIZE-1)/PAGESIZE);
     }
     // try reading the initrd from serial line
-    if(EFI_ERROR(status) || initrd.ptr==NULL){
+    if(EFI_ERROR == status || initrd.ptr==NULL){
         status = uefi_call_wrapper(BS->LocateProtocol, 3, &SerIoGuid, NULL, (void**)&ser);
-        if(!EFI_ERROR(status) && ser) {
+        if(status == 0 && ser) {
             // 1000 microsec timeout, mode 115200,8,n,1
             status = uefi_call_wrapper(ser->SetAttributes, 7, ser, 115200, 0, 1000, NoParity, 8, OneStopBit);
-            if(!EFI_ERROR(status)) {
+            if(EFI_ERROR != status) {
                 i = 3;
                 uefi_call_wrapper(ser->Write, 3, ser, &i, "\003\003\003");
                 i = 4; initrd.size = 0;
-                status = uefi_call_wrapper(ser->Read, 3, ser, &i, (VOID*)&initrd.size);
-                if(!EFI_ERROR(status) && i == 4) {
+                status = uefi_call_wrapper(ser->Read, 3, ser, &i, (void*)&initrd.size);
+                if(EFI_ERROR != status && i == 4) {
                     i = 2;
                     if(initrd.size < 32 || initrd.size >= INITRD_MAXSIZE*1024*1024) {
                         uefi_call_wrapper(ser->Write, 3, ser, &i, "SE");
@@ -1630,14 +1935,14 @@ foundinrom:
                         initrd.ptr = NULL;
                         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (initrd.size+PAGESIZE-1)/PAGESIZE,
                             (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
-                        if (EFI_ERROR(status) || initrd.ptr == NULL) {
+                        if (EFI_ERROR == status || initrd.ptr == NULL) {
                             uefi_call_wrapper(ser->Write, 3, ser, &i, "SE");
                             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
                         }
                         uefi_call_wrapper(ser->Write, 3, ser, &i, "OK");
                         i = initrd.size;
-                        status = uefi_call_wrapper(ser->Read, 3, ser, &i, (VOID*)initrd.ptr);
-                        if(EFI_ERROR(status) || i != initrd.size) {
+                        status = uefi_call_wrapper(ser->Read, 3, ser, &i, (void*)initrd.ptr);
+                        if(EFI_ERROR == status || i != initrd.size) {
                             uefi_call_wrapper(BS->FreePages, 2, (EFI_PHYSICAL_ADDRESS)initrd.ptr,
                                 (initrd.size+PAGESIZE-1)/PAGESIZE);
                             initrd.ptr = NULL;
@@ -1650,7 +1955,7 @@ foundinrom:
         }
     }
     // fall back to INITRD on filesystem
-    if(EFI_ERROR(status) || initrd.ptr==NULL){
+    if(EFI_ERROR == status || initrd.ptr==NULL){
         // if the user presses any key now, we fallback to backup initrd
         for(i=0;i<500;i++) {
             if(!uefi_call_wrapper(BS->CheckEvent, 1, CI->WaitForKey)) {
@@ -1669,7 +1974,7 @@ foundinrom:
                     image,
                     &lipGuid,
                     (void **) &loaded_image);
-        if (!EFI_ERROR(status) && loaded_image!=NULL) {
+        if (EFI_ERROR != status && loaded_image!=NULL) {
             status=EFI_LOAD_ERROR;
             RootDir = LibOpenRoot(loaded_image->DeviceHandle);
             // load ramdisk
@@ -1677,7 +1982,7 @@ foundinrom:
         }
     }
     // if not found, try architecture specific initrd file
-    if(EFI_ERROR(status) || initrd.ptr==NULL){
+    if(EFI_ERROR == status || initrd.ptr==NULL){
         initrdfile=L"\\BOOTBOOT\\X86_64";
         DBG(L" * Locate initrd in %s\n",initrdfile);
         status=LoadFile(initrdfile,&initrd.ptr, &initrd.size);
@@ -1692,11 +1997,11 @@ foundinrom:
         handles = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (handle_size+PAGESIZE-1)/PAGESIZE,
             (EFI_PHYSICAL_ADDRESS*)&handles);
-        if(EFI_ERROR(status) || handles == NULL)
+        if(EFI_ERROR == status || handles == NULL)
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages\n");
         initrd.ptr = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
-        if (EFI_ERROR(status) || initrd.ptr == NULL)
+        if (EFI_ERROR == status || initrd.ptr == NULL)
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         lba_s=lba_e=0;
         status = uefi_call_wrapper(BS->LocateHandle, 5, ByProtocol, &bioGuid, NULL, &handle_size, handles);
@@ -1744,7 +2049,7 @@ partok:
         if(initrd.size>0 && bio!=NULL) {
             initrd.ptr = NULL;
             status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, initrd.size/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&initrd.ptr);
-            if (EFI_ERROR(status) || initrd.ptr == NULL)
+            if (EFI_ERROR == status || initrd.ptr == NULL)
                 return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
             status = uefi_call_wrapper(bio->ReadBlocks, 5, bio, bio->Media->MediaId, lba_s, initrd.size, initrd.ptr);
         } else
@@ -1756,7 +2061,7 @@ partok:
             unsigned char *addr,f;
             int len=0, r;
             TINF_DATA d;
-            DBG(L" * Gzip compressed initrd @%lx %d bytes\n",initrd.ptr,initrd.size);
+            DBG(L" * Gzip compressed initrd @%x %d bytes\n",initrd.ptr,initrd.size);
             // skip gzip header
             addr=initrd.ptr+2;
             if(*addr++!=8) goto gzerr;
@@ -1770,7 +2075,7 @@ partok:
             CopyMem(&len,initrd.ptr+initrd.size-4,4);
             addr = NULL;
             status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, (len+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&addr);
-            if(EFI_ERROR(status) || addr == NULL)
+            if(EFI_ERROR == status || addr == NULL)
                 return report(EFI_OUT_OF_RESOURCES,L"AllocatePages\n");
             // decompress
             d.bitcount = 0;
@@ -1793,7 +2098,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             initrd.ptr=addr;
             initrd.size=len;
         }
-        DBG(L" * Initrd loaded @%lx %d bytes\n",initrd.ptr,initrd.size);
+        DBG(L" * Initrd loaded @%x %d bytes\n",initrd.ptr,initrd.size);
         kne=env.ptr=NULL;
         // if there's an environment file, load it
         if(loaded_image!=NULL && LoadFile(configfile,&env.ptr,&env.size)!=EFI_SUCCESS) {
@@ -1810,7 +2115,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
                     ret.size=PAGESIZE-1;
                 env.ptr = NULL;
                 status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&env.ptr);
-                if(EFI_ERROR(status) || env.ptr == NULL)
+                if(EFI_ERROR == status || env.ptr == NULL)
                     return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
                 ZeroMem((void*)env.ptr,PAGESIZE);
                 CopyMem((void*)env.ptr,ret.ptr,ret.size);
@@ -1824,7 +2129,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
             env.size = 0;
             env.ptr = NULL;
             status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 1, (EFI_PHYSICAL_ADDRESS*)&env.ptr);
-            if (EFI_ERROR(status) || env.ptr == NULL) {
+            if (EFI_ERROR == status || env.ptr == NULL) {
                 return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
             }
             ZeroMem((void*)env.ptr,PAGESIZE);
@@ -1833,7 +2138,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
 
         // get linear frame buffer
         status = GetLFB();
-        if (EFI_ERROR(status) || bootboot->fb_width==0 || bootboot->fb_ptr==0)
+        if (EFI_ERROR == status || bootboot->fb_width==0 || bootboot->fb_ptr==0)
                 return report(status, L"GOP failed, no framebuffer");
 
         // collect information on system
@@ -1877,17 +2182,17 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         bootboot->datetime[4]=DecimaltoBCD(t.Hour);
         bootboot->datetime[5]=DecimaltoBCD(t.Minute);
         bootboot->datetime[6]=DecimaltoBCD(t.Second);
-        bootboot->datetime[7]=DecimaltoBCD(t.Daylight);
+        bootboot->datetime[7]=DecimaltoBCD(t.DayLight);
         CopyMem((void *)&bootboot->timezone, &t.TimeZone, 2);
         if(bootboot->timezone<-1440||bootboot->timezone>1440)   // TZ in mins
             bootboot->timezone=0;
         DBG(L" * System time %d-%02d-%02d %02d:%02d:%02d GMT%s%d:%02d %s\n",
             t.Year,t.Month,t.Day,t.Hour,t.Minute,t.Second,
             bootboot->timezone>=0?L"+":L"",bootboot->timezone/60,bootboot->timezone%60,
-            t.Daylight?L"summertime":L"");
+            t.DayLight?L"summertime":L"");
         // get sys/core and parse
         status=LoadCore();
-        if (EFI_ERROR(status))
+        if (EFI_ERROR == status)
             return status;
         if(kne!=NULL)
             *kne='\n';
@@ -1976,7 +2281,7 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2,
             (memory_map_size+PAGESIZE-1)/PAGESIZE,
             (EFI_PHYSICAL_ADDRESS*)&memory_map);
-        if (EFI_ERROR(status) || memory_map == NULL) {
+        if (EFI_ERROR == status || memory_map == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
 
@@ -1984,11 +2289,11 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         paging = NULL;
         status = uefi_call_wrapper(BS->AllocatePages, 4, 0, 2, 37+
             (bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE, (EFI_PHYSICAL_ADDRESS*)&paging);
-        if (EFI_ERROR(status) || paging == NULL) {
+        if (EFI_ERROR == status || paging == NULL) {
             return report(EFI_OUT_OF_RESOURCES,L"AllocatePages");
         }
         ZeroMem((void*)paging,(37+(bootboot->numcores*initstack+PAGESIZE-1)/PAGESIZE)*PAGESIZE);
-        DBG(L" * Pagetables PML4 @%lx\n",paging);
+        DBG(L" * Pagetables PML4 @%x\n",paging);
         //PML4
         paging[0]=(UINT64)((UINT8 *)paging+PAGESIZE)+3;  // pointer to 2M PDPE (16G RAM identity mapped)
         paging[511]=(UINT64)((UINT8 *)paging+20*PAGESIZE)+3;   // pointer to 4k PDPE (core mapped at -2M)
@@ -2027,12 +2332,12 @@ gzerr:          return report(EFI_COMPROMISED_DATA,L"Unable to uncompress");
         // Get memory map
         int cnt = 3, apmemfree = 0;
 get_memory_map:
-        DBG(L" * Memory Map @%lx %d bytes try #%d\n", memory_map, memory_map_size, 4-cnt);
+        DBG(L" * Memory Map @%x %d bytes try #%d\n", memory_map, memory_map_size, 4-cnt);
         mmapent = (MMapEnt *)&(bootboot->mmap);
         bootboot->size = 128;
         status = uefi_call_wrapper(BS->GetMemoryMap, 5,
             &memory_map_size, memory_map, &map_key, &desc_size, &desc_version);
-        if (EFI_ERROR(status)) {
+        if (EFI_ERROR == status) {
             return report(status,L"GetMemoryMap");
         }
         last=NULL;
@@ -2098,7 +2403,7 @@ get_memory_map:
 
         //inform firmware that we're about to leave it's realm
         status = uefi_call_wrapper(BS->ExitBootServices, 2, image, map_key);
-        if(EFI_ERROR(status)){
+        if(EFI_ERROR == status){
             cnt--;
             if(cnt>0) goto get_memory_map;
             return report(status,L"ExitBootServices");
@@ -2187,7 +2492,7 @@ get_memory_map:
         // release AP spinlock
         bsp_done = 1;
         __asm__ __volatile__ ("pause" : : : "memory"); // memory barrier
-        bootboot_startcore((VOID*)bsp_num);
+        bootboot_startcore((void*)bsp_num);
     }
     return report(status,L"Initrd not found");
 }
