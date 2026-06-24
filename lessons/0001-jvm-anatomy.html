@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1: The Anatomy of a JVM</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+<h1>Lesson 1: The Anatomy of a JVM</h1>
+<p class="subtitle">Deconstructing the virtual machine into implementable components.</p>
+
+<p>To implement a JVM on bare metal, we must first stop thinking of it as "software" and start thinking of it as a <strong>virtual CPU</strong>. A JVM is essentially a software-defined processor that executes a specific instruction set (bytecode) instead of native ARM instructions.</p>
+
+<h2>The Three Pillars of the JVM</h2>
+
+<p>According to the <a href="https://docs.oracle.com/en/java/javase/specs/">JVM Specification</a>, the machine consists of three primary subsystems:</p>
+
+<table>
+  <tr><th>Component</th><th>Responsibility</th><th>Bare-Metal Challenge</th></tr>
+  <tr><td><strong>Class Loader</strong></td><td>Reads <code>.class</code> files and transforms them into internal runtime structures.</td><td>Reading from SD card / Flash using Circle's filesystem drivers.</td></tr>
+  <tr><td><strong>Runtime Data Areas</strong></td><td>The memory "state" of the machine (Heap, Stack, Program Counter).</td><td>Allocating large contiguous blocks of RAM and managing them without an OS.</td></tr>
+  <tr><td><strong>Execution Engine</strong></td><td>The "CPU" that reads bytecode and produces actions (Interpreter or JIT).</td><td>Efficiently mapping bytecode to AArch64 instructions.</td></tr>
+</table>
+
+<h2>The Runtime Data Areas (The Memory Map)</h2>
+
+<p>This is the most critical part of your implementation. You aren't just allocating memory; you are designing a memory architecture. You will need to implement:</p>
+
+<ul>
+  <li><strong>The Program Counter (PC)</strong>: A pointer to the current bytecode instruction being executed.</li>
+  <li><strong>The JVM Stack</strong>: A LIFO structure for method frames. Each frame contains local variables and an <em>operand stack</em> (where calculations happen).</li>
+  <li><strong>The Heap</strong>: The shared area where all Java objects live. This is where your Garbage Collector will operate.</li>
+  <li><strong>The Method Area</strong>: Where class structures (metadata) are stored.</li>
+</ul>
+
+<div class="callout">
+  <strong>The "Stack-Based" Secret:</strong> Unlike the ARM CPU, which uses registers (x0, x1, etc.), the JVM is a <strong>stack-based machine</strong>. To add two numbers, it doesn't do <code>add x0, x1, x2</code>; it pushes two numbers onto the operand stack, calls <code>iadd</code>, and the result is pushed back.
+</div>
+
+<h2>The Execution Loop</h2>
+
+<p>At its simplest level, your JVM implementation will be a giant <code>while</code> loop that looks like this:</p>
+
+<pre>
+while (running) {
+    uint8_t opcode = fetch_next_bytecode();
+    switch (opcode) {
+        case OP_IADD: // Integer Add
+            int a = pop();
+            int b = pop();
+            push(a + b);
+            break;
+        case OP_INVOKEVIRTUAL:
+            handle_method_call();
+            break;
+        // ... hundreds of other opcodes
+    }
+}
+</pre>
+
+<h2>Next Steps: Grounding in Circle</h2>
+
+<p>We have the blueprint. Now we need to see if our "foundation" (the Circle OS) provides the tools we need. We need to answer:</p>
+<ul>
+  <li>How do we allocate a huge block of memory for the Heap?</li>
+  <li>How do we handle exceptions (like <code>NullPointerException</code>) in C++?</li>
+  <li>Can we use Circle's existing memory management, or do we need to write our own?</li>
+</ul>
+
+<div class="footer">
+  <p>Lesson 1 of the JVM for Raspberry Pi series — <a href="../MISSION.md">Mission</a></p>
+  <p><strong>Questions?</strong> Ask your agent. If a concept feels too abstract, let's dive deeper into that specific part.</p>
+</div>
+
+</body>
+</html>
