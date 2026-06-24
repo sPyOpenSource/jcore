@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-static uint32_t MMIO_BASE;
+static uintptr_t MMIO_BASE;
 
 // The MMIO area base address, depends on board type
 static inline void mmio_init(int raspi)
@@ -110,7 +110,7 @@ void uart_init(int raspi)
 	// Set it to 3Mhz so that we can consistently set the baud rate
 	if (raspi >= 3) {
 		// UART_CLOCK = 30000000;
-		unsigned int r = (((unsigned int)(&mbox) & ~0xF) | 8);
+		unsigned int r = (((uintptr_t)(&mbox) & ~0xF) | 8);
 		// wait until we can talk to the VC
 		while ( mmio_read(MBOX_STATUS) & 0x80000000 ) { }
 		// send our message to property channel and wait for the response
@@ -158,6 +158,10 @@ void uart_puts(const char* str)
 extern "C" /* Use C linkage for kernel_main. */
 #endif
 
+#ifndef RASPI_VER
+#define RASPI_VER 2
+#endif
+
 #ifdef AARCH64
 // arguments for AArch64
 void kernel_main(uint64_t dtb_ptr32, uint64_t x1, uint64_t x2, uint64_t x3)
@@ -166,8 +170,7 @@ void kernel_main(uint64_t dtb_ptr32, uint64_t x1, uint64_t x2, uint64_t x3)
 void main(uint32_t r0, uint32_t r1, uint32_t atags)
 #endif
 {
-	// initialize UART for Raspi2
-	uart_init(2);
+	uart_init(RASPI_VER);
 	uart_puts("Hello, kernel World!\r\n");
 
 	while (1)

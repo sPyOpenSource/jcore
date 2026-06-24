@@ -138,9 +138,9 @@ enable_uart=1
 # Optional: GPU memory (16MB is enough for headless)
 gpu_mem=16</pre>
 
-<h2>Your Existing rpi2/ Code — What Needs to Change</h2>
+<h2>Your Existing baremetal/ Code — What Needs to Change</h2>
 
-<p>Your <code>rpi2/</code> directory has a 32-bit AArch32 boot stub for RPi 2 (<code>boot.S</code> at 0x8000). For an AArch64 kernel on RPi 3 or 4, you need:</p>
+<p>Your <code>baremetal/</code> directory has a 32-bit AArch32 boot stub for RPi 2 (<code>boot.S</code> at 0x8000). For an AArch64 kernel on RPi 3 or 4, you need:</p>
 <ol>
   <li><strong>Load address:</strong> <code>0x80000</code> instead of <code>0x8000</code></li>
   <li><strong>AArch64 instructions:</strong> Rewrite boot.S in AArch64 assembly</li>

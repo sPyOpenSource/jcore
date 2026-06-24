@@ -9,12 +9,12 @@ Successfully cross-compiled and booted `kernel.c` as a 32-bit RPi 2 kernel on QE
 - **Toolchain mix works:** CLANG (`--target=arm-none-eabi`) compiles 32-bit ARM; the AArch64 GNU `ld -marmelf` links it. No separate 32-bit ARM toolchain needed on macOS.
 - **UART init on RPi 2 needs PL011 at 0x3F201000** (MMIO base 0x3F000000 + GPIO offset 0x200000 + UART offset 0x1000).
 
-## Build command (from rpi2/)
+## Build command (from baremetal/)
 
 ```
 make -C /Users/xuyi/Source/OS/EFI_AARCH64/rpi2 qemu
 ```
 
 ## Implications
-- The existing `rpi2/linker.ld` works as-is for 32-bit.
+- The existing `baremetal/linker.ld` works as-is for 32-bit.
 - `kernel.c` has a proper `main()` with UART, mailbox-based clock setup (for RPi 3+), and echo loop. It was never compiled into the previous `kernel7.img`.

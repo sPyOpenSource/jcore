@@ -145,7 +145,7 @@ Breakpoint 1, _start () at boot_fixed.S:12<br>
 <ol>
   <li>Build <code>make -C rpi2 kernel.elf</code> (with debug symbols, add <code>-g</code> to CFLAGS)</li>
   <li>Launch QEMU with <code>-s -S</code></li>
-  <li>In another terminal: <code>gdb-multiarch rpi2/kernel.elf -ex 'target remote :1234'</code></li>
+  <li>In another terminal: <code>gdb-multiarch baremetal/kernel.elf -ex 'target remote :1234'</code></li>
   <li>Set a breakpoint: <code>b main</code></li>
   <li><code>c</code> — watch it stop at <code>main</code></li>
   <li><code>layout regs</code> — see registers live as you step</li>
