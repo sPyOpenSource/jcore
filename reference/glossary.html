@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPi Boot Chain — Glossary</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<style>
+  .term { margin: 1rem 0; }
+  .term-name { font-weight: 700; font-size: 1.05rem; }
+  .term-def { margin: 0.2rem 0 0.2rem 1rem; color: var(--muted); }
+  .term-avoid { font-size: 0.85rem; margin-left: 1rem; color: #dc2626; }
+  @media print { body { font-size: 12px; } }
+</style>
+</head>
+<body>
+<h1>RPi Boot Chain — Glossary</h1>
+<p>Canonical terms for this workspace. Every lesson, reference, and record should adhere to these definitions.</p>
+
+<div class="term">
+  <div class="term-name">VideoCore (VC)</div>
+  <div class="term-def">Broadcom's GPU/DSP coprocessor that boots <em>first</em> on all Raspberry Pi SoCs. It owns the boot chain up to the point where it releases the ARM CPU from reset. RPi 1-3 use VideoCore IV; RPi 4 uses VideoCore VI.</div>
+  <div class="term-avoid">Avoid: "GPU" alone (ambiguous with graphics)</div>
+</div>
+
+<div class="term">
+  <div class="term-name">ROM bootloader (Stage 1)</div>
+  <div class="term-def">Mask-programmed boot code in the SoC ROM. Runs on the VideoCore immediately after power-on. Initialises clocks, reads OTP to determine boot mode order, then loads Stage 2.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">bootcode.bin (Stage 2, legacy)</div>
+  <div class="term-def">Second-stage bootloader loaded from SD card (or USB) into the VideoCore's L2 cache. Enables SDRAM, then loads <code>start.elf</code>. Used on RPi 1-3 and early RPi 3B+. Superseded by SPI EEPROM bootloader on RPi 4+.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">SPI EEPROM bootloader (Stage 2, RPi 4+)</div>
+  <div class="term-def">Replaces <code>bootcode.bin</code> on RPi 4/5. Stored in SPI-attached EEPROM. Configurable via <code>BOOT_ORDER</code> to try SD, USB, network, NVMe. Executed by the VideoCore ROM.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">start.elf (Stage 3 / GPU firmware)</div>
+  <div class="term-def">Proprietary VideoCore firmware blob loaded from the SD card boot partition. Parses <code>config.txt</code>, applies device tree overlays, sets up memory split, and loads the ARM kernel image. RPi 4 uses <code>start4.elf</code>.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">config.txt</div>
+  <div class="term-def">Configuration file on the boot partition, parsed by <code>start.elf</code>. Controls kernel image name, ARM mode (64-bit vs 32-bit), memory split, device tree selection, UART, GPIO, and hundreds of other hardware parameters.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">armstub (armstub8.bin)</div>
+  <div class="term-def">Optional AArch64 secondary program loaded by <code>start.elf</code> before the kernel. Used to set up exception levels (drop from EL3 to EL2/EL1), configure the GIC, and wake secondary cores. RPi 3+ with AArch64.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">DTB / Device Tree Blob</div>
+  <div class="term-def">Binary description of hardware, compiled from <code>.dts</code> source. <code>start.elf</code> selects the correct <code>.dtb</code> based on board revision, applies overlays, and passes it to the kernel in register <code>x0</code>. Located on the boot partition.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">kernel8.img</div>
+  <div class="term-def">Default filename for a 64-bit (AArch64) kernel image on RPi 3+ and RPi 4. Loaded by <code>start.elf</code> at <code>0x80000</code>. Must be a raw binary (not ELF).</div>
+  <div class="term-avoid">Avoid: kernel.img (implies 32-bit), kernel7.img (32-bit RPi 2/3)</div>
+</div>
+
+<div class="term">
+  <div class="term-name">kernel load address</div>
+  <div class="term-def">Physical address where <code>start.elf</code> places the kernel image before releasing ARM. <code>0x80000</code> for AArch64 (kernel8.img), <code>0x8000</code> for AArch32 (kernel.img). Can be overridden with <code>kernel_address</code> in config.txt.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">BOOT_ORDER</div>
+  <div class="term-def">EEPROM bootloader config (RPi 4+) that specifies the order of boot media to try. Hex value: <code>0xf41</code> means SD → USB → network → STOP (default). Each digit maps to a boot mode.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">GPU memory split</div>
+  <div class="term-def">How much of the 1GB+ RAM is reserved for the VideoCore GPU vs. given to the ARM CPU. Configured via <code>gpu_mem=</code> in config.txt. The kernel only sees the ARM portion.</div>
+</div>
+
+<div class="term">
+  <div class="term-name">Mailbox interface</div>
+  <div class="term-def">IPC mechanism between the ARM CPU and the VideoCore GPU. Used by the kernel to query clock rates, get MAC address, set resolution — after the GPU firmware has already booted.</div>
+</div>
+
+<div class="footer">
+  <p>RPi Boot Chain Glossary — <a href="../MISSION.md">Mission</a> — <a href="../lessons/0001-boot-chain-overview.html">Lesson 1</a></p>
+</div>
+</body>
+</html>

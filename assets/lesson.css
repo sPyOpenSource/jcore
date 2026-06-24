@@ -1,0 +1,136 @@
+/* Shared lesson styles — RPi Boot Chain series */
+/* Tufte-inspired: clean, readable, print-friendly */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg: #faf9f8;
+  --text: #1a1a1a;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-light: #dbeafe;
+  --border: #e5e7eb;
+  --code-bg: #f3f4f6;
+  --callout-bg: #fef3c7;
+  --callout-border: #f59e0b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a2e;
+    --text: #e4e4e7;
+    --muted: #a1a1aa;
+    --accent: #60a5fa;
+    --accent-light: #1e3a5f;
+    --border: #2d2d44;
+    --code-bg: #252538;
+    --callout-bg: #3b2f10;
+    --callout-border: #f59e0b;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+h1 { font-size: 2rem; font-weight: 700; margin: 2rem 0 0.5rem; line-height: 1.2; }
+h2 { font-size: 1.4rem; font-weight: 600; margin: 2rem 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+
+p { margin: 0.8rem 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, pre {
+  font-family: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.9em;
+  background: var(--code-bg);
+  border-radius: 4px;
+}
+
+code { padding: 0.15em 0.4em; }
+
+pre {
+  font-size: 0.85em;
+  padding: 1rem;
+  overflow-x: auto;
+  line-height: 1.5;
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+}
+
+ul, ol { margin: 0.8rem 0; padding-left: 1.4rem; }
+li { margin: 0.3rem 0; }
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-light);
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout {
+  background: var(--callout-bg);
+  border-left: 3px solid var(--callout-border);
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.stage-diagram {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.stage {
+  background: var(--accent-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.stage .label { font-weight: 600; color: var(--accent); }
+.stage .desc { color: var(--muted); font-size: 0.85rem; }
+
+.arrow {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+th { font-weight: 600; color: var(--accent); }
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+}

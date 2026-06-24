@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1: The Raspberry Pi Boot Chain — GPU Boots First</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<style>
+  .flow { display: flex; flex-direction: column; align-items: center; margin: 2rem 0; }
+  .stage-box { background: var(--accent-light); border: 2px solid var(--accent); border-radius: 10px; padding: 1rem 1.5rem; text-align: center; width: 100%; max-width: 400px; }
+  .stage-box .who { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+  .stage-box .what { font-weight: 700; font-size: 1.1rem; margin: 0.2rem 0; }
+  .stage-box .detail { font-size: 0.85rem; color: var(--muted); }
+  .arrow-down { color: var(--muted); font-size: 1.5rem; margin: 0.3rem 0; }
+  .model-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  @media (max-width: 600px) { .model-compare { grid-template-columns: 1fr; } }
+  .model-col { border: 1px solid var(--border); border-radius: 8px; padding: 1rem; }
+  .model-col h3 { margin-top: 0; }
+  .note { background: var(--accent-light); border-radius: 6px; padding: 1rem; margin: 1rem 0; }
+  .note code { background: var(--bg); }
+</style>
+</head>
+<body>
+
+<h1>Lesson 1: The Raspberry Pi Boot Chain</h1>
+<p class="subtitle" style="color: var(--muted); font-size: 1.1rem;">Why the GPU wakes up before the CPU — and what that means for your kernel.</p>
+
+<h2>This is not a PC</h2>
+
+<p>On an x86 PC, the CPU powers on and immediately starts executing BIOS/UEFI code at the reset vector. <strong>The CPU is the root of trust.</strong></p>
+
+<p>On a Raspberry Pi, the <strong>VideoCore GPU</strong> powers on first. The ARM CPU is held in reset. The GPU sets up the system, loads firmware, and <em>then</em> releases the ARM cores to run your kernel. This inverted boot order is the single most important fact about RPi bare-metal development.</p>
+
+<div class="callout">
+  <strong>Why?</strong> Broadcom designed the BCM2835 (and successors) for set-top boxes. In that world, the GPU needs to start first to render a UI instantly. The ARM CPU is secondary. The Raspberry Pi Foundation built the Pi around this chip — the boot order is a legacy of that design choice.
+</div>
+
+<h2>The Boot Chain (RPi 4)</h2>
+
+<div class="flow">
+  <div class="stage-box">
+    <div class="who">VideoCore VI (ROM)</div>
+    <div class="what">Stage 1: ROM Bootloader</div>
+    <div class="detail">Mask ROM executes on GPU. Checks OTP, nRPIBOOT pin. Reads SPI EEPROM for Stage 2.</div>
+  </div>
+  <div class="arrow-down">↓</div>
+  <div class="stage-box">
+    <div class="who">VideoCore VI (EEPROM)</div>
+    <div class="what">Stage 2: SPI EEPROM Bootloader</div>
+    <div class="detail">Configurable bootloader. Tries <code>BOOT_ORDER</code> (SD → USB → Network → NVMe). Loads <code>start4.elf</code>.</div>
+  </div>
+  <div class="arrow-down">↓</div>
+  <div class="stage-box">
+    <div class="who">VideoCore VI (RAM)</div>
+    <div class="what">Stage 3: start4.elf (GPU Firmware)</div>
+    <div class="detail">Reads <code>config.txt</code>. Applies device tree overlays. Sets memory split. Loads DTB and <code>kernel8.img</code> into RAM. <strong>Releases ARM from reset.</strong></div>
+  </div>
+  <div class="arrow-down">↓</div>
+  <div class="stage-box">
+    <div class="who">ARM Cortex-A72</div>
+    <div class="what">Stage 4: Your Kernel</div>
+    <div class="detail">Executes at <code>0x80000</code> (AArch64). <code>x0</code> = DTB pointer. All four cores spinning; only core 0 runs.</div>
+  </div>
+</div>
+
+<h2>Legacy Chain (RPi 3 and earlier)</h2>
+
+<p>RPi 1-3 use the same concept but with SD-card-based Stage 2 instead of EEPROM:</p>
+
+<pre>GPU ROM → bootcode.bin (from SD) → start.elf (from SD) → config.txt → kernel8.img (AArch64 at 0x80000)</pre>
+
+<p>The <code>bootcode.bin</code> file sits on the SD card's FAT32 boot partition. On RPi 4+, this is replaced by the SPI EEPROM — no <code>bootcode.bin</code> needed (or possible).</p>
+
+<h2>Model Comparison</h2>
+
+<div class="model-compare">
+  <div class="model-col">
+    <h3>RPi 1 / 2 / 3 (BCM2835/6/7)</h3>
+    <ul>
+      <li>Stage 2: <code>bootcode.bin</code> on SD</li>
+      <li>Stage 3: <code>start.elf</code> on SD</li>
+      <li>AArch32: <code>kernel.img</code> at 0x8000</li>
+      <li>AArch64 (3+): <code>kernel8.img</code> at 0x80000</li>
+      <li>Config: <code>config.txt</code> on boot partition</li>
+      <li>Secondary cores: spin in <code>armstub8</code></li>
+    </ul>
+  </div>
+  <div class="model-col">
+    <h3>RPi 4 (BCM2711)</h3>
+    <ul>
+      <li>Stage 2: SPI EEPROM (no bootcode.bin)</li>
+      <li>Stage 3: <code>start4.elf</code> on SD</li>
+      <li>AArch64 only for kernel: <code>kernel8.img</code></li>
+      <li>AArch32 via <code>kernel7l.img</code> at 0x8000</li>
+      <li>BOOT_ORDER configurable in EEPROM</li>
+      <li>GIC-400 interrupt controller</li>
+    </ul>
+  </div>
+</div>
+
+<h2>What Your Kernel Sees at Entry</h2>
+
+<p>When <code>start.elf</code> finishes and releases the ARM, it enters your kernel with:</p>
+
+<table>
+  <tr><th>Register</th><th>Value</th></tr>
+  <tr><td><code>x0</code></td><td>32-bit pointer to the Device Tree Blob (DTB) in memory</td></tr>
+  <tr><td><code>x1</code></td><td>0</td></tr>
+  <tr><td><code>x2</code></td><td>0</td></tr>
+  <tr><td><code>x3</code></td><td>0</td></tr>
+  <tr><td><code>x4</code></td><td>Kernel entry point (<code>_start</code>)</td></tr>
+  <tr><td><code>sp</code></td><td>Undefined — you must set your own stack</td></tr>
+</table>
+
+<div class="callout">
+  <strong>Key difference from UEFI:</strong> With UEFI (your EFI_AARCH64 project), the firmware provides a rich boot services API (alloc pages, open files, load images). On bare-metal RPi, <code>start.elf</code> gives you <em>nothing</em> at runtime — just the DTB address in <code>x0</code>. No runtime services, no protocols. You talk to hardware directly via MMIO.
+</div>
+
+<h2>What Goes on the SD Card</h2>
+
+<p>For a minimal AArch64 bare-metal kernel, your SD card boot partition (FAT32) needs:</p>
+
+<table>
+  <tr><th>File</th><th>Purpose</th></tr>
+  <tr><td><code>start4.elf</code></td><td>GPU firmware (for RPi 4; use <code>start.elf</code> for older) — from <a href="https://github.com/raspberrypi/firmware/tree/master/boot">RPi firmware repo</a></td></tr>
+  <tr><td><code>fixup4.dat</code></td><td>Memory fixup file (paired with start4.elf)</td></tr>
+  <tr><td><code>bcm2711-rpi-4-b.dtb</code></td><td>Device tree blob for your board</td></tr>
+  <tr><td><code>config.txt</code></td><td>Configuration: tell firmware to boot 64-bit and name your kernel</td></tr>
+  <tr><td><code>kernel8.img</code></td><td><strong>Your kernel</strong> — raw AArch64 binary, loaded at 0x80000</td></tr>
+</table>
+
+<p>Minimal <code>config.txt</code> for AArch64 boot:</p>
+
+<pre>arm_64bit=1
+kernel=kernel8.img
+# Optional: enable UART on GPIO 14/15 for debug
+enable_uart=1
+# Optional: GPU memory (16MB is enough for headless)
+gpu_mem=16</pre>
+
+<h2>Your Existing rpi2/ Code — What Needs to Change</h2>
+
+<p>Your <code>rpi2/</code> directory has a 32-bit AArch32 boot stub for RPi 2 (<code>boot.S</code> at 0x8000). For an AArch64 kernel on RPi 3 or 4, you need:</p>
+<ol>
+  <li><strong>Load address:</strong> <code>0x80000</code> instead of <code>0x8000</code></li>
+  <li><strong>AArch64 instructions:</strong> Rewrite boot.S in AArch64 assembly</li>
+  <li><strong>Exception levels:</strong> You start at EL2 (or EL3 with armstub), not EL1 — may need to drop down</li>
+  <li><strong>Peripheral base:</strong> <code>0xFE000000</code> for RPi 4, <code>0x3F000000</code> for RPi 3</li>
+  <li><strong>Output format:</strong> Raw binary, not ELF. Link with <code>-T link.ld -nostdlib -Wl,-N -o kernel8.elf && objcopy -O binary kernel8.elf kernel8.img</code></li>
+</ol>
+
+<h2>Try It: Trace the Boot Chain on Your Pi</h2>
+
+<p>If you have a Raspberry Pi 4, you can see Stage 2 in action by enabling UART debug from the bootloader:</p>
+
+<ol>
+  <li>Add to <code>config.txt</code>: <code>BOOT_UART=1</code></li>
+  <li>Connect a USB-UART cable to GPIO 14 (TX) and 15 (RX), GND to GND</li>
+  <li>Open a serial terminal at 115200 baud</li>
+  <li>Power on — you'll see bootloader debug output before your kernel even starts</li>
+</ol>
+
+<p>This is the first real "skill" of RPi bare-metal: <strong>getting UART output from the bootloader itself</strong>, which gives you a window into every stage before your code runs.</p>
+
+<h2>Further Reading</h2>
+<ul>
+  <li><a href="../reference/glossary.html">Glossary</a> — canonical terms for this workspace</li>
+  <li><a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/bootflow-eeprom.adoc">Official RPi Documentation: EEPROM Boot Flow</a> — primary source</li>
+  <li><a href="https://www.rpi4os.com/part1-bootstrapping/">rpi4-osdev.com Part 1</a> — practical AArch64 bootstrap</li>
+  <li><a href="https://wiki.osdev.org/Raspberry_Pi_Bare_Bones">OSDev Wiki: RPi Bare Bones</a> — entry conventions</li>
+</ul>
+
+<div class="footer">
+  <p>Lesson 1 of the RPi Boot Chain series — <a href="../MISSION.md">Mission</a></p>
+  <p>Questions? Ask your agent — follow-up is always welcome.</p>
+</div>
+
+</body>
+</html>
