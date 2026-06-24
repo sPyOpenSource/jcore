@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2: Debugging Bare-Metal ARM with QEMU + GDB</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<style>
+  .cmd { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.8rem 1rem; margin: 1rem 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; overflow-x: auto; }
+  .cmd .prompt { color: var(--muted); }
+  .gdb-out { color: var(--accent); }
+  .term-session { background: #1a1a2e; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; overflow-x: auto; }
+  .term-session .gdb-prompt { color: #60a5fa; }
+  .term-session .output { color: #a1a1aa; }
+  .term-session .input { color: #e4e4e7; }
+</style>
+</head>
+<body>
+
+<h1>Lesson 2: Debugging Bare-Metal with QEMU + GDB</h1>
+<p class="subtitle" style="color: var(--muted); font-size: 1.1rem;">When "print statements" aren't enough — step through your kernel instruction by instruction.</p>
+
+<h2>The Bare-Metal Debugging Pyramid</h2>
+
+<p>On an OS, you have crash dumps, strace, valgrind. On bare metal, you have nothing. Build your debugging stack from bottom up:</p>
+
+<table>
+  <tr><th>Level</th><th>Tool</th><th>When to use</th></tr>
+  <tr><td>1 — Deep</td><td>QEMU GDB stub (<code>-s -S</code>)</td><td>Code crashes at startup, wrong register values, need to <em>see</em> execution</td></tr>
+  <tr><td>2 — Trace</td><td>QEMU <code>-d in_asm,int</code></td><td>Kernel runs but takes unexpected path; want a full instruction log</td></tr>
+  <tr><td>3 — Print</td><td>UART / GPIO</td><td>Runtime state dumps, "I got here" markers, register snapshots</td></tr>
+  <tr><td>4 — Bare</td><td>GPIO LED blink</td><td>No UART? Blink an LED from key code paths — one blink per reach</td></tr>
+</table>
+
+<h2>Technique 1: QEMU GDB Stub</h2>
+
+<p>This is your most powerful tool for the <em>kernel-won't-boot</em> scenario. QEMU exposes a GDB remote stub: you pause the VM, connect GDB, and step through your code as if it were a normal user-space program.</p>
+
+<h3>Launch QEMU with debug server</h3>
+
+<div class="cmd">
+<span class="prompt">$</span> qemu-system-aarch64 -M raspi2b \<br>
+  -device loader,file=kernel7-uart.img,addr=0x8000,force-raw=on \<br>
+  -serial stdio -display none \<br>
+  <strong>-s -S</strong>
+</div>
+
+<p><code>-s</code> opens a GDB server on TCP port 1234. <code>-S</code> freezes the CPU immediately — no code executes until you tell GDB to continue.</p>
+
+<h3>Connect GDB</h3>
+
+<div class="cmd">
+<span class="prompt">$</span> gdb-multiarch kernel.elf<br>
+<span class="gdb-prompt">(gdb)</span> <span class="input">target remote localhost:1234</span><br>
+<span class="output">Remote debugging using localhost:1234<br>
+0x00000000 in ?? ()</span>
+</div>
+
+<p>The CPU is frozen at address 0 (the reset vector). Your kernel is already loaded at 0x8000. Set a breakpoint and go:</p>
+
+<div class="term-session">
+<span class="gdb-prompt">(gdb)</span> <span class="input">break *0x8000</span><br>
+<span class="output">Breakpoint 1 at 0x8000: file boot_fixed.S, line 12.</span><br>
+<span class="gdb-prompt">(gdb)</span> <span class="input">continue</span><br>
+<span class="output">Continuing.<br>
+<br>
+Breakpoint 1, _start () at boot_fixed.S:12<br>
+12          mrc     p15, 0, r5, c0, c0, 5</span>
+</div>
+
+<p>You've hit your kernel's entry point. Now you can:</p>
+
+<table>
+  <tr><th>Command</th><th>Effect</th></tr>
+  <tr><td><code>stepi</code> / <code>si</code></td><td>Execute one instruction, then pause</td></tr>
+  <tr><td><code>nexti</code> / <code>ni</code></td><td>Step over (skip) one instruction</td></tr>
+  <tr><td><code>continue</code> / <code>c</code></td><td>Run until next breakpoint</td></tr>
+  <tr><td><code>info registers</code></td><td>Show all CPU registers</td></tr>
+  <tr><td><code>x/16x 0x8000</code></td><td>Examine 16 hex words at address 0x8000</td></tr>
+  <tr><td><code>disas</code></td><td>Disassemble around current PC</td></tr>
+  <tr><td><code>layout regs</code></td><td>Enable TUI mode with register pane</td></tr>
+  <tr><td><code>info threads</code></td><td>List all 4 CPU cores (raspi2b)</td></tr>
+  <tr><td><code>thread N</code></td><td>Switch to CPU core N</td></tr>
+</table>
+
+<h3>Skill: Step Through Your Kernel</h3>
+
+<p>Your <code>kernel7-uart.img</code> does: <code>mrc → and → cmp → bne → ldr → mov sp → ... → blx main → UART init → print → echo loop</code>. Use <code>stepi</code> to trace each instruction. Watch <code>$r5</code> after the <code>mrc</code> — that's your CPU ID (should be 0 on core 0).</p>
+
+<h2>Technique 2: QEMU Trace Flags</h2>
+
+<p>When GDB is overkill, QEMU's built-in tracing gives you a quick log of everything that happened:</p>
+
+<table>
+  <tr><th>Flag</th><th>Logs</th></tr>
+  <tr><td><code>-d in_asm</code></td><td>Every instruction translated (one line per basic block)</td></tr>
+  <tr><td><code>-d int</code></td><td>Interrupts: when they fire and the return address</td></tr>
+  <tr><td><code>-d cpu_reset</code></td><td>CPU state at every reset — useful for crash analysis</td></tr>
+  <tr><td><code>-d mmu</code></td><td>MMU translations (once you enable the MMU)</td></tr>
+  <tr><td><code>-D logfile</code></td><td>Write trace to a file instead of stderr</td></tr>
+</table>
+
+<div class="cmd">
+<span class="prompt">$</span> qemu-system-aarch64 -M raspi2b \<br>
+  -device loader,file=kernel7-uart.img,addr=0x8000,force-raw=on \<br>
+  <strong>-d in_asm -D /tmp/trace.log</strong> -serial stdio -display none<br>
+<span class="prompt">$</span> head -40 /tmp/trace.log
+</div>
+
+<h2>Technique 3: UART as Debug Output</h2>
+
+<p>You already have this. The key pattern is <strong>annotated checkpoints</strong> — not just "it got here" but state dumps:</p>
+
+<pre>void check_reg(const char* label, uint32_t val) {
+    uart_puts("*** ");
+    uart_puts(label);
+    uart_puts(" = 0x");
+    print_hex32(val);   // write a hex printer
+    uart_puts(" ***\r\n");
+}</pre>
+
+<p>Call it from <code>boot_fixed.S</code> before jumping to main to dump <code>$r0</code> (DTB pointer on real hardware!) and <code>$r1</code> (machine ID).</p>
+
+<div class="callout">
+  <strong>Make a hex printer now.</strong> It's your most reusable debug tool. Write <code>print_hex32(uint32_t val)</code> that shifts out 8 hex nibbles via UART. Put it in a shared <code>debug.h</code> that every future lesson can <code>#include</code>.
+</div>
+
+<h2>Technique 4: GPIO LED Blink (for Real Hardware)</h2>
+
+<p>When you have no UART cable and no JTAG, blink an LED. One blink = "got to init". Two blinks = "passed init". Fast blink = "in the main loop".</p>
+
+<pre>void blink_ok(void) {
+    for (int i = 0; i < 3; i++) {
+        GPIO_SET = 1 << 21;   // LED on
+        delay(1000000);
+        GPIO_CLR = 1 << 21;   // LED off
+        delay(1000000);
+    }
+}</pre>
+
+<p>Three quick blinks = "I'm alive at this point". This is how bare-metal debugging started before UART was standard.</p>
+
+<h2>Your Turn: GDB Lab</h2>
+
+<ol>
+  <li>Build <code>make -C rpi2 kernel.elf</code> (with debug symbols, add <code>-g</code> to CFLAGS)</li>
+  <li>Launch QEMU with <code>-s -S</code></li>
+  <li>In another terminal: <code>gdb-multiarch rpi2/kernel.elf -ex 'target remote :1234'</code></li>
+  <li>Set a breakpoint: <code>b main</code></li>
+  <li><code>c</code> — watch it stop at <code>main</code></li>
+  <li><code>layout regs</code> — see registers live as you step</li>
+  <li><code>si</code> three times, watch the UART registers get written</li>
+</ol>
+
+<p>If <code>gdb-multiarch</code> isn't installed: <code>brew install gdb</code> or use <code>arm-none-eabi-gdb</code> from the Arm toolchain.</p>
+
+<h2>Further Reading</h2>
+<ul>
+  <li><a href="https://qemu-project.gitlab.io/qemu/system/gdb.html">QEMU GDB stub documentation</a> — official docs</li>
+  <li><a href="../reference/glossary.html">Glossary</a></li>
+  <li><a href="../lessons/0001-boot-chain-overview.html">Lesson 1: Boot Chain Overview</a></li>
+  <li><a href="https://wiki.osdev.org/QEMU_and_GDB">OSDev: QEMU and GDB</a></li>
+</ul>
+
+<div class="footer">
+  <p>Lesson 2 of the RPi Boot Chain series — <a href="../MISSION.md">Mission</a></p>
+  <p>Questions? Ask your agent — follow-up is always welcome.</p>
+</div>
+
+</body>
+</html>
