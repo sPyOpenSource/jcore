@@ -16,6 +16,7 @@ namespace FlintAPI {
         int64_t getTimeNanos(void);
         int64_t getTimeMillis(void);
         JNMPtr findNativeMethod(MethodInfo *methodInfo);
+        void initHeap(void *start, void *end);
     };
 
     namespace IO {
@@ -71,7 +72,9 @@ namespace FlintAPI {
         FileResult readdir(DirHandle handle, FileInfo *fileInfo);
         FileResult closedir(DirHandle handle);
         FileResult mkdir(const char *path);
+        bool isStdoutHandle(FileHandle handle);
     };
+
 
     namespace Thread {
         typedef void * ThreadHandle;

@@ -43,7 +43,7 @@ jvoid NativeFileOutputStream_Open(FNIEnv *env, jobject obj, jstring name, jbool 
         if(handle == NULL)
             env->throwNew(env->findClass("java/io/FileNotFoundException"), "File opening failed");
         else
-            fdObj->getFieldByIndex(0)->setInt32((int32_t)handle);
+            fdObj->getFieldByIndex(0)->setInt32((int32_t)(intptr_t)handle);
     }
     Flint::unlock();
 }
@@ -66,7 +66,7 @@ jvoid NativeFileOutputStream_Write(FNIEnv *env, jobject obj, jint b) {
     else {
         uint8_t data = b & 0xFF;
         uint32_t bw = 0;
-        auto result = FlintAPI::IO::fwrite((FlintAPI::IO::FileHandle)fd, &data, 1, &bw);
+        auto result = FlintAPI::IO::fwrite((FlintAPI::IO::FileHandle)(intptr_t)fd, &data, 1, &bw);
         if(result != FlintAPI::IO::FILE_RESULT_OK || bw != 1)
             env->throwNew(env->findClass("java/io/IOException"), "Error while writing file");
     }
@@ -105,7 +105,7 @@ jvoid NativeFileOutputStream_WriteBytes(FNIEnv *env, jobject obj, jbyteArray b, 
     else {
         int8_t *data = &b->getData()[off];
         uint32_t bw = 0;
-        auto result = FlintAPI::IO::fwrite((FlintAPI::IO::FileHandle)fd, data, len, &bw);
+        auto result = FlintAPI::IO::fwrite((FlintAPI::IO::FileHandle)(intptr_t)fd, data, len, &bw);
         if(result != FlintAPI::IO::FILE_RESULT_OK || bw != len)
             env->throwNew(env->findClass("java/io/IOException"), "Error while writing file");
     }
@@ -117,7 +117,7 @@ jvoid NativeFileOutputStream_Close(FNIEnv *env, jobject obj) {
     Flint::lock();
     if(fd != -1) {
         if(!(0 <= fd && fd <= 2)) {
-            if(FlintAPI::IO::fclose((FlintAPI::IO::FileHandle)fd) == FlintAPI::IO::FILE_RESULT_OK)
+            if(FlintAPI::IO::fclose((FlintAPI::IO::FileHandle)(intptr_t)fd) == FlintAPI::IO::FILE_RESULT_OK)
                 fdObj->getFieldByIndex(0)->setInt32(-1);
             else
                 env->throwNew(env->findClass("java/io/IOException"), "File closing failed");

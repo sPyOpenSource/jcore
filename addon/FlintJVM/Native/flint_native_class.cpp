@@ -314,7 +314,7 @@ jobjectArray NativeClass_GetDeclaredMethods0(FNIEnv *env, jclass cls) {
                 etypes->clearProtected();
                 break;
             }
-            method->getField(env->exec, "entry")->setInt32((int32_t)methodInfo);
+            method->getField(env->exec, "entry")->setInt32((intptr_t)methodInfo);
 
             array->getData()[aidx++] = method;
             isOk = true;
@@ -361,7 +361,7 @@ jobjectArray NativeClass_GetDeclaredConstructors0(FNIEnv *env, jclass cls) {
                 etypes->clearProtected();
                 break;
             }
-            ctor->getField(env->exec, "entry")->setInt32((int32_t)methodInfo);
+            ctor->getField(env->exec, "entry")->setInt32((intptr_t)methodInfo);
 
             array->getData()[aidx++] = ctor;
             isOk = true;

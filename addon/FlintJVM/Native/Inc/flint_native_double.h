@@ -7,7 +7,7 @@
 jlong NativeDouble_DoubleToRawLongBits(FNIEnv *env, jdouble value);
 jdouble NativeDouble_LongBitsToDouble(FNIEnv *env, jlong bits);
 
-inline constexpr NativeMethod doubleMethods[] = {
+static const NativeMethod doubleMethods[] = {
     NATIVE_METHOD("doubleToRawLongBits", "(D)J", NativeDouble_DoubleToRawLongBits),
     NATIVE_METHOD("longBitsToDouble",    "(J)D", NativeDouble_LongBitsToDouble),
 };

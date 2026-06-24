@@ -7,7 +7,7 @@
 #include "flint_native_method.h"
 
 jobject NativeMethod_Invoke0(FNIEnv *env, jobject thisObj, jobject obj, jobjectArray args) {
-    jmethodId methodInfo = (jmethodId)thisObj->getFieldByIndex(0)->getInt32();  /* entry */
+    jmethodId methodInfo = (jmethodId)(intptr_t)thisObj->getFieldByIndex(0)->getInt32();  /* entry */
     jclass rtype = (jclass)thisObj->getFieldByIndex(3)->getObj();
     jobjectArray ptypes = (jobjectArray)thisObj->getFieldByIndex(4)->getObj();
     FExec *exec = env->exec;
@@ -45,7 +45,7 @@ jobject NativeMethod_Invoke0(FNIEnv *env, jobject thisObj, jobject obj, jobjectA
         if(methodInfo->loader != objType->getClassLoader()) {
             methodInfo = Flint::findMethod(exec, objType, &methodInfo->nameAndType);
             if(methodInfo == NULL) return NULL;
-            thisObj->getFieldByIndex(0)->setInt32((int32_t)methodInfo);
+            thisObj->getFieldByIndex(0)->setInt32((int32_t)(intptr_t)methodInfo);
         }
         ret = exec->callMethod(methodInfo, argSlot);
     }

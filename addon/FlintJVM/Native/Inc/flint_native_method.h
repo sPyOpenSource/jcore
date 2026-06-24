@@ -6,7 +6,7 @@
 
 jobject NativeMethod_Invoke0(FNIEnv *env, jobject thisObj, jobject obj, jobjectArray args);
 
-inline constexpr NativeMethod methodMethods[] = {
+static const NativeMethod methodMethods[] = {
     NATIVE_METHOD("invoke0", "(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;", NativeMethod_Invoke0),
 };
 

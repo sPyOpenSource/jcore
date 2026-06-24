@@ -13,7 +13,7 @@ jlong NativeFileInputStream_Skip(FNIEnv *env, jobject obj, jlong n);
 jint NativeFileInputStream_Available(FNIEnv *env, jobject obj);
 jvoid NativeFileInputStream_Close(FNIEnv *env, jobject obj);
 
-inline constexpr NativeMethod fileInputStreamMethods[] = {
+static const NativeMethod fileInputStreamMethods[] = {
     NATIVE_METHOD("open",      "(Ljava/lang/String;)V", NativeFileInputStream_Open),
     NATIVE_METHOD("read",      "()I",                   NativeFileInputStream_Read),
     NATIVE_METHOD("readBytes", "([BII)I",               NativeFileInputStream_ReadBytes),

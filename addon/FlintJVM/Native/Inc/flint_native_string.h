@@ -6,7 +6,7 @@
 
 jstring NativeString_Intern(FNIEnv *env, jstring str);
 
-inline constexpr NativeMethod stringMethods[] = {
+static const NativeMethod stringMethods[] = {
     NATIVE_METHOD("intern", "()Ljava/lang/String;", NativeString_Intern),
 };
 

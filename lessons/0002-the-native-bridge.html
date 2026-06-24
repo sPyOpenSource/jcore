@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2: The Native Bridge</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+
+<h1>Lesson 2: The Native Bridge</h1>
+<p class="subtitle">Connecting the Virtual Machine to the Physical World.</p>
+
+<p>A JVM is a "sandbox." By design, Java code cannot touch hardware directly. It can't flip a GPIO pin, write to a UART register, or allocate raw physical memory. To do these things, the JVM uses <strong>Native Methods</strong>.</p>
+
+<h2>The "Native" Concept</h2>
+
+<p>In Java, a method marked with the <code>native</code> keyword has no Java body. Instead, it's a signal to the JVM: <em>"Look up the implementation of this function in the host language (C++ in our case) and execute it."</em></p>
+
+<div class="callout">
+  <strong>The Bridge:</strong> The Native Bridge is the layer of C++ code that implements these functions. If the JVM wants to print a character to the screen, it calls a native method, which in turn calls the actual hardware driver (e.g., Circle's UART driver).
+</div>
+
+<h2>FlintJVM's Native Architecture</h2>
+
+<p>FlintJVM doesn't force you to implement every single Java API. Instead, it provides a set of <strong>Native Interfaces</strong>. If you implement the functions defined in these headers, the JVM gains those capabilities.</p>
+
+<p>Take a look at the structure in <code>addon/FlintJVM/Native/Inc/</code>:</p>
+
+<table>
+  <tr><th>Header</th><th>Responsibility</th><th>Example Native Function</th></tr>
+  <tr><td><code>flint_native_system.h</code></td><td>Core OS tasks (Time, Threads, Exit)</td><td><code>native_system_get_time()</code></td></tr>
+  <tr><td><code>flint_native_uart.h</code></td><td>Serial communication</td><td><code>native_uart_putc()</code></td></tr>
+  <tr><td><code>flint_native_pin.h</code></td><td>GPIO control</td><td><code>native_pin_set()</code></td></tr>
+  <tr><td><code>flint_native_math.h</code></td><td>Optimized math operations</td><td><code>native_math_sin()</code></td></tr>
+</table>
+
+<h2>How the Linkage Works</h2>
+
+<p>The process follows this chain:</p>
+<ol>
+  <li><strong>Java Code</strong>: Calls <code>System.out.println("Hi")</code>.</td>
+  <li><strong>JVM Execution Engine</strong>: Recognizes the call is to a native method.</td>
+  <li><strong>Native Bridge</strong>: The JVM looks up the function pointer for the native implementation.</td>
+  <li><strong>C++ Driver</strong>: Your implementation of <code>native_uart_putc</code> writes a byte to the RPi UART register.</td>
+</ol>
+
+<h2>Your Turn: Audit the Interface</h2>
+
+<p>To port FlintJVM to the Raspberry Pi, your first task is to identify the "Minimum Viable Interface." You don't need to implement everything at once. To get a "Hello World" working, you only need:</p>
+<ol>
+  <li><strong>System Basics</strong>: A way to get the current time or handle the JVM's startup.</td>
+  <li><strong>UART Output</strong>: A way to send characters to the serial console.</td>
+</ol>
+
+<div class="callout">
+  <strong>Challenge:</strong> Explore the <code>addon/FlintJVM/Native/Inc/</code> directory. Find <code>flint_native_uart.h</code> and <code>flint_native_system.h</code>. See if you can identify the exact C++ function signatures you will need to implement.
+</div>
+
+<div class="footer">
+  <p>Lesson 2 of the JVM for Raspberry Pi series — <a href="../MISSION.md">Mission</a></p>
+  <p><strong>Questions?</strong> Ask your agent. We can look at the specific headers together.</p>
+</div>
+
+</body>
+</html>

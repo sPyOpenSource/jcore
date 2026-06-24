@@ -21,8 +21,9 @@
 #include "flint_native_io_file_descriptor.h"
 #include "flint_native_io_file_input_stream.h"
 #include "flint_native_io_file_output_stream.h"
+#include "flint_native_rpi.h"
 
-static constexpr NativeClass BASE_NATIVE_CLASS_LIST[] = {
+static const NativeClass BASE_NATIVE_CLASS_LIST[] = {
     NATIVE_CLASS("java/lang/Math",                  mathMethods),
     NATIVE_CLASS("java/lang/Class",                 classMethods),
     NATIVE_CLASS("java/lang/reflect/Array",         arrayMethods),
@@ -40,6 +41,7 @@ static constexpr NativeClass BASE_NATIVE_CLASS_LIST[] = {
     NATIVE_CLASS("java/io/FileInputStream",         fileInputStreamMethods),
     NATIVE_CLASS("java/io/FileOutputStream",        fileOutputStreamMethods),
     NATIVE_CLASS("jdk/internal/reflect/Reflection", reflectionMethods),
+    NATIVE_CLASS("com/rpi/Hardware",                rpiMethods),
 };
 
 JNMPtr NativeClass::findNativeMethod(MethodInfo *methodInfo) {

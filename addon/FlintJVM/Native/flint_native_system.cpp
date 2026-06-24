@@ -89,5 +89,5 @@ jvoid NativeSystem_Arraycopy(FNIEnv *env, jobject src, jint srcPos, jobject dest
 
 jint NativeSystem_IdentityHashCode(FNIEnv *env, jobject obj) {
     (void)env;
-    return (int32_t)obj;
+    return (int32_t)(intptr_t)obj;
 }

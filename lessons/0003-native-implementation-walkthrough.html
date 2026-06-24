@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3: Native Implementation Walkthrough</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<style>
+  .code-box {
+    background: #1a1a2e;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  .warning {
+    background: #3a2114;
+    border: 1px solid #e6760b;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Lesson 3: Native Implementation Walkthrough</h1>
+<p class="subtitle">Making the FlintJVM work on your hardware is a two-step process: implement the JVM core and the Native HAL.</p>
+
+<h2>Step 1: Implement the Native Interface in FlintJVM</h2>
+
+<p>Look at the <code>addon/FlintJVM/Native/flint_native_interface.cpp</code> file. This is the <strong>core of the Native Bridge</strong> — a C++ header file that provides a uniform interface for the JVM core to call host functions. This file contains a set of pure virtual functions that every platform (FlintJVM has ESP32, RPi, PC, etc.) must implement.</p>
+
+<p>This file is important because it tells you <strong>exactly what functions you must write.</strong> These are not implemented in ESP32 (or any other platform) as-is — you will implement them specifically for RPi.</p>
+
+<div class="callout">
+  <strong>Your New Job:</strong> Implement the Native Interface for RPi. This is what connects FlintJVM to the Raspberry Pi.
+</div>
+
+<h2>Step 2: Choose Your Implementation Location</h2>
+
+<p>There are two ways to implement the Native Interface:</p>
+<ul>
+  <li><strong>One large file</strong>: Everything in a single <code>rpithal.cpp</code> (Easier to compile, Harder to organize)</li>
+  <li><strong>One file per interface</strong>: One native_*.cpp per RPi peripheral (Easier to organize, Harder to compile)</li>
+</ul>
+
+<div class="warning">
+  <strong>Requirement</strong>: You <em>must</em> implement a minimal set of native functions to get a "Hello World" working. Based on FlintJVM's architecture and what we've seen in the JAM Clojure example, you need at least <code>system_get_time</code>, <code>uart_putc</code>, and possibly <code>pin_set</code> to make <code>System.out.println("Hello")</code> work.
+</div>
+
+<h2>What's the Function Signature Format?</h2>
+
+<p>The function signatures in <code>flint_native_interface.h</code> look like this:</p>
+
+<pre><code>virtual JNMPtr GetJavaClass(const char *name) = 0; // Summary: Looks up a Java class
+virtual jint NativeMethodWrapper(JavaClass *obj, MethodInfo *methodInfo, JNMPtr methodPtr, JNMPtr thisPtr, va_list args); // Summary: Entry point for native method</code></pre>
+
+<p>Implementing these is the EASY part of porting FlintJVM to RPi. The HARD part is writing the <strong>native function implementations</strong> that follow them — things like your own <code>uart_putc</code> that writes to RPi's peripheral register at <code>0xFE201000</code>.</p>
+
+<h2>The Native Interface Hierarchy (for ESP32 it's straightforward)</h2>
+
+<p>Let's look at the structure of the same system for the ESP32 (which we can infer exists because FlintJVM works on ESP32). The ESP32 has a set of native function wrappers like NativeFile(), NativeConsole(). This is the same for RPi.</p>
+
+<p>When FlintJVM calls a native function like <code>System.out.println</code>, it goes:</p>
+<ul>
+  <li>JVM Core → Native Bridge <code>NativeMethodWrapper</code> → Friend in C++ (<code>NativeNative.cxx</code>) → {Your function}</li>
+</ul>
+
+<h2>The "Good Enough" Approach (What You Should Do First)</h2>
+
+<p>Since we are on a strict timeline, and this is a learning-oriented course, implement a minimal set of native functions and debug them. Look for existing implementations of RPi's native functions in the <code>src/drivers</code> or <code>addon/native</code> directories.</p>
+
+<p>Once you have basic native functions working, you can progressively add full functionality (like <code>Thread</code>, <code>File</code>, <code>System</code>) as the JVM core calls them.</p>
+
+<h2>Step 3: Fix the FlintJVM & Makefile</h2>
+
+<p>You'll have to fix the FlintJVM Makefile so the Native Interface gets compiled into <code>libwvm.a</code>. You'll need to:</p>
+<ol>
+  <li>Create an <code>rpithal.cpp</code> (or a directory of native files) that implements FlintJVM's Native Interface.</li>
+  <li>Add your implementation(s) to the FlintJVM Makefile (which builds <code>libwvm.a</code> — FlintJVM's core library).</li>
+  <li>Modify the <code>Makefile</code> in <code>sample/44-ESPJVM</code> to point to the updated <code>libwvm.a</code> from <code>addon/FlintJVM</code> so Circle can link correctly.</li>
+</ol>
+
+<h2>Step 4: Compile an RPi Kernel with FlintJVM</h2>
+
+<p>After we have a working native layer for RPi, you can try to compile the Circle kernel with the FlintJVM installed. The same steps as before to build the Circle kernel — you can now reference the native layer you built in building Circle.</p>
+
+<div class="footer">
+  <p>Lesson 3 of the FlintJVM for Raspberry Pi series — <a href="../MISSION.md">Mission</a></p>
+  <p><strong>Next Steps</strong>: Practice first by just implementing the <code>native_uart_putc</code> and <code>native_system_get_time</code> functions to get <code>System.out.println</code> working. Ask me for the structure, or we can do it together.</p>
+</div>
+
+</body>
+</html>

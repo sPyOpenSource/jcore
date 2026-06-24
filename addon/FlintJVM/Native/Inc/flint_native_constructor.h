@@ -6,7 +6,7 @@
 
 jobject NativeConstructor_NewInstance0(FNIEnv *env, jobject obj, jobjectArray initargs);
 
-inline constexpr NativeMethod constructorMethods[] = {
+static const NativeMethod constructorMethods[] = {
     NATIVE_METHOD("newInstance0", "([Ljava/lang/Object;)Ljava/lang/Object;", NativeConstructor_NewInstance0),
 };
 

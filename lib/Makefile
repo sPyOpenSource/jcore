@@ -28,7 +28,8 @@ OBJS	= actled.o alloc.o assert.o display.o windowdisplay.o chargenerator.o class
 	  string.o sysinit.o time.o timer.o tracer.o util.o \
 	  util_fast.o virtualgpiopin.o chainboot.o macaddress.o netdevice.o \
 	  new.o heapallocator.o pageallocator.o setjmp.o numberpool.o \
-	  writebuffer.o 2dgraphics.o ptrlistfiq.o
+	  writebuffer.o 2dgraphics.o ptrlistfiq.o \
+	  rpi/bcmpropertytags.o rpi/bcmmailbox.o
 
 OBJS32	= cache-v7.o exceptionhandler.o exceptionstub.o memory.o pagetable.o \
 	  startup.o synchronize.o

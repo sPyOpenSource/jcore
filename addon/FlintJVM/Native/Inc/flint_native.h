@@ -8,28 +8,27 @@
 #include "flint_native_interface.h"
 
 #define NATIVE_CLASS(name, methods)         NativeClass(name, methods, LENGTH(methods))
-#define NATIVE_METHOD(name, desc, method)   NativeMethod(name, desc, (uint32_t)method)
+#define NATIVE_METHOD(name, desc, method)   NativeMethod(name, desc, (uintptr_t)method)
 
 typedef void (*JNMPtr)(FNIEnv *env, ...);
 
 class NativeMethod {
 public:
-    union {
-        struct {
-            const char * const name;
-            const char * const desc;
-            const uint32_t hash;
-        };
-        ConstNameAndType nameAndType;
-    };
-    const uint32_t methodPtr;
+    const char * const name;
+    const char * const desc;
+    const uint32_t hash;
+    const uintptr_t methodPtr;
 
-    constexpr NativeMethod(const char *name, const char *desc, uint32_t method) :
+    NativeMethod(const char *name, const char *desc, uintptr_t method) :
     name(name), desc(desc),
     hash((Hash(name) & 0xFFFF) | (Hash(desc) << 16)),
     methodPtr(method) { }
-private:
-    void operator=(const NativeMethod &) = delete;
+
+    NativeMethod(const NativeMethod &other) :
+    name(other.name), desc(other.desc),
+    hash(other.hash), methodPtr(other.methodPtr) { }
+
+    NativeMethod &operator=(const NativeMethod &) = delete;
 
     friend class NativeClass;
 };
@@ -41,7 +40,7 @@ public:
     const uint32_t hash;
     const uint16_t methodCount;
 
-    constexpr NativeClass(const char *className, const NativeMethod *methods, uint32_t count) :
+    NativeClass(const char *className, const NativeMethod *methods, uint32_t count) :
     className(className), methods(methods), hash(Hash(className)), methodCount(count) {
 
     }

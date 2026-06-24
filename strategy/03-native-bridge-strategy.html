@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy 3: Native Bridge Implementation</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<style>
+  .algo-box {
+    background: #1a1a2e;
+    border-left: 4px solid #4f46e5;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Strategy 3: Native Bridge Implementation</h1>
+<p class="subtitle">The task breakdown: how to implement your Native Interface in FlintJVM and link it to the Raspberry Pi.</p>
+
+<p>The Native Bridge is the layer that connects FlintJVM to the host hardware. The FlintJVM core knows nothing about Raspberry Pi peripherals; it only knows about an abstract interface.</p>
+
+<h2>Core Insight: Two-Step Process</h2>
+
+<ol>
+  <li><strong>Implement FlintJVM's Virtual Interface:</strong> We need to create a concrete class that inherits from FlintJVM's <code>NativeInterface</code> and implements all <code>virtual</code> functions.</li>
+  <li><strong>Implement the Native Functions:</strong> Fill in the actual logic for things like <code>native_uart_putc</code> that writes to RPi's memory.</li>
+</ol>
+
+<p>The two steps are distinct. Implementing the first is simply a matter of filling in function signatures. The second is where we write our own code.</p>
+
+<h2>Understanding the Native Interface Structure</h2>
+
+<p>The FlintJVM Native Interface (<code>addon/FlintJVM/Native/Inc/flint_native_interface.h</code>) is a class full of pure virtual functions. Each one represents a method call you would make from Java code.</p>
+
+<p>Here is a minimal set of functions you should implement first (to get <code>System.out.println()</code> working):</p>
+
+<ul>
+  <li><code>virtual jint native_system_get_time();</code> - Typically used by Java's <code>System.currentTimeMillis()</code></li>
+  <li><code>virtual void native_uart_putc(uint8_t c);</code> - Writes a character to the RPi UART register (<code>0xFE201000</code> + data register offset)</li>
+  <li><code>virtual void native_pin_set(uint8_t pin, uint8_t value);</code> - Controls GPIO (for LED blinking in hello)</li>
+</ul>
+
+<div class="callout">
+  <strong>Strategy:</strong> Start with these 3 functions. You can wrap them in a class called <code>RpiNativeBridge</code>.
+</div>
+
+<h2>File Organization Options</h2>
+
+<table>
+  <tr><th>Pattern</th><th>Pros</th><th>Cons</th></tr>
+  <tr>
+    <td>One <code>rpithal.cpp</code> file</td>
+    <td>Simpler to compile, all natives in one place.</td>
+    <td>Difficult to maintain, mixing UART + filesystem + networking concerns.</td>
+  </tr>
+  <tr>
+    <td>Multiple <code>*_native.cpp</code> files</td>
+    <td>Easier to organize, easier to unit test, separates concerns by hardware type.</td>
+    <td>More build files to manage, more complex build dependency graph.</td>
+  </tr>
+</table>
+
+<h2>Implementation Algorithm</h2>
+
+<p>Your overall plan should be something like this:</p>
+
+<ol>
+  <li><strong>Header File Creation</strong>:
+    <ul>
+      <li>Create a new header <code>addon/FlintJVM/Native/Inc/rpithal_interface.h</code>
+      <li>Define your <code>RpiNativeBridge</code> class that inherits from FlintJVM's native interface
+      <li>Add pure virtual functions for everything you need
+    </ul>
+  </li>
+  <li><strong>Implementation File Creation</strong>:
+    <ul>
+      <li>Create rpithal.cpp in the same directory or in a separate <code>addon/FlintJVM/Native/RPI</code> subdirectory
+      <li>Implement every virtual function you declared
+      <li>For physical hardware interaction, call RPi-specific functions (from <code>src</code> drivers)
+    </ul>
+  </li>
+  <li><code>addon/FlintJVM/Native/Makefile</code>:
+    <ul>
+      <li>Add your rpithal.cpp file to the OBJS list</li>
+      <li>Ensure it builds into <code>libwvm.a</code></li>
+    </ul>
+  </li>
+  <li><strong>Update the FlintJVM core to use your class</strong>:
+    <ul>
+      <li>You may need to modify <code>addon/FlintJVM/Native/flint_native.cpp</code> or <code>src/addon/rosina.cpp</code> to instantiate your concrete class</li>
+      <li>There should be a platform-specific <code>newNativeBridge()</code> function somewhere</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Specific Implementation: uart_putc Example</h2>
+
+<p>Here's a minimal example of your <code>native_uart_putc()</code> implementation in C++:</p>
+
+<pre><code>#include <code>"Native/Inc/rpithal_interface.h"</code>
+#include <code>"<Circle>/src/drivers/uart.h" // Or however Circle's UART is exposed
+
+class RpiNativeBridge : public NativeInterface {
+public:
+    // ... other virtual functions...
+    
+    void native_uart_putc(uint8_t c) override {
+        // RPi UART0 registers
+        // Base address: 0xFE201000
+        // Data register offset: 0x00
+        const volatile uint32_t *uart_dr = (uint32_t*)0xFE201000;
+        
+        // Wait until line is empty (bit 5 of FR not set)
+        while ((*uart_dr & (1 << 5)) != 0);
+        
+        // Write character
+        *uart_dr = c & 0xFF;
+    }
+    
+    // ... other implementations
+};</code></pre>
+
+<p>Implementation of the static initialization should be handled similarly to how <strong>ESP32 does it in the FlintJVM native interface</strong>.</p>
+
+<h2>The RPi HAL Layer</h2>
+
+<p>The division of work for RPi HAL is similar to other platforms:</p>
+<ul>
+  <li>The JVM knows nothing about hardware</li>
+  <li>One layer: Platform Independent Native Interface (<code>NPI</code> = FlintJVM Native Interface)</li>
+  <li>One layer: Platform Specific Native HAL (<code>RpiNativeBridge</code>)</li>
+</ul>
+
+<h2>Building the FlintJVM Library</h2>
+
+<p>The FlintJVM core is built as <code>libwvm.a</code>. This library must be compiled and linked with Circle's kernel.</p>
+
+<p>The build of FlintJVM is handled in <code>addon/FlintJVM/Makefile</code></p>
+
+<p>You need to make sure your native implementation is included, and that <code>libwvm.a</code> includes your code.</p>
+
+<h2>Phase 4: Compiling for Raspberry Pi and Flint Integration</h2>
+
+<p>Now that we have the Native HAL implemented, we need to make sure it compiles and links with the Circle kernel.</p>
+
+<ul>
+  <li>Update FlintJVM's <code>addon/FlintJVM/Native/Makefile</code> to include your new <code>addon/FlintJVM/Native/rpithal.cpp</code> file.</li>
+  <li>Modify <code>sample/44-ESPJVM/Makefile</code> to reference the <code>addon/FlintJVM/libwvm.a</code> (which now contains your RPi HAL).</li>
+  <li>Change compile flags in FlintJVM if needed (e.g., <code>-march=armv8-a</code>, <code>-mtune=cortex-a72</code>)</li>
+</ul>
+
+<h2>The FlintJVM Integrated into Circle Kernel Diagram</h2>
+
+<p>Here's the updated architecture:</p>
+
+<pre><code>C circle_kernel.elf
+    +-- addon/circle/drivers/uart.o
+    +-- src/drivers/uart.o
+    +-- addon/FlintJVM/libwvm.a
+    |   +-- flint.o (execution engine)
+    |   +-- libnative.a (NativeInterface implementation)
+    |       +-- rpithal.o (your new RPi HAL)
+
+This is the final executable to be loaded onto the RPi. build
+</code></pre>
+
+<div class="footer">
+  <p>Strategy 3: Native Bridge Implementation — based on FlintJVM's architecture analysis</p>
+  <p>Continue with Phase 4: Launching the implementation and compiling the RPi kernel with FlintJVM.</p>
+</div>
+
+</body>
+</html>

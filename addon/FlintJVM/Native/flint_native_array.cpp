@@ -607,8 +607,18 @@ jobject NativeArray_MultiNewArray(FNIEnv *env, jclass componentType, jintArray d
         type[0] = JClass::isPrimitive(componentType->getTypeName());
         type[1] = 0;
         jclass cls = Flint::findClassOfArray(env->exec, type, dimensions->getLength());
-        return Flint::newMultiArray(env->exec, cls, dimensions->getData(), dimensions->getLength());
+        uint32_t len = dimensions->getLength();
+        int64_t dims64[256];
+        int32_t *dims32 = dimensions->getData();
+        for(uint32_t i = 0; i < len && i < 256; i++) dims64[i] = dims32[i];
+        return Flint::newMultiArray(env->exec, cls, dims64, len);
     }
     jclass cls = Flint::findClassOfArray(env->exec, componentType->getTypeName(), dimensions->getLength());
-    return Flint::newMultiArray(env->exec, cls, dimensions->getData(), dimensions->getLength());
+    {
+        uint32_t len = dimensions->getLength();
+        int64_t dims64[256];
+        int32_t *dims32 = dimensions->getData();
+        for(uint32_t i = 0; i < len && i < 256; i++) dims64[i] = dims32[i];
+        return Flint::newMultiArray(env->exec, cls, dims64, len);
+    }
 }

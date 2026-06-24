@@ -3,6 +3,7 @@
 #define __FLINT_NATIVE_INTERFACE_H
 
 #include <stdarg.h>
+#include <stddef.h>
 #include "flint_std.h"
 
 typedef int32_t                     jbool;

@@ -7,7 +7,7 @@
 jint NativeCharacter_ToLowerCase(FNIEnv *env, jchar c);
 jint NativeCharacter_ToUpperCase(FNIEnv *env, jchar c);
 
-inline constexpr NativeMethod characterMethods[] = {
+static const NativeMethod characterMethods[] = {
     NATIVE_METHOD("toLowerCase", "(C)C", NativeCharacter_ToLowerCase),
     NATIVE_METHOD("toUpperCase", "(C)C", NativeCharacter_ToUpperCase),
 };

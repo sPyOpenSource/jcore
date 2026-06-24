@@ -10,7 +10,7 @@ jclass NativeObject_GetClass(FNIEnv *env, jobject obj) {
 
 jint NativeObject_HashCode(FNIEnv *env, jobject obj) {
     (void)env;
-    return (int32_t)obj;
+    return (int32_t)(intptr_t)obj;
 }
 
 jobject NativeObject_Clone(FNIEnv *env, jobject obj) {
