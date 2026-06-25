@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 7: Kernel Memory Allocator — jxmalloc</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+<article>
+<h1>Lesson 7: Kernel Memory Allocator<br><small>How jxmalloc works inside JCore</small></h1>
+
+<p class="mission-tie"><strong>Mission:</strong> Every kernel subsystem (threads, domains, portals, file systems) allocates kernel memory via <code>jxmalloc</code>. Understanding it means understanding how JCore manages its own memory — and why you can't just call <code>libc malloc</code>.</p>
+
+<h2>Overview</h2>
+<p>JCore's kernel memory allocator lives in <code>src/malloc.c</code>. It's a <strong>bitmap-based block allocator</strong> with fixed-size blocks of <strong>1024 bytes</strong> (<code>BLOCKSIZE</code> in <code>src/Headers/malloc.h:16</code>).</p>
+
+<p>Three key differences from user-space <code>malloc</code>:</p>
+<ol>
+<li><strong>No libc</strong> — JCore has no standard library; <code>jxmalloc</code> is the kernel's own allocator</li>
+<li><strong>Fixed blocks</strong> — all allocations are multiples of 1024 bytes (no variable-size chunks)</li>
+<li><strong>Memory-type tracking</strong> — each allocation is tagged with what it's used for (heap, stack, code, etc.)</li>
+</ol>
+
+<h2>Initialization: Where does the memory come from?</h2>
+<p><code>jxmalloc_init()</code> at <code>malloc.c:85</code> determines the allocable memory range by reading the Multiboot2 info structure:</p>
+
+<pre><code>jxmem_end = top_of_RAM;  // 1 MB + upper_memory_size from Multiboot2 tag type 2
+jxmem_start = last_boot_module_end;  // aligned to next BLOCKSIZE</code></pre>
+
+<p>So the allocator manages all RAM <strong>between the end of the last boot module and the top of physical memory</strong>. In the QEMU default (~128 MB), this is roughly 128 MB of managed memory.</p>
+
+<p>The bitmap itself lives <strong>at the start of that range</strong> (<code>bitmap = jxmem_start</code>), eating the first few blocks.</p>
+
+<div class="ref">
+<p><strong>Code:</strong> <code>src/malloc.c:85-171</code> — <code>jxmalloc_init()</code></p>
+</div>
+
+<h2>Data Structures</h2>
+
+<table>
+<tr><th>Variable</th><th>Type</th><th>Purpose</th></tr>
+<tr><td><code>jxmem_start</code></td><td><code>char*</code></td><td>Bottom of allocable memory</td></tr>
+<tr><td><code>jxmem_end</code></td><td><code>char*</code></td><td>Top of allocable memory</td></tr>
+<tr><td><code>n_blocks</code></td><td><code>u4_t</code></td><td>Total blocks = (end - start) / 1024</td></tr>
+<tr><td><code>n_free</code></td><td><code>u4_t</code></td><td>Current count of free blocks</td></tr>
+<tr><td><code>current_block</code></td><td><code>u4_t</code></td><td>Rotating search pointer (fairness)</td></tr>
+<tr><td><code>bitmap</code></td><td><code>u1_t[]</code></td><td>One bit per block: 1 = used, 0 = free</td></tr>
+</table>
+
+<p>The bitmap needs <code>n_blocks / 8</code> bytes. For 128 MB with 1024-byte blocks, that's <code>128 * 1024 / 8 = 16 KB</code>.</p>
+
+<h2>Allocation Algorithm</h2>
+<p><code>jxmalloc_internal()</code> at <code>malloc.c:384</code> implements a <strong>first-fit with rotating pointer</strong>:</p>
+
+<ol>
+<li>Round requested size up to next block boundary (<code>ALIGN_NEXT_BLOCK</code>)</li>
+<li>Convert to block count: <code>size_blk = size >> 10</code></li>
+<li>Scan the bitmap for <code>size_blk</code> consecutive free blocks starting from <code>current_block</code></li>
+<li>If alignment is needed (e.g., for thread stacks), skip blocks that don't satisfy it</li>
+<li>Mark them used, advance <code>current_block</code> past the allocation, return address</li>
+<li>If not found, wrap around to block 0 and scan again</li>
+<li>If still not found: <code>sys_panic("Out of memory")</code></li>
+</ol>
+
+<h3>Free: <code>jxfree()</code></h3>
+<p><code>jxfree(addr, size)</code> at <code>malloc.c:494</code> converts <code>addr</code> to a block number, calculates how many blocks <code>size</code> occupies, and clears the corresponding bits in the bitmap.</p>
+
+<div class="ref">
+<p><strong>Caveat:</strong> You must pass the <strong>exact same size</strong> to <code>jxfree</code> that you passed to <code>jxmalloc</code>. The allocator cannot determine the allocation size from the address!</p>
+</div>
+
+<h2>Two-Level Allocation</h2>
+<p>JCore has a <strong>two-tier</strong> allocation system:</p>
+
+<h3>Tier 1: jxmalloc (global, coarse-grained)</h3>
+<ul>
+<li>Fixed 1024-byte blocks from the global pool</li>
+<li>Used for: thread stacks, code segments, DCB, large temporary allocations</li>
+</ul>
+
+<h3>Tier 2: malloc_code (per-domain, fine-grained)</h3>
+<p><code>malloc_code(domain, size)</code> at <code>malloc.c:601</code> is a <strong>bump allocator</strong> on top of jxmalloc:</p>
+<ul>
+<li>Each domain has its own code segment (pre-allocated via jxmalloc)</li>
+<li>Allocations are served sequentially within that segment (linear bump)</li>
+<li>When a segment runs out, a new one is allocated (up to <code>CODE_FRAGMENTS</code>)</li>
+<li>Used for: class descriptors, method descriptors, vtables, JIT-compiled code</li>
+<li>No <code>free</code> — code memory is freed per-domain when the domain terminates</li>
+</ul>
+
+<p>This two-tier design means the coarse-grained bitmap allocator rarely fragments, while the fine-grained bump allocator is extremely fast.</p>
+
+<h2>Memory Type Tracking</h2>
+<p>Every <code>jxmalloc</code> call includes a <code>MEMTYPE_*</code> tag:</p>
+<pre><code>void *p = jxmalloc(256 MEMTYPE_CODE);
+void *q = jxmalloc(4096 MEMTYPE_STACK);
+void *r = jxmalloc(64 MEMTYPE_HEAP);</code></pre>
+<p>These tags are used for statistics (printed by <code>jxmalloc_stat()</code>) to track how kernel memory is distributed.</p>
+
+<h2>Thread Stacks</h2>
+<p><code>malloc_threadstack()</code> at <code>malloc.c:868</code> allocates stack memory with alignment support (important for stacks that need <code>%esp</code> alignment to a page boundary).</p>
+
+<h2>Summary</h2>
+<table>
+<tr><th>Function</th><th>File:Line</th><th>Granularity</th><th>Used for</th></tr>
+<tr><td><code>jxmalloc()</code></td><td><code>malloc.c:349</code></td><td>1024-byte blocks</td><td>Global kernel allocations</td></tr>
+<tr><td><code>jxmalloc_align()</code></td><td><code>malloc.c:373</code></td><td>1024-byte blocks + alignment</td><td>Thread stacks, DMA buffers</td></tr>
+<tr><td><code>jxfree()</code></td><td><code>malloc.c:494</code></td><td>1024-byte blocks</td><td>Frees allocations</td></tr>
+<tr><td><code>malloc_code()</code></td><td><code>malloc.c:601</code></td><td>Variable (bump)</td><td>Per-domain code, class/method descriptors</td></tr>
+<tr><td><code>jxmalloc_stat()</code></td><td><code>malloc.c:284</code></td><td>—</td><td>Print allocator statistics</td></tr>
+</table>
+
+<h2>Try It Yourself</h2>
+<ol>
+<li>Add <code>jxmalloc_stat()</code> at the end of <code>main()</code> to see memory usage after initialization</li>
+<li>Look for <code>#ifdef MALLOC_STAT</code> in <code>malloc.c</code> — enable it in the Makefile to get per-type memory accounting</li>
+<li>Trace a <code>jxmalloc(64 MEMTYPE_OTHER)</code> call through the bitmap logic by hand</li>
+</ol>
+
+<h2>Further Reading</h2>
+<ul>
+<li><code>src/malloc.c</code> — the full implementation</li>
+<li><code>src/Headers/malloc.h</code> — BLOCKSIZE and API declarations</li>
+<li><a href="../lessons/0006-boot-stages.html">Lesson 6: Boot Stages</a> — where <code>jxmalloc_init()</code> is called (Stage 2)</li>
+<li><a href="../reference/glossary.html">Glossary</a></li>
+<li><a href="https://wiki.osdev.org/Memory_Allocation">OSDev Wiki: Memory Allocation</a> — survey of kernel allocator designs</li>
+</ul>
+
+<p><em>Ask your teacher (the agent) follow-up questions — try tracing through a specific allocation path in the code.</em></p>
+
+</article>
+</body>
+</html>

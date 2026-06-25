@@ -14,6 +14,7 @@
 - Lesson 4: Long Mode — 64-bit vs 32-bit, 4-level paging, canonical addresses, EFER.LME
 - Lesson 5: Disable Paging — identity mapping, triple fault, long→compat mode drop
 - Lesson 6: Boot Stages — GRUB→crt0.S→multiboot_main→main→start_domain_zero→Init domain
+- Lesson 7: jxmalloc — kernel bitmap allocator, 1024-byte blocks, two-tier with bump allocator per-domain
 
 ### Next
 - Ask user: GDT layout (`segments.h`, `asm.S` GDT entries), boot process deep dive (`crt0.S`), or JCore-specific portal/domain isolation pattern?

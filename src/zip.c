@@ -87,6 +87,7 @@ void zip_init(char *zipstart, jint ziplen)
 	char buffer[ECREC_SIZE];
 	int len = ziplen;
 	zip = zipstart;
+
 	mempos = zip;
 	zseek(len - ECREC_SIZE);
 	zread(buffer, ECREC_SIZE);
