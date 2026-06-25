@@ -77,9 +77,33 @@
 
 <p><strong>Trusted Compiler Problem</strong>: If the compiler that translates source code into executable code is part of the TCB, a malicious compiler can inject backdoors without leaving traces in the source. Ken Thompson's classic "Reflections on Trusting Trust."</p>
 
+<h2>Memory Management Unit</h2>
+
+<p><strong>MMU (Memory Management Unit)</strong>: Hardware in the CPU that translates every virtual address to a physical address. On x86, enabled by CR0.PG bit. Consists of page table walker + TLB cache.</p>
+
+<p><strong>Virtual Address</strong>: The address a program sees. Translated by the MMU to a physical address before reaching the memory bus.</p>
+
+<p><strong>Physical Address</strong>: The actual address sent to RAM. Invisible to user programs.</p>
+
+<p><strong>Page</strong>: A fixed-size block of virtual memory, aligned to its size. x86 supports 4 KB, 2 MB, and 1 GB pages (32-bit: 4 KB and 4 MB).</p>
+
+<p><strong>Page Frame</strong>: A fixed-size block of physical memory. A page maps to a page frame of the same size.</p>
+
+<p><strong>Page Directory (PD)</strong>: Level-1 table in 32-bit paging. 1024 entries × 4 bytes = 4 KB. Located at the address in CR3. Each entry points to a page table (or a 4 MB page if PS=1).</p>
+
+<p><strong>Page Table (PT)</strong>: Level-2 table in 32-bit paging. 1024 entries × 4 bytes = 4 KB. Each entry points to a 4 KB page frame.</p>
+
+<p><strong>CR3</strong>: Control register holding the physical address of the root page table (page directory on 32-bit, PML4 on x86-64). Also called PDBR (Page Directory Base Register).</p>
+
+<p><strong>TLB (Translation Lookaside Buffer)</strong>: On-chip cache of recent virtual→physical translations. Acts as the CPU's "MMU cache." Must be invalidated when page tables change (<code>invlpg</code> instruction or CR3 reload).</p>
+
+<p><strong>Page Fault (#PF)</strong>: Exception (interrupt 14) raised when the MMU cannot translate a virtual address — either the page is not present, or a protection violation occurred. The faulting address is stored in CR2. JCore's handler is in <code>exception.S</code>.</p>
+
+<p><strong>Page Table Walk</strong>: The process of traversing page directory/table entries to find a translation. On x86, the hardware performs the walk automatically on a TLB miss.</p>
+
 <hr>
 
-<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a></small></p>
+<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> · <a href="../lessons/0003-mmu.html">Lesson 3: MMU</a></small></p>
 
 </body>
 </html>

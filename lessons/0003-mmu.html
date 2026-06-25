@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3: The Memory Management Unit (MMU)</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<a href="../reference/glossary.html" style="float:right;font-size:.85rem;">Glossary</a>
+<h1>The Memory Management Unit (MMU)</h1>
+<p class="subtitle" style="color:var(--muted);margin-top:-.5rem;">Lesson 3 of the x86 Processor Modes series.</p>
+
+<h2>1. What the MMU Does</h2>
+
+<p>The MMU is a hardware unit inside the CPU that translates every address a program uses (<strong>virtual address</strong>) into the actual physical RAM location (<strong>physical address</strong>). This translation is invisible to user programs — they see a clean, flat 4 GB address space regardless of how memory is physically laid out.</p>
+
+<p>Enabling the MMU (via CR0.PG bit) adds an indirection layer between the program and memory. Disabled: virtual address = physical address. Enabled: virtual address → page tables → physical address.</p>
+
+<div class="callout">
+<strong>Key insight from Lesson 1 &amp; 2:</strong> Real mode has no MMU. Protected mode <em>can</em> have one — CR0.PE and CR0.PG are independent bits. You can have protected mode without paging (pure segmentation), or protected mode with paging (what JCore uses).
+</div>
+
+<h2>2. Page Tables on 32-bit x86</h2>
+
+<p>On 32-bit x86 protected mode, the MMU translates addresses through two levels of tables:</p>
+
+<pre>Virtual address (32 bits):
+┌──────────┬──────────┬────────────┐
+│   PD idx │   PT idx │   offset   │
+│  bits 31-22 │ bits 21-12 │ bits 11-0  │
+│  10 bits │  10 bits │  12 bits   │
+└──────────┴──────────┴────────────┘
+               ↓               ↓         ↓
+Page Dir  ─→  PDE  ─→  Page Table ─→  PTE  ─→  Physical page</pre>
+
+<p><strong>Page Directory</strong> (1024 entries × 4 bytes = 4 KB): each entry points to a page table. Located at the physical address in CR3.</p>
+
+<p><strong>Page Table</strong> (1024 entries × 4 bytes = 4 KB): each entry points to a 4 KB page frame. 1024 × 4 KB = 4 MB per page table.</p>
+
+<p><strong>Total coverage</strong>: 1024 page dir entries × 4 MB each = 4 GB virtual address space.</p>
+
+<h2>3. Page Table Entry Bits</h2>
+
+<table>
+  <tr><th>Bit</th><th>Name</th><th>Meaning</th></tr>
+  <tr><td>0</td><td>P (Present)</td><td>Page is in physical memory. If 0, accessing this address triggers a page fault.</td></tr>
+  <tr><td>1</td><td>R/W</td><td>0 = read-only, 1 = read-write.</td></tr>
+  <tr><td>2</td><td>U/S</td><td>0 = supervisor (Ring 0–2), 1 = user (Ring 3).</td></tr>
+  <tr><td>3</td><td>PWT</td><td>Page-level write-through.</td></tr>
+  <tr><td>4</td><td>PCD</td><td>Page-level cache disable.</td></tr>
+  <tr><td>5</td><td>A (Accessed)</td><td>Set by CPU when page is read/written — used by page-replacement algorithms.</td></tr>
+  <tr><td>6</td><td>D (Dirty)</td><td>Set by CPU when page is written to — page must be saved to disk before eviction.</td></tr>
+  <tr><td>7</td><td>PS (Page Size)</td><td>In PDE: 0 = points to page table, 1 = 4 MB page (huge page).</td></tr>
+  <tr><td>8</td><td>G (Global)</td><td>Prevents TLB flush on CR3 reload (<code>invpcid</code> needed to evict).</td></tr>
+  <tr><td>9–11</td><td>Avail</td><td>Available for OS use (e.g., Linux's young/dirty tracking).</td></tr>
+  <tr><td>12–31</td><td>Frame address</td><td>Physical address of the page (4 KB aligned — lower 12 bits are zero).</td></tr>
+</table>
+
+<h2>4. The TLB: The MMU's Cache</h2>
+
+<p>Walking two levels of page tables on <em>every memory access</em> would be catastrophically slow. The <strong>Translation Lookaside Buffer (TLB)</strong> is a hardware cache inside the CPU that stores recent virtual→physical translations.</p>
+
+<p>Typical TLB miss (on x86): hardware walks the page tables automatically (called a <strong>hardware page table walk</strong>) and loads the translation into the TLB. The OS is only involved if the page isn't present — that's a <strong>page fault</strong> (#PF, interrupt 14).</p>
+
+<p>When the OS changes a page table entry, it must invalidate the corresponding TLB entry with <code>invlpg</code> (or reload CR3 to flush the entire TLB). Without this, the CPU might use a stale translation.</p>
+
+<h2>5. MMU in JCore</h2>
+
+<p>JCore relies on GRUB to set up initial paging. The Multiboot2 header in <code>crt0.S</code> requests a linear framebuffer, and GRUB prepares the environment with paging enabled, identity-mapping the kernel's physical memory to its virtual address.</p>
+
+<p>JCore defines the CR0 paging flag:</p>
+
+<pre>// from src/Headers/misc.h
+#define CR0_PG  0x80000000   /* enable paging */</pre>
+
+<p>When a program accesses an unmapped or protected page, the CPU raises interrupt 14. JCore's page fault handler is in <code>src/Assembly/exception.S</code> (line 138):</p>
+
+<pre>#define PAGE_FAULT_VECTOR $14
+...
+pushl PAGE_FAULT_VECTOR   ; push vector number and handle</pre>
+
+<p>The error code pushed with the page fault tells JCore what happened:</p>
+<ul>
+  <li>Bit 0 (P): 0 = non-present page, 1 = protection violation</li>
+  <li>Bit 1 (W/R): 0 = read, 1 = write</li>
+  <li>Bit 2 (U/S): 0 = supervisor, 1 = user</li>
+</ul>
+
+<p>JCore's memory manager (the <code>Memory/gc_*</code> files) is a garbage collector that manages Java object heaps. It operates on top of the page-level abstraction provided by the kernel — it doesn't set up page tables itself, but relies on the underlying page mapping for isolation between domains.</p>
+
+<h2>6. MMU and the TCB</h2>
+
+<p>The MMU is part of the TCB (Lesson 2). It's the hardware mechanism that enforces process isolation — Domain A cannot access Domain B's memory because the page tables say so. If the MMU is defective or if the OS sets up page tables incorrectly, isolation fails.</p>
+
+<p>The page tables themselves are a software data structure (in the TCB), but the MMU that interprets them is hardware. This is the "hardware-enforced security" that makes microkernel architectures viable — the MMU is the trusted third party that mediates every memory access.</p>
+
+<h2>Further Reading</h2>
+<ul>
+  <li><a href="https://wiki.osdev.org/Paging">OSDev Wiki: Paging</a> — the practical reference for setting up page tables</li>
+  <li><a href="https://wiki.osdev.org/Memory_Management_Unit">OSDev Wiki: MMU</a> — conceptual deep dive</li>
+  <li><a href="https://en.wikipedia.org/wiki/Memory_management_unit">Wikipedia: Memory Management Unit</a></li>
+  <li>Intel SDM Vol. 3A, Chapter 4: "Paging" — the authoritative specification</li>
+  <li><code>src/Assembly/exception.S</code> — JCore's page fault handler</li>
+  <li><code>src/Headers/misc.h</code> — CR0/PG and other control register definitions</li>
+</ul>
+
+<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> · <a href="../reference/glossary.html">Glossary</a></small></p>
+<p><small>Have questions? Ask your agent — the agent is your teacher and can clarify anything.</small></p>
+
+</body>
+</html>
