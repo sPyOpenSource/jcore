@@ -77,6 +77,28 @@
 
 <p><strong>Trusted Compiler Problem</strong>: If the compiler that translates source code into executable code is part of the TCB, a malicious compiler can inject backdoors without leaving traces in the source. Ken Thompson's classic "Reflections on Trusting Trust."</p>
 
+<h2>Long Mode (64-bit)</h2>
+
+<p><strong>Long Mode</strong>: The 64-bit operating mode of x86-64 processors (AMD64 / Intel 64). Enables 64-bit registers (RAX–R15, RIP, RSP), 48-bit (or 57-bit) virtual addresses, and 52-bit physical addresses. Requires paging. Subsumes protected mode as the "high-performance" x86 mode.</p>
+
+<p><strong>Canonical Address</strong>: A virtual address where bits 48–63 are copies of bit 47 (sign-extended). Non-canonical addresses cause #GP. The usable range is two 47-bit regions: user space (0→0x00007FFFFFFFFFFF) and kernel space (0xFFFF800000000000→0xFFFFFFFFFFFFFFFF).</p>
+
+<p><strong>64-bit Mode</strong>: Sub-mode of long mode where code runs with 64-bit operand size by default. Entered by far-jumping to a code segment with the L (long) bit set in the GDT descriptor.</p>
+
+<p><strong>Compatibility Mode</strong>: Sub-mode of long mode where the CPU runs legacy 32-bit (or 16-bit) code. The processor is in long mode overall, but the currently executing segment is a 32-bit CS. Allows 64-bit OSes to run 32-bit applications.</p>
+
+<p><strong>EFER (Extended Feature Enable Register)</strong>: MSR <code>0xC0000080</code>. Controls long mode operation. Key bits: LME (bit 8, Long Mode Enable), LMA (bit 10, Long Mode Active, read-only), NXE (bit 11, No-Execute Enable).</p>
+
+<p><strong>PML4 (Page Map Level 4)</strong>: The root page table in 64-bit 4-level paging. 512 entries × 8 bytes = 4 KB. Located at the physical address in CR3. Each entry points to a Page Directory Pointer Table.</p>
+
+<p><strong>PDPT (Page Directory Pointer Table)</strong>: Level-2 table in 4-level paging. Entry can point to a Page Directory (4 KB pages) or directly to a 1 GB page (PS=1).</p>
+
+<p><strong>LA57</strong>: 5-level paging (CR4.LA57=1). Adds a third level above PML4, increasing virtual address space to 57-bit (128 PB). Supported on Ice Lake and later Intel CPUs, Zen 2 and later AMD.</p>
+
+<p><strong>NX (No-Execute) Bit</strong>: Bit 63 in 64-bit page table entries. When set, the page cannot be executed as code. Requires EFER.NXE=1. The hardware basis for W^X (write XOR execute) policies.</p>
+
+<p><strong>RIP-Relative Addressing</strong>: An addressing mode in 64-bit mode where the effective address is computed relative to RIP (the instruction pointer). Enables position-independent code (PIC) without the overhead of a base register.</p>
+
 <h2>Memory Management Unit</h2>
 
 <p><strong>MMU (Memory Management Unit)</strong>: Hardware in the CPU that translates every virtual address to a physical address. On x86, enabled by CR0.PG bit. Consists of page table walker + TLB cache.</p>
@@ -103,7 +125,7 @@
 
 <hr>
 
-<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> · <a href="../lessons/0003-mmu.html">Lesson 3: MMU</a></small></p>
+<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> · <a href="../lessons/0003-mmu.html">Lesson 3: MMU</a> · <a href="../lessons/0004-long-mode.html">Lesson 4: Long Mode</a></small></p>
 
 </body>
 </html>

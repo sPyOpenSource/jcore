@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4: Long Mode — The 64-bit World</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<a href="../reference/glossary.html" style="float:right;font-size:.85rem;">Glossary</a>
+<h1>Long Mode — The 64-bit World</h1>
+<p class="subtitle" style="color:var(--muted);margin-top:-.5rem;">Lesson 4 of the x86 Processor Modes series.</p>
+
+<h2>1. What Long Mode Adds</h2>
+
+<p>Long mode is the 64-bit operating mode introduced by AMD with the Athlon 64 (2003) and later adopted by Intel as EM64T / Intel 64. It's not "protected mode with bigger registers" — it's a fundamental redesign of how the CPU operates.</p>
+
+<table>
+  <tr><th></th><th>Protected Mode (32-bit)</th><th>Long Mode (64-bit)</th></tr>
+  <tr><td>General registers</td><td>8 (EAX–EDI)</td><td>16 (RAX–R15)</td></tr>
+  <tr><td>Register width</td><td>32 bits</td><td>64 bits</td></tr>
+  <tr><td>Virtual address space</td><td>4 GB</td><td>256 TB (48-bit)</td></tr>
+  <tr><td>Physical address space</td><td>64 GB (PAE) / 4 GB (no PAE)</td><td>1 TB – 4 PB (implementation-dependent)</td></tr>
+  <tr><td>Segmentation</td><td>Full segment:offset model</td><td>Mostly flat (CS/DS/ES/SS base forced to 0)</td></tr>
+  <tr><td>Paging required?</td><td>Optional</td><td>Mandatory</td></tr>
+  <tr><td>Page table levels</td><td>2 (PD + PT) or 3 with PAE</td><td>4 (PML4 + PDPT + PD + PT) or 5 with LA57</td></tr>
+  <tr><td>Hardware task switching</td><td>Supported (TSS)</td><td>Removed</td></tr>
+  <tr><td>V86 mode</td><td>Supported</td><td>Removed</td></tr>
+</table>
+
+<h2>2. Segmentation Changes</h2>
+
+<p>In long mode, segment registers <strong>work differently</strong>:</p>
+<ul>
+  <li><strong>CS, DS, ES, SS</strong>: base and limit are ignored — they're treated as 0 and unlimited. The only meaningful fields are DPL (privilege level) and the L bit (64-bit code vs compatibility mode).</li>
+  <li><strong>FS and GS</strong>: base addresses still work (set via MSRs <code>0xC0000100</code> and <code>0xC0000101</code>). These are used for thread-local storage (FS on Linux, GS on Windows) and per-CPU data.</li>
+</ul>
+
+<p>Compare with JCore's GDT (<code>segments.h</code>), which has separate 32-bit and 16-bit segments for mode switching. In long mode, the 16-bit segments would have no special meaning — you'd need completely different GDT entries with the L bit set.</p>
+
+<h2>3. Four-Level Paging</h2>
+
+<p>Long mode uses 4-level page tables (5-level with LA57 on newer CPUs). Each level has 512 entries × 8 bytes = 4 KB per table:</p>
+
+<pre>Virtual address (48-bit canonical):
+┌──────┬──────┬──────┬──────┬──────────┐
+│ PML4 │ PDPT │  PD  │  PT  │  offset  │
+│ 9bit │ 9bit │ 9bit │ 9bit │  12bit   │
+└──────┴──────┴──────┴──────┴──────────┘
+   ↓      ↓      ↓      ↓
+  CR3 → PML4 → PDPT → PD → PT → 4 KB page</pre>
+
+<p>Each 64-bit PTE has the same permission bits as 32-bit (Present, R/W, U/S, A, D, etc.) plus new ones:</p>
+<ul>
+  <li><strong>NX (bit 63)</strong>: No-Execute — marks a page as non-executable. Enabled via EFER.NXE. This is the hardware basis for <strong>W^X</strong> (write XOR execute) security policy.</li>
+  <li><strong>PAT (bit 7)</strong>: Page Attribute Table — for fine-grained memory type control.</li>
+</ul>
+
+<p>Because PTE entries are 8 bytes and each table is 4 KB, you get 512 entries per level. The total coverage: 512<sup>4</sup> × 4 KB = 256 TB (48-bit virtual address space).</p>
+
+<h2>4. Canonical Addresses</h2>
+
+<p>A 64-bit pointer in long mode must be <strong>canonical</strong>: bits 48–63 must be a copy of bit 47 (sign-extension). This splits the virtual address space into two regions:</p>
+
+<pre>0x0000_0000_0000_0000  ┌────────────────────┐
+                       │  User space (47-bit)│
+0x0000_7FFF_FFFF_FFFF  ├────────────────────┤
+0xFFFF_8000_0000_0000  │  Kernel space (47-bit)│
+                       └────────────────────┘
+0xFFFF_FFFF_FFFF_FFFF</pre>
+
+<p>Non-canonical addresses (e.g., <code>0x0000_8000_0000_0000</code>) cause a #GP fault if accessed. This is why 64-bit OSes can't use a full 64-bit address space — the unused high bits must be copies of bit 47.</p>
+
+<h2>5. Entering Long Mode</h2>
+
+<p>From protected mode, the sequence is:</p>
+<pre>1. Disable interrupts (CLI)
+2. Enable PAE (CR4.PAE = 1)
+3. Set up 4-level page tables with PML4 at CR3
+4. Set EFER.LME = 1 (WRMSR 0xC0000080)
+5. Enable paging (CR0.PG = 1) — this atomically enters long mode,
+   EFER.LMA becomes 1
+6. Far jump to a 64-bit code segment (GDT entry with L=1)
+   → CPU is now in 64-bit mode</pre>
+
+<p>Step 5 is the key moment: setting CR0.PG with EFER.LME=1 transitions from protected mode to <strong>compatibility mode</strong> (still 32-bit instructions). Step 6 switches to true <strong>64-bit mode</strong>.</p>
+
+<h2>6. Long Mode and JCore's Future</h2>
+
+<p>Your learning record <a href="../OS/learning-records/0003-32bit-vs-64bit.html">0003-32bit-vs-64bit</a> already identifies what would change for a 64-bit port:</p>
+<ul>
+  <li><code>BCBasicDatatype.REFERENCE</code> → return 8 (not 4)</li>
+  <li><code>BCReference.value</code> → <code>long</code> (not <code>int</code>)</li>
+  <li><code>addr_t</code> → <code>unsigned long long</code></li>
+  <li>8-byte alignment for objects</li>
+  <li>AArch64 assembly (currently x86-only)</li>
+</ul>
+
+<p>For <strong>x86-64</strong> specifically, JCore would need:</p>
+<ul>
+  <li>A new GDT with 64-bit code segments (L=1 in the descriptor)</li>
+  <li>The 4-level paging structures (PML4 → PDPT → PD → PT)</li>
+  <li>NX-bit support in page table entries for W^X policy</li>
+  <li>Rewrite all inline assembly (<code>lowlevel.S</code>, <code>asm.S</code>) for 64-bit operands</li>
+  <li>Replace the <code>prot_to_real</code> / <code>real_to_prot</code> mechanism — real mode switching is architecturally different from long mode</li>
+</ul>
+
+<div class="callout">
+<strong>Key insight:</strong> Long mode removes V86 mode and hardware task switching. If JCore ever goes 64-bit, the BIOS interrupt calls (VESA video modes, ACPI) that currently use <code>prot_to_real</code> would need a completely different approach — either a UEFI GOP framebuffer, or a trampoline that drops through compatibility mode to real mode.
+</div>
+
+<h2>Further Reading</h2>
+<ul>
+  <li><a href="https://wiki.osdev.org/X86-64">OSDev Wiki: x86-64</a> — comprehensive overview</li>
+  <li><a href="https://wiki.osdev.org/Setting_Up_Long_Mode">OSDev Wiki: Setting Up Long Mode</a> — step-by-step code</li>
+  <li><a href="https://en.wikipedia.org/wiki/Long_mode">Wikipedia: Long mode</a></li>
+  <li><a href="https://kernel-internals.org/arch/x86/boot">Linux Kernel Internals: x86-64 Boot Sequence</a> — real world example of the real→protected→long mode chain</li>
+  <li>Intel SDM Vol. 3A, Chapter 9: "Processor Management and Initialization" — the spec for mode transitions</li>
+  <li><code>src/Assembly/asm.S</code> — JCore's current mode-switching code (32-bit only)</li>
+  <li><code>src/Headers/segments.h</code> — current GDT layout (needs 64-bit CS entries for long mode)</li>
+</ul>
+
+<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> · <a href="../lessons/0003-mmu.html">Lesson 3: MMU</a> · <a href="../reference/glossary.html">Glossary</a></small></p>
+<p><small>Have questions? Ask your agent — the agent is your teacher and can clarify anything.</small></p>
+
+</body>
+</html>

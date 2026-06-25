@@ -38,7 +38,15 @@
 - [Wikipedia: Memory Management Unit](https://en.wikipedia.org/wiki/Memory_management_unit) — broad overview
 - [Intel SDM Vol. 3A, Chapter 4: Paging](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html) — authoritative reference
 - [Virtual Memory: Page Tables, TLBs, and Linux Internals](https://blog.codingconfessions.com/p/virtual-memory) — excellent deep explanation with Linux specifics
-- [MMU Handbook](https://kalairajah-personal.github.io/the-mmu-handbook) — rigorous, implementation-level reference across x86-64, ARM64, RISC-V (21 chapters), proof that small TCBs can be audited to zero bugs
+- [MMU Handbook](https://kalairajah-personal.github.io/the-mmu-handbook)
+
+### Long Mode (x86-64)
+- [OSDev Wiki: x86-64](https://wiki.osdev.org/X86-64) — comprehensive overview of long mode features
+- [OSDev Wiki: Setting Up Long Mode](https://wiki.osdev.org/Setting_Up_Long_Mode) — step-by-step assembly code
+- [OSDev Wiki: CPU Registers x86-64](https://wiki.osdev.org/CPU_Registers_x86-64) — CR0-CR8, MSRs, EFER
+- [Wikipedia: Long Mode](https://en.wikipedia.org/wiki/Long_mode) — history and architecture overview
+- [Wasil Zafar: x64 Long Mode & Protected Mode](https://www.wasilzafar.com/pages/series/assembly-mastery/asm-part16-long-mode.html) — accessible tutorial with mode transition code
+- [Linux x86-64 Boot Sequence](https://kernel-internals.org/arch/x86/boot) — real-world real→protected→long mode chain — rigorous, implementation-level reference across x86-64, ARM64, RISC-V (21 chapters), proof that small TCBs can be audited to zero bugs
 
 ## Wisdom (Communities)
 - [r/osdev](https://reddit.com/r/osdev) — active community of OS developers, good for mode-switching questions
