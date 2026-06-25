@@ -4,7 +4,7 @@
 You're building the JCore (JX) OS kernel — a Java-executing x86 OS. Your kernel boots via GRUB (which starts in protected mode), but it also has real-mode switching code for VESA BIOS calls and ACPI. You need to understand both modes deeply to maintain and extend this code: why the CPU starts in real mode, how the transition to protected mode works, and when you must switch back.
 
 ## Success looks like
-- Trace the boot path from CPU reset → real mode → GRUB → protected mode → JCore kernel
+- Trace the boot path from CPU reset → real mode → GRUB → protected mode → JCore kernel ✓
 - Explain what each GDT entry in `segments.h` does, including the 16-bit segments
 - Read `asm.S` (`real_to_prot` / `prot_to_real`) and explain every instruction's role
 - Know when and why the kernel drops back to real mode (VESA, ACPI, SMP startup)

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 6: Boot Stages — From GRUB to Java</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+<article>
+<h1>Lesson 6: Boot Stages<br><small>From GRUB to Java — the JCore boot path</small></h1>
+
+<p class="mission-tie"><strong>Mission:</strong> You're building the JCore kernel. Understanding the boot path from CPU reset through to the first Java thread lets you trace every subsystem's initialization order, know where to add new features, and debug early boot failures.</p>
+
+<h2>Overview</h2>
+
+<p>JCore's boot path passes through <strong>five distinct stages</strong>, each in a different layer of the system:</p>
+
+<pre class="diagram">
+Press RESET
+    │
+    ▼
+┌─────────────────────────────────────────┐
+│ Stage 0: CPU Reset → GRUB              │  Real mode → Protected mode
+│  (done by bootloader, not JCore)        │  (by the time _start runs, we're in PM)
+└─────────────────────────────────────────┘
+    │
+    ▼
+┌─────────────────────────────────────────┐
+│ Stage 1: Assembly Entry                │  crt0.S
+│  Stack setup, multiboot_info handoff    │  <em>30 lines of asm</em>
+└─────────────────────────────────────────┘
+    │
+    ▼
+┌─────────────────────────────────────────┐
+│ Stage 2: C Low-Level Init              │  multiboot_main (multiboot.c)
+│  GDT, IDT, debug regs, heap allocator   │  <em>~50 lines of C</em>
+└─────────────────────────────────────────┘
+    │
+    ▼
+┌─────────────────────────────────────────┐
+│ Stage 3: Kernel Subsystem Init         │  main() in main.c
+│  PIC, IRQ data, domains, threads,       │
+│  portals, Java runtime primitives       │  <em>~140 lines of C</em>
+└─────────────────────────────────────────┘
+    │
+    ▼
+┌─────────────────────────────────────────┐
+│ Stage 4: DomainZero Java Thread        │  start_domain_zero() in zero.c
+│  APIC, timer, load zero.jll + jdk0.jll, │
+│  create portals, create Init domain     │  <em>~200 lines of C</em>
+└─────────────────────────────────────────┘
+    │
+    ▼
+┌─────────────────────────────────────────┐
+│ Stage 5: Init Domain                   │  Java (class constructors run)
+│  Java scheduler, user domains, AI/AI    │  <em>Java code</em>
+└─────────────────────────────────────────┘
+</pre>
+
+<p>Each stage is <strong>irreversible</strong> — by the time the next stage starts, the previous stage's functions are no longer called. The boot path is a strict partial order.</p>
+
+<hr>
+
+<h2>Stage 0: CPU Reset → GRUB (not JCore code)</h2>
+
+<p>When the CPU powers on, it begins in <strong><a href="../lessons/0001-real-mode.html">real mode</a></strong> at address <code>0xFFFF0</code>. The BIOS initializes hardware, then loads GRUB. GRUB performs the <strong>real → protected mode transition</strong> (setting <code>CR0.PE</code>, loading a GDT, far-jumping to 32-bit code), then loads the JCore kernel binary from disk and hands off via the <strong>Multiboot2 protocol</strong>.</p>
+
+<p>By the time <code>_start</code> executes, the CPU is already in <strong>32-bit protected mode</strong>, paging is <strong>disabled</strong> (<code>CR0.PG = 0</code>), and <code>ebx</code> holds the physical address of the Multiboot2 info structure.</p>
+
+<div class="ref">
+<p><strong>Key code:</strong> Not JCore code. See <code>linker.ld</code> — the kernel is linked at <strong>2 MB</strong> physical, and GRUB loads it there because the Multiboot2 header (at <code>.multiboot_header</code>) declares it.</p>
+</div>
+
+<hr>
+
+<h2>Stage 1: Assembly Entry (<code>crt0.S</code>)</h2>
+
+<p><code>crt0.S</code> is the first JCore code to execute. It does exactly three things:</p>
+
+<ol>
+<li><strong>Set the stack pointer</strong> to <code>base_stack_end</code> (defined in the linker script as the top of <code>.bss</code> + stack space).</li>
+<li><strong>Preserve Multiboot info</strong> — pushes <code>ebx</code> (Multiboot2 physical address) and <code>eax</code> (magic number) onto the stack, then calls <code>multiboot_main</code>.</li>
+<li><strong>Scan for framebuffer tag</strong> — walks the Multiboot2 tag list looking for tag type 8 (framebuffer). If found, draws a red test pattern directly to the framebuffer memory.</li>
+</ol>
+
+<p>Notice what <code>crt0.S</code> does <em>not</em> do:</p>
+<ul>
+<li>No GDT setup (GRUB already set one up)</li>
+<li>No paging setup (JCore doesn't use paging)</li>
+<li>No interrupt setup (that comes in Stage 2)</li>
+</ul>
+
+<div class="ref">
+<p><strong>Code location:</strong> <code>src/Assembly/crt0.S:33-53</code><br>
+<strong>Key line:</strong> <code>call multiboot_main</code> — the handoff from assembly to C.</p>
+</div>
+
+<hr>
+
+<h2>Stage 2: C Low-Level Init (<code>multiboot_main</code>)</h2>
+
+<p>Found in <code>src/multiboot.c:478-532</code>. This stage establishes the <strong>minimum C runtime environment</strong>:</p>
+
+<ol>
+<li><strong>Validate Multiboot2 magic</strong> (<code>0x36D76289</code>) — panics if wrong bootloader.</li>
+<li><strong>Clear interrupts</strong> (<code>cli</code>), initialize serial port.</li>
+<li><strong>Clear VGA text screen</strong> (writes spaces to <code>0xB8000</code>).</li>
+<li><strong>Set up GDT</strong> (<code>base_gdt_init()</code>, <code>base_gdt_load()</code>) — JCore's own GDT replaces GRUB's. See <code>asm.S</code> for the GDT entries and <code>segments.h</code> for selectors.</li>
+<li><strong>Set up IDT</strong> (<code>idt_load()</code>) — installs handlers for traps and IRQs.</li>
+<li><strong>Configure debug registers</strong> — sets <code>DR6</code> and breakpoints 0/1 for performance monitoring.</li>
+<li><strong>Initialize heap</strong> (<code>jxmalloc_init()</code>) — enables dynamic memory allocation.</li>
+<li><strong>Call <code>main()</code></strong> — hands off to the kernel proper.</li>
+</ol>
+
+<div class="ref">
+<p><strong>Code location:</strong> <code>src/multiboot.c:478-531</code><br>
+<strong>Cross-reference:</strong> <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> — the GDT and IDT setup establishes the <strong>foundation of the TCB</strong>, defining the ring-0/ring-3 boundary.</p>
+</div>
+
+<hr>
+
+<h2>Stage 3: Kernel Subsystem Init (<code>main()</code>)</h2>
+
+<p>This is the largest initialization stage. Found in <code>src/main.c:63-200</code>. It progresses in a careful order, each subsystem depending on the ones before it:</p>
+
+<table>
+<tr><th>Order</th><th>Call</th><th>What it does</th></tr>
+<tr><td>1</td><td><code>multiboot_get_module()</code></td><td>Finds the boot module (a ZIP archive) from the Multiboot2 info and hands it to <code>zip_init()</code>.</td></tr>
+<tr><td>2</td><td><code>pic_init_pmode()</code></td><td>Initializes both 8259A PICs (Master at 0x20, Slave at 0xA0), remaps IRQ vectors to <code>0x20-0x2F</code> to avoid CPU exception overlap, sets automatic EOI.</td></tr>
+<tr><td>3</td><td><code>init_irq_data()</code></td><td>Allocates per-IRQ data structures (handlers, counters).</td></tr>
+<tr><td>4</td><td><code>ser_enable_break()</code></td><td>Enables serial break detection for debugging.</td></tr>
+<tr><td>5</td><td><code>init_domainsys()</code></td><td>Allocates domain descriptor memory pool, creates <strong>DomainZero</strong> — the root domain that owns all kernel resources.</td></tr>
+<tr><td>6</td><td><code>atomicfn_init()</code></td><td>Initializes atomic operation support (CAS, memory barriers) needed for lock-free data structures.</td></tr>
+<tr><td>7</td><td><code>threads_init()</code></td><td>Initializes the thread system: run queues, idle threads, scheduler data.</td></tr>
+<tr><td>8</td><td><code>portals_init()</code></td><td>Initializes the cross-domain communication system (portals).</td></tr>
+<tr><td>9</td><td><code>createObjectClassDesc()</code></td><td>Creates the <code>java.lang.Object</code> class descriptor — the root of the Java type system.</td></tr>
+<tr><td>10</td><td><code>createThread(dummy_entry_point)</code></td><td>Creates the <strong>idle thread</strong> — the first thread in the system, used when nothing else is runnable.</td></tr>
+<tr><td>11</td><td><code>initPrimitiveClasses()</code></td><td>Registers class descriptors for <code>boolean</code>, <code>int</code>, <code>long</code>, etc.</td></tr>
+<tr><td>12</td><td><code>createThread(start_domain_zero)</code></td><td>Creates the DomainZero initial thread — the first <strong>real</strong> thread that will run Java code. Calls <code>thread_exit()</code> (never returns).</td></tr>
+</table>
+
+<div class="ref">
+<p><strong>Cross-references:</strong></p>
+<ul>
+<li><a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> — DomainZero is the root of the trust hierarchy.</li>
+<li><a href="../lessons/0003-mmu.html">Lesson 3: MMU</a> — JCore does <strong>not</strong> enable paging. It uses pure segmentation for protection.</li>
+<li><a href="../reference/glossary.html">Glossary</a>: DomainZero, portal, PIC, domain.</li>
+</ul>
+</div>
+
+<hr>
+
+<h2>Stage 4: DomainZero Java Thread (<code>start_domain_zero</code>)</h2>
+
+<p>Found in <code>src/Interface/zero.c:246-437</code>. This is where the system transitions from "C kernel" to "kernel + Java runtime".</p>
+
+<h3>Low-level initialization</h3>
+<ol>
+<li><strong>APIC detection</strong> — checks for a local APIC. If found: installs APIC IRQ handlers, enables the APIC, and calibrates the APIC timer.</li>
+<li><strong>Set up system timer</strong> (<code>setTimer()</code>) — the PIT (8253) or APIC timer, depending on configuration.</li>
+<li><strong>Enable interrupts</strong> (<code>sti()</code>) — from this point forward, the kernel is interrupt-driven.</li>
+</ol>
+
+<h3>Library loading</h3>
+<ol>
+<li><strong>Load <code>zero.jll</code></strong> — the core JX runtime library (written in Java, compiled to JX native code). Contains the implementation of all portal interfaces (Domain, Memory, CPU, IRQ, Scheduler, Naming, etc.).</li>
+<li><strong>Link portals</strong> — <code>init_zero_from_lib()</code> initializes ~25 portals, one per kernel service. Each portal pairs a Java interface with a C implementation.</li>
+<li><strong>Run class constructors</strong> for <code>zero.jll</code> — static initializers execute, linking Java classes to their native implementations.</li>
+<li><strong>Load <code>jdk0.jll</code></strong> — a minimal Java standard library (String, Array, Math, etc.).</li>
+<li><strong>Run class constructors</strong> for <code>jdk0.jll</code>.</li>
+</ol>
+
+<h3>Domain creation</h3>
+<p>The function creates a new domain — <strong>Domain "Init"</strong> — via the <code>DomainManager</code> portal. This is the first Java-level domain:</p>
+<pre><code>domainProxy = domainManager_createDomain(dm,
+    newString("Init"),       // domain name
+    INIT_LIB,                // "AI/AI" — the initial class
+    domainZero->initialNamingProxy, ...);</code></pre>
+
+<p>The Init domain gets its own:<br>
+- <strong>Heap</strong> (<code>HEAP_BYTES_INIT</code>)<br>
+- <strong>Code space</strong> (<code>CODE_BYTES_DOMAININIT</code>)<br>
+- <strong>Scheduler</strong> (LowLevelScheduler + HighLevelScheduler per CPU)</p>
+
+<h3>Clean exit</h3>
+<p>The DomainZero initial thread <strong>terminates</strong> (<code>thread_exit()</code>) — it only exists long enough to bootstrap the Init domain.</p>
+
+<div class="ref">
+<p><strong>Code location:</strong> <code>src/Interface/zero.c:246-437</code><br>
+<strong>Key concept:</strong> <code>zero.jll</code> is what makes JCore "JX" — it's the Java-to-native bridge that lets kernel services be called from Java code via portals.</p>
+</div>
+
+<hr>
+
+<h2>Stage 5: Init Domain and Beyond</h2>
+
+<p>Once the Init domain is running, the system is fully operational. The Init domain:</p>
+<ol>
+<li>Runs the <strong>Java scheduler</strong> — manages thread priorities, time slices, preemption.</li>
+<li>Can load additional domains — each domain is an isolated trust boundary.</li>
+<li>Eventually loads user-facing services (networking, file systems, the AI subsystem).</li>
+</ol>
+
+<p>This is where the kernel's <strong>domain isolation model</strong> kicks in — portals mediate all cross-domain communication, and the TCB ensures no domain can escape its sandbox.</p>
+
+<hr>
+
+<h2>Summary: The Boot Path as a Dependency Chain</h2>
+
+<p>The boot stages form a strict dependency chain where each stage enables the next:</p>
+
+<table>
+<tr><th>Stage</th><th>Enables</th><th>File</th></tr>
+<tr><td>0. GRUB</td><td>Protected mode, Multiboot info</td><td><em>not JCore</em></td></tr>
+<tr><td>1. Assembly</td><td>C callable (stack, parameters)</td><td><code>crt0.S</code></td></tr>
+<tr><td>2. Low-level C</td><td>GDT, IDT, heap</td><td><code>multiboot.c</code></td></tr>
+<tr><td>3. Kernel subsystems</td><td>PIC, domains, threads, portals</td><td><code>main.c</code></td></tr>
+<tr><td>4. DomainZero Java</td><td>Java runtime, JLL libraries</td><td><code>zero.c</code></td></tr>
+<tr><td>5. Init domain</td><td>Java scheduler, user services</td><td>Java (<code>AI/AI</code>)</td></tr>
+</table>
+
+<p>Each stage has exactly <strong>one entry function</strong>: assembly → <code>multiboot_main</code> → <code>main</code> → <code>start_domain_zero</code> → <code>domainManager_createDomain</code>.</p>
+
+<h3>Things to Try</h3>
+<ol>
+<li><strong>Trace the path</strong> — open <code>crt0.S</code>, <code>multiboot.c:478</code>, <code>main.c:63</code>, <code>zero.c:246</code> and follow the call chain.</li>
+<li><strong>Add a breakpoint</strong> at the start of <code>main()</code> in QEMU/GDB — verify that <code>CR0.PG == 0</code> and you're in protected mode.</li>
+<li><strong>Look at the commented-out <code>init_realmode()</code></strong> at <code>main.c:129</code> — that would have been Stage 3.5, switching back to real mode for VESA framebuffer detection.</li>
+</ol>
+
+<hr>
+
+<h2>Further Reading</h2>
+<ul>
+<li><a href="https://wiki.osdev.org/Multiboot2">OSDev Wiki: Multiboot2</a> — the protocol GRUB uses to hand off to the kernel</li>
+<li><a href="https://www.gnu.org/software/grub/manual/multiboot2/multiboot.html">Multiboot2 Specification</a> — official spec</li>
+<li><a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> — what happens before GRUB takes over</li>
+<li><a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> — DomainZero as root of trust</li>
+<li><a href="../lessons/0003-mmu.html">Lesson 3: MMU</a> — why paging is not used</li>
+<li><a href="../lessons/0004-long-mode.html">Lesson 4: Long Mode</a> — what a 64-bit boot path would look like</li>
+<li><a href="../lessons/0005-disable-paging.html">Lesson 5: Disable Paging</a> — what's involved in switching away from protected mode</li>
+<li><a href="../reference/glossary.html">Glossary</a></li>
+</ul>
+
+<p><em>Ask your teacher (the agent) follow-up questions about any stage — the boot path is the skeleton of the OS, and understanding it unlocks everything else.</em></p>
+
+</article>
+</body>
+</html>
