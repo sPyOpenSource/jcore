@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2: Trusted Computing Base</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<a href="../reference/glossary.html" style="float:right;font-size:.85rem;">Glossary</a>
+<h1>Trusted Computing Base</h1>
+<p class="subtitle" style="color:var(--muted);margin-top:-.5rem;">Lesson 2 of the x86 Processor Modes series.</p>
+
+<h2>1. The Core Idea</h2>
+
+<p>The <strong>Trusted Computing Base (TCB)</strong> is the set of hardware, firmware, and software that <em>must</em> work correctly for the system's security policy to hold. If any component in the TCB is buggy or compromised, the entire system's security is lost.</p>
+
+<p>Lampson et al. put it succinctly:</p>
+<blockquote>A small amount of software and hardware that security depends on, distinguished from a much larger amount that can misbehave without affecting security.</blockquote>
+
+<p>In your JCore kernel, the TCB answers: "What must be bug-free for Domain A to be isolated from Domain B?"</p>
+
+<h2>2. What's in JCore's TCB?</h2>
+
+<table>
+  <tr><th>Component</th><th>In TCB?</th><th>Why</th></tr>
+  <tr><td>CPU (Ring 0–3 enforcement)</td><td>Yes</td><td>Hardware enforces segment/ page protection — if broken, isolation fails.</td></tr>
+  <tr><td>GDT / segment descriptors</td><td>Yes</td><td><code>segments.h</code> defines which segments can access what. A bad descriptor lets Ring 3 code into Ring 0.</td></tr>
+  <tr><td>Kernel C code (<code>src/</code>)</td><td>Yes</td><td>Memory manager, scheduler, portal system — all run in Ring 0 with full power.</td></tr>
+  <tr><td>AOT compiler (ByteCodeTranslater)</td><td>Yes</td><td>Produces native code from Java bytecode. If it generates wrong code, it bypasses all security.</td></tr>
+  <tr><td>Java standard library classes</td><td>No</td><td>They run in user domains, constrained by the kernel's protection mechanisms.</td></tr>
+  <tr><td>User Java applications</td><td>No</td><td>Sandboxed — their misbehaviour is contained by the kernel, portals, and Ring 3 isolation.</td></tr>
+</table>
+
+<h2>3. The Ring 0 / Ring 3 Boundary</h2>
+
+<p>The TCB boundary is enforced by x86 privilege levels. Your <code>segments.h</code>:</p>
+
+<pre>#define KERNEL_CS  0x10   /* index 2, RPL=0 → Ring 0 */
+#define USER_CS    0x43   /* index 4, RPL=3 → Ring 3 */</pre>
+
+<p>Ring 0 code (the kernel) can execute privileged instructions (<code>lgdt</code>, <code>mov cr0</code>, <code>out</code> to I/O ports). Ring 3 code (user Java domains) cannot — if it tries, the CPU raises a #GP (General Protection Fault).</p>
+
+<p>This is <strong>hardware-enforced TCB isolation</strong>. The kernel doesn't have to check every instruction; the CPU does it.</p>
+
+<h2>4. Why TCB Size Matters</h2>
+
+<p>A smaller TCB is easier to audit and verify. The seL4 microkernel (∼8,700 lines of C) has a <em>formal mathematical proof</em> of correctness. JCore's kernel is larger — more code means more potential bugs, which means more attack surface.</p>
+
+<p>JCore's architecture reduces its effective TCB in one clever way: the Java type system. If the AOT compiler produces correct code, then <em>Java type safety</em> is part of the TCB — array bounds checks, null checks, and access modifiers are enforced by the compiled code itself.</p>
+
+<p>But the AOT compiler is itself part of the TCB. If it has a bug, it could generate Ring 0-level code from untrusted bytecode. This is the <strong>trusted compiler problem</strong> (also known as Ken Thompson's "Reflections on Trusting Trust").</p>
+
+<h2>5. Boot Chain of Trust</h2>
+
+<p>A system's TCB doesn't start at the kernel entry point. It starts at power-on:</p>
+
+<pre>CPU reset → BIOS/UEFI → GRUB → JCore kernel → Domain Zero → User domains
+   (hardware)    (firmware)  (bootloader)  (kernel C)   (Java init)  (apps)</pre>
+
+<p>Each stage must verify the next (or at least not introduce vulnerabilities before the next stage can enforce security). In real mode (Lesson 1), the CPU has <em>no protection</em> — everything runs at effectively Ring 0. Security only begins once CR0.PE is set, the GDT is loaded, and the CPU enters protected mode.</p>
+
+<div class="callout">
+<strong>Key insight:</strong> Before CR0.PE is set, there is no TCB enforcement — the system relies entirely on the correctness of the bootloader. This is why secure boot systems (UEFI Secure Boot, measured boot) extend the TCB concept to the firmware layer.
+</div>
+
+<h2>6. Thought Experiment</h2>
+
+<p>Look at <code>src/portals.c</code> and <code>src/domain.c</code> in JCore. Portals are the mechanism for cross-domain communication — Domain A calls a method on an object in Domain B. The portal system must enforce: can Domain A call this method?</p>
+
+<p>Questions to ask yourself:</p>
+<ul>
+  <li>Is the portal dispatch code part of the TCB? (Hint: it runs in Ring 0.)</li>
+  <li>What happens if a portal descriptor is corrupted?</li>
+  <li>Does the Java access modifier (public/private) provide any protection across domain boundaries, or is that entirely in the kernel?</li>
+</ul>
+
+<h2>Further Reading</h2>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Trusted_computing_base">Wikipedia: Trusted Computing Base</a></li>
+  <li><a href="https://codelucky.com/trusted-computing-base-security-kernel/">CodeLucky: TCB Design Fundamentals</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Reflections_on_Trusting_Trust">Ken Thompson: Reflections on Trusting Trust</a> — the classic paper on why the compiler must be in the TCB</li>
+  <li><code>src/portals.c</code>, <code>src/domain.c</code> — JCore's portal and domain implementation</li>
+</ul>
+
+<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> &middot; <a href="../reference/glossary.html">Glossary</a></small></p>
+<p><small>Have questions? Ask your agent — the agent is your teacher and can clarify anything.</small></p>
+
+</body>
+</html>

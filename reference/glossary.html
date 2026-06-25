@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary — x86 Processor Modes</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<h1>Glossary</h1>
+<p>Canonical terms for the x86 processor modes workspace, rooted in the JCore codebase.</p>
+
+<h2>Processor Modes</h2>
+
+<p><strong>Real Mode</strong>: The 16-bit backward-compatibility mode all x86 CPUs enter at power-on/reset. Acts like an 8086: 20-bit address bus (1 MB max), segment:offset addressing, no memory protection, no privilege levels. BIOS firmware runs here.</p>
+
+<p><strong>Protected Mode</strong>: The 32-bit operating mode introduced with the 80386. Enables 4 GB address space, hardware memory protection via segmentation and paging, 4 privilege rings (Ring 0–3), and virtual memory. JCore runs in 32-bit protected mode.</p>
+
+<p><strong>Virtual 8086 (V86) Mode</strong>: A sub-mode of protected mode that creates a virtualized real-mode environment for individual tasks. Allows a protected-mode OS to call BIOS interrupts without fully switching out of protected mode.</p>
+
+<p><strong>Long Mode</strong>: The 64-bit mode (x86-64 / AMD64). JCore does not use this yet.</p>
+
+<h2>Segmentation Structures</h2>
+
+<p><strong>GDT (Global Descriptor Table)</strong>: A table of segment descriptors shared by all tasks. Located by the GDTR register. JCore's GDT is defined in <code>asm.S</code> at <code>gdt:</code>.</p>
+
+<p><strong>Segment Descriptor</strong>: An 8-byte entry in the GDT (or LDT) that defines a memory segment's base address, limit (size), type (code/data), privilege level (DPL), and other flags (D/B, G granularity, L for long mode).</p>
+
+<p><strong>Segment Selector</strong>: A 16-bit value loaded into CS, DS, SS, ES, FS, GS. In protected mode, it's an index into the GDT (or LDT), not a raw base address. Bits 0–1 = RPL (Requested Privilege Level), bit 2 = TI (Table Indicator: GDT vs LDT), bits 3–15 = index.</p>
+
+<p><strong>GDTR</strong>: The CPU register that holds the base address and limit of the GDT. Loaded with the <code>lgdt</code> instruction.</p>
+
+<h2>Control Registers</h2>
+
+<p><strong>CR0.PE (bit 0)</strong>: Protection Enable. When set, the CPU is in protected mode; when clear, real mode.</p>
+
+<p><strong>CR0.PG (bit 31)</strong>: Paging Enable. When set, the MMU translates linear addresses to physical addresses via page tables.</p>
+
+<p><strong>CR4.PAE (bit 5)</strong>: Physical Address Extension. Required before entering long mode.</p>
+
+<h2>Key Instructions</h2>
+
+<p><strong><code>lgdt</code></strong>: Load the GDTR register with a GDT descriptor (6 bytes: 2-byte limit + 4-byte base address).</p>
+
+<p><strong><code>ljmp</code></strong> (far jump): A jump that specifies both a segment selector and an offset. Needed after setting CR0.PE to load CS with a protected-mode selector.</p>
+
+<p><strong><code>DATA32</code></strong> prefix: Used in 16-bit code to make the following instruction use 32-bit operands. In JCore, used in <code>real_to_prot</code> and <code>prot_to_real</code>.</p>
+
+<h2>JCore Codebase References</h2>
+
+<p><strong><code>KERNEL_CS</code></strong> / <code>0x10</code>: 32-bit protected-mode code segment selector (Ring 0). See <code>segments.h</code>.</p>
+
+<p><strong><code>KERNEL_DS</code></strong> / <code>0x18</code>: 32-bit protected-mode data segment selector (Ring 0).</p>
+
+<p><strong><code>KERNEL_16_CS</code></strong> / <code>0x20</code>: 16-bit protected-mode code segment selector. Used when switching back to real mode — the CPU must execute a 16-bit segment before clearing CR0.PE.</p>
+
+<p><strong><code>KERNEL_16_DS</code></strong> / <code>0x28</code>: 16-bit protected-mode data segment selector.</p>
+
+<p><strong><code>real_to_prot</code></strong>: Assembly function in <code>asm.S</code> that switches from real mode → protected mode.</p>
+
+<p><strong><code>prot_to_real</code></strong>: Assembly function in <code>asm.S</code> that switches from protected mode → real mode.</p>
+
+<p><strong><code>vesa2_detect</code></strong>, <code>vesa2_get_mode_info</code>, <code>vesa2_set_mode</code>: Functions in <code>asm.S</code> that drop to real mode to call BIOS interrupt 0x10 for VESA video mode operations.</p>
+
+<h2>Trusted Computing Base</h2>
+
+<p><strong>TCB (Trusted Computing Base)</strong>: The set of all hardware, firmware, and software that must work correctly for the system's security policy to be enforced. If a component is outside the TCB, its failure cannot break security.</p>
+
+<p><strong>Reference Monitor</strong>: The conceptual component of the TCB that enforces access control — it must be tamper-proof, always invoked, and small enough to verify (the "reference validation mechanism").</p>
+
+<p><strong>Ring 0</strong>: The most privileged x86 protection ring. The kernel runs here. Code in Ring 0 can execute any CPU instruction and access any memory.</p>
+
+<p><strong>Ring 3</strong>: The least privileged x86 protection ring. User applications run here. Code in Ring 3 cannot execute privileged instructions (lgdt, mov cr0, etc.) without causing a #GP fault.</p>
+
+<p><strong>Secure Boot / Chain of Trust</strong>: Each boot stage cryptographically verifies the next before executing it. Extends the TCB concept to the boot process — the root of trust is a hardware key burned into the CPU or firmware.</p>
+
+<p><strong>Trusted Compiler Problem</strong>: If the compiler that translates source code into executable code is part of the TCB, a malicious compiler can inject backdoors without leaving traces in the source. Ken Thompson's classic "Reflections on Trusting Trust."</p>
+
+<hr>
+
+<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a></small></p>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1: Real Mode — The 16-bit Starting World</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<a href="../reference/glossary.html" style="float:right;font-size:.85rem;">Glossary</a>
+<h1>Real Mode — The 16-bit Starting World</h1>
+<p class="subtitle" style="color:var(--muted);margin-top:-.5rem;">Lesson 1 of the x86 Processor Modes series.</p>
+
+<h2>1. The Boot Story</h2>
+
+<p>When you press the power button on an x86 machine, the CPU wakes up in <strong>real mode</strong> — a 16-bit compatibility mode that imitates the Intel 8086 from 1978. Every x86 CPU (up to the latest Intel Core and AMD Ryzen) starts here. This is why your machine can still run DOS.</p>
+
+<p>The boot flow goes:</p>
+<pre>Power-on → CPU in real mode → BIOS POST → BIOS loads bootloader → bootloader → ...</pre>
+
+<p>In JCore, the bootloader is <strong>GRUB</strong>. GRUB receives control from the BIOS, sets up its own environment, then switches to protected mode and jumps to your kernel's entry point. By the time <code>crt0.S</code>'s <code>_start</code> runs, the CPU is already in 32-bit protected mode.</p>
+
+<p>But the <code>realmode</code> binary and the <code>prot_to_real</code> / <code>real_to_prot</code> functions in <code>asm.S</code> prove that JCore still needs real mode for certain tasks.</p>
+
+<h2>2. What Is Real Mode?</h2>
+
+<table>
+  <tr><th>Property</th><th>Real Mode</th><th>Protected Mode</th></tr>
+  <tr><td>Default operand size</td><td>16-bit</td><td>32-bit</td></tr>
+  <tr><td>Addressable memory</td><td>1 MB (20-bit)</td><td>4 GB (32-bit)</td></tr>
+  <tr><td>Segment register meaning</td><td>Base address (shifted ×16)</td><td>Selector into GDT/LDT</td></tr>
+  <tr><td>Memory protection</td><td>None</td><td>Segmentation + optional paging</td></tr>
+  <tr><td>Privilege levels</td><td>None (effectively Ring 0)</td><td>Ring 0–3</td></tr>
+  <tr><td>BIOS interrupts</td><td>Available</td><td>Not available (unless V86)</td></tr>
+</table>
+
+<h2>3. Memory Addressing: Segment:Offset</h2>
+
+<p>The 8086 had 16-bit registers but wanted to address 1 MB (20 bits). The solution: combine a segment register and an offset register to form a 20-bit address.</p>
+
+<pre>Physical address = (segment &lt;&lt; 4) + offset
+Example:  0x12F3:0x4B27  →  (0x12F3 × 16) + 0x4B27  =  0x17A57</pre>
+
+<p>This gives a 20-bit address space: 2<sup>20</sup> = 1,048,576 bytes = 1 MB. Each segment is 64 KB (16-bit offset), but you can change the segment base to reach anywhere in the 1 MB space.</p>
+
+<p>The six segment registers are: <strong>CS</strong> (code), <strong>DS</strong> (data), <strong>SS</strong> (stack), <strong>ES</strong> (extra), <strong>FS</strong> and <strong>GS</strong> (general-purpose). This is a key difference: in protected mode, these registers hold <em>selectors</em> (indices into the GDT), not base addresses. In real mode, they <em>are</em> the base (shifted left 4 bits).</p>
+
+<h2>4. Real Mode in JCore</h2>
+
+<p>Your codebase switches <em>back</em> to real mode for one reason: <strong>BIOS interrupts</strong>. When the kernel needs to query or set video modes, it must call <code>int 0x10</code> — the BIOS video interrupt. BIOS runs in real mode.</p>
+
+<p>Look at <code>src/Assembly/asm.S</code>:</p>
+
+<pre>ENTRY(vesa2_detect)
+    call   prot_to_real   ; switch to real mode
+    .code16
+    movw   $0x4F00, %ax
+    int    $0x10           ; VESA BIOS call — only works in real mode!
+    DATA32 call   real_to_prot  ; switch back
+    .code32</pre>
+
+<p>The <code>prot_to_real</code> function:</p>
+<ul>
+  <li>Saves the protected-mode stack pointer</li>
+  <li>Loads 16-bit segment selectors (<code>KERNEL_16_DS</code>)</li>
+  <li>Far-jumps to a 16-bit code segment (<code>KERNEL_16_CS</code>)</li>
+  <li>Clears CR0.PE — the single bit that separates real mode from protected mode</li>
+  <li>Far-jumps to <code>realcseg</code> with segment registers set to 0 (real mode style)</li>
+</ul>
+
+<h2>5. Pros and Cons of Real Mode</h2>
+
+<h3>Pros (why it still matters)</h3>
+<ul>
+  <li><strong>BIOS services</strong>: interrupts for disk I/O (int 0x13), video (int 0x10), keyboard, ACPI. The firmware installs these handlers — you don't need your own drivers.</li>
+  <li><strong>Simplicity</strong>: no GDT, no page tables, no privilege checks. The CPU just fetches and executes.</li>
+  <li><strong>Speed for simple tasks</strong>: fewer descriptor lookups per memory access.</li>
+</ul>
+
+<h3>Cons (why we leave it)</h3>
+<ul>
+  <li><strong>1 MB limit</strong>: not enough for a modern kernel. JCore loads at 2 MB (<code>linker.ld</code>: <code>. = 2M</code>).</li>
+  <li><strong>No memory protection</strong>: any program can overwrite the kernel, BIOS data, or other programs. No isolation.</li>
+  <li><strong>16-bit defaults</strong>: 64 KB segment limit is painful — complex segment arithmetic required for large data.</li>
+  <li><strong>No hardware multitasking support</strong>: no TSS, no ring transitions.</li>
+  <li><strong>No virtual memory</strong>: every address is physical, paging is off.</li>
+</ul>
+
+<h2>6. Check Your Understanding</h2>
+
+<p>Look at <code>src/Headers/segments.h</code>:</p>
+
+<pre>#define KERNEL_CS     0x10
+#define KERNEL_16_CS  0x20</pre>
+
+<p>The value <code>0x10</code> is a segment selector. In binary: <code>0000 0000 0001 0|0|00</code> — index 2, TI=0 (GDT), RPL=0 (Ring 0). JCore's GDT entry at index 2 is the 32-bit code segment.</p>
+
+<p><code>0x20</code> is index 4: the 16-bit code segment descriptor (with D/B = 0, meaning 16-bit operand size by default).</p>
+
+<div class="callout">
+<strong>Key insight:</strong> The CPU doesn't "change modes" when CR0.PE flips. It <em>interprets segment registers differently</em>. In real mode, CS = raw base << 4. In protected mode, CS = index into GDT. The mode switch is a reinterpretation of the same bytes.
+</div>
+
+<h2>Further Reading</h2>
+<ul>
+  <li><a href="https://wiki.osdev.org/Real_Mode">OSDev Wiki: Real Mode</a> — the definitive reference</li>
+  <li><a href="../reference/glossary.html">Glossary</a> — canonical terms for this workspace</li>
+  <li><a href="../lessons/0002-trusted-computing-base.html">Lesson 2: Trusted Computing Base</a> — what must be trusted when your OS runs</li>
+  <li>Intel SDM Vol. 3A, Chapter 2: "System Architecture Overview" — the authoritative source</li>
+</ul>
+
+<p><small>Have questions? Ask your agent — the agent is your teacher and can clarify anything.</small></p>
+
+</body>
+</html>

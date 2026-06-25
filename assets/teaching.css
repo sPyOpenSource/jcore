@@ -1,0 +1,90 @@
+/* ── Tufte-inspired teaching stylesheet ─────────────────────── */
+/* Shared across all lessons and reference documents.            */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Code+Pro:wght@400;600&display=swap');
+
+:root {
+  --bg:        #fffff8;
+  --fg:        #111;
+  --accent:    #2164b4;
+  --accent2:   #8b0000;
+  --muted:     #666;
+  --line:      #ddd;
+  --code-bg:   #f5f2f0;
+  --code-fg:   #222;
+  --sans:      'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  --mono:      'Source Code Pro', 'Fira Code', monospace;
+  --measure:   680px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font: 400 17px/1.6 var(--sans);
+  color: var(--fg);
+  background: var(--bg);
+  max-width: var(--measure);
+  margin: 3rem auto 6rem;
+  padding: 0 1rem;
+}
+
+h1, h2, h3 { font-weight: 600; line-height: 1.2; margin-top: 2rem; }
+h1 { font-size: 2rem; margin-top: 0; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--line); padding-bottom: .25rem; }
+h3 { font-size: 1.2rem; }
+
+p, li { margin-bottom: .8rem; }
+ul, ol { padding-left: 1.5rem; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+pre, code { font-family: var(--mono); font-size: .85rem; }
+pre {
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: .8rem 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+code { background: var(--code-bg); padding: .1em .3em; border-radius: 3px; }
+pre code { background: none; padding: 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; }
+th, td { padding: .5rem .75rem; text-align: left; border-bottom: 1px solid var(--line); }
+th { font-weight: 600; background: var(--code-bg); }
+
+.sidenote {
+  float: right;
+  clear: right;
+  margin-right: -260px;
+  width: 220px;
+  font-size: .8rem;
+  color: var(--muted);
+  position: relative;
+}
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: var(--muted);
+}
+
+hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
+
+.callout {
+  background: #f0f4fa;
+  border-left: 4px solid var(--accent);
+  padding: .8rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0 4px 4px 0;
+  font-size: .9rem;
+}
+
+@media print {
+  body { font-size: 11pt; margin: 1in; }
+  a { color: inherit; }
+}
