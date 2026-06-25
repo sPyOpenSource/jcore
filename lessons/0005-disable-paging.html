@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5: Disabling Paging (and the MMU)</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<a href="../reference/glossary.html" style="float:right;font-size:.85rem;">Glossary</a>
+<h1>Disabling Paging</h1>
+<p class="subtitle" style="color:var(--muted);margin-top:-.5rem;">Lesson 5 of the x86 Processor Modes series.</p>
+
+<h2>1. Why Disable Paging?</h2>
+
+<p>Once paging is on, it's usually on for good — but there are specific reasons to turn it off:</p>
+<ul>
+  <li><strong>Switch to real mode</strong>: real mode has no paging. To call BIOS interrupts, you must disable the MMU entirely (JCore's <code>prot_to_real</code> does this).</li>
+  <li><strong>Change the paging mode</strong>: to switch from 32-bit paging to 4-level (long mode) paging, you must disable paging first, then re-enable with new page tables.</li>
+  <li><strong>Early boot</strong>: some kernels identity-map first, enable paging, then remap — requiring a brief paging-off window.</li>
+  <li><strong>Transition from long mode → protected mode</strong>: you must clear CR0.PG, which drops you from long mode.</li>
+</ul>
+
+<div class="callout">
+<strong>Warning:</strong> Disabling paging while the instruction pointer (EIP/RIP) is in a page that is not identity-mapped causes an immediate <strong>triple fault</strong> — the CPU resets.
+</div>
+
+<h2>2. The Triple Fault Trap</h2>
+
+<p>When you clear CR0.PG, the MMU stops translating. The CPU immediately starts treating every address as a physical address. If EIP points to virtual address 0xC0100000 but the CPU now fetches from physical address 0xC0100000 (which has no code or RAM mapped), it raises a page fault (#PF). The page fault handler can't run (no IDT in real mode), which causes a double fault. The double fault handler also can't run → <strong>triple fault</strong> → CPU reset.</p>
+
+<p>The fix: the instruction that clears CR0.PG, and every instruction <em>after</em> it up to the far jump, must be in an <strong>identity-mapped page</strong> (virtual = physical).</p>
+
+<h2>3. Disabling Paging in Protected Mode</h2>
+
+<p>This is what JCore does in <code>asm.S:prot_to_real</code>. The relevant part before the actual mode switch:</p>
+
+<pre>prot_to_real:
+    ; save protected mode stack
+    movl    %esp, %eax
+    movl    %eax, protstack
+
+    ; get return address
+    movl    (%esp), %eax
+    movl    %eax, STACKOFF
+
+    ; switch to 16-bit data segment (still protected mode)
+    movw    $KERNEL_16_DS, %ax
+    movw    %ax, %ds
+    ; ... other segments ...
+
+    ; far jump to 16-bit code segment
+    ljmp    $KERNEL_16_CS, $tmpcseg
+
+tmpcseg:
+    .code16
+    ; NOW clear CR0.PE — exit protected mode entirely
+    movl    %cr0, %eax
+    andl    $CR0_PE_OFF, %eax   ; clear PE bit
+    movl    %eax, %cr0
+
+    ; far jump to real mode code segment
+    DATA32  ljmp    $0, $realcseg</pre>
+
+<p>Note: JCore doesn't explicitly clear CR0.PG here because it doesn't use paging — it runs with segmentation only. If paging were on, the sequence would be:</p>
+
+<pre>; Step 1: Identity-map the current code page
+; (already done if the kernel is identity-mapped)
+
+; Step 2: Clear CR0.PG
+movl    %cr0, %eax
+andl    $0x7FFFFFFF, %eax     ; clear PG (bit 31)
+movl    %eax, %cr0
+
+; Step 3: Immediate far jump — must be in identity-mapped page!
+jmp     $KERNEL_CS, $paging_off
+paging_off:
+; MMU is now off. All addresses are physical.</pre>
+
+<h2>4. Disabling Paging from Long Mode</h2>
+
+<p>Long mode makes this harder — you can't clear CR0.PG while in 64-bit mode. You must first drop to <strong>compatibility mode</strong> (32-bit long mode sub-mode):</p>
+
+<pre>Sequence: Long Mode → Compatibility Mode → Paging Off → Protected Mode
+
+1. Far jump to a 32-bit CS (GDT entry with L=0, D=1)
+   → CPU is now in compatibility mode (still in long mode,
+      but running 32-bit code)
+
+2. Clear CR0.PG (instruction must be identity-mapped)
+   → EFER.LMA is cleared automatically
+   → MMU off, CPU falls back to legacy protected mode
+
+3. Clear EFER.LME to fully exit IA-32e mode
+   (optional — only needed if re-entering long mode later)
+
+4. From here, continue to prot_to_real if needed</pre>
+
+<p>The far jump in step 1 is the critical piece: load CS with a descriptor whose D=1 (32-bit default) and L=0 (not 64-bit). This keeps the CPU in long mode, but running 32-bit code. Then CR0.PG can be cleared.</p>
+
+<h2>5. TLB After Disabling Paging</h2>
+
+<p>When CR0.PG is cleared, the TLB is <strong>not automatically flushed</strong> on all implementations. The Intel manual recommends:</p>
+<pre>; After clearing CR0.PG:
+mov    %cr3, %eax   ; read CR3
+mov    %eax, %cr3   ; write it back → flushes TLB</pre>
+
+<p>A CR3 reload (even writing the same value) invalidates all non-global TLB entries. This is essential before re-enabling paging with a different page table structure.</p>
+
+<h2>6. The Identity Mapping Requirement</h2>
+
+<p>Every instruction that touches CR0.PG (and any instruction fetched while the MMU is in transition) must be at a virtual address that equals its physical address. This is called <strong>identity mapping</strong> (or 1:1 mapping).</p>
+
+<p>There are two strategies for this:</p>
+<ul>
+  <li><strong>Permanent identity map</strong>: keep the first 4 MB identity-mapped at all times (wastes TLB entries but is simple).</li>
+  <li><strong>Trampoline code</strong>: copy a small routine to an identity-mapped page before disabling paging, jump to it, execute the CR0.PG clear, then proceed. Linux uses this for SMP startup (<code>trampoline.S</code>).</li>
+</ul>
+
+<p>JCore uses approach 2 implicitly: its kernel is loaded by GRUB at physical 2 MB and linked at virtual 2 MB (see <code>linker.ld</code>: <code>. = 2M</code>), so the kernel's virtual addresses ARE its physical addresses — it's identity-mapped by default.</p>
+
+<h2>Further Reading</h2>
+<ul>
+  <li><a href="https://wiki.osdev.org/Triple_Fault">OSDev Wiki: Triple Fault</a> — what happens when paging-off goes wrong</li>
+  <li><a href="https://wiki.osdev.org/Identity_Paging">OSDev Wiki: Identity Paging</a></li>
+  <li><code>src/Assembly/asm.S</code> — JCore's <code>prot_to_real</code> (switches from 32-bit protected mode to real mode, implicitly handling the paging-off case)</li>
+  <li><a href="https://forum.osdev.org/viewtopic.php?t=43127">OSDev Forum: Return to real mode from long mode and back</a> — discussion of the full long→compat→prot→real chain</li>
+  <li>Intel SDM Vol. 3A, Section 9.9: "Mode Switching" — complete specification</li>
+</ul>
+
+<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> · <a href="../lessons/0003-mmu.html">Lesson 3: MMU</a> · <a href="../lessons/0004-long-mode.html">Lesson 4: Long Mode</a> · <a href="../reference/glossary.html">Glossary</a></small></p>
+<p><small>Have questions? Ask your agent — the agent is your teacher and can clarify anything.</small></p>
+
+</body>
+</html>

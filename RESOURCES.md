@@ -46,7 +46,13 @@
 - [OSDev Wiki: CPU Registers x86-64](https://wiki.osdev.org/CPU_Registers_x86-64) — CR0-CR8, MSRs, EFER
 - [Wikipedia: Long Mode](https://en.wikipedia.org/wiki/Long_mode) — history and architecture overview
 - [Wasil Zafar: x64 Long Mode & Protected Mode](https://www.wasilzafar.com/pages/series/assembly-mastery/asm-part16-long-mode.html) — accessible tutorial with mode transition code
-- [Linux x86-64 Boot Sequence](https://kernel-internals.org/arch/x86/boot) — real-world real→protected→long mode chain — rigorous, implementation-level reference across x86-64, ARM64, RISC-V (21 chapters), proof that small TCBs can be audited to zero bugs
+- [Linux x86-64 Boot Sequence](https://kernel-internals.org/arch/x86/boot)
+
+### Disabling Paging / Mode Switching
+- [OSDev Wiki: Triple Fault](https://wiki.osdev.org/Triple_Fault) — what happens when mode transitions go wrong
+- [OSDev Wiki: Identity Paging](https://wiki.osdev.org/Identity_Paging) — why identity mapping is necessary for paging transitions
+- [OSDev Forum: Return to real mode from long mode and back](https://forum.osdev.org/viewtopic.php?t=43127) — practical discussion of long→compat→prot→real chain
+- Intel SDM Vol. 3A, Section 9.9: "Mode Switching" — complete specification for all mode transitions — real-world real→protected→long mode chain — rigorous, implementation-level reference across x86-64, ARM64, RISC-V (21 chapters), proof that small TCBs can be audited to zero bugs
 
 ## Wisdom (Communities)
 - [r/osdev](https://reddit.com/r/osdev) — active community of OS developers, good for mode-switching questions

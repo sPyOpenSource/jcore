@@ -123,9 +123,13 @@
 
 <p><strong>Page Table Walk</strong>: The process of traversing page directory/table entries to find a translation. On x86, the hardware performs the walk automatically on a TLB miss.</p>
 
+<p><strong>Triple Fault</strong>: When the CPU encounters a fault while trying to deliver a double fault, it shuts down and resets. Commonly caused by disabling paging without identity-mapping the code page — the CPU can't fetch the next instruction and faults repeatedly until reset.</p>
+
+<p><strong>Identity Mapping</strong>: A page table setup where virtual address X maps to physical address X (1:1). Required during paging transitions — the code that clears or sets CR0.PG must be identity-mapped so the CPU can still fetch instructions after the MMU changes state.</p>
+
 <hr>
 
-<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> · <a href="../lessons/0003-mmu.html">Lesson 3: MMU</a> · <a href="../lessons/0004-long-mode.html">Lesson 4: Long Mode</a></small></p>
+<p><small>← <a href="../lessons/0001-real-mode.html">Lesson 1: Real Mode</a> · <a href="../lessons/0002-trusted-computing-base.html">Lesson 2: TCB</a> · <a href="../lessons/0003-mmu.html">Lesson 3: MMU</a> · <a href="../lessons/0004-long-mode.html">Lesson 4: Long Mode</a> · <a href="../lessons/0005-disable-paging.html">Lesson 5: Disable Paging</a></small></p>
 
 </body>
 </html>
