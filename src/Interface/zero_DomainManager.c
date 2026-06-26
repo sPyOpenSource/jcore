@@ -70,7 +70,7 @@ static void installHLSfromClassName(DomainDesc * domain)
 }
 #endif
 
-int dddd = 9;
+//int dddd = 9;
 void start_initial_thread(void *dummy)
 {
 	LibDesc *lib;
@@ -93,7 +93,7 @@ void start_initial_thread(void *dummy)
 			o = getReferenceArrayElement(domain->libNames, i);
 			stringToChar(o, value, sizeof(value));
 			printf(value);
-			console(9, "lib");
+			//console(9, "lib");
 			lib = load(curdom(), value);
 			if (lib == NULL) {
 				sys_panic("Cannot load lib %s\n", value);
@@ -105,8 +105,8 @@ void start_initial_thread(void *dummy)
 
 	stringToChar(domain->dcodeName, value, sizeof(value));
 	printf(value);
-	console(dddd, value);
-	dddd++;
+	//console(dddd, value);
+	//dddd++;
 	lib = load(curdom(), value);
 	if (lib == NULL)
 		sys_panic("Cannot load domain file %s\n", value);
@@ -173,7 +173,7 @@ void start_initial_thread(void *dummy)
 	}
 }
 
-int linenumber = 0;
+//int linenumber = 0;
 /* create Domain without HLScheduler */
 static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * dname, ArrayDesc * cpuObjs,
 						ObjectDesc * dcodeName, ArrayDesc * libsName, ObjectDesc * startClassName,
@@ -181,8 +181,8 @@ static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * 
 						jint codeSize, ArrayDesc * argv, ObjectDesc * naming, ArrayDesc * moreArgs,
 						jint gcImpl, ArrayDesc * schedInfo)
 {
-	console(linenumber, "dmc");
-	linenumber++;
+	//console(linenumber, "dmc");
+	//linenumber++;
 	char value[80];
 	char value1[80];
 	DomainDesc *domain;
@@ -230,7 +230,7 @@ static DomainDesc *__domainManager_createDomain(ObjectDesc * self, ObjectDesc * 
 		installInitialNaming(sourceDomain, domain, sourceDomain->initialNamingProxy);
 	} else {
 		// install user supplied naming
-		console(linenumber, "naming");
+		//console(linenumber, "naming");
 #ifdef COPY_TO_DOMAINZERO
 		installInitialNaming(curdom(), domain, naming);
 #else

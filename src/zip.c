@@ -76,6 +76,7 @@ static void zread(char *buf, jint len)
 
 void zip_reset()
 {
+	printf("zip_reset: %d\n", zip);
 	mempos = zip;
 	dirofs = 0;
 	current = 0;

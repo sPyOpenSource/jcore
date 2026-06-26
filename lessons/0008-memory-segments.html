@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 8: Memory Segments — .bss, .data, Stack, Heap</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<h1>Lesson 8: Memory Segments</h1>
+<p class="subtitle"><code>.bss</code>, <code>.data</code>, Stack, and Heap — where does your data actually live?</p>
+
+<h2>Why This Matters Right Now</h2>
+
+<p>You are debugging a crash where JCore's <code>zip</code> pointer (<code class="code">0x2629f4</code>) is silently zeroed. It lives in <code>.bss</code>. Your <code>java_lang_Object</code> pointer (<code class="code">0x261968</code>) lives there too — and it's also zeroed at the crash site. Between them sits <code>emergency_stack[1024]</code> and the <code>jxmalloc</code> bitmap statics. <em>Understanding what each memory segment is, and why it behaves differently, is the key to fixing this.</em></p>
+
+<p>This lesson maps each segment onto your actual <code>linker.ld</code> and your running kernel, so you can see exactly where your data lives — and why <code>.bss</code> corruption is so destructive.</p>
+
+<h2>1. The Four Memory Territories</h2>
+
+<p>Every process (and every kernel) divides its address space into four logical regions. They differ in <em>initial value</em>, <em>lifetime</em>, and <em>allocation mechanism</em>:</p>
+
+<table>
+<tr><th>Segment</th><th>Initial value</th><th>Grows</th><th>Managed by</th><th>Typical contents</th></tr>
+<tr><td><code>.data</code></td><td>explicit init</td><td>fixed</td><td>linker</td><td>global variables with non-zero init</td></tr>
+<tr><td><code>.bss</code></td><td>zero</td><td>fixed</td><td>linker + loader</td><td>global variables with zero/no init</td></tr>
+<tr><td>Stack</td><td>undefined</td><td>downward</td><td>CPU (push/pop)</td><td>local vars, return addresses, call frames</td></tr>
+<tr><td>Heap</td><td>undefined</td><td>upward</td><td>malloc/free</td><td>dynamically allocated data</td></tr>
+</table>
+
+<div class="callout">
+<strong>Key insight:</strong> <code>.data</code> and <code>.bss</code> are <em>fixed-size</em> regions carved out at link time. The stack and heap are <em>dynamic</em> — they grow into adjacent free memory. If they collide, you corrupt data.
+</div>
+
+<h2>2. <code>.data</code> — The Initialized Data Segment</h2>
+
+<p>This is where global variables with <em>non-zero initial values</em> live. The linker copies the initial values straight from the ELF file into RAM when the kernel is loaded.</p>
+
+<p>In <code>linker.ld</code> (line 21–23):</p>
+
+<pre><code>.data : {
+    *(.data)
+}
+edata = .;</code></pre>
+
+<p>Examples in JCore:</p>
+<pre><code>// in serialdbg.c — initialized, so it goes in .data
+static int ser_io_base[] = { 0x3f8, 0x2f8, 0x3e8, 0x2e8 };</code></pre>
+
+<p>These values survive even if something zeroes <code>.bss</code> — they live in a different address range. That's why <code>ser_putchar</code> still works after the corruption: <code>ser_io_base[]</code> is safe in <code>.data</code>.</p>
+
+<h2>3. <code>.bss</code> — The Zero-Initialized Data Segment</h2>
+
+<p>Global variables that are <em>uninitialized</em> or <em>explicitly zeroed</em> go here. The ELF file doesn't store zero bytes on disk — it just records the address range in a program header of type <code>NOBITS</code>. The bootloader (or startup code) zeroes this range at load time.</p>
+
+<p>In <code>linker.ld</code> (line 26–29):</p>
+
+<pre><code>.bss : {
+    *(.bss)
+    *(COMMON)
+}
+end = .;</code></pre>
+
+<p>JCore examples:</p>
+<pre><code>// in load.c — no initializer → goes to .bss
+ClassDesc *java_lang_Object;          // 0x261968
+Class *java_lang_Object_class;        // 0x26196c
+
+// in zip.c — no initializer → .bss
+static char *zip;                     // 0x2629f4
+
+// in malloc.c — all go to .bss
+static char *jxmem_start;             // 0x2629cc
+static char *jxmem_end;               // 0x2629d0
+static u4_t n_blocks;                 // 0x2629d4
+static u1_t *bitmap;                  // 0x2629e0</code></pre>
+
+<div class="callout">
+<strong>The debugging connection:</strong> When <code>.bss</code> gets zeroed at runtime, every global pointer stored in this range becomes <code>NULL</code> at once:
+<ul>
+  <li><code>zip = NULL</code> → <code>zip_next_entry</code> PANICs</li>
+  <li><code>java_lang_Object = NULL</code> → class hierarchy breaks</li>
+  <li><code>jxmem_start = 0</code> → <code>jxmalloc</code> starts allocating from address 0</li>
+</ul>
+This is why a single corruption crashes everything at once.
+</div>
+
+<h3>Who clears <code>.bss</code>?</h3>
+
+<p>In your kernel, <code>crt0.S</code> lines 38–43 <em>comment out</em> the <code>.bss</code> clear:</p>
+
+<pre><code># lea  edata, %edi
+# lea  end, %ecx
+# sub  %ecx, %edi
+# xor  %eax, %eax
+# rep  stosb           ; ← this would zero from edata to end</code></pre>
+
+<p>In theory, GRUB reads the ELF program headers and zeroes <code>.bss</code>-type segments before jumping to your kernel. In practice, whether GRUB does this depends on: (a) whether the ELF program headers include a segment covering <code>.bss</code>, and (b) whether GRUB respects it under Multiboot2.</p>
+
+<h2>4. Stack — The Automatic Memory</h2>
+
+<p>The stack is a LIFO structure. The <code>ESP</code>/<code>RSP</code> register points to the top. <code>PUSH</code> decrements ESP and writes; <code>POP</code> reads and increments.</p>
+
+<p>In JCore, the initial stack is set up in <code>crt0.S</code> (line 35):</p>
+
+<pre><code>movl $base_stack_end, %esp</code></pre>
+
+<p>And <code>stack.S</code> defines the buffer:</p>
+
+<pre><code>.globl base_stack_start
+base_stack_start:
+    .space 32768       ; 32 KB boot stack
+base_stack_end:</code></pre>
+
+<p>Your linker script places this at <code>0x250000</code>–<code>0x258000</code>. The stack grows <em>downward</em> from <code>0x258000</code>: the first function call pushes to <code>0x257FFC</code>, then <code>0x257FF8</code>, etc.</p>
+
+<table>
+<tr><th>Property</th><th>Value in JCore</th></tr>
+<tr><td>Base address</td><td><code>0x250000</code> (<code>base_stack_start</code>)</td></tr>
+<tr><td>Initial ESP</td><td><code>0x258000</code> (<code>base_stack_end</code>)</td></tr>
+<tr><td>Size</td><td>32 KB (32768 bytes)</td></tr>
+<tr><td>Grows</td><td>downward (toward lower addresses)</td></tr>
+</table>
+
+<h3>Stack frame layout (cdecl calling convention)</h3>
+
+<pre><code>Higher addresses (0x258000)
+  ┌──────────────────────┐
+  │   local variables    │ ← EBP - 8, EBP - 4, etc.
+  ├──────────────────────┤
+  │   saved EBP          │ ← EBP points here (old frame pointer)
+  ├──────────────────────┤
+  │   return address     │ ← EBP + 4 (return EIP)
+  ├──────────────────────┤
+  │   function arguments │ ← EBP + 8, EBP + 12, etc.
+  ├──────────────────────┤
+  │   ... next frame ... │
+  Lower addresses (0x250000)</code></pre>
+
+<div class="callout">
+<strong>Your debugging clue:</strong> You see <code>ESP: 0x00257ec8</code> on early <code>malloc_code</code> calls. That's <code>0x258000 - 0x17EC8 = 312</code> bytes from the top — still in the boot stack. After <code>threads_init()</code>, you see <code>ESP: 0x00</code>. If the actual ESP register is really 0, <em>the CPU is using the top of the 4 GB address space</em> (<code>0xFFFFFFFC</code>) for its stack — a sure sign that something loaded a zeroed <code>PCB_ESP</code> from a corrupt thread context.
+</div>
+
+<h2>5. Heap — The Dynamic Memory</h2>
+
+<p>JCore has two heap allocators:</p>
+
+<h3>5a. <code>jxmalloc</code> — The Kernel Bitmap Allocator</h3>
+
+<p>Covers the physical memory range not used by the kernel or boot modules. It uses a simple bitmap in RAM:</p>
+
+<pre><code>// malloc.c:55-61
+static char *jxmem_start;   // start of managed memory
+static char *jxmem_end;     // end of managed memory
+static u4_t n_blocks;       // total 1024-byte blocks
+static u1_t *bitmap;        // 1 bit per block (1 = used, 0 = free)</code></pre>
+
+<p>Initialized in <code>jxmalloc_init()</code> (malloc.c:85): sets <code>jxmem_start</code> after the last boot module, <code>jxmem_end</code> at the top of physical RAM, divides into 1024-byte blocks, and uses the first few blocks as the bitmap itself.</p>
+
+<p>Your debug output shows <code>jxmem_start ≈ 0x0744ac00</code> (~121 MB) and <code>jxmem_end ≈ 0xb8d88000</code> (~3 GB), giving about 2 MB of managed blocks.</p>
+
+<h3>5b. Domain Code Allocator (bump allocator)</h3>
+
+<p>Each domain (including DomainZero) has a fast <em>bump allocator</em> for code memory (<code>malloc_code</code>). It allocates from fixed-size chunks allocated via <code>jxmalloc</code>. The bump pointer just advances — no free, no reuse.</p>
+
+<pre><code>// malloc.c:602-639
+char *malloc_code(DomainDesc *domain, u4_t size) {
+    if (domain->cur_code == -1) {
+        domain->code[0] = jxmalloc(chunksize MEMTYPE_CODE);
+        // ... allocate first chunk from jxmalloc
+    }
+    data = domain->codeTop[c];   // bump pointer
+    domain->codeTop[c] += size;  // advance
+    return data;
+}</code></pre>
+
+<h2>6. The JCore Memory Map (Visualized)</h2>
+
+<pre><code>0x00000000  ┌─────────────────────┐
+            │  real-mode IVT/BDA  │
+0x00100000  ├─────────────────────┤
+            │  kernel .text       │ (2 MB)
+0x0023CF50  ├─────────────────────┤
+            │  kernel .rodata     │
+0x00250000  ├─────────────────────┤
+            │  kernel .data       │ (edata = 0x261930)
+            │  boot stack         │ (32 KB, 0x250000-0x258000)
+0x00261930  ├─────────────────────┤
+            │  kernel .bss        │
+            │    - java_lang_Obj  │ (0x261968)
+            │    - emerg_stack    │ (0x261994, 4 KB)
+            │    - malloc statics │ (0x2629cc)
+            │    - zip            │ (0x2629f4)
+0x0026924C  ├─────────────────────┤  (end = 0x26924c)
+            │  (gap)              │
+0x001500000 ├─────────────────────┤
+            │  boot module (zip)  │ (21 MB+, ~148 MB decompressed)
+0x0744AC00  ├─────────────────────┤
+            │  jxmalloc heap      │ (~2 MB managed)
+            │  - thread stacks    │ (8 KB each)
+            │  - ThreadDesc       │ (via gc_allocDataInDomain)
+            │  - code chunks      │ (via jxmalloc → malloc_code)
+0xB8D88000  └─────────────────────┘</code></pre>
+
+<h2>7. The Bug in Context</h2>
+
+<p>Here's how the segments interact in your crash:</p>
+
+<ol>
+  <li><strong><code>.bss</code> gets zeroed</strong> — something writes zeros across <code>0x261930–0x26924c</code>. All your globals (<code>zip</code>, <code>java_lang_Object</code>, <code>jxmem_start</code>, etc.) become <code>NULL</code>.</li>
+  <li><strong><code>jxmalloc</code> breaks</strong> — <code>jxmem_start = 0</code> makes the bitmap allocator think memory starts at address 0. Subsequent <code>jxmalloc</code> calls return addresses near 0.</li>
+  <li><strong>Thread stacks get corrupted</strong> — <code>malloc_threadstack</code> uses <code>jxmalloc_align</code>, which now returns addresses near 0. The DomainZero thread's stack pointer <code>PCB_ESP</code> becomes a small number near 0.</li>
+  <li><strong>ESP = 0</strong> — the thread switch loads the corrupted <code>PCB_ESP</code>. The CPU tries to use the stack at address 0, wrapping to <code>0xFFFFFFFC</code> on first push.</li>
+  <li><strong><code>zip == NULL</code></strong> — <code>zip_reset</code> in <code>read_codefile</code> reads from address 0, passing garbage to the ZIP parser, which panics with "wrong central header signature".</li>
+</ol>
+
+<p>Any one of these symptoms is a consequence of the same root cause: something writing zeroes to <code>.bss</code> at runtime.</p>
+
+<h2>8. Why This Debugging Technique Works</h2>
+
+<p>The ESP-printing you added to <code>malloc_code</code> is a great diagnostic for exactly this reason: it tells you when your <em>actual runtime stack</em> has diverged from the boot stack. Normal ESP values are around <code>0x00257ec8</code> (boot stack). If you see <code>0x00</code> or very small values, you know a thread context was loaded from corrupted memory.</p>
+
+<p>To isolate <code>.bss</code> corruption specifically, a GDB watchpoint on <code>0x2629f4</code> (<code>zip</code>) would catch the write. But as you found, OVMF boots in 64-bit mode and GDB connection fails. Alternative: insert prints before/after every suspected write, or binary-search which function zeroes the range.</p>
+
+<h2>Summary</h2>
+
+<table>
+<tr><th>Segment</th><th>JCore Address</th><th>Risk if corrupted</th></tr>
+<tr><td><code>.text</code></td><td><code>0x200000</code></td><td>CPU executes garbage</td></tr>
+<tr><td><code>.rodata</code></td><td><code>0x23cf50</code></td><td>Strings / constants become garbage</td></tr>
+<tr><td><code>.data</code></td><td><code>0x250000</code></td><td>Initialized globals break</td></tr>
+<tr><td><code>.bss</code></td><td><code>0x261930</code></td><td><strong>All zero-initialized globals → NULL → cascading crash</strong></td></tr>
+<tr><td>Stack</td><td><code>0x250000–0x258000</code></td><td>Function calls crash immediately</td></tr>
+<tr><td>Heap</td><td><code>0x0744ac00+</code></td><td>Dangling pointers, double frees</td></tr>
+</table>
+
+<hr>
+
+<p><strong>Further reading:</strong> Linker scripts — <a href="https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html">GNU LD SECTIONS documentation</a> explains how <code>.data</code>, <code>.bss</code>, and custom sections are placed.</p>
+
+<p><strong>Ask your teacher:</strong> Want to trace which function zeroes <code>.bss</code>? We can insert a canary value at a known <code>.bss</code> address and check it after every call. Or we can look at the Multiboot2 ELF loading path in GRUB to see if it clears <code>.bss</code> correctly. Ask me any follow-up questions!</p>
+
+</body>
+</html>

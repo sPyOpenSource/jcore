@@ -53,7 +53,6 @@ void printCoreSymbolInformation(char *name)
 #define NOINTIN(x) if ((u4_t)eip >= (u4_t)x && (u4_t)eip <= (u4_t)x + FKTSIZE_##x) return 1;
 
 void thread_exit();
-void receive_portalcall();
 #ifndef FKTSIZE_thread_exit
 #define FKTSIZE_thread_exit 0
 #endif

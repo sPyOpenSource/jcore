@@ -2923,11 +2923,11 @@ void callClassConstructors(DomainDesc * domain, LibDesc * lib)
 
 	for (i = 0; i < lib->numberOfClasses; i++)
 		callClassConstructor(&lib->allClasses[i]);
-	console(21,"ok");
+	//console(21,"ok");
 	lib->initialized = 1;
 }
 
-int line = 0;
+//int line = 0;
 void callClassConstructor(Class * cl)
 {
 	jint i;
@@ -2936,7 +2936,7 @@ void callClassConstructor(Class * cl)
 	//console(line % 20, cl->classDesc->name);
 	//console(20, cl->classDesc->name);
 	//printf("cl->classDesc->name");
-	line++;
+	//line++;
 	if (cl->state == CLASS_READY)
 		return;
 	cl->state = CLASS_READY;

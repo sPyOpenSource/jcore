@@ -324,7 +324,7 @@ void start_domain_zero()
 	domainZero->initialNamingProxy = initialNamingProxy;
 	//console(4, "call zero");
 	callClassConstructors(domainZero, lib);
-	console(7, "zero OK");
+	//console(7, "zero OK");
 	//printf("zero ok\n");
 	lib = load(domainZero, "jdk0.jll");
 	if (lib == NULL)

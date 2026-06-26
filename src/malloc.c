@@ -97,11 +97,11 @@ void jxmalloc_init()
     // Loop door alle beschikbare tags heen
     while (tag->type != 0) {
         if (tag->type == 2) {
-            meminfo = (struct multiboot_meminfo *)m;
+            meminfo = (struct multiboot_meminfo *)tag;
         } 
         else if (tag->type == 3) {
             if (mods_count < 2) {
-                m[mods_count] = (struct multiboot_module *)m;
+                m[mods_count] = (struct multiboot_module *)tag;
             }
             mods_count++; // Blijf tellen om eventuele overschrijdingen te detecteren
         }
@@ -126,6 +126,7 @@ void jxmalloc_init()
 		} else {
 			sys_panic("max 2 modules expected");
 		}
+		//printf("jxmalloc_init: start=%p end=%p\n", jxmem_start, jxmem_end);
 	}
 #else
 	{
@@ -608,7 +609,7 @@ char *malloc_code(DomainDesc * domain, u4_t size)
 	DISABLE_IRQ;
 
 	if (domain->cur_code == -1) {
-		printf("Chunksize domain %d: %d\n", domain->id, chunksize);
+		//printf("Chunksize domain %d: %d\n", domain->id, chunksize);
 		domain->code[0] = (char *) jxmalloc(chunksize MEMTYPE_CODE);
 		domain->codeBorder[0] = domain->code[0] + chunksize;
 		domain->codeTop[0] = domain->code[0];

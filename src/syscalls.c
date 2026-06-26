@@ -3,7 +3,7 @@
 
 int HandleInterrupt(int esp)
 {
-  console(9, "inter");
+  //console(9, "inter");
     /*CPUState* cpu = (CPUState*)esp;
 
 

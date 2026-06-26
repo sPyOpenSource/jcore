@@ -140,7 +140,6 @@ int main(int argc, char *argv[])
 	atomicfn_init();
 
 	threads_init();
-
 	portals_init();
 
 	//irq_disable(); /* don't need to disable interrupts, because there are none - timer not yet initialized */
@@ -149,12 +148,18 @@ int main(int argc, char *argv[])
 	profile_init();
 #endif
 	java_lang_Object = createObjectClassDesc();
+	void *esp;
+	asm volatile ("movl %%esp, %0" : "=r"(esp));
+printf("ESP: %p\n", esp);
 	java_lang_Object_class = createObjectClass(java_lang_Object);
-
+asm volatile ("movl %%esp, %0" : "=r"(esp));
+printf("ESP: %p\n", esp);
 	createArrayObjectVTableProto(domainZero);
 	//class_Array = createArrayObjectClassDesc(domainZero);
 	//class_Array_class = createArrayObjectClass(domainZero, class_Array);
 	/* init system */
+	asm volatile ("movl %%esp, %0" : "=r"(esp));
+printf("ESP: %p\n", esp);
 	set_current(createThread(domainZero, dummy_entry_point /* dummy */ , (void *) -1, STATE_RUNNABLE, SCHED_CREATETHREAD_NORUNQ));	/* dummy thread */
 #ifdef DEBUG
 	check_current = 0;
@@ -190,8 +195,8 @@ int main(int argc, char *argv[])
 		sys_panic("END OF BENCHMARK");
 	}
 #endif
-	initPrimitiveClasses();
 
+	initPrimitiveClasses();
 	domainZero_thread = createThread(domainZero, start_domain_zero, (void *) 0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
 	setThreadName(domainZero_thread, "DomainZero:InitialThread", NULL);
 	thread_exit();
