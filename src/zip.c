@@ -81,7 +81,7 @@ static void zread(char *buf, jint len)
 
 void zip_reset()
 {
-	printf("zip_reset: %d dirbuf: %d\n", zip, dirbuf);
+	/*printf("zip_reset: %d dirbuf: %d\n", zip, dirbuf);
 	if (dirbuf) {
 		int i;
 		printf("dirbuf[0:32]@reset: ");
@@ -89,7 +89,7 @@ void zip_reset()
 		printf(" sig=");
 		printf("%lx", makelong(dirbuf, 0));
 		printf("\n");
-	}
+	}*/
 	mempos = zip;
 	dirofs = 0;
 	current = 0;
@@ -117,7 +117,7 @@ void zip_init(char *zipstart, jint ziplen)
 	zseek(len - (dir_size + ECREC_SIZE));
 	dirbuf = jxmalloc(dir_size MEMTYPE_OTHER);
 	zread(dirbuf, dir_size);
-		{
+		/*{
 			int i;
 			printf("dirbuf[0:32]: ");
 			for (i = 0; i < 32; i++) printf("%02x ", (unsigned char)dirbuf[i]);
@@ -126,7 +126,7 @@ void zip_init(char *zipstart, jint ziplen)
 			printf("RAW dirbuf val=%x\n", dirbuf);
 			printf("RAW dirbuf adr=%x\n", (unsigned int)&dirbuf);
 			printf("RAW rbf=%x\n", *(unsigned int*)((unsigned int)&dirbuf));
-		}
+		}*/
 	dirofs = 0;
 	current = 0;
 }

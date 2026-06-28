@@ -478,7 +478,7 @@ void ser_putchar(int port, int ch);
 void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 {
 	if (magic != 0x36D76289 && magic != 0x2BADB002) {
-        printf("Invalid magic number: 0x%08x\n", magic);
+        //printf("Invalid magic number: 0x%08x\n", magic);
         return;
     }
 	u2_t *screen_start = (u2_t *) 0xb8000;

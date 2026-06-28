@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
 	       module->mod_end - module->mod_start);
 
 	// Dump first 32 bytes of module data
-	{
+	/*{
 		unsigned char *p = (unsigned char *)module->mod_start;
 		printf("Module[0:32]: ");
 		int i;
@@ -134,21 +134,21 @@ int main(int argc, char *argv[])
 		int i;
 		for (i = len - 32; i < len; i++) printf("%02x ", p[i]);
 		printf("\n");
-	}
+	}*/
 
 	zip_init(module->mod_start, module->mod_end - module->mod_start);
 #endif				/* KERNEL */
 
 #ifdef KERNEL
-	check_dirbuf("before pic_init_pmode");
-	pic_init_pmode(); check_dirbuf("after pic_init_pmode");
-	init_irq_data(); check_dirbuf("after init_irq_data");
+	//check_dirbuf("before pic_init_pmode");
+	pic_init_pmode(); //check_dirbuf("after pic_init_pmode");
+	init_irq_data(); //check_dirbuf("after init_irq_data");
 	/*
 	 * Serial line
 	 */
-	ser_enable_break(); check_dirbuf("after ser_enable_break");
+	ser_enable_break(); //check_dirbuf("after ser_enable_break");
 
-	printf("finished system init\n"); check_dirbuf("after fin_sys_init");
+	printf("finished system init\n"); //check_dirbuf("after fin_sys_init");
 
 #ifdef LOG_PRINTF
 	init_log_space();
@@ -162,8 +162,8 @@ int main(int argc, char *argv[])
 	events_init();
 #endif
 
-	init_domainsys(); check_dirbuf("after domainsys");
-	dump_critical_vars("After init_domainsys");
+	init_domainsys();// check_dirbuf("after domainsys");
+	//dump_critical_vars("After init_domainsys");
 
 #ifdef KERNEL
 #ifdef FRAMEBUFFER_EMULATION
@@ -178,13 +178,13 @@ int main(int argc, char *argv[])
 #ifdef NOPREEMPT
 	nopreempt_init();
 #endif
-	atomicfn_init(); check_dirbuf("after atomicfn");
-	dump_critical_vars("After atomicfn_init");
+	atomicfn_init(); //check_dirbuf("after atomicfn");
+	//dump_critical_vars("After atomicfn_init");
 
-	threads_init(); check_dirbuf("after threads");
-	dump_critical_vars("After threads_init");
-	portals_init(); check_dirbuf("after portals");
-	dump_critical_vars("After portals_init");
+	threads_init(); //check_dirbuf("after threads");
+	//dump_critical_vars("After threads_init");
+	portals_init();// check_dirbuf("after portals");
+	//dump_critical_vars("After portals_init");
 
 	//irq_disable(); /* don't need to disable interrupts, because there are none - timer not yet initialized */
 

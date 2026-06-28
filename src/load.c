@@ -1043,7 +1043,7 @@ char *read_codefile(char *filename, jint * size)
 	for (;;) {
 		if (zip_next_entry(&entry) == -1)
 			return NULL;
-		printf("%s\n",entry.filename);
+		//printf("%s\n",entry.filename);
 		if (strcmp(entry.filename, filename) == 0) {
 			codefile = entry.data;
 			*size = entry.uncompressed_size;
