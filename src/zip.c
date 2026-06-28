@@ -62,6 +62,11 @@ static char *mempos;
 static char *dirbuf;
 static jint current;
 
+void check_dirbuf(const char *label) {
+    printf("dirbuf@%s=%d ", label, dirbuf);
+    printf("(from zip@%d)\n", zip);
+}
+
 static void zseek(jint pos)
 {
 	if (pos < 0)
@@ -76,7 +81,15 @@ static void zread(char *buf, jint len)
 
 void zip_reset()
 {
-	printf("zip_reset: %d\n", zip);
+	printf("zip_reset: %d dirbuf: %d\n", zip, dirbuf);
+	if (dirbuf) {
+		int i;
+		printf("dirbuf[0:32]@reset: ");
+		for (i = 0; i < 32; i++) printf("%02x ", (unsigned char)dirbuf[i]);
+		printf(" sig=");
+		printf("%lx", makelong(dirbuf, 0));
+		printf("\n");
+	}
 	mempos = zip;
 	dirofs = 0;
 	current = 0;
@@ -104,11 +117,16 @@ void zip_init(char *zipstart, jint ziplen)
 	zseek(len - (dir_size + ECREC_SIZE));
 	dirbuf = jxmalloc(dir_size MEMTYPE_OTHER);
 	zread(dirbuf, dir_size);
-	/*
-	   Debug.out.println("nr disk = " + makeword(dirbuf, NUMBER_THIS_DISK));
-	   Debug.out.println("nr disk cdir = " + makeword(dirbuf, NUM_DISK_WITH_START_CENTRAL_DIR));
-	   Debug.out.println("num entries = " + makeword(dirbuf,NUM_ENTRIES_CENTRL_DIR_THS_DISK));
-	 */
+		{
+			int i;
+			printf("dirbuf[0:32]: ");
+			for (i = 0; i < 32; i++) printf("%02x ", (unsigned char)dirbuf[i]);
+			printf("\n");
+			printf("dirbuf sig=%lx dir_size=%d\n", makelong(dirbuf, 0), dir_size);
+			printf("RAW dirbuf val=%x\n", dirbuf);
+			printf("RAW dirbuf adr=%x\n", (unsigned int)&dirbuf);
+			printf("RAW rbf=%x\n", *(unsigned int*)((unsigned int)&dirbuf));
+		}
 	dirofs = 0;
 	current = 0;
 }

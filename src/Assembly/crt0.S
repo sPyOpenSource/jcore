@@ -13,6 +13,7 @@ request_start:
     .long 4
     .long 6
     .long 3
+    .long 0
 request_end:
 	# TAG 1: Framebuffer Request (Vraag GRUB om een grafische modus)
     #.align 8
@@ -31,16 +32,18 @@ request_end:
 boot_entry:
 .section .text
 .globl     _start
-_start:    
+_start:
+	movl	%eax, magic_value
+	movl	%ebx, boot_info_pa
 	movl	$base_stack_end, %esp
-	#pushl	$0
-	#popf
-	#lea		edata, %edi
-	#lea		end, %ecx
-	#subl	%edi,%ecx
-	#xorl	%eax,%eax
-	#rep
-	#stosb
+	pushl	$0
+	popf
+	lea		edata, %edi
+	lea		end, %ecx
+	subl	%edi,%ecx
+	xorl	%eax,%eax
+	rep
+	stosb
 
 
 	#xorb	%al,%al
@@ -49,9 +52,9 @@ _start:
 	#movw	$0x372,%dx
 	#outb	%al,%dx
 
-	pushl	%ebx
-    pushl %eax
-	#xorl	%ebp,%ebp
+	pushl	boot_info_pa
+    pushl   magic_value
+	xorl	%ebp,%ebp
     call	 multiboot_main  
     movl %ebx, %esi
     addl $8, %esi                              # Sla de eerste 8 bytes (mbi_size + gereserveerd) over. Hier starten de tags.

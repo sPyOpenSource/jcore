@@ -96,7 +96,7 @@ void jxmalloc_init()
 
     // Loop door alle beschikbare tags heen
     while (tag->type != 0) {
-        if (tag->type == 2) {
+        if (tag->type == 4) {
             meminfo = (struct multiboot_meminfo *)tag;
         } 
         else if (tag->type == 3) {
@@ -367,7 +367,7 @@ void *jxmalloc(u4_t size MEMTYPE_INFO)
 #endif
 	size = ALIGN_NEXT_BLOCK(size);
 	size_blk = size >> BLOCKADDR_N_NULLBITS;
-	jxmalloc_internal(size_blk, 1, &start MEMTYPE_PARAM);
+	return jxmalloc_internal(size_blk, 1, &start MEMTYPE_PARAM);
 }
 
 /* align at address: addr % align == 0 */

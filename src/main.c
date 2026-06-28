@@ -1,5 +1,23 @@
 #include "all.h"
 
+extern DomainDesc *domainZero;
+extern ClassDesc *java_lang_Object;
+
+void dump_critical_vars(const char *label)
+{
+	printf("--- [%s] Critical Vars ---\n", label);
+	printf("domainZero: %p\n", domainZero);
+	printf("java_lang_Object: %p\n", java_lang_Object);
+	
+	// Dump a few bytes around java_lang_Object pointer in .bss
+	u8_t *ptr = (u8_t *)&java_lang_Object;
+	printf("Mem around java_lang_Object: ");
+	for(int i = -4; i < 12; i++) {
+		printf("%02x ", ptr[i]);
+	}
+	printf("\n---------------------------\n");
+}
+
 /*
  *
  * MAIN
@@ -91,24 +109,46 @@ int main(int argc, char *argv[])
 #else				/* KERNEL */
 	/* read zip from boot module */
 	/* module = base_multiboot_find(ZIPFILE); */
-	module = multiboot_get_module();
+		module = multiboot_get_module();
 
 	if (module == NULL)
 		sys_panic("Could not find boot module");
+
+	printf("Module: mod_start=0x%x mod_end=0x%x size=%d\n",
+	       module->mod_start, module->mod_end,
+	       module->mod_end - module->mod_start);
+
+	// Dump first 32 bytes of module data
+	{
+		unsigned char *p = (unsigned char *)module->mod_start;
+		printf("Module[0:32]: ");
+		int i;
+		for (i = 0; i < 32; i++) printf("%02x ", p[i]);
+		printf("\n");
+	}
+	// Dump last 64 bytes of module data
+	{
+		unsigned char *p = (unsigned char *)module->mod_start;
+		int len = module->mod_end - module->mod_start;
+		printf("Module[%d-32:%d]: ", len - 32, len);
+		int i;
+		for (i = len - 32; i < len; i++) printf("%02x ", p[i]);
+		printf("\n");
+	}
 
 	zip_init(module->mod_start, module->mod_end - module->mod_start);
 #endif				/* KERNEL */
 
 #ifdef KERNEL
-	pic_init_pmode();
-	init_irq_data();
+	check_dirbuf("before pic_init_pmode");
+	pic_init_pmode(); check_dirbuf("after pic_init_pmode");
+	init_irq_data(); check_dirbuf("after init_irq_data");
 	/*
 	 * Serial line
 	 */
-	ser_enable_break();
+	ser_enable_break(); check_dirbuf("after ser_enable_break");
 
-
-	printf("finished system init\n");
+	printf("finished system init\n"); check_dirbuf("after fin_sys_init");
 
 #ifdef LOG_PRINTF
 	init_log_space();
@@ -122,7 +162,8 @@ int main(int argc, char *argv[])
 	events_init();
 #endif
 
-	init_domainsys();
+	init_domainsys(); check_dirbuf("after domainsys");
+	dump_critical_vars("After init_domainsys");
 
 #ifdef KERNEL
 #ifdef FRAMEBUFFER_EMULATION
@@ -137,29 +178,29 @@ int main(int argc, char *argv[])
 #ifdef NOPREEMPT
 	nopreempt_init();
 #endif
-	atomicfn_init();
+	atomicfn_init(); check_dirbuf("after atomicfn");
+	dump_critical_vars("After atomicfn_init");
 
-	threads_init();
-	portals_init();
+	threads_init(); check_dirbuf("after threads");
+	dump_critical_vars("After threads_init");
+	portals_init(); check_dirbuf("after portals");
+	dump_critical_vars("After portals_init");
 
 	//irq_disable(); /* don't need to disable interrupts, because there are none - timer not yet initialized */
 
 #ifdef PROFILE
 	profile_init();
 #endif
+
 	java_lang_Object = createObjectClassDesc();
-	void *esp;
-	asm volatile ("movl %%esp, %0" : "=r"(esp));
-printf("ESP: %p\n", esp);
+
 	java_lang_Object_class = createObjectClass(java_lang_Object);
-asm volatile ("movl %%esp, %0" : "=r"(esp));
-printf("ESP: %p\n", esp);
+
 	createArrayObjectVTableProto(domainZero);
 	//class_Array = createArrayObjectClassDesc(domainZero);
 	//class_Array_class = createArrayObjectClass(domainZero, class_Array);
 	/* init system */
-	asm volatile ("movl %%esp, %0" : "=r"(esp));
-printf("ESP: %p\n", esp);
+
 	set_current(createThread(domainZero, dummy_entry_point /* dummy */ , (void *) -1, STATE_RUNNABLE, SCHED_CREATETHREAD_NORUNQ));	/* dummy thread */
 #ifdef DEBUG
 	check_current = 0;
@@ -195,7 +236,6 @@ printf("ESP: %p\n", esp);
 		sys_panic("END OF BENCHMARK");
 	}
 #endif
-
 	initPrimitiveClasses();
 	domainZero_thread = createThread(domainZero, start_domain_zero, (void *) 0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
 	setThreadName(domainZero_thread, "DomainZero:InitialThread", NULL);

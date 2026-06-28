@@ -25,7 +25,7 @@ SECTIONS
 
     .bss : {
         *(.bss)
-        *(COMMON)
+        /*(COMMON)*/
     }
     end = .;   /* Markeert het einde van de BSS / begin van de heap */
 }

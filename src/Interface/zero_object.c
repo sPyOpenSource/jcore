@@ -279,9 +279,6 @@ ClassDesc *createObjectClassDesc()
 	/* create and init java/lang/Object */
 	n_methods = sizeof(objectMethods) / sizeof(MethodInfoDesc);
 	java_lang_Object = malloc_classdesc(domainZero, strlen(name) + 1);
-	void *esp;
-	asm volatile ("movl %%esp, %0" : "=r"(esp));
-printf("ESP: %p\n", esp);
 	java_lang_Object->classType = CLASSTYPE_CLASS;
 #ifdef USE_QMAGIC
 	java_lang_Object->magic = MAGIC_CLASSDESC;
@@ -292,15 +289,14 @@ printf("ESP: %p\n", esp);
 	java_lang_Object->instanceSize = 0;
 	java_lang_Object->vtableSize = n_methods;
 	java_lang_Object->vtableSym = malloc_vtableSym(domainZero, java_lang_Object->vtableSize);
-asm volatile ("movl %%esp, %0" : "=r"(esp));
-printf("ESP: %p\n", esp);
+
 	i = 0;
 	java_lang_Object->numberOfMethods = n_methods;
 	java_lang_Object->methods = malloc_methods(domainZero, n_methods);
 	java_lang_Object->methodVtable = malloc_methodVtable(domainZero, n_methods);
+	
 	memset(java_lang_Object->methods, 0, sizeof(MethodDesc) * n_methods);
-asm volatile ("movl %%esp, %0" : "=r"(esp));
-printf("ESP: %p\n", esp);
+
 	for (j = 0; j < java_lang_Object->vtableSize * 3; j += 3) {
 		java_lang_Object->vtableSym[j] = "java/lang/Object";	/* class */
 		java_lang_Object->vtableSym[j + 1] = objectMethods[i].name;	/* name */
@@ -315,9 +311,9 @@ printf("ESP: %p\n", esp);
 	createVTable(domainZero, java_lang_Object);
 
 	installVtables(domainZero, java_lang_Object, objectMethods, n_methods, NULL);
-	asm volatile ("movl %%esp, %0" : "=r"(esp));
-printf("ESP: %p\n", esp);
+	
 	return java_lang_Object;
+
 }
 
 Class *createObjectClass(ClassDesc * java_lang_Object)
