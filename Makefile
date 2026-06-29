@@ -4,7 +4,7 @@ ARMGNU_OBJCOPY = /Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch6
 
 # Flags
 CFLAGS = -Wall -Werror -O2 -nostdlib -ffreestanding -marm -mabi=aapcs
-LDFLAGS = -nostartfiles -nostdlib -Wl,-T,linker.ld
+LDFLAGS = -fuse-ld=lld -nostartfiles -nostdlib -Wl,-T,linker.ld
 
 .PHONY: all clean
 
