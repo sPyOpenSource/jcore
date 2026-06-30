@@ -2,20 +2,63 @@
 #define GPIO_OE            0x134
 #define GPIO_SETDATAOUT    0x194
 #define GPIO_CLEARDATAOUT  0x190
-#define LED_PIN            (1 << 22) // Voorbeeld: USR3 LED op GPIO4_22
+#define LED_PIN            (1 << 22)
+
+#ifdef QEMU
+#define UART_BASE          0x09000000
+
+static void uart_putc(char c) {
+    volatile unsigned int *fr = (volatile unsigned int *)(UART_BASE + 0x018);
+    volatile unsigned char *dr = (volatile unsigned char *)(UART_BASE + 0x000);
+    while (*fr & (1 << 5));
+    *dr = (unsigned char)c;
+}
+
+static void uart_init(void) {
+    volatile unsigned int *cr = (volatile unsigned int *)(UART_BASE + 0x030);
+    volatile unsigned int *lcr_h = (volatile unsigned int *)(UART_BASE + 0x02C);
+    *cr = 0;
+    *lcr_h = (3 << 5) | (1 << 4);
+    *cr = (1 << 0) | (1 << 8) | (1 << 9);
+}
+#else
+#define UART3_BASE         0x49020000
+
+static void uart_putc(char c) {
+    volatile unsigned int *lsr = (volatile unsigned int *)(UART3_BASE + 0x14);
+    volatile unsigned char *thr = (volatile unsigned char *)(UART3_BASE + 0x00);
+    while (!(*lsr & (1 << 5)));
+    *thr = (unsigned char)c;
+}
+
+static void uart_init(void) {}
+#endif
+
+static void uart_puts(const char *s) {
+    while (*s) {
+        if (*s == '\n') {
+            uart_putc('\r');
+        }
+        uart_putc(*s);
+        s++;
+    }
+}
 
 void main(void) {
-    // 1. Configureer de pin als OUTPUT (schrijf een 0 naar de bit in het OE-register)
-    volatile unsigned int *gpio_oe = (unsigned int *)(GPIO4_BASE + GPIO_OE);
+    uart_init();
+    uart_puts("Hello BBAI!\n");
+    uart_puts("JX qemu boot: OK\n");
+
+    volatile unsigned int *gpio_oe = (volatile unsigned int *)(GPIO4_BASE + GPIO_OE);
     *gpio_oe &= ~LED_PIN;
 
-    volatile unsigned int *set_reg = (unsigned int *)(GPIO4_BASE + GPIO_SETDATAOUT);
-    volatile unsigned int *clear_reg = (unsigned int *)(GPIO4_BASE + GPIO_CLEARDATAOUT);
+    volatile unsigned int *set_reg = (volatile unsigned int *)(GPIO4_BASE + GPIO_SETDATAOUT);
+    volatile unsigned int *clear_reg = (volatile unsigned int *)(GPIO4_BASE + GPIO_CLEARDATAOUT);
 
-    while(1) {
-        *set_reg = LED_PIN;   // LED aan
-        for(volatile int i = 0; i < 500000; i++); // Bare-metal delay loop
-        *clear_reg = LED_PIN; // LED uit
-        for(volatile int i = 0; i < 500000; i++);
+    while (1) {
+        *set_reg = LED_PIN;
+        for (volatile unsigned int i = 0; i < 500000; i++);
+        *clear_reg = LED_PIN;
+        for (volatile unsigned int i = 0; i < 500000; i++);
     }
 }
