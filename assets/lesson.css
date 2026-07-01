@@ -1,0 +1,142 @@
+/* Shared stylesheet for BBAI SDK teaching workspace */
+/* Tufte-inspired: clean, readable, print-friendly */
+
+:root {
+  --text: #1a1a1a;
+  --bg: #fcfcfc;
+  --accent: #2563eb;
+  --accent-light: #dbeafe;
+  --gray: #6b7280;
+  --light-gray: #e5e7eb;
+  --code-bg: #f3f4f6;
+  --border: #d1d5db;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e5e5e5;
+    --bg: #1a1a1a;
+    --accent: #60a5fa;
+    --accent-light: #1e3a5f;
+    --gray: #9ca3af;
+    --light-gray: #374151;
+    --code-bg: #111827;
+    --border: #4b5563;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h1 { font-size: 1.8rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.3rem; }
+h2 { font-size: 1.3rem; color: var(--accent); }
+h3 { font-size: 1.1rem; }
+
+p, li { margin-bottom: 0.6rem; }
+ul, ol { padding-left: 1.5rem; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--code-bg);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+}
+
+pre code { background: none; padding: 0; }
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  background: var(--accent-light);
+  border-radius: 0 6px 6px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+th { background: var(--light-gray); font-weight: 600; }
+
+tr:last-child td { border-bottom: none; }
+
+.callout {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.callout-info { background: var(--accent-light); border-left: 3px solid var(--accent); }
+.callout-warn { background: #fef3cd; border-left: 3px solid #f59e0b; color: #92400e; }
+.callout-tip { background: #d1fae5; border-left: 3px solid #10b981; color: #065f46; }
+
+@media (prefers-color-scheme: dark) {
+  .callout-warn { background: #422006; color: #fbbf24; }
+  .callout-tip { background: #064e3b; color: #34d399; }
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+dt { font-weight: 600; margin-top: 0.5rem; }
+dd { margin-left: 1.5rem; margin-bottom: 0.3rem; }
+
+@media print {
+  body { max-width: none; font-size: 11pt; }
+  .back-link, .footer { display: none; }
+  pre { break-inside: avoid; }
+}

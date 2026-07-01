@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1: What is the TI Processor SDK?</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../MISSION.md">← Back to Mission</a></p>
+
+<h1>What is the TI Processor SDK?</h1>
+<p class="subtitle">Navigating TI's software ecosystem for the AM5729</p>
+
+<h2>Goal</h2>
+<p>After this lesson, you'll be able to look at any TI-provided file or tool for the AM57x and know what it is, where it lives in the SDK, and whether it's useful for baremetal OS work on the BeagleBone AI.</p>
+
+<h2>The Core Insight</h2>
+<p>There are <strong>two</strong> Processor SDKs, and they serve different purposes:</p>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Processor SDK Linux</th>
+    <th>Processor SDK RTOS</th>
+  </tr>
+  <tr>
+    <td><strong>Purpose</strong></td>
+    <td>Build Linux systems</td>
+    <td>Baremetal / RTOS development</td>
+  </tr>
+  <tr>
+    <td><strong>Relevant for you?</strong></td>
+    <td>Partially — U-Boot, toolchain, device trees</td>
+    <td><strong>Yes</strong> — CSL, PDK drivers, board init</td>
+  </tr>
+  <tr>
+    <td><strong>Size</strong></td>
+    <td>~1.8 GB installer</td>
+    <td>~1.8 GB installer</td>
+  </tr>
+  <tr>
+    <td><strong>Host</strong></td>
+    <td>Linux x86_64 only</td>
+    <td>Linux + Windows</td>
+  </tr>
+  <tr>
+    <td><strong>Key output</strong></td>
+    <td>SD card image with Linux + U-Boot</td>
+    <td>Standalone binaries, SYS/BIOS apps</td>
+  </tr>
+</table>
+
+<div class="callout callout-info">
+<strong>For your baremetal OS (JX):</strong> The RTOS SDK's PDK is the most directly useful — it provides the register-level headers and driver source code. The Linux SDK is useful as a reference for U-Boot source, device trees, and the <code>create-sdcard.sh</code> script.
+</div>
+
+<h2>SDK Components — A Map</h2>
+
+<p>Both SDKs share a similar structure. Here are the directories you'll care about:</p>
+
+<pre>
+processor-sdk-rtos-am57xx/
+├── pkg/                          # ← THIS IS THE MAIN SDK
+│   ├── ti/
+│   │   ├── csl/                  # Chip Support Library (register headers)
+│   │   │   └── csl_uart.h,
+│   │   │       csl_gpio.h, etc.  # Direct register access macros
+│   │   ├── board/                # Board init (pinmux, clock, DDR)
+│   │   │   └── src/am57xx_evm/   # ← Reference for writing BBAI board file
+│   │   ├── drv/                  # LLD — peripheral driver libraries
+│   │   │   ├── uart/             # UART low-level driver
+│   │   │   ├── i2c/              # I2C low-level driver
+│   │   │   └── gpio/             # GPIO low-level driver
+│   │   ├── osal/                 # OS Abstraction Layer
+│   │   └── starterware/          # Simple baremetal examples
+│   └── docs/                     # API documentation
+├── makerules/                    # Build system rules
+└── examples/                     # Example projects
+</pre>
+
+<div class="callout callout-tip">
+<strong>Cheat sheet:</strong> CSL = raw register access (what you're already doing in <code>main.c</code>). LLD = wrapper functions. Board = pinmux + clock + DDR init. For your baremetal OS, you want <strong>CSL</strong> headers and <strong>board</strong> init as reference.
+</div>
+
+<h2>The SoC vs. Board Problem</h2>
+
+<p>This is the most important concept in this lesson. TI ships support for their <strong>SoC</strong> (AM5729) but not for every <strong>board</strong> that uses it.</p>
+
+<table>
+  <tr><th>TI provides</th><th>You must write</th></tr>
+  <tr>
+    <td>
+      <ul>
+        <li>CSL headers for AM5729 registers</li>
+        <li>PDK driver source (UART, GPIO, etc.)</li>
+        <li>AM5729 TRM (7000 pages)</li>
+        <li>EVM + IDK board files as reference</li>
+        <li>U-Boot SPL + board code</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li>BBAI board init (<code>board.c</code>)</li>
+        <li>Pinmux table (which pins are UART, GPIO, etc.)</li>
+        <li>DDR3L timing config for BBAI's specific RAM chips</li>
+        <li>Clock tree init for the 20 MHz reference oscillator</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<div class="callout callout-warn">
+<strong>This is why</strong> we extracted MLO and u-boot.img from a pre-built Debian package instead of building them. The pre-built images include the board-specific BBAI init — building from source requires writing the BBAI board file first.
+</div>
+
+<h2>Where Our Existing Code Fits</h2>
+
+<p>Look at what we already have in <code>src/</code>:</p>
+
+<table>
+  <tr><th>Our file</th><th>SDK equivalent</th><th>What the SDK would provide</th></tr>
+  <tr>
+    <td><code>main.c</code> — UART putc + GPIO toggle</td>
+    <td>CSL-level code</td>
+    <td><code>CSL_uartRegs</code> and <code>CSL_gpioRegs</code> struct definitions instead of raw pointer casts</td>
+  </tr>
+  <tr>
+    <td><code>boot.asm</code> — stack init + branch</td>
+    <td>SPL entry point in U-Boot</td>
+    <td>Full SPL init: stack, BSS, clock, DDR</td>
+  </tr>
+  <tr>
+    <td><code>linker.ld</code> — memory layout</td>
+    <td>U-Boot linker script</td>
+    <td><code>u-boot-spl.lds</code> in the U-Boot source</td>
+  </tr>
+  <tr>
+    <td><code>Makefile</code> — clang cross-compile</td>
+    <td>SDK's <code>linux-devkit/</code></td>
+    <td>Pre-built ARM GCC cross-compiler, sysroot, and CMake rules</td>
+  </tr>
+</table>
+
+<h2>The SD Card Tool You Already Used</h2>
+
+<p>The Linux SDK includes <code>create-sdcard.sh</code>, which automates exactly what we did manually:</p>
+
+<pre>
+# Inside the Linux SDK after install:
+./bin/create-sdcard.sh
+
+# It does:
+# 1. Partition SD card (FAT32 boot + ext4 rootfs)
+# 2. Write MLO to sector 512
+# 3. Copy u-boot.img to FAT partition
+# 4. Copy kernel, device tree, rootfs
+</pre>
+
+<p>We replicated this manually using <code>dd</code>, <code>mformat</code>, and <code>mcopy</code>. Understanding the manual process (as we did) is more valuable than running the script — now you know <em>why</em> each step exists.</p>
+
+<h2>Key Takeaway</h2>
+<blockquote>
+The TI Processor SDK is not a single tool. It's two SDKs (Linux + RTOS), each containing many independently useful components. For baremetal work, the RTOS SDK's PDK is the treasure — but you'll need to write the BBAI board-specific code yourself, using the TI EVM board files as reference and the TRM as your final authority.
+</blockquote>
+
+<h2>Your Turn</h2>
+<ol>
+  <li><strong>Navigate the TRM:</strong> Open <a href="https://www.ti.com/lit/pdf/spruhz6">SPRUHZ6</a> and find the UART memory map (look for "UART3" in the table of contents). Verify that our <code>UART3_BASE = 0x49020000</code> matches the TRM.</li>
+  <li><strong>Read the glossary:</strong> Revisit the <a href="../GLOSSARY.md">GLOSSARY.md</a> and make sure you can explain each term in one sentence.</li>
+  <li><strong>Ask a followup:</strong> What part of the SDK do you want to explore next? I can create a lesson on PDK CSL headers, the boot ROM sequence, or building U-Boot from source.</li>
+</ol>
+
+<div class="footer">
+  <p>Lesson 1 of ? · References: <a href="../GLOSSARY.md">Glossary</a>, <a href="../RESOURCES.md">Resources</a></p>
+</div>
+</body>
+</html>

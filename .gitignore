@@ -1,3 +1,11 @@
 # Ignore build output directory
 build/
 *.o
+*.elf
+*.bin
+
+# Ignore extracted packages
+usr/
+
+# SD card image (generated, ~512 MB)
+/tmp/*.img
