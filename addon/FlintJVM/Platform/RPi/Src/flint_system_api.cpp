@@ -26,7 +26,9 @@ void FlintAPI::System::initHeap(void *start, void *end) {
 void *FlintAPI::System::malloc(uint32_t size) {
     void *p = heap_current;
     if (p == nullptr) return nullptr;
-    heap_current = (void *)((uint8_t *)p + size);
+    uintptr_t aligned = (((uintptr_t)p + 15) & ~15);
+    p = (void *)aligned;
+    heap_current = (void *)(aligned + size);
     if (heap_current > heap_end) return nullptr;
     return p;
 }

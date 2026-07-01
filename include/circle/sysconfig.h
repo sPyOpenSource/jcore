@@ -35,7 +35,7 @@
 // increase this value. The value must be a multiple of 16 KByte.
 
 #ifndef KERNEL_MAX_SIZE
-#define KERNEL_MAX_SIZE		(2 * MEGABYTE)
+#define KERNEL_MAX_SIZE		(4 * MEGABYTE)
 #endif
 
 // KERNEL_STACK_SIZE is the size of the stack set on startup for the

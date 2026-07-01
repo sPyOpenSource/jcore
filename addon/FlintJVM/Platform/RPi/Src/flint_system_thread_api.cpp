@@ -4,8 +4,11 @@
 using namespace FlintAPI::Thread;
 
 ThreadHandle FlintAPI::Thread::create(void (*task)(void *), void *param, uint32_t stackSize) {
-    (void)task; (void)param; (void)stackSize;
-    return nullptr;
+    (void)stackSize;
+    if (task) {
+        task(param);
+    }
+    return (ThreadHandle)1;
 }
 
 ThreadHandle FlintAPI::Thread::getCurrentThread(void) {

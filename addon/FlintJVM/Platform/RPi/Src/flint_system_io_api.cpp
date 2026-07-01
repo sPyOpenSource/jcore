@@ -1,21 +1,12 @@
 
 #include "flint.h"
 #include "flint_system_api.h"
-#include "hardware_class.h"
-#include "hellorpi_class.h"
+#include "classes/embedded_classes.h"
 #include <string.h>
 
-struct EmbeddedClass {
-    const char *name;
-    const unsigned char *data;
-    unsigned int size;
-};
-
-static const EmbeddedClass embeddedClasses[] = {
-    {"com/rpi/Hardware.class", Hardware_class, Hardware_class_len},
-    {"com/rpi/HelloRPi.class", HelloRPi_class, HelloRPi_class_len},
-    {nullptr, nullptr, 0}
-};
+extern "C" {
+    void rpi_uart_puts(const char *s);
+}
 
 static const unsigned char *findEmbeddedClass(const char *name, unsigned int *size) {
     for (int i = 0; embeddedClasses[i].name != nullptr; i++) {
@@ -36,7 +27,12 @@ using namespace FlintAPI::IO;
 FileResult FlintAPI::IO::finfo(const char *fileName, FileInfo *fileInfo) {
     unsigned int size;
     const unsigned char *data = findEmbeddedClass(fileName, &size);
-    if (data == nullptr) return FILE_RESULT_ERR;
+    if (data == nullptr) {
+        rpi_uart_puts("findEmbeddedClass FAILED for: ");
+        rpi_uart_puts(fileName);
+        rpi_uart_puts("\r\n");
+        return FILE_RESULT_ERR;
+    }
     if (fileInfo) {
         fileInfo->size = size;
         fileInfo->directory = false;
