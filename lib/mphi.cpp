@@ -18,8 +18,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include <circle/mphi.h>
-#include <circle/bcm2835.h>
-#include <circle/bcm2835int.h>
+#include <circle/rpi/bcm2835.h>
+#include <circle/rpi/bcm2835int.h>
 #include <circle/memio.h>
 #include <circle/atomic.h>
 #include <circle/synchronize.h>

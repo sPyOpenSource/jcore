@@ -1,16 +1,10 @@
 #include "flint_native_rpi.h"
 #include "flint_java_string.h"
 #include <stdint.h>
+#include <circle/rpi/bcm2835.h>
 
-/*
- * Raspberry Pi 4 BCM2711 Peripheral Base Addresses
- * For RPi 3, these would be 0x3F000000.
- * For RPi 4, these are 0xFE000000.
- */
-#define RPI_PERIPHERAL_BASE 0xFE000000
-#define RPI_UART0_BASE      (RPI_PERIPHERAL_BASE + 0x201000)
-#define RPI_GPIO_BASE       (RPI_PERIPHERAL_BASE + 0x200000)
-#define RPI_SYSTEM_TIMER    0x40000000
+#define RPI_UART0_BASE      (ARM_IO_BASE + 0x201000)
+#define RPI_GPIO_BASE       (ARM_IO_BASE + 0x200000)
 
 /* UART Register Offsets */
 #define UART_DR   0x00
@@ -49,7 +43,8 @@ jvoid NativeRPi_Print(FNIEnv *env, jstring msg) {
 
 jlong NativeRPi_CurrentTimeMillis(FNIEnv *env) {
     (void)env;
-    uint64_t ticks = *(volatile uint64_t*)RPI_SYSTEM_TIMER;
+    uint64_t ticks;
+    asm volatile("mrs %0, cntvct_el0" : "=r"(ticks));
     return (jlong)(ticks / 54000);
 }
 
