@@ -22,7 +22,7 @@ namespace myos
             InterruptHandler(InterruptManager* interruptManager, myos::common::uint8_t InterruptNumber);
             ~InterruptHandler();
         public:
-            virtual myos::common::uint32_t HandleInterrupt(myos::common::uint32_t esp);
+            virtual myos::common::uint64_t HandleInterrupt(myos::common::uint64_t esp);
         };
 
 
@@ -37,11 +37,12 @@ namespace myos
 
                 struct GateDescriptor
                 {
-                    myos::common::uint16_t handlerAddressLowBits;
-                    myos::common::uint16_t gdt_codeSegmentSelector;
-                    myos::common::uint8_t reserved;
-                    myos::common::uint8_t access;
-                    myos::common::uint16_t handlerAddressHighBits;
+                    myos::common::uint16_t offset_low;
+                    myos::common::uint16_t selector;
+                    myos::common::uint8_t ist;
+                    myos::common::uint8_t type_attr;
+                    myos::common::uint16_t offset_mid;
+                    myos::common::uint32_t offset_high;
                 } __attribute__((packed));
 
                 static GateDescriptor interruptDescriptorTable[256];
@@ -49,7 +50,7 @@ namespace myos
                 struct InterruptDescriptorTablePointer
                 {
                     myos::common::uint16_t size;
-                    myos::common::uint32_t base;
+                    myos::common::uint64_t base;
                 } __attribute__((packed));
 
                 myos::common::uint16_t hardwareInterruptOffset;
@@ -101,8 +102,8 @@ namespace myos
                 static void HandleException0x12();
                 static void HandleException0x13();
 
-                static myos::common::uint32_t HandleInterrupt(myos::common::uint8_t interrupt, myos::common::uint32_t esp);
-                myos::common::uint32_t DoHandleInterrupt(myos::common::uint8_t interrupt, myos::common::uint32_t esp);
+                static myos::common::uint64_t HandleInterrupt(myos::common::uint8_t interrupt, myos::common::uint64_t esp);
+                myos::common::uint64_t DoHandleInterrupt(myos::common::uint8_t interrupt, myos::common::uint64_t esp);
 
                 Port8BitSlow programmableInterruptControllerMasterCommandPort;
                 Port8BitSlow programmableInterruptControllerMasterDataPort;

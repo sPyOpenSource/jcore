@@ -22,7 +22,7 @@ InterruptHandler::~InterruptHandler()
         interruptManager->handlers[InterruptNumber] = 0;
 }
 
-uint32_t InterruptHandler::HandleInterrupt(uint32_t esp)
+uint64_t InterruptHandler::HandleInterrupt(uint64_t esp)
 {
     return esp;
 }
@@ -35,15 +35,14 @@ InterruptManager* InterruptManager::ActiveInterruptManager = 0;
 void InterruptManager::SetInterruptDescriptorTableEntry(uint8_t interrupt,
     uint16_t CodeSegment, void (*handler)(), uint8_t DescriptorPrivilegeLevel, uint8_t DescriptorType)
 {
-    // address of pointer to code segment (relative to global descriptor table)
-    // and address of the handler (relative to segment)
-    interruptDescriptorTable[interrupt].handlerAddressLowBits = ((uint32_t) handler) & 0xFFFF;
-    interruptDescriptorTable[interrupt].handlerAddressHighBits = (((uint32_t) handler) >> 16) & 0xFFFF;
-    interruptDescriptorTable[interrupt].gdt_codeSegmentSelector = CodeSegment;
-
+    uint64_t handlerAddr = (uint64_t)handler;
+    interruptDescriptorTable[interrupt].offset_low = handlerAddr & 0xFFFF;
+    interruptDescriptorTable[interrupt].selector = CodeSegment;
+    interruptDescriptorTable[interrupt].ist = 0;
     const uint8_t IDT_DESC_PRESENT = 0x80;
-    interruptDescriptorTable[interrupt].access = IDT_DESC_PRESENT | ((DescriptorPrivilegeLevel & 3) << 5) | DescriptorType;
-    interruptDescriptorTable[interrupt].reserved = 0;
+    interruptDescriptorTable[interrupt].type_attr = IDT_DESC_PRESENT | ((DescriptorPrivilegeLevel & 3) << 5) | DescriptorType;
+    interruptDescriptorTable[interrupt].offset_mid = (handlerAddr >> 16) & 0xFFFF;
+    interruptDescriptorTable[interrupt].offset_high = (handlerAddr >> 32) & 0xFFFFFFFF;
 }
 
 
@@ -55,7 +54,7 @@ InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescr
 {
     this->taskManager = taskManager;
     this->hardwareInterruptOffset = hardwareInterruptOffset;
-    uint32_t CodeSegment = globalDescriptorTable->CodeSegmentSelector();
+    uint16_t CodeSegment = globalDescriptorTable->CodeSegmentSelector();
 
     const uint8_t IDT_INTERRUPT_GATE = 0xE;
     for(uint8_t i = 255; i > 0; --i)
@@ -109,7 +108,6 @@ InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescr
     programmableInterruptControllerMasterCommandPort.Write(0x11);
     programmableInterruptControllerSlaveCommandPort.Write(0x11);
 
-    // remap
     programmableInterruptControllerMasterDataPort.Write(hardwareInterruptOffset);
     programmableInterruptControllerSlaveDataPort.Write(hardwareInterruptOffset + 8);
 
@@ -124,7 +122,7 @@ InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescr
 
     InterruptDescriptorTablePointer idt_pointer;
     idt_pointer.size  = 256 * sizeof(GateDescriptor) - 1;
-    idt_pointer.base  = (uint32_t)interruptDescriptorTable;
+    idt_pointer.base  = (uint64_t)interruptDescriptorTable;
     asm volatile("lidt %0" : : "m" (idt_pointer));
 }
 
@@ -156,7 +154,7 @@ void InterruptManager::Deactivate()
     }
 }
 
-uint32_t InterruptManager::HandleInterrupt(uint8_t interrupt, uint32_t esp)
+uint64_t InterruptManager::HandleInterrupt(uint8_t interrupt, uint64_t esp)
 {
     if(ActiveInterruptManager != 0)
         return ActiveInterruptManager->DoHandleInterrupt(interrupt, esp);
@@ -164,7 +162,7 @@ uint32_t InterruptManager::HandleInterrupt(uint8_t interrupt, uint32_t esp)
 }
 
 
-uint32_t InterruptManager::DoHandleInterrupt(uint8_t interrupt, uint32_t esp)
+uint64_t InterruptManager::DoHandleInterrupt(uint8_t interrupt, uint64_t esp)
 {
     if(handlers[interrupt] != 0)
     {
@@ -178,10 +176,9 @@ uint32_t InterruptManager::DoHandleInterrupt(uint8_t interrupt, uint32_t esp)
 
     if(interrupt == hardwareInterruptOffset)
     {
-        esp = (uint32_t)taskManager->Schedule((CPUState*)esp);
+        esp = (uint64_t)taskManager->Schedule((CPUState*)esp);
     }
 
-    // hardware interrupts must be acknowledged
     if(hardwareInterruptOffset <= interrupt && interrupt < hardwareInterruptOffset+16)
     {
         programmableInterruptControllerMasterCommandPort.Write(0x20);

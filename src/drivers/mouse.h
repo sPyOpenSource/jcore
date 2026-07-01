@@ -36,7 +36,7 @@ namespace myos
         public:
             MouseDriver(myos::hardwarecommunication::InterruptManager* manager, MouseEventHandler* handler);
             ~MouseDriver();
-            virtual myos::common::uint32_t HandleInterrupt(myos::common::uint32_t esp);
+            virtual myos::common::uint64_t HandleInterrupt(myos::common::uint64_t esp);
             virtual void Activate();
         };
 

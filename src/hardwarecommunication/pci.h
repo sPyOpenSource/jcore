@@ -33,7 +33,7 @@ namespace myos
         class PeripheralComponentInterconnectDeviceDescriptor
         {
         public:
-            myos::common::uint32_t portBase;
+            myos::common::uint64_t portBase;
             myos::common::uint32_t interrupt;
 
             myos::common::uint16_t bus;

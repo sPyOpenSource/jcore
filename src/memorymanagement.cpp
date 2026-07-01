@@ -89,26 +89,26 @@ void MemoryManager::free(void* ptr)
 }
 
 
-void* operator new(unsigned size)
+void* operator new(unsigned long size)
 {
     if(myos::MemoryManager::activeMemoryManager == 0)
         return 0;
     return myos::MemoryManager::activeMemoryManager->malloc(size);
 }
 
-void* operator new[](unsigned size)
+void* operator new[](unsigned long size)
 {
     if(myos::MemoryManager::activeMemoryManager == 0)
         return 0;
     return myos::MemoryManager::activeMemoryManager->malloc(size);
 }
 
-void* operator new(unsigned size, void* ptr)
+void* operator new(unsigned long size, void* ptr)
 {
     return ptr;
 }
 
-void* operator new[](unsigned size, void* ptr)
+void* operator new[](unsigned long size, void* ptr)
 {
     return ptr;
 }

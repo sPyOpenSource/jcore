@@ -1,4 +1,3 @@
-
 #ifndef __MYOS__MULTITASKING_H
 #define __MYOS__MULTITASKING_H
 
@@ -7,31 +6,29 @@
 
 namespace myos
 {
-
     struct CPUState
     {
-        common::uint32_t eax;
-        common::uint32_t ebx;
-        common::uint32_t ecx;
-        common::uint32_t edx;
-
-        common::uint32_t esi;
-        common::uint32_t edi;
-        common::uint32_t ebp;
-
-        /*
-        common::uint32_t gs;
-        common::uint32_t fs;
-        common::uint32_t es;
-        common::uint32_t ds;
-        */
-        common::uint32_t error;
-
-        common::uint32_t eip;
-        common::uint32_t cs;
-        common::uint32_t eflags;
-        common::uint32_t esp;
-        common::uint32_t ss;
+        common::uint64_t rax;
+        common::uint64_t rbx;
+        common::uint64_t rcx;
+        common::uint64_t rdx;
+        common::uint64_t rsi;
+        common::uint64_t rdi;
+        common::uint64_t rbp;
+        common::uint64_t r8;
+        common::uint64_t r9;
+        common::uint64_t r10;
+        common::uint64_t r11;
+        common::uint64_t r12;
+        common::uint64_t r13;
+        common::uint64_t r14;
+        common::uint64_t r15;
+        common::uint64_t error;
+        common::uint64_t rip;
+        common::uint64_t cs;
+        common::uint64_t rflags;
+        common::uint64_t rsp;
+        common::uint64_t ss;
     } __attribute__((packed));
 
 
@@ -39,7 +36,7 @@ namespace myos
     {
     friend class TaskManager;
     private:
-        common::uint8_t stack[4096]; // 4 KiB
+        common::uint8_t stack[8192]; // 8 KiB
         CPUState* cpustate;
     public:
         Task(GlobalDescriptorTable *gdt, void entrypoint());
@@ -60,6 +57,5 @@ namespace myos
         CPUState* Schedule(CPUState* cpustate);
     };
 }
-
 
 #endif

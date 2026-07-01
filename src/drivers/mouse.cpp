@@ -61,7 +61,7 @@ void printf(char*);
         dataport.Read();
     }
 
-    uint32_t MouseDriver::HandleInterrupt(uint32_t esp)
+    uint64_t MouseDriver::HandleInterrupt(uint64_t esp)
     {
         uint8_t status = commandport.Read();
         if (!(status & 0x20))

@@ -7,32 +7,29 @@ using namespace myos::common;
 
 Task::Task(GlobalDescriptorTable *gdt, void entrypoint())
 {
-    cpustate = (CPUState*)(stack + 4096 - sizeof(CPUState));
+    cpustate = (CPUState*)(stack + 8192 - sizeof(CPUState));
 
-    cpustate->eax = 0;
-    cpustate->ebx = 0;
-    cpustate->ecx = 0;
-    cpustate->edx = 0;
+    cpustate->rax = 0;
+    cpustate->rbx = 0;
+    cpustate->rcx = 0;
+    cpustate->rdx = 0;
 
-    cpustate->esi = 0;
-    cpustate->edi = 0;
-    cpustate->ebp = 0;
+    cpustate->rsi = 0;
+    cpustate->rdi = 0;
+    cpustate->rbp = 0;
 
-    /*
-    cpustate->gs = 0;
-    cpustate->fs = 0;
-    cpustate->es = 0;
-    cpustate->ds = 0;
-    */
+    cpustate->r8 = 0;
+    cpustate->r9 = 0;
+    cpustate->r10 = 0;
+    cpustate->r11 = 0;
+    cpustate->r12 = 0;
+    cpustate->r13 = 0;
+    cpustate->r14 = 0;
+    cpustate->r15 = 0;
 
-    // cpustate->error = 0;
-
-    // cpustate->esp = ;
-    cpustate->eip = (uint32_t)entrypoint;
+    cpustate->rip = (uint64_t)entrypoint;
     cpustate->cs = gdt->CodeSegmentSelector();
-    // cpustate-> ss = ;
-    cpustate->eflags = 0x202;
-
+    cpustate->rflags = 0x202;
 }
 
 Task::~Task()

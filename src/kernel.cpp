@@ -89,12 +89,16 @@ void printfHex16(uint16_t key)
     printfHex( key & 0xFF);
 }
 
-void printfHex32(uint32_t key)
+void printfHex64(uint64_t key)
 {
+    printfHex((key >> 56) & 0xFF);
+    printfHex((key >> 48) & 0xFF);
+    printfHex((key >> 40) & 0xFF);
+    printfHex((key >> 32) & 0xFF);
     printfHex((key >> 24) & 0xFF);
     printfHex((key >> 16) & 0xFF);
-    printfHex((key >> 8) & 0xFF);
-    printfHex( key & 0xFF);
+    printfHex((key >> 8 ) & 0xFF);
+    printfHex((key      ) & 0xFF);
 }
 
 
@@ -198,7 +202,7 @@ public:
 
 void sysprintf(char* str)
 {
-    asm("int $0x80" : : "a" (4), "b" (str));
+    asm("int $0x80" : : "D" (4), "S" (str));
 }
 
 void taskA()
@@ -267,10 +271,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
 
     void* allocated = memoryManager.malloc(1024);
     printf("\nallocated: 0x");
-    printfHex(((size_t)allocated >> 24) & 0xFF);
-    printfHex(((size_t)allocated >> 16) & 0xFF);
-    printfHex(((size_t)allocated >> 8 ) & 0xFF);
-    printfHex(((size_t)allocated      ) & 0xFF);
+    printfHex64((uint64_t)allocated);
     printf("\n");
 
     TaskManager taskManager;

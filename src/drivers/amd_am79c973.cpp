@@ -79,20 +79,20 @@ amd_am79c973::amd_am79c973(PeripheralComponentInterconnectDeviceDescriptor *dev,
     initBlock.reserved3 = 0;
     initBlock.logicalAddress = 0;
 
-    sendBufferDescr = (BufferDescriptor*)((((uint32_t)&sendBufferDescrMemory[0]) + 15) & ~((uint32_t)0xF));
-    initBlock.sendBufferDescrAddress = (uint32_t)sendBufferDescr;
-    recvBufferDescr = (BufferDescriptor*)((((uint32_t)&recvBufferDescrMemory[0]) + 15) & ~((uint32_t)0xF));
-    initBlock.recvBufferDescrAddress = (uint32_t)recvBufferDescr;
+    sendBufferDescr = (BufferDescriptor*)((((uint64_t)&sendBufferDescrMemory[0]) + 15) & ~((uint64_t)0xF));
+    initBlock.sendBufferDescrAddress = (uint32_t)(uintptr_t)sendBufferDescr;
+    recvBufferDescr = (BufferDescriptor*)((((uint64_t)&recvBufferDescrMemory[0]) + 15) & ~((uint64_t)0xF));
+    initBlock.recvBufferDescrAddress = (uint32_t)(uintptr_t)recvBufferDescr;
 
     for(uint8_t i = 0; i < 8; i++)
     {
-        sendBufferDescr[i].address = (((uint32_t)&sendBuffers[i]) + 15 ) & ~(uint32_t)0xF;
+        sendBufferDescr[i].address = (uint32_t)((((uintptr_t)&sendBuffers[i]) + 15 ) & ~(uintptr_t)0xF);
         sendBufferDescr[i].flags = 0x7FF
                                  | 0xF000;
         sendBufferDescr[i].flags2 = 0;
         sendBufferDescr[i].avail = 0;
 
-        recvBufferDescr[i].address = (((uint32_t)&recvBuffers[i]) + 15 ) & ~(uint32_t)0xF;
+        recvBufferDescr[i].address = (uint32_t)((((uintptr_t)&recvBuffers[i]) + 15 ) & ~(uintptr_t)0xF);
         recvBufferDescr[i].flags = 0xF7FF
                                  | 0x80000000;
         recvBufferDescr[i].flags2 = 0;
@@ -100,9 +100,9 @@ amd_am79c973::amd_am79c973(PeripheralComponentInterconnectDeviceDescriptor *dev,
     }
 
     registerAddressPort.Write(1);
-    registerDataPort.Write(  (uint32_t)(&initBlock) & 0xFFFF );
+    registerDataPort.Write(  (uint64_t)(&initBlock) & 0xFFFF );
     registerAddressPort.Write(2);
-    registerDataPort.Write(  ((uint32_t)(&initBlock) >> 16) & 0xFFFF );
+    registerDataPort.Write(  ((uint64_t)(&initBlock) >> 16) & 0xFFFF );
 
 }
 
@@ -132,7 +132,7 @@ int amd_am79c973::Reset()
 }
 
 
-uint32_t amd_am79c973::HandleInterrupt(common::uint32_t esp)
+uint64_t amd_am79c973::HandleInterrupt(common::uint64_t esp)
 {
     registerAddressPort.Write(0);
     uint32_t temp = registerDataPort.Read();

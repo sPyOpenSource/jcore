@@ -30,7 +30,7 @@ namespace myos
         public:
             KeyboardDriver(myos::hardwarecommunication::InterruptManager* manager, KeyboardEventHandler *handler);
             ~KeyboardDriver();
-            virtual myos::common::uint32_t HandleInterrupt(myos::common::uint32_t esp);
+            virtual myos::common::uint64_t HandleInterrupt(myos::common::uint64_t esp);
             virtual void Activate();
         };
 

@@ -12,32 +12,36 @@ namespace myos
             class SegmentDescriptor
             {
                 private:
-                    myos::common::uint16_t limit_lo;
-                    myos::common::uint16_t base_lo;
-                    myos::common::uint8_t base_hi;
-                    myos::common::uint8_t type;
-                    myos::common::uint8_t limit_hi;
-                    myos::common::uint8_t base_vhi;
-
+                    common::uint64_t value;
                 public:
-                    SegmentDescriptor(myos::common::uint32_t base, myos::common::uint32_t limit, myos::common::uint8_t type);
-                    myos::common::uint32_t Base();
-                    myos::common::uint32_t Limit();
+                    SegmentDescriptor(common::uint64_t val) : value(val) {}
+                    common::uint64_t Base() { return 0; }
+                    common::uint64_t Limit() { return 0; }
             } __attribute__((packed));
 
-        private:
+            struct TSSDescriptor {
+                common::uint32_t limit_lo;
+                common::uint32_t base_lo;
+                common::uint32_t base_mid;
+                common::uint8_t type;
+                common::uint8_t flags;
+                common::uint32_t base_hi;
+                common::uint32_t reserved;
+            } __attribute__((packed));
+
+            private:
             SegmentDescriptor nullSegmentSelector;
-            SegmentDescriptor unusedSegmentSelector;
             SegmentDescriptor codeSegmentSelector;
             SegmentDescriptor dataSegmentSelector;
+            TSSDescriptor tssDescriptor;
 
         public:
 
             GlobalDescriptorTable();
             ~GlobalDescriptorTable();
 
-            myos::common::uint16_t CodeSegmentSelector();
-            myos::common::uint16_t DataSegmentSelector();
+            common::uint16_t CodeSegmentSelector();
+            common::uint16_t DataSegmentSelector();
     };
 }
 

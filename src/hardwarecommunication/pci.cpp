@@ -78,7 +78,7 @@ void PeripheralComponentInterconnectController::SelectDrivers(DriverManager* dri
                 {
                     BaseAddressRegister bar = GetBaseAddressRegister(bus, device, function, barNum);
                     if(bar.address && (bar.type == InputOutput))
-                        dev.portBase = (uint32_t)bar.address;
+                        dev.portBase = (uint64_t)(uintptr_t)bar.address;
                 }
 
                 Driver* driver = GetDriver(dev, interrupts);

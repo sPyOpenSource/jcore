@@ -46,7 +46,7 @@ void KeyboardDriver::Activate()
     dataport.Write(0xf4);
 }
 
-uint32_t KeyboardDriver::HandleInterrupt(uint32_t esp)
+uint64_t KeyboardDriver::HandleInterrupt(uint64_t esp)
 {
     uint8_t key = dataport.Read();
 

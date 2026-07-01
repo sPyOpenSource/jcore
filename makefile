@@ -1,5 +1,4 @@
-
-# sudo apt-get install g++ binutils libc6-dev-i386
+# sudo apt-get install g++ binutils libc6-dev-amd64
 # sudo apt-get install VirtualBox grub-pc xorriso
 # macOS: brew install llvm (provides ld.lld)
 
@@ -7,10 +6,10 @@ CC = clang
 LD := $(shell command -v /opt/homebrew/bin/ld.lld 2>/dev/null || command -v ld.lld 2>/dev/null || echo "ld.lld")
 GRUB_MKRESCUE := $(shell command -v i686-elf-grub-mkrescue 2>/dev/null || command -v grub-mkrescue 2>/dev/null || echo "grub-mkrescue")
 
-TARGET = --target=i386-pc-none-elf
+TARGET = --target=x86_64-pc-none-elf
 GCCPARAMS = $(TARGET) -ffreestanding -Isrc -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
 ASPARAMS = $(TARGET)
-LDPARAMS = -melf_i386
+LDPARAMS = -melf_x86_64
 
 objects = obj/loader.o \
           obj/cstandardlib.o \
@@ -28,10 +27,10 @@ objects = obj/loader.o \
           obj/drivers/mouse.o \
           obj/drivers/vga.o \
           obj/drivers/ata.o \
-					obj/filesystem/msdospart.o \
-					obj/filesystem/fat.o \
-					obj/filesystem/SdFile.o \
-					obj/filesystem/Volume.o \
+          obj/filesystem/msdospart.o \
+          obj/filesystem/fat.o \
+          obj/filesystem/SdFile.o \
+          obj/filesystem/Volume.o \
           obj/gui/widget.o \
           obj/gui/window.o \
           obj/gui/desktop.o \
@@ -42,7 +41,6 @@ objects = obj/loader.o \
           obj/net/udp.o \
           obj/net/tcp.o \
           obj/kernel.o
-
 
 run: mykernel.iso
 	(killall VirtualBox && sleep 1) || true

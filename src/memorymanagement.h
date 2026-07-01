@@ -34,12 +34,11 @@ namespace myos
 }
 
 
-void* operator new(unsigned size);
-void* operator new[](unsigned size);
+void* operator new(unsigned long size);
+void* operator new[](unsigned long size);
 
-// placement new
-void* operator new(unsigned size, void* ptr);
-void* operator new[](unsigned size, void* ptr);
+void* operator new(unsigned long size, void* ptr);
+void* operator new[](unsigned long size, void* ptr);
 
 void operator delete(void* ptr);
 void operator delete[](void* ptr);

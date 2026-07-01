@@ -14,7 +14,7 @@ namespace myos
         SyscallHandler(hardwarecommunication::InterruptManager* interruptManager, myos::common::uint8_t InterruptNumber);
         ~SyscallHandler();
 
-        virtual myos::common::uint32_t HandleInterrupt(myos::common::uint32_t esp);
+            virtual myos::common::uint64_t HandleInterrupt(myos::common::uint64_t esp);
     };
 }
 

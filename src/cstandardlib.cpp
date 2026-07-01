@@ -1,6 +1,10 @@
+#include <common/types.h>
+
+using myos::common::size_t;
+
 extern "C"
 {
-    void* memcpy(void* dst, const void* src, unsigned int n)
+    void* memcpy(void* dst, const void* src, size_t n)
     {
         char* d = (char*)dst;
         const char* s = (const char*)src;
@@ -9,7 +13,7 @@ extern "C"
         return dst;
     }
 
-    void* memset(void* dst, int c, unsigned int n)
+    void* memset(void* dst, int c, size_t n)
     {
         char* d = (char*)dst;
         while(n--)
@@ -17,7 +21,7 @@ extern "C"
         return dst;
     }
 
-    void* memmove(void* dst, const void* src, unsigned int n)
+    void* memmove(void* dst, const void* src, size_t n)
     {
         char* d = (char*)dst;
         const char* s = (const char*)src;
@@ -36,7 +40,7 @@ extern "C"
         return dst;
     }
 
-    int memcmp(const void* a, const void* b, unsigned int n)
+    int memcmp(const void* a, const void* b, size_t n)
     {
         const char* p = (const char*)a;
         const char* q = (const char*)b;
@@ -50,15 +54,15 @@ extern "C"
         return 0;
     }
 
-    unsigned int strlen(const char* s)
+    size_t strlen(const char* s)
     {
-        unsigned int len = 0;
+        size_t len = 0;
         while(s[len])
             len++;
         return len;
     }
 
-    char* strncpy(char* dst, const char* src, unsigned int n)
+    char* strncpy(char* dst, const char* src, size_t n)
     {
         char* d = dst;
         while(n > 0 && *src)

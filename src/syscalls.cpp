@@ -17,15 +17,15 @@ SyscallHandler::~SyscallHandler()
 
 void printf(char*);
 
-uint32_t SyscallHandler::HandleInterrupt(uint32_t esp)
+uint64_t SyscallHandler::HandleInterrupt(uint64_t esp)
 {
     CPUState* cpu = (CPUState*)esp;
 
 
-    switch(cpu->eax)
+    switch(cpu->rax)
     {
         case 4:
-            printf((char*)cpu->ebx);
+            printf((char*)cpu->rbx);
             break;
 
         default:
