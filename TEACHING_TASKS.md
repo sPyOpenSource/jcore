@@ -10,9 +10,9 @@
 - [ ] **Task 5**: The role of the GDT in long mode
 
 ## Phase 3: Implementation
-- [x] **Task 6**: Walk through `loader.s` - the combined boot file (IN PROGRESS)
-- [ ] **Task 7**: Page tables deep dive - PML4, PDPT, PD structure
-- [ ] **Task 8**: Enabling PAE - What is CR4 bit 5?
+- [x] **Task 6**: Walk through `loader.s` - the combined boot file
+- [x] **Task 7**: Page tables deep dive - PML4, PDPT, PD structure
+- [x] **Task 8**: Enabling PAE - What is CR4 bit 5? (IN PROGRESS)
 - [ ] **Task 9**: The EFER MSR and Long Mode Enable (LME) bit
 - [ ] **Task 10**: Enabling paging - CR0 bit 31
 - [ ] **Task 11**: Setting up the 64-bit GDT

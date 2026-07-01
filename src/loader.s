@@ -23,11 +23,11 @@ multiboot2_header_end:
 .code32
 loader:
     # 1. Setup Page Tables (Identity mapping 0..1GB)
-    mov $pml4_table, %eax
+    mov $pdpt_table, %eax     # PML4[0] points to PDPT
     or $3, %eax               # present | writable
     mov %eax, pml4_table
 
-    mov $pdpt_table, %eax
+    mov $pd_table, %eax       # PDPT[0] points to PD
     or $3, %eax               # present | writable
     mov %eax, pdpt_table
 

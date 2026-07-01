@@ -43,8 +43,17 @@ objects = obj/loader.o \
           obj/kernel.o
 
 run: mykernel.iso
-	(killall VirtualBox && sleep 1) || true
-	VirtualBox --startvm 'kayos' &
+	@if command -v VirtualBox >/dev/null 2>&1 && VirtualBox --version >/dev/null 2>&1; then \
+		echo "Starting with VirtualBox..."; \
+		(killall VirtualBox && sleep 1) || true; \
+		VirtualBox --startvm 'kayos' & \
+	elif command -v qemu-system-x86_64 >/dev/null 2>&1; then \
+		echo "VirtualBox not found or broken, starting with QEMU..."; \
+		qemu-system-x86_64 -cdrom mykernel.iso -m 128 -boot d; \
+	else \
+		echo "Error: Neither VirtualBox nor QEMU found. Please install one of them."; \
+		exit 1; \
+	fi
 
 obj/%.o: src/%.cpp
 	mkdir -p $(@D)
@@ -64,6 +73,7 @@ mykernel.iso: mykernel.bin
 	cp mykernel.bin iso/boot/mykernel.bin
 	echo 'set timeout=0'                      > iso/boot/grub/grub.cfg
 	echo 'set default=0'                     >> iso/boot/grub/grub.cfg
+	echo 'set gfxpayload=text'               >> iso/boot/grub/grub.cfg
 	echo ''                                  >> iso/boot/grub/grub.cfg
 	echo 'menuentry "My Operating System" {' >> iso/boot/grub/grub.cfg
 	echo '  multiboot2 /boot/mykernel.bin'   >> iso/boot/grub/grub.cfg
