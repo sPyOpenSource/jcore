@@ -1,6 +1,7 @@
 
 #include <circle/new.h>
 #include <string.h>
+#include <jvm/jvm_bridge.h>
 #include "flint.h"
 #include "flint_opcodes.h"
 #include "flint_common.h"
@@ -168,7 +169,7 @@ bool ClassLoader::load(FExec *ctx, FlintAPI::IO::FileHandle file) {
     if(!FOffset(ctx, file, 8)) return false;
     if(!FReadUInt16(ctx, file, poolCount)) return false;
     poolCount--;
-    poolTable = (ConstPool *)Flint::malloc(ctx, poolCount * sizeof(ConstPool));
+    poolTable = (ConstPool *)myos::jvm::JVMBridge::AllocateMemory(poolCount * sizeof(ConstPool));
     if(poolTable == NULL) return false;
     for(uint32_t i = 0; i < poolCount; i++) {
         uint8_t tag;
@@ -179,7 +180,7 @@ bool ClassLoader::load(FExec *ctx, FlintAPI::IO::FileHandle file) {
                 uint16_t length;
                 if(!FReadUInt16(ctx, file, length)) return false;
                 if(length > utf8Length) {
-                    utf8Buff = (char *)((utf8Buff == buff) ? Flint::malloc(ctx, length) : Flint::realloc(ctx, utf8Buff, length));
+                    utf8Buff = (char *)((utf8Buff == buff) ? myos::jvm::JVMBridge::AllocateMemory(length) : Flint::realloc(ctx, utf8Buff, length));
                     if(utf8Buff == NULL) return false;
                     utf8Length = length;
                 }
@@ -241,7 +242,7 @@ bool ClassLoader::load(FExec *ctx, FlintAPI::IO::FileHandle file) {
             }
         }
     }
-    if(utf8Buff != buff) Flint::free(utf8Buff);
+    if(utf8Buff != buff) myos::jvm::JVMBridge::FreeMemory(utf8Buff);
 
     if(!FReadUInt16(ctx, file, accessFlags)) return false;
 
@@ -252,7 +253,7 @@ bool ClassLoader::load(FExec *ctx, FlintAPI::IO::FileHandle file) {
 
     if(!FReadUInt16(ctx, file, interfacesCount)) return false;
     if(interfacesCount) {
-        interfaces = (uint16_t *)Flint::malloc(ctx, interfacesCount * sizeof(uint16_t));
+        interfaces = (uint16_t *)myos::jvm::JVMBridge::AllocateMemory(interfacesCount * sizeof(uint16_t));
         if(interfaces == NULL) return false;
         for(uint32_t i = 0; i < interfacesCount; i++)
             if(!FReadUInt16(ctx, file, interfaces[i])) return false;
@@ -261,7 +262,7 @@ bool ClassLoader::load(FExec *ctx, FlintAPI::IO::FileHandle file) {
     if(!FReadUInt16(ctx, file, fieldsCount)) return false;
     if(fieldsCount) {
         uint32_t loadedCount = 0;
-        fields = (FieldInfo *)Flint::malloc(ctx, fieldsCount * sizeof(FieldInfo));
+        fields = (FieldInfo *)myos::jvm::JVMBridge::AllocateMemory(fieldsCount * sizeof(FieldInfo));
         if(fields == NULL) return false;
         for(uint16_t i = 0; i < fieldsCount; i++) {
             uint16_t flag, fieldsNameIndex, fieldsDescIndex, fieldsAttributesCount;
@@ -292,7 +293,7 @@ bool ClassLoader::load(FExec *ctx, FlintAPI::IO::FileHandle file) {
             }
         }
         if(loadedCount == 0) {
-            Flint::free(fields);
+            myos::jvm::JVMBridge::FreeMemory(fields);
             fields = NULL;
             fieldsCount = 0;
         }
@@ -305,7 +306,7 @@ bool ClassLoader::load(FExec *ctx, FlintAPI::IO::FileHandle file) {
 
     if(!FReadUInt16(ctx, file, methodsCount)) return false;
     if(methodsCount) {
-        methods = (MethodInfo *)Flint::malloc(ctx, methodsCount * sizeof(MethodInfo));
+        methods = (MethodInfo *)myos::jvm::JVMBridge::AllocateMemory(methodsCount * sizeof(MethodInfo));
         if(methods == NULL) return false;
         for(uint16_t i = 0; i < methodsCount; i++) {
             uint16_t flag, methodNameIndex, methodDescIndex, methodAttributesCount;
@@ -350,7 +351,7 @@ bool ClassLoader::load(FExec *ctx, FlintAPI::IO::FileHandle file) {
         else if(strcmp(attrName, "NestMembers") == 0) {
             if(!FReadUInt16(ctx, file, nestMembersCount)) return false;
             if(nestMembersCount > 0)
-                nestMembers = (uint16_t *)Flint::malloc(ctx, nestMembersCount * sizeof(uint16_t));
+                nestMembers = (uint16_t *)myos::jvm::JVMBridge::AllocateMemory(nestMembersCount * sizeof(uint16_t));
             for(uint16_t i = 0; i < nestMembersCount; i++)
                 if(!FReadUInt16(ctx, file, nestMembers[i])) return false;
         }
@@ -369,18 +370,18 @@ ClassLoader *ClassLoader::load(FExec *ctx, const char *clsName, uint16_t length)
             ctx->throwNew(Flint::findClass(ctx, "java/io/IOException"), "'%.*s' loading failed", length, clsName);
         return NULL;
     }
-    ClassLoader *loader = (ClassLoader *)Flint::malloc(ctx, sizeof(ClassLoader));
+    ClassLoader *loader = (ClassLoader *)myos::jvm::JVMBridge::AllocateMemory(sizeof(ClassLoader));
     if(loader == NULL) return NULL;
     new (loader)ClassLoader();
     if(loader->load(ctx, file) == false) {
         loader->~ClassLoader();
-        Flint::free(loader);
+        myos::jvm::JVMBridge::FreeMemory(loader);
         return NULL;
     }
     if(FClose(ctx, file) == false) {
         if(loader != NULL) {
             loader->~ClassLoader();
-            Flint::free(loader);
+            myos::jvm::JVMBridge::FreeMemory(loader);
         }
         return NULL;
     }
@@ -400,7 +401,7 @@ CodeAttribute *ClassLoader::readAttributeCode(FExec *ctx, void *file) {
     if(!FReadUInt16(ctx, file, exceptionTableLength)) return NULL;
 
     uint32_t codeAttrSize = sizeof(CodeAttribute) + exceptionTableLength * sizeof(ExceptionTable) + codeLength + 1;
-    CodeAttribute *codeAttr = (CodeAttribute *)Flint::malloc(ctx, codeAttrSize);
+    CodeAttribute *codeAttr = (CodeAttribute *)myos::jvm::JVMBridge::AllocateMemory(codeAttrSize);
     if(codeAttr == NULL) return NULL;
     codeAttr->maxStack = maxStack;
     codeAttr->maxLocals = maxLocals;
@@ -411,22 +412,22 @@ CodeAttribute *ClassLoader::readAttributeCode(FExec *ctx, void *file) {
         ExceptionTable *exceptionTable = (ExceptionTable *)codeAttr->data;
         for(uint16_t i = 0; i < exceptionTableLength; i++) {
             uint16_t startPc, endPc, handlerPc, catchType;
-            if(!FReadUInt16(ctx, file, startPc)) { Flint::free(codeAttr); return NULL; }
-            if(!FReadUInt16(ctx, file, endPc)) { Flint::free(codeAttr); return NULL; }
-            if(!FReadUInt16(ctx, file, handlerPc)) { Flint::free(codeAttr); return NULL; }
-            if(!FReadUInt16(ctx, file, catchType)) { Flint::free(codeAttr); return NULL; }
+            if(!FReadUInt16(ctx, file, startPc)) { myos::jvm::JVMBridge::FreeMemory(codeAttr); return NULL; }
+            if(!FReadUInt16(ctx, file, endPc)) { myos::jvm::JVMBridge::FreeMemory(codeAttr); return NULL; }
+            if(!FReadUInt16(ctx, file, handlerPc)) { myos::jvm::JVMBridge::FreeMemory(codeAttr); return NULL; }
+            if(!FReadUInt16(ctx, file, catchType)) { myos::jvm::JVMBridge::FreeMemory(codeAttr); return NULL; }
             new (&exceptionTable[i])ExceptionTable(startPc, endPc, handlerPc, catchType);
         }
     }
 
     uint16_t attrbutesCount;
-    if(!FReadUInt16(ctx, file, attrbutesCount)) { Flint::free(codeAttr); return NULL; }
+    if(!FReadUInt16(ctx, file, attrbutesCount)) { myos::jvm::JVMBridge::FreeMemory(codeAttr); return NULL; }
     while(attrbutesCount--)
-        if(!dumpAttribute(ctx, file)) { Flint::free(codeAttr); return NULL; }
+        if(!dumpAttribute(ctx, file)) { myos::jvm::JVMBridge::FreeMemory(codeAttr); return NULL; }
 
-    if(!Fseek(ctx, file, codePos)) { Flint::free(codeAttr); return NULL; }
+    if(!Fseek(ctx, file, codePos)) { myos::jvm::JVMBridge::FreeMemory(codeAttr); return NULL; }
     uint8_t *code = (uint8_t *)&((ExceptionTable *)codeAttr->data)[exceptionTableLength];
-    if(!FRead(ctx, file, code, codeLength)) { Flint::free(codeAttr); return NULL; }
+    if(!FRead(ctx, file, code, codeLength)) { myos::jvm::JVMBridge::FreeMemory(codeAttr); return NULL; }
     code[codeLength] = OP_EXIT;
 
     return codeAttr;
@@ -469,7 +470,7 @@ ConstNameAndType *ClassLoader::getConstNameAndType(FExec *ctx, uint16_t poolInde
         if(poolTable[poolIndex].tag & 0x80) {
             uint16_t nameIndex = ((uint16_t *)&poolTable[poolIndex].value)[0];
             uint16_t descIndex = ((uint16_t *)&poolTable[poolIndex].value)[1];
-            ConstNameAndType *tmp = (ConstNameAndType *)Flint::malloc(ctx, sizeof(ConstNameAndType));
+            ConstNameAndType *tmp = (ConstNameAndType *)myos::jvm::JVMBridge::AllocateMemory(sizeof(ConstNameAndType));
             if(tmp == NULL) {
                 Flint::unlock();
                 return NULL;
@@ -490,7 +491,7 @@ ConstField *ClassLoader::getConstField(FExec *ctx, uint16_t poolIndex) {
         if(poolTable[poolIndex].tag & 0x80) {
             uint16_t classNameIndex = ((uint16_t *)&poolTable[poolIndex].value)[0];
             uint16_t nameAndTypeIndex = ((uint16_t *)&poolTable[poolIndex].value)[1];
-            ConstField *tmp = (ConstField *)Flint::malloc(ctx, sizeof(ConstField));
+            ConstField *tmp = (ConstField *)myos::jvm::JVMBridge::AllocateMemory(sizeof(ConstField));
             if(tmp == NULL) {
                 Flint::unlock();
                 return NULL;
@@ -498,7 +499,7 @@ ConstField *ClassLoader::getConstField(FExec *ctx, uint16_t poolIndex) {
             ConstNameAndType *nameAndType = getConstNameAndType(ctx, nameAndTypeIndex);
             if(nameAndType == NULL) {
                 Flint::unlock();
-                Flint::free(tmp);
+                myos::jvm::JVMBridge::FreeMemory(tmp);
                 return NULL;
             }
             new (tmp)ConstField(getConstClassName(classNameIndex), nameAndType);
@@ -517,7 +518,7 @@ ConstMethod *ClassLoader::getConstMethod(FExec *ctx, uint16_t poolIndex) {
         if(poolTable[poolIndex].tag & 0x80) {
             uint16_t classNameIndex = ((uint16_t *)&poolTable[poolIndex].value)[0];
             uint16_t nameAndTypeIndex = ((uint16_t *)&poolTable[poolIndex].value)[1];
-            ConstMethod *tmp = (ConstMethod *)Flint::malloc(ctx, sizeof(ConstMethod));
+            ConstMethod *tmp = (ConstMethod *)myos::jvm::JVMBridge::AllocateMemory(sizeof(ConstMethod));
             if(tmp == NULL) {
                 Flint::unlock();
                 return NULL;
@@ -525,7 +526,7 @@ ConstMethod *ClassLoader::getConstMethod(FExec *ctx, uint16_t poolIndex) {
             ConstNameAndType *nameAndType = getConstNameAndType(ctx, nameAndTypeIndex);
             if(nameAndType == NULL) {
                 Flint::unlock();
-                Flint::free(tmp);
+                myos::jvm::JVMBridge::FreeMemory(tmp);
                 return NULL;
             }
             new (tmp)ConstMethod(getConstClassName(classNameIndex), nameAndType);
@@ -544,7 +545,7 @@ ConstInterfaceMethod *ClassLoader::getConstInterfaceMethod(FExec *ctx, uint16_t 
         if(poolTable[poolIndex].tag & 0x80) {
             uint16_t classNameIndex = ((uint16_t *)&poolTable[poolIndex].value)[0];
             uint16_t nameAndTypeIndex = ((uint16_t *)&poolTable[poolIndex].value)[1];
-            ConstInterfaceMethod *tmp = (ConstInterfaceMethod *)Flint::malloc(ctx, sizeof(ConstInterfaceMethod));
+            ConstInterfaceMethod *tmp = (ConstInterfaceMethod *)myos::jvm::JVMBridge::AllocateMemory(sizeof(ConstInterfaceMethod));
             if(tmp == NULL) {
                 Flint::unlock();
                 return NULL;
@@ -552,7 +553,7 @@ ConstInterfaceMethod *ClassLoader::getConstInterfaceMethod(FExec *ctx, uint16_t 
             ConstNameAndType *nameAndType = getConstNameAndType(ctx, nameAndTypeIndex);
             if(nameAndType == NULL) {
                 Flint::unlock();
-                Flint::free(tmp);
+                myos::jvm::JVMBridge::FreeMemory(tmp);
                 return NULL;
             }
             new (tmp)ConstInterfaceMethod(getConstClassName(classNameIndex), nameAndType);
@@ -659,7 +660,7 @@ MethodInfo *ClassLoader::getMethodInfo(FExec *ctx, uint8_t methodIndex) {
             uint8_t *attrCode = (uint8_t *)readAttributeCode(ctx, file);
             if(attrCode == NULL) { FClose(NULL, file); Flint::unlock(); return NULL; }
 
-            if(FClose(ctx, file) == false) { Flint::free(attrCode); Flint::unlock(); return NULL; }
+            if(FClose(ctx, file) == false) { myos::jvm::JVMBridge::FreeMemory(attrCode); Flint::unlock(); return NULL; }
 
             method->code = attrCode;
             method->accessFlag = (MethodAccessFlag)(method->accessFlag & ~METHOD_UNLOADED);
@@ -768,7 +769,7 @@ void ClassLoader::staticInitialized(void) {
 }
 
 bool ClassLoader::initStaticFields(FExec *ctx) {
-    staticFields = (FieldsData *)Flint::malloc(ctx, sizeof(FieldsData));
+    staticFields = (FieldsData *)myos::jvm::JVMBridge::AllocateMemory(sizeof(FieldsData));
     if(staticFields == NULL) return false;
     new (staticFields)FieldsData();
     return staticFields->init(ctx, this, true);
@@ -777,7 +778,7 @@ bool ClassLoader::initStaticFields(FExec *ctx) {
 void ClassLoader::clearStaticFields(void) {
     if(staticFields != NULL) {
         staticFields->~FieldsData();
-        Flint::free(staticFields);
+        myos::jvm::JVMBridge::FreeMemory(staticFields);
         staticFields = NULL;
         loaderFlags &= ~FLAG_STATIC_INIT;
     }
@@ -794,33 +795,33 @@ ClassLoader::~ClassLoader(void) {
                 case CONST_INTERFACE_METHOD:
                 case CONST_NAME_AND_TYPE:
                 case CONST_INVOKE_DYNAMIC:
-                    Flint::free((void *)poolTable[i].value);
+                    myos::jvm::JVMBridge::FreeMemory((void *)poolTable[i].value);
                     break;
                 case CONST_LONG:
                 case CONST_DOUBLE:
                     i++;
                     break;
                 case CONST_METHOD_HANDLE:
-                    Flint::free((void *)poolTable[i].value);
+                    myos::jvm::JVMBridge::FreeMemory((void *)poolTable[i].value);
                     break;
                 default:
                     break;
             }
         }
-        Flint::free(poolTable);
+        myos::jvm::JVMBridge::FreeMemory(poolTable);
     }
     if(interfacesCount && interfaces)
-        Flint::free(interfaces);
+        myos::jvm::JVMBridge::FreeMemory(interfaces);
     if(fieldsCount && fields)
-        Flint::free(fields);
+        myos::jvm::JVMBridge::FreeMemory(fields);
     if(methodsCount && methods) {
         for(uint32_t i = 0; i < methodsCount; i++) {
             if(!(methods[i].accessFlag & (METHOD_NATIVE | METHOD_UNLOADED)) && methods[i].code)
-                Flint::free(methods[i].code);
+                myos::jvm::JVMBridge::FreeMemory(methods[i].code);
         }
-        Flint::free(methods);
+        myos::jvm::JVMBridge::FreeMemory(methods);
     }
     if(nestMembersCount && nestMembers)
-        Flint::free(nestMembers);
+        myos::jvm::JVMBridge::FreeMemory(nestMembers);
     clearStaticFields();
 }

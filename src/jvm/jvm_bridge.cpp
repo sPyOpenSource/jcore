@@ -9,12 +9,11 @@ namespace myos {
         }
 
         void* JVMBridge::AllocateMemory(size_t size) {
-            // To be implemented: call MemoryManager::malloc
-            return 0;
+            return MemoryManager::activeMemoryManager->malloc(size);
         }
 
         void JVMBridge::FreeMemory(void* ptr) {
-            // To be implemented
+            MemoryManager::activeMemoryManager->free(ptr);
         }
 
         void JVMBridge::Println(const char* str) {

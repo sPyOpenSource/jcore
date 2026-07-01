@@ -1,6 +1,7 @@
 
 #include <circle/new.h>
 #include <string.h>
+#include <jvm/jvm_bridge.h>
 #include "flint.h"
 #include "flint_java_object.h"
 #include "flint_class_loader.h"
@@ -69,7 +70,7 @@ bool FieldsData::initStatic(FExec *ctx, ClassLoader *loader) {
     }
 
     if(count == 0) return true;
-    fields = (FieldValue *)Flint::malloc(ctx, count * sizeof(FieldValue));
+    fields = (FieldValue *)myos::jvm::JVMBridge::AllocateMemory(count * sizeof(FieldValue));
     if(fields == NULL) return false;
 
     for(uint16_t index = 0; index < fieldsCount; index++) {
@@ -121,7 +122,7 @@ bool FieldsData::initNonStatic(FExec *ctx, ClassLoader *loader) {
     }
 
     if(count == 0) return true;
-    fields = (FieldValue *)Flint::malloc(ctx, count * sizeof(FieldValue));
+    fields = (FieldValue *)myos::jvm::JVMBridge::AllocateMemory(count * sizeof(FieldValue));
     if(fields == NULL) return false;
 
     uint16_t fieldIndex = count;
@@ -197,5 +198,5 @@ FieldValue *FieldsData::getFieldByIndex(uint32_t index) const {
 }
 
 FieldsData::~FieldsData(void) {
-    if(fields) Flint::free(fields);
+    if(fields) myos::jvm::JVMBridge::FreeMemory(fields);
 }

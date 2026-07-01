@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <jvm/jvm_bridge.h>
 #include "flint.h"
 #include "flint_utf8.h"
 #include "flint_system_api.h"
@@ -88,10 +89,10 @@ bool Flint::isHeapPointer(void *p) {
 void *Flint::malloc(FExec *ctx, uint32_t size) {
     if(++objectCountToGc >= OBJECT_COUNT_TO_GC)
         gc();
-    void *p = FlintAPI::System::malloc(size);
+    void *p = myos::jvm::JVMBridge::AllocateMemory(size);
     if(p == NULL) {
         gc();
-        p = FlintAPI::System::malloc(size);
+        p = myos::jvm::JVMBridge::AllocateMemory(size);
     }
     if(p == NULL) {
         if(ctx != NULL) {
@@ -110,27 +111,23 @@ void *Flint::malloc(FExec *ctx, uint32_t size) {
 }
 
 void *Flint::realloc(FExec *ctx, void *p, uint32_t size) {
-    p = FlintAPI::System::realloc(p, size);
-    if(p == NULL) {
+    void *newp = myos::jvm::JVMBridge::AllocateMemory(size);
+    if(newp && p) {
+        memcpy(newp, p, size);
+        myos::jvm::JVMBridge::FreeMemory(p);
+    }
+    if(newp == NULL) {
         gc();
-        p = FlintAPI::System::malloc(size);
+        newp = myos::jvm::JVMBridge::AllocateMemory(size);
     }
-    if(p == NULL) {
-        if(ctx != NULL) {
-            JClass *excpCls = Flint::findClass(NULL, outOfMemoryErrorTypeName);
-            if(excpCls != NULL)
-                ctx->throwNew(excpCls);
-            else
-                ctx->excp = (JThrowable *)((uintptr_t)outOfMemoryErrorTypeName | 0x01);
-        }
+    if(newp != NULL) {
+        updateHeapRegion(newp);
     }
-    else
-        updateHeapRegion(p);
-    return p;
+    return newp;
 }
 
 void Flint::free(void *p) {
-    FlintAPI::System::free(p);
+    myos::jvm::JVMBridge::FreeMemory(p);
     heapCount--;
 }
 
