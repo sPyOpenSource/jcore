@@ -1,0 +1,90 @@
+make: Nothing to be done for `all'.
+Config.mk is being read
+make: Nothing to be done for `all'.
+Config.mk is being read
+make: Nothing to be done for `all'.
+Config.mk is being read
+make: Nothing to be done for `all'.
+Config.mk is being read
+make: `libinput.a' is up to date.
+Config.mk is being read
+make: `libfs.a' is up to date.
+Config.mk is being read
+make: `libfatfs.a' is up to date.
+Config.mk is being read
+make: `libsched.a' is up to date.
+Config.mk is being read
+make: `libnet.a' is up to date.
+Config.mk is being read
+make: Nothing to be done for `all'.
+Config.mk is being read
+make: `libfont.a' is up to date.
+Config.mk is being read
+RASPPI is 3
+  LD    kernel8.elf
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: warning: cannot find entry symbol _start; defaulting to 0000000000000000
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o: in function `CBcmFrameBuffer::~CBcmFrameBuffer()':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:125:(.text+0xc8): undefined reference to `operator delete(void*, unsigned long)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:127:(.text+0xdc): undefined reference to `CDMAChannel::~CDMAChannel()'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:127:(.text+0xe8): undefined reference to `CDMAChannel::~CDMAChannel()'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o: in function `CBcmFrameBuffer::SetArea(CDisplay::TArea const&, void const*, void (*)(void*), void*)':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:238:(.text+0x17c): undefined reference to `CDMAChannel::SetupMemCopy2D(void*, void const*, unsigned long, unsigned int, unsigned long, unsigned int)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:246:(.text+0x198): undefined reference to `CDMAChannel::SetCompletionRoutine(void (*)(unsigned int, unsigned int, bool, void*), void*)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:247:(.text+0x1b4): undefined reference to `CDMAChannel::Start()'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:251:(.text+0x1bc): undefined reference to `CDMAChannel::Start()'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:252:(.text+0x1c4): undefined reference to `CDMAChannel::Wait()'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o: in function `CBcmFrameBuffer::~CBcmFrameBuffer()':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:125:(.text+0x238): undefined reference to `operator delete(void*, unsigned long)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:127:(.text+0x244): undefined reference to `CDMAChannel::~CDMAChannel()'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o: in function `CBcmFrameBuffer::~CBcmFrameBuffer()':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:127:(.text+0x258): undefined reference to `operator delete(void*, unsigned long)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o: in function `CBcmFrameBuffer::CBcmFrameBuffer(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, bool)':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:62:(.text+0x2b4): undefined reference to `CDisplay::CDisplay(CDisplay::TColorModel)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:61:(.text+0x2d8): undefined reference to `CInterruptSystem::Get()'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:61:(.text+0x2e8): undefined reference to `CDMAChannel::CDMAChannel(unsigned int, CInterruptSystem*)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:114:(.text+0x398): undefined reference to `memcpy'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:109:(.text+0x3e8): undefined reference to `operator new[](unsigned long)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:111:(.text+0x3fc): undefined reference to `memset'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o: in function `CBcmFrameBuffer::Initialize()':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:185:(.text+0x600): undefined reference to `CKernelOptions::Get()'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmframebuffer.cpp:188:(.text+0x608): undefined reference to `CKernelOptions::GetBacklight() const'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o:(.rodata._ZTV15CBcmFrameBuffer[_ZTV15CBcmFrameBuffer]+0x48): undefined reference to `CDisplay::GetParent() const'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o:(.rodata._ZTV15CBcmFrameBuffer[_ZTV15CBcmFrameBuffer]+0x50): undefined reference to `CDisplay::GetOffsetX() const'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmframebuffer.o:(.rodata._ZTV15CBcmFrameBuffer[_ZTV15CBcmFrameBuffer]+0x58): undefined reference to `CDisplay::GetOffsetY() const'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmmailbox.o: in function `CBcmMailBox::Flush()':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmmailbox.cpp:69:(.text+0x68): undefined reference to `CTimer::SimpleMsDelay(unsigned int)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmmailbox.o: in function `CSpinLock::Release()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:74:(.text+0xfc): undefined reference to `LeaveCritical'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmmailbox.o: in function `CSpinLock::Acquire()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:66:(.text+0x114): undefined reference to `EnterCritical'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmmailbox.o: in function `CBcmMailBox::Write(unsigned int)':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmmailbox.cpp:98:(.text+0x130): undefined reference to `assertion_failed'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmmailbox.o: in function `CBcmMailBox::Flush()':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmmailbox.cpp:69:(.text+0x168): undefined reference to `CTimer::SimpleMsDelay(unsigned int)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmmailbox.o: in function `CBcmMailBox::Write(unsigned int)':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmmailbox.cpp:98:(.text+0x204): undefined reference to `assertion_failed'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmpropertytags.o: in function `CBcmPropertyTags::GetTags(void*, unsigned int)':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmpropertytags.cpp:81:(.text+0x58): undefined reference to `CMemorySystem::GetCoherentPage(unsigned int)'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmpropertytags.cpp:85:(.text+0x78): undefined reference to `memcpy'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmpropertytags.cpp:105:(.text+0xd4): undefined reference to `memcpy'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmpropertytags.cpp:75:(.text+0x100): undefined reference to `assertion_failed'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmpropertytags.cpp:76:(.text+0x114): undefined reference to `assertion_failed'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmpropertytags.cpp:78:(.text+0x128): undefined reference to `assertion_failed'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmpropertytags.o: in function `CBcmPropertyTags::GetTag(unsigned int, void*, unsigned int, unsigned int)':
+/Users/xuyi/Source/OS/circle/lib/rpi/bcmpropertytags.cpp:51:(.text+0x1a0): undefined reference to `assertion_failed'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: /Users/xuyi/Source/OS/circle/lib/rpi/bcmpropertytags.cpp:52:(.text+0x1b4): undefined reference to `assertion_failed'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmwatchdog.o: in function `CSpinLock::Acquire()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:66:(.text+0x88): undefined reference to `EnterCritical'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmwatchdog.o: in function `CSpinLock::Release()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:74:(.text+0x9c): undefined reference to `LeaveCritical'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmrandom.o: in function `CSpinLock::Release()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:74:(.text+0x48): undefined reference to `LeaveCritical'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmrandom.o: in function `CSpinLock::Acquire()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:66:(.text+0x54): undefined reference to `EnterCritical'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmrandom.o: in function `CSpinLock::Release()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:74:(.text+0xa0): undefined reference to `LeaveCritical'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmrandom.o: in function `CSpinLock::Acquire()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:66:(.text+0x100): undefined reference to `EnterCritical'
+/Users/xuyi/opt/arm-gnu-toolchain-15.2.rel1-darwin-arm64-aarch64-none-elf/bin/aarch64-none-elf-ld: bcmrandom.o: in function `CSpinLock::Release()':
+/Users/xuyi/Source/OS/circle/lib/rpi/../../include/circle/spinlock.h:74:(.text+0x114): undefined reference to `LeaveCritical'
+make: *** [kernel8.img] Error 1

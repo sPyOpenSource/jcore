@@ -23,8 +23,8 @@
 #include <circle/usb/dwhciframeschedper.h>
 #include <circle/usb/dwhciframeschediso.h>
 #include <circle/sched/scheduler.h>
-#include <circle/bcmpropertytags.h>
-#include <circle/bcm2835.h>
+#include <circle/rpi/bcmpropertytags.h>
+#include <circle/rpi/bcm2835.h>
 #include <circle/synchronize.h>
 #include <circle/logger.h>
 #include <circle/koptions.h>

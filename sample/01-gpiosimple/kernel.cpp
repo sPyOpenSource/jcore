@@ -18,7 +18,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 #include "kernel.h"
-#include <circle/gpiopin.h>
+#include <circle/peripherals/gpiopin.h>
 #include <circle/timer.h>
 
 CKernel::CKernel (void)
