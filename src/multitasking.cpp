@@ -30,6 +30,8 @@ Task::Task(GlobalDescriptorTable *gdt, void entrypoint())
     cpustate->rip = (uint64_t)entrypoint;
     cpustate->cs = gdt->CodeSegmentSelector();
     cpustate->rflags = 0x202;
+    cpustate->rsp = (uint64_t)(stack + 8192);
+    cpustate->ss = gdt->DataSegmentSelector();
 }
 
 Task::~Task()

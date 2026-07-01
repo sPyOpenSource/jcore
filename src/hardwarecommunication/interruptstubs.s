@@ -3,7 +3,15 @@
 .section .text
 .extern _ZN4myos21hardwarecommunication16InterruptManager15HandleInterruptEhy
 
-.macro HandleException num
+.macro HandleExceptionNoError num
+.global _ZN4myos21hardwarecommunication16InterruptManager19HandleException\num\()Ev
+_ZN4myos21hardwarecommunication16InterruptManager19HandleException\num\()Ev:
+    movb $\num, (interruptnumber)
+    pushq $0
+    jmp int_bottom
+.endm
+
+.macro HandleExceptionWithError num
 .global _ZN4myos21hardwarecommunication16InterruptManager19HandleException\num\()Ev
 _ZN4myos21hardwarecommunication16InterruptManager19HandleException\num\()Ev:
     movb $\num, (interruptnumber)
@@ -18,26 +26,26 @@ _ZN4myos21hardwarecommunication16InterruptManager26HandleInterruptRequest\num\()
     jmp int_bottom
 .endm
 
-HandleException 0x00
-HandleException 0x01
-HandleException 0x02
-HandleException 0x03
-HandleException 0x04
-HandleException 0x05
-HandleException 0x06
-HandleException 0x07
-HandleException 0x08
-HandleException 0x09
-HandleException 0x0A
-HandleException 0x0B
-HandleException 0x0C
-HandleException 0x0D
-HandleException 0x0E
-HandleException 0x0F
-HandleException 0x10
-HandleException 0x11
-HandleException 0x12
-HandleException 0x13
+HandleExceptionNoError 0x00
+HandleExceptionNoError 0x01
+HandleExceptionNoError 0x02
+HandleExceptionNoError 0x03
+HandleExceptionNoError 0x04
+HandleExceptionNoError 0x05
+HandleExceptionNoError 0x06
+HandleExceptionNoError 0x07
+HandleExceptionWithError 0x08
+HandleExceptionNoError 0x09
+HandleExceptionWithError 0x0A
+HandleExceptionWithError 0x0B
+HandleExceptionWithError 0x0C
+HandleExceptionWithError 0x0D
+HandleExceptionWithError 0x0E
+HandleExceptionNoError 0x0F
+HandleExceptionNoError 0x10
+HandleExceptionNoError 0x11
+HandleExceptionNoError 0x12
+HandleExceptionNoError 0x13
 
 HandleInterruptRequest 0x00
 HandleInterruptRequest 0x01

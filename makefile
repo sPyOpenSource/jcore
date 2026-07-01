@@ -11,7 +11,8 @@ GCCPARAMS = $(TARGET) -ffreestanding -Isrc -fno-use-cxa-atexit -nostdlib -fno-bu
 ASPARAMS = $(TARGET)
 LDPARAMS = -melf_x86_64
 
-objects = obj/loader.o \
+objects = obj/boot32.o \
+		  obj/boot64.o \
           obj/cstandardlib.o \
           obj/gdt.o \
           obj/memorymanagement.o \
@@ -73,7 +74,6 @@ mykernel.iso: mykernel.bin
 	cp mykernel.bin iso/boot/mykernel.bin
 	echo 'set timeout=0'                      > iso/boot/grub/grub.cfg
 	echo 'set default=0'                     >> iso/boot/grub/grub.cfg
-	echo 'set gfxpayload=text'               >> iso/boot/grub/grub.cfg
 	echo ''                                  >> iso/boot/grub/grub.cfg
 	echo 'menuentry "My Operating System" {' >> iso/boot/grub/grub.cfg
 	echo '  multiboot2 /boot/mykernel.bin'   >> iso/boot/grub/grub.cfg

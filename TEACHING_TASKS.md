@@ -13,20 +13,20 @@
 - [x] **Task 6**: Walk through `loader.s` - the combined boot file
 - [x] **Task 7**: Page tables deep dive - PML4, PDPT, PD structure
 - [x] **Task 8**: Enabling PAE - What is CR4 bit 5? (IN PROGRESS)
-- [ ] **Task 9**: The EFER MSR and Long Mode Enable (LME) bit
-- [ ] **Task 10**: Enabling paging - CR0 bit 31
-- [ ] **Task 11**: Setting up the 64-bit GDT
-- [ ] **Task 12**: The far jump (`ljmp`) to 64-bit mode
-- [ ] **Task 13**: The 64-bit stub - setting up stack and segments
-- [ ] **Task 14**: Calling into C/C++ from 64-bit assembly
+- [x] **Task 9**: The EFER MSR and Long Mode Enable (LME) bit
+- [x] **Task 10**: Enabling paging - CR0 bit 31
+- [x] **Task 11**: Setting up the 64-bit GDT
+- [x] **Task 12**: The far jump (`ljmp`) to 64-bit mode
+- [x] **Task 13**: The 64-bit stub - setting up stack and segments
+- [x] **Task 14**: Calling into C/C++ from 64-bit assembly
 
 ## Phase 4: Verification & Debugging
-- [ ] **Task 15**: How to verify you are in long mode
-- [ ] **Task 16**: Common triple fault causes and fixes
-- [ ] **Task 17**: QEMU debugging tips for boot code
-- [ ] **Task 18**: Reviewing the existing `boot32.s` and `boot64.s`
-- [ ] **Task 19**: Comparing old split approach vs combined `loader.s`
+- [x] **Task 15**: How to verify you are in long mode
+- [x] **Task 16**: Common triple fault causes and fixes
+- [x] **Task 17**: QEMU debugging tips for boot code
+- [x] **Task 18**: Reviewing the existing `boot32.s` and `boot64.s`
+- [x] **Task 19**: Comparing old split approach vs combined `loader.s`
 - [ ] **Task 20**: Exercises and challenges for the student
 
 ---
-*Progress: 0/20 tasks completed*
+*Progress: 19/20 tasks completed*

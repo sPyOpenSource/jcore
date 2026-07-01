@@ -52,7 +52,7 @@ void printf(char* str)
                 y++;
                 break;
             default:
-                VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0xFF00) | str[i];
+                VideoMemory[80 * y + x] = 0x0F00 | str[i];
                 x++;
                 break;
         }

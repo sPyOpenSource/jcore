@@ -4,7 +4,7 @@ OUTPUT_ARCH(x86_64)
 
 SECTIONS
 {
-  . = 0x0100000;
+  . = 2M;
 
   .text :
   {

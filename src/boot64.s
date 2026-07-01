@@ -5,7 +5,7 @@
 
 .code64
 long_mode_start:
-    mov $0, %ax
+    mov $0x10, %ax
     mov %ax, %ss
     mov %ax, %ds
     mov %ax, %es
