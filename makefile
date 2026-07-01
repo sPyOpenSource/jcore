@@ -13,6 +13,7 @@ ASPARAMS = $(TARGET)
 LDPARAMS = -melf_i386
 
 objects = obj/loader.o \
+          obj/cstandardlib.o \
           obj/gdt.o \
           obj/memorymanagement.o \
           obj/drivers/driver.o \
