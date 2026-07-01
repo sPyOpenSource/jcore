@@ -1,11 +1,19 @@
-.set MAGIC, 0x1badb002
-.set FLAGS, (1 << 0 | 1 << 1)
-.set CHECKSUM, -(MAGIC + FLAGS)
+.set MAGIC, 0xe85250d6
+.set ARCH, 0
+.set HEADER_LEN, multiboot2_header_end - multiboot2_header_start
+.set CHECKSUM, 0x100000000 - (MAGIC + ARCH + HEADER_LEN)
 
 .section .multiboot
+.align 8
+multiboot2_header_start:
     .long MAGIC
-    .long FLAGS
+    .long ARCH
+    .long HEADER_LEN
     .long CHECKSUM
+    .word 0
+    .word 0
+    .long 8
+multiboot2_header_end:
 
 
 .section .text

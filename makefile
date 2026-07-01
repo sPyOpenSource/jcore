@@ -1,9 +1,15 @@
 
 # sudo apt-get install g++ binutils libc6-dev-i386
-# sudo apt-get install VirtualBox grub-legacy xorriso
+# sudo apt-get install VirtualBox grub-pc xorriso
+# macOS: brew install llvm (provides ld.lld)
 
-GCCPARAMS = -m32 -Isrc -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
-ASPARAMS = --32
+CC = clang
+LD := $(shell command -v /opt/homebrew/bin/ld.lld 2>/dev/null || command -v ld.lld 2>/dev/null || echo "ld.lld")
+GRUB_MKRESCUE := $(shell command -v i686-elf-grub-mkrescue 2>/dev/null || command -v grub-mkrescue 2>/dev/null || echo "grub-mkrescue")
+
+TARGET = --target=i386-pc-none-elf
+GCCPARAMS = $(TARGET) -ffreestanding -Isrc -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
+ASPARAMS = $(TARGET)
 LDPARAMS = -melf_i386
 
 objects = obj/loader.o \
@@ -43,14 +49,14 @@ run: mykernel.iso
 
 obj/%.o: src/%.cpp
 	mkdir -p $(@D)
-	gcc $(GCCPARAMS) -c -o $@ $<
+	$(CC) $(GCCPARAMS) -c -o $@ $<
 
 obj/%.o: src/%.s
 	mkdir -p $(@D)
-	as $(ASPARAMS) -o $@ $<
+	$(CC) $(ASPARAMS) -c -o $@ $<
 
 mykernel.bin: linker.ld $(objects)
-	ld $(LDPARAMS) -T $< -o $@ $(objects)
+	$(LD) $(LDPARAMS) -T $< -o $@ $(objects)
 
 mykernel.iso: mykernel.bin
 	mkdir iso
@@ -61,10 +67,10 @@ mykernel.iso: mykernel.bin
 	echo 'set default=0'                     >> iso/boot/grub/grub.cfg
 	echo ''                                  >> iso/boot/grub/grub.cfg
 	echo 'menuentry "My Operating System" {' >> iso/boot/grub/grub.cfg
-	echo '  multiboot /boot/mykernel.bin'    >> iso/boot/grub/grub.cfg
+	echo '  multiboot2 /boot/mykernel.bin'   >> iso/boot/grub/grub.cfg
 	echo '  boot'                            >> iso/boot/grub/grub.cfg
 	echo '}'                                 >> iso/boot/grub/grub.cfg
-	grub-mkrescue --output=mykernel.iso iso
+	$(GRUB_MKRESCUE) --output=mykernel.iso iso
 	rm -rf iso
 
 install: mykernel.bin

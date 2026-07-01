@@ -224,16 +224,40 @@ extern "C" void callConstructors()
 }
 
 
-extern "C" void kernelMain(const void* multiboot_structure, uint32_t /*multiboot_magic*/)
+static uint32_t getMemUpper(const void* mbd, uint32_t magic)
+{
+    if(magic == 0x36d76289)
+    {
+        uint32_t totalSize = *(uint32_t*)mbd;
+        uint8_t* tagPtr = (uint8_t*)mbd + 8;
+        while((uint32_t)(tagPtr - (uint8_t*)mbd) < totalSize)
+        {
+            uint32_t tagType = *(uint32_t*)tagPtr;
+            uint32_t tagSize = *(uint32_t*)(tagPtr + 4);
+            if(tagType == 4)
+                return *(uint32_t*)(tagPtr + 12);
+            if(tagType == 0)
+                break;
+            tagPtr += (tagSize + 7) & ~7;
+        }
+        return 0;
+    }
+    else
+    {
+        return *(uint32_t*)(((size_t)mbd) + 8);
+    }
+}
+
+extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_magic)
 {
     printf("Hello World! --- http://www.AlgorithMan.de\n");
 
     GlobalDescriptorTable gdt;
 
 
-    uint32_t* memupper = (uint32_t*)(((size_t)multiboot_structure) + 8);
     size_t heap = 10 * 1024 * 1024;
-    MemoryManager memoryManager(heap, (*memupper) * 1024 - heap - 10 * 1024);
+    uint32_t memUpper = getMemUpper(multiboot_structure, multiboot_magic);
+    MemoryManager memoryManager(heap, memUpper * 1024 - heap - 10 * 1024);
 
     printf("heap: 0x");
     printfHex((heap >> 24) & 0xFF);
