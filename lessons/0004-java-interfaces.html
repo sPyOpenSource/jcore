@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4: Java Interfaces — From Source to Bytecode</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+<style>
+  .side-by-side {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .side-by-side > div {
+    flex: 1;
+  }
+  .side-by-side h3 {
+    margin-top: 0;
+  }
+  .flow-arrow {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--muted);
+    margin: 0.5rem 0;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: monospace;
+    margin-right: 0.3rem;
+  }
+  .tag-source { background: #fef3c7; color: #92400e; }
+  .tag-bytecode { background: #dbeafe; color: #1e40af; }
+  .tag-jvm { background: #ede9fe; color: #5b21b6; }
+</style>
+</head>
+<body>
+
+<h1>Lesson 4: Java Interfaces</h1>
+<p class="subtitle">From the <code>interface</code> keyword to <code>invokeinterface</code> bytecode.</p>
+
+<div class="callout">
+<strong>Mission Connection:</strong> FlintJVM needs to resolve <code>invokeinterface</code> at runtime. Understanding how interfaces compile and link is essential to debugging why your Java program throws <code>UnsupportedOperationException</code> instead of running.
+</div>
+
+<h2>1. What Is an Interface?</h2>
+
+<p>An <strong>interface</strong> is a reference type that defines a contract: a set of method signatures (and since Java 8, default methods and static methods) that implementing classes must provide. Unlike a class, an interface cannot be instantiated directly — it only describes <em>what</em> a type can do, not <em>how</em>.</p>
+
+<pre><code>public interface Drawable {
+    void draw();                      // abstract method
+    default void print() {            // default method (Java 8+)
+        System.out.println("printing");
+    }
+}
+
+public class Circle implements Drawable {
+    public void draw() {              // must implement draw()
+        System.out.println("circle");
+    }
+    // print() inherited from the interface
+}</code></pre>
+
+<table>
+  <tr><th>Feature</th><th>Class</th><th>Interface</th></tr>
+  <tr><td>Can be instantiated</td><td>Yes (<code>new</code>)</td><td>No</td></tr>
+  <tr><td>Fields</td><td>Any</td><td>Only <code>static final</code> (constants)</td></tr>
+  <tr><td>Methods</td><td>Concrete + abstract</td><td>Abstract + default + static</td></tr>
+  <tr><td>Multiple inheritance</td><td>No</td><td>Yes (multiple interfaces)</td></tr>
+  <tr><td>Class file flag</td><td>None (0x0000)</td><td><code>ACC_INTERFACE (0x0200)</code></td></tr>
+</table>
+
+<h2>2. How javac Compiles Interfaces</h2>
+
+<h3>Interface declaration → .class file</h3>
+
+<p>A Java interface compiles to a <code>.class</code> file identical in structure to a class file, with one difference: the <code>access_flags</code> field has the <code>ACC_INTERFACE</code> bit (0x0200) set. The JVM spec says a class must have this bit set to be treated as an interface; otherwise, it's a class.</p>
+
+<pre><code>// Source: Drawable.java
+public interface Drawable {
+    void draw();
+}
+
+// Decompiled class file flags:
+// access_flags = ACC_PUBLIC | ACC_INTERFACE | ACC_ABSTRACT
+//                     0x0001 |       0x0200 |       0x0400  = 0x0601</code></pre>
+
+<h3>Method call → invokeinterface bytecode</h3>
+
+<p>When you call a method through an interface reference:</p>
+
+<pre><code>Drawable d = new Circle();
+d.draw();  // compiles to invokeinterface</code></pre>
+
+<p>This produces a single bytecode instruction:</p>
+
+<table>
+  <tr><th>Instruction</th><th>Opcode</th><th>Operands</th></tr>
+  <tr><td><code>invokeinterface</code></td><td><code>0xB9</code></td><td><em>index</em> (constant pool), <em>count</em> (args + 1), 0</td></tr>
+</table>
+
+<p>The <code>invokeinterface</code> instruction looks up the method in the constant pool (a <code>CONSTANT_InterfaceMethodref</code> entry, tag 11), then performs a <strong>dynamic dispatch</strong> — walking the receiver's class hierarchy to find a concrete implementation.</p>
+
+<h2>3. Why invokeinterface Is Different</h2>
+
+<p>There are four JVM invoke instructions. Each has different dispatch semantics:</p>
+
+<table>
+  <tr><th>Opcode</th><th>Instruction</th><th>Receiver</th><th>Dispatch</th></tr>
+  <tr><td><code>0xB7</code></td><td><code>invokespecial</code></td><td>Known at compile time</td><td>Direct (no vtable)</td></tr>
+  <tr><td><code>0xB8</code></td><td><code>invokestatic</code></td><td>None (static)</td><td>Direct</td></tr>
+  <tr><td><code>0xB9</code></td><td><code>invokeinterface</code></td><td>Interface reference</td><td>Interface method table (itable)</td></tr>
+  <tr><td><code>0xB6</code></td><td><code>invokevirtual</code></td><td>Class reference</td><td>Virtual method table (vtable)</td></tr>
+</table>
+
+<p>The challenge with <code>invokeinterface</code>: unlike <code>invokevirtual</code> (which uses a fixed offset into a vtable), the JVM must search the receiver's class for the interface method because interfaces can be implemented by unrelated classes. To optimize this, JVMs typically build <strong>interface method tables (Itables)</strong> — per-class lookup tables that map interface methods to concrete implementations.</p>
+
+<div class="callout">
+<strong>Inside FlintJVM:</strong> The opcode <code>OP_INVOKEINTERFACE (0xB9)</code> is handled by the <code>invokeInterface</code> method in <code>flint_execution.cpp:62</code>. It reads a <code>CONSTANT_InterfaceMethodref</code> (tag 11 from the constant pool), resolves the method, and dispatches using the receiver's class loader. Look at <code>flint_const_pool.h:17</code> for how interface method references are represented in memory.
+</div>
+
+<h2>4. Default Methods (Java 8+)</h2>
+
+<p>Java 8 introduced <strong>default methods</strong> — methods with a body defined directly in the interface. This changes the dispatch: if no implementing class provides an override, the JVM falls back to the interface's default implementation.</p>
+
+<pre><code>public interface Named {
+    default String name() { return "unknown"; }
+}
+
+public class Person implements Named {
+    // inherits name() -> returns "unknown"
+}
+
+public class Dog implements Named {
+    public String name() { return "fido"; }  // overrides default
+}</code></pre>
+
+<p>In the class file, default methods are marked with <code>ACC_DEFAULT</code> (a synthetic flag). The JVM stores them in the interface's method table and copies them into implementing classes' itables unless overridden.</p>
+
+<h2>5. Key Takeaways</h2>
+
+<ol>
+  <li><strong>Interfaces are just classes with <code>ACC_INTERFACE</code> set.</strong> Same <code>.class</code> file format, same constant pool.</li>
+  <li><strong>Calling an interface method uses <code>invokeinterface</code> (0xB9)</strong>, which requires itable dispatch — slower than vtable dispatch.</li>
+  <li><strong>FlintJVM handles all of this</strong> in <code>flint_execution.cpp</code>, <code>flint_const_pool.cpp</code>, and <code>flint_class_loader.cpp</code> — the embedded runtime classes from <code>java.base.jar</code> include standard library interfaces like <code>Iterable</code>, <code>Comparable</code>, <code>Runnable</code>, etc.</li>
+  <li><strong>Your HelloRPi test failed on <code>UnsupportedOperationException</code></strong> — not because of interface dispatch, but because <code>invokedynamic</code> (for Java 11 string concat) isn't implemented in this FlintJVM build.</li>
+</ol>
+
+<h2>6. Practice: Trace the Dispatch</h2>
+
+<p>Given these types:</p>
+
+<pre><code>interface Talker { String talk(); }
+abstract class Animal implements Talker {}
+class Cat extends Animal { public String talk() { return "meow"; } }
+
+Talker t = new Cat();
+t.talk();</code></pre>
+
+<ol>
+  <li>What access flag will <code>Talker</code>'s class file have?</li>
+  <li>What bytecode instruction is <code>t.talk()</code> compiled to?</li>
+  <li>When the JVM dispatches <code>t.talk()</code>, does it use a vtable or an itable?</li>
+</ol>
+
+<p style="margin-top:1rem;"><em>Answers:</em> (1) <code>ACC_INTERFACE | ACC_ABSTRACT | ACC_PUBLIC = 0x0601</code>, (2) <code>invokeinterface</code> (0xB9), (3) Itable (interface method table).</p>
+
+<h2>Further Reading</h2>
+<ul>
+  <li><strong><a href="https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-2.html#jvms-2.9">JVM Spec §2.9: Class Files</a></strong> — The official specification for class file structure.</li>
+  <li><strong><a href="https://docs.oracle.com/javase/specs/jvms/se11/html/jvms-6.html#jvms-6.5.invokeinterface">JVM Spec §6.5: invokeinterface</a></strong> — The precise semantics of the <code>invokeinterface</code> instruction.</li>
+  <li><strong>FlintJVM source</strong>: <code>addon/FlintJVM/Inc/flint_opcodes.h</code> (opcode definitions), <code>addon/FlintJVM/Inc/flint_const_pool.h</code> (constant pool types), <code>addon/FlintJVM/Inc/flint_execution.h</code> (interface dispatch declaration).</li>
+</ul>
+
+<div class="footer">
+  <p>Ask your teacher follow-up questions about interface dispatch, itables, or how this connects to your FlintJVM port.<br>
+  <a href="0001-jvm-anatomy.html">Lesson 1: JVM Anatomy</a> &middot;
+  <a href="0002-the-native-bridge.html">Lesson 2: The Native Bridge</a> &middot;
+  <a href="0003-native-implementation-walkthrough.html">Lesson 3: Native Implementation Walkthrough</a></p>
+</div>
+
+</body>
+</html>

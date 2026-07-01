@@ -7,4 +7,6 @@
 ## Current State
 - Workspace initialized.
 - Mission defined.
-- Next step: Exploration of Circle's primitives to determine what is already available (heap, threads, etc.).
+- JVM boots on QEMU, native calls work, invokedynamic is the remaining blocker.
+- 602 runtime classes embedded from FlintExample's java.base.jar.
+- 4 lessons created covering JVM anatomy, native bridge, native implementation, and Java interfaces.
