@@ -17,7 +17,9 @@ namespace myos {
         }
 
         void JVMBridge::Println(const char* str) {
-            // To be implemented: call printf
+            extern "C" void printf(char*);
+            printf((char*)str);
+            printf("\n");
         }
     }
 }

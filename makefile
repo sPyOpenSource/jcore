@@ -112,7 +112,7 @@ obj/flint_native_%.o: FlintJVM/Native/flint_native_%.cpp
 	mkdir -p $(@D)
 	$(CC) $(GCCPARAMS) -I FlintJVM/Inc -I FlintJVM/Native/Inc -c -o $@ $<
 
-obj/jvm/jvm_bridge.o: FlintJVM/JVM/jvm_bridge.cpp
+obj/jvm/jvm_bridge.o: src/jvm/jvm_bridge.cpp
 	mkdir -p $(@D)
 	$(CC) $(GCCPARAMS) -I FlintJVM/Inc -I FlintJVM/Native/Inc -c -o $@ $<
 

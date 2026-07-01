@@ -148,10 +148,11 @@ void Flint::setDebugger(FDbg *dbg) {
 }
 
 void Flint::consoleWrite(uint8_t *utf8, uint32_t length) {
-    if(dbg)
-        dbg->consoleWrite(utf8, length);
-    else
-        FlintAPI::System::consoleWrite(utf8, length);
+    extern "C" void printf(char*);
+    for(uint32_t i = 0; i < length; ++i) {
+        char buf[2] = {(char)utf8[i], 0};
+        printf(buf);
+    }
 }
 
 void Flint::print(int64_t num) {
@@ -197,8 +198,7 @@ void Flint::println(int64_t num) {
 }
 
 void Flint::println(const char *ascii) {
-    print(ascii);
-    println();
+    myos::jvm::JVMBridge::Println(ascii);
 }
 
 void Flint::println(JString *str) {
