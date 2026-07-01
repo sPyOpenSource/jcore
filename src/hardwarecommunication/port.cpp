@@ -14,9 +14,6 @@ Port::~Port()
 }
 
 
-
-
-
 Port8Bit::Port8Bit(uint16_t portnumber)
     : Port(portnumber)
 {
@@ -37,9 +34,6 @@ uint8_t Port8Bit::Read()
 }
 
 
-
-
-
 Port8BitSlow::Port8BitSlow(uint16_t portnumber)
     : Port8Bit(portnumber)
 {
@@ -53,9 +47,6 @@ void Port8BitSlow::Write(uint8_t data)
 {
     Write8Slow(portnumber, data);
 }
-
-
-
 
 
 Port16Bit::Port16Bit(uint16_t portnumber)
@@ -79,8 +70,6 @@ uint16_t Port16Bit::Read()
 
 
 
-
-
 Port32Bit::Port32Bit(uint16_t portnumber)
     : Port(portnumber)
 {
@@ -99,4 +88,3 @@ uint32_t Port32Bit::Read()
 {
     return Read32(portnumber);
 }
-

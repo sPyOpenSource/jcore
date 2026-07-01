@@ -1,0 +1,68 @@
+[
+  {
+    "id": "layer:boot-platform",
+    "name": "Boot & Platform",
+    "description": "Boot entry point, assembly loader, and linker script that define the initial CPU state and memory layout",
+    "nodeIds": ["file:src/loader.s", "file:linker.ld"]
+  },
+  {
+    "id": "layer:kernel-core",
+    "name": "Kernel Core",
+    "description": "Main kernel entry point, initialization, system console output, and common type definitions used throughout the kernel",
+    "nodeIds": ["file:src/kernel.cpp", "file:src/common/types.h", "file:src/common/graphicscontext.h"]
+  },
+  {
+    "id": "layer:hardware-abstraction",
+    "name": "Hardware Abstraction",
+    "description": "CPU segmentation (GDT), I/O port abstraction, interrupt descriptor table (IDT) and PIC management, PCI bus enumeration",
+    "nodeIds": ["file:src/gdt.cpp", "file:src/gdt.h", "file:src/hardwarecommunication/port.cpp", "file:src/hardwarecommunication/port.h", "file:src/hardwarecommunication/interrupts.cpp", "file:src/hardwarecommunication/interrupts.h", "file:src/hardwarecommunication/interruptstubs.s", "file:src/hardwarecommunication/pci.cpp", "file:src/hardwarecommunication/pci.h"]
+  },
+  {
+    "id": "layer:memory-management",
+    "name": "Memory Management",
+    "description": "Free-list-based kernel heap allocator with global operator new/delete overrides",
+    "nodeIds": ["file:src/memorymanagement.cpp", "file:src/memorymanagement.h"]
+  },
+  {
+    "id": "layer:task-management",
+    "name": "Task Management",
+    "description": "Cooperative multitasking with round-robin scheduler and interrupt-based syscall dispatch",
+    "nodeIds": ["file:src/multitasking.cpp", "file:src/multitasking.h", "file:src/syscalls.cpp", "file:src/syscalls.h"]
+  },
+  {
+    "id": "layer:device-drivers",
+    "name": "Device Drivers",
+    "description": "Hardware driver framework and concrete drivers for PS/2 keyboard, PS/2 mouse, VGA graphics, ATA storage, and AMD Am79C973 Ethernet NIC",
+    "nodeIds": ["file:src/drivers/driver.cpp", "file:src/drivers/driver.h", "file:src/drivers/keyboard.cpp", "file:src/drivers/keyboard.h", "file:src/drivers/mouse.cpp", "file:src/drivers/mouse.h", "file:src/drivers/vga.cpp", "file:src/drivers/vga.h", "file:src/drivers/ata.cpp", "file:src/drivers/ata.h", "file:src/drivers/amd_am79c973.cpp", "file:src/drivers/amd_am79c973.h"]
+  },
+  {
+    "id": "layer:filesystem",
+    "name": "Filesystem",
+    "description": "FAT12/16/32 filesystem with MBR partition parsing, cluster-chain management, file operations, and SD card wrapper (adapted from Arduino SdFat library)",
+    "nodeIds": ["file:src/filesystem/fat.cpp", "file:src/filesystem/fat.h", "file:src/filesystem/FatStructs.h", "file:src/filesystem/SdFile.cpp", "file:src/filesystem/Volume.cpp", "file:src/filesystem/msdospart.cpp", "file:src/filesystem/msdospart.h", "file:src/filesystem/File.cpp", "file:src/filesystem/SD.cpp", "file:src/filesystem/SD.h"]
+  },
+  {
+    "id": "layer:gui",
+    "name": "GUI",
+    "description": "Graphical desktop environment with composable widgets, draggable windows, mouse cursor rendering, and hierarchical event dispatch",
+    "nodeIds": ["file:src/gui/desktop.cpp", "file:src/gui/desktop.h", "file:src/gui/widget.cpp", "file:src/gui/widget.h", "file:src/gui/window.cpp", "file:src/gui/window.h"]
+  },
+  {
+    "id": "layer:networking",
+    "name": "Networking",
+    "description": "Full network protocol stack: Ethernet framing, ARP resolution, IPv4 routing, ICMP ping, UDP datagrams, and TCP connection state machine",
+    "nodeIds": ["file:src/net/arp.cpp", "file:src/net/arp.h", "file:src/net/etherframe.cpp", "file:src/net/etherframe.h", "file:src/net/icmp.cpp", "file:src/net/icmp.h", "file:src/net/ipv4.cpp", "file:src/net/ipv4.h", "file:src/net/tcp.cpp", "file:src/net/tcp.h", "file:src/net/udp.cpp", "file:src/net/udp.h"]
+  },
+  {
+    "id": "layer:build-config",
+    "name": "Build & Config",
+    "description": "Build system configuration and project settings",
+    "nodeIds": ["file:makefile", "file:.gitignore"]
+  },
+  {
+    "id": "layer:documentation",
+    "name": "Documentation",
+    "description": "Project-level documentation and licensing",
+    "nodeIds": ["file:CHANGELOG", "file:LICENSE"]
+  }
+]

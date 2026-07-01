@@ -1,0 +1,50 @@
+[
+  {
+    "order": 1,
+    "title": "Boot Entry Point",
+    "description": "Start at the Multiboot-compliant assembly loader that sets up a 2MB kernel stack, calls global constructors, and jumps to kernelMain with multiboot info.",
+    "nodeIds": ["file:src/loader.s", "file:linker.ld"]
+  },
+  {
+    "order": 2,
+    "title": "Kernel Initialization",
+    "description": "The main kernel entry point where all subsystems are initialized in sequence: GDT, MemoryManager, InterruptManager, PCI bus, drivers, FAT filesystem, GUI desktop, and the full networking stack. See the initialization order in kernelMain.",
+    "nodeIds": ["file:src/kernel.cpp", "file:src/common/types.h"]
+  },
+  {
+    "order": 3,
+    "title": "Hardware Platform: GDT, Ports, Interrupts, PCI",
+    "description": "The x86 hardware abstraction layer: GlobalDescriptorTable for segmentation, I/O port abstractions (8/16/32 bit), PIC-based interrupt handling with IDT setup, interrupt stubs in assembly, and PCI bus enumeration with automatic driver discovery.",
+    "nodeIds": ["file:src/gdt.cpp", "file:src/gdt.h", "file:src/hardwarecommunication/port.cpp", "file:src/hardwarecommunication/interrupts.cpp", "file:src/hardwarecommunication/interruptstubs.s", "file:src/hardwarecommunication/pci.cpp"]
+  },
+  {
+    "order": 4,
+    "title": "Memory Management and Multitasking",
+    "description": "The kernel heap allocator using a free-list-based MemoryManager (with global operator new/delete overrides), and the cooperative multitasking system with round-robin scheduling and interrupt-based syscall dispatch.",
+    "nodeIds": ["file:src/memorymanagement.cpp", "file:src/memorymanagement.h", "file:src/multitasking.cpp", "file:src/multitasking.h", "file:src/syscalls.cpp", "file:src/syscalls.h"]
+  },
+  {
+    "order": 5,
+    "title": "Device Drivers",
+    "description": "The driver framework and hardware drivers: Driver base class with lifecycle, PS/2 keyboard with scancode-to-ASCII mapping, PS/2 mouse with relative motion tracking, VGA graphics (320x200x256), ATA PATA storage driver, and the AMD Am79C973 Ethernet NIC driver with DMA descriptor rings.",
+    "nodeIds": ["file:src/drivers/driver.cpp", "file:src/drivers/keyboard.cpp", "file:src/drivers/mouse.cpp", "file:src/drivers/vga.cpp", "file:src/drivers/ata.cpp", "file:src/drivers/amd_am79c973.cpp"]
+  },
+  {
+    "order": 6,
+    "title": "FAT Filesystem",
+    "description": "Full FAT12/16/32 filesystem implementation adapted from the Arduino SdFat library. Includes MBR partition table parsing, BIOS Parameter Block reading, FAT cluster chain management, directory traversal, and file read/write operations via SdFile/SdVolume classes.",
+    "nodeIds": ["file:src/filesystem/FatStructs.h", "file:src/filesystem/fat.cpp", "file:src/filesystem/msdospart.cpp", "file:src/filesystem/Volume.cpp", "file:src/filesystem/SdFile.cpp", "file:src/filesystem/SD.cpp", "file:src/filesystem/File.cpp"]
+  },
+  {
+    "order": 7,
+    "title": "GUI: Desktop, Widgets, Windows",
+    "description": "The graphical user interface layer with a composite widget hierarchy: Widget base class with positioning and focus, CompositeWidget with child management and event dispatch, draggable Window, and Desktop with mouse cursor rendering. Uses VGA as the GraphicsContext.",
+    "nodeIds": ["file:src/common/graphicscontext.h", "file:src/gui/widget.cpp", "file:src/gui/window.cpp", "file:src/gui/desktop.cpp"]
+  },
+  {
+    "order": 8,
+    "title": "Network Stack: Ethernet to TCP",
+    "description": "A full network stack built on the AMD NIC driver: EtherFrameProvider dispatches by etherType, ARP resolves IP-to-MAC, IPv4 provides subnet-based routing, ICMP handles ping, and UDP/TCP provide transport-layer socket abstractions with a full TCP state machine.",
+    "nodeIds": ["file:src/net/etherframe.cpp", "file:src/net/arp.cpp", "file:src/net/ipv4.cpp", "file:src/net/icmp.cpp", "file:src/net/udp.cpp", "file:src/net/tcp.cpp"]
+  }
+]

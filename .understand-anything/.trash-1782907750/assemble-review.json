@@ -1,0 +1,138 @@
+{
+  "needsFixes": true,
+  "fixes": [
+    {
+      "type": "change_type",
+      "nodeId": "file:src/common/graphicscontext.h:GraphicsContext",
+      "from": "typedef",
+      "to": "class"
+    },
+    {
+      "type": "change_type",
+      "nodeId": "file:makefile",
+      "from": "script",
+      "to": "config"
+    },
+    {
+      "type": "change_type",
+      "nodeId": "file:src/hardwarecommunication/interruptstubs.s",
+      "from": "code",
+      "to": "file"
+    },
+    {
+      "type": "change_type",
+      "nodeId": "file:src/loader.s",
+      "from": "code",
+      "to": "file"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/drivers/ata.cpp",
+      "field": "filePath",
+      "value": "src/drivers/ata.cpp"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/drivers/ata.h",
+      "field": "filePath",
+      "value": "src/drivers/ata.h"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/filesystem/FatStructs.h",
+      "field": "filePath",
+      "value": "src/filesystem/FatStructs.h"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/filesystem/SdFile.cpp",
+      "field": "filePath",
+      "value": "src/filesystem/SdFile.cpp"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/filesystem/Volume.cpp",
+      "field": "filePath",
+      "value": "src/filesystem/Volume.cpp"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/filesystem/fat.cpp",
+      "field": "filePath",
+      "value": "src/filesystem/fat.cpp"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/filesystem/fat.h",
+      "field": "filePath",
+      "value": "src/filesystem/fat.h"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/filesystem/msdospart.cpp",
+      "field": "filePath",
+      "value": "src/filesystem/msdospart.cpp"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/filesystem/msdospart.h",
+      "field": "filePath",
+      "value": "src/filesystem/msdospart.h"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/common/graphicscontext.h",
+      "field": "filePath",
+      "value": "src/common/graphicscontext.h"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/common/graphicscontext.h:GraphicsContext",
+      "field": "filePath",
+      "value": "src/common/graphicscontext.h"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/gui/desktop.cpp",
+      "field": "filePath",
+      "value": "src/gui/desktop.cpp"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/gui/desktop.h",
+      "field": "filePath",
+      "value": "src/gui/desktop.h"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/gui/widget.cpp",
+      "field": "filePath",
+      "value": "src/gui/widget.cpp"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/gui/widget.h",
+      "field": "filePath",
+      "value": "src/gui/widget.h"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/gui/window.cpp",
+      "field": "filePath",
+      "value": "src/gui/window.cpp"
+    },
+    {
+      "type": "add_field",
+      "nodeId": "file:src/gui/window.h",
+      "field": "filePath",
+      "value": "src/gui/window.h"
+    }
+  ],
+  "missingNodes": [],
+  "missingEdges": [],
+  "notes": [
+    "4 unsupported node types fixed: 2 'code'→'file' (assembly files interruptstubs.s, loader.s), 1 'typedef'→'class' (GraphicsContext), 1 'script'→'config' (makefile)",
+    "17 file-level nodes missing 'filePath' field: 9 had 'path' instead (ata, filesystem batch), 6 had neither 'path' nor 'filePath' (gui batch + graphicscontext.h), and 1 is the reclassified typedef node. All are recoverable from existing 'path' field or node ID prefix.",
+    "All 691 edges in assembled graph reference valid existing node IDs. No bare path references found in edges. The 37 dropped edges from the merge report are not present in this file and cannot be recovered from assembled data alone."
+  ]
+}

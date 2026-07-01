@@ -1,0 +1,2644 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/common/types.h",
+      "type": "file",
+      "name": "types.h",
+      "filePath": "src/common/types.h",
+      "summary": "Defines fundamental integer types (int8_t, uint8_t, int16_t, uint16_t, int32_t, uint32_t, int64_t, uint64_t), string typedef, and size_t in the myos::common namespace. Platform abstraction layer for type definitions used throughout the kernel.",
+      "tags": ["types", "typedef", "platform", "common"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/kernel.cpp",
+      "type": "file",
+      "name": "kernel.cpp",
+      "filePath": "src/kernel.cpp",
+      "summary": "Main kernel entry point. Initializes GDT, memory manager, interrupt handling, syscalls, PCI bus, drivers (keyboard, mouse, ATA), FAT filesystem, GUI desktop, and networking stack (Ethernet, ARP, IPv4, ICMP, UDP, TCP). Contains VGA text-mode printf utilities, keyboard/mouse/TCP/UDP handler classes, and the kernelMain function.",
+      "tags": ["kernel", "main", "entry", "boot", "initialization"],
+      "complexity": "complex",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/memorymanagement.cpp",
+      "type": "file",
+      "name": "memorymanagement.cpp",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Implements a free-list-based memory allocator (MemoryManager::malloc/free) and global operator new/delete overrides that delegate to the active MemoryManager singleton.",
+      "tags": ["memory", "allocator", "heap", "dynamic-memory"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/memorymanagement.h",
+      "type": "file",
+      "name": "memorymanagement.h",
+      "filePath": "src/memorymanagement.h",
+      "summary": "Declares the MemoryChunk struct (linked-list node for free list) and MemoryManager class with static activeMemoryManager singleton, malloc, and free. Also declares global operator new/delete variants.",
+      "tags": ["memory", "allocator", "heap", "header"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/arp.cpp",
+      "type": "file",
+      "name": "arp.cpp",
+      "filePath": "src/net/arp.cpp",
+      "summary": "Implements the Address Resolution Protocol (ARP): handles incoming ARP request/response messages, broadcasts MAC addresses, resolves IP to MAC using an internal cache, and sends ARP requests.",
+      "tags": ["arp", "network", "protocol", "address-resolution"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/arp.h",
+      "type": "file",
+      "name": "arp.h",
+      "filePath": "src/net/arp.h",
+      "summary": "Declares the ARP message struct (AddressResolutionProtocolMessage) and AddressResolutionProtocol class inheriting EtherFrameHandler, with IP-MAC cache and resolve/broadcast methods.",
+      "tags": ["arp", "network", "protocol", "address-resolution", "header"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/etherframe.cpp",
+      "type": "file",
+      "name": "etherframe.cpp",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Implements EtherFrameHandler (base class for ethertype-specific handlers) and EtherFrameProvider that wraps an amd_am79c973 NIC driver. Dispatches incoming Ethernet frames to registered handlers by etherType, and provides Send/GetIPAddress/GetMACAddress methods.",
+      "tags": ["ethernet", "network", "link-layer", "mac"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/etherframe.h",
+      "type": "file",
+      "name": "etherframe.h",
+      "filePath": "src/net/etherframe.h",
+      "summary": "Declares the EtherFrameHeader struct (dstMAC, srcMAC, etherType), EtherFrameFooter typedef, EtherFrameHandler base class, and EtherFrameProvider class inheriting RawDataHandler. Provides the handler dispatch mechanism.",
+      "tags": ["ethernet", "network", "link-layer", "mac", "header"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/icmp.cpp",
+      "type": "file",
+      "name": "icmp.cpp",
+      "filePath": "src/net/icmp.cpp",
+      "summary": "Implements the Internet Control Message Protocol (ICMP): handles ping echo requests (type 8) by replying with echo replies (type 0), and provides RequestEchoReply to send pings.",
+      "tags": ["icmp", "network", "ping", "internet"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/icmp.h",
+      "type": "file",
+      "name": "icmp.h",
+      "filePath": "src/net/icmp.h",
+      "summary": "Declares the InternetControlMessageProtocolMessage struct (type, code, checksum, data) and InternetControlMessageProtocol class inheriting InternetProtocolHandler.",
+      "tags": ["icmp", "network", "ping", "internet", "header"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/ipv4.cpp",
+      "type": "file",
+      "name": "ipv4.cpp",
+      "filePath": "src/net/ipv4.cpp",
+      "summary": "Implements InternetProtocolHandler (base for transport protocols) and InternetProtocolProvider. Handles IPv4 packet routing including header checksum calculation, subnet-based routing via gateway, and dispatching to protocol handlers by IP protocol number.",
+      "tags": ["ipv4", "network", "internet", "routing"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/ipv4.h",
+      "type": "file",
+      "name": "ipv4.h",
+      "filePath": "src/net/ipv4.h",
+      "summary": "Declares InternetProtocolV4Message struct (IPv4 header fields), InternetProtocolHandler base class, and InternetProtocolProvider class inheriting EtherFrameHandler with ARP integration and checksum utility.",
+      "tags": ["ipv4", "network", "internet", "routing", "header"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/tcp.cpp",
+      "type": "file",
+      "name": "tcp.cpp",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Implements the full TCP state machine including connection establishment (SYN/SYN-ACK/ACK), data transfer, and teardown (FIN/ACK/CLOSE). Provides TransmissionControlProtocolProvider with Connect, Listen, Bind, Disconnect, Send operations and socket state management.",
+      "tags": ["tcp", "network", "transport", "state-machine"],
+      "complexity": "complex",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/tcp.h",
+      "type": "file",
+      "name": "tcp.h",
+      "filePath": "src/net/tcp.h",
+      "summary": "Declares TCP socket states enum, flag enum, header/pseudo-header structs, and TransmissionControlProtocolHandler, TransmissionControlProtocolSocket, TransmissionControlProtocolProvider classes. Provider inherits InternetProtocolHandler.",
+      "tags": ["tcp", "network", "transport", "state-machine", "header"],
+      "complexity": "complex",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/udp.cpp",
+      "type": "file",
+      "name": "udp.cpp",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Implements UDP datagram handling: UserDatagramProtocolProvider with Connect, Listen, Bind, Disconnect, Send operations and socket management. Dispatches received datagrams to registered handlers.",
+      "tags": ["udp", "network", "transport"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "file:src/net/udp.h",
+      "type": "file",
+      "name": "udp.h",
+      "filePath": "src/net/udp.h",
+      "summary": "Declares UserDatagramProtocolHeader struct, and UserDatagramProtocolHandler, UserDatagramProtocolSocket, UserDatagramProtocolProvider classes. Provider inherits InternetProtocolHandler.",
+      "tags": ["udp", "network", "transport", "header"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+
+    {
+      "id": "class:myos::MemoryChunk",
+      "type": "class",
+      "name": "MemoryChunk",
+      "filePath": "src/memorymanagement.h",
+      "summary": "Linked-list node for the free-list memory allocator. Contains next/prev pointers, allocated flag, and size field.",
+      "tags": ["memory", "allocator", "linked-list"],
+      "complexity": "simple",
+      "languageNotes": "c++ struct"
+    },
+    {
+      "id": "class:myos::MemoryManager",
+      "type": "class",
+      "name": "MemoryManager",
+      "filePath": "src/memorymanagement.h",
+      "summary": "Free-list-based heap memory manager with static activeMemoryManager singleton. Provides malloc/free for kernel heap allocation.",
+      "tags": ["memory", "allocator", "heap", "singleton"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "struct:myos::net::EtherFrameHeader",
+      "type": "class",
+      "name": "EtherFrameHeader",
+      "filePath": "src/net/etherframe.h",
+      "summary": "Ethernet frame header with 48-bit dstMAC, 48-bit srcMAC, and 16-bit etherType (big-endian bit-fields).",
+      "tags": ["ethernet", "header", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++ packed struct"
+    },
+    {
+      "id": "class:myos::net::EtherFrameHandler",
+      "type": "class",
+      "name": "EtherFrameHandler",
+      "filePath": "src/net/etherframe.h",
+      "summary": "Base class for ethertype-specific protocol handlers. Registers itself with EtherFrameProvider to receive frames matching its etherType.",
+      "tags": ["ethernet", "handler", "network", "base-class"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:myos::net::EtherFrameProvider",
+      "type": "class",
+      "name": "EtherFrameProvider",
+      "filePath": "src/net/etherframe.h",
+      "summary": "Wraps an amd_am79c973 NIC driver, dispatches incoming Ethernet frames to registered EtherFrameHandler instances by etherType. Inherits RawDataHandler.",
+      "tags": ["ethernet", "provider", "network", "driver-wrapper"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "struct:myos::net::AddressResolutionProtocolMessage",
+      "type": "class",
+      "name": "AddressResolutionProtocolMessage",
+      "filePath": "src/net/arp.h",
+      "summary": "ARP message structure with hardware type, protocol type, hardware/protocol address sizes, command (request/response), source/destination MAC and IP addresses.",
+      "tags": ["arp", "message", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++ packed struct"
+    },
+    {
+      "id": "class:myos::net::AddressResolutionProtocol",
+      "type": "class",
+      "name": "AddressResolutionProtocol",
+      "filePath": "src/net/arp.h",
+      "summary": "ARP protocol handler. Maintains an IP-to-MAC cache and provides resolve, request, and broadcast functionality. Inherits EtherFrameHandler.",
+      "tags": ["arp", "protocol", "network", "cache"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "struct:myos::net::InternetProtocolV4Message",
+      "type": "class",
+      "name": "InternetProtocolV4Message",
+      "filePath": "src/net/ipv4.h",
+      "summary": "IPv4 packet header with version, header length, ToS, total length, identification, flags/offset, TTL, protocol, checksum, source/destination IP addresses.",
+      "tags": ["ipv4", "header", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++ packed struct"
+    },
+    {
+      "id": "class:myos::net::InternetProtocolHandler",
+      "type": "class",
+      "name": "InternetProtocolHandler",
+      "filePath": "src/net/ipv4.h",
+      "summary": "Base class for transport-layer protocol handlers (TCP, UDP, ICMP). Registers with InternetProtocolProvider and provides Send/OnInternetProtocolReceived.",
+      "tags": ["ipv4", "handler", "network", "base-class"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:myos::net::InternetProtocolProvider",
+      "type": "class",
+      "name": "InternetProtocolProvider",
+      "filePath": "src/net/ipv4.h",
+      "summary": "IPv4 routing layer. Handles incoming IP packets and dispatches to protocol handlers. Routes outgoing packets via gateway based on subnet mask. Uses ARP for MAC resolution. Provides static Checksum utility.",
+      "tags": ["ipv4", "provider", "network", "routing"],
+      "complexity": "complex",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "struct:myos::net::InternetControlMessageProtocolMessage",
+      "type": "class",
+      "name": "InternetControlMessageProtocolMessage",
+      "filePath": "src/net/icmp.h",
+      "summary": "ICMP message structure with type (echo request/reply), code, checksum, and data payload.",
+      "tags": ["icmp", "message", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++ packed struct"
+    },
+    {
+      "id": "class:myos::net::InternetControlMessageProtocol",
+      "type": "class",
+      "name": "InternetControlMessageProtocol",
+      "filePath": "src/net/icmp.h",
+      "summary": "ICMP protocol handler implementing ping echo request/reply. Inherits InternetProtocolHandler.",
+      "tags": ["icmp", "protocol", "network", "ping"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "struct:myos::net::UserDatagramProtocolHeader",
+      "type": "class",
+      "name": "UserDatagramProtocolHeader",
+      "filePath": "src/net/udp.h",
+      "summary": "UDP header with source port, destination port, length, and checksum.",
+      "tags": ["udp", "header", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++ packed struct"
+    },
+    {
+      "id": "class:myos::net::UserDatagramProtocolHandler",
+      "type": "class",
+      "name": "UserDatagramProtocolHandler",
+      "filePath": "src/net/udp.h",
+      "summary": "Base handler for UDP datagrams. Subclasses override HandleUserDatagramProtocolMessage to process received UDP data.",
+      "tags": ["udp", "handler", "network", "base-class"],
+      "complexity": "simple",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:myos::net::UserDatagramProtocolSocket",
+      "type": "class",
+      "name": "UserDatagramProtocolSocket",
+      "filePath": "src/net/udp.h",
+      "summary": "UDP socket with remote/local IP/port, backend reference, handler, and listening flag. Provides Send, Disconnect, message handling.",
+      "tags": ["udp", "socket", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:myos::net::UserDatagramProtocolProvider",
+      "type": "class",
+      "name": "UserDatagramProtocolProvider",
+      "filePath": "src/net/udp.h",
+      "summary": "UDP provider managing up to 65535 sockets. Supports Connect, Listen, Bind, Disconnect, Send. Dispatches received datagrams to bound handlers. Inherits InternetProtocolHandler.",
+      "tags": ["udp", "provider", "network", "transport"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "enum:myos::net::TransmissionControlProtocolSocketState",
+      "type": "class",
+      "name": "TransmissionControlProtocolSocketState",
+      "filePath": "src/net/tcp.h",
+      "summary": "TCP socket state machine enum: CLOSED, LISTEN, SYN_SENT, SYN_RECEIVED, ESTABLISHED, FIN_WAIT1, FIN_WAIT2, CLOSING, TIME_WAIT, CLOSE_WAIT.",
+      "tags": ["tcp", "state-machine", "enum"],
+      "complexity": "simple",
+      "languageNotes": "c++ enum"
+    },
+    {
+      "id": "enum:myos::net::TransmissionControlProtocolFlag",
+      "type": "class",
+      "name": "TransmissionControlProtocolFlag",
+      "filePath": "src/net/tcp.h",
+      "summary": "TCP flag bit values: FIN (1), SYN (2), RST (4), PSH (8), ACK (16), URG (32), ECE (64), CWR (128), NS (256).",
+      "tags": ["tcp", "flags", "enum"],
+      "complexity": "simple",
+      "languageNotes": "c++ enum"
+    },
+    {
+      "id": "struct:myos::net::TransmissionControlProtocolHeader",
+      "type": "class",
+      "name": "TransmissionControlProtocolHeader",
+      "filePath": "src/net/tcp.h",
+      "summary": "TCP segment header with source/destination ports, sequence/acknowledgement numbers, header size, flags, window size, checksum, urgent pointer, and options.",
+      "tags": ["tcp", "header", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++ packed struct"
+    },
+    {
+      "id": "struct:myos::net::TransmissionControlProtocolPseudoHeader",
+      "type": "class",
+      "name": "TransmissionControlProtocolPseudoHeader",
+      "filePath": "src/net/tcp.h",
+      "summary": "TCP pseudo-header used for checksum calculation (srcIP, dstIP, protocol, totalLength).",
+      "tags": ["tcp", "header", "checksum"],
+      "complexity": "simple",
+      "languageNotes": "c++ packed struct"
+    },
+    {
+      "id": "class:myos::net::TransmissionControlProtocolHandler",
+      "type": "class",
+      "name": "TransmissionControlProtocolHandler",
+      "filePath": "src/net/tcp.h",
+      "summary": "Base handler for TCP connections. Subclasses override HandleTransmissionControlProtocolMessage to process received TCP data.",
+      "tags": ["tcp", "handler", "network", "base-class"],
+      "complexity": "simple",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:myos::net::TransmissionControlProtocolSocket",
+      "type": "class",
+      "name": "TransmissionControlProtocolSocket",
+      "filePath": "src/net/tcp.h",
+      "summary": "TCP socket with remote/local IP/port, sequence/acknowledgement numbers, state machine, backend, and handler. Provides Send, Disconnect, and message dispatch.",
+      "tags": ["tcp", "socket", "network", "state-machine"],
+      "complexity": "complex",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:myos::net::TransmissionControlProtocolProvider",
+      "type": "class",
+      "name": "TransmissionControlProtocolProvider",
+      "filePath": "src/net/tcp.h",
+      "summary": "Full TCP provider implementing the TCP state machine. Manages up to 65535 sockets. Supports Connect (SYN), Listen (passive open), Bind, Disconnect (FIN), Send with flag control. Inherits InternetProtocolHandler.",
+      "tags": ["tcp", "provider", "network", "transport", "state-machine"],
+      "complexity": "complex",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:PrintfKeyboardEventHandler",
+      "type": "class",
+      "name": "PrintfKeyboardEventHandler",
+      "filePath": "src/kernel.cpp",
+      "summary": "Keyboard event handler that prints pressed characters to the VGA text-mode console. Inherits KeyboardEventHandler.",
+      "tags": ["kernel", "keyboard", "handler", "printf"],
+      "complexity": "simple",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:MouseToConsole",
+      "type": "class",
+      "name": "MouseToConsole",
+      "filePath": "src/kernel.cpp",
+      "summary": "Mouse event handler that renders a cursor on the VGA text-mode console using character attribute bit manipulation. Inherits MouseEventHandler.",
+      "tags": ["kernel", "mouse", "handler", "console"],
+      "complexity": "simple",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:PrintfUDPHandler",
+      "type": "class",
+      "name": "PrintfUDPHandler",
+      "filePath": "src/kernel.cpp",
+      "summary": "UDP handler that prints received UDP datagram payload to the VGA console. Inherits UserDatagramProtocolHandler.",
+      "tags": ["kernel", "udp", "handler", "printf"],
+      "complexity": "simple",
+      "languageNotes": "c++ class"
+    },
+    {
+      "id": "class:PrintfTCPHandler",
+      "type": "class",
+      "name": "PrintfTCPHandler",
+      "filePath": "src/kernel.cpp",
+      "summary": "TCP handler that prints received data to console and responds to HTTP GET / with a static HTML page. Inherits TransmissionControlProtocolHandler.",
+      "tags": ["kernel", "tcp", "handler", "http"],
+      "complexity": "moderate",
+      "languageNotes": "c++ class"
+    },
+
+    {
+      "id": "function:printf",
+      "type": "function",
+      "name": "printf",
+      "filePath": "src/kernel.cpp",
+      "summary": "Writes a null-terminated string to the VGA text-mode buffer at 0xB8000. Handles newlines, scrolling, and 80x25 character grid.",
+      "tags": ["kernel", "vga", "output", "console"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:printfHex",
+      "type": "function",
+      "name": "printfHex",
+      "filePath": "src/kernel.cpp",
+      "summary": "Prints a single byte as two hex digits using printf.",
+      "tags": ["kernel", "hex", "debug"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:printfHex16",
+      "type": "function",
+      "name": "printfHex16",
+      "filePath": "src/kernel.cpp",
+      "summary": "Prints a 16-bit value as four hex digits using printfHex.",
+      "tags": ["kernel", "hex", "debug"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:printfHex32",
+      "type": "function",
+      "name": "printfHex32",
+      "filePath": "src/kernel.cpp",
+      "summary": "Prints a 32-bit value as eight hex digits using printfHex.",
+      "tags": ["kernel", "hex", "debug"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:sysprintf",
+      "type": "function",
+      "name": "sysprintf",
+      "filePath": "src/kernel.cpp",
+      "summary": "System call wrapper that invokes int 0x80 with function code 4 to print a string via the kernel's syscall handler.",
+      "tags": ["kernel", "syscall", "interrupt"],
+      "complexity": "simple",
+      "languageNotes": "c++ with inline asm"
+    },
+    {
+      "id": "function:taskA",
+      "type": "function",
+      "name": "taskA",
+      "filePath": "src/kernel.cpp",
+      "summary": "Test task that continuously prints 'A' via sysprintf.",
+      "tags": ["kernel", "task", "test"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:taskB",
+      "type": "function",
+      "name": "taskB",
+      "filePath": "src/kernel.cpp",
+      "summary": "Test task that continuously prints 'B' via sysprintf.",
+      "tags": ["kernel", "task", "test"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:callConstructors",
+      "type": "function",
+      "name": "callConstructors",
+      "filePath": "src/kernel.cpp",
+      "summary": "Iterates from start_ctors to end_ctors and calls each global constructor. Called before kernelMain.",
+      "tags": ["kernel", "initialization", "constructors"],
+      "complexity": "simple",
+      "languageNotes": "c++ extern C"
+    },
+    {
+      "id": "function:kernelMain",
+      "type": "function",
+      "name": "kernelMain",
+      "filePath": "src/kernel.cpp",
+      "summary": "Main kernel entry point. Initializes GDT, MemoryManager, InterruptManager, SyscallHandler, DriverManager (keyboard, mouse, PCI, ATA), FAT filesystem, and full networking stack (Ethernet, ARP, IPv4, ICMP, UDP, TCP). Enters main loop.",
+      "tags": ["kernel", "main", "entry", "boot"],
+      "complexity": "complex",
+      "languageNotes": "c++ extern C"
+    },
+    {
+      "id": "function:myos::MemoryManager::malloc",
+      "type": "function",
+      "name": "MemoryManager::malloc",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Allocates a block of memory from the free-list. Splits chunks if remaining space is large enough. Returns null if no suitable chunk found.",
+      "tags": ["memory", "allocator", "heap"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::MemoryManager::free",
+      "type": "function",
+      "name": "MemoryManager::free",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Frees a previously allocated block. Coalesces adjacent free chunks to reduce fragmentation.",
+      "tags": ["memory", "allocator", "heap"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::MemoryManager::MemoryManager",
+      "type": "function",
+      "name": "MemoryManager::MemoryManager",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Constructs the memory manager with a start address and size, initializing the free-list with a single chunk. Sets itself as the activeMemoryManager.",
+      "tags": ["memory", "allocator", "constructor"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::MemoryManager::~MemoryManager",
+      "type": "function",
+      "name": "MemoryManager::~MemoryManager",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Destructor. Clears activeMemoryManager if it points to this instance.",
+      "tags": ["memory", "allocator", "destructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:operator new(unsigned)",
+      "type": "function",
+      "name": "operator new(unsigned)",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Global operator new that delegates to MemoryManager::activeMemoryManager->malloc.",
+      "tags": ["memory", "allocator", "operator"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:operator new[](unsigned)",
+      "type": "function",
+      "name": "operator new[](unsigned)",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Global array operator new that delegates to MemoryManager::activeMemoryManager->malloc.",
+      "tags": ["memory", "allocator", "operator"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:operator new(unsigned, void*)",
+      "type": "function",
+      "name": "operator new(unsigned, void*)",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Placement new that returns the pointer argument unchanged.",
+      "tags": ["memory", "allocator", "placement-new"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:operator new[](unsigned, void*)",
+      "type": "function",
+      "name": "operator new[](unsigned, void*)",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Placement array new that returns the pointer argument unchanged.",
+      "tags": ["memory", "allocator", "placement-new"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:operator delete(void*)",
+      "type": "function",
+      "name": "operator delete(void*)",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Global operator delete that delegates to MemoryManager::activeMemoryManager->free.",
+      "tags": ["memory", "allocator", "operator"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:operator delete[](void*)",
+      "type": "function",
+      "name": "operator delete[](void*)",
+      "filePath": "src/memorymanagement.cpp",
+      "summary": "Global array operator delete that delegates to MemoryManager::activeMemoryManager->free.",
+      "tags": ["memory", "allocator", "operator"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameHandler::EtherFrameHandler",
+      "type": "function",
+      "name": "EtherFrameHandler::EtherFrameHandler",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Constructs an EtherFrameHandler, converting etherType to big-endian and registering with the backend provider.",
+      "tags": ["ethernet", "handler", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameHandler::Send",
+      "type": "function",
+      "name": "EtherFrameHandler::Send",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Sends data over Ethernet by calling backend->Send with the handler's etherType.",
+      "tags": ["ethernet", "send", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameHandler::OnEtherFrameReceived",
+      "type": "function",
+      "name": "EtherFrameHandler::OnEtherFrameReceived",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Default handler returns false (no response). Override in subclass to process received Ethernet frames.",
+      "tags": ["ethernet", "handler", "receive"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameHandler::GetIPAddress",
+      "type": "function",
+      "name": "EtherFrameHandler::GetIPAddress",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Returns the IP address from the backend NIC driver.",
+      "tags": ["ethernet", "ip", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameProvider::EtherFrameProvider",
+      "type": "function",
+      "name": "EtherFrameProvider::EtherFrameProvider",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Constructs EtherFrameProvider wrapping an amd_am79c973 NIC driver. Initializes all handler slots to null.",
+      "tags": ["ethernet", "provider", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameProvider::OnRawDataReceived",
+      "type": "function",
+      "name": "EtherFrameProvider::OnRawDataReceived",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Called by the NIC driver when raw data arrives. Parses EtherFrameHeader, dispatches to registered handler by etherType, and optionally sends back response frames.",
+      "tags": ["ethernet", "receive", "dispatch", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameProvider::Send",
+      "type": "function",
+      "name": "EtherFrameProvider::Send",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Constructs an Ethernet frame with header, copies payload, and sends via backend NIC driver. Allocates and frees temporary buffer via MemoryManager.",
+      "tags": ["ethernet", "send", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameProvider::GetMACAddress",
+      "type": "function",
+      "name": "EtherFrameProvider::GetMACAddress",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Returns the MAC address from the backend NIC driver.",
+      "tags": ["ethernet", "mac", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameProvider::GetIPAddress",
+      "type": "function",
+      "name": "EtherFrameProvider::GetIPAddress",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Returns the IP address from the backend NIC driver.",
+      "tags": ["ethernet", "ip", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameHandler::~EtherFrameHandler",
+      "type": "function",
+      "name": "EtherFrameHandler::~EtherFrameHandler",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Unregisters this handler from the backend provider.",
+      "tags": ["ethernet", "destructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::EtherFrameProvider::~EtherFrameProvider",
+      "type": "function",
+      "name": "EtherFrameProvider::~EtherFrameProvider",
+      "filePath": "src/net/etherframe.cpp",
+      "summary": "Empty destructor.",
+      "tags": ["ethernet", "destructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::AddressResolutionProtocol::AddressResolutionProtocol",
+      "type": "function",
+      "name": "AddressResolutionProtocol::AddressResolutionProtocol",
+      "filePath": "src/net/arp.cpp",
+      "summary": "Constructs ARP handler with etherType 0x806 and initializes cache entry count to 0.",
+      "tags": ["arp", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::AddressResolutionProtocol::OnEtherFrameReceived",
+      "type": "function",
+      "name": "AddressResolutionProtocol::OnEtherFrameReceived",
+      "filePath": "src/net/arp.cpp",
+      "summary": "Processes incoming ARP messages. Handles ARP requests (replies with MAC) and ARP responses (updates cache).",
+      "tags": ["arp", "receive", "handler"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::AddressResolutionProtocol::BroadcastMACAddress",
+      "type": "function",
+      "name": "AddressResolutionProtocol::BroadcastMACAddress",
+      "filePath": "src/net/arp.cpp",
+      "summary": "Sends an ARP response (gratuitous ARP) announcing this host's MAC to the given IP.",
+      "tags": ["arp", "broadcast", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::AddressResolutionProtocol::RequestMACAddress",
+      "type": "function",
+      "name": "AddressResolutionProtocol::RequestMACAddress",
+      "filePath": "src/net/arp.cpp",
+      "summary": "Sends an ARP request to resolve an IP address to a MAC. Uses broadcast destination MAC.",
+      "tags": ["arp", "request", "resolution"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::AddressResolutionProtocol::GetMACFromCache",
+      "type": "function",
+      "name": "AddressResolutionProtocol::GetMACFromCache",
+      "filePath": "src/net/arp.cpp",
+      "summary": "Looks up an IP in the ARP cache and returns the corresponding MAC, or broadcast MAC if not found.",
+      "tags": ["arp", "cache", "lookup"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::AddressResolutionProtocol::Resolve",
+      "type": "function",
+      "name": "AddressResolutionProtocol::Resolve",
+      "filePath": "src/net/arp.cpp",
+      "summary": "Resolves an IP to a MAC by checking cache first, then sending an ARP request and polling until resolution.",
+      "tags": ["arp", "resolution", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetProtocolHandler::InternetProtocolHandler",
+      "type": "function",
+      "name": "InternetProtocolHandler::InternetProtocolHandler",
+      "filePath": "src/net/ipv4.cpp",
+      "summary": "Registers this handler with InternetProtocolProvider for a specific IP protocol number.",
+      "tags": ["ipv4", "handler", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetProtocolHandler::Send",
+      "type": "function",
+      "name": "InternetProtocolHandler::Send",
+      "filePath": "src/net/ipv4.cpp",
+      "summary": "Sends data to a destination IP by delegating to the InternetProtocolProvider with this handler's protocol number.",
+      "tags": ["ipv4", "send", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetProtocolHandler::OnInternetProtocolReceived",
+      "type": "function",
+      "name": "InternetProtocolHandler::OnInternetProtocolReceived",
+      "filePath": "src/net/ipv4.cpp",
+      "summary": "Default handler returns false. Override in subclass to process received IP packets.",
+      "tags": ["ipv4", "handler", "receive"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetProtocolProvider::InternetProtocolProvider",
+      "type": "function",
+      "name": "InternetProtocolProvider::InternetProtocolProvider",
+      "filePath": "src/net/ipv4.cpp",
+      "summary": "Constructs IPv4 provider with etherType 0x800, initializes handler table, stores ARP reference, gateway IP, and subnet mask.",
+      "tags": ["ipv4", "provider", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetProtocolProvider::OnEtherFrameReceived",
+      "type": "function",
+      "name": "InternetProtocolProvider::OnEtherFrameReceived",
+      "filePath": "src/net/ipv4.cpp",
+      "summary": "Processes incoming IPv4 frames, validates destination IP, dispatches payload to registered protocol handler. Supports response by swapping source/destination IP and recalculating checksum.",
+      "tags": ["ipv4", "receive", "dispatch"],
+      "complexity": "complex",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetProtocolProvider::Send",
+      "type": "function",
+      "name": "InternetProtocolProvider::Send",
+      "filePath": "src/net/ipv4.cpp",
+      "summary": "Constructs an IPv4 packet with header, calculates checksum, routes via gateway if destination is not on local subnet, and sends via ARP-resolved MAC address.",
+      "tags": ["ipv4", "send", "routing"],
+      "complexity": "complex",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetProtocolProvider::Checksum",
+      "type": "function",
+      "name": "InternetProtocolProvider::Checksum",
+      "filePath": "src/net/ipv4.cpp",
+      "summary": "Static method computing the Internet checksum (16-bit one's complement) over arbitrary data. Handles odd byte length.",
+      "tags": ["ipv4", "checksum", "utility"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetControlMessageProtocol::InternetControlMessageProtocol",
+      "type": "function",
+      "name": "InternetControlMessageProtocol::InternetControlMessageProtocol",
+      "filePath": "src/net/icmp.cpp",
+      "summary": "Constructs ICMP handler with protocol number 0x01.",
+      "tags": ["icmp", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetControlMessageProtocol::OnInternetProtocolReceived",
+      "type": "function",
+      "name": "InternetControlMessageProtocol::OnInternetProtocolReceived",
+      "filePath": "src/net/icmp.cpp",
+      "summary": "Processes ICMP messages: handles echo requests (type 8) by sending echo replies (type 0), and prints ping responses (type 0).",
+      "tags": ["icmp", "ping", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::InternetControlMessageProtocol::RequestEchoReply",
+      "type": "function",
+      "name": "InternetControlMessageProtocol::RequestEchoReply",
+      "filePath": "src/net/icmp.cpp",
+      "summary": "Sends an ICMP echo request (ping) to the specified IP address with data payload 0x3713.",
+      "tags": ["icmp", "ping", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolHandler::UserDatagramProtocolHandler",
+      "type": "function",
+      "name": "UserDatagramProtocolHandler::UserDatagramProtocolHandler",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Empty constructor.",
+      "tags": ["udp", "handler", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolSocket::UserDatagramProtocolSocket",
+      "type": "function",
+      "name": "UserDatagramProtocolSocket::UserDatagramProtocolSocket",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Constructs a UDP socket with backend reference, null handler, and listening=false.",
+      "tags": ["udp", "socket", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolSocket::HandleUserDatagramProtocolMessage",
+      "type": "function",
+      "name": "UserDatagramProtocolSocket::HandleUserDatagramProtocolMessage",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Delegates incoming UDP data to the bound handler if set.",
+      "tags": ["udp", "socket", "dispatch"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolSocket::Send",
+      "type": "function",
+      "name": "UserDatagramProtocolSocket::Send",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Sends UDP data via the backend provider.",
+      "tags": ["udp", "send", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolSocket::Disconnect",
+      "type": "function",
+      "name": "UserDatagramProtocolSocket::Disconnect",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Disconnects the socket via the backend provider.",
+      "tags": ["udp", "disconnect"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolProvider::UserDatagramProtocolProvider",
+      "type": "function",
+      "name": "UserDatagramProtocolProvider::UserDatagramProtocolProvider",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Constructs UDP provider with protocol 0x11, initializing socket table and free port starting at 1024.",
+      "tags": ["udp", "provider", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolProvider::OnInternetProtocolReceived",
+      "type": "function",
+      "name": "UserDatagramProtocolProvider::OnInternetProtocolReceived",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Dispatches received IP data to matching UDP socket by port. Supports both listening and connected sockets.",
+      "tags": ["udp", "receive", "dispatch"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolProvider::Connect",
+      "type": "function",
+      "name": "UserDatagramProtocolProvider::Connect",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Creates and returns a connected UDP socket with the specified remote IP and port. Assigns an ephemeral local port.",
+      "tags": ["udp", "connect", "socket"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolProvider::Listen",
+      "type": "function",
+      "name": "UserDatagramProtocolProvider::Listen",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Creates a listening UDP socket on the specified local port.",
+      "tags": ["udp", "listen", "socket"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolProvider::Disconnect",
+      "type": "function",
+      "name": "UserDatagramProtocolProvider::Disconnect",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Removes the socket from the provider's socket table and frees its memory.",
+      "tags": ["udp", "disconnect", "cleanup"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolProvider::Send",
+      "type": "function",
+      "name": "UserDatagramProtocolProvider::Send",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Builds a UDP datagram with header, copies payload, and sends via InternetProtocolHandler.",
+      "tags": ["udp", "send", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::UserDatagramProtocolProvider::Bind",
+      "type": "function",
+      "name": "UserDatagramProtocolProvider::Bind",
+      "filePath": "src/net/udp.cpp",
+      "summary": "Binds a UDP handler to a socket for incoming message delivery.",
+      "tags": ["udp", "bind", "handler"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolHandler::TransmissionControlProtocolHandler",
+      "type": "function",
+      "name": "TransmissionControlProtocolHandler::TransmissionControlProtocolHandler",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Empty constructor.",
+      "tags": ["tcp", "handler", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolSocket::TransmissionControlProtocolSocket",
+      "type": "function",
+      "name": "TransmissionControlProtocolSocket::TransmissionControlProtocolSocket",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Constructs a TCP socket with backend reference, null handler, and CLOSED state.",
+      "tags": ["tcp", "socket", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolSocket::HandleTransmissionControlProtocolMessage",
+      "type": "function",
+      "name": "TransmissionControlProtocolSocket::HandleTransmissionControlProtocolMessage",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Delegates received TCP data to the bound handler if set.",
+      "tags": ["tcp", "dispatch", "handler"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolSocket::Send",
+      "type": "function",
+      "name": "TransmissionControlProtocolSocket::Send",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Waits until connection is ESTABLISHED, then sends data with PSH|ACK flags via the backend.",
+      "tags": ["tcp", "send", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolSocket::Disconnect",
+      "type": "function",
+      "name": "TransmissionControlProtocolSocket::Disconnect",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Initiates TCP disconnect by delegating to the backend provider.",
+      "tags": ["tcp", "disconnect", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolProvider::TransmissionControlProtocolProvider",
+      "type": "function",
+      "name": "TransmissionControlProtocolProvider::TransmissionControlProtocolProvider",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Constructs TCP provider with protocol 0x06, initializing socket table and free port starting at 1024.",
+      "tags": ["tcp", "provider", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:bigEndian32",
+      "type": "function",
+      "name": "bigEndian32",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "File-scope utility converting a 32-bit value from host to big-endian byte order.",
+      "tags": ["utility", "endian", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++ file-local"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolProvider::OnInternetProtocolReceived",
+      "type": "function",
+      "name": "TransmissionControlProtocolProvider::OnInternetProtocolReceived",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Full TCP state machine handler. Processes SYN, SYN-ACK, ACK, FIN, RST flags, manages socket state transitions (LISTEN, SYN_SENT, SYN_RECEIVED, ESTABLISHED, FIN_WAIT, CLOSE_WAIT, CLOSED), handles data delivery with sequence number verification, and sends RST on errors.",
+      "tags": ["tcp", "state-machine", "receive"],
+      "complexity": "complex",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "type": "function",
+      "name": "TransmissionControlProtocolProvider::Send",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Builds a TCP segment with header, pseudo-header for checksum, options (MSS for SYN), and sends via InternetProtocolHandler.",
+      "tags": ["tcp", "send", "network"],
+      "complexity": "complex",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolProvider::Connect",
+      "type": "function",
+      "name": "TransmissionControlProtocolProvider::Connect",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Initiates a TCP connection by creating a socket in SYN_SENT state and sending a SYN segment.",
+      "tags": ["tcp", "connect", "network"],
+      "complexity": "moderate",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolProvider::Disconnect",
+      "type": "function",
+      "name": "TransmissionControlProtocolProvider::Disconnect",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Initiates graceful TCP teardown by transitioning socket to FIN_WAIT1 and sending FIN+ACK.",
+      "tags": ["tcp", "disconnect", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolProvider::Listen",
+      "type": "function",
+      "name": "TransmissionControlProtocolProvider::Listen",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Creates a listening TCP socket on the specified port in LISTEN state.",
+      "tags": ["tcp", "listen", "network"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    },
+    {
+      "id": "function:myos::net::TransmissionControlProtocolProvider::Bind",
+      "type": "function",
+      "name": "TransmissionControlProtocolProvider::Bind",
+      "filePath": "src/net/tcp.cpp",
+      "summary": "Binds a TCP handler to a socket for incoming data delivery.",
+      "tags": ["tcp", "bind", "handler"],
+      "complexity": "simple",
+      "languageNotes": "c++"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/common/types.h",
+      "target": "class:myos::MemoryChunk",
+      "type": "exports",
+      "weight": 0.8,
+      "languageNotes": "typedef used by types in struct"
+    },
+    {
+      "source": "file:src/memorymanagement.h",
+      "target": "class:myos::MemoryChunk",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "struct defined in header"
+    },
+    {
+      "source": "file:src/memorymanagement.h",
+      "target": "class:myos::MemoryManager",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/memorymanagement.h",
+      "target": "file:src/common/types.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <common/types.h>"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "file:src/memorymanagement.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <memorymanagement.h>"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:myos::MemoryManager::MemoryManager",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:myos::MemoryManager::~MemoryManager",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:myos::MemoryManager::free",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:operator new(unsigned)",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:operator new[](unsigned)",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:operator new(unsigned, void*)",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:operator new[](unsigned, void*)",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:operator delete(void*)",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/memorymanagement.cpp",
+      "target": "function:operator delete[](void*)",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "function:operator new(unsigned)",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to MemoryManager::malloc"
+    },
+    {
+      "source": "function:operator new[](unsigned)",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to MemoryManager::malloc"
+    },
+    {
+      "source": "function:operator delete(void*)",
+      "target": "function:myos::MemoryManager::free",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to MemoryManager::free"
+    },
+    {
+      "source": "function:operator delete[](void*)",
+      "target": "function:myos::MemoryManager::free",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to MemoryManager::free"
+    },
+    {
+      "source": "class:myos::MemoryManager",
+      "target": "class:myos::MemoryChunk",
+      "type": "depends_on",
+      "weight": 0.8,
+      "languageNotes": "MemoryManager uses MemoryChunk for free-list nodes"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/common/types.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <common/types.h>"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/memorymanagement.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <memorymanagement.h>"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:printf",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:printfHex",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:printfHex16",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:printfHex32",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:sysprintf",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:taskA",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:taskB",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:callConstructors",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:kernelMain",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "class:PrintfKeyboardEventHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "class:MouseToConsole",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "class:PrintfUDPHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "class:PrintfTCPHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in kernel.cpp"
+    },
+    {
+      "source": "function:printfHex",
+      "target": "function:printf",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "calls printf to print hex digits"
+    },
+    {
+      "source": "function:printfHex16",
+      "target": "function:printfHex",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "calls printfHex for each byte"
+    },
+    {
+      "source": "function:printfHex32",
+      "target": "function:printfHex",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "calls printfHex for each byte"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "function:printf",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "uses printf for console output"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "function:printfHex",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "uses printfHex for debug output"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "function:printfHex16",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "uses printfHex16 for debug output"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "function:printfHex32",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "uses printfHex32 for debug output"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "function:callConstructors",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "called implicitly before kernelMain"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:myos::MemoryManager",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "creates and uses MemoryManager"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:PrintfUDPHandler",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "instantiates PrintfUDPHandler"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:PrintfTCPHandler",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "instantiates PrintfTCPHandler"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:PrintfKeyboardEventHandler",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "instantiates PrintfKeyboardEventHandler"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:MouseToConsole",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "instantiates MouseToConsole"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:myos::net::EtherFrameProvider",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "creates EtherFrameProvider wrapping NIC"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:myos::net::AddressResolutionProtocol",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "creates ARP handler"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:myos::net::InternetProtocolProvider",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "creates IPv4 provider with ARP"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:myos::net::InternetControlMessageProtocol",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "creates ICMP handler"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:myos::net::UserDatagramProtocolProvider",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "creates UDP provider"
+    },
+    {
+      "source": "function:kernelMain",
+      "target": "class:myos::net::TransmissionControlProtocolProvider",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "creates TCP provider"
+    },
+    {
+      "source": "class:PrintfTCPHandler",
+      "target": "class:myos::net::TransmissionControlProtocolHandler",
+      "type": "inherits",
+      "weight": 0.9,
+      "languageNotes": "inherits TransmissionControlProtocolHandler"
+    },
+    {
+      "source": "class:PrintfUDPHandler",
+      "target": "class:myos::net::UserDatagramProtocolHandler",
+      "type": "inherits",
+      "weight": 0.9,
+      "languageNotes": "inherits UserDatagramProtocolHandler"
+    },
+    {
+      "source": "file:src/net/etherframe.h",
+      "target": "struct:myos::net::EtherFrameHeader",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "struct defined in header"
+    },
+    {
+      "source": "file:src/net/etherframe.h",
+      "target": "class:myos::net::EtherFrameHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/etherframe.h",
+      "target": "class:myos::net::EtherFrameProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/etherframe.h",
+      "target": "file:src/common/types.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <common/types.h>"
+    },
+    {
+      "source": "file:src/net/etherframe.h",
+      "target": "file:src/memorymanagement.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <memorymanagement.h>"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "file:src/net/etherframe.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/etherframe.h>"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameHandler::EtherFrameHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameHandler::Send",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameHandler::OnEtherFrameReceived",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameHandler::GetIPAddress",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameHandler::~EtherFrameHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameProvider::EtherFrameProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameProvider::OnRawDataReceived",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameProvider::Send",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameProvider::GetMACAddress",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameProvider::GetIPAddress",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameProvider::~EtherFrameProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "function:myos::net::EtherFrameProvider::Send",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "allocates frame buffer"
+    },
+    {
+      "source": "function:myos::net::EtherFrameProvider::Send",
+      "target": "function:myos::MemoryManager::free",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "frees frame buffer"
+    },
+    {
+      "source": "function:myos::net::EtherFrameHandler::Send",
+      "target": "function:myos::net::EtherFrameProvider::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to backend provider"
+    },
+    {
+      "source": "file:src/net/arp.h",
+      "target": "file:src/common/types.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <common/types.h>"
+    },
+    {
+      "source": "file:src/net/arp.h",
+      "target": "file:src/net/etherframe.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/etherframe.h>"
+    },
+    {
+      "source": "file:src/net/arp.h",
+      "target": "struct:myos::net::AddressResolutionProtocolMessage",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "struct defined in header"
+    },
+    {
+      "source": "file:src/net/arp.h",
+      "target": "class:myos::net::AddressResolutionProtocol",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "class:myos::net::AddressResolutionProtocol",
+      "target": "class:myos::net::EtherFrameHandler",
+      "type": "inherits",
+      "weight": 0.9,
+      "languageNotes": "inherits EtherFrameHandler"
+    },
+    {
+      "source": "file:src/net/arp.cpp",
+      "target": "file:src/net/arp.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/arp.h>"
+    },
+    {
+      "source": "file:src/net/arp.cpp",
+      "target": "function:myos::net::AddressResolutionProtocol::AddressResolutionProtocol",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/arp.cpp",
+      "target": "function:myos::net::AddressResolutionProtocol::OnEtherFrameReceived",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/arp.cpp",
+      "target": "function:myos::net::AddressResolutionProtocol::BroadcastMACAddress",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/arp.cpp",
+      "target": "function:myos::net::AddressResolutionProtocol::RequestMACAddress",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/arp.cpp",
+      "target": "function:myos::net::AddressResolutionProtocol::GetMACFromCache",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/arp.cpp",
+      "target": "function:myos::net::AddressResolutionProtocol::Resolve",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "function:myos::net::AddressResolutionProtocol::Resolve",
+      "target": "function:myos::net::AddressResolutionProtocol::GetMACFromCache",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "checks cache first"
+    },
+    {
+      "source": "function:myos::net::AddressResolutionProtocol::Resolve",
+      "target": "function:myos::net::AddressResolutionProtocol::RequestMACAddress",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends request if not in cache"
+    },
+    {
+      "source": "function:myos::net::AddressResolutionProtocol::OnEtherFrameReceived",
+      "target": "function:myos::net::EtherFrameHandler::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends ARP reply via base class"
+    },
+    {
+      "source": "file:src/net/ipv4.h",
+      "target": "struct:myos::net::InternetProtocolV4Message",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "struct defined in header"
+    },
+    {
+      "source": "file:src/net/ipv4.h",
+      "target": "class:myos::net::InternetProtocolHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/ipv4.h",
+      "target": "class:myos::net::InternetProtocolProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/ipv4.h",
+      "target": "file:src/common/types.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <common/types.h>"
+    },
+    {
+      "source": "file:src/net/ipv4.h",
+      "target": "file:src/net/etherframe.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/etherframe.h>"
+    },
+    {
+      "source": "file:src/net/ipv4.h",
+      "target": "file:src/net/arp.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/arp.h>"
+    },
+    {
+      "source": "class:myos::net::InternetProtocolProvider",
+      "target": "class:myos::net::EtherFrameHandler",
+      "type": "inherits",
+      "weight": 0.9,
+      "languageNotes": "inherits EtherFrameHandler"
+    },
+    {
+      "source": "class:myos::net::InternetProtocolProvider",
+      "target": "class:myos::net::AddressResolutionProtocol",
+      "type": "depends_on",
+      "weight": 0.7,
+      "languageNotes": "uses ARP for MAC resolution"
+    },
+    {
+      "source": "file:src/net/ipv4.cpp",
+      "target": "file:src/net/ipv4.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/ipv4.h>"
+    },
+    {
+      "source": "file:src/net/ipv4.cpp",
+      "target": "function:myos::net::InternetProtocolHandler::InternetProtocolHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/ipv4.cpp",
+      "target": "function:myos::net::InternetProtocolHandler::Send",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/ipv4.cpp",
+      "target": "function:myos::net::InternetProtocolHandler::OnInternetProtocolReceived",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/ipv4.cpp",
+      "target": "function:myos::net::InternetProtocolProvider::InternetProtocolProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/ipv4.cpp",
+      "target": "function:myos::net::InternetProtocolProvider::OnEtherFrameReceived",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/ipv4.cpp",
+      "target": "function:myos::net::InternetProtocolProvider::Send",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/ipv4.cpp",
+      "target": "function:myos::net::InternetProtocolProvider::Checksum",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "function:myos::net::InternetProtocolProvider::Send",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "allocates IP packet buffer"
+    },
+    {
+      "source": "function:myos::net::InternetProtocolProvider::Send",
+      "target": "function:myos::MemoryManager::free",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "frees IP packet buffer"
+    },
+    {
+      "source": "function:myos::net::InternetProtocolProvider::Send",
+      "target": "function:myos::net::AddressResolutionProtocol::Resolve",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "resolves next-hop MAC via ARP"
+    },
+    {
+      "source": "function:myos::net::InternetProtocolProvider::Send",
+      "target": "function:myos::net::EtherFrameProvider::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends frame via Ethernet provider"
+    },
+    {
+      "source": "function:myos::net::InternetProtocolHandler::Send",
+      "target": "function:myos::net::InternetProtocolProvider::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to backend provider"
+    },
+    {
+      "source": "function:myos::net::InternetProtocolProvider::OnEtherFrameReceived",
+      "target": "function:myos::net::InternetProtocolHandler::OnInternetProtocolReceived",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "dispatches to registered handler"
+    },
+    {
+      "source": "file:src/net/icmp.h",
+      "target": "struct:myos::net::InternetControlMessageProtocolMessage",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "struct defined in header"
+    },
+    {
+      "source": "file:src/net/icmp.h",
+      "target": "class:myos::net::InternetControlMessageProtocol",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/icmp.h",
+      "target": "file:src/common/types.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <common/types.h>"
+    },
+    {
+      "source": "file:src/net/icmp.h",
+      "target": "file:src/net/ipv4.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/ipv4.h>"
+    },
+    {
+      "source": "class:myos::net::InternetControlMessageProtocol",
+      "target": "class:myos::net::InternetProtocolHandler",
+      "type": "inherits",
+      "weight": 0.9,
+      "languageNotes": "inherits InternetProtocolHandler"
+    },
+    {
+      "source": "file:src/net/icmp.cpp",
+      "target": "file:src/net/icmp.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/icmp.h>"
+    },
+    {
+      "source": "file:src/net/icmp.cpp",
+      "target": "function:myos::net::InternetControlMessageProtocol::InternetControlMessageProtocol",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/icmp.cpp",
+      "target": "function:myos::net::InternetControlMessageProtocol::OnInternetProtocolReceived",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/icmp.cpp",
+      "target": "function:myos::net::InternetControlMessageProtocol::RequestEchoReply",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "function:myos::net::InternetControlMessageProtocol::RequestEchoReply",
+      "target": "function:myos::net::InternetProtocolHandler::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends ICMP via IP"
+    },
+    {
+      "source": "file:src/net/udp.h",
+      "target": "struct:myos::net::UserDatagramProtocolHeader",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "struct defined in header"
+    },
+    {
+      "source": "file:src/net/udp.h",
+      "target": "class:myos::net::UserDatagramProtocolHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/udp.h",
+      "target": "class:myos::net::UserDatagramProtocolSocket",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/udp.h",
+      "target": "class:myos::net::UserDatagramProtocolProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/udp.h",
+      "target": "file:src/common/types.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <common/types.h>"
+    },
+    {
+      "source": "file:src/net/udp.h",
+      "target": "file:src/net/ipv4.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/ipv4.h>"
+    },
+    {
+      "source": "file:src/net/udp.h",
+      "target": "file:src/memorymanagement.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <memorymanagement.h>"
+    },
+    {
+      "source": "class:myos::net::UserDatagramProtocolProvider",
+      "target": "class:myos::net::InternetProtocolHandler",
+      "type": "inherits",
+      "weight": 0.9,
+      "languageNotes": "inherits InternetProtocolHandler"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "file:src/net/udp.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/udp.h>"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolHandler::UserDatagramProtocolHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolSocket::UserDatagramProtocolSocket",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolSocket::HandleUserDatagramProtocolMessage",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolSocket::Send",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolSocket::Disconnect",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolProvider::UserDatagramProtocolProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolProvider::OnInternetProtocolReceived",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolProvider::Connect",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolProvider::Listen",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolProvider::Disconnect",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolProvider::Send",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/udp.cpp",
+      "target": "function:myos::net::UserDatagramProtocolProvider::Bind",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "function:myos::net::UserDatagramProtocolSocket::Send",
+      "target": "function:myos::net::UserDatagramProtocolProvider::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to backend provider"
+    },
+    {
+      "source": "function:myos::net::UserDatagramProtocolSocket::Disconnect",
+      "target": "function:myos::net::UserDatagramProtocolProvider::Disconnect",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to backend provider"
+    },
+    {
+      "source": "function:myos::net::UserDatagramProtocolProvider::Send",
+      "target": "function:myos::net::InternetProtocolHandler::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends UDP datagram via IP"
+    },
+    {
+      "source": "function:myos::net::UserDatagramProtocolProvider::Connect",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "allocates socket memory"
+    },
+    {
+      "source": "function:myos::net::UserDatagramProtocolProvider::Listen",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "allocates socket memory"
+    },
+    {
+      "source": "function:myos::net::UserDatagramProtocolProvider::Disconnect",
+      "target": "function:myos::MemoryManager::free",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "frees socket memory"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "enum:myos::net::TransmissionControlProtocolSocketState",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "enum defined in header"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "enum:myos::net::TransmissionControlProtocolFlag",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "enum defined in header"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "struct:myos::net::TransmissionControlProtocolHeader",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "struct defined in header"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "struct:myos::net::TransmissionControlProtocolPseudoHeader",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "struct defined in header"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "class:myos::net::TransmissionControlProtocolHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "class:myos::net::TransmissionControlProtocolSocket",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "class:myos::net::TransmissionControlProtocolProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "class defined in header"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "file:src/common/types.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <common/types.h>"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "file:src/net/ipv4.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/ipv4.h>"
+    },
+    {
+      "source": "file:src/net/tcp.h",
+      "target": "file:src/memorymanagement.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <memorymanagement.h>"
+    },
+    {
+      "source": "class:myos::net::TransmissionControlProtocolProvider",
+      "target": "class:myos::net::InternetProtocolHandler",
+      "type": "inherits",
+      "weight": 0.9,
+      "languageNotes": "inherits InternetProtocolHandler"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "file:src/net/tcp.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "#include <net/tcp.h>"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolHandler::TransmissionControlProtocolHandler",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolSocket::TransmissionControlProtocolSocket",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolSocket::HandleTransmissionControlProtocolMessage",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolSocket::Send",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolSocket::Disconnect",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:bigEndian32",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::TransmissionControlProtocolProvider",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::OnInternetProtocolReceived",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Connect",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Disconnect",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Listen",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "file:src/net/tcp.cpp",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Bind",
+      "type": "contains",
+      "weight": 1.0,
+      "languageNotes": "defined in cpp"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolSocket::Send",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to backend provider"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolSocket::Disconnect",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Disconnect",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "delegates to backend provider"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "target": "function:myos::net::InternetProtocolHandler::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends TCP segment via IP"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "allocates segment buffer"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "target": "function:myos::MemoryManager::free",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "frees segment buffer"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "target": "function:myos::net::InternetProtocolProvider::Checksum",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "calculates TCP segment checksum"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::Connect",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "allocates socket memory"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::Connect",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends SYN segment"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::Listen",
+      "target": "function:myos::MemoryManager::malloc",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "allocates socket memory"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::OnInternetProtocolReceived",
+      "target": "function:myos::net::TransmissionControlProtocolProvider::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends SYN-ACK, ACK, FIN, RST segments during state machine transitions"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::OnInternetProtocolReceived",
+      "target": "function:myos::net::InternetProtocolProvider::Checksum",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "uses Checksum for verification"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::OnInternetProtocolReceived",
+      "target": "function:myos::net::TransmissionControlProtocolSocket::HandleTransmissionControlProtocolMessage",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "dispatches data to socket handler"
+    },
+    {
+      "source": "function:myos::net::TransmissionControlProtocolProvider::OnInternetProtocolReceived",
+      "target": "function:bigEndian32",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "converts sequence/ack numbers"
+    },
+    {
+      "source": "function:PrintfTCPHandler::HandleTransmissionControlProtocolMessage",
+      "target": "function:myos::net::TransmissionControlProtocolSocket::Send",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "sends HTTP response"
+    },
+    {
+      "source": "function:PrintfTCPHandler::HandleTransmissionControlProtocolMessage",
+      "target": "function:myos::net::TransmissionControlProtocolSocket::Disconnect",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "closes connection after HTTP response"
+    },
+    {
+      "source": "file:src/net/etherframe.cpp",
+      "target": "function:myos::net::EtherFrameProvider::OnRawDataReceived",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "overrides RawDataHandler"
+    },
+    {
+      "source": "function:myos::net::EtherFrameProvider::OnRawDataReceived",
+      "target": "function:myos::net::EtherFrameHandler::OnEtherFrameReceived",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "dispatches to registered handler"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:myos::net::InternetControlMessageProtocol::RequestEchoReply",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "kernel calls ICMP ping (commented out)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "function:myos::net::AddressResolutionProtocol::BroadcastMACAddress",
+      "type": "calls",
+      "weight": 0.6,
+      "languageNotes": "kernel sends gratuitous ARP (commented out)"
+    },
+
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/gdt.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 5)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/hardwarecommunication/interrupts.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/syscalls.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 5)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/hardwarecommunication/pci.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/drivers/driver.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/drivers/keyboard.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/drivers/mouse.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/drivers/vga.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/drivers/ata.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 3)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/filesystem/msdospart.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 3)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/filesystem/fat.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 3)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/gui/desktop.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 4)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/gui/window.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 4)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/multitasking.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 5)"
+    },
+    {
+      "source": "file:src/kernel.cpp",
+      "target": "file:src/drivers/amd_am79c973.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    },
+    {
+      "source": "file:src/net/etherframe.h",
+      "target": "file:src/drivers/amd_am79c973.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    },
+    {
+      "source": "file:src/memorymanagement.h",
+      "target": "file:src/hardwarecommunication/pci.h",
+      "type": "imports",
+      "weight": 0.7,
+      "languageNotes": "cross-batch import (batch 2)"
+    }
+  ],
+  "batchFiles": [
+    {"path": "src/common/types.h", "language": "c++", "sizeLines": 21, "fileCategory": "code"},
+    {"path": "src/kernel.cpp", "language": "c++", "sizeLines": 430, "fileCategory": "code"},
+    {"path": "src/memorymanagement.cpp", "language": "c++", "sizeLines": 126, "fileCategory": "code"},
+    {"path": "src/memorymanagement.h", "language": "c++", "sizeLines": 48, "fileCategory": "code"},
+    {"path": "src/net/arp.cpp", "language": "c++", "sizeLines": 120, "fileCategory": "code"},
+    {"path": "src/net/arp.h", "language": "c++", "sizeLines": 56, "fileCategory": "code"},
+    {"path": "src/net/etherframe.cpp", "language": "c++", "sizeLines": 102, "fileCategory": "code"},
+    {"path": "src/net/etherframe.h", "language": "c++", "sizeLines": 64, "fileCategory": "code"},
+    {"path": "src/net/icmp.cpp", "language": "c++", "sizeLines": 61, "fileCategory": "code"},
+    {"path": "src/net/icmp.h", "language": "c++", "sizeLines": 37, "fileCategory": "code"},
+    {"path": "src/net/ipv4.cpp", "language": "c++", "sizeLines": 138, "fileCategory": "code"},
+    {"path": "src/net/ipv4.h", "language": "c++", "sizeLines": 75, "fileCategory": "code"},
+    {"path": "src/net/tcp.cpp", "language": "c++", "sizeLines": 356, "fileCategory": "code"},
+    {"path": "src/net/tcp.h", "language": "c++", "sizeLines": 138, "fileCategory": "code"},
+    {"path": "src/net/udp.cpp", "language": "c++", "sizeLines": 181, "fileCategory": "code"},
+    {"path": "src/net/udp.h", "language": "c++", "sizeLines": 82, "fileCategory": "code"}
+  ]
+}

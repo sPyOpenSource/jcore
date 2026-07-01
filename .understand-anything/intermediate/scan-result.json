@@ -1,0 +1,476 @@
+{
+  "projectName": "x86OS",
+  "projectDescription": "A simple x86 operating system kernel with FAT filesystem, GUI, multitasking, and networking support",
+  "languages": ["c++", "assembly", "makefile"],
+  "frameworks": [],
+  "complexity": "moderate",
+  "files": [
+    {
+      "path": ".gitignore",
+      "language": "plaintext",
+      "sizeLines": 32,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "plaintext",
+      "sizeLines": 52,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/config.json",
+      "language": "json",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "CHANGELOG",
+      "language": "plaintext",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "LICENSE",
+      "language": "plaintext",
+      "sizeLines": 674,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "linker.ld",
+      "language": "linker-script",
+      "sizeLines": 32,
+      "fileCategory": "config"
+    },
+    {
+      "path": "makefile",
+      "language": "makefile",
+      "sizeLines": 75,
+      "fileCategory": "script"
+    },
+    {
+      "path": "src/common/graphicscontext.h",
+      "language": "c++",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/common/types.h",
+      "language": "c++",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/amd_am79c973.cpp",
+      "language": "c++",
+      "sizeLines": 236,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/amd_am79c973.h",
+      "language": "c++",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "sizeLines": 218,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/ata.h",
+      "language": "c++",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/driver.cpp",
+      "language": "c++",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/driver.h",
+      "language": "c++",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/keyboard.cpp",
+      "language": "c++",
+      "sizeLines": 115,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/keyboard.h",
+      "language": "c++",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/mouse.cpp",
+      "language": "c++",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/mouse.h",
+      "language": "c++",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/vga.cpp",
+      "language": "c++",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/drivers/vga.h",
+      "language": "c++",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "sizeLines": 426,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/File.cpp",
+      "language": "c++",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/SD.cpp",
+      "language": "c++",
+      "sizeLines": 627,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/SD.h",
+      "language": "c++",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "sizeLines": 1283,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "sizeLines": 312,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/fat.cpp",
+      "language": "c++",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "sizeLines": 557,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/msdospart.cpp",
+      "language": "c++",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/filesystem/msdospart.h",
+      "language": "c++",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gdt.cpp",
+      "language": "c++",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gdt.h",
+      "language": "c++",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gui/desktop.cpp",
+      "language": "c++",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gui/desktop.h",
+      "language": "c++",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gui/widget.cpp",
+      "language": "c++",
+      "sizeLines": 158,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gui/widget.h",
+      "language": "c++",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gui/window.cpp",
+      "language": "c++",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/gui/window.h",
+      "language": "c++",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hardwarecommunication/interrupts.cpp",
+      "language": "c++",
+      "sizeLines": 193,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hardwarecommunication/interrupts.h",
+      "language": "c++",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hardwarecommunication/interruptstubs.s",
+      "language": "assembly",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hardwarecommunication/pci.cpp",
+      "language": "c++",
+      "sizeLines": 213,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hardwarecommunication/pci.h",
+      "language": "c++",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hardwarecommunication/port.cpp",
+      "language": "c++",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/hardwarecommunication/port.h",
+      "language": "c++",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/kernel.cpp",
+      "language": "c++",
+      "sizeLines": 430,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/loader.s",
+      "language": "assembly",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/memorymanagement.cpp",
+      "language": "c++",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/memorymanagement.h",
+      "language": "c++",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/multitasking.cpp",
+      "language": "c++",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/multitasking.h",
+      "language": "c++",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/arp.cpp",
+      "language": "c++",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/arp.h",
+      "language": "c++",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/etherframe.cpp",
+      "language": "c++",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/etherframe.h",
+      "language": "c++",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/icmp.cpp",
+      "language": "c++",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/icmp.h",
+      "language": "c++",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/ipv4.cpp",
+      "language": "c++",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/ipv4.h",
+      "language": "c++",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/tcp.cpp",
+      "language": "c++",
+      "sizeLines": 356,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/tcp.h",
+      "language": "c++",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/udp.cpp",
+      "language": "c++",
+      "sizeLines": 181,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/net/udp.h",
+      "language": "c++",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/syscalls.cpp",
+      "language": "c++",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/syscalls.h",
+      "language": "c++",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 66,
+  "totalLines": 9481,
+  "importMap": {
+    ".gitignore": [],
+    ".understand-anything/.understandignore": [],
+    ".understand-anything/config.json": [],
+    "CHANGELOG": [],
+    "LICENSE": [],
+    "linker.ld": [],
+    "makefile": [],
+    "src/common/graphicscontext.h": [],
+    "src/common/types.h": [],
+    "src/drivers/amd_am79c973.cpp": ["src/drivers/amd_am79c973.h"],
+    "src/drivers/amd_am79c973.h": ["src/common/types.h", "src/drivers/driver.h", "src/hardwarecommunication/pci.h", "src/hardwarecommunication/interrupts.h", "src/hardwarecommunication/port.h"],
+    "src/drivers/ata.cpp": ["src/drivers/ata.h"],
+    "src/drivers/ata.h": ["src/common/types.h", "src/hardwarecommunication/interrupts.h", "src/hardwarecommunication/port.h"],
+    "src/drivers/driver.cpp": ["src/drivers/driver.h"],
+    "src/drivers/driver.h": [],
+    "src/drivers/keyboard.cpp": ["src/drivers/keyboard.h"],
+    "src/drivers/keyboard.h": ["src/common/types.h", "src/hardwarecommunication/interrupts.h", "src/drivers/driver.h", "src/hardwarecommunication/port.h"],
+    "src/drivers/mouse.cpp": ["src/drivers/mouse.h"],
+    "src/drivers/mouse.h": ["src/common/types.h", "src/hardwarecommunication/port.h", "src/drivers/driver.h", "src/hardwarecommunication/interrupts.h"],
+    "src/drivers/vga.cpp": ["src/drivers/vga.h"],
+    "src/drivers/vga.h": ["src/common/types.h", "src/hardwarecommunication/port.h", "src/drivers/driver.h"],
+    "src/filesystem/FatStructs.h": ["src/common/types.h", "src/drivers/ata.h"],
+    "src/filesystem/File.cpp": ["src/filesystem/SD.h"],
+    "src/filesystem/SD.cpp": ["src/filesystem/SD.h"],
+    "src/filesystem/SD.h": [],
+    "src/filesystem/SdFile.cpp": ["src/filesystem/fat.h"],
+    "src/filesystem/Volume.cpp": ["src/filesystem/fat.h"],
+    "src/filesystem/fat.cpp": ["src/filesystem/FatStructs.h"],
+    "src/filesystem/fat.h": ["src/filesystem/FatStructs.h", "src/drivers/ata.h"],
+    "src/filesystem/msdospart.cpp": ["src/filesystem/msdospart.h", "src/filesystem/FatStructs.h"],
+    "src/filesystem/msdospart.h": ["src/common/types.h", "src/drivers/ata.h"],
+    "src/gdt.cpp": ["src/gdt.h"],
+    "src/gdt.h": ["src/common/types.h"],
+    "src/gui/desktop.cpp": ["src/gui/desktop.h"],
+    "src/gui/desktop.h": ["src/gui/widget.h", "src/drivers/mouse.h"],
+    "src/gui/widget.cpp": ["src/gui/widget.h"],
+    "src/gui/widget.h": ["src/common/types.h", "src/common/graphicscontext.h", "src/drivers/keyboard.h"],
+    "src/gui/window.cpp": ["src/gui/window.h"],
+    "src/gui/window.h": ["src/gui/widget.h", "src/drivers/mouse.h"],
+    "src/hardwarecommunication/interrupts.cpp": ["src/hardwarecommunication/interrupts.h"],
+    "src/hardwarecommunication/interrupts.h": ["src/gdt.h", "src/multitasking.h", "src/common/types.h", "src/hardwarecommunication/port.h"],
+    "src/hardwarecommunication/interruptstubs.s": [],
+    "src/hardwarecommunication/pci.cpp": ["src/hardwarecommunication/pci.h", "src/drivers/amd_am79c973.h"],
+    "src/hardwarecommunication/pci.h": ["src/hardwarecommunication/port.h", "src/drivers/driver.h", "src/common/types.h", "src/hardwarecommunication/interrupts.h", "src/memorymanagement.h"],
+    "src/hardwarecommunication/port.cpp": ["src/hardwarecommunication/port.h"],
+    "src/hardwarecommunication/port.h": ["src/common/types.h"],
+    "src/kernel.cpp": ["src/common/types.h", "src/gdt.h", "src/memorymanagement.h", "src/hardwarecommunication/interrupts.h", "src/syscalls.h", "src/hardwarecommunication/pci.h", "src/drivers/driver.h", "src/drivers/keyboard.h", "src/drivers/mouse.h", "src/drivers/vga.h", "src/drivers/ata.h", "src/filesystem/msdospart.h", "src/filesystem/fat.h", "src/gui/desktop.h", "src/gui/window.h", "src/multitasking.h", "src/drivers/amd_am79c973.h", "src/net/etherframe.h", "src/net/arp.h", "src/net/ipv4.h", "src/net/icmp.h", "src/net/udp.h", "src/net/tcp.h"],
+    "src/loader.s": [],
+    "src/memorymanagement.cpp": ["src/memorymanagement.h"],
+    "src/memorymanagement.h": ["src/common/types.h"],
+    "src/multitasking.cpp": ["src/multitasking.h"],
+    "src/multitasking.h": ["src/common/types.h", "src/gdt.h"],
+    "src/net/arp.cpp": ["src/net/arp.h"],
+    "src/net/arp.h": ["src/common/types.h", "src/net/etherframe.h"],
+    "src/net/etherframe.cpp": ["src/net/etherframe.h"],
+    "src/net/etherframe.h": ["src/common/types.h", "src/drivers/amd_am79c973.h", "src/memorymanagement.h"],
+    "src/net/icmp.cpp": ["src/net/icmp.h"],
+    "src/net/icmp.h": ["src/common/types.h", "src/net/ipv4.h"],
+    "src/net/ipv4.cpp": ["src/net/ipv4.h"],
+    "src/net/ipv4.h": ["src/common/types.h", "src/net/etherframe.h", "src/net/arp.h"],
+    "src/net/tcp.cpp": ["src/net/tcp.h"],
+    "src/net/tcp.h": ["src/common/types.h", "src/net/ipv4.h", "src/memorymanagement.h"],
+    "src/net/udp.cpp": ["src/net/udp.h"],
+    "src/net/udp.h": ["src/common/types.h", "src/net/ipv4.h", "src/memorymanagement.h"],
+    "src/syscalls.cpp": ["src/syscalls.h"],
+    "src/syscalls.h": ["src/common/types.h", "src/hardwarecommunication/interrupts.h", "src/multitasking.h"]
+  },
+  "filteredByIgnore": 2837
+}

@@ -1,0 +1,3930 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "874566e7e94f75cbdfc3eaef7300abf9390d0c05",
+  "generatedAt": "2026-07-01T12:08:59.018Z",
+  "files": {
+    ".gitignore": {
+      "filePath": ".gitignore",
+      "contentHash": "699ddb1c72881999e7e0a53a7d0183f13591e202a5a0e64afb2a51cd9348c735",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "5d1ba224f052d549ee74aa0dd8f48215ceb24bd0977731a5654ac145b111462d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 53,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/config.json": {
+      "filePath": ".understand-anything/config.json",
+      "contentHash": "08d37f20ea0af2233ae24f094723759f952381ecb6dd7f2aaa05ef96e95eae6b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "CHANGELOG": {
+      "filePath": "CHANGELOG",
+      "contentHash": "102bd641c8a7ae0f3e6f46d54e01b87b93910909081647fc17bdd843bf8bef4a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": false
+    },
+    "LICENSE": {
+      "filePath": "LICENSE",
+      "contentHash": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 675,
+      "hasStructuralAnalysis": false
+    },
+    "linker.ld": {
+      "filePath": "linker.ld",
+      "contentHash": "6562925927e736574d4b2ee5ca12020ab5a5fe8a66183d0fe20c7c45b4789a90",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": false
+    },
+    "makefile": {
+      "filePath": "makefile",
+      "contentHash": "e2c11329d6e2fc7dbeca56146d488eb5a2ce93522a08d002218d7b5858ffc2af",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "src/common/graphicscontext.h": {
+      "filePath": "src/common/graphicscontext.h",
+      "contentHash": "76611e8dd50ab383144d27759f118851b39551845f650105842581bd2ca36599",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "src/common/types.h": {
+      "filePath": "src/common/types.h",
+      "contentHash": "20137258893c3b043343a39cc76616d053592249ea2d6d96f11c3595df3bd023",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/amd_am79c973.cpp": {
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "contentHash": "8703be91ec03ff0efe48d04ab26a94e0d63cbacce8ae8859e81fa60d280b8a09",
+      "functions": [
+        {
+          "name": "RawDataHandler",
+          "params": [
+            "backend"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "~RawDataHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "OnRawDataReceived",
+          "params": [
+            "buffer",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Send",
+          "params": [
+            "buffer",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "amd_am79c973",
+          "params": [
+            "dev",
+            "interrupts"
+          ],
+          "exported": true,
+          "lineCount": 73
+        },
+        {
+          "name": "~amd_am79c973",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Activate",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "Reset",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "HandleInterrupt",
+          "params": [
+            "esp"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "Send",
+          "params": [
+            "buffer",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "Receive",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 32
+        },
+        {
+          "name": "SetHandler",
+          "params": [
+            "handler"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "GetMACAddress",
+          "params": [],
+          "returnType": "uint64_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "SetIPAddress",
+          "params": [
+            "ip"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "GetIPAddress",
+          "params": [],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "drivers/amd_am79c973.h",
+          "specifiers": [
+            "drivers/amd_am79c973.h"
+          ]
+        }
+      ],
+      "exports": [
+        "RawDataHandler",
+        "~RawDataHandler",
+        "OnRawDataReceived",
+        "Send",
+        "amd_am79c973",
+        "~amd_am79c973",
+        "Activate",
+        "Reset",
+        "HandleInterrupt",
+        "Send",
+        "Receive",
+        "SetHandler",
+        "GetMACAddress",
+        "SetIPAddress",
+        "GetIPAddress"
+      ],
+      "totalLines": 237,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/amd_am79c973.h": {
+      "filePath": "src/drivers/amd_am79c973.h",
+      "contentHash": "739ae9ada3e7fb4b7582393eb4638cd917c07a759ca63fc952aff470b19bff19",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 104,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/ata.cpp": {
+      "filePath": "src/drivers/ata.cpp",
+      "contentHash": "6245e0e70f3b7a603805e98e4aca982d1fea6d939a752afc314b7ff6b34bf9d0",
+      "functions": [
+        {
+          "name": "AdvancedTechnologyAttachment",
+          "params": [
+            "master",
+            "portBase"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "~AdvancedTechnologyAttachment",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Identify",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 43
+        },
+        {
+          "name": "Read28",
+          "params": [
+            "sectorNum",
+            "data",
+            "count"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 43
+        },
+        {
+          "name": "Read28",
+          "params": [
+            "sectorNum",
+            "count"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 45
+        },
+        {
+          "name": "Write28",
+          "params": [
+            "sectorNum",
+            "data",
+            "count"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 36
+        },
+        {
+          "name": "Flush",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "drivers/ata.h",
+          "specifiers": [
+            "drivers/ata.h"
+          ]
+        }
+      ],
+      "exports": [
+        "AdvancedTechnologyAttachment",
+        "~AdvancedTechnologyAttachment",
+        "Identify",
+        "Read28",
+        "Read28",
+        "Write28",
+        "Flush"
+      ],
+      "totalLines": 219,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/ata.h": {
+      "filePath": "src/drivers/ata.h",
+      "contentHash": "eaa3047c2ace3819edb9120f45339519dadcfac7f01151815995231ccade4d26",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/driver.cpp": {
+      "filePath": "src/drivers/driver.cpp",
+      "contentHash": "31982698c8fd5c86e2ae0dcc4a8261f60eaf77b4c3e19893cfcb0a0c51f258e8",
+      "functions": [
+        {
+          "name": "Driver",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "~Driver",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Activate",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Reset",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Deactivate",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "DriverManager",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "AddDriver",
+          "params": [
+            "drv"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "ActivateAll",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "drivers/driver.h",
+          "specifiers": [
+            "drivers/driver.h"
+          ]
+        }
+      ],
+      "exports": [
+        "Driver",
+        "~Driver",
+        "Activate",
+        "Reset",
+        "Deactivate",
+        "DriverManager",
+        "AddDriver",
+        "ActivateAll"
+      ],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/driver.h": {
+      "filePath": "src/drivers/driver.h",
+      "contentHash": "6f092012693f58a8adf49aaf9f45d3477819ceb1091b9c5d0085a3dd72bea4ad",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/keyboard.cpp": {
+      "filePath": "src/drivers/keyboard.cpp",
+      "contentHash": "84fa9c967cbe564af6525bf4c69ea11c7650e1a5d10eb798c0cc959c1c7ec662",
+      "functions": [
+        {
+          "name": "KeyboardEventHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnKeyDown",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnKeyUp",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "KeyboardDriver",
+          "params": [
+            "manager",
+            "handler"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "~KeyboardDriver",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Activate",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "HandleInterrupt",
+          "params": [
+            "esp"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 67
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "drivers/keyboard.h",
+          "specifiers": [
+            "drivers/keyboard.h"
+          ]
+        }
+      ],
+      "exports": [
+        "KeyboardEventHandler",
+        "OnKeyDown",
+        "OnKeyUp",
+        "KeyboardDriver",
+        "~KeyboardDriver",
+        "Activate",
+        "HandleInterrupt"
+      ],
+      "totalLines": 116,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/keyboard.h": {
+      "filePath": "src/drivers/keyboard.h",
+      "contentHash": "04df52a1b1d3fd83bd4aecbb7bf5b8b35146cbffca6878d9eb3fd8d90963fb48",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/mouse.cpp": {
+      "filePath": "src/drivers/mouse.cpp",
+      "contentHash": "90290d3ba2b2f83900f37d631028fd81b6f894728f0302b7bf24dcf184e934bb",
+      "functions": [
+        {
+          "name": "MouseEventHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnActivate",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnMouseDown",
+          "params": [
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnMouseUp",
+          "params": [
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnMouseMove",
+          "params": [
+            "x",
+            "y"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "MouseDriver",
+          "params": [
+            "manager",
+            "handler"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "~MouseDriver",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Activate",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "HandleInterrupt",
+          "params": [
+            "esp"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 35
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "drivers/mouse.h",
+          "specifiers": [
+            "drivers/mouse.h"
+          ]
+        }
+      ],
+      "exports": [
+        "MouseEventHandler",
+        "OnActivate",
+        "OnMouseDown",
+        "OnMouseUp",
+        "OnMouseMove",
+        "MouseDriver",
+        "~MouseDriver",
+        "Activate",
+        "HandleInterrupt"
+      ],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/mouse.h": {
+      "filePath": "src/drivers/mouse.h",
+      "contentHash": "0fbd6e94f4405a98476a4edd0975e24ae8aab4d4d2c0a7167d6ebf2544678ff4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 47,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/vga.cpp": {
+      "filePath": "src/drivers/vga.cpp",
+      "contentHash": "b58c2729647c8350c4c30c3969a91427d3850349f83d17ecf2fd3b38b2f4be96",
+      "functions": [
+        {
+          "name": "VideoGraphicsArray",
+          "params": [],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "~VideoGraphicsArray",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "WriteRegisters",
+          "params": [
+            "registers"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 46
+        },
+        {
+          "name": "SupportsMode",
+          "params": [
+            "width",
+            "height",
+            "colordepth"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "SetMode",
+          "params": [
+            "width",
+            "height",
+            "colordepth"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 28
+        },
+        {
+          "name": "PutPixel",
+          "params": [
+            "x",
+            "y",
+            "colorIndex"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "GetColorIndex",
+          "params": [
+            "r",
+            "g",
+            "b"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "PutPixel",
+          "params": [
+            "x",
+            "y",
+            "r",
+            "g",
+            "b"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "FillRectangle",
+          "params": [
+            "x",
+            "y",
+            "w",
+            "h",
+            "r",
+            "g",
+            "b"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "drivers/vga.h",
+          "specifiers": [
+            "drivers/vga.h"
+          ]
+        }
+      ],
+      "exports": [
+        "VideoGraphicsArray",
+        "~VideoGraphicsArray",
+        "WriteRegisters",
+        "SupportsMode",
+        "SetMode",
+        "PutPixel",
+        "GetColorIndex",
+        "PutPixel",
+        "FillRectangle"
+      ],
+      "totalLines": 155,
+      "hasStructuralAnalysis": true
+    },
+    "src/drivers/vga.h": {
+      "filePath": "src/drivers/vga.h",
+      "contentHash": "a999f4bd955acacf5afbe0dc4623c27444a5276502925bc59e3cbf276e1f735c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/FatStructs.h": {
+      "filePath": "src/filesystem/FatStructs.h",
+      "contentHash": "95c4cf89ec46e3fbf85d1af8ed76f62bff96016324c83ccc5fa27c07663cce37",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 427,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/File.cpp": {
+      "filePath": "src/filesystem/File.cpp",
+      "contentHash": "a0b2032af76e1f214416a73a5d9db491f023ba67754876c80427a0819ebce008",
+      "functions": [
+        {
+          "name": "File",
+          "params": [
+            "f",
+            "n"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "File",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "isDirectory",
+          "params": [],
+          "returnType": "boolean",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "write",
+          "params": [
+            "val"
+          ],
+          "returnType": "size_t",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "write",
+          "params": [
+            "buf",
+            "size"
+          ],
+          "returnType": "size_t",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "peek",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "read",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "read",
+          "params": [
+            "buf",
+            "nbyte"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "available",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "flush",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "seek",
+          "params": [
+            "pos"
+          ],
+          "returnType": "boolean",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "position",
+          "params": [],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "size",
+          "params": [],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "close",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "SD.h",
+          "specifiers": [
+            "SD.h"
+          ]
+        }
+      ],
+      "exports": [
+        "File",
+        "File",
+        "isDirectory",
+        "write",
+        "write",
+        "peek",
+        "read",
+        "read",
+        "available",
+        "flush",
+        "seek",
+        "position",
+        "size",
+        "close"
+      ],
+      "totalLines": 147,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/SD.cpp": {
+      "filePath": "src/filesystem/SD.cpp",
+      "contentHash": "dd9c0cca0b902121554bc43557e0ef209b9fb7eb39cac2cee76bb7afb7b4aa6c",
+      "functions": [
+        {
+          "name": "getNextPathComponent",
+          "params": [
+            "path",
+            "p_offset",
+            "buffer"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 56
+        },
+        {
+          "name": "walkPath",
+          "params": [
+            "filepath",
+            "parentDir"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 101
+        },
+        {
+          "name": "callback_pathExists",
+          "params": [
+            "parentDir",
+            "filePathComponent"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "callback_makeDirPath",
+          "params": [
+            "parentDir",
+            "filePathComponent",
+            "isLastComponent",
+            "object"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "callback_remove",
+          "params": [
+            "parentDir",
+            "filePathComponent",
+            "isLastComponent"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "callback_rmdir",
+          "params": [
+            "parentDir",
+            "filePathComponent",
+            "isLastComponent"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "begin",
+          "params": [
+            "csPin"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "begin",
+          "params": [
+            "clock",
+            "csPin"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "end",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "getParentDir",
+          "params": [
+            "filepath",
+            "index"
+          ],
+          "returnType": "SdFile",
+          "exported": true,
+          "lineCount": 56
+        },
+        {
+          "name": "open",
+          "params": [
+            "filepath",
+            "mode"
+          ],
+          "returnType": "File",
+          "exported": true,
+          "lineCount": 54
+        },
+        {
+          "name": "exists",
+          "params": [
+            "filepath"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "mkdir",
+          "params": [
+            "filepath"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "rmdir",
+          "params": [
+            "filepath"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "remove",
+          "params": [
+            "filepath"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "openNextFile",
+          "params": [
+            "mode"
+          ],
+          "returnType": "File",
+          "exported": true,
+          "lineCount": 43
+        },
+        {
+          "name": "rewindDirectory",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "SD.h",
+          "specifiers": [
+            "SD.h"
+          ]
+        }
+      ],
+      "exports": [
+        "getNextPathComponent",
+        "walkPath",
+        "callback_pathExists",
+        "callback_makeDirPath",
+        "callback_remove",
+        "callback_rmdir",
+        "begin",
+        "begin",
+        "end",
+        "getParentDir",
+        "open",
+        "exists",
+        "mkdir",
+        "rmdir",
+        "remove",
+        "openNextFile",
+        "rewindDirectory"
+      ],
+      "totalLines": 628,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/SD.h": {
+      "filePath": "src/filesystem/SD.h",
+      "contentHash": "a4f653d80e895dc65a5f9c8d0ad2fcce44470599bfa7242b170f3bd612573c8a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 127,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/SdFile.cpp": {
+      "filePath": "src/filesystem/SdFile.cpp",
+      "contentHash": "2789fdd1ddca11c9f090fa48431f8aa0a8638c23c4e811f0f991a5f37b03bdb4",
+      "functions": [
+        {
+          "name": "addCluster",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "addDirCluster",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "close",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "contiguousRange",
+          "params": [
+            "bgnBlock",
+            "endBlock"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "createContiguous",
+          "params": [
+            "dirFile",
+            "fileName",
+            "size"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "dirEntry",
+          "params": [
+            "dir"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "dirName",
+          "params": [
+            "dir",
+            "name"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "ls",
+          "params": [
+            "flags",
+            "indent"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 42
+        },
+        {
+          "name": "make83Name",
+          "params": [
+            "str",
+            "name"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 32
+        },
+        {
+          "name": "makeDir",
+          "params": [
+            "dir",
+            "dirName"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 53
+        },
+        {
+          "name": "memcmp",
+          "params": [
+            "ptr1",
+            "ptr2",
+            "num"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "open",
+          "params": [
+            "dirFile",
+            "fileName",
+            "oflag"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 79
+        },
+        {
+          "name": "open",
+          "params": [
+            "dirFile",
+            "index",
+            "oflag"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "openCachedEntry",
+          "params": [
+            "dirIndex",
+            "oflag"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 37
+        },
+        {
+          "name": "openRoot",
+          "params": [
+            "vol"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "printDirName",
+          "params": [
+            "dir",
+            "width"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "printFatDate",
+          "params": [
+            "fatDate"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "printFatTime",
+          "params": [
+            "fatTime"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "printTwoDigits",
+          "params": [
+            "v"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "read",
+          "params": [
+            "buf",
+            "nbyte"
+          ],
+          "returnType": "int16_t",
+          "exported": true,
+          "lineCount": 54
+        },
+        {
+          "name": "readDir",
+          "params": [
+            "dir"
+          ],
+          "returnType": "int8_t",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "remove",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "remove",
+          "params": [
+            "dirFile",
+            "fileName"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "rmDir",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "rmRfStar",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 38
+        },
+        {
+          "name": "seekSet",
+          "params": [
+            "pos"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 31
+        },
+        {
+          "name": "sync",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "timestamp",
+          "params": [
+            "flags",
+            "year",
+            "month",
+            "day",
+            "hour",
+            "minute",
+            "second"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "truncate",
+          "params": [
+            "length"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 42
+        },
+        {
+          "name": "write",
+          "params": [
+            "buf",
+            "nbyte"
+          ],
+          "returnType": "size_t",
+          "exported": true,
+          "lineCount": 94
+        },
+        {
+          "name": "write",
+          "params": [
+            "b"
+          ],
+          "returnType": "size_t",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "write",
+          "params": [
+            "str"
+          ],
+          "returnType": "size_t",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fat.h",
+          "specifiers": [
+            "fat.h"
+          ]
+        }
+      ],
+      "exports": [
+        "addCluster",
+        "addDirCluster",
+        "close",
+        "contiguousRange",
+        "createContiguous",
+        "dirEntry",
+        "dirName",
+        "ls",
+        "make83Name",
+        "makeDir",
+        "memcmp",
+        "open",
+        "open",
+        "openCachedEntry",
+        "openRoot",
+        "printDirName",
+        "printFatDate",
+        "printFatTime",
+        "printTwoDigits",
+        "read",
+        "readDir",
+        "remove",
+        "remove",
+        "rmDir",
+        "rmRfStar",
+        "seekSet",
+        "sync",
+        "timestamp",
+        "truncate",
+        "write",
+        "write",
+        "write"
+      ],
+      "totalLines": 1284,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/Volume.cpp": {
+      "filePath": "src/filesystem/Volume.cpp",
+      "contentHash": "2bc36e8659e2a403bee664ad19dd22a028f8ab6bfc041b426f5b69b1b21cfbb0",
+      "functions": [
+        {
+          "name": "allocContiguous",
+          "params": [
+            "count",
+            "curCluster"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 67
+        },
+        {
+          "name": "cacheFlush",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "cacheRawBlock",
+          "params": [
+            "blockNumber",
+            "action"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "cacheZeroBlock",
+          "params": [
+            "blockNumber"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "chainSize",
+          "params": [
+            "cluster",
+            "size"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "fatGet",
+          "params": [
+            "cluster",
+            "value"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "fatPut",
+          "params": [
+            "cluster",
+            "value"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "freeChain",
+          "params": [
+            "cluster"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "init",
+          "params": [
+            "dev",
+            "part"
+          ],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 81
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fat.h",
+          "specifiers": [
+            "fat.h"
+          ]
+        }
+      ],
+      "exports": [
+        "allocContiguous",
+        "cacheFlush",
+        "cacheRawBlock",
+        "cacheZeroBlock",
+        "chainSize",
+        "fatGet",
+        "fatPut",
+        "freeChain",
+        "init"
+      ],
+      "totalLines": 313,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/fat.cpp": {
+      "filePath": "src/filesystem/fat.cpp",
+      "contentHash": "bd6bf7443789f6618dd48e33f3a989d80093ff3481674c25c5e439b586a5b76d",
+      "functions": [
+        {
+          "name": "ReadBiosBlock",
+          "params": [
+            "hd",
+            "partitionOffset"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 80
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "filesystem/FatStructs.h",
+          "specifiers": [
+            "filesystem/FatStructs.h"
+          ]
+        }
+      ],
+      "exports": [
+        "ReadBiosBlock"
+      ],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/fat.h": {
+      "filePath": "src/filesystem/fat.h",
+      "contentHash": "1ac34c9ed02d5205fd8a18892d91fbfd27babf0603874aacb2132d3ac39373e0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 558,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/msdospart.cpp": {
+      "filePath": "src/filesystem/msdospart.cpp",
+      "contentHash": "ce942e544af9ef63060d6554d96aa6bd8eb1141bcd9c6e46508f5cbd74641849",
+      "functions": [
+        {
+          "name": "ReadPartitions",
+          "params": [
+            "hd"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "filesystem/msdospart.h",
+          "specifiers": [
+            "filesystem/msdospart.h"
+          ]
+        },
+        {
+          "source": "filesystem/FatStructs.h",
+          "specifiers": [
+            "filesystem/FatStructs.h"
+          ]
+        }
+      ],
+      "exports": [
+        "ReadPartitions"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "src/filesystem/msdospart.h": {
+      "filePath": "src/filesystem/msdospart.h",
+      "contentHash": "d0931ef23cb7fdfa55955acdb8cc210c997f7bbdb2f8b7c30ab475929e9b0254",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "src/gdt.cpp": {
+      "filePath": "src/gdt.cpp",
+      "contentHash": "90c528a823e20a92a6aa5d882f264966cf6c99388154a94ed125b3a3b6dec72f",
+      "functions": [
+        {
+          "name": "GlobalDescriptorTable",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "~GlobalDescriptorTable",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "DataSegmentSelector",
+          "params": [],
+          "returnType": "uint16_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "CodeSegmentSelector",
+          "params": [],
+          "returnType": "uint16_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "SegmentDescriptor::SegmentDescriptor",
+          "params": [
+            "base",
+            "limit",
+            "type"
+          ],
+          "exported": true,
+          "lineCount": 41
+        },
+        {
+          "name": "SegmentDescriptor::Base",
+          "params": [],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "SegmentDescriptor::Limit",
+          "params": [],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "gdt.h",
+          "specifiers": [
+            "gdt.h"
+          ]
+        }
+      ],
+      "exports": [
+        "GlobalDescriptorTable",
+        "~GlobalDescriptorTable",
+        "DataSegmentSelector",
+        "CodeSegmentSelector",
+        "SegmentDescriptor::SegmentDescriptor",
+        "SegmentDescriptor::Base",
+        "SegmentDescriptor::Limit"
+      ],
+      "totalLines": 100,
+      "hasStructuralAnalysis": true
+    },
+    "src/gdt.h": {
+      "filePath": "src/gdt.h",
+      "contentHash": "b0ec14d0dfda1ed0b32cbaa16fa904a812bc650d54009983b7385c6a15ae5594",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "src/gui/desktop.cpp": {
+      "filePath": "src/gui/desktop.cpp",
+      "contentHash": "dcb1d4c6d48cb143e733c531f32fa67b8ab4cadfe6dcb11e1bab34b875604cac",
+      "functions": [
+        {
+          "name": "Desktop",
+          "params": [
+            "w",
+            "h",
+            "r",
+            "g",
+            "b"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "~Desktop",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Draw",
+          "params": [
+            "gc"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "OnMouseDown",
+          "params": [
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "OnMouseUp",
+          "params": [
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "OnMouseMove",
+          "params": [
+            "x",
+            "y"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "gui/desktop.h",
+          "specifiers": [
+            "gui/desktop.h"
+          ]
+        }
+      ],
+      "exports": [
+        "Desktop",
+        "~Desktop",
+        "Draw",
+        "OnMouseDown",
+        "OnMouseUp",
+        "OnMouseMove"
+      ],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "src/gui/desktop.h": {
+      "filePath": "src/gui/desktop.h",
+      "contentHash": "6babf1b8b1bd3672815c83e1407446a55c6d3d1d9e05e7caa96ce917b0e46219",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "src/gui/widget.cpp": {
+      "filePath": "src/gui/widget.cpp",
+      "contentHash": "a0d7ad28bb64e077bc67faa1b1ddec880c7b4a69ae69a242684c3d5b485c5352",
+      "functions": [
+        {
+          "name": "Widget",
+          "params": [
+            "parent",
+            "x",
+            "y",
+            "w",
+            "h",
+            "r",
+            "g",
+            "b"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "~Widget",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "GetFocus",
+          "params": [
+            "widget"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "ModelToScreen",
+          "params": [
+            "x",
+            "y"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "Draw",
+          "params": [
+            "gc"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "OnMouseDown",
+          "params": [
+            "x",
+            "y",
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "ContainsCoordinate",
+          "params": [
+            "x",
+            "y"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "OnMouseUp",
+          "params": [
+            "x",
+            "y",
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnMouseMove",
+          "params": [
+            "oldx",
+            "oldy",
+            "newx",
+            "newy"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "CompositeWidget",
+          "params": [
+            "parent",
+            "x",
+            "y",
+            "w",
+            "h",
+            "r",
+            "g",
+            "b"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "~CompositeWidget",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "GetFocus",
+          "params": [
+            "widget"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "AddChild",
+          "params": [
+            "child"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "Draw",
+          "params": [
+            "gc"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "OnMouseDown",
+          "params": [
+            "x",
+            "y",
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "OnMouseUp",
+          "params": [
+            "x",
+            "y",
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "OnMouseMove",
+          "params": [
+            "oldx",
+            "oldy",
+            "newx",
+            "newy"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "OnKeyDown",
+          "params": [
+            "str"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "OnKeyUp",
+          "params": [
+            "str"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "gui/widget.h",
+          "specifiers": [
+            "gui/widget.h"
+          ]
+        }
+      ],
+      "exports": [
+        "Widget",
+        "~Widget",
+        "GetFocus",
+        "ModelToScreen",
+        "Draw",
+        "OnMouseDown",
+        "ContainsCoordinate",
+        "OnMouseUp",
+        "OnMouseMove",
+        "CompositeWidget",
+        "~CompositeWidget",
+        "GetFocus",
+        "AddChild",
+        "Draw",
+        "OnMouseDown",
+        "OnMouseUp",
+        "OnMouseMove",
+        "OnKeyDown",
+        "OnKeyUp"
+      ],
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "src/gui/widget.h": {
+      "filePath": "src/gui/widget.h",
+      "contentHash": "cd05c60a0412039ae5bb41d96df6974cec42eea022d3ae7a75b7d629c0cf9137",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "src/gui/window.cpp": {
+      "filePath": "src/gui/window.cpp",
+      "contentHash": "7475a09c4e63f5ba6e61264078eece697d4cb1466a0fba3e86581eb01f0803e0",
+      "functions": [
+        {
+          "name": "Window",
+          "params": [
+            "parent",
+            "x",
+            "y",
+            "w",
+            "h",
+            "r",
+            "g",
+            "b"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "~Window",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnMouseDown",
+          "params": [
+            "x",
+            "y",
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "OnMouseUp",
+          "params": [
+            "x",
+            "y",
+            "button"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "OnMouseMove",
+          "params": [
+            "oldx",
+            "oldy",
+            "newx",
+            "newy"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "gui/window.h",
+          "specifiers": [
+            "gui/window.h"
+          ]
+        }
+      ],
+      "exports": [
+        "Window",
+        "~Window",
+        "OnMouseDown",
+        "OnMouseUp",
+        "OnMouseMove"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "src/gui/window.h": {
+      "filePath": "src/gui/window.h",
+      "contentHash": "a29d7f633fb1f5876bedb3044e692b0d1c071eacb0a3c6c3a1702b65cb0ed816",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "src/hardwarecommunication/interrupts.cpp": {
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "contentHash": "c26edeb18c67cabcfdb1ada16ee41818e4226d2ba03a60af86e2f88d3bd2decf",
+      "functions": [
+        {
+          "name": "InterruptHandler",
+          "params": [
+            "interruptManager",
+            "InterruptNumber"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "~InterruptHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "HandleInterrupt",
+          "params": [
+            "esp"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "SetInterruptDescriptorTableEntry",
+          "params": [
+            "interrupt",
+            "CodeSegment",
+            "DescriptorPrivilegeLevel",
+            "DescriptorType"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "InterruptManager",
+          "params": [
+            "hardwareInterruptOffset",
+            "globalDescriptorTable",
+            "taskManager"
+          ],
+          "exported": true,
+          "lineCount": 80
+        },
+        {
+          "name": "~InterruptManager",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "HardwareInterruptOffset",
+          "params": [],
+          "returnType": "uint16_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Activate",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "Deactivate",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "HandleInterrupt",
+          "params": [
+            "interrupt",
+            "esp"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "DoHandleInterrupt",
+          "params": [
+            "interrupt",
+            "esp"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 27
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "hardwarecommunication/interrupts.h",
+          "specifiers": [
+            "hardwarecommunication/interrupts.h"
+          ]
+        }
+      ],
+      "exports": [
+        "InterruptHandler",
+        "~InterruptHandler",
+        "HandleInterrupt",
+        "SetInterruptDescriptorTableEntry",
+        "InterruptManager",
+        "~InterruptManager",
+        "HardwareInterruptOffset",
+        "Activate",
+        "Deactivate",
+        "HandleInterrupt",
+        "DoHandleInterrupt"
+      ],
+      "totalLines": 194,
+      "hasStructuralAnalysis": true
+    },
+    "src/hardwarecommunication/interrupts.h": {
+      "filePath": "src/hardwarecommunication/interrupts.h",
+      "contentHash": "369b8d2975c3c6d286f4986e1c34ec029a96d75ee9a97fa956bbff476f6db0f0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 123,
+      "hasStructuralAnalysis": true
+    },
+    "src/hardwarecommunication/interruptstubs.s": {
+      "filePath": "src/hardwarecommunication/interruptstubs.s",
+      "contentHash": "13653629732ffb9db60887db6bef0b6948696db0b2b626549ad41eca1f252ab3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 125,
+      "hasStructuralAnalysis": false
+    },
+    "src/hardwarecommunication/pci.cpp": {
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "contentHash": "0f7795c17983abe64c5a7a4dc4f570c5306fee4cbdc851fdf01c975ce05b8a6c",
+      "functions": [
+        {
+          "name": "PeripheralComponentInterconnectDeviceDescriptor",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "~PeripheralComponentInterconnectDeviceDescriptor",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "PeripheralComponentInterconnectController",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "~PeripheralComponentInterconnectController",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Read",
+          "params": [
+            "bus",
+            "device",
+            "function",
+            "registeroffset"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "Write",
+          "params": [
+            "bus",
+            "device",
+            "function",
+            "registeroffset",
+            "value"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "DeviceHasFunctions",
+          "params": [
+            "bus",
+            "device"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "SelectDrivers",
+          "params": [
+            "driverManager",
+            "interrupts"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 47
+        },
+        {
+          "name": "GetBaseAddressRegister",
+          "params": [
+            "bus",
+            "device",
+            "function",
+            "bar"
+          ],
+          "returnType": "BaseAddressRegister",
+          "exported": true,
+          "lineCount": 39
+        },
+        {
+          "name": "GetDeviceDescriptor",
+          "params": [
+            "bus",
+            "device",
+            "function"
+          ],
+          "returnType": "PeripheralComponentInterconnectDeviceDescriptor",
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "hardwarecommunication/pci.h",
+          "specifiers": [
+            "hardwarecommunication/pci.h"
+          ]
+        },
+        {
+          "source": "drivers/amd_am79c973.h",
+          "specifiers": [
+            "drivers/amd_am79c973.h"
+          ]
+        }
+      ],
+      "exports": [
+        "PeripheralComponentInterconnectDeviceDescriptor",
+        "~PeripheralComponentInterconnectDeviceDescriptor",
+        "PeripheralComponentInterconnectController",
+        "~PeripheralComponentInterconnectController",
+        "Read",
+        "Write",
+        "DeviceHasFunctions",
+        "SelectDrivers",
+        "GetBaseAddressRegister",
+        "GetDeviceDescriptor"
+      ],
+      "totalLines": 214,
+      "hasStructuralAnalysis": true
+    },
+    "src/hardwarecommunication/pci.h": {
+      "filePath": "src/hardwarecommunication/pci.h",
+      "contentHash": "1d36fe891f37966e136a3d94fe9a8d8499eba2160adec3b025ca63accf2f9034",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 81,
+      "hasStructuralAnalysis": true
+    },
+    "src/hardwarecommunication/port.cpp": {
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "contentHash": "6997861fa991ea270a678a221c0b8a59b646472871ffd7b888070889e7e57fec",
+      "functions": [
+        {
+          "name": "Port",
+          "params": [
+            "portnumber"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "~Port",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Port8Bit",
+          "params": [
+            "portnumber"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "~Port8Bit",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Write",
+          "params": [
+            "data"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Read",
+          "params": [],
+          "returnType": "uint8_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Port8BitSlow",
+          "params": [
+            "portnumber"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "~Port8BitSlow",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Write",
+          "params": [
+            "data"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Port16Bit",
+          "params": [
+            "portnumber"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "~Port16Bit",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Write",
+          "params": [
+            "data"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Read",
+          "params": [],
+          "returnType": "uint16_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Port32Bit",
+          "params": [
+            "portnumber"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "~Port32Bit",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "Write",
+          "params": [
+            "data"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Read",
+          "params": [],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "hardwarecommunication/port.h",
+          "specifiers": [
+            "hardwarecommunication/port.h"
+          ]
+        }
+      ],
+      "exports": [
+        "Port",
+        "~Port",
+        "Port8Bit",
+        "~Port8Bit",
+        "Write",
+        "Read",
+        "Port8BitSlow",
+        "~Port8BitSlow",
+        "Write",
+        "Port16Bit",
+        "~Port16Bit",
+        "Write",
+        "Read",
+        "Port32Bit",
+        "~Port32Bit",
+        "Write",
+        "Read"
+      ],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "src/hardwarecommunication/port.h": {
+      "filePath": "src/hardwarecommunication/port.h",
+      "contentHash": "2a42b045a34f214bbb469542dc9c2277a1f324bf2a12fe8df134214d6c3de87f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 117,
+      "hasStructuralAnalysis": true
+    },
+    "src/kernel.cpp": {
+      "filePath": "src/kernel.cpp",
+      "contentHash": "cf5e80139c26806f64ac15a0ff8a9fe60d4de553d5051bba698bd18c3179c529",
+      "functions": [
+        {
+          "name": "printf",
+          "params": [
+            "str"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 36
+        },
+        {
+          "name": "printfHex",
+          "params": [
+            "key"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "printfHex16",
+          "params": [
+            "key"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "printfHex32",
+          "params": [
+            "key"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "OnKeyDown",
+          "params": [
+            "c"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "MouseToConsole",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "OnMouseMove",
+          "params": [
+            "xoffset",
+            "yoffset"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "HandleUserDatagramProtocolMessage",
+          "params": [
+            "socket",
+            "data",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "HandleTransmissionControlProtocolMessage",
+          "params": [
+            "socket",
+            "data",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 30
+        },
+        {
+          "name": "sysprintf",
+          "params": [
+            "str"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "taskA",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "taskB",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrintfKeyboardEventHandler",
+          "methods": [
+            "OnKeyDown"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "MouseToConsole",
+          "methods": [
+            "MouseToConsole",
+            "OnMouseMove"
+          ],
+          "properties": [
+            "x"
+          ],
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "PrintfUDPHandler",
+          "methods": [
+            "HandleUserDatagramProtocolMessage"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "PrintfTCPHandler",
+          "methods": [
+            "HandleTransmissionControlProtocolMessage"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "imports": [
+        {
+          "source": "common/types.h",
+          "specifiers": [
+            "common/types.h"
+          ]
+        },
+        {
+          "source": "gdt.h",
+          "specifiers": [
+            "gdt.h"
+          ]
+        },
+        {
+          "source": "memorymanagement.h",
+          "specifiers": [
+            "memorymanagement.h"
+          ]
+        },
+        {
+          "source": "hardwarecommunication/interrupts.h",
+          "specifiers": [
+            "hardwarecommunication/interrupts.h"
+          ]
+        },
+        {
+          "source": "syscalls.h",
+          "specifiers": [
+            "syscalls.h"
+          ]
+        },
+        {
+          "source": "hardwarecommunication/pci.h",
+          "specifiers": [
+            "hardwarecommunication/pci.h"
+          ]
+        },
+        {
+          "source": "drivers/driver.h",
+          "specifiers": [
+            "drivers/driver.h"
+          ]
+        },
+        {
+          "source": "drivers/keyboard.h",
+          "specifiers": [
+            "drivers/keyboard.h"
+          ]
+        },
+        {
+          "source": "drivers/mouse.h",
+          "specifiers": [
+            "drivers/mouse.h"
+          ]
+        },
+        {
+          "source": "drivers/vga.h",
+          "specifiers": [
+            "drivers/vga.h"
+          ]
+        },
+        {
+          "source": "drivers/ata.h",
+          "specifiers": [
+            "drivers/ata.h"
+          ]
+        },
+        {
+          "source": "filesystem/msdospart.h",
+          "specifiers": [
+            "filesystem/msdospart.h"
+          ]
+        },
+        {
+          "source": "filesystem/fat.h",
+          "specifiers": [
+            "filesystem/fat.h"
+          ]
+        },
+        {
+          "source": "gui/desktop.h",
+          "specifiers": [
+            "gui/desktop.h"
+          ]
+        },
+        {
+          "source": "gui/window.h",
+          "specifiers": [
+            "gui/window.h"
+          ]
+        },
+        {
+          "source": "multitasking.h",
+          "specifiers": [
+            "multitasking.h"
+          ]
+        },
+        {
+          "source": "drivers/amd_am79c973.h",
+          "specifiers": [
+            "drivers/amd_am79c973.h"
+          ]
+        },
+        {
+          "source": "net/etherframe.h",
+          "specifiers": [
+            "net/etherframe.h"
+          ]
+        },
+        {
+          "source": "net/arp.h",
+          "specifiers": [
+            "net/arp.h"
+          ]
+        },
+        {
+          "source": "net/ipv4.h",
+          "specifiers": [
+            "net/ipv4.h"
+          ]
+        },
+        {
+          "source": "net/icmp.h",
+          "specifiers": [
+            "net/icmp.h"
+          ]
+        },
+        {
+          "source": "net/udp.h",
+          "specifiers": [
+            "net/udp.h"
+          ]
+        },
+        {
+          "source": "net/tcp.h",
+          "specifiers": [
+            "net/tcp.h"
+          ]
+        }
+      ],
+      "exports": [
+        "printf",
+        "printfHex",
+        "printfHex16",
+        "printfHex32",
+        "OnKeyDown",
+        "PrintfKeyboardEventHandler",
+        "MouseToConsole",
+        "OnMouseMove",
+        "MouseToConsole",
+        "HandleUserDatagramProtocolMessage",
+        "PrintfUDPHandler",
+        "HandleTransmissionControlProtocolMessage",
+        "PrintfTCPHandler",
+        "sysprintf",
+        "taskA",
+        "taskB"
+      ],
+      "totalLines": 431,
+      "hasStructuralAnalysis": true
+    },
+    "src/loader.s": {
+      "filePath": "src/loader.s",
+      "contentHash": "8ccffc4bd70fb59f5ad0d4342f531ec5f3c87b64b28f3bb9768fbb87e9891d1a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": false
+    },
+    "src/memorymanagement.cpp": {
+      "filePath": "src/memorymanagement.cpp",
+      "contentHash": "9dd5122ac4a718ec5a533c82c2a44307803adcfb5ea57872a1d63747b48e66bd",
+      "functions": [
+        {
+          "name": "MemoryManager",
+          "params": [
+            "start",
+            "size"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "~MemoryManager",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "free",
+          "params": [
+            "ptr"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "operator delete",
+          "params": [
+            "ptr"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "operator delete[]",
+          "params": [
+            "ptr"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "memorymanagement.h",
+          "specifiers": [
+            "memorymanagement.h"
+          ]
+        }
+      ],
+      "exports": [
+        "MemoryManager",
+        "~MemoryManager",
+        "free",
+        "operator delete",
+        "operator delete[]"
+      ],
+      "totalLines": 127,
+      "hasStructuralAnalysis": true
+    },
+    "src/memorymanagement.h": {
+      "filePath": "src/memorymanagement.h",
+      "contentHash": "962fb7565d455fafb2e35ff8810186f6b9dfca62779979903f44b71c7503fd1a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "src/multitasking.cpp": {
+      "filePath": "src/multitasking.cpp",
+      "contentHash": "47385c5c74b70c516734fd912db9a2153245fd329473a484921bc8aad95eee59",
+      "functions": [
+        {
+          "name": "Task",
+          "params": [
+            "gdt",
+            "entrypoint"
+          ],
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "~Task",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "TaskManager",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "~TaskManager",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "AddTask",
+          "params": [
+            "task"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "multitasking.h",
+          "specifiers": [
+            "multitasking.h"
+          ]
+        }
+      ],
+      "exports": [
+        "Task",
+        "~Task",
+        "TaskManager",
+        "~TaskManager",
+        "AddTask"
+      ],
+      "totalLines": 73,
+      "hasStructuralAnalysis": true
+    },
+    "src/multitasking.h": {
+      "filePath": "src/multitasking.h",
+      "contentHash": "e4e77d0bd3d4a5096930a456aa496d73584d648f278efbccf808138c9b3e3ae3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 66,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/arp.cpp": {
+      "filePath": "src/net/arp.cpp",
+      "contentHash": "054295098a0604261afb638e6230ee235c3bcac8f671f045823807c0f9d9fd0c",
+      "functions": [
+        {
+          "name": "AddressResolutionProtocol",
+          "params": [
+            "backend"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "~AddressResolutionProtocol",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnEtherFrameReceived",
+          "params": [
+            "etherframePayload",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 42
+        },
+        {
+          "name": "BroadcastMACAddress",
+          "params": [
+            "IP_BE"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "RequestMACAddress",
+          "params": [
+            "IP_BE"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "GetMACFromCache",
+          "params": [
+            "IP_BE"
+          ],
+          "returnType": "uint64_t",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "Resolve",
+          "params": [
+            "IP_BE"
+          ],
+          "returnType": "uint64_t",
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "net/arp.h",
+          "specifiers": [
+            "net/arp.h"
+          ]
+        }
+      ],
+      "exports": [
+        "AddressResolutionProtocol",
+        "~AddressResolutionProtocol",
+        "OnEtherFrameReceived",
+        "BroadcastMACAddress",
+        "RequestMACAddress",
+        "GetMACFromCache",
+        "Resolve"
+      ],
+      "totalLines": 121,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/arp.h": {
+      "filePath": "src/net/arp.h",
+      "contentHash": "914a9640bbaea1fe34548335aa41dac3a42e8fdbfa6a86ca16a9eced2046ee56",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/etherframe.cpp": {
+      "filePath": "src/net/etherframe.cpp",
+      "contentHash": "fbdb5a2001149c0b78b8f9fe7609c757c2feb262ee692c9ec3442d1f377b665f",
+      "functions": [
+        {
+          "name": "EtherFrameHandler",
+          "params": [
+            "backend",
+            "etherType"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "~EtherFrameHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "OnEtherFrameReceived",
+          "params": [
+            "etherframePayload",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Send",
+          "params": [
+            "dstMAC_BE",
+            "data",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "GetIPAddress",
+          "params": [],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "EtherFrameProvider",
+          "params": [
+            "backend"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "~EtherFrameProvider",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnRawDataReceived",
+          "params": [
+            "buffer",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "Send",
+          "params": [
+            "dstMAC_BE",
+            "etherType_BE",
+            "buffer",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "GetIPAddress",
+          "params": [],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "GetMACAddress",
+          "params": [],
+          "returnType": "uint64_t",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "net/etherframe.h",
+          "specifiers": [
+            "net/etherframe.h"
+          ]
+        }
+      ],
+      "exports": [
+        "EtherFrameHandler",
+        "~EtherFrameHandler",
+        "OnEtherFrameReceived",
+        "Send",
+        "GetIPAddress",
+        "EtherFrameProvider",
+        "~EtherFrameProvider",
+        "OnRawDataReceived",
+        "Send",
+        "GetIPAddress",
+        "GetMACAddress"
+      ],
+      "totalLines": 103,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/etherframe.h": {
+      "filePath": "src/net/etherframe.h",
+      "contentHash": "322ee176f19f39fb2a749484f3b36d78640bda4d3981b15fadf67865d88a7336",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/icmp.cpp": {
+      "filePath": "src/net/icmp.cpp",
+      "contentHash": "5972581ce2eadc1df798327abc8c0edb0a1c370255aa48902fd8aa781e846ff2",
+      "functions": [
+        {
+          "name": "InternetControlMessageProtocol",
+          "params": [
+            "backend"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "~InternetControlMessageProtocol",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnInternetProtocolReceived",
+          "params": [
+            "srcIP_BE",
+            "dstIP_BE",
+            "internetprotocolPayload",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "RequestEchoReply",
+          "params": [
+            "ip_be"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "net/icmp.h",
+          "specifiers": [
+            "net/icmp.h"
+          ]
+        }
+      ],
+      "exports": [
+        "InternetControlMessageProtocol",
+        "~InternetControlMessageProtocol",
+        "OnInternetProtocolReceived",
+        "RequestEchoReply"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/icmp.h": {
+      "filePath": "src/net/icmp.h",
+      "contentHash": "3818106963af0fbd2f38609ca98e37fb071fbdfb2c7e707bfc3075069b3aa9df",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/ipv4.cpp": {
+      "filePath": "src/net/ipv4.cpp",
+      "contentHash": "b841d79c2a37f1bc1128c740e46f130397821490b9b66f9b1a67025c4723f32e",
+      "functions": [
+        {
+          "name": "InternetProtocolHandler",
+          "params": [
+            "backend",
+            "protocol"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "~InternetProtocolHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "OnInternetProtocolReceived",
+          "params": [
+            "srcIP_BE",
+            "dstIP_BE",
+            "internetprotocolPayload",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "Send",
+          "params": [
+            "dstIP_BE",
+            "internetprotocolPayload",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "InternetProtocolProvider",
+          "params": [
+            "backend",
+            "arp",
+            "gatewayIP",
+            "subnetMask"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "~InternetProtocolProvider",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnEtherFrameReceived",
+          "params": [
+            "etherframePayload",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 34
+        },
+        {
+          "name": "Send",
+          "params": [
+            "dstIP_BE",
+            "protocol",
+            "data",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 37
+        },
+        {
+          "name": "Checksum",
+          "params": [
+            "data",
+            "lengthInBytes"
+          ],
+          "returnType": "uint16_t",
+          "exported": true,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "net/ipv4.h",
+          "specifiers": [
+            "net/ipv4.h"
+          ]
+        }
+      ],
+      "exports": [
+        "InternetProtocolHandler",
+        "~InternetProtocolHandler",
+        "OnInternetProtocolReceived",
+        "Send",
+        "InternetProtocolProvider",
+        "~InternetProtocolProvider",
+        "OnEtherFrameReceived",
+        "Send",
+        "Checksum"
+      ],
+      "totalLines": 139,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/ipv4.h": {
+      "filePath": "src/net/ipv4.h",
+      "contentHash": "bed94f8787e88b6c788677508247d798e8493258d8482598a11a440f854aad2a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/tcp.cpp": {
+      "filePath": "src/net/tcp.cpp",
+      "contentHash": "68c12b47b555710d952af2e50be99cbf9dcd341ceea96a2dcaba973268de9a4e",
+      "functions": [
+        {
+          "name": "TransmissionControlProtocolHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "~TransmissionControlProtocolHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "HandleTransmissionControlProtocolMessage",
+          "params": [
+            "socket",
+            "data",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "TransmissionControlProtocolSocket",
+          "params": [
+            "backend"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "~TransmissionControlProtocolSocket",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "HandleTransmissionControlProtocolMessage",
+          "params": [
+            "data",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "Send",
+          "params": [
+            "data",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "Disconnect",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "TransmissionControlProtocolProvider",
+          "params": [
+            "backend"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "~TransmissionControlProtocolProvider",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "bigEndian32",
+          "params": [
+            "x"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "OnInternetProtocolReceived",
+          "params": [
+            "srcIP_BE",
+            "dstIP_BE",
+            "internetprotocolPayload",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 171
+        },
+        {
+          "name": "Send",
+          "params": [
+            "socket",
+            "data",
+            "size",
+            "flags"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 42
+        },
+        {
+          "name": "Disconnect",
+          "params": [
+            "socket"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "Bind",
+          "params": [
+            "socket",
+            "handler"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "net/tcp.h",
+          "specifiers": [
+            "net/tcp.h"
+          ]
+        }
+      ],
+      "exports": [
+        "TransmissionControlProtocolHandler",
+        "~TransmissionControlProtocolHandler",
+        "HandleTransmissionControlProtocolMessage",
+        "TransmissionControlProtocolSocket",
+        "~TransmissionControlProtocolSocket",
+        "HandleTransmissionControlProtocolMessage",
+        "Send",
+        "Disconnect",
+        "TransmissionControlProtocolProvider",
+        "~TransmissionControlProtocolProvider",
+        "bigEndian32",
+        "OnInternetProtocolReceived",
+        "Send",
+        "Disconnect",
+        "Bind"
+      ],
+      "totalLines": 357,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/tcp.h": {
+      "filePath": "src/net/tcp.h",
+      "contentHash": "724d85c08e9f851ee88f8c2f1847ebf12277b7d75b629267ed953d2812dd96a7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 139,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/udp.cpp": {
+      "filePath": "src/net/udp.cpp",
+      "contentHash": "c7cc13345e2671634873a6e30bc3c4769917a83fa9a7652e9997e306322d1153",
+      "functions": [
+        {
+          "name": "UserDatagramProtocolHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "~UserDatagramProtocolHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "HandleUserDatagramProtocolMessage",
+          "params": [
+            "socket",
+            "data",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "UserDatagramProtocolSocket",
+          "params": [
+            "backend"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "~UserDatagramProtocolSocket",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "HandleUserDatagramProtocolMessage",
+          "params": [
+            "data",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "Send",
+          "params": [
+            "data",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "Disconnect",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "UserDatagramProtocolProvider",
+          "params": [
+            "backend"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "~UserDatagramProtocolProvider",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "OnInternetProtocolReceived",
+          "params": [
+            "srcIP_BE",
+            "dstIP_BE",
+            "internetprotocolPayload",
+            "size"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 37
+        },
+        {
+          "name": "Disconnect",
+          "params": [
+            "socket"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "Send",
+          "params": [
+            "socket",
+            "data",
+            "size"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "Bind",
+          "params": [
+            "socket",
+            "handler"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "net/udp.h",
+          "specifiers": [
+            "net/udp.h"
+          ]
+        }
+      ],
+      "exports": [
+        "UserDatagramProtocolHandler",
+        "~UserDatagramProtocolHandler",
+        "HandleUserDatagramProtocolMessage",
+        "UserDatagramProtocolSocket",
+        "~UserDatagramProtocolSocket",
+        "HandleUserDatagramProtocolMessage",
+        "Send",
+        "Disconnect",
+        "UserDatagramProtocolProvider",
+        "~UserDatagramProtocolProvider",
+        "OnInternetProtocolReceived",
+        "Disconnect",
+        "Send",
+        "Bind"
+      ],
+      "totalLines": 182,
+      "hasStructuralAnalysis": true
+    },
+    "src/net/udp.h": {
+      "filePath": "src/net/udp.h",
+      "contentHash": "632d9106ded6318411b5e2e722cdde2baa8ce7287f9e5d9e38ca87c5a8218844",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 83,
+      "hasStructuralAnalysis": true
+    },
+    "src/syscalls.cpp": {
+      "filePath": "src/syscalls.cpp",
+      "contentHash": "42961547050b74fba72364e1ab7decb2950f390d75fd9d7b13eb5dfc9bf5935c",
+      "functions": [
+        {
+          "name": "SyscallHandler",
+          "params": [
+            "interruptManager",
+            "InterruptNumber"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "~SyscallHandler",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "HandleInterrupt",
+          "params": [
+            "esp"
+          ],
+          "returnType": "uint32_t",
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "syscalls.h",
+          "specifiers": [
+            "syscalls.h"
+          ]
+        }
+      ],
+      "exports": [
+        "SyscallHandler",
+        "~SyscallHandler",
+        "HandleInterrupt"
+      ],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "src/syscalls.h": {
+      "filePath": "src/syscalls.h",
+      "contentHash": "b50b16e883cb7828eb0d69ab9e879e00d959deab046d31d4790f2a94455ca778",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

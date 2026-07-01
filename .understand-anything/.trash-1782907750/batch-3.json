@@ -1,0 +1,1679 @@
+{
+  "batchIndex": 3,
+  "batchLabel": "drivers-filesystem",
+  "nodes": [
+    {
+      "id": "file:src/drivers/ata.cpp",
+      "type": "file",
+      "label": "ata.cpp",
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "Implementation of ATA PATA driver using port-mapped I/O. Provides 28-bit LBA read/write operations via polling, device identification, and write cache flushing for master/slave ATA devices.",
+      "tags": ["drivers", "ata", "storage", "pata"]
+    },
+    {
+      "id": "file:src/drivers/ata.h",
+      "type": "file",
+      "label": "ata.h",
+      "path": "src/drivers/ata.h",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "Header for AdvancedTechnologyAttachment class. Declares an ATA PATA driver with port-mapped I/O ports (data, error, sector count, LBA, device, command, control), Identify/Read28/Write28/Flush methods.",
+      "tags": ["drivers", "ata", "storage", "pata", "header"]
+    },
+    {
+      "id": "file:src/filesystem/FatStructs.h",
+      "type": "file",
+      "label": "FatStructs.h",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "FAT file system structures from Arduino SdFat library. Defines packed structs for MBR partition table (part_t/mbr_t), BIOS parameter block (bpb_t), FAT32 boot sector (fbs_t), directory entry (dir_t), and FAT16/32 EOC constants. Derived from Microsoft fatgen103.doc.",
+      "tags": ["filesystem", "fat12", "fat16", "fat32", "mbr", "bpb", "structures", "header"]
+    },
+    {
+      "id": "file:src/filesystem/SdFile.cpp",
+      "type": "file",
+      "label": "SdFile.cpp",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "Implementation of the SdFile class for FAT16/FAT32 file access. Provides file operations: open by name/index, read/write, seek, truncate, sync, directory listing, file creation, contiguous file allocation, and recursive directory removal. Adapted from Arduino SdFat library.",
+      "tags": ["filesystem", "fat", "file-operations", "sd-card", "sdfat"]
+    },
+    {
+      "id": "file:src/filesystem/Volume.cpp",
+      "type": "file",
+      "label": "Volume.cpp",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "Implementation of the SdVolume class for FAT16/FAT32 volume management. Provides volume initialization from MBR partitions, FAT entry get/put operations, cluster chain allocation/deallocation, block cache with mirror FAT support, and cluster arithmetic. Adapted from Arduino SdFat library.",
+      "tags": ["filesystem", "fat", "volume", "cache", "cluster-allocation", "sdfat"]
+    },
+    {
+      "id": "file:src/filesystem/fat.cpp",
+      "type": "file",
+      "label": "fat.cpp",
+      "path": "src/filesystem/fat.cpp",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "ReadBiosBlock implementation for reading and printing FAT32 root directory entries from disk. Reads the FAT32 boot sector, navigates the cluster chain via FAT, and prints file names and hex dumps to console.",
+      "tags": ["filesystem", "fat32", "root-directory", "boot-sector", "debug"]
+    },
+    {
+      "id": "file:src/filesystem/fat.h",
+      "type": "file",
+      "label": "fat.h",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "Main FAT filesystem header defining SdFile and SdVolume classes, the cache_t union (data/FAT16/FAT32/directory/MBR/boot sector overlay), open flags (O_READ/O_WRITE/O_CREAT etc), file type constants, ls/timestamp flags, FAT date/time conversion inline functions. Adapted from Arduino SdFat library.",
+      "tags": ["filesystem", "fat", "sdfile", "sdvolume", "cache", "header"]
+    },
+    {
+      "id": "file:src/filesystem/msdospart.cpp",
+      "type": "file",
+      "label": "msdospart.cpp",
+      "path": "src/filesystem/msdospart.cpp",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "Implementation of MSDOSPartitionTable::ReadPartitions. Reads the MBR from block 0, validates the 0xAA55 signature, iterates 4 primary partition entries, and for each active partition calls ReadBiosBlock to parse the FAT volume.",
+      "tags": ["filesystem", "mbr", "partition-table", "boot-sector"]
+    },
+    {
+      "id": "file:src/filesystem/msdospart.h",
+      "type": "file",
+      "label": "msdospart.h",
+      "path": "src/filesystem/msdospart.h",
+      "language": "c++",
+      "fileCategory": "code",
+      "summary": "Header for MSDOS partition table structures. Defines PartitionTableEntry (CHS/LBA fields, partition type, bootable flag), MasterBootRecord (bootloader, signature, 4 partition entries, magic number), and MSDOSPartitionTable class with static ReadPartitions method.",
+      "tags": ["filesystem", "mbr", "partition-table", "chs", "lba", "header"]
+    },
+    {
+      "id": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "type": "class",
+      "label": "AdvancedTechnologyAttachment",
+      "path": "src/drivers/ata.h",
+      "language": "c++",
+      "summary": "ATA PATA driver class using port-mapped I/O. Controls master/slave ATA devices via 8-bit and 16-bit I/O ports. Supports 28-bit LBA addressing for identify, read, write, and flush operations.",
+      "tags": ["drivers", "ata", "pata", "storage"]
+    },
+    {
+      "id": "class:myos::filesystem::PartitionTableEntry",
+      "type": "class",
+      "label": "PartitionTableEntry",
+      "path": "src/filesystem/msdospart.h",
+      "language": "c++",
+      "summary": "Packed MBR partition entry with bootable flag, CHS start/end addresses, partition type, LBA start sector, and length.",
+      "tags": ["filesystem", "mbr", "partition", "chs", "lba"]
+    },
+    {
+      "id": "class:myos::filesystem::MasterBootRecord",
+      "type": "class",
+      "label": "MasterBootRecord",
+      "path": "src/filesystem/msdospart.h",
+      "language": "c++",
+      "summary": "Packed MBR structure containing bootloader code, disk signature, 4 PartitionTableEntry slots, and 0xAA55 magic number.",
+      "tags": ["filesystem", "mbr", "boot-sector"]
+    },
+    {
+      "id": "class:myos::filesystem::MSDOSPartitionTable",
+      "type": "class",
+      "label": "MSDOSPartitionTable",
+      "path": "src/filesystem/msdospart.h",
+      "language": "c++",
+      "summary": "Utility class with static ReadPartitions method to read and parse the MBR partition table from an ATA drive.",
+      "tags": ["filesystem", "mbr", "partition-table"]
+    },
+    {
+      "id": "struct:partitionTable",
+      "type": "class",
+      "label": "partitionTable (part_t)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Packed MBR partition table entry structure with boot indicator, CHS begin/end, partition type, LBA first sector, and total sectors. Typedef'd as part_t.",
+      "tags": ["filesystem", "mbr", "partition", "fatgen103"]
+    },
+    {
+      "id": "struct:masterBootRecord",
+      "type": "class",
+      "label": "masterBootRecord (mbr_t)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Packed MBR structure: 440-byte code area, disk signature, zero field, 4 partitionTable entries, 0x55/0xAA signature bytes. Typedef'd as mbr_t.",
+      "tags": ["filesystem", "mbr", "boot-sector"]
+    },
+    {
+      "id": "struct:biosParmBlock",
+      "type": "class",
+      "label": "biosParmBlock (bpb_t)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Packed BIOS Parameter Block describing FAT volume layout: bytes/sector, sectors/cluster, reserved sectors, FAT count, root entries, total sectors, media type, FAT size, CHS geometry, and FAT32-specific fields (sectors per FAT, root cluster, FSInfo, backup boot sector). Typedef'd as bpb_t.",
+      "tags": ["filesystem", "bpb", "fat12", "fat16", "fat32", "volume-layout"]
+    },
+    {
+      "id": "struct:fat32BootSector",
+      "type": "class",
+      "label": "fat32BootSector (fbs_t)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Packed FAT32 boot sector: x86 jmp instruction, OEM name, biosParmBlock, drive number, reserved, boot signature, volume serial/label, filesystem type, boot code, and 0x55/0xAA signature bytes. Typedef'd as fbs_t.",
+      "tags": ["filesystem", "fat32", "boot-sector", "vbr"]
+    },
+    {
+      "id": "struct:directoryEntry",
+      "type": "class",
+      "label": "directoryEntry (dir_t)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Packed FAT short (8.3) directory entry: name, attributes, reserved NT, creation time (tenths/date/time), last access date, first cluster (high/low), last write time/date, file size. Typedef'd as dir_t.",
+      "tags": ["filesystem", "fat", "directory-entry", "8.3-name"]
+    },
+    {
+      "id": "class:SdFile",
+      "type": "class",
+      "label": "SdFile",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "FAT file/directory access class. Supports open by name or index, sequential/positional read/write, directory listing (ls), file creation, truncation, sync, timestamping, contiguous file allocation, recursive delete, and root directory access. Wraps SdVolume for block-level operations.",
+      "tags": ["filesystem", "fat", "file-operations", "directory"]
+    },
+    {
+      "id": "union:cache_t",
+      "type": "class",
+      "label": "cache_t",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "512-byte block cache union overlaying data bytes, FAT16 entries (uint16_t[256]), FAT32 entries (uint32_t[128]), directory entries (dir_t[16]), MBR (mbr_t), or FAT boot sector (fbs_t).",
+      "tags": ["filesystem", "cache", "block-device"]
+    },
+    {
+      "id": "class:SdVolume",
+      "type": "class",
+      "label": "SdVolume",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "FAT16/FAT32 volume manager. Handles volume init from MBR partitions, FAT entry get/put, cluster chain allocation/deallocation, block-level cache with dirty tracking and mirror FAT support, and cluster arithmetic. Friend of SdFile.",
+      "tags": ["filesystem", "fat", "volume", "cache", "cluster"]
+    },
+    {
+      "id": "func:AdvancedTechnologyAttachment_Constructor",
+      "type": "function",
+      "label": "AdvancedTechnologyAttachment::AdvancedTechnologyAttachment(bool, uint16_t)",
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "summary": "Constructor. Initializes master flag and all I/O port objects from the base port address.",
+      "tags": ["constructor", "ata"]
+    },
+    {
+      "id": "func:AdvancedTechnologyAttachment_Destructor",
+      "type": "function",
+      "label": "AdvancedTechnologyAttachment::~AdvancedTechnologyAttachment()",
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "summary": "Destructor, empty implementation.",
+      "tags": ["destructor", "ata"]
+    },
+    {
+      "id": "func:AdvancedTechnologyAttachment_Identify",
+      "type": "function",
+      "label": "AdvancedTechnologyAttachment::Identify()",
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "summary": "Sends IDENTIFY command (0xEC) to the ATA device and prints the 256-word device information to the console.",
+      "tags": ["ata", "identify", "device-info"]
+    },
+    {
+      "id": "func:AdvancedTechnologyAttachment_Read28_buf",
+      "type": "function",
+      "label": "AdvancedTechnologyAttachment::Read28(uint32_t, uint8_t*, uint16_t)",
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "summary": "Reads count bytes from sectorNum into data buffer using 28-bit LBA READ SECTORS (0x20) with polling.",
+      "tags": ["ata", "read", "lba28"]
+    },
+    {
+      "id": "func:AdvancedTechnologyAttachment_Read28_no_buf",
+      "type": "function",
+      "label": "AdvancedTechnologyAttachment::Read28(uint32_t, int)",
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "summary": "Reads count bytes from sectorNum with 28-bit LBA but discards data (used for positioning/skip reads).",
+      "tags": ["ata", "read", "lba28", "skip"]
+    },
+    {
+      "id": "func:AdvancedTechnologyAttachment_Write28",
+      "type": "function",
+      "label": "AdvancedTechnologyAttachment::Write28(uint32_t, uint8_t*, uint32_t)",
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "summary": "Writes count bytes from data buffer to sectorNum using 28-bit LBA WRITE SECTORS (0x30). Pads remaining sector bytes with zeros.",
+      "tags": ["ata", "write", "lba28"]
+    },
+    {
+      "id": "func:AdvancedTechnologyAttachment_Flush",
+      "type": "function",
+      "label": "AdvancedTechnologyAttachment::Flush()",
+      "path": "src/drivers/ata.cpp",
+      "language": "c++",
+      "summary": "Sends FLUSH CACHE command (0xE7) and waits for completion via polling status register.",
+      "tags": ["ata", "flush", "cache"]
+    },
+    {
+      "id": "func:SdFile_addCluster",
+      "type": "function",
+      "label": "SdFile::addCluster()",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Allocates one cluster via volume allocContiguous and links it as the first cluster if none exists.",
+      "tags": ["filesystem", "allocation", "cluster"]
+    },
+    {
+      "id": "func:SdFile_addDirCluster",
+      "type": "function",
+      "label": "SdFile::addDirCluster()",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Adds a cluster to a directory file, zeros it in the cache, and increases the directory file size.",
+      "tags": ["filesystem", "directory", "allocation"]
+    },
+    {
+      "id": "func:SdFile_cacheDirEntry",
+      "type": "function",
+      "label": "SdFile::cacheDirEntry(uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Returns a pointer to the cached directory entry for this file at dirBlock_/dirIndex_.",
+      "tags": ["filesystem", "cache", "directory"]
+    },
+    {
+      "id": "func:SdFile_close",
+      "type": "function",
+      "label": "SdFile::close()",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Syncs cached data and marks the file as closed.",
+      "tags": ["filesystem", "close"]
+    },
+    {
+      "id": "func:SdFile_contiguousRange",
+      "type": "function",
+      "label": "SdFile::contiguousRange(uint32_t*, uint32_t*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Checks if file clusters are contiguous and returns the block address range.",
+      "tags": ["filesystem", "contiguous", "block-range"]
+    },
+    {
+      "id": "func:SdFile_createContiguous",
+      "type": "function",
+      "label": "SdFile::createContiguous(SdFile*, const char*, uint32_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Creates and opens a new contiguous file of the specified size by pre-allocating clusters.",
+      "tags": ["filesystem", "create", "contiguous"]
+    },
+    {
+      "id": "func:SdFile_dirEntry",
+      "type": "function",
+      "label": "SdFile::dirEntry(dir_t*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Syncs then reads the directory entry for this file into a dir_t struct.",
+      "tags": ["filesystem", "directory", "metadata"]
+    },
+    {
+      "id": "func:SdFile_dirName",
+      "type": "function",
+      "label": "SdFile::dirName(const dir_t&, char*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Formats an 8.3 directory name field into a null-terminated string (e.g. FILENAME.EXT).",
+      "tags": ["filesystem", "name-formatting"]
+    },
+    {
+      "id": "func:SdFile_ls",
+      "type": "function",
+      "label": "SdFile::ls(uint8_t, uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Lists directory contents with options for modify date, file size, and recursive subdirectory listing.",
+      "tags": ["filesystem", "directory", "listing"]
+    },
+    {
+      "id": "func:SdFile_make83Name",
+      "type": "function",
+      "label": "SdFile::make83Name(const char*, uint8_t*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Converts a string to a FAT 8.3 short name, rejecting illegal characters and converting to uppercase.",
+      "tags": ["filesystem", "name-conversion", "8.3"]
+    },
+    {
+      "id": "func:SdFile_makeDir",
+      "type": "function",
+      "label": "SdFile::makeDir(SdFile*, const char*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Creates a new subdirectory with . and .. entries, allocating and zeroing the first cluster.",
+      "tags": ["filesystem", "directory", "create"]
+    },
+    {
+      "id": "func:SdFile_open_name",
+      "type": "function",
+      "label": "SdFile::open(SdFile*, const char*, uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Opens a file or directory by 8.3 name with specified flags (O_READ, O_WRITE, O_CREAT, O_EXCL, O_TRUNC). Creates new file if O_CREAT is set.",
+      "tags": ["filesystem", "open", "file"]
+    },
+    {
+      "id": "func:SdFile_open_index",
+      "type": "function",
+      "label": "SdFile::open(SdFile*, uint16_t, uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Opens a file by directory entry index.",
+      "tags": ["filesystem", "open", "by-index"]
+    },
+    {
+      "id": "func:SdFile_openCachedEntry",
+      "type": "function",
+      "label": "SdFile::openCachedEntry(uint8_t, uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Opens a file from a cached directory entry, initializing first cluster, file size, type, and position. Honors read-only and directory attributes.",
+      "tags": ["filesystem", "open", "cache"]
+    },
+    {
+      "id": "func:SdFile_openRoot",
+      "type": "function",
+      "label": "SdFile::openRoot(SdVolume*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Opens the root directory of a FAT volume (FAT16 root or FAT32 root cluster).",
+      "tags": ["filesystem", "root-directory", "open"]
+    },
+    {
+      "id": "func:SdFile_printDirName",
+      "type": "function",
+      "label": "SdFile::printDirName(dir_t&, uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Prints the 8.3 directory entry name to console with optional width padding.",
+      "tags": ["filesystem", "printing", "directory"]
+    },
+    {
+      "id": "func:SdFile_printFatDate",
+      "type": "function",
+      "label": "SdFile::printFatDate(uint16_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Prints a FAT date field in yyyy-mm-dd format.",
+      "tags": ["filesystem", "printing", "date"]
+    },
+    {
+      "id": "func:SdFile_printFatTime",
+      "type": "function",
+      "label": "SdFile::printFatTime(uint16_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Prints a FAT time field in hh:mm:ss format.",
+      "tags": ["filesystem", "printing", "time"]
+    },
+    {
+      "id": "func:SdFile_printTwoDigits",
+      "type": "function",
+      "label": "SdFile::printTwoDigits(uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Prints a two-digit value (0-99) with leading zero.",
+      "tags": ["filesystem", "printing"]
+    },
+    {
+      "id": "func:SdFile_read",
+      "type": "function",
+      "label": "SdFile::read(void*, uint16_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Reads up to nbyte bytes from current file position. Handles FAT16 root, cluster chains, and cache buffering for non-sector-aligned reads.",
+      "tags": ["filesystem", "read", "data"]
+    },
+    {
+      "id": "func:SdFile_readDir",
+      "type": "function",
+      "label": "SdFile::readDir(dir_t*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Reads the next valid directory entry, skipping deleted entries and . or .. entries.",
+      "tags": ["filesystem", "read", "directory"]
+    },
+    {
+      "id": "func:SdFile_readDirCache",
+      "type": "function",
+      "label": "SdFile::readDirCache()",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Reads the next directory entry into cache and returns a pointer to it.",
+      "tags": ["filesystem", "read", "cache"]
+    },
+    {
+      "id": "func:SdFile_remove",
+      "type": "function",
+      "label": "SdFile::remove()",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Truncates file to zero (freeing clusters), marks directory entry as deleted, and closes the file.",
+      "tags": ["filesystem", "delete", "file"]
+    },
+    {
+      "id": "func:SdFile_remove_static",
+      "type": "function",
+      "label": "SdFile::remove(SdFile*, const char*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Static method: opens a file by name and removes it.",
+      "tags": ["filesystem", "delete", "by-name"]
+    },
+    {
+      "id": "func:SdFile_rmDir",
+      "type": "function",
+      "label": "SdFile::rmDir()",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Removes an empty subdirectory after verifying it contains no files (except . and ..).",
+      "tags": ["filesystem", "delete", "directory"]
+    },
+    {
+      "id": "func:SdFile_rmRfStar",
+      "type": "function",
+      "label": "SdFile::rmRfStar()",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Recursively deletes all files and subdirectories (rm -rf equivalent).",
+      "tags": ["filesystem", "delete", "recursive"]
+    },
+    {
+      "id": "func:SdFile_seekSet",
+      "type": "function",
+      "label": "SdFile::seekSet(uint32_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Sets file position to pos, walking the FAT cluster chain if needed. FAT16 root uses direct byte offset.",
+      "tags": ["filesystem", "seek", "position"]
+    },
+    {
+      "id": "func:SdFile_sync",
+      "type": "function",
+      "label": "SdFile::sync()",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Flushes cached data and updates the directory entry (file size, first cluster, timestamps).",
+      "tags": ["filesystem", "sync", "flush"]
+    },
+    {
+      "id": "func:SdFile_timestamp",
+      "type": "function",
+      "label": "SdFile::timestamp(uint8_t, uint16_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Sets access/create/write timestamps in the directory entry with validation.",
+      "tags": ["filesystem", "timestamp", "metadata"]
+    },
+    {
+      "id": "func:SdFile_truncate",
+      "type": "function",
+      "label": "SdFile::truncate(uint32_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Truncates file to a given length, freeing extra clusters and setting the truncation point as EOC.",
+      "tags": ["filesystem", "truncate", "resize"]
+    },
+    {
+      "id": "func:SdFile_write_buf",
+      "type": "function",
+      "label": "SdFile::write(void*, uint16_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Writes data to the file at current position. Allocates clusters as needed, handles full-block vs partial-block writes with cache. Supports O_APPEND and O_SYNC modes.",
+      "tags": ["filesystem", "write", "data"]
+    },
+    {
+      "id": "func:SdFile_write_byte",
+      "type": "function",
+      "label": "SdFile::write(uint8_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Single-byte write delegate to write(void*, uint16_t).",
+      "tags": ["filesystem", "write"]
+    },
+    {
+      "id": "func:SdFile_write_str",
+      "type": "function",
+      "label": "SdFile::write(const char*)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Stub string write returning 0 (not implemented in this port).",
+      "tags": ["filesystem", "write"]
+    },
+    {
+      "id": "func:memcmp",
+      "type": "function",
+      "label": "memcmp(uint8_t*, uint8_t*, size_t)",
+      "path": "src/filesystem/SdFile.cpp",
+      "language": "c++",
+      "summary": "Custom memory comparison helper used for 8.3 name matching.",
+      "tags": ["utility", "comparison"]
+    },
+    {
+      "id": "func:SdVolume_allocContiguous",
+      "type": "function",
+      "label": "SdVolume::allocContiguous(uint32_t, uint32_t*)",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Finds and allocates a contiguous run of count free clusters in the FAT. Links them as a chain and returns the first cluster.",
+      "tags": ["filesystem", "allocation", "contiguous", "fat"]
+    },
+    {
+      "id": "func:SdVolume_cacheFlush",
+      "type": "function",
+      "label": "SdVolume::cacheFlush()",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Writes dirty cache block to device (and mirror FAT if set), then clears dirty flag. Write operations are currently stubbed out.",
+      "tags": ["filesystem", "cache", "flush"]
+    },
+    {
+      "id": "func:SdVolume_cacheRawBlock",
+      "type": "function",
+      "label": "SdVolume::cacheRawBlock(uint32_t, uint8_t)",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Loads block into cache if not already cached. Flushes dirty cache first if needed. Marks cache dirty for write actions.",
+      "tags": ["filesystem", "cache", "read"]
+    },
+    {
+      "id": "func:SdVolume_cacheZeroBlock",
+      "type": "function",
+      "label": "SdVolume::cacheZeroBlock(uint32_t)",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Zeros a 512-byte block in cache and marks it dirty for writing.",
+      "tags": ["filesystem", "cache", "zero"]
+    },
+    {
+      "id": "func:SdVolume_chainSize",
+      "type": "function",
+      "label": "SdVolume::chainSize(uint32_t, uint32_t*) const",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Walks the FAT cluster chain starting from cluster and returns the total size in bytes.",
+      "tags": ["filesystem", "cluster-chain", "size"]
+    },
+    {
+      "id": "func:SdVolume_fatGet",
+      "type": "function",
+      "label": "SdVolume::fatGet(uint32_t, uint32_t*) const",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Fetches a FAT entry value for a given cluster. Supports FAT16 (1 sector = 256 entries) and FAT32 (1 sector = 128 entries) with caching.",
+      "tags": ["filesystem", "fat", "get-entry"]
+    },
+    {
+      "id": "func:SdVolume_fatPut",
+      "type": "function",
+      "label": "SdVolume::fatPut(uint32_t, uint32_t)",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Stores a FAT entry value for a given cluster. Sets mirror FAT block for dual-FAT volumes.",
+      "tags": ["filesystem", "fat", "put-entry"]
+    },
+    {
+      "id": "func:SdVolume_freeChain",
+      "type": "function",
+      "label": "SdVolume::freeChain(uint32_t)",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Frees a cluster chain by marking each cluster as 0 in the FAT. Resets allocSearchStart.",
+      "tags": ["filesystem", "free", "cluster-chain"]
+    },
+    {
+      "id": "func:SdVolume_init",
+      "type": "function",
+      "label": "SdVolume::init(AdvancedTechnologyAttachment*, uint8_t)",
+      "path": "src/filesystem/Volume.cpp",
+      "language": "c++",
+      "summary": "Initializes a FAT volume from an ATA device. Reads MBR partition table (part > 0) or super floppy boot sector (part == 0). Parses BPB to determine FAT type (12/16/32), cluster geometry, FAT location, root directory, and data region.",
+      "tags": ["filesystem", "init", "volume", "fat12", "fat16", "fat32"]
+    },
+    {
+      "id": "func:ReadBiosBlock_fat",
+      "type": "function",
+      "label": "ReadBiosBlock(AdvancedTechnologyAttachment*, uint32_t)",
+      "path": "src/filesystem/fat.cpp",
+      "language": "c++",
+      "summary": "Reads a FAT32 boot sector from disk, navigates the root directory cluster chain, and prints file names and hex dumps of directory entries. Debug utility for examining FAT32 volumes.",
+      "tags": ["filesystem", "fat32", "debug", "read"]
+    },
+    {
+      "id": "func:MSDOSPartitionTable_ReadPartitions",
+      "type": "function",
+      "label": "MSDOSPartitionTable::ReadPartitions(AdvancedTechnologyAttachment*)",
+      "path": "src/filesystem/msdospart.cpp",
+      "language": "c++",
+      "summary": "Reads the MBR from block 0, validates the 0xAA55 signature, and iterates 4 primary partitions printing type and bootable status.",
+      "tags": ["filesystem", "mbr", "partition", "read"]
+    },
+    {
+      "id": "func:DIR_IS_LONG_NAME",
+      "type": "function",
+      "label": "DIR_IS_LONG_NAME(const dir_t*)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Inline: tests if a directory entry is part of a long file name (attributes & 0x3F == 0x0F).",
+      "tags": ["filesystem", "fat", "directory", "inline"]
+    },
+    {
+      "id": "func:DIR_IS_FILE",
+      "type": "function",
+      "label": "DIR_IS_FILE(const dir_t*)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Inline: tests if a directory entry is a regular file (not volume ID or directory).",
+      "tags": ["filesystem", "fat", "directory", "inline"]
+    },
+    {
+      "id": "func:DIR_IS_SUBDIR",
+      "type": "function",
+      "label": "DIR_IS_SUBDIR(const dir_t*)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Inline: tests if a directory entry is a subdirectory.",
+      "tags": ["filesystem", "fat", "directory", "inline"]
+    },
+    {
+      "id": "func:DIR_IS_FILE_OR_SUBDIR",
+      "type": "function",
+      "label": "DIR_IS_FILE_OR_SUBDIR(const dir_t*)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Inline: tests if a directory entry is a file or subdirectory (not volume ID).",
+      "tags": ["filesystem", "fat", "directory", "inline"]
+    },
+    {
+      "id": "func:FAT_DATE",
+      "type": "function",
+      "label": "FAT_DATE(uint16_t, uint8_t, uint8_t)",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "Inline: encodes year/month/day into a FAT directory date field (year-1980 << 9 | month << 5 | day).",
+      "tags": ["filesystem", "fat", "date", "inline"]
+    },
+    {
+      "id": "func:FAT_YEAR",
+      "type": "function",
+      "label": "FAT_YEAR(uint16_t)",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "Inline: extracts year from a FAT directory date field.",
+      "tags": ["filesystem", "fat", "date", "inline"]
+    },
+    {
+      "id": "func:FAT_MONTH",
+      "type": "function",
+      "label": "FAT_MONTH(uint16_t)",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "Inline: extracts month from a FAT directory date field.",
+      "tags": ["filesystem", "fat", "date", "inline"]
+    },
+    {
+      "id": "func:FAT_DAY",
+      "type": "function",
+      "label": "FAT_DAY(uint16_t)",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "Inline: extracts day from a FAT directory date field.",
+      "tags": ["filesystem", "fat", "date", "inline"]
+    },
+    {
+      "id": "func:FAT_TIME",
+      "type": "function",
+      "label": "FAT_TIME(uint8_t, uint8_t, uint8_t)",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "Inline: encodes hour/minute/second into a FAT directory time field (hh<<11 | mm<<5 | ss>>1).",
+      "tags": ["filesystem", "fat", "time", "inline"]
+    },
+    {
+      "id": "func:FAT_HOUR",
+      "type": "function",
+      "label": "FAT_HOUR(uint16_t)",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "Inline: extracts hour from a FAT directory time field.",
+      "tags": ["filesystem", "fat", "time", "inline"]
+    },
+    {
+      "id": "func:FAT_MINUTE",
+      "type": "function",
+      "label": "FAT_MINUTE(uint16_t)",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "Inline: extracts minute from a FAT directory time field.",
+      "tags": ["filesystem", "fat", "time", "inline"]
+    },
+    {
+      "id": "func:FAT_SECOND",
+      "type": "function",
+      "label": "FAT_SECOND(uint16_t)",
+      "path": "src/filesystem/fat.h",
+      "language": "c++",
+      "summary": "Inline: extracts second from a FAT directory time field (multiplies by 2 for 2-second granularity).",
+      "tags": ["filesystem", "fat", "time", "inline"]
+    },
+    {
+      "id": "func:ReadBiosBlock_decl",
+      "type": "function",
+      "label": "ReadBiosBlock(myos::drivers::AdvancedTechnologyAttachment*, uint32_t)",
+      "path": "src/filesystem/FatStructs.h",
+      "language": "c++",
+      "summary": "Declaration of ReadBiosBlock function. Defined in fat.cpp.",
+      "tags": ["filesystem", "fat32", "declaration"]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/drivers/ata.cpp",
+      "target": "file:src/drivers/ata.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/drivers/ata.h",
+      "target": "file:src/filesystem/FatStructs.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "file:src/filesystem/fat.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "file:src/filesystem/fat.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/filesystem/fat.cpp",
+      "target": "file:src/filesystem/FatStructs.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "file:src/filesystem/FatStructs.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "file:src/drivers/ata.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/filesystem/msdospart.cpp",
+      "target": "file:src/filesystem/msdospart.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/filesystem/msdospart.cpp",
+      "target": "file:src/filesystem/FatStructs.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/filesystem/msdospart.h",
+      "target": "file:src/drivers/ata.h",
+      "type": "import",
+      "weight": 1
+    },
+    {
+      "source": "file:src/drivers/ata.h",
+      "target": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/drivers/ata.cpp",
+      "target": "func:AdvancedTechnologyAttachment_Constructor",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/drivers/ata.cpp",
+      "target": "func:AdvancedTechnologyAttachment_Destructor",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/drivers/ata.cpp",
+      "target": "func:AdvancedTechnologyAttachment_Identify",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/drivers/ata.cpp",
+      "target": "func:AdvancedTechnologyAttachment_Read28_buf",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/drivers/ata.cpp",
+      "target": "func:AdvancedTechnologyAttachment_Read28_no_buf",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/drivers/ata.cpp",
+      "target": "func:AdvancedTechnologyAttachment_Write28",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/drivers/ata.cpp",
+      "target": "func:AdvancedTechnologyAttachment_Flush",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "target": "func:AdvancedTechnologyAttachment_Constructor",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "target": "func:AdvancedTechnologyAttachment_Destructor",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "target": "func:AdvancedTechnologyAttachment_Identify",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "target": "func:AdvancedTechnologyAttachment_Read28_buf",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "target": "func:AdvancedTechnologyAttachment_Read28_no_buf",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "target": "func:AdvancedTechnologyAttachment_Write28",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:myos::drivers::AdvancedTechnologyAttachment",
+      "target": "func:AdvancedTechnologyAttachment_Flush",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "class:SdFile",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "union:cache_t",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "class:SdVolume",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_addCluster",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_addDirCluster",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_cacheDirEntry",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_close",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_contiguousRange",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_createContiguous",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_dirEntry",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_dirName",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_ls",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_make83Name",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_makeDir",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_open_name",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_open_index",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_openCachedEntry",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_openRoot",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_printDirName",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_printFatDate",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_printFatTime",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_printTwoDigits",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_read",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_readDir",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_readDirCache",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_remove",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_remove_static",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_rmDir",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_rmRfStar",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_seekSet",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_sync",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_timestamp",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_truncate",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_write_buf",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_write_byte",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:SdFile_write_str",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/SdFile.cpp",
+      "target": "func:memcmp",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_addCluster",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_addDirCluster",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_cacheDirEntry",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_close",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_contiguousRange",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_createContiguous",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_dirEntry",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_dirName",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_ls",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_make83Name",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_makeDir",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_open_name",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_open_index",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_openCachedEntry",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_openRoot",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_printDirName",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_printFatDate",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_printFatTime",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_printTwoDigits",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_read",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_readDir",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_readDirCache",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_remove",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_remove_static",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_rmDir",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_rmRfStar",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_seekSet",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_sync",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_timestamp",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_truncate",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_write_buf",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_write_byte",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "func:SdFile_write_str",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_allocContiguous",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_cacheFlush",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_cacheRawBlock",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_cacheZeroBlock",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_chainSize",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_fatGet",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_fatPut",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_freeChain",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/Volume.cpp",
+      "target": "func:SdVolume_init",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.cpp",
+      "target": "func:ReadBiosBlock_fat",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "func:ReadBiosBlock_decl",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/msdospart.cpp",
+      "target": "func:MSDOSPartitionTable_ReadPartitions",
+      "type": "defines",
+      "weight": 0.5
+    },
+    {
+      "source": "class:myos::filesystem::MSDOSPartitionTable",
+      "target": "func:MSDOSPartitionTable_ReadPartitions",
+      "type": "declares",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdFile",
+      "target": "class:SdVolume",
+      "type": "friend",
+      "weight": 0.5
+    },
+    {
+      "source": "class:SdVolume",
+      "target": "class:SdFile",
+      "type": "friend",
+      "weight": 0.5
+    },
+    {
+      "source": "func:SdFile_read",
+      "target": "func:SdVolume_init",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_read",
+      "target": "func:SdVolume_cacheRawBlock",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_read",
+      "target": "func:SdVolume_cacheFlush",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_write_buf",
+      "target": "func:SdVolume_cacheRawBlock",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_write_buf",
+      "target": "func:SdVolume_cacheFlush",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_write_buf",
+      "target": "func:SdFile_addCluster",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_sync",
+      "target": "func:SdVolume_cacheFlush",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_open_name",
+      "target": "func:SdFile_make83Name",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_open_name",
+      "target": "func:SdFile_openCachedEntry",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_open_name",
+      "target": "func:SdFile_addDirCluster",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_openRoot",
+      "target": "func:SdVolume_init",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_read",
+      "target": "func:SdVolume_fatGet",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "func:SdFile_seekSet",
+      "target": "func:SdVolume_fatGet",
+      "type": "calls",
+      "weight": 0.3
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "struct:partitionTable",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "struct:masterBootRecord",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "struct:biosParmBlock",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "struct:fat32BootSector",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "struct:directoryEntry",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "func:DIR_IS_LONG_NAME",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "func:DIR_IS_FILE",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "func:DIR_IS_SUBDIR",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/FatStructs.h",
+      "target": "func:DIR_IS_FILE_OR_SUBDIR",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "func:FAT_DATE",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "func:FAT_YEAR",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "func:FAT_MONTH",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "func:FAT_DAY",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "func:FAT_TIME",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "func:FAT_HOUR",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "func:FAT_MINUTE",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/fat.h",
+      "target": "func:FAT_SECOND",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/msdospart.h",
+      "target": "class:myos::filesystem::PartitionTableEntry",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/msdospart.h",
+      "target": "class:myos::filesystem::MasterBootRecord",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/filesystem/msdospart.h",
+      "target": "class:myos::filesystem::MSDOSPartitionTable",
+      "type": "contains",
+      "weight": 0.5
+    },
+    {
+      "source": "struct:masterBootRecord",
+      "target": "struct:partitionTable",
+      "type": "contains",
+      "weight": 0.3
+    },
+    {
+      "source": "struct:fat32BootSector",
+      "target": "struct:biosParmBlock",
+      "type": "contains",
+      "weight": 0.3
+    },
+    {
+      "source": "union:cache_t",
+      "target": "struct:directoryEntry",
+      "type": "uses",
+      "weight": 0.3
+    },
+    {
+      "source": "union:cache_t",
+      "target": "struct:masterBootRecord",
+      "type": "uses",
+      "weight": 0.3
+    },
+    {
+      "source": "union:cache_t",
+      "target": "struct:fat32BootSector",
+      "type": "uses",
+      "weight": 0.3
+    }
+  ]
+}

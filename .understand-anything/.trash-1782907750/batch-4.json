@@ -1,0 +1,599 @@
+{
+  "batch": 4,
+  "nodes": [
+    {
+      "id": "src/common/graphicscontext.h",
+      "type": "file",
+      "name": "graphicscontext.h",
+      "summary": "Defines GraphicsContext as a typedef alias for VideoGraphicsArray, providing a VGA-based graphics abstraction layer in the myos::common namespace.",
+      "tags": ["graphics", "vga", "typedef", "abstraction"],
+      "language": "c++",
+      "fileCategory": "code"
+    },
+    {
+      "id": "src/common/graphicscontext.h:GraphicsContext",
+      "type": "typedef",
+      "name": "GraphicsContext",
+      "summary": "Typedef alias for myos::drivers::VideoGraphicsArray, the primary graphics output interface.",
+      "tags": ["graphics", "typedef", "vga"],
+      "parentFile": "src/common/graphicscontext.h"
+    },
+    {
+      "id": "src/gui/desktop.cpp",
+      "type": "file",
+      "name": "desktop.cpp",
+      "summary": "Implements the Desktop class — a composite widget that renders a crosshair mouse cursor and dispatches mouse move/click/release events to child widgets.",
+      "tags": ["gui", "desktop", "mouse", "cursor", "composite"],
+      "language": "c++",
+      "fileCategory": "code"
+    },
+    {
+      "id": "src/gui/desktop.cpp:Desktop::Desktop",
+      "type": "function",
+      "name": "Desktop::Desktop",
+      "summary": "Constructor: initializes desktop composite widget with dimensions and background color, sets cursor to center.",
+      "tags": [],
+      "parentFile": "src/gui/desktop.cpp"
+    },
+    {
+      "id": "src/gui/desktop.cpp:Desktop::~Desktop",
+      "type": "function",
+      "name": "Desktop::~Desktop",
+      "summary": "Destructor.",
+      "tags": [],
+      "parentFile": "src/gui/desktop.cpp"
+    },
+    {
+      "id": "src/gui/desktop.cpp:Desktop::Draw",
+      "type": "function",
+      "name": "Desktop::Draw",
+      "summary": "Draws the desktop by rendering child widgets then drawing a 4-pixel crosshair cursor at the mouse position.",
+      "tags": [],
+      "parentFile": "src/gui/desktop.cpp"
+    },
+    {
+      "id": "src/gui/desktop.cpp:Desktop::OnMouseDown",
+      "type": "function",
+      "name": "Desktop::OnMouseDown",
+      "summary": "Delegates mouse button press to the child widget at the cursor position.",
+      "tags": [],
+      "parentFile": "src/gui/desktop.cpp"
+    },
+    {
+      "id": "src/gui/desktop.cpp:Desktop::OnMouseUp",
+      "type": "function",
+      "name": "Desktop::OnMouseUp",
+      "summary": "Delegates mouse button release to the child widget at the cursor position.",
+      "tags": [],
+      "parentFile": "src/gui/desktop.cpp"
+    },
+    {
+      "id": "src/gui/desktop.cpp:Desktop::OnMouseMove",
+      "type": "function",
+      "name": "Desktop::OnMouseMove",
+      "summary": "Updates cursor position with clamped deltas (scaled by 1/4) and delegates move event to child widgets.",
+      "tags": [],
+      "parentFile": "src/gui/desktop.cpp"
+    },
+    {
+      "id": "src/gui/desktop.h",
+      "type": "file",
+      "name": "desktop.h",
+      "summary": "Declares the Desktop class that inherits from CompositeWidget and MouseEventHandler, managing cursor position and dispatching mouse events to children.",
+      "tags": ["gui", "desktop", "mouse", "cursor", "composite"],
+      "language": "c++",
+      "fileCategory": "code"
+    },
+    {
+      "id": "src/gui/desktop.h:Desktop",
+      "type": "class",
+      "name": "Desktop",
+      "summary": "Composite widget and mouse event handler that renders a mouse cursor and dispatches mouse events to focused child widgets.",
+      "tags": ["gui", "desktop", "mouse", "composite"],
+      "parentFile": "src/gui/desktop.h"
+    },
+    {
+      "id": "src/gui/widget.cpp",
+      "type": "file",
+      "name": "widget.cpp",
+      "summary": "Implements Widget base class with position, size, color, parent-relative coordinate transforms, focus management, and drawing; implements CompositeWidget managing up to 100 children with hierarchical mouse/keyboard event dispatch.",
+      "tags": ["gui", "widget", "composite", "events", "focus", "hierarchy"],
+      "language": "c++",
+      "fileCategory": "code"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::Widget",
+      "type": "function",
+      "name": "Widget::Widget",
+      "summary": "Constructor: sets parent, position, size, color, and marks widget as focussable.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::~Widget",
+      "type": "function",
+      "name": "Widget::~Widget",
+      "summary": "Destructor.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::GetFocus",
+      "type": "function",
+      "name": "Widget::GetFocus",
+      "summary": "Propagates focus request up to the parent widget.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::ModelToScreen",
+      "type": "function",
+      "name": "Widget::ModelToScreen",
+      "summary": "Transforms widget-local coordinates to screen coordinates by accumulating parent offsets.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::Draw",
+      "type": "function",
+      "name": "Widget::Draw",
+      "summary": "Fills the widget's rectangular area with its background color using the graphics context.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::OnMouseDown",
+      "type": "function",
+      "name": "Widget::OnMouseDown",
+      "summary": "Requests focus for this widget on mouse press if focussable.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::ContainsCoordinate",
+      "type": "function",
+      "name": "Widget::ContainsCoordinate",
+      "summary": "Tests whether a given point falls within the widget's bounding rectangle.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::OnMouseUp",
+      "type": "function",
+      "name": "Widget::OnMouseUp",
+      "summary": "Default no-op mouse release handler (intended to be overridden).",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:Widget::OnMouseMove",
+      "type": "function",
+      "name": "Widget::OnMouseMove",
+      "summary": "Default no-op mouse move handler (intended to be overridden).",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::CompositeWidget",
+      "type": "function",
+      "name": "CompositeWidget::CompositeWidget",
+      "summary": "Constructor: initializes with no focused child and zero children.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::~CompositeWidget",
+      "type": "function",
+      "name": "CompositeWidget::~CompositeWidget",
+      "summary": "Destructor.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::GetFocus",
+      "type": "function",
+      "name": "CompositeWidget::GetFocus",
+      "summary": "Sets the focused child and propagates focus up to parent.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::AddChild",
+      "type": "function",
+      "name": "CompositeWidget::AddChild",
+      "summary": "Adds a child widget if under the 100-widget limit.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::Draw",
+      "type": "function",
+      "name": "CompositeWidget::Draw",
+      "summary": "Draws this widget then all children in reverse order (back-to-front).",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::OnMouseDown",
+      "type": "function",
+      "name": "CompositeWidget::OnMouseDown",
+      "summary": "Dispatches mouse press to the first child containing the click coordinates.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::OnMouseUp",
+      "type": "function",
+      "name": "CompositeWidget::OnMouseUp",
+      "summary": "Dispatches mouse release to the first child containing the coordinates.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::OnMouseMove",
+      "type": "function",
+      "name": "CompositeWidget::OnMouseMove",
+      "summary": "Dispatches mouse move events to children, handling enter/leave transitions between children.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::OnKeyDown",
+      "type": "function",
+      "name": "CompositeWidget::OnKeyDown",
+      "summary": "Forwards key press to the currently focused child widget.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.cpp:CompositeWidget::OnKeyUp",
+      "type": "function",
+      "name": "CompositeWidget::OnKeyUp",
+      "summary": "Forwards key release to the currently focused child widget.",
+      "tags": [],
+      "parentFile": "src/gui/widget.cpp"
+    },
+    {
+      "id": "src/gui/widget.h",
+      "type": "file",
+      "name": "widget.h",
+      "summary": "Declares Widget base class (extends KeyboardEventHandler) with position, size, color, focus, and virtual event/drawing methods; declares CompositeWidget extending Widget with child management (up to 100) and hierarchical event dispatch.",
+      "tags": ["gui", "widget", "composite", "events", "focus", "hierarchy"],
+      "language": "c++",
+      "fileCategory": "code"
+    },
+    {
+      "id": "src/gui/widget.h:Widget",
+      "type": "class",
+      "name": "Widget",
+      "summary": "Base GUI component with position, size, background color, focusability, parent-relative coordinate transforms, and virtual handlers for drawing, mouse, and keyboard events.",
+      "tags": ["gui", "widget", "base", "events"],
+      "parentFile": "src/gui/widget.h"
+    },
+    {
+      "id": "src/gui/widget.h:CompositeWidget",
+      "type": "class",
+      "name": "CompositeWidget",
+      "summary": "Widget that manages up to 100 child widgets, dispatches mouse/keyboard events to the appropriate child, and propagates focus through the hierarchy.",
+      "tags": ["gui", "composite", "container", "events", "focus"],
+      "parentFile": "src/gui/widget.h"
+    },
+    {
+      "id": "src/gui/window.cpp",
+      "type": "file",
+      "name": "window.cpp",
+      "summary": "Implements Window, a draggable composite widget that tracks left-button drag state and repositions itself on mouse move during drag.",
+      "tags": ["gui", "window", "draggable", "composite"],
+      "language": "c++",
+      "fileCategory": "code"
+    },
+    {
+      "id": "src/gui/window.cpp:Window::Window",
+      "type": "function",
+      "name": "Window::Window",
+      "summary": "Constructor: initializes as a composite widget with dragging disabled.",
+      "tags": [],
+      "parentFile": "src/gui/window.cpp"
+    },
+    {
+      "id": "src/gui/window.cpp:Window::~Window",
+      "type": "function",
+      "name": "Window::~Window",
+      "summary": "Destructor.",
+      "tags": [],
+      "parentFile": "src/gui/window.cpp"
+    },
+    {
+      "id": "src/gui/window.cpp:Window::OnMouseDown",
+      "type": "function",
+      "name": "Window::OnMouseDown",
+      "summary": "Sets dragging flag on left button press (button == 1) and delegates to parent.",
+      "tags": [],
+      "parentFile": "src/gui/window.cpp"
+    },
+    {
+      "id": "src/gui/window.cpp:Window::OnMouseUp",
+      "type": "function",
+      "name": "Window::OnMouseUp",
+      "summary": "Clears dragging flag and delegates to parent.",
+      "tags": [],
+      "parentFile": "src/gui/window.cpp"
+    },
+    {
+      "id": "src/gui/window.cpp:Window::OnMouseMove",
+      "type": "function",
+      "name": "Window::OnMouseMove",
+      "summary": "Repositions window by delta if dragging, then delegates to parent.",
+      "tags": [],
+      "parentFile": "src/gui/window.cpp"
+    },
+    {
+      "id": "src/gui/window.h",
+      "type": "file",
+      "name": "window.h",
+      "summary": "Declares Window, a draggable composite widget that tracks left-button drag state and repositions itself during mouse movement.",
+      "tags": ["gui", "window", "draggable", "composite"],
+      "language": "c++",
+      "fileCategory": "code"
+    },
+    {
+      "id": "src/gui/window.h:Window",
+      "type": "class",
+      "name": "Window",
+      "summary": "Draggable composite widget that allows users to reposition a window by holding the left mouse button and dragging.",
+      "tags": ["gui", "window", "draggable", "composite"],
+      "parentFile": "src/gui/window.h"
+    }
+  ],
+  "edges": [
+    {
+      "source": "src/gui/desktop.cpp",
+      "target": "src/gui/desktop.h",
+      "type": "imports"
+    },
+    {
+      "source": "src/gui/desktop.h",
+      "target": "src/gui/widget.h",
+      "type": "imports"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.h",
+      "type": "imports"
+    },
+    {
+      "source": "src/gui/widget.h",
+      "target": "src/common/graphicscontext.h",
+      "type": "imports"
+    },
+    {
+      "source": "src/gui/window.cpp",
+      "target": "src/gui/window.h",
+      "type": "imports"
+    },
+    {
+      "source": "src/gui/window.h",
+      "target": "src/gui/widget.h",
+      "type": "imports"
+    },
+    {
+      "source": "src/common/graphicscontext.h",
+      "target": "src/common/graphicscontext.h:GraphicsContext",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/desktop.cpp",
+      "target": "src/gui/desktop.cpp:Desktop::Desktop",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/desktop.cpp",
+      "target": "src/gui/desktop.cpp:Desktop::~Desktop",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/desktop.cpp",
+      "target": "src/gui/desktop.cpp:Desktop::Draw",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/desktop.cpp",
+      "target": "src/gui/desktop.cpp:Desktop::OnMouseDown",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/desktop.cpp",
+      "target": "src/gui/desktop.cpp:Desktop::OnMouseUp",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/desktop.cpp",
+      "target": "src/gui/desktop.cpp:Desktop::OnMouseMove",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/desktop.h",
+      "target": "src/gui/desktop.h:Desktop",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::Widget",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::~Widget",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::GetFocus",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::ModelToScreen",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::Draw",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::OnMouseDown",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::ContainsCoordinate",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::OnMouseUp",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:Widget::OnMouseMove",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::CompositeWidget",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::~CompositeWidget",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::GetFocus",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::AddChild",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::Draw",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::OnMouseDown",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::OnMouseUp",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::OnMouseMove",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::OnKeyDown",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.cpp",
+      "target": "src/gui/widget.cpp:CompositeWidget::OnKeyUp",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.h",
+      "target": "src/gui/widget.h:Widget",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/widget.h",
+      "target": "src/gui/widget.h:CompositeWidget",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/window.cpp",
+      "target": "src/gui/window.cpp:Window::Window",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/window.cpp",
+      "target": "src/gui/window.cpp:Window::~Window",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/window.cpp",
+      "target": "src/gui/window.cpp:Window::OnMouseDown",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/window.cpp",
+      "target": "src/gui/window.cpp:Window::OnMouseUp",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/window.cpp",
+      "target": "src/gui/window.cpp:Window::OnMouseMove",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/window.h",
+      "target": "src/gui/window.h:Window",
+      "type": "contains"
+    },
+    {
+      "source": "src/gui/desktop.h",
+      "target": "src/drivers/mouse.h",
+      "type": "imports",
+      "crossBatch": true,
+      "batchIndex": 2
+    },
+    {
+      "source": "src/gui/widget.h",
+      "target": "src/common/types.h",
+      "type": "imports",
+      "crossBatch": true,
+      "batchIndex": 1
+    },
+    {
+      "source": "src/gui/widget.h",
+      "target": "src/drivers/keyboard.h",
+      "type": "imports",
+      "crossBatch": true,
+      "batchIndex": 2
+    },
+    {
+      "source": "src/gui/window.h",
+      "target": "src/drivers/mouse.h",
+      "type": "imports",
+      "crossBatch": true,
+      "batchIndex": 2
+    },
+    {
+      "source": "src/kernel.cpp",
+      "target": "src/gui/desktop.h",
+      "type": "used_by",
+      "crossBatch": true,
+      "batchIndex": 1,
+      "symbols": ["Desktop"]
+    },
+    {
+      "source": "src/kernel.cpp",
+      "target": "src/gui/window.h",
+      "type": "used_by",
+      "crossBatch": true,
+      "batchIndex": 1,
+      "symbols": ["Window"]
+    }
+  ]
+}

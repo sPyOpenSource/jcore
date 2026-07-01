@@ -1,0 +1,2550 @@
+{
+  "nodes": [
+    {
+      "id": "src/drivers/amd_am79c973.cpp",
+      "type": "file",
+      "name": "amd_am79c973.cpp",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Implementation of the AMD Am79C973 Ethernet NIC driver with packet send/receive, DMA buffer descriptor management, interrupt handling, and raw data handler abstraction",
+      "tags": ["driver", "network", "ethernet", "dma", "interrupt"],
+      "properties": { "language": "c++", "lines": 236 }
+    },
+    {
+      "id": "function:myos::drivers::RawDataHandler::RawDataHandler",
+      "type": "function",
+      "name": "RawDataHandler::RawDataHandler",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Constructs a RawDataHandler and registers it with the given AMD NIC backend",
+      "tags": ["constructor", "network"],
+      "properties": { "startLine": 9, "endLine": 13 }
+    },
+    {
+      "id": "function:myos::drivers::RawDataHandler::~RawDataHandler",
+      "type": "function",
+      "name": "RawDataHandler::~RawDataHandler",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Destructor that unregisters the handler from the NIC backend",
+      "tags": ["destructor", "network"],
+      "properties": { "startLine": 15, "endLine": 18 }
+    },
+    {
+      "id": "function:myos::drivers::RawDataHandler::OnRawDataReceived",
+      "type": "function",
+      "name": "RawDataHandler::OnRawDataReceived",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Virtual callback for received raw network data, returns false by default",
+      "tags": ["virtual", "network", "callback"],
+      "properties": { "startLine": 20, "endLine": 23 }
+    },
+    {
+      "id": "function:myos::drivers::RawDataHandler::Send",
+      "type": "function",
+      "name": "RawDataHandler::Send",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Delegates network data transmission to the backend NIC driver",
+      "tags": ["network", "send"],
+      "properties": { "startLine": 25, "endLine": 28 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::amd_am79c973",
+      "type": "function",
+      "name": "amd_am79c973::amd_am79c973",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Constructs the AMD NIC driver, reads MAC address, initializes DMA buffer descriptors and initialization block, and configures the NIC via registers",
+      "tags": ["constructor", "network", "initialization", "dma"],
+      "properties": { "startLine": 35, "endLine": 107 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::~amd_am79c973",
+      "type": "function",
+      "name": "amd_am79c973::~amd_am79c973",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Destructor for the AMD NIC driver",
+      "tags": ["destructor", "network"],
+      "properties": { "startLine": 109, "endLine": 111 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::Activate",
+      "type": "function",
+      "name": "amd_am79c973::Activate",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Activates the NIC by writing control registers to enable MMIO and start operation",
+      "tags": ["network", "activation"],
+      "properties": { "startLine": 113, "endLine": 125 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::Reset",
+      "type": "function",
+      "name": "amd_am79c973::Reset",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Resets the NIC hardware via the reset port",
+      "tags": ["network", "reset"],
+      "properties": { "startLine": 127, "endLine": 132 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::HandleInterrupt",
+      "type": "function",
+      "name": "amd_am79c973::HandleInterrupt",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Handles NIC interrupts: checks for errors, initiates receive, acknowledges sent frames, and prints debug info",
+      "tags": ["interrupt", "network", "error-handling"],
+      "properties": { "startLine": 135, "endLine": 154 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::Send",
+      "type": "function",
+      "name": "amd_am79c973::Send",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Transmits a raw data buffer over Ethernet via DMA descriptor ring",
+      "tags": ["network", "send", "dma"],
+      "properties": { "startLine": 157, "endLine": 183 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::Receive",
+      "type": "function",
+      "name": "amd_am79c973::Receive",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Receives Ethernet frames from the DMA descriptor ring, invokes the registered data handler, and prints frame contents",
+      "tags": ["network", "receive", "dma"],
+      "properties": { "startLine": 185, "endLine": 216 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::SetHandler",
+      "type": "function",
+      "name": "amd_am79c973::SetHandler",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Registers a RawDataHandler to receive incoming network data callbacks",
+      "tags": ["network", "callback"],
+      "properties": { "startLine": 218, "endLine": 221 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::GetMACAddress",
+      "type": "function",
+      "name": "amd_am79c973::GetMACAddress",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Returns the MAC address stored in the initialization block",
+      "tags": ["network", "mac"],
+      "properties": { "startLine": 223, "endLine": 226 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::SetIPAddress",
+      "type": "function",
+      "name": "amd_am79c973::SetIPAddress",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Sets the logical IP address in the initialization block",
+      "tags": ["network", "ip"],
+      "properties": { "startLine": 228, "endLine": 231 }
+    },
+    {
+      "id": "function:myos::drivers::amd_am79c973::GetIPAddress",
+      "type": "function",
+      "name": "amd_am79c973::GetIPAddress",
+      "filePath": "src/drivers/amd_am79c973.cpp",
+      "summary": "Returns the configured IP address from the initialization block",
+      "tags": ["network", "ip"],
+      "properties": { "startLine": 233, "endLine": 236 }
+    },
+    {
+      "id": "src/drivers/amd_am79c973.h",
+      "type": "file",
+      "name": "amd_am79c973.h",
+      "filePath": "src/drivers/amd_am79c973.h",
+      "summary": "Header defining RawDataHandler callback abstraction and the amd_am79c973 Ethernet NIC driver class with DMA descriptor ring buffers and initialization block",
+      "tags": ["driver", "network", "ethernet", "dma", "header"],
+      "properties": { "language": "c++", "lines": 103 }
+    },
+    {
+      "id": "class:myos::drivers::RawDataHandler",
+      "type": "class",
+      "name": "RawDataHandler",
+      "filePath": "src/drivers/amd_am79c973.h",
+      "summary": "Abstract handler for raw network data, receives callbacks from the AMD NIC driver on incoming packets",
+      "tags": ["network", "callback", "abstract"],
+      "properties": { "startLine": 20, "endLine": 30 }
+    },
+    {
+      "id": "class:myos::drivers::amd_am79c973",
+      "type": "class",
+      "name": "amd_am79c973",
+      "filePath": "src/drivers/amd_am79c973.h",
+      "summary": "AMD Am79C973 Ethernet NIC driver with DMA buffer descriptor rings, raw handler API, interrupt handling, and MAC/IP address management",
+      "tags": ["driver", "network", "ethernet", "dma", "interrupt"],
+      "properties": { "startLine": 33, "endLine": 98 }
+    },
+    {
+      "id": "struct:myos::drivers::amd_am79c973::InitializationBlock",
+      "type": "class",
+      "name": "InitializationBlock",
+      "filePath": "src/drivers/amd_am79c973.h",
+      "summary": "Packed structure containing NIC initialization parameters: mode, buffer counts, physical MAC address, logical address, and descriptor addresses",
+      "tags": ["network", "dma", "configuration"],
+      "properties": { "startLine": 35, "endLine": 47 }
+    },
+    {
+      "id": "struct:myos::drivers::amd_am79c973::BufferDescriptor",
+      "type": "class",
+      "name": "BufferDescriptor",
+      "filePath": "src/drivers/amd_am79c973.h",
+      "summary": "Packed structure describing a DMA buffer: address, flags, flags2, and availability field",
+      "tags": ["network", "dma", "buffer"],
+      "properties": { "startLine": 50, "endLine": 56 }
+    },
+    {
+      "id": "src/drivers/driver.cpp",
+      "type": "file",
+      "name": "driver.cpp",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Implementation of the base Driver class lifecycle methods and DriverManager for managing multiple drivers",
+      "tags": ["driver", "manager", "lifecycle"],
+      "properties": { "language": "c++", "lines": 42 }
+    },
+    {
+      "id": "function:myos::drivers::Driver::Driver",
+      "type": "function",
+      "name": "Driver::Driver",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Default constructor for the base Driver class",
+      "tags": ["constructor", "driver"],
+      "properties": { "startLine": 5, "endLine": 7 }
+    },
+    {
+      "id": "function:myos::drivers::Driver::~Driver",
+      "type": "function",
+      "name": "Driver::~Driver",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Destructor for the base Driver class",
+      "tags": ["destructor", "driver"],
+      "properties": { "startLine": 9, "endLine": 11 }
+    },
+    {
+      "id": "function:myos::drivers::Driver::Activate",
+      "type": "function",
+      "name": "Driver::Activate",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Default Activate implementation (no-op), intended to be overridden by subclasses",
+      "tags": ["virtual", "driver", "activation"],
+      "properties": { "startLine": 13, "endLine": 15 }
+    },
+    {
+      "id": "function:myos::drivers::Driver::Reset",
+      "type": "function",
+      "name": "Driver::Reset",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Default Reset implementation returning 0, intended to be overridden by subclasses",
+      "tags": ["virtual", "driver", "reset"],
+      "properties": { "startLine": 17, "endLine": 20 }
+    },
+    {
+      "id": "function:myos::drivers::Driver::Deactivate",
+      "type": "function",
+      "name": "Driver::Deactivate",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Default Deactivate implementation (no-op), intended to be overridden by subclasses",
+      "tags": ["virtual", "driver", "deactivation"],
+      "properties": { "startLine": 22, "endLine": 24 }
+    },
+    {
+      "id": "function:myos::drivers::DriverManager::DriverManager",
+      "type": "function",
+      "name": "DriverManager::DriverManager",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Constructs a DriverManager with zero registered drivers",
+      "tags": ["constructor", "driver-manager"],
+      "properties": { "startLine": 27, "endLine": 30 }
+    },
+    {
+      "id": "function:myos::drivers::DriverManager::AddDriver",
+      "type": "function",
+      "name": "DriverManager::AddDriver",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Registers a driver in the driver array",
+      "tags": ["driver-manager", "registration"],
+      "properties": { "startLine": 32, "endLine": 36 }
+    },
+    {
+      "id": "function:myos::drivers::DriverManager::ActivateAll",
+      "type": "function",
+      "name": "DriverManager::ActivateAll",
+      "filePath": "src/drivers/driver.cpp",
+      "summary": "Calls Activate() on every registered driver",
+      "tags": ["driver-manager", "activation"],
+      "properties": { "startLine": 38, "endLine": 42 }
+    },
+    {
+      "id": "src/drivers/driver.h",
+      "type": "file",
+      "name": "driver.h",
+      "filePath": "src/drivers/driver.h",
+      "summary": "Header defining the abstract base Driver class with virtual lifecycle methods and the DriverManager container for driver registration and activation",
+      "tags": ["driver", "abstract", "manager", "header"],
+      "properties": { "language": "c++", "lines": 37 }
+    },
+    {
+      "id": "class:myos::drivers::Driver",
+      "type": "class",
+      "name": "Driver",
+      "filePath": "src/drivers/driver.h",
+      "summary": "Abstract base class for all hardware drivers providing Activate, Reset, and Deactivate lifecycle hooks",
+      "tags": ["driver", "abstract"],
+      "properties": { "startLine": 9, "endLine": 18 }
+    },
+    {
+      "id": "class:myos::drivers::DriverManager",
+      "type": "class",
+      "name": "DriverManager",
+      "filePath": "src/drivers/driver.h",
+      "summary": "Container managing up to 265 drivers with AddDriver and ActivateAll methods",
+      "tags": ["driver-manager", "container"],
+      "properties": { "startLine": 20, "endLine": 32 }
+    },
+    {
+      "id": "src/drivers/keyboard.cpp",
+      "type": "file",
+      "name": "keyboard.cpp",
+      "filePath": "src/drivers/keyboard.cpp",
+      "summary": "Implementation of PS/2 keyboard driver with scancode-to-character mapping and interrupt-driven key event dispatch",
+      "tags": ["driver", "keyboard", "input", "interrupt"],
+      "properties": { "language": "c++", "lines": 115 }
+    },
+    {
+      "id": "function:myos::drivers::KeyboardEventHandler::KeyboardEventHandler",
+      "type": "function",
+      "name": "KeyboardEventHandler::KeyboardEventHandler",
+      "filePath": "src/drivers/keyboard.cpp",
+      "summary": "Default constructor for the keyboard event handler",
+      "tags": ["constructor", "keyboard", "callback"],
+      "properties": { "startLine": 9, "endLine": 11 }
+    },
+    {
+      "id": "function:myos::drivers::KeyboardEventHandler::OnKeyDown",
+      "type": "function",
+      "name": "KeyboardEventHandler::OnKeyDown",
+      "filePath": "src/drivers/keyboard.cpp",
+      "summary": "Virtual callback for key press events, no-op by default",
+      "tags": ["virtual", "keyboard", "callback"],
+      "properties": { "startLine": 13, "endLine": 15 }
+    },
+    {
+      "id": "function:myos::drivers::KeyboardEventHandler::OnKeyUp",
+      "type": "function",
+      "name": "KeyboardEventHandler::OnKeyUp",
+      "filePath": "src/drivers/keyboard.cpp",
+      "summary": "Virtual callback for key release events, no-op by default",
+      "tags": ["virtual", "keyboard", "callback"],
+      "properties": { "startLine": 17, "endLine": 19 }
+    },
+    {
+      "id": "function:myos::drivers::KeyboardDriver::KeyboardDriver",
+      "type": "function",
+      "name": "KeyboardDriver::KeyboardDriver",
+      "filePath": "src/drivers/keyboard.cpp",
+      "summary": "Constructs the keyboard driver, attaching to interrupt 0x21 with data port 0x60 and command port 0x64",
+      "tags": ["constructor", "keyboard", "interrupt"],
+      "properties": { "startLine": 22, "endLine": 28 }
+    },
+    {
+      "id": "function:myos::drivers::KeyboardDriver::~KeyboardDriver",
+      "type": "function",
+      "name": "KeyboardDriver::~KeyboardDriver",
+      "filePath": "src/drivers/keyboard.cpp",
+      "summary": "Destructor for the keyboard driver",
+      "tags": ["destructor", "keyboard"],
+      "properties": { "startLine": 30, "endLine": 32 }
+    },
+    {
+      "id": "function:myos::drivers::KeyboardDriver::Activate",
+      "type": "function",
+      "name": "KeyboardDriver::Activate",
+      "filePath": "src/drivers/keyboard.cpp",
+      "summary": "Activates the keyboard: flushes buffer, enables interrupts via command byte, and sets scancode translation",
+      "tags": ["keyboard", "activation", "interrupt"],
+      "properties": { "startLine": 37, "endLine": 47 }
+    },
+    {
+      "id": "function:myos::drivers::KeyboardDriver::HandleInterrupt",
+      "type": "function",
+      "name": "KeyboardDriver::HandleInterrupt",
+      "filePath": "src/drivers/keyboard.cpp",
+      "summary": "Handles keyboard IRQ1: reads scancode, maps PS/2 scancodes to ASCII characters, dispatches to event handler, prints unknown scancodes",
+      "tags": ["interrupt", "keyboard", "input", "scancode"],
+      "properties": { "startLine": 49, "endLine": 115 }
+    },
+    {
+      "id": "src/drivers/keyboard.h",
+      "type": "file",
+      "name": "keyboard.h",
+      "filePath": "src/drivers/keyboard.h",
+      "summary": "Header defining KeyboardEventHandler interface and KeyboardDriver class with PS/2 scancode-to-character interrupt handling",
+      "tags": ["driver", "keyboard", "input", "interrupt", "header"],
+      "properties": { "language": "c++", "lines": 40 }
+    },
+    {
+      "id": "class:myos::drivers::KeyboardEventHandler",
+      "type": "class",
+      "name": "KeyboardEventHandler",
+      "filePath": "src/drivers/keyboard.h",
+      "summary": "Abstract interface for handling keyboard key press and release events",
+      "tags": ["keyboard", "callback", "abstract"],
+      "properties": { "startLine": 15, "endLine": 22 }
+    },
+    {
+      "id": "class:myos::drivers::KeyboardDriver",
+      "type": "class",
+      "name": "KeyboardDriver",
+      "filePath": "src/drivers/keyboard.h",
+      "summary": "PS/2 keyboard driver using interrupt 0x21, scancode-to-ASCII mapping, and keyboard event handler dispatch",
+      "tags": ["driver", "keyboard", "interrupt"],
+      "properties": { "startLine": 24, "endLine": 35 }
+    },
+    {
+      "id": "src/drivers/mouse.cpp",
+      "type": "file",
+      "name": "mouse.cpp",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Implementation of PS/2 mouse driver with interrupt-driven relative movement and button state tracking",
+      "tags": ["driver", "mouse", "input", "interrupt"],
+      "properties": { "language": "c++", "lines": 98 }
+    },
+    {
+      "id": "function:myos::drivers::MouseEventHandler::MouseEventHandler",
+      "type": "function",
+      "name": "MouseEventHandler::MouseEventHandler",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Default constructor for the mouse event handler",
+      "tags": ["constructor", "mouse", "callback"],
+      "properties": { "startLine": 12, "endLine": 14 }
+    },
+    {
+      "id": "function:myos::drivers::MouseEventHandler::OnActivate",
+      "type": "function",
+      "name": "MouseEventHandler::OnActivate",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Virtual callback invoked when the mouse driver activates, no-op by default",
+      "tags": ["virtual", "mouse", "callback"],
+      "properties": { "startLine": 16, "endLine": 18 }
+    },
+    {
+      "id": "function:myos::drivers::MouseEventHandler::OnMouseDown",
+      "type": "function",
+      "name": "MouseEventHandler::OnMouseDown",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Virtual callback for mouse button press, no-op by default",
+      "tags": ["virtual", "mouse", "callback"],
+      "properties": { "startLine": 20, "endLine": 22 }
+    },
+    {
+      "id": "function:myos::drivers::MouseEventHandler::OnMouseUp",
+      "type": "function",
+      "name": "MouseEventHandler::OnMouseUp",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Virtual callback for mouse button release, no-op by default",
+      "tags": ["virtual", "mouse", "callback"],
+      "properties": { "startLine": 24, "endLine": 26 }
+    },
+    {
+      "id": "function:myos::drivers::MouseEventHandler::OnMouseMove",
+      "type": "function",
+      "name": "MouseEventHandler::OnMouseMove",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Virtual callback for mouse movement, no-op by default",
+      "tags": ["virtual", "mouse", "callback"],
+      "properties": { "startLine": 28, "endLine": 30 }
+    },
+    {
+      "id": "function:myos::drivers::MouseDriver::MouseDriver",
+      "type": "function",
+      "name": "MouseDriver::MouseDriver",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Constructs the mouse driver, attaching to interrupt 0x2C with data port 0x60 and command port 0x64",
+      "tags": ["constructor", "mouse", "interrupt"],
+      "properties": { "startLine": 33, "endLine": 39 }
+    },
+    {
+      "id": "function:myos::drivers::MouseDriver::~MouseDriver",
+      "type": "function",
+      "name": "MouseDriver::~MouseDriver",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Destructor for the mouse driver",
+      "tags": ["destructor", "mouse"],
+      "properties": { "startLine": 41, "endLine": 43 }
+    },
+    {
+      "id": "function:myos::drivers::MouseDriver::Activate",
+      "type": "function",
+      "name": "MouseDriver::Activate",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Activates the mouse: enables auxiliary device, sets IRQ, and enables data reporting",
+      "tags": ["mouse", "activation", "interrupt"],
+      "properties": { "startLine": 45, "endLine": 62 }
+    },
+    {
+      "id": "function:myos::drivers::MouseDriver::HandleInterrupt",
+      "type": "function",
+      "name": "MouseDriver::HandleInterrupt",
+      "filePath": "src/drivers/mouse.cpp",
+      "summary": "Handles mouse IRQ12: reads 3-byte packets, computes relative movement, tracks button state transitions, dispatches to event handler",
+      "tags": ["interrupt", "mouse", "input"],
+      "properties": { "startLine": 64, "endLine": 98 }
+    },
+    {
+      "id": "src/drivers/mouse.h",
+      "type": "file",
+      "name": "mouse.h",
+      "filePath": "src/drivers/mouse.h",
+      "summary": "Header defining MouseEventHandler interface and MouseDriver class for PS/2 mouse with relative motion and button tracking",
+      "tags": ["driver", "mouse", "input", "interrupt", "header"],
+      "properties": { "language": "c++", "lines": 46 }
+    },
+    {
+      "id": "class:myos::drivers::MouseEventHandler",
+      "type": "class",
+      "name": "MouseEventHandler",
+      "filePath": "src/drivers/mouse.h",
+      "summary": "Abstract interface for handling mouse activate, button down/up, and move events",
+      "tags": ["mouse", "callback", "abstract"],
+      "properties": { "startLine": 15, "endLine": 24 }
+    },
+    {
+      "id": "class:myos::drivers::MouseDriver",
+      "type": "class",
+      "name": "MouseDriver",
+      "filePath": "src/drivers/mouse.h",
+      "summary": "PS/2 mouse driver using interrupt 0x2C, 3-byte packet parsing, relative movement, and 3-button state tracking",
+      "tags": ["driver", "mouse", "interrupt"],
+      "properties": { "startLine": 27, "endLine": 41 }
+    },
+    {
+      "id": "src/drivers/vga.cpp",
+      "type": "file",
+      "name": "vga.cpp",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Implementation of VGA graphics driver with 320x200x256 mode setting, hardware register programming, framebuffer access, pixel drawing, and rectangle fill",
+      "tags": ["driver", "vga", "graphics", "framebuffer"],
+      "properties": { "language": "c++", "lines": 154 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::VideoGraphicsArray",
+      "type": "function",
+      "name": "VideoGraphicsArray::VideoGraphicsArray",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Constructs the VGA driver, initializing all I/O port members for VGA register access",
+      "tags": ["constructor", "vga", "graphics"],
+      "properties": { "startLine": 8, "endLine": 21 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::~VideoGraphicsArray",
+      "type": "function",
+      "name": "VideoGraphicsArray::~VideoGraphicsArray",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Destructor for the VGA driver",
+      "tags": ["destructor", "vga", "graphics"],
+      "properties": { "startLine": 23, "endLine": 25 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::WriteRegisters",
+      "type": "function",
+      "name": "VideoGraphicsArray::WriteRegisters",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Writes a register table to VGA hardware through misc, sequencer, CRTC, graphics controller, and attribute controller ports",
+      "tags": ["vga", "graphics", "initialization"],
+      "properties": { "startLine": 28, "endLine": 73 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::SupportsMode",
+      "type": "function",
+      "name": "VideoGraphicsArray::SupportsMode",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Checks if the given mode is supported; only 320x200x8bpp is supported",
+      "tags": ["vga", "graphics", "mode-check"],
+      "properties": { "startLine": 75, "endLine": 78 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::SetMode",
+      "type": "function",
+      "name": "VideoGraphicsArray::SetMode",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Sets the VGA display mode to 320x200x256 by writing the standard register table to hardware",
+      "tags": ["vga", "graphics", "mode-set"],
+      "properties": { "startLine": 80, "endLine": 107 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::GetFrameBufferSegment",
+      "type": "function",
+      "name": "VideoGraphicsArray::GetFrameBufferSegment",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Returns the framebuffer segment base address based on the graphics controller register",
+      "tags": ["vga", "graphics", "framebuffer"],
+      "properties": { "startLine": 110, "endLine": 122 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::PutPixel.colorIndex",
+      "type": "function",
+      "name": "VideoGraphicsArray::PutPixel(colorIndex)",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Sets a pixel at (x,y) to the specified 8-bit color index in the framebuffer",
+      "tags": ["vga", "graphics", "pixel"],
+      "properties": { "startLine": 124, "endLine": 132 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::GetColorIndex",
+      "type": "function",
+      "name": "VideoGraphicsArray::GetColorIndex",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Maps RGB values to the nearest VGA color index from a limited palette",
+      "tags": ["vga", "graphics", "color"],
+      "properties": { "startLine": 134, "endLine": 142 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::PutPixel.rgb",
+      "type": "function",
+      "name": "VideoGraphicsArray::PutPixel(rgb)",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Sets a pixel at (x,y) using RGB values, converting to VGA color index internally",
+      "tags": ["vga", "graphics", "pixel"],
+      "properties": { "startLine": 144, "endLine": 147 }
+    },
+    {
+      "id": "function:myos::drivers::VideoGraphicsArray::FillRectangle",
+      "type": "function",
+      "name": "VideoGraphicsArray::FillRectangle",
+      "filePath": "src/drivers/vga.cpp",
+      "summary": "Fills a rectangular region with the specified RGB color",
+      "tags": ["vga", "graphics", "rectangle"],
+      "properties": { "startLine": 149, "endLine": 154 }
+    },
+    {
+      "id": "src/drivers/vga.h",
+      "type": "file",
+      "name": "vga.h",
+      "filePath": "src/drivers/vga.h",
+      "summary": "Header for VGA graphics driver with framebuffer pixel drawing, color index mapping, rectangle fill, and 320x200x256 mode support",
+      "tags": ["driver", "vga", "graphics", "framebuffer", "header"],
+      "properties": { "language": "c++", "lines": 52 }
+    },
+    {
+      "id": "class:myos::drivers::VideoGraphicsArray",
+      "type": "class",
+      "name": "VideoGraphicsArray",
+      "filePath": "src/drivers/vga.h",
+      "summary": "VGA graphics driver supporting 320x200x256 resolution with hardware register programming, framebuffer access, and pixel/rectangle drawing",
+      "tags": ["driver", "vga", "graphics"],
+      "properties": { "startLine": 15, "endLine": 47 }
+    },
+    {
+      "id": "src/hardwarecommunication/interrupts.cpp",
+      "type": "file",
+      "name": "interrupts.cpp",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Implementation of x86 interrupt handling: IDT setup with gate descriptors, PIC 8259A programming, exception/IRQ dispatch, and interrupt handler management",
+      "tags": ["interrupt", "idt", "pic", "hardware", "x86"],
+      "properties": { "language": "c++", "lines": 193 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptHandler::InterruptHandler",
+      "type": "function",
+      "name": "InterruptHandler::InterruptHandler",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Registers this handler with the InterruptManager for the given interrupt number",
+      "tags": ["constructor", "interrupt", "registration"],
+      "properties": { "startLine": 12, "endLine": 17 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptHandler::~InterruptHandler",
+      "type": "function",
+      "name": "InterruptHandler::~InterruptHandler",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Unregisters this handler from the InterruptManager if it is the currently registered handler",
+      "tags": ["destructor", "interrupt", "unregistration"],
+      "properties": { "startLine": 19, "endLine": 23 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptHandler::HandleInterrupt",
+      "type": "function",
+      "name": "InterruptHandler::HandleInterrupt",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Default interrupt handler stub that returns esp unmodified",
+      "tags": ["virtual", "interrupt"],
+      "properties": { "startLine": 25, "endLine": 28 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptManager::SetInterruptDescriptorTableEntry",
+      "type": "function",
+      "name": "InterruptManager::SetInterruptDescriptorTableEntry",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Programs a single IDT gate descriptor with code segment selector, handler address, privilege level, and gate type",
+      "tags": ["interrupt", "idt", "configuration"],
+      "properties": { "startLine": 35, "endLine": 48 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptManager::InterruptManager",
+      "type": "function",
+      "name": "InterruptManager::InterruptManager",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Sets up the full IDT with exception handlers, IRQ handlers, syscall interrupt 0x80, initializes PIC 8259A with remapping, and loads the IDT via lidt instruction",
+      "tags": ["constructor", "interrupt", "idt", "pic", "initialization"],
+      "properties": { "startLine": 50, "endLine": 129 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptManager::~InterruptManager",
+      "type": "function",
+      "name": "InterruptManager::~InterruptManager",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Deactivates the interrupt manager on destruction",
+      "tags": ["destructor", "interrupt"],
+      "properties": { "startLine": 131, "endLine": 134 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptManager::HardwareInterruptOffset",
+      "type": "function",
+      "name": "InterruptManager::HardwareInterruptOffset",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Returns the offset at which hardware IRQs are mapped in the IDT",
+      "tags": ["interrupt", "accessor"],
+      "properties": { "startLine": 136, "endLine": 139 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptManager::Activate",
+      "type": "function",
+      "name": "InterruptManager::Activate",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Activates interrupt handling by setting this as active manager and executing sti (enable interrupts)",
+      "tags": ["interrupt", "activation"],
+      "properties": { "startLine": 141, "endLine": 148 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptManager::Deactivate",
+      "type": "function",
+      "name": "InterruptManager::Deactivate",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Deactivates interrupt handling by clearing active manager and executing cli (disable interrupts)",
+      "tags": ["interrupt", "deactivation"],
+      "properties": { "startLine": 150, "endLine": 157 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptManager::HandleInterrupt",
+      "type": "function",
+      "name": "InterruptManager::HandleInterrupt",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Static dispatch method that forwards interrupt to the active interrupt manager",
+      "tags": ["interrupt", "dispatch"],
+      "properties": { "startLine": 159, "endLine": 164 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::InterruptManager::DoHandleInterrupt",
+      "type": "function",
+      "name": "InterruptManager::DoHandleInterrupt",
+      "filePath": "src/hardwarecommunication/interrupts.cpp",
+      "summary": "Routes interrupt to registered handler, prints unhandled interrupts, triggers task scheduling on timer IRQ, and acknowledges PIC",
+      "tags": ["interrupt", "dispatch", "task-switch", "pic"],
+      "properties": { "startLine": 167, "endLine": 193 }
+    },
+    {
+      "id": "src/hardwarecommunication/interrupts.h",
+      "type": "file",
+      "name": "interrupts.h",
+      "filePath": "src/hardwarecommunication/interrupts.h",
+      "summary": "Header for x86 interrupt handling framework with InterruptHandler base class, InterruptManager, IDT GateDescriptor structure, exception/IRQ handler declarations, and PIC port access",
+      "tags": ["interrupt", "idt", "pic", "hardware", "header"],
+      "properties": { "language": "c++", "lines": 122 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::InterruptHandler",
+      "type": "class",
+      "name": "InterruptHandler",
+      "filePath": "src/hardwarecommunication/interrupts.h",
+      "summary": "Base class for interrupt handlers with automatic registration and unregistration with the InterruptManager",
+      "tags": ["interrupt", "abstract"],
+      "properties": { "startLine": 17, "endLine": 26 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::InterruptManager",
+      "type": "class",
+      "name": "InterruptManager",
+      "filePath": "src/hardwarecommunication/interrupts.h",
+      "summary": "Manages the full x86 interrupt system: IDT setup, PIC 8259A programming, handler registry, exception stubs, IRQ dispatch, and task scheduling trigger",
+      "tags": ["interrupt", "manager", "idt", "pic"],
+      "properties": { "startLine": 29, "endLine": 118 }
+    },
+    {
+      "id": "struct:myos::hardwarecommunication::InterruptManager::GateDescriptor",
+      "type": "class",
+      "name": "GateDescriptor",
+      "filePath": "src/hardwarecommunication/interrupts.h",
+      "summary": "Packed 8-byte IDT gate descriptor with handler address split across low/high bits, code segment selector, access flags, and reserved field",
+      "tags": ["interrupt", "idt", "descriptor"],
+      "properties": { "startLine": 38, "endLine": 45 }
+    },
+    {
+      "id": "struct:myos::hardwarecommunication::InterruptManager::InterruptDescriptorTablePointer",
+      "type": "class",
+      "name": "InterruptDescriptorTablePointer",
+      "filePath": "src/hardwarecommunication/interrupts.h",
+      "summary": "Packed 6-byte structure for the lidt instruction: 16-bit table size and 32-bit base address",
+      "tags": ["interrupt", "idt", "descriptor"],
+      "properties": { "startLine": 49, "endLine": 53 }
+    },
+    {
+      "id": "src/hardwarecommunication/pci.cpp",
+      "type": "file",
+      "name": "pci.cpp",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Implementation of PCI bus controller with device enumeration, configuration space read/write, BAR parsing, and automatic AMD NIC driver instantiation",
+      "tags": ["pci", "bus", "hardware", "enumeration"],
+      "properties": { "language": "c++", "lines": 213 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectDeviceDescriptor::PeripheralComponentInterconnectDeviceDescriptor",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectDeviceDescriptor::PeripheralComponentInterconnectDeviceDescriptor",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Default constructor for PCI device descriptor",
+      "tags": ["constructor", "pci"],
+      "properties": { "startLine": 9, "endLine": 11 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectDeviceDescriptor::~PeripheralComponentInterconnectDeviceDescriptor",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectDeviceDescriptor::~PeripheralComponentInterconnectDeviceDescriptor",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Destructor for PCI device descriptor",
+      "tags": ["destructor", "pci"],
+      "properties": { "startLine": 13, "endLine": 15 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::PeripheralComponentInterconnectController",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::PeripheralComponentInterconnectController",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Constructs the PCI controller with data port 0xCFC and command port 0xCF8",
+      "tags": ["constructor", "pci"],
+      "properties": { "startLine": 18, "endLine": 22 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::~PeripheralComponentInterconnectController",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::~PeripheralComponentInterconnectController",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Destructor for PCI controller",
+      "tags": ["destructor", "pci"],
+      "properties": { "startLine": 24, "endLine": 26 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::Read",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::Read",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Reads a 32-bit register from PCI configuration space using bus/device/function addressing",
+      "tags": ["pci", "configuration", "read"],
+      "properties": { "startLine": 28, "endLine": 39 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::Write",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::Write",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Writes a 32-bit value to PCI configuration space using bus/device/function addressing",
+      "tags": ["pci", "configuration", "write"],
+      "properties": { "startLine": 41, "endLine": 51 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::DeviceHasFunctions",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::DeviceHasFunctions",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Checks if a PCI device has multiple functions via the header type register",
+      "tags": ["pci", "configuration"],
+      "properties": { "startLine": 53, "endLine": 56 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::SelectDrivers",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::SelectDrivers",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Enumerates all PCI buses/devices/functions, reads device descriptors, resolves BARs, instantiates matching drivers, and adds them to the driver manager",
+      "tags": ["pci", "enumeration", "driver-selection"],
+      "properties": { "startLine": 62, "endLine": 108 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetBaseAddressRegister",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::GetBaseAddressRegister",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Reads a PCI BAR at the given index, determining whether it is memory-mapped or I/O, and returns the address",
+      "tags": ["pci", "bar", "configuration"],
+      "properties": { "startLine": 111, "endLine": 149 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetDriver",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::GetDriver",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Matches PCI vendor/device IDs to known drivers and instantiates the AMD Am79C973 NIC driver, also detects VGA graphics devices",
+      "tags": ["pci", "driver-matching"],
+      "properties": { "startLine": 152, "endLine": 191 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetDeviceDescriptor",
+      "type": "function",
+      "name": "PeripheralComponentInterconnectController::GetDeviceDescriptor",
+      "filePath": "src/hardwarecommunication/pci.cpp",
+      "summary": "Reads vendor ID, device ID, class code, subclass, interface, revision, and interrupt from PCI configuration space for a given bus/device/function",
+      "tags": ["pci", "configuration", "descriptor"],
+      "properties": { "startLine": 194, "endLine": 213 }
+    },
+    {
+      "id": "src/hardwarecommunication/pci.h",
+      "type": "file",
+      "name": "pci.h",
+      "filePath": "src/hardwarecommunication/pci.h",
+      "summary": "Header for PCI bus controller with device enumeration, configuration space access, Base Address Register parsing, and driver instantiation support",
+      "tags": ["pci", "bus", "hardware", "enumeration", "header"],
+      "properties": { "language": "c++", "lines": 80 }
+    },
+    {
+      "id": "enum:myos::hardwarecommunication::BaseAddressRegisterType",
+      "type": "class",
+      "name": "BaseAddressRegisterType",
+      "filePath": "src/hardwarecommunication/pci.h",
+      "summary": "Enum distinguishing memory-mapped (0) vs I/O (1) PCI BAR types",
+      "tags": ["pci", "enum"],
+      "properties": { "startLine": 16, "endLine": 20 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::BaseAddressRegister",
+      "type": "class",
+      "name": "BaseAddressRegister",
+      "filePath": "src/hardwarecommunication/pci.h",
+      "summary": "Describes a PCI Base Address Register with address, size, prefetchable flag, and type (memory or I/O)",
+      "tags": ["pci", "bar"],
+      "properties": { "startLine": 23, "endLine": 30 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::PeripheralComponentInterconnectDeviceDescriptor",
+      "type": "class",
+      "name": "PeripheralComponentInterconnectDeviceDescriptor",
+      "filePath": "src/hardwarecommunication/pci.h",
+      "summary": "Describes a PCI device: bus/device/function address, vendor/device ID, class/subclass/interface, interrupt line, and port base",
+      "tags": ["pci", "descriptor"],
+      "properties": { "startLine": 33, "endLine": 55 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::PeripheralComponentInterconnectController",
+      "type": "class",
+      "name": "PeripheralComponentInterconnectController",
+      "filePath": "src/hardwarecommunication/pci.h",
+      "summary": "PCI bus controller for configuration space access, device enumeration, BAR parsing, multi-function detection, and driver selection",
+      "tags": ["pci", "controller", "bus"],
+      "properties": { "startLine": 58, "endLine": 75 }
+    },
+    {
+      "id": "src/hardwarecommunication/port.cpp",
+      "type": "file",
+      "name": "port.cpp",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Implementation of x86 I/O port abstractions: 8-bit, 8-bit-slow, 16-bit, and 32-bit read/write using in/out instructions",
+      "tags": ["port", "io", "hardware", "x86"],
+      "properties": { "language": "c++", "lines": 90 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port::Port",
+      "type": "function",
+      "name": "Port::Port",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Constructs a port with the given I/O port number",
+      "tags": ["constructor", "port"],
+      "properties": { "startLine": 7, "endLine": 10 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port::~Port",
+      "type": "function",
+      "name": "Port::~Port",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Destructor for the base port class",
+      "tags": ["destructor", "port"],
+      "properties": { "startLine": 12, "endLine": 14 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port8Bit::Port8Bit",
+      "type": "function",
+      "name": "Port8Bit::Port8Bit",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Constructs an 8-bit I/O port",
+      "tags": ["constructor", "port"],
+      "properties": { "startLine": 17, "endLine": 20 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port8Bit::~Port8Bit",
+      "type": "function",
+      "name": "Port8Bit::~Port8Bit",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Destructor for 8-bit port",
+      "tags": ["destructor", "port"],
+      "properties": { "startLine": 22, "endLine": 24 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port8Bit::Write",
+      "type": "function",
+      "name": "Port8Bit::Write",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Writes a byte to the I/O port using the outb instruction",
+      "tags": ["port", "write", "io"],
+      "properties": { "startLine": 26, "endLine": 29 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port8Bit::Read",
+      "type": "function",
+      "name": "Port8Bit::Read",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Reads a byte from the I/O port using the inb instruction",
+      "tags": ["port", "read", "io"],
+      "properties": { "startLine": 31, "endLine": 34 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port8BitSlow::Port8BitSlow",
+      "type": "function",
+      "name": "Port8BitSlow::Port8BitSlow",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Constructs a slow 8-bit I/O port",
+      "tags": ["constructor", "port", "slow"],
+      "properties": { "startLine": 37, "endLine": 40 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port8BitSlow::~Port8BitSlow",
+      "type": "function",
+      "name": "Port8BitSlow::~Port8BitSlow",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Destructor for slow 8-bit port",
+      "tags": ["destructor", "port"],
+      "properties": { "startLine": 42, "endLine": 44 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port8BitSlow::Write",
+      "type": "function",
+      "name": "Port8BitSlow::Write",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Writes a byte with an extra delay via JMP padding for slow devices",
+      "tags": ["port", "write", "io", "slow"],
+      "properties": { "startLine": 46, "endLine": 49 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port16Bit::Port16Bit",
+      "type": "function",
+      "name": "Port16Bit::Port16Bit",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Constructs a 16-bit I/O port",
+      "tags": ["constructor", "port"],
+      "properties": { "startLine": 52, "endLine": 55 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port16Bit::~Port16Bit",
+      "type": "function",
+      "name": "Port16Bit::~Port16Bit",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Destructor for 16-bit port",
+      "tags": ["destructor", "port"],
+      "properties": { "startLine": 57, "endLine": 59 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port16Bit::Write",
+      "type": "function",
+      "name": "Port16Bit::Write",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Writes a 16-bit word to the I/O port using the outw instruction",
+      "tags": ["port", "write", "io"],
+      "properties": { "startLine": 61, "endLine": 64 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port16Bit::Read",
+      "type": "function",
+      "name": "Port16Bit::Read",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Reads a 16-bit word from the I/O port using the inw instruction",
+      "tags": ["port", "read", "io"],
+      "properties": { "startLine": 66, "endLine": 69 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port32Bit::Port32Bit",
+      "type": "function",
+      "name": "Port32Bit::Port32Bit",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Constructs a 32-bit I/O port",
+      "tags": ["constructor", "port"],
+      "properties": { "startLine": 73, "endLine": 76 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port32Bit::~Port32Bit",
+      "type": "function",
+      "name": "Port32Bit::~Port32Bit",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Destructor for 32-bit port",
+      "tags": ["destructor", "port"],
+      "properties": { "startLine": 78, "endLine": 80 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port32Bit::Write",
+      "type": "function",
+      "name": "Port32Bit::Write",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Writes a 32-bit double-word to the I/O port using the outl instruction",
+      "tags": ["port", "write", "io"],
+      "properties": { "startLine": 82, "endLine": 85 }
+    },
+    {
+      "id": "function:myos::hardwarecommunication::Port32Bit::Read",
+      "type": "function",
+      "name": "Port32Bit::Read",
+      "filePath": "src/hardwarecommunication/port.cpp",
+      "summary": "Reads a 32-bit double-word from the I/O port using the inl instruction",
+      "tags": ["port", "read", "io"],
+      "properties": { "startLine": 87, "endLine": 90 }
+    },
+    {
+      "id": "src/hardwarecommunication/port.h",
+      "type": "file",
+      "name": "port.h",
+      "filePath": "src/hardwarecommunication/port.h",
+      "summary": "Header for x86 I/O port abstraction classes with inline assembly in/out instructions: Port8Bit, Port8BitSlow, Port16Bit, Port32Bit",
+      "tags": ["port", "io", "hardware", "x86", "header"],
+      "properties": { "language": "c++", "lines": 116 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::Port",
+      "type": "class",
+      "name": "Port",
+      "filePath": "src/hardwarecommunication/port.h",
+      "summary": "Abstract base class for I/O port access, storing a 16-bit port number",
+      "tags": ["port", "abstract"],
+      "properties": { "startLine": 12, "endLine": 19 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::Port8Bit",
+      "type": "class",
+      "name": "Port8Bit",
+      "filePath": "src/hardwarecommunication/port.h",
+      "summary": "8-bit I/O port with inb/outb inline assembly read/write operations",
+      "tags": ["port", "io"],
+      "properties": { "startLine": 22, "endLine": 43 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::Port8BitSlow",
+      "type": "class",
+      "name": "Port8BitSlow",
+      "filePath": "src/hardwarecommunication/port.h",
+      "summary": "8-bit I/O port with a delayed outb instruction for slow devices, using JMP padding",
+      "tags": ["port", "io", "slow"],
+      "properties": { "startLine": 47, "endLine": 60 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::Port16Bit",
+      "type": "class",
+      "name": "Port16Bit",
+      "filePath": "src/hardwarecommunication/port.h",
+      "summary": "16-bit I/O port with inw/outw inline assembly read/write operations",
+      "tags": ["port", "io"],
+      "properties": { "startLine": 64, "endLine": 85 }
+    },
+    {
+      "id": "class:myos::hardwarecommunication::Port32Bit",
+      "type": "class",
+      "name": "Port32Bit",
+      "filePath": "src/hardwarecommunication/port.h",
+      "summary": "32-bit I/O port with inl/outl inline assembly read/write operations",
+      "tags": ["port", "io"],
+      "properties": { "startLine": 89, "endLine": 110 }
+    }
+  ],
+  "edges": [
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "src/drivers/amd_am79c973.h",
+      "type": "import",
+      "summary": "#include <drivers/amd_am79c973.h>"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "src/common/types.h",
+      "type": "import",
+      "summary": "Imports type definitions"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "src/drivers/driver.h",
+      "type": "import",
+      "summary": "Imports base Driver class"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "src/hardwarecommunication/pci.h",
+      "type": "import",
+      "summary": "Imports PCI device descriptor"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "src/hardwarecommunication/interrupts.h",
+      "type": "import",
+      "summary": "Imports InterruptManager for interrupt handling"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "src/hardwarecommunication/port.h",
+      "type": "import",
+      "summary": "Imports I/O port classes"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "src/drivers/driver.h",
+      "type": "import",
+      "summary": "#include <drivers/driver.h>"
+    },
+    {
+      "source": "src/drivers/driver.h",
+      "target": "src/common/types.h",
+      "type": "import",
+      "summary": "Imports type definitions"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "src/drivers/keyboard.h",
+      "type": "import",
+      "summary": "#include <drivers/keyboard.h>"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "src/common/types.h",
+      "type": "import",
+      "summary": "Imports type definitions"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "src/hardwarecommunication/interrupts.h",
+      "type": "import",
+      "summary": "Imports InterruptHandler base class"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "src/drivers/driver.h",
+      "type": "import",
+      "summary": "Imports base Driver class"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "src/hardwarecommunication/port.h",
+      "type": "import",
+      "summary": "Imports I/O port classes"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "src/drivers/mouse.h",
+      "type": "import",
+      "summary": "#include <drivers/mouse.h>"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "src/common/types.h",
+      "type": "import",
+      "summary": "Imports type definitions"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "src/hardwarecommunication/port.h",
+      "type": "import",
+      "summary": "Imports I/O port classes"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "src/drivers/driver.h",
+      "type": "import",
+      "summary": "Imports base Driver class"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "src/hardwarecommunication/interrupts.h",
+      "type": "import",
+      "summary": "Imports InterruptHandler base class"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "src/drivers/vga.h",
+      "type": "import",
+      "summary": "#include <drivers/vga.h>"
+    },
+    {
+      "source": "src/drivers/vga.h",
+      "target": "src/common/types.h",
+      "type": "import",
+      "summary": "Imports type definitions"
+    },
+    {
+      "source": "src/drivers/vga.h",
+      "target": "src/hardwarecommunication/port.h",
+      "type": "import",
+      "summary": "Imports I/O port classes"
+    },
+    {
+      "source": "src/drivers/vga.h",
+      "target": "src/drivers/driver.h",
+      "type": "import",
+      "summary": "Imports base Driver class"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "src/hardwarecommunication/interrupts.h",
+      "type": "import",
+      "summary": "#include <hardwarecommunication/interrupts.h>"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/gdt.h",
+      "type": "import",
+      "summary": "Imports GlobalDescriptorTable for code segment selector"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/multitasking.h",
+      "type": "import",
+      "summary": "Imports TaskManager for task scheduling from interrupts"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/common/types.h",
+      "type": "import",
+      "summary": "Imports type definitions"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/hardwarecommunication/port.h",
+      "type": "import",
+      "summary": "Imports I/O port classes for PIC programming"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "src/hardwarecommunication/pci.h",
+      "type": "import",
+      "summary": "#include <hardwarecommunication/pci.h>"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "src/drivers/amd_am79c973.h",
+      "type": "import",
+      "summary": "#include <drivers/amd_am79c973.h> for AMD NIC driver instantiation"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "src/hardwarecommunication/port.h",
+      "type": "import",
+      "summary": "Imports I/O port classes"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "src/drivers/driver.h",
+      "type": "import",
+      "summary": "Imports Driver base class and DriverManager"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "src/common/types.h",
+      "type": "import",
+      "summary": "Imports type definitions"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "src/hardwarecommunication/interrupts.h",
+      "type": "import",
+      "summary": "Imports InterruptManager for driver instantiation"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "src/memorymanagement.h",
+      "type": "import",
+      "summary": "Imports MemoryManager for driver allocation"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "src/hardwarecommunication/port.h",
+      "type": "import",
+      "summary": "#include <hardwarecommunication/port.h>"
+    },
+    {
+      "source": "src/hardwarecommunication/port.h",
+      "target": "src/common/types.h",
+      "type": "import",
+      "summary": "Imports type definitions"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "class:myos::drivers::RawDataHandler",
+      "type": "contains",
+      "summary": "File contains RawDataHandler method implementations"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::RawDataHandler::RawDataHandler",
+      "type": "contains",
+      "summary": "File contains RawDataHandler constructor"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::RawDataHandler::~RawDataHandler",
+      "type": "contains",
+      "summary": "File contains RawDataHandler destructor"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::RawDataHandler::OnRawDataReceived",
+      "type": "contains",
+      "summary": "File contains OnRawDataReceived implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::RawDataHandler::Send",
+      "type": "contains",
+      "summary": "File contains RawDataHandler::Send implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "class:myos::drivers::amd_am79c973",
+      "type": "contains",
+      "summary": "File contains amd_am79c973 method implementations"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::amd_am79c973",
+      "type": "contains",
+      "summary": "File contains amd_am79c973 constructor"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::~amd_am79c973",
+      "type": "contains",
+      "summary": "File contains amd_am79c973 destructor"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::Activate",
+      "type": "contains",
+      "summary": "File contains Activate implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::Reset",
+      "type": "contains",
+      "summary": "File contains Reset implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::HandleInterrupt",
+      "type": "contains",
+      "summary": "File contains HandleInterrupt implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::Send",
+      "type": "contains",
+      "summary": "File contains Send implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::Receive",
+      "type": "contains",
+      "summary": "File contains Receive implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::SetHandler",
+      "type": "contains",
+      "summary": "File contains SetHandler implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::GetMACAddress",
+      "type": "contains",
+      "summary": "File contains GetMACAddress implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::SetIPAddress",
+      "type": "contains",
+      "summary": "File contains SetIPAddress implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.cpp",
+      "target": "function:myos::drivers::amd_am79c973::GetIPAddress",
+      "type": "contains",
+      "summary": "File contains GetIPAddress implementation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "class:myos::drivers::RawDataHandler",
+      "type": "contains",
+      "summary": "Header declares RawDataHandler class"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "class:myos::drivers::amd_am79c973",
+      "type": "contains",
+      "summary": "Header declares amd_am79c973 class"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "struct:myos::drivers::amd_am79c973::InitializationBlock",
+      "type": "contains",
+      "summary": "Header declares InitializationBlock struct"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "struct:myos::drivers::amd_am79c973::BufferDescriptor",
+      "type": "contains",
+      "summary": "Header declares BufferDescriptor struct"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "class:myos::drivers::Driver",
+      "type": "contains",
+      "summary": "File contains Driver method implementations"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "function:myos::drivers::Driver::Driver",
+      "type": "contains",
+      "summary": "File contains Driver constructor"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "function:myos::drivers::Driver::~Driver",
+      "type": "contains",
+      "summary": "File contains Driver destructor"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "function:myos::drivers::Driver::Activate",
+      "type": "contains",
+      "summary": "File contains Driver::Activate"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "function:myos::drivers::Driver::Reset",
+      "type": "contains",
+      "summary": "File contains Driver::Reset"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "function:myos::drivers::Driver::Deactivate",
+      "type": "contains",
+      "summary": "File contains Driver::Deactivate"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "class:myos::drivers::DriverManager",
+      "type": "contains",
+      "summary": "File contains DriverManager method implementations"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "function:myos::drivers::DriverManager::DriverManager",
+      "type": "contains",
+      "summary": "File contains DriverManager constructor"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "function:myos::drivers::DriverManager::AddDriver",
+      "type": "contains",
+      "summary": "File contains AddDriver"
+    },
+    {
+      "source": "src/drivers/driver.cpp",
+      "target": "function:myos::drivers::DriverManager::ActivateAll",
+      "type": "contains",
+      "summary": "File contains ActivateAll"
+    },
+    {
+      "source": "src/drivers/driver.h",
+      "target": "class:myos::drivers::Driver",
+      "type": "contains",
+      "summary": "Header declares Driver class"
+    },
+    {
+      "source": "src/drivers/driver.h",
+      "target": "class:myos::drivers::DriverManager",
+      "type": "contains",
+      "summary": "Header declares DriverManager class"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "class:myos::drivers::KeyboardEventHandler",
+      "type": "contains",
+      "summary": "File contains KeyboardEventHandler method implementations"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "function:myos::drivers::KeyboardEventHandler::KeyboardEventHandler",
+      "type": "contains",
+      "summary": "File contains KeyboardEventHandler constructor"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "function:myos::drivers::KeyboardEventHandler::OnKeyDown",
+      "type": "contains",
+      "summary": "File contains OnKeyDown"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "function:myos::drivers::KeyboardEventHandler::OnKeyUp",
+      "type": "contains",
+      "summary": "File contains OnKeyUp"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "class:myos::drivers::KeyboardDriver",
+      "type": "contains",
+      "summary": "File contains KeyboardDriver method implementations"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "function:myos::drivers::KeyboardDriver::KeyboardDriver",
+      "type": "contains",
+      "summary": "File contains KeyboardDriver constructor"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "function:myos::drivers::KeyboardDriver::~KeyboardDriver",
+      "type": "contains",
+      "summary": "File contains KeyboardDriver destructor"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "function:myos::drivers::KeyboardDriver::Activate",
+      "type": "contains",
+      "summary": "File contains KeyboardDriver::Activate"
+    },
+    {
+      "source": "src/drivers/keyboard.cpp",
+      "target": "function:myos::drivers::KeyboardDriver::HandleInterrupt",
+      "type": "contains",
+      "summary": "File contains HandleInterrupt"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "class:myos::drivers::KeyboardEventHandler",
+      "type": "contains",
+      "summary": "Header declares KeyboardEventHandler class"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "class:myos::drivers::KeyboardDriver",
+      "type": "contains",
+      "summary": "Header declares KeyboardDriver class"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "class:myos::drivers::MouseEventHandler",
+      "type": "contains",
+      "summary": "File contains MouseEventHandler method implementations"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseEventHandler::MouseEventHandler",
+      "type": "contains",
+      "summary": "File contains MouseEventHandler constructor"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseEventHandler::OnActivate",
+      "type": "contains",
+      "summary": "File contains OnActivate"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseEventHandler::OnMouseDown",
+      "type": "contains",
+      "summary": "File contains OnMouseDown"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseEventHandler::OnMouseUp",
+      "type": "contains",
+      "summary": "File contains OnMouseUp"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseEventHandler::OnMouseMove",
+      "type": "contains",
+      "summary": "File contains OnMouseMove"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "class:myos::drivers::MouseDriver",
+      "type": "contains",
+      "summary": "File contains MouseDriver method implementations"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseDriver::MouseDriver",
+      "type": "contains",
+      "summary": "File contains MouseDriver constructor"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseDriver::~MouseDriver",
+      "type": "contains",
+      "summary": "File contains MouseDriver destructor"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseDriver::Activate",
+      "type": "contains",
+      "summary": "File contains MouseDriver::Activate"
+    },
+    {
+      "source": "src/drivers/mouse.cpp",
+      "target": "function:myos::drivers::MouseDriver::HandleInterrupt",
+      "type": "contains",
+      "summary": "File contains MouseDriver::HandleInterrupt"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "class:myos::drivers::MouseEventHandler",
+      "type": "contains",
+      "summary": "Header declares MouseEventHandler class"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "class:myos::drivers::MouseDriver",
+      "type": "contains",
+      "summary": "Header declares MouseDriver class"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "class:myos::drivers::VideoGraphicsArray",
+      "type": "contains",
+      "summary": "File contains VideoGraphicsArray method implementations"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::VideoGraphicsArray",
+      "type": "contains",
+      "summary": "File contains VideoGraphicsArray constructor"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::~VideoGraphicsArray",
+      "type": "contains",
+      "summary": "File contains VideoGraphicsArray destructor"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::WriteRegisters",
+      "type": "contains",
+      "summary": "File contains WriteRegisters"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::SupportsMode",
+      "type": "contains",
+      "summary": "File contains SupportsMode"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::SetMode",
+      "type": "contains",
+      "summary": "File contains SetMode"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::GetFrameBufferSegment",
+      "type": "contains",
+      "summary": "File contains GetFrameBufferSegment"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::PutPixel.colorIndex",
+      "type": "contains",
+      "summary": "File contains PutPixel(colorIndex)"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::GetColorIndex",
+      "type": "contains",
+      "summary": "File contains GetColorIndex"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::PutPixel.rgb",
+      "type": "contains",
+      "summary": "File contains PutPixel(rgb)"
+    },
+    {
+      "source": "src/drivers/vga.cpp",
+      "target": "function:myos::drivers::VideoGraphicsArray::FillRectangle",
+      "type": "contains",
+      "summary": "File contains FillRectangle"
+    },
+    {
+      "source": "src/drivers/vga.h",
+      "target": "class:myos::drivers::VideoGraphicsArray",
+      "type": "contains",
+      "summary": "Header declares VideoGraphicsArray class"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "class:myos::hardwarecommunication::InterruptHandler",
+      "type": "contains",
+      "summary": "File contains InterruptHandler method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptHandler::InterruptHandler",
+      "type": "contains",
+      "summary": "File contains InterruptHandler constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptHandler::~InterruptHandler",
+      "type": "contains",
+      "summary": "File contains InterruptHandler destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptHandler::HandleInterrupt",
+      "type": "contains",
+      "summary": "File contains HandleInterrupt stub"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "class:myos::hardwarecommunication::InterruptManager",
+      "type": "contains",
+      "summary": "File contains InterruptManager method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptManager::SetInterruptDescriptorTableEntry",
+      "type": "contains",
+      "summary": "File contains SetInterruptDescriptorTableEntry"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptManager::InterruptManager",
+      "type": "contains",
+      "summary": "File contains InterruptManager constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptManager::~InterruptManager",
+      "type": "contains",
+      "summary": "File contains InterruptManager destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptManager::HardwareInterruptOffset",
+      "type": "contains",
+      "summary": "File contains HardwareInterruptOffset"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptManager::Activate",
+      "type": "contains",
+      "summary": "File contains Activate"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptManager::Deactivate",
+      "type": "contains",
+      "summary": "File contains Deactivate"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptManager::HandleInterrupt",
+      "type": "contains",
+      "summary": "File contains static HandleInterrupt dispatch"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.cpp",
+      "target": "function:myos::hardwarecommunication::InterruptManager::DoHandleInterrupt",
+      "type": "contains",
+      "summary": "File contains DoHandleInterrupt"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "class:myos::hardwarecommunication::InterruptHandler",
+      "type": "contains",
+      "summary": "Header declares InterruptHandler class"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "class:myos::hardwarecommunication::InterruptManager",
+      "type": "contains",
+      "summary": "Header declares InterruptManager class"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "struct:myos::hardwarecommunication::InterruptManager::GateDescriptor",
+      "type": "contains",
+      "summary": "Header declares GateDescriptor struct"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "struct:myos::hardwarecommunication::InterruptManager::InterruptDescriptorTablePointer",
+      "type": "contains",
+      "summary": "Header declares InterruptDescriptorTablePointer struct"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "class:myos::hardwarecommunication::PeripheralComponentInterconnectDeviceDescriptor",
+      "type": "contains",
+      "summary": "File contains PCI device descriptor method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectDeviceDescriptor::PeripheralComponentInterconnectDeviceDescriptor",
+      "type": "contains",
+      "summary": "File contains PCI device descriptor constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectDeviceDescriptor::~PeripheralComponentInterconnectDeviceDescriptor",
+      "type": "contains",
+      "summary": "File contains PCI device descriptor destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "class:myos::hardwarecommunication::PeripheralComponentInterconnectController",
+      "type": "contains",
+      "summary": "File contains PCI controller method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::PeripheralComponentInterconnectController",
+      "type": "contains",
+      "summary": "File contains PCI controller constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::~PeripheralComponentInterconnectController",
+      "type": "contains",
+      "summary": "File contains PCI controller destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::Read",
+      "type": "contains",
+      "summary": "File contains Read"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::Write",
+      "type": "contains",
+      "summary": "File contains Write"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::DeviceHasFunctions",
+      "type": "contains",
+      "summary": "File contains DeviceHasFunctions"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::SelectDrivers",
+      "type": "contains",
+      "summary": "File contains SelectDrivers"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetBaseAddressRegister",
+      "type": "contains",
+      "summary": "File contains GetBaseAddressRegister"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetDriver",
+      "type": "contains",
+      "summary": "File contains GetDriver"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetDeviceDescriptor",
+      "type": "contains",
+      "summary": "File contains GetDeviceDescriptor"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "enum:myos::hardwarecommunication::BaseAddressRegisterType",
+      "type": "contains",
+      "summary": "Header declares BaseAddressRegisterType enum"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "class:myos::hardwarecommunication::BaseAddressRegister",
+      "type": "contains",
+      "summary": "Header declares BaseAddressRegister struct"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "class:myos::hardwarecommunication::PeripheralComponentInterconnectDeviceDescriptor",
+      "type": "contains",
+      "summary": "Header declares PCI device descriptor class"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "class:myos::hardwarecommunication::PeripheralComponentInterconnectController",
+      "type": "contains",
+      "summary": "Header declares PCI controller class"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "class:myos::hardwarecommunication::Port",
+      "type": "contains",
+      "summary": "File contains Port method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port::Port",
+      "type": "contains",
+      "summary": "File contains Port constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port::~Port",
+      "type": "contains",
+      "summary": "File contains Port destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "class:myos::hardwarecommunication::Port8Bit",
+      "type": "contains",
+      "summary": "File contains Port8Bit method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port8Bit::Port8Bit",
+      "type": "contains",
+      "summary": "File contains Port8Bit constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port8Bit::~Port8Bit",
+      "type": "contains",
+      "summary": "File contains Port8Bit destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port8Bit::Write",
+      "type": "contains",
+      "summary": "File contains Port8Bit::Write"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port8Bit::Read",
+      "type": "contains",
+      "summary": "File contains Port8Bit::Read"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "class:myos::hardwarecommunication::Port8BitSlow",
+      "type": "contains",
+      "summary": "File contains Port8BitSlow method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port8BitSlow::Port8BitSlow",
+      "type": "contains",
+      "summary": "File contains Port8BitSlow constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port8BitSlow::~Port8BitSlow",
+      "type": "contains",
+      "summary": "File contains Port8BitSlow destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port8BitSlow::Write",
+      "type": "contains",
+      "summary": "File contains Port8BitSlow::Write"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "class:myos::hardwarecommunication::Port16Bit",
+      "type": "contains",
+      "summary": "File contains Port16Bit method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port16Bit::Port16Bit",
+      "type": "contains",
+      "summary": "File contains Port16Bit constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port16Bit::~Port16Bit",
+      "type": "contains",
+      "summary": "File contains Port16Bit destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port16Bit::Write",
+      "type": "contains",
+      "summary": "File contains Port16Bit::Write"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port16Bit::Read",
+      "type": "contains",
+      "summary": "File contains Port16Bit::Read"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "class:myos::hardwarecommunication::Port32Bit",
+      "type": "contains",
+      "summary": "File contains Port32Bit method implementations"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port32Bit::Port32Bit",
+      "type": "contains",
+      "summary": "File contains Port32Bit constructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port32Bit::~Port32Bit",
+      "type": "contains",
+      "summary": "File contains Port32Bit destructor"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port32Bit::Write",
+      "type": "contains",
+      "summary": "File contains Port32Bit::Write"
+    },
+    {
+      "source": "src/hardwarecommunication/port.cpp",
+      "target": "function:myos::hardwarecommunication::Port32Bit::Read",
+      "type": "contains",
+      "summary": "File contains Port32Bit::Read"
+    },
+    {
+      "source": "src/hardwarecommunication/port.h",
+      "target": "class:myos::hardwarecommunication::Port",
+      "type": "contains",
+      "summary": "Header declares Port base class"
+    },
+    {
+      "source": "src/hardwarecommunication/port.h",
+      "target": "class:myos::hardwarecommunication::Port8Bit",
+      "type": "contains",
+      "summary": "Header declares Port8Bit class"
+    },
+    {
+      "source": "src/hardwarecommunication/port.h",
+      "target": "class:myos::hardwarecommunication::Port8BitSlow",
+      "type": "contains",
+      "summary": "Header declares Port8BitSlow class"
+    },
+    {
+      "source": "src/hardwarecommunication/port.h",
+      "target": "class:myos::hardwarecommunication::Port16Bit",
+      "type": "contains",
+      "summary": "Header declares Port16Bit class"
+    },
+    {
+      "source": "src/hardwarecommunication/port.h",
+      "target": "class:myos::hardwarecommunication::Port32Bit",
+      "type": "contains",
+      "summary": "Header declares Port32Bit class"
+    },
+    {
+      "source": "class:myos::drivers::amd_am79c973",
+      "target": "class:myos::drivers::Driver",
+      "type": "extends",
+      "summary": "amd_am79c973 inherits from Driver"
+    },
+    {
+      "source": "class:myos::drivers::amd_am79c973",
+      "target": "class:myos::hardwarecommunication::InterruptHandler",
+      "type": "extends",
+      "summary": "amd_am79c973 inherits from InterruptHandler"
+    },
+    {
+      "source": "class:myos::drivers::KeyboardDriver",
+      "target": "class:myos::hardwarecommunication::InterruptHandler",
+      "type": "extends",
+      "summary": "KeyboardDriver inherits from InterruptHandler"
+    },
+    {
+      "source": "class:myos::drivers::KeyboardDriver",
+      "target": "class:myos::drivers::Driver",
+      "type": "extends",
+      "summary": "KeyboardDriver inherits from Driver"
+    },
+    {
+      "source": "class:myos::drivers::MouseDriver",
+      "target": "class:myos::hardwarecommunication::InterruptHandler",
+      "type": "extends",
+      "summary": "MouseDriver inherits from InterruptHandler"
+    },
+    {
+      "source": "class:myos::drivers::MouseDriver",
+      "target": "class:myos::drivers::Driver",
+      "type": "extends",
+      "summary": "MouseDriver inherits from Driver"
+    },
+    {
+      "source": "class:myos::hardwarecommunication::Port8Bit",
+      "target": "class:myos::hardwarecommunication::Port",
+      "type": "extends",
+      "summary": "Port8Bit inherits from Port"
+    },
+    {
+      "source": "class:myos::hardwarecommunication::Port8BitSlow",
+      "target": "class:myos::hardwarecommunication::Port8Bit",
+      "type": "extends",
+      "summary": "Port8BitSlow inherits from Port8Bit"
+    },
+    {
+      "source": "class:myos::hardwarecommunication::Port16Bit",
+      "target": "class:myos::hardwarecommunication::Port",
+      "type": "extends",
+      "summary": "Port16Bit inherits from Port"
+    },
+    {
+      "source": "class:myos::hardwarecommunication::Port32Bit",
+      "target": "class:myos::hardwarecommunication::Port",
+      "type": "extends",
+      "summary": "Port32Bit inherits from Port"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.cpp",
+      "target": "class:myos::drivers::amd_am79c973",
+      "type": "creates",
+      "summary": "PCI controller instantiates amd_am79c973 driver for AMD vendor 0x1022 device 0x2000"
+    },
+    {
+      "source": "function:myos::drivers::RawDataHandler::Send",
+      "target": "function:myos::drivers::amd_am79c973::Send",
+      "type": "calls",
+      "summary": "RawDataHandler::Send delegates to amd_am79c973::Send"
+    },
+    {
+      "source": "function:myos::drivers::amd_am79c973::HandleInterrupt",
+      "target": "function:myos::drivers::amd_am79c973::Receive",
+      "type": "calls",
+      "summary": "HandleInterrupt calls Receive when receive flag is set"
+    },
+    {
+      "source": "function:myos::drivers::amd_am79c973::Receive",
+      "target": "function:myos::drivers::RawDataHandler::OnRawDataReceived",
+      "type": "calls",
+      "summary": "Receive calls registered handler OnRawDataReceived"
+    },
+    {
+      "source": "function:myos::drivers::amd_am79c973::Receive",
+      "target": "function:myos::drivers::amd_am79c973::Send",
+      "type": "calls",
+      "summary": "Receive calls Send if handler returns true"
+    },
+    {
+      "source": "function:myos::drivers::KeyboardDriver::HandleInterrupt",
+      "target": "function:myos::drivers::KeyboardEventHandler::OnKeyDown",
+      "type": "calls",
+      "summary": "HandleInterrupt dispatches key press to handler"
+    },
+    {
+      "source": "function:myos::drivers::MouseDriver::HandleInterrupt",
+      "target": "function:myos::drivers::MouseEventHandler::OnMouseMove",
+      "type": "calls",
+      "summary": "HandleInterrupt dispatches mouse movement to handler"
+    },
+    {
+      "source": "function:myos::drivers::MouseDriver::HandleInterrupt",
+      "target": "function:myos::drivers::MouseEventHandler::OnMouseDown",
+      "type": "calls",
+      "summary": "HandleInterrupt dispatches button press to handler"
+    },
+    {
+      "source": "function:myos::drivers::MouseDriver::HandleInterrupt",
+      "target": "function:myos::drivers::MouseEventHandler::OnMouseUp",
+      "type": "calls",
+      "summary": "HandleInterrupt dispatches button release to handler"
+    },
+    {
+      "source": "function:myos::drivers::MouseDriver::Activate",
+      "target": "function:myos::drivers::MouseEventHandler::OnActivate",
+      "type": "calls",
+      "summary": "Activate calls OnActivate on handler"
+    },
+    {
+      "source": "function:myos::drivers::VideoGraphicsArray::SetMode",
+      "target": "function:myos::drivers::VideoGraphicsArray::WriteRegisters",
+      "type": "calls",
+      "summary": "SetMode writes VGA register table via WriteRegisters"
+    },
+    {
+      "source": "function:myos::drivers::VideoGraphicsArray::PutPixel.rgb",
+      "target": "function:myos::drivers::VideoGraphicsArray::GetColorIndex",
+      "type": "calls",
+      "summary": "PutPixel(rgb) converts color via GetColorIndex"
+    },
+    {
+      "source": "function:myos::drivers::VideoGraphicsArray::PutPixel.rgb",
+      "target": "function:myos::drivers::VideoGraphicsArray::PutPixel.colorIndex",
+      "type": "calls",
+      "summary": "PutPixel(rgb) delegates to PutPixel(colorIndex)"
+    },
+    {
+      "source": "function:myos::drivers::VideoGraphicsArray::PutPixel.colorIndex",
+      "target": "function:myos::drivers::VideoGraphicsArray::GetFrameBufferSegment",
+      "type": "calls",
+      "summary": "PutPixel gets framebuffer segment for pixel address calculation"
+    },
+    {
+      "source": "function:myos::drivers::VideoGraphicsArray::FillRectangle",
+      "target": "function:myos::drivers::VideoGraphicsArray::PutPixel.rgb",
+      "type": "calls",
+      "summary": "FillRectangle draws each pixel via PutPixel(rgb)"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::InterruptManager::DoHandleInterrupt",
+      "target": "function:myos::hardwarecommunication::InterruptHandler::HandleInterrupt",
+      "type": "calls",
+      "summary": "DoHandleInterrupt routes to registered handler's HandleInterrupt"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::InterruptManager::InterruptManager",
+      "target": "function:myos::hardwarecommunication::InterruptManager::SetInterruptDescriptorTableEntry",
+      "type": "calls",
+      "summary": "Constructor programs 256 IDT entries using SetInterruptDescriptorTableEntry"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::SelectDrivers",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetDeviceDescriptor",
+      "type": "calls",
+      "summary": "SelectDrivers reads device descriptors during enumeration"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::SelectDrivers",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetBaseAddressRegister",
+      "type": "calls",
+      "summary": "SelectDrivers reads BARs during enumeration"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::SelectDrivers",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetDriver",
+      "type": "calls",
+      "summary": "SelectDrivers matches and instantiates drivers"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::SelectDrivers",
+      "target": "class:myos::drivers::DriverManager",
+      "type": "calls",
+      "summary": "SelectDrivers adds instantiated drivers via DriverManager"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetDriver",
+      "target": "class:myos::drivers::amd_am79c973",
+      "type": "calls",
+      "summary": "GetDriver instantiates amd_am79c973 for AMD 0x2000 NICs"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetDeviceDescriptor",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::Read",
+      "type": "calls",
+      "summary": "GetDeviceDescriptor reads config space via Read"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::GetBaseAddressRegister",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::Read",
+      "type": "calls",
+      "summary": "GetBaseAddressRegister reads BAR values via Read"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::DeviceHasFunctions",
+      "target": "function:myos::hardwarecommunication::PeripheralComponentInterconnectController::Read",
+      "type": "calls",
+      "summary": "DeviceHasFunctions reads header type via Read"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::Port8Bit::Write",
+      "target": "class:myos::hardwarecommunication::Port8Bit",
+      "type": "calls",
+      "summary": "Port8Bit::Write uses inline Write8 with outb instruction"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::Port8Bit::Read",
+      "target": "class:myos::hardwarecommunication::Port8Bit",
+      "type": "calls",
+      "summary": "Port8Bit::Read uses inline Read8 with inb instruction"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::Port8BitSlow::Write",
+      "target": "class:myos::hardwarecommunication::Port8BitSlow",
+      "type": "calls",
+      "summary": "Port8BitSlow::Write uses inline Write8Slow with delayed outb"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::Port16Bit::Write",
+      "target": "class:myos::hardwarecommunication::Port16Bit",
+      "type": "calls",
+      "summary": "Port16Bit::Write uses inline Write16 with outw instruction"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::Port16Bit::Read",
+      "target": "class:myos::hardwarecommunication::Port16Bit",
+      "type": "calls",
+      "summary": "Port16Bit::Read uses inline Read16 with inw instruction"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::Port32Bit::Write",
+      "target": "class:myos::hardwarecommunication::Port32Bit",
+      "type": "calls",
+      "summary": "Port32Bit::Write uses inline Write32 with outl instruction"
+    },
+    {
+      "source": "function:myos::hardwarecommunication::Port32Bit::Read",
+      "target": "class:myos::hardwarecommunication::Port32Bit",
+      "type": "calls",
+      "summary": "Port32Bit::Read uses inline Read32 with inl instruction"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "src/common/types.h",
+      "type": "references",
+      "summary": "Uses types defined in common/types.h (uint8_t, uint16_t, uint32_t, uint64_t)"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "src/common/types.h",
+      "type": "references",
+      "summary": "Uses types defined in common/types.h"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "src/common/types.h",
+      "type": "references",
+      "summary": "Uses types defined in common/types.h"
+    },
+    {
+      "source": "src/drivers/vga.h",
+      "target": "src/common/types.h",
+      "type": "references",
+      "summary": "Uses types defined in common/types.h"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/common/types.h",
+      "type": "references",
+      "summary": "Uses type definitions from common/types.h"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "src/common/types.h",
+      "type": "references",
+      "summary": "Uses types defined in common/types.h"
+    },
+    {
+      "source": "src/hardwarecommunication/port.h",
+      "target": "src/common/types.h",
+      "type": "references",
+      "summary": "Uses types defined in common/types.h"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/gdt.h",
+      "type": "references",
+      "summary": "References GlobalDescriptorTable for code segment selector"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/multitasking.h",
+      "type": "references",
+      "summary": "References TaskManager for task scheduling integration"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "src/memorymanagement.h",
+      "type": "references",
+      "summary": "References MemoryManager for driver allocation"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "src/kernel.cpp",
+      "type": "references",
+      "summary": "Cross-batch reference: used by kernel.cpp for printf debug, network handlers"
+    },
+    {
+      "source": "src/drivers/amd_am79c973.h",
+      "target": "src/net/etherframe.h",
+      "type": "references",
+      "summary": "Cross-batch reference: used by etherframe network layer"
+    },
+    {
+      "source": "src/drivers/driver.h",
+      "target": "src/kernel.cpp",
+      "type": "references",
+      "summary": "Cross-batch reference: used by kernel.cpp for driver management"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "src/kernel.cpp",
+      "type": "references",
+      "summary": "Cross-batch reference: used by kernel.cpp for keyboard handler setup"
+    },
+    {
+      "source": "src/drivers/keyboard.h",
+      "target": "src/gui/widget.h",
+      "type": "references",
+      "summary": "Cross-batch reference: used by GUI widget for keyboard input"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "src/kernel.cpp",
+      "type": "references",
+      "summary": "Cross-batch reference: used by kernel.cpp for mouse handler setup"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "src/gui/desktop.h",
+      "type": "references",
+      "summary": "Cross-batch reference: used by Desktop for mouse event handling"
+    },
+    {
+      "source": "src/drivers/mouse.h",
+      "target": "src/gui/window.h",
+      "type": "references",
+      "summary": "Cross-batch reference: used by Window for mouse interaction"
+    },
+    {
+      "source": "src/drivers/vga.h",
+      "target": "src/kernel.cpp",
+      "type": "references",
+      "summary": "Cross-batch reference: used by kernel.cpp for VGA initialization"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/kernel.cpp",
+      "type": "references",
+      "summary": "Cross-batch reference: used by kernel.cpp for interrupt setup"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/drivers/ata.h",
+      "type": "references",
+      "summary": "Cross-batch reference: used by ATA driver for interrupt handling"
+    },
+    {
+      "source": "src/hardwarecommunication/interrupts.h",
+      "target": "src/syscalls.h",
+      "type": "references",
+      "summary": "Cross-batch reference: used by syscall handler"
+    },
+    {
+      "source": "src/hardwarecommunication/pci.h",
+      "target": "src/kernel.cpp",
+      "type": "references",
+      "summary": "Cross-batch reference: used by kernel.cpp for PCI enumeration"
+    },
+    {
+      "source": "src/hardwarecommunication/port.h",
+      "target": "src/drivers/ata.h",
+      "type": "references",
+      "summary": "Cross-batch reference: used by ATA driver for I/O port access"
+    }
+  ]
+}

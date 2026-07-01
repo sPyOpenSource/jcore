@@ -116,8 +116,6 @@ bool getNextPathComponent(const char *path, unsigned int *p_offset,
   return (path[offset] != '\0');
 }
 
-
-
 bool walkPath(const char *filepath, SdFile& parentDir,
 		 bool (*callback)(SdFile& parentDir,
 				     const char *filePathComponent,

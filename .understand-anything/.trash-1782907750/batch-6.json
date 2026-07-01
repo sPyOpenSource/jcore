@@ -1,0 +1,391 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/filesystem/File.cpp",
+      "type": "file",
+      "name": "File.cpp",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Implements the File class wrapping an underlying SdFile from sdfatlib. Provides file operations: read, write, peek, available, flush, seek, position, size, close, isDirectory, name, openNextFile, rewindDirectory, and boolean conversion.",
+      "tags": ["filesystem", "sd-card", "fat", "file-io"],
+      "complexity": "moderate",
+      "languageNotes": "wraps sdfatlib; uses malloc/free for SdFile allocation"
+    },
+    {
+      "id": "function:File::File(SdFile, const char*)",
+      "type": "function",
+      "name": "File::File(SdFile, const char*)",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Constructor. Copies an SdFile into a heap-allocated buffer and stores the file name (up to 12 chars).",
+      "tags": ["filesystem", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "malloc for SdFile; strncpy for name"
+    },
+    {
+      "id": "function:File::File(void)",
+      "type": "function",
+      "name": "File::File(void)",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Default constructor. Creates an empty File with null file pointer and empty name.",
+      "tags": ["filesystem", "constructor"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::name",
+      "type": "function",
+      "name": "File::name",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Returns a pointer to the file name string.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::isDirectory",
+      "type": "function",
+      "name": "File::isDirectory",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Returns true if the underlying SdFile is a directory.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::write(uint8_t)",
+      "type": "function",
+      "name": "File::write(uint8_t)",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Writes a single byte to the file via write(&val, 1).",
+      "tags": ["filesystem", "write"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::write(const uint8_t*, size_t)",
+      "type": "function",
+      "name": "File::write(const uint8_t*, size_t)",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Writes a buffer of bytes to the underlying SdFile. Returns bytes written or 0 on error.",
+      "tags": ["filesystem", "write"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::peek",
+      "type": "function",
+      "name": "File::peek",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Reads one byte without advancing the file position (uses seekCur(-1) to step back).",
+      "tags": ["filesystem", "read"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::read()",
+      "type": "function",
+      "name": "File::read()",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Reads and returns a single byte from the file, or -1 on failure.",
+      "tags": ["filesystem", "read"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::read(void*, uint16_t)",
+      "type": "function",
+      "name": "File::read(void*, uint16_t)",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Buffered read of up to nbyte bytes into a buffer. Returns number of bytes read.",
+      "tags": ["filesystem", "read"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::available",
+      "type": "function",
+      "name": "File::available",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Returns the number of bytes available to read (size - position), capped at 0x7FFF.",
+      "tags": ["filesystem", "read"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::flush",
+      "type": "function",
+      "name": "File::flush",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Syncs the underlying SdFile to persist writes.",
+      "tags": ["filesystem", "write"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::seek",
+      "type": "function",
+      "name": "File::seek",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Seeks to an absolute position in the file.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::position",
+      "type": "function",
+      "name": "File::position",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Returns the current read/write position in the file.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::size",
+      "type": "function",
+      "name": "File::size",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Returns the total size of the file in bytes.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::close",
+      "type": "function",
+      "name": "File::close",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Closes the underlying SdFile, frees the heap-allocated SdFile pointer, and resets to null.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": "uses free()"
+    },
+    {
+      "id": "function:File::operator bool",
+      "type": "function",
+      "name": "File::operator bool",
+      "filePath": "src/filesystem/File.cpp",
+      "summary": "Boolean conversion operator. Returns true if the underlying SdFile is open.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:File::openNextFile",
+      "type": "function",
+      "name": "File::openNextFile",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Iterates through directory entries, skipping deleted entries and '.' entries, and returns the next file as a File object.",
+      "tags": ["filesystem", "directory"],
+      "complexity": "moderate",
+      "languageNotes": "uses SdFile::readDir and dirName"
+    },
+    {
+      "id": "function:File::rewindDirectory",
+      "type": "function",
+      "name": "File::rewindDirectory",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Rewinds a directory file back to the first entry for re-iteration.",
+      "tags": ["filesystem", "directory"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "file:src/filesystem/SD.cpp",
+      "type": "file",
+      "name": "SD.cpp",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Implements the SDClass wrapper for sdfatlib and helper functions for path traversal. Provides begin/end initialization, open, exists, mkdir, rmdir, remove operations on SD card files via the FAT filesystem.",
+      "tags": ["filesystem", "sd-card", "fat", "driver"],
+      "complexity": "complex",
+      "languageNotes": "uses sdfatlib; path traversal with getNextPathComponent/walkPath callbacks; SPI card init"
+    },
+    {
+      "id": "function:getNextPathComponent",
+      "type": "function",
+      "name": "getNextPathComponent",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Parses individual path components (e.g. 'foo', 'bar', 'baz' from '/foo/bar/baz') into a buffer. Returns true if more components remain after this one.",
+      "tags": ["filesystem", "path-parsing"],
+      "complexity": "moderate",
+      "languageNotes": "MAX_COMPONENT_LEN = 12; similar to strtok but non-modifying"
+    },
+    {
+      "id": "function:walkPath",
+      "type": "function",
+      "name": "walkPath",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Traverses a file path component by component, calling a callback at each level. Alternates between two SdFile handles to avoid recursion. Stops traversal if callback returns false.",
+      "tags": ["filesystem", "path-traversal"],
+      "complexity": "complex",
+      "languageNotes": "callback-based; non-recursive; swaps between two file handles"
+    },
+    {
+      "id": "function:callback_pathExists",
+      "type": "function",
+      "name": "callback_pathExists",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Callback for walkPath that checks if a file/directory exists by attempting to open it read-only.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:callback_makeDirPath",
+      "type": "function",
+      "name": "callback_makeDirPath",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Callback for walkPath that creates a directory if it does not already exist.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:callback_remove",
+      "type": "function",
+      "name": "callback_remove",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Callback for walkPath that removes a file at the last path component.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:callback_rmdir",
+      "type": "function",
+      "name": "callback_rmdir",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Callback for walkPath that removes a directory at the last path component.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:SDClass::begin(uint8_t)",
+      "type": "function",
+      "name": "SDClass::begin(uint8_t)",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Initializes the SD card at half SPI speed: inits card, volume, and opens the root directory.",
+      "tags": ["filesystem", "sd-card", "init"],
+      "complexity": "moderate",
+      "languageNotes": "SPI_HALF_SPEED; chained init calls"
+    },
+    {
+      "id": "function:SDClass::begin(uint32_t, uint8_t)",
+      "type": "function",
+      "name": "SDClass::begin(uint32_t, uint8_t)",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Initializes SD card with a custom SPI clock speed after half-speed init.",
+      "tags": ["filesystem", "sd-card", "init"],
+      "complexity": "moderate",
+      "languageNotes": "setSpiClock after init"
+    },
+    {
+      "id": "function:SDClass::end",
+      "type": "function",
+      "name": "SDClass::end",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Closes the root directory, allowing re-initialization with a new card.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:SDClass::getParentDir",
+      "type": "function",
+      "name": "SDClass::getParentDir",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Traverses the path to find the parent directory of a file, returning an SdFile handle and setting index to the offset of the filename within the path.",
+      "tags": ["filesystem", "path-parsing"],
+      "complexity": "moderate",
+      "languageNotes": "swaps between two SdFile handles"
+    },
+    {
+      "id": "function:SDClass::open",
+      "type": "function",
+      "name": "SDClass::open",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Opens a file by full path. Traverses to the parent directory using getParentDir, then opens the file component with the given mode. Supports append mode by seeking to end.",
+      "tags": ["filesystem", "file-io"],
+      "complexity": "moderate",
+      "languageNotes": "returns File object wrapping SdFile"
+    },
+    {
+      "id": "function:SDClass::exists",
+      "type": "function",
+      "name": "SDClass::exists",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Returns true if the given file path exists on the SD card.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:SDClass::mkdir",
+      "type": "function",
+      "name": "SDClass::mkdir",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Creates a directory hierarchy (equivalent to mkdir -p) using walkPath and callback_makeDirPath.",
+      "tags": ["filesystem"],
+      "complexity": "moderate",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:SDClass::rmdir",
+      "type": "function",
+      "name": "SDClass::rmdir",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Removes a directory hierarchy (equivalent to rm -rf) using walkPath and callback_rmdir.",
+      "tags": ["filesystem"],
+      "complexity": "moderate",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:SDClass::remove",
+      "type": "function",
+      "name": "SDClass::remove",
+      "filePath": "src/filesystem/SD.cpp",
+      "summary": "Removes a file by path using walkPath and callback_remove.",
+      "tags": ["filesystem"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "file:src/filesystem/SD.h",
+      "type": "file",
+      "name": "SD.h",
+      "filePath": "src/filesystem/SD.h",
+      "summary": "Declares the File and SDClass wrapper classes for sdfatlib. File wraps SdFile with read/write/seek/iterate methods. SDClass manages the SD card lifecycle (begin, end) and file/directory operations (open, exists, mkdir, rmdir, remove). Provides global SD object and SDFile/SDFileSystemClass typedefs.",
+      "tags": ["filesystem", "sd-card", "fat", "file-io"],
+      "complexity": "moderate",
+      "languageNotes": "namespace SDLib; uses AdvancedTechnologyAttachment for card; SdFat.h dependency"
+    },
+    {
+      "id": "class:File",
+      "type": "class",
+      "name": "File",
+      "filePath": "src/filesystem/SD.h",
+      "summary": "Wraps an SdFile with name tracking, read/write/peek/available/flush/seek/size/close operations, directory iteration, and boolean conversion.",
+      "tags": ["filesystem", "file-io"],
+      "complexity": "moderate",
+      "languageNotes": "13-char max filename (8.3 format)"
+    },
+    {
+      "id": "class:SDClass",
+      "type": "class",
+      "name": "SDClass",
+      "filePath": "src/filesystem/SD.h",
+      "summary": "SD card controller class wrapping sdfatlib. Provides init (begin/end), file open, exists, mkdir, rmdir, and remove. Uses AdvancedTechnologyAttachment (ATA) for hardware access.",
+      "tags": ["filesystem", "sd-card", "driver"],
+      "complexity": "moderate",
+      "languageNotes": "global SD object; uses ATA driver for hardware"
+    }
+  ],
+  "edges": [
+    { "source": "file:src/filesystem/File.cpp", "target": "file:src/filesystem/SD.h", "type": "includes" },
+    { "source": "file:src/filesystem/SD.cpp", "target": "file:src/filesystem/SD.h", "type": "includes" },
+    { "source": "class:File", "target": "class:SDClass", "type": "friend" },
+    { "source": "file:src/filesystem/SD.h", "target": "class:File", "type": "declares" },
+    { "source": "file:src/filesystem/SD.h", "target": "class:SDClass", "type": "declares" }
+  ]
+}

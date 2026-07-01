@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "id": "file:.gitignore",
+      "type": "config",
+      "name": ".gitignore",
+      "filePath": ".gitignore",
+      "summary": "Git ignore file excluding compiled objects (*.o, *.obj, /obj), precompiled headers (*.gch, *.pch), libraries (*.so, *.dylib, *.a), and executables (*.exe, *.bin, *.iso) from version control.",
+      "tags": ["git", "ignore", "config"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "file:CHANGELOG",
+      "type": "document",
+      "name": "CHANGELOG",
+      "filePath": "CHANGELOG",
+      "summary": "Project changelog documenting versions v1.0 to v1.3 with features: read long file, FAT filesystem B02, filesystem B01, and HTTP server fix.",
+      "tags": ["changelog", "documentation"],
+      "complexity": "simple",
+      "languageNotes": "v1.0-v1.3; dates from 2019"
+    },
+    {
+      "id": "file:LICENSE",
+      "type": "document",
+      "name": "LICENSE",
+      "filePath": "LICENSE",
+      "summary": "GNU General Public License v3.0. The project is licensed under GPLv3.",
+      "tags": ["license", "gpl"],
+      "complexity": "simple",
+      "languageNotes": "GPLv3"
+    },
+    {
+      "id": "file:linker.ld",
+      "type": "config",
+      "name": "linker.ld",
+      "filePath": "linker.ld",
+      "summary": "GNU ld linker script for i386 ELF format. Entry point is 'loader'. Sections: .text (0x0100000, includes .multiboot, .text, .rodata), .data (with init_array constructors), .bss. Discards .fini_array and .comment.",
+      "tags": ["linker", "ld", "i386", "build"],
+      "complexity": "moderate",
+      "languageNotes": "elf32-i386; constructor support via .init_array"
+    },
+    {
+      "id": "file:makefile",
+      "type": "script",
+      "name": "makefile",
+      "filePath": "makefile",
+      "summary": "Build system for the x86OS kernel. Compiles C++ with GCC (m32, nostdlib, no-exceptions/rtti), assembles .s files, links with ld. Builds a GRUB-bootable ISO via grub-mkrescue. Targets: run (VirtualBox), install (copy to /boot), clean.",
+      "tags": ["makefile", "build", "iso", "grub", "virtualbox"],
+      "complexity": "moderate",
+      "languageNotes": "GCCPARAMS include -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions"
+    }
+  ],
+  "edges": []
+}

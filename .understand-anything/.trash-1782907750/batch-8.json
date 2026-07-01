@@ -1,0 +1,45 @@
+{
+  "nodes": [
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "config",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "Configuration file defining exclusion patterns for the understand-anything analysis tool. Currently excludes /obj, /iso, and /jx directories. Follows .gitignore-style syntax with commented patterns for test files and additional build artifacts.",
+      "tags": ["config", "analyzer", "ignore"],
+      "complexity": "simple",
+      "languageNotes": "gitignore-style syntax; built-in exclusions for node_modules, .git, etc."
+    },
+    {
+      "id": "file:.understand-anything/config.json",
+      "type": "config",
+      "name": "config.json",
+      "filePath": ".understand-anything/config.json",
+      "summary": "Understand-anything configuration with output language set to English.",
+      "tags": ["config", "analyzer"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "file:src/hardwarecommunication/interruptstubs.s",
+      "type": "code",
+      "name": "interruptstubs.s",
+      "filePath": "src/hardwarecommunication/interruptstubs.s",
+      "summary": "x86 assembly interrupt stubs using GNU as macros. Defines HandleException (0x00-0x13) and HandleInterruptRequest (0x00-0x0F, 0x31, 0x80) entry points. The int_bottom routine saves registers (general purpose via push), calls the C++ InterruptManager::HandleInterrupt, restores registers, and returns via iret. Includes an InterruptIgnore stub for unused interrupts.",
+      "tags": ["assembly", "interrupts", "x86", "isr"],
+      "complexity": "moderate",
+      "languageNotes": "GNU as (AT&T syntax); assembler macros; mangled C++ symbol names"
+    },
+    {
+      "id": "file:src/loader.s",
+      "type": "code",
+      "name": "loader.s",
+      "filePath": "src/loader.s",
+      "summary": "Multiboot-compliant boot loader entry point in x86 assembly. Sets up a 2MB kernel stack, calls global constructors (callConstructors), then jumps to kernelMain with multiboot info (EBX) and magic (EAX). Halts on return.",
+      "tags": ["assembly", "boot", "multiboot", "x86"],
+      "complexity": "moderate",
+      "languageNotes": "GNU as (AT&T syntax); multiboot header; 2MB bss stack"
+    }
+  ],
+  "edges": []
+}

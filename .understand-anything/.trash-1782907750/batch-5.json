@@ -1,0 +1,303 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/gdt.cpp",
+      "type": "file",
+      "name": "gdt.cpp",
+      "filePath": "src/gdt.cpp",
+      "summary": "Implements the GlobalDescriptorTable and its nested SegmentDescriptor class. The GDT constructor loads the GDT register via the lgdt instruction. SegmentDescriptor encodes 32-bit base and limit into a compact 8-byte descriptor format with 20-bit limit and 32-bit base fields.",
+      "tags": ["gdt", "segmentation", "memory-management", "x86"],
+      "complexity": "moderate",
+      "languageNotes": "uses inline assembly (lgdt); manual bit-field encoding of segment descriptors"
+    },
+    {
+      "id": "class:GlobalDescriptorTable",
+      "type": "class",
+      "name": "GlobalDescriptorTable",
+      "filePath": "src/gdt.h",
+      "summary": "Manages the x86 GDT with null, unused, code (0x9A) and data (0x92) segment selectors. Provides CodeSegmentSelector and DataSegmentSelector methods returning offset-based segment selectors.",
+      "tags": ["gdt", "segmentation", "x86"],
+      "complexity": "moderate",
+      "languageNotes": "packed SegmentDescriptor nested class; uses placement in memory to compute selectors"
+    },
+    {
+      "id": "function:GlobalDescriptorTable::GlobalDescriptorTable",
+      "type": "function",
+      "name": "GlobalDescriptorTable::GlobalDescriptorTable",
+      "filePath": "src/gdt.cpp",
+      "summary": "Constructor. Initializes null, unused, code (0x9A, 64MB), and data (0x92, 64MB) segment descriptors, then loads the GDT via lgdt instruction.",
+      "tags": ["gdt", "constructor"],
+      "complexity": "moderate",
+      "languageNotes": "uses inline assembly; computes GDT pointer from this pointer"
+    },
+    {
+      "id": "function:GlobalDescriptorTable::~GlobalDescriptorTable",
+      "type": "function",
+      "name": "GlobalDescriptorTable::~GlobalDescriptorTable",
+      "filePath": "src/gdt.cpp",
+      "summary": "Destructor.",
+      "tags": ["gdt", "destructor"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:GlobalDescriptorTable::DataSegmentSelector",
+      "type": "function",
+      "name": "GlobalDescriptorTable::DataSegmentSelector",
+      "filePath": "src/gdt.cpp",
+      "summary": "Returns the data segment selector value (offset of dataSegmentSelector from this).",
+      "tags": ["gdt", "segmentation"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:GlobalDescriptorTable::CodeSegmentSelector",
+      "type": "function",
+      "name": "GlobalDescriptorTable::CodeSegmentSelector",
+      "filePath": "src/gdt.cpp",
+      "summary": "Returns the code segment selector value (offset of codeSegmentSelector from this).",
+      "tags": ["gdt", "segmentation"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor",
+      "type": "function",
+      "name": "GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor",
+      "filePath": "src/gdt.cpp",
+      "summary": "Constructs a segment descriptor encoding 32-bit base and limit into an 8-byte packed structure. Handles 16-bit vs 32-bit addressing and limit granularity.",
+      "tags": ["gdt", "segmentation"],
+      "complexity": "moderate",
+      "languageNotes": "manual bit-field encoding; limit granularity adjustment"
+    },
+    {
+      "id": "function:GlobalDescriptorTable::SegmentDescriptor::Base",
+      "type": "function",
+      "name": "GlobalDescriptorTable::SegmentDescriptor::Base",
+      "filePath": "src/gdt.cpp",
+      "summary": "Decodes and returns the 32-bit base address from the packed descriptor.",
+      "tags": ["gdt", "segmentation"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:GlobalDescriptorTable::SegmentDescriptor::Limit",
+      "type": "function",
+      "name": "GlobalDescriptorTable::SegmentDescriptor::Limit",
+      "filePath": "src/gdt.cpp",
+      "summary": "Decodes and returns the 32-bit limit from the packed descriptor, applying 4KB page granularity when 32-bit mode is set.",
+      "tags": ["gdt", "segmentation"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "file:src/gdt.h",
+      "type": "file",
+      "name": "gdt.h",
+      "filePath": "src/gdt.h",
+      "summary": "Declares the GlobalDescriptorTable class with a packed nested SegmentDescriptor class. The GDT holds null, unused, code (executable/readable), and data (read/write) segment selectors.",
+      "tags": ["gdt", "segmentation", "memory-management", "x86"],
+      "complexity": "moderate",
+      "languageNotes": "uses common/types.h typedefs; packed attribute on SegmentDescriptor"
+    },
+    {
+      "id": "class:SegmentDescriptor",
+      "type": "class",
+      "name": "SegmentDescriptor",
+      "filePath": "src/gdt.h",
+      "summary": "Packed 8-byte x86 segment descriptor encoding base (32-bit) and limit (20-bit) with type flags.",
+      "tags": ["gdt", "segmentation"],
+      "complexity": "moderate",
+      "languageNotes": "__attribute__((packed)); nested inside GlobalDescriptorTable"
+    },
+    {
+      "id": "file:src/multitasking.cpp",
+      "type": "file",
+      "name": "multitasking.cpp",
+      "filePath": "src/multitasking.cpp",
+      "summary": "Implements cooperative multitasking: Task constructor initializes a CPU state on a 4KB stack for a given entry point, and TaskManager schedules tasks via round-robin.",
+      "tags": ["multitasking", "scheduling", "cooperative"],
+      "complexity": "moderate",
+      "languageNotes": "CPUState is packed struct; round-robin scheduling"
+    },
+    {
+      "id": "function:Task::Task",
+      "type": "function",
+      "name": "Task::Task",
+      "filePath": "src/multitasking.cpp",
+      "summary": "Constructor. Sets up a CPUState on the task's 4KB stack with zeroed registers, the entry point as EIP, the GDT code segment selector, and EFLAGS (0x202).",
+      "tags": ["multitasking", "constructor"],
+      "complexity": "moderate",
+      "languageNotes": "CPUState placed at top of stack; GDT code selector for CS"
+    },
+    {
+      "id": "function:Task::~Task",
+      "type": "function",
+      "name": "Task::~Task",
+      "filePath": "src/multitasking.cpp",
+      "summary": "Destructor.",
+      "tags": ["multitasking", "destructor"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:TaskManager::TaskManager",
+      "type": "function",
+      "name": "TaskManager::TaskManager",
+      "filePath": "src/multitasking.cpp",
+      "summary": "Constructor. Initializes task count to 0 and current task index to -1.",
+      "tags": ["multitasking", "constructor"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:TaskManager::~TaskManager",
+      "type": "function",
+      "name": "TaskManager::~TaskManager",
+      "filePath": "src/multitasking.cpp",
+      "summary": "Destructor.",
+      "tags": ["multitasking", "destructor"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:TaskManager::AddTask",
+      "type": "function",
+      "name": "TaskManager::AddTask",
+      "filePath": "src/multitasking.cpp",
+      "summary": "Adds a task to the scheduler. Returns false if the task table (max 256) is full.",
+      "tags": ["multitasking", "scheduling"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:TaskManager::Schedule",
+      "type": "function",
+      "name": "TaskManager::Schedule",
+      "filePath": "src/multitasking.cpp",
+      "summary": "Round-robin scheduler: saves the current CPU state, advances to the next task, and returns the new task's CPU state.",
+      "tags": ["multitasking", "scheduling", "round-robin"],
+      "complexity": "moderate",
+      "languageNotes": "cooperative multitasking; called from interrupt handler"
+    },
+    {
+      "id": "file:src/multitasking.h",
+      "type": "file",
+      "name": "multitasking.h",
+      "filePath": "src/multitasking.h",
+      "summary": "Declares CPUState (packed x86 register save area), Task (with 4KB stack and CPUState pointer), and TaskManager (round-robin scheduler with 256 task slots).",
+      "tags": ["multitasking", "scheduling", "task"],
+      "complexity": "moderate",
+      "languageNotes": "uses common/types.h and gdt.h; CPUState __attribute__((packed))"
+    },
+    {
+      "id": "struct:CPUState",
+      "type": "class",
+      "name": "CPUState",
+      "filePath": "src/multitasking.h",
+      "summary": "Packed struct representing x86 CPU register state for context switching: general purpose, segment, EIP, EFLAGS, ESP, and SS.",
+      "tags": ["multitasking", "context-switch", "x86"],
+      "complexity": "simple",
+      "languageNotes": "__attribute__((packed)); used by Task for context save/restore"
+    },
+    {
+      "id": "class:Task",
+      "type": "class",
+      "name": "Task",
+      "filePath": "src/multitasking.h",
+      "summary": "Represents a single task with a private 4KB stack and CPUState. Initialized with a GDT and entry point function.",
+      "tags": ["multitasking", "task"],
+      "complexity": "simple",
+      "languageNotes": "friend class TaskManager accesses private cpustate"
+    },
+    {
+      "id": "class:TaskManager",
+      "type": "class",
+      "name": "TaskManager",
+      "filePath": "src/multitasking.h",
+      "summary": "Manages up to 256 tasks with round-robin scheduling. Provides AddTask and Schedule methods for cooperative multitasking.",
+      "tags": ["multitasking", "scheduling"],
+      "complexity": "simple",
+      "languageNotes": "fixed-size task array (256)"
+    },
+    {
+      "id": "file:src/syscalls.cpp",
+      "type": "file",
+      "name": "syscalls.cpp",
+      "filePath": "src/syscalls.cpp",
+      "summary": "Implements SyscallHandler, a simple syscall dispatcher that handles interrupt-based system calls. Currently supports syscall number 4 (write/print) using EBX as the string pointer.",
+      "tags": ["syscalls", "interrupts", "system-call"],
+      "complexity": "simple",
+      "languageNotes": "interrupt-based syscall dispatch; uses printf extern"
+    },
+    {
+      "id": "function:SyscallHandler::SyscallHandler",
+      "type": "function",
+      "name": "SyscallHandler::SyscallHandler",
+      "filePath": "src/syscalls.cpp",
+      "summary": "Constructor. Registers the handler with InterruptManager at the given interrupt number offset by the hardware interrupt base.",
+      "tags": ["syscalls", "constructor"],
+      "complexity": "simple",
+      "languageNotes": "delegates to InterruptHandler constructor"
+    },
+    {
+      "id": "function:SyscallHandler::~SyscallHandler",
+      "type": "function",
+      "name": "SyscallHandler::~SyscallHandler",
+      "filePath": "src/syscalls.cpp",
+      "summary": "Destructor.",
+      "tags": ["syscalls", "destructor"],
+      "complexity": "simple",
+      "languageNotes": ""
+    },
+    {
+      "id": "function:SyscallHandler::HandleInterrupt",
+      "type": "function",
+      "name": "SyscallHandler::HandleInterrupt",
+      "filePath": "src/syscalls.cpp",
+      "summary": "Dispatches syscalls based on EAX register. Supports syscall 4 (print string from EBX). Returns the updated ESP.",
+      "tags": ["syscalls", "interrupt-handler", "system-call"],
+      "complexity": "simple",
+      "languageNotes": "switches on eax; syscall 4 = printf"
+    },
+    {
+      "id": "file:src/syscalls.h",
+      "type": "file",
+      "name": "syscalls.h",
+      "filePath": "src/syscalls.h",
+      "summary": "Declares SyscallHandler extending InterruptHandler, dispatching system calls from user-space via interrupts.",
+      "tags": ["syscalls", "interrupts", "system-call"],
+      "complexity": "simple",
+      "languageNotes": "inherits hardwarecommunication::InterruptHandler"
+    },
+    {
+      "id": "class:SyscallHandler",
+      "type": "class",
+      "name": "SyscallHandler",
+      "filePath": "src/syscalls.h",
+      "summary": "Interrupt handler subclass that dispatches system calls. Receives an interrupt manager and interrupt number, provides HandleInterrupt override.",
+      "tags": ["syscalls", "interrupts"],
+      "complexity": "simple",
+      "languageNotes": "virtual HandleInterrupt override"
+    }
+  ],
+  "edges": [
+    { "source": "file:src/gdt.cpp", "target": "file:src/gdt.h", "type": "includes" },
+    { "source": "file:src/multitasking.cpp", "target": "file:src/multitasking.h", "type": "includes" },
+    { "source": "file:src/syscalls.cpp", "target": "file:src/syscalls.h", "type": "includes" },
+    { "source": "file:src/gdt.h", "target": "file:src/common/types.h", "type": "includes" },
+    { "source": "file:src/multitasking.h", "target": "file:src/common/types.h", "type": "includes" },
+    { "source": "file:src/multitasking.h", "target": "file:src/gdt.h", "type": "includes" },
+    { "source": "file:src/syscalls.h", "target": "file:src/common/types.h", "type": "includes" },
+    { "source": "file:src/syscalls.h", "target": "file:src/hardwarecommunication/interrupts.h", "type": "includes" },
+    { "source": "file:src/syscalls.h", "target": "file:src/multitasking.h", "type": "includes" },
+    { "source": "class:GlobalDescriptorTable", "target": "class:SegmentDescriptor", "type": "contains" },
+    { "source": "file:src/gdt.h", "target": "class:GlobalDescriptorTable", "type": "declares" },
+    { "source": "file:src/multitasking.h", "target": "struct:CPUState", "type": "declares" },
+    { "source": "file:src/multitasking.h", "target": "class:Task", "type": "declares" },
+    { "source": "file:src/multitasking.h", "target": "class:TaskManager", "type": "declares" },
+    { "source": "file:src/syscalls.h", "target": "class:SyscallHandler", "type": "declares" },
+    { "source": "class:Task", "target": "struct:CPUState", "type": "uses" },
+    { "source": "class:TaskManager", "target": "class:Task", "type": "manages" }
+  ]
+}
