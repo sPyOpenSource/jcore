@@ -41,7 +41,47 @@ objects = obj/boot32.o \
           obj/net/icmp.o \
           obj/net/udp.o \
           obj/net/tcp.o \
-          obj/kernel.o
+           obj/kernel.o \
+           obj/flint.o \
+           obj/flint_array_object.o \
+           obj/flint_class_loader.o \
+           obj/flint_common.o \
+           obj/flint_const_pool.o \
+           obj/flint_debugger.o \
+           obj/flint_execution.o \
+           obj/flint_field_info.o \
+           obj/flint_fields_data.o \
+           obj/flint_java_class.o \
+           obj/flint_java_class_dict_node.o \
+           obj/flint_java_object.o \
+           obj/flint_java_string.o \
+           obj/flint_java_string_dict_node.o \
+           obj/flint_java_thread.o \
+           obj/flint_java_throwable.o \
+           obj/flint_method_info.o \
+           obj/flint_mutex.o \
+           obj/flint_utf8.o \
+           obj/flint_utf8_dict_node.o \
+           obj/flint_native.o \
+           obj/flint_native_array.o \
+           obj/flint_native_character.o \
+           obj/flint_native_class.o \
+           obj/flint_native_constructor.o \
+           obj/flint_native_double.o \
+           obj/flint_native_float.o \
+           obj/flint_native_interface.o \
+           obj/flint_native_io_file.o \
+           obj/flint_native_io_file_descriptor.o \
+           obj/flint_native_io_file_input_stream.o \
+           obj/flint_native_io_file_output_stream.o \
+           obj/flint_native_math.o \
+           obj/flint_native_method.o \
+           obj/flint_native_object.o \
+           obj/flint_native_reflection.o \
+           obj/flint_native_string.o \
+           obj/flint_native_system.o \
+           obj/flint_native_thread.o \
+           obj/jvm/jvm_bridge.o
 
 run: mykernel.iso
 	@if command -v VirtualBox >/dev/null 2>&1 && VirtualBox --version >/dev/null 2>&1; then \
@@ -55,6 +95,26 @@ run: mykernel.iso
 		echo "Error: Neither VirtualBox nor QEMU found. Please install one of them."; \
 		exit 1; \
 	fi
+
+obj/flint.o: FlintJVM/flint.cpp
+	mkdir -p $(@D)
+	$(CC) $(GCCPARAMS) -I FlintJVM/Inc -c -o $@ $<
+
+obj/flint_%.o: FlintJVM/flint_%.cpp
+	mkdir -p $(@D)
+	$(CC) $(GCCPARAMS) -I FlintJVM/Inc -c -o $@ $<
+
+obj/flint_native.o: FlintJVM/Native/flint_native.cpp
+	mkdir -p $(@D)
+	$(CC) $(GCCPARAMS) -I FlintJVM/Inc -I FlintJVM/Native/Inc -c -o $@ $<
+
+obj/flint_native_%.o: FlintJVM/Native/flint_native_%.cpp
+	mkdir -p $(@D)
+	$(CC) $(GCCPARAMS) -I FlintJVM/Inc -I FlintJVM/Native/Inc -c -o $@ $<
+
+obj/jvm/jvm_bridge.o: FlintJVM/JVM/jvm_bridge.cpp
+	mkdir -p $(@D)
+	$(CC) $(GCCPARAMS) -I FlintJVM/Inc -I FlintJVM/Native/Inc -c -o $@ $<
 
 obj/%.o: src/%.cpp
 	mkdir -p $(@D)
