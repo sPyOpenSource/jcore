@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference: x86-64 Registers</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>x86-64 Register Reference</h1>
+    
+    <p>This table summarizes the mapping between legacy 32-bit registers and their 64-bit counterparts.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>64-bit Name</th>
+                <th>32-bit Name</th>
+                <th>16-bit Name</th>
+                <th>8-bit Name (Low)</th>
+                <th>8-bit Name (High)</th>
+                <th>Common Use</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>RAX</code></td>
+                <td><code>EAX</code></td>
+                <td><code>AX</code></td>
+                <td><code>AL</code></td>
+                <td><code>AH</code></td>
+                <td>Accumulator / Return Value</td>
+            </tr>
+            <tr>
+                <td><code>RBX</code></td>
+                <td><code>EBX</code></td>
+                <td><code>BX</code></td>
+                <td><code>BL</code></td>
+                <td><code>BH</code></td>
+                <td>Base Register</td>
+            </tr>
+            <tr>
+                <td><code>RCX</code></td>
+                <td><code>ECX</code></td>
+                <td><code>CX</code></td>
+                <td><code>CL</code></td>
+                <td><code>CH</code></td>
+                <td>Counter / Loop</td>
+            </tr>
+            <tr>
+                <td><code>RDX</code></td>
+                <td><code>EDX</code></td>
+                <td><code>DX</code></td>
+                <td><code>DL</code></td>
+                <td><code>DH</code></td>
+                <td>Data / I/O</td>
+            </tr>
+            <tr>
+                <td><code>RSI</code></td>
+                <td><code>ESI</code></td>
+                <td><code>SI</code></td>
+                <td><code>SIL</code></td>
+                <td>-</td>
+                <td>Source Index</td>
+            </tr>
+            <tr>
+                <td><code>RDI</code></td>
+                <td><code>EDI</code></td>
+                <td><code>DI</code></td>
+                <td><code>DIL</code></td>
+                <td>-</td>
+                <td>Destination Index</td>
+            </tr>
+            <tr>
+                <td><code>RBP</code></td>
+                <td><code>EBP</code></td>
+                <td><code>BP</code></td>
+                <td><code>BPL</code></td>
+                <td>-</td>
+                <td>Base Pointer (Stack Frame)</td>
+            </tr>
+            <tr>
+                <td><code>RSP</code></td>
+                <td><code>ESP</code></td>
+                <td><code>SP</code></td>
+                <td><code>SPL</code></td>
+                <td>-</td>
+                <td>Stack Pointer</td>
+            </tr>
+            <tr>
+                <td><code>R8-R15</code></td>
+                <td><code>R8D-R15D</code></td>
+                <td><code>R8W-R15W</code></td>
+                <td><code>R8B-R15B</code></td>
+                <td>-</td>
+                <td>General Purpose</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout">
+        <strong>Note:</strong> Accessing the 32-bit part of a 64-bit register (e.g., <code>EAX</code>) will zero-extend the result into the upper 32 bits of the 64-bit register (<code>RAX</code>).
+    </div>
+
+    <footer>
+        <p>Reference material for x86-64 Porting. <br>
+        <a href="../lessons/0001-the-big-picture.html">&larr; Back to Lesson 1</a></p>
+    </footer>
+</body>
+</html>

@@ -1,21 +1,20 @@
-# Mission: x86 Real Mode + Protected Mode for OS Development
+# Mission: Porting x86-32 Codebase to x86-64
 
-## Why
-You're building the JCore (JX) OS kernel — a Java-executing x86 OS. Your kernel boots via GRUB (which starts in protected mode), but it also has real-mode switching code for VESA BIOS calls and ACPI. You need to understand both modes deeply to maintain and extend this code: why the CPU starts in real mode, how the transition to protected mode works, and when you must switch back.
+## Goal
+Successfully migrate a software codebase written for the x86 (32-bit) architecture to the x86-64 (64-bit) architecture.
 
-## Success looks like
-- Trace the boot path from CPU reset → real mode → GRUB → protected mode → JCore kernel ✓
-- Explain what each GDT entry in `segments.h` does, including the 16-bit segments
-- Read `asm.S` (`real_to_prot` / `prot_to_real`) and explain every instruction's role
-- Know when and why the kernel drops back to real mode (VESA, ACPI, SMP startup)
-- Understand the limitations that motivate the next transition (long mode on x86-64)
+## Context
+The user has an existing codebase targeting x86-32 and needs to transition it to x86-64 to leverage larger address spaces, more registers, and modern hardware capabilities.
 
-## Constraints
-- Focus on 32-bit protected mode (that's what JCore uses now); long mode is future scope
-- Tie every concept back to the JCore codebase — this is applied knowledge, not theory
-- Lessons should be short and completable in one sitting
+## Success Criteria
+- The codebase compiles for x86-64.
+- All core functionality is preserved.
+- Performance is maintained or improved.
+- Memory safety and alignment issues related to the architecture change are resolved.
 
-## Out of scope
-- Java bytecode execution, class loading, JCore's Java internals (that's the `OS/` workspace)
-- ARM processor modes (this is x86-specific)
-- CPUID, ACPI table parsing, or other advanced system programming topics
+## Key Challenges
+- Pointer size increase (4 bytes -> 8 bytes).
+- Changes in calling conventions (e.g., register-based argument passing).
+- Alignment requirements for 64-bit data.
+- x86-64 specific instruction set extensions (SSE/AVX).
+- Handling of legacy 32-bit code/libraries.

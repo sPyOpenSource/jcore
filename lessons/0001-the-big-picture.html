@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: The Big Picture - x86-32 vs x86-64</title>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <h1>Lesson 1: The Big Picture</h1>
+    
+    <p>Porting a codebase from x86-32 (IA-32) to x86-64 (AMD64/Intel 64) is more than just flipping a compiler switch. While the instructions are largely compatible, the underlying architectural model changes significantly.</p>
+
+    <div class="callout">
+        <strong>Key Concept:</strong> The transition from 32-bit to 64-bit primarily affects how the CPU handles memory addresses and how it stores temporary data in registers.
+    </div>
+
+    <h2>1. Address Space Expansion</h2>
+    <p>In x86-32, pointers are 32 bits wide, limiting the maximum addressable memory to 2<sup>32</sup> bytes, which is <strong>4 GB</strong>. In x86-64, pointers are 64 bits wide, theoretically allowing up to 2<sup>64</sup> bytes (though current implementations usually limit this to 48 or 57 bits, still providing petabytes of space).</p>
+    <p><strong>Impact:</strong> Any assumption in your code that a pointer fits into a 32-bit integer will cause crashes or data corruption on x86-64.</p>
+
+    <h2>2. Register Expansion</h2>
+    <p>The general-purpose registers have been widened from 32 bits to 64 bits. They also get new names:</p>
+    <ul>
+        <li><code>EAX</code> (32-bit) &rarr; <code>RAX</code> (64-bit)</li>
+        <li><code>EBX</code> (32-bit) &rarr; <code>RBX</code> (64-bit)</li>
+        <li><code>ECX</code> (32-bit) &rarr; <code>RCX</code> (64-bit)</li>
+        <li><code>EDX</code> (32-bit) &rarr; <code>RDX</code> (64-bit)</li>
+        <li><code>ESI</code>, <code>EDI</code>, <code>EBP</code>, <code>ESP</code> &rarr; <code>RSI</code>, <code>RDI</code>, <code>RBP</code>, <code>RSP</code></li>
+    </ul>
+    <p>Additionally, x86-64 introduces eight new general-purpose registers: <code>R8</code> through <code>R15</code>.</p>
+
+    <h2>3. Pointer Size Change</h2>
+    <p>This is the most common source of bugs during porting. In x86-32, <code>sizeof(void*) == 4</code>. In x86-64, <code>sizeof(void*) == 8</code>.</p>
+    <p>If your code does something like this:</p>
+    <pre>uint32_t address = (uint32_t)ptr;</pre>
+    <p>It will truncate the address on a 64-bit system, leading to a segmentation fault.</p>
+
+    <div class="quiz" id="quiz1">
+        <h3>Knowledge Check</h3>
+        <p>If you are porting code that casts a pointer to an integer to perform address arithmetic, what is the safest type to use to ensure compatibility across both 32-bit and 64-bit architectures?</p>
+        <div class="quiz-option" onclick="checkAnswer(this, false)">uint32_t</div>
+        <div class="quiz-option" onclick="checkAnswer(this, true)">uintptr_t</div>
+        <div class="quiz-option" onclick="checkAnswer(this, false)">size_t</div>
+        <div class="quiz-option" onclick="checkAnswer(this, false)">unsigned long</div>
+    </div>
+
+    <script>
+        function checkAnswer(element, isCorrect) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+            if (isCorrect) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+        }
+    </script>
+
+    <div class="callout">
+        <strong>Recommended Reading:</strong> Refer to the <a href="https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.html">Intel 64 and IA-32 Architectures Software Developer's Manuals</a> for the full register set details.
+    </div>
+
+    <footer>
+        <p>Lesson 1 of the x86-64 Porting Series. <br> 
+        <em>Need help? Ask your AI teacher a follow-up question!</em></p>
+    </footer>
+</body>
+</html>
