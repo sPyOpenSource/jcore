@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 0001: The Heart of the VM</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <header>
+        <p>Lesson 0001</p>
+        <h1>The Heart of the VM: The Fetch-Decode-Execute Loop</h1>
+    </header>
+
+    <article>
+        <section>
+            <p>At its most fundamental level, every Virtual Machine is just a loop. Whether it's the JVM, the Lua VM, or the Python interpreter, the core of the execution engine is a repetitive cycle that transforms a stream of bytes into actions.</p>
+            <p>This cycle is known as the <strong>Fetch-Decode-Execute</strong> loop.</p>
+        </section>
+
+        <section>
+            <h2>1. The Cycle</h2>
+            <p>Imagine the VM as a tiny computer living inside your real computer. It has its own program counter (PC), its own stack, and its own set of instructions (bytecode). The loop works as follows:</p>
+            
+            <div class="inline-definition">
+                <strong>Fetch:</strong> Read the next byte of bytecode from the instruction stream at the current program counter.
+            </div>
+            <div class="inline-definition">
+                <strong>Decode:</strong> Determine which operation that byte represents (e.g., <code>0x60</code> might mean <code>aload_0</code> in the JVM).
+            </div>
+            <div class="inline-definition">
+                <strong>Execute:</strong> Perform the actual work associated with that operation—pushing a value onto the stack, adding two numbers, or jumping to another part of the code.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Implementation in FlintJVM</h2>
+            <p>In <code>flint_execution.cpp</code>, this loop is implemented as a large <code>while</code> loop containing a <code>switch</code> statement. This is the most common pattern for bytecode interpreters.</p>
+            <pre><code>while (vm->running) {
+    uint8_t opcode = vm->fetch_byte(); // FETCH
+    
+    switch (opcode) { // DECODE
+        case OP_IADD: { // EXECUTE
+            int v1 = vm->pop();
+            int v2 = vm->pop();
+            vm->push(v1 + v2);
+            break;
+        }
+        // ... other opcodes ...
+    }
+}</code></pre>
+            <div class="note">
+                Note how the <code>fetch_byte()</code> method not only returns the byte but also increments the Program Counter, preparing the VM for the next cycle.
+            </div>
+        </section>
+
+        <section>
+            <h2>3. The Cost of Indirection</h2>
+            <p>While a <code>switch</code> loop is simple, it comes with a performance penalty: <strong>dispatch overhead</strong>. Every single instruction requires a branch (the switch), which can be slow because the CPU's branch predictor often struggles to guess which opcode comes next.</p>
+            <p>Advanced VMs use techniques like <em>Threaded Code</em> or <em>JIT Compilation</em> to eliminate this overhead, but the Fetch-Decode-Execute loop remains the conceptual foundation.</p>
+        </section>
+
+        <section class="quiz">
+            <h3>Quick Check</h3>
+            <p>If the VM encounters an opcode it doesn't recognize during the <strong>Decode</strong> phase, what should happen?</p>
+            <label><input type="radio" name="q1" value="a"> It should skip the byte and continue to the next one.</label>
+            <label><input type="radio" name="q1" value="b"> It should guess the most likely operation.</label>
+            <label><input type="radio" name="q1" value="c" id="correct"> It should throw a "VerifyError" or "Invalid Opcode" exception.</label>
+            <button onclick="checkQuiz()">Submit Answer</button>
+            <div id="result" class="result"></div>
+        </section>
+    </article>
+
+    <footer>
+        <p>Created for the x86OS VM Course. Next Lesson: The Operand Stack.</p>
+    </footer>
+
+    <script>
+        function checkQuiz() {
+            const correct = document.getElementById('correct');
+            const result = document.getElementById('result');
+            if (correct.checked) {
+                result.textContent = "Correct! An unrecognized opcode is a critical failure in the bytecode stream.";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Incorrect. Try thinking about what happens if the program is corrupted.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -4,8 +4,10 @@
 using namespace myos;
 using namespace myos::common;
 
+TaskManager *TaskManager::activeTaskManager = nullptr;
 
-Task::Task(GlobalDescriptorTable *gdt, void entrypoint())
+
+Task::Task(GlobalDescriptorTable *gdt, void (*entrypoint)(void*), void* arg)
 {
     cpustate = (CPUState*)(stack + 8192 - sizeof(CPUState));
 
@@ -15,7 +17,7 @@ Task::Task(GlobalDescriptorTable *gdt, void entrypoint())
     cpustate->rdx = 0;
 
     cpustate->rsi = 0;
-    cpustate->rdi = 0;
+    cpustate->rdi = (uint64_t)arg;
     cpustate->rbp = 0;
 
     cpustate->r8 = 0;

@@ -8,6 +8,7 @@ namespace myos
     class GlobalDescriptorTable
     {
         public:
+            static GlobalDescriptorTable *activeGDT;
 
             class SegmentDescriptor
             {

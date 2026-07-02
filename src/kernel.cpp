@@ -2,6 +2,7 @@
 #include <common/types.h>
 #include <gdt.h>
 #include <memorymanagement.h>
+#include <jvm/jvm_bridge.h>
 #include <hardwarecommunication/interrupts.h>
 #include <syscalls.h>
 #include <hardwarecommunication/pci.h>
@@ -15,6 +16,9 @@
 #include <gui/desktop.h>
 #include <gui/window.h>
 #include <multitasking.h>
+#include "flint.h"
+
+
 
 #include <drivers/amd_am79c973.h>
 #include <net/etherframe.h>
@@ -29,7 +33,6 @@
 
 
 using namespace myos;
-using namespace myos::common;
 using namespace myos::drivers;
 using namespace myos::filesystem;
 using namespace myos::hardwarecommunication;
@@ -257,6 +260,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     printf("Hello World! --- http://www.AlgorithMan.de\n");
 
     GlobalDescriptorTable gdt;
+    GlobalDescriptorTable::activeGDT = &gdt;
 
 
     size_t heap = 10 * 1024 * 1024;
@@ -275,6 +279,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     printf("\n");
 
     TaskManager taskManager;
+    TaskManager::activeTaskManager = &taskManager;
     /*
     Task task1(&gdt, taskA);
     Task task2(&gdt, taskB);
@@ -447,9 +452,14 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
 
     while(1)
     {
-        #ifdef GRAPHICSMODE
-            desktop.Draw(&vga);
-        #endif
-        //for(int i = 0; i < 100000; i++){}
-    }
+    #ifdef GRAPHICSMODE
+        desktop.Draw(&vga);
+    #endif
+    
+    myos::jvm::JVMBridge::Initialize();
+    Flint::runToMain("HelloWorld");
+
+    //for(int i = 0; i < 100000; i++){}
+}
+
 }

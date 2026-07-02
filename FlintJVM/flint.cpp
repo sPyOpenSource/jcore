@@ -148,10 +148,9 @@ void Flint::setDebugger(FDbg *dbg) {
 }
 
 void Flint::consoleWrite(uint8_t *utf8, uint32_t length) {
-    extern "C" void printf(char*);
     for(uint32_t i = 0; i < length; ++i) {
         char buf[2] = {(char)utf8[i], 0};
-        printf(buf);
+        myos::jvm::JVMBridge::Println(buf);
     }
 }
 
@@ -527,7 +526,7 @@ ClassLoader *Flint::findLoader(FExec *ctx, const char *clsName, uint16_t length)
             if(ctx != NULL) {
                 JClass *excpCls = Flint::findClass(NULL, "java/lang/ClassNotFoundException");
                 if(excpCls == NULL) {
-                    alignas(4) static const char *errMsg = "Cannot load java/lang/ClassNotFoundException";
+                    static const char errMsg[] = "Cannot load java/lang/ClassNotFoundException";
                     ctx->excp = (JThrowable *)((uintptr_t)errMsg | 0x01);
                 }
                 else

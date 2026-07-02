@@ -20,10 +20,9 @@
 #ifndef FatStructs_h
 #define FatStructs_h
 
+#include <stdint.h>
 #include <common/types.h>
 #include "drivers/ata.h"
-
-using namespace myos::common;
 
 void ReadBiosBlock(myos::drivers::AdvancedTechnologyAttachment *hd, uint32_t partitionOffset);
 

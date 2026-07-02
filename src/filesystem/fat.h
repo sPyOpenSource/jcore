@@ -19,10 +19,12 @@
  */
 #ifndef SdFat_h
 #define SdFat_h
-/**
- * \file
- * SdFile and SdVolume classes
- */
+
+#include <stddef.h>
+#include <stdint.h>
+#include "FatStructs.h"
+#include "drivers/ata.h"
+
 
 //#include "Sd2Card.h"
 #include "FatStructs.h"

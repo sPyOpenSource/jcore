@@ -2,6 +2,8 @@
 using namespace myos;
 using namespace myos::common;
 
+GlobalDescriptorTable *GlobalDescriptorTable::activeGDT = nullptr;
+
 GlobalDescriptorTable::GlobalDescriptorTable()
     : nullSegmentSelector(0),
       codeSegmentSelector((1ULL << 43) | (1ULL << 44) | (1ULL << 47) | (1ULL << 53)),

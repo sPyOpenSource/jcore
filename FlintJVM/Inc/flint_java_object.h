@@ -18,7 +18,7 @@ private:
     uint32_t monitorCount;
     uintptr_t ownId;
 protected:
-    uint8_t data[];
+    uint8_t data[0];
 public:
     const char *getTypeName(void) const;
 

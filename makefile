@@ -7,7 +7,7 @@ LD := $(shell command -v /opt/homebrew/bin/ld.lld 2>/dev/null || command -v ld.l
 GRUB_MKRESCUE := $(shell command -v i686-elf-grub-mkrescue 2>/dev/null || command -v grub-mkrescue 2>/dev/null || echo "grub-mkrescue")
 
 TARGET = --target=x86_64-pc-none-elf
-GCCPARAMS = $(TARGET) -ffreestanding -Isrc -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
+GCCPARAMS = $(TARGET) -ffreestanding -Isrc -I FlintJVM/Inc -I FlintJVM/Native/Inc -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
 ASPARAMS = $(TARGET)
 LDPARAMS = -melf_x86_64
 
@@ -73,9 +73,10 @@ objects = obj/boot32.o \
            obj/flint_native_io_file.o \
            obj/flint_native_io_file_descriptor.o \
            obj/flint_native_io_file_input_stream.o \
-           obj/flint_native_io_file_output_stream.o \
-           obj/flint_native_math.o \
-           obj/flint_native_method.o \
+            obj/flint_native_io_file_output_stream.o \
+            obj/flint_native_math_stubs.o \
+            obj/opencode_stubs.o \
+            obj/flint_native_method.o \
            obj/flint_native_object.o \
            obj/flint_native_reflection.o \
            obj/flint_native_string.o \

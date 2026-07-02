@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Source+Code+Pro:wght@400;600&display=swap');
+
+:root {
+  --text: #111;
+  --text-muted: #666;
+  --link: #2563eb;
+  --bg: #fffff8;
+  --border: #ddd6c1;
+  --accent: #d62d20;
+  --code-bg: #f8f4e8;
+}
+
+* { box-sizing: border-box; }
+html { font-size: 18px; }
+body {
+  font-family: 'Crimson Text', Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+article > section { margin-bottom: 3rem; }
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.25rem;
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2rem 0 0.5rem;
+  font-style: italic;
+}
+
+p { margin: 0 0 1.2rem; text-align: justify; }
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+pre, code {
+  font-family: 'Source Code Pro', Consolas, monospace;
+  font-size: 0.92rem;
+  background: var(--code-bg);
+  border-radius: 4px;
+}
+code { padding: 0.15rem 0.4rem; }
+pre { padding: 1rem; overflow-x: auto; line-height: 1.5; margin: 1.5rem 0; }
+
+figure {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: #fff;
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+figure > figcaption {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+.inline-definition {
+  font-size: 0.92rem;
+  background: var(--code-bg);
+  padding: 1rem;
+  border-left: 3px solid var(--accent);
+  margin: 1.5rem 0;
+}
+
+.note {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: #fff;
+}
+
+header { margin-bottom: 2rem; }
+header p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.quiz {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.quiz h3 { margin-top: 0; }
+.quiz label { display: block; margin: 0.5rem 0; cursor: pointer; }
+.quiz input[type="radio"] { margin-right: 0.5rem; }
+.quiz button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+.quiz button:hover { opacity: 0.9; }
+.quiz .result { margin-top: 1rem; font-weight: 600; }

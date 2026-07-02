@@ -38,14 +38,17 @@ namespace myos
     private:
         common::uint8_t stack[8192]; // 8 KiB
         CPUState* cpustate;
+        void* arg;
     public:
-        Task(GlobalDescriptorTable *gdt, void entrypoint());
+        Task(GlobalDescriptorTable *gdt, void (*entrypoint)(void*), void* arg = nullptr);
         ~Task();
     };
 
 
     class TaskManager
     {
+    public:
+        static TaskManager *activeTaskManager;
     private:
         Task* tasks[256];
         int numTasks;
