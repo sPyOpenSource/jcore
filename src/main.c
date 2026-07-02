@@ -1,79 +1,71 @@
-#include "llama2.h"
+#include "all.h"
 
-#ifdef QEMU
-#define UART_BASE          0x09000000
+struct multiboot_info boot_info;
 
-static void uart_putc(char c) {
-    volatile unsigned int *fr = (volatile unsigned int *)(UART_BASE + 0x018);
-    volatile unsigned char *dr = (volatile unsigned char *)(UART_BASE + 0x000);
-    while (*fr & (1 << 5));
-    *dr = (unsigned char)c;
-}
+extern void init_serial(int port);
+extern void gic_init(void);
+extern void arch_timer_init(void);
+extern void ser_putc(int x, char c);
 
-static void uart_init(void) {
-    volatile unsigned int *cr = (volatile unsigned int *)(UART_BASE + 0x030);
-    volatile unsigned int *lcr_h = (volatile unsigned int *)(UART_BASE + 0x02C);
-    *cr = 0;
-    *lcr_h = (3 << 5) | (1 << 4);
-    *cr = (1 << 0) | (1 << 8) | (1 << 9);
-}
-#else
-#define UART3_BASE         0x49020000
+static void worker_thread(void *param)
+{
+    int i;
+    (void)param;
 
-static void uart_putc(char c) {
-    volatile unsigned int *lsr = (volatile unsigned int *)(UART3_BASE + 0x14);
-    volatile unsigned char *thr = (volatile unsigned char *)(UART3_BASE + 0x00);
-    while (!(*lsr & (1 << 5)));
-    *thr = (unsigned char)c;
-}
-
-static void uart_init(void) {}
-#endif
-
-static void uart_puts(const char *s) {
-    while (*s) {
-        if (*s == '\n') uart_putc('\r');
-        uart_putc(*s++);
+    for (i = 0; i < 5; i++) {
+        dprintf("worker: hello from jcore thread! (iteration %d)\n", i);
+        {
+            volatile int j;
+            for (j = 0; j < 1000000; j++);
+        }
+        threadyield();
     }
+
+    dprintf("worker: done, exiting\n");
+    thread_exit();
 }
 
-extern const char _binary_model_bin_start[];
+void start_domain_zero(void *dummy)
+{
+    ThreadDesc *t;
+    (void)dummy;
 
-void main(void) {
-    uart_init();
-    uart_puts("JX boot: OK\n");
+    dprintf("domain zero started\n");
 
-    uart_puts("loading model... ");
-    Transformer t;
-    int rc = build_transformer(&t, _binary_model_bin_start);
-    if (rc != 0) {
-        uart_puts("FAIL\n");
-        return;
-    }
-    uart_puts("OK\ngenerating...\n");
+    t = createThread(domainZero, worker_thread, (void *)0x1234, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
+    setThreadName(t, "Worker", NULL);
 
-    generate(&t, 256, uart_putc);
+    thread_exit();
+}
 
-    uart_puts("\ndone\n");
+void jcore(void)
+{
+    ThreadDesc *initial;
 
-#ifndef QEMU
-#define GPIO4_BASE         0x4805D000
-#define GPIO_OE            0x134
-#define GPIO_SETDATAOUT    0x194
-#define GPIO_CLEARDATAOUT  0x190
-#define LED_PIN            (1 << 22)
+    init_serial(0);
 
-    volatile unsigned int *gpio_oe = (volatile unsigned int *)(GPIO4_BASE + GPIO_OE);
-    *gpio_oe &= ~LED_PIN;
-    volatile unsigned int *set_reg = (volatile unsigned int *)(GPIO4_BASE + GPIO_SETDATAOUT);
-    volatile unsigned int *clear_reg = (volatile unsigned int *)(GPIO4_BASE + GPIO_CLEARDATAOUT);
-    while (1) {
-        *set_reg = LED_PIN;
-        for (volatile unsigned int i = 0; i < 500000; i++);
-        *clear_reg = LED_PIN;
-        for (volatile unsigned int i = 0; i < 500000; i++);
-    }
-#else
-    while (1);
-#endif
+    dprintf("\n=== jcore RTOS on ARM ===\n");
+    dprintf("init serial: OK\n");
+    
+    // gic_init();
+    // dprintf("init GIC: OK\n");
+    
+    init_domainsys();
+    dprintf("init domains: OK\n");
+    
+    threads_init();
+    dprintf("init threads: OK\n");
+    
+    // arch_timer_init();
+    // dprintf("init timer: OK\n");
+
+
+    initial = createThread(domainZero, start_domain_zero, (void *)0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
+    setThreadName(initial, "DomainZero:InitialThread", NULL);
+
+    dprintf("starting scheduler...\n");
+llm();
+    thread_exit();
+
+    for (;;);
 }

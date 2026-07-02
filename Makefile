@@ -8,7 +8,7 @@ LDFLAGS = -nostartfiles -nostdlib -fuse-ld=lld
 
 JCORE_WARN = -Wall -Wno-deprecated-non-prototype -Wno-visibility -Wno-unused-variable -Wno-implicit-function-declaration -Wno-int-conversion -Wno-unused-function -Wno-shift-count-overflow
 JCORE_CFLAGS = $(JCORE_WARN) -O2 -nostdlib -ffreestanding -marm -mabi=aapcs -mcpu=cortex-a15 \
-               -DKERNEL -DTIMER_HZ=10 -DCPU_MHZ=1000 -Isrc/jcore -Ijcore -I.
+               -DQEMU -DKERNEL -DTIMER_HZ=10 -DCPU_MHZ=1000 -Isrc/jcore -Ijcore -I.
 JCORE_AFLAGS = $(AFLAGS) -DKERNEL -DTIMER_HZ=10 -DCPU_MHZ=1000 -Isrc/jcore -Ijcore -I. -DASSEMBLER
 
 MODEL_DIR = models

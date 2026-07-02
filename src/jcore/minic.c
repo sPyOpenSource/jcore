@@ -34,12 +34,14 @@ struct multiboot_module *multiboot_get_module()
  */
 int atexit(void (*__function) (void))
 {
+	return 0;
 }
+
 
 
 int write(int fd, char *buf, int len)
 {
-
+	return 0;
 }
 
 
@@ -55,18 +57,22 @@ int gettimeofday(struct timeval *tp, void *x)
 
 int open(const char *path, int oflag)
 {
+	return 0;
 }
 
 int fstat()
 {
+	return 0;
 }
 
 int read()
 {
+	return 0;
 }
 
 int close()
 {
+	return 0;
 }
 
 
@@ -164,6 +170,7 @@ register int base;
 double strtod(const char *s, char **p)
 {
 	sys_panic("strtod not available");
+	return 0.0;
 }
 
 size_t strlen(const char *string)
@@ -227,6 +234,7 @@ int printf(const char *fmt, ...)
 int sprintf(char *str, char const *fmt, ...)
 {
 	sys_panic("sprintf not implemented.");
+	return 0;
 }
 
 extern int do_sampling;
@@ -367,7 +375,7 @@ void *memcpy(void *to, const void *from, size_t n)
 void *memcpy(void *tov, const void *fromv, size_t length)
 {
 	register char *to = tov;
-	register char *from = fromv;
+	register const char *from = fromv;
 
 	while (length-- > 0) {
 		*to++ = *from++;
@@ -417,6 +425,7 @@ void printstr(char *str, u4_t u, int base)
 #ifndef INCLUDE_VPRINTF
 int vprintf(const char *fmt, va_list args)
 {
+	return 0;
 }
 
 #else				/* INCLUDE_VPRINTF */
@@ -878,6 +887,7 @@ int vprintf(const char *fmt, va_list args)
 int snprintf(char *str, int n, const char *fmt, ...)
 {
 	sys_panic("not implemented");
+	return 0;
 }
 
 long atol(const char *str)

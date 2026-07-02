@@ -8,10 +8,11 @@ static int thread_count = 0;
 static int current_thread_idx = 0;
 static ThreadDesc *current_thread = NULL;
 
-DomainDesc *domainZero = &domainZeroStorage;
 static DomainDesc domainZeroStorage;
+DomainDesc *domainZero = &domainZeroStorage;
 
-extern void switch_context(ThreadDesc *old, ThreadDesc *new);
+extern jint internal_switch_to(ThreadDesc **current, ThreadDesc *to);
+extern jint destroy_switch_to(ThreadDesc **current, ThreadDesc *to);
 
 void threads_init() {
     memset(threads, 0, sizeof(threads));
@@ -48,6 +49,8 @@ ThreadDesc *createThread(DomainDesc * domain, void (*entry)(void *), void *param
     *(--sp) = (u4_t)param;           // R0
     
     t->context[PCB_ESP] = (u4_t)sp;
+    t->context[PCB_EIP] = (u4_t)entry;
+    t->contextPtr = &t->context;
     t->state = state;
     t->domain = domain;
     
@@ -62,10 +65,9 @@ void threadyield() {
     }
 
     if (next_idx != current_thread_idx) {
-        ThreadDesc *old = current_thread;
         current_thread_idx = next_idx;
-        current_thread = &threads[current_thread_idx];
-        switch_context(old, current_thread);
+        ThreadDesc *new_thread = &threads[current_thread_idx];
+        internal_switch_to(&current_thread, new_thread);
     }
 }
 
@@ -79,9 +81,22 @@ void setThreadName(ThreadDesc *t, const char *name) {
 }
 
 void thread_exit() {
+    dprintf("thread_exit: exiting current thread\n");
     current_thread->state = STATE_ZOMBIE;
-    threadyield();
-    while (1) {}
+    
+    int next_idx = (current_thread_idx + 1) % thread_count;
+    while (threads[next_idx].state != STATE_RUNNABLE) {
+        next_idx = (next_idx + 1) % thread_count;
+        if (next_idx == current_thread_idx) break;
+    }
+
+    if (next_idx != current_thread_idx) {
+        current_thread_idx = next_idx;
+        destroy_switch_to(&current_thread, &threads[current_thread_idx]);
+    } else {
+        // No other runnable threads
+        sys_panic("No more runnable threads");
+    }
 }
 
 void init_domainsys() {
