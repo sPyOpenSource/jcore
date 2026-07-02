@@ -7,7 +7,7 @@ LD := $(shell command -v /opt/homebrew/bin/ld.lld 2>/dev/null || command -v ld.l
 GRUB_MKRESCUE := $(shell command -v i686-elf-grub-mkrescue 2>/dev/null || command -v grub-mkrescue 2>/dev/null || echo "grub-mkrescue")
 
 TARGET = --target=x86_64-pc-none-elf
-GCCPARAMS = $(TARGET) -ffreestanding -Isrc -I FlintJVM/Inc -I FlintJVM/Native/Inc -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
+GCCPARAMS = $(TARGET) -ffreestanding -Isrc -IFlintJVM/Inc -IFlintJVM/Native/Inc -Isrc/includes -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
 ASPARAMS = $(TARGET)
 LDPARAMS = -melf_x86_64
 
@@ -41,48 +41,48 @@ objects = obj/boot32.o \
           obj/net/icmp.o \
           obj/net/udp.o \
           obj/net/tcp.o \
-           obj/kernel.o \
-           obj/flint.o \
-           obj/flint_array_object.o \
-           obj/flint_class_loader.o \
-           obj/flint_common.o \
-           obj/flint_const_pool.o \
-           obj/flint_debugger.o \
-           obj/flint_execution.o \
-           obj/flint_field_info.o \
-           obj/flint_fields_data.o \
-           obj/flint_java_class.o \
-           obj/flint_java_class_dict_node.o \
-           obj/flint_java_object.o \
-           obj/flint_java_string.o \
-           obj/flint_java_string_dict_node.o \
-           obj/flint_java_thread.o \
-           obj/flint_java_throwable.o \
-           obj/flint_method_info.o \
-           obj/flint_mutex.o \
-           obj/flint_utf8.o \
-           obj/flint_utf8_dict_node.o \
-           obj/flint_native.o \
-           obj/flint_native_array.o \
-           obj/flint_native_character.o \
-           obj/flint_native_class.o \
-           obj/flint_native_constructor.o \
-           obj/flint_native_double.o \
-           obj/flint_native_float.o \
-           obj/flint_native_interface.o \
-           obj/flint_native_io_file.o \
-           obj/flint_native_io_file_descriptor.o \
-           obj/flint_native_io_file_input_stream.o \
-            obj/flint_native_io_file_output_stream.o \
-            obj/flint_native_math_stubs.o \
-            obj/opencode_stubs.o \
-            obj/flint_native_method.o \
-           obj/flint_native_object.o \
-           obj/flint_native_reflection.o \
-           obj/flint_native_string.o \
-           obj/flint_native_system.o \
-           obj/flint_native_thread.o \
-           obj/jvm/jvm_bridge.o
+          obj/kernel.o \
+          obj/flint.o \
+          obj/flint_array_object.o \
+          obj/flint_class_loader.o \
+          obj/flint_common.o \
+          obj/flint_const_pool.o \
+          obj/flint_debugger.o \
+          obj/flint_execution.o \
+          obj/flint_field_info.o \
+          obj/flint_fields_data.o \
+          obj/flint_java_class.o \
+          obj/flint_java_class_dict_node.o \
+          obj/flint_java_object.o \
+          obj/flint_java_string.o \
+          obj/flint_java_string_dict_node.o \
+          obj/flint_java_thread.o \
+          obj/flint_java_throwable.o \
+          obj/flint_method_info.o \
+          obj/flint_mutex.o \
+          obj/flint_utf8.o \
+          obj/flint_utf8_dict_node.o \
+          obj/flint_native.o \
+          obj/flint_native_array.o \
+          obj/flint_native_character.o \
+          obj/flint_native_class.o \
+          obj/flint_native_constructor.o \
+          obj/flint_native_double.o \
+          obj/flint_native_float.o \
+          obj/flint_native_interface.o \
+          obj/flint_native_io_file.o \
+          obj/flint_native_io_file_descriptor.o \
+          obj/flint_native_io_file_input_stream.o \
+          obj/flint_native_io_file_output_stream.o \
+          obj/flint_native_math_stubs.o \
+          obj/opencode_stubs.o \
+          obj/flint_native_method.o \
+          obj/flint_native_object.o \
+          obj/flint_native_reflection.o \
+          obj/flint_native_string.o \
+          obj/flint_native_system.o \
+          obj/flint_native_thread.o \
+          obj/jvm/jvm_bridge.o
 
 run: mykernel.iso
 	@if command -v VirtualBox >/dev/null 2>&1 && VirtualBox --version >/dev/null 2>&1; then \

@@ -287,6 +287,10 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     taskManager.AddTask(&task2);
     */
 
+    myos::jvm::JVMBridge::Initialize();
+    Flint::runToMain("HelloWorld");
+
+    for(;;){}
     InterruptManager interrupts(0x20, &gdt, &taskManager);
     SyscallHandler syscalls(&interrupts, 0x80);
 
@@ -455,11 +459,6 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     #ifdef GRAPHICSMODE
         desktop.Draw(&vga);
     #endif
-    
-    myos::jvm::JVMBridge::Initialize();
-    Flint::runToMain("HelloWorld");
-
-    //for(int i = 0; i < 100000; i++){}
-}
+    }
 
 }
