@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 4: RTOS Use Cases</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../MISSION.md">← Back to Mission</a></p>
+
+<h1>RTOS Use Cases</h1>
+<p class="subtitle">Where an RTOS is the right tool — and where it isn't</p>
+
+<h2>The Screening Question</h2>
+<blockquote>
+If a late answer causes damage — damaged hardware, lost data, a crash, or a human safety risk — you need an RTOS. If a late answer just makes someone wait longer, a GPOS is fine.
+</blockquote>
+
+<h2>Where RTOS Is the Right Choice</h2>
+
+<h3>Embedded Control (the classic case)</h3>
+<p>A flight controller reads an IMU at 1 kHz, runs a PID loop, and adjusts motor PWM. If the control loop is delayed by even 10 ms, the drone wobbles or crashes. Linux running on the same CPU could do the math faster, but its scheduling jitter means it occasionally delivers the output late. The RTOS guarantees the deadline.</p>
+
+<p>Same pattern: CNC mills, 3D printers, robot arm controllers, automotive ECU injector timing, ABS brake modulation.</p>
+
+<h3>Data Acquisition</h3>
+<p>A seismic sensor digitizes at 100 kHz. A sample arrives every 10 µs. You need to read it, timestamp it, and buffer it without missing the next sample. A GPOS can miss samples under interrupt load (network, USB). An RTOS guarantees the ISR latency is bounded so no sample is lost.</p>
+
+<p>Same pattern: oscilloscopes, software-defined radios, LIDAR, audio workstations.</p>
+
+<h3>Industrial Automation</h3>
+<p>A PLC reads a pressure sensor every 1 ms. If pressure exceeds a threshold, it must trigger an emergency valve within 5 ms. The safety case requires proof that the worst-case response time is under 5 ms. An RTOS can provide that bound. A GPOS cannot — its worst case is unbounded under heavy load.</p>
+
+<h3>Automotive / Aerospace (critical safety)</h3>
+<p>Modern cars have 100+ ECUs. The brake-by-wire controller must respond to pedal position within a fixed window — not microseconds too late. Aerospace systems (avionics, fly-by-wire) require certification (DO-178C) that proves timing bounds. RTOSs like VxWorks and Integrity are certified for this. Linux is not.</p>
+
+<h3>Consumer Electronics (surprising fits)</h3>
+<p>Many devices you'd think run Linux actually run an RTOS:</p>
+<ul>
+  <li><strong>WiFi/BT firmware</strong> — your Broadcom WiFi chip runs ThreadX or FreeRTOS on its internal ARM Cortex-M</li>
+  <li><strong>SSD controller</strong> — manages NAND flash wear leveling with tight timing constraints</li>
+  <li><strong>USB-C PD controller</strong> — negotiates power delivery with millisecond-level protocol timing</li>
+</ul>
+
+<h2>Where RTOS Is the Wrong Choice</h2>
+
+<table>
+  <tr><th>Scenario</th><th>Use Linux</th><th>Why not RTOS</th></tr>
+  <tr><td>Web server</td><td>✓</td><td>No deadlines; throughput matters; you need TCP/IP, TLS, filesystem</td></tr>
+  <tr><td>Desktop / laptop</td><td>✓</td><td>User interaction tolerates 10–100 ms latency; GPOS provides process isolation, GPU drivers, window system</td></tr>
+  <tr><td>File server (NAS)</td><td>✓</td><td>Storage throughput dominates; disk I/O latency is already variable</td></tr>
+  <tr><td>Video streaming box</td><td>✓</td><td>Media playback buffers absorb jitter; you need GPU, DRM, codecs — none of which exist in an RTOS ecosystem</td></tr>
+  <tr><td>Prototype / hobby project</td><td>Debatable</td><td>If you don't have a real deadline, the RTOS wins on simplicity but loses on tooling. Linux wins on libraries but loses on complexity.</td></tr>
+</table>
+
+<h2>The Grey Zone: RTOS on Powerful Hardware</h2>
+
+<p>This is where <strong>your BBAI project</strong> lives. The Cortex-A15 can run Linux effortlessly. Why build an RTOS?</p>
+
+<table>
+  <tr><th></th><th>Linux on BBAI</th><th>Your RTOS on BBAI</th></tr>
+  <tr><td>Boot time</td><td>~10 seconds</td><td>Milliseconds</td></tr>
+  <tr><td>Determinism</td><td>No (jitter)</td><td>Yes (bounded)</td></tr>
+  <tr><td>Code size</td><td>~10 MB kernel + filesystem</td><td>Tens of KB</td></tr>
+  <tr><td>Understanding</td><td>No single person understands all of Linux</td><td>You can read every line</td></tr>
+  <tr><td>Driver support</td><td>Everything (USB, Ethernet, HDMI, WiFi)</td><td>Only what you write</td></tr>
+  <tr><td>Safety certification</td><td>Prohibitively expensive</td><td>Feasible with effort</td></tr>
+</table>
+
+<p>Your project is in the grey zone because:</p>
+<ul>
+  <li>You don't <em>need</em> an RTOS (no hard deadlines)</li>
+  <li>You're building one to <strong>learn</strong> — the constraint is pedagogical, not functional</li>
+  <li>The BBAI is forgiving hardware (lots of RAM, good docs) for learning OS concepts</li>
+</ul>
+
+<div class="callout callout-tip">
+<strong>This is a legitimate use of an RTOS.</strong> Many aerospace and automotive RTOSs started as learning projects that found real deadlines. The skills transfer directly: once you've written a PendSV handler, you can debug one in any RTOS.
+</div>
+
+<h2>Quiz</h2>
+
+<p><strong>Q1:</strong> A smart thermostat reads temperature every 10 seconds and updates the display. Should it run an RTOS?</p>
+<p style="color: #6b7280;"><em>Answer: Probably not. 10-second intervals mean scheduling jitter is irrelevant. A simple super-loop on a cheap MCU is fine, or even Linux on a Raspberry Pi if you need WiFi and a touch UI.</em></p>
+
+<p><strong>Q2:</strong> A pacemaker delivers electrical pulses synchronized to the heart's rhythm. Should it run an RTOS?</p>
+<p style="color: #6b7280;"><em>Answer: Absolutely yes. Late or early pulses can kill. The RTOS must guarantee timing bounds and the entire system must be certified (IEC 62304 Class C).</em></p>
+
+<p><strong>Q3:</strong> If you're using an RTOS but have no hard deadlines, what are you actually getting?</p>
+<p style="color: #6b7280;"><em>Answer: Simplicity and transparency — deterministic behavior, static allocation, full code auditability. These are valuable even without hard deadlines. This is your BBAI project.</em></p>
+
+<h2>Your Turn</h2>
+<ol>
+  <li>Think about your JX OS — what's the workload that <em>would</em> need realtime guarantees? (Maybe none yet, but what kind of workload would you want to add?)</li>
+  <li>Look at the FreeRTOS website for a list of commercial products that use it — see how many you've used without knowing they ran an RTOS.</li>
+  <li>Ask a followup: should your RTOS be tickless (one-shot timer) or tick-driven (periodic SysTick)?</li>
+</ol>
+
+<div class="footer">
+  <p>Lesson 4 of ? · References: <a href="../reference/rtos-vs-gpos.html">RTOS vs GPOS Reference</a>, <a href="../GLOSSARY.md">Glossary</a> · Next: <a href="../lessons/0002-armv7-rtos-context-switch.html">ARMv7-A Context Switch</a></p>
+</div>
+</body>
+</html>

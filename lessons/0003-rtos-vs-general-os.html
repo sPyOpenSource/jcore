@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3: RTOS vs General-Purpose OS</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../MISSION.md">← Back to Mission</a></p>
+
+<h1>RTOS vs General-Purpose OS</h1>
+<p class="subtitle">What makes an OS "realtime" and why you can't run Linux on a microcontroller</p>
+
+<h2>The One-Sentence Answer</h2>
+<blockquote>
+A general-purpose OS optimizes for <strong>average-case throughput</strong>. An RTOS guarantees <strong>worst-case deadline satisfaction</strong>. Everything else — scheduler, memory model, IPC — follows from that.
+</blockquote>
+
+<p>If you ask Linux "how fast can you dispatch this thread?" it will tell you the average. If you ask an RTOS the same question, it will tell you the <em>maximum</em> — and that number will be reliable regardless of system load.</p>
+
+<h2>Why the Same Hardware Needs Different Software</h2>
+
+<p>The Cortex-A15 on the BBAI is powerful enough to run Linux. It's also powerful enough to run a tiny deterministic RTOS. The difference is not in the hardware — it's in what you ask the software to guarantee.</p>
+
+<table>
+  <tr><th>Scenario</th><th>Linux would</th><th>RTOS would</th></tr>
+  <tr>
+    <td>UART byte arrives</td>
+    <td>IRQ → tasklet → wake thread → schedule (milliseconds, varies)</td>
+    <td>IRQ → unlock semaphore → switch to waiting task (microseconds, fixed)</td>
+  </tr>
+  <tr>
+    <td>GPIO pin changes</td>
+    <td>Deferred interrupt handler, maybe 10 ms of jitter</td>
+    <td>ISR fires, task runs in same tick if priority is high enough</td>
+  </tr>
+  <tr>
+    <td>100 tasks ready to run</td>
+    <td>CFS gives each a fair timeslice — latency depends on count</td>
+    <td>Highest-priority task runs immediately — O(1) dispatch</td>
+  </tr>
+</table>
+
+<h2>The Three Pillars of Realtime</h2>
+
+<h3>1. Scheduling</h3>
+<p>An RTOS uses <strong>fixed-priority preemptive scheduling</strong>. Each task has a priority. The highest-priority ready-to-run task always runs. No aging, no fairness adjustment, no dynamic priority boosting. This makes the worst-case dispatch time predictable: it's the time to save the current context and restore the highest-priority task's context.</p>
+
+<p>A GPOS uses <strong>fair-share scheduling</strong> (CFS on Linux). It tries to give every thread an equal share of CPU time. This is great for interactive workloads — your text editor doesn't starve because a compiler is running. But it makes latency unpredictable under load.</p>
+
+<h3>2. Kernel Preemption</h3>
+<p>In a standard GPOS, the kernel can disable preemption for long stretches (e.g., while walking a linked list of tasks). In an RTOS, every kernel operation is bounded — the longest critical section is measured in microseconds, not milliseconds. This is why Linux needs the <code>PREEMPT_RT</code> patch to approach realtime behavior: it breaks long critical sections into preemptible pieces.</p>
+
+<div class="callout callout-info">
+<strong>The corollary:</strong> The RTOS kernel must be <em>simpler</em> than a GPOS kernel. Complex data structures (hash tables, red-black trees) have unpredictable traversal times. The RTOS uses arrays and linked lists because their operation counts are known and bounded.
+</div>
+
+<h3>3. Priority Inversion Protocol</h3>
+<p>This is the classic RTOS trap. Consider three tasks:</p>
+
+<pre>
+Task A (high priority) — needs mutex M
+Task B (medium pri)   — pure CPU, no mutex
+Task C (low priority) — holds mutex M
+</pre>
+
+<p><strong>Without priority inheritance:</strong> C holds M, A blocks on M, B preempts C (B has higher priority than C). A is now blocked until B yields <strong>and then</strong> C finishes its critical section. The delay to A is unbounded — it depends on how long B runs. This is <strong>unbounded priority inversion</strong>.</p>
+
+<p><strong>With priority inheritance:</strong> When A blocks on M, C inherits A's priority temporarily. B can no longer preempt C. C finishes its critical section, releases M, and drops back to its original priority. A runs. The delay is bounded to C's critical section length.</p>
+
+<p>A GPOS may or may not implement priority inheritance. Linux does (since 2.6.18 with <code>futex</code>), but only for realtime scheduling policies (<code>SCHED_FIFO</code>, <code>SCHED_RR</code>). The default (<code>SCHED_OTHER</code>) does not — because fairness is the goal, not deadline satisfaction.</p>
+
+<h2>Where This Leaves Your RTOS</h2>
+
+<p>Your RTOS on the BBAI is a <strong>trust-based, fixed-priority preemptive RTOS with domain isolation</strong>. It's not trying to be Linux. It's trying to be:</p>
+<ul>
+  <li><strong>Deterministic</strong> — PendSV + fixed priorities, no aging</li>
+  <li><strong>Simple</strong> — static allocation, bounded kernel operations</li>
+  <li><strong>Transparent</strong> — you can trace every instruction of every context switch</li>
+</ul>
+
+<p>This is exactly the right set of tradeoffs for a baremetal OS you're building to learn. Linux makes different tradeoffs because it serves different goals — fairness, isolation, and throughput across thousands of processes.</p>
+
+<h2>Quiz</h2>
+
+<p><strong>Q1:</strong> A high-priority task misses its deadline because a medium-priority task is running. What mechanism is missing?</p>
+<p style="color: #6b7280;"><em>Answer: Priority inheritance on the mutex that the high-priority task is waiting for (or the low-priority task holding the mutex doesn't exist — in which case the scheduler itself is the problem).</em></p>
+
+<p><strong>Q2:</strong> Linux's CFS scheduler gives each of 100 tasks an equal share. An RTOS with the same 100 tasks runs task A (priority 5) then task B (priority 99). Why won't B ever run if A is compute-bound?</p>
+<p style="color: #6b7280;"><em>Answer: Fixed-priority preemptive scheduling — B has higher priority, so it runs immediately. But if A is higher priority than B, A runs and B never gets CPU. This is by design: the developer assigned priorities to meet deadlines.</em></p>
+
+<p><strong>Q3:</strong> Your RTOS kernel disables interrupts for 300 µs during the context switch. Is this acceptable?</p>
+<p style="color: #6b7280;"><em>Answer: It depends on your deadline requirements. 300 µs is very long for an RTOS (typical target is &lt;10 µs). The interrupt-off time during PendSV should only cover saving/restoring registers — not the scheduler_next() call, which can run with interrupts enabled if a queue protects the ready list.</em></p>
+
+<h2>Further Reading</h2>
+<ul>
+  <li>"Priority Inheritance" — Sha, Rajkumar, Lehoczky (1990). The original paper on priority inheritance protocol.</li>
+  <li>FreeRTOS documentation on scheduling — shows a production RTOS making the same tradeoffs you're making.</li>
+  <li>Linux kernel documentation for <code>PREEMPT_RT</code> — shows what it takes to make a GPOS behave like an RTOS.</li>
+</ul>
+
+<div class="footer">
+  <p>Lesson 3 of ? · References: <a href="../reference/rtos-vs-gpos.html">RTOS vs GPOS Reference</a>, <a href="../GLOSSARY.md">Glossary</a>, <a href="../RESOURCES.md">Resources</a></p>
+</div>
+</body>
+</html>

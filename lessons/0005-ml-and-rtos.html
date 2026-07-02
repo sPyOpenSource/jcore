@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 5: Machine Learning on an RTOS</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../MISSION.md">← Back to Mission</a></p>
+
+<h1>Machine Learning on an RTOS</h1>
+<p class="subtitle">What runs, what doesn't, and what the BBAI's hardware can do</p>
+
+<h2>The Short Answer</h2>
+<blockquote>
+You cannot train models on an RTOS (no PyTorch, no GPU drivers, no Python). You <strong>can</strong> run inference — deploy a pre-trained model to make predictions — on an RTOS, as long as the model is simple enough and you have the math routines.
+</blockquote>
+
+<h2>Training vs Inference</h2>
+
+<table>
+  <tr><th></th><th>Training</th><th>Inference</th></tr>
+  <tr><td>Compute</td><td>Massive (GPU/TPU, hours to weeks)</td><td>Small (single forward pass, microseconds to milliseconds)</td></tr>
+  <tr><td>Software stack</td><td>PyTorch, TensorFlow, CUDA, cuDNN, Python</td><td>TFLite Micro, ONNX Runtime, Glow, hand-written</td></tr>
+  <tr><td>Memory</td><td>GB–TB of RAM, VRAM</td><td>KB–MB of RAM</td></tr>
+  <tr><td>Data type</td><td>FP32, FP16, BF16</td><td>FP32, FP16, INT8, INT4, binary</td></tr>
+  <tr><td>OS needed</td><td>Linux, Windows, macOS</td><td>Any — including baremetal / RTOS</td></tr>
+  <tr><td>Deadline-critical?</td><td>No (throughput matters)</td><td>Often yes (real-time sensor processing)</td></tr>
+</table>
+
+<h2>Inference on an RTOS: How It Works</h2>
+
+<p>You train on a server, export the model (weights + architecture), cross-compile an inference engine, and link it into your RTOS image. The RTOS never sees Python or PyTorch — it only runs the compiled forward pass.</p>
+
+<pre>
+Training (x86 Linux):
+  train.py  →  model.pt  →  export → model.onnx / model.tflite
+
+Cross-compile (macOS → ARM):
+  model.tflite  →  TFLite Micro for ARM  →  libtflm.a
+
+Deploy (BBAI RTOS):
+  kernel.bin + libtflm.a + model_data.o  →  linker → jx-rtos.elf
+</pre>
+
+<h2>Real-World RTOS ML Examples</h2>
+
+<table>
+  <tr><th>Application</th><th>Model type</th><th>Where inference runs</th></tr>
+  <tr><td>Keyword spotting ("Hey Siri")</td><td>Tiny CNN, ~20 KB weights</td><td>DSP or Cortex-M, runs continuously, &lt;10 mW</td></tr>
+  <tr><td>Anomaly detection on sensor data</td><td>Autoencoder, ~100 KB weights</td><td>Industrial MCU, 1 ms inference, triggers alert</td></tr>
+  <tr><td>Camera-based person detection</td><td>MobileNetV1, ~4 MB weights</td><td>Cortex-A with SIMD, 30 FPS, triggers recording</td></tr>
+  <tr><td>Motor vibration classification</td><td>1D CNN, ~50 KB weights</td><td>Cortex-M, 100 µs inference, predicts bearing failure</td></tr>
+</table>
+
+<h2>The BBAI's ML Hardware</h2>
+
+<p>The AM5729 has hardware for ML inference — and you're not using it:</p>
+
+<table>
+  <tr><th>Accelerator</th><th>Cores</th><th>Could run</th><th>Reachable from your RTOS?</th></tr>
+  <tr><td>C66x DSP</td><td>2</td><td>Fixed-point matrix multiply, FIR filters</td><td>Yes — TI's DSP linker, custom firmware</td></tr>
+  <tr><td>IVA-HD (video accelerator)</td><td>1</td><td>H.264 encode/decode, image scaling</td><td>Maybe — register-level programming</td></tr>
+  <tr><td>PRU-ICSS</td><td>2</td><td>Real-time I/O, not ML**</td><td>Yes — but wrong tool for ML</td></tr>
+  <tr><td>NEON SIMD (A15)</td><td>1 per core</td><td>32× faster matrix multiply vs scalar</td><td>Yes — inline assembly in your RTOS</td></tr>
+</table>
+
+<div class="callout callout-warn">
+<strong>Reality check:</strong> TI's ML stack (TIDL, EdgeAI) requires Linux + OpenCL + DSP firmware blobs. On a baremetal RTOS, you'd need to:
+<ul>
+  <li>Write the DSP boot firmware yourself</li>
+  <li>Implement the RPMsg protocol for A15↔DSP communication</li>
+  <li>Hand-code matrix multiply on C66x in assembly</li>
+</ul>
+This is a large project on its own. For learning, start with <strong>NEON on the A15</strong> — you can do useful ML inference without leaving your RTOS.
+</div>
+
+<h2>What You Could Actually Run on Your RTOS</h2>
+
+<pre>
+// A tiny 2-layer MLP for MNIST digit recognition
+// ~100 lines of C, no libraries needed
+
+typedef struct { float w[784][64]; float b[64]; } Layer1;
+typedef struct { float w[64][10];  float b[10];  } Layer2;
+
+float relu(float x) { return x > 0 ? x : 0; }
+
+int predict(Layer1 *l1, Layer2 *l2, float img[784]) {
+    float h[64] = {0};
+    for (int i = 0; i < 64; i++) {
+        for (int j = 0; j < 784; j++)
+            h[i] += img[j] * l1->w[j][i];
+        h[i] = relu(h[i] + l1->b[i]);
+    }
+    float out[10] = {0};
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 64; j++)
+            out[i] += h[j] * l2->w[j][i];
+        out[i] += l2->b[i];
+    }
+    int best = 0;
+    for (int i = 1; i < 10; i++)
+        if (out[i] > out[best]) best = i;
+    return best;
+}
+</pre>
+
+<p>This runs in under 1 ms on a Cortex-A15 at 1.5 GHz. You can train the weights on your laptop with PyTorch, dump them as a C header, and link them into your RTOS. No DSP, no GPU, no Linux needed.</p>
+
+<h2>The Real Value: Sensor Fusion at Deadline</h2>
+
+<p>An RTOS + ML combination shines when you need to:</p>
+<ol>
+  <li>Read a sensor at a fixed rate (e.g., IMU at 1 kHz)</li>
+  <li>Run a tiny model on the sensor data (e.g., detect "tap" gesture)</li>
+  <li>Produce an output before the next sample arrives (1 ms budget)</li>
+</ol>
+
+<p>This is the killer app for RTOS ML — not running large models, but running <strong>small, fast, deterministic</strong> models on streaming sensor data where a late answer is wrong even if numerically correct.</p>
+
+<h2>Quiz</h2>
+
+<p><strong>Q1:</strong> Can you train a neural network on an RTOS?</p>
+<p style="color: #6b7280;"><em>Answer: No. Training needs Python, GPU, GB of memory. You train on a server and deploy the weights to the RTOS.</em></p>
+
+<p><strong>Q2:</strong> Your BBAI RTOS needs to classify audio samples at 10 kHz. Which hardware do you use?</p>
+<p style="color: #6b7280;"><em>Answer: Start on the A15 with NEON SIMD. If it fits in 100 µs per sample, you're done. If not, move to the C66x DSP — but that means writing DSP firmware separately.</em></p>
+
+<p><strong>Q3:</strong> What's the point of running ML on an RTOS instead of Linux?</p>
+<p style="color: #6b7280;"><em>Answer: Deterministic timing — the inference completes within a known bound every time. On Linux, a context switch could delay inference by milliseconds.</em></p>
+
+<div class="footer">
+  <p>Lesson 5 of ? · References: <a href="../reference/rtos-vs-gpos.html">RTOS vs GPOS Reference</a>, <a href="../GLOSSARY.md">Glossary</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RTOS vs General-Purpose OS Reference</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../lessons/0003-rtos-vs-general-os.html">← Lesson 3</a></p>
+
+<h1>RTOS vs General-Purpose OS</h1>
+
+<h2>Core Distinction</h2>
+
+<table>
+  <tr><th>Dimension</th><th>RTOS</th><th>General-Purpose OS (Linux, Windows)</th></tr>
+  <tr>
+    <td><strong>Goal</strong></td>
+    <td>Meet deadlines — worst-case latency matters</td>
+    <td>Maximize throughput — average-case matters</td>
+  </tr>
+  <tr>
+    <td><strong>Scheduler</strong></td>
+    <td>Priority-based preemptive, fixed priority</td>
+    <td>Fair-share (CFS), O(1), or round-robin with dynamic priority</td>
+  </tr>
+  <tr>
+    <td><strong>Dispatch latency</strong></td>
+    <td>Deterministic, bounded (microseconds)</td>
+    <td>Variable (milliseconds to seconds under load)</td>
+  </tr>
+  <tr>
+    <td><strong>Kernel preemption</strong></td>
+    <td>Fully preemptible (short critical sections)</td>
+    <td>PREEMPT_RT needed for near-rt; standard kernel has long preempt-off regions</td>
+  </tr>
+  <tr>
+    <td><strong>Memory model</strong></td>
+    <td>Static allocation preferred, no page faults in ISRs</td>
+    <td>Virtual memory, demand paging, overcommit, swap</td>
+  </tr>
+  <tr>
+    <td><strong>Protection</strong></td>
+    <td>Often trust-based (everything privileged) or lightweight domains</td>
+    <td>Full user/kernel MMU separation, isolated process address spaces</td>
+  </tr>
+  <tr>
+    <td><strong>IPC</strong></td>
+    <td>Message queues, semaphores, mutexes with priority inheritance</td>
+    <td>Pipes, sockets, shared memory, signals, D-Bus</td>
+  </tr>
+  <tr>
+    <td><strong>Priority inversion</strong></td>
+    <td>Handled by protocol (priority inheritance, ceiling)</td>
+    <td>Not guaranteed — can cause unbounded priority inversion on standard kernel</td>
+  </tr>
+  <tr>
+    <td><strong>Blocking</strong></td>
+    <td>Minimized — spin on hardware registers, no kernel blocking in ISRs</td>
+    <td>Kernel can block (page faults, I/O wait, sleep)</td>
+  </tr>
+  <tr>
+    <td><strong>Timers</strong></td>
+    <td>Tick-driven or tickless, one-shot timers common</td>
+    <td>Multi-tick, high-resolution timers optional (hrtimers)</td>
+  </tr>
+  <tr>
+    <td><strong>Typical scale</strong></td>
+    <td>KB–MB of RAM, no storage required</td>
+    <td>MB–GB of RAM, filesystem required</td>
+  </tr>
+  <tr>
+    <td><strong>Examples</strong></td>
+    <td>FreeRTOS, Zephyr, RT-Thread, VxWorks, µC/OS</td>
+    <td>Linux, Windows, macOS, FreeBSD</td>
+  </tr>
+</table>
+
+<h2>Priority Inversion in One Diagram</h2>
+
+<pre>
+Without priority inheritance:
+  Low-pri task holds mutex M
+  ─> High-pri task tries to lock M — BLOCKED
+  ─> Medium-pri task preempts Low (no relation to M)
+  ─> High-pri stays blocked until Medium yields
+  ─> Bounded → unbounded delay for High
+
+With priority inheritance:
+  Low-pri task holds mutex M
+  ─> High-pri tries to lock M — BLOCKED
+  ─> Low inherits High's priority (temporarily)
+  ─> Low finishes critical section, releases M
+  ─> Low's priority drops back, High runs
+</pre>
+
+<h2>Where Your RTOS Fits</h2>
+
+<p>The RTOS you're building on the BBAI:</p>
+<ul>
+  <li><strong>Trust-based</strong> — everything in SVC mode, no user/kernel split</li>
+  <li><strong>Domain isolation</strong> — task stacks in separate CLIENT domains</li>
+  <li><strong>Deterministic context switch</strong> — PendSV + fixed priorities</li>
+  <li><strong>Static allocation</strong> — task stacks and TCBs allocated at build time</li>
+  <li><strong>No filesystem, no networking</strong> — pure compute + UART + GPIO for now</li>
+</ul>
+
+<p>This is a deliberately minimal RTOS — closer to FreeRTOS than to Linux. The hardware (Cortex-A15) is far more powerful than what most RTOSs run on, but the software model is the same.</p>
+
+</body>
+</html>

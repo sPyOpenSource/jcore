@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2: ARMv7-A RTOS Context Switching</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../MISSION.md">← Back to Mission</a></p>
+
+<h1>ARMv7-A RTOS Context Switching</h1>
+<p class="subtitle">SysTick, PendSV, and the deferred switch pattern</p>
+
+<h2>The Core Idea</h2>
+
+<p>A preemptive RTOS lets the CPU switch between tasks at fixed time intervals, without the task having to yield. Each task gets a slice of CPU time. The switch happens in an <strong>exception handler</strong> — either SysTick directly, or PendSV deferred.</p>
+
+<h2>Two Stack Pointers</h2>
+
+<p>ARMv7-A has two stack pointers, and this is the foundation of clean context switching:</p>
+
+<table>
+  <tr><th>Pointer</th><th>Used in</th><th>Stores</th></tr>
+  <tr><td>MSP (Main Stack Pointer)</td><td>Handler mode (exceptions)</td><td>Kernel's stack — scheduler state, SVC handler locals</td></tr>
+  <tr><td>PSP (Process Stack Pointer)</td><td>Thread mode (task code)</td><td>Task's stack — local variables, saved registers</td></tr>
+</table>
+
+<p>When an exception fires, the hardware automatically uses MSP for the handler. The interrupted task's stack pointer remains in PSP. This means the exception handler can save and restore PSP without ever touching the task's stack from the kernel's side.</p>
+
+<h2>SysTick → PendSV → Switch</h2>
+
+<p>The standard RTOS pattern uses three exceptions working together:</p>
+
+<pre>
+Timer tick (e.g., 1 ms):
+  ┌──────────┐
+  │ SysTick  │  Fires on timer. Increments tick count.
+  │          │  Pends PendSV via ICSR[28] = 1.
+  └────┬─────┘
+       │ return from exception
+       ▼
+  ┌──────────┐
+  │  Task    │  Continues running briefly (or PendSV fires immediately
+  │  code    │  if no other IRQs are pending).
+  └────┬─────┘
+       │ PendSV fires (lowest-priority exception)
+       ▼
+  ┌──────────┐
+  │ PendSV   │  Saves r4–r11 of current task.
+  │ Handler  │  Calls scheduler_next().
+  │          │  Restores r4–r11 of next task.
+  └────┬─────┘
+       │ return from exception
+       ▼
+  ┌──────────┐
+  │ Task N+1 │  Next task runs.
+  └──────────┘
+</pre>
+
+<div class="callout callout-info">
+<strong>Why defer to PendSV?</strong> If you context-switch inside SysTick, the ISR is running on MSP. Any registers saved on the stack are mixed with the exception frame. PendSV runs at the lowest priority — it waits until all other IRQs are done, so you never preempt an ISR with a context switch.
+</div>
+
+<h2>What the Hardware Saves Automatically</h2>
+
+<p>On exception entry, ARMv7-A pushes eight registers onto the <strong>current stack</strong> (for PendSV, that's PSP since tasks run in thread mode):</p>
+
+<pre>
+[PSP-0x20]  r0
+[PSP-0x1C]  r1
+[PSP-0x18]  r2
+[PSP-0x14]  r3
+[PSP-0x10]  r12
+[PSP-0x0C]  LR (return address to interrupted code)
+[PSP-0x08]  PC (address of next instruction)
+[PSP-0x04]  xPSR (program status)
+[PSP]       ← SP now points here
+</pre>
+
+<p>This is the <strong>exception frame</strong>. On exception return (<code>BX LR</code> with EXC_RETURN), the hardware pops these and resumes execution.</p>
+
+<h2>What the PendSV Handler Saves</h2>
+
+<p>The PendSV handler only needs to save <strong>callee-saved registers</strong> (r4–r11) because the compiler guarantees they're preserved across function calls. Everything else (r0–r3, r12, LR, PC, xPSR) is already on the stack from the hardware exception frame.</p>
+
+<pre>
+PendSV_Handler:
+    mrs     r0, psp              ; r0 = task's PSP
+    stmdb   r0!, {r4-r11}        ; push r4–r11 onto task stack
+
+    ; Now r0 = new task SP (after pushing 8 × 4 = 32 bytes)
+    ldr     r1, =current_tcb
+    str     r0, [r1]             ; TCB.sp = current SP
+
+    ; Pick next task
+    bl      scheduler_next       ; r0 = &next_TCB
+
+    ; Load next task's saved SP
+    ldr     r0, [r0]             ; r0 = next TCB's sp
+    ldmia   r0!, {r4-r11}        ; pop r4–r11
+    msr     psp, r0              ; restore PSP
+
+    bx      lr                   ; EXC_RETURN in LR → pop exception frame
+</pre>
+
+<p>Total save/restore per context switch: <strong>8 registers × 4 bytes × 2 directions = 64 bytes</strong> of stack traffic. The other 8 registers (r0–r3, r12, LR, PC, xPSR) are handled by hardware.</p>
+
+<h2>Now: The Domain Question</h2>
+
+<p>From the grilling session, you said the SVC table should live in domain 0 (MANAGER) so task-domain reads of it fault. Let's trace through what actually happens:</p>
+
+<ol>
+  <li><strong>Task runs in thread mode (SVC mode, but using PSP).</strong> DACR domain 0 = MANAGER, domain 1 = CLIENT. Task memory is in domain 1.</li>
+  <li><strong>Task executes SVC 0.</strong> Hardware switches to handler mode (still SVC mode, but now using MSP).</li>
+  <li><strong>SVC handler runs.</strong> It needs to read the SVC table. The SVC table's page table entry has domain = 0.</li>
+  <li><strong>The access check:</strong> The MMU checks the <em>page table entry's domain field</em> against DACR. Since DACR[0] = MANAGER (doesn't check permissions), the read succeeds.</li>
+</ol>
+
+<p>But here's the subtlety: <strong>the handler runs in the same domain configuration as the task.</strong> Entering SVC mode does NOT change DACR. If DACR[0] were CLIENT instead of MANAGER, the SVC handler would fault when reading its own table — because the page table entry says domain 0, and the CPU checks DACR[0] regardless of which mode it's in.</p>
+
+<div class="callout callout-warn">
+<strong>The common mistake:</strong> People assume "handler mode" or "SVC mode" implies kernel privileges. For the MMU, privilege comes from page table permission bits (AP bits), not from the mode. For domains, it's purely about the DACR value, which is the same in all modes unless you explicitly change it.
+</div>
+
+<h2>Nailing It Down</h2>
+
+<p>The correct design is:</p>
+<table>
+  <tr><th>Region</th><th>Domain</th><th>DACR setting</th><th>Who can access</th></tr>
+  <tr><td>SVC table</td><td>0</td><td>MANAGER (0b11)</td><td>Any mode (no permission checks)</td></tr>
+  <tr><td>Kernel .text/.data</td><td>0</td><td>MANAGER</td><td>Any mode</td></tr>
+  <tr><td>Task 0 stack + TCB</td><td>1</td><td>CLIENT (0b01)</td><td>Only via page table AP bits (SVC only, typically)</td></tr>
+  <tr><td>Task 1 stack + TCB</td><td>2</td><td>CLIENT</td><td>Same — SVC-only access</td></tr>
+  <tr><td>UART / GPIO (device)</td><td>3</td><td>CLIENT</td><td>AP bits set for SVC-only or SVC+user</td></tr>
+</table>
+
+<p>If you set SVC table to MANAGER (domain 0), <strong>any code running at any privilege level can read it</strong> — including a buggy task. MANAGER bypasses all permission checks including AP bits. To truly protect the table from tasks, you'd need domain 0 as CLIENT and tasks as a different CLIENT domain, with the table's AP bits set to SVC-only (AP[1:0] = 0b11).</p>
+
+<p><strong>But</strong> — in your RTOS (no user mode, everything in SVC mode), the AP bits don't help. Everything is SVC privileged. So the real protection is <strong>not running user mode at all</strong>, and accepting that a buggy task can crash the kernel. Domains protect <em>memory regions</em> from each other (task A's stack from task B), not tasks from the kernel.</p>
+
+<h2>Quiz: Check Your Understanding</h2>
+
+<p>Answer each in one sentence before looking at the answer.</p>
+
+<p><strong>Q1:</strong> Why does the PendSV handler use PSP instead of MSP?</p>
+<p style="color: #6b7280;"><em>Answer: Because the interrupted task's registers are on its own stack (PSP), not the kernel's stack (MSP). Using MSP would save kernel-internal data, not task state.</em></p>
+
+<p><strong>Q2:</strong> What would happen if you context-switched inside the SysTick handler directly (no PendSV)?</p>
+<p style="color: #6b7280;"><em>Answer: The context switch would happen on MSP, possibly while a higher-priority IRQ was still being processed, leading to stack corruption or races between the scheduler and interrupt handlers.</em></p>
+
+<p><strong>Q3:</strong> Does setting a domain to MANAGER make it more or less restricted?</p>
+<p style="color: #6b7280;"><em>Answer: Less restricted — MANAGER bypasses all permission checks. CLIENT enables them. This is counterintuitive: MANAGER means "I manage this, don't check permissions."</em></p>
+
+<h2>Your Turn</h2>
+<ol>
+  <li>Open the <a href="../reference/armv7-context-switch.html">ARMv7-A Context Switch Reference</a> and read through the PendSV handler code</li>
+  <li>Trace through the handler by hand with a two-task scenario — write down the stack state before and after each instruction</li>
+  <li>Ask a followup: what part of this is still fuzzy? The hardware exception frame? The DACR check? The PendSV deferral mechanism?</li>
+</ol>
+
+<div class="footer">
+  <p>Lesson 2 of ? · References: <a href="../reference/armv7-context-switch.html">Context Switch Reference</a>, <a href="../GLOSSARY.md">Glossary</a>, <a href="../RESOURCES.md">Resources</a></p>
+</div>
+</body>
+</html>

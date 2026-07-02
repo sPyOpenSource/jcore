@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 6: Tiny LLM on Baremetal ARM</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../MISSION.md">← Back to Mission</a></p>
+
+<h1>Tiny LLM on Baremetal ARM</h1>
+<p class="subtitle">Running a transformer on the BBAI without Linux</p>
+
+<h2>The Screening Question</h2>
+<blockquote>
+Can you run an LLM on an RTOS? <strong>Yes</strong> — a small one. The model runs as a compiled function. No PyTorch, no Python, no OS services needed. Just matrix multiply and softmax.
+</blockquote>
+
+<h2>What "Tiny" Means in Numbers</h2>
+
+<table>
+  <tr><th>Model</th><th>Parameters</th><th>FP32 size</th><th>INT8 size</th><th>Fits in 1 GB?</th></tr>
+  <tr><td>TinyStories-1M</td><td>1M</td><td>4 MB</td><td>1 MB</td><td>✓ Easily</td></tr>
+  <tr><td>TinyStories-15M</td><td>15M</td><td>60 MB</td><td>15 MB</td><td>✓</td></tr>
+  <tr><td>TinyStories-42M</td><td>42M</td><td>168 MB</td><td>42 MB</td><td>✓</td></tr>
+  <tr><td>llama2.c 260K</td><td>0.26M</td><td>1 MB</td><td>—</td><td>✓ Trivial</td></tr>
+  <tr><td>Phi-1 (Microsoft)</td><td>1.3B</td><td>5.2 GB</td><td>1.3 GB</td><td>✗ (with current setup)</td></tr>
+  <tr><td>TinyLlama</td><td>1.1B</td><td>4.4 GB</td><td>1.1 GB</td><td>✗ (just barely over)</td></tr>
+</table>
+
+<p>The sweet spot for your BBAI (1 GB DDR, no swap): <strong>15M–42M parameter models in INT8</strong> or <strong>1M–15M in FP32</strong>.</p>
+
+<h2>The Software Stack</h2>
+
+<p>Karpathy's <a href="https://github.com/karpathy/llama2.c">llama2.c</a> is the right reference: a single ~700-line C file that loads a weight file and runs the forward pass. No dependencies. No malloc in the hot path. It compiles with any C compiler including our clang ARM cross-compiler.</p>
+
+<pre>
+llama2.c architecture:
+   main()
+    ├── build_transformer()    — reads weights from .bin file
+    ├── generate()             — autoregressive loop
+    │    └── transformer()     — one forward pass
+    │         ├── rmsnorm()    — 2× per layer
+    │         ├── matmul()     — matrix multiply (attention + FFN)
+    │         ├── attention()  — scaled dot-product
+    │         ├── softmax()    — attention weights
+    │         └── ffn()        — feed-forward network
+    └── print token
+
+Total: ~700 lines. No external libraries.
+</pre>
+
+<h2>Two Ways to Load Weights</h2>
+
+<p>Your RTOS has no filesystem. Here are the options:</p>
+
+<table>
+  <tr><th>Approach</th><th>How it works</th><th>Complexity</th><th>Max model size</th></tr>
+  <tr>
+    <td><strong>Link into kernel</strong></td>
+    <td><code>xxd -i model.bin > model_data.c</code> → compile and link as a giant array</td>
+    <td>Trivial</td>
+    <td>~100 MB (linker can handle it)</td>
+  </tr>
+  <tr>
+    <td><strong>Load from SD card</strong></td>
+    <td>U-Boot's <code>fatload mmc 0:1 0x90000000 model.bin</code>, then pass address to kernel</td>
+    <td>U-Boot side only (no driver needed)</td>
+    <td>Up to ~900 MB (limited by DDR)</td>
+  </tr>
+  <tr>
+    <td><strong>SD card driver in RTOS</strong></td>
+    <td>Write an MMC driver + FAT reader in your RTOS</td>
+    <td>High (SD protocol, FAT parsing)</td>
+    <td>Up to 900 MB</td>
+  </tr>
+</table>
+
+<p>For a first run, use the <strong>link into kernel</strong> approach. It's the least code and the model is already in RAM at boot.</p>
+
+<h2>Minimal Port: What to Change</h2>
+
+<p>Taking <code>llama2.c</code> to your RTOS:</p>
+
+<ol>
+  <li><strong>Remove file I/O:</strong> Replace <code>fopen</code>/<code>fread</code> with a pointer to the linked weight array. The <code>build_transformer()</code> function becomes a single memcpy or just sets pointers.</li>
+  <li><strong>Remove stdout:</strong> Replace <code>printf("%c", token)</code> with your <code>uart_putc()</code>.</li>
+  <li><strong>Remove malloc:</strong> <code>llama2.c</code> already allocates everything at startup. Change <code>malloc()</code> to static arrays or addresses in DDR.</li>
+  <li><strong>Adjust the memory layout:</strong> The transformer needs ~64–128 MB for activations, key-value cache, and the weight matrix. Update <code>linker.ld</code> to reserve this region.</li>
+</ol>
+
+<pre>
+// Before (llama2.c):
+float *w = (float*)malloc(weight_size);
+FILE *f = fopen("model.bin", "rb");
+fread(w, 1, weight_size, f);
+
+// After (your RTOS):
+extern float _binary_model_bin_start[];
+float *w = _binary_model_bin_start;
+// No fopen, no fread
+</pre>
+
+<h2>What You'll See on UART</h2>
+
+<p>With a TinyStories-15M model linked into your kernel, boot and inference looks like:</p>
+
+<pre>
+JX RTOS boot: OK
+Loading model...  (60 MB weights, immediately in RAM)
+Model loaded. 42 tokens generated:
+
+Once upon a time, there was a little boy named Tim.
+Tim liked to play with his red ball.
+One day, Tim lost his ball in the garden.
+He looked under the bush and found a blue ball.
+Tim was happy and played with the blue ball.
+The end.
+---
+Generation took 3.2 seconds (13.1 tokens/sec)
+</pre>
+
+<p>That's 42 tokens at 13 tok/s — about 75 ms per token, or 5–6 tokens per SysTick if your tick is 10 ms. The LLM becomes just another function your RTOS calls.</p>
+
+<h2>What This Teaches You</h2>
+
+<ul>
+  <li>How transformer attention works at the C level (no framework hiding the math)</li>
+  <li>How to cross-compile a "Linux" program into a baremetal binary</li>
+  <li>How to layout a large static data array in DDR with the linker</li>
+  <li>How much compute a Cortex-A15 can actually deliver (don't trust specs — measure)</li>
+</ul>
+
+<h2>Quiz</h2>
+
+<p><strong>Q1:</strong> Why can't you run a 7B-parameter model on the BBAI?</p>
+<p style="color: #6b7280;"><em>Answer: 7B × 4 bytes = 28 GB just for weights. The BBAI has 1 GB total DDR.</em></p>
+
+<p><strong>Q2:</strong> What stops you from using <code>printf</code> from llama2.c in your RTOS?</p>
+<p style="color: #6b7280;"><em>Answer: Nothing — you can provide your own <code>putc</code>-based <code>printf</code>, or replace <code>printf</code> calls with direct <code>uart_puts</code>. The linker resolves the symbol either way.</em></p>
+
+<p><strong>Q3:</strong> Where do the model weights live in memory at boot time with the "link into kernel" approach?</p>
+<p style="color: #6b7280;"><em>Answer: In the kernel binary, linked at a fixed address in DDR (e.g., <code>0x90000000</code>). They're part of the ELF's .rodata or .data section. No loading needed — they're already there when U-Boot jumps to the kernel.</em></p>
+
+<h2>Your Turn</h2>
+<ol>
+  <li>Download <a href="https://github.com/karpathy/llama2.c">llama2.c</a> and compile it for your host: <code>make run</code> with the tiny 260K model (included in the repo). See it work on your Mac first.</li>
+  <li>The 260K model is tiny (1 MB weights) — try linking it into your RTOS kernel as a proof of concept.</li>
+  <li>Ask a followup: should you use the TinyStories-15M model (better text) or start with the 260K toy model (faster iteration)?</li>
+</ol>
+
+<div class="footer">
+  <p>Lesson 6 of ? · References: <a href="../GLOSSARY.md">Glossary</a> · Prerequisites: <a href="../lessons/0005-ml-and-rtos.html">ML and RTOS</a></p>
+</div>
+</body>
+</html>

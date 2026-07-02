@@ -1,23 +1,25 @@
-# BeagleBone AI (AM5729) Baremetal Boot Stub
-# Entry point for the kernel loaded by U-Boot at 0x80200000
-
-# UART base locations from the TRM
-.equ UART1.BASE,    0x4806A000
-.equ UART2.BASE,    0x4806C000
-.equ UART3.BASE,    0x49020000
-.equ UART4.BASE,    0x49042000
+# Enable FPU/NEON, set stack, jump to main()
+# Works for both BBAI and QEMU (stack address from linker)
 
 .arm
 .global _start
 
 _start:
-    # Set up the stack pointer at the end of our RAM region.
-    # RAM starts at 0x80200000, length 0x10000.
-    ldr sp, =0x80210000
+    # Enable access to CP10 (VFP) and CP11 (NEON) in CPACR
+    mrc p15, 0, r0, c1, c0, 2
+    orr r0, r0, #(0xF << 20)
+    mcr p15, 0, r0, c1, c0, 2
+    isb
 
-    # Call the C kernel entry point
+    # Set FPEXC enable bit to turn on the FPU/NEON unit
+    mov r0, #0x40000000
+    vmsr fpexc, r0
+    isb
+
+    # Stack pointer from linker script (_stack_top = ORIGIN + LENGTH)
+    ldr sp, =_stack_top
+
     bl main
 
-    # If main returns, hang forever
 _hang:
     b _hang

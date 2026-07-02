@@ -1,25 +1,26 @@
-# Mission: TI Processor SDK for Baremetal OS Development on BeagleBone AI
+# Mission: Preemptive RTOS on BeagleBone AI (Cortex-A15)
 
 ## Why
 
-I'm building a baremetal OS (JX) for the BeagleBone AI (AM5729). To do that effectively, I need to understand what TI officially provides — tools, documentation, bootloader sources, low-level drivers — so I can leverage the right parts instead of reinventing the wheel or working against the ecosystem.
+I'm building a preemptive RTOS (JX) for the BeagleBone AI's Cortex-A15. The RTOS is the core of a larger baremetal OS project. I need to understand how ARMv7-A exception handling, context switching, and memory protection work at the register level so I can write the scheduler, PendSV handler, and domain-based isolation from scratch.
 
 ## Success looks like
 
-- Able to navigate the TI Processor SDK (Linux + RTOS) to find the right tool, doc, or example for a given task
-- Understand the boot chain from TI ROM through SPL/MLO to U-Boot to custom kernel
-- Know where to find AM5729 register definitions, device trees, and board init code without guessing
-- Can build a minimal MLO + U-Boot from source if the pre-built ones don't work
-- Know the difference between TI-supported and BBAI-board-specific code — what's reusable vs. what must be custom
+- Can explain how SysTick, PendSV, and SVC interact during a preemptive context switch
+- Can write a PendSV handler that saves/restores r4–r11, SP, LR on ARMv7-A
+- Can set up the MMU with domain-based protection: kernel domain 0 (MANAGER), task domains (CLIENT)
+- Can build and run a minimal RTOS with two preempted tasks on real hardware
+- Understand the DACR mechanism well enough to explain why the SVC table needs domain 0
 
 ## Constraints
 
-- Developing on macOS (cross-compiling for ARM)
-- No CCS/Windows dependency if possible — prefer open toolchain (clang/GCC, OpenOCD)
-- Learning is driven by the real need to make the JX baremetal OS boot on hardware
+- ARM32 mode (ARMv7-A), no hypervisor, no TrustZone
+- Developing on macOS, cross-compiling with clang
+- No external RTOS code — writing it from scratch for learning
 
 ## Out of scope
 
-- Linux kernel internals or driver development (the goal is baremetal, not Linux)
-- Yocto/Buildroot full distro building
-- DSP or IPU (M4) programming — Cortex-A15 only for now
+- SMP scheduling (using only one A15 core for now)
+- DSP or M4 IPU programming
+- Linux kernel internals
+- Filesystem, networking, or any I/O beyond UART + GPIO

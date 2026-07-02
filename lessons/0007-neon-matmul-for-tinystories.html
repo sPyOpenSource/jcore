@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 7: NEON MatMul for TinyStories on BBAI</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../MISSION.md">← Back to Mission</a></p>
+
+<h1>NEON MatMul for TinyStories on BBAI</h1>
+<p class="subtitle">Making the 15M-parameter transformer actually fast on Cortex-A15</p>
+
+<h2>The Bottleneck</h2>
+
+<p>A TinyStories-15M transformer has 6 layers, each with:</p>
+<ul>
+  <li><strong>Attention:</strong> 4 matrix-vector multiplies (Q, K, V, output projection)</li>
+  <li><strong>FFN:</strong> 2 matrix-vector multiplies (gate + up, then down)</li>
+  <li><strong>Embedding:</strong> 1 matrix-vector multiply at the end (logits)</li>
+</ul>
+
+<p>Every token does roughly <strong>43 matrix-vector multiplies</strong> of size <code>[d_model × d_model]</code> where d_model = 288 for TinyStories-15M. In scalar FP32, that's <code>43 × 288 × 288 = 3.6M FMAs</code> per token — or 43M FMAs for a 12-token generation.</p>
+
+<div class="callout callout-info">
+<strong>Scalar performance:</strong> The A15 does one FP32 multiply-add per cycle per core at 1.5 GHz = 1.5 GFLOPS theoretical peak. NEON doubles that to 4 FMA/cycle = 6 GFLOPS (4-wide SIMD × 2 for FMA). In practice, you get ~70–80% of peak with good code = ~4.5 GFLOPS. That turns 43M FMAs into ~10 ms per token — 100 tok/s.
+</div>
+
+<h2>NEON on Cortex-A15</h2>
+
+<p>The A15 has a NEON unit with:</p>
+<ul>
+  <li>32× 128-bit registers (q0–q15 or d0–d31, depending on how you count)</li>
+  <li>Each register holds 4× float32</li>
+  <li><code>VMLA.F32</code> — fused multiply-accumulate on 4 floats at once</li>
+  <li>1 FMA/cycle throughput, fully pipelined</li>
+</ul>
+
+<p>You access NEON via <strong>intrinsics</strong> — C function calls that compile directly to NEON instructions. No inline assembly needed for basic matmul.</p>
+
+<pre>
+// NEON intrinsics header — available in clang's arm-none-eabi target
+#include &lt;arm_neon.h&gt;
+
+// Types:
+float32x4_t   — 4 floats in one register
+float32x2_t   — 2 floats (half register)
+
+// Key operations:
+vld1q_f32(ptr)     — load 4 floats from memory
+vst1q_f32(ptr, v)  — store 4 floats
+vmlaq_f32(acc, a, b)  — acc += a * b (4-wide FMA)
+vdupq_n_f32(x)     — broadcast scalar to all 4 lanes
+vaddq_f32(a, b)    — 4-wide add
+</pre>
+
+<h2>NEON Matrix × Vector</h2>
+
+<p>This is the hot loop — nearly all compute time is here. For a weight matrix <code>W[M × K]</code> and input vector <code>x[K]</code>, compute <code>y[i] = sum_j W[i][j] * x[j]</code>.</p>
+
+<h3>Scalar version (baseline):</h3>
+<pre>
+void matmul_vec(float *y, float *W, float *x, int M, int K) {
+    for (int i = 0; i &lt; M; i++) {
+        float sum = 0.0f;
+        for (int j = 0; j &lt; K; j++)
+            sum += W[i * K + j] * x[j];
+        y[i] = sum;
+    }
+}
+</pre>
+
+<h3>NEON version (4× unrolled):</h3>
+<pre>
+#include &lt;arm_neon.h&gt;
+
+void matmul_vec_neon(float *y, float *W, float *x, int M, int K) {
+    for (int i = 0; i &lt; M; i++) {
+        float32x4_t acc = vdupq_n_f32(0.0f);
+        float *w_row = W + i * K;
+        int j = 0;
+        // Process 4 floats per iteration
+        for (; j + 4 &lt;= K; j += 4) {
+            float32x4_t w = vld1q_f32(w_row + j);
+            float32x4_t xv = vld1q_f32(x + j);
+            acc = vmlaq_f32(acc, w, xv);
+        }
+        // Reduce 4-lane accumulator to scalar
+        float32x2_t sum = vpadd_f32(vget_low_f32(acc), vget_high_f32(acc));
+        float result = vget_lane_f32(sum, 0) + vget_lane_f32(sum, 1);
+        // Handle remaining elements (K not divisible by 4)
+        for (; j &lt; K; j++)
+            result += w_row[j] * x[j];
+        y[i] = result;
+    }
+}
+</pre>
+
+<h3>Performance comparison (theoretical, d_model=288):</h3>
+<pre>
+Scalar:   288 MACs × 1 MAC/cycle = 288 cycles/row × 288 rows = 83K cycles/token-layer
+NEON:     288/4 = 72 MACs × 1 MAC/cycle = 72 cycles/row × 288 rows = 21K cycles/token-layer
+Speedup:  ~4× for the matmul, ~3× overall (matmul is ~80% of total compute)
+</pre>
+
+<h2>Going Further: 2× More with Prefetching</h2>
+
+<p>The A15 has a 32 KB L1 cache. A weight row is <code>288 × 4 = 1152 bytes</code>. The entire layer's weights don't fit in L1 (6 layers × 4 matrices × 1152 bytes = too much), but <strong>one matrix</strong> does fit. The bottleneck is loading weights from L2 (1 MB shared).</p>
+
+<p>You can prefetch the next row while computing the current one:</p>
+
+<pre>
+void matmul_vec_neon_prefetch(float *y, float *W, float *x, int M, int K) {
+    for (int i = 0; i &lt; M; i++) {
+        float32x4_t acc = vdupq_n_f32(0.0f);
+        float *w_row = W + i * K;
+        // Prefetch next row
+        if (i + 1 &lt; M)
+            __builtin_prefetch(W + (i + 1) * K, 0, 3);
+        int j = 0;
+        for (; j + 4 &lt;= K; j += 4)
+            acc = vmlaq_f32(acc, vld1q_f32(w_row + j), vld1q_f32(x + j));
+        // ... remainder handling (same as above)
+    }
+}
+</pre>
+
+<h2>Bringing It Into Your RTOS</h2>
+
+<p>Replace llama2.c's scalar <code>matmul()</code> with the NEON version. The calling convention is the same — just swap the function pointer or rename.</p>
+
+<pre>
+// In llama2.c, find this function and replace it:
+// static void matmul(float *xout, float *x, float *w, int n, int d) {
+//     for (int i = 0; i &lt; d; i++) { ... scalar ... }
+// }
+
+// Your replacement:
+static void matmul(float *xout, float *x, float *w, int n, int d) {
+    matmul_vec_neon(xout, w, x, d, n);
+}
+</pre>
+
+<div class="callout callout-tip">
+<strong>Compiler flags:</strong> clang needs <code>-mfpu=neon -mfloat-abi=hard</code> to emit NEON instructions. Add these to your <code>CFLAGS</code> in the Makefile. Without them, <code>arm_neon.h</code> intrinsics will still compile but generate calls to soft-float library functions instead of NEON — useless.
+</div>
+
+<h2>Expected End-to-End Performance</h2>
+
+<table>
+  <tr><th>Configuration</th><th>tok/s (generation)</th><th>Time for 100 tokens</th></tr>
+  <tr><td>Scalar C, no NEON</td><td>~12</td><td>~8.3 s</td></tr>
+  <tr><td>NEON matmul only</td><td>~35</td><td>~2.9 s</td></tr>
+  <tr><td>NEON + prefetch</td><td>~45</td><td>~2.2 s</td></tr>
+  <tr><td>NEON + prefetch + INT8 quant</td><td>~90</td><td>~1.1 s</td></tr>
+</table>
+
+<p><strong>INT8 quantization</strong> (weights only) is the next big leap: 4× less memory bandwidth, 2× throughput on NEON's <code>VMLAL.S8</code>. But that's a future lesson — start with FP32 NEON.</p>
+
+<h2>What to Do Right Now</h2>
+
+<ol>
+  <li><strong>Test NEON on your host:</strong> You can compile NEON intrinsics on your Mac (ARM64 Mac) with <code>clang -O2 -march=armv8-a+simd</code> to verify the code works.</li>
+  <li><strong>Cross-compile for BBAI:</strong> Add <code>-mfpu=neon -mfloat-abi=hard</code> to your Makefile's <code>CFLAGS</code>.</li>
+  <li><strong>Benchmark the matmul:</strong> Write a tiny test that times one matrix-vector multiply (288×288) with and without NEON, print results to UART.</li>
+  <li><strong>Link TinyStories-15M weights:</strong> Download <a href="https://huggingface.co/karpathy/tinyllamas/stories15M.bin">stories15M.bin</a> (60 MB), convert to a C array, and link it in.</li>
+</ol>
+
+<p>The NEON intrinsic version alone is ~3× faster than scalar. That's the difference between "cute demo" and "actually usable."</p>
+
+<hr>
+
+<h2>Reference: Full NEON MatMul for llama2.c</h2>
+
+<p>Replace llama2.c's <code>matmul()</code> with this:</p>
+
+<pre>
+#include &lt;arm_neon.h&gt;
+
+static void matmul(float *xout, float *x, float *w, int n, int d) {
+    // xout[d] = w[d][n] @ x[n]   (weight matrix × input vector)
+    for (int i = 0; i &lt; d; i++) {
+        float32x4_t acc = vdupq_n_f32(0.0f);
+        float *w_row = w + i * n;
+        int j = 0;
+        for (; j + 4 &lt;= n; j += 4)
+            acc = vmlaq_f32(acc, vld1q_f32(w_row + j), vld1q_f32(x + j));
+        float32x2_t sum = vpadd_f32(vget_low_f32(acc), vget_high_f32(acc));
+        float result = vget_lane_f32(sum, 0) + vget_lane_f32(sum, 1);
+        for (; j &lt; n; j++)
+            result += w_row[j] * x[j];
+        xout[i] = result;
+    }
+}
+</pre>
+
+<p>That's the entire NEON port. One function. ~15 lines. 3× speedup.</p>
+
+<div class="footer">
+  <p>Lesson 7 of ? · References: <a href="../GLOSSARY.md">Glossary</a> · Prerequisites: <a href="../lessons/0006-tiny-llm-on-baremetal.html">Tiny LLM on Baremetal</a></p>
+</div>
+</body>
+</html>

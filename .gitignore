@@ -4,6 +4,13 @@ build/
 *.elf
 *.bin
 
+# Generated assembly wrappers for model weights
+model_bin.S
+
+# Downloaded model weights
+models/
+model.bin
+
 # Ignore extracted packages
 usr/
 

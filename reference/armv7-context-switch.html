@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARMv7-A Context Switch Reference</title>
+<link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+<p class="back-link"><a href="../lessons/0002-armv7-rtos-context-switch.html">← Lesson 2</a></p>
+
+<h1>ARMv7-A Context Switch Reference</h1>
+<p class="subtitle">Registers, exceptions, and the PendSV pattern</p>
+
+<h2>ARMv7-A Register Set</h2>
+
+<pre>
+General-purpose:
+  r0–r3    Caller-saved (scratch)
+  r4–r11   Callee-saved (must preserve across context switch)
+  r12      Intra-procedure-call scratch (IP)
+  r13 (SP) Stack pointer (banked per mode)
+  r14 (LR) Link register (banked per mode)
+  r15 (PC) Program counter
+
+Status:
+  CPSR      Current Program Status Register
+  SPSR_&lt;mode&gt;  Saved PSR (banked per exception mode)
+</pre>
+
+<div class="callout callout-info">
+<strong>Context switch minimum save:</strong> r4–r11, SP, LR. The compiler saves r0–r3 and r12 on function entry (AAPCS). PC is implicit — you return to it by restoring LR into PC.
+</div>
+
+<h2>Exception Model</h2>
+
+<table>
+  <tr><th>Exception</th><th>Mode</th><th>Vector offset</th><th>Banked SP</th></tr>
+  <tr><td>Reset</td><td>SVC</td><td>0x00</td><td>SP_svc</td></tr>
+  <tr><td>Undefined instruction</td><td>UND</td><td>0x04</td><td>SP_und</td></tr>
+  <tr><td>SVC (system call)</td><td>SVC</td><td>0x08</td><td>SP_svc</td></tr>
+  <tr><td>Prefetch abort</td><td>ABT</td><td>0x0C</td><td>SP_abt</td></tr>
+  <tr><td>Data abort</td><td>ABT</td><td>0x10</td><td>SP_abt</td></tr>
+  <tr><td>IRQ</td><td>IRQ</td><td>0x18</td><td>SP_irq</td></tr>
+  <tr><td>FIQ</td><td>FIQ</td><td>0x1C</td><td>SP_fiq</td></tr>
+</table>
+
+<h2>The PendSV Pattern</h2>
+
+<p>PendSV (SuperVisor call Pend-ing, exception 14, vector offset 0x38) is the standard ARM mechanism for <strong>deferred context switching</strong>.</p>
+
+<h3>Why it exists</h3>
+
+<p>If you context-switch inside the SysTick handler directly, the ISR saves the interrupted task's state <em>on the interrupt stack</em> (SP_irq or SP_svc). But IRQ handlers use banked SP — the stacked state is mixed with interrupt return addresses. PendSV lets you:</p>
+
+<ol>
+  <li>Do minimal work in SysTick (just set a flag / increment a counter)</li>
+  <li>Pend PendSV by writing bit 28 of ICSR (<code>0xE000ED04</code>)</li>
+  <li>Return from SysTick — CPU goes back to the interrupted task</li>
+  <li>PendSV fires <em>immediately after</em> if no other exceptions are pending, running in SVC mode with SP_svc</li>
+</ol>
+
+<h3>Sequence diagram</h3>
+
+<pre>
+SysTick fires
+  → Save r0–r3, r12, LR, PC, xPSR automatically (ARMv7-A pushes these on exception entry)
+  → Enter handler mode
+  → Pend PendSV (write ICSR[28] = 1)
+  → Return from exception (BX LR with EXC_RETURN)
+  → (optional: higher-priority IRQ runs here)
+  → PendSV fires in SVC mode
+  → Save r4–r11 of current task onto its stack
+  → Switch SP to next task's stack
+  → Restore r4–r11 of next task
+  → Return from exception → next task runs
+</pre>
+
+<h3>ICSR register</h3>
+
+<pre>
+ICSR (0xE000ED04):
+  Bit 28: PENDSVSET — write 1 to pend PendSV
+  Bit 27: PENDSVCLR — write 1 to unpend
+</pre>
+
+<h2>Minimal PendSV Handler</h2>
+
+<pre>
+.globl PendSV_Handler
+PendSV_Handler:
+    # Save callee-saved registers of current task
+    # (r0–r3, r12, LR, PC, xPSR already saved by hardware)
+    mrs     r0, psp              # Get PSP (process stack pointer)
+    stmdb   r0!, {r4-r11}        # Save r4–r11 onto task stack
+    ldr     r1, =current_tcb
+    str     r0, [r1]             # Save updated SP to TCB
+
+    # Switch to next task
+    bl      scheduler_next       # Returns next TCB pointer in r0
+    ldr     r1, =current_tcb
+    str     r0, [r1]             # Update current_tcb
+    ldr     r0, [r0]             # Load SP from TCB
+
+    # Restore callee-saved registers of next task
+    ldmia   r0!, {r4-r11}        # Restore r4–r11
+    msr     psp, r0              # Restore PSP
+
+    # Return to next task
+    bx      lr                   # (LR contains EXC_RETURN)
+</pre>
+
+<div class="callout callout-tip">
+<strong>PSP vs MSP:</strong> Cortex-A15 has two stack pointers: MSP (main, used in handler mode) and PSP (process, used in thread mode). Tasks run in thread mode using PSP. The kernel runs in handler mode using MSP. This separation is why PendSV can save the task's SP without clobbering the kernel's stack.
+</div>
+
+<h2>Key Registers for Debug</h2>
+
+<pre>
+System Control Block (SCB):
+  0xE000ED00  CPUID        Processor ID
+  0xE000ED04  ICSR         Interrupt Control and State
+  0xE000ED08  VTOR         Vector Table Offset Register
+  0xE000ED0C  AIRCR        Application Interrupt and Reset Control
+  0xE000ED20  SHPR1        System Handler Priority 1 (includes PendSV prio)
+  0xE000ED23  SHPR3        System Handler Priority 3 (SysTick priority)
+  0xE000ED24  SHCSR        System Handler Control and State
+
+SysTick:
+  0xE000E010  SYST_CSR     Control and Status
+  0xE000E014  SYST_RVR     Reload Value
+  0xE000E018  SYST_CVR     Current Value
+  0xE000E01C  SYST_CALIB   Calibration
+
+MPU/MMU:
+  0xE000ED90  MPU_TYPE     MPU type register
+  0xE000ED94  MPU_CTRL     MPU control
+  0xE000ED98  MPU_RNR      Region number
+  0xE000ED9C  MPU_RBAR     Region base address
+  0xE000EDA0  MPU_RASR     Region attribute and size
+
+DACR (CP15):
+  c6, 0, c3, 0  — Domain Access Control Register
+</pre>
+
+<h2>Further Reading</h2>
+<ul>
+  <li>ARM Architecture Reference Manual ARMv7-A (ARM DDI 0406C), sections B1.8–B1.9 (exception model)</li>
+  <li>ARM DDI 0406C, section B3.8 (PendSV)</li>
+  <li>ARM DDI 0406C, section B4.2 (DACR and domain access control)</li>
+</ul>
+
+</body>
+</html>
