@@ -2,6 +2,7 @@
 #define MINIC_H
 
 #include "types.h"
+#include <stdarg.h>
 
 struct _fpreg {
 	unsigned short significand[4];
@@ -41,21 +42,6 @@ struct sigcontext {
 
 
 typedef int bool_t;
-
-
-#define __va_size(type) ((sizeof(type)+3) & ~0x3)
-
-typedef char *va_list;
-
-#define	va_start(pvar, lastarg)		   	((pvar) = (char*)(void*)&(lastarg) + __va_size(lastarg))
-#define	va_end(pvar)
-#define	va_arg(pvar,type)			\
-	((pvar) += __va_size(type),		\
-	 *((type *)((pvar) - __va_size(type))))
-
-#ifdef LOG_PRINTF
-extern int printf2mem;
-#endif
 
 // Prototypes
 struct multiboot_module *multiboot_get_module();

@@ -31,8 +31,8 @@ JCORE_ARM_OBJS = \
 
 # jcore library objects
 JCORE_LIB_OBJS = \
-	thread-jcore.o \
-	runq-jcore.o \
+	minirun-jcore.o \
+	sched-jcore.o \
 	minic-jcore.o
 
 $(JCORE_ARM_OBJS) $(JCORE_LIB_OBJS): Makefile
@@ -58,16 +58,13 @@ exception-jcore.o: src/jcore/exception.c
 main-jcore.o: src/jcore/main.c
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
-thread-jcore.o: jcore/thread.c
+minirun-jcore.o: src/jcore/minirun.c
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
-runq-jcore.o: jcore/runq.c
+sched-jcore.o: src/jcore/sched.c
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
 minic-jcore.o: jcore/minic.c
-	$(CC) $(JCORE_CFLAGS) -c $< -o $@
-
-misc-jcore.o: jcore/misc.c
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
 JCORE_OBJS = $(JCORE_ARM_OBJS) $(JCORE_LIB_OBJS)
