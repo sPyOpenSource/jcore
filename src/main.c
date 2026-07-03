@@ -1,4 +1,5 @@
 #include "all.h"
+#include "drivers/prcm.h"
 
 struct multiboot_info boot_info;
 
@@ -50,6 +51,9 @@ void start_domain_zero(void *dummy)
 void main(void)
 {
     ThreadDesc *initial;
+
+    prcm_enable_mmc2();
+    dprintf("PRCM: MMC2 clock enabled\n");
 
     init_serial(0);
 

@@ -24,7 +24,8 @@ JCORE_ARM_OBJS = \
 	gic-jcore.o \
 	timer-jcore.o \
 	exception-jcore.o \
-	main-jcore.o
+	main-jcore.o \
+	prcm-jcore.o
 
 JCORE_LIB_OBJS = \
 	minirun-jcore.o \
@@ -55,6 +56,9 @@ exception-jcore.o: src/exception.c
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
 main-jcore.o: src/main.c
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
+prcm-jcore.o: src/drivers/prcm.c src/drivers/prcm.h
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
 minirun-jcore.o: src/minirun.c
