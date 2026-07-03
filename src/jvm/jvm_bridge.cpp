@@ -5,6 +5,7 @@
 #include <gdt.h>
 #include <flint_system_api.h>
 #include <jvm/embedded_classes.h>
+#include <vfs/vfs.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -33,7 +34,7 @@ namespace FlintAPI {
     namespace System {
         void reset(void) {}
         void *malloc(uint32_t size) { return myos::jvm::JVMBridge::AllocateMemory(size); }
-        void *realloc(void *p, uint32_t size) { return myos::jvm::JVMBridge::AllocateMemory(size); } // Simplified
+        void *realloc(void *p, uint32_t size) { return myos::jvm::JVMBridge::AllocateMemory(size); }
         void free(void *p) { myos::jvm::JVMBridge::FreeMemory(p); }
         void consoleWrite(uint8_t *utf8, uint32_t length) {
             char buf[1024];
@@ -66,82 +67,137 @@ namespace FlintAPI {
         ThreadHandle getCurrentThread(void) { return nullptr; }
         void terminate(ThreadHandle handle) {}
         void sleep(uint32_t ms) {}
-        void yield(void) {
-            // In a real kernel, this would trigger a reschedule.
-            // For the POC, we can leave it as a no-op or call a reschedule if available.
+        void yield(void) {}
+    }
+}
+
+// Embedded class file fallback (for when VFS is unavailable or file not found on disk)
+static const unsigned char *embeddedClassData = nullptr;
+static unsigned int embeddedClassSize = 0;
+static unsigned int embeddedClassPos = 0;
+static const FlintAPI::IO::FileHandle EMBEDDED_HANDLE = (FlintAPI::IO::FileHandle)1;
+
+static bool isEmbeddedHandle(FlintAPI::IO::FileHandle handle) {
+    return handle == EMBEDDED_HANDLE;
+}
+
+static const unsigned char *findEmbeddedClass(const char *name, unsigned int *size) {
+    for (int i = 0; embeddedClasses[i].name != nullptr; i++) {
+        if (strcmp(embeddedClasses[i].name, name) == 0) {
+            *size = embeddedClasses[i].size;
+            return embeddedClasses[i].data;
         }
     }
+    return nullptr;
 }
 
 namespace FlintAPI {
     namespace IO {
-        struct MemoryFile {
-            const uint8_t *data;
-            uint32_t size;
-            uint32_t pos;
-            bool isMemoryFile;
-        };
-
         FileResult finfo(const char *fileName, FileInfo *fileInfo) {
-            if (strcmp(fileName, "HelloWorld") == 0) {
-                if (fileInfo) {
-                    fileInfo->size = HELLO_WORLD_SIZE;
+            // Try VFS first
+            if (myos::vfs::VFS::IsInitialized()) {
+                myos::vfs::VFS::FileHandle handle = myos::vfs::VFS::Open(fileName, 0x01);
+                if (handle) {
+                    if (fileInfo) {
+                        fileInfo->size = myos::vfs::VFS::Size(handle);
+                        fileInfo->attribute = 0;
+                        fileInfo->directory = false;
+                        size_t nameLen = strlen(fileName);
+                        if (nameLen > sizeof(fileInfo->name) - 1)
+                            nameLen = sizeof(fileInfo->name) - 1;
+                        memcpy(fileInfo->name, fileName, nameLen);
+                        fileInfo->name[nameLen] = '\0';
+                    }
+                    myos::vfs::VFS::Close(handle);
+                    return FILE_RESULT_OK;
                 }
-                return FILE_RESULT_OK;
             }
-            return FILE_RESULT_NO_PATH;
-        }
 
-        FileHandle fopen(const char *fileName, FileMode mode) {
-            if (strcmp(fileName, "HelloWorld") == 0) {
-                MemoryFile *mf = (MemoryFile *)myos::jvm::JVMBridge::AllocateMemory(sizeof(MemoryFile));
-                mf->data = HELLO_WORLD_CLASS;
-                mf->size = HELLO_WORLD_SIZE;
-                mf->pos = 0;
-                mf->isMemoryFile = true;
-                return (FileHandle)mf;
+            // Fall back to embedded class files
+            unsigned int size;
+            const unsigned char *data = findEmbeddedClass(fileName, &size);
+            if (data == nullptr) return FILE_RESULT_NO_PATH;
+            if (fileInfo) {
+                fileInfo->attribute = 0;
+                fileInfo->size = size;
+                fileInfo->time = 0;
+                size_t nameLen = strlen(fileName);
+                if (nameLen > sizeof(fileInfo->name) - 1)
+                    nameLen = sizeof(fileInfo->name) - 1;
+                memcpy(fileInfo->name, fileName, nameLen);
+                fileInfo->name[nameLen] = '\0';
             }
-            return NULL;
-        }
-
-        FileResult fread(FileHandle handle, void *buff, uint32_t btw, uint32_t *bw) {
-            MemoryFile *mf = (MemoryFile *)handle;
-            if (!mf || !mf->isMemoryFile) return FILE_RESULT_ERR;
-            
-            uint32_t available = mf->size - mf->pos;
-            uint32_t toRead = btw < available ? btw : available;
-            memcpy(buff, mf->data + mf->pos, toRead);
-            mf->pos += toRead;
-            if (bw) *bw = toRead;
-            
-            return toRead == btw ? FILE_RESULT_OK : FILE_RESULT_ERR;
-        }
-
-        uint32_t fsize(FileHandle handle) {
-            MemoryFile *mf = (MemoryFile *)handle;
-            return mf ? mf->size : 0;
-        }
-
-        uint32_t ftell(FileHandle handle) {
-            MemoryFile *mf = (MemoryFile *)handle;
-            return mf ? mf->pos : 0;
-        }
-
-        FileResult fseek(FileHandle handle, uint32_t offset) {
-            MemoryFile *mf = (MemoryFile *)handle;
-            if (!mf || !mf->isMemoryFile) return FILE_RESULT_ERR;
-            if (offset > mf->size) return FILE_RESULT_ERR;
-            mf->pos = offset;
             return FILE_RESULT_OK;
         }
 
-        FileResult fclose(FileHandle handle) {
-            MemoryFile *mf = (MemoryFile *)handle;
-            if (mf && mf->isMemoryFile) {
-                myos::jvm::JVMBridge::FreeMemory(mf);
+        FileHandle fopen(const char *fileName, FileMode mode) {
+            // Try VFS first
+            if (myos::vfs::VFS::IsInitialized()) {
+                uint8_t fatMode = 0x01;
+                if (mode & FILE_MODE_WRITE) fatMode = 0x02;
+                if (mode & FILE_MODE_CREATE_NEW) fatMode |= 0x10;
+                FileHandle vfsHandle = myos::vfs::VFS::Open(fileName, fatMode);
+                if (vfsHandle) return vfsHandle;
+            }
+
+            // Fall back to embedded class files
+            unsigned int size;
+            const unsigned char *data = findEmbeddedClass(fileName, &size);
+            if (data == nullptr) return nullptr;
+            embeddedClassData = data;
+            embeddedClassSize = size;
+            embeddedClassPos = 0;
+            return EMBEDDED_HANDLE;
+        }
+
+        FileResult fread(FileHandle handle, void *buff, uint32_t btw, uint32_t *bw) {
+            if (!handle) return FILE_RESULT_ERR;
+            if (isEmbeddedHandle(handle)) {
+                if (embeddedClassData == nullptr) return FILE_RESULT_ERR;
+                uint32_t toRead = btw;
+                if (embeddedClassPos + toRead > embeddedClassSize)
+                    toRead = embeddedClassSize - embeddedClassPos;
+                memcpy(buff, embeddedClassData + embeddedClassPos, toRead);
+                embeddedClassPos += toRead;
+                if (bw) *bw = toRead;
                 return FILE_RESULT_OK;
             }
-            return FILE_RESULT_ERR;
+            uint32_t read = myos::vfs::VFS::Read((myos::vfs::VFS::FileHandle)handle, buff, btw);
+            if (bw) *bw = read;
+            return read == btw ? FILE_RESULT_OK : FILE_RESULT_ERR;
+        }
+
+        uint32_t fsize(FileHandle handle) {
+            if (!handle) return 0;
+            if (isEmbeddedHandle(handle)) return embeddedClassSize;
+            return myos::vfs::VFS::Size((myos::vfs::VFS::FileHandle)handle);
+        }
+
+        uint32_t ftell(FileHandle handle) {
+            if (!handle) return 0;
+            if (isEmbeddedHandle(handle)) return embeddedClassPos;
+            return myos::vfs::VFS::Tell((myos::vfs::VFS::FileHandle)handle);
+        }
+
+        FileResult fseek(FileHandle handle, uint32_t offset) {
+            if (!handle) return FILE_RESULT_ERR;
+            if (isEmbeddedHandle(handle)) {
+                embeddedClassPos = offset;
+                return FILE_RESULT_OK;
+            }
+            return myos::vfs::VFS::Seek((myos::vfs::VFS::FileHandle)handle, offset) ? FILE_RESULT_OK : FILE_RESULT_ERR;
+        }
+
+        FileResult fclose(FileHandle handle) {
+            if (!handle) return FILE_RESULT_ERR;
+            if (isEmbeddedHandle(handle)) {
+                embeddedClassData = nullptr;
+                embeddedClassSize = 0;
+                embeddedClassPos = 0;
+                return FILE_RESULT_OK;
+            }
+            myos::vfs::VFS::Close((myos::vfs::VFS::FileHandle)handle);
+            return FILE_RESULT_OK;
         }
 
         FileResult fremove(const char *fileName) { return FILE_RESULT_ERR; }

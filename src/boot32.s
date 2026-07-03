@@ -1,5 +1,5 @@
 .set MAGIC, 0xe85250d6
-.set ARCH, 0
+.set ARCH, 1
 .set HEADER_LEN, multiboot2_header_end - multiboot2_header_start
 .set CHECKSUM, 0x100000000 - (MAGIC + ARCH + HEADER_LEN)
 

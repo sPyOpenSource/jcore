@@ -15,6 +15,7 @@
 #include <filesystem/fat.h>
 #include <gui/desktop.h>
 #include <gui/window.h>
+#include <vfs/vfs.h>
 #include <multitasking.h>
 #include "flint.h"
 
@@ -286,11 +287,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     taskManager.AddTask(&task1);
     taskManager.AddTask(&task2);
     */
-
-    myos::jvm::JVMBridge::Initialize();
-    Flint::runToMain("HelloWorld");
-
-    for(;;){}
+    
     InterruptManager interrupts(0x20, &gdt, &taskManager);
     SyscallHandler syscalls(&interrupts, 0x80);
 
@@ -350,31 +347,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     ata0s.Identify();
 
     //MSDOSPartitionTable::ReadPartitions(&ata0m);
-    SdVolume volume;
-    SdFile root;
-    char test = volume.init(&ata0s, 1);
-    //printfHex(test);
-    test = root.openRoot(volume);
-    //printfHex(test);
-    //root.ls(LS_DATE, 0);
-    uint8_t buffer[512 * 9];
-    /*SdFile info1;
-    test = info1.open(&root, "INFO1.TXT", 0x01);
-    info1.read(buffer, 512);
-    printf((char*)buffer);
-    //printfHex(test);
-    SdFile info2;
-    test = info2.open(&root, "INFO2.TXT", 0x01);
-    //printfHex(test);
-    info2.read(buffer, 512);
-    printf((char*)buffer);*/
-    SdFile info3;
-    test = info3.open(&root, "INFO3.TXT", 0x01);
-    //printfHex(test);
-    //for (int i = 0; i < 9; i++){
-      info3.read(buffer, 512 * 9);
-      printf((char*)buffer);
-    //}
+    myos::vfs::VFS::Initialize(&ata0s, 1);
     //ata0m.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
     //ata0m.Flush();
     //ata0m.Read28(0, 25);
@@ -453,6 +426,9 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     //UserDatagramProtocolSocket* udpsocket = udp.Listen(1234);
     //udp.Bind(udpsocket, &udphandler);
 
+
+    myos::jvm::JVMBridge::Initialize();
+    Flint::runToMain("com/rpi/HelloRPi");
 
     while(1)
     {

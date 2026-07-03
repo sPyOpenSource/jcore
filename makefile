@@ -4,10 +4,10 @@
 
 CC = clang
 LD := $(shell command -v /opt/homebrew/bin/ld.lld 2>/dev/null || command -v ld.lld 2>/dev/null || echo "ld.lld")
-GRUB_MKRESCUE := $(shell command -v i686-elf-grub-mkrescue 2>/dev/null || command -v grub-mkrescue 2>/dev/null || echo "grub-mkrescue")
+GRUB_MKRESCUE := $(shell command -v x86_64-elf-grub-mkrescue 2>/dev/null || command -v grub-mkrescue 2>/dev/null || echo "grub-mkrescue")
 
 TARGET = --target=x86_64-pc-none-elf
-GCCPARAMS = $(TARGET) -ffreestanding -Isrc -IFlintJVM/Inc -IFlintJVM/Native/Inc -Isrc/includes -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
+GCCPARAMS = $(TARGET) -ffreestanding -Isrc -Isrc/jvm -IFlintJVM/Inc -IFlintJVM/Native/Inc -Isrc/includes -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
 ASPARAMS = $(TARGET)
 LDPARAMS = -melf_x86_64
 
@@ -82,7 +82,8 @@ objects = obj/boot32.o \
           obj/flint_native_string.o \
           obj/flint_native_system.o \
           obj/flint_native_thread.o \
-          obj/jvm/jvm_bridge.o
+           obj/jvm/jvm_bridge.o \
+           obj/vfs/vfs.o
 
 run: mykernel.iso
 	@if command -v VirtualBox >/dev/null 2>&1 && VirtualBox --version >/dev/null 2>&1; then \
