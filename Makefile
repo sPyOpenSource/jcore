@@ -6,7 +6,7 @@ LDFLAGS = -nostartfiles -nostdlib -fuse-ld=lld
 
 JCORE_WARN = -Wall -Wno-deprecated-non-prototype -Wno-visibility -Wno-unused-variable -Wno-implicit-function-declaration -Wno-int-conversion -Wno-unused-function -Wno-shift-count-overflow
 JCORE_CFLAGS = $(JCORE_WARN) -O2 -nostdlib -ffreestanding -marm -mabi=aapcs -mcpu=cortex-a15 \
-               -DQEMU -DKERNEL -DTIMER_HZ=10 -DCPU_MHZ=1000 -Isrc/jcore/includes -Isrc/includes -I.
+               -DQEMU -DKERNEL -DTIMER_HZ=10 -DCPU_MHZ=1000 -Isrc/jcore/includes -Isrc/includes -Isrc -I.
 JCORE_AFLAGS = $(AFLAGS) -DKERNEL -DTIMER_HZ=10 -DCPU_MHZ=1000 -Isrc/jcore/includes -I. -DASSEMBLER
 
 MODEL_DIR = models
@@ -25,7 +25,10 @@ JCORE_ARM_OBJS = \
 	timer-jcore.o \
 	exception-jcore.o \
 	main-jcore.o \
-	prcm-jcore.o
+	prcm-jcore.o \
+	pinmux-jcore.o \
+	mmc2-jcore.o \
+	ram_blk-jcore.o
 
 JCORE_LIB_OBJS = \
 	minirun-jcore.o \
@@ -33,7 +36,10 @@ JCORE_LIB_OBJS = \
 	minic-jcore.o \
 	llama2-jcore.o \
 	llm-jcore.o \
-	aeabi-jcore.o
+	aeabi-jcore.o \
+	fat32-jcore.o \
+	vfs-jcore.o \
+	fat32_vfs-jcore.o
 
 $(JCORE_ARM_OBJS) $(JCORE_LIB_OBJS): Makefile
 
@@ -61,6 +67,15 @@ main-jcore.o: src/main.c
 prcm-jcore.o: src/drivers/prcm.c src/drivers/prcm.h
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
+pinmux-jcore.o: src/drivers/pinmux.c src/drivers/pinmux.h
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
+mmc2-jcore.o: src/drivers/mmc2.c src/drivers/mmc2.h
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
+ram_blk-jcore.o: src/drivers/ram_blk.c src/drivers/ram_blk.h
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
 minirun-jcore.o: src/minirun.c
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
@@ -79,6 +94,15 @@ llm-jcore.o: src/llm.c
 aeabi-jcore.o: src/aeabi.c
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
+fat32-jcore.o: src/fs/fat32.c src/fs/fat32.h
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
+vfs-jcore.o: src/fs/vfs.c src/fs/vfs.h
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
+fat32_vfs-jcore.o: src/fs/fat32_vfs.c src/fs/fat32.h src/fs/vfs.h
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
 model_bin-jcore.o: model_bin.S
 	$(CC) -c $(JCORE_AFLAGS) $< -o $@
 
@@ -90,8 +114,12 @@ kernel-jcore.elf: $(JCORE_OBJS) linker-jcore.ld
 kernel-jcore.bin: kernel-jcore.elf
 	$(ARMGNU_OBJCOPY) -O binary $< $@
 
-run: kernel-jcore.elf
-	qemu-system-arm -M virt -cpu cortex-a15 -m 128M -nographic -kernel $<
+FAT32_IMG = models/fat32-test.img
+
+run: kernel-jcore.elf $(FAT32_IMG)
+	qemu-system-arm -M virt -cpu cortex-a15 -m 128M -nographic \
+		-device loader,file=$(FAT32_IMG),addr=0x45000000,force-raw=on \
+		-kernel $<
 
 # === Model embedding ===
 

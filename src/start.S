@@ -40,6 +40,13 @@ reset_handler:
     vmsr fpexc, r0
     isb
 
+    @ Enable unaligned memory access (SCTLR.U=1, SCTLR.A=0)
+    mrc p15, 0, r0, c1, c0, 0
+    bic r0, r0, #(1 << 1)     @ clear A (alignment check)
+    orr r0, r0, #(1 << 22)    @ set U (unaligned access)
+    mcr p15, 0, r0, c1, c0, 0
+    isb
+
     @ Set SVC mode stack
     ldr sp, =stack_top_svc
 

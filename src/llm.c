@@ -73,7 +73,5 @@ void llm(void) {
         *clear_reg = LED_PIN;
         for (volatile unsigned int i = 0; i < 500000; i++);
     }
-#else
-    while (1);
 #endif
 }
