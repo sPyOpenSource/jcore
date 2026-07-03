@@ -33,7 +33,10 @@ JCORE_ARM_OBJS = \
 JCORE_LIB_OBJS = \
 	minirun-jcore.o \
 	sched-jcore.o \
-	minic-jcore.o
+	minic-jcore.o \
+	llama2-jcore.o \
+	llm-jcore.o \
+	aeabi-jcore.o
 
 $(JCORE_ARM_OBJS) $(JCORE_LIB_OBJS): Makefile
 

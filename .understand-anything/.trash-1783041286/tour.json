@@ -1,0 +1,69 @@
+{
+  "project": "jcore RTOS on ARM",
+  "description": "A preemptive RTOS with NEON-accelerated llama2 inference targeting the BeagleBone AI Cortex-A15.",
+  "tour": [
+    {
+      "step": 1,
+      "title": "System Bootstrapping",
+      "description": "The journey begins at start.S, where the CPU is initialized, the stack is set up, and the system jumps into main.c. main.c orchestrates the rest of the kernel initialization.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/start.S",
+        "/Users/xuyi/Source/OS/UEFI/src/main.c"
+      ],
+      "layer": "layer:initialization"
+    },
+    {
+      "step": 2,
+      "title": "Hardware Foundation",
+      "description": "Explore how jcore interacts with the ARMv7-A hardware. gic.c manages the Generic Interrupt Controller, timer.c handles the system timer for preemption, and exception.c provides the entry points for hardware exceptions.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/gic.c",
+        "/Users/xuyi/Source/OS/UEFI/src/timer.c",
+        "/Users/xuyi/Source/OS/UEFI/src/exception.c"
+      ],
+      "layer": "layer:hardware-arch"
+    },
+    {
+      "step": 3,
+      "title": "The Minimal Runtime",
+      "description": "Since this is a bare-metal RTOS, it needs a minimal C runtime. minirun.c provides basic memory and runtime support, while aeabi.c implements ARM EABI helpers required by the compiler for certain operations.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/minirun.c",
+        "/Users/xuyi/Source/OS/UEFI/src/aeabi.c"
+      ],
+      "layer": "layer:runtime-support"
+    },
+    {
+      "step": 4,
+      "title": "Preemptive Scheduling and Context Switching",
+      "description": "The heart of the RTOS. sched.c implements a round-robin scheduler. context.h defines the Process Control Block (PCB), and switch_asm.S performs the heavy lifting of saving and restoring CPU registers during a context switch.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/sched.c",
+        "/Users/xuyi/Source/OS/UEFI/src/switch_asm.S",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/context.h"
+      ],
+      "layer": "layer:kernel-core"
+    },
+    {
+      "step": 5,
+      "title": "Synchronization and Safety",
+      "description": "In a preemptive environment, synchronization is key. Learn how the kernel uses spinlocks and interrupt disabling to protect shared resources.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h"
+      ],
+      "layer": "layer:kernel-core"
+    },
+    {
+      "step": 6,
+      "title": "NEON-Accelerated Inference",
+      "description": "Finally, see the high-level application. llama2.c implements the core inference engine utilizing ARM NEON instructions for acceleration, and llm.c provides the high-level logic for the LLM.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/llama2.c",
+        "/Users/xuyi/Source/OS/UEFI/src/llm.c"
+      ],
+      "layer": "layer:application-service"
+    }
+  ]
+}

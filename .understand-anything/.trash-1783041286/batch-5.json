@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    { "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o", "label": "i2c_c.o" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/src/drivers/i2c/i2c.c", "label": "i2c.c" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/gpio.h", "label": "gpio.h" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/common.h", "label": "common.h" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h", "label": "base.h" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/i2c.h", "label": "i2c.h" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h", "label": "printf.h" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h", "label": "io.h" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "label": "lcd_c.o" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/src/drivers/i2c/lcd.c", "label": "lcd.c" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/lcd.h", "label": "lcd.h" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h", "label": "timer.h" }
+  ],
+  "edges": [
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o", "target": "/Users/xuyi/Source/OS/UEFI/src/drivers/i2c/i2c.c", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/gpio.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/common.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/i2c.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "target": "/Users/xuyi/Source/OS/UEFI/src/drivers/i2c/lcd.c", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/lcd.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/common.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/i2c.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h", "label": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h", "label": "depends_on" }
+  ]
+}

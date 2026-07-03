@@ -1,0 +1,161 @@
+{
+  "nodes": [
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/fontData_c.d",
+      "label": "fontData_c.d",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/fontData_c.o",
+      "label": "fontData_c.o",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.d",
+      "label": "video_c.d",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "label": "video_c.o",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/drivers/video/fontData.c",
+      "label": "fontData.c",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "common.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/drivers/video/video.c",
+      "label": "video.c",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mailbox.h",
+      "label": "mailbox.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "printf.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "io.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "timer.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "base.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/video.h",
+      "label": "video.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mem/dma.h",
+      "label": "dma.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/dma.h",
+      "label": "dma.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mm.h",
+      "label": "mm.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "label": "mem.h",
+      "type": "file"
+    }
+  ],
+  "edges": [
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/fontData_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/drivers/video/fontData.c",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/fontData_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/drivers/video/video.c",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/mailbox.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/peripherals/video.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/mem/dma.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/peripherals/dma.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/mem/mm.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "label": "depends_on"
+    }
+  ]
+}

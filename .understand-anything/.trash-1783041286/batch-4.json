@@ -1,0 +1,191 @@
+{
+  "nodes": [
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.d",
+      "label": "emmc_c.d",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "label": "emmc_c.o",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.d",
+      "label": "emmc_clock_c.d",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "label": "emmc_clock_c.o",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/drivers/emmc/emmc.c",
+      "label": "emmc.c",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/drivers/emmc/emmc_clock.c",
+      "label": "emmc_clock.c",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "common.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/gpio.h",
+      "label": "gpio.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "base.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mailbox.h",
+      "label": "mailbox.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "timer.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "label": "mem.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "printf.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "io.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/emmc.h",
+      "label": "emmc.h",
+      "type": "FILE"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/lib/utils.h",
+      "label": "utils.h",
+      "type": "FILE"
+    }
+  ],
+  "edges": [
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.d",
+      "target": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "label": "DESCRIBES_DEPENDENCIES_OF"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.d",
+      "target": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "label": "DESCRIBES_DEPENDENCIES_OF"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/src/drivers/emmc/emmc.c",
+      "label": "COMPILED_FROM"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/gpio.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/mailbox.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/emmc.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/lib/utils.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/src/drivers/emmc/emmc_clock.c",
+      "label": "COMPILED_FROM"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/emmc.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/mailbox.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "DEPENDS_ON"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "DEPENDS_ON"
+    }
+  ]
+}

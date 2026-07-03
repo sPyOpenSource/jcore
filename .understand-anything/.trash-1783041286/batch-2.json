@@ -1,0 +1,396 @@
+{
+  "nodes": [
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.d",
+      "type": "file",
+      "label": "boot_s.d"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "type": "file",
+      "label": "boot_s.o"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.d",
+      "type": "file",
+      "label": "entry_s.d"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "type": "file",
+      "label": "entry_s.o"
+    },
+    {
+      "id": "_start",
+      "type": "symbol",
+      "label": "_start"
+    },
+    {
+      "id": "el1_entry",
+      "type": "symbol",
+      "label": "el1_entry"
+    },
+    {
+      "id": "id_pgd_addr",
+      "type": "symbol",
+      "label": "id_pgd_addr"
+    },
+    {
+      "id": "master",
+      "type": "symbol",
+      "label": "master"
+    },
+    {
+      "id": "proc_hang",
+      "type": "symbol",
+      "label": "proc_hang"
+    },
+    {
+      "id": "bss_begin",
+      "type": "symbol",
+      "label": "bss_begin"
+    },
+    {
+      "id": "bss_end",
+      "type": "symbol",
+      "label": "bss_end"
+    },
+    {
+      "id": "id_pgd",
+      "type": "symbol",
+      "label": "id_pgd"
+    },
+    {
+      "id": "kernel_main",
+      "type": "symbol",
+      "label": "kernel_main"
+    },
+    {
+      "id": "memzero",
+      "type": "symbol",
+      "label": "memzero"
+    },
+    {
+      "id": "err_hang",
+      "type": "symbol",
+      "label": "err_hang"
+    },
+    {
+      "id": "error_invalid_el0_32",
+      "type": "symbol",
+      "label": "error_invalid_el0_32"
+    },
+    {
+      "id": "error_invalid_el0_64",
+      "type": "symbol",
+      "label": "error_invalid_el0_64"
+    },
+    {
+      "id": "error_invalid_el1h",
+      "type": "symbol",
+      "label": "error_invalid_el1h"
+    },
+    {
+      "id": "error_invalid_el1t",
+      "type": "symbol",
+      "label": "error_invalid_el1t"
+    },
+    {
+      "id": "fiq_invalid_el0_32",
+      "type": "symbol",
+      "label": "fiq_invalid_el0_32"
+    },
+    {
+      "id": "fiq_invalid_el0_64",
+      "type": "symbol",
+      "label": "fiq_invalid_el0_64"
+    },
+    {
+      "id": "fiq_invalid_el1h",
+      "type": "symbol",
+      "label": "fiq_invalid_el1h"
+    },
+    {
+      "id": "fiq_invalid_el1t",
+      "type": "symbol",
+      "label": "fiq_invalid_el1t"
+    },
+    {
+      "id": "handle_el1_irq",
+      "type": "symbol",
+      "label": "handle_el1_irq"
+    },
+    {
+      "id": "irq_invalid_el0_32",
+      "type": "symbol",
+      "label": "irq_invalid_el0_32"
+    },
+    {
+      "id": "irq_invalid_el0_64",
+      "type": "symbol",
+      "label": "irq_invalid_el0_64"
+    },
+    {
+      "id": "irq_invalid_el1t",
+      "type": "symbol",
+      "label": "irq_invalid_el1t"
+    },
+    {
+      "id": "sync_invalid_el0_32",
+      "type": "symbol",
+      "label": "sync_invalid_el0_32"
+    },
+    {
+      "id": "sync_invalid_el0_64",
+      "type": "symbol",
+      "label": "sync_invalid_el0_64"
+    },
+    {
+      "id": "sync_invalid_el1h",
+      "type": "symbol",
+      "label": "sync_invalid_el1h"
+    },
+    {
+      "id": "sync_invalid_el1t",
+      "type": "symbol",
+      "label": "sync_invalid_el1t"
+    },
+    {
+      "id": "vectors",
+      "type": "symbol",
+      "label": "vectors"
+    },
+    {
+      "id": "handle_irq",
+      "type": "symbol",
+      "label": "handle_irq"
+    },
+    {
+      "id": "show_invalid_entry_message",
+      "type": "symbol",
+      "label": "show_invalid_entry_message"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/boot/boot.S",
+      "type": "file",
+      "label": "boot.S"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mm.h",
+      "type": "file",
+      "label": "mm.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/sysregs.h",
+      "type": "file",
+      "label": "sysregs.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mmu.h",
+      "type": "file",
+      "label": "mmu.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/boot/entry.S",
+      "type": "file",
+      "label": "entry.S"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/entry.h",
+      "type": "file",
+      "label": "entry.h"
+    }
+  ],
+  "edges": [
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.d",
+      "target": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "label": "describes"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/src/boot/boot.S",
+      "label": "depends_on"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/mem/mm.h",
+      "label": "depends_on"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/sysregs.h",
+      "label": "depends_on"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/mem/mmu.h",
+      "label": "depends_on"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.d",
+      "target": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "label": "describes"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/src/boot/entry.S",
+      "label": "depends_on"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "/Users/xuyi/Source/OS/UEFI/include/entry.h",
+      "label": "depends_on"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "_start",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "el1_entry",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "id_pgd_addr",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "master",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "proc_hang",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "bss_begin",
+      "label": "references"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "bss_end",
+      "label": "references"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "id_pgd",
+      "label": "references"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "kernel_main",
+      "label": "references"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "memzero",
+      "label": "references"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "err_hang",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "error_invalid_el0_32",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "error_invalid_el0_64",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "error_invalid_el1h",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "error_invalid_el1t",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "fiq_invalid_el0_32",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "fiq_invalid_el0_64",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "fiq_invalid_el1h",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "fiq_invalid_el1t",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "handle_el1_irq",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "irq_invalid_el0_32",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "irq_invalid_el0_64",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "irq_invalid_el1t",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "sync_invalid_el0_32",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "sync_invalid_el0_64",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "sync_invalid_el1h",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "sync_invalid_el1t",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "vectors",
+      "label": "defines"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "handle_irq",
+      "label": "references"
+    },
+    {
+      "source": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "show_invalid_entry_message",
+      "label": "references"
+    }
+  ]
+}

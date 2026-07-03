@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    { "id": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/src/mem/mem.c", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mem.h", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/common.h", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mm.h", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mmu.h", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/build/mem/mm_s.o", "type": "file" },
+    { "id": "/Users/xuyi/Source/OS/UEFI/src/mem/mm.S", "type": "file" }
+  ],
+  "edges": [
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "target": "/Users/xuyi/Source/OS/UEFI/src/mem/mem.c", "type": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/mem/mem.h", "type": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/common.h", "type": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h", "type": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/mem/mm.h", "type": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/mem/mmu.h", "type": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h", "type": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o", "target": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h", "type": "depends_on" },
+    { "source": "/Users/xuyi/Source/OS/UEFI/build/mem/mm_s.o", "target": "/Users/xuyi/Source/OS/UEFI/src/mem/mm.S", "type": "depends_on" }
+  ]
+}

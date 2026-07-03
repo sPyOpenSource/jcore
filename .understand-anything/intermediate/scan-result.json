@@ -1,0 +1,1321 @@
+{
+  "project_root": "/Users/xuyi/Source/OS/UEFI",
+  "languages": [
+    "Makefile",
+    "Assembly",
+    "Binary",
+    "C",
+    "Linker Script",
+    "Markdown",
+    "JSON",
+    "HTML",
+    "CSS"
+  ],
+  "frameworks": [
+    "Llama2",
+    "Bare-metal",
+    "UEFI"
+  ],
+  "files": [
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/linker-jcore.ld",
+      "language": "Linker Script"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/arm-none-eabihf.json",
+      "language": "JSON"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/RESOURCES.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/MISSION.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/Makefile",
+      "language": "Makefile"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/GLOSSARY.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/.gitignore",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/linker.ld",
+      "language": "Linker Script"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/linker-qemu.ld",
+      "language": "Linker Script"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/usr/lib/u-boot/am57xx_evm/u-boot.img",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/usr/lib/u-boot/am57xx_evm/MLO",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/learning-records/0002-rtos-domain-misconception.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/learning-records/0006-tiny-llm-feasibility.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/learning-records/0007-neon-matmul-goal.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/learning-records/0005-ml-on-rtos-scope.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/learning-records/0004-rtos-use-cases.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/learning-records/0003-rtos-vs-gpos-distinction.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/learning-records/0001-sdk-landscape.md",
+      "language": "Markdown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/models/stories260K.bin",
+      "language": "Binary"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/.understand-anything/.understandignore",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/lessons/0007-neon-matmul-for-tinystories.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/lessons/0003-rtos-vs-general-os.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/lessons/0006-tiny-llm-on-baremetal.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/lessons/0005-ml-and-rtos.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/lessons/0001-what-is-the-ti-processor-sdk.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/lessons/0004-rtos-use-cases.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/lessons/0002-armv7-rtos-context-switch.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/start-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/testfile.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel8.elf",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/serial-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/minic-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/efi_main.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/sched-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/exception-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/switch_asm-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/main-jcore-57e7e88b.o.tmp",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/exception-b8893224.o.tmp",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/minirun-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/smp.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/runq-jcore-60fa2ca9.o.tmp",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/timer-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/bootboot.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/thread-jcore-d6538647.o.tmp",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/testfile.bin",
+      "language": "Binary"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/gic-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/exception-jcore-3ebb8aea.o.tmp",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/main-jcore.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/fontData_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/fontData_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/mailbox/mailbox_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/mailbox/mailbox_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/shared/io_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/shared/io_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/spi/spi_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/spi/led_display_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/spi/spi_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/spi/led_display_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/muart/mini_uart_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/muart/mini_uart_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/gpio/gpio_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/drivers/gpio/gpio_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/dma/dma_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/dma/dma_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel/timer_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel/irq_s.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel/irq_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel/kernel_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel/irq_s.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel/timer_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel/irq_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/kernel/kernel_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/mem/mm_s.o",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/build/mem/mm_s.d",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/assets/lesson.css",
+      "language": "CSS"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/reference/armv7-context-switch.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/reference/rtos-vs-gpos.html",
+      "language": "HTML"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/llama2.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/gic.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/serial.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/timer.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/sched.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/exception.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/start.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/minirun.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/aeabi.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/main.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/switch_asm.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/llm.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/config.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/context.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/intr.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/multiboot.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/segments.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_pgc.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_VMMethod.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_DebugSupport.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_MemoryManager.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/sched_global_rr.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/thread.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/io_apic.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Memory_simple.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Scheduler.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/monitor.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Mutex.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/msg.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/thread_debug.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/interrupt.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_BootFS.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/scheduler_global.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/symfind.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_VMClass.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_InterceptorInboundInfo.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_move_common.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/math.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_LLSchedulerSupport.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/schedSWITCH.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/irq.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Memory_minimal.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/memfs.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Memory_shared.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_TimerEmulation.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Clock.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_move.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_impl.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/timer8254.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zip.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Domain.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/serialdbg.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_JAVASchedulerSupport.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/AUTHORS",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/vm_eventLog.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_CPU.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_CPUState.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Memory_org.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/bench.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/Makefile",
+      "language": "Makefile"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/sched_global.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/ekhz.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/runq.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/smp_activate.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/hwint.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/javascheduler.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_IRQ.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/sched_local.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/atomic.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_org.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/exception_handler.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/asm.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/bdt.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/sched_local_java.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/call.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/README.LZO",
+      "language": "Unknown"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_CAS.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_NetEmulation.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/crc32.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/smp_detect.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/execJAVA.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_FastMemory.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/minic_debug.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Memory_new.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_memcpy.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_DomainManager.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_thread.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_HLSchedulerSupport.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/timer.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_common.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Profiler.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Ports.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_ComponentManager.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/libcache.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/main.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_SMPCPUManager.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_pa.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_AtomicVariable.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/stack.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_new.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/atomicfn.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/cpuid.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_checkheap.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_chunked.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_compacting.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/profile.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_stack.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/malloc.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/portal.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Credential.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/thread_profile.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_net.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/settings.makefile",
+      "language": "Makefile"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/classes.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_bitmap.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/oneshot.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/smp_startup.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_FBEmulation.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/ipiint.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/switch.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/exception.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/load.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/misc.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/multiboot.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_object.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Memory.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/vmsupport.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/minilzo.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_DebugChannel.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/thread_emulation.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/crt0.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_TestDZperf.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/smp.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_VMObject.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/lapic.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/runq_inline.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/minic.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_Naming.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/lowlevel.S",
+      "language": "Assembly"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/gc_alloc.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_DiskEmulation.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/sched_local_rr.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/zero_CPUManager.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/domain.c",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/portal_proto.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/libcache.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/zero_Profiler.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/spinlock.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_thread.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_common.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/execJAVA.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/smp_detect.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_memcpy.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_stack.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/profile.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/portal.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/malloc.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_chunked.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_compacting.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/scheduler_inlined.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/atomicfn.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_new.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/config.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/cpuid.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_pa.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/types.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/lzoconf.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/misc.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/load.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/code.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/lock.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/bench.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_bitmap.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/context.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/classes.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_alloc.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/intr.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/domain.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/minic.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/smp.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/lapic.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/minilzo.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/vmsupport.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/malloc_proto.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/zero_Memory.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/multiboot.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/segments.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/msg.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/monitor.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/io_apic.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/thread.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_pgc.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/timer8254.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/zip.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_impl.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/serialdbg.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_move.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/memfs.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/sched.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/irq.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/symfind.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/interrupt.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/object.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_move_common.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/threadimpl.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/javascheduler.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/runq.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/zero.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/ekhz.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/debug_reg.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_org_int.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/crc32.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/bdt.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/lowlevel.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/exception_handler.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_org.h",
+      "language": "C"
+    },
+    {
+      "path": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/atomic.h",
+      "language": "C"
+    }
+  ]
+}

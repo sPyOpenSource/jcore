@@ -1,0 +1,521 @@
+{
+  "nodes": [
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "kind": "file",
+      "label": "all.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/atomic.h",
+      "kind": "file",
+      "label": "atomic.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/atomicfn.h",
+      "kind": "file",
+      "label": "atomicfn.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/bdt.h",
+      "kind": "file",
+      "label": "bdt.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/bench.h",
+      "kind": "file",
+      "label": "bench.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/classes.h",
+      "kind": "file",
+      "label": "classes.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/code.h",
+      "kind": "file",
+      "label": "code.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/config.h",
+      "kind": "file",
+      "label": "config.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/context.h",
+      "kind": "file",
+      "label": "context.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/cpuid.h",
+      "kind": "file",
+      "label": "cpuid.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/crc32.h",
+      "kind": "file",
+      "label": "crc32.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/debug_reg.h",
+      "kind": "file",
+      "label": "debug_reg.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/domain.h",
+      "kind": "file",
+      "label": "domain.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/ekhz.h",
+      "kind": "file",
+      "label": "ekhz.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/exception_handler.h",
+      "kind": "file",
+      "label": "exception_handler.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/execJAVA.h",
+      "kind": "file",
+      "label": "execJAVA.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc.h",
+      "kind": "file",
+      "label": "gc.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_alloc.h",
+      "kind": "file",
+      "label": "gc_alloc.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_bitmap.h",
+      "kind": "file",
+      "label": "gc_bitmap.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_chunked.h",
+      "kind": "file",
+      "label": "gc_chunked.h"
+    },
+    {
+      "id": "SymbolDesc",
+      "kind": "struct",
+      "label": "SymbolDesc"
+    },
+    {
+      "id": "MethodDesc",
+      "kind": "struct",
+      "label": "MethodDesc"
+    },
+    {
+      "id": "ClassDesc",
+      "kind": "struct",
+      "label": "ClassDesc"
+    },
+    {
+      "id": "Class",
+      "kind": "struct",
+      "label": "Class"
+    },
+    {
+      "id": "SharedLibDesc",
+      "kind": "struct",
+      "label": "SharedLibDesc"
+    },
+    {
+      "id": "LibDesc",
+      "kind": "struct",
+      "label": "LibDesc"
+    },
+    {
+      "id": "DomainDesc",
+      "kind": "struct",
+      "label": "DomainDesc"
+    },
+    {
+      "id": "GCDesc",
+      "kind": "struct",
+      "label": "GCDesc"
+    },
+    {
+      "id": "SchedDesc",
+      "kind": "struct",
+      "label": "SchedDesc"
+    },
+    {
+      "id": "cpu_info",
+      "kind": "struct",
+      "label": "cpu_info"
+    },
+    {
+      "id": "benchtime_s",
+      "kind": "struct",
+      "label": "benchtime_s"
+    },
+    {
+      "id": "CPUFrequency",
+      "kind": "struct",
+      "label": "CPUFrequency"
+    },
+    {
+      "id": "nopreempt_init",
+      "kind": "function",
+      "label": "nopreempt_init"
+    },
+    {
+      "id": "nopreempt_register",
+      "kind": "function",
+      "label": "nopreempt_register"
+    },
+    {
+      "id": "atomicfn_init",
+      "kind": "function",
+      "label": "atomicfn_init"
+    },
+    {
+      "id": "registerObject",
+      "kind": "function",
+      "label": "registerObject"
+    },
+    {
+      "id": "unregisterObject",
+      "kind": "function",
+      "label": "unregisterObject"
+    },
+    {
+      "id": "handle2ClassDesc",
+      "kind": "function",
+      "label": "handle2ClassDesc"
+    },
+    {
+      "id": "bdtStart",
+      "kind": "function",
+      "label": "bdtStart"
+    },
+    {
+      "id": "bdtStartChunk",
+      "kind": "function",
+      "label": "bdtStartChunk"
+    },
+    {
+      "id": "bdtSend",
+      "kind": "function",
+      "label": "bdtSend"
+    },
+    {
+      "id": "bdtStop",
+      "kind": "function",
+      "label": "bdtStop"
+    },
+    {
+      "id": "bench_empty",
+      "kind": "function",
+      "label": "bench_empty"
+    },
+    {
+      "id": "bench_load",
+      "kind": "function",
+      "label": "bench_load"
+    },
+    {
+      "id": "executeForallClasses",
+      "kind": "function",
+      "label": "executeForallClasses"
+    },
+    {
+      "id": "cpuid",
+      "kind": "function",
+      "label": "cpuid"
+    },
+    {
+      "id": "crc32start",
+      "kind": "function",
+      "label": "crc32start"
+    },
+    {
+      "id": "crc32end",
+      "kind": "function",
+      "label": "crc32end"
+    },
+    {
+      "id": "crc32",
+      "kind": "function",
+      "label": "crc32"
+    },
+    {
+      "id": "crc32single",
+      "kind": "function",
+      "label": "crc32single"
+    },
+    {
+      "id": "init_domainsys",
+      "kind": "function",
+      "label": "init_domainsys"
+    },
+    {
+      "id": "createDomain",
+      "kind": "function",
+      "label": "createDomain"
+    },
+    {
+      "id": "getNumberOfDomains",
+      "kind": "function",
+      "label": "getNumberOfDomains"
+    },
+    {
+      "id": "domain_panic",
+      "kind": "function",
+      "label": "domain_panic"
+    },
+    {
+      "id": "foreachDomain",
+      "kind": "function",
+      "label": "foreachDomain"
+    },
+    {
+      "id": "foreachDomain1",
+      "kind": "function",
+      "label": "foreachDomain1"
+    },
+    {
+      "id": "malloc_tmp_stringtable",
+      "kind": "function",
+      "label": "malloc_tmp_stringtable"
+    },
+    {
+      "id": "findMethodAtAddrInDomain",
+      "kind": "function",
+      "label": "findMethodAtAddrInDomain"
+    },
+    {
+      "id": "getCPUFrequency",
+      "kind": "function",
+      "label": "getCPUFrequency"
+    },
+    {
+      "id": "createExceptionInDomain",
+      "kind": "function",
+      "label": "createExceptionInDomain"
+    },
+    {
+      "id": "throw_exception",
+      "kind": "function",
+      "label": "throw_exception"
+    },
+    {
+      "id": "exceptionHandler",
+      "kind": "function",
+      "label": "exceptionHandler"
+    },
+    {
+      "id": "call_JAVA_method0",
+      "kind": "function",
+      "label": "call_JAVA_method0"
+    },
+    {
+      "id": "gc_init",
+      "kind": "function",
+      "label": "gc_init"
+    },
+    {
+      "id": "gc_done",
+      "kind": "function",
+      "label": "gc_done"
+    },
+    {
+      "id": "gc_freeWords",
+      "kind": "function",
+      "label": "gc_freeWords"
+    },
+    {
+      "id": "gc_totalWords",
+      "kind": "function",
+      "label": "gc_totalWords"
+    },
+    {
+      "id": "gc_allocDataInDomain",
+      "kind": "function",
+      "label": "gc_allocDataInDomain"
+    },
+    {
+      "id": "allocArrayInDomain",
+      "kind": "function",
+      "label": "allocArrayInDomain"
+    }
+  ],
+  "edges": [
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/config.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/context.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/atomic.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/domain.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/execJAVA.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/exception_handler.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/bench.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/ekhz.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/atomicfn.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/classes.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/domain.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/code.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/config.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/domain.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/object.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/exception_handler.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/domain.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_alloc.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_bitmap.h",
+      "kind": "includes"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc.h",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_chunked.h",
+      "kind": "includes"
+    },
+    {
+      "from": "registerObject",
+      "to": "DomainDesc",
+      "kind": "uses"
+    },
+    {
+      "from": "registerObject",
+      "to": "ObjectDesc",
+      "kind": "uses"
+    },
+    {
+      "from": "handle2ClassDesc",
+      "to": "ClassDesc",
+      "kind": "returns"
+    },
+    {
+      "from": "MethodDesc",
+      "to": "SymbolDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "MethodDesc",
+      "to": "ClassDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "ClassDesc",
+      "to": "MethodDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "ClassDesc",
+      "to": "ClassDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "Class",
+      "to": "ClassDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "DomainDesc",
+      "to": "LibDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "DomainDesc",
+      "to": "GCDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "DomainDesc",
+      "to": "SchedDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "GCDesc",
+      "to": "ObjectDesc",
+      "kind": "contains"
+    },
+    {
+      "from": "gc_init",
+      "to": "DomainDesc",
+      "kind": "uses"
+    },
+    {
+      "from": "createDomain",
+      "to": "DomainDesc",
+      "kind": "returns"
+    },
+    {
+      "from": "createExceptionInDomain",
+      "to": "DomainDesc",
+      "kind": "uses"
+    },
+    {
+      "from": "allocArrayInDomain",
+      "to": "DomainDesc",
+      "kind": "uses"
+    },
+    {
+      "from": "allocArrayInDomain",
+      "to": "ClassDesc",
+      "kind": "uses"
+    }
+  ]
+}

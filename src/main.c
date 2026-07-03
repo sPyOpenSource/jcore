@@ -38,7 +38,7 @@ void start_domain_zero(void *dummy)
     thread_exit();
 }
 
-void jcore(void)
+void main(void)
 {
     ThreadDesc *initial;
 
@@ -64,8 +64,11 @@ void jcore(void)
     setThreadName(initial, "DomainZero:InitialThread", NULL);
 
     dprintf("starting scheduler...\n");
-llm();
+    llm();
     thread_exit();
 
     for (;;);
 }
+
+/* Entry point called by start.S */
+void main(void) { jcore(); }

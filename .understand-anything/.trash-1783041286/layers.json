@@ -1,0 +1,52 @@
+{
+  "layers": [
+    {
+      "name": "Hardware/Architecture Layer",
+      "description": "Direct hardware interaction, ARMv7-A architecture support, and low-level drivers (GIC, Timer, Exceptions).",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/start.S",
+        "/Users/xuyi/Source/OS/UEFI/src/switch_asm.S",
+        "/Users/xuyi/Source/OS/UEFI/src/gic.c",
+        "/Users/xuyi/Source/OS/UEFI/src/timer.c",
+        "/Users/xuyi/Source/OS/UEFI/src/exception.c",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/intr.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h"
+      ]
+    },
+    {
+      "name": "Kernel Core Layer",
+      "description": "OS kernel primitives: round-robin scheduling, thread management, and synchronization.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/sched.c",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/context.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h"
+      ]
+    },
+    {
+      "name": "Runtime Support Layer",
+      "description": "Minimal C runtime and ARM EABI helpers for bare-metal execution.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/minirun.c",
+        "/Users/xuyi/Source/OS/UEFI/src/aeabi.c"
+      ]
+    },
+    {
+      "name": "Application/Service Layer",
+      "description": "Llama2 inference engine featuring NEON acceleration and high-level LLM control logic.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/llama2.c",
+        "/Users/xuyi/Source/OS/UEFI/src/llm.c",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+      ]
+    },
+    {
+      "name": "Initialization Layer",
+      "description": "Main entry point that orchestrates the boot process and initializes other layers.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/main.c"
+      ]
+    }
+  ]
+}

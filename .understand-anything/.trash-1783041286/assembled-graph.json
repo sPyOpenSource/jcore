@@ -1,0 +1,2287 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "jcore RTOS on ARM",
+    "languages": [
+      "C",
+      "Assembly",
+      "Linker Script",
+      "Makefile",
+      "Markdown",
+      "HTML",
+      "CSS",
+      "JSON"
+    ],
+    "frameworks": [
+      "Bare-metal",
+      "ARMv7-A"
+    ],
+    "description": "A preemptive RTOS with NEON-accelerated llama2 inference targeting the BeagleBone AI Cortex-A15.",
+    "analyzedAt": "2026-07-03T01:13:59.630071Z",
+    "gitCommitHash": "f382e4c566e23c559d3d88ee076176c8e82fe626"
+  },
+  "nodes": [
+    {
+      "id": "file:jcore_rtos",
+      "label": "jcore RTOS",
+      "type": "Project",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:beaglebone_ai",
+      "label": "BeagleBone AI",
+      "type": "Hardware",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cortex_a15",
+      "label": "Cortex-A15",
+      "type": "Processor",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:armv7_a",
+      "label": "ARMv7-A",
+      "type": "Architecture",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:systick",
+      "label": "SysTick",
+      "type": "HardwareFeature",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:pendsv",
+      "label": "PendSV",
+      "type": "HardwareFeature",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:svc",
+      "label": "SVC",
+      "type": "HardwareFeature",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:mmu",
+      "label": "MMU",
+      "type": "HardwareFeature",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:dacr",
+      "label": "DACR",
+      "type": "HardwareFeature",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:uart",
+      "label": "UART",
+      "type": "Peripheral",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:gpio",
+      "label": "GPIO",
+      "type": "Peripheral",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ddr3l",
+      "label": "DDR3L",
+      "type": "Memory",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ocmc_ram",
+      "label": "OCMC_RAM",
+      "type": "Memory",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:rom_bootloader",
+      "label": "ROM Bootloader",
+      "type": "Software",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:mlo_spl",
+      "label": "MLO (SPL)",
+      "type": "Software",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:u_boot",
+      "label": "U-Boot",
+      "type": "Software",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:config_header",
+      "label": "Configuration Header (CH)",
+      "type": "DataStructure",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:fit_image",
+      "label": "FIT (Flattened Image Tree)",
+      "type": "DataStructure",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:trm",
+      "label": "TRM (Technical Reference Manual)",
+      "type": "Document",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:device_tree",
+      "label": "Device Tree",
+      "type": "DataStructure",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:pin_mux",
+      "label": "Pin Mux",
+      "type": "HardwareFeature",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:pdk",
+      "label": "PDK (Platform Development Kit)",
+      "type": "SDK",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:csl",
+      "label": "CSL (Chip Support Library)",
+      "type": "SDK",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lld",
+      "label": "LLD (Low-Level Driver)",
+      "type": "SDK",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk_linux",
+      "label": "Processor SDK (Linux)",
+      "type": "SDK",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk_rtos",
+      "label": "Processor SDK (RTOS)",
+      "type": "SDK",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ccs",
+      "label": "CCS (Code Composer Studio)",
+      "type": "Tool",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:iced",
+      "label": "ICED (ICEmelter Debug)",
+      "type": "HardwareFeature",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:clang",
+      "label": "clang",
+      "type": "Tool",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:lld_linker",
+      "label": "lld",
+      "type": "Tool",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:qemu",
+      "label": "qemu-system-arm",
+      "type": "Tool",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:objcopy",
+      "label": "aarch64-none-elf-objcopy",
+      "type": "Tool",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:kernel_bin",
+      "label": "kernel.bin",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:kernel_jcore_elf",
+      "label": "kernel-jcore.elf",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:kernel_jcore_bin",
+      "label": "kernel-jcore.bin",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:kernel_qemu_elf",
+      "label": "kernel-qemu.elf",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:kernel_qemu_bin",
+      "label": "kernel-qemu.bin",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:linker_ld",
+      "label": "linker.ld",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:linker_jcore_ld",
+      "label": "linker-jcore.ld",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:linker_qemu_ld",
+      "label": "linker-qemu.ld",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:makefile",
+      "label": "Makefile",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:glossary_md",
+      "label": "GLOSSARY.md",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:mission_md",
+      "label": "MISSION.md",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:resources_md",
+      "label": "RESOURCES.md",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:target_json",
+      "label": "arm-none-eabihf.json",
+      "type": "File",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.d",
+      "type": "file",
+      "label": "boot_s.d",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "type": "file",
+      "label": "boot_s.o",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.d",
+      "type": "file",
+      "label": "entry_s.d",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "type": "file",
+      "label": "entry_s.o",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:_start",
+      "type": "symbol",
+      "label": "_start",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:el1_entry",
+      "type": "symbol",
+      "label": "el1_entry",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:id_pgd_addr",
+      "type": "symbol",
+      "label": "id_pgd_addr",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:master",
+      "type": "symbol",
+      "label": "master",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:proc_hang",
+      "type": "symbol",
+      "label": "proc_hang",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bss_begin",
+      "type": "symbol",
+      "label": "bss_begin",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bss_end",
+      "type": "symbol",
+      "label": "bss_end",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:id_pgd",
+      "type": "symbol",
+      "label": "id_pgd",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:kernel_main",
+      "type": "symbol",
+      "label": "kernel_main",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:memzero",
+      "type": "symbol",
+      "label": "memzero",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:err_hang",
+      "type": "symbol",
+      "label": "err_hang",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:error_invalid_el0_32",
+      "type": "symbol",
+      "label": "error_invalid_el0_32",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:error_invalid_el0_64",
+      "type": "symbol",
+      "label": "error_invalid_el0_64",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:error_invalid_el1h",
+      "type": "symbol",
+      "label": "error_invalid_el1h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:error_invalid_el1t",
+      "type": "symbol",
+      "label": "error_invalid_el1t",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:fiq_invalid_el0_32",
+      "type": "symbol",
+      "label": "fiq_invalid_el0_32",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:fiq_invalid_el0_64",
+      "type": "symbol",
+      "label": "fiq_invalid_el0_64",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:fiq_invalid_el1h",
+      "type": "symbol",
+      "label": "fiq_invalid_el1h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:fiq_invalid_el1t",
+      "type": "symbol",
+      "label": "fiq_invalid_el1t",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:handle_el1_irq",
+      "type": "symbol",
+      "label": "handle_el1_irq",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:irq_invalid_el0_32",
+      "type": "symbol",
+      "label": "irq_invalid_el0_32",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:irq_invalid_el0_64",
+      "type": "symbol",
+      "label": "irq_invalid_el0_64",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:irq_invalid_el1t",
+      "type": "symbol",
+      "label": "irq_invalid_el1t",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sync_invalid_el0_32",
+      "type": "symbol",
+      "label": "sync_invalid_el0_32",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sync_invalid_el0_64",
+      "type": "symbol",
+      "label": "sync_invalid_el0_64",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sync_invalid_el1h",
+      "type": "symbol",
+      "label": "sync_invalid_el1h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sync_invalid_el1t",
+      "type": "symbol",
+      "label": "sync_invalid_el1t",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:vectors",
+      "type": "symbol",
+      "label": "vectors",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:handle_irq",
+      "type": "symbol",
+      "label": "handle_irq",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:show_invalid_entry_message",
+      "type": "symbol",
+      "label": "show_invalid_entry_message",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/boot/boot.S",
+      "type": "file",
+      "label": "boot.S",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mm.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/sysregs.h",
+      "type": "file",
+      "label": "sysregs.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mmu.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/boot/entry.S",
+      "type": "file",
+      "label": "entry.S",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/entry.h",
+      "type": "file",
+      "label": "entry.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.d",
+      "label": "emmc_c.d",
+      "type": "FILE",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "label": "emmc_c.o",
+      "type": "FILE",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.d",
+      "label": "emmc_clock_c.d",
+      "type": "FILE",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "label": "emmc_clock_c.o",
+      "type": "FILE",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/emmc/emmc.c",
+      "label": "emmc.c",
+      "type": "FILE",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/emmc/emmc_clock.c",
+      "label": "emmc_clock.c",
+      "type": "FILE",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "common.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/gpio.h",
+      "label": "gpio.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/mailbox.h",
+      "label": "mailbox.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "timer.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "label": "mem.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "printf.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "io.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/emmc.h",
+      "label": "emmc.h",
+      "type": "FILE",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/lib/utils.h",
+      "label": "utils.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "label": "i2c_c.o",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/i2c/i2c.c",
+      "label": "i2c.c",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/i2c.h",
+      "label": "i2c.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "label": "lcd_c.o",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/i2c/lcd.c",
+      "label": "lcd.c",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/lcd.h",
+      "label": "lcd.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/video/fontData_c.d",
+      "label": "fontData_c.d",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/video/fontData_c.o",
+      "label": "fontData_c.o",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.d",
+      "label": "video_c.d",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/video/video_c.o",
+      "label": "video_c.o",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/video/fontData.c",
+      "label": "fontData.c",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/video/video.c",
+      "label": "video.c",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/video.h",
+      "label": "video.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/mem/dma.h",
+      "label": "dma.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/dma.h",
+      "label": "dma.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/mem/mem.c",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mm_s.o",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/mem/mm.S",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.d",
+      "label": "printf_c.d",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.o",
+      "label": "printf_c.o",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.d",
+      "label": "utils_c.d",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "label": "utils_c.o",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.d",
+      "label": "utils_s.d",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.o",
+      "label": "utils_s.o",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/misc/printf.c",
+      "label": "printf.c",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/misc/utils.c",
+      "label": "utils.c",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/include/lib/clib.h",
+      "label": "clib.h",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/misc/utils.S",
+      "label": "utils.S",
+      "type": "file",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/config.h",
+      "kind": "file",
+      "label": "config.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/context.h",
+      "kind": "file",
+      "label": "context.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/intr.h",
+      "kind": "file",
+      "label": "intr.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "kind": "file",
+      "label": "llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+      "kind": "file",
+      "label": "lock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h",
+      "kind": "file",
+      "label": "lowlevel.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/misc.h",
+      "kind": "file",
+      "label": "misc.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/multiboot.h",
+      "kind": "file",
+      "label": "multiboot.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/segments.h",
+      "kind": "file",
+      "label": "segments.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+      "kind": "file",
+      "label": "spinlock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Config",
+      "kind": "struct",
+      "label": "Config",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:TransformerWeights",
+      "kind": "struct",
+      "label": "TransformerWeights",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:RunState",
+      "kind": "struct",
+      "label": "RunState",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Transformer",
+      "kind": "struct",
+      "label": "Transformer",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:build_transformer",
+      "kind": "function",
+      "label": "build_transformer",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:forward",
+      "kind": "function",
+      "label": "forward",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sample_argmax",
+      "kind": "function",
+      "label": "sample_argmax",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:generate",
+      "kind": "function",
+      "label": "generate",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:irqcontext",
+      "kind": "struct",
+      "label": "irqcontext",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/intr.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:irqcontext_timer",
+      "kind": "struct",
+      "label": "irqcontext_timer",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/intr.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:get_cpsr",
+      "kind": "function",
+      "label": "get_cpsr",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:set_cpsr",
+      "kind": "function",
+      "label": "set_cpsr",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:DISABLE_IRQ",
+      "kind": "macro",
+      "label": "DISABLE_IRQ",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:RESTORE_IRQ",
+      "kind": "macro",
+      "label": "RESTORE_IRQ",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:callnative_special",
+      "kind": "function",
+      "label": "callnative_special",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cas",
+      "kind": "function",
+      "label": "cas",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:fetchAndStore",
+      "kind": "function",
+      "label": "fetchAndStore",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sys_panic",
+      "kind": "function",
+      "label": "sys_panic",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:getEFlags",
+      "kind": "function",
+      "label": "getEFlags",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test_and_set_bit",
+      "kind": "function",
+      "label": "test_and_set_bit",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:atomic_inc",
+      "kind": "function",
+      "label": "atomic_inc",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:multiboot_info",
+      "kind": "struct",
+      "label": "multiboot_info",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/multiboot.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:spinlock_t",
+      "kind": "typedef",
+      "label": "spinlock_t",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:spin_lock",
+      "kind": "function",
+      "label": "spin_lock",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:spin_unlock",
+      "kind": "function",
+      "label": "spin_unlock",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/all.h",
+      "kind": "file",
+      "label": "all.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/atomic.h",
+      "kind": "file",
+      "label": "atomic.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/atomicfn.h",
+      "kind": "file",
+      "label": "atomicfn.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/bdt.h",
+      "kind": "file",
+      "label": "bdt.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/bench.h",
+      "kind": "file",
+      "label": "bench.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/classes.h",
+      "kind": "file",
+      "label": "classes.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/code.h",
+      "kind": "file",
+      "label": "code.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/config.h",
+      "kind": "file",
+      "label": "config.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/context.h",
+      "kind": "file",
+      "label": "context.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/cpuid.h",
+      "kind": "file",
+      "label": "cpuid.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/crc32.h",
+      "kind": "file",
+      "label": "crc32.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/debug_reg.h",
+      "kind": "file",
+      "label": "debug_reg.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/domain.h",
+      "kind": "file",
+      "label": "domain.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/ekhz.h",
+      "kind": "file",
+      "label": "ekhz.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/exception_handler.h",
+      "kind": "file",
+      "label": "exception_handler.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/execJAVA.h",
+      "kind": "file",
+      "label": "execJAVA.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc.h",
+      "kind": "file",
+      "label": "gc.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_alloc.h",
+      "kind": "file",
+      "label": "gc_alloc.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_bitmap.h",
+      "kind": "file",
+      "label": "gc_bitmap.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:/Users/xuyi/Source/OS/UEFI/src/jcore/includes/gc_chunked.h",
+      "kind": "file",
+      "label": "gc_chunked.h",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:SymbolDesc",
+      "kind": "struct",
+      "label": "SymbolDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:MethodDesc",
+      "kind": "struct",
+      "label": "MethodDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ClassDesc",
+      "kind": "struct",
+      "label": "ClassDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Class",
+      "kind": "struct",
+      "label": "Class",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:SharedLibDesc",
+      "kind": "struct",
+      "label": "SharedLibDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:LibDesc",
+      "kind": "struct",
+      "label": "LibDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:DomainDesc",
+      "kind": "struct",
+      "label": "DomainDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:GCDesc",
+      "kind": "struct",
+      "label": "GCDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:SchedDesc",
+      "kind": "struct",
+      "label": "SchedDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cpu_info",
+      "kind": "struct",
+      "label": "cpu_info",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:benchtime_s",
+      "kind": "struct",
+      "label": "benchtime_s",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:CPUFrequency",
+      "kind": "struct",
+      "label": "CPUFrequency",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:nopreempt_init",
+      "kind": "function",
+      "label": "nopreempt_init",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:nopreempt_register",
+      "kind": "function",
+      "label": "nopreempt_register",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:atomicfn_init",
+      "kind": "function",
+      "label": "atomicfn_init",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:registerObject",
+      "kind": "function",
+      "label": "registerObject",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:unregisterObject",
+      "kind": "function",
+      "label": "unregisterObject",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:handle2ClassDesc",
+      "kind": "function",
+      "label": "handle2ClassDesc",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bdtStart",
+      "kind": "function",
+      "label": "bdtStart",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bdtStartChunk",
+      "kind": "function",
+      "label": "bdtStartChunk",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bdtSend",
+      "kind": "function",
+      "label": "bdtSend",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bdtStop",
+      "kind": "function",
+      "label": "bdtStop",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bench_empty",
+      "kind": "function",
+      "label": "bench_empty",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:bench_load",
+      "kind": "function",
+      "label": "bench_load",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:executeForallClasses",
+      "kind": "function",
+      "label": "executeForallClasses",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:cpuid",
+      "kind": "function",
+      "label": "cpuid",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crc32start",
+      "kind": "function",
+      "label": "crc32start",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crc32end",
+      "kind": "function",
+      "label": "crc32end",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crc32",
+      "kind": "function",
+      "label": "crc32",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:crc32single",
+      "kind": "function",
+      "label": "crc32single",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:init_domainsys",
+      "kind": "function",
+      "label": "init_domainsys",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:createDomain",
+      "kind": "function",
+      "label": "createDomain",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:getNumberOfDomains",
+      "kind": "function",
+      "label": "getNumberOfDomains",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:domain_panic",
+      "kind": "function",
+      "label": "domain_panic",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:foreachDomain",
+      "kind": "function",
+      "label": "foreachDomain",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:foreachDomain1",
+      "kind": "function",
+      "label": "foreachDomain1",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:malloc_tmp_stringtable",
+      "kind": "function",
+      "label": "malloc_tmp_stringtable",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:findMethodAtAddrInDomain",
+      "kind": "function",
+      "label": "findMethodAtAddrInDomain",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:getCPUFrequency",
+      "kind": "function",
+      "label": "getCPUFrequency",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:createExceptionInDomain",
+      "kind": "function",
+      "label": "createExceptionInDomain",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:throw_exception",
+      "kind": "function",
+      "label": "throw_exception",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:exceptionHandler",
+      "kind": "function",
+      "label": "exceptionHandler",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:call_JAVA_method0",
+      "kind": "function",
+      "label": "call_JAVA_method0",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:gc_init",
+      "kind": "function",
+      "label": "gc_init",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:gc_done",
+      "kind": "function",
+      "label": "gc_done",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:gc_freeWords",
+      "kind": "function",
+      "label": "gc_freeWords",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:gc_totalWords",
+      "kind": "function",
+      "label": "gc_totalWords",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:gc_allocDataInDomain",
+      "kind": "function",
+      "label": "gc_allocDataInDomain",
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:allocArrayInDomain",
+      "kind": "function",
+      "label": "allocArrayInDomain",
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:beaglebone_ai",
+      "label": "runs on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:cortex_a15",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:cortex_a15",
+      "target": "file:armv7_a",
+      "label": "implements",
+      "direction": "forward"
+    },
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:systick",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:pendsv",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:svc",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:mmu",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:mmu",
+      "target": "file:dacr",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:uart",
+      "label": "has",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:gpio",
+      "label": "has",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:ddr3l",
+      "label": "has",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:ocmc_ram",
+      "label": "has",
+      "direction": "forward"
+    },
+    {
+      "source": "file:rom_bootloader",
+      "target": "file:mlo_spl",
+      "label": "loads",
+      "direction": "forward"
+    },
+    {
+      "source": "file:mlo_spl",
+      "target": "file:u_boot",
+      "label": "loads",
+      "direction": "forward"
+    },
+    {
+      "source": "file:u_boot",
+      "target": "file:jcore_rtos",
+      "label": "loads",
+      "direction": "forward"
+    },
+    {
+      "source": "file:mlo_spl",
+      "target": "file:config_header",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:u_boot",
+      "target": "file:fit_image",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:trm",
+      "target": "file:beaglebone_ai",
+      "label": "describes",
+      "direction": "forward"
+    },
+    {
+      "source": "file:device_tree",
+      "target": "file:beaglebone_ai",
+      "label": "describes",
+      "direction": "forward"
+    },
+    {
+      "source": "file:pdk",
+      "target": "file:csl",
+      "label": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:pdk",
+      "target": "file:lld",
+      "label": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:sdk_rtos",
+      "target": "file:pdk",
+      "label": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:sdk_linux",
+      "target": "file:u_boot",
+      "label": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ccs",
+      "target": "file:beaglebone_ai",
+      "label": "debugs",
+      "direction": "forward"
+    },
+    {
+      "source": "file:iced",
+      "target": "file:beaglebone_ai",
+      "label": "provides debug for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:clang",
+      "target": "file:jcore_rtos",
+      "label": "compiles",
+      "direction": "forward"
+    },
+    {
+      "source": "file:lld_linker",
+      "target": "file:jcore_rtos",
+      "label": "links",
+      "direction": "forward"
+    },
+    {
+      "source": "file:qemu",
+      "target": "file:cortex_a15",
+      "label": "emulates",
+      "direction": "forward"
+    },
+    {
+      "source": "file:makefile",
+      "target": "file:kernel_bin",
+      "label": "builds",
+      "direction": "forward"
+    },
+    {
+      "source": "file:makefile",
+      "target": "file:kernel_jcore_bin",
+      "label": "builds",
+      "direction": "forward"
+    },
+    {
+      "source": "file:makefile",
+      "target": "file:kernel_qemu_bin",
+      "label": "builds",
+      "direction": "forward"
+    },
+    {
+      "source": "file:linker_ld",
+      "target": "file:kernel_bin",
+      "label": "defines layout for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:linker_jcore_ld",
+      "target": "file:kernel_jcore_bin",
+      "label": "defines layout for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:linker_qemu_ld",
+      "target": "file:kernel_qemu_bin",
+      "label": "defines layout for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:glossary_md",
+      "target": "file:jcore_rtos",
+      "label": "documents",
+      "direction": "forward"
+    },
+    {
+      "source": "file:mission_md",
+      "target": "file:jcore_rtos",
+      "label": "defines goals for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:resources_md",
+      "target": "file:jcore_rtos",
+      "label": "lists resources for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:target_json",
+      "target": "file:clang",
+      "label": "configures",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.d",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "label": "describes",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/src/boot/boot.S",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mm.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/sysregs.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mmu.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.d",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "label": "describes",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/src/boot/entry.S",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/entry.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:_start",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:el1_entry",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:id_pgd_addr",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:master",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:proc_hang",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:bss_begin",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:bss_end",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:id_pgd",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:kernel_main",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/boot_s.o",
+      "target": "file:memzero",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:err_hang",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:error_invalid_el0_32",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:error_invalid_el0_64",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:error_invalid_el1h",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:error_invalid_el1t",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:fiq_invalid_el0_32",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:fiq_invalid_el0_64",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:fiq_invalid_el1h",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:fiq_invalid_el1t",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:handle_el1_irq",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:irq_invalid_el0_32",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:irq_invalid_el0_64",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:irq_invalid_el1t",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:sync_invalid_el0_32",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:sync_invalid_el0_64",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:sync_invalid_el1h",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:sync_invalid_el1t",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:vectors",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:handle_irq",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/boot/entry_s.o",
+      "target": "file:show_invalid_entry_message",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.d",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "label": "DESCRIBES_DEPENDENCIES_OF",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.d",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "label": "DESCRIBES_DEPENDENCIES_OF",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/emmc/emmc.c",
+      "label": "COMPILED_FROM",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/gpio.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/mailbox.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/emmc.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/lib/utils.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/emmc/emmc_clock.c",
+      "label": "COMPILED_FROM",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/emmc.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/mailbox.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/i2c/i2c.c",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/gpio.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/i2c.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/i2c_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/src/drivers/i2c/lcd.c",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/lcd.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/i2c.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/timer.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/drivers/i2c/lcd_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/src/mem/mem.c",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/base.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mm.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/mem/mmu.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mem_c.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:/Users/xuyi/Source/OS/UEFI/build/mem/mm_s.o",
+      "target": "file:/Users/xuyi/Source/OS/UEFI/src/mem/mm.S",
+      "type": "depends_on",
+      "direction": "forward"
+    }
+  ],
+  "layers": [
+    {
+      "name": "Hardware/Architecture Layer",
+      "description": "Direct hardware interaction, ARMv7-A architecture support, and low-level drivers (GIC, Timer, Exceptions).",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/start.S",
+        "/Users/xuyi/Source/OS/UEFI/src/switch_asm.S",
+        "/Users/xuyi/Source/OS/UEFI/src/gic.c",
+        "/Users/xuyi/Source/OS/UEFI/src/timer.c",
+        "/Users/xuyi/Source/OS/UEFI/src/exception.c",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/intr.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h"
+      ]
+    },
+    {
+      "name": "Kernel Core Layer",
+      "description": "OS kernel primitives: round-robin scheduling, thread management, and synchronization.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/sched.c",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/context.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h"
+      ]
+    },
+    {
+      "name": "Runtime Support Layer",
+      "description": "Minimal C runtime and ARM EABI helpers for bare-metal execution.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/minirun.c",
+        "/Users/xuyi/Source/OS/UEFI/src/aeabi.c"
+      ]
+    },
+    {
+      "name": "Application/Service Layer",
+      "description": "Llama2 inference engine featuring NEON acceleration and high-level LLM control logic.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/llama2.c",
+        "/Users/xuyi/Source/OS/UEFI/src/llm.c",
+        "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+      ]
+    },
+    {
+      "name": "Initialization Layer",
+      "description": "Main entry point that orchestrates the boot process and initializes other layers.",
+      "files": [
+        "/Users/xuyi/Source/OS/UEFI/src/main.c"
+      ]
+    }
+  ],
+  "tour": {
+    "project": "jcore RTOS on ARM",
+    "description": "A preemptive RTOS with NEON-accelerated llama2 inference targeting the BeagleBone AI Cortex-A15.",
+    "tour": [
+      {
+        "step": 1,
+        "title": "System Bootstrapping",
+        "description": "The journey begins at start.S, where the CPU is initialized, the stack is set up, and the system jumps into main.c. main.c orchestrates the rest of the kernel initialization.",
+        "files": [
+          "/Users/xuyi/Source/OS/UEFI/src/start.S",
+          "/Users/xuyi/Source/OS/UEFI/src/main.c"
+        ],
+        "layer": "layer:initialization"
+      },
+      {
+        "step": 2,
+        "title": "Hardware Foundation",
+        "description": "Explore how jcore interacts with the ARMv7-A hardware. gic.c manages the Generic Interrupt Controller, timer.c handles the system timer for preemption, and exception.c provides the entry points for hardware exceptions.",
+        "files": [
+          "/Users/xuyi/Source/OS/UEFI/src/gic.c",
+          "/Users/xuyi/Source/OS/UEFI/src/timer.c",
+          "/Users/xuyi/Source/OS/UEFI/src/exception.c"
+        ],
+        "layer": "layer:hardware-arch"
+      },
+      {
+        "step": 3,
+        "title": "The Minimal Runtime",
+        "description": "Since this is a bare-metal RTOS, it needs a minimal C runtime. minirun.c provides basic memory and runtime support, while aeabi.c implements ARM EABI helpers required by the compiler for certain operations.",
+        "files": [
+          "/Users/xuyi/Source/OS/UEFI/src/minirun.c",
+          "/Users/xuyi/Source/OS/UEFI/src/aeabi.c"
+        ],
+        "layer": "layer:runtime-support"
+      },
+      {
+        "step": 4,
+        "title": "Preemptive Scheduling and Context Switching",
+        "description": "The heart of the RTOS. sched.c implements a round-robin scheduler. context.h defines the Process Control Block (PCB), and switch_asm.S performs the heavy lifting of saving and restoring CPU registers during a context switch.",
+        "files": [
+          "/Users/xuyi/Source/OS/UEFI/src/sched.c",
+          "/Users/xuyi/Source/OS/UEFI/src/switch_asm.S",
+          "/Users/xuyi/Source/OS/UEFI/src/includes/context.h"
+        ],
+        "layer": "layer:kernel-core"
+      },
+      {
+        "step": 5,
+        "title": "Synchronization and Safety",
+        "description": "In a preemptive environment, synchronization is key. Learn how the kernel uses spinlocks and interrupt disabling to protect shared resources.",
+        "files": [
+          "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+          "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+          "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h"
+        ],
+        "layer": "layer:kernel-core"
+      },
+      {
+        "step": 6,
+        "title": "NEON-Accelerated Inference",
+        "description": "Finally, see the high-level application. llama2.c implements the core inference engine utilizing ARM NEON instructions for acceleration, and llm.c provides the high-level logic for the LLM.",
+        "files": [
+          "/Users/xuyi/Source/OS/UEFI/src/llama2.c",
+          "/Users/xuyi/Source/OS/UEFI/src/llm.c"
+        ],
+        "layer": "layer:application-service"
+      }
+    ]
+  }
+}

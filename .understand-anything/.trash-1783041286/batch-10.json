@@ -1,0 +1,146 @@
+{
+  "nodes": [
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.d",
+      "label": "printf_c.d",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.o",
+      "label": "printf_c.o",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.d",
+      "label": "utils_c.d",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "label": "utils_c.o",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.d",
+      "label": "utils_s.d",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.o",
+      "label": "utils_s.o",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/misc/printf.c",
+      "label": "printf.c",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "printf.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "io.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "common.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/misc/utils.c",
+      "label": "utils.c",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/lib/utils.h",
+      "label": "utils.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "label": "mem.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/include/lib/clib.h",
+      "label": "clib.h",
+      "type": "file"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/misc/utils.S",
+      "label": "utils.S",
+      "type": "file"
+    }
+  ],
+  "edges": [
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.d",
+      "to": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.o",
+      "label": "defines_dependencies_of"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/misc/printf.c",
+      "label": "compiled_from"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/lib/printf.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/peripherals/io.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/printf_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.d",
+      "to": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "label": "defines_dependencies_of"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/misc/utils.c",
+      "label": "compiled_from"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/lib/utils.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/common.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/mem/mem.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_c.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/include/lib/clib.h",
+      "label": "depends_on"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.d",
+      "to": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.o",
+      "label": "defines_dependencies_of"
+    },
+    {
+      "from": "/Users/xuyi/Source/OS/UEFI/build/misc/utils_s.o",
+      "to": "/Users/xuyi/Source/OS/UEFI/src/misc/utils.S",
+      "label": "compiled_from"
+    }
+  ]
+}

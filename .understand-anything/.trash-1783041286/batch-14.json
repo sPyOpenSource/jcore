@@ -1,0 +1,246 @@
+{
+  "nodes": [
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/config.h",
+      "kind": "file",
+      "label": "config.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/context.h",
+      "kind": "file",
+      "label": "context.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/intr.h",
+      "kind": "file",
+      "label": "intr.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h",
+      "kind": "file",
+      "label": "llama2.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h",
+      "kind": "file",
+      "label": "lock.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h",
+      "kind": "file",
+      "label": "lowlevel.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h",
+      "kind": "file",
+      "label": "misc.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/multiboot.h",
+      "kind": "file",
+      "label": "multiboot.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/segments.h",
+      "kind": "file",
+      "label": "segments.h"
+    },
+    {
+      "id": "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h",
+      "kind": "file",
+      "label": "spinlock.h"
+    },
+    {
+      "id": "Config",
+      "kind": "struct",
+      "label": "Config",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+    },
+    {
+      "id": "TransformerWeights",
+      "kind": "struct",
+      "label": "TransformerWeights",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+    },
+    {
+      "id": "RunState",
+      "kind": "struct",
+      "label": "RunState",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+    },
+    {
+      "id": "Transformer",
+      "kind": "struct",
+      "label": "Transformer",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+    },
+    {
+      "id": "build_transformer",
+      "kind": "function",
+      "label": "build_transformer",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+    },
+    {
+      "id": "forward",
+      "kind": "function",
+      "label": "forward",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+    },
+    {
+      "id": "sample_argmax",
+      "kind": "function",
+      "label": "sample_argmax",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+    },
+    {
+      "id": "generate",
+      "kind": "function",
+      "label": "generate",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/llama2.h"
+    },
+    {
+      "id": "irqcontext",
+      "kind": "struct",
+      "label": "irqcontext",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/intr.h"
+    },
+    {
+      "id": "irqcontext_timer",
+      "kind": "struct",
+      "label": "irqcontext_timer",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/intr.h"
+    },
+    {
+      "id": "get_cpsr",
+      "kind": "function",
+      "label": "get_cpsr",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h"
+    },
+    {
+      "id": "set_cpsr",
+      "kind": "function",
+      "label": "set_cpsr",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h"
+    },
+    {
+      "id": "DISABLE_IRQ",
+      "kind": "macro",
+      "label": "DISABLE_IRQ",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h"
+    },
+    {
+      "id": "RESTORE_IRQ",
+      "kind": "macro",
+      "label": "RESTORE_IRQ",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lock.h"
+    },
+    {
+      "id": "callnative_special",
+      "kind": "function",
+      "label": "callnative_special",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h"
+    },
+    {
+      "id": "cas",
+      "kind": "function",
+      "label": "cas",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h"
+    },
+    {
+      "id": "fetchAndStore",
+      "kind": "function",
+      "label": "fetchAndStore",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/lowlevel.h"
+    },
+    {
+      "id": "sys_panic",
+      "kind": "function",
+      "label": "sys_panic",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h"
+    },
+    {
+      "id": "getEFlags",
+      "kind": "function",
+      "label": "getEFlags",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h"
+    },
+    {
+      "id": "test_and_set_bit",
+      "kind": "function",
+      "label": "test_and_set_bit",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h"
+    },
+    {
+      "id": "atomic_inc",
+      "kind": "function",
+      "label": "atomic_inc",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/misc.h"
+    },
+    {
+      "id": "multiboot_info",
+      "kind": "struct",
+      "label": "multiboot_info",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/multiboot.h"
+    },
+    {
+      "id": "spinlock_t",
+      "kind": "typedef",
+      "label": "spinlock_t",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h"
+    },
+    {
+      "id": "spin_lock",
+      "kind": "function",
+      "label": "spin_lock",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h"
+    },
+    {
+      "id": "spin_unlock",
+      "kind": "function",
+      "label": "spin_unlock",
+      "file": "/Users/xuyi/Source/OS/UEFI/src/includes/spinlock.h"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Transformer",
+      "to": "Config",
+      "kind": "composes"
+    },
+    {
+      "from": "Transformer",
+      "to": "TransformerWeights",
+      "kind": "composes"
+    },
+    {
+      "from": "Transformer",
+      "to": "RunState",
+      "kind": "composes"
+    },
+    {
+      "from": "fetchAndStore",
+      "to": "cas",
+      "kind": "calls"
+    },
+    {
+      "from": "DISABLE_IRQ",
+      "to": "get_cpsr",
+      "kind": "uses"
+    },
+    {
+      "from": "RESTORE_IRQ",
+      "to": "set_cpsr",
+      "kind": "uses"
+    },
+    {
+      "from": "get_eflags",
+      "to": "getEFlags",
+      "kind": "calls"
+    },
+    {
+      "from": "spin_unlock_wait",
+      "to": "spin_is_locked",
+      "kind": "calls"
+    }
+  ]
+}

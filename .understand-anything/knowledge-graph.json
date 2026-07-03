@@ -1,0 +1,2529 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "jcore RTOS on ARM",
+    "languages": [
+      "C",
+      "Assembly",
+      "Linker Script",
+      "Makefile",
+      "Markdown",
+      "HTML",
+      "CSS",
+      "JSON"
+    ],
+    "frameworks": [
+      "Bare-metal",
+      "ARMv7-A"
+    ],
+    "description": "A preemptive RTOS with NEON-accelerated llama2 inference targeting the BeagleBone AI Cortex-A15.",
+    "analyzedAt": "2026-07-03T01:13:59.630071Z",
+    "gitCommitHash": "f382e4c566e23c559d3d88ee076176c8e82fe626"
+  },
+  "nodes": [
+    {
+      "id": "file:jcore_rtos",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "jcore RTOS",
+      "summary": "jcore RTOS"
+    },
+    {
+      "id": "file:beaglebone_ai",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "BeagleBone AI",
+      "summary": "BeagleBone AI"
+    },
+    {
+      "id": "file:cortex_a15",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "Cortex-A15",
+      "summary": "Cortex-A15"
+    },
+    {
+      "id": "file:armv7_a",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "ARMv7-A",
+      "summary": "ARMv7-A"
+    },
+    {
+      "id": "file:systick",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "SysTick",
+      "summary": "SysTick"
+    },
+    {
+      "id": "file:pendsv",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "PendSV",
+      "summary": "PendSV"
+    },
+    {
+      "id": "file:svc",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "SVC",
+      "summary": "SVC"
+    },
+    {
+      "id": "file:mmu",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "MMU",
+      "summary": "MMU"
+    },
+    {
+      "id": "file:dacr",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "DACR",
+      "summary": "DACR"
+    },
+    {
+      "id": "file:uart",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "UART",
+      "summary": "UART"
+    },
+    {
+      "id": "file:gpio",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "GPIO",
+      "summary": "GPIO"
+    },
+    {
+      "id": "file:ddr3l",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "DDR3L",
+      "summary": "DDR3L"
+    },
+    {
+      "id": "file:ocmc_ram",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "OCMC_RAM",
+      "summary": "OCMC_RAM"
+    },
+    {
+      "id": "file:rom_bootloader",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "ROM Bootloader",
+      "summary": "ROM Bootloader"
+    },
+    {
+      "id": "file:mlo_spl",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "MLO (SPL)",
+      "summary": "MLO (SPL)"
+    },
+    {
+      "id": "file:u_boot",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "U-Boot",
+      "summary": "U-Boot"
+    },
+    {
+      "id": "file:config_header",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "Configuration Header (CH)",
+      "summary": "Configuration Header (CH)"
+    },
+    {
+      "id": "file:fit_image",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "FIT (Flattened Image Tree)",
+      "summary": "FIT (Flattened Image Tree)"
+    },
+    {
+      "id": "file:trm",
+      "type": "document",
+      "complexity": "moderate",
+      "name": "TRM (Technical Reference Manual)",
+      "summary": "TRM (Technical Reference Manual)"
+    },
+    {
+      "id": "file:device_tree",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "Device Tree",
+      "summary": "Device Tree"
+    },
+    {
+      "id": "file:pin_mux",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "Pin Mux",
+      "summary": "Pin Mux"
+    },
+    {
+      "id": "file:pdk",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "PDK (Platform Development Kit)",
+      "summary": "PDK (Platform Development Kit)"
+    },
+    {
+      "id": "file:csl",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "CSL (Chip Support Library)",
+      "summary": "CSL (Chip Support Library)"
+    },
+    {
+      "id": "file:lld",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "LLD (Low-Level Driver)",
+      "summary": "LLD (Low-Level Driver)"
+    },
+    {
+      "id": "file:sdk_linux",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "Processor SDK (Linux)",
+      "summary": "Processor SDK (Linux)"
+    },
+    {
+      "id": "file:sdk_rtos",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "Processor SDK (RTOS)",
+      "summary": "Processor SDK (RTOS)"
+    },
+    {
+      "id": "file:ccs",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "CCS (Code Composer Studio)",
+      "summary": "CCS (Code Composer Studio)"
+    },
+    {
+      "id": "file:iced",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "ICED (ICEmelter Debug)",
+      "summary": "ICED (ICEmelter Debug)"
+    },
+    {
+      "id": "file:clang",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "clang",
+      "summary": "clang"
+    },
+    {
+      "id": "file:lld_linker",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "lld",
+      "summary": "lld"
+    },
+    {
+      "id": "file:qemu",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "qemu-system-arm",
+      "summary": "qemu-system-arm"
+    },
+    {
+      "id": "file:objcopy",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "aarch64-none-elf-objcopy",
+      "summary": "aarch64-none-elf-objcopy"
+    },
+    {
+      "id": "file:kernel_bin",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "kernel.bin",
+      "summary": "kernel.bin"
+    },
+    {
+      "id": "file:kernel_jcore_elf",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "kernel-jcore.elf",
+      "summary": "kernel-jcore.elf"
+    },
+    {
+      "id": "file:kernel_jcore_bin",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "kernel-jcore.bin",
+      "summary": "kernel-jcore.bin"
+    },
+    {
+      "id": "file:kernel_qemu_elf",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "kernel-qemu.elf",
+      "summary": "kernel-qemu.elf"
+    },
+    {
+      "id": "file:kernel_qemu_bin",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "kernel-qemu.bin",
+      "summary": "kernel-qemu.bin"
+    },
+    {
+      "id": "file:linker_ld",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "linker.ld",
+      "summary": "linker.ld"
+    },
+    {
+      "id": "file:linker_jcore_ld",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "linker-jcore.ld",
+      "summary": "linker-jcore.ld"
+    },
+    {
+      "id": "file:linker_qemu_ld",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "linker-qemu.ld",
+      "summary": "linker-qemu.ld"
+    },
+    {
+      "id": "file:makefile",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "Makefile",
+      "summary": "Makefile"
+    },
+    {
+      "id": "file:glossary_md",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "GLOSSARY.md",
+      "summary": "GLOSSARY.md"
+    },
+    {
+      "id": "file:mission_md",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "MISSION.md",
+      "summary": "MISSION.md"
+    },
+    {
+      "id": "file:resources_md",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "RESOURCES.md",
+      "summary": "RESOURCES.md"
+    },
+    {
+      "id": "file:target_json",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "arm-none-eabihf.json",
+      "summary": "arm-none-eabihf.json"
+    },
+    {
+      "id": "file:build/boot/boot_s.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "boot_s.d",
+      "summary": "boot_s.d"
+    },
+    {
+      "id": "file:build/boot/boot_s.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "boot_s.o",
+      "summary": "boot_s.o"
+    },
+    {
+      "id": "file:build/boot/entry_s.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "entry_s.d",
+      "summary": "entry_s.d"
+    },
+    {
+      "id": "file:build/boot/entry_s.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "entry_s.o",
+      "summary": "entry_s.o"
+    },
+    {
+      "id": "file:_start",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "_start",
+      "summary": "_start"
+    },
+    {
+      "id": "file:el1_entry",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "el1_entry",
+      "summary": "el1_entry"
+    },
+    {
+      "id": "file:id_pgd_addr",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "id_pgd_addr",
+      "summary": "id_pgd_addr"
+    },
+    {
+      "id": "file:master",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "master",
+      "summary": "master"
+    },
+    {
+      "id": "file:proc_hang",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "proc_hang",
+      "summary": "proc_hang"
+    },
+    {
+      "id": "file:bss_begin",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "bss_begin",
+      "summary": "bss_begin"
+    },
+    {
+      "id": "file:bss_end",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "bss_end",
+      "summary": "bss_end"
+    },
+    {
+      "id": "file:id_pgd",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "id_pgd",
+      "summary": "id_pgd"
+    },
+    {
+      "id": "file:kernel_main",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "kernel_main",
+      "summary": "kernel_main"
+    },
+    {
+      "id": "file:memzero",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "memzero",
+      "summary": "memzero"
+    },
+    {
+      "id": "file:err_hang",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "err_hang",
+      "summary": "err_hang"
+    },
+    {
+      "id": "file:error_invalid_el0_32",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "error_invalid_el0_32",
+      "summary": "error_invalid_el0_32"
+    },
+    {
+      "id": "file:error_invalid_el0_64",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "error_invalid_el0_64",
+      "summary": "error_invalid_el0_64"
+    },
+    {
+      "id": "file:error_invalid_el1h",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "error_invalid_el1h",
+      "summary": "error_invalid_el1h"
+    },
+    {
+      "id": "file:error_invalid_el1t",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "error_invalid_el1t",
+      "summary": "error_invalid_el1t"
+    },
+    {
+      "id": "file:fiq_invalid_el0_32",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "fiq_invalid_el0_32",
+      "summary": "fiq_invalid_el0_32"
+    },
+    {
+      "id": "file:fiq_invalid_el0_64",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "fiq_invalid_el0_64",
+      "summary": "fiq_invalid_el0_64"
+    },
+    {
+      "id": "file:fiq_invalid_el1h",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "fiq_invalid_el1h",
+      "summary": "fiq_invalid_el1h"
+    },
+    {
+      "id": "file:fiq_invalid_el1t",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "fiq_invalid_el1t",
+      "summary": "fiq_invalid_el1t"
+    },
+    {
+      "id": "file:handle_el1_irq",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "handle_el1_irq",
+      "summary": "handle_el1_irq"
+    },
+    {
+      "id": "file:irq_invalid_el0_32",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "irq_invalid_el0_32",
+      "summary": "irq_invalid_el0_32"
+    },
+    {
+      "id": "file:irq_invalid_el0_64",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "irq_invalid_el0_64",
+      "summary": "irq_invalid_el0_64"
+    },
+    {
+      "id": "file:irq_invalid_el1t",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "irq_invalid_el1t",
+      "summary": "irq_invalid_el1t"
+    },
+    {
+      "id": "file:sync_invalid_el0_32",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "sync_invalid_el0_32",
+      "summary": "sync_invalid_el0_32"
+    },
+    {
+      "id": "file:sync_invalid_el0_64",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "sync_invalid_el0_64",
+      "summary": "sync_invalid_el0_64"
+    },
+    {
+      "id": "file:sync_invalid_el1h",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "sync_invalid_el1h",
+      "summary": "sync_invalid_el1h"
+    },
+    {
+      "id": "file:sync_invalid_el1t",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "sync_invalid_el1t",
+      "summary": "sync_invalid_el1t"
+    },
+    {
+      "id": "file:vectors",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "vectors",
+      "summary": "vectors"
+    },
+    {
+      "id": "file:handle_irq",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "handle_irq",
+      "summary": "handle_irq"
+    },
+    {
+      "id": "file:show_invalid_entry_message",
+      "type": "concept",
+      "complexity": "moderate",
+      "name": "show_invalid_entry_message",
+      "summary": "show_invalid_entry_message"
+    },
+    {
+      "id": "file:src/boot/boot.S",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "boot.S",
+      "summary": "boot.S"
+    },
+    {
+      "id": "file:include/mem/mm.h",
+      "type": "file",
+      "complexity": "moderate",
+      "summary": "No summary available"
+    },
+    {
+      "id": "file:include/sysregs.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "sysregs.h",
+      "summary": "sysregs.h"
+    },
+    {
+      "id": "file:include/mem/mmu.h",
+      "type": "file",
+      "complexity": "moderate",
+      "summary": "No summary available"
+    },
+    {
+      "id": "file:src/boot/entry.S",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "entry.S",
+      "summary": "entry.S"
+    },
+    {
+      "id": "file:include/entry.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "entry.h",
+      "summary": "entry.h"
+    },
+    {
+      "id": "file:build/drivers/emmc/emmc_c.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "emmc_c.d",
+      "summary": "emmc_c.d"
+    },
+    {
+      "id": "file:build/drivers/emmc/emmc_c.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "emmc_c.o",
+      "summary": "emmc_c.o"
+    },
+    {
+      "id": "file:build/drivers/emmc/emmc_clock_c.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "emmc_clock_c.d",
+      "summary": "emmc_clock_c.d"
+    },
+    {
+      "id": "file:build/drivers/emmc/emmc_clock_c.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "emmc_clock_c.o",
+      "summary": "emmc_clock_c.o"
+    },
+    {
+      "id": "file:src/drivers/emmc/emmc.c",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "emmc.c",
+      "summary": "emmc.c"
+    },
+    {
+      "id": "file:src/drivers/emmc/emmc_clock.c",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "emmc_clock.c",
+      "summary": "emmc_clock.c"
+    },
+    {
+      "id": "file:include/common.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "common.h",
+      "summary": "common.h"
+    },
+    {
+      "id": "file:include/peripherals/gpio.h",
+      "complexity": "moderate",
+      "name": "gpio.h",
+      "summary": "gpio.h",
+      "type": "concept"
+    },
+    {
+      "id": "file:include/peripherals/base.h",
+      "type": "file",
+      "complexity": "moderate",
+      "summary": "No summary available"
+    },
+    {
+      "id": "file:include/mailbox.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "mailbox.h",
+      "summary": "mailbox.h"
+    },
+    {
+      "id": "file:include/peripherals/timer.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "timer.h",
+      "summary": "timer.h"
+    },
+    {
+      "id": "file:include/mem/mem.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "mem.h",
+      "summary": "mem.h"
+    },
+    {
+      "id": "file:include/lib/printf.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "printf.h",
+      "summary": "printf.h"
+    },
+    {
+      "id": "file:include/peripherals/io.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "io.h",
+      "summary": "io.h"
+    },
+    {
+      "id": "file:include/peripherals/emmc.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "emmc.h",
+      "summary": "emmc.h"
+    },
+    {
+      "id": "file:include/lib/utils.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "utils.h",
+      "summary": "utils.h"
+    },
+    {
+      "id": "file:build/drivers/i2c/i2c_c.o",
+      "complexity": "moderate",
+      "name": "i2c_c.o",
+      "summary": "i2c_c.o",
+      "type": "concept"
+    },
+    {
+      "id": "file:src/drivers/i2c/i2c.c",
+      "complexity": "moderate",
+      "name": "i2c.c",
+      "summary": "i2c.c",
+      "type": "concept"
+    },
+    {
+      "id": "file:include/peripherals/i2c.h",
+      "complexity": "moderate",
+      "name": "i2c.h",
+      "summary": "i2c.h",
+      "type": "concept"
+    },
+    {
+      "id": "file:build/drivers/i2c/lcd_c.o",
+      "complexity": "moderate",
+      "name": "lcd_c.o",
+      "summary": "lcd_c.o",
+      "type": "concept"
+    },
+    {
+      "id": "file:src/drivers/i2c/lcd.c",
+      "complexity": "moderate",
+      "name": "lcd.c",
+      "summary": "lcd.c",
+      "type": "concept"
+    },
+    {
+      "id": "file:include/peripherals/lcd.h",
+      "complexity": "moderate",
+      "name": "lcd.h",
+      "summary": "lcd.h",
+      "type": "concept"
+    },
+    {
+      "id": "file:build/drivers/video/fontData_c.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "fontData_c.d",
+      "summary": "fontData_c.d"
+    },
+    {
+      "id": "file:build/drivers/video/fontData_c.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "fontData_c.o",
+      "summary": "fontData_c.o"
+    },
+    {
+      "id": "file:build/drivers/video/video_c.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "video_c.d",
+      "summary": "video_c.d"
+    },
+    {
+      "id": "file:build/drivers/video/video_c.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "video_c.o",
+      "summary": "video_c.o"
+    },
+    {
+      "id": "file:src/drivers/video/fontData.c",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "fontData.c",
+      "summary": "fontData.c"
+    },
+    {
+      "id": "file:src/drivers/video/video.c",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "video.c",
+      "summary": "video.c"
+    },
+    {
+      "id": "file:include/peripherals/video.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "video.h",
+      "summary": "video.h"
+    },
+    {
+      "id": "file:include/mem/dma.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "dma.h",
+      "summary": "dma.h"
+    },
+    {
+      "id": "file:include/peripherals/dma.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "dma.h",
+      "summary": "dma.h"
+    },
+    {
+      "id": "file:build/mem/mem_c.o",
+      "type": "file",
+      "complexity": "moderate",
+      "summary": "No summary available"
+    },
+    {
+      "id": "file:src/mem/mem.c",
+      "type": "file",
+      "complexity": "moderate",
+      "summary": "No summary available"
+    },
+    {
+      "id": "file:build/mem/mm_s.o",
+      "type": "file",
+      "complexity": "moderate",
+      "summary": "No summary available"
+    },
+    {
+      "id": "file:src/mem/mm.S",
+      "type": "file",
+      "complexity": "moderate",
+      "summary": "No summary available"
+    },
+    {
+      "id": "file:build/misc/printf_c.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "printf_c.d",
+      "summary": "printf_c.d"
+    },
+    {
+      "id": "file:build/misc/printf_c.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "printf_c.o",
+      "summary": "printf_c.o"
+    },
+    {
+      "id": "file:build/misc/utils_c.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "utils_c.d",
+      "summary": "utils_c.d"
+    },
+    {
+      "id": "file:build/misc/utils_c.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "utils_c.o",
+      "summary": "utils_c.o"
+    },
+    {
+      "id": "file:build/misc/utils_s.d",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "utils_s.d",
+      "summary": "utils_s.d"
+    },
+    {
+      "id": "file:build/misc/utils_s.o",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "utils_s.o",
+      "summary": "utils_s.o"
+    },
+    {
+      "id": "file:src/misc/printf.c",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "printf.c",
+      "summary": "printf.c"
+    },
+    {
+      "id": "file:src/misc/utils.c",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "utils.c",
+      "summary": "utils.c"
+    },
+    {
+      "id": "file:include/lib/clib.h",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "clib.h",
+      "summary": "clib.h"
+    },
+    {
+      "id": "file:src/misc/utils.S",
+      "type": "file",
+      "complexity": "moderate",
+      "name": "utils.S",
+      "summary": "utils.S"
+    },
+    {
+      "id": "file:src/includes/config.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "config.h",
+      "summary": "config.h"
+    },
+    {
+      "id": "file:src/includes/context.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "context.h",
+      "summary": "context.h"
+    },
+    {
+      "id": "file:src/includes/intr.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "intr.h",
+      "summary": "intr.h"
+    },
+    {
+      "id": "file:src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "llama2.h",
+      "summary": "llama2.h"
+    },
+    {
+      "id": "file:src/includes/lock.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "lock.h",
+      "summary": "lock.h"
+    },
+    {
+      "id": "file:src/includes/lowlevel.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "lowlevel.h",
+      "summary": "lowlevel.h"
+    },
+    {
+      "id": "file:src/includes/misc.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "misc.h",
+      "summary": "misc.h"
+    },
+    {
+      "id": "file:src/includes/multiboot.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "multiboot.h",
+      "summary": "multiboot.h"
+    },
+    {
+      "id": "file:src/includes/segments.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "segments.h",
+      "summary": "segments.h"
+    },
+    {
+      "id": "file:src/includes/spinlock.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "spinlock.h",
+      "summary": "spinlock.h"
+    },
+    {
+      "id": "file:Config",
+      "filePath": "src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "Config",
+      "summary": "Config"
+    },
+    {
+      "id": "file:TransformerWeights",
+      "filePath": "src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "TransformerWeights",
+      "summary": "TransformerWeights"
+    },
+    {
+      "id": "file:RunState",
+      "filePath": "src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "RunState",
+      "summary": "RunState"
+    },
+    {
+      "id": "file:Transformer",
+      "filePath": "src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "Transformer",
+      "summary": "Transformer"
+    },
+    {
+      "id": "file:build_transformer",
+      "filePath": "src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "build_transformer",
+      "summary": "build_transformer"
+    },
+    {
+      "id": "file:forward",
+      "filePath": "src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "forward",
+      "summary": "forward"
+    },
+    {
+      "id": "file:sample_argmax",
+      "filePath": "src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "sample_argmax",
+      "summary": "sample_argmax"
+    },
+    {
+      "id": "file:generate",
+      "filePath": "src/includes/llama2.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "generate",
+      "summary": "generate"
+    },
+    {
+      "id": "file:irqcontext",
+      "filePath": "src/includes/intr.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "irqcontext",
+      "summary": "irqcontext"
+    },
+    {
+      "id": "file:irqcontext_timer",
+      "filePath": "src/includes/intr.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "irqcontext_timer",
+      "summary": "irqcontext_timer"
+    },
+    {
+      "id": "file:get_cpsr",
+      "filePath": "src/includes/lock.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "get_cpsr",
+      "summary": "get_cpsr"
+    },
+    {
+      "id": "file:set_cpsr",
+      "filePath": "src/includes/lock.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "set_cpsr",
+      "summary": "set_cpsr"
+    },
+    {
+      "id": "file:DISABLE_IRQ",
+      "filePath": "src/includes/lock.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "DISABLE_IRQ",
+      "summary": "DISABLE_IRQ"
+    },
+    {
+      "id": "file:RESTORE_IRQ",
+      "filePath": "src/includes/lock.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "RESTORE_IRQ",
+      "summary": "RESTORE_IRQ"
+    },
+    {
+      "id": "file:callnative_special",
+      "filePath": "src/includes/lowlevel.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "callnative_special",
+      "summary": "callnative_special"
+    },
+    {
+      "id": "file:cas",
+      "filePath": "src/includes/lowlevel.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "cas",
+      "summary": "cas"
+    },
+    {
+      "id": "file:fetchAndStore",
+      "filePath": "src/includes/lowlevel.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "fetchAndStore",
+      "summary": "fetchAndStore"
+    },
+    {
+      "id": "file:sys_panic",
+      "filePath": "src/includes/misc.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "sys_panic",
+      "summary": "sys_panic"
+    },
+    {
+      "id": "file:getEFlags",
+      "filePath": "src/includes/misc.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "getEFlags",
+      "summary": "getEFlags"
+    },
+    {
+      "id": "file:test_and_set_bit",
+      "filePath": "src/includes/misc.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "test_and_set_bit",
+      "summary": "test_and_set_bit"
+    },
+    {
+      "id": "file:atomic_inc",
+      "filePath": "src/includes/misc.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "atomic_inc",
+      "summary": "atomic_inc"
+    },
+    {
+      "id": "file:multiboot_info",
+      "filePath": "src/includes/multiboot.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "multiboot_info",
+      "summary": "multiboot_info"
+    },
+    {
+      "id": "file:spinlock_t",
+      "filePath": "src/includes/spinlock.h",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "spinlock_t",
+      "summary": "spinlock_t"
+    },
+    {
+      "id": "file:spin_lock",
+      "filePath": "src/includes/spinlock.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "spin_lock",
+      "summary": "spin_lock"
+    },
+    {
+      "id": "file:spin_unlock",
+      "filePath": "src/includes/spinlock.h",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "spin_unlock",
+      "summary": "spin_unlock"
+    },
+    {
+      "id": "file:src/jcore/includes/all.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "all.h",
+      "summary": "all.h"
+    },
+    {
+      "id": "file:src/jcore/includes/atomic.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "atomic.h",
+      "summary": "atomic.h"
+    },
+    {
+      "id": "file:src/jcore/includes/atomicfn.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "atomicfn.h",
+      "summary": "atomicfn.h"
+    },
+    {
+      "id": "file:src/jcore/includes/bdt.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "bdt.h",
+      "summary": "bdt.h"
+    },
+    {
+      "id": "file:src/jcore/includes/bench.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "bench.h",
+      "summary": "bench.h"
+    },
+    {
+      "id": "file:src/jcore/includes/classes.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "classes.h",
+      "summary": "classes.h"
+    },
+    {
+      "id": "file:src/jcore/includes/code.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "code.h",
+      "summary": "code.h"
+    },
+    {
+      "id": "file:src/jcore/includes/config.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "config.h",
+      "summary": "config.h"
+    },
+    {
+      "id": "file:src/jcore/includes/context.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "context.h",
+      "summary": "context.h"
+    },
+    {
+      "id": "file:src/jcore/includes/cpuid.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "cpuid.h",
+      "summary": "cpuid.h"
+    },
+    {
+      "id": "file:src/jcore/includes/crc32.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "crc32.h",
+      "summary": "crc32.h"
+    },
+    {
+      "id": "file:src/jcore/includes/debug_reg.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "debug_reg.h",
+      "summary": "debug_reg.h"
+    },
+    {
+      "id": "file:src/jcore/includes/domain.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "domain.h",
+      "summary": "domain.h"
+    },
+    {
+      "id": "file:src/jcore/includes/ekhz.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "ekhz.h",
+      "summary": "ekhz.h"
+    },
+    {
+      "id": "file:src/jcore/includes/exception_handler.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "exception_handler.h",
+      "summary": "exception_handler.h"
+    },
+    {
+      "id": "file:src/jcore/includes/execJAVA.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "execJAVA.h",
+      "summary": "execJAVA.h"
+    },
+    {
+      "id": "file:src/jcore/includes/gc.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "gc.h",
+      "summary": "gc.h"
+    },
+    {
+      "id": "file:src/jcore/includes/gc_alloc.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "gc_alloc.h",
+      "summary": "gc_alloc.h"
+    },
+    {
+      "id": "file:src/jcore/includes/gc_bitmap.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "gc_bitmap.h",
+      "summary": "gc_bitmap.h"
+    },
+    {
+      "id": "file:src/jcore/includes/gc_chunked.h",
+      "complexity": "moderate",
+      "type": "file",
+      "name": "gc_chunked.h",
+      "summary": "gc_chunked.h"
+    },
+    {
+      "id": "file:SymbolDesc",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "SymbolDesc",
+      "summary": "SymbolDesc"
+    },
+    {
+      "id": "file:MethodDesc",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "MethodDesc",
+      "summary": "MethodDesc"
+    },
+    {
+      "id": "file:ClassDesc",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "ClassDesc",
+      "summary": "ClassDesc"
+    },
+    {
+      "id": "file:Class",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "Class",
+      "summary": "Class"
+    },
+    {
+      "id": "file:SharedLibDesc",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "SharedLibDesc",
+      "summary": "SharedLibDesc"
+    },
+    {
+      "id": "file:LibDesc",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "LibDesc",
+      "summary": "LibDesc"
+    },
+    {
+      "id": "file:DomainDesc",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "DomainDesc",
+      "summary": "DomainDesc"
+    },
+    {
+      "id": "file:GCDesc",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "GCDesc",
+      "summary": "GCDesc"
+    },
+    {
+      "id": "file:SchedDesc",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "SchedDesc",
+      "summary": "SchedDesc"
+    },
+    {
+      "id": "file:cpu_info",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "cpu_info",
+      "summary": "cpu_info"
+    },
+    {
+      "id": "file:benchtime_s",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "benchtime_s",
+      "summary": "benchtime_s"
+    },
+    {
+      "id": "file:CPUFrequency",
+      "complexity": "moderate",
+      "type": "concept",
+      "name": "CPUFrequency",
+      "summary": "CPUFrequency"
+    },
+    {
+      "id": "file:nopreempt_init",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "nopreempt_init",
+      "summary": "nopreempt_init"
+    },
+    {
+      "id": "file:nopreempt_register",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "nopreempt_register",
+      "summary": "nopreempt_register"
+    },
+    {
+      "id": "file:atomicfn_init",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "atomicfn_init",
+      "summary": "atomicfn_init"
+    },
+    {
+      "id": "file:registerObject",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "registerObject",
+      "summary": "registerObject"
+    },
+    {
+      "id": "file:unregisterObject",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "unregisterObject",
+      "summary": "unregisterObject"
+    },
+    {
+      "id": "file:handle2ClassDesc",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "handle2ClassDesc",
+      "summary": "handle2ClassDesc"
+    },
+    {
+      "id": "file:bdtStart",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "bdtStart",
+      "summary": "bdtStart"
+    },
+    {
+      "id": "file:bdtStartChunk",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "bdtStartChunk",
+      "summary": "bdtStartChunk"
+    },
+    {
+      "id": "file:bdtSend",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "bdtSend",
+      "summary": "bdtSend"
+    },
+    {
+      "id": "file:bdtStop",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "bdtStop",
+      "summary": "bdtStop"
+    },
+    {
+      "id": "file:bench_empty",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "bench_empty",
+      "summary": "bench_empty"
+    },
+    {
+      "id": "file:bench_load",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "bench_load",
+      "summary": "bench_load"
+    },
+    {
+      "id": "file:executeForallClasses",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "executeForallClasses",
+      "summary": "executeForallClasses"
+    },
+    {
+      "id": "file:cpuid",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "cpuid",
+      "summary": "cpuid"
+    },
+    {
+      "id": "file:crc32start",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "crc32start",
+      "summary": "crc32start"
+    },
+    {
+      "id": "file:crc32end",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "crc32end",
+      "summary": "crc32end"
+    },
+    {
+      "id": "file:crc32",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "crc32",
+      "summary": "crc32"
+    },
+    {
+      "id": "file:crc32single",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "crc32single",
+      "summary": "crc32single"
+    },
+    {
+      "id": "file:init_domainsys",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "init_domainsys",
+      "summary": "init_domainsys"
+    },
+    {
+      "id": "file:createDomain",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "createDomain",
+      "summary": "createDomain"
+    },
+    {
+      "id": "file:getNumberOfDomains",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "getNumberOfDomains",
+      "summary": "getNumberOfDomains"
+    },
+    {
+      "id": "file:domain_panic",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "domain_panic",
+      "summary": "domain_panic"
+    },
+    {
+      "id": "file:foreachDomain",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "foreachDomain",
+      "summary": "foreachDomain"
+    },
+    {
+      "id": "file:foreachDomain1",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "foreachDomain1",
+      "summary": "foreachDomain1"
+    },
+    {
+      "id": "file:malloc_tmp_stringtable",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "malloc_tmp_stringtable",
+      "summary": "malloc_tmp_stringtable"
+    },
+    {
+      "id": "file:findMethodAtAddrInDomain",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "findMethodAtAddrInDomain",
+      "summary": "findMethodAtAddrInDomain"
+    },
+    {
+      "id": "file:getCPUFrequency",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "getCPUFrequency",
+      "summary": "getCPUFrequency"
+    },
+    {
+      "id": "file:createExceptionInDomain",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "createExceptionInDomain",
+      "summary": "createExceptionInDomain"
+    },
+    {
+      "id": "file:throw_exception",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "throw_exception",
+      "summary": "throw_exception"
+    },
+    {
+      "id": "file:exceptionHandler",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "exceptionHandler",
+      "summary": "exceptionHandler"
+    },
+    {
+      "id": "file:call_JAVA_method0",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "call_JAVA_method0",
+      "summary": "call_JAVA_method0"
+    },
+    {
+      "id": "file:gc_init",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "gc_init",
+      "summary": "gc_init"
+    },
+    {
+      "id": "file:gc_done",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "gc_done",
+      "summary": "gc_done"
+    },
+    {
+      "id": "file:gc_freeWords",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "gc_freeWords",
+      "summary": "gc_freeWords"
+    },
+    {
+      "id": "file:gc_totalWords",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "gc_totalWords",
+      "summary": "gc_totalWords"
+    },
+    {
+      "id": "file:gc_allocDataInDomain",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "gc_allocDataInDomain",
+      "summary": "gc_allocDataInDomain"
+    },
+    {
+      "id": "file:allocArrayInDomain",
+      "complexity": "moderate",
+      "type": "function",
+      "name": "allocArrayInDomain",
+      "summary": "allocArrayInDomain"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:beaglebone_ai",
+      "label": "runs on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:cortex_a15",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:cortex_a15",
+      "target": "file:armv7_a",
+      "label": "implements",
+      "direction": "forward"
+    },
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:systick",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:pendsv",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:svc",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:jcore_rtos",
+      "target": "file:mmu",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:mmu",
+      "target": "file:dacr",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:uart",
+      "label": "has",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:gpio",
+      "label": "has",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:ddr3l",
+      "label": "has",
+      "direction": "forward"
+    },
+    {
+      "source": "file:beaglebone_ai",
+      "target": "file:ocmc_ram",
+      "label": "has",
+      "direction": "forward"
+    },
+    {
+      "source": "file:rom_bootloader",
+      "target": "file:mlo_spl",
+      "label": "loads",
+      "direction": "forward"
+    },
+    {
+      "source": "file:mlo_spl",
+      "target": "file:u_boot",
+      "label": "loads",
+      "direction": "forward"
+    },
+    {
+      "source": "file:u_boot",
+      "target": "file:jcore_rtos",
+      "label": "loads",
+      "direction": "forward"
+    },
+    {
+      "source": "file:mlo_spl",
+      "target": "file:config_header",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:u_boot",
+      "target": "file:fit_image",
+      "label": "uses",
+      "direction": "forward"
+    },
+    {
+      "source": "file:trm",
+      "target": "file:beaglebone_ai",
+      "label": "describes",
+      "direction": "forward"
+    },
+    {
+      "source": "file:device_tree",
+      "target": "file:beaglebone_ai",
+      "label": "describes",
+      "direction": "forward"
+    },
+    {
+      "source": "file:pdk",
+      "target": "file:csl",
+      "label": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:pdk",
+      "target": "file:lld",
+      "label": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:sdk_rtos",
+      "target": "file:pdk",
+      "label": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:sdk_linux",
+      "target": "file:u_boot",
+      "label": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ccs",
+      "target": "file:beaglebone_ai",
+      "label": "debugs",
+      "direction": "forward"
+    },
+    {
+      "source": "file:iced",
+      "target": "file:beaglebone_ai",
+      "label": "provides debug for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:clang",
+      "target": "file:jcore_rtos",
+      "label": "compiles",
+      "direction": "forward"
+    },
+    {
+      "source": "file:lld_linker",
+      "target": "file:jcore_rtos",
+      "label": "links",
+      "direction": "forward"
+    },
+    {
+      "source": "file:qemu",
+      "target": "file:cortex_a15",
+      "label": "emulates",
+      "direction": "forward"
+    },
+    {
+      "source": "file:makefile",
+      "target": "file:kernel_bin",
+      "label": "builds",
+      "direction": "forward"
+    },
+    {
+      "source": "file:makefile",
+      "target": "file:kernel_jcore_bin",
+      "label": "builds",
+      "direction": "forward"
+    },
+    {
+      "source": "file:makefile",
+      "target": "file:kernel_qemu_bin",
+      "label": "builds",
+      "direction": "forward"
+    },
+    {
+      "source": "file:linker_ld",
+      "target": "file:kernel_bin",
+      "label": "defines layout for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:linker_jcore_ld",
+      "target": "file:kernel_jcore_bin",
+      "label": "defines layout for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:linker_qemu_ld",
+      "target": "file:kernel_qemu_bin",
+      "label": "defines layout for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:glossary_md",
+      "target": "file:jcore_rtos",
+      "label": "documents",
+      "direction": "forward"
+    },
+    {
+      "source": "file:mission_md",
+      "target": "file:jcore_rtos",
+      "label": "defines goals for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:resources_md",
+      "target": "file:jcore_rtos",
+      "label": "lists resources for",
+      "direction": "forward"
+    },
+    {
+      "source": "file:target_json",
+      "target": "file:clang",
+      "label": "configures",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.d",
+      "target": "file:build/boot/boot_s.o",
+      "label": "describes",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:src/boot/boot.S",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:include/mem/mm.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:include/sysregs.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:include/mem/mmu.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.d",
+      "target": "file:build/boot/entry_s.o",
+      "label": "describes",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:src/boot/entry.S",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:include/entry.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:_start",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:el1_entry",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:id_pgd_addr",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:master",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:proc_hang",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:bss_begin",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:bss_end",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:id_pgd",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:kernel_main",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/boot_s.o",
+      "target": "file:memzero",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:err_hang",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:error_invalid_el0_32",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:error_invalid_el0_64",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:error_invalid_el1h",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:error_invalid_el1t",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:fiq_invalid_el0_32",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:fiq_invalid_el0_64",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:fiq_invalid_el1h",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:fiq_invalid_el1t",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:handle_el1_irq",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:irq_invalid_el0_32",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:irq_invalid_el0_64",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:irq_invalid_el1t",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:sync_invalid_el0_32",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:sync_invalid_el0_64",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:sync_invalid_el1h",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:sync_invalid_el1t",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:vectors",
+      "label": "defines",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:handle_irq",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/boot/entry_s.o",
+      "target": "file:show_invalid_entry_message",
+      "label": "references",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.d",
+      "target": "file:build/drivers/emmc/emmc_c.o",
+      "label": "DESCRIBES_DEPENDENCIES_OF",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.d",
+      "target": "file:build/drivers/emmc/emmc_clock_c.o",
+      "label": "DESCRIBES_DEPENDENCIES_OF",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:src/drivers/emmc/emmc.c",
+      "label": "COMPILED_FROM",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/common.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/peripherals/gpio.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/peripherals/base.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/mailbox.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/peripherals/timer.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/mem/mem.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/lib/printf.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/peripherals/io.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/peripherals/emmc.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_c.o",
+      "target": "file:include/lib/utils.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:src/drivers/emmc/emmc_clock.c",
+      "label": "COMPILED_FROM",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:include/peripherals/emmc.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:include/peripherals/base.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:include/common.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:include/peripherals/io.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:include/mailbox.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:include/lib/printf.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/emmc/emmc_clock_c.o",
+      "target": "file:include/peripherals/timer.h",
+      "label": "DEPENDS_ON",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/i2c_c.o",
+      "target": "file:src/drivers/i2c/i2c.c",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/i2c_c.o",
+      "target": "file:include/peripherals/gpio.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/i2c_c.o",
+      "target": "file:include/common.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/i2c_c.o",
+      "target": "file:include/peripherals/base.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/i2c_c.o",
+      "target": "file:include/peripherals/i2c.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/i2c_c.o",
+      "target": "file:include/lib/printf.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/i2c_c.o",
+      "target": "file:include/peripherals/io.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/lcd_c.o",
+      "target": "file:src/drivers/i2c/lcd.c",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/lcd_c.o",
+      "target": "file:include/peripherals/lcd.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/lcd_c.o",
+      "target": "file:include/common.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/lcd_c.o",
+      "target": "file:include/peripherals/i2c.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/lcd_c.o",
+      "target": "file:include/peripherals/base.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/lcd_c.o",
+      "target": "file:include/peripherals/timer.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/lcd_c.o",
+      "target": "file:include/lib/printf.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/drivers/i2c/lcd_c.o",
+      "target": "file:include/peripherals/io.h",
+      "label": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mem_c.o",
+      "target": "file:src/mem/mem.c",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mem_c.o",
+      "target": "file:include/mem/mem.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mem_c.o",
+      "target": "file:include/common.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mem_c.o",
+      "target": "file:include/peripherals/base.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mem_c.o",
+      "target": "file:include/mem/mm.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mem_c.o",
+      "target": "file:include/mem/mmu.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mem_c.o",
+      "target": "file:include/lib/printf.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mem_c.o",
+      "target": "file:include/peripherals/io.h",
+      "type": "depends_on",
+      "direction": "forward"
+    },
+    {
+      "source": "file:build/mem/mm_s.o",
+      "target": "file:src/mem/mm.S",
+      "type": "depends_on",
+      "direction": "forward"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:hardware-arch",
+      "name": "Hardware/Architecture Layer",
+      "description": "Direct hardware interaction, ARMv7-A architecture support, and low-level drivers (GIC, Timer, Exceptions).",
+      "nodeIds": [
+        "file:src/start.S",
+        "file:src/switch_asm.S",
+        "file:src/gic.c",
+        "file:src/timer.c",
+        "file:src/exception.c",
+        "file:src/includes/intr.h",
+        "file:src/includes/lowlevel.h"
+      ]
+    },
+    {
+      "id": "layer:kernel-core",
+      "name": "Kernel Core Layer",
+      "description": "OS kernel primitives: round-robin scheduling, thread management, and synchronization.",
+      "nodeIds": [
+        "file:src/sched.c",
+        "file:src/includes/context.h",
+        "file:src/includes/lock.h",
+        "file:src/includes/spinlock.h",
+        "file:src/includes/misc.h"
+      ]
+    },
+    {
+      "id": "layer:runtime-support",
+      "name": "Runtime Support Layer",
+      "description": "Minimal C runtime and ARM EABI helpers for bare-metal execution.",
+      "nodeIds": [
+        "file:src/minirun.c",
+        "file:src/aeabi.c"
+      ]
+    },
+    {
+      "id": "layer:application-service",
+      "name": "Application/Service Layer",
+      "description": "Llama2 inference engine featuring NEON acceleration and high-level LLM control logic.",
+      "nodeIds": [
+        "file:src/llama2.c",
+        "file:src/llm.c",
+        "file:src/includes/llama2.h"
+      ]
+    },
+    {
+      "id": "layer:initialization",
+      "name": "Initialization Layer",
+      "description": "Main entry point that orchestrates the boot process and initializes other layers.",
+      "nodeIds": [
+        "file:src/main.c"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "step": 1,
+      "title": "System Bootstrapping",
+      "description": "The journey begins at start.S, where the CPU is initialized, the stack is set up, and the system jumps into main.c. main.c orchestrates the rest of the kernel initialization.",
+      "nodeIds": [
+        "file:src/start.S",
+        "file:src/main.c"
+      ],
+      "layer": "layer:initialization"
+    },
+    {
+      "step": 2,
+      "title": "Hardware Foundation",
+      "description": "Explore how jcore interacts with the ARMv7-A hardware. gic.c manages the Generic Interrupt Controller, timer.c handles the system timer for preemption, and exception.c provides the entry points for hardware exceptions.",
+      "nodeIds": [
+        "file:src/gic.c",
+        "file:src/timer.c",
+        "file:src/exception.c"
+      ],
+      "layer": "layer:hardware-arch"
+    },
+    {
+      "step": 3,
+      "title": "The Minimal Runtime",
+      "description": "Since this is a bare-metal RTOS, it needs a minimal C runtime. minirun.c provides basic memory and runtime support, while aeabi.c implements ARM EABI helpers required by the compiler for certain operations.",
+      "nodeIds": [
+        "file:src/minirun.c",
+        "file:src/aeabi.c"
+      ],
+      "layer": "layer:runtime-support"
+    },
+    {
+      "step": 4,
+      "title": "Preemptive Scheduling and Context Switching",
+      "description": "The heart of the RTOS. sched.c implements a round-robin scheduler. context.h defines the Process Control Block (PCB), and switch_asm.S performs the heavy lifting of saving and restoring CPU registers during a context switch.",
+      "nodeIds": [
+        "file:src/sched.c",
+        "file:src/switch_asm.S",
+        "file:src/includes/context.h"
+      ],
+      "layer": "layer:kernel-core"
+    },
+    {
+      "step": 5,
+      "title": "Synchronization and Safety",
+      "description": "In a preemptive environment, synchronization is key. Learn how the kernel uses spinlocks and interrupt disabling to protect shared resources.",
+      "nodeIds": [
+        "file:src/includes/lock.h",
+        "file:src/includes/spinlock.h",
+        "file:src/includes/lowlevel.h"
+      ],
+      "layer": "layer:kernel-core"
+    },
+    {
+      "step": 6,
+      "title": "NEON-Accelerated Inference",
+      "description": "Finally, see the high-level application. llama2.c implements the core inference engine utilizing ARM NEON instructions for acceleration, and llm.c provides the high-level logic for the LLM.",
+      "nodeIds": [
+        "file:src/llama2.c",
+        "file:src/llm.c"
+      ],
+      "layer": "layer:application-service"
+    }
+  ]
+}
