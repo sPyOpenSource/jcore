@@ -7,6 +7,15 @@ extern void gic_init(void);
 extern void arch_timer_init(void);
 extern void ser_putc(int x, char c);
 
+extern void llm(void);
+
+static void llama_thread(void *param)
+{
+    (void)param;
+    llm();
+    thread_exit();
+}
+
 static void worker_thread(void *param)
 {
     int i;
@@ -63,12 +72,11 @@ void main(void)
     initial = createThread(domainZero, start_domain_zero, (void *)0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
     setThreadName(initial, "DomainZero:InitialThread", NULL);
 
+    ThreadDesc *llm_t = createThread(domainZero, llama_thread, (void *)0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
+    setThreadName(llm_t, "LLM_Inference", NULL);
+
     dprintf("starting scheduler...\n");
-    llm();
     thread_exit();
 
     for (;;);
 }
-
-/* Entry point called by start.S */
-void main(void) { jcore(); }
