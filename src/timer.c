@@ -41,6 +41,8 @@ static unsigned int timer_reg_read(int reg)
     return val;
 }
 
+static unsigned int timer_reload_value = 10000000;
+
 void setTimer(void)
 {
     unsigned int freq;
@@ -51,6 +53,7 @@ void setTimer(void)
         freq = 100000000;
 
     ticks = freq / TIMER_HZ;
+    timer_reload_value = ticks;
 
     timer_reg_write(1, ticks);
     timer_reg_write(2, 1);
@@ -64,7 +67,8 @@ void arch_timer_init(void)
     gic_enable_irq(TIMER_IRQ);
 }
 
-void arch_timer_ack(void)
+void arch_timer_tick(void)
 {
-    timer_reg_write(1, timer_reg_read(1));
+    timer_reg_write(2, 1);
+    timer_reg_write(1, timer_reload_value);
 }

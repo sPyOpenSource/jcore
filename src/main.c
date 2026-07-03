@@ -14,15 +14,9 @@ struct multiboot_info boot_info;
 extern void init_serial(int port);
 extern void gic_init(void);
 extern void arch_timer_init(void);
+extern void irq_enable(void);
 
-extern void llm(void);
-
-static void llama_thread(void *param)
-{
-    (void)param;
-    llm();
-    thread_exit();
-}
+extern void llm_from_data(const char *model_data);
 
 static void worker_thread(void *param)
 {
@@ -42,58 +36,32 @@ static void worker_thread(void *param)
     thread_exit();
 }
 
-static void fat32_test_thread(void *param)
-{
-    (void)param;
-    struct mmc_block_dev ram_dev;
-    struct fat32_fs fs;
-    struct fat32_file fh;
-
-    ram_blk_init_at(&ram_dev, 66000, (void *)0x45000000);
-
-    if (fat32_mount(&ram_dev, &fs) != 0)
-        dprintf("FAT32: mount FAILED\n");
-    else if (fat32_open_root(&fs, "TEST.TXT", &fh) != 0)
-        dprintf("FAT32: open FAILED\n");
-    else {
-        uint8_t buf[64];
-        int n = fat32_read(&fh, buf, sizeof(buf), 0);
-        buf[n < sizeof(buf) ? n : sizeof(buf) - 1] = '\0';
-        dprintf("FAT32: %s\n", (char *)buf);
-    }
-
-    thread_exit();
-}
+static char model_buffer[2 * 1024 * 1024];
 
 extern struct vfs_ops fat32_vfs_ops;
 
-static void vfs_test_thread(void *param)
+static void vfs_llm_thread(void *param)
 {
     (void)param;
-    struct mmc_block_dev ram_dev2;
+    struct mmc_block_dev ram_dev;
 
-    dprintf("VFS test: starting\n");
-
-    ram_blk_init_at(&ram_dev2, 66000, (void *)0x45000000);
+    ram_blk_init_at(&ram_dev, 66000, (void *)0x45000000);
     vfs_init();
-    dprintf("VFS: init OK\n");
 
-    int rc = vfs_mount("/ram", &fat32_vfs_ops, &ram_dev2);
-    dprintf("VFS: mount rc=%d\n", rc);
-
-    int fd = vfs_open("/ram/test.txt", 0);
-    dprintf("VFS: open fd=%d\n", fd);
-    if (fd >= 0) {
-        char buf[256];
-        int n = vfs_read(fd, buf, sizeof(buf) - 1);
-        dprintf("VFS: read %d bytes\n", n);
-        if (n > 0) {
-            buf[n] = '\0';
-            dprintf("VFS: content: %s\n", buf);
+    if (vfs_mount("/sd", &fat32_vfs_ops, &ram_dev) != 0)
+        dprintf("VFS: mount FAIL\n");
+    else {
+        int fd = vfs_open("/sd/MODEL.BIN", 0);
+        if (fd < 0)
+            dprintf("VFS: open FAIL\n");
+        else {
+            int n = vfs_read(fd, model_buffer, sizeof(model_buffer));
+            vfs_close(fd);
+            if (n > 0)
+                llm_from_data(model_buffer);
         }
-        vfs_close(fd);
     }
-    dprintf("VFS test: done\n");
+
     thread_exit();
 }
 
@@ -107,11 +75,8 @@ void start_domain_zero(void *dummy)
     t = createThread(domainZero, worker_thread, (void *)0x1234, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
     setThreadName(t, "Worker", NULL);
 
-    t = createThread(domainZero, fat32_test_thread, (void *)0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
-    setThreadName(t, "FAT32_Test", NULL);
-
-    t = createThread(domainZero, vfs_test_thread, (void *)0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
-    setThreadName(t, "VFS_Test", NULL);
+    t = createThread(domainZero, vfs_llm_thread, (void *)0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
+    setThreadName(t, "VFS_LLM", NULL);
 
     thread_exit();
 }
@@ -139,8 +104,8 @@ void main(void)
     dprintf("\n=== jcore RTOS on ARM ===\n");
     dprintf("init serial: OK\n");
     
-    // gic_init();
-    // dprintf("init GIC: OK\n");
+    gic_init();
+    dprintf("init GIC: OK\n");
     
     init_domainsys();
     dprintf("init domains: OK\n");
@@ -148,15 +113,14 @@ void main(void)
     threads_init();
     dprintf("init threads: OK\n");
     
-    // arch_timer_init();
-    // dprintf("init timer: OK\n");
+    arch_timer_init();
+    dprintf("init timer: OK\n");
 
+    irq_enable();
+    dprintf("IRQs enabled\n");
 
     initial = createThread(domainZero, start_domain_zero, (void *)0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
     setThreadName(initial, "DomainZero:InitialThread", NULL);
-
-    ThreadDesc *llm_t = createThread(domainZero, llama_thread, (void *)0, STATE_RUNNABLE, SCHED_CREATETHREAD_DEFAULT);
-    setThreadName(llm_t, "LLM_Inference", NULL);
 
     dprintf("starting scheduler...\n");
     thread_exit();

@@ -122,15 +122,14 @@ unused_handler:
     ldmfd sp!, {r0-r12, pc}^
 
 irq_handler_asm:
-    sub lr, lr, #4
-    stmfd sp!, {r0-r12, lr}
-    mrs r0, spsr
-    stmfd sp!, {r0}
-    mov r0, sp
+    sub lr, lr, #4             @ LR_irq = return address
+    srsdb sp!, #0x13           @ Save LR_irq + SPSR_irq to SVC stack
+    cps #0x13                  @ Switch to SVC mode
+    stmfd sp!, {r0-r12, lr}    @ Save r0-r12 + LR_svc on SVC stack
+    mov r0, sp                 @ Frame pointer = saved context
     bl arch_irq_handler
-    ldmfd sp!, {r0}
-    msr spsr_cxsf, r0
-    ldmfd sp!, {r0-r12, pc}^
+    ldmfd sp!, {r0-r12, lr}    @ Restore regs from SVC stack
+    rfeia sp!                  @ Return: PC ← [sp], CPSR ← [sp+4]
 
 fiq_handler_asm:
     sub lr, lr, #4

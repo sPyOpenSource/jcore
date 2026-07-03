@@ -3,7 +3,7 @@
 
 #define GIC_BASE       0x08000000
 #define GICD_BASE      (GIC_BASE + 0x0000)
-#define GICC_BASE      (GIC_BASE + 0x1000)
+#define GICC_BASE      (GIC_BASE + 0x10000)
 
 #define GICD_CTLR      (GICD_BASE + 0x000)
 #define GICD_TYPER     (GICD_BASE + 0x004)

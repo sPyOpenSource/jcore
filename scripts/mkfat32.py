@@ -205,6 +205,15 @@ if __name__ == '__main__':
     import json
     with open(sys.argv[1]) as f:
         config = json.load(f)
+
+    files = []
+    for f in config['files']:
+        if 'data_hex' in f:
+            files.append((f['name'], bytes.fromhex(f['data_hex'])))
+        elif 'data_file' in f:
+            with open(f['data_file'], 'rb') as bf:
+                files.append((f['name'], bf.read()))
+        else:
+            files.append((f['name'], b''))
     make_fat32_image(config['total_sectors'], config['volume_label'],
-                     [(f['name'], bytes.fromhex(f['data_hex'])) for f in config['files']],
-                     config['out_path'])
+                     files, config['out_path'])

@@ -39,23 +39,7 @@ static void uart_puts(const char *s) {
 
 extern const char _binary_model_bin_start[];
 
-void llm(void) {
-    uart_init();
-    uart_puts("JX boot: OK\n");
-
-    uart_puts("loading model... ");
-    Transformer t;
-    int rc = build_transformer(&t, _binary_model_bin_start);
-    if (rc != 0) {
-        uart_puts("FAIL\n");
-        return;
-    }
-    uart_puts("OK\ngenerating...\n");
-
-    generate(&t, 256, uart_putc);
-
-    uart_puts("\ndone\n");
-
+static void led_blink(void) {
 #ifndef QEMU
 #define GPIO4_BASE         0x4805D000
 #define GPIO_OE            0x134
@@ -74,4 +58,28 @@ void llm(void) {
         for (volatile unsigned int i = 0; i < 500000; i++);
     }
 #endif
+}
+
+void llm_from_data(const char *model_data) {
+    uart_puts("loading model... ");
+    Transformer t;
+    int rc = build_transformer(&t, model_data);
+    if (rc != 0) {
+        uart_puts("FAIL\n");
+        return;
+    }
+    uart_puts("OK\ngenerating...\n");
+
+    generate(&t, 256, uart_putc);
+
+    uart_puts("\ndone\n");
+}
+
+void llm(void) {
+    uart_init();
+    uart_puts("JX boot: OK\n");
+
+    llm_from_data(_binary_model_bin_start);
+
+    led_blink();
 }
