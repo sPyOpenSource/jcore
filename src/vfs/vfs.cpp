@@ -53,7 +53,7 @@ namespace myos {
             }
 
             s_initialized = true;
-            printf("VFS: initialized\n");
+            printf("VFS: initialized\n\r");
             return true;
         }
 

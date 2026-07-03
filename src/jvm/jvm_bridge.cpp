@@ -12,8 +12,8 @@
 namespace myos {
     namespace jvm {
         void JVMBridge::Initialize() {
-            printf("JVM Bridge initializing...\n");
-            printf("JVM Bridge initialized.\n");
+            printf("JVM Bridge initializing...\n\r");
+            printf("JVM Bridge initialized.\n\r");
         }
 
         void* JVMBridge::AllocateMemory(myos::common::size_t size) {
@@ -26,7 +26,7 @@ namespace myos {
 
         void JVMBridge::Println(const char* str) {
             printf((char*)str);
-            printf("\n");
+            printf("\n\r");
         }
     }
 }
@@ -88,7 +88,7 @@ static const unsigned char *findEmbeddedClass(const char *name, unsigned int *si
         if (strcmp(embeddedClasses[i].name, name) == 0) {
             printf("[JVM Load] ");
             printf(name);
-            printf("\n");
+            printf("\n\r");
             *size = embeddedClasses[i].size;
             return embeddedClasses[i].data;
         }

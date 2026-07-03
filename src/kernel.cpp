@@ -261,7 +261,7 @@ static uint32_t getMemUpper(const void* mbd, uint32_t magic)
 
 extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_magic)
 {
-    printf("Hello World! --- http://www.AlgorithMan.de\n");
+    printf("Hello World! --- http://www.AlgorithMan.de\n\r");
 
     GlobalDescriptorTable gdt;
     GlobalDescriptorTable::activeGDT = &gdt;
@@ -278,9 +278,9 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     printfHex((heap      ) & 0xFF);
 
     void* allocated = memoryManager.malloc(1024);
-    printf("\nallocated: 0x");
+    printf("\n\rallocated: 0x");
     printfHex64((uint64_t)allocated);
-    printf("\n");
+    printf("\n\r");
 
     TaskManager taskManager;
     TaskManager::activeTaskManager = &taskManager;
@@ -294,7 +294,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     InterruptManager interrupts(0x20, &gdt, &taskManager);
     SyscallHandler syscalls(&interrupts, 0x80);
 
-    printf("Initializing Hardware, Stage 1\n");
+    printf("Initializing Hardware, Stage 1\n\r");
 
     #ifdef GRAPHICSMODE
         Desktop desktop(320, 200, 0x00, 0x00, 0xA8);
@@ -326,10 +326,10 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
             VideoGraphicsArray vga;
         #endif
 
-    printf("Initializing Hardware, Stage 2\n");
+    printf("Initializing Hardware, Stage 2\n\r");
         drvManager.ActivateAll();
 
-    printf("Initializing Hardware, Stage 3\n");
+    printf("Initializing Hardware, Stage 3\n\r");
 
     #ifdef GRAPHICSMODE
         vga.SetMode(320, 200, 8);
@@ -339,7 +339,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
         desktop.AddChild(&win2);
     #endif
 
-    printf("\n\n\n\n\n\n\n\n\n");
+    printf("\n\n\n\n\n\n\n\n\n\r");
 
     /*printf("\nS-ATA primary master: ");
     AdvancedTechnologyAttachment ata0m(true, 0x1F0);
@@ -348,9 +348,9 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     printf("\nS-ATA primary slave: ");
     AdvancedTechnologyAttachment ata0s(false, 0x1F0);
     ata0s.Identify();
-    printf("VFS initializing...\n");
+    printf("VFS initializing...\n\r");
     myos::vfs::VFS::Initialize(&ata0s, 1);
-    printf("VFS initialized (or failed).\n");
+    printf("VFS initialized (or failed).\n\r");
     //ata0m.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
     //ata0m.Flush();
     //ata0m.Read28(0, 25);
@@ -432,11 +432,11 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     //udp.Bind(udpsocket, &udphandler);
 
 
-    printf("Starting JVM...\n");
+    printf("Starting JVM...\n\r");
     myos::jvm::JVMBridge::Initialize();
-    printf("Running JVM main...\n");
+    printf("Running JVM main...\n\r");
     Flint::runToMain("com/rpi/HelloRPi");
-    printf("JVM finished.\n");
+    printf("JVM finished.\n\r");
 
     while(1)
     {
