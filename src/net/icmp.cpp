@@ -15,7 +15,7 @@ InternetControlMessageProtocol::~InternetControlMessageProtocol()
 {
 }
             
-void printf(char*);
+void printf(const char* str);
 void printfHex(uint8_t);
 bool InternetControlMessageProtocol::OnInternetProtocolReceived(common::uint32_t srcIP_BE, common::uint32_t dstIP_BE,
                                             common::uint8_t* internetprotocolPayload, common::uint32_t size)

@@ -21,7 +21,7 @@
 
 #define NULL 0
 
-void printf(char*);
+void printf(const char* str);
 
 //------------------------------------------------------------------------------
 // callback function for date/time

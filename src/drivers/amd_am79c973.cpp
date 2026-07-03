@@ -28,7 +28,7 @@ void RawDataHandler::Send(uint8_t* buffer, uint32_t size)
 }
 
 
-void printf(char*);
+void printf(const char* str);
 void printfHex(uint8_t);
 
 

@@ -15,7 +15,7 @@ SyscallHandler::~SyscallHandler()
 }
 
 
-void printf(char*);
+void printf(const char* str);
 
 uint64_t SyscallHandler::HandleInterrupt(uint64_t esp)
 {

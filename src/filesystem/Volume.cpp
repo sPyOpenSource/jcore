@@ -19,7 +19,7 @@
  */
 #include "fat.h"
 
-void printf(char*);
+void printf(const char* str);
 void printfHex(uint8_t);
 
 //------------------------------------------------------------------------------

@@ -12,6 +12,7 @@
 namespace myos {
     namespace jvm {
         void JVMBridge::Initialize() {
+            printf("JVM Bridge initializing...\n");
             printf("JVM Bridge initialized.\n");
         }
 
@@ -37,6 +38,7 @@ namespace FlintAPI {
         void *realloc(void *p, uint32_t size) { return myos::jvm::JVMBridge::AllocateMemory(size); }
         void free(void *p) { myos::jvm::JVMBridge::FreeMemory(p); }
         void consoleWrite(uint8_t *utf8, uint32_t length) {
+            printf("[JVM Console] ");
             char buf[1024];
             uint32_t len = length < 1023 ? length : 1023;
             memcpy(buf, utf8, len);
@@ -84,6 +86,9 @@ static bool isEmbeddedHandle(FlintAPI::IO::FileHandle handle) {
 static const unsigned char *findEmbeddedClass(const char *name, unsigned int *size) {
     for (int i = 0; embeddedClasses[i].name != nullptr; i++) {
         if (strcmp(embeddedClasses[i].name, name) == 0) {
+            printf("[JVM Load] ");
+            printf(name);
+            printf("\n");
             *size = embeddedClasses[i].size;
             return embeddedClasses[i].data;
         }

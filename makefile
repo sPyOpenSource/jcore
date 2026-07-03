@@ -6,10 +6,10 @@ CC = clang
 LD := $(shell command -v /opt/homebrew/bin/ld.lld 2>/dev/null || command -v ld.lld 2>/dev/null || echo "ld.lld")
 GRUB_MKRESCUE := $(shell command -v x86_64-elf-grub-mkrescue 2>/dev/null || command -v grub-mkrescue 2>/dev/null || echo "grub-mkrescue")
 
-TARGET = --target=x86_64-pc-none-elf
-GCCPARAMS = $(TARGET) -ffreestanding -Isrc -Isrc/jvm -IFlintJVM/Inc -IFlintJVM/Native/Inc -Isrc/includes -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
+TARGET = --target=x86_64-unknown-none-elf
+GCCPARAMS = $(TARGET) -ffreestanding -Isrc -Isrc/jvm -IFlintJVM/Inc -IFlintJVM/Native/Inc -Isrc/includes -fno-use-cxa-atexit -nostdlib -mno-red-zone -fno-builtin -fno-rtti -fno-exceptions -Wno-write-strings
 ASPARAMS = $(TARGET)
-LDPARAMS = -melf_x86_64
+LDPARAMS = -melf_x86_64 -n -z max-page-size=0x1000
 
 objects = obj/boot32.o \
 		  obj/boot64.o \
@@ -138,6 +138,7 @@ mykernel.iso: mykernel.bin
 	echo 'set default=0'                     >> iso/boot/grub/grub.cfg
 	echo ''                                  >> iso/boot/grub/grub.cfg
 	echo 'menuentry "My Operating System" {' >> iso/boot/grub/grub.cfg
+	echo '  insmod multiboot2'               >> iso/boot/grub/grub.cfg
 	echo '  multiboot2 /boot/mykernel.bin'   >> iso/boot/grub/grub.cfg
 	echo '  boot'                            >> iso/boot/grub/grub.cfg
 	echo '}'                                 >> iso/boot/grub/grub.cfg

@@ -14,6 +14,6 @@ int vsnprintf(char *str, size_t size, const char *format, va_list ap);
 }
 #endif
 
-void printf(char*);
+void printf(const char* str);
 
 #endif

@@ -4,16 +4,21 @@ OUTPUT_ARCH(x86_64)
 
 SECTIONS
 {
-  . = 2M;
+  . = 1M;
 
-  .text :
+  .text : ALIGN(8)
   {
-    *(.multiboot)
+    KEEP(*(.text.multiboot))
+
     *(.text*)
-    *(.rodata)
   }
 
-  .data  :
+  .rodata : ALIGN(8)
+  {
+    *(.rodata*)
+  }
+
+  .data  : ALIGN(8)
   {
     start_ctors = .;
     KEEP(*( .init_array ));
@@ -23,7 +28,7 @@ SECTIONS
     *(.data)
   }
 
-  .bss  :
+  .bss  : ALIGN(8)
   {
     *(.bss)
   }

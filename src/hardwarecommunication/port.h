@@ -28,7 +28,7 @@ namespace myos
                 virtual myos::common::uint8_t Read();
                 virtual void Write(myos::common::uint8_t data);
 
-            protected:
+            public:
                 static inline myos::common::uint8_t Read8(myos::common::uint16_t _port)
                 {
                     myos::common::uint8_t result;

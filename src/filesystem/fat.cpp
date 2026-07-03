@@ -5,7 +5,7 @@ using namespace myos::common;
 //using namespace myos::filesystem;
 using namespace myos::drivers;
 
-void printf(char*);
+void printf(const char* str);
 void printfHex(uint8_t);
 
 void ReadBiosBlock(myos::drivers::AdvancedTechnologyAttachment *hd, common::uint32_t partitionOffset)

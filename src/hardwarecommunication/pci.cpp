@@ -56,7 +56,7 @@ bool PeripheralComponentInterconnectController::DeviceHasFunctions(common::uint1
 }
 
 
-void printf(char* str);
+void printf(const char* str);
 void printfHex(uint8_t);
 
 void PeripheralComponentInterconnectController::SelectDrivers(DriverManager* driverManager, myos::hardwarecommunication::InterruptManager* interrupts)

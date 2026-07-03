@@ -7,7 +7,7 @@ using namespace myos::drivers;
 using namespace myos::hardwarecommunication;
 
 
-void printf(char*);
+void printf(const char* str);
 
     MouseEventHandler::MouseEventHandler()
     {

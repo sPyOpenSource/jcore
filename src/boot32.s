@@ -1,32 +1,28 @@
 .set MAGIC, 0xe85250d6
-.set ARCH, 1
+.set ARCH, 0
 .set HEADER_LEN, multiboot2_header_end - multiboot2_header_start
-.set CHECKSUM, 0x100000000 - (MAGIC + ARCH + HEADER_LEN)
+.set CHECKSUM, - (MAGIC + ARCH + HEADER_LEN)
 
-.section .multiboot
+.section .text.multiboot, "a", @progbits
 .align 8
 multiboot2_header_start:
     .long MAGIC
     .long ARCH
     .long HEADER_LEN
     .long CHECKSUM
-    .word 0
-    .word 0
-    .long 8
-multiboot2_header_end:
 request_start:
-    .word 1
-    .word 0 
+    .balign 8
+    .short 1
+    .short 0 
     .long request_end - request_start
     .long 4
     .long 6
     .long 3
-    .long 0
 request_end:
 	# TAG 1: Framebuffer Request (Vraag GRUB om een grafische modus)
     #.align 8
-    #.word 5                                    # Type 5 = Framebuffer request
-    #.word 0                                    # Flags
+    #.short 5                                    # Type 5 = Framebuffer request
+    #.short 0                                    # Flags
     #.long 20                                   # Grootte van deze tag (20 bytes)
     #.long 1024                                 # Breedte (X)
     #.long 768                                  # Hoogte (Y)
@@ -34,9 +30,10 @@ request_end:
 
     # TAG 2: End Tag
     .align 8
-    .word 0                                    # Type 0 = End
-    .word 0                                    # Flags
+    .short 0                                    # Type 0 = End
+    .short 0                                    # Flags
     .long 8                                    # Grootte (8 bytes)
+multiboot2_header_end:
 
 .section .text
 .extern long_mode_start
@@ -46,7 +43,8 @@ request_end:
 loader:
     movl %ebx, %esi
     addl $8, %esi
-
+    jmp setup_paging
+    
 find_framebuffer_tag:
     movl (%esi), %eax                          # EAX = Tag Type
     movl 4(%esi), %ecx                         # ECX = Tag Size

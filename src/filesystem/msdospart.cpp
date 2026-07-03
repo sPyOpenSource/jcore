@@ -6,7 +6,7 @@ using namespace myos::common;
 using namespace myos::drivers;
 using namespace myos::filesystem;
 
-void printf(char*);
+void printf(const char* str);
 void printfHex(uint8_t);
 
 void MSDOSPartitionTable::ReadPartitions(myos::drivers::AdvancedTechnologyAttachment *hd)

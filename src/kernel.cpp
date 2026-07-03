@@ -41,14 +41,17 @@ using namespace myos::gui;
 using namespace myos::net;
 
 
-void printf(char* str)
+void printf(const char* str)
 {
     static uint16_t* VideoMemory = (uint16_t*)0xb8000;
-
     static uint8_t x = 0, y = 0;
 
     for(int i = 0; str[i] != '\0'; ++i)
     {
+        // Serial output (COM1)
+        while (!(myos::hardwarecommunication::Port8Bit::Read8(0x3f8 + 5) & 0x20));
+        myos::hardwarecommunication::Port8Bit::Write8(0x3f8, str[i]);
+
         switch(str[i])
         {
             case '\n':
@@ -345,9 +348,9 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     printf("\nS-ATA primary slave: ");
     AdvancedTechnologyAttachment ata0s(false, 0x1F0);
     ata0s.Identify();
-
-    //MSDOSPartitionTable::ReadPartitions(&ata0m);
+    printf("VFS initializing...\n");
     myos::vfs::VFS::Initialize(&ata0s, 1);
+    printf("VFS initialized (or failed).\n");
     //ata0m.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
     //ata0m.Flush();
     //ata0m.Read28(0, 25);
@@ -402,7 +405,9 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     TransmissionControlProtocolProvider tcp(&ipv4);
 
 
-    interrupts.Activate();
+    // printf("Activating interrupts...\n");
+    // interrupts.Activate();
+    // printf("Interrupts active.\n");
 
     //printf("\n\n\n\n");
 
@@ -427,8 +432,11 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     //udp.Bind(udpsocket, &udphandler);
 
 
+    printf("Starting JVM...\n");
     myos::jvm::JVMBridge::Initialize();
+    printf("Running JVM main...\n");
     Flint::runToMain("com/rpi/HelloRPi");
+    printf("JVM finished.\n");
 
     while(1)
     {

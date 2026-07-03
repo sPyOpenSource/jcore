@@ -31,7 +31,7 @@ KeyboardDriver::~KeyboardDriver()
 {
 }
 
-void printf(char*);
+void printf(const char* str);
 void printfHex(uint8_t);
 
 void KeyboardDriver::Activate()
