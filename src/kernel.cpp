@@ -339,7 +339,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
         desktop.AddChild(&win2);
     #endif
 
-    printf("\n\n\n\n\n\n\n\n\n\r");
+    printf("\n\n\n\r");
 
     printf("\nS-ATA primary master: ");
     AdvancedTechnologyAttachment ata0m(true, 0x1F0);

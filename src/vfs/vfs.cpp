@@ -15,14 +15,12 @@ namespace myos {
 
             s_volume = (SdVolume*)MemoryManager::activeMemoryManager->malloc(sizeof(SdVolume));
             if (!s_volume) {
-                printf("VFS: Failed to allocate SdVolume\n");
                 return false;
             }
             new (s_volume) SdVolume();
 
             s_rootDir = (SdFile*)MemoryManager::activeMemoryManager->malloc(sizeof(SdFile));
             if (!s_rootDir) {
-                printf("VFS: Failed to allocate SdFile for root\n");
                 s_volume->~SdVolume();
                 MemoryManager::activeMemoryManager->free(s_volume);
                 s_volume = nullptr;
@@ -31,7 +29,6 @@ namespace myos {
             new (s_rootDir) SdFile();
 
             if (!s_volume->init(device, partition)) {
-                printf("VFS: init volume failed\n");
                 s_rootDir->~SdFile();
                 MemoryManager::activeMemoryManager->free(s_rootDir);
                 s_rootDir = nullptr;
@@ -42,7 +39,6 @@ namespace myos {
             }
 
             if (!s_rootDir->openRoot(s_volume)) {
-                printf("VFS: Failed to open root directory\n");
                 s_rootDir->~SdFile();
                 MemoryManager::activeMemoryManager->free(s_rootDir);
                 s_rootDir = nullptr;
@@ -53,7 +49,6 @@ namespace myos {
             }
 
             s_initialized = true;
-            printf("VFS: initialized\n\r");
             return true;
         }
 
@@ -114,7 +109,6 @@ namespace myos {
                 if (!child->open(dir, comp, openMode)) {
                     child->~SdFile(); MemoryManager::activeMemoryManager->free(child);
                     dir->close(); dir->~SdFile(); MemoryManager::activeMemoryManager->free(dir);
-                    printf("VFS:"); printf(comp); printf(" not found\n\r");
                     return nullptr;
                 }
 

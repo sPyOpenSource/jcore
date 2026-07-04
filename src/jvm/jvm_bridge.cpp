@@ -12,8 +12,6 @@
 namespace myos {
     namespace jvm {
         void JVMBridge::Initialize() {
-            printf("JVM Bridge initializing...\n\r");
-            printf("JVM Bridge initialized.\n\r");
         }
 
         void* JVMBridge::AllocateMemory(myos::common::size_t size) {
@@ -101,11 +99,9 @@ namespace FlintAPI {
                         memcpy(fileInfo->name, fileName, nameLen);
                         fileInfo->name[nameLen] = '\0';
                     }
-                    printf("JVM finfo OK: "); printf(fileName); printf("\n\r");
                     myos::vfs::VFS::Close(handle);
                     return FILE_RESULT_OK;
                 }
-                printf("JVM finfo FAIL: "); printf(fileName); printf("\n\r");
             }
             return FILE_RESULT_NO_PATH;
         }
@@ -115,10 +111,8 @@ namespace FlintAPI {
                 uint8_t fatMode = 0x01;
                 if (mode & FILE_MODE_WRITE) fatMode = 0x02;
                 if (mode & FILE_MODE_CREATE_NEW) fatMode |= 0x10;
-                printf("JVM fopen: "); printf(fileName); printf("\n\r");
                 FileHandle vfsHandle = myos::vfs::VFS::Open(fileName, fatMode);
                 if (vfsHandle) return vfsHandle;
-                printf("JVM fopen FAILED\n\r");
             }
             return nullptr;
         }

@@ -92,7 +92,7 @@ run: mykernel.iso
 		VirtualBox --startvm 'kayos' & \
 	elif command -v qemu-system-x86_64 >/dev/null 2>&1; then \
 		echo "VirtualBox not found or broken, starting with QEMU..."; \
-		qemu-system-x86_64 -serial stdio -drive if=pflash,format=raw,readonly=on,file=/opt/homebrew/share/qemu/edk2-x86_64-code.fd -cdrom mykernel.iso -drive file=java_fs.img,format=raw,if=ide,index=1 -m 128 -boot d; \
+		qemu-system-x86_64 -serial stdio -drive if=pflash,format=raw,readonly=on,file=/opt/homebrew/share/qemu/edk2-x86_64-code.fd -cdrom mykernel.iso -drive file=/Users/xuyi/Downloads/OVMF-X64-r15214/bbai-sd.img,format=raw,if=ide,index=0 -m 128 -boot d; \
 	else \
 		echo "Error: Neither VirtualBox nor QEMU found. Please install one of them."; \
 		exit 1; \
