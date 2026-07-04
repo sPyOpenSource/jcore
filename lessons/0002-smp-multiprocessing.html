@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 0002: Symmetric Multiprocessing (SMP)</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <header>
+        <p>Lesson 0002</p>
+        <h1>Symmetric Multiprocessing: From One Core to Many</h1>
+    </header>
+
+    <article>
+        <section>
+            <p>Your current x86OS kernel runs on a single CPU core. The <code>TaskManager</code> schedules tasks, the <code>InterruptManager</code> handles IRQs, and the <code>MemoryManager</code> manages physical frames — all assuming one stream of execution. SMP breaks that assumption. This lesson covers what changes when you add a second, fourth, or sixty-fourth core.</p>
+        </section>
+
+        <section>
+            <h2>1. What Changes in SMP?</h2>
+            <p>In a uniprocessor kernel, "current task" is a global variable. In SMP, every core runs its own task simultaneously. The kernel must become <em>re-entrant</em> and <em>concurrent</em> at every level.</p>
+
+            <div class="inline-definition">
+                <strong>SMP (Symmetric Multiprocessing):</strong> Multiple identical CPU cores sharing the same memory bus, I/O bus, and interrupt controller. Any core can run any task or handle any interrupt.
+            </div>
+
+            <div class="inline-definition">
+                <strong>APIC (Advanced Programmable Interrupt Controller):</strong> The modern replacement for the PIC. Each core has a Local APIC; the I/O APIC routes device interrupts to specific cores.
+            </div>
+
+            <p>Key areas that must change:</p>
+            <ul>
+                <li><strong>Scheduler:</strong> Per-CPU runqueues, load balancing, task affinity.</li>
+                <li><strong>Interrupts:</strong> Per-core IDT, IPI (Inter-Processor Interrupts) for cross-core signaling.</li>
+                <li><strong>Memory:</strong> Per-CPU allocator caches, TLB shootdowns for page table changes.</li>
+                <li><strong>Synchronization:</strong> Spinlocks (with IRQ disable), RCU, per-CPU variables.</li>
+                <li><strong>Timekeeping:</strong> Per-core timer (LAPIC timer), synchronized TSC.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Bringing Up Application Processors (APs)</h2>
+            <p>The Bootstrap Processor (BSP) starts first. It must wake the APs via the <strong>INIT-SIPI-SIPI</strong> sequence:</p>
+
+            <figure>
+                <pre><code>// Simplified AP startup sequence (BSP side)
+void smp_init() {
+    // 1. Find APIC IDs from ACPI MADT table
+    // 2. Allocate per-CPU stack and GDT/TSS for each AP
+    
+    for each apic_id in ap_list {
+        // 3. INIT IPI - reset the AP
+        lapic_send_ipi(apic_id, IPI_INIT, 0);
+        wait(10ms);
+        
+        // 4. SIPI - start up at vector (trampoline code)
+        lapic_send_ipi(apic_id, IPI_SIPI, trampoline_vector);
+        wait(200us);
+        
+        // 5. Second SIPI (required by spec)
+        lapic_send_ipi(apic_id, IPI_SIPI, trampoline_vector);
+        wait(200us);
+        
+        // 6. AP now runs trampoline, switches to long mode, jumps to ap_main()
+    }
+}</code></pre>
+                <figcaption>BSP wakes APs via INIT-SIPI-SIPI</figcaption>
+            </figure>
+
+            <p>The AP starts in 16-bit real mode at the SIPI vector. The <strong>trampoline code</strong> (typically placed at 0x8000 or similar) must:</p>
+            <ol>
+                <li>Switch to protected mode</li>
+                <li>Enable PAE and long mode</li>
+                <li>Load per-CPU GDT (with TSS for kernel stack)</li>
+                <li>Jump to <code>ap_main()</code> in C</li>
+            </ol>
+
+            <div class="note">
+                <strong>Your current kernel:</strong> <code>kernel.cpp</code> constructs <code>InterruptManager</code> and <code>TaskManager</code> as singletons. For SMP, these become per-CPU structures. The BSP initializes the global structures; each AP initializes its own local copies.
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Per-CPU Data Structures</h2>
+            <p>In x86-64, the <code>GS</code> segment register (or <code>FS</code> in some OSes) points to a per-CPU data area. This is the fastest way to access "current task," "current CPU ID," "scheduler state," etc.</p>
+
+            <figure>
+                <pre><code>// Per-CPU structure (accessed via GS:offset)
+struct CpuLocal {
+    uint32_t cpu_id;
+    uint32_t apic_id;
+    
+    Task* current_task;           // Currently running task
+    Task* idle_task;              // Per-CPU idle task
+    
+    InterruptManager* intr_mgr;   // Per-CPU IDT/PIC state
+    TaskManager* task_mgr;        // Per-CPU runqueue
+    
+    // Synchronization
+    spinlock_t sched_lock;        // Protects runqueue
+    uint32_t irq_depth;           // Nested interrupt count
+    bool in_scheduler;            // Re-entry guard
+    
+    // Timekeeping
+    uint64_t scheduler_ticks;
+    uint64_t last_tsc;
+    
+    // Memory
+    void* kernel_stack_top;       // For IST / double fault
+    PageDirectory* current_pd;    // Active address space
+} __attribute__((aligned(4096)));</code></pre>
+                <figcaption>Per-CPU data area</figcaption>
+            </figure>
+
+            <p>Access via inline assembly:</p>
+            <figure>
+                <pre><code>static inline CpuLocal* this_cpu() {
+    CpuLocal* cpu;
+    asm("mov %%gs:0, %0" : "=r"(cpu));
+    return cpu;
+}
+
+#define current_task (this_cpu()->current_task)
+#define current_cpu_id (this_cpu()->cpu_id)</code></pre>
+                <figcaption>Per-CPU access macros</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>4. Scheduler Changes for SMP</h2>
+            <p>Your current <code>TaskManager::Schedule()</code> is a simple round-robin over a global array. In SMP, each CPU has its own runqueue. The scheduler runs on <em>each core independently</em> via the timer interrupt.</p>
+
+            <figure>
+                <pre><code>// Per-CPU runqueue (simple array for now)
+struct Runqueue {
+    spinlock_t lock;
+    Task* tasks[MAX_TASKS_PER_CPU];
+    int head, tail, count;
+    Task* idle_task;
+};
+
+// Called from timer interrupt (IRQ0 / LAPIC timer)
+void scheduler_tick(CPUState* state) {
+    CpuLocal* cpu = this_cpu();
+    cpu->scheduler_ticks++;
+    
+    // Save current task state
+    if (cpu->current_task) {
+        cpu->current_task->cpustate = *state;
+    }
+    
+    // Pick next task from local runqueue
+    Task* next = runqueue_pop(&cpu->runqueue);
+    if (!next) next = cpu->idle_task;
+    
+    cpu->current_task = next;
+    *state = next->cpustate;  // Restore registers, RIP, RSP, RFLAGS
+}</code></pre>
+                <figcaption>Per-CPU scheduler tick</figcaption>
+            </figure>
+
+            <p><strong>Load balancing</strong> happens periodically (or when a runqueue is empty): steal tasks from the busiest CPU's runqueue.</p>
+
+            <div class="note">
+                Your current <code>TaskManager</code> uses a simple array and <code>currentTask</code> index. For SMP, replace with per-CPU <code>Runqueue</code> and add <code>spinlock_t</code> for concurrent access during task migration.
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Inter-Processor Interrupts (IPIs)</h2>
+            <p>IPIs are the primary communication mechanism between cores. Common IPI types:</p>
+
+            <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+                <tr style="border-bottom:2px solid var(--border);"><th style="text-align:left; padding:0.5rem;">IPI Type</th><th style="text-align:left; padding:0.5rem;">Vector</th><th style="text-align:left; padding:0.5rem;">Purpose</th></tr>
+                <tr><td style="padding:0.5rem;">Reschedule</td><td style="padding:0.5rem;">0xF0</td><td style="padding:0.5rem;">Force target CPU to reschedule (task woke up)</td></tr>
+                <tr><td style="padding:0.5rem;">TLB Shootdown</td><td style="padding:0.5rem;">0xF1</td><td style="padding:0.5rem;">Invalidate TLB entries after page table change</td></tr>
+                <tr><td style="padding:0.5rem;">Generic Function</td><td style="padding:0.5rem;">0xF2</td><td style="padding:0.5rem;">Run arbitrary function on target CPU</td></tr>
+                <tr><td style="padding:0.5rem;">Timer Sync</td><td style="padding:0.5rem;">0xF3</td><td style="padding:0.5rem;">Synchronize TSC / LAPIC timers</td></tr>
+                <tr><td style="padding:0.5rem;">Shutdown</td><td style="padding:0.5rem;">0xF4</td><td style="padding:0.5rem;">Halt target CPU</td></tr>
+            </table>
+
+            <figure>
+                <pre><code>// Send IPI via Local APIC
+void lapic_send_ipi(uint32_t apic_id, uint8_t vector, uint32_t delivery_mode) {
+    // High 32 bits: destination (for x2APIC) or APIC ID << 24
+    lapic_write(LAPIC_ICR_HIGH, apic_id << 24);
+    
+    // Low 32 bits: vector + delivery mode + level + trigger
+    uint32_t icr_low = vector 
+        | (delivery_mode << 8) 
+        | (1 << 14)  // Level = assert
+        | (0 << 15); // Trigger = edge
+    lapic_write(LAPIC_ICR_LOW, icr_low);
+    
+    // Wait for delivery
+    while (lapic_read(LAPIC_ICR_LOW) & (1 << 12)) cpu_relax();
+}
+
+// Example: Wake up a task on another CPU
+void task_wakeup(Task* task) {
+    int target_cpu = task->affinity >= 0 ? task->affinity : pick_idle_cpu();
+    runqueue_push(&cpus[target_cpu].runqueue, task);
+    
+    if (target_cpu != current_cpu_id) {
+        lapic_send_ipi(cpus[target_cpu].apic_id, IPI_RESCHEDULE, DELIVERY_FIXED);
+    }
+}</code></pre>
+                <figcaption>IPI send and task wakeup</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>6. Synchronization Primitives</h2>
+            <p>Your kernel currently runs with interrupts disabled (<code>cli</code>) in critical sections. In SMP, <code>cli</code> only masks interrupts on <em>the local CPU</em>. You need spinlocks.</p>
+
+            <figure>
+                <pre><code>typedef struct {
+    volatile uint64_t locked;  // 0 = free, 1 = held
+    uint32_t owner_cpu;        // For debugging
+    uint32_t irq_was_enabled;  // Saved IF flag
+} spinlock_t;
+
+static inline void spin_lock(spinlock_t* lock) {
+    // Save and disable local interrupts
+    uint64_t rflags;
+    asm volatile("pushfq; cli; popq %0" : "=r"(rflags));
+    lock->irq_was_enabled = rflags & 0x200;
+    
+    // Spin with PAUSE (prevents memory order violations, saves power)
+    while (__sync_lock_test_and_set(&lock->locked, 1)) {
+        asm volatile("pause");
+    }
+    lock->owner_cpu = current_cpu_id;
+}
+
+static inline void spin_unlock(spinlock_t* lock) {
+    lock->owner_cpu = 0xFFFFFFFF;
+    __sync_lock_release(&lock->locked);
+    
+    // Restore interrupts if they were enabled
+    if (lock->irq_was_enabled) asm volatile("sti");
+}</code></pre>
+                <figcaption>Spinlock with IRQ save/restore</figcaption>
+            </figure>
+
+            <p>Use this to protect per-CPU runqueues, global resource lists, and any data shared across cores.</p>
+
+            <div class="note">
+                <strong>Key rule:</strong> Never block (sleep/wait) while holding a spinlock. Spinlocks are only for short, non-blocking critical sections. For longer waits, use mutexes/semaphores that can sleep — but those require a working scheduler first.
+            </div>
+        </section>
+
+        <section>
+            <h2>7. TLB Shootdowns</h2>
+            <p>When CPU 0 modifies a page table (e.g., <code>mmap</code>, <code>munmap</code>, page fault handling), other CPUs may have stale TLB entries. You must invalidate them via IPI.</p>
+
+            <figure>
+                <pre><code>// On CPU 0: changing page table for address range [vaddr, vaddr+size)
+void tlb_shootdown(uintptr_t vaddr, size_t size) {
+    // 1. Update page tables (already done)
+    
+    // 2. Send IPI to all other CPUs
+    for (int i = 0; i < num_cpus; i++) {
+        if (i == current_cpu_id) continue;
+        // Pass vaddr/size via per-CPU mailbox or fixed structure
+        cpus[i].shootdown_vaddr = vaddr;
+        cpus[i].shootdown_size = size;
+        lapic_send_ipi(cpus[i].apic_id, IPI_TLB_SHOOTDOWN, DELIVERY_FIXED);
+    }
+    
+    // 3. Invalidate locally
+    invlpg(vaddr);  // Repeat for each page in range
+    
+    // 4. Wait for acknowledgments
+    for (int i = 0; i < num_cpus; i++) {
+        if (i == current_cpu_id) continue;
+        while (!cpus[i].shootdown_done) cpu_relax();
+        cpus[i].shootdown_done = false;
+    }
+}
+
+// IPI handler on target CPU
+void ipi_tlb_shootdown_handler() {
+    uintptr_t vaddr = this_cpu()->shootdown_vaddr;
+    size_t size = this_cpu()->shootdown_size;
+    
+    for (uintptr_t p = vaddr; p < vaddr + size; p += PAGE_SIZE) {
+        invlpg(p);
+    }
+    this_cpu()->shootdown_done = true;
+}</code></pre>
+                <figcaption>TLB shootdown protocol</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>8. Integration with Your x86OS</h2>
+            <p>Here's a minimal roadmap to add SMP to your existing kernel:</p>
+
+            <ol>
+                <li><strong>ACPI Parsing:</strong> Parse MADT (Multiple APIC Description Table) to get CPU count, APIC IDs, I/O APIC info.</li>
+                <li><strong>Per-CPU GDT/TSS:</strong> Allocate one GDT and TSS per CPU. The TSS holds the kernel stack pointer (RSP0) for each CPU.</li>
+                <li><strong>Trampoline Code:</strong> Write 16-bit assembly (place at 0x8000) that APs execute on SIPI.</li>
+                <li><strong>Local APIC Driver:</strong> Map LAPIC MMIO, implement timer (for scheduler tick), IPI send/recv, EOI.</li>
+                <li><strong>Per-CPU Storage:</strong> Allocate <code>CpuLocal</code> array, set up GS base via <code>wrgsbase</code> (or <code>swapgs</code> + MSR).</li>
+                <li><strong>Initialize APs:</strong> BSP runs INIT-SIPI-SIPI, each AP calls <code>ap_main()</code> → initializes local IDT, LAPIC timer, enables interrupts.</li>
+                <li><strong>Scheduler:</strong> Convert global <code>TaskManager</code> to per-CPU <code>Runqueue</code> with spinlocks.</li>
+                <li><strong>Locking:</strong> Replace all <code>cli/sti</code> critical sections with spinlocks.</li>
+            </ol>
+        </section>
+
+        <section class="quiz">
+            <h3>Quick Check</h3>
+            <p>In SMP, why is <code>cli</code> (disable interrupts) insufficient to protect a shared data structure?</p>
+            <label><input type="radio" name="q1" value="a"> <code>cli</code> doesn't work in long mode.</label>
+            <label><input type="radio" name="q1" value="b"> <code>cli</code> only masks interrupts on the local CPU; other CPUs can still access the data concurrently.</label>
+            <label><input type="radio" name="q1" value="c" id="correct"> <code>cli</code> causes a General Protection Fault on secondary cores.</label>
+            <button onclick="checkQuiz()">Submit Answer</button>
+            <div id="result" class="result"></div>
+        </section>
+    </article>
+
+    <footer>
+        <p>Created for the x86OS SMP Course. Next Lesson: APIC and Interrupt Routing.</p>
+    </footer>
+
+    <script>
+        function checkQuiz() {
+            const correct = document.getElementById('correct');
+            const result = document.getElementById('result');
+            if (correct.checked) {
+                result.textContent = "Correct! cli only affects the current core's IF flag. Other cores continue executing and can race on shared data.";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Incorrect. Think about what cli actually does — it's a local CPU instruction.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
