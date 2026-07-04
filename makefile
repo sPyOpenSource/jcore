@@ -92,7 +92,7 @@ run: mykernel.iso
 		VirtualBox --startvm 'kayos' & \
 	elif command -v qemu-system-x86_64 >/dev/null 2>&1; then \
 		echo "VirtualBox not found or broken, starting with QEMU..."; \
-		qemu-system-x86_64 -cdrom mykernel.iso -m 128 -boot d; \
+		qemu-system-x86_64 -serial stdio -bios /Users/xuyi/Downloads/OVMF-X64-r15214/OVMF.fd -cdrom mykernel.iso -m 128 -boot d; \
 	else \
 		echo "Error: Neither VirtualBox nor QEMU found. Please install one of them."; \
 		exit 1; \

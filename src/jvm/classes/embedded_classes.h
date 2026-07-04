@@ -2,6 +2,7 @@
 #pragma once
 
 #include "all_classes.h"
+#include "x86os_Hello.h"
 
 struct EmbeddedClass {
     const char *name;
@@ -612,5 +613,6 @@ static const EmbeddedClass embeddedClasses[] = {
     {"jdk/internal/vm/annotation/ReservedStackAccess.class", jdk_internal_vm_annotation_ReservedStackAccess_data, jdk_internal_vm_annotation_ReservedStackAccess_len},
     {"jdk/internal/vm/annotation/Stable.class", jdk_internal_vm_annotation_Stable_data, jdk_internal_vm_annotation_Stable_len},
     {"module-info.class", module_info_data, module_info_len},
+    {"x86os/Hello.class", x86os_Hello_data, x86os_Hello_len},
     {nullptr, nullptr, 0}
 };

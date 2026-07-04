@@ -22,6 +22,13 @@
 #include "flint_native_io_file_input_stream.h"
 #include "flint_native_io_file_output_stream.h"
 #include "flint_native_rpi.h"
+#include <stdio.h>
+#include "flint_java_string.h"
+
+void MyCustomHelloPrint(FNIEnv *env, jstring msg);
+static const NativeMethod helloMethods[] = {
+    NATIVE_METHOD("helloPrint", "(Ljava/lang/String;)V", MyCustomHelloPrint),
+};
 
 static const NativeClass BASE_NATIVE_CLASS_LIST[] = {
     NATIVE_CLASS("java/lang/Math",                  mathMethods),
@@ -42,6 +49,7 @@ static const NativeClass BASE_NATIVE_CLASS_LIST[] = {
     NATIVE_CLASS("java/io/FileOutputStream",        fileOutputStreamMethods),
     NATIVE_CLASS("jdk/internal/reflect/Reflection", reflectionMethods),
     NATIVE_CLASS("com/rpi/Hardware",                rpiMethods),
+    NATIVE_CLASS("x86os/Hello",                     helloMethods),
 };
 
 JNMPtr NativeClass::findNativeMethod(MethodInfo *methodInfo) {

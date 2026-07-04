@@ -435,7 +435,7 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
     printf("Starting JVM...\n\r");
     myos::jvm::JVMBridge::Initialize();
     printf("Running JVM main...\n\r");
-    Flint::runToMain("com/rpi/HelloRPi");
+    Flint::runToMain("x86os/Hello");
     printf("JVM finished.\n\r");
 
     while(1)

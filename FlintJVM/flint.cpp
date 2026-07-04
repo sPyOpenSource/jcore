@@ -148,10 +148,11 @@ void Flint::setDebugger(FDbg *dbg) {
 }
 
 void Flint::consoleWrite(uint8_t *utf8, uint32_t length) {
-    for(uint32_t i = 0; i < length; ++i) {
-        char buf[2] = {(char)utf8[i], 0};
-        myos::jvm::JVMBridge::Println(buf);
-    }
+    char buf[1024];
+    uint32_t len = length < 1023 ? length : 1023;
+    memcpy(buf, utf8, len);
+    buf[len] = '\0';
+    printf(buf);
 }
 
 void Flint::print(int64_t num) {
