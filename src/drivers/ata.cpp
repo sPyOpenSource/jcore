@@ -94,8 +94,7 @@ void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, common::ui
         return;
     }
 
-
-    printf("Reading ATA Drive: ");
+    //printf("Reading ATA Drive: ");
 
     for(int i = 0; i < count; i += 2)
     {
@@ -138,8 +137,7 @@ void AdvancedTechnologyAttachment::Read28(common::uint32_t sectorNum, int count)
         return;
     }
 
-
-    printf("Reading ATA Drive: ");
+    //printf("Reading ATA Drive: ");
 
     for(int i = 0; i < count; i += 2)
     {
