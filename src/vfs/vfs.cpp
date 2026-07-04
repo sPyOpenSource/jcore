@@ -74,24 +74,58 @@ namespace myos {
             s_initialized = false;
         }
 
+        static const char* nextComponent(const char* path, char* buf, size_t bufSize) {
+            while (*path == '/') path++;
+            if (!*path) return nullptr;
+            size_t i = 0;
+            while (*path && *path != '/' && i + 1 < bufSize) {
+                buf[i++] = *path++;
+            }
+            buf[i] = '\0';
+            return path;
+        }
+
         VFS::FileHandle VFS::Open(const char* fileName, uint8_t mode) {
             if (!s_initialized || !fileName) return nullptr;
 
-            SdFile* file = (SdFile*)MemoryManager::activeMemoryManager->malloc(sizeof(SdFile));
-            if (!file) {
-                printf("VFS: alloc failed\n");
+            char comp[64];
+            const char* remaining = nextComponent(fileName, comp, sizeof(comp));
+            if (!remaining && comp[0] == '\0') return nullptr;
+
+            SdFile* dir = (SdFile*)MemoryManager::activeMemoryManager->malloc(sizeof(SdFile));
+            if (!dir) return nullptr;
+            new (dir) SdFile();
+            if (!dir->openRoot(s_volume)) {
+                dir->~SdFile();
+                MemoryManager::activeMemoryManager->free(dir);
                 return nullptr;
             }
-            new (file) SdFile();
 
-            if (!file->open(s_rootDir, fileName, mode)) {
-                printf("VFS: open fail\n");
-                file->~SdFile();
-                MemoryManager::activeMemoryManager->free(file);
-                return nullptr;
+            while (true) {
+                uint8_t openMode = remaining ? 0x01 : mode;
+
+                SdFile* child = (SdFile*)MemoryManager::activeMemoryManager->malloc(sizeof(SdFile));
+                if (!child) {
+                    dir->close(); dir->~SdFile(); MemoryManager::activeMemoryManager->free(dir);
+                    return nullptr;
+                }
+                new (child) SdFile();
+
+                if (!child->open(dir, comp, openMode)) {
+                    child->~SdFile(); MemoryManager::activeMemoryManager->free(child);
+                    dir->close(); dir->~SdFile(); MemoryManager::activeMemoryManager->free(dir);
+                    printf("VFS:"); printf(comp); printf(" not found\n\r");
+                    return nullptr;
+                }
+
+                dir->close(); dir->~SdFile(); MemoryManager::activeMemoryManager->free(dir);
+                dir = child;
+
+                if (!remaining || !*remaining) break;
+                remaining = nextComponent(remaining, comp, sizeof(comp));
             }
 
-            return file;
+            return dir;
         }
 
         uint32_t VFS::Read(FileHandle handle, void* buffer, uint32_t size) {
@@ -129,8 +163,12 @@ namespace myos {
 
         bool VFS::Exists(const char* fileName) {
             if (!s_initialized || !fileName) return false;
-            SdFile file;
-            return file.open(s_rootDir, fileName, 0x01);
+            SdFile* handle = Open(fileName, 0x01);
+            if (handle) {
+                Close(handle);
+                return true;
+            }
+            return false;
         }
     }
 }

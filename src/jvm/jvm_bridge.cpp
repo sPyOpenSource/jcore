@@ -88,7 +88,6 @@ static const unsigned char *findEmbeddedClass(const char *name, unsigned int *si
 namespace FlintAPI {
     namespace IO {
         FileResult finfo(const char *fileName, FileInfo *fileInfo) {
-            // Try VFS first
             if (myos::vfs::VFS::IsInitialized()) {
                 myos::vfs::VFS::FileHandle handle = myos::vfs::VFS::Open(fileName, 0x01);
                 if (handle) {
@@ -102,46 +101,26 @@ namespace FlintAPI {
                         memcpy(fileInfo->name, fileName, nameLen);
                         fileInfo->name[nameLen] = '\0';
                     }
+                    printf("JVM finfo OK: "); printf(fileName); printf("\n\r");
                     myos::vfs::VFS::Close(handle);
                     return FILE_RESULT_OK;
                 }
+                printf("JVM finfo FAIL: "); printf(fileName); printf("\n\r");
             }
-
-            // Fall back to embedded class files
-            unsigned int size;
-            const unsigned char *data = findEmbeddedClass(fileName, &size);
-            if (data == nullptr) return FILE_RESULT_NO_PATH;
-            if (fileInfo) {
-                fileInfo->attribute = 0;
-                fileInfo->size = size;
-                fileInfo->time = 0;
-                size_t nameLen = strlen(fileName);
-                if (nameLen > sizeof(fileInfo->name) - 1)
-                    nameLen = sizeof(fileInfo->name) - 1;
-                memcpy(fileInfo->name, fileName, nameLen);
-                fileInfo->name[nameLen] = '\0';
-            }
-            return FILE_RESULT_OK;
+            return FILE_RESULT_NO_PATH;
         }
 
         FileHandle fopen(const char *fileName, FileMode mode) {
-            // Try VFS first
             if (myos::vfs::VFS::IsInitialized()) {
                 uint8_t fatMode = 0x01;
                 if (mode & FILE_MODE_WRITE) fatMode = 0x02;
                 if (mode & FILE_MODE_CREATE_NEW) fatMode |= 0x10;
+                printf("JVM fopen: "); printf(fileName); printf("\n\r");
                 FileHandle vfsHandle = myos::vfs::VFS::Open(fileName, fatMode);
                 if (vfsHandle) return vfsHandle;
+                printf("JVM fopen FAILED\n\r");
             }
-
-            // Fall back to embedded class files
-            unsigned int size;
-            const unsigned char *data = findEmbeddedClass(fileName, &size);
-            if (data == nullptr) return nullptr;
-            embeddedClassData = data;
-            embeddedClassSize = size;
-            embeddedClassPos = 0;
-            return EMBEDDED_HANDLE;
+            return nullptr;
         }
 
         FileResult fread(FileHandle handle, void *buff, uint32_t btw, uint32_t *bw) {
@@ -184,12 +163,14 @@ namespace FlintAPI {
 
         FileResult fclose(FileHandle handle) {
             if (!handle) return FILE_RESULT_ERR;
+#if 0
             if (isEmbeddedHandle(handle)) {
                 embeddedClassData = nullptr;
                 embeddedClassSize = 0;
                 embeddedClassPos = 0;
                 return FILE_RESULT_OK;
             }
+#endif
             myos::vfs::VFS::Close((myos::vfs::VFS::FileHandle)handle);
             return FILE_RESULT_OK;
         }

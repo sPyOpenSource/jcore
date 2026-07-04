@@ -393,51 +393,101 @@ uint8_t SdFile::makeDir(SdFile* dir, const char* dirName) {
  * or can't be opened in the access mode specified by oflag.
  */
 
- int memcmp ( uint8_t * ptr1, uint8_t * ptr2, size_t num ){
-   for (int i = 0; i < num; i++){
-     if (ptr1[i] != ptr2[i])
-      return -1;
-   }
-   return 0;
- }
+static uint8_t vfatSum(const uint8_t* name83) {
+  uint8_t sum = 0;
+  for (int i = 11; i; i--) sum = ((sum & 1) ? 0x80 : 0) + (sum >> 1) + *name83++;
+  return sum;
+}
+
+int memcmp ( uint8_t * ptr1, uint8_t * ptr2, size_t num ){
+  for (int i = 0; i < num; i++) if (ptr1[i] != ptr2[i]) return -1;
+  return 0;
+}
 
 uint8_t SdFile::open(SdFile* dirFile, const char* fileName, uint8_t oflag) {
   uint8_t dname[11];
   dir_t* p;
 
-  // error if already open
   if (isOpen())return false;
-
   if (!make83Name(fileName, dname)) return false;
 
   vol_ = dirFile->vol_;
   dirFile->rewind();
 
-  // bool for empty entry found
   uint8_t emptyFound = false;
+  uint8_t lfnBuf[256];
+  uint16_t lfnLen = 0;
+  uint8_t lfnState = 0; // 0=idle, 1=collecting
+  uint8_t lfnSeq = 0;
+  uint8_t lfnCsum = 0;
 
-  // search for file
   while (dirFile->curPosition_ < dirFile->fileSize_) {
     uint8_t index = 0xF & (dirFile->curPosition_ >> 5);
     p = dirFile->readDirCache();
     if (p == NULL) return false;
 
     if (p->name[0] == DIR_NAME_FREE || p->name[0] == DIR_NAME_DELETED) {
-      // remember first empty slot
+      lfnState = 0; lfnLen = 0;
       if (!emptyFound) {
         emptyFound = true;
         dirIndex_ = index;
         dirBlock_ = SdVolume::cacheBlockNumber_;
       }
-      // done if no entries follow
       if (p->name[0] == DIR_NAME_FREE) break;
-    } else if (!memcmp(dname, p->name, 11))
-    {
-      // don't open existing file if O_CREAT and O_EXCL
-      if ((oflag & (O_CREAT | O_EXCL)) == (O_CREAT | O_EXCL)) return false;
+    } else if (DIR_IS_LONG_NAME(p)) {
+      uint8_t* r = (uint8_t*)p;
+      uint8_t seq = r[0];
+      uint8_t seqNum = seq & 0x1F;
 
-      // open found file
-      return openCachedEntry(0xF & index, oflag);
+      if (seq & 0x40) {
+        lfnState = 1;
+        lfnLen = 0;
+        lfnSeq = seqNum;
+        lfnCsum = r[13];
+      }
+      if (lfnState == 1 && seqNum == lfnSeq) {
+        uint8_t* src;
+        uint16_t c;
+        src = r + 1;
+        for (int i = 0; i < 5 && lfnLen < 255; i++) {
+          c = src[i*2] | (src[i*2+1] << 8);
+          lfnBuf[lfnLen++] = c;
+        }
+        src = r + 14;
+        for (int i = 0; i < 6 && lfnLen < 255; i++) {
+          c = src[i*2] | (src[i*2+1] << 8);
+          lfnBuf[lfnLen++] = c;
+        }
+        src = r + 28;
+        for (int i = 0; i < 2 && lfnLen < 255; i++) {
+          c = src[i*2] | (src[i*2+1] << 8);
+          lfnBuf[lfnLen++] = c;
+        }
+        lfnSeq = seqNum - 1;
+      } else {
+        lfnState = 0; lfnLen = 0;
+      }
+    } else {
+      if (lfnState == 1 && lfnCsum == vfatSum(p->name) && !(p->attributes & DIR_ATT_VOLUME_ID)) {
+        const char* req = fileName;
+        uint16_t j;
+        for (j = 0; j < lfnLen && lfnBuf[j] != 0x0000 && lfnBuf[j] != 0xFFFF; j++) {
+          if (lfnBuf[j] > 0x7F) break;
+          if ((char)lfnBuf[j] != *req) break;
+          req++;
+        }
+        if (j > 0 && *req == '\0') {
+          if ((oflag & (O_CREAT | O_EXCL)) == (O_CREAT | O_EXCL)) return false;
+          return openCachedEntry(0xF & index, oflag);
+        }
+      }
+      lfnState = 0; lfnLen = 0;
+
+      if (!(p->attributes & DIR_ATT_VOLUME_ID) && !memcmp(dname, p->name, 11))
+      {
+        if ((oflag & (O_CREAT | O_EXCL)) == (O_CREAT | O_EXCL)) return false;
+        return openCachedEntry(0xF & index, oflag);
+      }
     }
   }
   // only create file if O_CREAT and O_WRITE

@@ -234,7 +234,7 @@ uint8_t SdVolume::init(myos::drivers::AdvancedTechnologyAttachment* dev, uint8_t
   sdCard_ = dev;
   // if part == 0 assume super floppy with FAT boot sector in block zero
   // if part > 0 assume mbr volume with partition table
-  uint32_t partitionOffset;
+  uint32_t partitionOffset = volumeStartBlock;
   if (part) {
     if (part > 4)return false;
     sdCard_->Read28(volumeStartBlock, (uint8_t*)&cacheBuffer_.mbr, (uint16_t)sizeof(mbr_t));
@@ -264,8 +264,7 @@ uint8_t SdVolume::init(myos::drivers::AdvancedTechnologyAttachment* dev, uint8_t
     bpb->fatCount == 0 ||
     bpb->reservedSectorCount == 0 ||
     bpb->sectorsPerCluster == 0) {
-       // not valid FAT volume
-      return false;
+       return false;
   }
   fatCount_ = bpb->fatCount;
   blocksPerCluster_ = bpb->sectorsPerCluster;

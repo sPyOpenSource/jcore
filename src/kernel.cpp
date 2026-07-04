@@ -341,15 +341,32 @@ extern "C" void kernelMain(const void* multiboot_structure, uint32_t multiboot_m
 
     printf("\n\n\n\n\n\n\n\n\n\r");
 
-    /*printf("\nS-ATA primary master: ");
+    printf("\nS-ATA primary master: ");
     AdvancedTechnologyAttachment ata0m(true, 0x1F0);
-    ata0m.Identify();*/
+    ata0m.Identify();
 
-    printf("\nS-ATA primary slave: ");
+    /*printf("\nS-ATA primary slave: ");
     AdvancedTechnologyAttachment ata0s(false, 0x1F0);
-    ata0s.Identify();
+    ata0s.Identify();*/
     printf("VFS initializing...\n\r");
-    myos::vfs::VFS::Initialize(&ata0s, 1);
+    bool vfsOk = false;
+    for (uint8_t part = 0; part < 5; part++) {
+        if (myos::vfs::VFS::Initialize(&ata0m, part)) {
+            vfsOk = true;
+            break;
+        }
+    }
+    if (!vfsOk) {
+        printf("Trying secondary master...\n\r");
+        AdvancedTechnologyAttachment ata1m(true, 0x170);
+        ata1m.Identify();
+        for (uint8_t part = 0; part < 5; part++) {
+            if (myos::vfs::VFS::Initialize(&ata1m, part)) {
+                vfsOk = true;
+                break;
+            }
+        }
+    }
     printf("VFS initialized (or failed).\n\r");
     //ata0m.Write28(0, (uint8_t*)"http://www.AlgorithMan.de", 25);
     //ata0m.Flush();

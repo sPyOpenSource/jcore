@@ -31,12 +31,12 @@ static void rpi_gpio_set(uint32_t pin, bool value) {
     }
 }
 
-void printf(const char* str);
-
 jvoid NativeRPi_Print(FNIEnv *env, jstring msg) {
     if (msg == NULL) return;
     const char *str = msg->getAscii();
-    printf(str);
+    while (*str) {
+            rpi_uart_putc(*str++);
+    }
 }
 
 jlong NativeRPi_CurrentTimeMillis(FNIEnv *env) {
