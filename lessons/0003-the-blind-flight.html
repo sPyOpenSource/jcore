@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewportolle" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 0003: The Blind Flight -- Real Hardware Debugging</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <header>
+        <p>Lesson 0003</sup></p>
+        <h1>The Blind Flight: Debugging on Real Hardware</h1>
+    </header>
+
+    <article>
+        <section>
+            <p>QEMU is a forgiving angel. It emulates a clean x86-64 with a perfect serial port, a stable memory map, and no stray interrupts. Real hardware is a spiteful god: COM ports sometimes live at <code>0x3F8</code>, sometimes at <code>0x2F8</code>, sometimes not at all. Your kernel that prints a victory message under QEMU may produce only silence on metal.</p>
+            <p>This lesson teaches you how to fly blind -- how to debug when the screen is black, the serial cable is silent, and you have no idea whether the CPU even reached your <code>start</code> label.</p>
+        </section>
+
+        <section>
+            <h2>1. Verify Your Bootloader Still Works</h2>
+            <p>Before you even write a debug strategy, confirm your bootloader payload is reaching <code>kernelMain</code> on real hardware. A surprising percentage of "my kernel crashes on real hardware" is really "my bootloader fails to read the kernel image from the USB stick."</p>
+            <p>Your ISO image works because QEMU emulates a CD-ROM. A real machine boots from a USB flash drive or a real CD. The bootloader (GRUB, or your custom loader) must read the kernel sectors successfully. If your kernel is loaded at the wrong physical address, the <code>long_mode_start</code> jump lands in the BIOS or in random memory, and <strong>you get no output and no crash</strong> -- the CPU might just be executing garbage.</p>
+
+            <div class="inline-definition">
+                <strong>Golden Rule #1:</strong> Burn the ISO to a real CD, or use <code>dd</code> to write it to a USB stick. Boot it. If you get a black screen, literally just your bootloader stage failing, fix the bootloader first.
+            </div>
+
+            <p>Your bootloader should have a way to emit a beep, flash the num-lock LED, or write a byte to a known I/O port before jumping to the kernel. If it does these three things and the kernel is silent, <em>then</em> you have a kernel-level bug. If it does none of them, you have a boot-media bug.</p>
+        </section>
+
+        <section>
+            <h2>2. The Serial Port Is Your Lifeline</h2>
+            <p>You already have a <code>printf</code> that sends characters out of COM1 (<code>0x3F8</code>) to serial in QEMU. That same COM port exists on almost every x86-64 motherboard, but there are three fatal differences on real hardware:</p>
+            <ol>
+                <li><strong>Port Address:</strong> The BIOS may have relocated the serial port. Check <code>0x40:0x00</code> in the BDA (BIOS Data Area), or just try <code>0x2F8</code> (COM2), or use the newer MMIO-based serial (e.g., on some Intel NUCs).</li>
+                <li><strong>Line Settings:</strong> QEMU defaults to 115200 baud, 8N1, no flow control. Real hardware might be left at 9600 baud by the BIOS. You must explicitly program the baud rate via the <a href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter#Data_terminal_equipment_(DTE)" target="_blank">Divisor Latch</a>.</li>
+                <li><strong>Transmitter Holding Register:</strong> On QEMU, you can spam bytes to port 0x3F8 immediately. On real hardware, you <em>must</em> wait for the THR (Transmit Holding Register) to be empty (bit 5 of LSR, or bit 5 of the 16550 status register at offset 5). Polling too fast or writing when not ready will drop characters or hang the CPU.</li>
+            </ol>
+
+            <figure>
+                <pre><code>// Minimal "bare metal" serial output, no stdlib, no VFS.
+// Placed at 0x1000 so it works before paging is fully set up.
+#include &lt;stdint.h&gt;
+
+#define COM1_BASE 0x3F8
+
+static inline uint8_t inb(uint16_t port) {
+    uint8_t ret;
+    __asm__ __volatile__ ("inb %1, %0" : "=a"(ret) : "Nd"(port));
+    return ret;
+}
+
+static inline void outb(uint16_t port, uint8_t data) {
+    __asm__ __volatile__ ("outb %0, %1" :: "a"(data), "Nd"(port));
+}
+
+void uart_init() {
+    // 0x80 is a "safe" port to delay on (any port works for delay)
+    outb(COM1_BASE + 1, 0x00);  // Disable interrupts
+    outb(COM1_BASE + 3, 0x80);  // Enable DLAB (Divisor Latch Access)
+    outb(COM1_BASE + 0, 0x01);  // Divisor = 1  ->  115200 baud
+    outb(COM1_BASE + 1, 0x00);  // (high byte of divisor)
+    outb(COM1_BASE + 3, 0x03);  // 8 bits, no parity, one stop (8N1)
+    outb(COM1_BASE + 2, 0xC7);  // Enable FIFO, clear them, 14-byte threshold
+    // Modern hardware: you may want to set 0xC1 for 1-byte threshold
+}
+
+void uart_putc(char c) {
+    // Wait for the THR to be ready. Bit 5 of LSR.
+    while (!(inb(COM1_BASE + 5) &amp; 0x20));
+    outb(COM1_BASE, (uint8_t)c);
+    // Optional: Wait for the Transmitter Shift Register to be empty
+    // while (!(inb(COM1_BASE + 5) &amp; 0x40));
+}
+
+void uart_puts(const char* s) {
+    while (*s) {
+        uart_putc(*s++);
+    }
+}</code></pre>
+                <figcaption>Minimal, reliable real-hardware serial output</figcaption>
+            </figure>
+
+            <div class="note">
+                <strong>Your current <code>kernel.cpp</code> does:</strong><br>
+                <code>while(!(Read8(0x3F8 + 5) &amp; 0x20)); Write8(0xStress, str[i])</code><br>
+                That is <b>almost correct</b>, but if <code>Read8</code> and <code>Write8</code> don't in-line or if the compiler re-orders the IO, you will lose data. Use <code>volatile</code> for every port IO in C++ to defeat the optimizer. Also set the baud rate explicitly: the BIOS might have left the port in 9600 baud or a weird state.
+            </div>
+
+            <p><strong>Connection:</strong> You need a USB-to-TTL serial adapter (e.g., FT232, CP2102, CH340). Connect GND to pin 5, TX to pin 3 (RX on the host), and RX to pin 2 (TX on the host). Open a terminal with <code>screen /dev/ttyUSB0 115200</code> or <code>minicom -D /dev/ttyUSB0 -b 115200</code>.</p>
+        </section>
+
+        <section>
+            <h2>3. When the Screen Is Black: The In-Situ Blinkenlight</h2>
+            <p>What if your kernel crashes <em>before</em> it even reaches <code>printf</code>? Maybe the GDT or paging setup is wrong, and the CPU triple-faults immediately. You need a way to leave breadcrumbs.</p>
+            <p>The most reliable early-boot debug signal is the <strong>POST Code</strong>: writing a single byte to port <code>0x80</code>. Many motherboards (especially server-grade and some enthusiast boards) have a POST code LED that displays the last byte written. Even if they don't, a PCIe POST card can be bought for a few dollars and does the same.</p>
+
+            <figure>
+                <pre><code>// The "universal" hardware heartbeat.
+static inline void heartbeat(uint8_t code) {
+    __asm__ __volatile__ ("outb %0, $0x80" :: "a"(code));
+}
+
+// Usage: place these at key functions/jumps.
+void long_mode_start() {
+    heartbeat(0x10);  // Stage 1: In long mode
+    setup_paging();
+    heartbeat(0x20);  // Stage 2: Paging enabled
+    construct_gdt();
+    heartbeat(0x30);  // Stage 3: GDT loaded
+    kernelMain(multiboot_info, magic);
+    heartbeat(0x40);  // Stage 4: KernelMain returned (shouldn't)
+}</code></pre>
+                <figcaption>Writing POST codes to port 0x80</figcaption>
+            </figure>
+
+            <p>This is <em>absurdly</em> useful because it requires <strong>zero working memory, zero initialized data, and no driver stack</strong>. If <code>0x10</code> shows up on the POST LED, your bootloader and transition to long mode works. If <code>0x20</code> does <em>not</em> show up, you know the crash is inside <code>setup_paging()</code>. Binary search your way down.</p>
+        </section>
+
+        <section>
+            <h2>4. Black Screen of Death: The Systematic Approach</h2>
+            <p>When you get a black screen and no serial output, do not guess. Follow this checklist in order.</p>
+
+            <ol>
+                <li><strong>Check your boot media.</strong> Is the ISO actually bootable on real hardware? Does the bootloader have a fallback path if the disk geometry is different? (e.g., does it read a hardcoded LBA that is off by one on real hardware?)</li>
+                <li><strong>Verify the bootloader runs.</strong> Add a <code>heartbeat(0x01)</code> immediately after the BIOS hands over control. If you don't see it, your boot media is corrupted or unsupported.</li>
+                <li><strong>Verify long mode entry.</strong> Add <code>heartbeat(0x10)</code> at the top of your 64-bit entry point. If you see it, you are in long mode. If not, your GDT or paging setup is wrong (check PAE, PGE, and LM bits in CR4/CR0/EFER).</li>
+                <li><strong>Check video mode.</strong> Are you sure your kernel even tries to write to VGA text mode? If it blindly assumes 0xB8000 is a valid physical address for a framebuffer, and you're running on a system with UEFI GOP, there might be no VGA text mode at all. Use serial, not video, for initial debug.</li>
+                <li><strong>Serial silence:</strong> If <code>uart_init()</code> runs but nothing appears, check: is the baud rate correct? Is the port at the right IO address? (Try 0x2F8 for COM2). Is the FIFO enabled with a small threshold? Does the host-side terminal program match the settings?</li>
+                <li><strong>Triple fault / hang:</strong> If your kernel sets up an IDT and enables interrupts (<code>sti</code>) before all ISRs are good, a single APIC timer tick will triple-fault and reboot. Ensure your APIC timer handler is installed before enabling interrupts, or just leave <code>cli</code> until the kernel is fully initialized.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>5. The GDB Stub: Interactive Debugging Over Serial</h2>
+            <p>Once you have a serial port, the ultimate debugging tool is a remote GDB stub baked into your kernel. Instead of guessing, you set a breakpoint from GDB, step through C++ code, and inspect registers and memory.</p>
+            <p>A minimal GDB stub for x86-64 handles the <code>g</code> (read registers), <code>m</code> (read memory), <code>M</code> (write memory), and <code>c</code> (continue) packets. It lives in your interrupt handler (or a dedicated handler for the debug exception, <code>#DB</code>, vector 1) and communicates over the same serial port.</p>
+            <p>This is too large to fully inline here, but the key concept is: in your <code>kernel.cpp</code>, before the main loop, call <code>gdb_init()</code>. This installs the <code>#DB</code> handler (for hardware breakpoints via <code>DR0-DR3</code>) and the <code>int3</code> handler (for software breakpoints). When a <code>gdb_interrupt_handler</code> runs, it sends a stop packet, then waits for packets like <code>s</code> (step) or <code>c</code> (continue owning).</p>
+            <p>The primary source for this is the <a href="https://wiki.osdev.org/GDB" target="_blank">OSDev Wiki: Debugging with GDB</a> and the <code>kgdb</code> implementation in Linux.</p>
+        </section>
+
+        <section>
+            <h2>6. The Real Hardware Checklist</h2>
+            <p>Before ever booting on real metal, you should verify the following programmatically:</p>
+            <ul>
+                <li>Does the Multiboot2 / Multiboot1 info structure have a valid memory map? (Real hardware memory maps are not the flat 1:1 identity map of QEMU).</li>
+                <li>Are you reading APCI tables (RSDT/XSDT)? You cannot rely on the BIOS reserving memory for you; the EBDA (Extended BIOS Data Area) might be at a different location.</li>
+                <li>Interrupts: do you map the APIC before assuming PIC is off? Some hardware leaves the PIC in a state that conflicts with the APIC. In QEMU, this rarely breaks; on metal, it does.</li>
+                <li>DMA / ATA: Your ATA driver does PIO. PIO is extremely slow and can time out on real hardware with different disk timings. The status bit might flip in a slightly different order. Ensure you have a timeout, and that you never spin forever on a bit.</li>
+            </ul>
+        </section>
+
+        <section class="quiz">
+            <h3>Quick Check</h3>
+            <p>You boot your kernel on real hardware and get a black screen. The first thing you should do is:</p>
+            <label><input type="radio" name="q1" value="a"> Start adding <code>printf</code> statements to <code>kernelMain</code>.</label>
+            <label><input type="radio" name="q1" value="b" id="correct"> Add a <code>heartbeat()</code> (port <code>0x80</code>) at the very top of <code>long_mode_start</code> and see if it shows on the POST LED.</label>
+            <label><input type="radio" name="q1" value="c"> Run the ISO in QEMU again to see if it still works.</label>
+            <button onclick="checkQuiz()">Submit Answer</button>
+            <div id="result" class="result"></div>
+        </section>
+
+        <section>
+            <h2>Primary Source for Further Reading</h2>
+            <p>The canonical real-world guide to low-level debugging is the <strong>OSDev Wiki -- Debugging</strong> page and the <strong>Intel SDM Volume 3</strong> (System Programming Guide), sections on the Local APIC, xAPIC, and x2APIC, and the <strong>Linux Kernel <code>kgdb</code></strong> documentation.</p>
+            <p>Remember: the agent can assist with anything that's unclear. Ask follow-up questions about any of these topics.</p>
+        </section>
+    </article>
+
+    <footer>
+        <p>Created for the x86OS Hardware Course. Next Lesson: Advanced GDB Stubs and JTAG.</p>
+    </footer>
+
+    <script>
+        function checkQuiz() {
+            const correct = document.getElementById('correct');
+            const result = document.getElementById('result');
+            if (correct.checked) {
+                result.textContent = "Correct! If <code>heartbeat(0x10)</code> doesn't show, the crash is in early boot before you can print.";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Incorrect. <code>printf</code> won't help if the crash happens before the serial port or framebuffer are ready.";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

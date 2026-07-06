@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference: Real Hardware Debug Checklist</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Real Hardware Debug Checklist</h1>
+        <p>A quick reference for bootstrappers moving from QEMU to metal.</p>
+    </header>
+
+    <article>
+        <section>
+            <h2>1. COM1 / Serial Port Setup</h2>
+            <pre><code>// IO addresses (check BDA 0x40:0x00 for base)
+COM1 = 0x3F8, COM2 = 0x2F8, COM3 = 0x3E8, COM4 = 0x2E8
+
+// Initialize 115200 8N1 (no flow control)
+outb(base + 1, 0x00);  // Disable interrupts
+outb(base + 3, 0x refreshes=);// Enable DLAB
+outb(base + 0, 0x00);  // Low byte of divisor (115200 baud / 1)
+outb(base + 1, 0x00);  // High byte of divisor
+outb(base + 3, 0x03);  // 8 bits, no parity, one stop bit
+outb(base + 2, 0xC7);  // Enable FIFO, clear, 14-byte level
+
+// Transmit char c
+while (!(inb(base + 5) &amp; 0x20));  // Wait for THR empty
+outb(base, c);</code></pre>
+        </section>
+
+        <section>
+            <h2>2. POST Codes to Port 0x80</h2>
+            <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+                <tr style="border-bottom:2px solid var(--border);"><th style="padding:0.5rem;">Code</th><th style="padding:0.5rem;">Meaning</th></tr>
+                <tr><td style="padding:0.5rem;">0x01</td><td style="padding:0.5rem;">Bootloader entry (real-mode start)</td></tr>
+                <tr><td style="padding:0.5rem;">0x10</td><td style="padding:0.5rem;">Long mode entered</td></tr>
+                <tr><td style="padding:0.5rem;">0x20</td><td style="padding:0.5rem;">Paging enabled</td></tr>
+                <tr><td style="padding:0.5rem;">0x30</td><td style="padding:0.5rem;">GDT / TSS loaded</td></tr>
+                <tr><td style="padding:0.5rem;">0x40</td><td style="padding:0.5rem;">KernelMain entered</td></tr>
+                <tr><td style="padding:0.5rem;">0x50</td><td style="padding:0.5rem;">VFS init done</td></tr>
+                <tr><td style="padding:0.5rem;">0x60</td><td style="padding:0.5rem;">JVM entry point</td></tr>
+                <tr><td style="padding:0.5rem;">0xFF</td><td style="padding:0.5rem;">Panic / Unrecoverable error</td></tr>
+            </table>
+            <div class="note">
+                Write these via: <code>asm volatile("outb %0, $0x80" :: "a"(code));</code>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. The "Black Screen" Decision Tree</h2>
+            <ol>
+                <li>Did the bootloader run? (POST code 0x01)<br>→ <strong>No:</strong> Boot media / BIOS compatibility. Test on another machine.</li>
+                <li>Did we enter long mode? (POST code 0x10)<br>→ <strong>No:</strong> Check <code>cr0</code>, <code>cr4</code>, <code>EFER.LME</code>, and GDT.</li>
+                <li>Did paging work? (POST code 0x20)<br>→ <strong>No:</strong> Check <code>cr3</code>, PML4, address mapping. Identity map the first 1GB correctly.</li>
+                <li>Does serial work? (connect USB-to-TTL)<br>→ <strong>No:</strong> Check baud rate, port address, FIFO threshold. Try 0x2F8.</li>
+                <li>Does the video buffer work? (0xB8000)<br>→ <strong>No:</strong> System may use UEFI GOP only. Use serial for initial boot.</li>
+                <li>Triple fault?<br>→ <strong>Check:</strong> IDT installed before <code>sti</code>? PIC remapped? APIC mapped?</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>4. Common Real-Only Bugs</h2>
+            <ul>
+                <li><strong>Wrong memory map:</strong> QEMU gives you a flat 1:1 map. Real hardware has holes (ACPI, EBDA, MMIO). Parse the Multiboot memory map.</li>
+                <li><strong>AP / PIC conflict:</strong> QEMU lets you use PIC and APIC together (most of the time). Real hardware requires you to explicitly disable the PIC and switch to APIC before enabling interrupts.</li>
+                <li><strong>ATA PIO hang:</strong> QEMU returns status bits immediately. Real drives may take milliseconds. Always have a timeout loop, and check <code>DRQ</code> <strong>after</strong> <code>BSY</code> clears.</li>
+                <li><strong>Wrong CPU count:</strong> QEMU reports 1 CPU unless you pass <code>-smp N</code>. Real hardware has however many cores the CPU has. Don't trust <code>num_cpus</code> without ACPI MADT parsing.</li>
+            </ul>
+        </section>
+    </article>
+
+    <footer>
+        <p>Quick reference for x86OS real-hardware debugging. See Lesson 0003 for context.</p>
+    </footer>
+</body>
+</html>
