@@ -28,7 +28,9 @@ JCORE_ARM_OBJS = \
 	prcm-jcore.o \
 	pinmux-jcore.o \
 	mmc2-jcore.o \
-	ram_blk-jcore.o
+	ram_blk-jcore.o \
+	dss-jcore.o \
+	hdmi-jcore.o
 
 JCORE_LIB_OBJS = \
 	minirun-jcore.o \
@@ -74,6 +76,12 @@ mmc2-jcore.o: src/drivers/mmc2.c src/drivers/mmc2.h
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
 ram_blk-jcore.o: src/drivers/ram_blk.c src/drivers/ram_blk.h
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
+dss-jcore.o: src/drivers/dss.c src/drivers/dss.h
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
+hdmi-jcore.o: src/drivers/hdmi.c src/drivers/hdmi.h
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
 minirun-jcore.o: src/minirun.c

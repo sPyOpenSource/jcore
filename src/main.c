@@ -3,6 +3,8 @@
 #include "drivers/prcm.h"
 #include "drivers/pinmux.h"
 #include "drivers/mmc2.h"
+#include "drivers/dss.h"
+#include "drivers/hdmi.h"
 #endif
 
 #include "fs/vfs.h"
@@ -97,12 +99,26 @@ void main(void)
     } else {
         dprintf("MMC2: SD card init failed\n");
     }
+
+    prcm_enable_dss();
+    dprintf("PRCM: DSS clock enabled\n");
+
+    pinmux_init_hdmi();
+    dprintf("Pinmux: HDMI pins configured\n");
 #endif
 
     init_serial(0);
 
     dprintf("\n=== jcore RTOS on ARM ===\n");
     dprintf("init serial: OK\n");
+
+#ifndef QEMU
+    dss_init();
+    hdmi_init();
+    dss_set_framebuffer(FB_ADDR);
+    dss_fill_colorbar();
+    dss_update();
+#endif
     
     gic_init();
     dprintf("init GIC: OK\n");
