@@ -1,4 +1,5 @@
 #include "llama2.h"
+#include "includes/led_debug.h"
 
 #ifdef QEMU
 #define UART_BASE          0x09000000
@@ -66,6 +67,9 @@ void llm_from_data(const char *model_data) {
     int rc = build_transformer(&t, model_data);
     if (rc != 0) {
         uart_puts("FAIL\n");
+#ifndef QEMU
+        led_signal(3);
+#endif
         return;
     }
     uart_puts("OK\ngenerating...\n");
@@ -81,5 +85,7 @@ void llm(void) {
 
     llm_from_data(_binary_model_bin_start);
 
-    led_blink();
+#ifndef QEMU
+    led_signal(1);
+#endif
 }

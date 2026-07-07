@@ -38,6 +38,7 @@ JCORE_LIB_OBJS = \
 	minic-jcore.o \
 	llama2-jcore.o \
 	llm-jcore.o \
+	led_debug-jcore.o \
 	aeabi-jcore.o \
 	fat32-jcore.o \
 	vfs-jcore.o \
@@ -97,6 +98,9 @@ llama2-jcore.o: src/llama2.c src/includes/llama2.h
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
 llm-jcore.o: src/llm.c
+	$(CC) $(JCORE_CFLAGS) -c $< -o $@
+
+led_debug-jcore.o: src/led_debug.c src/includes/led_debug.h
 	$(CC) $(JCORE_CFLAGS) -c $< -o $@
 
 aeabi-jcore.o: src/aeabi.c
