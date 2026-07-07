@@ -1,0 +1,23 @@
+{
+    "total_sectors": 262144,
+    "volume_label": "JCOREBOOT",
+    "out_path": "/tmp/jcore-sdcard-bootable.img",
+    "files": [
+        {
+            "name": "MLO",
+            "data_file": "usr/lib/u-boot/am57xx_evm/MLO"
+        },
+        {
+            "name": "u-boot.img",
+            "data_file": "usr/lib/u-boot/am57xx_evm/u-boot.img"
+        },
+        {
+            "name": "KERNEL.BIN",
+            "data_file": "kernel-jcore.bin"
+        },
+        {
+            "name": "MODEL.BIN",
+            "data_file": "model.bin"
+        }
+    ]
+}

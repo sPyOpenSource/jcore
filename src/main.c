@@ -88,6 +88,7 @@ void main(void)
     ThreadDesc *initial;
 
 #ifndef QEMU
+    pinmux_init_uart3();
     prcm_enable_mmc2();
     dprintf("PRCM: MMC2 clock enabled\n");
 

@@ -23,6 +23,17 @@ void init_serial(int port)
     *fbrd = 3;
     *lcr_h = (3 << 5) | (1 << 4);
     *cr = (1 << 0) | (1 << 8) | (1 << 9);
+#else
+    volatile unsigned int *cr = (volatile unsigned int *)(UART3_BASE + 0x030);
+    volatile unsigned int *lcr_h = (volatile unsigned int *)(UART3_BASE + 0x02C);
+    volatile unsigned int *ibrd = (volatile unsigned int *)(UART3_BASE + 0x024);
+    volatile unsigned int *fbrd = (volatile unsigned int *)(UART3_BASE + 0x028);
+    *cr = 0;
+    /* 115200 baud: 100MHz / (16 * 115200) = 54.25 -> IBRD=54, FBRD=4 */
+    *ibrd = 54;
+    *fbrd = 4;
+    *lcr_h = (3 << 5) | (1 << 4); // 8 bits, FIFO enabled
+    *cr = (1 << 0) | (1 << 8) | (1 << 9); // UART enable, TX enable, RX enable
 #endif
 }
 

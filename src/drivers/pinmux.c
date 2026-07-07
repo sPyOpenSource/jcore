@@ -13,6 +13,12 @@ static void set_pad_config(uint32_t addr, uint32_t config) {
     *reg = config;
 }
 
+void pinmux_init_uart3(void) {
+    /* Configure UART3 TX/RX pins */
+    set_pin_mode(0x44E101A0, 0x1); /* UART3_TX */
+    set_pin_mode(0x44E101A4, 0x1); /* UART3_RX */
+}
+
 void pinmux_init_mmc2(void) {
     /* Configure MMC2 pins to Mode 1 (MMC2 function) */
     set_pin_mode(CONF_MMC2_CLK, PINMUX_MODE_MMC2);
