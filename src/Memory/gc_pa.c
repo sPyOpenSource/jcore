@@ -2,11 +2,11 @@
 #include "all.h"
 #if defined(PROFILE_AGING) || defined(ZSTORE)
 #include "gc_pa.h"
-#include "minilzo.h"
-#include "symfind.h"
+#include "core/minilzo.h"
+#include "debug/symfind.h"
 
 #ifdef KERNEL
-#include "serialdbg.h"
+#include "debug/serialdbg.h"
 #else
 #include <termios.h>
 #include <unistd.h>

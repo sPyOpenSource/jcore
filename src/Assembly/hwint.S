@@ -1,8 +1,8 @@
-#include "context.h"
-#include "thread.h"
-#include "portal.h"
-#include "segments.h"
-#include "intr.h"
+#include "arch/context.h"
+#include "core/thread.h"
+#include "core/portal.h"
+#include "arch/segments.h"
+#include "arch/intr.h"
 	
 	.text
 	
@@ -167,7 +167,7 @@ hwint15:
         HWINT_SLAVE(15)
 
 #ifdef APIC
-#include "irq.h"
+#include "arch/irq.h"
 
 	.align 4
 local_timer_int:

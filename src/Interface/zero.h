@@ -6,10 +6,10 @@
 #ifndef ZERO_H
 #define ZERO_H
 
-#include "load.h"
-#include "smp.h"
-#include "irq.h"
-#include "thread.h"
+#include "core/load.h"
+#include "arch/smp.h"
+#include "arch/irq.h"
+#include "core/thread.h"
 #include "zero_Memory.h"
 
 

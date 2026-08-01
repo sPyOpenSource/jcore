@@ -8,10 +8,10 @@
 
 
 #include "config.h"
-#include "context.h"
-#include "thread.h"
+#include "arch/context.h"
+#include "core/thread.h"
 
-#include "intr.h"
+#include "arch/intr.h"
 	
 .globl hwint00
 
@@ -45,7 +45,7 @@
 
 	
 #ifdef APIC
-	#include "irq.h"
+	#include "arch/irq.h"
 	.global	hwint00apic
 #endif
 		.text

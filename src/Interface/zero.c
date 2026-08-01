@@ -1,7 +1,7 @@
 #include "all.h"
 
-#include "spinlock.h"
-#include "lapic.h"
+#include "core/spinlock.h"
+#include "arch/lapic.h"
 
 static spinlock_t memory_revoke_lock = SPIN_LOCK_UNLOCKED;
 

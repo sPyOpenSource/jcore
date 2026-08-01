@@ -1,6 +1,6 @@
-#include "context.h"
-#include "thread.h"
-#include "intr.h"
+#include "arch/context.h"
+#include "core/thread.h"
+#include "arch/intr.h"
 
 #ifdef MICROBENCHMARKS
 

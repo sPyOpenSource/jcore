@@ -4,7 +4,7 @@
  *******************************************************************************/
 
 #include "all.h"
-#include "serialdbg.h"
+#include "debug/serialdbg.h"
 
 //#define VERBOSE_UNBLOCK 1
 

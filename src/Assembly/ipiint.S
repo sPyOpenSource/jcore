@@ -1,7 +1,7 @@
 #ifdef SMP
 	
-#include "irq.h"
-#include "intr.h"
+#include "arch/irq.h"
+#include "arch/intr.h"
 	
 	.text
 

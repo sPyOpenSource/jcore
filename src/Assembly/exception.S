@@ -6,9 +6,9 @@
 *
 */
 
-#include "context.h"
-#include "thread.h"
-#include "intr.h"
+#include "arch/context.h"
+#include "core/thread.h"
+#include "arch/intr.h"
 	
 .globl divide_error
 .globl debug_exception
@@ -245,7 +245,7 @@ notDefined:
 	jmp exception
 
 #ifdef APIC
-#include "irq.h"
+#include "arch/irq.h"
 .global spurious_apic
 .global error_apic
 	

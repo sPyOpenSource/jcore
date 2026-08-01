@@ -1,5 +1,5 @@
-#include "thread.h"
-#include "segments.h"
+#include "core/thread.h"
+#include "arch/segments.h"
 	
 /* functions used to execute a JAVA method in a worker Thread */
 #ifdef JAVASCHEDULER

@@ -4,9 +4,9 @@
 #if defined(PROFILE_AGING) || defined(ZSTORE)
 
 #include "types.h"
-#include "domain.h"
+#include "core/domain.h"
 #ifdef KERNEL
-#include "serialdbg.h"
+#include "debug/serialdbg.h"
 #endif
 
 # define PA_TABOFF 5

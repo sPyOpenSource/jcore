@@ -1,16 +1,16 @@
-ESSENTIALSOURCES = main.c libcache.c load.c thread.c interrupt.c \
-                   domain.c misc.c Interface/zero.c vmsupport.c portal.c malloc.c \
-				   classes.c zip.c  execJAVA.c atomic.c \
-                   exception_handler.c memfs.c atomicfn.c oneshot.c \
-                   sched_global.c sched_local.c sched_local_rr.c sched_local_java.c sched_global_rr.c \
-		   		   runq.c syscalls.c
+ESSENTIALSOURCES = core/main.c core/libcache.c core/load.c core/thread.c core/interrupt.c \
+                   core/domain.c core/misc.c Interface/zero.c core/vmsupport.c core/portal.c core/malloc.c \
+				   core/classes.c core/zip.c core/execJAVA.c core/atomic.c \
+                   core/exception_handler.c core/memfs.c core/atomicfn.c core/oneshot.c \
+                   core/sched_global.c core/sched_local.c core/sched_local_rr.c core/sched_local_java.c core/sched_global_rr.c \
+		   		   core/runq.c core/syscalls.c
 
 ESSENTIALSOURCES += Memory/gc.c Memory/gc_memcpy.c Memory/gc_move.c Memory/gc_alloc.c Memory/gc_checkheap.c \
                     Memory/gc_org.c Memory/gc_common.c Memory/gc_thread.c Memory/gc_stack.c Memory/gc_move_common.c \
                     Memory/gc_new.c Memory/gc_impl.c Memory/gc_compacting.c Memory/gc_bitmap.c Memory/gc_chunked.c
 
-SUPPORTSOURCES = profile.c thread_debug.c thread_emulation.c thread_profile.c \
-                 monitor.c Memory/gc_pa.c Memory/gc_pgc.c minilzo.c bdt.c crc32.c ekhz.c
+SUPPORTSOURCES = debug/profile.c debug/thread_debug.c debug/thread_emulation.c debug/thread_profile.c \
+                 debug/monitor.c Memory/gc_pa.c Memory/gc_pgc.c core/minilzo.c core/bdt.c core/crc32.c core/ekhz.c
 
 ZEROSOURCES  = Interface/zero_AtomicVariable.c Interface/zero_BootFS.c
 ZEROSOURCES += Interface/zero_CAS.c Interface/zero_Clock.c
@@ -34,14 +34,14 @@ ZEROSOURCES += Interface/zero_object.c Interface/zero_InterceptorInboundInfo.c
 
 SOURCES = $(ESSENTIALSOURCES) $(ZEROSOURCES) $(SUPPORTSOURCES)
 
-INCLUDES = Headers/config.h Headers/thread.h Headers/load.h Interface/zero.h Headers/lowlevel.h Headers/profile.h \
+INCLUDES = Headers/config.h Headers/core/thread.h Headers/core/load.h Interface/zero.h Headers/arch/lowlevel.h Headers/debug/profile.h \
            Memory/gc.h Memory/gc_memcpy.h Memory/gc_move.h Memory/gc_alloc.h Memory/gc_pa.h Memory/gc_pgc.h \
            Memory/gc_org.h Memory/gc_org_int.h Memory/gc_new.h Memory/gc_common.h Memory/gc_thread.h \
            Memory/gc_stack.h Memory/gc_impl.h Memory/gc_compacting.h \
-           Headers/ekhz.h Headers/code.h Headers/libcache.h
+           Headers/core/ekhz.h Headers/core/code.h Headers/core/libcache.h
 
-ESSENTIALCORESOURCES =  minic.c multiboot.c irq.c lapic.c io_apic.c smp_detect.c smp_activate.c smp.c timer8254.c cpuid.c
-CORESOURCES = $(SOURCES) $(ESSENTIALCORESOURCES) serialdbg.c symfind.c
+ESSENTIALCORESOURCES =  arch/minic.c arch/multiboot.c arch/irq.c arch/lapic.c arch/io_apic.c arch/smp_detect.c arch/smp_activate.c arch/smp.c arch/timer8254.c arch/cpuid.c
+CORESOURCES = $(SOURCES) $(ESSENTIALCORESOURCES) debug/serialdbg.c debug/symfind.c
 
 LINUXSOURCES = $(SOURCES) symfind.c
 ASMSOURCES   = Assembly/lowlevel.S Assembly/call.S Assembly/switch.S Assembly/schedSWITCH.S \
@@ -107,25 +107,29 @@ LINUXOBJ += $(ASMSOURCES:%.S=.linux/%.o)
 
 COREOBJ2 = $(COREOBJ:.kernel/Memory/%=.kernel/%)
 COREOBJ3 = $(COREOBJ2:.kernel/Assembly/%=.kernel/%)
-COREBUILD = $(LD) $(CORELDOPTS) -T linker.ld -o jxcore $(COREOBJ3:.kernel/Interface/%=.kernel/%)
+COREOBJ4 = $(COREOBJ3:.kernel/Interface/%=.kernel/%)
+COREOBJ5 = $(COREOBJ4:.kernel/core/%=.kernel/%)
+COREOBJ6 = $(COREOBJ5:.kernel/arch/%=.kernel/%)
+COREOBJ7 = $(COREOBJ6:.kernel/debug/%=.kernel/%)
+COREBUILD = $(LD) $(CORELDOPTS) -T linker.ld -o jxcore $(COREOBJ7)
 
 jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	$(COREBUILD)
 	#perl mksymtab.perl jxcore symbols.h
-	rm -f .kernel/symfind.o .kernel/atomicfn.o ; $(MAKE) .kernel/symfind.o .kernel/atomicfn.o
+	rm -f .kernel/symfind.o .kernel/atomicfn.o ; $(MAKE) .kernel/debug/symfind.o .kernel/core/atomicfn.o
 	$(COREBUILD)
 #	strip jxcore
 
 .kernel/valid-symbols: src/Headers/symbols.h
 	$(COREBUILD)
 	$(MKSYMTAB) jxcore src/Headers/symbols.h
-	$(MAKE) .kernel/symfind.o
+	$(MAKE) .kernel/debug/symfind.o
 	touch .kernel/valid-symbols
 	$(MAKE) jxcoremake
 
-.kernel/symfind.o: src/Headers/symbols.h src/symfind.c
+.kernel/debug/symfind.o: src/Headers/symbols.h src/debug/symfind.c
 
-.kernel/atomicfn.o: src/Headers/symbols.h src/atomicfn.c src/Headers/atomicfn.h
+.kernel/core/atomicfn.o: src/Headers/symbols.h src/core/atomicfn.c src/Headers/core/atomicfn.h
 
 .kernel:
 	mkdir .kernel

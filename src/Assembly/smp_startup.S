@@ -1,6 +1,6 @@
 #ifdef SMP
 
-#include "segments.h"
+#include "arch/segments.h"
 	
 /* the memory below 1Meg is free, so let's use anything */	
 #define SMP_START_STACK 8000

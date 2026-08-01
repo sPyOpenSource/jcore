@@ -19,7 +19,7 @@
 
 /* FIXME
 #ifdef SMP
-#include "spinlock.h"
+#include "core/spinlock.h"
 static spinlock_t allocating_mem = SPIN_LOCK_UNLOCKED;
 #endif
 */

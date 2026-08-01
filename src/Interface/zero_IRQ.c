@@ -1,5 +1,5 @@
 #include "all.h"
-#include "syscalls.h"
+#include "core/syscalls.h"
 //#define DEBUG_IRQ 1
 
 #define debugz(x)

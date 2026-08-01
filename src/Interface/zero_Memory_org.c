@@ -83,7 +83,7 @@ MemoryProxyHandle allocMemoryProxyInDomain(DomainDesc * domain, ClassDesc * c, j
 */
 
 #ifdef REVOKE_USING_SPINLOCK
-#include "spinlock.h"
+#include "core/spinlock.h"
 static spinlock_t memory_revoke_lock = SPIN_LOCK_UNLOCKED;
 #endif
 
