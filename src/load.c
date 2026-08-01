@@ -81,11 +81,18 @@ NOT IMPL jint readInt()
 
 #define readStringData(buf, nBytes) { memcpy(buf, codefilepos, nBytes); codefilepos += nBytes; buf[nBytes] = '\0';}
 
-#define readString(buf,nbuf) { jint nBytes; readInt(nBytes); if (nBytes >= nbuf) sys_panic("buf too small\n"); readStringData(buf, nBytes);}
+//#define readString(buf,nbuf) { jint nBytes; readInt(nBytes); if (nBytes >= nbuf) sys_panic("buf too small\n"); readStringData(buf, nBytes);}
 
-#define readStringID(buf) { jint id ; readInt(id); buf = string_table[id]; }
+//#define readStringID(buf) { jint id ; readInt(id); buf = string_table[id]; }
 
-#define readAllocString(buf) {jint nBytes; readInt(nBytes);  if (nBytes >= 10000) sys_panic("nBytes too large\n"); buf = malloc_string(domain, nBytes+1); readStringData(buf, nBytes);}
+#define readString(buf) { buf = codefilepos; while(*codefilepos != 0){codefilepos++;}; codefilepos++; }
+
+#define readStringID(buf) { jint id ; readInt(id); \
+	if(id < string_table_size) {buf = (char *)string_table[id];} \
+	else if(string_table_size == 0) {buf = "";} \
+	else {buf = (char*)string_table[string_table_size - 1]; for(int ii = string_table_size - 1; ii < id; ii++) {while(*buf != 0){buf++;}; buf++;}} }
+
+//#define readAllocString(buf) {jint nBytes; readInt(nBytes);  if (nBytes >= 10000) sys_panic("nBytes too large\n"); buf = malloc_string(domain, nBytes+1); readStringData(buf, nBytes);}
 
 #define readCode(buf, nbytes) {  memcpy(buf, codefilepos, nbytes); codefilepos += nbytes;}
 
@@ -1112,7 +1119,7 @@ LibDesc *load(DomainDesc * domain, char *filename)
 {
 	SharedLibDesc *sharedLib;
 
-	printf("load %s\n",filename);
+	//printf("load %s\n",filename);
 
 	/* try to find an already loaded library */
 	sharedLib = findSharedLib(filename);
@@ -1269,7 +1276,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 {
 	jint i, checksum, version;
 	char *codefilepos;
-	char processor[20];
+	char *processor;
 
 	codefilepos = codefile;
 
@@ -1291,7 +1298,7 @@ char *testCheckSumAndVersion(char *filename, char *codefile, int size)
 		//printf("Cannot load code with version != %d\n", CURRENT_COMPILER_VERSION);
 		sys_panic("Mismatch between library version and version supported by jxcore");
 	}
-	readString(processor, sizeof(processor));
+	readString(processor);//, sizeof(processor));
 	//debugf(("Processor: %s\n", processor));
 
 	return codefilepos;
@@ -1304,12 +1311,13 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	jint completeVtableSize = 0;
 	jint completeBytecodeSize = 0;
 	char *supername;
-	char libname[32];
+	char *libname;
 	SharedLibDesc *lib;
 	jint totalNumberOfClasses;
 	SharedLibDesc *neededLib;
 	char *codefilepos;
-	char **string_table;
+	jint *string_table;
+	jint string_table_size;
 	jint dummy;
 	jint size;
 	jint isinterface;
@@ -1344,13 +1352,11 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	/*
 	   reserved for option fields
 	 */
-
 	readInt(i);
 
 	/*
 	   load needed libs
 	 */
-
 	readInt(lib->numberOfNeededLibs);
 
 	if (lib->numberOfNeededLibs == 0) {
@@ -1360,7 +1366,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	}
 
 	for (i = 0; i < lib->numberOfNeededLibs; i++) {
-		readString(libname, sizeof(libname));
+		readString(libname);//, sizeof(libname));
 		neededLib = findSharedLib(libname);
 
 		if (neededLib == NULL) {
@@ -1392,34 +1398,49 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	readInt(lib->numberOfMeta);
 	lib->meta = malloc_metatable(domain, lib->numberOfMeta);
 	for (i = 0; i < lib->numberOfMeta; i++) {
-		readAllocString(lib->meta[i].var);
-		readAllocString(lib->meta[i].val);
+		readString(lib->meta[i].var);
+		readString(lib->meta[i].val);
 		//printf("%s = %s\n", lib->meta[i].var, lib->meta[i].val);
 	}
 
 	/*
 	   read string table
 	 */
-
 	readInt(i);
 	if (i == 0) {
 		string_table = NULL;
+		string_table_size = 0;
 	} else {
-		string_table = (char **) malloc_code(domain, i * sizeof(char *));
-		for (j = 0; j < i; j++)
-			readAllocString(string_table[j]);
+		char *end = codefilepos + i;
+		jint count = 0;
+		char *p = codefilepos;
+		while (p < end) {
+			count++;
+			while (p < end && *p != 0)
+				p++;
+			p++;
+		}
+		string_table = jxmalloc(count * sizeof(jint) MEMTYPE_OTHER);
+		string_table_size = count;
+		count = 0;
+		while (codefilepos < end) {
+			string_table[count++] = (jint) codefilepos;
+			while (codefilepos < end && *codefilepos != 0)
+				codefilepos++;
+			codefilepos++;
+		}
+		codefilepos = end;
 	}
 
 	/*
 	   vmsymbol-table
 	 */
-
 	readInt(i);
 	if (i > 0) {
-		char symbol[30];
+		char *symbol;
 		for (j = 0; j < i; j++) {
-			readString(symbol, sizeof(symbol));
-			/* printf("%2d %s ",j,symbol); */
+			readString(symbol);//, sizeof(symbol));
+			//printf("%2d %s ",j,symbol);
 			if (j == numberVMOperations)
 				sys_panic("to many symbols");
 			vmsupport[j].index = 0;
@@ -1436,7 +1457,6 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	/*
 	   load classes
 	 */
-
 	readInt(totalNumberOfClasses);
 	lib->numberOfClasses = 0;
 	lib->allClasses = malloc_classdescs(domain, totalNumberOfClasses);
@@ -1543,7 +1563,7 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 
 
 		completeBytecodeSize += dummy;
-		/*printf("class=%s bytecodesize=%d\n", lib->allClasses[i].name, dummy); */
+		//printf("class=%s bytecodesize=%d\n", lib->allClasses[i].name, dummy);
 
 		readInt(dummy);
 
@@ -1658,9 +1678,9 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 						lib->allClasses[i].methods[j].symbols[k] =
 						    malloc_symbol(domain, sizeof(SymbolDescDEPFunction));
 						s = (SymbolDescDEPFunction *) lib->allClasses[i].methods[j].symbols[k];
-						readAllocString(s->className);
-						readAllocString(s->methodName);
-						readAllocString(s->methodSignature);
+						readString(s->className);
+						readString(s->methodName);
+						readString(s->methodSignature);
 						break;
 					}
 				case 4:{	/* StaticFieldSTEntry */
@@ -1939,8 +1959,8 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 	lib->codeBytes = completeCodeBytes;
 	lib->vtablesize = completeVtableSize;
 	lib->bytecodes = completeBytecodeSize;
-	/*printf("Code: 0x%x (numBytes=%d)\n", (jint)code, completeCodeBytes); */
-	readCode(lib->code, completeCodeBytes);
+ 	/*printf("Code: 0x%x (numBytes=%d)\n", (jint)code, completeCodeBytes); */
+ 	readCode(lib->code, completeCodeBytes);
 
 #if 0				/* TODO: check whether we can free codefile */
 #ifndef READFROMZIP

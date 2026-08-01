@@ -217,7 +217,7 @@ void vm_test_cinit(ClassDesc * c)
 	//if (!curdom()->initialized) {
 	cl = classDesc2Class(curdom(), c);
 	if (cl->state != CLASS_READY) {
-		printf("call class constructor for %s\n", cl->classDesc->name);
+		//printf("call class constructor for %s\n", cl->classDesc->name);
 		callClassConstructor(cl);
 	}
 	//}

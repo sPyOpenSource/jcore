@@ -58,7 +58,7 @@ ifeq ($(strip $(CC)), icc)
 CORECCFLAGS  = -g -w -X
 else
 #CORECCFLAGS = -g -Wall -fcall-used-ebx -fcall-used-esi -fcall-used-edi -nostdinc
-CORECCFLAGS = -g -nostdinc -m32 -target i386-pc-linux-gnu -std=gnu89 -fno-builtin -fno-stack-protector -Wno-error=return-type
+ CORECCFLAGS = -g -nostdinc -m32 -target i386-pc-linux-gnu -std=gnu89 -fno-builtin -fno-stack-protector -Wno-error=return-type -mno-sse -mno-sse2 -mno-mmx -msoft-float
 endif
 
 ifeq ($(shell uname -s),Darwin)

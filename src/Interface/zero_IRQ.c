@@ -363,7 +363,7 @@ MethodInfoDesc irqMethods[] = {
 	{"disableIRQ", "", irq_disableIRQ},
 	{"enableAll", "", irq_enableAll},
 	{"disableAll", "", irq_disableAll},
-	{"setDestination", "", irq_set_destination},
+	{"set_destination", "", irq_set_destination},
 };
 
 void init_irq_portal()

@@ -1822,7 +1822,7 @@ static char *copy_content_reference_internal(DomainDesc * src, DomainDesc * dst,
 }
 #endif
 
-ClassDesc *portalInterface;
+extern ClassDesc *portalInterface;
 
 Proxy *portal_auto_promo(DomainDesc * domain, ObjectDesc * obj)
 {
@@ -1832,18 +1832,6 @@ Proxy *portal_auto_promo(DomainDesc * domain, ObjectDesc * obj)
 	ASSERTOBJECT(obj);
 	cl = obj2ClassDesc(obj);
 
-#ifdef DBG_AUTO_PORTAL_PROMO
-	printf("Auto promotion of object %p of class %s in domain %d, thread %d.%d\n", obj, cl->name, domain->id, TID(curthr()));
-	if (curthr()->mostRecentlyCalledBy != NULL) {
-		printf("   This is a portal thread processing service %d %s (%s)\n", curthr()->processingDEP->serviceIndex,
-		       curthr()->processingDEP->interface->name, obj2ClassDesc(curthr()->processingDEP->obj)->name);
-		if (curthr()->processingDEP) {
-			if (obj2ClassDesc(curthr()->processingDEP->obj)->inheritServiceThread) {
-				printf("INHERIT!!!\n");
-			}
-		}
-	}
-#endif
 	if (implements_interface(cl, portalInterface)) {
 		ClassDesc *ifclass;
 		ClassDesc *superclass;
