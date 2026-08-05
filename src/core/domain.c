@@ -601,10 +601,7 @@ void domain_panic(DomainDesc * domain, char *msg, ...)
 	u4_t *base;
 	va_list args;
 
-	printf("DOMAIN PANIC ");
-	if (domain != NULL)
-		printf("in domain %d", domain->id);
-	printf("\n");
+	print_panic_context("DOMAIN PANIC", curthr(), domain);
 	va_start(args, msg);
 	vprintf(msg, args);
 	va_end(args);
