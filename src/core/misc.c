@@ -62,11 +62,7 @@ void sys_panic(char *msg, ...)
 		exit(1);
 	}
 	in_panic = 1;
-	printf("PANIC\n");
-#ifdef SMP
-	printf("CPU%d ", get_processor_id());
-#endif
-	printf("PANIC:\n");
+	print_panic_context("PANIC", curthr(), NULL);
 	printf("%s\n", msg);
 	va_start(args, msg);
 	vprintf(msg, args);
