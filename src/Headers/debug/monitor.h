@@ -8,6 +8,7 @@ void checkStackTrace(ThreadDesc * thread, u4_t * base);
 void printStackTrace(char *prefix, ThreadDesc * thread, u4_t * base);
 void printNStackTrace(char *prefix, ThreadDesc * thread, u4_t * base,
 		      int n);
+void print_panic_context(char *prefix, ThreadDesc * thread, DomainDesc * domain);
 #ifdef KERNEL
 void printTraceFromCtx(char *prefix, ThreadDesc * thread,
 		       struct irqcontext *ctx);
