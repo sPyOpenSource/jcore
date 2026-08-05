@@ -301,3 +301,39 @@ char *get_state(ThreadDesc * t)
 	}
 	return "UNKNOWN";
 }
+
+void print_panic_context(char *prefix, ThreadDesc * thread, DomainDesc * domain)
+{
+	unsigned long long cycles;
+	u4_t ms;
+
+	asm volatile ("rdtsc":"=A" (cycles):);
+	ms = CYCL2MILLIS(cycles);
+
+	printf("%s t=%ums cpu=%d ", prefix, ms, get_processor_id());
+
+	if (domain == NULL && thread != NULL)
+		domain = thread->domain;
+
+	if (domain != NULL)
+		printf("dom=%d(%s) ", domain->id, domain->domainName);
+
+	if (thread != NULL) {
+		if (thread->domain != NULL)
+			printf("thr=%d.%d", thread->domain->id, thread->id);
+		else
+			printf("thr=%d", thread->id);
+		if (thread->name[0] != '\0')
+			printf("(%s)", thread->name);
+		printf(" state=%s eip=%p ", get_state(thread),
+		       (void *) (u4_t) thread->context[PCB_EIP]);
+		print_eip_info((char *) thread->context[PCB_EIP]);
+		printf(" ");
+	} else {
+		printf("thr=(none) ");
+	}
+
+	printf("caller=");
+	print_eip_info((char *) getCallerCallerIP());
+	printf("\n");
+}
