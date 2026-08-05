@@ -256,9 +256,9 @@ void printStackTrace(char *prefix, ThreadDesc * thread, u4_t * base)
 #endif
 
 #ifdef COMPACT_EIP_INFO
-		printf("%s(%d) ip=%p sp=%p", prefix, i, eip, sp);
+		printf("%s(%d) ip=%p sp=%p ", prefix, i, eip, sp);
 #else
-		printf("%s(%d) ip=%p sp=%p stack=%d", prefix, i, eip, sp, frame);
+		printf("%s(%d) ip=%p sp=%p stack=%d ", prefix, i, eip, sp, frame);
 #endif
 		print_eip_info((char *) eip);
 		printf("\n");
@@ -302,7 +302,7 @@ void printNStackTrace(char *prefix, ThreadDesc * thread, u4_t * base, int n)
 #else
 		frame = thread->stack - ebp;
 #endif
-		printf("%s(%d) ip=%p sp=%p stack=%d", prefix, i, eip, sp, frame);
+		printf("%s(%d) ip=%p sp=%p stack=%d ", prefix, i, eip, sp, frame);
 		print_eip_info((char *) eip);
 		printf("\n");
 
@@ -2246,7 +2246,7 @@ void last_data()
 
 void console(int line, char *msg)
 {
-/*#ifdef KERNEL
+#ifdef KERNEL
 	u2_t *screen_start = (u2_t *) 0xb8000;
 	int i;
 	for (i = 0; i < strlen(msg); i++) {
@@ -2254,5 +2254,5 @@ void console(int line, char *msg)
 	}
 	for (; i < 80; i++)
 		screen_start[i + 80 * line] = 0x0f00;
-#endif*/
+#endif
 }

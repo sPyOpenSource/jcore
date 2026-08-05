@@ -415,6 +415,9 @@ int findMethodAtAddr(u1_t * addr, MethodDesc ** method, ClassDesc ** classInfo, 
 
 	for (mem = domainMem; mem < domainMemBorder; mem += DOMAINMEM_SIZEBYTES) {
 		domain = (DomainDesc *) (mem + DOMAINDESC_OFFSETBYTES);
+		if (domain->state == DOMAIN_STATE_FREE)
+			continue;
+		//printf("FMA: mem=%p domain=%p state=%d nlibs=%d addr=%p\n", mem, domain, domain->state, domain->numberOfLibs, addr);
 		if (findMethodAtAddrInDomain(domain, addr, method, classInfo, bytecodePos, lineNumber) == 0) {
 			ret = 0;
 			goto finish;
@@ -451,6 +454,8 @@ int findProxyCode(DomainDesc * domain, char *addr, char **method, char **sig, Cl
 
 	for (mem = domainMem; mem < domainMemBorder; mem += DOMAINMEM_SIZEBYTES) {
 		domain = (DomainDesc *) (mem + DOMAINDESC_OFFSETBYTES);
+		if (domain->state == DOMAIN_STATE_FREE)
+			continue;
 		if (findProxyCodeInDomain(domain, addr, method, sig, classInfo) == 0) {
 			ret = 0;
 			break;

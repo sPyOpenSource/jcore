@@ -79,8 +79,29 @@ void sys_panic(char *msg, ...)
 #else
 	base = (u4_t *) & msg - 2;
 
-	printStackTrace("PANIC ", curthr(), base);
-
+	/* TEMP-VERIFY: walk the real boot stack and resolve core symbols only. */
+	{
+		extern char *findCoreSymbol(jint addr);
+		extern u4_t base_stack_start, base_stack_end;
+		u4_t *sp = base;
+		u4_t *ebp = NULL, *eip;
+		int i, frame;
+		printf("PANIC \n");
+		for (i = 0; i < STACK_TRACE_LIMIT; i++) {
+			if (sp == NULL || sp <= &base_stack_start || sp + 2 >= &base_stack_end)
+				break;
+			ebp = (u4_t *) * sp++;
+			eip = (u4_t *) * sp++;
+			frame = ((int) ebp & (0xffffffff >> (32 - STACK_CHUNK)));
+			printf("PANIC (%d) ip=%p sp=%p stack=%d", i, eip, sp, frame);
+			{
+				char *cn = findCoreSymbol((jint) eip);
+				printf(" (core:%s)", cn != NULL ? cn : "???");
+			}
+			printf("\n");
+			sp = ebp;
+		}
+	}
 
 	monitor(NULL);
 #endif

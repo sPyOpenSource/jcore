@@ -57,6 +57,7 @@ _start:
 	xorl	%ebp,%ebp
     call	 multiboot_main  
     movl %ebx, %esi
+    addl $8, %esp                              # Clean up stack after call (2 pushed args = 8 bytes)
     addl $8, %esi                              # Sla de eerste 8 bytes (mbi_size + gereserveerd) over. Hier starten de tags.
 
 find_framebuffer_tag:
@@ -90,8 +91,7 @@ draw_loop:
     loop draw_loop
 
 1:      
-        int   $3
-        jmp   2f
-        .ascii "PANIC: main returned!"
-2:      
+        cli
+        hlt
         jmp   1b
+        .ascii "PANIC: main returned!"

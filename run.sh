@@ -6,7 +6,7 @@ cd Compiler/app/isodir/code
 zip -0 uncompressed.zip *.jll
 cat uncompressed.zip | gzip --fast -c > ../code.zip
 cd ../..
-grub-mkrescue -o MyOS.iso isodir
+i686-elf-grub-mkrescue -o MyOS.iso isodir
 
 #run it in VirtualBox
 #(killall VirtualBox && sleep 1) || true
