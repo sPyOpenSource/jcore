@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scheduler Quick Reference — JCore</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<h1>Scheduler Quick Reference</h1>
+<p>JCore's two-level round-robin scheduler: files, interface, states, and the low/high-level split. Companions: <a href="../lessons/0010-scheduler.html">Lesson 10</a>, <a href="../reference/gc-glossary.html">GC Glossary</a>.</p>
+
+<h2>The Sched_* interface</h2>
+<p>The kernel scheduler is <em>event-driven</em> — these are the only entry points, plus the raw switch.</p>
+
+<table>
+<tr><th>Function</th><th>When</th><th>File</th></tr>
+<tr><td><code>Sched_created(t, param)</code></td><td>new thread; insert + maybe queue domain</td><td>runq.c:38 / sched_global_rr.c:283</td></tr>
+<tr><td><code>Sched_destroyed(t)</code></td><td>thread died</td><td>runq.c:56</td></tr>
+<tr><td><code>Sched_blocked(t)</code></td><td>thread blocked</td><td>runq.c:62</td></tr>
+<tr><td><code>Sched_unblocked(t)</code></td><td>thread woke up</td><td>runq.c:68</td></tr>
+<tr><td><code>Sched_yielded(t)</code></td><td>voluntary yield</td><td>runq.c:77</td></tr>
+<tr><td><code>Sched_reschedule()</code></td><td>timer tick (preemption)</td><td>runq.c:137</td></tr>
+<tr><td><code>Sched_activate/deactivate_interrupt_thread()</code></td><td>IRQ thread switches</td><td>runq.c:109/122</td></tr>
+<tr><td><code>Sched_domainLeave(d)</code></td><td>domain destroyed</td><td>runq.c:172</td></tr>
+<tr><td><code>Sched_gc_rootSet(d, handler)</code></td><td><b>GC:</b> expose scheduler root refs</td><td>sched_global_rr.c:472</td></tr>
+<tr><td><code>Sched_gc_tcb(d, t, handler)</code></td><td><b>GC:</b> thread-special root refs</td><td>sched_global_rr.c:478</td></tr>
+</table>
+
+<h2>Two-level runqueue</h2>
+<pre><code>domain_runqueue            global FIFO of runnable <b>domains</b>   (runq.c:25)
+   └── domain-&gt;firstThreadInRunQueue  per-domain FIFO of <b>threads</b></code></pre>
+<ul>
+<li>Pick: <code>runqueue_removeFirstOrNULL()</code> (runq.c:301) — head domain, then head thread; current domain appended if still runnable.</li>
+<li>Invariant: only <code>STATE_RUNNABLE</code> threads are queued; <code>ASSERT</code>ed before every switch.</li>
+<li>Queued-ness stored in <code>domain-&gt;sched.untypedGlobalMemory</code> (NEW_SCHED) / <code>nextInRunQueue</code> links — no heap calls in the hot path.</li>
+</ul>
+
+<h2>Thread states (thread.h:19-31)</h2>
+<table>
+<tr><td><code>STATE_INIT</code> 1</td><td>created, not yet started</td></tr>
+<tr><td><code>STATE_RUNNABLE</code> 2</td><td>sitting in a runqueue</td></tr>
+<tr><td><code>STATE_ZOMBIE</code> 3</td><td>dead, awaiting reaping</td></tr>
+<tr><td><code>STATE_SLEEPING</code> 5 / <code>STATE_WAITING</code> 6</td><td>blocked on a condition</td></tr>
+<tr><td><code>STATE_PORTAL_WAIT_*</code> 7-9,13-14</td><td>blocked on a portal call</td></tr>
+<tr><td><code>STATE_BLOCKEDUSER</code> 10</td><td>Java <code>blocked()</code></td></tr>
+<tr><td><code>STATE_AVAILABLE</code> 11</td><td>idle/interrupt/GC thread — <b>skipped by GC scan</b></td></tr>
+<tr><td><code>STATE_WAIT_ONESHOT</code> 12</td><td>blocked on a timer</td></tr>
+</table>
+
+<h2>The switch (switch.S)</h2>
+<ul>
+<li><code>internal_switch_to</code> — save current thread's EIP/ESP/EBP/ESI/EDI/EFLAGS into its <code>context[]</code>, then restore the next thread's and <code>ret</code> into it. Thread resumes mid-instruction.</li>
+<li><code>destroy_switch_to</code> — restore next thread without saving current (current is dying).</li>
+</ul>
+
+<h2>LLS / HLS split (JAVASCHEDULER mode)</h2>
+<p>In Java-scheduler mode both levels can be <b>Java objects</b> in the heap — which is why the GC must move scheduler objects.</p>
+<table>
+<tr><th>Level</th><th>Role</th><th>Grounding</th></tr>
+<tr><td><b>LLS</b> (Low-Level)</td><td>per-CPU: domain switching, time slices, IRQ handling. Java class <code>jx/zero/LowLevelScheduler</code>, method pointers resolved via vtable in <code>LLSched_register()</code>.</td><td>javascheduler.c:532</td></tr>
+<tr><td><b>HLS</b> (High-Level)</td><td>per-domain per-CPU: thread-level policy. Java class <code>jx/zero/scheduler/HighLevelScheduler</code>, callbacks <code>preempted/interrupted/activated</code>.</td><td>javascheduler.c:588</td></tr>
+</table>
+<p>GC interplay: <code>gc_org_moveSchedulerObject()</code> (gc_org.c:48) relocates each CPU's HLS object after a copying collection; <code>gc_impl.c:43 walkSchedulerObjects()</code> iterates the same table.</p>
+
+<h2>Idle thread</h2>
+<pre><code>for(;;){ sti; hlt; cli; while(domain_runqueue.first==NULL); threadyield(); }</code></pre>
+<p>Parks the CPU on <code>hlt</code> until an interrupt (timer/device/IPI) wakes it to re-check the runqueue.</p>
+
+</body>
+</html>

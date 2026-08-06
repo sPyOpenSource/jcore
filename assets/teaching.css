@@ -84,6 +84,67 @@ hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
   font-size: .9rem;
 }
 
+/* ── Quiz widget (used by assets/quiz.js) ─────────────────────── */
+
+.quiz {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1rem 1.2rem 1.2rem;
+  margin: 1.5rem 0;
+  background: #fcfcf5;
+}
+.quiz h3 {
+  margin-top: 0;
+  font-size: 1.05rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: .4rem;
+}
+.quiz .q {
+  margin: .9rem 0;
+  font-weight: 600;
+}
+.quiz .diagram {
+  font-family: var(--mono);
+  font-size: .78rem;
+  line-height: 1.45;
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: .7rem .9rem;
+  margin: .6rem 0;
+  white-space: pre;
+  overflow-x: auto;
+  font-weight: 400;
+}
+.quiz .opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: 400 .9rem/1.4 var(--sans);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: .5rem .7rem;
+  margin: .4rem 0;
+  cursor: pointer;
+}
+.quiz .opt:hover { border-color: var(--accent); }
+.quiz .opt.correct {
+  background: #e4f3e0;
+  border-color: #3a7d2c;
+}
+.quiz .opt.wrong {
+  background: #f8e2e0;
+  border-color: var(--accent2);
+}
+.quiz .opt:disabled { cursor: default; }
+.quiz .explain {
+  display: none;
+  font-size: .88rem;
+  color: var(--muted);
+  margin: .5rem 0 0;
+}
+.quiz .qblock.solved .explain { display: block; }
+
 @media print {
   body { font-size: 11pt; margin: 1in; }
   a { color: inherit; }

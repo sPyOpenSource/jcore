@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GC Glossary — JVM Garbage Collection</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+
+<h1>GC Glossary</h1>
+<p>Canonical terms for the JVM garbage-collection thread of lessons, rooted in the JCore codebase (<code>src/Memory/gc_*.c</code>).</p>
+
+<h2>Core model</h2>
+
+<p><strong>Garbage</strong>: An object that is unreachable from the root set. Reachability — not any program action — defines what the collector may reclaim.</p>
+
+<p><strong>Root set</strong>: The objects a collector starts tracing from: active thread stacks (local variables, operand stack), static fields of loaded classes, JNI references, and JIT-held registers. JCore scans these in <code>gc_org_gc()</code> (<code>gc_org.c:1084</code>).</p>
+
+<p><strong>Reachability levels</strong> (defined by <code>java.lang.ref</code>): strong (plain references), soft (<code>SoftReference</code> — reclaimed only under memory pressure), weak (<code>WeakReference</code> — reclaimed at the next GC), phantom (<code>PhantomReference</code> — reclaimed and enqueued for post-mortem cleanup).</p>
+
+<p><strong>Mutator</strong>: The application threads that allocate objects and mutate the object graph — everything that is <em>not</em> the collector.</p>
+
+<h2>Algorithm families</h2>
+
+<p><strong>Reference counting</strong>: Each object tracks the number of incoming references; count hits zero ⇒ free immediately. Simple, incremental, but leaks cycles and needs per-store overhead. Not used by HotSpot.</p>
+
+<p><strong>Tracing collection</strong>: Traverse the object graph from the roots; everything not visited is garbage. The family every HotSpot collector belongs to.</p>
+
+<p><strong>Mark-sweep</strong>: Tracing that marks reachable objects, then sweeps the heap freeing unmarked ones. Leaves fragmentation.</p>
+
+<p><strong>Copying collection (semispace)</strong>: Tracively copy survivors from from-space into an empty to-space; the whole old space is then garbage. Allocation is a bump pointer; survivors get relocated (cheap allocation, fast collection, but only half the heap usable at once). JCore's default <code>gc_org.c</code> is this design (heaps <code>heap</code> and <code>heap2</code>). Cheney's algorithm is the classic breadth-first variant.</p>
+
+<p><strong>Mark-compact</strong>: Mark reachable objects, then slide them together to one end, eliminating fragmentation. Used in HotSpot's Serial Old.</p>
+
+<p><strong>Generational collection</strong>: The empirical weak generational hypothesis — most objects die young — splits the heap into a young generation (collected frequently, cheaply) and an old generation (collected rarely). Young GCs are usually copying; old GCs mark-sweep/compact. Basis of HotSpot (Eden + Survivors + Tenured).</p>
+
+<p><strong>Incremental / concurrent / parallel / stop-the-world</strong>: <em>Parallel</em> = multiple GC threads; <em>stop-the-world</em> = all mutators paused; <em>concurrent</em> = collector runs at the same time as mutators (CMS, G1, ZGC, Shenandoah); <em>incremental</em> = collection work spread over time.</p>
+
+<h2>JCore codebase references</h2>
+
+<p><strong><code>gc_org.c</code></strong>: The original copying (semispace) collector. <code>gc_org_gc()</code> at line 1084 is the entry point; <code>gc_org_allocHeap2()</code> at line 62 is the to-space bump pointer.</p>
+
+<p><strong><code>gc_compacting.c</code></strong>: Mark-compact implementation (HotSpot Old-gen analogue).</p>
+
+<p><strong><code>gc_bitmap.c</code></strong>: Bitmap-based collector — reuses the bitmap idea from <code>jxmalloc</code>, applied to liveness marking.</p>
+
+<p><strong><code>gc_chunked.c</code></strong>: Region/chunk-based collector (conceptual ancestor of G1's regions).</p>
+
+<p><strong><code>gc_stack.c</code></strong>: Stack scanning — which words on a thread stack are roots (uses stack maps).</p>
+
+<p><strong><code>gc_pa.c</code></strong>: Parallel allocation / GC support code.</p>
+
+<p><strong><code>gc_alloc.c</code></strong>: Object allocation path (<code>gc_allocDataInDomain</code>), the mutator-facing front door of the heap.</p>
+
+<p><strong><code>OBJSIZE_*</code> / <code>OBJFLAGS_*</code></strong> (<code>gc.h</code>): JCore stores per-object metadata (flags, vtable, size) in words preceding the object header — the collector's way of knowing an object's layout.</p>
+
+<h2>JVM heap terms (HotSpot)</h2>
+
+<p><strong>Young generation</strong>: Eden + two Survivor spaces. New objects land in Eden (bump allocation); survivors age by being copied Survivor0 → Survivor1.</p>
+
+<p><strong>Old generation (Tenured)</strong>: Long-lived survivors are promoted here; collected by mark-sweep/compact (or G1's mixed collections).</p>
+
+<p><strong>Minor vs major/full GC</strong>: Minor collects only the young gen; full collects the whole heap. A promotion failure (no room in old gen) can force a full GC.</p>
+
+<p><strong>Safepoint</strong>: A point where all mutators are frozen so the collector can identify roots (stacks, registers) consistently. JCore triggers collection only when it can safely inspect threads.</p>
+
+<p><strong>Card table / remembered set</strong>: The young-gen collector must know which old-gen objects reference young objects (cross-generation pointers); a card table is a coarse bitmap of dirty old-gen pages, a remembered set the refined structure.</p>
+
+</body>
+</html>

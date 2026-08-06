@@ -18,3 +18,15 @@
 
 ### Next
 - Ask user: GDT layout (`segments.h`, `asm.S` GDT entries), boot process deep dive (`crt0.S`), or JCore-specific portal/domain isolation pattern?
+
+## Session state (2026-08-06) — new thread: JVM Garbage Collection
+### Done
+- Lesson 9: GC I — reachability model. "Garbage = unreachable from roots." Grounded in `gc_org.c:1084` root scanning + `malloc_code` bump allocator. Quiz widget built (`assets/quiz.js`).
+- Lesson 10: Scheduler — two-level round-robin runqueue (runq.c), switch.S context switch, idle+`hlt`, LLS/HLS Java-scheduler split, GC interface (`Sched_gc_rootSet`, `gc_org_moveSchedulerObject`).
+- Reference: `reference/gc-glossary.html`, `reference/scheduler.html`.
+
+### Next
+- Safepoints: how JCore stops mutators so the GC can run (bridges scheduler → GC mission).
+- Then the promised GC II: copying/semispace collector — walk `gc_org_gc()` end to end (from/to space, forwarding pointers, bump allocation).
+- Generational heap (Eden/Survivor/Old), mark-compact (`gc_compacting.c`), G1/ZGC.
+

@@ -202,7 +202,6 @@ void print_eip_info(char *addr)
 		}
 #else
 		printf("%s\n", classInfo->name);
-		printf("%s\n", " ");
 		printf("%s", method->name);
 		printf("(%d,%d)\n", lineNumber, bytecodePos);
 		//printk("(%s::%s.%s%s (0x%lx) at bytecode %ld, line %ld)", classInfo->definingLib->name, classInfo->name,

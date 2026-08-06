@@ -1,20 +1,21 @@
-# Mission: Porting x86-32 Codebase to x86-64
+# Mission: JVM Garbage Collection, Mastered in JCore's Own Code
 
-## Goal
-Successfully migrate a software codebase written for the x86 (32-bit) architecture to the x86-64 (64-bit) architecture.
+## Why
+JCore is a Java Virtual Machine the user is building and running on bare metal (ARM/x86), with real collectors already in `src/Memory/gc_*.c`. The user wants to understand JVM garbage collection deeply enough to reason about — and eventually tune or improve — JCore's heap, and to speak the same language as HotSpot's collectors when reading the wider JVM literature.
 
-## Context
-The user has an existing codebase targeting x86-32 and needs to transition it to x86-64 to leverage larger address spaces, more registers, and modern hardware capabilities.
+## Success looks like
+- Trace JCore's copying collector (`gc_org.c`) end-to-end: what triggers a GC, what the root scan visits, how objects move, where the collector must pause and why.
+- Explain any HotSpot collector (Serial, Parallel, G1, ZGC, Shenandoah) as an instance of the reachability model plus a strategy for finding/disposing of garbage.
+- Compare JCore's collectors (`gc_compacting.c`, `gc_bitmap.c`, `gc_chunked.c`) against their HotSpot counterparts and name the trade-offs.
+- Read a GC log or heap dump and diagnose why a full GC happened.
+- Navigate a real JVM's heap layout (Eden/Survivor/Old) and predict which objects end up where.
 
-## Success Criteria
-- The codebase compiles for x86-64.
-- All core functionality is preserved.
-- Performance is maintained or improved.
-- Memory safety and alignment issues related to the architecture change are resolved.
+## Constraints
+- Applied, code-first learning style: every concept must be anchored to JCore source (`src/Memory/`, `src/malloc.c`).
+- Concise lessons, completable in minutes, one tangible win each.
+- Workspace currently holds JCore's real GC code — use it as the primary lab, not toy examples.
 
-## Key Challenges
-- Pointer size increase (4 bytes -> 8 bytes).
-- Changes in calling conventions (e.g., register-based argument passing).
-- Alignment requirements for 64-bit data.
-- x86-64 specific instruction set extensions (SSE/AVX).
-- Handling of legacy 32-bit code/libraries.
+## Out of scope
+- Writing a new collector from scratch (JCore already has several).
+- Tuning production application heaps via JVM flags — relevant later only as diagnostic reading.
+- JavaScript/Ruby/Python garbage collectors — JVM and JCore focus only.

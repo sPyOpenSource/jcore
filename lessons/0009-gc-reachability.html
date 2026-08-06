@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 9: What Is Garbage? — The Reachability Model</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+<article>
+<h1>Lesson 9: JVM Garbage Collection I<br><small>What is garbage? — the reachability model</small></h1>
+
+<p class="mission-tie"><strong>Mission:</strong> JCore is a JVM — every <code>new</code> it executes allocates an object, and no one ever calls <code>free</code> on it. JCore already ships a real garbage collector in <code>src/Memory/gc_*.c</code>. Before we read that code, we need the one idea everything else hangs on: <strong>what counts as garbage?</strong></p>
+
+<h2>The shift from malloc to new</h2>
+<p>In your kernel, memory is manual. You pair every <code>jxmalloc(size)</code> with a <code>jxfree(addr, size)</code> — and you saw in <a href="0007-malloc.html">Lesson 7</a> how fragile that is: pass the wrong size to <code>jxfree</code> and the bitmap corrupts.</p>
+
+<p>The JVM is different. A Java program calls <code>new</code> millions of times and <strong>never frees anything</strong>. So where does the memory go? The answer is that garbage collection is not an optimization — it is the <em>only</em> memory reclamation mechanism. The runtime decides what is dead and reclaims it, automatically.</p>
+
+<div class="callout">
+<p><strong>You already built half of this.</strong> In <code>src/malloc.c:601</code>, <code>malloc_code()</code> is a <strong>bump allocator</strong>: it hands out the next N bytes and never frees individually — memory is reclaimed in bulk when a domain dies. That "allocate everything, clean up later" shape is exactly how a GC heap works. The hard part isn't allocation (a bump pointer). The hard part is deciding <em>what</em> to clean up.</p>
+</div>
+
+<h2>The definition: garbage = unreachable from roots</h2>
+<p>An object is <strong>garbage</strong> if and only if it cannot be reached by following references from a set of <strong>root</strong> objects. That's it. Nothing the program "says" matters — no explicit free, no count. Purely graph reachability.</p>
+
+<pre><code>Roots ──pointers──▶ live objects ──...──▶ more live objects
+
+                              ░░░░░░ = garbage (no path from any root)</code></pre>
+
+<p>Why does this definition work? Two properties:</p>
+<ol>
+<li><strong>No dangling pointers.</strong> A reachable object is in use, so it must stay. An unreachable object can never be seen again, so it can be freed <em>or even moved</em>.</li>
+<li><strong>Cycles get collected.</strong> Two objects pointing at each other but with no path to a root are still garbage. (Reference counting — the other main scheme — leaks exactly this case. We'll compare in the next lesson.)</li>
+</ol>
+
+<h2>What are the roots?</h2>
+<p>In HotSpot the root set is:</p>
+<table>
+<tr><th>Root</th><th>Where it lives</th></tr>
+<tr><td>Local variables &amp; operand stack</td><td>Each active thread's stack (at safepoints)</td></tr>
+<tr><td>Static fields</td><td>Loaded classes' <code>Class</code> objects</td></tr>
+<tr><td>JNI references</td><td>Native code's <code>GlobalRef</code> handles</td></tr>
+<tr><td>JIT register contents</td><td>Live registers of compiled frames</td></tr>
+</table>
+
+<p>JCore's collector scans the same classes of roots. In <code>gc_org_gc()</code> at <code>src/Memory/gc_org.c:1084</code>, before it moves anything, it walks every thread and scans its stack:</p>
+<pre><code>for (t = domain-&gt;threads; t != NULL; t = t-&gt;nextInDomain) {
+    if (t == domain-&gt;gc.gcThread) continue;
+    if (t-&gt;isInterruptHandlerThread) continue;
+    if (t-&gt;state == STATE_AVAILABLE)   continue;
+    gc_org_scan_stack(domain, t, JNI_FALSE);   /* roots on the stack */
+}
+/* ...then statics of loaded classes (scan_class_org) */</code></pre>
+<p>This is exactly HotSpot's "scan thread stacks, then statics" recipe — because JCore is a JVM, its GC has the same job. That one page is your anchor: <strong>GC = find roots, walk everything reachable, treat the rest as garbage.</strong></p>
+
+<div class="ref">
+<p><strong>Code:</strong> <code>src/Memory/gc_org.c:1084-1203</code> — <code>gc_org_gc()</code> root scanning. Note it also scans "classes" statics right after the stack loop.</p>
+</div>
+
+<h2>Why this matters for everything that follows</h2>
+<p>Every collector in the JVM (Serial, Parallel, CMS, G1, ZGC, Shenandoah) is a different answer to one question: <em>how do you find the unreachable objects, and what do you do with them?</em> But they all agree on the definition. Once you can look at any object graph and determine liveness by hand, the algorithms are just engineering.</p>
+
+<p>Three families you'll meet, all starting from this definition:</p>
+<table>
+<tr><th>Family</th><th>How it finds garbage</th><th>What it does after</th></tr>
+<tr><td>Mark-sweep</td><td>Trace from roots, mark reachable</td><td>Sweep: free unmarked objects in place</td></tr>
+<tr><td>Copying</td><td>Trace from roots</td><td>Move survivors to a fresh space (JCore's <code>gc_org.c</code>)</td></tr>
+<tr><td>Mark-compact</td><td>Trace from roots, mark</td><td>Slide survivors together, no holes</td></tr>
+</table>
+
+<h2>Check yourself</h2>
+
+<div class="quiz" data-quiz>
+<div class="qblock">
+<p class="q">1. Root R points to A. A points to B. B points to C. Nothing else exists. Which objects are garbage?</p>
+<button class="opt" data-correct>No objects are garbage</button>
+<button class="opt">Object C is garbage</button>
+<button class="opt">Objects B and C are garbage</button>
+<button class="opt">All three are garbage</button>
+<p class="explain">Every object is reachable from R via a reference chain (R→A→B→C), so none is garbage. Garbage = unreachable, not "old" or "unused".</p>
+</div>
+
+<div class="qblock">
+<p class="q">2. R points to A. A points to B. B points back to A. C and D point to each other but nothing points to them. Which objects are garbage?</p>
+<button class="opt">A and B are garbage</button>
+<button class="opt" data-correct>C and D are garbage</button>
+<button class="opt">B and D are garbage</button>
+<button class="opt">No objects are garbage</button>
+<p class="explain">A&#8596;B is a reachable cycle (you get there from R), so it lives. C&#8596;D is a cycle with no path to any root — exactly the cycle that reference counting leaks. Reachability kills it.</p>
+</div>
+
+<div class="qblock">
+<p class="q">3. In <code>gc_org_gc()</code>, which words on a thread stack does the collector treat as roots?</p>
+<button class="opt" data-correct>Only words that hold pointers</button>
+<button class="opt">Only the return addresses</button>
+<button class="opt">All of the stack words</button>
+<button class="opt">Only static field values</button>
+<p class="explain">Only words that actually hold references are roots. The hard part is knowing <em>which</em> words those are — JCore uses stack maps emitted by its compiler to find them.</p>
+</div>
+</div>
+
+<h2>Try it yourself</h2>
+<ol>
+<li>Open <code>src/Memory/gc_org.c</code> and find <code>gc_org_init()</code> (line 2221). Note the two heap halves (from-space and to-space). One GC's survivors will be copied into the other half — that's the "copying" family.</li>
+<li>In <code>gc_org_gc()</code>, list the three distinct root sources scanned before any object is moved (stacks, then classes/statics, and one more). Why must the GC thread's own stack be skipped?</li>
+<li>Predict what happens to the heap after a GC when nothing is reachable: where does every object go?</li>
+</ol>
+
+<h2>Further reading</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/java/javase/17/gctuning/introduction-garbage-collection-tuning.html">Oracle GC Tuning Guide — Introduction to Garbage Collection Tuning</a> — the official HotSpot overview; read the "Garbage Collection" basics section.</li>
+<li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/ref/package-summary.html"><code>java.lang.ref</code> package docs</a> — the Javadoc defines reachability <em>levels</em> (strong, soft, weak, phantom); this is the spec-level definition of what keeps an object alive.</li>
+<li><a href="../reference/gc-glossary.html">GC Glossary</a> — canonical terms for this thread of lessons.</li>
+<li><a href="../lessons/0007-malloc.html">Lesson 7: jxmalloc</a> — the bump-allocator half of GC that you already built.</li>
+<li>Richard Jones, Antony Hosking, Eliot Moss, <em>The Garbage Collection Handbook</em> (2nd ed.) — the definitive text; Chapter 1 states the reachability model we just used.</li>
+</ul>
+
+<p><em>Ask your teacher (the agent) follow-up questions — e.g., how does JCore know which stack words are pointers? (Hint: it's why compiled code emits stack maps.)</em></p>
+
+</article>
+<script src="../assets/quiz.js"></script>
+</body>
+</html>

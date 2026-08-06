@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 10: The Scheduler — What Runs Next on a CPU</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+<article>
+<h1>Lesson 10: The Scheduler<br><small>What runs next on a CPU</small></h1>
+
+<p class="mission-tie"><strong>Mission:</strong> JCore is a JVM — many Java threads compete for few CPUs, and the garbage collector only works when threads are stopped at safe points. The scheduler is the ground layer the GC stands on. This lesson gives you the scheduler's job, its data structures in <code>src/core/runq.c</code>, and how it hands control to the collector.</p>
+
+<h2>The scheduler's one question</h2>
+<p>A scheduler answers a single question: <em>given one CPU and a set of runnable threads, which one runs next?</em> It isn't always running — it is <strong>invoked</strong> when the world changes:</p>
+
+<table>
+<tr><th>Event</th><th>JCore entry point</th></tr>
+<tr><td>A thread becomes runnable (created)</td><td><code>Sched_created()</code> — runq.c:38</td></tr>
+<tr><td>A thread wakes up (unblocked)</td><td><code>Sched_unblocked()</code> — runq.c:68</td></tr>
+<tr><td>A thread voluntarily yields</td><td><code>Sched_yielded()</code> — runq.c:77</td></tr>
+<tr><td>A thread blocks or dies</td><td><code>Sched_blocked()</code> / <code>Sched_destroyed()</code></td></tr>
+<tr><td>The timer fires (preemption)</td><td><code>Sched_reschedule()</code> — runq.c:137</td></tr>
+</table>
+
+<div class="callout">
+<p><strong>The central invariant:</strong> a runqueue holds <em>only</em> <code>STATE_RUNNABLE</code> threads (<code>src/Headers/core/thread.h:20</code>). Blocking moves you out; unblocking moves you back in. Every schedule decision is "dequeue a runnable thread, switch to it."</p>
+</div>
+
+<h2>Two-level round-robin</h2>
+<p>JCore's runqueue is not one flat queue. It is two nested queues (<code>runq.c:25</code>):</p>
+<pre><code>domain_runqueue            global: runnable <b>domains</b>, FIFO
+   └── domain-&gt;firstThreadInRunQueue   per-domain: runnable <b>threads</b>, FIFO</code></pre>
+
+<p>Why two levels? Domains are the scheduling units of isolation. Round-robin <em>between domains</em> guarantees a runnable domain can't starve forever — even if another domain spawns 1000 threads. Then round-robin <em>within</em> a domain picks a thread fairly. The pick in <code>runqueue_removeFirstOrNULL()</code> (runq.c:301):</p>
+
+<ol>
+<li>Dequeue the head domain from <code>domain_runqueue</code>.</li>
+<li>If none: take the head thread from the <em>current</em> domain's thread runqueue.</li>
+<li>Else: append the current domain to the domain runqueue (if it still has runnable threads), then take the head thread of the dequeued domain.</li>
+</ol>
+
+<p>Notice the scheduler itself never touches <code>malloc</code> — queued-ness lives in the domain's own <code>queued</code> flag and <code>nextInRunQueue</code> links, exactly like the bitmap/bump allocators you already studied.</p>
+
+<h2>The switch: raw context swap</h2>
+<p>Choosing is half the job; the other half is actually swapping the CPU onto the next thread. That's assembly, in <code>src/Assembly/switch.S</code>:</p>
+
+<pre><code>internal_switch_to:                 // save current, then restore next
+    movl  %eax, PCB_EIP(%ecx)       // where we'll resume from
+    movl  %esp, PCB_ESP(%ecx)       // stack pointer
+    movl  %ebp, PCB_EBP(%ecx)       // frame pointer
+    movl  %esi, PCB_ESI(%ecx)       // callee-saved regs
+    movl  %edi, PCB_EDI(%ecx)
+    ...                             // then load next thread's PCB and ret</code></pre>
+
+<p>The trick that makes it work: each thread's register state lives in its <code>context[]</code> PCB. Saving a thread = copying registers there; resuming = restoring them and <code>ret</code> into the stored <code>EIP</code>. The thread wakes up <em>mid-instruction</em>, as if the switch never happened. There's also <code>destroy_switch_to</code> — used when the current thread is <strong>dying</strong>, so its state is never saved.</p>
+
+<h2>What happens when there's nothing to run</h2>
+<p>An <code>idle</code> thread owns the CPU (<code>runq.c:196</code>):</p>
+<pre><code>for (;;) {
+    asm("sti"); asm("hlt"); asm("cli");   // halt until interrupt
+    while (domain_runqueue.first == NULL); // then wait for work
+    threadyield();
+}</code></pre>
+<p><code>hlt</code> parks the CPU and consumes zero power until the next interrupt (timer, device, IPI) wakes it to re-check.</p>
+
+<h2>Where the GC meets the scheduler</h2>
+<p>The scheduler isn't just adjacent to GC — it <strong>cooperates</strong> with it:</p>
+<ol>
+<li><strong>Roots:</strong> the scheduler holds references (to runnable threads, scheduler objects). The collector must know them. In <code>sched_global_rr.c:472</code>, <code>Sched_gc_rootSet()</code> lets the GC walk the scheduler's special root objects.</li>
+<li><strong>Moving:</strong> in JCore's Java-scheduler mode, the scheduler itself is a Java object living <em>in the heap</em>. A copying GC must relocate it — see <code>gc_org_moveSchedulerObject()</code> at <code>gc_org.c:48</code>, which rewrites the scheduler reference after the copy.</li>
+<li><strong>Safepoints:</strong> a GC must stop all mutator threads. Only a scheduler can do that — and the collector skips threads whose state marks them not-running (<code>STATE_AVAILABLE</code>, as in <code>gc_org.c:1164</code>).</li>
+</ol>
+
+<p>So: garbage collection <em>cannot even start</em> without the scheduler. When we study safepoints later, this is the seam you'll revisit.</p>
+
+<h2>Check yourself</h2>
+
+<div class="quiz" data-quiz>
+<div class="qblock">
+<p class="q">1. A runqueue in JCore holds which threads?</p>
+<button class="opt" data-correct>Only runnable threads, always</button>
+<button class="opt">Only blocked threads, forever</button>
+<button class="opt">All live threads of a domain</button>
+<button class="opt">Only preempted threads, sometimes</button>
+<p class="explain">The invariant is enforced everywhere: <code>ASSERT(thread-&gt;state == STATE_RUNNABLE)</code> before a switch. Blocking removes a thread; unblocking re-adds it.</p>
+</div>
+
+<div class="qblock">
+<p class="q">2. When a thread calls <code>Sched_block()</code>, what happens to it?</p>
+<button class="opt" data-correct>It leaves the runqueue</button>
+<button class="opt">It stays in the runqueue</button>
+<button class="opt">It becomes the idle thread</button>
+<button class="opt">It is garbage collected</button>
+<p class="explain">The thread's state is set to the blocking reason (e.g. <code>STATE_BLOCKEDUSER</code>) and it is removed from the runqueue until some event calls <code>Sched_unblock()</code>.</p>
+</div>
+
+<div class="qblock">
+<p class="q">3. What does the global domain runqueue guarantee?</p>
+<button class="opt">Domains never share a CPU</button>
+<button class="opt" data-correct>One domain can't starve all</button>
+<button class="opt">Threads never get preempted</button>
+<button class="opt">The GC can move all threads</button>
+<p class="explain">Domains are round-robined as units, so a domain with many threads still gets only its fair turn of CPU — fairness is between domains first, threads second.</p>
+</div>
+
+<div class="qblock">
+<p class="q">4. Why does the GC need the scheduler's help?</p>
+<button class="opt">To allocate space for new objects</button>
+<button class="opt">To find every object that is live</button>
+<button class="opt" data-correct>To stop threads and find all roots</button>
+<button class="opt">To move threads out of the heap</button>
+<p class="explain">A GC must freeze mutators (safepoints) and know the scheduler's own references — <code>Sched_gc_rootSet()</code> exposes those, and <code>gc_org_moveSchedulerObject()</code> relocates the scheduler's Java object.</p>
+</div>
+</div>
+
+<h2>Try it yourself</h2>
+<ol>
+<li>Trace one <code>switch_to</code> by hand in <code>src/Assembly/switch.S</code>: find where the current EIP is saved and where the next thread's EIP is loaded. Why must EIP be saved on the <em>stack</em> of the calling thread?</li>
+<li>In <code>runq.c</code>, find the two queue structures and list every place a domain gets added to <code>domain_runqueue</code>. What condition must hold first?</li>
+<li>Read <code>gc_org_moveSchedulerObject()</code> (<code>gc_org.c:48</code>) — it walks <code>domain-&gt;Scheduler[i]</code> for every CPU. Why would a <em>copying</em> GC need to rewrite this pointer specially, rather than finding it through a normal object graph walk?</li>
+</ol>
+
+<h2>Further reading</h2>
+<ul>
+<li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf">OSTEP: Scheduling — Introduction</a> (Arpaci-Dusseau) — the canonical high-trust treatment of scheduling policies; read the sections on FIFO/SJF/RR to see where JCore's round-robin sits.</li>
+<li><a href="https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched-lottery.pdf">OSTEP: Scheduling — Proportional Share</a> — lottery scheduling, a nice contrast if you later read JCore's Java <code>HighLevelScheduler</code>.</li>
+<li><a href="../lessons/0007-malloc.html">Lesson 7: jxmalloc</a> — the allocator lesson that gave you the "no free" mental model; the runqueue reuses that "embedded links, no heap calls" trick.</li>
+<li><a href="../reference/gc-glossary.html">GC Glossary</a> — see <strong>safepoint</strong> and <strong>root set</strong> for the terms this lesson leans on.</li>
+<li><a href="../reference/scheduler.html">Scheduler Quick Reference</a> — the <code>Sched_*</code> interface, thread states, and the LLS/HLS split at a glance.</li>
+</ul>
+
+<p><em>Ask your teacher (the agent) follow-up questions — e.g., what happens when the timer interrupt lands in the middle of the GC? Or how the two-level runqueue keeps the GC thread itself from starving?</em></p>
+
+</article>
+<script src="../assets/quiz.js"></script>
+</body>
+</html>
