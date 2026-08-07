@@ -9,5 +9,5 @@ Current is only support for x86 processors with 32bit memory address.
 For x86_64, ARM and RiscV processors
 
 # Legal issues
-This Java runtime environment is a clean-room implementation of the [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine) specification. We have not obtained a Java license from Sun and therefore the system can not be called a Java system.
+This Java runtime environment is a clean-room implementation of the [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine) specification. [JX](https://www4.cs.fau.de/Projects/JX/index.html) is the original project. There are no Java license from Sun, so the system can not be called a Java system yet.
 The source code is released under the GPL with an exception statement. The exception allows you to use it together with closed-source code as long as you only use the provided interface components. (see also http://www.gnu.org/licenses/gpl-faq.html)
