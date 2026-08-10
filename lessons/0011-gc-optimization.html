@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11: GC Optimization — Trade-offs and Analysis</title>
+<link rel="stylesheet" href="../assets/teaching.css">
+</head>
+<body>
+<article>
+<h1>Lesson 11: JVM Garbage Collection III<br><small>GC optimization — trade-offs, metrics, and log analysis</small></h1>
+
+<p class="mission-tie"><strong>Mission:</strong> JCore ships four real collectors in <code>src/Memory/gc_*.c</code>. "Optimizing" GC means understanding the <strong>three-way trade-off</strong> between pause time, throughput, and memory footprint — then choosing the collector (or tuning it) for your workload. This lesson teaches you to read GC logs, measure the axes, and map JCore's collectors to their HotSpot counterparts.</p>
+
+<h2>What "GC optimization" actually means</h2>
+<p>In your kernel (<code>jxmalloc</code>), optimization meant "make allocation faster" or "reduce fragmentation." In a GC, you cannot optimize one axis without hurting another:</p>
+
+<table>
+<tr><th>Axis</th><th>What it means</th><th>JCore metric</th></tr>
+<tr><td><strong>Pause time</strong> (latency)</td><td>How long mutators are stopped during collection</td><td><code>Time</code> field in <code>gc_printInfo</code> output</td></tr>
+<tr><td><strong>Throughput</strong></td><td>% of CPU time spent running mutator vs GC</td><td><code>1 - (total GC time / total runtime)</code></td></tr>
+<tr><td><strong>Memory footprint</strong></td><td>Heap size needed for a given allocation rate</td><td><code>heap(used)</code> / <code>heap(total)</code> in <code>printInfo</code></td></tr>
+</table>
+
+<div class="callout">
+<p><strong>No free lunch.</strong> A collector that pauses for 1ms (low latency) typically needs more heap (high footprint) or uses more CPU for concurrent work (lower throughput). The "optimal" choice depends entirely on what your application values.</p>
+</div>
+
+<h2>The three-way trade-off visualized</h2>
+<pre><code>                    ┌─────────────────────┐
+                    │    IDEAL (impossible)│
+                    │  Low Pause, High     │
+                    │  Throughput, Low Mem  │
+                    └──────────┬────────────┘
+                               │
+           ┌───────────────────┼───────────────────┐
+           ▼                   ▼                   ▼
+    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+    │ Low Pause   │    │ High        │    │ Low Memory  │
+    │ (ZGC,       │    │ Throughput  │    │ (Serial,    │
+    │  Shenandoah)│    │ (Parallel)  │    │  Epsilon*)  │
+    └─────────────┘    └─────────────┘    └─────────────┘
+           │                   │                   │
+           └───────────────────┼───────────────────┘
+                               ▼
+                    Real collectors live
+                    on the edges of this
+                    triangle — pick two.
+</code></pre>
+
+<p><em>* Epsilon is a no-op GC for benchmarking; it allocates until OOM.</em></p>
+
+<h2>JCore's four collectors on the trade-off triangle</h2>
+
+<table>
+<tr><th>Collector</th><th>File</th><th>Family</th><th>Pause</th><th>Throughput</th><th>Memory</th><th>HotSpot analogue</th></tr>
+<tr>
+<td><strong>gc_org</strong></td>
+<td><code>gc_org.c</code></td>
+<td>Copying (semispace)</td>
+<td>Short (proportional to live data)</td>
+<td>Good (bump allocation, fast copy)</td>
+<td>2× heap (from + to space)</td>
+<td>Serial Young Gen</td>
+</tr>
+<tr>
+<td><strong>gc_compacting</strong></td>
+<td><code>gc_compacting.c</code></td>
+<td>Mark-compact</td>
+<td>Longer (mark + slide whole heap)</td>
+<td>Lower (slide is O(heap))</td>
+<td>1× heap (in-place)</td>
+<td>Serial Old Gen</td>
+</tr>
+<tr>
+<td><strong>gc_bitmap</strong></td>
+<td><code>gc_bitmap.c</code></td>
+<td>Bitmap mark-sweep</td>
+<td>Variable (mark + sweep)</td>
+<td>Good (bitmap is compact)</td>
+<td>1× heap + bitmap overhead</td>
+<td>CMS-style</td>
+</tr>
+<tr>
+<td><strong>gc_chunked</strong></td>
+<td><code>gc_chunked.c</code></td>
+<td>Region-based</td>
+<td>Incremental (chunk-by-chunk)</td>
+<td>Good (parallelizable)</td>
+<td>Flexible (per-chunk accounting)</td>
+<td>G1 regions</td>
+</tr>
+</table>
+
+<div class="ref">
+<p><strong>Code:</strong> Compare <code>gc_org_printInfo()</code> (<code>gc_org.c:2207</code>), <code>gc_compacting_printInfo()</code> (<code>gc_compacting.c:494</code>), <code>gc_bitmap_printInfo()</code> (<code>gc_bitmap.c:654</code>), <code>gc_chunked_printInfo()</code> (<code>gc_chunked.c:468</code>). Each prints its own memory accounting.</p>
+</div>
+
+<h2>Reading JCore GC logs</h2>
+<p>When you run JCore with <code>NOTICE_GC</code> and <code>MEASURE_GC_TIME</code> defined, you get output like:</p>
+
+<pre><code>GC IN  3 (SystemDomain) started
+
+GC IN  3 finished
+   GC Info for SystemDomain (   3)
+      Runs:   5, Time:  1234567, Collected Bytes: 1048576
+heap(used ): 0x100000...0x105000 (current=0x104800)
+heap(other): 0x200000...0x205000 (current=0x200000)
+total: 20480, used: 5120, free: 15360
+</code></pre>
+
+<p>Key fields to extract per-collection:</p>
+<ol>
+<li><code>Time</code> — pause duration in microseconds (from <code>MEASURE_GC_TIME</code>)</li>
+<li><code>Collected Bytes</code> — memory reclaimed this cycle</li>
+<li><code>Runs</code> — cumulative collection count for this domain</li>
+<li>Collector-specific lines — heap ranges, word counts, chunk stats</li>
+</ol>
+
+<h2>Derived metrics you should compute</h2>
+
+<table>
+<tr><th>Metric</th><th>Formula</th><th>What it tells you</th></tr>
+<tr><td><strong>Allocation rate</strong></td><td><code>Collected Bytes / time since last GC</code></td><td>How fast mutator creates garbage</td></tr>
+<tr><td><strong>Collection frequency</strong></td><td><code>1 / time between GCs</code></td><td>How often you pause</td></tr>
+<tr><td><strong>Mean pause</strong></td><td><code>Σ pause / count</code></td><td>Typical stop-the-world cost</td></tr>
+<tr><td><strong>P95/P99 pause</strong></td><td>Sort pauses, pick 95th/99th percentile</td><td>Worst-case latency spikes</td></tr>
+<tr><td><strong>Throughput %</strong></td><td><code>100 * (1 - total_GC_time / total_runtime)</code></td><td>Mutator CPU share</td></tr>
+<tr><td><strong>Survival rate</strong></td><td><code>(heap_after - heap_before) / allocated_since_last_GC</code></td><td>How much data survives (promotion pressure)</td></tr>
+</table>
+
+<div class="callout">
+<p><strong>Your allocation rate is the driver.</strong> If allocation rate doubles, either pause time doubles (same heap), or you need 2× heap (same pause). The collector choice determines which knobs you have.</p>
+</div>
+
+<h2>Diagnosing common GC patterns from logs</h2>
+
+<div class="qblock">
+<h4>Pattern: "Pause time keeps growing"</h4>
+<p><em>Symptoms:</em> <code>Time</code> field increases steadily; <code>Collected Bytes</code> stays flat.</p>
+<p><em>Causes:</em> Heap too small → more frequent GCs with more live data each time. Or: memory leak (survival rate → 100%).</p>
+<p><em>JCore action:</em> Check <code>heap(used)</code> trend in <code>printInfo</code>. If it grows monotonically, you have a leak in the mutator, not a GC problem.</p>
+</div>
+
+<div class="qblock">
+<h4>Pattern: "Full GC every N collections"</h4>
+<p><em>Symptoms:</em> Periodic massive <code>Time</code> spike; <code>Collected Bytes</code> is huge.</p>
+<p><em>Causes:</em> In generational terms: promotion failure (old gen full). In JCore's <code>gc_org</code>: from-space fills up and everything is live.</p>
+<p><em>JCore action:</em> Look at <code>total: X, used: Y, free: Z</code> — if <code>free</code> is tiny after GC, your heap is undersized for the live set.</p>
+</div>
+
+<div class="qblock">
+<h4>Pattern: "High throughput but occasional huge pauses"</h4>
+<p><em>Symptoms:</em> Most <code>Time</code> values small, but rare spikes.</p>
+<p><em>Causes:</em> Incremental/region-based collector (<code>gc_chunked</code>) doing a full compaction cycle.</p>
+<p><em>JCore action:</em> Check <code>gc_chunked_printInfo</code> chunk list — how many chunks? Are they fragmented?</p>
+</div>
+
+<h2>Mapping to HotSpot: the same trade-offs, different names</h2>
+
+<table>
+<tr><th>Goal</th><th>HotSpot choice</th><th>JCore analogue</th><th>When to pick</th></tr>
+<tr>
+<td>Lowest pause, large heap OK</td>
+<td>ZGC / Shenandoah</td>
+<td><em>Not in JCore yet</em> (concurrent relocation)</td>
+<td>Interactive apps, strict SLAs</td>
+</tr>
+<tr>
+<td>Max throughput, batch workloads</td>
+<td>Parallel GC (<code>-XX:+UseParallelGC</code>)</td>
+<td><code>gc_org</code> (if young) / <code>gc_compacting</code> (if old)</td>
+<td>Batch jobs, data processing</td>
+</tr>
+<tr>
+<td>Balanced, moderate heap</td>
+<td>G1 (<code>-XX:+UseG1GC</code>)</td>
+<td><code>gc_chunked</code> (regions + incremental)</td>
+<td>Most server apps</td>
+</tr>
+<tr>
+<td>Minimal footprint, single-threaded</td>
+<td>Serial GC</td>
+<td><code>gc_org</code> or <code>gc_compacting</code></td>
+<td>Embedded, small heaps</td>
+</tr>
+</table>
+
+<h2>Try it yourself</h2>
+<ol>
+<li>Run JCore with <code>NOTICE_GC</code> and <code>MEASURE_GC_TIME</code>. Capture a log. Compute: mean pause, P95 pause, allocation rate, throughput.</li>
+<li>In <code>gc_org.c:2207</code>, trace the two heaps (<code>heap</code>/<code>heap2</code>). Why does <code>gc_org</code> need 2× memory? What happens if you allocate faster than GC can copy?</li>
+<li>Compare <code>gc_compacting_printInfo()</code> and <code>gc_bitmap_printInfo()</code>. Both use 1× heap. What does <code>gc_compacting</code> pay for compaction that <code>gc_bitmap</code> doesn't? (Hint: sliding vs sweeping)</li>
+<li>Open <code>gc_chunked.c:468</code>. How does the chunk list structure let <code>gc_chunked</code> do incremental work? What would happen if you added a new chunk mid-GC?</li>
+</ol>
+
+<h2>Further reading</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/java/javase/17/gctuning/introduction-garbage-collection-tuning.html">Oracle GC Tuning Guide — Introduction</a> — the official HotSpot overview of the three axes and how HotSpot's collectors map to them.</li>
+<li><a href="https://www.oracle.com/technical-resources/articles/java/g1gc.html">G1: One Garbage Collector To Rule Them All</a> — region-based collection, the direct conceptual parent of JCore's <code>gc_chunked.c</code>.</li>
+<li><a href="https://shipilev.net/jvm/anatomy-quarks/">JVM Anatomy Park (Shipilёv)</a> — search "GC pause", "allocation rate", "safepoint" for surgical deep-dives.</li>
+<li><a href="../reference/gc-glossary.html">GC Glossary</a> — terms used in this lesson.</li>
+<li><a href="../lessons/0009-gc-reachability.html">Lesson 9: GC Reachability Model</a> — the definition this lesson builds on.</li>
+<li>Richard Jones et al., <em>The Garbage Collection Handbook</em>, Ch. 3–4 — copying vs mark-compact trade-offs formally analyzed.</li>
+</ul>
+
+<p><em>Ask your teacher (the agent) follow-up questions — e.g., how would you implement a generational collector on top of JCore's existing gc_org? What would change in the allocation path?</em></p>
+
+</article>
+<script src="../assets/quiz.js"></script>
+</body>
+</html>
