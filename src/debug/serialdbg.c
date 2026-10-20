@@ -174,6 +174,93 @@ void puts(char *s)
 }
 #endif
 
+/*
+ * VGA text console.
+ *
+ * The kernel wipes 0xb8000 at boot (multiboot_main) and afterwards used to
+ * write everything to the serial line only, so the screen stayed black for
+ * the whole session.  These routines mirror the serial stream into the text
+ * buffer so boot messages are visible on the display as well.
+ *
+ * The console is switched off again as soon as a VESA mode takes over the
+ * video hardware (see fbemulation_open), because 0xb8000 is no longer a text
+ * buffer then.
+ */
+#define VGA_TEXT ((volatile unsigned short *)0xb8000)
+#define VGA_COLS 80
+#define VGA_ROWS 25
+#define VGA_ATTR 0x0f00		/* bright white on black, same as console() */
+
+static int vga_row = 0;
+static int vga_col = 0;
+static int vga_active = 0;
+
+void vga_console_init(void)
+{
+	int i;
+
+	for (i = 0; i < VGA_COLS * VGA_ROWS; i++)
+		VGA_TEXT[i] = VGA_ATTR;
+	vga_row = 0;
+	vga_col = 0;
+	vga_active = 1;
+}
+
+void vga_console_disable(void)
+{
+	vga_active = 0;
+}
+
+static void vga_scroll(void)
+{
+	int i;
+
+	for (i = 0; i < VGA_COLS * (VGA_ROWS - 1); i++)
+		VGA_TEXT[i] = VGA_TEXT[i + VGA_COLS];
+	for (; i < VGA_COLS * VGA_ROWS; i++)
+		VGA_TEXT[i] = VGA_ATTR;
+	vga_row = VGA_ROWS - 1;
+}
+
+static void vga_putc(int ch)
+{
+	if (!vga_active)
+		vga_console_init();
+
+	switch (ch) {
+	case '\n':
+		vga_col = 0;
+		vga_row++;
+		break;
+	case '\r':
+		vga_col = 0;
+		break;
+	case '\b':
+		if (vga_col > 0)
+			vga_col--;
+		break;
+	case '\t':
+		do {
+			VGA_TEXT[vga_row * VGA_COLS + vga_col] = VGA_ATTR | ' ';
+			vga_col++;
+		} while ((vga_col & 7) != 0 && vga_col < VGA_COLS);
+		break;
+	default:
+		if (ch < 32 || ch > 126)
+			break;
+		VGA_TEXT[vga_row * VGA_COLS + vga_col] = VGA_ATTR | (ch & 0xff);
+		vga_col++;
+		break;
+	}
+
+	if (vga_col >= VGA_COLS) {
+		vga_col = 0;
+		vga_row++;
+	}
+	if (vga_row >= VGA_ROWS)
+		vga_scroll();
+}
+
 #define TRANSMIT(ch) while (!(inb(ser_io_base[port] + 5) & 0x20)); outb(ser_io_base[port] + 0, ch);
 
 void ser_putchar(int port, int ch)
@@ -193,6 +280,10 @@ void ser_putchar(int port, int ch)
 	} else {
 		TRANSMIT(ch);
 	}
+
+	/* mirror the very same stream on the VGA text screen */
+	if (port == debug_port)
+		vga_putc(ch);
 
 	/* Wait for the transmit buffer to become available.  */
 

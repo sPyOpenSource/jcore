@@ -4,6 +4,8 @@ extern int debug_port;
 
 void ser_putc(int x, char c);
 void dbg_print(int port, char *s);
+void vga_console_init(void);
+void vga_console_disable(void);
 void check_serial();
 void ser_dump(int port, const char *ptr, unsigned int size);
 int ser_trygetchar(int port);

@@ -922,7 +922,7 @@ void memory_set8(MemoryProxy * self, jint where, jbyte what)
 #endif				/* REVOKE_USING_CLI */
 }
 
-jbyte memory_get8(MemoryProxy * self, jint where)
+jint memory_get8(MemoryProxy * self, jint where)
 {
 	jbyte *ptr;
 	jint size;
@@ -957,7 +957,7 @@ jbyte memory_get8(MemoryProxy * self, jint where)
 #ifdef REVOKE_USING_CLI
 	RESTORE_IRQ;
 #endif				/* REVOKE_USING_CLI */
-	return result;
+	return (jint)result;
 }
 
 void memory_set16(ObjectDesc * self, jint where, jshort what)
@@ -981,7 +981,20 @@ void memory_set16(ObjectDesc * self, jint where, jshort what)
 	ptr[where] = what;
 }
 
-jshort memory_get16(ObjectDesc * self, jint where)
+/*
+ * NOTE: these accessors return jint with the 8/16-bit value ZERO-EXTENDED,
+ * not jbyte/jshort.  Two reasons:
+ *  - a jbyte/jshort C return only defines AL/AX, leaving the upper bits of
+ *    EAX as stale garbage (seen as get16()==0x12AFAA55 with the correct
+ *    0xAA55 in the low half, which made the IDE driver reject a perfectly
+ *    valid MBR);
+ *  - the deployed init2.jll (compiled from the simulator-branch jars) expects
+ *    zero-extension, e.g. bioide PartitionTable compares
+ *    magic() != (0xffff & 0xaa55), i.e. it needs 0x0000AA55, not the
+ *    sign-extended 0xFFFFAA55.  Do not "fix" this to sign extension without
+ *    also rebuilding the Java side.
+ */
+jint memory_get16(ObjectDesc * self, jint where)
 {
 	jshort *ptr;
 	jint size;
@@ -998,7 +1011,7 @@ jshort memory_get16(ObjectDesc * self, jint where)
 	/*debugz(("Memory get16 %lx pos=%ld\n", (jint)self, pos); */
 	if (where >= size / sizeof(jshort))
 		exceptionHandler(THROW_MemoryIndexOutOfBounds);
-	return ptr[where];
+	return (jint)(unsigned short)ptr[where];
 }
 
 #ifdef SMP
@@ -1710,7 +1723,7 @@ void memory_setLittleEndian32(ObjectDesc * self, jint offset, jint value)
 	*(jint *) (mem + offset) = value;
 }
 
-jshort memory_getLittleEndian16(ObjectDesc * self, jint offset)
+jint memory_getLittleEndian16(ObjectDesc * self, jint offset)
 {
 	jbyte *mem;
 	jint size;
@@ -1724,7 +1737,7 @@ jshort memory_getLittleEndian16(ObjectDesc * self, jint offset)
 	if (offset + 2 > size)
 		exceptionHandler(THROW_MemoryIndexOutOfBounds);
 	mem = (jbyte *) self->data[1];
-	return *(jshort *) (mem + offset);
+	return (jint)(unsigned short) *(jshort *) (mem + offset);
 }
 
 void memory_setLittleEndian16(ObjectDesc * self, jint offset, jshort value)
@@ -1784,7 +1797,7 @@ void memory_setBigEndian32(ObjectDesc * self, jint offset, jint value)
 	*(jint *) (mem + offset) = value;
 }
 
-jshort memory_getBigEndian16(ObjectDesc * self, jint offset)
+jint memory_getBigEndian16(ObjectDesc * self, jint offset)
 {
 	jbyte *mem;
 	jint size;

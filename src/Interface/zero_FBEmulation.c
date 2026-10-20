@@ -147,6 +147,10 @@ jboolean fbemulation_open(ObjectDesc * self, int mode)
 		goto finished;
 	}
 
+	/* 0xb8000 is no longer a text buffer once a graphics mode is active,
+	   so stop mirroring the serial stream onto it. */
+	vga_console_disable();
+
 	framebuffer = (u1_t *) modeinfo->linear_frame_buffer_address;
 	width = modeinfo->width_in_pixels;
 	height = modeinfo->height_in_pixels;

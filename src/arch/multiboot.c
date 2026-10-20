@@ -2,6 +2,7 @@
 #include "misc.h"
 #include "core/lock.h"
 #include "debug/debug_reg.h"
+#include "debug/serialdbg.h"
 
 #define assert(x)
 
@@ -481,9 +482,6 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
         //printf("Invalid magic number: 0x%08x\n", magic);
         return;
     }
-	u2_t *screen_start = (u2_t *) 0xb8000;
-	u2_t *screen_end = screen_start + 80 * 24;
-	u2_t *s;
 	int argc = 0;
 	char **argv = 0;
 	int port = 0;
@@ -495,8 +493,9 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	   This avoids one loose fragment of memory that has to be avoided. */
 	boot_info = boot_info_pa;
 
-	for (s = screen_start; s < screen_end; s++)
-		*s = 0x0f00;
+	/* Wipe the text screen (including whatever GRUB left behind) and
+	   start mirroring all further debug output onto it. */
+	vga_console_init();
 
 	/* dbg_sync(port); */
 	/* dbg_print(port, "JX\n"); */
