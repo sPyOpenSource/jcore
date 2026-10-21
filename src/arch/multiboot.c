@@ -489,6 +489,8 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	asm volatile ("cli");
 	init_serial(port);
 
+	printf("JCore booting (UEFI/BIOS)\n");
+
 	/* Copy the multiboot_info structure into our pre-reserved area.
 	   This avoids one loose fragment of memory that has to be avoided. */
 	boot_info = boot_info_pa;
@@ -499,9 +501,11 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	multiboot_parse_framebuffer(boot_info_pa);
 
 	if (multiboot_fb_available()) {
+		printf("UEFI framebuffer available, filling banner\n");
 		/* Visible "boot started" banner. */
 		multiboot_fb_fill(0, 0, 180);
 	} else {
+		printf("No UEFI framebuffer tag found\n");
 		/* Wipe the text screen (including whatever GRUB left behind) and
 		   start mirroring all further debug output onto it. */
 		vga_console_init();
