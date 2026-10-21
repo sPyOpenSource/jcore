@@ -98,6 +98,13 @@ struct multiboot_framebuffer {
     u1_t  framebuffer_bpp;    // Werkelijke bits per pixel (bijv. 32)
     u1_t  framebuffer_type;   // 0 = Indexed, 1 = Direct RGB, 2 = EGA Text
     u2_t reserved;
+    /* Direct RGB only (type == 1): color channel layout. */
+    u1_t red_field_position;
+    u1_t red_mask_size;
+    u1_t green_field_position;
+    u1_t green_mask_size;
+    u1_t blue_field_position;
+    u1_t blue_mask_size;
 };
 
 struct multiboot_tag {
@@ -161,5 +168,10 @@ struct multiboot_info {
 
 
 extern unsigned int boot_info;
+
+/* UEFI/multiboot2 framebuffer helpers (implemented in arch/multiboot.c). */
+void multiboot_parse_framebuffer(unsigned int boot_info_pa);
+int  multiboot_fb_available(void);
+void multiboot_fb_fill(unsigned int r, unsigned int g, unsigned int b);
 
 #endif				/* MULTIBOOT_H */

@@ -493,9 +493,19 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	   This avoids one loose fragment of memory that has to be avoided. */
 	boot_info = boot_info_pa;
 
-	/* Wipe the text screen (including whatever GRUB left behind) and
-	   start mirroring all further debug output onto it. */
-	vga_console_init();
+	/* Parse the multiboot2 framebuffer tag (provided by GRUB under UEFI)
+	   so we can draw at least a visible banner on the display.  On legacy
+	   BIOS there is no such tag and we fall back to the VGA text console. */
+	multiboot_parse_framebuffer(boot_info_pa);
+
+	if (multiboot_fb_available()) {
+		/* Visible "boot started" banner. */
+		multiboot_fb_fill(0, 0, 180);
+	} else {
+		/* Wipe the text screen (including whatever GRUB left behind) and
+		   start mirroring all further debug output onto it. */
+		vga_console_init();
+	}
 
 	/* dbg_sync(port); */
 	/* dbg_print(port, "JX\n"); */
@@ -528,4 +538,106 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	/* Invoke the main program. */
 
 	exit(main(argc, argv, NULL));
+}
+
+/* ------------------------------------------------------------------ */
+/* UEFI / multiboot2 framebuffer helpers                              */
+/* ------------------------------------------------------------------ */
+
+static u4_t uefi_fb_addr = 0;
+static u4_t uefi_fb_pitch = 0;
+static u4_t uefi_fb_width = 0;
+static u4_t uefi_fb_height = 0;
+static u4_t uefi_fb_bpp = 0;
+static u1_t uefi_fb_red_pos = 16;
+static u1_t uefi_fb_green_pos = 8;
+static u1_t uefi_fb_blue_pos = 0;
+
+void multiboot_parse_framebuffer(unsigned int boot_info_pa)
+{
+	unsigned char *base;
+	u4_t total_size;
+	u4_t offset;
+
+	uefi_fb_addr = 0;
+
+	if (boot_info_pa == 0)
+		return;
+
+	base = (unsigned char *) boot_info_pa;
+	total_size = *(u4_t *) base;
+
+	offset = 8;		/* skip total_size + reserved */
+	while (offset + 8 <= total_size) {
+		struct multiboot_tag *tag = (struct multiboot_tag *) (base + offset);
+		u4_t size;
+
+		if (tag->type == 0)
+			break;	/* end tag */
+
+		if (tag->type == 8) {	/* framebuffer tag */
+			struct multiboot_framebuffer *fb =
+			    (struct multiboot_framebuffer *) tag;
+
+			/* Only direct RGB modes we can draw into from 32-bit code. */
+			if (fb->framebuffer_type == 1 &&
+			    (fb->framebuffer_bpp == 32 || fb->framebuffer_bpp == 24) &&
+			    fb->framebuffer_addr != 0 &&
+			    (fb->framebuffer_addr >> 32) == 0) {
+				uefi_fb_addr = (u4_t) fb->framebuffer_addr;
+				uefi_fb_pitch = fb->framebuffer_pitch;
+				uefi_fb_width = fb->framebuffer_width;
+				uefi_fb_height = fb->framebuffer_height;
+				uefi_fb_bpp = fb->framebuffer_bpp;
+				uefi_fb_red_pos = fb->red_field_position;
+				uefi_fb_green_pos = fb->green_field_position;
+				uefi_fb_blue_pos = fb->blue_field_position;
+
+			}
+		}
+
+		size = tag->size;
+		size = (size + 7) & ~7U;
+		if (size == 0)
+			size = 8;
+		offset += size;
+	}
+}
+
+int multiboot_fb_available(void)
+{
+	return uefi_fb_addr != 0;
+}
+
+void multiboot_fb_fill(unsigned int r, unsigned int g, unsigned int b)
+{
+	volatile u1_t *fb;
+	u4_t pixel;
+	u4_t y;
+	u4_t bytes_per_pixel;
+
+	if (uefi_fb_addr == 0 || uefi_fb_pitch == 0 || uefi_fb_height == 0)
+		return;
+
+	bytes_per_pixel = (uefi_fb_bpp + 7) / 8;
+	if (bytes_per_pixel != 3 && bytes_per_pixel != 4)
+		return;
+
+	pixel = (r << uefi_fb_red_pos) | (g << uefi_fb_green_pos) |
+	    (b << uefi_fb_blue_pos);
+
+	fb = (volatile u1_t *) uefi_fb_addr;
+	for (y = 0; y < uefi_fb_height; y++) {
+		u4_t x;
+		u1_t *row = (u1_t *) (fb + y * uefi_fb_pitch);
+		for (x = 0; x < uefi_fb_width; x++) {
+			if (bytes_per_pixel == 4) {
+				*(u4_t *) (row + x * 4) = pixel;
+			} else {
+				row[x * 3 + 0] = (u1_t) (pixel & 0xff);
+				row[x * 3 + 1] = (u1_t) ((pixel >> 8) & 0xff);
+				row[x * 3 + 2] = (u1_t) ((pixel >> 16) & 0xff);
+			}
+		}
+	}
 }

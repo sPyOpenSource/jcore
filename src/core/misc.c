@@ -62,6 +62,8 @@ void sys_panic(char *msg, ...)
 		exit(1);
 	}
 	in_panic = 1;
+	if (multiboot_fb_available())
+		multiboot_fb_fill(200, 0, 0);
 	print_panic_context("PANIC", curthr(), NULL);
 	printf("%s\n", msg);
 	va_start(args, msg);
