@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../assets/lesson.css">
+    <title>Lesson 0008: Debugging with Minimum Tools</title>
+</head>
+<body>
+    <h1>Debugging with Minimum Tools: The LED Interface</h1>
+    
+    <section>
+        <h2>The "Blind" Developer's Dilemma</h2>
+        <p>Imagine your kernel crashes. The screen is black. The serial port is silent. You have no debugger attached. How do you know if the CPU is in a <code>while(1)</code> loop, a <code>HardFault</code>, or if it simply didn't start?</p>
+        <p>This is where <strong>LED Signaling</strong> becomes your primary diagnostic tool.</p>
+    </section>
+
+    <section>
+        <h2>1. Checkpoint Debugging</h2>
+        <p>Instead of <code>printf("Reached step 1")</code>, you use <code>LED_ON(1)</code>.</p>
+        <div class="code-block">
+            <pre>
+void kernel_main() {
+    led_on(LED_0); // Milestone: Main reached
+    init_mmu();
+    led_on(LED_1); // Milestone: MMU initialized
+    init_scheduler();
+    led_on(LED_2); // Milestone: Scheduler ready
+}
+            </pre>
+        </div>
+        <p>By observing which LED is the last to light up, you narrow the crash location to a specific function call.</p>
+    </section>
+
+    <section>
+        <h2>2. Liveness (The Heartbeat)</h2>
+        <p>A system that isn't blinking is a dead system. Implementing a "heartbeat" in your idle task or a timer interrupt proves that the CPU is still executing instructions and that interrupts are functioning.</p>
+    </section>
+
+    <section>
+        <h2>3. Signaling Crash Types</h2>
+        <p>Different failure modes should have different visual signatures:</p>
+        <ul>
+            <li><strong>Steady ON:</strong> Normal operation / Waiting.</li>
+            <li><strong>Slow Blink:</strong> Idle / Heartbeat.</li>
+            <li><strong>Rapid Blink:</strong> Panic / HardFault.</li>
+            <li><strong>Alternating Blink:</strong> Memory Error / Stack Overflow.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Summary</h2>
+        <p>Minimum-tool debugging is about converting <strong>Internal State</strong> $\rightarrow$ <strong>Visual Patterns</strong>. It requires discipline in how you place your signals, but it is the only way to debug the most critical, early-stage boot code.</p>
+    </section>
+</body>
+</html>
