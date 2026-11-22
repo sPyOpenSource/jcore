@@ -22,4 +22,4 @@ fi
 # of 128MB RAM is not enough and the kernel dies in an assertion loop (black screen).
 # NOTE: -boot d, because the kernel itself lives on the ISO while disk.img only
 # holds the data partition.
-qemu-system-x86_64 -m 1024 -drive file=disk.img,format=raw -cdrom MyOS.iso -boot d -serial stdio
+qemu-system-x86_64 -m 1024 -drive file=/Users/xuyi/Downloads/OVMF-X64-r15214/bbai-sd.img,format=raw -cdrom MyOS.iso -boot d -serial stdio

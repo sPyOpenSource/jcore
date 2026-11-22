@@ -135,8 +135,8 @@ jxcore: .kernel src/Headers/realmode.h $(COREOBJ)
 	mkdir .kernel
 
 realmode: src/Assembly/asm.S
-	$(CC) -g -c -o asm.o src/Assembly/asm.S
-	$(LD) -Ttext 0x9000 -o realmode asm.o
+	$(CC) -g -m32 -target i386-pc-linux-gnu -c -o asm.o src/Assembly/asm.S
+	i686-elf-ld -Ttext 0x9000 -o realmode asm.o
 	perl mksymtab.perl realmode src/Headers/realmode.h
 	touch src/main.c
 	$(MAKE) jxcore

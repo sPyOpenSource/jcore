@@ -205,7 +205,7 @@
 // 12 =  4096 byte stack size (normal)
 // 13 =  8192 byte stack size (large)
 // 14 = 16384 byte stack size (huge)
-#define STACK_CHUNK      13
+#define STACK_CHUNK      14
 #define STACK_GROW       1
 #define STACK_CHUNK_SIZE (1 << STACK_CHUNK)
 //#endif

@@ -3,7 +3,7 @@
 /*
  * VMClass DEP
  */
-static ClassDesc *vmclassClass = NULL;
+ClassDesc *vmclassClass = NULL;
 extern ClassDesc *vmmethodClass;
 
 ObjectDesc *vmclass_getName(ObjectDesc * self)

@@ -248,8 +248,8 @@ Class *class_S;
 Class *class_Z;
 
 ArrayClassDesc *sharedArrayClasses = NULL;
-ClassDesc *vmclassClass;
-ClassDesc *vmmethodClass;
+extern ClassDesc *vmclassClass;
+extern ClassDesc *vmmethodClass;
 
 Class *specialAllocClass(DomainDesc * domain, int number)
 {
@@ -569,7 +569,19 @@ Class *findClassOrPrimitive(DomainDesc * domain, char *name)
 		char tmp[80];
 		strncpy(tmp, name + 1, strlen(name) - 2);
 		tmp[strlen(name) - 2] = '\0';
-		return findClass(domain, tmp);
+		cl = findClass(domain, tmp);
+		if (cl == NULL) {
+			/* The compiler records some library dependencies only in the
+			   NEEDLIBS meta field and leaves the binary neededLibs list
+			   empty.  Load the defining lib on demand so the element class
+			   of a (possibly multi-dimensional) array can be resolved. */
+			ClassDesc *cd = findClassDesc(tmp);
+			if (cd != NULL && cd->definingLib != NULL && cd->definingLib->name != NULL) {
+				if (load(domain, cd->definingLib->name) != NULL)
+					cl = findClass(domain, tmp);
+			}
+		}
+		return cl;
 	}
 	sys_panic("findClOrPrim error name=%s", name);
 	return NULL;
@@ -718,7 +730,15 @@ Class *classDesc2Class(DomainDesc * domain, ClassDesc * classDesc)
 	if (name[0] != '[') {
 
 		slib = classDesc->definingLib;
-		if ((lib = sharedLib2Lib(domain, slib))) {
+		if ((lib = sharedLib2Lib(domain, slib)) == NULL) {
+			/* The defining lib is not loaded into this domain yet.  This
+			   happens when the compiler only records the dependencies in
+			   the NEEDLIBS meta field and leaves the binary neededLibs
+			   list empty.  Load the lib on demand. */
+			if (slib != NULL && slib->name != NULL)
+				lib = load(domain, slib->name);
+		}
+		if (lib != NULL) {
 			ndx = (int) (classDesc - (slib->allClasses));
 			return &(lib->allClasses[ndx]);
 		}
@@ -2771,37 +2791,47 @@ void findClassAndMethod(DomainDesc * domain, char *classname, char *methodname, 
 }
 
 
+static void findClassDescAndMethodInClassDesc(ClassDesc * c, char *methodname, char *signature,
+					       ClassDesc ** classFound, MethodDesc ** methodFound)
+{
+	jint j;
+
+	if (c == NULL)
+		return;
+
+	for (j = 0; j < c->numberOfMethods; j++) {
+		if (strcmp(methodname, c->methods[j].name) == 0) {
+			if (strcmp(signature, c->methods[j].signature) == 0) {
+				*classFound = c;
+				*methodFound = &(c->methods[j]);
+				return;
+			}
+		}
+	}
+}
+
 void findClassDescAndMethodInLib(SharedLibDesc * lib, char *classname, char *methodname, char *signature, ClassDesc ** classFound,
 				 MethodDesc ** methodFound)
 {
-	jint i, j;
+	ClassDesc *c;
 
 	if (strcmp(classname, "java/lang/Object") == 0) {	/* Object is part of every lib */
 		findClassDescAndMethodInObject(lib, classname, methodname, signature, classFound, methodFound);
 		return;
 	}
 
-	for (i = 0; i < lib->numberOfClasses; i++) {
-		if (strcmp(classname, lib->allClasses[i].name) == 0) {
-			for (j = 0; j < lib->allClasses[i].numberOfMethods; j++) {
-				if (strcmp(methodname, lib->allClasses[i].methods[j].name) == 0) {
-					if (strcmp(signature, lib->allClasses[i].methods[j].signature) == 0) {
-						*classFound = &(lib->allClasses[i]);
-						*methodFound = &(lib->allClasses[i].methods[j]);
-						return;
-					}
-				}
-			}
-		}
-	}
 	*classFound = NULL;
 	*methodFound = NULL;
+	c = findClassDescInSharedLib(lib, classname);
+	if (c != NULL)
+		findClassDescAndMethodInClassDesc(c, methodname, signature, classFound, methodFound);
 }
 
 void findClassDescAndMethod(char *classname, char *methodname, char *signature, ClassDesc ** classFound,
 			    MethodDesc ** methodFound)
 {
 	SharedLibDesc *sharedLib;
+	ClassDesc *c;
 	*classFound = NULL;
 	*methodFound = NULL;
 	sharedLib = sharedLibs;
@@ -2827,6 +2857,18 @@ void findClassDescAndMethod(char *classname, char *methodname, char *signature, 
 		sharedLib = sharedLib->next;
 	}
 
+	/* A symbolic reference may name a subclass even when the method is
+	   inherited (javac does this for invokestatic).  JVM method resolution
+	   searches the named class first and then its superclasses. */
+	for (c = findClassDesc(classname); c != NULL; c = c->superclass) {
+		if (c == java_lang_Object) {
+			findClassDescAndMethodInObject(NULL, classname, methodname, signature, classFound, methodFound);
+		} else {
+			findClassDescAndMethodInClassDesc(c, methodname, signature, classFound, methodFound);
+		}
+		if (*classFound != NULL)
+			return;
+	}
 }
 
 MethodDesc *findMethodInSharedLibs(char *classname, char *methodname, char *signature)

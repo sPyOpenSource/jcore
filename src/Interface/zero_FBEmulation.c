@@ -66,18 +66,45 @@ struct vesa_mode_info {
 
 static u4_t vesaModes[30];
 static u4_t vesaModesWidth[30];
+static u1_t vesaModesBPP[30];
 static int numberModes = 0;
+
+static void addVesaMode(u2_t mode, u4_t width, u1_t bpp)
+{
+	int pos;
+
+	if (numberModes >= 30)
+		return;
+
+	/* Prefer 16-bpp modes, then wider modes. */
+	for (pos = numberModes; pos > 0; pos--) {
+		int rank = (bpp == 16) ? 0 : 1;
+		int prevRank = (vesaModesBPP[pos - 1] == 16) ? 0 : 1;
+
+		if (rank < prevRank || (rank == prevRank && width > vesaModesWidth[pos - 1])) {
+			vesaModes[pos] = vesaModes[pos - 1];
+			vesaModesWidth[pos] = vesaModesWidth[pos - 1];
+			vesaModesBPP[pos] = vesaModesBPP[pos - 1];
+		} else {
+			break;
+		}
+	}
+	vesaModes[pos] = mode;
+	vesaModesWidth[pos] = width;
+	vesaModesBPP[pos] = bpp;
+	numberModes++;
+}
 
 #define SEG2LIN(x) ((((u4_t)(x)) / 65536) * 16 + (((u4_t)(x)) % 65536))
 
 typedef int (*vesa2_get_mode_info_t) (int mode, struct vesa_mode_info * vesa_mode_info);
-vesa2_get_mode_info_t extern_vesa2_get_mode_info = 0;//(vesa2_get_mode_info_t) FKTADDR_vesa2_get_mode_info;
+vesa2_get_mode_info_t extern_vesa2_get_mode_info = (vesa2_get_mode_info_t) FKTADDR_vesa2_get_mode_info;
 
 typedef int (*vesa2_set_mode_t) (int mode);
-vesa2_set_mode_t extern_vesa2_set_mode = 0;//(vesa2_set_mode_t) FKTADDR_vesa2_set_mode;
+vesa2_set_mode_t extern_vesa2_set_mode = (vesa2_set_mode_t) FKTADDR_vesa2_set_mode;
 
 typedef int (*vesa2_detect_t) (void);
-vesa2_detect_t extern_vesa2_detect = 0;//(vesa2_detect_t) FKTADDR_vesa2_detect;
+vesa2_detect_t extern_vesa2_detect = (vesa2_detect_t) FKTADDR_vesa2_detect;
 
 //#define DBG_VESA 1
 //#define TEST_FRAMEBUFFER 1
@@ -106,6 +133,7 @@ jboolean fbemulation_open(ObjectDesc * self, int mode)
 {
 	jboolean status = JNI_FALSE;
 	int i;
+	int fallbackIndex = 0;
 	char modeStr[80];
 
 	DISABLE_IRQ;
@@ -132,11 +160,11 @@ jboolean fbemulation_open(ObjectDesc * self, int mode)
 	}
       retry:
 	if (extern_vesa2_set_mode(mode | 0x4000) != 0) {
-		printf("FAILED TO SET VESA MODE\n");
+		printf("FAILED TO SET VESA MODE %x\n", mode | 0x4000);
 		console(0, "FAILED TO SET VESA MODE");
-		/* try to find supported mode */
-		if (numberModes > 0) {
-			mode = vesaModes[0];
+		/* Try every mode the VESA BIOS reported as linear-framebuffer capable. */
+		if (fallbackIndex < numberModes) {
+			mode = vesaModes[fallbackIndex++];
 			goto retry;
 		}
 		goto finished;
@@ -299,19 +327,9 @@ void init_realmode()
 #ifdef DBG_VESA
 				printf("      Info.linear_frame_buffer_address %p\n", modeinfo->linear_frame_buffer_address);
 #endif
-				if (modeinfo->bits_per_pixel == 16 /*|| modeinfo->bits_per_pixel == 32 */ ) {
-					if (numberModes < 30) {
-						if (modeinfo->width_in_pixels > vesaModesWidth[0]) {	/* use highest resolution */
-							vesaModes[numberModes] = vesaModes[0];
-							vesaModesWidth[numberModes] = vesaModesWidth[0];
-							vesaModes[0] = modes[i];
-							vesaModesWidth[0] = modeinfo->width_in_pixels;
-						} else {
-							vesaModes[numberModes] = modes[i];
-							vesaModesWidth[numberModes] = modeinfo->width_in_pixels;
-						}
-						numberModes++;
-					}
+				if (modeinfo->bits_per_pixel == 16 || modeinfo->bits_per_pixel == 24 ||
+				    modeinfo->bits_per_pixel == 32) {
+					addVesaMode(modes[i], modeinfo->width_in_pixels, modeinfo->bits_per_pixel);
 				}
 			} else {
 #ifdef DBG_VESA
