@@ -1,21 +1,14 @@
 #building the iso file
-mkdir -p Compiler/app/isodir/boot/grub
-make
-strip jxcore ; cp jxcore Compiler/app/isodir/jxcore
-cd Compiler/app/isodir/code
+#mkdir -p Compiler/app/isodir/boot/grub
+#make
+#strip jxcore ; cp jxcore Compiler/app/isodir/jxcore
+cd Compiler
+ant clean run
+cd app/isodir/code
 zip -0 uncompressed.zip *.jll
 cat uncompressed.zip | gzip --fast -c > ../code.zip
 cd ../..
 i686-elf-grub-mkrescue -o MyOS.iso isodir
-
-#run it in VirtualBox
-#(killall VirtualBox && sleep 1) || true
-#VBoxManage startvm 'JavaOS' &
-
-#boot disk (partitioned FAT volume) - the OS needs it, see makedisk.sh
-if [ ! -f disk.img ]; then
-    ./makedisk.sh disk.img
-fi
 
 #run it in qemu
 # NOTE: the kernel sizes its heap from the multiboot memory map; QEMU's default
