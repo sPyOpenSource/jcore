@@ -36,6 +36,22 @@ struct multiboot_module *multiboot_get_module()
 	return NULL;
 }
 
+/* Locate the framebuffer tag (type 8) GRUB provides from VBE or UEFI GOP. */
+struct multiboot_framebuffer *multiboot_get_framebuffer()
+{
+    struct multiboot_tag *tag = (struct multiboot_tag *) (boot_info + 8);
+
+    while (tag->type != 0) {
+	if (tag->size < 8)
+	    break;
+	if (tag->type == 8)
+	    return (struct multiboot_framebuffer *)tag;
+	tag = (struct multiboot_tag *)((u4_t)tag + ((tag->size + 7) & ~7));
+    }
+
+    return NULL;
+}
+
 
 /*
  *

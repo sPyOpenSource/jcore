@@ -123,6 +123,36 @@ static struct vesa_mode_info *modeinfo = (struct vesa_mode_info *) OTHERMEM;
 static u1_t *framebuffer = NULL;
 static jint width, height, bytesPerLine, bitsPerPixel;
 
+/* Framebuffer handed to us by GRUB (VBE on BIOS, GOP on UEFI). */
+static u1_t *grubFramebuffer = NULL;
+static jint grubWidth, grubHeight, grubBytesPerLine, grubBitsPerPixel;
+static jboolean vesaAvailable = JNI_FALSE;
+
+static jboolean useGrubFramebuffer()
+{
+	struct multiboot_framebuffer *fb = multiboot_get_framebuffer();
+
+	if (fb == NULL)
+		return JNI_FALSE;
+
+	/* Only direct-color RGB is usable by the WM bitmaps. */
+	if (fb->framebuffer_type != 1)
+		return JNI_FALSE;
+	/* The kernel runs without paging, so the buffer must be below 4 GiB. */
+	if (((u8_t)fb->framebuffer_addr >> 32) != 0)
+		return JNI_FALSE;
+
+	grubFramebuffer = (u1_t *)(u4_t)fb->framebuffer_addr;
+	grubWidth = fb->framebuffer_width;
+	grubHeight = fb->framebuffer_height;
+	grubBytesPerLine = fb->framebuffer_pitch;
+	grubBitsPerPixel = fb->framebuffer_bpp;
+	printf("GRUB framebuffer: %ldx%ld, %ld bytesPerLine, %ld bitsPerPixel\n",
+	       (long)grubWidth, (long)grubHeight,
+	       (long)grubBytesPerLine, (long)grubBitsPerPixel);
+	return JNI_TRUE;
+}
+
 struct pseudo_descriptor {
 	short pad;
 	u2_t limit;
@@ -135,6 +165,23 @@ jboolean fbemulation_open(ObjectDesc * self, int mode)
 	int i;
 	int fallbackIndex = 0;
 	char modeStr[80];
+
+	/* Under UEFI there is no VESA BIOS; use the framebuffer GRUB already
+	   set up through GOP instead of switching modes ourselves. */
+	if (grubFramebuffer != NULL) {
+		framebuffer = grubFramebuffer;
+		width = grubWidth;
+		height = grubHeight;
+		bytesPerLine = grubBytesPerLine;
+		bitsPerPixel = grubBitsPerPixel;
+		printf("return from fbemulation_open (GRUB framebuffer)\n");
+		return JNI_TRUE;
+	}
+
+	if (vesaAvailable == JNI_FALSE) {
+		printf("No framebuffer available; leaving graphics device closed\n");
+		return JNI_FALSE;
+	}
 
 	DISABLE_IRQ;
 
@@ -252,6 +299,11 @@ jboolean fbemulation_checkEvent(ObjectDesc * self, ObjectDesc * event)
 
 void init_realmode()
 {
+	/* Prefer the framebuffer GRUB provides (VBE/GOP). This is the only
+	   path available on UEFI firmware, where INT 10h VBE does not exist. */
+	if (useGrubFramebuffer() == JNI_TRUE)
+		return;
+
 	zipentry entry;
 	int ret;
 	u2_t mode;
@@ -290,9 +342,10 @@ void init_realmode()
 
 		ret = extern_vesa2_detect();
 		if (ret != 0) {
-			printf("VESA NOT SUPPORTED");
-			sys_panic("VESA NOT SUPPORTED");
+			printf("VESA NOT SUPPORTED; continuing without a graphics device\n");
+			goto restoreInterrupts;
 		}
+		vesaAvailable = JNI_TRUE;
 #ifdef DBG_VESA
 		printf("HAVE VESA: ret=%d %c %c %c %c\n", ret, info->signature[0], info->signature[1], info->signature[2],
 		       info->signature[3]);
@@ -340,10 +393,14 @@ void init_realmode()
 
 	}
 
+      restoreInterrupts:
 	idt_load();
 	pic_init_pmode();	/* config interrupt controller */
 
 	RESTORE_IRQ;
+
+	if (vesaAvailable == JNI_FALSE)
+		return;
 
 	printf("OK\n");
 }

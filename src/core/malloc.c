@@ -91,34 +91,63 @@ void jxmalloc_init()
 	{
 		struct multiboot_tag *tag = (struct multiboot_tag *) (boot_info + 8);
 		struct multiboot_meminfo *meminfo = NULL;
-    struct multiboot_module *m[2] = { NULL, NULL };
-    int mods_count = 0;
+		struct multiboot_tag *mmap = NULL;
+		struct multiboot_module *m[2] = { NULL, NULL };
+		int mods_count = 0;
+		u4_t usableEnd = 0;
 
-    // Loop door alle beschikbare tags heen
-    while (tag->type != 0) {
-        if (tag->type == 4) {
-            meminfo = (struct multiboot_meminfo *)tag;
-        } 
-        else if (tag->type == 3) {
-            if (mods_count < 2) {
-                m[mods_count] = (struct multiboot_module *)tag;
-            }
-            mods_count++; // Blijf tellen om eventuele overschrijdingen te detecteren
-        }
+		while (tag->type != 0) {
+			if (tag->type == 4) {
+				meminfo = (struct multiboot_meminfo *) tag;
+			} else if (tag->type == 6) {
+				mmap = tag;
+			} else if (tag->type == 3) {
+				if (mods_count < 2) {
+					m[mods_count] = (struct multiboot_module *) tag;
+				}
+				mods_count++;
+			}
 
-        // Ga naar de volgende tag. Belangrijk: Multiboot2 tags zijn ALTIJD 8-byte aligned!
-        // (tag->size + 7) & ~7 zorgt voor de correcte afronding naar boven naar de volgende 8 bytes.
-        tag = (struct multiboot_tag *)((u4_t)tag + ((tag->size + 7) & ~7));
-    }
+			tag = (struct multiboot_tag *) ((u4_t) tag + ((tag->size + 7) & ~7));
+		}
 
-    // Veiligheidscontroles
-    if (!meminfo) {
-        sys_panic("No memory information tag found");
-    }
-    if (mods_count > 2) {
-        sys_panic("Max 2 modules expected");
-    }
-		jxmem_end = (char *) ALIGN_PREV_BLOCK(0x100000 + meminfo->mem_upper * 1024);
+		if (!meminfo) {
+			sys_panic("No memory information tag found");
+		}
+		if (mods_count > 2) {
+			sys_panic("Max 2 modules expected");
+		}
+
+		/* The basic memory tag only reports conventional BIOS memory. Under
+		   UEFI GRUB leaves most RAM out of it, so use the Multiboot2 memory
+		   map to find the top of the largest region usable by the kernel. */
+		if (mmap != NULL) {
+			u4_t entrySize = *(u4_t *) ((u4_t) mmap + 8);
+			if (entrySize >= 24 && mmap->size > 16) {
+				u4_t p = (u4_t) mmap + 16;
+				u4_t n = (mmap->size - 16) / entrySize;
+				u4_t i;
+
+				for (i = 0; i < n; i++) {
+					u8_t base = *(u8_t *) p;
+					u8_t len = *(u8_t *) (p + 8);
+					u4_t type = *(u4_t *) (p + 16);
+					u8_t end = base + len;
+
+					if (type == 1 && (base >> 32) == 0 && (end >> 32) == 0 &&
+					    base >= 0x100000 && (u4_t) end > usableEnd) {
+						usableEnd = (u4_t) end;
+					}
+					p += entrySize;
+				}
+			}
+		}
+
+		if (usableEnd != 0)
+			jxmem_end = (char *) ALIGN_PREV_BLOCK(usableEnd);
+		else
+			jxmem_end = (char *) ALIGN_PREV_BLOCK(0x100000 + meminfo->mem_upper * 1024);
+
 		if (mods_count == 1) {
 			jxmem_start = (char *) ALIGN_NEXT_BLOCK(m[0]->mod_end + 1);
 		} else if (mods_count == 2) {
@@ -126,7 +155,6 @@ void jxmalloc_init()
 		} else {
 			sys_panic("max 2 modules expected");
 		}
-		//printf("jxmalloc_init: start=%p end=%p\n", jxmem_start, jxmem_end);
 	}
 #else
 	{

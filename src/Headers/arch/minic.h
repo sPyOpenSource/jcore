@@ -59,6 +59,8 @@ extern int printf2mem;
 
 // Prototypes
 struct multiboot_module *multiboot_get_module();
+struct multiboot_framebuffer;
+struct multiboot_framebuffer *multiboot_get_framebuffer();
 int strncmp(const char *s1, const char *s2, size_t n);
 int vprintf(const char *fmt, va_list args);
 char *strncpy(char *to, const char *from, size_t count);
