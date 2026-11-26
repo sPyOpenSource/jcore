@@ -309,7 +309,6 @@ void init_realmode()
 	u2_t mode;
 	zip_reset();
 	while ((ret = zip_next_entry(&entry)) != -1) {
-		printf(entry.filename);
 		if (strcmp(entry.filename, REALMODE_MODULE) == 0) {
 			memcpy(REALCODE, entry.data + 0x1000, entry.uncompressed_size - 0x1000);
 			break;

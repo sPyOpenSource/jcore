@@ -1,7 +1,7 @@
 #building the iso file
-#mkdir -p Compiler/app/isodir/boot/grub
-#make
-#strip jxcore ; cp jxcore Compiler/app/isodir/jxcore
+mkdir -p Compiler/app/isodir/boot/grub
+make
+strip jxcore ; cp jxcore Compiler/app/isodir/jxcore
 cd Compiler
 ant clean run
 cd app/isodir/code

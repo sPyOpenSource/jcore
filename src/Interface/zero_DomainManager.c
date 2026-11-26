@@ -70,7 +70,6 @@ static void installHLSfromClassName(DomainDesc * domain)
 }
 #endif
 
-//int dddd = 9;
 void start_initial_thread(void *dummy)
 {
 	LibDesc *lib;
@@ -92,8 +91,6 @@ void start_initial_thread(void *dummy)
 		for (i = 0; i < n_libs; i++) {
 			o = getReferenceArrayElement(domain->libNames, i);
 			stringToChar(o, value, sizeof(value));
-			printf(value);
-			//console(9, "lib");
 			lib = load(curdom(), value);
 			if (lib == NULL) {
 				sys_panic("Cannot load lib %s\n", value);
@@ -104,9 +101,6 @@ void start_initial_thread(void *dummy)
 	}
 
 	stringToChar(domain->dcodeName, value, sizeof(value));
-	printf(value);
-	//console(dddd, value);
-	//dddd++;
 	lib = load(curdom(), value);
 	if (lib == NULL)
 		sys_panic("Cannot load domain file %s\n", value);
