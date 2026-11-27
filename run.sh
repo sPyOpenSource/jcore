@@ -4,10 +4,10 @@ make
 strip jxcore ; cp jxcore Compiler/app/isodir/jxcore
 cd Compiler
 ant clean run
-cd app/isodir/code
-zip -0 uncompressed.zip *.jll
-cat uncompressed.zip | gzip --fast -c > ../code.zip
-cd ../..
+cd app/isodir
+#zip -0 uncompressed.zip *.jll
+#cat uncompressed.zip | gzip --fast -c > ../code.zip
+#cd ../..
 
 # Build a dual-boot ISO with matching BIOS and UEFI GRUB modules. The checked-in
 # x86_64-efi modules are older than the installed x86_64-elf GRUB, so generate a
