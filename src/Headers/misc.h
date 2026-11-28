@@ -126,6 +126,8 @@ static inline void outb(unsigned short int port, unsigned char val)
 #define CR4_PGE	0x00000020	/* page global extensions */
 #define CR4_MCE	0x00000040	/* machine check exception */
 #define CR4_PCE	0x00000100	/* enable read perf counter instr */
+#define CR4_OSFXSR	0x00000200	/* enable SSE state (FXSAVE/FXRSTOR) */
+#define CR4_OSXMMEXCPT	0x00000400	/* enable unmasked SSE exceptions */
 
 
 #include "types.h"

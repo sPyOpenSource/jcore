@@ -1,4 +1,5 @@
 #include "arch/multiboot.h"
+#include "arch/cpuid.h"
 #include "misc.h"
 #include "core/lock.h"
 #include "debug/debug_reg.h"
@@ -519,6 +520,18 @@ void multiboot_main(unsigned int magic, unsigned int boot_info_pa)
 	set_b1(0, DR7_LEN_4, DR7_RW_DATA);
 	/* The  manual recommends executing an LGDT instruction after modifying breakpoint registers. */
 	base_gdt_load();
+
+	/* Compiled Java code uses SSE/SSE2 registers for float and double
+	 * values. The kernel itself is built with -mno-sse, so nothing had
+	 * enabled XMM state; SSE instructions then fault with #UD. Enable
+	 * SSE state and unmasked exceptions here, before any Java runs. */
+	struct cpu_info cpu_info;
+	cpuid(&cpu_info);
+	if (cpu_info.feature_flags & CPUF_SSE) {
+	    set_cr4(get_cr4() | CR4_OSFXSR | CR4_OSXMMEXCPT);
+	    unsigned int mxcsr = 0x1f80;
+	    asm volatile("ldmxcsr %0" : : "m" (mxcsr));
+	}
 	
 	//printf("CPU OK\n\n");
 

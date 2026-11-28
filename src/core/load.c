@@ -83,14 +83,9 @@ NOT IMPL jint readInt()
 
 //#define readString(buf,nbuf) { jint nBytes; readInt(nBytes); if (nBytes >= nbuf) sys_panic("buf too small\n"); readStringData(buf, nBytes);}
 
-//#define readStringID(buf) { jint id ; readInt(id); buf = string_table[id]; }
+#define readStringID(buf) { jint id ; readInt(id); buf = string_table[id]; }
 
 #define readString(buf) { buf = codefilepos; while(*codefilepos != 0){codefilepos++;}; codefilepos++; }
-
-#define readStringID(buf) { jint id ; readInt(id); \
-	if(id < string_table_size) {buf = (char *)string_table[id];} \
-	else if(string_table_size == 0) {buf = "";} \
-	else {buf = (char*)string_table[string_table_size - 1]; for(int ii = string_table_size - 1; ii < id; ii++) {while(*buf != 0){buf++;}; buf++;}} }
 
 //#define readAllocString(buf) {jint nBytes; readInt(nBytes);  if (nBytes >= 10000) sys_panic("nBytes too large\n"); buf = malloc_string(domain, nBytes+1); readStringData(buf, nBytes);}
 
@@ -1451,7 +1446,6 @@ SharedLibDesc *loadSharedLibrary(DomainDesc * domain, char *filename, TempMemory
 		}
 		codefilepos = end;
 	}
-
 	/*
 	   vmsymbol-table
 	 */
